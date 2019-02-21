@@ -1,0 +1,171 @@
+﻿@using Newtonsoft.Json
+@model List<GHM.Website.ThaiThinhMedic.Infrastructure.Models.QuaTang>
+@{
+    ViewBag.Title = "Đăng ký lớp học tiền sản.";
+}
+
+<div class="page-content">
+    <div id="pregnancy-container" class="container">
+        <div class="row">
+            @{Html.RenderPartial("~/Views/Home/_Breadcumb.cshtml");}
+        </div>
+        <div class="row bg-white">
+            <div class="col-sm-9 ">
+                <div class="header-pregnancy"></div>
+                <div class="block-pregnancy">
+                    <div class="content-register-pregnancy">
+                        <h1 class="star-title title-register">ĐĂNG KÝ KHÓA HỌC TIỀN SẢN</h1>
+                        <h1 class="star-title">DÀNH CHO CHA MẸ BẦU</h1>
+                        <div class="star-title-decoration">
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <div class="description">
+                            Trải nghiệm khóa học tiền sản tại Phòng khám Đa Khoa 125 Thái Thịnh, các mẹ sẽ được cung cấp kiên thức về quá trình thai kỳ: Trước khi mang thai cha mẹ cần chuẩn bị những gì? Quá trinhg mang thai có điều gì cần lưu ý không? Những bất thường trong quá trình mang thai thì phải xử trí như thế nào? ..v.v
+                        </div>
+                        <div class="step-register-pergnancy">
+                            <ul>
+                                @{ int i = 1;
+                                    foreach (var quaTang in Model)
+                                    {
+                                        <li><b>Buổi + @i </b>Với chủ đề: @quaTang.TenQuaTang</li>
+                                        i++;
+                                    }
+                                }
+                                @*<li><b>Buổi 1 </b> Với chủ đề: Sự phát triển của thai qua các giai đoạn của thai kỳ(đối tượng: cha mẹ chuẩn bị mang thai, bắt đầu có thai đến 30 tuần tuổi)</li>
+                                    <li><b>Buổi 2</b> Với chủ đề: Dấu hiệu chuyển dạ(> 30 tuần tuổi - 39 tuần)</li>
+                                    <li><b>Buổi 3 </b> Vơi chủ đề: Chăm sóc trẻ sơ sinh (34 - 39 tuần)</li>*@
+                            </ul>
+                        </div>
+                        <div class="cm-mgt-20 form-register-pregnancy">
+                            <h1>THÔNG TIN ĐĂNG KÝ THAM GIA KHÓA HỌC</h1>
+                            <p>* Bắt cuộc</p>
+                            <form class="form-horizontal" data-bind="submit: save">
+                                <div class="form-group">
+                                    <label class="col-sm-12">Họ và tên <span class="color-red">*</span></label>
+                                    <div class="col-sm-12">
+                                        <input type="text" id="fullName" class="" name="name" value="" placeholder="Vui lòng nhập họ và tên" data-bind="value: quaTangKhachHang().fullName" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-12">Số điện thoại <span class="color-red">*</span></label>
+                                    <div class="col-sm-12">
+                                        <input type="text" id="phoneNumber" class="" name="phoneNumber" value="" placeholder="Vui lòng nhập số điện thoại."
+                                               data-bind="value: quaTangKhachHang().phoneNumber" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-12">Địa chỉ email</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" id="email" class="" name="name" value="" placeholder="Vui lòng nhập địa chỉ email." data-bind="value: quaTangKhachHang().email" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-12">Địa chỉ <span class="color-red">*</span></label>
+                                    <div class="col-sm-12">
+                                        <textarea rows="4" id="address" class="" placeholder="Vui lòng nhập địa chỉ." data-bind="value: quaTangKhachHang().address"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-12">Chọn lịch học <span class="color-red">*</span></label>
+                                    <div class="col-sm-12">
+                                        <ul id="list-khoa-hoc" class="list-inline">
+                                            @{ int count = 1;
+                                                foreach (var quaTang in Model)
+                                                {
+                                                    <li>
+                                                        <input type="checkbox" name="course" value="@quaTang.MaQuaTang" id="@quaTang.MaQuaTang" data-bind="checked: quaTangKhachHang().maQuaTang" />
+                                                        <label for="@quaTang.MaQuaTang">@quaTang.NgayApDung.HasValue ? Buổi + @count : +  @quaTang.NgayApDung.Value.ToString("dd/MM/yyyy") : ""</label>
+                                                    </li>
+                                                    count++;
+                                                }
+                                            }
+                                            @*<li>
+                                                    <input type="checkbox" id="all" name="course" value="ALL" data-bind="checked: quaTangKhachHang().maQuaTang" />
+                                                    <label for="all">Buổi 1: 00/00/2018</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="all" name="course" value="ALL" data-bind="checked: quaTangKhachHang().maQuaTang" />
+                                                    <label for="all">Buổi 2: 00/00/2018</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="all" name="course" value="ALL" data-bind="checked: quaTangKhachHang().maQuaTang" />
+                                                    <label for="">Buổi 3: 00/00/2018</label>
+                                                </li>*@
+                                            <li>
+                                                <input type="checkbox" id="all" name="course" value="ALL" data-bind="checked: quaTangKhachHang().maQuaTang" />
+                                                <label for="all">Tất cả các buổi học</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-12">Bạn sẽ tham gia học cùng ai? <span class="color-red">*</span></label>
+                                    <div class="col-sm-12">
+                                        <ul class="list-partner" data-bind="foreach: danhSachNguoiDiCung">
+                                            <li>
+                                                <span data-bind="text: $data"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <i class="color-red">Vui lòng nhập tên rồi sau đó click vào nút thêm người đi cùng có thể đăng ký thêm người đi cùng.</i>
+                                        <input type="text" id="inputPartner" class="cm-mgb-5" name="name" value="" placeholder="Vui lòng nhập họ tên người tham gia"
+                                               data-bind="value: tenNguoiDiCung" />
+                                        <button type="button" class="btn btn-primary btn-sm" data-bind="click: addPartner">
+                                            <i class="fa fa-plus"></i>
+                                            Thêm người đi cùng
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-2 col-sm-offset-5">
+                                        <button class="btn btn-primary btn-lg">
+                                            <i class="fa fa-check"></i>
+                                            Đăng ký
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 banner">
+                <ul>
+                    <li>
+                        <a href="javascript://">
+                            <img src="~/assets/images/02_ngoai.jpg" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript//">
+                            <img src="~/assets/images/03_san.jpg" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript//">
+                            <img src="~/assets/images/03_san.jpg" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- END Container -->
+</div>
+@section knockout{
+    <script>
+        @*var currentUser = @(JsonConvert.SerializeObject(CurrentPatient));*@
+    </script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/assets/plugins/knockout/knockout-latest.js"></script>
+    <script src="~/assets/plugins/knockout/knockout.mapping-latest.js"></script>
+    <script src="~/assets/plugins/datetimepicker/js/moment-locale-vi.js"></script>
+    <script src="~/assets/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/built/knokcoutbindinghandlers/datetimepicker.handler.js"></script>
+    <script src="~/assets/plugins/toastr/toastr.min.js"></script>
+    <script src="~/assets/plugins/lodash/lodash.min.js"></script>
+    <script src="~/assets/plugins/sweetalert/sweet-alert.js"></script>
+    <script src="~/built/BaseClass.js"></script>
+    <script src="~/built/viewmodel/pregnancy/pregnancy.viewmodel.js"></script>
+    @*@Scripts.Render("~/bundles/pregnancy")*@
+}

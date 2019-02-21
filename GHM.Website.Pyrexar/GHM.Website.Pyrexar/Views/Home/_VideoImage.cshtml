@@ -1,0 +1,102 @@
+﻿
+@{
+    var listVideo = ViewBag.ListVideoHomePage as List<VideoViewModel>;
+    var listPhoto = ViewBag.ListPhoto as List<AlbumItemViewModel>;
+}
+
+<div id="video-image">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="titlebar">Thư viện ảnh và video</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="image">
+                    <h2 class="titlebar">Thư viện ảnh</h2>
+                    <div id="imageSlider" class="carousel slide" data-ride="carousel" data-interval="6000">
+                        <div class="carousel-inner" role="listbox">
+                            @if (listPhoto != null && listPhoto.Any())
+                            {
+                                <div class="carousel-inner" role="listbox">
+                                    @{
+                                        var x = 1;
+                                        foreach (var photo in listPhoto)
+                                        {
+                                            <div class="@(string.Format("item {0}", x == 1? "active" : ""))">
+                                                <a href="@(string.IsNullOrEmpty(photo.Thumbnail) ? "/images/no-image.png" : photo.Thumbnail)" 
+                                                   title="@photo.Title" data-fancybox="gallery">
+                                                    <img data-src="@($"/image?url={(string.IsNullOrEmpty(photo.Thumbnail) ? "/images/no-image.png" : photo.Thumbnail)}&width=560&height=420")"
+                                                         onerror="this.src='/images/no-image.png'"
+                                                         alt="@photo.Title" class="img-responsive lazy" />
+                                                </a>
+                                                <div class="carousel-caption" role="option">
+                                                    <p>
+                                                        @photo.Title
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            x++;
+                                        }
+                                    }
+                                </div>
+                            }
+                        </div>
+                        @if (listPhoto != null && listPhoto.Count() > 1)
+                        {
+                            <a class="left carousel-control" href="#imageSlider" role="button" data-slide="prev">
+                                <i class="fa fa-angle-left" aria-hidden="true"></i>
+                            </a>
+                            <a class="right carousel-control" href="#imageSlider" role="button" data-slide="next">
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="video">
+                    <h2 class="titlebar">Thư viện video</h2>
+                    <div id="videoCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+                        @if (listVideo != null && listVideo.Any())
+                        {
+                            <div class="carousel-inner" role="listbox">
+                                @{
+                                    var i = 1;
+                                    foreach (var video in listVideo)
+                                    {
+                                        <div class="@(string.Format("item {0}", i == 1? "active" : ""))">
+                                            <a title="@video.Title"
+                                               data-fancybox href="@video.Url">
+                                                <img data-src="@($"/image?url={(string.IsNullOrEmpty(video.Thumbnail) ? "/images/no-image.png" : video.Thumbnail)}&width=560&height=420")"
+                                                     onerror="this.src='/images/no-image.png'"
+                                                     alt="@video.Title" class="img-responsive lazy"/>
+                                                <span class="duration_video"><i class="fa fa-play"></i></span>
+                                            </a>
+                                            <div class="carousel-caption" role="option">
+                                                <p>
+                                                    @video.Title
+                                                </p>
+                                            </div>
+                                        </div>
+                                        i++;
+                                    }
+                                }
+                            </div>
+                        }
+                        @if (listVideo != null && listVideo.Count > 1)
+                        {
+                            <a class="left carousel-control" href="#videoCarousel" role="button" data-slide="prev">
+                                <i class="fa fa-angle-left" aria-hidden="true"></i>
+                            </a>
+                            <a class="right carousel-control" href="#videoCarousel" role="button" data-slide="next">
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </a>
+                        }
+                    </div>                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@{
+    var listNewsHot = ViewBag.ListNewsHot as List<NewsSearchViewModel>;
+    var listProduct = ViewBag.ListProduct as List<NewsSearchViewModel>;   
+    var mainBanner = ViewBag.MainBanner as BannerViewModel;
+}
+@if (mainBanner != null)
+{
+    <partial name="_MainSlider" model="@mainBanner" />
+}
+<partial name="_About"/>
+@if (listProduct != null && listProduct.Any())
+{
+    <partial name="_ProductHot" model="listProduct" />
+}
+<partial name="_VideoImage" />
+@if (listNewsHot != null && listNewsHot.Any())
+{
+    <partial name="_HotNews" model="listNewsHot" />
+}

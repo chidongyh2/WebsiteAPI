@@ -1,0 +1,389 @@
+﻿@using Clinic.Utils
+@using Newtonsoft.Json
+@model List<Clinic.DataAccess.VideoChupThuThuat>
+@{
+    ViewBag.Title = "Danh sách video";
+}
+
+@if (Model != null && Model.Any())
+{
+    var _link = Model[0].LinkWeb.ToLower();
+    var _newLink = "";
+    if (_link.Contains("/video/"))
+    {
+        _newLink = _link.Replace("/video/", "http://video1.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s3/"))
+    {
+        _newLink = _link.Replace("/video_s3/", "http://video3.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s2/"))
+    {
+        _newLink = _link.Replace("/video_s2/", "http://video2.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s4/"))
+    {
+        _newLink = _link.Replace("/video_s4/", "http://video4.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s5/"))
+    {
+        _newLink = _link.Replace("/video_s5/", "http://video5.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s6/"))
+    {
+        _newLink = _link.Replace("/video_s6/", "http://video6.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s7/"))
+    {
+        _newLink = _link.Replace("/video_s7/", "http://video7.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s8/"))
+    {
+        _newLink = _link.Replace("/video_s8/", "http://video8.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s9/"))
+    {
+        _newLink = _link.Replace("/video_s9/", "http://video9.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s10/"))
+    {
+        _newLink = _link.Replace("/video_s10/", "http://video10.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s11/"))
+    {
+        _newLink = _link.Replace("/video_s11/", "http://video11.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s12/"))
+    {
+        _newLink = _link.Replace("/video_s12/", "http://video12.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s13/"))
+    {
+        _newLink = _link.Replace("/video_s13/", "http://video13.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s14/"))
+    {
+        _newLink = _link.Replace("/video_s14/", "http://video14.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s15/"))
+    {
+        _newLink = _link.Replace("/video_s15/", "http://video15.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s16/"))
+    {
+        _newLink = _link.Replace("/video_s16/", "http://video16.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s17/"))
+    {
+        _newLink = _link.Replace("/video_s17/", "http://video17.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s18/"))
+    {
+        _newLink = _link.Replace("/video_s18/", "http://video18.pkdktt.com/");
+    }
+    else if (_link.Contains("/video_s19/"))
+    {
+        _newLink = _link.Replace("/video_s19/", "http://video19.pkdktt.com/");
+    }
+
+    @*<link href="~/assets/plugins/videojs/video-js.min.css" rel="stylesheet">*@
+
+    <div class="container bg-white">
+        <div id="wrapperVideoPage">
+            <div class="row cm-mgt-20">
+                <div class="col-sm-12">
+                    <h4 class="star-title uppercase">Xem video siêu âm</h4>
+                    <div class="star-title-decoration">
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row cm-mgb-20">
+                <div class="col-md-4">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <h4 class="title-border">Thông tin khách hàng</h4>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Mã BN</label>
+                            <div class="col-sm-8">
+                                @CurrentPatient.MaBenhNhan
+                            </div>
+                        </div>
+                        <div class="dashed-line cm-mgb-15"></div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Họ tên</label>
+                            <div class="col-sm-8">
+                                @CurrentPatient.HoTenBenhNhan
+                            </div>
+                        </div>
+                        <div class="dashed-line cm-mgb-15"></div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Ngày sinh</label>
+                            <div class="col-sm-8">
+                                @string.Format("{0}", CurrentPatient.NgayThangNamSinh.HasValue ? CurrentPatient.NgayThangNamSinh.Value.ToString("d") : "")
+                            </div>
+                        </div>
+                        <div class="dashed-line cm-mgb-15"></div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Tuổi</label>
+                            <div class="col-sm-8">
+                                @CurrentPatient.Tuoi
+                            </div>
+                        </div>
+                        <div class="dashed-line cm-mgb-15"></div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Giới tính</label>
+                            <div class="col-sm-8">
+                                @string.Format("{0}", CurrentPatient.MaGioiTinh.HasValue && !CurrentPatient.MaGioiTinh.Value ? "Nữ" : "Nam")
+                            </div>
+                        </div>
+                        <div class="dashed-line cm-mgb-15"></div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Số điện thoại</label>
+                            <div class="col-sm-8">
+                                @CurrentPatient.SoDienThoai
+                            </div>
+                        </div>
+                        <div class="dashed-line cm-mgb-15"></div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Email</label>
+                            <div class="col-sm-8">
+                                @CurrentPatient.Email
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                                <label class="col-sm-4">Quận huyện</label>
+                                <div class="col-sm-8">
+                                    @if (CurrentPatient != null && CurrentPatient.MaBenhNhan == Model.MaBenhNhan)
+                                    {
+                                        <text>@(Model.MaQuan)</text>
+                                    }
+                                    else
+                                    {
+                                        <text>************</text>
+                                    }
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Tỉnh thành</label>
+                                <div class="col-sm-8"></div>
+                            </div>*@
+                    </div>
+                </div><!-- end col-md-4 -->
+                <div class="col-md-8">
+                    <div class="wrapper-video">
+                        <div id='player'></div>
+                        <div id="jwPlayerVideo" style="display: none; overflow: hidden; opacity: 0;"></div>
+                    </div>
+                    @*<div class="wrapper-video-content">
+                            <a href="javascript://" class="btn btn-default btn-lg btn-replay" id="btn-replay" onclick="onReloadClick()" style="display: none;">
+                                <i class="fa fa-repeat"></i>
+                            </a>
+                            <video width="80%" id="startVideo" controls onplay="onStartVideoPlay()" onended="onStartVideoEnded()" onpause="onStartVideoPause()">
+                                <source src="~/assets/files/start.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                            <video width="80%" id="mainVideo" controls onplay="onMainVideoPlay()" onended="onMainVideoEnded()" onpause="onMainVideoPause()" style="display: none;">
+                                <source src="/video.ashx?id=@Model[0].IDs" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                            <video width="80%" id="endVideo" onplay="" onended="onEndVideoEnded()" style="display: none;">
+                                <source src="~/assets/files/end.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                            <audio id="mainAudio">
+                                <source src="~/assets/files/bgmusic.mp3"/>
+                            </audio>
+
+                        </div>*@
+                </div><!-- end col-md-8 -->
+            </div>
+
+            @*@{Html.RenderPartial("~/Views/Video/_Note.cshtml");}*@
+            <div class="row wrapper-list-video" data-bind="visible: listVideo().length > 0" style="display: none;">
+                <div class="col-sm-12">
+                    @{Html.RenderPartial("~/Views/Video/_VideoTable.cshtml");}
+                </div>
+            </div>
+            <div class="modal fade" id="videoHelpModal" tabindex="-1" role="dialog" aria-labelledby="videoHelpModal-label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title uppercase main-text-color bold" id="videoHelpModal-label">Trợ giúp</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Button_Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end #wrapperVideoPage -->
+    </div>
+    @*@section knockout{
+            <script>
+                var startVideo = document.getElementById("startVideo");
+                var mainVideo = document.getElementById("mainVideo");
+                var endVideo = document.getElementById("endVideo");
+                var replayButton = document.getElementById("btn-replay");
+
+                var mainAudio = document.getElementById("mainAudio");
+
+                function onStartVideoPlay() {
+                    mainAudio.play();
+                }
+
+                function onStartVideoEnded() {
+                    startVideo.setAttribute("style", "display: none");
+                    mainVideo.setAttribute("style", "display: block");
+                    mainVideo.play();
+                }
+
+                function onStartVideoPause() {
+                    mainAudio.pause();
+                }
+
+                function onMainVideoEnded() {
+                    mainVideo.setAttribute("style", "display: none");
+                    endVideo.setAttribute("style", "display: block");
+                    endVideo.play();
+                }
+
+                function onMainVideoPause() {
+                    mainAudio.pause();
+                }
+
+                function onEndVideoEnded() {
+                    mainAudio.pause();
+                    replayButton.setAttribute("style", "display: block");
+                }
+
+                function onReloadClick() {
+                    startVideo.play();
+                    endVideo.setAttribute("style", "display: none");
+                    startVideo.setAttribute("style", "display: block");
+                    replayButton.setAttribute("style", "display: none");
+                }
+
+                function onMainVideoPlay() {
+                    mainAudio.play();
+                }
+
+                var listVideo = @Html.Raw(Model != null ? JsonConvert.SerializeObject(Model, Common.GetCalmcaseSetting()) : "[]");
+                var currentVideo = listVideo.length > 0 ? listVideo[0] : {};
+
+            </script>
+            @Scripts.Render("~/bundles/Video")
+            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57849a6133dc4ca6"></script>
+        }*@
+
+    @section knockout{
+        <script type='text/javascript'>                                 
+                                jwplayer('player').setup({
+                                    file: '/assets/files/bgmusic.mp3',
+                                    width: '100%',
+                                    //image: "/img/logo.png",
+                                    aspectratio: '16:9',
+                                    skin: 'five',
+                                    logo: {
+
+                                    },
+                                    playlist: [{
+                                        image: "/assets/images/logo1.png",
+                                        sources: [{
+                                            file: "/assets/files/start.mp4"
+                                        }],
+                                        title: "Play"
+                                    }, {
+                                        sources: [{
+                                            file: "@_newLink.Replace("mpg","mp4").Replace("mpeg", "mp4")",
+                                        }]
+                                    }, {
+                                        sources: [{
+                                            file: "/assets/files/end.mp4"
+                                        }]
+                                    }],
+                                    events: {
+                                        onPlay: function () {
+                                            $("#jwPlayerVideo").css("display", "none");
+                                            jwplayer('jwPlayerVideo').play();
+                                            var _state = jwplayer('jwPlayerVideo').getState();
+                                            if (_state == 'PAUSED') {
+                                                jwplayer('jwPlayerVideo').play();
+                                            }
+                                        },
+                                        onError: function () {
+                                            //jwplayer('jwPlayerVideo').load({  image: "http://pkdktt.com/wp-content/uploads/2015/06/PopupNangcapbaotrihethong-01.png" });
+                                            alert(['Kính gửi Quý khách hàng,'] + "\r\n" + ['Rất tiếc, hệ thống không tìm thấy Video này.']);
+
+                                        },
+                                        onPause: function () {
+                                            jwplayer('jwPlayerVideo').pause();
+                                        },
+                                        onStop: function () {
+                                            alert("stoped");
+                                        },
+                                        onMute: function () {
+                                            //jwplayer('jwPlayerVideo').setMute(true);
+                                            jwplayer('jwPlayerVideo').setMute(this.getMute());
+                                        },
+                                        onVolume: function (event) {
+                                            var _vol = event.volume;
+                                            //var _pl = jwplayer('jwPlayerVideo').getVolumn();
+                                            jwplayer('jwPlayerVideo').setVolume(this.getVolume());
+                                            console.log(_vol);
+                                        },
+                                        onPlaylistComplete: function (event) {
+                                            jwplayer('jwPlayerVideo').stop();
+                                        },
+
+
+                                    }
+                                });
+        </script>
+        <script type="text/javascript">
+                                jwplayer("jwPlayerVideo").setup({
+                                    id: "jwPlayerVideo",
+                                    name: "jwPlayerVideo",
+                                    autostart: "false",
+                                    bufferlength: 10,
+                                    width: 0,
+                                    height: 0,
+                                    backcolor: "FFFFFF",
+                                    frontcolor: "FFFFFF",
+                                    lightcolor: " FFFFFF",
+                                    screencolor: "FFFFFF",
+                                    controlbar: "bottom",
+                                    skin: 'five',
+                                    icons: "true",
+                                    dock: "false",
+                                    allowscriptaccess: "always",
+                                    image: "/assets/images/logo1.png",
+                                    file: "/assets/files/bgmusic.mp3"
+                                });
+                                var listVideo = @Html.Raw(Model != null ? JsonConvert.SerializeObject(Model, Common.GetCalmcaseSetting()) : "[]");
+                                var currentVideo = listVideo.length > 0 ? listVideo[0] : {};
+        </script>
+        @Scripts.Render("~/bundles/Video")
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57849a6133dc4ca6"></script>
+    }
+}
+else
+{
+    <div class="container wrapper-error bg-white">
+        <div class="row">
+            <div class="col-sm-12">
+                <i class="fa fa-film icon"></i>
+                <div class="message">Hiện tại bạn không có video nào!</div>
+            </div>
+        </div>
+    </div>
+}

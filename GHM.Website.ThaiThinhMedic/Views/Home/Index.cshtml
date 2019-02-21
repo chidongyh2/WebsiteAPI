@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Phòng khám 125 Thái Thịnh - 20 năm phát triển";
+}
+
+<link rel="stylesheet" type="text/css" href="~/assets/plugins/lightslider/css/lightslider.css" />
+
+@*Slider*@
+@{Html.RenderPartial("_MainSlider");}
+<!----Popup ---->
+@*@if (popup != null && popup.Any())
+            {
+                var image = popup.FirstOrDefault();
+                if (image != null)
+                {
+                    <div class="main-popup" data-bind="visible: isShowPopup">
+
+                        <a class="link-popup" href="@string.Format("{0}", string.IsNullOrEmpty(image.Url) ? "javascript://" : image.Url)">
+                            <div class="close-popup" data-bind="click: closePopup, tooltips" href="javascript://" title="Đóng popup" data-toggle="tooltip" data-placement="left">
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <img src="@Url.Action("Index", "ImageHandler", new {url = image.ImageUrl, type=1})" alt="Phòng khám đa khoa 125 Thái Thịnh." />
+                        </a>
+                    </div>
+                }
+}*@
+
+<div class="main-popup" data-bind="visible: isShowPopup">
+    <a class="link-popup" href="javascript://">
+        <div class="close-popup" data-bind="click: closePopup, tooltips" href="javascript://" title="Đóng popup" data-toggle="tooltip" data-placement="left">
+            <i class="fa fa-times"></i>
+        </div>
+        <img class="lazy" src="~/assets/images/popup.jpg" alt="Phòng khám đa khoa 125 Thái Thịnh." />
+    </a>
+</div>
+<!-----End Popup---->
+<!--Green Section-->
+<nav>
+    <section class="bg_green padding-half">
+        <div class="container">
+            <div class="row white_content">
+                <h4 class="star-title" style="color: #FFF">Chuyên khoa uy tín</h4>
+                <br />
+                <div class="line"></div>
+                @{Html.RenderPartial("_FacultySlider");}
+            </div>
+        </div>
+    </section>
+</nav>
+<!----End Green Section-->
+<!------- BEGIN: Util ------------->
+@{Html.RenderPartial("_Util");}
+<!------- End: Util ------------->
+<!----Video, News, Banner---->
+<section class="padding video cm-mgt-20 bg-white cm-pd-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                @{Html.RenderPartial("_Video");}             
+            </div>
+            <div class="col-md-4 banner">
+                <ul>
+                    <li>
+                        <a href="javascript://">
+                            <img src="~/assets/images/02_ngoai.jpg" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript//">
+                            <img src="~/assets/images/03_san.jpg" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="padding block-host-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                @{Html.RenderPartial("_HostNew");}
+            </div>
+            <div class="col-md-4 banner">
+                <ul>
+                    <li>
+                        <a href="javascript://">
+                            <img src="~/assets/images/02_ngoai.jpg" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript//">
+                            <img src="~/assets/images/03_san.jpg" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>  
+</section>
+<!-----End Video, New, Banner----->
+@*Script*@
+<script src="~/assets/plugins/jquery/jquery-1.10.2.min.js"></script>
+
+@section knockout{
+    @*<script src="~/assets/plugins/knockout/knockout-latest.js"></script>*@
+    <script src="~/assets/plugins/owl.carousel/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/assets/plugins/lightslider/js/lightslider.js"></script>
+    <script src="~/assets/plugins/owl.carousel/assets/js/bootstrap-collapse.js"></script>
+    <script src="~/assets/plugins/owl.carousel/assets/js/bootstrap-transition.js"></script>
+    <script src="~/assets/plugins/owl.carousel/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="~/assets/plugins/owl.carousel/assets/js/application.js"></script>
+    <script src="~/built/viewmodel/home/home.viewmodel.js"></script>
+}

@@ -1,0 +1,14 @@
+﻿@model AlbumItemViewModel;
+
+@{
+    var listPhoto = ViewBag.ListPhoto as List<AlbumItemViewModel>;
+}
+@if (Model != null)
+{
+    <div class="photo-item">
+        <a href="@(string.IsNullOrEmpty(Model.Thumbnail)? "/images/no-image.png" : Model.Thumbnail)" title="@Model.Title" data-fancybox="gallery">
+            <img class="img-responsive zoom lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(Model.Thumbnail) ? "/images/no-image.png" : Model.Thumbnail)}&width=480&height=360")" alt="@Model.Title"
+                 onerror="this.src='/images/no-image.png'"/>
+        </a>
+    </div>
+}

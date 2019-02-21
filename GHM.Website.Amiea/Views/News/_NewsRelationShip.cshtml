@@ -1,0 +1,21 @@
+﻿@model List<NewsSearchViewModel>
+@if (Model != null && Model.Any())
+{
+    <div id="news-relationship">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="titlebar">Tin tức liên quan</h2>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var news in Model)
+                {
+                    <div class="col-sm-6 media">
+                        <partial name="_NewsRelationShipItem" model="news"/>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,63 @@
+﻿@{
+    var videoDetail = ViewBag.VideoDetail as VideoViewModel;
+    var listVideo = ViewBag.AlbumViewModel as List<AlbumWithItemViewModel>;
+    ViewBag.Title = videoDetail?.Title;
+    ViewBag.MetaTitle = videoDetail?.Title;
+    ViewBag.Description = videoDetail?.Description;
+    ViewBag.Image = videoDetail?.Thumbnail;
+}
+<div id="video-detail">
+    <div class="container">
+        @if (videoDetail != null)
+        {
+            <div class="row">
+                <div class="col-sm-9 cm-mgb-20 content">
+                    @if (videoDetail.Type == VideoType.YouTube)
+                    {
+                        <iframe src="@(string.Format("https://www.youtube.com/embed/{0}?autoplay=1&amp;rel=0", videoDetail?.VideoLinkId))" allow="autoplay; encrypted-media" allowfullscreen frameborder="0" width="100%" height="480"></iframe>
+                    }
+                    @if (videoDetail.Type == VideoType.Vimeo)
+                    {
+                        <iframe src="@(string.Format("https://player.vimeo.com/video/{0}?color=0c88dd&title=0&byline=0&portrait=0&autoplay=1", videoDetail?.VideoLinkId))" allow="autoplay; fullscreen" frameborder="0" width="100%" height="480"></iframe>
+                    }
+                </div>
+                <div class="col-sm-3 summary">
+                    <h1 class="title">@videoDetail?.Title</h1>
+                    <div class="description">@videoDetail?.Description</div>
+                </div>
+            </div>
+        }
+        <div class="row">
+            @if (listVideo != null && listVideo.Any())
+            {
+                foreach (var video in listVideo)
+                {
+                    <div class="abum-photo">
+                        <div class="col-sm-12 ">
+                            <h4 class="title-border">@(string.IsNullOrEmpty(video.Title) ? "Album1" : video.Title)</h4>
+                            <div class="line"></div>
+                        </div>
+                        @if (video.AlbumItems != null && video.AlbumItems.Any())
+                        {
+                            @foreach (var videoItem in video.AlbumItems)
+                            {
+                                <div class="col-sm-3">
+                                    <partial name="_VideoItem" model="videoItem" />
+                                </div>
+                            }
+                            @if (video.AlbumItems != null && video.AlbumItems.Count > 4)
+                            {
+                                <div class="col-sm-12 ">
+                                    <a href="@string.Format("/thu-vien-video/{0}/{1}/{2}", video.SeoLink, 1, 20)"
+                                       title="@video.Title" class="btn-more pull-right">
+                                        Xem tiếp ...
+                                    </a>
+                                </div>
+                            }
+                        }
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

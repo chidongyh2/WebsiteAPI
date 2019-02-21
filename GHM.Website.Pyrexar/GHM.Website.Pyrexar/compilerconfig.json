@@ -1,0 +1,50 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/less/header.css",
+    "inputFile": "wwwroot/css/less/header.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/footer.css",
+    "inputFile": "wwwroot/css/less/footer.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/main.css",
+    "inputFile": "wwwroot/css/less/main.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/common.css",
+    "inputFile": "wwwroot/css/less/common.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/config.css",
+    "inputFile": "wwwroot/css/less/config.less"
+  },
+  {
+    "outputFile": "wwwroot/lib/toastr/toastr.es5.js",
+    "inputFile": "wwwroot/lib/toastr/toastr.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/contact.viewmodel.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/contact.viewmodel.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/fancybox-master/dist/jquery.fancybox.min.es5.js",
+    "inputFile": "wwwroot/lib/fancybox-master/dist/jquery.fancybox.min.js"
+  },
+  {
+    "outputFile": "wwwroot/js/site.es5.js",
+    "inputFile": "wwwroot/js/site.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/jquery.lazy-master/jquery.lazy.es5.js",
+    "inputFile": "wwwroot/lib/jquery.lazy-master/jquery.lazy.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/lightslider/js/lightslider.es5.js",
+    "inputFile": "wwwroot/lib/lightslider/js/lightslider.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/slider-pro-master/dist/js/jquery.sliderPro.es5.js",
+    "inputFile": "wwwroot/lib/slider-pro-master/dist/js/jquery.sliderPro.js"
+  }
+]

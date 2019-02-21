@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  ghm.authentication:
+    image: ghm.authentication
+    build:
+      context: .
+      dockerfile: GHM.Authentication\Dockerfile
+
+  ghm.core.api:
+    image: ghm.core.api
+    build:
+      context: .
+      dockerfile: GHM.Core.Api\Dockerfile
+

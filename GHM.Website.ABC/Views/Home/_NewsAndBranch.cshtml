@@ -1,0 +1,81 @@
+﻿@{
+    var listCategoryWidthNew = ViewBag.ListNews as List<CategoryWidthNewsViewModel>;
+    var categoryIdDefault = listCategoryWidthNew != null && listCategoryWidthNew.Count > 0 ? listCategoryWidthNew.FirstOrDefault().CategoryId : 0;
+    var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
+}
+<link href="~/lib/lightslider/css/lightslider.css" rel="stylesheet" />
+<div class="news-angency">
+    @if (listCategoryWidthNew != null && listCategoryWidthNew.Any())
+    {
+        var listCategory = listCategoryWidthNew.Select(x => new
+        {
+            x.CategoryId,
+            x.CategoryName
+        });
+        <div id="newsAndBranch">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 center">
+                        <h2 class="titlebar">@Resource.News</h2>
+                        <hr />
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                @{
+                                    var count = 0;
+                                    foreach (var category in listCategory)
+                                    {
+                                        <span class="@(string.Format("filter btn {0}", count == 0 ? "active" : ""))" data-filter="@category.CategoryId">@category.CategoryName</span>
+                                        count++;
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        @{
+                            foreach (var categoryNews in listCategoryWidthNew)
+                            {
+                                <partial name="_BlockNews" model="categoryNews" />
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (listBranch != null)
+    {
+        <div id="agency">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 center">
+                        <h2 class="titlebar">@Resource.DistributionAgents</h2>
+                        <hr />
+                    </div>
+                    <div class="col-sm-12">
+                        <div id="agencySlider">
+                            @foreach (var branch in listBranch)
+                            {
+                                <div class="item">
+                                    <a href="@branch.Website" title="@branch.Name">
+                                        <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(branch.Logo) ? "/images/no-image.png" : branch.Logo)}")"
+                                        onerror="this.src='/images/no-image.png'"
+                                        alt="@branch.Name" />
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script type="text/javascript">
+    var categoryIdDefault = @categoryIdDefault;
+</script>
+
+

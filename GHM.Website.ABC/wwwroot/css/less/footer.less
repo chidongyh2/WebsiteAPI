@@ -1,0 +1,196 @@
+﻿@import "config.less";
+
+#footer {
+    color: @color-white;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    background-image: url('../../images/bgr web/trang chu/image-04.jpg');
+    background-position: initial;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    @media @mobile {
+        background-size: auto 100%;
+    }
+
+    .logo {
+        margin: 10px 0px;
+
+        @media @mobile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            width: 160px
+        }
+    }
+
+    .contact-info {
+        list-style-type: none;
+        color: @color-text;
+        padding-left: 0px;
+
+        ul {
+            list-style-type: none;
+            padding-left: 0px;
+
+            @media @mobile {
+                text-align: center;
+            }
+
+            .branch {
+                h1 {
+                    margin-top:0px;
+                    font-size: 20px;
+                    color: #4A4A4A;
+                    font-family: OpenSans-Bold;
+                }
+            }
+
+            li {
+                padding: 3px 0px;
+
+                i {
+                    padding-right: 5px;
+
+                    &:before {
+                        padding-left: 2px;
+                    }
+                }
+
+                a {
+                    color: @color-text;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                font-size: 14px;
+            }
+
+            .social-network {
+                ul {
+                    li {
+                        padding: 0px 5px;
+
+                        a {
+                            color: @color-text;
+                            font-size: 16px;
+
+                            img {
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .message {
+        .title-message {
+            padding-top: 60px;
+            font-size: 17px;
+            text-transform: uppercase;
+            color: @main-color;
+            font-family: OpenSans-Bold;
+
+            @media @mobile {
+                padding-top: 20px;
+                text-align: center;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            border: none;
+            color: @color-text;
+            font-style: italic;
+            font-size: 14px;
+        }
+
+        .btn-send-message {
+            border: 1px solid @main-color;
+            padding: 7px 36px;
+            color: @main-color;
+            background-color: #EDEDED;
+
+            i {
+                font-size: 20px;
+            }
+
+            &:hover {
+                color: @color-white;
+                background-color: @main-color;
+            }
+        }
+
+        .submit {
+            padding-top: 10px;
+
+            @media @mobile {
+                text-align: center;
+            }
+        }
+    }
+
+    .link {
+        padding-top: 103px;
+
+        ul {
+            list-style-type: none;
+            padding-left: 0px;
+
+            li {
+                padding: 3px 0px;
+
+                a {
+                    color: @color-text;
+                    font-size: 14px;
+                    text-transform: uppercase;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer-bottom {
+    background-color: @main-color;
+
+    .brand {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .list-items {
+            padding: 0px 20px;
+            flex-basis: 10%;
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @media @mobile {
+                padding: 0px 5px;
+                flex-basis: 25%;
+            }
+        }
+    }
+}
+
+.copy-right {
+    font-size: 15px;
+    color: @color-text;
+}

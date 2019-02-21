@@ -1,0 +1,23 @@
+﻿
+@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var newsHomePage = ViewBag.NewsHomePage as NewsDetailViewModel;
+}
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="content">
+                    @if (websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Instruction))
+                    {
+                        @Html.Raw(websiteSetting.Instruction)
+                    }
+                </div>
+            </div>
+            <div class="col-sm-6 hidden-xs hidden-sm">
+                <img class="img-responsive" src="~/images/Certification-logo-box.png" />
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,198 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+    var listMenuItem = ViewBag.FooterMenuNav as List<MenuItemViewModel>;
+    var listBrand = ViewBag.ListBrands as List<BrandSearchViewModel>;
+}
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="logo">
+                    <a href="/" title="@websiteSetting?.Brand">
+                        <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? websiteSetting.Logo : "/images/Trang chu/Logo ABC tren-duoi.png" )"
+                             alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) ? websiteSetting?.Brand : ViewBag.Title)"
+                             onerror="this.src='/images/no-image.png'" />
+                    </a>
+                </div>
+                <div class="contact-info">
+                    <ul>
+                        @if (listBranch != null && listBranch.Any())
+                        {
+                            foreach (var branchs in listBranch.Where(x => x.IsOffice.Value))
+                            {
+                                <li class="branch">
+                                    <h1> @branchs?.Name</h1>
+                                </li>
+                                @if (!string.IsNullOrEmpty(branchs?.Address))
+                                {
+                                    <li class="">
+                                        <i class="fa fa-map-marker"></i>
+                                        @branchs?.Address
+                                    </li>
+                                }
+                                @if (branchs.BranchContactDetails != null && branchs.BranchContactDetails.Any())
+                                {
+                                    @foreach (var branchItem in branchs.BranchContactDetails)
+                                    {
+                                        switch (branchItem.ContactType)
+                                        {
+                                            case ContactType.MobilePhone:
+                                                <li class="">
+                                                    <i class="fa fa-phone"></i>
+                                                    @branchItem.ContactValue
+                                                </li>
+                                                break;
+                                            case ContactType.Fax:
+                                                <li class="">
+                                                    @branchItem.ContactValue
+                                                </li>
+                                                break;
+                                            case ContactType.Email:
+                                                <li class="">
+                                                    <i class="fa fa-envelope"></i>
+                                                    <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a> 
+                                                </li>
+                                                break;
+                                            case ContactType.HomePhone:
+                                                <li class="">
+                                                    <i class="fa fa-phone"></i>
+                                                    @branchItem.ContactValue
+                                                </li>
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                }
+                                @if (!string.IsNullOrEmpty(branchs?.WorkTime))
+                                {
+                                    <li class="">
+                                        <i class="fa fa-clock-o"></i>
+                                        @branchs?.WorkTime
+                                    </li>
+                                }
+                                @if (!string.IsNullOrEmpty(branchs?.Website))
+                                {
+                                    <li class="">
+                                        <i class="fa fa-globe" aria-hidden="true"></i>
+                                        <a href="@branchs?.Website">@branchs?.Website</a>
+                                    </li>
+                                }
+                            }
+                        }
+                        @if (listSocialNetWork != null && listSocialNetWork.Any())
+                        {
+                            <li class="social-network">
+                                <ul class="list-inline">
+                                    @foreach (var socialNetWork in listSocialNetWork)
+                                    {
+                                        <li class="list-items">
+                                            <a href="@socialNetWork.Url" class="btn-scoical">
+                                                @if (!string.IsNullOrEmpty(socialNetWork.Icon))
+                                                {
+                                                    @*<img data-src="@($"/image?url={(string.IsNullOrEmpty(socialNetWork.Image) ? "/images/no-image.png" : socialNetWork.Image)}&width=20&height=20&type=1")"
+                                                         alt="@socialNetWork.Name"
+                                                         class="lazy" />*@
+                                                    <i class="fa @socialNetWork.Icon"></i>
+                                                }
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+            <div class="col-sm-2 link hidden-xs">
+                <ul>
+                    @if (listBrand != null && listBrand.Any())
+                    {
+                        foreach (var item in listBrand)
+                        {
+                            <li>
+                                <a href="@item.Website" class="transition" title="@item.Name">
+                                    @item.Name
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-sm-2 link hidden-xs">
+                <ul>
+                    @if (listMenuItem != null && listMenuItem.Any())
+                    {
+                        @*<li><a href="/" class="@("" == "/" ? "active" : "")">@Resource.Home</a></li>*@
+                        foreach (var item in listMenuItem.Where(x => x.ParentId == null))
+                        {
+                            <li>
+                                <a href="@( $"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : item.Url)}")" class="transition">
+                                    @item.Name
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-sm-4 message">
+                <h3 class="title-message">
+                    @Resource.SendMessage
+                </h3>
+                <form class="form-horizontal" id="contact_form" data-bind="submit: sendFeedback">
+                    <div class="form-group">
+                        <div data-bind="attr: {class: isContactNameError() ? 'col-xs-6 cm-pdr-0 has-error' : 'col-xs-6 cm-pdr-0'}">
+                            <input id="contact_full_name" type="text" class="form-control w100pc" placeholder="@Resource.FullNamePlaceHolder" value="" data-bind="value: contactName, hasFocus: isContactNameFocus" />
+                        </div>
+                        <div data-bind="attr: {class: isPhoneNumberError() ? 'col-xs-6 cm-pdl-5 has-error' : 'col-xs-6 cm-pdl-5'}">
+                            <input type="text" class="form-control w100pc" placeholder="@Resource.PhoneNumberPlaceHolder" value="" data-bind="value: contactPhoneNumber, hasFocus: isPhoneNumberFocus" />
+                        </div>
+                    </div>
+                    <div class="form-group" data-bind="attr: {class: isEmailError() ? 'form-group has-error' : 'form-group'}">
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control w100pc" placeholder="@Resource.EmailPlaceHolder" value="" data-bind="value: contactEmail, hasFocus: isEmailFocus" />
+                        </div>
+                    </div>
+                    <div class="form-group" data-bind="attr: {class: isContentError() ? 'form-group has-error' : 'form-group'}">
+                        <div class="col-xs-12">
+                            <textarea type="text" class="form-control w100pc" placeholder="@Resource.ContentPlaceHolder" rows="4" data-bind="value: contactContent, hasFocus: isContentFocus"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 submit">
+                            <button type="submit" class="btn btn-send-message" data-bind="enable: !isSendingContact()">
+                                <i class="fa fa-envelope-o" data-bind="visible: !isSendingContact()"></i>
+                                <i class="fa fa-spinner fa-pulse" data-bind="visible: isSendingContact()" style="display: none"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="footer-bottom">
+    <div class="container">
+        <div class="brand">
+            @if (listBrand != null && listBrand.Any())
+            {
+                foreach (var item in listBrand)
+                {
+                    <div class="list-items">
+                        <a href="@item.Website" title="@item.Name">
+                            <img data-src="@($"/image?url={(string.IsNullOrEmpty(item.Logo) ? "/images/no-image.png" : item.Logo)}&width=80&height=80&type=1")"
+                                 alt="@item.Name"
+                                 class="lazy" />
+                        </a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+<div class="copy-right center">
+    Copyright 2018 - @DateTime.Now.Year - @websiteSetting?.Brand - All rights reserved
+</div>

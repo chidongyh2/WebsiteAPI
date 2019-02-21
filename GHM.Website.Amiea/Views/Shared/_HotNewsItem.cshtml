@@ -1,0 +1,52 @@
+﻿@model NewsSearchViewModel;
+
+@if (Model != null)
+{
+<div class="content">
+    @*<h2 class="title">
+        <a href="@($"/tin-tuc/{ Model.SeoLink}.html")" title="@Model.Title">
+            @(!string.IsNullOrEmpty(Model.Title) ? Common.SubString(Model.Title, 18) : "")
+        </a>
+    </h2>*@
+    <div class="thumbnail-new">
+        <a href="@($"/{ Model.SeoLink}.html")" title="@(string.IsNullOrEmpty(Model.MetaTitle) ? Model.Title : Model.MetaTitle)">
+            <img class="lazy img-responsive zoom w100pc lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(Model.FeatureImage) ? "/images/no-image.png" : Model.FeatureImage)}&width=480&height=360")"
+                 onerror="this.src='/images/no-image.png'"
+                 alt="@(!string.IsNullOrEmpty(Model.AltImage) ? Model.AltImage : Model.Title)" />
+        </a>
+    </div>
+    <div class="title">
+        <h2>
+            <a href="@($"/{ Model.SeoLink}.html")" title="@(string.IsNullOrEmpty(Model.MetaTitle) ? Model.Title : Model.MetaTitle)">
+                @(!string.IsNullOrEmpty(Model.Title) ? Common.SubString(Model.Title, 70) : "")
+            </a>
+        </h2>
+        @*<ul class="inline">
+            <li class="list-items">
+                <i class="fa fa-calendar">@Model.Cre</i>
+                <i class="fa fa-clock-o"></i>
+            </li>
+        </ul>*@
+    </div>
+    <div class="summary">
+        <h2 class="title-mobile">
+            <a href="@($"/{ Model.SeoLink}.html")" title="@Model.Title">
+              @Model.Title
+            </a>
+        </h2>
+        <div class="comment">
+            <ul class="list-inline">
+                <li class="list-items">
+                    <i class="fa fa-eye"> @Model.ViewCount Lượt xem</i>
+                </li>
+                <li class="list-items">
+                    <i class="fa fa-heart-o"> @Model.LikeCount Lượt thích</i>
+                </li>
+                <li class="list-items">
+                    <i class="fa fa-comment-o"> @Model.CommentCount Lượt bình luận</i>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+}

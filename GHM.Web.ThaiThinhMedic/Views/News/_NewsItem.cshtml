@@ -1,0 +1,46 @@
+﻿@using Clinic.DataAccess
+@model News
+
+@{
+    var width = ViewData.ContainsKey("width") ? (int)ViewData["width"] : 70;
+    var height = ViewData.ContainsKey("height") ? (int)ViewData["height"] : 70;
+    var isShowDescription = ViewData.ContainsKey("isShowDescription") ? (bool)ViewData["isShowDescription"] : false;
+}
+
+@if (Model != null)
+{
+    <div class="media new-item">
+        <div class="media-left">
+            <a href="@($"/{Model.SeoLink}.html")">
+                <img class="media-object lazy" data-src="@Url.Action("Index", "ImageHandler", new {url = Model.Image, width = width, height = height, type = 1 })" alt="@Model.Title">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">
+                <a href="@($"/{Model.SeoLink}.html")" class="title" title="@Model.Title">@Model.Title</a>
+            </h4>
+            <ul class="option">
+                <li>
+                    <i class="fa fa-calendar-o"></i>
+                    @Model.CreateTime.ToString("dd/MM/yyyy hh:mm")
+                </li>
+                <li>
+                    <i class="fa fa-eye"></i>
+                    @Model.ViewCount
+                </li>
+            </ul>
+            @if (isShowDescription)
+            {
+                <div class="description">
+                    @Html.Raw(Model.Description)
+                </div>
+                <div class="read-more text-right cm-mgt-10">
+                    <a href="@($"/{Model.SeoLink}.html")" title="@Model.Title"><i class="fa fa-angle-double-right"></i> Xem tiếp</a>
+                </div>
+            }
+
+        </div>
+    </div>
+}
+
+

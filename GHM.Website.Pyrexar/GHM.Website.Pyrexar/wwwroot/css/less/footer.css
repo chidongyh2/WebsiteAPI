@@ -1,0 +1,115 @@
+﻿@font-face {
+  font-family: 'OpenSans';
+  src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'OpenSans-Bold';
+  src: url('../../lib/open_sans/opensans-bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'OpenSans-BoldItalic';
+  src: url('../../lib/open_sans/opensans-bolditalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'OpenSans-Italic';
+  src: url('../../lib/open_sans/opensans-italic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'OpenSans-Semibold';
+  src: url('../../lib/open_sans/opensans-semibold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'OpenSans-SemiBoldItalic';
+  src: url('../../lib/open_sans/opensans-semibolditalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'OpenSans-Light';
+  src: url('../../lib/open_sans/opensans-light.ttf') format('truetype');
+}
+#footer {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  background-color: #29314e;
+  color: #FFFFFF;
+}
+#footer ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+#footer .title {
+  font-size: 25px;
+  color: #FFFFFF;
+  margin-top: -5px;
+  margin-bottom: 30px;
+}
+#footer .about-us .content {
+  color: #8D94AE !important;
+  font-size: 16px;
+  line-height: 25px;
+}
+#footer .recent-posts ul li {
+  color: #c9ccd8;
+  padding: 10px 0px;
+  border-top: 1px solid #323c5f;
+  transition: ease-in-out 0.3s;
+}
+#footer .recent-posts ul li:first-child {
+  padding-top: 0px;
+  border-top: none;
+}
+#footer .recent-posts ul li a {
+  color: #c9ccd8;
+  font-size: 16px;
+}
+#footer .recent-posts ul li a:hover {
+  color: #004ff2;
+  text-decoration: none;
+}
+#footer .site-map ul li {
+  color: #c9ccd8;
+  padding: 3px 0px;
+  transition: ease-in-out 0.3s;
+}
+#footer .site-map ul li:first-child {
+  padding-top: 0px;
+  border-top: none;
+}
+#footer .site-map ul li a {
+  color: #c9ccd8;
+  font-size: 16px;
+}
+#footer .site-map ul li a:hover {
+  color: #004ff2;
+  text-decoration: none;
+}
+#footer .contact-info ul li {
+  color: #8D94AE;
+  padding: 3px 0px;
+  font-size: 16px;
+  line-height: 25px;
+}
+#footer .contact-info ul li a {
+  color: #8D94AE;
+}
+#footer .contact-info ul li a:hover {
+  text-decoration: none;
+}
+@media only screen and (max-width: 768px) {
+  #footer .col-sm-3 {
+    padding-bottom: 25px;
+  }
+  #footer .col-sm-3:last-child {
+    padding-bottom: unset;
+  }
+}
+#copyright {
+  background-color: #202741;
+  padding: 10px 0;
+  border-top: 1px solid #283152;
+  color: #8d94ae;
+}
+#copyright .content {
+  margin: 0.625rem;
+  padding: 1.5rem 1rem 0rem 1rem;
+  font-size: 16px;
+}

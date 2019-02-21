@@ -1,0 +1,210 @@
+﻿@using Clinic.DataAccess
+@{
+    var listMenuItem = ViewBag.MainNav as List<MenuItem>;
+}
+
+@helper ShowNav(List<MenuItem> listMenuItem, int? parentId)
+{
+var list = listMenuItem.Where(x => x.ParentId == parentId);
+foreach (var item in list)
+{
+    var childCount = listMenuItem.Count(x => x.ParentId == item.Id);
+        <li class="dropdown">
+            <a href="/@( $"{(string.IsNullOrEmpty(item.Url) ? item.NamePath : item.Url)}")" class="transition">
+                @item.Name
+                @if (parentId.HasValue && childCount > 0)
+                {
+                    <i class="fa fa-angle-right"></i>
+                }
+            </a>
+            <ul>
+                @ShowNav(listMenuItem, item.Id)
+            </ul>
+        </li>
+}
+}
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#clinicMainNav" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand clinic-logo" href="/">
+                <img src="~/assets/images/logo-full.png" alt="công ty cổ phần bệnh viện thái thịnh"/>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="clinicMainNav">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Trang chủ</a></li>
+                @ShowNav(listMenuItem, null)
+                @if (CurrentPatient != null)
+                {
+                    <li class="dropdown">
+                        <a href="javascript://" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Tài khoản <span class="caret"></span></a>
+                        <ul class="user-menu">
+                            <li>
+                                <a href="/thong-tin-ca-nhan">
+                                    <i class="fa fa-user cm-mgr-10"></i>
+                                    @Resources.Display_MyInfo
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/lich-su-kham-benh">
+                                    <i class="fa fa-history cm-mgr-10"></i>
+                                    @Resources.Display_Medical_History
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/xem-video">
+                                    <i class="fa fa-video-camera cm-mgr-10"></i>
+                                    @Resources.Display_Ultrasound_Video
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/xem-anh">
+                                    <i class="fa fa-file-picture-o cm-mgr-10"></i>
+                                    @Resources.Display_Ultrasound_Photos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/dang-xuat">
+                                    <i class="fa fa-sign-out cm-mgr-10"></i>
+                                    @Resources.Display_Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li><a href="/dang-nhap">Đăng nhập</a></li>
+                }
+            </ul>
+            @*<ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="/" class="transition">Trang chủ <span class="sr-only">(current)</span></a></li>
+                    <li class="dropdown">
+                        <a href="http://clinic.com/appointmentschedule/fullcalendar#">Giới thiệu</a>
+                        <ul>
+                            <li><a href="#">Thư ngỏ của Ban Giám Đốc</a></li>
+                            <li>
+                                <a href="#">
+                                    Về chúng tôi
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                                <ul>
+                                    <li><a href="#">Lịch sử bệnh viện thái thịnh</a></li>
+                                    <li><a href="#">Sơ đồ tổ chức</a></li>
+                                    <li><a href="#">Cơ sở vật chất - Trang thiết bị</a></li>
+                                    <li><a href="#">Đội ngũ chuyên gia</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/cac-chuyen-khoa">Chuyên khoa</a>
+                        <ul>
+                            <li><a href="#">Khoa nội</a></li>
+                            <li><a href="#">Khoa siêu âm</a></li>
+                            <li><a href="#">Trung tâm xét nghiệm</a></li>
+                            <li><a href="#">Khoa nhi</a></li>
+                            <li><a href="#">Sản phụ khoa</a></li>
+                            <li><a href="#">Khoa da liễu</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/dich-vu-ho-tro">Dịch vụ hỗ trợ</a>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Dịch vụ chọn gói
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                                <ul>
+                                    <li><a href="#">Gói khám sức khoẻ định kỳ</a></li>
+                                    <li><a href="#">Chăm sóc thai kỳ trọn gói</a></li>
+                                    <li><a href="#">Gói khám sức khoẻ tiền hôn nhân</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Dịch vụ bảo hiểm
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                                <ul>
+                                    <li><a href="#">Bảo hiểm BIC</a></li>
+                                    <li><a href="#">Bảo hiểm PVI</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="/thong-tin-suc-khoe">Tin tức</a>
+                        <ul>
+                            <li><a href="#">Góc chuyên môn</a></li>
+                            <li><a href="#">Tin hoạt động</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/dat-hen">Tuyển dụng</a>
+                        <ul>
+                            <li><a href="#">Chính sách nhân sự</a></li>
+                            <li><a href="#">Thông tin tuyển dụng</a></li>
+                            <li><a href="#">Đơn ứng tuyển</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/lien-he">Liên hệ</a></li>
+                    @if (CurrentPatient != null)
+                    {
+                        <li class="dropdown">
+                            <a href="javascript://" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Tài khoản <span class="caret"></span></a>
+                            <ul>
+                                <li>
+                                    <a href="/">
+                                        <i class="fa fa-user cm-mgr-10"></i>
+                                        Thông tin tài khoản
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/">
+                                        <i class="fa fa-history cm-mgr-10"></i>
+                                        Lịch sử khám
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/xem-video">
+                                        <i class="fa fa-video-camera cm-mgr-10"></i>
+                                        Video siêu âm
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/xem-anh">
+                                        <i class="fa fa-file-picture-o cm-mgr-10"></i>
+                                        Ảnh siêu âm
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/dang-xuat">
+                                        <i class="fa fa-sign-out cm-mgr-10"></i>
+                                        Đăng xuất
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a href="/dang-nhap">Đăng nhập</a></li>
+                    }
+                </ul>*@
+        </div>
+
+    </div><!-- /.container-fluid -->
+</nav>
+
+

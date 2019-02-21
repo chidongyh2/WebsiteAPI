@@ -1,0 +1,137 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+    var listNewsNewest = ViewBag.ListNewsNewest as List<NewsSearchViewModel>;
+    var listMenuItem = ViewBag.FooterMenuNav as List<MenuItemViewModel>;
+}
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 about-us">
+                <h3 class="title">
+                    @Resource.AboutUs
+                </h3>
+                @if (websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand))
+                {
+                    <div class="content">
+                        @Html.Raw(websiteSetting.Brand)
+                    </div>
+                }
+            </div>
+            <div class="col-sm-3 recent-posts">
+                <h3 class="title">
+                    @Resource.RecentBlogs
+                </h3>
+                @if (listNewsNewest != null && listNewsNewest.Any())
+                {
+                    <ul>
+                        @foreach (var news in listNewsNewest.Take(4))
+                        {
+                            <li>
+                                <a href="@($"/{news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                                    @(!string.IsNullOrEmpty(news.Title) ? Common.SubString(news.Title, 100) : news.Title)
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+            <div class="col-sm-3 site-map">
+                <h3 class="title">
+                    Sitemap
+                </h3>
+                <ul>
+                    @if (listMenuItem != null && listMenuItem.Any())
+                    {
+                        foreach (var item in listMenuItem)
+                        {
+                            <li>
+                                <a href="@( $"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : item.Url)}")" class="transition">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    @item.Name
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-sm-3 contact-info">
+                <h3 class="title">
+                    @Resource.Contact
+                </h3>
+                <ul>
+                    @if (listBranch != null && listBranch.Any())
+                    {
+                        foreach (var branchs in listBranch)
+                        {
+                            var branch = branchs;
+                            <li>
+                                <i class="fa fa-building-o" aria-hidden="true"></i>  @branch?.Address
+                            </li>
+
+                            @if (branchs.BranchContactDetails != null && branchs.BranchContactDetails.Any())
+                            {
+                                @foreach (var branchItem in branchs.BranchContactDetails)
+                                {
+                                    switch (branchItem.ContactType)
+                                    {
+                                        case ContactType.MobilePhone:
+                                            <li class="">
+                                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                                @branchItem.ContactValue
+                                            </li>
+                                            break;
+                                        case ContactType.Fax:
+                                            <li class="">
+                                                <i class="fa fa-fax" aria-hidden="true"></i>
+                                                @branchItem.ContactValue
+                                            </li>
+                                            break;
+                                        case ContactType.Email:
+                                            <li class="">
+                                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                                <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a>  
+                                            </li>
+                                            break;
+                                        case ContactType.HomePhone:
+                                            <li class="">
+                                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                                @branchItem.ContactValue
+                                            </li>
+                                            break;
+                                        default:
+                                            break;
+
+                                    }
+                                }
+                            }
+                            @if (!string.IsNullOrEmpty(branch?.WorkTime))
+                            {
+                                <li>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    @branch?.WorkTime
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<div id="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="content">
+                    © 2015 - @DateTime.Now.Year Pyrexar Medical
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <partial name="_SocialNetWorkHeader" />
+            </div>
+        </div>
+    </div>
+</div>

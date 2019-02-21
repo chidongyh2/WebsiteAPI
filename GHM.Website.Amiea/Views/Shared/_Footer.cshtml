@@ -1,0 +1,165 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+}
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="title">Hệ thống</h2>
+                <div class="logo">
+                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? websiteSetting.Logo :  "" )"
+                         alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) ? websiteSetting?.Brand : ViewBag.Title)"
+                         onerror="this.src='/images/no-image.png'" />
+                </div>
+            </div>
+            @*<div class="col-sm-4 cm-mgb-20" id="block_logo">*@
+            <div class="contact-info list-inline">
+                @if (listBranch != null && listBranch.Any())
+                {
+                    foreach (var branchs in listBranch)
+                    {
+                        var branch = branchs;
+                        <div class="col-sm-4 media">
+                            <div class="media-left">
+                                <i class="fa fa-home"></i>
+                            </div>
+                            <div class="media-body">
+                                @branch?.Name:
+                                <div class="form-group">
+                                    @branch?.Address
+                                </div>
+                            </div>
+                        </div>
+                        @if (branchs.BranchContactDetails != null && branchs.BranchContactDetails.Any())
+                        {
+                            @foreach (var branchItem in branchs.BranchContactDetails)
+                            {
+                                switch (branchItem.ContactType)
+                                {
+                                    case ContactType.MobilePhone:
+                                        <div class="col-sm-4 media">
+                                            <div class="media-left">
+                                                <i class="fa fa-phone"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                Ðiện thoại di động:
+                                                <div class="form-group">
+                                                    @branchItem.ContactValue
+                                                </div>
+                                            </div>
+                                        </div>
+                                        break;
+                                    case ContactType.Fax:
+                                        <div class="col-sm-4 media">
+                                            <div class="media-left">
+                                                <i class="fa fa-fax" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                Fax:
+                                                <div class="form-group">
+                                                    @branchItem.ContactValue
+                                                </div>
+                                            </div>
+                                        </div>
+                                        break;
+                                    case ContactType.Email:
+                                        <div class="col-sm-4 media">
+                                            <div class="media-left">
+                                                <i class="fa fa-envelope"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                Email:
+                                                <div class="form-group">
+                                                    <a href="mailto:@branchItem.ContactValue"> @branchItem.ContactValue</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        break;
+                                    case ContactType.HomePhone:
+                                        <div class="col-sm-4 media">
+                                            <div class="media-left">
+                                                <i class="fa fa-phone"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                Ðiện thoại bàn:
+                                                <div class="form-group">
+                                                    @branchItem.ContactValue
+                                                </div>
+                                            </div>
+                                        </div>
+                                        break;
+                                    default:
+                                        break;
+
+                                }
+                            }
+                        }
+                        @if (!string.IsNullOrEmpty(branch?.WorkTime))
+                        {
+                            <div class="col-sm-4 media">
+                                <div class="media-left">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div class="media-body">
+                                    Giờ làm việc :
+                                    <div class="form-group">
+                                        @branch?.WorkTime
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            </div>          
+        </div>
+        <div class="row cm-mgt-10">
+            <div class="col-sm-4 center ">
+                <div class="social-network">
+                    <ul class="list-inline">
+                        @foreach (var socialNetWork in listSocialNetWork)
+                        {
+                            <li class="list-items">
+                                <a href="@socialNetWork.Url" class="btn-scoical">
+                                    @if (!string.IsNullOrEmpty(socialNetWork.Image))
+                                    {
+                                        <img data-src="@($"/image?url={(string.IsNullOrEmpty(socialNetWork.Image) ? "/images/no-image.png" : socialNetWork.Image)}&width=128&height=128&type=1")"
+                                             alt="@socialNetWork.Name"
+                                             class="lazy" />
+                                    }
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4 center">
+                <div class="hotline">
+                    <div class="media-middle media-object">
+                        <div class="media-left">
+                            <img src="~/images/hotline.png" />
+                        </div>
+                        <div class="media-body">
+                            <div class="left">
+                                <span>
+                                    HOTLINE(24/7)
+                                </span>
+                                <div class="form-group">
+                                    <a href="tel:@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Hotline) ? websiteSetting.Hotline : "(091) 601 5199")">
+                                        @(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Hotline) ? websiteSetting.Hotline : "(091) 601 5199")
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 center">
+                <div class="message">
+                    <a class="btn btn-send-message" href="/lien-he" title="">Gửi tin nhắn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

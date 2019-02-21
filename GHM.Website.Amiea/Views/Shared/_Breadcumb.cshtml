@@ -1,0 +1,6 @@
+﻿@model string;
+@if(!string.IsNullOrEmpty(Model)){
+<div class="header">
+    <img data-src="@($"/image?url={Model}")" class="lazy"/>   
+</div>
+}

@@ -1,0 +1,54 @@
+﻿@{
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+}
+
+@if (listSocialNetWork != null && listSocialNetWork.Any())
+{
+    <div class="social-network-header pull-right">
+        <ul class="list-inline">
+            @foreach (var socialNetWork in listSocialNetWork)
+            {
+                <li class="list-items">
+                    <a href="@socialNetWork.Url" class="btn-scoical">
+                        @if (!string.IsNullOrEmpty(socialNetWork.Image))
+                        {
+                            <img data-src="@($"/image?url={(string.IsNullOrEmpty(socialNetWork.Image) ? "/images/no-image.png" : socialNetWork.Image)}&width=128&height=128&type=1")" 
+                                 alt="@socialNetWork.Name" 
+                                 class="lazy"/>
+                        }
+                    </a>
+                </li>
+            }
+            @*<li class="list-items">
+            <a href="javascript://" class="btn-scoical btn-facebook">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </li>
+        <li class="list-items">
+            <a href="javascript://" class="btn-scoical btn-twitter">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li class="list-items">
+            <a href="javascript://" class="btn-scoical btn-instagram">
+                <i class="fa fa-instagram"></i>
+            </a>
+        </li>
+        <li class="list-items">
+            <a href="javascript://" class="btn-scoical btn-youtube">
+                <i class="fa fa-youtube-play"></i>
+            </a>
+        </li>
+        <li class="list-items">
+            <a href="javascript://" class="btn-scoical btn-linkedin">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="list-items">
+            <a href="javascript://" class="btn-scoical btn-printerest">
+                <i class="fa fa-pinterest" aria-hidden="true"></i>
+            </a>
+        </li>*@
+        </ul>
+    </div>
+}

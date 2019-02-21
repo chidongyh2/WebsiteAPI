@@ -1,0 +1,149 @@
+﻿@using MongoDB.Bson.IO
+@using JsonConvert = Newtonsoft.Json.JsonConvert
+@model GHM.Website.ThaiThinhMedic.Infrastructure.Models.Promotion
+
+@{
+    ViewBag.Title = Model != null ? $"Đăng ký khuyến mại - {Model.Name}" : "Rất tiếc không tìm thấy thông tin khuyến mại.";
+    ViewBag.Description = "Niềm hạnh phúc của mỗi bậc làm cha mẹ là được nhìn thấy đứa con bé bỏng của mình lớn dần và khỏe mạnh ngay từ trong bào thai. Và để chắc chắn rằng bé yêu đang phát triển thì việc siêu âm thai và khám thai định kỳ luôn là điều cần thiết mà bất cứ cha mẹ nào cũng cần phải nhớ.";
+    var errorMessage = ViewBag.ErrorMessage;
+}
+<link href="~/assets/plugins/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+<div id="promotion-container">
+    @if (Model == null)
+    {
+        <div class="wrapper-error">
+
+        </div><!-- END: .wrapper-error -->
+    }
+    else
+    {
+        <div class="bg-white">
+            <div id="wrapperAppointmentSchedule" class="container">
+                @*@if (CurrentPatient != null)
+                    {
+                        <a href="javascript://" title="Dịch vụ bạn đã đặt" class="button-shopping" data-bind="click: showMyService">
+                            <i class="fa fa-shopping-basket fa-2x"></i>
+                        </a>
+                    }*@
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="star-title">đăng ký @Model.Name</h4>
+                        <div class="star-title-decoration">
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="wrapper-description">
+                            @Html.Raw(Model.Description)
+                        </div><!-- END: .wrapper-description -->
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button class="register-now" data-bind="click: showRegisterModal">
+                        <i class="fa fa-check"></i>
+                        Đặt hẹn khám ngay
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="register-modal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Đăng ký tham gia chương trình giờ vàng khuyến mại.</h4>
+                    </div>
+                    <form class="form-horizontal" data-bind="submit: save">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Họ tên <span class="color-red">*</span>:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" placeholder="Vui lòng nhập họ và tên." id="fullName"
+                                           data-bind="value: register().fullName" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Số điện thoại <span class="color-red">*</span>:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" placeholder="Vui lòng nhập số điện thoại đăng ký." id="phoneNumber"
+                                           data-bind="value: register().phoneNumber" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Ngày sinh <span class="color-red">*</span>:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" data-bind="dateTimePicker: register().birthday" value=""
+                                           placeholder="Chọn ngày sinh"
+                                           id="dateOfBirth" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Ngày đến khám <span class="color-red">*</span>:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" data-bind="dateTimePicker: register().examinationDate" value=""
+                                           placeholder="Chọn ngày đến khám"
+                                           id="examinationDate" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Dịch vụ khám <span class="color-red">*</span>:</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" data-bind="options: listSubject, optionsValue: 'subjectId', optionsText: 'subjectName', value: register().promotionSubjectId, optionsCaption: '-- Chọn dịch vụ đăng ký --', enable: !isSearching()"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Thời gian đến khám <span class="color-red">*</span>:</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" data-bind="options: listTimes, optionsValue: 'id', optionsText: 'id', value: register().time, optionsCaption: '-- Chọn thời gian đến khám --', enable: !isSearching()"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Email:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" placeholder="Vui lòng nhập email." id="email"
+                                           data-bind="value: register().email" id="email" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Ghi chú:</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" rows="3" placeholder="Nhập nội dung ghi chú"
+                                              data-bind="register().note"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" data-bind="click: save, enable: !isSearching()">
+                                <i class="fa fa-spinner fa-pulse" data-bind="visible: isSaving"></i>
+                                Đăng ký
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" data-bind="enable: !isSearching()">Đóng lại</button>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    }
+</div>
+@section knockout{
+    <script>
+        var promotionSubject = @(ViewBag.PromotionSubject != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.PromotionSubject)) : "[]");
+        var promotionId = "@(Model != null ? Model.Id :"")";
+    </script>
+    @*@Scripts.Render("~/bundles/promotion")*@
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/assets/plugins/knockout/knockout-latest.js"></script>
+    <script src="~/assets/plugins/knockout/knockout.mapping-latest.js"></script>
+    <script src="~/assets/plugins/datetimepicker/js/moment-locale-vi.js"></script>
+    <script src="~/assets/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/built/knokcoutbindinghandlers/datetimepicker.handler.js"></script>
+    <script src="~/assets/plugins/toastr/toastr.min.js"></script>
+    <script src="~/assets/plugins/lodash/lodash.min.js"></script>
+    <script src="~/assets/plugins/sweetalert/sweet-alert.js"></script>
+    <script src="~/built/BaseClass.js"></script>
+    <script src=" ~/built/viewmodel/promotion/promotion.viewmodel.js"></script>
+}

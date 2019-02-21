@@ -1,0 +1,32 @@
+﻿<table class="table table-bordered table-stripped">
+    <thead>
+        <tr>
+            <th clas="center w150">Số phiếu khám</th>
+            <th clas="center">Tên video</th>
+            <th clas="center">Đang phát</th>
+            <th class="w100 center">Tải về</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: listVideo">
+        <tr class="bg-info">
+            <td colspan="4" data-bind="text: groupName"></td>
+        </tr>
+        <!-- ko foreach: videos -->
+        <tr>
+            <td data-bind="text: soPhieuKham"></td>
+            <td>
+                <a href="javascript://" data-bind="text: tenFileVideo, attr: {href: '/chi-tiet-video/' + iDs}"></a>
+            </td>
+            <td class="center w50">
+                <i class="fa fa-play blink" data-bind="visible: $root.currentVideo().iDs === iDs"></i>
+            </td>
+            <td class="center w100">
+                <a href="javascript://" data-bind="attr: {href: '/tai-video/' + iDs}" class="btn btn-primary">
+                    <i class="fa fa-cloud-download"></i>
+                    Tải về
+                </a>
+            </td>
+        </tr>
+        <!-- /ko -->
+    </tbody>
+</table>

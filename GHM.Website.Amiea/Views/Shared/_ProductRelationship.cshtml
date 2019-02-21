@@ -1,0 +1,30 @@
+﻿@model List<NewsSearchViewModel>;
+@{
+    var categoryProductRelation = ViewBag.CategoryProductRelations as CategoryTranslationViewModel;
+}
+
+@if (categoryProductRelation != null)
+{
+    <div id="product-relationship">
+        <div class="container">
+            <div class="row">
+                <div class=" col-sm-12">
+                    <h2 class="titlebar">
+                        @categoryProductRelation.Name
+                    </h2>
+                </div>
+            </div>
+            @if (Model != null && Model.Any())
+            {
+                <div class="row">
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-sm-6 media">
+                            <partial name="_ProductRelationShipItem" model="product" />
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+}

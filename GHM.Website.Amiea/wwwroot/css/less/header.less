@@ -1,0 +1,203 @@
+﻿@import "config.less";
+@color-header: #993333;
+@color-white: #FFFFFF;
+@background-header: #A5AAAE;
+
+.navbar-fixed-top {
+    background-color: @background-header;
+    border-bottom: none;
+    transition: background-color 2s ease-out;
+}
+
+.scroll-fixed-navbar {
+    background-color: @background-header;
+    border-bottom: 1px solid #222;
+}
+
+nav {
+    min-height: 70px !important;
+    .navbar-header {
+        margin-top: 10px;
+        padding-left: 0px;
+
+        .navbar-brand {
+            padding: 0px 20px;
+        }
+
+        img {
+            margin-top: 10px;
+            width: 160px;
+            height: auto;
+        }
+    }
+
+    .navbar-toggle {
+        float: left;
+        margin-left: 15px;
+        border: none;
+        color: @main-color;
+        margin-right: 0px;
+
+        .icon-bar {
+            background-color: @main-color !important;
+            height: 3px;
+        }
+
+        &:hover, &:active, &:focus {
+            background-color: @main-color !important;
+
+            .icon-bar {
+                background-color: @color-white !important;
+            }
+        }
+    }
+
+    .navbar-collapse {
+        padding-left: 0px;
+        padding-right: 0px;
+        border-color: @background-header !important;
+        margin-right: 440px;
+
+        ul {
+            li {
+                a {
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+    /* Main Nav */
+    #ameiaMainNav {
+        padding-left: 30px;
+
+        .navbar-nav {
+            @media @mobile {
+                border-top: 1px solid @color-white;
+                background-color: @background-header;
+                margin: 0px !important;
+            }
+        }
+
+        ul {
+            li {
+                position: relative;
+
+                &:last-child {
+                    border: none;
+                }
+
+                a {
+                    color: @color-white;
+                    font-size: 16px;
+                    line-height: 60px;
+                    text-transform: uppercase;
+                    display: block;
+                    font-weight: 500;
+                    padding: 0px 10px;
+                    padding-top: 13px;
+                    -webkit-transition: all 100ms ease-in-out;
+                    -moz-transition: all 100ms ease-in-out;
+                    -o-transition: all 100ms ease-in-out;
+                    transition: all 100ms ease-in-out;
+
+                    @media @mobile {
+                        line-height: 40px;
+                    }
+                }
+
+                .selected-nav {
+                    color: @color-header;
+                }
+
+                &:hover {
+                    color: @color-header;
+
+                    > a {
+                        color: @color-header;
+                        text-decoration: none;
+                        padding-left: 10px;
+                    }
+
+                    nav ul li a {
+                        display: block;
+                        text-decoration: none;
+                    }
+                }
+
+                .active {
+                    color: @color-header;
+                }
+            }
+
+            ul {
+                list-style: none;
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                text-align: left;
+                width: 300px;
+                padding-left: 0;
+                background: @background-header;
+                -webkit-transition-property: opacity,top;
+                transition-property: opacity,top;
+                -webkit-transition-duration: .5s;
+                transition-duration: .5s;
+                z-index: 1030;
+                top: 100%;
+
+                li {
+                    a {
+                        line-height: 30px;
+
+                        i {
+                            float: right;
+                        }
+
+                        &:hover {
+                            margin-left: 10px;
+                        }
+
+                        @media @mobile {
+                            padding-left: 10px;
+                        }
+                    }
+
+                    .active {
+                        color: @color-header;
+                    }
+
+                    ul {
+                        /*position: absolute;*/
+                        left: 100%;
+                        top: 0 !important;
+                    }
+                }
+            }
+        }
+
+        li:hover > ul {
+            display: block;
+            position: absolute;
+            opacity: 1;
+            top: 100%;
+        }
+    }
+    /*text-align: center;*/
+    z-index: 1030;
+}
+
+@media only screen and (max-width: 768px) {
+    nav {
+        .navbar-header {
+            .navbar-brand {
+                padding: 0 15px !important;
+            }
+
+            img {
+                /*width: 69%;*/
+            }
+        }
+    }
+}

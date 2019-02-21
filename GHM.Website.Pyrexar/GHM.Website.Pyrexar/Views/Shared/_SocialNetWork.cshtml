@@ -1,0 +1,29 @@
+﻿@{
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+}
+
+@if (listSocialNetWork != null && listSocialNetWork.Any())
+{
+    <div id="social-network">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="list-inline pull-right">
+                        @foreach (var socialNetWork in listSocialNetWork)
+                        {
+                            <li class="list-items">
+                                <a href="@socialNetWork.Url" class="btn-scoical">
+                                    @if (!string.IsNullOrEmpty(socialNetWork.Image))
+                                    {
+                                        <img data-src="@($"/image?url={(string.IsNullOrEmpty(socialNetWork.Image) ? "/images/no-image.png" : socialNetWork.Image)}&width=128&height=128&type=1")" alt="@socialNetWork.Name"
+                                                   class="lazy"/>
+                                    }
+                                </a>
+                            </li>
+                        }                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+}

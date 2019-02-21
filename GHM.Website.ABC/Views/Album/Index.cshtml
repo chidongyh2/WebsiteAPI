@@ -1,0 +1,101 @@
+﻿@{
+    var listAblum = ViewBag.ListAlbum as List<AlbumViewModel>;
+    var listMainMenu = ViewBag.MainNav as List<MenuItemViewModel>;
+}
+
+<partial name="_Breadcumb">
+    <div id="abums" class="album-videos">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 center">
+                    <h2 class="titlebar">
+                        Video
+                    </h2>
+                    <hr />
+                </div>
+                @if (listAblum != null && listAblum.Any())
+                {
+                    <div class="col-sm-12">
+                        <div class="btn-toolbar">
+                            <div class="btn-group" data-bind="foreach: listAlbum">
+                                <a class="btn filter" href="javascript://" data-bind="css: {active: Id === $root.id()}, click: $root.selectAlbum">
+                                    <span data-bind=" text: Title,"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="row" data-bind="foreach: listVideo">
+                            <div data-bind="css: $index() === 0 ? 'col-sm-8' : 'col-sm-4 col-xs-6'">
+                                <div class="video-item">
+                                    <div class="thumbnail-video">
+                                        <a data-bind="attr: { href: url, title: title }"
+                                           data-fancybox>
+                                            <img class="img-responsive zoom lazy"
+                                                 data-bind="attr: {src: '/image?url=' + thumbnail + '&width=640&height=360', title: title }"
+                                                 onerror="this.src='/images/no-image.png'" />
+                                            <span class="duration_video"><i class="fa fa-play"></i></span>
+                                        </a>
+                                    </div>
+                                    <!--ko if: $index() > 0 -->
+                                    <h3 class="title-video">
+                                        <a data-bind="attr: { href: url, title: title },  text: title" data-fancybox>
+                                        </a>
+                                    </h3>
+                                    <!--/ko-->
+                                    <!--ko if: $index() === 0 -->
+                                    <h2 class="title-video-default">
+                                        <a data-bind="attr: { href: url, title: title },  text: title" data-fancybox>
+                                        </a>
+                                    </h2>
+                                    <div class="description" data-bind="text: description">
+                                    </div>
+                                    <!--/ko-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!--ko if: $root.totalPage() > 1-->
+            <div class="row">
+                <div class="col-sm-12 center">
+                    <ul class="pagination" data-bind="foreach: listPage">
+                        <!--ko if:page === 1-->
+                        <li>
+                            <a data-bind="css: $root.currentPage() === 1 ? 'disabled' :  '', click: $root.firstPage" href="#abums">
+                                <i class="fa fa-angle-double-left"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-bind="css: $root.currentPage() === 1 ? 'disabled bg-none' :  'bg-none', click: $root.prevPage" href="#abums">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        </li>
+                        <!--/ko-->
+                        <li><a data-bind="css: $root.currentPage() === page ? 'active' : '', text: page, click: $root.search" href="#abums"></a></li>
+                        <!--ko if: page === $root.totalPage()-->
+                        <li>
+                            <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled bg-none' : 'bg-none', click: $root.nextPage" href="#abums">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled' : '', click: $root.lastPage" href="#abums">
+                                <i class="fa fa-angle-double-right"></i>
+                            </a>
+                        </li>
+                        <!--/ko-->
+                    </ul>
+                </div>
+            </div>
+            <!--/ko-->
+        </div>
+    </div>
+
+    <script type="text/javascript">
+      var listAlbum =  @(ViewBag.ListAlbum != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListAlbum)) : "[]");
+    </script>
+    @section scripts {
+        <script type="text/javascript" src="~/js/viewmodel/video.viewmodel.min.js"></script>
+    }

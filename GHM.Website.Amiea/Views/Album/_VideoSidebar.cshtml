@@ -1,0 +1,21 @@
+﻿
+@model List<AlbumViewModel>
+@{
+    var seoLink = ViewBag.SeoLink;
+    ViewBag.Title = "Thư viện video";
+}
+<div class="album-siderbar">
+    <h2 class="title"><a href="/thu-vien-video">Thư viện video</a></h2>
+    @if (Model != null && Model.Any())
+    {
+        <ul class="menu hidden-sm hidden-xs">
+            @foreach (var album in Model)
+            {
+                <li class="menu-item ">
+                    <a href="@string.Format("/thu-vien-video/{0}", album.SeoLink)" 
+                       title="@album.Title" class="@(album.SeoLink == seoLink ? "selected" : "")">@album.Title</a>
+                </li>
+            }
+        </ul>
+    }
+</div>

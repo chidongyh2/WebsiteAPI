@@ -1,0 +1,21 @@
+﻿@model List<NewsSearchViewModel>
+@if (Model != null && Model.Any())
+{
+    <div id="product-hot-in-detail" class="background-color">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="titlebar">Các Sản phẩm nổi bật</h2>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var product in Model)
+                {
+                    <div class="col-sm-3 cm-mgb-20">
+                        <partial name="_ProductHotItem" model="product" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

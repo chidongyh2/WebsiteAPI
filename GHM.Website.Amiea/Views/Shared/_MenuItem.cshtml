@@ -1,0 +1,37 @@
+﻿@model MenuObject
+
+@{ 
+    var path = $"{Context.Request.Path}";
+    var absoluteUri = $"{Context.Request.Host}{Context.Request.Path}";
+}
+@if (Model != null)
+{
+    var list = Model.ListMenuItem.Where(x => x.ParentId == Model.ParentId);
+    foreach (var item in list)
+    {
+        var childCount = Model.ListMenuItem.Count(x => x.ParentId == item.Id);
+        <li >
+            <a href="@( $"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : item.Url)}")" 
+               class="@((item.NamePath != null && path.Contains(item.NamePath) || item.Url == absoluteUri) ? "transition active" : "transition")" title="@item.Name">
+                @item.Name
+                @if (item.ParentId.HasValue && childCount > 0)
+                {
+                    <i class="fa fa-angle-right"></i>
+                }
+            </a>
+            @if (Model.ListMenuItem.Count(x => x.ParentId == item.Id) > 0)
+            {
+            <ul>
+                @{
+                    var menuObject = new MenuObject
+                    {
+                        ListMenuItem = Model.ListMenuItem,
+                        ParentId = item.Id
+                    };
+                    <partial name="_MenuItem" model="menuObject" />
+                }
+            </ul>
+            }
+        </li>
+    }   
+}

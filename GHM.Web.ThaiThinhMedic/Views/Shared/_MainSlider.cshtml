@@ -1,0 +1,18 @@
+﻿@using Clinic.Business.Complex.Website
+@{
+    var mainSlider = ViewBag.MainSlider as List<SliderSearchResult>;
+}
+
+@if (mainSlider != null && mainSlider.Any())
+{
+    <div id="mainSlider" class="owl-carousel owl-theme">
+        @foreach (var item in mainSlider)
+        {
+            <div class="item">
+                <a href="@string.Format("{0}", string.IsNullOrEmpty(item.Url) ? "javascript://" : item.Url)">
+                    <img src="@Url.Action("Index", "ImageHandler", new { url = item.ImageUrl, width = 1920, height = 768, type = 1 })" alt="@string.Format("{0}", string.IsNullOrEmpty(item.Name) ? "" : item.Name)">
+                </a>
+            </div>
+        }
+    </div>
+}

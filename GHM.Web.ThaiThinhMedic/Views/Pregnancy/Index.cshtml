@@ -1,0 +1,103 @@
+﻿@using Newtonsoft.Json
+@model List<Clinic.DataAccess.Entities.DesktopSystem.QuaTang>
+@{
+    ViewBag.Title = "Đăng ký lớp học tiền sản.";
+}
+
+<div id="pregnancy-container" class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="star-title">Đăng ký lớp học tiền sản Công ty cổ phần Bệnh viện Thái Thịnh</h4>
+            <div class="star-title-decoration">
+                <i class="fa fa-star-o"></i>
+            </div>
+        </div>
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="description">
+                Với mong muốn giúp cho các cha mẹ đã, đang và sắp có ý định sinh con có thêm nhiều kiến thức, hỗ trợ các cha mẹ có sự chuẩn bị tốt để đón bé yêu một cách hoàn hảo nhất, Phòng khám Đa khoa 125 Thái Thịnh phối hợp cùng Jadespa tổ chức định kỳ Khóa học Tiền sản dành cho cha mẹ bầu 03 tháng một lần.
+                Hãy chuẩn bị mọi thứ thật hoàn hảo để đón bé yêu ra đời bằng cách đăng ký tham gia khóa học tiền sản tại Phòng khám Đa khoa 125 Thái Thịnh ngay hôm nay các mẹ nhé!
+            </div>
+        </div>
+        <div class="col-sm-6 col-sm-offset-3 cm-mgt-20">
+            <form class="form-horizontal" data-bind="submit: save">
+                <div class="form-group">
+                    <label class="col-sm-12">Họ và tên <span class="color-red">*</span></label>
+                    <div class="col-sm-12">
+                        <input type="text" id="fullName" class="form-control" name="name" value="" placeholder="Vui lòng nhập họ và tên" data-bind="value: quaTangKhachHang().fullName" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12">Số điện thoại <span class="color-red">*</span></label>
+                    <div class="col-sm-12">
+                        <input type="text" id="phoneNumber" class="form-control" name="phoneNumber" value="" placeholder="Vui lòng nhập số điện thoại."
+                               data-bind="value: quaTangKhachHang().phoneNumber" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12">Địa chỉ email</label>
+                    <div class="col-sm-12">
+                        <input type="text" id="email" class="form-control" name="name" value="" placeholder="Vui lòng nhập địa chỉ email." data-bind="value: quaTangKhachHang().email" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12">Địa chỉ <span class="color-red">*</span></label>
+                    <div class="col-sm-12">
+                        <textarea rows="4" id="address" class="form-control" placeholder="Vui lòng nhập địa chỉ." data-bind="value: quaTangKhachHang().address"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12">Bạn sẽ tham gia học buổi nào? <span class="color-red">*</span></label>
+                    <div class="col-sm-12">
+                        <ul id="list-khoa-hoc">
+                            @foreach (var quaTang in Model)
+                            {
+                                <li>
+                                    <input type="radio" name="course" value="@quaTang.MaQuaTang" id="@quaTang.MaQuaTang" data-bind="checked: quaTangKhachHang().maQuaTang" />
+                                    <label for="@quaTang.MaQuaTang">@quaTang.TenQuaTang</label>
+                                </li>
+                            }
+                            <li>
+                                <input type="radio" id="all" name="course" value="ALL" data-bind="checked: quaTangKhachHang().maQuaTang" />
+                                <label for="all">Tất cả các buổi học</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12">Bạn sẽ tham gia học cùng ai? <span class="color-red">*</span></label>
+                    <div class="col-sm-12">
+                        <ul class="list-partner" data-bind="foreach: danhSachNguoiDiCung">
+                            <li>
+                                <span data-bind="text: $data"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 cm-mgt-10">
+                        <i class="color-red">Vui lòng nhập tên rồi sau đó click vào nút thêm người đi cùng có thể đăng ký thêm người đi cùng.</i>
+                        <input type="text" id="inputPartner" class="form-control cm-mgb-5" name="name" value="" placeholder="Vui lòng nhập họ tên người tham gia"
+                               data-bind="value: tenNguoiDiCung" />
+                        <button type="button" class="btn btn-primary btn-sm" data-bind="click: addPartner">
+                            <i class="fa fa-plus"></i>
+                            Thêm người đi cùng
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary btn-lg">
+                            <i class="fa fa-check"></i>
+                            Đăng ký
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div><!-- END Container -->
+
+@section knockout{
+    <script>
+        var currentUser = @(JsonConvert.SerializeObject(CurrentPatient));
+    </script>
+    @Scripts.Render("~/bundles/pregnancy")
+}

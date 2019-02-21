@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = Resource.Contact;
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
+    var breadcrumd = new Breadcrumb()
+    {
+        Title = Resource.ContactPyrexar,
+    };
+}
+<partial name="_Breadcumb" model="breadcrumd" />
+<div id="map">
+    <iframe src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.GoogleMap) ? websiteSetting.GoogleMap : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.521597783849!2d105.81547915024359!3d21.01180568593895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab7d497c610d%3A0xf47ff80f0a500d9e!2sJade+Spa+%26+Clinic!5e0!3m2!1sen!2s!4v1481097450349")" width="100%" height="415" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div><!-- end #map -->
+<div class="container cm-mgt-20 cm-mgb-20">
+    <div class="row contact">
+        <div class="col-sm-8">
+            <h4 class="title-border">@Resource.ContactInformation</h4>
+            <div class="line"></div>
+            <form class="form-horizontal" id="contact_form" data-bind="submit: sendFeedback">
+                <div class="form-group" data-bind="attr: {class: isContactNameError() ? 'form-group has-error' : 'form-group'}">
+                    <label class="col-sm-12">@Resource.FullName</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control w100pc" placeholder="@Resource.FullNamePlaceHolder" value="" data-bind="value: contactName, hasFocus: isContactNameFocus" />
+                    </div>
+                </div>
+                <div class="form-group" data-bind="attr: {class: isPhoneNumberError() ? 'form-group has-error' : 'form-group'}">
+                    <label class="col-sm-12">@Resource.PhoneNumber</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control w100pc" placeholder="@Resource.PhoneNumberPlaceHolder" value="" data-bind="value: contactPhoneNumber, hasFocus: isPhoneNumberFocus" />
+                    </div>
+                </div>
+                <div class="form-group" data-bind="attr: {class: isEmailError() ? 'form-group has-error' : 'form-group'}">
+                    <label class="col-sm-12">Email</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control w100pc" placeholder="@Resource.EmailPlaceHolder" value="" data-bind="value: contactEmail, hasFocus: isEmailFocus" />
+                    </div>
+                </div>
+                <div class="form-group" data-bind="attr: {class: isContentError() ? 'form-group has-error' : 'form-group'}">
+                    <label class="col-sm-12">@Resource.Content</label>
+                    <div class="col-sm-12">
+                        <textarea type="text" class="form-control w100pc" placeholder="@Resource.ContentPlaceHolder" rows="4" data-bind="value: contactContent, hasFocus: isContentFocus"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-send-message" data-bind="enable: !isSendingContact()">
+                            <i class="fa fa-send" data-bind="visible: !isSendingContact()"></i>
+                            <i class="fa fa-spinner fa-pulse" data-bind="visible: isSendingContact()" style="display: none"></i>
+                            @Resource.Send
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-4">
+            <h4 class="title-border">@Resource.Contact</h4>
+            <div class="line"></div>
+            <ul>
+                @if (listBranch != null && listBranch.Any())
+                {
+                    foreach (var branchs in listBranch)
+                    {
+                        var branch = branchs;
+                        <li>
+                            <span>
+                                <i class="fa fa-home"></i>
+                            </span>
+                            @branch?.Name: @branch?.Address
+                        </li>
+                        @if (branchs.BranchContactDetails != null && branchs.BranchContactDetails.Any())
+                        {
+                            @foreach (var branchItem in branchs.BranchContactDetails)
+                            {
+                                if (branchItem.ContactType == ContactType.MobilePhone)
+                                {
+                                    <li>
+                                        <i class="fa fa-phone"></i>
+                                        @Resource.PhoneNumber: @branchItem.ContactValue
+                                    </li>
+                                }
+                                if (branchItem.ContactType == ContactType.Email)
+                                {
+                                    <li>
+                                        <i class="fa fa-envelope"></i>
+                                        Email: @branchItem.ContactValue
+                                    </li>
+                                }
+                                if (branchItem.ContactType == ContactType.HomePhone)
+                                {
+                                    <li>
+                                        <i class="fa fa-phone"></i>
+                                        @Resource.HomePhone: @branchItem.ContactValue
+                                    </li>
+                                }
+                                if (branchItem.ContactType == ContactType.Fax)
+                                {
+                                    <li>
+                                        <i class="fa fa-fax" aria-hidden="true"></i>
+                                        Fax: @branchItem.ContactValue
+                                    </li>
+                                }
+                            }
+                        }
+                        <li>
+                            <i class="fa fa-clock-o"></i>
+                            @Resource.WorkTime : @branch?.WorkTime
+                        </li>
+                    }
+                }
+                @if (websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Hotline))
+                {
+                    <li>
+                        <i class="fa fa-phone"></i>
+                        <a href="/" class="hotline">HOTLINE: @websiteSetting.Hotline</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/js/viewmodel/contact.viewmodel.es5.min.js"></script>
+}
+

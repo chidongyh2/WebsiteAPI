@@ -1,0 +1,38 @@
+﻿@model List<NewsSearchViewModel>
+@if (Model != null && Model.Any())
+{
+    <div class="product-in-home">
+        <div class="container">
+            <div class="row">
+                <h3 class="titlebar">
+                    @Resource.Product
+                </h3>
+                <div id="productCarousel">
+                    @foreach (var product in Model)
+                    {
+                        <div class="item">
+                            <div class="image-content">
+                                <a href="@($"/{product.SeoLink}.html")" title="@(string.IsNullOrEmpty(product.MetaTitle) ? product.Title : product.MetaTitle)">
+                                    <img class="news-image img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(product.FeatureImage) ? "/images/no-image.png" : product.FeatureImage)}&width=480&height=360")"
+                                         onerror="this.src='/images/no-image.png'"
+                                         alt="@(string.IsNullOrEmpty(product.AltImage) ? product.Title : product.AltImage)" />
+                                </a>
+                            </div>
+                            <div class="title">
+                                <a href="@($"/{ product.SeoLink}.html")" title="@(string.IsNullOrEmpty(product.MetaTitle) ? product.Title : product.MetaTitle)">
+                                    @(!string.IsNullOrEmpty(product.Title) ? Common.SubString(product.Title, 150) : product.Title)
+                                </a>
+                            </div>
+                            <div class="summary">
+                                @(!string.IsNullOrEmpty(product.Description) ? Common.SubString(product.Description, 200) : product.Description)
+                            </div>
+                            <div class="view-more">
+                                <a href="@($"/{ product.SeoLink}.html")" class="btn-view-more"><i class="fa fa-chevron-right"></i> @Resource.ViewMore</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

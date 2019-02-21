@@ -1,0 +1,71 @@
+﻿@using System.Configuration
+@using Clinic.DataAccess
+@model News
+
+@{
+    ViewBag.Title = Model != null ? Model.Title : "Chi tiết bài viết";
+    ViewBag.Description = Model != null ? Model.Title : ConfigurationManager.AppSettings["description"];
+    var listNewNews = ViewBag.ListNews as List<News>;
+    var listCategory = ViewBag.ListCategory as List<Category>;    
+}
+
+<div class="page-content bg-white">
+    @{Html.RenderPartial("_Breadcumb");}
+    <div class="container">
+        @if (Model != null)
+        {
+            <div class="row">
+                <div class="news-main col-sm-8">
+                    <h4 class="title">@Model.Title</h4>
+                    <ul class="option">
+                        <li>
+                            <i class="fa fa-calendar"></i>
+                            @Model.CreateTime.ToString("dd/MM/yyyy hh:mm")
+                        </li>
+                        <li>
+                            <i class="fa fa-eye"></i>
+                            @Model.ViewCount
+                        </li>
+                    </ul>
+                    <hr />
+                    <div class="content">
+                        @Html.Raw(Model.Content)
+
+                        @{
+                            var recruimentId = ConfigurationManager.AppSettings["recruimentId"] != null ? int.Parse(ConfigurationManager.AppSettings["recruimentId"]) : -1;
+                            if (recruimentId == Model.CategoryId)
+                            {
+                                <div class="recruiment-container">
+                                    <p>Đơn ứng tuyển:</p>
+                                    <div class="center">
+                                        <a href="/tuyen-dung/tai-mau-don-ung-tuyen" class="btn btn-primary">
+                                            <i class="fa fa-cloud-download"></i>
+                                            Download mẫu đơn ứng tuyển tại đây
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                    @{Html.RenderPartial("~/Views/News/_PreviousAndNextPost.cshtml");}
+                </div>
+
+                <div class="news-sidebar col-sm-4 cm-mgt-20">
+                    @{Html.RenderPartial("~/Views/News/_TabNews.cshtml", listNewNews);}
+
+                    @{Html.RenderPartial("~/Views/News/_ListCategory.cshtml", listCategory);}
+
+                    @if (!string.IsNullOrEmpty(Model.Tags))
+                    {
+                        Html.RenderPartial("~/Views/News/_Tags.cshtml", Model.Tags);
+                    }
+                </div>
+            </div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-info">Rất tiếc bài viết bạn đang tìm kiếm không tồn tại.</div>
+                        }
+    </div>
+</div>

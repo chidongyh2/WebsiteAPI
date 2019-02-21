@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Configurations\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.0" />
+    <PackageReference Include="BouncyCastle" Version="1.8.2" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GHM.Events\GHM.Events.csproj" />
+    <ProjectReference Include="..\GHM.Infrastructure.SqlServer\GHM.Infrastructure.SqlServer.csproj" />
+    <ProjectReference Include="..\GHM.Infrastructure\GHM.Infrastructure.csproj" />
+    <ProjectReference Include="..\GHM.Website_Event.Domain\GHM.Website.Event.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

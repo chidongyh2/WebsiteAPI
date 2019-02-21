@@ -1,0 +1,73 @@
+﻿@model List<NewsSearchViewModel>;
+
+@if (Model != null && Model.Any())
+{
+    var i = 0;
+    <div id="news-home" class="">
+
+        @foreach (var news in Model)
+        {
+            if (i % 2 == 0)
+            {
+                <div class="news-item">
+                    <div class="block">
+                        <div class="news-content">
+                            <h2 class="title">
+                                <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                                    @(!string.IsNullOrEmpty(news.Title) ? Common.SubString(news.Title, 70) : "")
+                                </a>
+                            </h2>
+                            <div class="description">
+                                @Html.Raw((!string.IsNullOrEmpty(news.Description) ? Common.SubString(news.Description, 1000) : news.Description));
+                            </div>
+                            <div class="main-feature-buttons">
+                                <a href="@($"/{ news.SeoLink}.html")" class="btn-viewmore"
+                                        >@Resource.ViewMore</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block hidden-sm hidden-xs">
+                        <div class="thumbnail-new">
+                            <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                                <img class="lazy img-responsive w100pc" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : news.FeatureImage)}")"
+                                     onerror="this.src='/images/no-image.png'"
+                                     alt="@(!string.IsNullOrEmpty(news.AltImage) ? news.AltImage : news.Title)" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="news-item">
+                    <div class="block hidden-sm hidden-xs">
+                        <div class="thumbnail-new ">
+                            <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                                <img class="lazy img-responsive w100pc" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : news.FeatureImage)}")"
+                                     onerror="this.src='/images/no-image.png'"
+                                     alt="@(!string.IsNullOrEmpty(news.AltImage) ? news.AltImage : news.Title)" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="news-content">
+                            <h2 class="title">
+                                <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                                    @(!string.IsNullOrEmpty(news.Title) ? Common.SubString(news.Title, 70) : "")
+                                </a>
+                            </h2>
+                            <div class="description">
+                                @Html.Raw((!string.IsNullOrEmpty(news.Description) ? Common.SubString(news.Description, 1000) : news.Description));
+                            </div>
+                            <div class="main-feature-buttons">
+                                <a href="@($"/{ news.SeoLink}.html")" class="btn-viewmore">@Resource.ViewMore</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            i++;
+        }
+    </div>
+}
+

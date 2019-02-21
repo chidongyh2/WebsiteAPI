@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IHtmlLocalizer<Resource> SharedLocalizer
+@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listMenuItem = ViewBag.MainNav as List<MenuItemViewModel>;
+    var path = $"{Context.Request.Path}";
+    var absoluteUri = $"{Context.Request.Host}{Context.Request.Path}";
+}
+
+<header id="header">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+                <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? websiteSetting.Logo : "/images/Logo GHM-04.png" )"
+                     alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "")"
+                     onerror="this.src='/images/no-image.png'" />
+            </a>
+        </div>
+        <div class="navbar-collapse collapse justify-content-center" id="ameiaMainNav">
+            <ul class="nav navbar-nav">
+                <li><a href="/" class="@(path == "/" ? "active" : "")">@Resource.Home</a></li>
+                @if (listMenuItem != null && listMenuItem.Any())
+                {
+                    var menuObject = new MenuObject
+                    {
+                        ListMenuItem = listMenuItem,
+                        ParentId = null,
+                    };
+                    <partial name="_MenuItem" model="menuObject" />
+                }
+            </ul>
+        </div>
+        <div class="header-tool hidden-xs">
+            <div class="btn-group">
+                @if (ViewBag.CurrentLanguage == "vi-VN")
+                {
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <img src="/images/vi.png"> Vietnamese<span class="caret"></span>
+                    </a>
+                }
+                else
+                {
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <img src="~/images/en.png"> English<span class="caret"></span>
+                    </a>
+                }
+                <ul class="dropdown-menu">
+                    <li><a href="/change-language/vi-VN?url=@path"><img src="/images/vi.png"> Vietnamese</a></li>
+                    <li><a href="/change-language/en-US?url=@path"><img src="/images/en.png"> English</a></li>
+                </ul>
+            </div>
+            <div id="Menu"></div>
+        </div>
+    </nav>
+</header>

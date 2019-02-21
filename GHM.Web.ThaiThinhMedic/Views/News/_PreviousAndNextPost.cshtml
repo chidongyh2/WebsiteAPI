@@ -1,0 +1,33 @@
+﻿@using Clinic.DataAccess
+@{
+    var previousNews = ViewBag.PreviousNews as News;
+    var nextNews = ViewBag.NextNews as News;
+    ViewData["width"] = 140;
+    ViewData["height"] = 140;
+}
+
+<div class="row cm-mgb-20">
+    <div class="col-sm-6">
+        @if (previousNews != null)
+        {
+            <h4 class="title-border">Bài trước</h4>
+            <div class="line"></div>
+            Html.RenderPartial("~/Views/News/_NewsItem.cshtml", previousNews, new ViewDataDictionary
+        {
+            {"width", 140},{"height", 140}, {"type", 1}
+        });
+        }
+
+    </div>
+    <div class="col-sm-6">
+        @if (nextNews != null)
+        {
+            <h4 class="title-border">Bài tiếp theo</h4>
+            <div class="line"></div>
+            Html.RenderPartial("~/Views/News/_NewsItem.cshtml", nextNews, new ViewDataDictionary
+            {
+                {"width", 140},{"height", 140}, {"type", 1}
+            });
+        }
+    </div>
+</div>

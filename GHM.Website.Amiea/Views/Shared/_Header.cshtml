@@ -1,0 +1,39 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listMenuItem = ViewBag.MainNav as List<MenuItemViewModel>;
+    var path = $"{Context.Request.Path}";
+}
+
+<header id="header">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>       
+                <a href="/" class="navbar-brand">
+                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? websiteSetting.Logo : "/images/Logo GHM-04.png" )"
+                         alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "Phun xăm thẩm mỹ amiea")" 
+                         onerror="this.src='/images/no-image.png'"/>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse navbar-left" id="ameiaMainNav">
+                <ul class="nav navbar-nav">
+                    <li><a href="/"class="@(path == "/" ? "active" : "")">TRANG CHỦ</a></li>
+                    @if (listMenuItem != null && listMenuItem.Any())
+                    {
+                        var menuObject = new MenuObject
+                        {
+                            ListMenuItem = listMenuItem,
+                            ParentId = null,
+                        };
+                        <partial name="_MenuItem" model="menuObject"/>                       
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

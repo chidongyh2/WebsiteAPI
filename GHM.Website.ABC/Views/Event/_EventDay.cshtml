@@ -1,0 +1,75 @@
+﻿@model EventShowClientViewModel;
+
+@if (Model != null)
+{
+    <div class="event-day">
+        <div class="container">
+            @if (Model?.Invitations != null && Model.Invitations.Any())
+            {
+                <div class="row professionals">
+                    <div class="col-sm-12 center">
+                        <div class="icon">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </div>
+                        <h2 class="titlebar">
+                            @Resource.EventProfessionals
+                        </h2>
+                    </div>
+                    <div class="col-sm-12">
+                        <div id="professionalsSlider">
+                            @foreach (var professional in Model?.Invitations?.Where(x => x.Role == RegisterRole.Professional))
+                            {
+                                <div class="item">
+                                    <div class="professional-image">
+                                        <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(professional.Avatar) ? "/images/no-image.png" : professional.Avatar)}&width=320&height=180")"
+                                             onerror="this.src='/images/no-image.png'"
+                                             alt="@professional.FullName" />
+                                    </div>
+                                    <div class="full-name center cm-pdt-5">
+                                        @professional.FullName
+                                    </div>
+                                    <p class="description">
+                                        @professional.Note
+                                    </p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="row">
+                <div class="col-sm-12 center">
+                    <div class="icon">
+                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </div>
+                    <h2 class="titlebar">
+                        @Resource.EventDetail
+                    </h2>
+                </div>
+                <div class="col-sm-12">
+                    <div class="days">
+                        @{
+                            var count = 1;
+                            @foreach (var eventDay in Model?.EventDays?.OrderBy(x => x.EventDate))
+                            {
+                                <div class="item">
+                                    <div class="thumbnail-event">
+                                        <img class="img-responsive w100pc lazy" src="@($"/image?url=https://testfilemanager.ghmsoft.vn/{(string.IsNullOrEmpty(Model.EventInfo.Thumbnail) ? "~/images/BGR web/Amiea/Ve-chung-toi-2_Amiea_07.gif" : Model.EventInfo.Thumbnail )}&width=480&height=270")" />
+                                        <span class="img-overlay"></span>
+                                        <div class="content">
+                                            <h3 class="title">@Resource.Day @count: @eventDay.Name</h3>
+                                            <hr />
+                                            <div class="description"> @eventDay.Description</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                count++;
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

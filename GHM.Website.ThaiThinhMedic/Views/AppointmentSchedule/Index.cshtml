@@ -1,0 +1,338 @@
+﻿@{
+    ViewBag.Title = "Siêu âm thai 4D - Phòng khám 125 Thái Thịnh";
+    ViewBag.Description = "Niềm hạnh phúc của mỗi bậc làm cha mẹ là được nhìn thấy đứa con bé bỏng của mình lớn dần và khỏe mạnh ngay từ trong bào thai. Và để chắc chắn rằng bé yêu đang phát triển thì việc siêu âm thai và khám thai định kỳ luôn là điều cần thiết mà bất cứ cha mẹ nào cũng cần phải nhớ.";
+}
+
+<link href="~/assets/plugins/jquery-week/skins/default.css" rel="stylesheet" />
+<link href="~/assets/plugins/jquery-week/skins/gcalendar.css" rel="stylesheet" />
+<link href="~/assets/plugins/jquery-week/jquery.weekcalendar.css" rel="stylesheet" />
+<link href="~/assets/plugins/jquery-week/libs/css/smoothness/jquery-ui-1.8.11.custom.css" rel="stylesheet" />
+<link href="~/assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+<link href="~/Content/less/waiting.min.css" rel="stylesheet" />
+<link href="~/assets/plugins/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+
+<div class="bg-white">
+    <div id="wrapperAppointmentSchedule" class="container">
+        @if (CurrentPatient != null)
+        {
+            <a href="javascript://" title="Dịch vụ bạn đã đặt" class="button-shopping" data-bind="click: showMyService">
+                <i class="fa fa-shopping-basket fa-2x"></i>
+            </a>
+        }
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="star-title">Đặt hẹn trực tuyến</h4>
+                <div class="star-title-decoration">
+                    <i class="fa fa-star-o"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row cm-mgb-20">
+            <div class="col-sm-12 cm-mgb-20">
+                <div class="form-inline text-center">
+                    <div class="form-group">
+                        <div class="bold">Vui lòng chọn dịch vụ:</div>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" data-bind="options: listServiceSearch, optionsValue: 'serviceId', optionsText: 'serviceName', value: serviceId, optionsCaption: '-- Chọn dịch vụ --', enable: !isSearching()"></select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" data-bind="options: listDoctorSearch, optionsValue: 'doctorId', optionsText: 'doctorName', value: doctorId, optionsCaption: '-- Chọn bác sỹ --', enable: !isSearching()"></select>
+                    </div>
+                    <div class="form-group">
+                        <button data-bind="click: submitSearch, enable: !isSearching()" class="btn btn-primary">
+                            <i class="fa fa-spinner fa-pulse" data-bind="visible: isSearching"></i>
+                            <i class="fa fa-search" data-bind="visible: !isSearching()" style="display: none;"></i>
+                            <span>Tìm kiếm</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row cm-mgb-20">
+            <div class="col-sm-12">
+                <h4 class="uppercase main-text-color bold">QUY ĐỊNH ĐẶT HẸN TRÊN WEBSITE</h4>
+                <p>
+                    1. Đối tượng : Khách hàng <b>Khám thai, Siêu âm thai và Khám nhi</b> tại phòng khám
+                </p>
+                <p>
+                    2. Thời gian đặt hẹn:
+                    <ul class="first">
+                        <li>Ca sáng từ: 8h00 – 11h30</li>
+                        <li>Ca chiều từ: 13h30 -16h30</li>
+                        <li>Ca tối từ: 17h00 - 18h00</li>
+                    </ul>
+
+                </p>
+                <div>
+                    <ul class="second">
+                        <li>
+                            <b>Khám Nhi: </b>nhận đặt hẹn tất cả các ngày trong tuần theo khung giờ trên.
+                        </li>
+                        <li>
+                            <b>Khám thai và Siêu âm thai: </b>nhận đặt hẹn tất cả các ngày trong tuần theo khung giờ trên trừ ca sáng thứ 7 và ca sáng chủ nhật.
+                        </li>
+                    </ul>
+                </div>
+                <p>3. Quý khách đặt lịch hẹn tối đa trước 48h và tối thiểu 1h (60 phút) trước khi đến khám.</p>
+                <p>4. Quý khách cần đảm bảo tới đúng giờ hẹn. Nếu quá hẹn 15 phút lịch hẹn sẽ tự động hủy và quý khách phải đăng ký lại dịch vụ tại quầy Lễ tân.</p>
+                <p>5. Khi đến khám vui lòng thông báo với Lễ tân là quý khách đã đặt hẹn trước.</p>
+                <p>6. Để đảm bảo mỗi khách hàng có một mã bệnh nhân cố định vui lòng không thay đổi thông tin về số điện thoại khi thực hiện đặt lịch hẹn.</p>
+                <p>7. Lịch làm việc của Bác sĩ có thể thay đổi, quý khách nên liên hệ trước khi đến để biết lịch làm việc chính xác của Bác sĩ.</p>
+                <p>
+                    (Số điện thoại liên hệ: 0243 853 5522 – Hotline: 0972 88 11 25 hoặc chat trực tuyến trên trang chủ website: <a href="http://thaithinhmedic.com" title="thaithinhmedic">http://thaithinhmedic.com</a>)
+                </p>
+                <p>
+                    <b>Lưu ý:</b> Trường hợp một Khách hàng đặt song song hai dịch vụ (khám thai và siêu âm thai) trong cùng một ngày bắt buộc phải chọn hai khung giờ khám khác nhau. Mỗi khách hàng chỉ được đặt hẹn 1lần/dịch vụ/1 ca làm việc (ca sáng, chiều, tối).
+                </p>
+
+                <b>Xin cảm ơn!</b>
+
+                @if (CurrentPatient == null)
+                {
+                    <div class="alert alert-info cm-mgt-10">
+                        <b>Thông báo</b>: Quý khách vui lòng <a href="/dang-nhap?returnUrl='/dat-hen'" class="bold">đăng nhập</a> để có thể xem lại danh sách lịch hẹn đã đặt.
+                    </div>
+                }
+
+                <ul class="third">
+                    <li>
+                        <span class="not-allowed"></span>: Khung giờ không thể đặt hẹn.
+                        <span class="booked-already"></span> <span class="booked-already-1"></span>: Đã có lịch hẹn.
+                        <span class="alowed"></span>: Khung giờ có thể đặt hẹn.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row cm-mgb-20">
+            <div class="col-sm-12" data-bind="visible: isShowCalendar" style="display: none;">
+                <div id="calendar"></div>
+            </div>
+            @*<div class="col-sm-12" data-bind="visible: serviceId() !== '' && serviceId() !== undefined" style="display: none;">
+                    <div id="calendar"></div>
+                </div>*@
+        </div>
+        <div class="row cm-mgb-20">
+            <div class="col-sm-12">
+                <div class="form-inline text-center">
+                    <div class="form-group">
+                        <div class="bold">Vui lòng chọn dịch vụ:</div>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" data-bind="options: listServiceSearch, optionsValue: 'serviceId', optionsText: 'serviceName', value: serviceId, optionsCaption: '-- Chọn dịch vụ --', enable: !isSearching()"></select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" data-bind="options: listDoctorSearch, optionsValue: 'doctorId', optionsText: 'doctorName', value: doctorId, optionsCaption: '-- Chọn bác sỹ --', enable: !isSearching()"></select>
+                    </div>
+                    <div class="form-group">
+                        <button data-bind="click: submitSearch, enable: !isSearching()" class="btn btn-primary">
+                            <i class="fa fa-spinner fa-pulse" data-bind="visible: isSearching"></i>
+                            <i class="fa fa-search" data-bind="visible: !isSearching()" style="display: none;"></i>
+                            <span>Tìm kiếm</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myServiceModal" tabindex="-1" role="dialog" aria-labelledby="myServiceModal-label" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myServiceModal-label">
+                            <i class="fa fa-shopping-basket"></i>
+                            Dịch vụ bạn đã đặt
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="spinner" data-bind="visible: isGettingMyService">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                        </div>
+
+                        <table class="table table-bordered table-stripped table-hover" data-bind="visible: !isGettingMyService()">
+                            <thead>
+                                <tr>
+                                    <th class="center w50">STT</th>
+                                    <th class="center">Tên dịch vụ</th>
+                                    <th class="center">Tên bác sỹ</th>
+                                    <th class="center">Thời gian</th>
+                                    <th class="center"></th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: listMyService">
+                                <tr>
+                                    <td class="center" data-bind="text: $index() + 1"></td>
+                                    <td data-bind="text: TenDichVu"></td>
+                                    <td data-bind="text: TenBacSy"></td>
+                                    <td data-bind="text: StartTime"></td>
+                                    <td class="center">
+                                        <button type="button" class="btn btn-primary" data-bind="click: $root.setUpdate, enable: !$root.disableListButton()">
+                                            <i class="fa fa-pencil"></i>
+                                            Sửa
+                                        </button>
+                                        <button type="button" class="btn btn-danger" data-bind="click: $root.delete, enable: !$root.disableListButton()">
+                                            <i class="fa fa-trash"></i>
+                                            Xoá
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            <i class="fa fa-times"></i>
+                            @Resources.Button_Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="appointmentScheduleModal" tabindex="-1" role="dialog" aria-labelledby="appointmentScheduleModal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title main-text-color" id="appointmentScheduleModal-label">Đặt hẹn online</h4>
+                    </div>
+                    <form class="form-horizontal" data-bind="submit: save">
+                        <div class="modal-body">
+                            <h4 class="title-border">Thông tin lịch hẹn</h4>
+                            <div class="line"></div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Ngày khám (<span class="color-red">*</span>)</label>
+                                <div class="col-sm-8">
+                                    @*<select class="form-control" data-bind="options: listDate, value: appointment().selectedDate"></select>*@
+                                    <div class="form-control" data-bind="text: appointment().selectedDate" readonly></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Giờ khám (<span class="color-red">*</span>)</label>
+                                <div class="col-sm-8">
+                                    <div class="btn-group btn-dropdown-nested">
+                                        <div class="form-control" data-bind="text: appointment().hours" readonly></div>
+                                        @*<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            <span data-bind="text: appointment().hours"></span>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <span class="bold">Ca sáng</span>
+                                                <ul>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '08:00', 8)">08:00</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '08:30', 8.30)">08:30</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '09:00', 9)">09:00</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '09:30', 9.30)">09:30</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '10:00', 10)">10:00</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '10:30', 10.30)">10:30</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '11:00', 11)">11:00</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '11:30', 11.30)">11:30</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li>
+                                                <span class="bold">
+                                                    Ca chiều
+                                                </span>
+                                                <ul>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '13:30', 13.30)">13:30</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '14:00', 14)">14:00</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '14:30', 14.30)">14:30</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '15:00', 15)">15:00</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '15:30', 15.30)">15:30</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '16:00', 16)">16:00</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '16:30', 16.30)">16:30</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li>
+                                                <span class="bold">
+                                                    Ca tối
+                                                </span>
+                                                <ul>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '17:30', 17.30)">17:30</a></li>
+                                                    <li><a href="javascript://" data-bind="click: changeTime.bind($data, '18:00', 18)">18:00</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" data-bind="attr: {class: isServiceError() ? 'form-group has-error' : 'form-group'}">
+                                <label class="col-sm-4">Dịch vụ (<span class="color-red">*</span>)</label>
+                                <div class="col-sm-8">
+                                    @*<select class="form-control" data-bind="options: listService, optionsValue: 'serviceId', optionsText: 'serviceName', optionsCaption: '-- Chọn dịch vụ --', value: appointment().serviceId, hasFocus: serviceFocus"></select>*@
+                                    <div class="form-control" readonly data-bind="text: appointment().serviceName"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Bác sỹ</label>
+                                <div class="col-sm-8">
+                                    @*<select class="form-control" data-bind="options: listDoctor, optionsValue: 'doctorId', optionsText: 'doctorName', optionsCaption: '-- Chọn bác sỹ --', value: appointment().doctorId"></select>*@
+                                    <div class="form-control" data-bind="text: appointment().doctorName" readonly></div>
+                                </div>
+                            </div>
+                            <h4 class="title-border">Thông tin khách hàng</h4>
+                            <div class="line"></div>
+                            <div class="form-group" data-bind="attr: {class: isNameError() ? 'form-group has-error' : 'form-group'}">
+                                <label class="col-sm-4">Họ tên (<span class="color-red">*</span>)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" data-bind="value: appointment().fullName, hasFocus: nameFocus" value="" />
+                                </div>
+                            </div>
+                            <div class="form-group" data-bind="attr: {class: isBirthdayError() ? 'form-group has-error' : 'form-group'}">
+                                <label class="col-sm-4">Ngày sinh (<span class="color-red">*</span>)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" data-bind="dateTimePicker: appointment().birthday, hasFocus: birthdayFocus" value="" />
+                                </div>
+                            </div>
+                            <div class="form-group" data-bind="attr: {class: isPhoneNumberError() ? 'form-group has-error' : 'form-group'}">
+                                <label class="col-sm-4">Điện thoại (<span class="color-red">*</span>)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" value="" data-bind="value: appointment().phoneNumber, hasFocus: phoneNumberFocus" />
+                                </div>
+                            </div>
+                            <div class="form-group" data-bind="attr: {class: isEmailError() ? 'form-group has-error' : 'form-group'}">
+                                <label class="col-sm-4">Email</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" value="" data-bind="value: appointment().email, hasFocus: emailFocus" />
+                                </div>
+                            </div>
+                            <div class="form-group" data-bind="attr: {class: isAddressError() ? 'form-group has-error' : 'form-group'}">
+                                <label class="col-sm-4">Địa chỉ (<span class="color-red">*</span>)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" value="" data-bind="value: appointment().address, hasFocus: addressFocus" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Ghi Chú</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" rows="5" data-bind="value: appointment().note"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" data-bind="enable: !isSaving()">
+                                <i class="fa fa-pulse fa-spinner" data-bind="visible: isSaving"></i>
+                                Đặt hẹn
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" data-bind="enable: !isSaving()">Huỷ bỏ</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section knockout{
+    <script>
+        var listService = @Html.Raw(ViewBag.ListService);
+    </script>
+    @Scripts.Render("~/bundles/appointment-schedule")
+}

@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Liên hệ";
+}
+
+<div id="map">
+    <iframe frameborder="0" width="100%" height="100%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=125%20thai%20thinh&key=AIzaSyAWPEgy1UOyTEXbUsU_9GE2O3yhBj4w7es" allowfullscreen></iframe>
+    @*<iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAWPEgy1UOyTEXbUsU_9GE2O3yhBj4w7es&origin=125%20thai%20thinh" frameborder="0" width="100%" height="100%"></iframe>*@
+</div><!-- end #map -->
+
+<div class="container cm-mgt-20 cm-mgb-20">
+    <div class="row">
+        <div class="col-sm-8">
+            <h4 class="title-border">Thông tin liên hệ</h4>
+            <div class="line"></div>
+            <form class="form-horizontal" id="contact_form" data-bind="submit: sendFeedback">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group" data-bind="attr: {class: isContactNameError() ? 'form-group has-error' : 'form-group'}">
+                            <label class="col-sm-12">Họ và tên</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control w100pc" placeholder="Vui lòng nhập họ và tên" value="" data-bind="value: contactName, hasFocus: isContactNameFocus" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group" data-bind="attr: {class: isPhoneNumberError() ? 'form-group has-error' : 'form-group'}">
+                            <label class="col-sm-12">Số điện thoại</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control w100pc" placeholder="Vui lòng nhập số điện thoại" value="" data-bind="value: contactPhoneNumber, hasFocus: isPhoneNumberFocus" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" data-bind="attr: {class: isEmailError() ? 'form-group has-error' : 'form-group'}">
+                    <label class="col-sm-12">Email</label>
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control w100pc" placeholder="Vui lòng nhập Email" value="" data-bind="value: contactEmail, hasFocus: isEmailFocus" />
+                    </div>
+                </div>
+                <div class="form-group" data-bind="attr: {class: isContentError() ? 'form-group has-error' : 'form-group'}">
+                    <label class="col-sm-12">Nội dung</label>
+                    <div class="col-sm-12">
+                        <textarea type="text" class="form-control w100pc" placeholder="Vui lòng để lại nội dung liên hệ của bạn" rows="4" data-bind="value: contactContent, hasFocus: isContentFocus"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12 text-right">
+                        <button type="submit" class="btn btn-primary" data-bind="enable: !isSendingContact()">
+                            <i class="fa fa-send" data-bind="visible: !isSendingContact()"></i>
+                            <i class="fa fa-spinner fa-pulse" data-bind="visible: isSendingContact()" style="display: none"></i>
+                            Gửi
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-4 contact">
+            <h4 class="title-border">Địa chỉ</h4>
+            <div class="line"></div>
+            <ul>
+                <li>
+                    <label>Điện thoại 1:</label>
+                    <span> 02438.53.55.22</span>
+                </li>
+                <li>
+                    <label>Điện thoại 2:</label>
+                    <span> 0247.309.6888</span>
+                </li>
+                <li>
+                    <label>Hotline:</label>
+                    <span> 097.288.1125</span>
+                </li>
+                <li>
+                    <label>Email:</label>
+                    <span><a href="mailto:info@pkdktt.com"> info@pkdktt.com</a></span>
+                </li>
+                <li>
+                    <label>Email CSKH:</label>
+                    <span><a href="mailto:cskh@pkdktt.com"> cskh@pkdktt.com</a></span>
+                </li>
+                <li>
+                    <label>Website:</label>
+                    <span><a href="http://thaithinhmedic.com"> thaithinhmedic.com</a></span>
+                </li>
+                <li>
+                    <label>Địa chỉ:</label>
+                    <span>Số 125 Thái Thịnh - Đống Đa - Hà Nội</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@section knockout{
+    <script src="~/assets/plugins/knockout/knockout-latest.js"></script>
+    <script src="~/assets/plugins/owl.carousel/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/assets/plugins/lightslider/js/lightslider.js"></script>
+    <script src="~/assets/plugins/owl.carousel/assets/js/bootstrap-collapse.js"></script>
+    <script src="~/assets/plugins/owl.carousel/assets/js/bootstrap-transition.js"></script>
+    <script src="~/assets/plugins/owl.carousel/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="~/assets/plugins/owl.carousel/assets/js/application.js"></script>
+    <script src="~/built/viewmodel/home/home.viewmodel.js"></script>
+}

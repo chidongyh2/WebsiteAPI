@@ -1,0 +1,24 @@
+﻿@model NewsSearchViewModel
+@if (Model != null)
+{
+    <div class="news-item">
+        <div class="image-content">
+            <a href="@($"/{ Model.SeoLink}.html")" title="@(string.IsNullOrEmpty(Model.MetaTitle) ? Model.Title : Model.MetaTitle)">
+                <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(Model.FeatureImage) ? "/images/no-image.png" : Model.FeatureImage)}&width=480&height=360")"
+                     onerror="this.src='/images/no-image.png'"
+                     alt="@(string.IsNullOrEmpty(Model.AltImage) ? Model.Title : Model.AltImage)" />
+            </a>
+        </div>
+        <div class="title">
+            <a href="@($"/{ Model.SeoLink}.html")" title="@(string.IsNullOrEmpty(Model.MetaTitle) ? Model.Title : Model.MetaTitle)">
+                @(!string.IsNullOrEmpty(Model.Title) ? Common.SubString(Model.Title, 100) : Model.Title)
+            </a>
+        </div>
+        <div class="summary">
+            @(!string.IsNullOrEmpty(Model.Description) ? Common.SubString(Model.Description, 140) : Model.Description)
+        </div>
+        <div class="view-more">
+            <a href="@($"/{ Model.SeoLink}.html")" class="btn-view-more"><i class="fa fa-chevron-right"></i> Đọc tiếp</a>
+        </div>
+    </div>
+}

@@ -1,0 +1,48 @@
+﻿@{
+    var listPhoto = ViewBag.AlbumViewModel as List<AlbumWithItemViewModel>;
+    var listAlbum = ViewBag.ListAlbum as List<AlbumViewModel>;
+    ViewBag.Title = "Thư viện ảnh Ameia";
+}
+@*<partial name="_Breadcumb" />*@
+<div id="abums">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <partial name="_PhotoSidebar" model="listAlbum" />
+            </div>
+            <div class="col-sm-9 content">
+                @if (listPhoto != null && listPhoto.Any())
+                {
+                    @foreach (var album in listPhoto)
+                    {
+                        <div class="row abum-photo">
+                            <div class="col-sm-12 ">
+                                <h2 class="title-border">@album.Title</h2>
+                                <div class="line"></div>
+                            </div>
+                            @if (album.AlbumItems != null && album.AlbumItems.Any())
+                            {
+                                @foreach (var photo in album.AlbumItems.Take(3))
+                                {
+                                    <div class="col-sm-4 col-xs-6 ">
+                                        <partial name="_PhotoItem" model="photo" />
+                                    </div>
+                                }
+                                @if (album.AlbumItems != null && album.AlbumItems.Any() && album.AlbumItems.Count > 3)
+                                {
+                                    <div class="col-sm-12 ">
+                                        <a href="@string.Format("/thu-vien-anh/{0}/{1}/{2}", album.SeoLink, 1, 20)" class="btn-more pull-right" title="@album.Title">
+                                            Xem tiếp ...
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <partial name="_SocialNetWork">
+</div>
+

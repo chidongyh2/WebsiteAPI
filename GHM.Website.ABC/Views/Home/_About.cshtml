@@ -1,0 +1,70 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+}
+
+<div id="about" class="about-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 center">
+                <h2 class="titlebar">
+                    @Resource.AboutABC @websiteSetting.Brand
+                </h2>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="content">
+                    @if (websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Instruction))
+                    {
+                        @Html.Raw(websiteSetting.Instruction)
+                    }
+                </div>
+            </div>
+            <div class="col-sm-6 hidden-xs">
+                <div class="strategy-content">
+                    <img class="img-responsive" src="~/images/BGR web/Trang chu/anh sep-02.png" alt="@websiteSetting.Brand" />
+                    <div class="content hidden-xs" data-bind="text:description(), css: {active: $root.isSelect}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 cm-pdl-0">
+                <ul class="strategy cm-pdl-0" data-bind="foreach: $root.listValue()">
+                    <li>
+                        <div data-bind="css: {active: Order === $root.order() && !$root.isMobile()}">
+                            <!-- ko if: Order === $root.order() && !$root.isMobile() -->
+                            <span class="hidden-xs">
+                                <i class="fa fa-caret-left" aria-hidden="true"></i>
+                            </span>
+                            <!-- /ko -->
+                            <a href="javascript://" data-bind="event:{ mouseover: $root.selectValue, mouseout: $root.exitValue}"
+                               class="media">
+                                <div class="media-left">
+                                    <span data-bind="text: '0' + Order"></span>
+                                </div>
+                                <div class="media-body">
+                                    <h3 data-bind="text: Title"></h3>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-6 visible-xs">
+                <div class="strategy-content" id="strategy-content">
+                    <div class="strategy-content">
+                        <img class="img-responsive" src="~/images/BGR web/Trang chu/anh sep-02.png" title="@websiteSetting.Brand" />
+                        <div class="content" data-bind="text:description(), css: {active: $root.isSelect}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var listValue = @(ViewBag.ListValue != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListValue)) : "[]");
+</script>
+
+

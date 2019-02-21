@@ -1,0 +1,84 @@
+﻿@using Clinic.Business
+@using Clinic.DataAccess
+@model List<Clinic.DataAccess.News>
+
+@{
+    var breadcrumbs = ViewBag.Breadcrumb as List<Breadcrumb>;
+    var current = breadcrumbs.FirstOrDefault(x => x.IsCurrent);
+    ViewBag.Title = current != null ? current.Name : "Chuyên mục";
+    var listCategory = ViewBag.ListCategory as List<Category>;
+}
+
+<div class="page-content">
+    @*@{Html.RenderPartial("_Breadcumb");}*@
+    <div class="container">
+        <div class="row">
+            @{Html.RenderPartial("_Breadcumb");}
+        </div>
+        <div class="row">
+            <div class="col-sm-8 cm-mgt-20">
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        @*<div class="media news-item">
+                                <div class="media-left">
+                                    <a href="@string.Format("/{0}.html",item.SeoLink)" title="@item.Title">
+                                        <img class="media-object" src="@Url.Action("Index", "ImageHandler", new {url = item.Image, width = 170, height = 170})" alt="@item.Title">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="@string.Format("/{0}.html",item.SeoLink)" title="@item.Title">@item.Title</a>
+                                    </h4>
+                                    <ul class="option">
+                                        <li>
+                                            <i class="fa fa-calendar-o"></i>
+                                            @item.CreateTime.ToString("dd/MM/yyyy hh:mm")
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-eye"></i>
+                                            @item.ViewCount
+                                        </li>
+                                    </ul>
+                                    <div class="description">
+                                        @Html.Raw(item.Description)
+                                    </div>
+                                    <div class="read-more text-right cm-mgt-10">
+                                        <a href="@string.Format("/{0}.html",item.SeoLink)" title="@item.Title"><i class="fa fa-angle-double-right"></i> Xem tiếp</a>
+                                    </div>
+                                </div>
+                            </div>*@
+                        Html.RenderPartial("~/Views/News/_NewsItem.cshtml", item, new ViewDataDictionary { { "width", 170 }, { "height", 170 }, { "isShowDescription", true } });
+                        <hr />
+                    }
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 text-right">
+                            <div class="dataTables_paginate paging_simple_numbers" id="pager"></div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info">Rất tiếc. Chuyện mục bạn đang tìm kiếm hiện không có bài viết nào.</div>
+                }
+            </div>
+            <div class="col-sm-4 news-sidebar cm-mgt-20">
+                @if (listCategory != null && listCategory.Any())
+                {
+                    Html.RenderPartial("~/Views/News/_ListCategory.cshtml", listCategory);
+                }
+            </div>
+        </div>
+    </div>
+</div><!-- end .page-content -->
+
+@section knockout{
+    <script>
+        var totalRows = @ViewBag.TotalRows;
+        var currentPage = @(Request.Params["page"] == null ? 1 : int.Parse(Request.Params["page"]));
+        var url = '@(current != null ? current.NamePath : "")';
+    </script>
+    @Scripts.Render("~/bundles/Category")
+}

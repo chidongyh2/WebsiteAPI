@@ -1,0 +1,27 @@
+﻿@using Clinic.DataAccess
+@{
+    var listNews = ViewBag.ListArea2 as List<News>;
+}
+
+@if (listNews != null && listNews.Any())
+{
+    var groups = listNews.GroupBy(x => new { x.CategoryId, x.CategoryName });
+    <section class="news cm-mgt-20 cm-mgb-20 cm-pdb-20">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="title-border">@string.Format("{0}", groups != null ? groups.FirstOrDefault().Key.CategoryName : "")</h2>
+                    <div class="line"></div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in groups.FirstOrDefault())
+                {
+                    <div class="col-sm-4">
+                        @{Html.RenderPartial("~/Views/News/_NewsItem.cshtml", item, new ViewDataDictionary { { "width", 100 }, { "height", 100 }, { "isShowDescription", true } });}
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,116 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\PromotionController.cs" />
+    <Compile Remove="helper\JsonCamelCaseResult.cs" />
+    <Compile Remove="helper\ScriptBlock.cs" />
+    <Compile Remove="helper\ScriptBlockExtenion.cs" />
+    <Compile Remove="Hubs\PatientWaitingHub.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GHM.Infrastructure\GHM.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="assets\plugins\videojs\examples\" />
+    <Folder Include="Hubs\" />
+    <Folder Include="Views\Doctor\" />
+    <Folder Include="Views\ImageHandler\" />
+    <Folder Include="Views\Service\" />
+    <Folder Include="wwwroot\files\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Account\ConfirmEmail.cshtml" />
+    <None Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <None Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <None Include="Views\Account\ForgotPassword.cshtml" />
+    <None Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <None Include="Views\Account\Login.cshtml" />
+    <None Include="Views\Account\Register.cshtml" />
+    <None Include="Views\Account\ResetPassword.cshtml" />
+    <None Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <None Include="Views\Account\SendCode.cshtml" />
+    <None Include="Views\Account\VerifyCode.cshtml" />
+    <None Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <None Include="Views\AppointmentSchedule\Index.cshtml" />
+    <None Include="Views\AppointmentSchedule\Index2.cshtml" />
+    <None Include="Views\AppointmentSchedule\SliderQuayThuoc.cshtml" />
+    <None Include="Views\Category\Index.cshtml" />
+    <None Include="Views\Contact\Index.cshtml" />
+    <None Include="Views\Error\FileNotFound.cshtml" />
+    <None Include="Views\Error\NotFound.cshtml" />
+    <None Include="Views\Error\NotHavePermission.cshtml" />
+    <None Include="Views\Error\SomethingWrong.cshtml" />
+    <None Include="Views\Home\About.cshtml" />
+    <None Include="Views\Home\Contact.cshtml" />
+    <None Include="Views\Home\Coordinator.cshtml" />
+    <None Include="Views\Home\Faq.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\_Area1.cshtml" />
+    <None Include="Views\Home\_Area2.cshtml" />
+    <None Include="Views\Home\_HotNews.cshtml" />
+    <None Include="Views\Home\_Util.cshtml" />
+    <None Include="Views\Home\_VideoAndContact.cshtml" />
+    <None Include="Views\Image\Index.cshtml" />
+    <None Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <None Include="Views\Manage\ChangePassword.cshtml" />
+    <None Include="Views\Manage\Index.cshtml" />
+    <None Include="Views\Manage\ManageLogins.cshtml" />
+    <None Include="Views\Manage\SetPassword.cshtml" />
+    <None Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <None Include="Views\News\Detail.cshtml" />
+    <None Include="Views\News\_ListCategory.cshtml" />
+    <None Include="Views\News\_ListRelateNews.cshtml" />
+    <None Include="Views\News\_NewsItem.cshtml" />
+    <None Include="Views\News\_PreviousAndNextPost.cshtml" />
+    <None Include="Views\News\_TabNews.cshtml" />
+    <None Include="Views\News\_Tags.cshtml" />
+    <None Include="Views\Patient\Index.cshtml" />
+    <None Include="Views\Patient\MedicalHistory.cshtml" />
+    <None Include="Views\Pregnancy\Index.cshtml" />
+    <None Include="Views\Promotion\Index.cshtml" />
+    <None Include="Views\Schedule\Index.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\Lockout.cshtml" />
+    <None Include="Views\Shared\_Breadcumb.cshtml" />
+    <None Include="Views\Shared\_FacultySlider.cshtml" />
+    <None Include="Views\Shared\_Footer.cshtml" />
+    <None Include="Views\Shared\_Header.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_LayoutEmpty.cshtml" />
+    <None Include="Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Views\Shared\_MainSlider.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\Video\Index.cshtml" />
+    <None Include="Views\Video\Info.cshtml" />
+    <None Include="Views\Video\_Note.cshtml" />
+    <None Include="Views\Video\_VideoTable.cshtml" />
+    <None Include="Views\Waiting\Info.cshtml" />
+    <None Include="Views\Waiting\Info1.cshtml" />
+    <None Include="Views\Waiting\Music.cshtml" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,99 @@
+﻿
+@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var newsHomePage = ViewBag.NewsHomePage as NewsDetailViewModel;
+}
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="titlebar">
+                    Thương Hiệu Amiea
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                @*<h3 class="title">
+                    Triết lý kinh doanh
+                </h3>*@
+                <div class="content">
+                    @if (websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Instruction))
+                    {
+                        @Html.Raw(websiteSetting.Instruction)
+                    }
+                </div>
+                <div class="contact">
+                    <a href="/ve-chung-toi.html" class="btn btn-contact">Tìm hiểu thêm</a>
+                </div>
+            </div>
+            @*@if (newsHomePage != null)
+            {
+                <div class="col-sm-4 col-xs-5 cm-pdl-0">
+                    <h3 class="title hidden-xs hidden-sm">
+                        @newsHomePage?.Title
+                    </h3>
+                    <div class="content hidden-sm hidden-xs">
+                        @Html.Raw(newsHomePage?.Content)                       
+                    </div>
+                    <ul class="strategy visible-sm visible-xs cm-pdl-0">
+
+                        <li>
+                            <a href="javascript://"
+                               class="media">
+                                <div class="media-left">
+                                    <i class="fa fa-envira" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                    <span>
+                                        Thương hiệu thiết bị PMU số 1 Thế Giới
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript://"
+                               class="media">
+                                <div class="media-left">
+                                    <i class="fa fa-envira" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                    <span>
+                                        Hơn 20 năm kinh nghiệm, phân phối trên 40 quốc gia
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript://"
+                               class="media">
+                                <div class="media-left">
+                                    <i class="fa fa-envira" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                    <span>
+                                        Sản phẩm mực hữu cơ được đánh giá cao về chất lượng
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript://"
+                               class="media">
+                                <div class="media-left">
+                                    <i class="fa fa-envira" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                    <span>
+                                        Sản phẩm Amiea được nghiên cứu và sản xuất tại Đức
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            }*@
+        </div>
+    </div>
+</div>
