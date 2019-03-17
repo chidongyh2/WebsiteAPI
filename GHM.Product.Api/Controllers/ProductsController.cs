@@ -33,9 +33,14 @@ namespace GHM.Product.Api.Controllers
         public async Task<IActionResult> Search(string keyword, int? categoryId, bool? isManagementByLot,
             bool? isActive, int page = 1, int pageSize = 20)
         {
+            try { 
             var result = await _productService.Search(CurrentUser.TenantId, CultureInfo.CurrentCulture.Name,
                 keyword, categoryId, isManagementByLot, isActive, page, pageSize);
             return Ok(result);
+            }catch(Exception e)
+            {
+                return null;
+            }
         }
 
         [AcceptVerbs("POST"), ValidateModel]

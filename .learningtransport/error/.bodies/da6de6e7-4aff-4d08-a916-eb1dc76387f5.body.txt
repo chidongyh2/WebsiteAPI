@@ -1,0 +1,1 @@
+<?xml version="1.0"?><RoleDeleted xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://tempuri.net/GHM.NServiceBus.Events.GHM.Core"><RoleId>8126f1a4-c3b3-4af3-8ecf-9b211bcc0202</RoleId></RoleDeleted>

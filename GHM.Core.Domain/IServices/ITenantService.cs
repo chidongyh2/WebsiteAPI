@@ -8,7 +8,7 @@ namespace GHM.Core.Domain.IServices
 {
     public interface ITenantService
     {
-        Task<ActionResultResponse> Insert(TenantMeta tenantMeta);
+        Task<ActionResultResponse> Insert(string currentTenant, TenantMeta tenantMeta);
 
         Task<ActionResultResponse> Update(string id, TenantMeta tenantMeta);
 

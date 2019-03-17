@@ -22,13 +22,17 @@ namespace GHM.Core.Infrastructure.Services
         private readonly ITenantLanguageRepository _tenantLanguageRepository;
         private readonly ITenantLanguageService _tenantLanguageService;
         private readonly ILanguageRepository _languageRepository;
+        private readonly ITenantPageRepository _tenantPageRepository;
+        private readonly IUserAccountRepository _userAccountRepository;
+        public readonly IUserRoleRepository _userRoleRepository;
 
         private readonly IResourceService<SharedResource> _sharedResourceService;
         private readonly IResourceService<GhmCoreResource> _resourceService;
 
         public TenantService(ITenantRepository tenantRepository, IResourceService<SharedResource> sharedResourceService,
             IResourceService<GhmCoreResource> resourceService, ITenantLanguageService tenantLanguageService, ILanguageRepository languageRepository,
-            ITenantLanguageRepository tenantLanguageRepository)
+            ITenantLanguageRepository tenantLanguageRepository, ITenantPageRepository tenantPageRepository, IUserAccountRepository userAccountRepository,
+            IUserRoleRepository userRoleRepository)
         {
             _tenantRepository = tenantRepository;
             _sharedResourceService = sharedResourceService;
@@ -36,9 +40,12 @@ namespace GHM.Core.Infrastructure.Services
             _tenantLanguageService = tenantLanguageService;
             _languageRepository = languageRepository;
             _tenantLanguageRepository = tenantLanguageRepository;
+            _tenantPageRepository = tenantPageRepository;
+            _userAccountRepository = userAccountRepository;
+            _userRoleRepository = userRoleRepository;
         }
 
-        public async Task<ActionResultResponse> Insert(TenantMeta tenantMeta)
+        public async Task<ActionResultResponse> Insert(string currentTenant, TenantMeta tenantMeta)
         {
             if (tenantMeta.Languages == null || !tenantMeta.Languages.Any())
                 return new ActionResultResponse(-1, _resourceService.GetString("Please select at least one language."));
@@ -53,6 +60,36 @@ namespace GHM.Core.Infrastructure.Services
             var result = await _tenantRepository.Insert(tenant);
             if (result <= 0)
                 return new ActionResultResponse(-3, _sharedResourceService.GetString("Something went wrong. Please contact with administrator."));
+
+            // update userId
+            var userAccount = await _userAccountRepository.GetInfo(currentTenant, tenantMeta.UserId, false);
+            if (userAccount == null)
+                return new ActionResultResponse(-4, _resourceService.GetString("user account does not exist"));
+
+            userAccount.TenantId = tenant.Id;
+            await _userAccountRepository.UpdateUserAccount(userAccount);
+            //insert tenant page
+            foreach(var tenantPage in tenantMeta.Pages)
+            {
+                var tenantPages = new TenantPage();
+                tenantPages.TenantId = tenant.Id;
+                tenantPages.PageId = tenantPage.PageId;
+                await _tenantPageRepository.Insert(tenantPages);
+            }
+
+            //update UpserRole admin strator
+            var userRoleExist = await _userRoleRepository.CheckExist(tenantMeta.UserId);
+
+            if(userRoleExist)
+            {
+                await _userRoleRepository.DeleteByUserId(tenantMeta.UserId);
+            }
+            
+
+            var insertRoleUser = await _userRoleRepository.Insert(tenantMeta.UserId, "SuperAdministrator");
+
+            if (insertRoleUser < 0)
+                return new ActionResultResponse(-5, _resourceService.GetString("insert user role does not success"));
 
             // Insert tenant languages.
             await InsertTenantLanguage(tenantId, tenantMeta.Languages);

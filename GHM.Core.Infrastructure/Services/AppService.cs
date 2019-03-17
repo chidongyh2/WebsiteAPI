@@ -36,9 +36,7 @@ namespace GHM.Core.Infrastructure.Services
             }, userId);
             appSetting.Permissions = await _rolePageRepository.GetsByUserId(userId);
             appSetting.Languages = await _tenantLanguageRepository.GetLanguageSupport(tenantId);
-            appSetting.Pages = isSupperAdmin
-            ? await _pageRepository.GetAllActivePage(languageId)
-            : await _pageRepository.GetPagesByUserId(userId, languageId);
+            appSetting.Pages = await _pageRepository.GetPagesByUserId(tenantId, userId, languageId);
             return appSetting;
         }
 

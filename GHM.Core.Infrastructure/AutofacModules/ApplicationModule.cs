@@ -43,6 +43,10 @@ namespace GHM.Core.Infrastructure.AutofacModules
                 .InstancePerLifetimeScope();
             #endregion
 
+            builder.RegisterType<TenantPageRepository>()
+                .As<ITenantPageRepository>()
+                .InstancePerLifetimeScope();
+
             builder.RegisterType<ProfileRepository>()
                 .As<IProfileService>()
                 .InstancePerLifetimeScope();

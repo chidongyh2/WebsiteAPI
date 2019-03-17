@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
 using GHM.Core.Domain.IServices;
@@ -27,10 +28,15 @@ namespace GHM.Core.Api.Controllers
         [AcceptVerbs("GET")]
         public async Task<IActionResult> InitApp()
         {
+            try { 
             var appSettings = await _appService.GetAppSettings(CurrentUser.Id, CurrentUser.TenantId,
                 CultureInfo.CurrentCulture.Name);
             appSettings.CurrentUser = CurrentUser;
             return Ok(appSettings);
+            }catch(Exception e)
+            {
+                return null;
+            }
         }
 
         [Route("languages"), AcceptVerbs("GET")]

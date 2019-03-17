@@ -48,7 +48,7 @@ namespace GHM.Core.Domain.IRepository
 
         Task<List<PageGetByUserViewModel>> GetListPageByUserId(string userId);
 
-        Task<List<PageGetByUserViewModel>> GetPagesByUserId(string userId, string languageId);
+        Task<List<PageGetByUserViewModel>> GetPagesByUserId(string tenantId, string userId, string languageId);
 
         Task<List<PageGetByUserViewModel>> GetAllActivePage(string languageId);
     }

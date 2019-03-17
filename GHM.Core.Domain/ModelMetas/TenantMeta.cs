@@ -12,6 +12,7 @@ namespace GHM.Core.Domain.ModelMetas
         public bool IsActive { get; set; }
         public string Note { get; set; }
         public string Logo { get; set; }
+        public string UserId { get; set; }
         public List<TenantLanguageMeta> Languages { get; set; }
         public List<TenantPage> Pages { get; set; }
     }
