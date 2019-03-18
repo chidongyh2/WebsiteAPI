@@ -70,7 +70,6 @@ namespace GHM.Core.Api
                     options.RequireHttpsMetadata = false;
                     options.ApiName = "GHM_Core_Api";
                 });
-
             services.AddDbContext<CoreDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("CoreConnectionString"));
