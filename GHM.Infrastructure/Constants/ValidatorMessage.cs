@@ -20,5 +20,6 @@ namespace GHM.Infrastructure.Constants
         public const string MustBeNumber = "{0} must be number.";
         public const string MaxLength = "{0} must not exceed {1} characters.";
         public const string GreaterThanAndLessThan = "{0} must greater than {1} and less than {2}.";
+        public const string MustGreaterThanAndLessThanOrEqual = "{ 0 } must greater than { 1 } and less than {2} or equal {3}";
     }
 }
