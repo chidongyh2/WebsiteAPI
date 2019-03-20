@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using GHM.Warehouse.Domain.IRepository;
 using GHM.Warehouse.Domain.Models;
 using GHM.Infrastructure.SqlServer;
+using System;
 
 namespace GHM.Warehouse.Infrastructure.Repository
 {
@@ -80,10 +81,16 @@ namespace GHM.Warehouse.Infrastructure.Repository
 
         public async Task<bool> CheckExists(string productAttributeValueId, string tenantId, string productAttributeId, string languageId, string name)
         {
-            name = name.Trim();
-            return await _productAttributeValueTranslationRepository.ExistAsync(x =>
-                x.AttributeValueId != productAttributeValueId && x.TenantId == tenantId && x.ProductAttributeId == productAttributeId
-                && x.LanguageId == languageId && x.Name == name && !x.IsDelete);
+            try
+            {
+                name = name.Trim();
+                return await _productAttributeValueTranslationRepository.ExistAsync(x =>
+                    x.AttributeValueId != productAttributeValueId && x.TenantId == tenantId && x.ProductAttributeId == productAttributeId
+                    && x.LanguageId == languageId && x.Name == name && !x.IsDelete);
+            }catch(Exception e)
+            {
+                return false;
+            }
         }
     }
 }

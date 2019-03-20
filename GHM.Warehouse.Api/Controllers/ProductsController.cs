@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GHM.Warehouse.Api.Controllers
 {
-    [Authorize]
     [Produces("application/json")]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/products")]

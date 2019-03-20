@@ -77,7 +77,7 @@ namespace GHM.Warehouse.Api
                 .AddIdentityServerAuthentication(options =>
                 {
                     var authority = Configuration.GetApiUrl("Authority");
-                    options.Authority = !string.IsNullOrEmpty(authority) ? authority : "http://localhost:5000/";
+                    options.Authority = !string.IsNullOrEmpty(authority) ? authority : "http://localhost:50000/";
                     options.RequireHttpsMetadata = false;
                     options.ApiName = "GHM_Warehouse_Api";
                 });
@@ -135,17 +135,17 @@ namespace GHM.Warehouse.Api
 
             #endregion
 
-            #region Allow Origins
+            #region Allow Origins            
             var allowOrigins = Configuration.GetSection("AllowOrigins")
                 .GetChildren().Select(x => x.Value).ToArray();
             app.UseCors(builder =>
             {
-                builder.WithOrigins(allowOrigins);
+                builder.AllowAnyOrigin();
                 builder.AllowAnyHeader();
                 builder.AllowAnyMethod();
                 builder.AllowCredentials();
             });
-            #endregion            
+            #endregion
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
         }

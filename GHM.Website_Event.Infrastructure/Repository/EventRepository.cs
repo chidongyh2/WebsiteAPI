@@ -62,7 +62,7 @@ namespace GHM.Website.Event.Infrastructure.Repository
 
             if (!isCheck)
             {
-                spec = spec.And(x => x.Status != ApproverStatus.Draft);
+                //spec = spec.And(x => x.Status != ApproverStatus.Draft);
             }
 
             var query = Context.Set<Domain.Models.Event>().Where(spec)

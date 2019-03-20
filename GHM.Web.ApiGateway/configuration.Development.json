@@ -70,23 +70,7 @@
       }
     },
     // BEGIN: Product
-    {
-      "DownstreamPathTemplate": "/api/v{version}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 50011
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v{version}/products/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UseServiceDiscovery": false,
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "GHM_Product_Api" ]
-      }
-    },
+  
     // BEGIN: Notifications
     {
       "DownstreamPathTemplate": "/api/v{version}/notifications/{everything}",
