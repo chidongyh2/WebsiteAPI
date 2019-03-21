@@ -10323,7 +10323,7 @@ Customized Bootstrap Modal
     z-index: 10051;
 }
 
-.modal-dialog .modal-lg{
+.modal-dialog .modal-lg {
     width: 80% !important;
 }
 
@@ -32321,4 +32321,13 @@ Color library demo
     .mt-content-row .mt-content-col-fixed .mt-content-sidebar {
         margin-left: 0;
     }
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    padding: 5px !important;
 }

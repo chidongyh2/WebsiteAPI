@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GHM.Core.Domain\GHM.Core.Domain.csproj" />
     <ProjectReference Include="..\GHM.Events\GHM.Events.csproj" />
     <ProjectReference Include="..\GHM.FileManagement.Domain\GHM.FileManagement.Domain.csproj" />
     <ProjectReference Include="..\GHM.Infrastructure.SqlServer\GHM.Infrastructure.SqlServer.csproj" />

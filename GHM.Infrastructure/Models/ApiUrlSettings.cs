@@ -14,5 +14,6 @@
         public string WebsiteApiUrl { get; set; }
         public string InteractiveApiUrl { get; set; }
         public string ApiGatewayUrl { get; set; }
+        public string WarehouseApiUrl { get; set; }
     }
 }

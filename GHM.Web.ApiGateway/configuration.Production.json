@@ -7,7 +7,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50000
+          "Port": 20000
         }
       ],
       "UpstreamPathTemplate": "/auth/{everything}",
@@ -21,7 +21,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50003
+          "Port": 20003
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/events/{everything}",
@@ -36,7 +36,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50001
+          "Port": 20001
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/core/{everything}",
@@ -50,7 +50,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50002
+          "Port": 20002
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
@@ -64,7 +64,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50011
+          "Port": 20011
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/products/{everything}",
@@ -82,7 +82,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50004
+          "Port": 20004
         }
       ],
       "UpstreamPathTemplate": "/notifications",
@@ -96,7 +96,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50005
+          "Port": 20005
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/files/{everything}",
@@ -113,7 +113,21 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50009
+          "Port": 20009
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
+      "UseServiceDiscovery": false
+    },
+    // BEGIN: Warehouse
+    {
+      "DownstreamPathTemplate": "/api/v{version}/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 20009
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",

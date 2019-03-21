@@ -1,5 +1,136 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["modules-website-website-module"],{
 
+/***/ "./src/app/base.component.ts":
+/*!***********************************!*\
+  !*** ./src/app/base.component.ts ***!
+  \***********************************/
+/*! exports provided: String, BaseComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "String", function() { return String; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BaseComponent", function() { return BaseComponent; });
+var String;
+(function (String) {
+})(String || (String = {}));
+var BaseComponent = /** @class */ (function () {
+    function BaseComponent() {
+        this.isSaving = false;
+        this.isUpdate = false;
+        this.isShowForm = false;
+        this.isLoading = false;
+        this.isSearching = false;
+        this.totalRows = 0;
+        this.currentPage = 1;
+        this.pageSize = 20;
+        this.isSubmitted = false;
+        this.keyword = '';
+        this.isActiveSearch = null;
+        this.pageTitle = '';
+        this.formErrors = {};
+        this.validationMessages = {};
+        this.isHasInsertPermission = false;
+        this.isHasUpdatePermission = false;
+        this.isHasDeletePermission = false;
+        this.isHasPrintPermission = false;
+        this.isHasApprovePermission = false;
+        this.isHasExportPermission = false;
+        this.isHasViewPermission = false;
+        this.isHasReportPermission = false;
+        this.subscribers = {};
+        this.downloading = false;
+        this.dateTimeValidFormat = [
+            'DD/MM/YYYY',
+            'DD/MM/YYYY HH:mm',
+            'DD/MM/YYYY HH:mm:ss',
+            'DD/MM/YYYY HH:mm Z',
+            'DD-MM-YYYY',
+            'DD-MM-YYYY HH:mm',
+            'DD-MM-YYYY HH:mm:ss',
+            'DD-MM-YYYY HH:mm Z',
+            // --------------------
+            'MM/DD/YYYY',
+            'MM/DD/YYYY HH:mm',
+            'MM/DD/YYYY HH:mm:ss',
+            'MM/DD/YYYY HH:mm Z',
+            'MM-DD-YYYY',
+            'MM-DD-YYYY HH:mm',
+            'MM-DD-YYYY HH:mm:ss',
+            'MM-DD-YYYY HH:mm Z',
+            // --------------------
+            'YYYY/MM/DD',
+            'YYYY/MM/DD HH:mm',
+            'YYYY/MM/DD HH:mm:ss',
+            'YYYY/MM/DD HH:mm Z',
+            'YYYY-MM-DD',
+            'YYYY-MM-DD HH:mm',
+            'YYYY-MM-DD HH:mm:ss',
+            'YYYY-MM-DD HH:mm Z',
+            // --------------------
+            'YYYY/DD/MM',
+            'YYYY/DD/MM HH:mm',
+            'YYYY/DD/MM HH:mm:ss',
+            'YYYY/DD/MM HH:mm Z',
+            'YYYY-DD-MM',
+            'YYYY-DD-MM HH:mm',
+            'YYYY-DD-MM HH:mm:ss',
+            'YYYY-DD-MM HH:mm Z',
+        ];
+    }
+    BaseComponent.prototype.resetAfterSave = function () {
+        this.isSaving = false;
+        this.isSubmitted = false;
+    };
+    BaseComponent.prototype.formatString = function (message) {
+        var args = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            args[_i - 1] = arguments[_i];
+        }
+        args.forEach(function (value, index) {
+            var pattern = new RegExp("\\{" + index + "\\}", 'g');
+            message = message.replace(pattern, value);
+        });
+        return message;
+    };
+    // showWarningBox(title: string, message: string) {
+    //     this.showAlertBox(title, message, 'warning');
+    // }
+    //
+    // showSuccessBox(title: string, message: string) {
+    //     this.showAlertBox(title, message, 'success');
+    // }
+    //
+    // showDangerBox(title: string, message: string) {
+    //     this.showAlertBox(title, message, 'error');
+    // }
+    //
+    // showInfoBox(title: string, message: string) {
+    //     this.showAlertBox(title, message, 'info');
+    // }
+    // showAlertBox(title: string, message: string, type: any = 'success') {
+    //     setTimeout(() => {
+    //         swal({
+    //             title: title,
+    //             text: message,
+    //             type: type,
+    //             timer: 1500,
+    //             showConfirmButton: false
+    //         }).then(() => {
+    //         }, () => {
+    //         });
+    //     });
+    // }
+    BaseComponent.prototype.getListOrderNumber = function (currentPage, pageSize, index) {
+        return (currentPage - 1) * pageSize + index + 1;
+    };
+    return BaseComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/modules/website/category/category-form/category-form.component.html":
 /*!*************************************************************************************!*\
   !*** ./src/app/modules/website/category/category-form/category-form.component.html ***!
@@ -7,7 +138,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nh-modal #categoryFormModal size=\"md\" (onShown)=\"onFormModalShown()\"\r\n          (onHidden)=\"onFormModalHidden()\">\r\n    <nh-modal-header>\r\n        <i class=\"fas fa-folder-open\"></i>\r\n        {{isUpdate ? 'Cập nhật chuyên mục' + model.value.name : 'Thêm mới chuyên mục'}}\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"modal-body\">\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Tên nhóm\" class=\"control-label col-sm-3\"\r\n                           [required]=\"true\"></label>\r\n                    <div class=\"col-sm-9\">\r\n                        <input type=\"text\" id=\"name\" class=\"form-control\" placeholder=\"Nhập tên nhóm\"\r\n                               formControlName=\"name\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Nhóm lớn\" class=\"control-label col-sm-3\"></label>\r\n                    <div class=\"col-sm-9\">\r\n                        <nh-dropdown-tree\r\n                            title=\"-- Chọn chuyên mục cấp trên --\"\r\n                            [data]=\"categoryTree\"\r\n                            formControlName=\"parentId\"></nh-dropdown-tree>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Kích hoạt\" class=\"control-label col-sm-3\"></label>\r\n                    <div class=\"col-sm-9\">\r\n                        <mat-checkbox color=\"primary\" formControlName=\"isActive\"></mat-checkbox>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Mô tả\" class=\"control-label col-sm-3\"></label>\r\n                    <div class=\"col-sm-9\">\r\n                        <textarea class=\"form-control\" rows=\"4\" formControlName=\"description\"></textarea>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <ghm-button [loading]=\"isSaving\">Lưu lại</ghm-button>\r\n            <ghm-button type=\"button\" classes=\"btn btn-default\" icon=\"fas fa-times\" nh-dismiss=\"true\"\r\n                        [loading]=\"isSaving\">\r\n                Hủy bỏ\r\n            </ghm-button>\r\n            <!--<button mat-raised-button color=\"primary\" [disabled]=\"isSaving\">-->\r\n            <!--<i class=\"fas fa-save\" *ngIf=\"isSaving\"></i>-->\r\n            <!--<i class=\"fas fa-spinner fa-spin\" *ngIf=\"!isSaving\"></i>-->\r\n            <!--Lưu lại-->\r\n            <!--</button>-->\r\n            <!--<button mat-raised-button [disabled]=\"isSaving\">-->\r\n            <!--<i class=\"fas fa-times\"></i>-->\r\n            <!--Hủy bỏ-->\r\n            <!--</button>-->\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
+module.exports = "<nh-modal #categoryFormModal size=\"md\" (onShown)=\"onFormModalShown()\"\r\n          (hidden)=\"onFormModalHidden()\">\r\n    <nh-modal-header>\r\n        <i class=\"fas fa-folder-open\"></i>\r\n        {{isUpdate ? 'Cập nhật chuyên mục' + model.value.name : 'Thêm mới chuyên mục'}}\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"modal-body\">\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Tên nhóm\" class=\"control-label col-sm-3\"\r\n                           [required]=\"true\"></label>\r\n                    <div class=\"col-sm-9\">\r\n                        <input type=\"text\" id=\"name\" class=\"form-control\" placeholder=\"Nhập tên nhóm\"\r\n                               formControlName=\"name\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Nhóm lớn\" class=\"control-label col-sm-3\"></label>\r\n                    <div class=\"col-sm-9\">\r\n                        <nh-dropdown-tree\r\n                            title=\"-- Chọn chuyên mục cấp trên --\"\r\n                            [data]=\"categoryTree\"\r\n                            formControlName=\"parentId\"></nh-dropdown-tree>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Kích hoạt\" class=\"control-label col-sm-3\"></label>\r\n                    <div class=\"col-sm-9\">\r\n                        <mat-checkbox color=\"primary\" formControlName=\"isActive\"></mat-checkbox>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Mô tả\" class=\"control-label col-sm-3\"></label>\r\n                    <div class=\"col-sm-9\">\r\n                        <textarea class=\"form-control\" rows=\"4\" formControlName=\"description\"></textarea>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <ghm-button [loading]=\"isSaving\">Lưu lại</ghm-button>\r\n            <ghm-button type=\"button\" classes=\"btn btn-default\" icon=\"fas fa-times\" nh-dismiss=\"true\"\r\n                        [loading]=\"isSaving\">\r\n                Hủy bỏ\r\n            </ghm-button>\r\n            <!--<button mat-raised-button color=\"primary\" [disabled]=\"isSaving\">-->\r\n            <!--<i class=\"fas fa-save\" *ngIf=\"isSaving\"></i>-->\r\n            <!--<i class=\"fas fa-spinner fa-spin\" *ngIf=\"!isSaving\"></i>-->\r\n            <!--Lưu lại-->\r\n            <!--</button>-->\r\n            <!--<button mat-raised-button [disabled]=\"isSaving\">-->\r\n            <!--<i class=\"fas fa-times\"></i>-->\r\n            <!--Hủy bỏ-->\r\n            <!--</button>-->\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
 
 /***/ }),
 
@@ -89,13 +220,13 @@ var CategoryFormComponent = /** @class */ (function (_super) {
     CategoryFormComponent.prototype.add = function () {
         this.isUpdate = false;
         this.getCategoryTree();
-        this.categoryFormModal.show();
+        this.categoryFormModal.open();
     };
     CategoryFormComponent.prototype.edit = function (category) {
         this.getCategoryTree();
         this.isUpdate = true;
         this.model.patchValue(category);
-        this.categoryFormModal.show();
+        this.categoryFormModal.open();
     };
     CategoryFormComponent.prototype.save = function () {
         var _this = this;
@@ -268,7 +399,7 @@ var CategoryPickerComponent = /** @class */ (function (_super) {
     };
     CategoryPickerComponent.prototype.show = function () {
         this.search(1);
-        this.pickerModal.show();
+        this.pickerModal.open();
     };
     CategoryPickerComponent.prototype.search = function (currentPage) {
         var _this = this;
@@ -343,14 +474,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryComponent", function() { return CategoryComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../base-list.component */ "./src/app/base-list.component.ts");
-/* harmony import */ var _category_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./category.service */ "./src/app/modules/website/category/category.service.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _category_form_category_form_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./category-form/category-form.component */ "./src/app/modules/website/category/category-form/category-form.component.ts");
-/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../base-list.component */ "./src/app/base-list.component.ts");
+/* harmony import */ var _category_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./category.service */ "./src/app/modules/website/category/category.service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _category_form_category_form_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./category-form/category-form.component */ "./src/app/modules/website/category/category-form/category-form.component.ts");
+/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -382,14 +512,12 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
 var CategoryComponent = /** @class */ (function (_super) {
     __extends(CategoryComponent, _super);
-    function CategoryComponent(pageId, route, appService, toastr, spinnerService, categoryService) {
+    function CategoryComponent(pageId, route, toastr, spinnerService, categoryService) {
         var _this = _super.call(this) || this;
         _this.pageId = pageId;
         _this.route = route;
-        _this.appService = appService;
         _this.toastr = toastr;
         _this.spinnerService = spinnerService;
         _this.categoryService = categoryService;
@@ -398,7 +526,7 @@ var CategoryComponent = /** @class */ (function (_super) {
     CategoryComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.listItems$ = this.route.data
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (result) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
             var data = result.data;
             _this.totalRows = data.totalRows;
             return data.items;
@@ -410,7 +538,7 @@ var CategoryComponent = /** @class */ (function (_super) {
         this.currentPage = currentPage;
         this.isSearching = true;
         this.listItems$ = this.categoryService.search(this.keyword, this.isActive, this.currentPage, this.pageSize)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["finalize"])(function () { return _this.isSearching = false; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (result) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["finalize"])(function () { return _this.isSearching = false; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
             _this.totalRows = result.totalRows;
             return result.items;
         }));
@@ -431,24 +559,23 @@ var CategoryComponent = /** @class */ (function (_super) {
         });
     };
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_category_form_category_form_component__WEBPACK_IMPORTED_MODULE_6__["CategoryFormComponent"]),
-        __metadata("design:type", _category_form_category_form_component__WEBPACK_IMPORTED_MODULE_6__["CategoryFormComponent"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_category_form_category_form_component__WEBPACK_IMPORTED_MODULE_5__["CategoryFormComponent"]),
+        __metadata("design:type", _category_form_category_form_component__WEBPACK_IMPORTED_MODULE_5__["CategoryFormComponent"])
     ], CategoryComponent.prototype, "categoryFormComponent", void 0);
     CategoryComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-category',
             template: __webpack_require__(/*! ./category.component.html */ "./src/app/modules/website/category/category.component.html"),
-            providers: [_category_service__WEBPACK_IMPORTED_MODULE_4__["CategoryService"]]
+            providers: [_category_service__WEBPACK_IMPORTED_MODULE_3__["CategoryService"]]
         }),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_1__["PAGE_ID"])),
-        __metadata("design:paramtypes", [Object, _angular_router__WEBPACK_IMPORTED_MODULE_9__["ActivatedRoute"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_8__["ToastrService"],
-            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_7__["SpinnerService"],
-            _category_service__WEBPACK_IMPORTED_MODULE_4__["CategoryService"]])
+        __metadata("design:paramtypes", [Object, _angular_router__WEBPACK_IMPORTED_MODULE_8__["ActivatedRoute"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_7__["ToastrService"],
+            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_6__["SpinnerService"],
+            _category_service__WEBPACK_IMPORTED_MODULE_3__["CategoryService"]])
     ], CategoryComponent);
     return CategoryComponent;
-}(_base_list_component__WEBPACK_IMPORTED_MODULE_3__["BaseListComponent"]));
+}(_base_list_component__WEBPACK_IMPORTED_MODULE_2__["BaseListComponent"]));
 
 
 
@@ -475,95 +602,6 @@ var Category = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/modules/website/category/category.service.ts":
-/*!**************************************************************!*\
-  !*** ./src/app/modules/website/category/category.service.ts ***!
-  \**************************************************************/
-/*! exports provided: CategoryService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryService", function() { return CategoryService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../configs/app.config */ "./src/app/configs/app.config.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-
-
-
-var CategoryService = /** @class */ (function () {
-    function CategoryService(appConfig, http) {
-        this.appConfig = appConfig;
-        this.http = http;
-        this.url = 'category/';
-        this.url = "" + appConfig.WEBSITE_API_URL + this.url;
-    }
-    CategoryService.prototype.resolve = function (route, state) {
-        var queryParams = route.queryParams;
-        var keyword = queryParams.keyword;
-        var isActive = queryParams.isActive;
-        var page = queryParams.page;
-        var pageSize = queryParams.pageSize;
-        return this.search(keyword, isActive, page, pageSize);
-    };
-    CategoryService.prototype.search = function (keyword, isActive, page, pageSize) {
-        if (page === void 0) { page = 1; }
-        if (pageSize === void 0) { pageSize = 20; }
-        return this.http.get(this.url + "search", {
-            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
-                .set('keyword', keyword ? keyword : '')
-                .set('isActive', isActive != null && isActive !== undefined ? isActive.toString() : '')
-                .set('page', page ? page.toString() : '1')
-                .set('pageSize', pageSize ? pageSize.toString() : this.appConfig.PAGE_SIZE.toString())
-        });
-    };
-    CategoryService.prototype.searchPicker = function (keyword, page, pageSize) {
-        return this.http.get(this.url + "search-picker", {
-            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
-                .set('keyword', keyword ? keyword : '')
-                .set('page', page ? page.toString() : '1')
-                .set('pageSize', pageSize ? pageSize.toString() : this.appConfig.PAGE_SIZE.toString())
-        });
-    };
-    CategoryService.prototype.insert = function (category) {
-        return this.http.post(this.url + "insert", category);
-    };
-    CategoryService.prototype.update = function (category) {
-        return this.http.post(this.url + "update", category);
-    };
-    CategoryService.prototype.delete = function (id) {
-        return this.http.delete(this.url + "delete", {
-            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
-                .set('id', id.toString())
-        });
-    };
-    CategoryService.prototype.getCategoryTree = function () {
-        return this.http.get(this.url + "get-category-tree");
-    };
-    CategoryService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_1__["APP_CONFIG"])),
-        __metadata("design:paramtypes", [Object, _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-    ], CategoryService);
-    return CategoryService;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/modules/website/course/class/class-form/class-form.component.html":
 /*!***********************************************************************************!*\
   !*** ./src/app/modules/website/course/class/class-form/class-form.component.html ***!
@@ -571,7 +609,7 @@ var CategoryService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nh-modal #classFormModal size=\"sm\" (onHidden)=\"onClassFormModalDismiss()\">\r\n    <nh-modal-header [showCloseButton]=\"true\">\r\n        <i class=\"fas fa-home\"></i> {{ isUpdate ? 'Cập nhật thông tin lớp học' : 'Thêm mới lớp học'}}\r\n    </nh-modal-header>\r\n    <form action=\"\" class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Tên lớp\" class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <input type=\"text\" class=\"form-control\" placeholder=\"Nhập tên lớp học\" formControlName=\"name\"/>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.name\">{{ formErrors.name }}</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ngày bắt đầu\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <nh-date formControlName=\"startDate\"\r\n                             [type]=\"'inputButton'\"\r\n                             [title]=\"'Chọn ngày bắt đầu'\"\r\n                             [mask]=\"true\"></nh-date>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ngày kết thúc\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <nh-date formControlName=\"endDate\"\r\n                             [type]=\"'inputButton'\"\r\n                             [title]=\"'Chọn ngày kết thúc'\"\r\n                             [mask]=\"true\"></nh-date>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Mô tả\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nhập nội dung mô tả\"\r\n                              formControlName=\"description\"></textarea>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.description\">{{ formErrors.description }}</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Địa chỉ\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nhập địa chỉ lớp học\"\r\n                              formControlName=\"address\"></textarea>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.address\">{{ formErrors.address }}</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Kích hoạt\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <mat-checkbox formControlName=\"isActive\" color=\"primary\"></mat-checkbox>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button class=\"btn btn-primary\" [disabled]=\"isSaving\">\r\n                <i class=\"fas fa-save\" *ngIf=\"!isSaving\"></i>\r\n                <i class=\"fas fa-spinner fa-spin\" *ngIf=\"isSaving\"></i>\r\n                Lưu lại\r\n            </button>\r\n            <button type=\"button\" class=\"btn btn-default\" nh-dismiss=\"true\">\r\n                <i class=\"fas fa-times\"></i>\r\n                Hủy bỏ\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
+module.exports = "<nh-modal #classFormModal size=\"sm\" (hidden)=\"onClassFormModalDismiss()\">\r\n    <nh-modal-header [showCloseButton]=\"true\">\r\n        <i class=\"fas fa-home\"></i> {{ isUpdate ? 'Cập nhật thông tin lớp học' : 'Thêm mới lớp học'}}\r\n    </nh-modal-header>\r\n    <form action=\"\" class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Tên lớp\" class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <input type=\"text\" class=\"form-control\" placeholder=\"Nhập tên lớp học\" formControlName=\"name\"/>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.name\">{{ formErrors.name }}</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ngày bắt đầu\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <nh-date formControlName=\"startDate\"\r\n                             [type]=\"'inputButton'\"\r\n                             [title]=\"'Chọn ngày bắt đầu'\"\r\n                             [mask]=\"true\"></nh-date>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ngày kết thúc\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <nh-date formControlName=\"endDate\"\r\n                             [type]=\"'inputButton'\"\r\n                             [title]=\"'Chọn ngày kết thúc'\"\r\n                             [mask]=\"true\"></nh-date>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Mô tả\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nhập nội dung mô tả\"\r\n                              formControlName=\"description\"></textarea>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.description\">{{ formErrors.description }}</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Địa chỉ\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nhập địa chỉ lớp học\"\r\n                              formControlName=\"address\"></textarea>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.address\">{{ formErrors.address }}</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Kích hoạt\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <mat-checkbox formControlName=\"isActive\" color=\"primary\"></mat-checkbox>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button class=\"btn btn-primary\" [disabled]=\"isSaving\">\r\n                <i class=\"fas fa-save\" *ngIf=\"!isSaving\"></i>\r\n                <i class=\"fas fa-spinner fa-spin\" *ngIf=\"isSaving\"></i>\r\n                Lưu lại\r\n            </button>\r\n            <button type=\"button\" class=\"btn btn-default\" nh-dismiss=\"true\">\r\n                <i class=\"fas fa-times\"></i>\r\n                Hủy bỏ\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
 
 /***/ }),
 
@@ -594,7 +632,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -623,16 +660,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-
 var ClassFormComponent = /** @class */ (function (_super) {
     __extends(ClassFormComponent, _super);
-    function ClassFormComponent(fb, toastr, utilService, classService, appService) {
+    function ClassFormComponent(fb, toastr, utilService, classService) {
         var _this = _super.call(this) || this;
         _this.fb = fb;
         _this.toastr = toastr;
         _this.utilService = utilService;
         _this.classService = classService;
-        _this.appService = appService;
         _this.onSaveSuccess = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         _this.classes = new _class_model__WEBPACK_IMPORTED_MODULE_3__["Classes"]();
         return _this;
@@ -647,13 +682,13 @@ var ClassFormComponent = /** @class */ (function (_super) {
     };
     ClassFormComponent.prototype.add = function () {
         this.isUpdate = false;
-        this.classFormModal.show();
+        this.classFormModal.open();
     };
     ClassFormComponent.prototype.edit = function (classes) {
         console.log(classes);
         this.model.patchValue(classes);
         this.isUpdate = true;
-        this.classFormModal.show();
+        this.classFormModal.open();
     };
     ClassFormComponent.prototype.save = function () {
         var _this = this;
@@ -737,8 +772,7 @@ var ClassFormComponent = /** @class */ (function (_super) {
         __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormBuilder"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_6__["ToastrService"],
             _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_4__["UtilService"],
-            _class_service__WEBPACK_IMPORTED_MODULE_5__["ClassService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_9__["AppService"]])
+            _class_service__WEBPACK_IMPORTED_MODULE_5__["ClassService"]])
     ], ClassFormComponent);
     return ClassFormComponent;
 }(_base_form_component__WEBPACK_IMPORTED_MODULE_1__["BaseFormComponent"]));
@@ -978,7 +1012,7 @@ var ClassService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nh-modal #courseFormModal size=\"lg\" (onShown)=\"onCourseModalShown()\" (onHidden)=\"onCourseFormModalDismiss()\">\r\n    <nh-modal-header [showCloseButton]=\"true\">\r\n        <i class=\"fab fa-leanpub\"></i>\r\n        Tạo khóa học\r\n    </nh-modal-header>\r\n    <nh-modal-content class=\"cm-pd-0\">\r\n        <div class=\"course-panel\">\r\n            <div class=\"left-panel\">\r\n                <ul>\r\n                    <li (click)=\"changeShowType(0)\" [class.active]=\"showType === 0\"><a href=\"javascript://\">Thông tin\r\n                        khóa học</a></li>\r\n                    <li *ngIf=\"isUpdate\" (click)=\"changeShowType(1)\" [class.active]=\"showType === 1\"><a\r\n                        href=\"javascript://\">Thông tin lớp học</a></li>\r\n                </ul>\r\n            </div><!-- END: .left-panel -->\r\n            <div class=\"right-panel\">\r\n                <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\"\r\n                      *ngIf=\"showType === 0; else classTemplate\">\r\n                    <div class=\"form-group\">\r\n                        <label ghmLabel=\"Tên khóa học\" class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n                        <div class=\"col-sm-8\">\r\n                            <input type=\"text\" class=\"form-control\" placeholder=\"Nhập tên khóa học.\"\r\n                                   formControlName=\"name\" id=\"courseName\"/>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"formErrors.name\">\r\n                                {{ formErrors.name }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label ghmLabel=\"Mô tả\" class=\"col-sm-4 control-label\"></label>\r\n                        <div class=\"col-sm-8\">\r\n                            <textarea type=\"text\" rows=\"3\" class=\"form-control\" placeholder=\"Nhập tên khóa học.\"\r\n                                      formControlName=\"description\"></textarea>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"formErrors.description\">\r\n                                {{ formErrors.description }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label ghmLabel=\"Nội dung\" class=\"col-sm-4 control-label\"></label>\r\n                        <div class=\"col-sm-8\">\r\n                            <tinymce [elementId]=\"'courseContentEditor'\" formControlName=\"content\"\r\n                                     #courseContentEditor></tinymce>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label ghmLabel=\"Kích hoạt\" class=\"col-sm-4 control-label\"></label>\r\n                        <div class=\"col-sm-8\">\r\n                            <mat-checkbox color=\"primary\" formControlName=\"isActive\"></mat-checkbox>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <div class=\"col-sm-8 col-sm-offset-4\">\r\n                            <!--<button class=\"btn btn-primary\" [disabled]=\"isSaving\">-->\r\n                                <!--<i class=\"fas fa-save\" *ngIf=\"!isSaving\"></i>-->\r\n                                <!--<i class=\"fas fa-spinner fa-spin\" *ngIf=\"isSaving\"></i>-->\r\n                                <!--Lưu lại-->\r\n                            <!--</button>-->\r\n                            <ghm-button [loading]=\"isSaving\">Lưu lại</ghm-button>\r\n                            <button type=\"button\" class=\"btn btn-default\" nh-dismiss=\"true\" [disabled]=\"isSaving\">\r\n                                <i class=\"fas fa-times\"></i>\r\n                                Hủy bỏ\r\n                            </button>\r\n                        </div>\r\n                    </div>\r\n                </form><!-- END: .form-horizontal -->\r\n            </div><!-- END: .right-panel -->\r\n        </div><!-- END: .course-panel -->\r\n    </nh-modal-content>\r\n</nh-modal>\r\n\r\n\r\n<ng-template #classTemplate>\r\n    <app-class [courseId]=\"course.id\"></app-class>\r\n</ng-template>\r\n"
+module.exports = "<nh-modal #courseFormModal size=\"lg\" (show)=\"onCourseModalShown()\" (hidden)=\"onCourseFormModalDismiss()\">\r\n    <nh-modal-header [showCloseButton]=\"true\">\r\n        <i class=\"fab fa-leanpub\"></i>\r\n        Tạo khóa học\r\n    </nh-modal-header>\r\n    <nh-modal-content class=\"cm-pd-0\">\r\n        <div class=\"course-panel\">\r\n            <div class=\"left-panel\">\r\n                <ul>\r\n                    <li (click)=\"changeShowType(0)\" [class.active]=\"showType === 0\"><a href=\"javascript://\">Thông tin\r\n                        khóa học</a></li>\r\n                    <li *ngIf=\"isUpdate\" (click)=\"changeShowType(1)\" [class.active]=\"showType === 1\"><a\r\n                        href=\"javascript://\">Thông tin lớp học</a></li>\r\n                </ul>\r\n            </div><!-- END: .left-panel -->\r\n            <div class=\"right-panel\">\r\n                <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\"\r\n                      *ngIf=\"showType === 0; else classTemplate\">\r\n                    <div class=\"form-group\">\r\n                        <label ghmLabel=\"Tên khóa học\" class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n                        <div class=\"col-sm-8\">\r\n                            <input type=\"text\" class=\"form-control\" placeholder=\"Nhập tên khóa học.\"\r\n                                   formControlName=\"name\" id=\"courseName\"/>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"formErrors.name\">\r\n                                {{ formErrors.name }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label ghmLabel=\"Mô tả\" class=\"col-sm-4 control-label\"></label>\r\n                        <div class=\"col-sm-8\">\r\n                            <textarea type=\"text\" rows=\"3\" class=\"form-control\" placeholder=\"Nhập tên khóa học.\"\r\n                                      formControlName=\"description\"></textarea>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"formErrors.description\">\r\n                                {{ formErrors.description }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label ghmLabel=\"Nội dung\" class=\"col-sm-4 control-label\"></label>\r\n                        <div class=\"col-sm-8\">\r\n                            <tinymce [elementId]=\"'courseContentEditor'\" formControlName=\"content\"\r\n                                     #courseContentEditor></tinymce>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label ghmLabel=\"Kích hoạt\" class=\"col-sm-4 control-label\"></label>\r\n                        <div class=\"col-sm-8\">\r\n                            <mat-checkbox color=\"primary\" formControlName=\"isActive\"></mat-checkbox>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <div class=\"col-sm-8 col-sm-offset-4\">\r\n                            <!--<button class=\"btn btn-primary\" [disabled]=\"isSaving\">-->\r\n                                <!--<i class=\"fas fa-save\" *ngIf=\"!isSaving\"></i>-->\r\n                                <!--<i class=\"fas fa-spinner fa-spin\" *ngIf=\"isSaving\"></i>-->\r\n                                <!--Lưu lại-->\r\n                            <!--</button>-->\r\n                            <ghm-button [loading]=\"isSaving\">Lưu lại</ghm-button>\r\n                            <button type=\"button\" class=\"btn btn-default\" nh-dismiss=\"true\" [disabled]=\"isSaving\">\r\n                                <i class=\"fas fa-times\"></i>\r\n                                Hủy bỏ\r\n                            </button>\r\n                        </div>\r\n                    </div>\r\n                </form><!-- END: .form-horizontal -->\r\n            </div><!-- END: .right-panel -->\r\n        </div><!-- END: .course-panel -->\r\n    </nh-modal-content>\r\n</nh-modal>\r\n\r\n\r\n<ng-template #classTemplate>\r\n    <app-class [courseId]=\"course.id\"></app-class>\r\n</ng-template>\r\n"
 
 /***/ }),
 
@@ -1003,7 +1037,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _class_class_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../class/class.component */ "./src/app/modules/website/course/class/class.component.ts");
 /* harmony import */ var _shareds_components_tinymce_tinymce_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../shareds/components/tinymce/tinymce.component */ "./src/app/shareds/components/tinymce/tinymce.component.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1034,16 +1067,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-
 var CourseFormComponent = /** @class */ (function (_super) {
     __extends(CourseFormComponent, _super);
-    function CourseFormComponent(fb, toastr, utilService, courseService, appService) {
+    function CourseFormComponent(fb, toastr, utilService, courseService) {
         var _this = _super.call(this) || this;
         _this.fb = fb;
         _this.toastr = toastr;
         _this.utilService = utilService;
         _this.courseService = courseService;
-        _this.appService = appService;
         _this.onSaveSuccess = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         _this.course = new _course_model__WEBPACK_IMPORTED_MODULE_3__["Course"]();
         _this.showType = 0;
@@ -1063,13 +1094,13 @@ var CourseFormComponent = /** @class */ (function (_super) {
     };
     CourseFormComponent.prototype.add = function () {
         this.isUpdate = false;
-        this.courseFormModal.show();
+        this.courseFormModal.open();
     };
     CourseFormComponent.prototype.edit = function (course) {
         this.isUpdate = true;
         this.course = course;
         this.model.patchValue(course);
-        this.courseFormModal.show();
+        this.courseFormModal.open();
     };
     CourseFormComponent.prototype.save = function () {
         var _this = this;
@@ -1160,8 +1191,7 @@ var CourseFormComponent = /** @class */ (function (_super) {
         __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_7__["ToastrService"],
             _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_6__["UtilService"],
-            _course_service__WEBPACK_IMPORTED_MODULE_5__["CourseService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_11__["AppService"]])
+            _course_service__WEBPACK_IMPORTED_MODULE_5__["CourseService"]])
     ], CourseFormComponent);
     return CourseFormComponent;
 }(_base_form_component__WEBPACK_IMPORTED_MODULE_2__["BaseFormComponent"]));
@@ -1200,7 +1230,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _course_register_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../course-register.service */ "./src/app/modules/website/course/course-register/course-register.service.ts");
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1229,16 +1258,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-
 var CourseRegisterFormComponent = /** @class */ (function (_super) {
     __extends(CourseRegisterFormComponent, _super);
-    function CourseRegisterFormComponent(fb, toastr, utilService, courserRegisterService, appService) {
+    function CourseRegisterFormComponent(fb, toastr, utilService, courserRegisterService) {
         var _this = _super.call(this) || this;
         _this.fb = fb;
         _this.toastr = toastr;
         _this.utilService = utilService;
         _this.courserRegisterService = courserRegisterService;
-        _this.appService = appService;
         _this.courseRegister = new _course_register_model__WEBPACK_IMPORTED_MODULE_3__["CourseRegister"]();
         _this.status = [{ id: 0, name: 'Mới đăng ký' }, { id: 1, name: 'Đã tham gia' }, { id: 2, name: 'Đã hủy' }, {
                 id: 3,
@@ -1254,12 +1281,12 @@ var CourseRegisterFormComponent = /** @class */ (function (_super) {
     };
     CourseRegisterFormComponent.prototype.add = function () {
         this.isUpdate = false;
-        this.courseRegisterFormModal.show();
+        this.courseRegisterFormModal.open();
     };
     CourseRegisterFormComponent.prototype.edit = function (courseRegister) {
         this.model.patchValue(courseRegister);
         this.isUpdate = true;
-        this.courseRegisterFormModal.show();
+        this.courseRegisterFormModal.open();
     };
     CourseRegisterFormComponent.prototype.save = function () {
         var _this = this;
@@ -1329,8 +1356,7 @@ var CourseRegisterFormComponent = /** @class */ (function (_super) {
         __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_7__["ToastrService"],
             _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_5__["UtilService"],
-            _course_register_service__WEBPACK_IMPORTED_MODULE_6__["CourseRegisterService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_9__["AppService"]])
+            _course_register_service__WEBPACK_IMPORTED_MODULE_6__["CourseRegisterService"]])
     ], CourseRegisterFormComponent);
     return CourseRegisterFormComponent;
 }(_base_form_component__WEBPACK_IMPORTED_MODULE_1__["BaseFormComponent"]));
@@ -1567,8 +1593,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
 /* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../configs/app.config */ "./src/app/configs/app.config.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1603,16 +1628,14 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
 var CourseComponent = /** @class */ (function (_super) {
     __extends(CourseComponent, _super);
-    function CourseComponent(appConfig, pageId, route, toastr, appService, spinnerService, courseService) {
+    function CourseComponent(appConfig, pageId, route, toastr, spinnerService, courseService) {
         var _this = _super.call(this) || this;
         _this.appConfig = appConfig;
         _this.pageId = pageId;
         _this.route = route;
         _this.toastr = toastr;
-        _this.appService = appService;
         _this.spinnerService = spinnerService;
         _this.courseService = courseService;
         return _this;
@@ -1665,10 +1688,9 @@ var CourseComponent = /** @class */ (function (_super) {
             template: __webpack_require__(/*! ./course.component.html */ "./src/app/modules/website/course/course.component.html"),
         }),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_10__["APP_CONFIG"])),
-        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_12__["PAGE_ID"])),
+        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_11__["PAGE_ID"])),
         __metadata("design:paramtypes", [Object, Object, _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_9__["ToastrService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_11__["AppService"],
             _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_8__["SpinnerService"],
             _course_service__WEBPACK_IMPORTED_MODULE_2__["CourseService"]])
     ], CourseComponent);
@@ -1788,7 +1810,7 @@ var CourseService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nh-modal #menuFormModal size=\"sm\"\r\n          (onShown)=\"onFormModalShown()\"\r\n          (onHidden)=\"onFormModalHidden()\">\r\n    <nh-modal-header [showCloseButton]=\"true\">\r\n        <i class=\"fas fa-bars\"></i> {{ isUpdate ? 'Cập nhật thông tin menu' : 'Thêm mới menu'}}\r\n    </nh-modal-header>\r\n    <form action=\"\" class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Loại menu\" class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <nh-select\r\n                        title=\"-- Chọn loại menu --\"\r\n                        [data]=\"referenceTypes\"\r\n                        formControlName=\"referenceType\"\r\n                    ></nh-select>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.referenceType\">{{ formErrors.referenceType }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Menu cấp trên\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <nh-dropdown-tree\r\n                        title=\"-- Chọn menu cấp trên --\"\r\n                        [data]=\"menuTree\"\r\n                        formControlName=\"parentId\"></nh-dropdown-tree>\r\n                </div>\r\n            </div>\r\n            <ng-container *ngIf=\"model.value.referenceType === referenceType.CUSTOM; else menuFormTemplate\">\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Tên menu\" class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Nhập đường dẫn video\"\r\n                               formControlName=\"name\"\r\n                               id=\"name\"/>\r\n                        <div class=\"alert alert-danger\" *ngIf=\"formErrors.name\">{{ formErrors.name }}</div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\" *ngIf=\"model.value.referenceType === referenceType.CUSTOM\">\r\n                    <label ghmLabel=\"Đường dẫn\" class=\"col-sm-4 control-label\"></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Nhập đường dẫn menu\"\r\n                               formControlName=\"url\"/>\r\n                        <div class=\"alert alert-danger\" *ngIf=\"formErrors.url\">{{ formErrors.url }}</div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Thứ tự\" class=\"col-sm-4 control-label\"></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Nhập đường dẫn video\"\r\n                               formControlName=\"order\"/>\r\n                        <div class=\"alert alert-danger\" *ngIf=\"formErrors.order\">{{ formErrors.order }}</div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Trạng thái\" class=\"col-sm-4 control-label\"></label>\r\n                    <div class=\"col-sm-8\">\r\n                    <span class=\"cm-pdt-5\"><mat-checkbox formControlName=\"isActive\" color=\"primary\">{{model.value.isActive ? 'Hủy kích hoạt' :\r\n                        'Kích hoạt'}}\r\n                    </mat-checkbox></span>\r\n                    </div>\r\n                </div>\r\n            </ng-container><!-- END: custom menu -->\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button class=\"btn btn-primary\" [disabled]=\"isSaving\">\r\n                <i class=\"fas fa-save\" *ngIf=\"!isSaving\"></i>\r\n                <i class=\"fas fa-spinner fa-spin\" *ngIf=\"isSaving\"></i>\r\n                Lưu lại\r\n            </button>\r\n            <button type=\"button\" class=\"btn btn-default\" nh-dismiss=\"true\">\r\n                <i class=\"fas fa-times\"></i>\r\n                Hủy bỏ\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n\r\n<ng-template #menuFormTemplate>\r\n    <div class=\"form-group\">\r\n        <label ghmLabel=\"Danh sách {{model.value.referenceType === referenceType.CATEGORY ? 'chuyên mục' : 'bài viết'}}\"\r\n               class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n        <div class=\"col-sm-8\">\r\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"showSelectReference()\">\r\n                <i class=\"fas fa-check\"></i>\r\n                Chọn {{model.value.referenceType === referenceType.CATEGORY ? 'chuyên mục' : 'bài viết'}}\r\n            </button>\r\n            <hr>\r\n            <ul *ngIf=\"model.value.referenceType === referenceType.CATEGORY; else listNewsTemplate\">\r\n                <li *ngFor=\"let item of listCategories\">\r\n                    {{item.name}}\r\n                    <a href=\"javascript://\" class=\"btn btn-xs btn-danger\" (click)=\"removeReference(item)\">\r\n                        <i class=\"fas fa-trash-alt\"></i>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</ng-template>\r\n\r\n<!--<app-category-picker (onAccept)=\"onAcceptSelectReference($event)\"></app-category-picker>-->\r\n<!--<app-news-picker (onAccept)=\"onAcceptSelectReference($event)\"></app-news-picker>-->\r\n\r\n<ghm-multi-select\r\n    #categoryPicker\r\n    titleIcon=\"fas fa-folder-open\"\r\n    title=\"Chọn chuyên mục\"\r\n    [url]=\"appConfig.WEBSITE_API_URL + 'category/search-picker'\"\r\n    (onAccept)=\"onAcceptSelectReference($event)\"\r\n></ghm-multi-select>\r\n<ghm-multi-select\r\n    #newsPicker\r\n    titleIcon=\"fas fa-file-alt\"\r\n    title=\"Chọn tin tức\"\r\n    [url]=\"appConfig.WEBSITE_API_URL + 'news/search-picker'\"\r\n    (onAccept)=\"onAcceptSelectReference($event)\"\r\n></ghm-multi-select>\r\n\r\n<ng-template #listNewsTemplate>\r\n    <ul>\r\n        <li *ngFor=\"let item of listNews\">\r\n            {{item.name}}\r\n            <a href=\"javascript://\" class=\"btn btn-xs btn-danger\" (click)=\"removeReference(item)\">\r\n                <i class=\"fas fa-trash-alt\"></i>\r\n            </a>\r\n        </li>\r\n    </ul>\r\n</ng-template>\r\n"
+module.exports = "<nh-modal #menuFormModal size=\"sm\"\r\n          (show)=\"onFormModalShown()\"\r\n          (hidden)=\"onFormModalHidden()\">\r\n    <nh-modal-header [showCloseButton]=\"true\">\r\n        <i class=\"fas fa-bars\"></i> {{ isUpdate ? 'Cập nhật thông tin menu' : 'Thêm mới menu'}}\r\n    </nh-modal-header>\r\n    <form action=\"\" class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Loại menu\" class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <nh-select\r\n                        title=\"-- Chọn loại menu --\"\r\n                        [data]=\"referenceTypes\"\r\n                        formControlName=\"referenceType\"\r\n                    ></nh-select>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.referenceType\">{{ formErrors.referenceType }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Menu cấp trên\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <nh-dropdown-tree\r\n                        title=\"-- Chọn menu cấp trên --\"\r\n                        [data]=\"menuTree\"\r\n                        formControlName=\"parentId\"></nh-dropdown-tree>\r\n                </div>\r\n            </div>\r\n            <ng-container *ngIf=\"model.value.referenceType === referenceType.CUSTOM; else menuFormTemplate\">\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Tên menu\" class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Nhập đường dẫn video\"\r\n                               formControlName=\"name\"\r\n                               id=\"name\"/>\r\n                        <div class=\"alert alert-danger\" *ngIf=\"formErrors.name\">{{ formErrors.name }}</div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\" *ngIf=\"model.value.referenceType === referenceType.CUSTOM\">\r\n                    <label ghmLabel=\"Đường dẫn\" class=\"col-sm-4 control-label\"></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Nhập đường dẫn menu\"\r\n                               formControlName=\"url\"/>\r\n                        <div class=\"alert alert-danger\" *ngIf=\"formErrors.url\">{{ formErrors.url }}</div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Thứ tự\" class=\"col-sm-4 control-label\"></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Nhập đường dẫn video\"\r\n                               formControlName=\"order\"/>\r\n                        <div class=\"alert alert-danger\" *ngIf=\"formErrors.order\">{{ formErrors.order }}</div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Trạng thái\" class=\"col-sm-4 control-label\"></label>\r\n                    <div class=\"col-sm-8\">\r\n                    <span class=\"cm-pdt-5\"><mat-checkbox formControlName=\"isActive\" color=\"primary\">{{model.value.isActive ? 'Hủy kích hoạt' :\r\n                        'Kích hoạt'}}\r\n                    </mat-checkbox></span>\r\n                    </div>\r\n                </div>\r\n            </ng-container><!-- END: custom menu -->\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button class=\"btn btn-primary\" [disabled]=\"isSaving\">\r\n                <i class=\"fas fa-save\" *ngIf=\"!isSaving\"></i>\r\n                <i class=\"fas fa-spinner fa-spin\" *ngIf=\"isSaving\"></i>\r\n                Lưu lại\r\n            </button>\r\n            <button type=\"button\" class=\"btn btn-default\" nh-dismiss=\"true\">\r\n                <i class=\"fas fa-times\"></i>\r\n                Hủy bỏ\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n\r\n<ng-template #menuFormTemplate>\r\n    <div class=\"form-group\">\r\n        <label ghmLabel=\"Danh sách {{model.value.referenceType === referenceType.CATEGORY ? 'chuyên mục' : 'bài viết'}}\"\r\n               class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n        <div class=\"col-sm-8\">\r\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"showSelectReference()\">\r\n                <i class=\"fas fa-check\"></i>\r\n                Chọn {{model.value.referenceType === referenceType.CATEGORY ? 'chuyên mục' : 'bài viết'}}\r\n            </button>\r\n            <hr>\r\n            <ul *ngIf=\"model.value.referenceType === referenceType.CATEGORY; else listNewsTemplate\">\r\n                <li *ngFor=\"let item of listCategories\">\r\n                    {{item.name}}\r\n                    <a href=\"javascript://\" class=\"btn btn-xs btn-danger\" (click)=\"removeReference(item)\">\r\n                        <i class=\"fas fa-trash-alt\"></i>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</ng-template>\r\n\r\n<!--<app-category-picker (onAccept)=\"onAcceptSelectReference($event)\"></app-category-picker>-->\r\n<app-news-picker (onAccept)=\"onAcceptSelectReference($event)\"></app-news-picker>\r\n\r\n<ghm-multi-select\r\n    #categoryPicker\r\n    titleIcon=\"fas fa-folder-open\"\r\n    title=\"Chọn chuyên mục\"\r\n    [url]=\"appConfig.WEBSITE_API_URL + 'category/search-picker'\"\r\n    (onAccept)=\"onAcceptSelectReference($event)\"\r\n></ghm-multi-select>\r\n<ghm-multi-select\r\n    #newsPicker\r\n    titleIcon=\"fas fa-file-alt\"\r\n    title=\"Chọn tin tức\"\r\n    [url]=\"appConfig.WEBSITE_API_URL + 'news/search-picker'\"\r\n    (onAccept)=\"onAcceptSelectReference($event)\"\r\n></ghm-multi-select>\r\n\r\n<ng-template #listNewsTemplate>\r\n    <ul>\r\n        <li *ngFor=\"let item of listNews\">\r\n            {{item.name}}\r\n            <a href=\"javascript://\" class=\"btn btn-xs btn-danger\" (click)=\"removeReference(item)\">\r\n                <i class=\"fas fa-trash-alt\"></i>\r\n            </a>\r\n        </li>\r\n    </ul>\r\n</ng-template>\r\n"
 
 /***/ }),
 
@@ -1816,7 +1838,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shareds_components_ghm_multi_select_ghm_multi_select_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../shareds/components/ghm-multi-select/ghm-multi-select.component */ "./src/app/shareds/components/ghm-multi-select/ghm-multi-select.component.ts");
 /* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../configs/app.config */ "./src/app/configs/app.config.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1852,17 +1873,15 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
 var MenuFormComponent = /** @class */ (function (_super) {
     __extends(MenuFormComponent, _super);
-    function MenuFormComponent(appConfig, fb, toastr, utilService, menuService, appService) {
+    function MenuFormComponent(appConfig, fb, toastr, utilService, menuService) {
         var _this = _super.call(this) || this;
         _this.appConfig = appConfig;
         _this.fb = fb;
         _this.toastr = toastr;
         _this.utilService = utilService;
         _this.menuService = menuService;
-        _this.appService = appService;
         _this.onSaveSuccess = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         _this.menu = new _menu_model__WEBPACK_IMPORTED_MODULE_6__["Menu"]();
         _this.listCategories = [];
@@ -1913,13 +1932,13 @@ var MenuFormComponent = /** @class */ (function (_super) {
     };
     MenuFormComponent.prototype.add = function () {
         this.isUpdate = false;
-        this.menuFormModal.show();
+        this.menuFormModal.open();
     };
     MenuFormComponent.prototype.edit = function (menu) {
         this.isUpdate = true;
         this.menu = menu;
         this.model.patchValue(menu);
-        this.menuFormModal.show();
+        this.menuFormModal.open();
     };
     MenuFormComponent.prototype.save = function () {
         var _this = this;
@@ -2051,8 +2070,7 @@ var MenuFormComponent = /** @class */ (function (_super) {
         __metadata("design:paramtypes", [Object, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"],
             _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_4__["UtilService"],
-            _menu_service__WEBPACK_IMPORTED_MODULE_8__["MenuService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_13__["AppService"]])
+            _menu_service__WEBPACK_IMPORTED_MODULE_8__["MenuService"]])
     ], MenuFormComponent);
     return MenuFormComponent;
 }(_base_form_component__WEBPACK_IMPORTED_MODULE_1__["BaseFormComponent"]));
@@ -2068,7 +2086,7 @@ var MenuFormComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <form class=\"form-inline\" (ngSubmit)=\"search()\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Nhập tên menu cần tìm\" [(ngModel)]=\"keyword\"\r\n                       name=\"keyword\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <ghm-button [loading]=\"isSearching\" icon=\"fas fa-search\"></ghm-button>\r\n            </div>\r\n            <div class=\"form-group pull-right\">\r\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"menuFormComponent.add()\">\r\n                    <i class=\"fas fa-plus\"></i>\r\n                    Thêm\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-stripped table-hover\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center middle\">Tên menu</th>\r\n                    <th class=\"center middle w100\">Loại</th>\r\n                    <th class=\"center middle w100\">Trạng thái</th>\r\n                    <th class=\"center middle w100\">Thứ tự</th>\r\n                    <th class=\"center middle w100\">Hành động</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let item of listItems$ | async\">\r\n                    <td class=\"middle\">\r\n                        <span [innerHtml]=\"item.namePrefix\"></span> {{ item.name }}\r\n                    </td>\r\n                    <td class=\"center middle\">\r\n                        <span class=\"badge \"\r\n                              [class.badge-danger]=\"item.referenceType === 0\"\r\n                              [class.badge-success]=\"item.referenceType === 1\"\r\n                              [class.badge-info]=\"item.referenceType === 2\"\r\n                        >\r\n                            {{ item.referenceType === 0 ? 'Tự nhập' : item.referenceType === 1 ? 'Chuyên mục' : item.referenceType === 2 ? 'Tin tức' : ''}}\r\n                        </span>\r\n\r\n                    </td>\r\n                    <td class=\"center middle\">\r\n                        <span class=\"badge \"\r\n                              [class.badge-danger]=\"!item.isActive\"\r\n                              [class.badge-success]=\"item.isActive\"\r\n                        >{{ item.isActive ? 'Đã kích hoạt' : 'chưa kích hoạt' }}</span>\r\n                    </td>\r\n                    <td class=\"center middle\">\r\n                        {{ item.order }}\r\n                    </td>\r\n                    <td>\r\n                        <ghm-button type=\"button\"\r\n                                    classes=\"btn btn-sm btn-primary\"\r\n                                    icon=\"fas fa-pencil-alt\" [loading]=\"isSaving\" matTooltip=\"Sửa\"\r\n                                    [matTooltipPosition]=\"'above'\"\r\n                                    (clicked)=\"menuFormComponent.edit(item)\"></ghm-button>\r\n                        <ghm-button type=\"button\"\r\n                                    classes=\"btn btn-sm btn-danger\"\r\n                                    icon=\"fas fa-trash-alt\" [loading]=\"isSaving\" matTooltip=\"Xóa\"\r\n                                    [matTooltipPosition]=\"'above'\"\r\n                                    [swal]=\"{ title: 'Bạn có chắc chắn muốn xóa khóa học', type: 'warning' }\"\r\n                                    (confirm)=\"delete(item.id)\"></ghm-button>\r\n\r\n                        <!--<ghm-button type=\"button\" icon=\"fas fa-pencil-alt\" [loading]=\"isSaving\"></ghm-button>-->\r\n\r\n                        <!--<button type=\"button\"  -->\r\n                        <!--(click)=\"edit(item)\">-->\r\n                        <!--<i class=\"fas fa-pencil-alt\"></i>-->\r\n                        <!--</button>-->\r\n                        <!--<button type=\"button\" class=\"btn btn-sm btn-danger\" matTooltip=\"Xóa\"-->\r\n                        <!--[matTooltipPosition]=\"'above'\"-->\r\n                        <!--[swal]=\"{ title: 'Bạn có chắc chắn muốn xóa khóa học', type: 'warning' }\"-->\r\n                        <!--(confirm)=\"delete(item.id)\">-->\r\n                        <!--<i class=\"fas fa-trash-alt\"></i>-->\r\n                        <!--</button>-->\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<app-menu-form (onSaveSuccess)=\"search()\"></app-menu-form>\r\n"
+module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <form class=\"form-inline\" (ngSubmit)=\"search()\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Nhập tên menu cần tìm\" [(ngModel)]=\"keyword\"\r\n                       name=\"keyword\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <ghm-button [loading]=\"isSearching\" icon=\"fas fa-search\"></ghm-button>\r\n            </div>\r\n            <div class=\"form-group pull-right\">\r\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"menuFormComponent.add()\">\r\n                    <i class=\"fas fa-plus\"></i>\r\n                    Thêm\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-stripped table-hover\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center middle\">Tên menu</th>\r\n                    <th class=\"center middle w100\">Loại</th>\r\n                    <th class=\"center middle w100\">Trạng thái</th>\r\n                    <th class=\"center middle w100\">Thứ tự</th>\r\n                    <th class=\"center middle w100\">Hành động</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let item of listItems$ | async\">\r\n                    <td class=\"middle\">\r\n                        <span [innerHtml]=\"item.namePrefix\"></span> {{ item.name }}\r\n                    </td>\r\n                    <td class=\"center middle\">\r\n                        <span class=\"badge \"\r\n                              [class.badge-danger]=\"item.referenceType === 0\"\r\n                              [class.badge-success]=\"item.referenceType === 1\"\r\n                              [class.badge-info]=\"item.referenceType === 2\"\r\n                        >\r\n                            {{ item.referenceType === 0 ? 'Tự nhập' : item.referenceType === 1 ? 'Chuyên mục' : item.referenceType === 2 ? 'Tin tức' : ''}}\r\n                        </span>\r\n\r\n                    </td>\r\n                    <td class=\"center middle\">\r\n                        <span class=\"badge \"\r\n                              [class.badge-danger]=\"!item.isActive\"\r\n                              [class.badge-success]=\"item.isActive\"\r\n                        >{{ item.isActive ? 'Đã kích hoạt' : 'chưa kích hoạt' }}</span>\r\n                    </td>\r\n                    <td class=\"center middle\">\r\n                        {{ item.order }}\r\n                    </td>\r\n                    <td>\r\n                        <ghm-button type=\"button\"\r\n                                    classes=\"btn btn-sm btn-primary\"\r\n                                    icon=\"fas fa-pencil-alt\" matTooltip=\"Sửa\"\r\n                                    [matTooltipPosition]=\"'above'\"\r\n                                    (clicked)=\"menuFormComponent.edit(item)\"></ghm-button>\r\n                        <ghm-button type=\"button\"\r\n                                    classes=\"btn btn-sm btn-danger\"\r\n                                    icon=\"fas fa-trash-alt\" matTooltip=\"Xóa\"\r\n                                    [matTooltipPosition]=\"'above'\"\r\n                                    [swal]=\"{ title: 'Bạn có chắc chắn muốn xóa khóa học', type: 'warning' }\"\r\n                                    (confirm)=\"delete(item.id)\"></ghm-button>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<app-menu-form (onSaveSuccess)=\"search()\"></app-menu-form>\r\n"
 
 /***/ }),
 
@@ -2090,10 +2108,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_9__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2126,16 +2143,14 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
 var MenuComponent = /** @class */ (function (_super) {
     __extends(MenuComponent, _super);
-    function MenuComponent(pageId, route, toastr, spinnerService, appService, menuService) {
+    function MenuComponent(pageId, route, toastr, spinnerService, menuService) {
         var _this = _super.call(this) || this;
         _this.pageId = pageId;
         _this.route = route;
         _this.toastr = toastr;
         _this.spinnerService = spinnerService;
-        _this.appService = appService;
         _this.menuService = menuService;
         return _this;
     }
@@ -2165,7 +2180,7 @@ var MenuComponent = /** @class */ (function (_super) {
         });
     };
     MenuComponent.prototype.renderListMenu = function (menus) {
-        lodash__WEBPACK_IMPORTED_MODULE_10__["each"](menus, function (menu) {
+        lodash__WEBPACK_IMPORTED_MODULE_9__["each"](menus, function (menu) {
             var idPathArray = menu.idPath.split('.');
             if (idPathArray.length > 1) {
                 for (var i = 1; i < idPathArray.length; i++) {
@@ -2185,11 +2200,10 @@ var MenuComponent = /** @class */ (function (_super) {
             selector: 'app-menu',
             template: __webpack_require__(/*! ./menu.component.html */ "./src/app/modules/website/menu/menu.component.html")
         }),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_9__["PAGE_ID"])),
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_8__["PAGE_ID"])),
         __metadata("design:paramtypes", [Object, _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_7__["ToastrService"],
             _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_6__["SpinnerService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_8__["AppService"],
             _menu_service__WEBPACK_IMPORTED_MODULE_2__["MenuService"]])
     ], MenuComponent);
     return MenuComponent;
@@ -2292,271 +2306,6 @@ var MenuService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/modules/website/news/news-form/news-form.component.html":
-/*!*************************************************************************!*\
-  !*** ./src/app/modules/website/news/news-form/news-form.component.html ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<nh-modal #newsFormModal size=\"full\" (onShown)=\"onNewsFormModalShown()\" (onHidden)=\"onNewsFormModalHidden()\">\r\n    <nh-modal-header>\r\n        <i class=\"fas fa-newspaper\"></i>\r\n        {{isUpdate ? 'Cập nhật tin tức' : 'Thêm mới tin tức'}}\r\n    </nh-modal-header>\r\n    <div class=\"form\">\r\n        <form action=\"\" class=\"horizontal-form\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n            <nh-modal-content>\r\n                <div class=\"row\">\r\n                    <div class=\"col-sm-8\">\r\n                        <div class=\"form-group\">\r\n                            <label ghmLabel=\"Tiêu đề\" [required]=\"true\"></label>\r\n                            <input type=\"text\" id=\"title\" class=\"form-control\" placeholder=\"Nhập tiêu đề tin.\"\r\n                                   formControlName=\"title\"/>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"formErrors.title\">{{ formErrors.title }}</div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label ghmLabel=\"Nội dung tóm tắt\" [required]=\"true\"></label>\r\n                            <textarea rows=\"3\" class=\"form-control\" placeholder=\"Nhập nội dung tóm tắt.\"\r\n                                      formControlName=\"description\"></textarea>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"formErrors.description\">{{ formErrors.description\r\n                                }}\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label ghmLabel=\"Nội dung\" [required]=\"true\"></label>\r\n                            <tinymce [elementId]=\"'newsContentEditor'\" formControlName=\"content\"\r\n                                     #newsContentEditor></tinymce>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"formErrors.content\">{{ formErrors.content }}</div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label ghmLabel=\"Nguồn bài viết\"></label>\r\n                            <input type=\"text\" class=\"form-control\" placeholder=\"Nhập nguồn bài viết.\"\r\n                                   formControlName=\"source\"/>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"formErrors.source\">{{ formErrors.source }}</div>\r\n                        </div>\r\n                    </div><!-- END col-8 -->\r\n                    <div class=\"col-sm-4\">\r\n                        <div class=\"form-group\">\r\n                            <label ghmLabel=\"Chuyên mục\"></label>\r\n                            <nh-dropdown-tree\r\n                                title=\"-- Chọn chuyên mục --\"\r\n                                [data]=\"categoryTree\"\r\n                                [isMultiple]=\"true\"\r\n                                (onAccept)=\"onAcceptSelectCategory($event)\"\r\n                                formControlName=\"categoryIds\"></nh-dropdown-tree>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"formErrors.categoryIds\">{{ formErrors.categoryIds\r\n                                }}\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <mat-checkbox color=\"primary\" formControlName=\"isActive\">Kích hoạt</mat-checkbox>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <mat-checkbox color=\"primary\" formControlName=\"isHot\">Nổi bật</mat-checkbox>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <mat-checkbox color=\"primary\" formControlName=\"isHomePage\">Hiển thị trang chủ</mat-checkbox>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label ghmLabel=\"Ảnh bài viết\" [required]=\"true\"></label>\r\n                            <input type=\"text\" class=\"form-control\" placeholder=\"Nhập đường dẫn ảnh.\"\r\n                                   formControlName=\"image\">\r\n                            <div class=\"alert alert-danger\" *ngIf=\"formErrors.image\">{{ formErrors.image }}</div>\r\n                        </div>\r\n                    </div><!-- END: col-4 -->\r\n                </div>\r\n            </nh-modal-content>\r\n            <nh-modal-footer>\r\n                <ghm-button [loading]=\"isSaving\">Lưu lại</ghm-button>\r\n                <ghm-button [loading]=\"isSaving\" [type]=\"'button'\" classes=\"btn btn-default\" icon=\"fas fa-times\"\r\n                            nh-dismiss=\"true\">Đóng lại\r\n                </ghm-button>\r\n            </nh-modal-footer>\r\n        </form>\r\n    </div>\r\n</nh-modal>\r\n"
-
-/***/ }),
-
-/***/ "./src/app/modules/website/news/news-form/news-form.component.ts":
-/*!***********************************************************************!*\
-  !*** ./src/app/modules/website/news/news-form/news-form.component.ts ***!
-  \***********************************************************************/
-/*! exports provided: NewsFormComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewsFormComponent", function() { return NewsFormComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _base_form_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../base-form.component */ "./src/app/base-form.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _news_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../news.service */ "./src/app/modules/website/news/news.service.ts");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _news_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../news.model */ "./src/app/modules/website/news/news.model.ts");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../shareds/decorator/destroy-subscribes.decorator */ "./src/app/shareds/decorator/destroy-subscribes.decorator.ts");
-/* harmony import */ var _shareds_components_tinymce_tinymce_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../shareds/components/tinymce/tinymce.component */ "./src/app/shareds/components/tinymce/tinymce.component.ts");
-/* harmony import */ var _category_category_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../category/category.service */ "./src/app/modules/website/category/category.service.ts");
-/* harmony import */ var _view_model_tree_data__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../view-model/tree-data */ "./src/app/view-model/tree-data.ts");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var NewsFormComponent = /** @class */ (function (_super) {
-    __extends(NewsFormComponent, _super);
-    function NewsFormComponent(fb, route, toastr, utilService, spinnerService, categoryService, appService, newsService) {
-        var _this = _super.call(this) || this;
-        _this.fb = fb;
-        _this.route = route;
-        _this.toastr = toastr;
-        _this.utilService = utilService;
-        _this.spinnerService = spinnerService;
-        _this.categoryService = categoryService;
-        _this.appService = appService;
-        _this.newsService = newsService;
-        _this.onSaveSuccess = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        _this.news = new _news_model__WEBPACK_IMPORTED_MODULE_5__["News"]();
-        _this.categoryTree = [];
-        return _this;
-    }
-    NewsFormComponent.prototype.ngOnInit = function () {
-        this.buildForm();
-        this.getCategoryTree();
-    };
-    NewsFormComponent.prototype.onNewsFormModalShown = function () {
-        if (this.newsContentEditor) {
-            this.newsContentEditor.initEditor();
-        }
-        this.utilService.focusElement('courseName');
-        this.newsContentEditor.initEditor();
-    };
-    NewsFormComponent.prototype.onNewsFormModalHidden = function () {
-        if (this.isModified) {
-            this.onSaveSuccess.emit();
-        }
-        this.newsContentEditor.destroy();
-    };
-    NewsFormComponent.prototype.onAcceptSelectCategory = function (data) {
-        this.model.patchValue({ categoryIds: lodash__WEBPACK_IMPORTED_MODULE_13__["map"](data, 'id') });
-    };
-    NewsFormComponent.prototype.add = function () {
-        this.isUpdate = false;
-        this.newsFormModal.show();
-    };
-    NewsFormComponent.prototype.edit = function (news) {
-        var _this = this;
-        this.isUpdate = true;
-        this.newsFormModal.show();
-        this.spinnerService.show('Đang tải thông tin tin tức. Vui lòng đợi...');
-        this.newsService.getDetail(news.id)
-            .subscribe(function (result) {
-            _this.model.patchValue(result);
-            _this.newsContentEditor.setContent(result.content);
-        });
-    };
-    NewsFormComponent.prototype.save = function () {
-        var _this = this;
-        var isValid = this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages, true);
-        if (isValid) {
-            this.news = this.model.value;
-            this.isSaving = true;
-            if (this.isUpdate) {
-                this.newsService.update(this.news)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_15__["finalize"])(function () { return _this.isSaving = false; }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message);
-                    _this.isModified = true;
-                    _this.newsFormModal.dismiss();
-                });
-            }
-            else {
-                this.newsService.insert(this.news)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_15__["finalize"])(function () { return _this.isSaving = false; }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message);
-                    _this.model.reset(new _news_model__WEBPACK_IMPORTED_MODULE_5__["News"]());
-                    _this.isModified = true;
-                });
-            }
-        }
-    };
-    NewsFormComponent.prototype.buildForm = function () {
-        var _this = this;
-        this.formErrors = this.utilService.renderFormError(['title', 'description', 'content', 'image', 'source', 'categoryIds']);
-        this.validationMessages = {
-            'title': {
-                'required': 'Vui lòng nhập tiêu đề tin.',
-                'maxLength': 'Tiêu đề không được phép lớn hơn 256 ký tự'
-            },
-            'description': {
-                'required': 'Vui lòng nhập nội dung mô tả',
-                'maxLength': 'Nội dung mô tả không được phép lớn hơn 500 ký tự.'
-            },
-            'content': {
-                'required': 'Vui lòng nhập nội dung tin tức.'
-            },
-            'image': {
-                'required': 'Vui lòng chọn ảnh đại diện.'
-            },
-            'source': {
-                'maxLength': 'Nguồn bài viết không được phép lớn hơn 500 ký tự.'
-            },
-            'categoryIds': {
-                'required': 'Vui lòng chọn ít nhất một chuyên mục.'
-            }
-        };
-        this.model = this.fb.group({
-            'id': [this.news.id],
-            'title': [this.news.title, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(256)
-                ]],
-            'description': [this.news.description, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(500)
-                ]],
-            'content': [this.news.content, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required
-                ]],
-            'categoryIds': [this.news.categoryIds, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required
-                ]],
-            'isActive': [this.news.isActive],
-            'image': [this.news.image, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required
-                ]],
-            'isHot': [this.news.isHot],
-            'isHomePage': [this.news.isHomePage],
-            'source': [this.news.source, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(500)
-                ]]
-        });
-        this.model.valueChanges.subscribe(function () { return _this.utilService.onValueChanged(_this.model, _this.formErrors, _this.validationMessages); });
-    };
-    NewsFormComponent.prototype.getCategoryTree = function () {
-        var _this = this;
-        this.subscribers.getCategoryTree = this.categoryService.getCategoryTree()
-            .subscribe(function (result) {
-            _this.categoryTree = _this.renderCategoryTree(result, null);
-        });
-    };
-    NewsFormComponent.prototype.renderCategoryTree = function (categories, parentId) {
-        var _this = this;
-        var listCategory = lodash__WEBPACK_IMPORTED_MODULE_13__["filter"](categories, function (category) {
-            return category.parentId === parentId;
-        });
-        var treeData = [];
-        if (listCategory) {
-            lodash__WEBPACK_IMPORTED_MODULE_13__["each"](listCategory, function (category) {
-                var childCount = lodash__WEBPACK_IMPORTED_MODULE_13__["countBy"](categories, function (item) {
-                    return item.parentId === category.id;
-                }).true;
-                var children = _this.renderCategoryTree(categories, category.id);
-                treeData.push(new _view_model_tree_data__WEBPACK_IMPORTED_MODULE_12__["TreeData"](category.id, category.parentId, category.name, false, false, category.idPath, '', category, null, childCount, false, children));
-            });
-        }
-        return treeData;
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('newsFormModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_7__["NhModalComponent"])
-    ], NewsFormComponent.prototype, "newsFormModal", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('newsContentEditor'),
-        __metadata("design:type", _shareds_components_tinymce_tinymce_component__WEBPACK_IMPORTED_MODULE_10__["TinymceComponent"])
-    ], NewsFormComponent.prototype, "newsContentEditor", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], NewsFormComponent.prototype, "onSaveSuccess", void 0);
-    NewsFormComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-news-form',
-            template: __webpack_require__(/*! ./news-form.component.html */ "./src/app/modules/website/news/news-form/news-form.component.html"),
-            providers: [_category_category_service__WEBPACK_IMPORTED_MODULE_11__["CategoryService"]]
-        }),
-        Object(_shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_9__["DestroySubscribers"])(),
-        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_8__["ActivatedRoute"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_6__["ToastrService"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_4__["UtilService"],
-            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_14__["SpinnerService"],
-            _category_category_service__WEBPACK_IMPORTED_MODULE_11__["CategoryService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_16__["AppService"],
-            _news_service__WEBPACK_IMPORTED_MODULE_3__["NewsService"]])
-    ], NewsFormComponent);
-    return NewsFormComponent;
-}(_base_form_component__WEBPACK_IMPORTED_MODULE_1__["BaseFormComponent"]));
-
-
-
-/***/ }),
-
 /***/ "./src/app/modules/website/news/news-picker/news-picker.component.html":
 /*!*****************************************************************************!*\
   !*** ./src/app/modules/website/news/news-picker/news-picker.component.html ***!
@@ -2627,7 +2376,7 @@ var NewsPickerComponent = /** @class */ (function (_super) {
     NewsPickerComponent.prototype.show = function () {
         this.listSelected = [];
         this.search(1);
-        this.pickerModal.show();
+        this.pickerModal.open();
     };
     NewsPickerComponent.prototype.search = function (currentPage) {
         var _this = this;
@@ -2686,7 +2435,7 @@ var NewsPickerComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <form class=\"form-inline\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Nhập tiêu đề tin cần tìm.\"\r\n                       [(ngModel)]=\"keyword\" name=\"keyword\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <!--<button class=\"btn btn-primary\">-->\r\n                <!--<i class=\"fas fa-search\"></i>-->\r\n                <!--</button>-->\r\n                <ghm-button [loading]=\"isSearching\" icon=\"fas fa-search\"></ghm-button>\r\n            </div>\r\n            <div class=\"form-group pull-right\">\r\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"newsFormComponent.add()\">\r\n                    <i class=\"fas fa-plus\"></i>\r\n                    Thêm\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-hover table-stripped\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center middle w50\">STT</th>\r\n                    <th class=\"center middle\">Tiêu đề bài viết</th>\r\n                    <th class=\"center middle\">Ảnh</th>\r\n                    <th class=\"center middle w50\">Ngày tạo</th>\r\n                    <th class=\"center middle w50\">Người tạo</th>\r\n                    <th class=\"center middle w50\">Trạng thái</th>\r\n                    <th class=\"center middle w50\">Nổi bật</th>\r\n                    <th class=\"center middle w50\">Trang chủ</th>\r\n                    <th class=\"center middle w100\">Hành động</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let item of listItems$ | async; let i = index\">\r\n                    <td class=\"center middle\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n                    <td class=\"middle\">{{ item.title }}</td>\r\n                    <td class=\"middle\">{{ item.image }}</td>\r\n                    <td class=\"middle\">{{ item.createTime | dateTimeFormat: 'DD/MM/YYYY HH:mm' }}</td>\r\n                    <td class=\"middle\">{{ item.creatorFullName }}</td>\r\n                    <td class=\"center middle\">\r\n                        <mat-checkbox color=\"primary\" [checked]=\"item.isActive\"></mat-checkbox>\r\n                    </td>\r\n                    <td class=\"center middle\">\r\n                        <mat-checkbox color=\"primary\" [checked]=\"item.isHot\"></mat-checkbox>\r\n                    </td>\r\n                    <td class=\"center middle\">\r\n                        <mat-checkbox color=\"primary\" [checked]=\"item.isHomePage\"></mat-checkbox>\r\n                    </td>\r\n                    <td class=\"center middle\">\r\n                        <button type=\"button\" class=\"btn btn-sm btn-primary\" matTooltip=\"Sửa\"\r\n                                [matTooltipPosition]=\"'above'\"\r\n                                (click)=\"newsFormComponent.edit(item)\">\r\n                            <i class=\"fas fa-pencil-alt\"></i>\r\n                        </button>\r\n                        <button type=\"button\" class=\"btn btn-sm btn-danger\" matTooltip=\"Xóa\"\r\n                                [matTooltipPosition]=\"'above'\"\r\n                                [swal]=\"{ title: 'Bạn có chắc chắn muốn xóa tin tức không?', type: 'warning' }\"\r\n                                (confirm)=\"delete(item.id)\">\r\n                            <i class=\"fas fa-trash-alt\"></i>\r\n                        </button>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n        <ghm-paging [totalRows]=\"totalRows\" [currentPage]=\"currentPage\" [pageShow]=\"6\" (pageClick)=\"search($event)\"\r\n                    [isDisabled]=\"isSearching\" pageName=\"tin tức\"></ghm-paging>\r\n    </div>\r\n</div>\r\n\r\n<app-news-form (onSaveSuccess)=\"search(1)\"></app-news-form>\r\n"
+module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <form class=\"form-inline\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Nhập tiêu đề tin cần tìm.\"\r\n                       [(ngModel)]=\"keyword\" name=\"keyword\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <!--<button class=\"btn btn-primary\">-->\r\n                <!--<i class=\"fas fa-search\"></i>-->\r\n                <!--</button>-->\r\n                <ghm-button [loading]=\"isSearching\" icon=\"fas fa-search\"></ghm-button>\r\n            </div>\r\n            <div class=\"form-group pull-right\">\r\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"newsFormComponent.add()\">\r\n                    <i class=\"fas fa-plus\"></i>\r\n                    Thêm\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <table class=\"table table-bordered table-hover table-stripped\">\r\n            <thead>\r\n            <tr>\r\n                <th class=\"center middle w50\">STT</th>\r\n                <th class=\"center middle\">Tiêu đề bài viết</th>\r\n                <th class=\"center middle\">Ảnh</th>\r\n                <th class=\"center middle w50\">Ngày tạo</th>\r\n                <th class=\"center middle w50\">Người tạo</th>\r\n                <th class=\"center middle w50\">Trạng thái</th>\r\n                <th class=\"center middle w50\">Nổi bật</th>\r\n                <th class=\"center middle w50\">Trang chủ</th>\r\n                <th class=\"center middle w100\">Hành động</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let item of listItems$ | async; let i = index\">\r\n                <td class=\"center middle\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n                <td class=\"middle\">{{ item.title }}</td>\r\n                <td class=\"middle\">{{ item.image }}</td>\r\n                <td class=\"middle\">{{ item.createTime | dateTimeFormat: 'DD/MM/YYYY HH:mm' }}</td>\r\n                <td class=\"middle\">{{ item.creatorFullName }}</td>\r\n                <td class=\"center middle\">\r\n                    <mat-checkbox color=\"primary\" [checked]=\"item.isActive\"></mat-checkbox>\r\n                </td>\r\n                <td class=\"center middle\">\r\n                    <mat-checkbox color=\"primary\" [checked]=\"item.isHot\"></mat-checkbox>\r\n                </td>\r\n                <td class=\"center middle\">\r\n                    <mat-checkbox color=\"primary\" [checked]=\"item.isHomePage\"></mat-checkbox>\r\n                </td>\r\n                <td class=\"center middle\">\r\n                    <button type=\"button\" class=\"btn btn-sm btn-primary\" matTooltip=\"Sửa\"\r\n                            [matTooltipPosition]=\"'above'\"\r\n                            (click)=\"newsFormComponent.edit(item)\">\r\n                        <i class=\"fas fa-pencil-alt\"></i>\r\n                    </button>\r\n                    <button type=\"button\" class=\"btn btn-sm btn-danger\" matTooltip=\"Xóa\"\r\n                            [matTooltipPosition]=\"'above'\"\r\n                            [swal]=\"{ title: 'Bạn có chắc chắn muốn xóa tin tức không?', type: 'warning' }\"\r\n                            (confirm)=\"delete(item.id)\">\r\n                        <i class=\"fas fa-trash-alt\"></i>\r\n                    </button>\r\n                </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n        <ghm-paging [totalRows]=\"totalRows\" [currentPage]=\"currentPage\" [pageShow]=\"6\" (pageClick)=\"search($event)\"\r\n                    [isDisabled]=\"isSearching\" pageName=\"tin tức\"></ghm-paging>\r\n    </div>\r\n</div>\r\n\r\n<app-news-form (onSaveSuccess)=\"search(1)\"></app-news-form>\r\n"
 
 /***/ }),
 
@@ -2706,11 +2455,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _news_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./news.service */ "./src/app/modules/website/news/news.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../base-list.component */ "./src/app/base-list.component.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../configs/app.config */ "./src/app/configs/app.config.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../configs/app.config */ "./src/app/configs/app.config.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2743,24 +2491,22 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
 var NewsComponent = /** @class */ (function (_super) {
     __extends(NewsComponent, _super);
-    function NewsComponent(appConfig, pageId, spinnerService, route, toastr, appService, newsService) {
+    function NewsComponent(appConfig, pageId, spinnerService, route, toastr, newsService) {
         var _this = _super.call(this) || this;
         _this.appConfig = appConfig;
         _this.pageId = pageId;
         _this.spinnerService = spinnerService;
         _this.route = route;
         _this.toastr = toastr;
-        _this.appService = appService;
         _this.newsService = newsService;
         return _this;
     }
     NewsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.appService.setupPage(this.pageId.WEBSITE, this.pageId.NEWS, 'Quản lý tin tức', 'Danh sách tin tức');
-        this.listItems$ = this.route.data.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (result) {
+        this.listItems$ = this.route.data.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (result) {
             var data = result.data;
             _this.totalRows = data.totalRows;
             return data.items;
@@ -2771,7 +2517,7 @@ var NewsComponent = /** @class */ (function (_super) {
         this.currentPage = currentPage;
         this.isSearching = true;
         this.listItems$ = this.newsService.search(this.keyword, this.categoryId, this.isActive, this.isHot, this.isHomePage, this.currentPage, this.pageSize)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["finalize"])(function () { return _this.isSearching = false; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (result) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["finalize"])(function () { return _this.isSearching = false; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (result) {
             _this.totalRows = result.totalRows;
             return result.items;
         }));
@@ -2793,147 +2539,15 @@ var NewsComponent = /** @class */ (function (_super) {
             selector: 'app-news',
             template: __webpack_require__(/*! ./news.component.html */ "./src/app/modules/website/news/news.component.html"),
         }),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_7__["APP_CONFIG"])),
-        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_8__["PAGE_ID"])),
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_6__["APP_CONFIG"])),
+        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_7__["PAGE_ID"])),
         __metadata("design:paramtypes", [Object, Object, _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_2__["SpinnerService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_10__["ToastrService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_6__["AppService"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_9__["ToastrService"],
             _news_service__WEBPACK_IMPORTED_MODULE_3__["NewsService"]])
     ], NewsComponent);
     return NewsComponent;
 }(_base_list_component__WEBPACK_IMPORTED_MODULE_5__["BaseListComponent"]));
-
-
-
-/***/ }),
-
-/***/ "./src/app/modules/website/news/news.model.ts":
-/*!****************************************************!*\
-  !*** ./src/app/modules/website/news/news.model.ts ***!
-  \****************************************************/
-/*! exports provided: News */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "News", function() { return News; });
-var News = /** @class */ (function () {
-    function News(id, title, description, content, createTime, viewCount, likeCount, commentCount, isActive, creatorId, creatorFullName, creatorImage, image, isHot, isHomePage, lastUpdate) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.content = content;
-        this.createTime = createTime;
-        this.viewCount = viewCount;
-        this.likeCount = likeCount;
-        this.commentCount = commentCount;
-        this.isActive = isActive ? isActive : false;
-        this.creatorId = creatorId;
-        this.creatorFullName = creatorFullName;
-        this.creatorImage = creatorImage;
-        this.image = image;
-        this.isHot = isHot;
-        this.isHomePage = isHomePage;
-        this.lastUpdate = lastUpdate;
-    }
-    return News;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/modules/website/news/news.service.ts":
-/*!******************************************************!*\
-  !*** ./src/app/modules/website/news/news.service.ts ***!
-  \******************************************************/
-/*! exports provided: NewsService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewsService", function() { return NewsService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../configs/app.config */ "./src/app/configs/app.config.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-
-
-
-var NewsService = /** @class */ (function () {
-    function NewsService(appConfig, http) {
-        this.appConfig = appConfig;
-        this.http = http;
-        this.url = 'news/';
-        this.url = "" + appConfig.WEBSITE_API_URL + this.url;
-    }
-    NewsService.prototype.resolve = function (route, state) {
-        var queryParams = route.queryParams;
-        var keyword = queryParams.keyword;
-        var categoryId = queryParams.categoryId;
-        var isActive = queryParams.isActive;
-        var isHot = queryParams.isHot;
-        var isHomePage = queryParams.isHot;
-        var page = queryParams.page;
-        var pageSize = queryParams.pageSize;
-        return this.search(keyword, categoryId, isActive, isHot, isHomePage, page, pageSize);
-    };
-    NewsService.prototype.insert = function (news) {
-        return this.http.post(this.url + "insert", news);
-    };
-    NewsService.prototype.update = function (news) {
-        return this.http.post(this.url + "update", news);
-    };
-    NewsService.prototype.delete = function (id) {
-        return this.http.delete(this.url + "delete/" + id.toString());
-    };
-    NewsService.prototype.search = function (keyword, categoryId, isActive, isHot, isHomePage, page, pageSize) {
-        if (page === void 0) { page = 1; }
-        if (pageSize === void 0) { pageSize = 20; }
-        return this.http.get(this.url + "search", {
-            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
-                .set('keyword', keyword ? keyword : '')
-                .set('categoryId', categoryId ? categoryId.toString() : '')
-                .set('isActive', isActive != null && isActive !== undefined ? isActive.toString() : '')
-                .set('isHot', isHot != null && isHot !== undefined ? isHot.toString() : '')
-                .set('isHomePage', isHomePage != null && isHomePage !== undefined ? isHomePage.toString() : '')
-                .set('page', page ? page.toString() : '1')
-                .set('pageSize', page ? pageSize.toString() : this.appConfig.PAGE_SIZE.toString())
-        });
-    };
-    NewsService.prototype.searchPicker = function (keyword, categoryId, page, pageSize) {
-        if (page === void 0) { page = 1; }
-        if (pageSize === void 0) { pageSize = 20; }
-        return this.http.get(this.url + "insert", {
-            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
-                .set('keyword', keyword ? keyword : '')
-                .set('categoryId', categoryId ? categoryId.toString() : '')
-                .set('page', page ? page.toString() : '1')
-                .set('pageSize', page ? pageSize.toString() : this.appConfig.PAGE_SIZE.toString())
-        });
-    };
-    NewsService.prototype.getDetail = function (id) {
-        return this.http.get(this.url + "detail/" + id);
-    };
-    NewsService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_1__["APP_CONFIG"])),
-        __metadata("design:paramtypes", [Object, _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-    ], NewsService);
-    return NewsService;
-}());
 
 
 
@@ -3045,10 +2659,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _promotion_voucher_list_component_promotion_voucher_list_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../promotion-voucher-list.component/promotion-voucher-list.component */ "./src/app/modules/website/promotions/promotion-voucher-list.component/promotion-voucher-list.component.ts");
 /* harmony import */ var _promotion_subject_list_promotion_subject_list_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../promotion-subject-list/promotion-subject-list.component */ "./src/app/modules/website/promotions/promotion-subject-list/promotion-subject-list.component.ts");
 /* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../shareds/decorator/destroy-subscribes.decorator */ "./src/app/shareds/decorator/destroy-subscribes.decorator.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../../configs/app.config */ "./src/app/configs/app.config.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../configs/app.config */ "./src/app/configs/app.config.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3086,11 +2698,9 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
 var PromotionDetailComponent = /** @class */ (function (_super) {
     __extends(PromotionDetailComponent, _super);
-    function PromotionDetailComponent(appConfig, pageId, route, title, fb, router, toastr, spinnerService, appService, utilService, promotionService, promotionSubjectService) {
+    function PromotionDetailComponent(appConfig, pageId, route, title, fb, router, toastr, spinnerService, utilService, promotionService, promotionSubjectService) {
         var _this = _super.call(this) || this;
         _this.appConfig = appConfig;
         _this.pageId = pageId;
@@ -3100,7 +2710,6 @@ var PromotionDetailComponent = /** @class */ (function (_super) {
         _this.router = router;
         _this.toastr = toastr;
         _this.spinnerService = spinnerService;
-        _this.appService = appService;
         _this.utilService = utilService;
         _this.promotionService = promotionService;
         _this.promotionSubjectService = promotionSubjectService;
@@ -3147,16 +2756,14 @@ var PromotionDetailComponent = /** @class */ (function (_super) {
             template: __webpack_require__(/*! ./promotion-detail.component.html */ "./src/app/modules/website/promotions/promotion-detail/promotion-detail.component.html"),
             providers: [_shareds_services_util_service__WEBPACK_IMPORTED_MODULE_12__["UtilService"], _services_promotion_service__WEBPACK_IMPORTED_MODULE_3__["PromotionService"], _services_promotion_subject_service__WEBPACK_IMPORTED_MODULE_8__["PromotionSubjectService"]]
         }),
-        Object(_shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_13__["DestroySubscribers"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_15__["APP_CONFIG"])),
-        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_16__["PAGE_ID"])),
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_13__["APP_CONFIG"])),
+        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_14__["PAGE_ID"])),
         __metadata("design:paramtypes", [Object, Object, _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__["Title"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"],
             _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_6__["SpinnerService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_14__["AppService"],
             _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_12__["UtilService"],
             _services_promotion_service__WEBPACK_IMPORTED_MODULE_3__["PromotionService"],
             _services_promotion_subject_service__WEBPACK_IMPORTED_MODULE_8__["PromotionSubjectService"]])
@@ -3193,21 +2800,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _model_promotion_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model/promotion.model */ "./src/app/modules/website/promotions/model/promotion.model.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../base.component */ "./src/app/base.component.ts");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var _promotion_voucher_list_component_promotion_voucher_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../promotion-voucher-list.component/promotion-voucher-list.component */ "./src/app/modules/website/promotions/promotion-voucher-list.component/promotion-voucher-list.component.ts");
-/* harmony import */ var _promotion_subject_list_promotion_subject_list_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../promotion-subject-list/promotion-subject-list.component */ "./src/app/modules/website/promotions/promotion-subject-list/promotion-subject-list.component.ts");
-/* harmony import */ var _services_promotion_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../services/promotion.service */ "./src/app/modules/website/promotions/services/promotion.service.ts");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../shareds/decorator/destroy-subscribes.decorator */ "./src/app/shareds/decorator/destroy-subscribes.decorator.ts");
-/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var _shareds_components_nh_wizard_nh_wizard_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../../shareds/components/nh-wizard/nh-wizard.component */ "./src/app/shareds/components/nh-wizard/nh-wizard.component.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var _promotion_voucher_list_component_promotion_voucher_list_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../promotion-voucher-list.component/promotion-voucher-list.component */ "./src/app/modules/website/promotions/promotion-voucher-list.component/promotion-voucher-list.component.ts");
+/* harmony import */ var _promotion_subject_list_promotion_subject_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../promotion-subject-list/promotion-subject-list.component */ "./src/app/modules/website/promotions/promotion-subject-list/promotion-subject-list.component.ts");
+/* harmony import */ var _services_promotion_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../services/promotion.service */ "./src/app/modules/website/promotions/services/promotion.service.ts");
+/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
+/* harmony import */ var _shareds_components_nh_wizard_nh_wizard_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../shareds/components/nh-wizard/nh-wizard.component */ "./src/app/shareds/components/nh-wizard/nh-wizard.component.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _base_form_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../../base-form.component */ "./src/app/base-form.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3246,12 +2850,9 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
-
 var PromotionFormComponent = /** @class */ (function (_super) {
     __extends(PromotionFormComponent, _super);
-    function PromotionFormComponent(pageId, route, title, fb, router, toastr, spinnerService, appService, utilService, promotionService) {
+    function PromotionFormComponent(pageId, route, title, fb, router, toastr, spinnerService, utilService, promotionService) {
         var _this = _super.call(this) || this;
         _this.pageId = pageId;
         _this.route = route;
@@ -3260,7 +2861,6 @@ var PromotionFormComponent = /** @class */ (function (_super) {
         _this.router = router;
         _this.toastr = toastr;
         _this.spinnerService = spinnerService;
-        _this.appService = appService;
         _this.utilService = utilService;
         _this.promotionService = promotionService;
         _this.promotion = new _model_promotion_model__WEBPACK_IMPORTED_MODULE_2__["Promotion"]();
@@ -3304,7 +2904,7 @@ var PromotionFormComponent = /** @class */ (function (_super) {
             this.spinnerService.show();
             if (this.isUpdate) {
                 this.promotionService.update(this.promotion)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_17__["finalize"])(function () { return _this.spinnerService.hide(); }))
+                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["finalize"])(function () { return _this.spinnerService.hide(); }))
                     .subscribe(function (result) {
                     _this.toastr.success(result.message);
                     _this.promotionFormWizard.next();
@@ -3364,53 +2964,50 @@ var PromotionFormComponent = /** @class */ (function (_super) {
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('promotionSubjectVoucher'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_13__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__["NhModalComponent"])
     ], PromotionFormComponent.prototype, "promotionSubjectVoucher", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('promotionSubjectFormModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_13__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__["NhModalComponent"])
     ], PromotionFormComponent.prototype, "promotionSubjectFormModal", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('promotionGenerateVoucherModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_13__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__["NhModalComponent"])
     ], PromotionFormComponent.prototype, "promotionGenerateVoucherModal", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('promotionGenerateVoucherForUserModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_13__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__["NhModalComponent"])
     ], PromotionFormComponent.prototype, "promotionGenerateVoucherForUserModal", void 0);
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_promotion_voucher_list_component_promotion_voucher_list_component__WEBPACK_IMPORTED_MODULE_8__["PromotionVoucherListComponent"]),
-        __metadata("design:type", _promotion_voucher_list_component_promotion_voucher_list_component__WEBPACK_IMPORTED_MODULE_8__["PromotionVoucherListComponent"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_promotion_voucher_list_component_promotion_voucher_list_component__WEBPACK_IMPORTED_MODULE_7__["PromotionVoucherListComponent"]),
+        __metadata("design:type", _promotion_voucher_list_component_promotion_voucher_list_component__WEBPACK_IMPORTED_MODULE_7__["PromotionVoucherListComponent"])
     ], PromotionFormComponent.prototype, "promotionVoucherListComponent", void 0);
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_promotion_subject_list_promotion_subject_list_component__WEBPACK_IMPORTED_MODULE_9__["PromotionSubjectListComponent"]),
-        __metadata("design:type", _promotion_subject_list_promotion_subject_list_component__WEBPACK_IMPORTED_MODULE_9__["PromotionSubjectListComponent"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_promotion_subject_list_promotion_subject_list_component__WEBPACK_IMPORTED_MODULE_8__["PromotionSubjectListComponent"]),
+        __metadata("design:type", _promotion_subject_list_promotion_subject_list_component__WEBPACK_IMPORTED_MODULE_8__["PromotionSubjectListComponent"])
     ], PromotionFormComponent.prototype, "promotionSubjectListComponent", void 0);
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_shareds_components_nh_wizard_nh_wizard_component__WEBPACK_IMPORTED_MODULE_14__["NhWizardComponent"]),
-        __metadata("design:type", _shareds_components_nh_wizard_nh_wizard_component__WEBPACK_IMPORTED_MODULE_14__["NhWizardComponent"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_shareds_components_nh_wizard_nh_wizard_component__WEBPACK_IMPORTED_MODULE_12__["NhWizardComponent"]),
+        __metadata("design:type", _shareds_components_nh_wizard_nh_wizard_component__WEBPACK_IMPORTED_MODULE_12__["NhWizardComponent"])
     ], PromotionFormComponent.prototype, "promotionFormWizard", void 0);
     PromotionFormComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: '.m-grid__item.m-grid__item--fluid.m-wrapper',
             template: __webpack_require__(/*! ./promotion-form.component.html */ "./src/app/modules/website/promotions/promotion-form/promotion-form.component.html"),
-            providers: [_shareds_services_util_service__WEBPACK_IMPORTED_MODULE_11__["UtilService"], _services_promotion_service__WEBPACK_IMPORTED_MODULE_10__["PromotionService"]]
+            providers: [_shareds_services_util_service__WEBPACK_IMPORTED_MODULE_10__["UtilService"], _services_promotion_service__WEBPACK_IMPORTED_MODULE_9__["PromotionService"]]
         }),
-        Object(_shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_12__["DestroySubscribers"])(),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_18__["CheckPermission"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_16__["PAGE_ID"])),
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_13__["PAGE_ID"])),
         __metadata("design:paramtypes", [Object, _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__["Title"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["Title"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"],
-            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_6__["SpinnerService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_15__["AppService"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_11__["UtilService"],
-            _services_promotion_service__WEBPACK_IMPORTED_MODULE_10__["PromotionService"]])
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"],
+            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_5__["SpinnerService"],
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_10__["UtilService"],
+            _services_promotion_service__WEBPACK_IMPORTED_MODULE_9__["PromotionService"]])
     ], PromotionFormComponent);
     return PromotionFormComponent;
-}(_base_component__WEBPACK_IMPORTED_MODULE_4__["BaseComponent"]));
+}(_base_form_component__WEBPACK_IMPORTED_MODULE_15__["BaseFormComponent"]));
 
 
 
@@ -3448,7 +3045,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _promotion_voucher_form_promotion_voucher_form_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../promotion-voucher-form/promotion-voucher-form.component */ "./src/app/modules/website/promotions/promotion-voucher-form/promotion-voucher-form.component.ts");
 /* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../configs/app.config */ "./src/app/configs/app.config.ts");
 /* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3481,15 +3077,13 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
 var PromotionListComponent = /** @class */ (function (_super) {
     __extends(PromotionListComponent, _super);
-    function PromotionListComponent(appConfig, pageId, title, toastr, appService, spinnerService, promotionService) {
+    function PromotionListComponent(appConfig, pageId, title, toastr, spinnerService, promotionService) {
         var _this = _super.call(this) || this;
         _this.pageId = pageId;
         _this.title = title;
         _this.toastr = toastr;
-        _this.appService = appService;
         _this.spinnerService = spinnerService;
         _this.promotionService = promotionService;
         _this.title.setTitle('Danh sách các chương trình khuyến mại.');
@@ -3560,7 +3154,6 @@ var PromotionListComponent = /** @class */ (function (_super) {
         __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_9__["PAGE_ID"])),
         __metadata("design:paramtypes", [Object, Object, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["Title"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_10__["AppService"],
             _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_2__["SpinnerService"],
             _services_promotion_service__WEBPACK_IMPORTED_MODULE_1__["PromotionService"]])
     ], PromotionListComponent);
@@ -3605,10 +3198,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
 /* harmony import */ var _shareds_components_service_picker_service_picker_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../shareds/components/service-picker/service-picker.component */ "./src/app/shareds/components/service-picker/service-picker.component.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_models_time_object_model__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../shareds/models/time-object.model */ "./src/app/shareds/models/time-object.model.ts");
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
+/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var _shareds_models_time_object_model__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../shareds/models/time-object.model */ "./src/app/shareds/models/time-object.model.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3641,16 +3232,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-
-
 var PromotionSubjectListComponent = /** @class */ (function (_super) {
     __extends(PromotionSubjectListComponent, _super);
-    function PromotionSubjectListComponent(fb, toastr, spinnerService, appService, utilService, promotionSubjectService) {
+    function PromotionSubjectListComponent(fb, toastr, spinnerService, utilService, promotionSubjectService) {
         var _this = _super.call(this) || this;
         _this.fb = fb;
         _this.toastr = toastr;
         _this.spinnerService = spinnerService;
-        _this.appService = appService;
         _this.utilService = utilService;
         _this.promotionSubjectService = promotionSubjectService;
         _this.isReadOnly = false;
@@ -3867,10 +3455,10 @@ var PromotionSubjectListComponent = /** @class */ (function (_super) {
         this.promotionSubjectAddTime.toDate = dateTime.isValid() ? dateTime : null;
     };
     PromotionSubjectListComponent.prototype.onSelectFromTime = function (dateTime, promotionApplyTime) {
-        promotionApplyTime.fromTime = dateTime.isValid() ? new _shareds_models_time_object_model__WEBPACK_IMPORTED_MODULE_13__["TimeObject"](dateTime.hour(), dateTime.minute()) : null;
+        promotionApplyTime.fromTime = dateTime.isValid() ? new _shareds_models_time_object_model__WEBPACK_IMPORTED_MODULE_12__["TimeObject"](dateTime.hour(), dateTime.minute()) : null;
     };
     PromotionSubjectListComponent.prototype.onSelectToTime = function (dateTime, promotionApplyTime) {
-        promotionApplyTime.toTime = dateTime.isValid() ? new _shareds_models_time_object_model__WEBPACK_IMPORTED_MODULE_13__["TimeObject"](dateTime.hour(), dateTime.minute()) : null;
+        promotionApplyTime.toTime = dateTime.isValid() ? new _shareds_models_time_object_model__WEBPACK_IMPORTED_MODULE_12__["TimeObject"](dateTime.hour(), dateTime.minute()) : null;
     };
     PromotionSubjectListComponent.prototype.addNewApplyTime = function () {
         if (!this.promotionSubjectAddTime.promotionApplyTimes) {
@@ -3891,7 +3479,7 @@ var PromotionSubjectListComponent = /** @class */ (function (_super) {
             this.promotionSubjectAddTime.toDate = promotionSubject.toDate;
             this.promotionSubjectAddTime.promotionApplyTimes = promotionSubject.promotionApplyTimes;
         }
-        this.addTimeModal.show();
+        this.addTimeModal.open();
     };
     PromotionSubjectListComponent.prototype.search = function () {
         var _this = this;
@@ -3950,12 +3538,10 @@ var PromotionSubjectListComponent = /** @class */ (function (_super) {
             template: __webpack_require__(/*! ./promotion-subject-list.component.html */ "./src/app/modules/website/promotions/promotion-subject-list/promotion-subject-list.component.html"),
             providers: [_services_promotion_subject_service__WEBPACK_IMPORTED_MODULE_2__["PromotionSubjectService"]]
         }),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_14__["CheckPermission"])(),
         __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_7__["ToastrService"],
             _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_6__["SpinnerService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_11__["AppService"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_12__["UtilService"],
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_11__["UtilService"],
             _services_promotion_subject_service__WEBPACK_IMPORTED_MODULE_2__["PromotionSubjectService"]])
     ], PromotionSubjectListComponent);
     return PromotionSubjectListComponent;
@@ -4054,7 +3640,7 @@ var PromotionVoucherFormComponent = /** @class */ (function (_super) {
     PromotionVoucherFormComponent.prototype.edit = function (promotionVoucher) {
         this.isUpdate = true;
         this.model.patchValue(promotionVoucher);
-        this.promotionGenerateVoucherForUserModal.show();
+        this.promotionGenerateVoucherForUserModal.open();
     };
     PromotionVoucherFormComponent.prototype.save = function () {
         var _this = this;
@@ -4093,11 +3679,11 @@ var PromotionVoucherFormComponent = /** @class */ (function (_super) {
         });
     };
     PromotionVoucherFormComponent.prototype.showGenerateModal = function () {
-        this.promotionVoucherGenerateModal.show();
+        this.promotionVoucherGenerateModal.open();
     };
     PromotionVoucherFormComponent.prototype.showVoucherFormModal = function () {
         this.isUpdate = false;
-        this.promotionGenerateVoucherForUserModal.show();
+        this.promotionGenerateVoucherForUserModal.open();
     };
     PromotionVoucherFormComponent.prototype.onSelectFromDate = function (datetTime) {
         this.model.patchValue({ fromDate: datetTime });
@@ -4216,7 +3802,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../base-list.component */ "./src/app/base-list.component.ts");
 /* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../configs/app.config */ "./src/app/configs/app.config.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4247,14 +3832,12 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
 var PromotionVoucherListComponent = /** @class */ (function (_super) {
     __extends(PromotionVoucherListComponent, _super);
-    function PromotionVoucherListComponent(appConfig, toastr, appService, spinnerService, promotionVoucherService) {
+    function PromotionVoucherListComponent(appConfig, toastr, spinnerService, promotionVoucherService) {
         var _this = _super.call(this) || this;
         _this.appConfig = appConfig;
         _this.toastr = toastr;
-        _this.appService = appService;
         _this.spinnerService = spinnerService;
         _this.promotionVoucherService = promotionVoucherService;
         _this.isReadOnly = false;
@@ -4316,7 +3899,7 @@ var PromotionVoucherListComponent = /** @class */ (function (_super) {
         //     confirmButtonText: 'Đồng ý',
         //     cancelButtonText: 'Hủy bỏ'
         // }).then(() => {
-        //     this.spinnerService.show();
+        //     this.spinnerService.open();
         //     this.promotionVoucherService.delete(promotionVoucher.id)
         //         .finally(() => this.spinnerService.hide())
         //         .subscribe((result: IActionResultResponse) => {
@@ -4346,7 +3929,6 @@ var PromotionVoucherListComponent = /** @class */ (function (_super) {
         }),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_7__["APP_CONFIG"])),
         __metadata("design:paramtypes", [Object, ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_8__["AppService"],
             _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_3__["SpinnerService"],
             _services_promotion_voucher_service__WEBPACK_IMPORTED_MODULE_2__["PromotionVoucherService"]])
     ], PromotionVoucherListComponent);
@@ -4575,439 +4157,6 @@ var PromotionService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/modules/website/video/video-form/video-form.component.html":
-/*!****************************************************************************!*\
-  !*** ./src/app/modules/website/video/video-form/video-form.component.html ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<nh-modal #videoFormModal size=\"sm\"\r\n          (onShown)=\"onFormModalShown()\"\r\n          (onHidden)=\"onFormModalHidden()\">\r\n    <nh-modal-header [showCloseButton]=\"true\">\r\n        <i class=\"fas fa-video\"></i> {{ isUpdate ? 'Cập nhật thông tin video' : 'Thêm mới video'}}\r\n    </nh-modal-header>\r\n    <form action=\"\" class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Loại video\" class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <nh-select\r\n                        title=\"-- Chọn loại video --\"\r\n                        [data]=\"videoTypes\"\r\n                        formControlName=\"type\"\r\n                    ></nh-select>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.type\">{{ formErrors.type }}</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\" *ngIf=\"model.value.type === 2\">\r\n                <label ghmLabel=\"Đường dẫn\" class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <input type=\"text\" class=\"form-control\" placeholder=\"Nhập đường dẫn video\" formControlName=\"url\"\r\n                           id=\"url\"/>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.url\">{{ formErrors.url }}</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\" *ngIf=\"model.value.type === 0\">\r\n                <label ghmLabel=\"Mã video\" class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <input type=\"text\" id=\"videoId\" class=\"form-control\" placeholder=\"Nhập mã video.\"\r\n                           formControlName=\"videoId\"/>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.videoId\">{{ formErrors.videoId }}</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Tiêu đề\" class=\"col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <input type=\"text\" class=\"form-control\" placeholder=\"Nhập tiêu đề video.\" formControlName=\"title\"/>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.title\">{{ formErrors.title }}</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Mô tả\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <textarea type=\"text\" class=\"form-control\" placeholder=\"Nhập mô tả video.\"\r\n                              formControlName=\"description\"></textarea>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.description\">{{ formErrors.description }}</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Thumbnail\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <input class=\"form-control\" placeholder=\"Nhập đường dẫn thumbnail\"\r\n                           formControlName=\"thumbnail\"/>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.address\">{{ formErrors.address }}</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Thứ tự\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <input type=\"text\" class=\"form-control\" placeholder=\"Nhập số thứ tự hiển thị\"\r\n                           formControlName=\"order\">\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Kích hoạt\" class=\"col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <mat-checkbox formControlName=\"isActive\" color=\"primary\"></mat-checkbox>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button class=\"btn btn-primary\" [disabled]=\"isSaving\">\r\n                <i class=\"fas fa-save\" *ngIf=\"!isSaving\"></i>\r\n                <i class=\"fas fa-spinner fa-spin\" *ngIf=\"isSaving\"></i>\r\n                Lưu lại\r\n            </button>\r\n            <button type=\"button\" class=\"btn btn-default\" nh-dismiss=\"true\">\r\n                <i class=\"fas fa-times\"></i>\r\n                Hủy bỏ\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
-
-/***/ }),
-
-/***/ "./src/app/modules/website/video/video-form/video-form.component.ts":
-/*!**************************************************************************!*\
-  !*** ./src/app/modules/website/video/video-form/video-form.component.ts ***!
-  \**************************************************************************/
-/*! exports provided: VideoFormComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VideoFormComponent", function() { return VideoFormComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _base_form_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../base-form.component */ "./src/app/base-form.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _video_model__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../video.model */ "./src/app/modules/website/video/video.model.ts");
-/* harmony import */ var _video_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../video.service */ "./src/app/modules/website/video/video.service.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-
-
-var VideoFormComponent = /** @class */ (function (_super) {
-    __extends(VideoFormComponent, _super);
-    function VideoFormComponent(fb, toastr, utilService, appService, videoService) {
-        var _this = _super.call(this) || this;
-        _this.fb = fb;
-        _this.toastr = toastr;
-        _this.utilService = utilService;
-        _this.appService = appService;
-        _this.videoService = videoService;
-        _this.onSaveSuccess = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        _this.video = new _video_model__WEBPACK_IMPORTED_MODULE_6__["Video"]();
-        _this.videoTypes = [{ id: 0, name: 'Youtube' }, { id: 1, name: 'Vimeo' }, { id: 2, name: 'Upload lên server' }];
-        return _this;
-    }
-    VideoFormComponent.prototype.ngOnInit = function () {
-        this.buildForm();
-    };
-    VideoFormComponent.prototype.onFormModalShown = function () {
-        this.utilService.focusElement('url');
-        this.utilService.focusElement('videoId');
-    };
-    VideoFormComponent.prototype.onFormModalHidden = function () {
-        if (this.isModified) {
-            this.onSaveSuccess.emit();
-        }
-    };
-    VideoFormComponent.prototype.add = function () {
-        this.isUpdate = false;
-        this.videoFormModal.show();
-    };
-    VideoFormComponent.prototype.edit = function (video) {
-        this.isUpdate = true;
-        this.video = video;
-        this.model.patchValue(video);
-        this.videoFormModal.show();
-    };
-    VideoFormComponent.prototype.save = function () {
-        var _this = this;
-        var isValid = this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages, true);
-        if (isValid) {
-            this.video = this.model.value;
-            this.isSaving = true;
-            if (this.isUpdate) {
-                this.videoService.update(this.video)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["finalize"])(function () { return _this.isSaving = false; }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message);
-                    _this.isModified = true;
-                    _this.model.reset(new _video_model__WEBPACK_IMPORTED_MODULE_6__["Video"]());
-                    _this.videoFormModal.dismiss();
-                });
-            }
-            else {
-                this.videoService.insert(this.video)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["finalize"])(function () { return _this.isSaving = false; }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message);
-                    _this.isModified = true;
-                    _this.model.reset(new _video_model__WEBPACK_IMPORTED_MODULE_6__["Video"]());
-                });
-            }
-        }
-    };
-    VideoFormComponent.prototype.buildForm = function () {
-        var _this = this;
-        this.formErrors = this.utilService.renderFormError(['url', 'title', 'description', 'thumbnail', 'type']);
-        this.validationMessages = {
-            'url': {
-                'required': 'Vui lòng nhập đường dẫn video',
-                'maxLength': 'Đường dẫn video không được phép vượt quá 500 ký tự'
-            },
-            'title': {
-                'required': 'Vui lòng nhập tiêu đề video',
-                'maxLength': 'Tiêu đề video không được phép vượt quá 256 ký tự.'
-            },
-            'description': {
-                'maxLength': 'Mô tả video không được phép vượt quá 500 ký tự.'
-            },
-            'thumbnail': {
-                'maxLength': 'Thumbnail không được phép vượt quá 500 ký tự.'
-            },
-            'type': {
-                'required': 'Vui lòng chọn loại video.'
-            }
-        };
-        this.model = this.fb.group({
-            'id': [this.video.id],
-            'videoId': [this.video.videoId],
-            'url': [this.video.url, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(256)
-                ]],
-            'title': [this.video.title, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(256)
-                ]],
-            'description': [this.video.description, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(500)
-                ]],
-            'thumbnail': [this.video.thumbnail, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(500)
-                ]],
-            'isActive': [this.video.isActive],
-            'order': [this.video.order],
-            'type': [this.video.type, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required
-                ]],
-        });
-        this.model.valueChanges.subscribe(function () { return _this.utilService.onValueChanged(_this.model, _this.formErrors, _this.validationMessages); });
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('videoFormModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_4__["NhModalComponent"])
-    ], VideoFormComponent.prototype, "videoFormModal", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], VideoFormComponent.prototype, "onSaveSuccess", void 0);
-    VideoFormComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-video-form',
-            template: __webpack_require__(/*! ./video-form.component.html */ "./src/app/modules/website/video/video-form/video-form.component.html")
-        }),
-        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_3__["UtilService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_9__["AppService"],
-            _video_service__WEBPACK_IMPORTED_MODULE_7__["VideoService"]])
-    ], VideoFormComponent);
-    return VideoFormComponent;
-}(_base_form_component__WEBPACK_IMPORTED_MODULE_1__["BaseFormComponent"]));
-
-
-
-/***/ }),
-
-/***/ "./src/app/modules/website/video/video.component.html":
-/*!************************************************************!*\
-  !*** ./src/app/modules/website/video/video.component.html ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <form class=\"form-inline\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Nhập tiêu đề video cần tìm.\"\r\n                [(ngModel)]=\"keyword\" name=\"keyword\"/>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button class=\"btn btn-primary\">\r\n                    <i class=\"fas fa-search\" *ngIf=\"!isSearching\"></i>\r\n                    <i class=\"fas fa-spinner fa-spin\" *ngIf=\"isSearching\"></i>\r\n                </button>\r\n            </div>\r\n            <div class=\"form-group pull-right\">\r\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"videoFormComponent.add()\">\r\n                    <i class=\"fas fa-plus\"></i>\r\n                    Thêm\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-hover table-stripped\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center middle w50\">STT</th>\r\n                    <th class=\"center middle\">Tiêu đề video</th>\r\n                    <th class=\"center middle\">Loại video</th>\r\n                    <th class=\"center middle\">Mô tả</th>\r\n                    <th class=\"center middle\">Đường dẫn</th>\r\n                    <th class=\"center middle\">Thứ tự</th>\r\n                    <th class=\"center middle w50\">Trạng thái</th>\r\n                    <th class=\"center middle w100\"></th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let item of listItems$ | async; let i = index\">\r\n                    <td class=\"center middle\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n                    <td class=\"middle\">{{ item.title }}</td>\r\n                    <td class=\"middle\">{{ item.type === 0 ? 'Youtube' : item.type === 1 ? 'vimeo' : 'Upload lên server' }}</td>\r\n                    <td class=\"middle\">{{ item.description }}</td>\r\n                    <td class=\"middle\">{{ item.url }}</td>\r\n                    <td class=\"middle\">{{ item.order }}</td>\r\n                    <td class=\"center middle\">\r\n                        <span class=\"badge \"\r\n                              [class.badge-danger]=\"!item.isActive\"\r\n                              [class.badge-success]=\"item.isActive\"\r\n                        >{{ item.isActive ? 'Đã kích hoạt' : 'Chưa kích hoạt' }}</span>\r\n                    </td>\r\n                    <td class=\"center middle\">\r\n                        <button type=\"button\" class=\"btn btn-sm btn-primary\" matTooltip=\"Sửa\"\r\n                                [matTooltipPosition]=\"'above'\"\r\n                                (click)=\"videoFormComponent.edit(item)\">\r\n                            <i class=\"fas fa-pencil-alt\"></i>\r\n                        </button>\r\n                        <button type=\"button\" class=\"btn btn-sm btn-danger\" matTooltip=\"Xóa\"\r\n                                [matTooltipPosition]=\"'above'\"\r\n                                [swal]=\"{ title: 'Bạn có chắc chắn muốn xóa khóa học', type: 'warning' }\"\r\n                                (confirm)=\"delete(item.id)\">\r\n                            <i class=\"fas fa-trash-alt\"></i>\r\n                        </button>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n        <ghm-paging [totalRows]=\"totalRows\" [currentPage]=\"currentPage\" [pageShow]=\"6\" (pageClick)=\"search($event)\"\r\n                    [isDisabled]=\"isSearching\" pageName=\"khóa học\"></ghm-paging>\r\n    </div>\r\n</div>\r\n\r\n<app-video-form (onSaveSuccess)=\"search(1)\"></app-video-form>\r\n"
-
-/***/ }),
-
-/***/ "./src/app/modules/website/video/video.component.ts":
-/*!**********************************************************!*\
-  !*** ./src/app/modules/website/video/video.component.ts ***!
-  \**********************************************************/
-/*! exports provided: VideoComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VideoComponent", function() { return VideoComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../base-list.component */ "./src/app/base-list.component.ts");
-/* harmony import */ var _video_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./video.model */ "./src/app/modules/website/video/video.model.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _video_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./video.service */ "./src/app/modules/website/video/video.service.ts");
-/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _video_form_video_form_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./video-form/video-form.component */ "./src/app/modules/website/video/video-form/video-form.component.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-
-
-
-
-
-
-
-
-
-
-
-
-var VideoComponent = /** @class */ (function (_super) {
-    __extends(VideoComponent, _super);
-    function VideoComponent(pageId, route, toastr, appService, spinnerService, videoService) {
-        var _this = _super.call(this) || this;
-        _this.pageId = pageId;
-        _this.route = route;
-        _this.toastr = toastr;
-        _this.appService = appService;
-        _this.spinnerService = spinnerService;
-        _this.videoService = videoService;
-        return _this;
-    }
-    VideoComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.appService.setupPage(this.pageId.WEBSITE, this.pageId.VIDEO, 'Quản lý Video', 'Danh sách video');
-        this.listItems$ = this.route.data.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(function (result) {
-            var data = result.data;
-            _this.totalRows = data.totalRows;
-            return data.items;
-        }));
-    };
-    VideoComponent.prototype.search = function (currentPage) {
-        var _this = this;
-        this.currentPage = currentPage;
-        this.isSearching = true;
-        this.listItems$ = this.videoService.search(this.keyword, this.isActive, this.currentPage, this.pageSize)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["finalize"])(function () { return _this.isSearching = false; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(function (result) {
-            return lodash__WEBPACK_IMPORTED_MODULE_9__["map"](result.items, function (video) {
-                _this.totalRows = result.totalRows;
-                return new _video_model__WEBPACK_IMPORTED_MODULE_2__["Video"](video.id, video.videoId, video.title, video.url, video.description, video.thumbnail, video.isActive, video.order, video.type);
-            });
-        }));
-    };
-    VideoComponent.prototype.delete = function (id) {
-        var _this = this;
-        this.spinnerService.show('Đang xóa video. Vui lòng đợi...');
-        this.videoService.delete(id)
-            .subscribe(function (result) {
-            _this.toastr.success(result.message);
-            _this.search(_this.currentPage);
-        });
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_video_form_video_form_component__WEBPACK_IMPORTED_MODULE_10__["VideoFormComponent"]),
-        __metadata("design:type", _video_form_video_form_component__WEBPACK_IMPORTED_MODULE_10__["VideoFormComponent"])
-    ], VideoComponent.prototype, "videoFormComponent", void 0);
-    VideoComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-video',
-            template: __webpack_require__(/*! ./video.component.html */ "./src/app/modules/website/video/video.component.html")
-        }),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_6__["PAGE_ID"])),
-        __metadata("design:paramtypes", [Object, _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_8__["ToastrService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_7__["AppService"],
-            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_5__["SpinnerService"],
-            _video_service__WEBPACK_IMPORTED_MODULE_4__["VideoService"]])
-    ], VideoComponent);
-    return VideoComponent;
-}(_base_list_component__WEBPACK_IMPORTED_MODULE_1__["BaseListComponent"]));
-
-
-
-/***/ }),
-
-/***/ "./src/app/modules/website/video/video.model.ts":
-/*!******************************************************!*\
-  !*** ./src/app/modules/website/video/video.model.ts ***!
-  \******************************************************/
-/*! exports provided: Video */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Video", function() { return Video; });
-var Video = /** @class */ (function () {
-    function Video(id, videoId, title, url, description, thumbnail, isActive, order, type) {
-        this.id = id;
-        this.videoId = videoId;
-        this.title = title;
-        this.url = url;
-        this.description = description;
-        this.thumbnail = thumbnail;
-        this.isActive = isActive ? isActive : false;
-        this.order = order;
-        this.type = type ? type : 0;
-    }
-    return Video;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/modules/website/video/video.service.ts":
-/*!********************************************************!*\
-  !*** ./src/app/modules/website/video/video.service.ts ***!
-  \********************************************************/
-/*! exports provided: VideoService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VideoService", function() { return VideoService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../configs/app.config */ "./src/app/configs/app.config.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-
-
-
-var VideoService = /** @class */ (function () {
-    function VideoService(appConfig, http) {
-        this.appConfig = appConfig;
-        this.http = http;
-        this.url = 'video/';
-        this.url = "" + appConfig.WEBSITE_API_URL + this.url;
-    }
-    VideoService.prototype.resolve = function (route, state) {
-        var queryParams = route.queryParams;
-        var keyword = queryParams.keyword;
-        var isActive = queryParams.isActive;
-        var page = queryParams.page;
-        var pageSize = queryParams.pageSize;
-        return this.search(keyword, isActive, page, pageSize);
-    };
-    VideoService.prototype.insert = function (video) {
-        return this.http.post(this.url + "insert", video);
-    };
-    VideoService.prototype.update = function (video) {
-        return this.http.post(this.url + "update", video);
-    };
-    VideoService.prototype.delete = function (id) {
-        return this.http.delete(this.url + "delete/" + id);
-    };
-    VideoService.prototype.search = function (keyword, isActive, page, pageSize) {
-        if (page === void 0) { page = 1; }
-        if (pageSize === void 0) { pageSize = 20; }
-        return this.http.get(this.url + "search", {
-            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]()
-                .set('keyword', keyword ? keyword : '')
-                .set('isActive', isActive != null && isActive !== undefined ? isActive.toString() : '')
-                .set('page', page ? page.toString() : '1')
-                .set('pageSize', pageSize ? pageSize.toString() : this.appConfig.PAGE_SIZE.toString())
-        });
-    };
-    VideoService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_2__["APP_CONFIG"])),
-        __metadata("design:paramtypes", [Object, _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
-    ], VideoService);
-    return VideoService;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/modules/website/website-routing.module.ts":
 /*!***********************************************************!*\
   !*** ./src/app/modules/website/website-routing.module.ts ***!
@@ -5031,20 +4180,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _course_course_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./course/course.service */ "./src/app/modules/website/course/course.service.ts");
 /* harmony import */ var _category_category_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./category/category.service */ "./src/app/modules/website/category/category.service.ts");
 /* harmony import */ var _news_news_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./news/news.service */ "./src/app/modules/website/news/news.service.ts");
-/* harmony import */ var _video_video_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./video/video.component */ "./src/app/modules/website/video/video.component.ts");
-/* harmony import */ var _video_video_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./video/video.service */ "./src/app/modules/website/video/video.service.ts");
-/* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/modules/website/menu/menu.component.ts");
-/* harmony import */ var _menu_menu_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./menu/menu.service */ "./src/app/modules/website/menu/menu.service.ts");
-/* harmony import */ var _promotions_promotion_form_promotion_form_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./promotions/promotion-form/promotion-form.component */ "./src/app/modules/website/promotions/promotion-form/promotion-form.component.ts");
-/* harmony import */ var _promotions_promotion_detail_promotion_detail_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./promotions/promotion-detail/promotion-detail.component */ "./src/app/modules/website/promotions/promotion-detail/promotion-detail.component.ts");
+/* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/modules/website/menu/menu.component.ts");
+/* harmony import */ var _menu_menu_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./menu/menu.service */ "./src/app/modules/website/menu/menu.service.ts");
+/* harmony import */ var _promotions_promotion_form_promotion_form_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./promotions/promotion-form/promotion-form.component */ "./src/app/modules/website/promotions/promotion-form/promotion-form.component.ts");
+/* harmony import */ var _promotions_promotion_detail_promotion_detail_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./promotions/promotion-detail/promotion-detail.component */ "./src/app/modules/website/promotions/promotion-detail/promotion-detail.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
 
 
 
@@ -5091,17 +4236,10 @@ var websiteRouting = [
                 }
             },
             {
-                path: 'video',
-                component: _video_video_component__WEBPACK_IMPORTED_MODULE_12__["VideoComponent"],
-                resolve: {
-                    data: _video_video_service__WEBPACK_IMPORTED_MODULE_13__["VideoService"]
-                }
-            },
-            {
                 path: 'menu',
-                component: _menu_menu_component__WEBPACK_IMPORTED_MODULE_14__["MenuComponent"],
+                component: _menu_menu_component__WEBPACK_IMPORTED_MODULE_12__["MenuComponent"],
                 resolve: {
-                    data: _menu_menu_service__WEBPACK_IMPORTED_MODULE_15__["MenuService"]
+                    data: _menu_menu_service__WEBPACK_IMPORTED_MODULE_13__["MenuService"]
                 }
             }
         ],
@@ -5116,15 +4254,15 @@ var websiteRouting = [
             },
             {
                 path: 'add',
-                component: _promotions_promotion_form_promotion_form_component__WEBPACK_IMPORTED_MODULE_16__["PromotionFormComponent"]
+                component: _promotions_promotion_form_promotion_form_component__WEBPACK_IMPORTED_MODULE_14__["PromotionFormComponent"]
             },
             {
                 path: 'detail',
-                component: _promotions_promotion_detail_promotion_detail_component__WEBPACK_IMPORTED_MODULE_17__["PromotionDetailComponent"]
+                component: _promotions_promotion_detail_promotion_detail_component__WEBPACK_IMPORTED_MODULE_15__["PromotionDetailComponent"]
             },
             {
                 path: 'edit',
-                component: _promotions_promotion_form_promotion_form_component__WEBPACK_IMPORTED_MODULE_16__["PromotionFormComponent"]
+                component: _promotions_promotion_form_promotion_form_component__WEBPACK_IMPORTED_MODULE_14__["PromotionFormComponent"]
             }
         ],
     },
@@ -5136,7 +4274,7 @@ var WebsiteRoutingModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             imports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild(websiteRouting)],
             exports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]],
-            providers: [_course_course_service__WEBPACK_IMPORTED_MODULE_9__["CourseService"], _category_category_service__WEBPACK_IMPORTED_MODULE_10__["CategoryService"], _news_news_service__WEBPACK_IMPORTED_MODULE_11__["NewsService"], _video_video_service__WEBPACK_IMPORTED_MODULE_13__["VideoService"], _menu_menu_service__WEBPACK_IMPORTED_MODULE_15__["MenuService"]]
+            providers: [_course_course_service__WEBPACK_IMPORTED_MODULE_9__["CourseService"], _category_category_service__WEBPACK_IMPORTED_MODULE_10__["CategoryService"], _news_news_service__WEBPACK_IMPORTED_MODULE_11__["NewsService"], _menu_menu_service__WEBPACK_IMPORTED_MODULE_13__["MenuService"]]
         })
     ], WebsiteRoutingModule);
     return WebsiteRoutingModule;
@@ -5189,6 +4327,7 @@ var WebsiteComponent = /** @class */ (function () {
     function WebsiteComponent(pageId, appService) {
         this.pageId = pageId;
         this.appService = appService;
+        this.settings = [];
     }
     WebsiteComponent.prototype.ngOnInit = function () {
         this.appService.setupPage(this.pageId.WEBSITE, this.pageId.WEBSITE, 'Website', 'Quản lý website');
@@ -5254,14 +4393,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _toverux_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! @toverux/ngx-sweetalert2 */ "./node_modules/@toverux/ngx-sweetalert2/esm5/toverux-ngx-sweetalert2.js");
 /* harmony import */ var _course_class_class_form_class_form_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./course/class/class-form/class-form.component */ "./src/app/modules/website/course/class/class-form/class-form.component.ts");
 /* harmony import */ var _news_news_form_news_form_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./news/news-form/news-form.component */ "./src/app/modules/website/news/news-form/news-form.component.ts");
-/* harmony import */ var _video_video_form_video_form_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./video/video-form/video-form.component */ "./src/app/modules/website/video/video-form/video-form.component.ts");
-/* harmony import */ var _video_video_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./video/video.component */ "./src/app/modules/website/video/video.component.ts");
-/* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/modules/website/menu/menu.component.ts");
-/* harmony import */ var _menu_menu_form_menu_form_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./menu/menu-form/menu-form.component */ "./src/app/modules/website/menu/menu-form/menu-form.component.ts");
-/* harmony import */ var _category_category_picker_category_picker_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./category/category-picker/category-picker.component */ "./src/app/modules/website/category/category-picker/category-picker.component.ts");
-/* harmony import */ var _news_news_picker_news_picker_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./news/news-picker/news-picker.component */ "./src/app/modules/website/news/news-picker/news-picker.component.ts");
-/* harmony import */ var _shareds_components_ghm_multi_select_ghm_mutil_select_module__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ../../shareds/components/ghm-multi-select/ghm-mutil-select.module */ "./src/app/shareds/components/ghm-multi-select/ghm-mutil-select.module.ts");
-/* harmony import */ var _core_core_module__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../../core/core.module */ "./src/app/core/core.module.ts");
+/* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/modules/website/menu/menu.component.ts");
+/* harmony import */ var _menu_menu_form_menu_form_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./menu/menu-form/menu-form.component */ "./src/app/modules/website/menu/menu-form/menu-form.component.ts");
+/* harmony import */ var _category_category_picker_category_picker_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./category/category-picker/category-picker.component */ "./src/app/modules/website/category/category-picker/category-picker.component.ts");
+/* harmony import */ var _news_news_picker_news_picker_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./news/news-picker/news-picker.component */ "./src/app/modules/website/news/news-picker/news-picker.component.ts");
+/* harmony import */ var _shareds_components_ghm_multi_select_ghm_mutil_select_module__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ../../shareds/components/ghm-multi-select/ghm-mutil-select.module */ "./src/app/shareds/components/ghm-multi-select/ghm-mutil-select.module.ts");
+/* harmony import */ var _core_core_module__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ../../core/core.module */ "./src/app/core/core.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5310,26 +4447,24 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
-
 var WebsiteModule = /** @class */ (function () {
     function WebsiteModule() {
     }
     WebsiteModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _core_core_module__WEBPACK_IMPORTED_MODULE_43__["CoreModule"], _website_routing_module__WEBPACK_IMPORTED_MODULE_2__["WebsiteRoutingModule"], _shareds_layouts_layout_module__WEBPACK_IMPORTED_MODULE_11__["LayoutModule"], _shareds_components_nh_modal_nh_modal_module__WEBPACK_IMPORTED_MODULE_14__["NhModalModule"], _shareds_components_nh_select_nh_select_module__WEBPACK_IMPORTED_MODULE_13__["NhSelectModule"], _shareds_components_nh_tree_nh_tree_module__WEBPACK_IMPORTED_MODULE_15__["NHTreeModule"], _shareds_components_nh_upload_nh_upload_module__WEBPACK_IMPORTED_MODULE_16__["NhUploadModule"],
-                _shareds_components_ghm_paging_ghm_paging_module__WEBPACK_IMPORTED_MODULE_17__["GhmPagingModule"], _core_core_module__WEBPACK_IMPORTED_MODULE_43__["CoreModule"],
+            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _core_core_module__WEBPACK_IMPORTED_MODULE_41__["CoreModule"], _website_routing_module__WEBPACK_IMPORTED_MODULE_2__["WebsiteRoutingModule"], _shareds_layouts_layout_module__WEBPACK_IMPORTED_MODULE_11__["LayoutModule"], _shareds_components_nh_modal_nh_modal_module__WEBPACK_IMPORTED_MODULE_14__["NhModalModule"], _shareds_components_nh_select_nh_select_module__WEBPACK_IMPORTED_MODULE_13__["NhSelectModule"], _shareds_components_nh_tree_nh_tree_module__WEBPACK_IMPORTED_MODULE_15__["NHTreeModule"], _shareds_components_nh_upload_nh_upload_module__WEBPACK_IMPORTED_MODULE_16__["NhUploadModule"],
+                _shareds_components_ghm_paging_ghm_paging_module__WEBPACK_IMPORTED_MODULE_17__["GhmPagingModule"], _core_core_module__WEBPACK_IMPORTED_MODULE_41__["CoreModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_18__["MatIconModule"], _angular_material__WEBPACK_IMPORTED_MODULE_18__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_18__["MatCheckboxModule"], _angular_material__WEBPACK_IMPORTED_MODULE_18__["MatMenuModule"], _shareds_components_nh_datetime_picker_nh_date_module__WEBPACK_IMPORTED_MODULE_19__["NhDateModule"], _shareds_pipe_datetime_format_datetime_format_module__WEBPACK_IMPORTED_MODULE_20__["DatetimeFormatModule"], _shareds_pipe_format_number_format_number_module__WEBPACK_IMPORTED_MODULE_21__["FormatNumberModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_22__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_22__["ReactiveFormsModule"], _shareds_components_clipboard_clipboard_module__WEBPACK_IMPORTED_MODULE_23__["ClipboardModule"], _shareds_components_nh_wizard_nh_wizard_module__WEBPACK_IMPORTED_MODULE_25__["NhWizardModule"], _shareds_components_tinymce_tinymce_module__WEBPACK_IMPORTED_MODULE_26__["TinymceModule"], _angular_material__WEBPACK_IMPORTED_MODULE_18__["MatTooltipModule"], _shareds_components_service_picker_service_picker_module__WEBPACK_IMPORTED_MODULE_27__["ServicePickerModule"],
-                _toverux_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_33__["SweetAlert2Module"], _shareds_components_ghm_multi_select_ghm_mutil_select_module__WEBPACK_IMPORTED_MODULE_42__["GhmMutilSelectModule"]],
+                _toverux_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_33__["SweetAlert2Module"], _shareds_components_ghm_multi_select_ghm_mutil_select_module__WEBPACK_IMPORTED_MODULE_40__["GhmMutilSelectModule"]],
             exports: [],
             declarations: [
                 _website_component__WEBPACK_IMPORTED_MODULE_3__["WebsiteComponent"], _category_category_component__WEBPACK_IMPORTED_MODULE_4__["CategoryComponent"], _category_category_form_category_form_component__WEBPACK_IMPORTED_MODULE_5__["CategoryFormComponent"], _promotions_promotion_list_promotion_list_component__WEBPACK_IMPORTED_MODULE_6__["PromotionListComponent"], _promotions_promotion_detail_promotion_detail_component__WEBPACK_IMPORTED_MODULE_7__["PromotionDetailComponent"],
                 _promotions_promotion_form_promotion_form_component__WEBPACK_IMPORTED_MODULE_8__["PromotionFormComponent"],
                 _promotions_promotion_voucher_list_component_promotion_voucher_list_component__WEBPACK_IMPORTED_MODULE_24__["PromotionVoucherListComponent"], _promotions_promotion_voucher_form_promotion_voucher_form_component__WEBPACK_IMPORTED_MODULE_9__["PromotionVoucherFormComponent"], _promotions_promotion_subject_list_promotion_subject_list_component__WEBPACK_IMPORTED_MODULE_10__["PromotionSubjectListComponent"],
                 _news_news_component__WEBPACK_IMPORTED_MODULE_12__["NewsComponent"], _course_course_component__WEBPACK_IMPORTED_MODULE_28__["CourseComponent"], _course_course_form_course_form_component__WEBPACK_IMPORTED_MODULE_29__["CourseFormComponent"], _course_class_class_component__WEBPACK_IMPORTED_MODULE_30__["ClassComponent"], _course_course_register_course_register_component__WEBPACK_IMPORTED_MODULE_31__["CourseRegisterComponent"], _course_course_register_course_register_form_course_register_form_component__WEBPACK_IMPORTED_MODULE_32__["CourseRegisterFormComponent"],
-                _course_class_class_form_class_form_component__WEBPACK_IMPORTED_MODULE_34__["ClassFormComponent"], _news_news_form_news_form_component__WEBPACK_IMPORTED_MODULE_35__["NewsFormComponent"], _video_video_form_video_form_component__WEBPACK_IMPORTED_MODULE_36__["VideoFormComponent"], _video_video_component__WEBPACK_IMPORTED_MODULE_37__["VideoComponent"], _menu_menu_component__WEBPACK_IMPORTED_MODULE_38__["MenuComponent"], _menu_menu_form_menu_form_component__WEBPACK_IMPORTED_MODULE_39__["MenuFormComponent"],
-                _category_category_picker_category_picker_component__WEBPACK_IMPORTED_MODULE_40__["CategoryPickerComponent"], _news_news_picker_news_picker_component__WEBPACK_IMPORTED_MODULE_41__["NewsPickerComponent"]
+                _course_class_class_form_class_form_component__WEBPACK_IMPORTED_MODULE_34__["ClassFormComponent"], _news_news_form_news_form_component__WEBPACK_IMPORTED_MODULE_35__["NewsFormComponent"], _menu_menu_component__WEBPACK_IMPORTED_MODULE_36__["MenuComponent"], _menu_menu_form_menu_form_component__WEBPACK_IMPORTED_MODULE_37__["MenuFormComponent"],
+                _category_category_picker_category_picker_component__WEBPACK_IMPORTED_MODULE_38__["CategoryPickerComponent"], _news_news_picker_news_picker_component__WEBPACK_IMPORTED_MODULE_39__["NewsPickerComponent"]
             ],
             providers: [],
         })
@@ -5596,7 +4731,7 @@ var GhmMultiSelectComponent = /** @class */ (function (_super) {
     };
     GhmMultiSelectComponent.prototype.show = function () {
         this.search(1);
-        this.pickerModal.show();
+        this.pickerModal.open();
     };
     GhmMultiSelectComponent.prototype.search = function (currentPage) {
         var _this = this;
@@ -5786,319 +4921,6 @@ var GhmMutilSelectModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/shareds/components/nh-wizard/nh-step.component.html":
-/*!*********************************************************************!*\
-  !*** ./src/app/shareds/components/nh-wizard/nh-step.component.html ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"isShow\">\r\n    <div class=\"step-content-container\">\r\n        <div class=\"spinner\" *ngIf=\"isLoading\">\r\n            <div class=\"rect1\"></div>\r\n            <div class=\"rect2\"></div>\r\n            <div class=\"rect3\"></div>\r\n            <div class=\"rect4\"></div>\r\n            <div class=\"rect5\"></div>\r\n        </div>\r\n        <ng-content *ngIf=\"!isLoading\"></ng-content>\r\n    </div><!-- END: .content-container -->\r\n    <div class=\"nh-wizard-step-footer\" *ngIf=\"!isFinish\">\r\n        <button type=\"button\" class=\"back btn btn-default\" *ngIf=\"step > 1\" (click)=\"back()\">\r\n            {{backLabel}}\r\n        </button>\r\n        <button type=\"button\" class=\"next btn btn-default\"\r\n                *ngIf=\"!isLast; else lastStepButtonTemplate\"\r\n                [disabled]=\"!isValid || isLoading\"\r\n                (click)=\"next()\">\r\n            <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isLoading\"></i>\r\n            {{nextLabel}}\r\n        </button>\r\n        <ng-template #lastStepButtonTemplate>\r\n            <button type=\"button\" class=\"next btn btn-default finish\"\r\n                    [disabled]=\"!isValid\"\r\n                    (click)=\"finish()\">\r\n                {{finishLabel}}\r\n            </button>\r\n        </ng-template>\r\n    </div>\r\n</div>\r\n"
-
-/***/ }),
-
-/***/ "./src/app/shareds/components/nh-wizard/nh-step.component.ts":
-/*!*******************************************************************!*\
-  !*** ./src/app/shareds/components/nh-wizard/nh-step.component.ts ***!
-  \*******************************************************************/
-/*! exports provided: NhStepComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NhStepComponent", function() { return NhStepComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var NhStepComponent = /** @class */ (function () {
-    function NhStepComponent() {
-        this.isValid = true;
-        this.isLoading = false;
-        this.icon = '';
-        this.backLabel = 'Quay lại';
-        this.nextLabel = 'Tiếp theo';
-        this.finishLabel = 'Hoàn thành';
-        this.onNextClick = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.onBackClick = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.onFinishClick = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.isShow = false;
-        this.isFinish = false;
-        this.isLast = false;
-    }
-    NhStepComponent.prototype.ngOnInit = function () {
-    };
-    NhStepComponent.prototype.next = function () {
-        this.onNextClick.emit(this.step);
-    };
-    NhStepComponent.prototype.back = function () {
-        this.onBackClick.emit(this.step);
-    };
-    NhStepComponent.prototype.finish = function () {
-        this.onFinishClick.emit(this.step);
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Number)
-    ], NhStepComponent.prototype, "step", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], NhStepComponent.prototype, "title", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], NhStepComponent.prototype, "description", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NhStepComponent.prototype, "isValid", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NhStepComponent.prototype, "isLoading", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NhStepComponent.prototype, "icon", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NhStepComponent.prototype, "backLabel", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NhStepComponent.prototype, "nextLabel", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NhStepComponent.prototype, "finishLabel", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], NhStepComponent.prototype, "onNextClick", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], NhStepComponent.prototype, "onBackClick", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], NhStepComponent.prototype, "onFinishClick", void 0);
-    NhStepComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'nh-step',
-            template: __webpack_require__(/*! ./nh-step.component.html */ "./src/app/shareds/components/nh-wizard/nh-step.component.html")
-        }),
-        __metadata("design:paramtypes", [])
-    ], NhStepComponent);
-    return NhStepComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/shareds/components/nh-wizard/nh-wizard.component.html":
-/*!***********************************************************************!*\
-  !*** ./src/app/shareds/components/nh-wizard/nh-wizard.component.html ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"nh-wizard-container\">\r\n    <div class=\"nh-wizard-header nh-wizard-header-{{steps.length}}\">\r\n        <ul>\r\n            <li *ngFor=\"let step of steps\" [class.active]=\"step.id <= currentStep\">\r\n                <div class=\"step-container\">\r\n                    <div class=\"step\">\r\n                        <div class=\"step-inner\">\r\n                            <i [ngClass]=\"step.icon\">{{step.id}}</i>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"title\">{{step.title}}</div>\r\n                <div class=\"description\">{{step.description}}</div>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n    <ng-content></ng-content>\r\n</div><!-- END: .nh-wizard-container -->\r\n"
-
-/***/ }),
-
-/***/ "./src/app/shareds/components/nh-wizard/nh-wizard.component.scss":
-/*!***********************************************************************!*\
-  !*** ./src/app/shareds/components/nh-wizard/nh-wizard.component.scss ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "nh-wizard .nh-wizard-container {\n  padding: 50px 20px 20px;\n  border: 1px solid #ddd;\n  border-radius: 10px;\n  box-shadow: 5px 5px 5px #ddd;\n  background: white; }\n  nh-wizard .nh-wizard-container .nh-wizard-header {\n    text-align: center;\n    border-bottom: 1px solid #ddd;\n    padding-bottom: 20px; }\n  nh-wizard .nh-wizard-container .nh-wizard-header.nh-wizard-header-1 ul li {\n      width: 100%; }\n  nh-wizard .nh-wizard-container .nh-wizard-header.nh-wizard-header-2 ul li {\n      width: 50%; }\n  nh-wizard .nh-wizard-container .nh-wizard-header.nh-wizard-header-3 ul li {\n      width: 33.33333333%; }\n  nh-wizard .nh-wizard-container .nh-wizard-header.nh-wizard-header-4 ul li {\n      width: 25%; }\n  nh-wizard .nh-wizard-container .nh-wizard-header.nh-wizard-header-5 ul li {\n      width: 20%; }\n  nh-wizard .nh-wizard-container .nh-wizard-header.nh-wizard-header-6 ul li {\n      width: 16.66666667%; }\n  nh-wizard .nh-wizard-container .nh-wizard-header.nh-wizard-header-7 ul li {\n      width: 14.28571429%; }\n  nh-wizard .nh-wizard-container .nh-wizard-header.nh-wizard-header-8 ul li {\n      width: 12.5%; }\n  nh-wizard .nh-wizard-container .nh-wizard-header.nh-wizard-header-9 ul li {\n      width: 11.11111111%; }\n  nh-wizard .nh-wizard-container .nh-wizard-header.nh-wizard-header-10 ul li {\n      width: 10%; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul {\n      padding-left: 0;\n      text-align: center; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul li {\n        list-style: none;\n        display: inline-block;\n        position: relative; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul li:last-child::before {\n          border: none; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul li:first-child::after {\n          border: none; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul li::before, nh-wizard .nh-wizard-container .nh-wizard-header ul li::after {\n          content: '';\n          position: absolute;\n          top: 25%;\n          z-index: 1; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul li::before {\n          left: -4em;\n          width: 100%;\n          border: 3px solid #ddd;\n          left: 50%; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul li::after {\n          width: 0;\n          left: -50%;\n          border: 3px solid #27ae60; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul li.active::after {\n          width: 100%; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul li.active div.step-container div.step {\n          background-position: -100% 0; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul li div.step-container {\n          padding-bottom: 60px; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul li div.step-container div.step {\n            width: 60px;\n            height: 60px;\n            border-radius: 50% !important;\n            color: white;\n            background-size: 200% 100%;\n            background-image: linear-gradient(to right, #ddd 50%, #27ae60 50%);\n            padding: 5px;\n            margin: 0 auto;\n            position: absolute;\n            left: 0;\n            right: 0;\n            z-index: 4; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul li div.step-container div.step .step-inner {\n              border-radius: 100% !important;\n              width: 50px;\n              height: 50px;\n              display: table-cell;\n              vertical-align: middle;\n              position: absolute;\n              z-index: 2;\n              background: white;\n              color: #333;\n              font-size: 20px;\n              padding: 10px 0; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul li div.step-container div.step i {\n              font-style: normal;\n              font-weight: bold; }\n  nh-wizard .nh-wizard-container .nh-wizard-header ul li div.title {\n          text-align: center;\n          margin-top: 10px;\n          font-weight: bold; }\n  nh-wizard .nh-wizard-container nh-step .step-content-container {\n    padding: 20px 0; }\n  nh-wizard .nh-wizard-container nh-step .nh-wizard-step-footer {\n    clear: both;\n    overflow: hidden;\n    padding: 20px 0 0;\n    border-top: 1px solid #ddd; }\n  nh-wizard .nh-wizard-container nh-step .nh-wizard-step-footer button {\n      border: 3px solid #999;\n      background: white;\n      border-radius: 20px;\n      padding: 7px 30px; }\n  nh-wizard .nh-wizard-container nh-step .nh-wizard-step-footer button.back {\n        float: left; }\n  nh-wizard .nh-wizard-container nh-step .nh-wizard-step-footer button.next {\n        float: right;\n        border: 1px solid #3498db;\n        background: #3498db;\n        color: white; }\n  nh-wizard .nh-wizard-container nh-step .nh-wizard-step-footer button.finish {\n        background-color: #27ae60;\n        color: white;\n        border: 1px solid #27ae60; }\n"
-
-/***/ }),
-
-/***/ "./src/app/shareds/components/nh-wizard/nh-wizard.component.ts":
-/*!*********************************************************************!*\
-  !*** ./src/app/shareds/components/nh-wizard/nh-wizard.component.ts ***!
-  \*********************************************************************/
-/*! exports provided: NhWizardComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NhWizardComponent", function() { return NhWizardComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _nh_step_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nh-step.component */ "./src/app/shareds/components/nh-wizard/nh-step.component.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var NhWizardComponent = /** @class */ (function () {
-    function NhWizardComponent() {
-        this.currentStep = 1;
-        this.isFinish = false;
-        this._allowNext = false;
-        this.subscribers = {};
-        this.isLast = false;
-        this.steps = []; // List all step header
-    }
-    Object.defineProperty(NhWizardComponent.prototype, "allowNext", {
-        get: function () {
-            return this._allowNext;
-        },
-        set: function (value) {
-            this._allowNext = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    NhWizardComponent.prototype.ngOnInit = function () {
-    };
-    NhWizardComponent.prototype.ngAfterContentInit = function () {
-        var _this = this;
-        this.steps = [];
-        this.nhStepComponents.forEach(function (stepComponent, index) {
-            // Render list step header
-            _this.steps.push({
-                id: stepComponent.step, title: stepComponent.title,
-                description: stepComponent.description,
-                icon: stepComponent.icon
-            });
-            _this.updateShowStatus();
-            _this.subscribers.onNextClick = stepComponent.onNextClick.subscribe(function () {
-                if (_this.allowNext) {
-                    _this.next();
-                }
-            });
-            _this.subscribers.onBackClick = stepComponent.onBackClick.subscribe(function () {
-                _this.back();
-            });
-            _this.subscribers.onFinishClick = stepComponent.onFinishClick.subscribe(function () {
-            });
-            if (index === _this.nhStepComponents.length - 1) {
-                stepComponent.isLast = true;
-            }
-        });
-    };
-    NhWizardComponent.prototype.ngOnDestroy = function () {
-        this.subscribers.onNextClick.unsubscribe();
-        this.subscribers.onBackClick.unsubscribe();
-        this.subscribers.onFinishClick.unsubscribe();
-    };
-    NhWizardComponent.prototype.next = function () {
-        this.currentStep = this.currentStep + 1;
-        this.checkLastStep();
-        this.updateShowStatus();
-    };
-    NhWizardComponent.prototype.back = function () {
-        if (this.currentStep === 1) {
-            return;
-        }
-        this.currentStep = this.currentStep - 1;
-        this.checkLastStep();
-        this.updateShowStatus();
-    };
-    NhWizardComponent.prototype.checkLastStep = function () {
-        this.isLast = this.nhStepComponents.length === this.currentStep;
-    };
-    NhWizardComponent.prototype.updateShowStatus = function () {
-        var _this = this;
-        this.nhStepComponents.forEach(function (stepComponent) {
-            stepComponent.isShow = stepComponent.step === _this.currentStep;
-        });
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"])(_nh_step_component__WEBPACK_IMPORTED_MODULE_1__["NhStepComponent"]),
-        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["QueryList"])
-    ], NhWizardComponent.prototype, "nhStepComponents", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NhWizardComponent.prototype, "currentStep", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NhWizardComponent.prototype, "isFinish", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object),
-        __metadata("design:paramtypes", [Object])
-    ], NhWizardComponent.prototype, "allowNext", null);
-    NhWizardComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'nh-wizard',
-            template: __webpack_require__(/*! ./nh-wizard.component.html */ "./src/app/shareds/components/nh-wizard/nh-wizard.component.html"),
-            styles: [__webpack_require__(/*! ./nh-wizard.component.scss */ "./src/app/shareds/components/nh-wizard/nh-wizard.component.scss")],
-            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None
-        }),
-        __metadata("design:paramtypes", [])
-    ], NhWizardComponent);
-    return NhWizardComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/shareds/components/nh-wizard/nh-wizard.module.ts":
-/*!******************************************************************!*\
-  !*** ./src/app/shareds/components/nh-wizard/nh-wizard.module.ts ***!
-  \******************************************************************/
-/*! exports provided: NhWizardModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NhWizardModule", function() { return NhWizardModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _nh_wizard_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nh-wizard.component */ "./src/app/shareds/components/nh-wizard/nh-wizard.component.ts");
-/* harmony import */ var _nh_step_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nh-step.component */ "./src/app/shareds/components/nh-wizard/nh-step.component.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-var NhWizardModule = /** @class */ (function () {
-    function NhWizardModule() {
-    }
-    NhWizardModule = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]],
-            exports: [_nh_wizard_component__WEBPACK_IMPORTED_MODULE_2__["NhWizardComponent"], _nh_step_component__WEBPACK_IMPORTED_MODULE_3__["NhStepComponent"]],
-            declarations: [_nh_wizard_component__WEBPACK_IMPORTED_MODULE_2__["NhWizardComponent"], _nh_step_component__WEBPACK_IMPORTED_MODULE_3__["NhStepComponent"]]
-        })
-    ], NhWizardModule);
-    return NhWizardModule;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/shareds/components/service-picker/service-picker.component.html":
 /*!*********************************************************************************!*\
   !*** ./src/app/shareds/components/service-picker/service-picker.component.html ***!
@@ -6185,14 +5007,15 @@ var ServicePickerComponent = /** @class */ (function (_super) {
         });
     };
     ServicePickerComponent.prototype.show = function () {
-        this.servicePickerModal.show();
+        this.servicePickerModal.open();
     };
     ServicePickerComponent.prototype.onSelectServiceType = function (node) {
         var _this = this;
         if (node.parentId) {
-            // this.spinnerService.show();
+            // this.spinnerService.open();
             this.selectedServiceName = node.text;
             this.subscribers.searchService = this.serviceService.searchService(this.keyword, node.id, this.currentPage)
+                // .finally(() => this.spinnerService.hide())
                 .subscribe(function (result) {
                 _this.totalRows = result.totalRows;
                 lodash__WEBPACK_IMPORTED_MODULE_1__["each"](result.items, function (item) {
@@ -6346,38 +5169,82 @@ var ServiceService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/view-model/tree-data.ts":
-/*!*****************************************!*\
-  !*** ./src/app/view-model/tree-data.ts ***!
-  \*****************************************/
-/*! exports provided: TreeData */
+/***/ "./src/app/shareds/pipe/format-number/format-number.module.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/shareds/pipe/format-number/format-number.module.ts ***!
+  \********************************************************************/
+/*! exports provided: FormatNumberModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TreeData", function() { return TreeData; });
-var TreeData = /** @class */ (function () {
-    function TreeData(id, parentId, text, isSelected, open, idPath, icon, data, state, childCount, isLoading, children) {
-        this.id = id;
-        this.parentId = parentId;
-        this.text = text;
-        this.isSelected = isSelected;
-        this.open = open;
-        this.idPath = idPath;
-        this.icon = icon;
-        this.data = data;
-        this.state = state
-            ? state
-            : {
-                opened: false,
-                selected: false,
-                disabled: false
-            };
-        this.childCount = childCount;
-        this.isLoading = isLoading;
-        this.children = children;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormatNumberModule", function() { return FormatNumberModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _format_number_pipe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./format-number.pipe */ "./src/app/shareds/pipe/format-number/format-number.pipe.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var FormatNumberModule = /** @class */ (function () {
+    function FormatNumberModule() {
     }
-    return TreeData;
+    FormatNumberModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            imports: [],
+            exports: [_format_number_pipe__WEBPACK_IMPORTED_MODULE_1__["FormatNumberPipe"]],
+            declarations: [_format_number_pipe__WEBPACK_IMPORTED_MODULE_1__["FormatNumberPipe"]],
+            providers: [],
+        })
+    ], FormatNumberModule);
+    return FormatNumberModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shareds/pipe/format-number/format-number.pipe.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/shareds/pipe/format-number/format-number.pipe.ts ***!
+  \******************************************************************/
+/*! exports provided: FormatNumberPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormatNumberPipe", function() { return FormatNumberPipe; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var FormatNumberPipe = /** @class */ (function () {
+    function FormatNumberPipe() {
+    }
+    FormatNumberPipe.prototype.transform = function (value, exponent) {
+        return this.formatMoney(value, exponent, ',', '.');
+    };
+    FormatNumberPipe.prototype.formatMoney = function (value, c, d, t) {
+        var n = value;
+        c = isNaN(c = Math.abs(c)) ? 0 : c;
+        d = d === undefined ? '.' : d;
+        t = t === undefined ? ',' : t;
+        var s = n < 0 ? '-' : '';
+        var i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c)));
+        this.j = (this.j = i.length) > 3 ? this.j % 3 : 0;
+        return s + (this.j ? i.substr(0, this.j) + t : '') + i.substr(this.j).replace(/(\d{3})(?=\d)/g, '$1' + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : '');
+    };
+    FormatNumberPipe = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({ name: 'formatNumber' })
+    ], FormatNumberPipe);
+    return FormatNumberPipe;
 }());
 
 

@@ -689,7 +689,7 @@ define(
       'entity': /&#?[\da-z]{1,8};/i
     };
 
-    // Plugin to make entity title show the real entity, idea by Roman Komarov
+    // Plugin to make entity title open the real entity, idea by Roman Komarov
     Prism.hooks.add('wrap', function (env) {
 
       if (env.type === 'entity') {

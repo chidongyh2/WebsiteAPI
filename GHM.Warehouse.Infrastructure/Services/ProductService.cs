@@ -16,6 +16,8 @@ using GHM.Infrastructure.IServices;
 using GHM.Infrastructure.Models;
 using GHM.Infrastructure.Resources;
 using GHM.Infrastructure.ViewModels;
+using GHM.Warehouse.Domain.Constants;
+
 namespace GHM.Warehouse.Infrastructure.Services
 {
     public class ProductService : IProductService
@@ -98,6 +100,10 @@ namespace GHM.Warehouse.Infrastructure.Services
                 Thumbnail = productMeta.Thumbnail,
                 TenantId = tenantId,
                 CreatorId = creatorId,
+                Status = productMeta.Status,
+                Source = productMeta.Source,
+                IsHot = productMeta.IsHot,
+                IsHomePage = productMeta.IsHomePage,
                 CreatorFullName = creatorFullName
             };
 
@@ -204,6 +210,10 @@ namespace GHM.Warehouse.Infrastructure.Services
                         LanguageId = productTranslation.LanguageId.Trim(),
                         Name = productTranslation.Name.Trim(),
                         Description = productTranslation.Description?.Trim(),
+                        MetaDescription = productTranslation.MetaDescription?.Trim(),
+                        MetaKeyword = productTranslation.MetaKeyword.Trim(),
+                        SeoLink = productTranslation.SeoLink.Trim(),
+                        Content = productTranslation.Content,
                         UnsignName = productTranslation.Name?.StripVietnameseChars().ToUpper()
                     };
                     productTranslations.Add(productTranslationInsert);
@@ -979,12 +989,31 @@ namespace GHM.Warehouse.Infrastructure.Services
                 IsActive = info.IsActive,
                 IsManagementByLot = info.IsManagementByLot,
                 Thumbnail = info.Thumbnail,
+                LikeCount = info.LikeCount,
+                CommentCount = info.CommentCount,
+                ViewCount = info.ViewCount,
+                ApprovedTime = info.ApprovedTime,
+                ApproverAvartar = info.ApproverAvartar,
+                ApproverComment = info.ApproverComment,
+                ApproverFullName = info.ApproverFullName,
+                ApproverUserId = info.ApproverUserId,
+                IsHomePage = info.IsHomePage,
+                IsHot = info.IsHot,
+                LastUpdateHomePage =info.LastUpdateHomePage,
+                LastUpdateHot = info.LastUpdateHomePage,
+                SentTime = info.SentTime,
+                Source = info.Source,
+                Status = info.Status,
                 Translations = productTranslations?.Select(x => new ProductTranslationViewModel
                 {
                     LanguageId = x.LanguageId,
                     Name = x.Name,
                     Description = x.Description,
-                    UnsignName = x.UnsignName
+                    UnsignName = x.UnsignName,
+                    Content = x.Content,
+                    MetaDescription = x.MetaDescription,
+                    MetaKeyword = x.MetaKeyword,
+                    SeoLink = x.SeoLink
                 }).ToList(),
                 Images = productImages?.Select(x => new ProductImageViewModel
                 {
@@ -1355,6 +1384,24 @@ namespace GHM.Warehouse.Infrastructure.Services
             //var result = await _productAttributeRepository.Inserts(listProductAttributes);
             return new ActionResultResponse<string>(1,
                 _sharedResourceService.GetString(SuccessMessage.AddSuccessful, _resourceService.GetString("product value")));
+        }
+
+        public async Task<ActionResultResponse> UpdateAprrove(string tenantId, string id, ApproverStatus status)
+        {
+            var productInfo = await _productRepository.GetInfo(tenantId, id, false);
+            if (productInfo == null)
+                return new ActionResultResponse(-1, _resourceService.GetString("Product does not exist"));
+
+            productInfo.Status = status;
+
+            var result = await _productRepository.Update(productInfo);
+            return new ActionResultResponse(result, result < 0 ? ErrorMessage.SomethingWentWrong : _resourceService.GetString("Update prove successfully"));
+        }
+
+        public async Task<List<ProductTranslationViewModel>> GetProductTranslationById(string tenantId, string id)
+        {
+            var result = await _productTranslationRepository.GetAllById(tenantId, id);
+            return result;
         }
 
         //private async Task<ActionResultResponse<string>> SaveProductConversionUnit(string tenantId, string productId, string unitId,

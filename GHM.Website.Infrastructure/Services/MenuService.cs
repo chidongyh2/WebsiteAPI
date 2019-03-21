@@ -15,6 +15,8 @@ using GHM.Infrastructure.Models;
 using GHM.Infrastructure.Resources;
 using GHM.Infrastructure.ViewModels;
 using GHM.Website.Domain.Constants;
+using GHM.Infrastructure.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace GHM.Website.Infrastructure.Services
 {
@@ -27,13 +29,15 @@ namespace GHM.Website.Infrastructure.Services
         private readonly IResourceService<SharedResource> _sharedResourceService;
         private readonly INewsTranslationRepository _newsTranslationRepository;
         private readonly IResourceService<GhmWebsiteResource> _websiteResourceService;
+        private readonly IConfiguration _configuration;
         public MenuService(IMenuRepository menuRepository,
             IMenuItemRepository menuItemRepository,
             IMenuItemTranslationRepository menuItemTranslationRepository,
             ICategoryTranslationRepository categoryTranslationRepositoryRepository,
             INewsTranslationRepository newsTranslationRepository,
             IResourceService<SharedResource> sharedResourceService,
-            IResourceService<GhmWebsiteResource> websiteResourceService
+            IResourceService<GhmWebsiteResource> websiteResourceService,
+            IConfiguration configuration
         )
         {
             _menuRepository = menuRepository;
@@ -43,6 +47,7 @@ namespace GHM.Website.Infrastructure.Services
             _sharedResourceService = sharedResourceService;
             _websiteResourceService = websiteResourceService;
             _newsTranslationRepository = newsTranslationRepository;
+            _configuration = configuration;
         }
 
         #region Menus
@@ -312,6 +317,11 @@ namespace GHM.Website.Infrastructure.Services
                         await _menuItemRepository.UpdateChildCount(menuItem.ParentId.Value, childCount);
                     }
                     #endregion
+                    var apiUrls = _configuration.GetApiUrl();
+                    if (apiUrls == null)
+                        return new ActionResultResponse<int>(-1, _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
+
+                    var httpClient = new HttpClientService();
 
                     #region insert MenuItem Translation ItemSelect.
                     switch (menuItemMeta.SubjectType)
@@ -357,7 +367,46 @@ namespace GHM.Website.Infrastructure.Services
                                     return resultInsertTranslation;
                             }
                             break;
+                        case SubjectType.Product:
+                            var listProductTranslation = await httpClient.GetAsync<List<ProductTranslationViewModel>>($"{apiUrls.WarehouseApiUrl}/products/translation/{menuItem.Id}");
+                            var listMenuItemTranslationProduct = new List<MenuItemTranslationMeta>();
+                            if (listProductTranslation != null && listProductTranslation.Any())
+                            {
+                                foreach (var productTranslationItem in listProductTranslation)
+                                {
+                                    listMenuItemTranslationProduct.Add(new MenuItemTranslationMeta
+                                    {
+                                        LanguageId = productTranslationItem.LanguageId,
+                                        Name = productTranslationItem.Name,
+                                        NamePath = $"{productTranslationItem.SeoLink}.html",
+                                    });
+                                }
 
+                                var resultInsertTranslation = await InsertMenuItemTranslation(menuItem, listMenuItemTranslationProduct);
+                                if (resultInsertTranslation.Code <= 0)
+                                    return resultInsertTranslation;
+                            }
+                            break;
+                        case SubjectType.ProductCategory:
+                            var listProductCategoryTranslation = await httpClient.GetAsync<List<ProductTranslationViewModel>>($"{apiUrls.WarehouseApiUrl}/product-categories/{menuItem.Id}, true, 1, 10000"); ;
+                            var listMenuItemProductCategoryTranslationInsert = new List<MenuItemTranslationMeta>();
+                            if (listProductCategoryTranslation != null && listProductCategoryTranslation.Any())
+                            {
+                                foreach (var menuItemTranslation in listProductCategoryTranslation)
+                                {
+                                    listMenuItemProductCategoryTranslationInsert.Add(new MenuItemTranslationMeta
+                                    {
+                                        LanguageId = menuItemTranslation.LanguageId,
+                                        Name = menuItemTranslation.Name,
+                                        NamePath = menuItemTranslation.SeoLink,
+                                    });
+                                }
+
+                                var resultInsertTranslation = await InsertMenuItemTranslation(menuItem, listMenuItemProductCategoryTranslationInsert);
+                                if (resultInsertTranslation.Code <= 0)
+                                    return resultInsertTranslation;
+                            }
+                            break;
                     }
                     #endregion
                 }

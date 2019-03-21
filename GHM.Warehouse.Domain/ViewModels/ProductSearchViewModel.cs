@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using GHM.Warehouse.Domain.Constants;
+using System;
+using System.Collections.Generic;
 
 namespace GHM.Warehouse.Domain.ViewModels
 {
@@ -9,8 +11,13 @@ namespace GHM.Warehouse.Domain.ViewModels
         public bool? IsManagementByLot { get; set; }
         public string Thumbnail { get; set; }
         public string Name { get; set; }
+        public string Source { get; set; }
+        public bool? IsHot { get; set; }
+        public bool? isHomePage { get; set; }
+        public ApproverStatus Status { get; set; }
         public string DefaultUnit { get; set; }
         public int CategoryId { get; set; }
         public List<string> CategoryNames { get; set; }
+        
     }
 }

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.Models;
 using GHM.Infrastructure.ViewModels;
+using GHM.Warehouse.Domain.Constants;
 using GHM.Warehouse.Domain.ModelMetas;
 using GHM.Warehouse.Domain.ViewModels;
 
@@ -54,5 +55,9 @@ namespace GHM.Warehouse.Domain.IServices
         Task<SearchResult<UnitSuggestionsViewModel>> GetUnitByProductId(string tenantId, string languageId, string productId, int page, int pageSize);
 
         Task<SearchResult<ProductUnitViewModel>> GetProductUnitByProductId(string tenantId, string productId);
+
+        Task<ActionResultResponse> UpdateAprrove(string tenantId, string id, ApproverStatus status);
+
+        Task<List<ProductTranslationViewModel>> GetProductTranslationById(string tenantId, string id);
     }
 }

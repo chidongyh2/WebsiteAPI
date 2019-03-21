@@ -1,5 +1,285 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
+/***/ "./node_modules/moment/locale sync recursive ^\\.\\/.*$":
+/*!**************************************************!*\
+  !*** ./node_modules/moment/locale sync ^\.\/.*$ ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./af": "./node_modules/moment/locale/af.js",
+	"./af.js": "./node_modules/moment/locale/af.js",
+	"./ar": "./node_modules/moment/locale/ar.js",
+	"./ar-dz": "./node_modules/moment/locale/ar-dz.js",
+	"./ar-dz.js": "./node_modules/moment/locale/ar-dz.js",
+	"./ar-kw": "./node_modules/moment/locale/ar-kw.js",
+	"./ar-kw.js": "./node_modules/moment/locale/ar-kw.js",
+	"./ar-ly": "./node_modules/moment/locale/ar-ly.js",
+	"./ar-ly.js": "./node_modules/moment/locale/ar-ly.js",
+	"./ar-ma": "./node_modules/moment/locale/ar-ma.js",
+	"./ar-ma.js": "./node_modules/moment/locale/ar-ma.js",
+	"./ar-sa": "./node_modules/moment/locale/ar-sa.js",
+	"./ar-sa.js": "./node_modules/moment/locale/ar-sa.js",
+	"./ar-tn": "./node_modules/moment/locale/ar-tn.js",
+	"./ar-tn.js": "./node_modules/moment/locale/ar-tn.js",
+	"./ar.js": "./node_modules/moment/locale/ar.js",
+	"./az": "./node_modules/moment/locale/az.js",
+	"./az.js": "./node_modules/moment/locale/az.js",
+	"./be": "./node_modules/moment/locale/be.js",
+	"./be.js": "./node_modules/moment/locale/be.js",
+	"./bg": "./node_modules/moment/locale/bg.js",
+	"./bg.js": "./node_modules/moment/locale/bg.js",
+	"./bm": "./node_modules/moment/locale/bm.js",
+	"./bm.js": "./node_modules/moment/locale/bm.js",
+	"./bn": "./node_modules/moment/locale/bn.js",
+	"./bn.js": "./node_modules/moment/locale/bn.js",
+	"./bo": "./node_modules/moment/locale/bo.js",
+	"./bo.js": "./node_modules/moment/locale/bo.js",
+	"./br": "./node_modules/moment/locale/br.js",
+	"./br.js": "./node_modules/moment/locale/br.js",
+	"./bs": "./node_modules/moment/locale/bs.js",
+	"./bs.js": "./node_modules/moment/locale/bs.js",
+	"./ca": "./node_modules/moment/locale/ca.js",
+	"./ca.js": "./node_modules/moment/locale/ca.js",
+	"./cs": "./node_modules/moment/locale/cs.js",
+	"./cs.js": "./node_modules/moment/locale/cs.js",
+	"./cv": "./node_modules/moment/locale/cv.js",
+	"./cv.js": "./node_modules/moment/locale/cv.js",
+	"./cy": "./node_modules/moment/locale/cy.js",
+	"./cy.js": "./node_modules/moment/locale/cy.js",
+	"./da": "./node_modules/moment/locale/da.js",
+	"./da.js": "./node_modules/moment/locale/da.js",
+	"./de": "./node_modules/moment/locale/de.js",
+	"./de-at": "./node_modules/moment/locale/de-at.js",
+	"./de-at.js": "./node_modules/moment/locale/de-at.js",
+	"./de-ch": "./node_modules/moment/locale/de-ch.js",
+	"./de-ch.js": "./node_modules/moment/locale/de-ch.js",
+	"./de.js": "./node_modules/moment/locale/de.js",
+	"./dv": "./node_modules/moment/locale/dv.js",
+	"./dv.js": "./node_modules/moment/locale/dv.js",
+	"./el": "./node_modules/moment/locale/el.js",
+	"./el.js": "./node_modules/moment/locale/el.js",
+	"./en-au": "./node_modules/moment/locale/en-au.js",
+	"./en-au.js": "./node_modules/moment/locale/en-au.js",
+	"./en-ca": "./node_modules/moment/locale/en-ca.js",
+	"./en-ca.js": "./node_modules/moment/locale/en-ca.js",
+	"./en-gb": "./node_modules/moment/locale/en-gb.js",
+	"./en-gb.js": "./node_modules/moment/locale/en-gb.js",
+	"./en-ie": "./node_modules/moment/locale/en-ie.js",
+	"./en-ie.js": "./node_modules/moment/locale/en-ie.js",
+	"./en-il": "./node_modules/moment/locale/en-il.js",
+	"./en-il.js": "./node_modules/moment/locale/en-il.js",
+	"./en-nz": "./node_modules/moment/locale/en-nz.js",
+	"./en-nz.js": "./node_modules/moment/locale/en-nz.js",
+	"./eo": "./node_modules/moment/locale/eo.js",
+	"./eo.js": "./node_modules/moment/locale/eo.js",
+	"./es": "./node_modules/moment/locale/es.js",
+	"./es-do": "./node_modules/moment/locale/es-do.js",
+	"./es-do.js": "./node_modules/moment/locale/es-do.js",
+	"./es-us": "./node_modules/moment/locale/es-us.js",
+	"./es-us.js": "./node_modules/moment/locale/es-us.js",
+	"./es.js": "./node_modules/moment/locale/es.js",
+	"./et": "./node_modules/moment/locale/et.js",
+	"./et.js": "./node_modules/moment/locale/et.js",
+	"./eu": "./node_modules/moment/locale/eu.js",
+	"./eu.js": "./node_modules/moment/locale/eu.js",
+	"./fa": "./node_modules/moment/locale/fa.js",
+	"./fa.js": "./node_modules/moment/locale/fa.js",
+	"./fi": "./node_modules/moment/locale/fi.js",
+	"./fi.js": "./node_modules/moment/locale/fi.js",
+	"./fo": "./node_modules/moment/locale/fo.js",
+	"./fo.js": "./node_modules/moment/locale/fo.js",
+	"./fr": "./node_modules/moment/locale/fr.js",
+	"./fr-ca": "./node_modules/moment/locale/fr-ca.js",
+	"./fr-ca.js": "./node_modules/moment/locale/fr-ca.js",
+	"./fr-ch": "./node_modules/moment/locale/fr-ch.js",
+	"./fr-ch.js": "./node_modules/moment/locale/fr-ch.js",
+	"./fr.js": "./node_modules/moment/locale/fr.js",
+	"./fy": "./node_modules/moment/locale/fy.js",
+	"./fy.js": "./node_modules/moment/locale/fy.js",
+	"./gd": "./node_modules/moment/locale/gd.js",
+	"./gd.js": "./node_modules/moment/locale/gd.js",
+	"./gl": "./node_modules/moment/locale/gl.js",
+	"./gl.js": "./node_modules/moment/locale/gl.js",
+	"./gom-latn": "./node_modules/moment/locale/gom-latn.js",
+	"./gom-latn.js": "./node_modules/moment/locale/gom-latn.js",
+	"./gu": "./node_modules/moment/locale/gu.js",
+	"./gu.js": "./node_modules/moment/locale/gu.js",
+	"./he": "./node_modules/moment/locale/he.js",
+	"./he.js": "./node_modules/moment/locale/he.js",
+	"./hi": "./node_modules/moment/locale/hi.js",
+	"./hi.js": "./node_modules/moment/locale/hi.js",
+	"./hr": "./node_modules/moment/locale/hr.js",
+	"./hr.js": "./node_modules/moment/locale/hr.js",
+	"./hu": "./node_modules/moment/locale/hu.js",
+	"./hu.js": "./node_modules/moment/locale/hu.js",
+	"./hy-am": "./node_modules/moment/locale/hy-am.js",
+	"./hy-am.js": "./node_modules/moment/locale/hy-am.js",
+	"./id": "./node_modules/moment/locale/id.js",
+	"./id.js": "./node_modules/moment/locale/id.js",
+	"./is": "./node_modules/moment/locale/is.js",
+	"./is.js": "./node_modules/moment/locale/is.js",
+	"./it": "./node_modules/moment/locale/it.js",
+	"./it.js": "./node_modules/moment/locale/it.js",
+	"./ja": "./node_modules/moment/locale/ja.js",
+	"./ja.js": "./node_modules/moment/locale/ja.js",
+	"./jv": "./node_modules/moment/locale/jv.js",
+	"./jv.js": "./node_modules/moment/locale/jv.js",
+	"./ka": "./node_modules/moment/locale/ka.js",
+	"./ka.js": "./node_modules/moment/locale/ka.js",
+	"./kk": "./node_modules/moment/locale/kk.js",
+	"./kk.js": "./node_modules/moment/locale/kk.js",
+	"./km": "./node_modules/moment/locale/km.js",
+	"./km.js": "./node_modules/moment/locale/km.js",
+	"./kn": "./node_modules/moment/locale/kn.js",
+	"./kn.js": "./node_modules/moment/locale/kn.js",
+	"./ko": "./node_modules/moment/locale/ko.js",
+	"./ko.js": "./node_modules/moment/locale/ko.js",
+	"./ky": "./node_modules/moment/locale/ky.js",
+	"./ky.js": "./node_modules/moment/locale/ky.js",
+	"./lb": "./node_modules/moment/locale/lb.js",
+	"./lb.js": "./node_modules/moment/locale/lb.js",
+	"./lo": "./node_modules/moment/locale/lo.js",
+	"./lo.js": "./node_modules/moment/locale/lo.js",
+	"./lt": "./node_modules/moment/locale/lt.js",
+	"./lt.js": "./node_modules/moment/locale/lt.js",
+	"./lv": "./node_modules/moment/locale/lv.js",
+	"./lv.js": "./node_modules/moment/locale/lv.js",
+	"./me": "./node_modules/moment/locale/me.js",
+	"./me.js": "./node_modules/moment/locale/me.js",
+	"./mi": "./node_modules/moment/locale/mi.js",
+	"./mi.js": "./node_modules/moment/locale/mi.js",
+	"./mk": "./node_modules/moment/locale/mk.js",
+	"./mk.js": "./node_modules/moment/locale/mk.js",
+	"./ml": "./node_modules/moment/locale/ml.js",
+	"./ml.js": "./node_modules/moment/locale/ml.js",
+	"./mn": "./node_modules/moment/locale/mn.js",
+	"./mn.js": "./node_modules/moment/locale/mn.js",
+	"./mr": "./node_modules/moment/locale/mr.js",
+	"./mr.js": "./node_modules/moment/locale/mr.js",
+	"./ms": "./node_modules/moment/locale/ms.js",
+	"./ms-my": "./node_modules/moment/locale/ms-my.js",
+	"./ms-my.js": "./node_modules/moment/locale/ms-my.js",
+	"./ms.js": "./node_modules/moment/locale/ms.js",
+	"./mt": "./node_modules/moment/locale/mt.js",
+	"./mt.js": "./node_modules/moment/locale/mt.js",
+	"./my": "./node_modules/moment/locale/my.js",
+	"./my.js": "./node_modules/moment/locale/my.js",
+	"./nb": "./node_modules/moment/locale/nb.js",
+	"./nb.js": "./node_modules/moment/locale/nb.js",
+	"./ne": "./node_modules/moment/locale/ne.js",
+	"./ne.js": "./node_modules/moment/locale/ne.js",
+	"./nl": "./node_modules/moment/locale/nl.js",
+	"./nl-be": "./node_modules/moment/locale/nl-be.js",
+	"./nl-be.js": "./node_modules/moment/locale/nl-be.js",
+	"./nl.js": "./node_modules/moment/locale/nl.js",
+	"./nn": "./node_modules/moment/locale/nn.js",
+	"./nn.js": "./node_modules/moment/locale/nn.js",
+	"./pa-in": "./node_modules/moment/locale/pa-in.js",
+	"./pa-in.js": "./node_modules/moment/locale/pa-in.js",
+	"./pl": "./node_modules/moment/locale/pl.js",
+	"./pl.js": "./node_modules/moment/locale/pl.js",
+	"./pt": "./node_modules/moment/locale/pt.js",
+	"./pt-br": "./node_modules/moment/locale/pt-br.js",
+	"./pt-br.js": "./node_modules/moment/locale/pt-br.js",
+	"./pt.js": "./node_modules/moment/locale/pt.js",
+	"./ro": "./node_modules/moment/locale/ro.js",
+	"./ro.js": "./node_modules/moment/locale/ro.js",
+	"./ru": "./node_modules/moment/locale/ru.js",
+	"./ru.js": "./node_modules/moment/locale/ru.js",
+	"./sd": "./node_modules/moment/locale/sd.js",
+	"./sd.js": "./node_modules/moment/locale/sd.js",
+	"./se": "./node_modules/moment/locale/se.js",
+	"./se.js": "./node_modules/moment/locale/se.js",
+	"./si": "./node_modules/moment/locale/si.js",
+	"./si.js": "./node_modules/moment/locale/si.js",
+	"./sk": "./node_modules/moment/locale/sk.js",
+	"./sk.js": "./node_modules/moment/locale/sk.js",
+	"./sl": "./node_modules/moment/locale/sl.js",
+	"./sl.js": "./node_modules/moment/locale/sl.js",
+	"./sq": "./node_modules/moment/locale/sq.js",
+	"./sq.js": "./node_modules/moment/locale/sq.js",
+	"./sr": "./node_modules/moment/locale/sr.js",
+	"./sr-cyrl": "./node_modules/moment/locale/sr-cyrl.js",
+	"./sr-cyrl.js": "./node_modules/moment/locale/sr-cyrl.js",
+	"./sr.js": "./node_modules/moment/locale/sr.js",
+	"./ss": "./node_modules/moment/locale/ss.js",
+	"./ss.js": "./node_modules/moment/locale/ss.js",
+	"./sv": "./node_modules/moment/locale/sv.js",
+	"./sv.js": "./node_modules/moment/locale/sv.js",
+	"./sw": "./node_modules/moment/locale/sw.js",
+	"./sw.js": "./node_modules/moment/locale/sw.js",
+	"./ta": "./node_modules/moment/locale/ta.js",
+	"./ta.js": "./node_modules/moment/locale/ta.js",
+	"./te": "./node_modules/moment/locale/te.js",
+	"./te.js": "./node_modules/moment/locale/te.js",
+	"./tet": "./node_modules/moment/locale/tet.js",
+	"./tet.js": "./node_modules/moment/locale/tet.js",
+	"./tg": "./node_modules/moment/locale/tg.js",
+	"./tg.js": "./node_modules/moment/locale/tg.js",
+	"./th": "./node_modules/moment/locale/th.js",
+	"./th.js": "./node_modules/moment/locale/th.js",
+	"./tl-ph": "./node_modules/moment/locale/tl-ph.js",
+	"./tl-ph.js": "./node_modules/moment/locale/tl-ph.js",
+	"./tlh": "./node_modules/moment/locale/tlh.js",
+	"./tlh.js": "./node_modules/moment/locale/tlh.js",
+	"./tr": "./node_modules/moment/locale/tr.js",
+	"./tr.js": "./node_modules/moment/locale/tr.js",
+	"./tzl": "./node_modules/moment/locale/tzl.js",
+	"./tzl.js": "./node_modules/moment/locale/tzl.js",
+	"./tzm": "./node_modules/moment/locale/tzm.js",
+	"./tzm-latn": "./node_modules/moment/locale/tzm-latn.js",
+	"./tzm-latn.js": "./node_modules/moment/locale/tzm-latn.js",
+	"./tzm.js": "./node_modules/moment/locale/tzm.js",
+	"./ug-cn": "./node_modules/moment/locale/ug-cn.js",
+	"./ug-cn.js": "./node_modules/moment/locale/ug-cn.js",
+	"./uk": "./node_modules/moment/locale/uk.js",
+	"./uk.js": "./node_modules/moment/locale/uk.js",
+	"./ur": "./node_modules/moment/locale/ur.js",
+	"./ur.js": "./node_modules/moment/locale/ur.js",
+	"./uz": "./node_modules/moment/locale/uz.js",
+	"./uz-latn": "./node_modules/moment/locale/uz-latn.js",
+	"./uz-latn.js": "./node_modules/moment/locale/uz-latn.js",
+	"./uz.js": "./node_modules/moment/locale/uz.js",
+	"./vi": "./node_modules/moment/locale/vi.js",
+	"./vi.js": "./node_modules/moment/locale/vi.js",
+	"./x-pseudo": "./node_modules/moment/locale/x-pseudo.js",
+	"./x-pseudo.js": "./node_modules/moment/locale/x-pseudo.js",
+	"./yo": "./node_modules/moment/locale/yo.js",
+	"./yo.js": "./node_modules/moment/locale/yo.js",
+	"./zh-cn": "./node_modules/moment/locale/zh-cn.js",
+	"./zh-cn.js": "./node_modules/moment/locale/zh-cn.js",
+	"./zh-hk": "./node_modules/moment/locale/zh-hk.js",
+	"./zh-hk.js": "./node_modules/moment/locale/zh-hk.js",
+	"./zh-tw": "./node_modules/moment/locale/zh-tw.js",
+	"./zh-tw.js": "./node_modules/moment/locale/zh-tw.js"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	var module = __webpack_require__(id);
+	return module;
+}
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) { // check for number or string
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return id;
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
+
+/***/ }),
+
 /***/ "./src/$$_lazy_route_resource lazy recursive":
 /*!**********************************************************!*\
   !*** ./src/$$_lazy_route_resource lazy namespace object ***!
@@ -11,65 +291,260 @@ var map = {
 	"./auth/auth.module": [
 		"./src/app/auth/auth.module.ts"
 	],
+	"./modules/banners/banner.module": [
+		"./src/app/modules/banners/banner.module.ts",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~38fe7b1e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~eb940534",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~f64c9f94",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-event~7d4ccdf0",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~e7b58e02",
+		"common",
+		"modules-banners-banner-module"
+	],
+	"./modules/brand/brand.module": [
+		"./src/app/modules/brand/brand.module.ts",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~38fe7b1e",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-event~7d4ccdf0",
+		"modules-brand-brand-module~modules-configs-config-module~modules-event-event-module~modules-hr-organ~944476a5",
+		"modules-brand-brand-module~modules-configs-config-module~modules-folders-folder-module~modules-news-~49f5d887",
+		"common",
+		"modules-brand-brand-module"
+	],
 	"./modules/configs/config.module": [
 		"./src/app/modules/configs/config.module.ts",
-		"modules-configs-config-module~modules-hr-organization-organization-module~modules-hr-user-user-modul~a6c09138",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~38fe7b1e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~eb940534",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~f64c9f94",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-event~7d4ccdf0",
+		"modules-brand-brand-module~modules-configs-config-module~modules-event-event-module~modules-hr-organ~944476a5",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~e7b58e02",
+		"modules-brand-brand-module~modules-configs-config-module~modules-folders-folder-module~modules-news-~49f5d887",
+		"modules-configs-config-module~modules-event-event-module~modules-warehouse-product-product-module~mo~3a1e53c3",
+		"modules-configs-config-module~modules-hr-organization-organization-module~modules-timekeeping-timeke~ac9db1e7",
+		"modules-configs-config-module~modules-event-event-module~modules-gallery-gallery-module~modules-news~3f9c398d",
+		"modules-configs-config-module~modules-folders-folder-module~modules-warehouse-product-product-module~00164b2a",
+		"modules-configs-config-module~modules-warehouse-product-product-module~modules-warehouse-warehouse-m~1a8e386e",
+		"modules-configs-config-module~modules-event-event-module~modules-surveys-survey-module",
+		"modules-configs-config-module~modules-news-news-module~modules-website-website-module",
+		"modules-configs-config-module~modules-news-news-module",
 		"common",
 		"modules-configs-config-module"
+	],
+	"./modules/customer/config/customer-config.module": [
+		"./src/app/modules/customer/config/customer-config.module.ts",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-customer-config-customer-config-module~modules-customer-customer-module~modules-event-event-~b93c4313",
+		"modules-customer-config-customer-config-module~modules-customer-customer-module",
+		"common",
+		"modules-customer-config-customer-config-module"
+	],
+	"./modules/customer/customer.module": [
+		"./src/app/modules/customer/customer.module.ts",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~38fe7b1e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~eb940534",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~f64c9f94",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~e7b58e02",
+		"modules-customer-config-customer-config-module~modules-customer-customer-module~modules-event-event-~b93c4313",
+		"modules-customer-config-customer-config-module~modules-customer-customer-module",
+		"modules-customer-customer-module~modules-hr-user-user-module",
+		"common",
+		"modules-customer-customer-module"
 	],
 	"./modules/error/error.module": [
 		"./src/app/modules/error/error.module.ts",
 		"modules-error-error-module"
 	],
+	"./modules/event/event.module": [
+		"./src/app/modules/event/event.module.ts",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~38fe7b1e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~eb940534",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~f64c9f94",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-event~7d4ccdf0",
+		"modules-brand-brand-module~modules-configs-config-module~modules-event-event-module~modules-hr-organ~944476a5",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~e7b58e02",
+		"modules-configs-config-module~modules-event-event-module~modules-warehouse-product-product-module~mo~3a1e53c3",
+		"modules-customer-config-customer-config-module~modules-customer-customer-module~modules-event-event-~b93c4313",
+		"modules-configs-config-module~modules-event-event-module~modules-gallery-gallery-module~modules-news~3f9c398d",
+		"modules-configs-config-module~modules-event-event-module~modules-surveys-survey-module",
+		"modules-event-event-module~modules-gallery-gallery-module",
+		"common",
+		"modules-event-event-module"
+	],
+	"./modules/folders/folder.module": [
+		"./src/app/modules/folders/folder.module.ts",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~eb940534",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~f64c9f94",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-event~7d4ccdf0",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~e7b58e02",
+		"modules-brand-brand-module~modules-configs-config-module~modules-folders-folder-module~modules-news-~49f5d887",
+		"modules-configs-config-module~modules-folders-folder-module~modules-warehouse-product-product-module~00164b2a",
+		"modules-folders-folder-module~modules-hr-user-user-module~modules-website-website-module",
+		"common",
+		"modules-folders-folder-module"
+	],
+	"./modules/gallery/gallery.module": [
+		"./src/app/modules/gallery/gallery.module.ts",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~38fe7b1e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~eb940534",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~f64c9f94",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-event~7d4ccdf0",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~e7b58e02",
+		"modules-customer-config-customer-config-module~modules-customer-customer-module~modules-event-event-~b93c4313",
+		"modules-configs-config-module~modules-event-event-module~modules-gallery-gallery-module~modules-news~3f9c398d",
+		"modules-event-event-module~modules-gallery-gallery-module",
+		"common"
+	],
 	"./modules/hr/organization/organization.module": [
 		"./src/app/modules/hr/organization/organization.module.ts",
-		"modules-configs-config-module~modules-hr-organization-organization-module~modules-hr-user-user-modul~a6c09138",
-		"modules-hr-organization-organization-module~modules-hr-user-user-module~modules-timekeeping-timekeep~1d55590d",
-		"modules-hr-organization-organization-module~modules-timekeeping-timekeeping-module",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~38fe7b1e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~eb940534",
+		"modules-brand-brand-module~modules-configs-config-module~modules-event-event-module~modules-hr-organ~944476a5",
+		"modules-configs-config-module~modules-hr-organization-organization-module~modules-timekeeping-timeke~ac9db1e7",
+		"modules-hr-organization-organization-module~modules-hr-user-user-module",
 		"common",
 		"modules-hr-organization-organization-module"
 	],
 	"./modules/hr/user/user.module": [
 		"./src/app/modules/hr/user/user.module.ts",
-		"modules-configs-config-module~modules-hr-organization-organization-module~modules-hr-user-user-modul~a6c09138",
-		"modules-hr-user-user-module~modules-notifications-notification-module~modules-task-task-module~modul~8cd13bad",
-		"modules-hr-user-user-module~modules-timekeeping-timekeeping-module~modules-website-website-module",
-		"modules-hr-organization-organization-module~modules-hr-user-user-module~modules-timekeeping-timekeep~1d55590d",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~38fe7b1e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~eb940534",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~f64c9f94",
+		"modules-brand-brand-module~modules-configs-config-module~modules-event-event-module~modules-hr-organ~944476a5",
+		"modules-folders-folder-module~modules-hr-user-user-module~modules-website-website-module",
 		"modules-hr-user-user-module~modules-timekeeping-timekeeping-module",
-		"modules-hr-user-user-module~modules-website-website-module",
+		"modules-hr-organization-organization-module~modules-hr-user-user-module",
+		"modules-customer-customer-module~modules-hr-user-user-module",
 		"common",
 		"modules-hr-user-user-module"
 	],
+	"./modules/news/news.module": [
+		"./src/app/modules/news/news.module.ts",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~38fe7b1e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~eb940534",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~f64c9f94",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-event~7d4ccdf0",
+		"modules-brand-brand-module~modules-configs-config-module~modules-folders-folder-module~modules-news-~49f5d887",
+		"modules-configs-config-module~modules-event-event-module~modules-gallery-gallery-module~modules-news~3f9c398d",
+		"modules-configs-config-module~modules-news-news-module~modules-website-website-module",
+		"modules-configs-config-module~modules-news-news-module",
+		"common",
+		"modules-news-news-module"
+	],
 	"./modules/notifications/notification.module": [
 		"./src/app/modules/notifications/notification.module.ts",
-		"modules-hr-user-user-module~modules-notifications-notification-module~modules-task-task-module~modul~8cd13bad",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
 		"common",
 		"modules-notifications-notification-module"
 	],
+	"./modules/surveys/survey.module": [
+		"./src/app/modules/surveys/survey.module.ts",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~38fe7b1e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~eb940534",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~f64c9f94",
+		"modules-brand-brand-module~modules-configs-config-module~modules-event-event-module~modules-hr-organ~944476a5",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~e7b58e02",
+		"modules-configs-config-module~modules-event-event-module~modules-surveys-survey-module",
+		"common",
+		"modules-surveys-survey-module"
+	],
 	"./modules/task/task.module": [
 		"./src/app/modules/task/task.module.ts",
-		"modules-configs-config-module~modules-hr-organization-organization-module~modules-hr-user-user-modul~a6c09138",
-		"modules-hr-user-user-module~modules-notifications-notification-module~modules-task-task-module~modul~8cd13bad",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~eb940534",
 		"common",
 		"modules-task-task-module"
 	],
 	"./modules/timekeeping/timekeeping.module": [
 		"./src/app/modules/timekeeping/timekeeping.module.ts",
-		"modules-configs-config-module~modules-hr-organization-organization-module~modules-hr-user-user-modul~a6c09138",
-		"modules-hr-user-user-module~modules-notifications-notification-module~modules-task-task-module~modul~8cd13bad",
-		"modules-hr-user-user-module~modules-timekeeping-timekeeping-module~modules-website-website-module",
-		"modules-hr-organization-organization-module~modules-hr-user-user-module~modules-timekeeping-timekeep~1d55590d",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~38fe7b1e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~eb940534",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~f64c9f94",
+		"modules-brand-brand-module~modules-configs-config-module~modules-event-event-module~modules-hr-organ~944476a5",
+		"modules-configs-config-module~modules-hr-organization-organization-module~modules-timekeeping-timeke~ac9db1e7",
 		"modules-hr-user-user-module~modules-timekeeping-timekeeping-module",
-		"modules-hr-organization-organization-module~modules-timekeeping-timekeeping-module",
 		"common",
 		"modules-timekeeping-timekeeping-module"
 	],
+	"./modules/warehouse/product/product.module": [
+		"./src/app/modules/warehouse/product/product.module.ts",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~38fe7b1e",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-event~7d4ccdf0",
+		"modules-brand-brand-module~modules-configs-config-module~modules-event-event-module~modules-hr-organ~944476a5",
+		"modules-brand-brand-module~modules-configs-config-module~modules-folders-folder-module~modules-news-~49f5d887",
+		"modules-configs-config-module~modules-event-event-module~modules-warehouse-product-product-module~mo~3a1e53c3",
+		"modules-configs-config-module~modules-hr-organization-organization-module~modules-timekeeping-timeke~ac9db1e7",
+		"modules-configs-config-module~modules-folders-folder-module~modules-warehouse-product-product-module~00164b2a",
+		"modules-configs-config-module~modules-warehouse-product-product-module~modules-warehouse-warehouse-m~1a8e386e",
+		"common",
+		"modules-warehouse-product-product-module"
+	],
+	"./modules/warehouse/warehouse.module": [
+		"./src/app/modules/warehouse/warehouse.module.ts",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~38fe7b1e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~eb940534",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-event~7d4ccdf0",
+		"modules-brand-brand-module~modules-configs-config-module~modules-event-event-module~modules-hr-organ~944476a5",
+		"modules-brand-brand-module~modules-configs-config-module~modules-folders-folder-module~modules-news-~49f5d887",
+		"modules-configs-config-module~modules-event-event-module~modules-warehouse-product-product-module~mo~3a1e53c3",
+		"modules-configs-config-module~modules-hr-organization-organization-module~modules-timekeeping-timeke~ac9db1e7",
+		"modules-configs-config-module~modules-folders-folder-module~modules-warehouse-product-product-module~00164b2a",
+		"modules-configs-config-module~modules-warehouse-product-product-module~modules-warehouse-warehouse-m~1a8e386e",
+		"common",
+		"modules-warehouse-warehouse-module"
+	],
 	"./modules/website/website.module": [
 		"./src/app/modules/website/website.module.ts",
-		"modules-configs-config-module~modules-hr-organization-organization-module~modules-hr-user-user-modul~a6c09138",
-		"modules-hr-user-user-module~modules-notifications-notification-module~modules-task-task-module~modul~8cd13bad",
-		"modules-hr-user-user-module~modules-timekeeping-timekeeping-module~modules-website-website-module",
-		"modules-hr-user-user-module~modules-website-website-module",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~c12edc57",
+		"modules-banners-banner-module~modules-brand-brand-module~modules-configs-config-module~modules-custo~9ff1130e",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-config-customer-config-~d531546a",
+		"modules-banners-banner-module~modules-configs-config-module~modules-customer-customer-module~modules~f64c9f94",
+		"modules-configs-config-module~modules-event-event-module~modules-warehouse-product-product-module~mo~3a1e53c3",
+		"modules-folders-folder-module~modules-hr-user-user-module~modules-website-website-module",
+		"modules-configs-config-module~modules-news-news-module~modules-website-website-module",
 		"common",
 		"modules-website-website-module"
 	]
@@ -78,7 +553,7 @@ function webpackAsyncContext(req) {
 	var ids = map[req];
 	if(!ids) {
 		return Promise.resolve().then(function() {
-			var e = new Error('Cannot find module "' + req + '".');
+			var e = new Error("Cannot find module '" + req + "'");
 			e.code = 'MODULE_NOT_FOUND';
 			throw e;
 		});
@@ -140,12 +615,16 @@ var routes = [
         },
         canActivate: [_shareds_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_2__["AuthGuardService"]],
         children: [
-            { path: '', redirectTo: 'organization/positions', pathMatch: 'full' },
+            // {path: '', redirectTo: 'organization/positions', pathMatch: 'full'},
             { path: 'config', loadChildren: './modules/configs/config.module#ConfigModule' },
             { path: 'organization', loadChildren: './modules/hr/organization/organization.module#OrganizationModule' },
             { path: 'users', loadChildren: './modules/hr/user/user.module#UserModule' },
-            // {path: 'positions', loadChildren: './modules/hr/position/position.module#PositionModule'},
-            // {path: 'titles', loadChildren: './modules/hr/title/title.module#TitleModule'},
+            {
+                path: 'config-customer',
+                loadChildren: './modules/customer/config/customer-config.module#CustomerConfigModule'
+            },
+            { path: 'customers', loadChildren: './modules/customer/customer.module#CustomerModule' },
+            { path: 'surveys', loadChildren: './modules/surveys/survey.module#SurveyModule' },
             // {path: 'offices', loadChildren: './modules/hr/office/office.module#OfficeModule'},
             {
                 path: 'tasks',
@@ -156,6 +635,14 @@ var routes = [
             { path: 'error', loadChildren: './modules/error/error.module#ErrorModule' },
             { path: 'website', loadChildren: './modules/website/website.module#WebsiteModule' },
             { path: 'notifications', loadChildren: './modules/notifications/notification.module#NotificationModule' },
+            { path: 'gallery', loadChildren: './modules/gallery/gallery.module#GalleryModule' },
+            { path: 'folders', loadChildren: './modules/folders/folder.module#FolderModule' },
+            { path: 'banners', loadChildren: './modules/banners/banner.module#BannerModule' },
+            { path: 'news', loadChildren: './modules/news/news.module#NewsModule' },
+            { path: 'products', loadChildren: './modules/warehouse/product/product.module#ProductModule' },
+            { path: 'warehouses', loadChildren: './modules/warehouse/warehouse.module#WarehouseModule' },
+            { path: 'event', loadChildren: './modules/event/event.module#EventModule' },
+            { path: 'brand', loadChildren: './modules/brand/brand.module#BrandModule' },
         ]
     },
     { path: '', redirectTo: 'titles', pathMatch: 'full' },
@@ -202,9 +689,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
 /* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./configs/app.config */ "./src/app/configs/app.config.ts");
 /* harmony import */ var _modules_configs_page_page_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/configs/page/page.service */ "./src/app/modules/configs/page/page.service.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var _shareds_services_auth_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shareds/services/auth.service */ "./src/app/shareds/services/auth.service.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var _shareds_services_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./shareds/services/auth.service */ "./src/app/shareds/services/auth.service.ts");
+/* harmony import */ var _shareds_services_notification_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shareds/services/notification.service */ "./src/app/shareds/services/notification.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -226,21 +713,18 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(appConfig, sanitizer, router, route, authService, appService, spinnerService) {
+    function AppComponent(appConfig, sanitizer, router, route, notificationService, authService, spinnerService) {
         var _this = this;
         this.sanitizer = sanitizer;
         this.router = router;
         this.route = route;
+        this.notificationService = notificationService;
         this.authService = authService;
-        this.appService = appService;
         this.spinnerService = spinnerService;
         this.subscribers = {};
         this.subscribers.router = this.router.events.subscribe(function (e) { return _this.navigationInterceptor(e); });
     }
     AppComponent.prototype.ngOnInit = function () {
-        // if (this.authService.isLoggedIn) {
-        //     this.appService.initApp();
-        // }
     };
     AppComponent.prototype.ngOnDestroy = function () {
         this.subscribers.router.unsubscribe();
@@ -276,11 +760,11 @@ var AppComponent = /** @class */ (function () {
             providers: [_modules_configs_page_page_service__WEBPACK_IMPORTED_MODULE_4__["PageService"]]
         }),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_3__["APP_CONFIG"])),
-        __metadata("design:paramtypes", [Object, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["DomSanitizer"],
+        __metadata("design:paramtypes", [Object, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["DomSanitizer"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
-            _shareds_services_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_5__["AppService"],
+            _shareds_services_notification_service__WEBPACK_IMPORTED_MODULE_7__["NotificationService"],
+            _shareds_services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"],
             _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_2__["SpinnerService"]])
     ], AppComponent);
     return AppComponent;
@@ -317,23 +801,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shareds_services_interceptor_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./shareds/services/interceptor.service */ "./src/app/shareds/services/interceptor.service.ts");
 /* harmony import */ var _shareds_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./shareds/services/auth-guard.service */ "./src/app/shareds/services/auth-guard.service.ts");
 /* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_services_notify_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./shareds/services/notify.service */ "./src/app/shareds/services/notify.service.ts");
-/* harmony import */ var _shareds_layouts_layout_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./shareds/layouts/layout.module */ "./src/app/shareds/layouts/layout.module.ts");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _shareds_services_test_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./shareds/services/test.service */ "./src/app/shareds/services/test.service.ts");
-/* harmony import */ var _angular_common_locales_fr__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/common/locales/fr */ "./node_modules/@angular/common/locales/fr.js");
-/* harmony import */ var _angular_common_locales_fr__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(_angular_common_locales_fr__WEBPACK_IMPORTED_MODULE_22__);
-/* harmony import */ var _angular_common_locales_extra_vi__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/common/locales/extra/vi */ "./node_modules/@angular/common/locales/extra/vi.js");
-/* harmony import */ var _angular_common_locales_extra_vi__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(_angular_common_locales_extra_vi__WEBPACK_IMPORTED_MODULE_23__);
+/* harmony import */ var _shareds_layouts_layout_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./shareds/layouts/layout.module */ "./src/app/shareds/layouts/layout.module.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
+/* harmony import */ var _angular_common_locales_fr__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/common/locales/fr */ "./node_modules/@angular/common/locales/fr.js");
+/* harmony import */ var _angular_common_locales_fr__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_angular_common_locales_fr__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var _angular_common_locales_extra_vi__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/common/locales/extra/vi */ "./node_modules/@angular/common/locales/extra/vi.js");
+/* harmony import */ var _angular_common_locales_extra_vi__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_angular_common_locales_extra_vi__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
+/* harmony import */ var _core_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./core/spinner/spinner.component */ "./src/app/core/spinner/spinner.component.ts");
+/* harmony import */ var _shareds_helpers_app_injector__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./shareds/helpers/app-injector */ "./src/app/shareds/helpers/app-injector.ts");
+/* harmony import */ var _shareds_services_notification_service__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./shareds/services/notification.service */ "./src/app/shareds/services/notification.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 
 
 
@@ -357,7 +844,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 // Locale.
 
 
-Object(_angular_common__WEBPACK_IMPORTED_MODULE_19__["registerLocaleData"])(_angular_common_locales_fr__WEBPACK_IMPORTED_MODULE_22___default.a, 'vi-VN', _angular_common_locales_extra_vi__WEBPACK_IMPORTED_MODULE_23___default.a);
+
+
+
+
+Object(_angular_common__WEBPACK_IMPORTED_MODULE_18__["registerLocaleData"])(_angular_common_locales_fr__WEBPACK_IMPORTED_MODULE_20___default.a, 'vi-VN', _angular_common_locales_extra_vi__WEBPACK_IMPORTED_MODULE_21___default.a);
 // export function appServiceFactory(appService: AppService, authService: AuthService): Function {
 //     return () => {
 //         if (authService.isLoggedIn) {
@@ -366,15 +857,17 @@ Object(_angular_common__WEBPACK_IMPORTED_MODULE_19__["registerLocaleData"])(_ang
 //     };
 // }
 var AppModule = /** @class */ (function () {
-    function AppModule() {
+    function AppModule(injector) {
+        Object(_shareds_helpers_app_injector__WEBPACK_IMPORTED_MODULE_24__["setAppInjector"])(injector);
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
+                _core_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_23__["SpinnerComponent"]
             ],
             imports: [
-                _shareds_layouts_layout_module__WEBPACK_IMPORTED_MODULE_18__["LayoutModule"],
+                _shareds_layouts_layout_module__WEBPACK_IMPORTED_MODULE_17__["LayoutModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
@@ -393,15 +886,17 @@ var AppModule = /** @class */ (function () {
                 })
             ],
             providers: [
-                _shareds_services_script_loader_service__WEBPACK_IMPORTED_MODULE_6__["ScriptLoaderService"], ngx_toastr__WEBPACK_IMPORTED_MODULE_11__["ToastrService"], _shareds_services_auth_service__WEBPACK_IMPORTED_MODULE_12__["AuthService"], _shareds_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_15__["AuthGuardService"], _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_16__["UtilService"], _shareds_services_notify_service__WEBPACK_IMPORTED_MODULE_17__["NotifyService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClient"],
-                _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_20__["AppService"], _shareds_services_test_service__WEBPACK_IMPORTED_MODULE_21__["TestService"],
+                _shareds_services_script_loader_service__WEBPACK_IMPORTED_MODULE_6__["ScriptLoaderService"], ngx_toastr__WEBPACK_IMPORTED_MODULE_11__["ToastrService"], _shareds_services_auth_service__WEBPACK_IMPORTED_MODULE_12__["AuthService"], _shareds_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_15__["AuthGuardService"], _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_16__["UtilService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClient"],
+                _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_19__["AppService"], _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_22__["SpinnerService"], _shareds_services_notification_service__WEBPACK_IMPORTED_MODULE_25__["NotificationService"],
                 // {provide: APP_INITIALIZER, useFactory: appServiceFactory, deps: [AppService, Title], multi: true},
                 { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HTTP_INTERCEPTORS"], useClass: _shareds_services_interceptor_service__WEBPACK_IMPORTED_MODULE_14__["InterceptorService"], multi: true },
                 { provide: _configs_app_config__WEBPACK_IMPORTED_MODULE_8__["APP_CONFIG"], useValue: _configs_app_config__WEBPACK_IMPORTED_MODULE_8__["APP_CONFIG_DI"] },
-                { provide: _configs_page_id_config__WEBPACK_IMPORTED_MODULE_10__["PAGE_ID"], useValue: _configs_page_id_config__WEBPACK_IMPORTED_MODULE_10__["PAGE_ID_DI"] }
+                { provide: _configs_page_id_config__WEBPACK_IMPORTED_MODULE_10__["PAGE_ID"], useValue: _configs_page_id_config__WEBPACK_IMPORTED_MODULE_10__["PAGE_ID_DI"] },
+                { provide: 'APP_SERVICE', useValue: _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_19__["AppService"] },
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
-        })
+        }),
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]])
     ], AppModule);
     return AppModule;
 }());
@@ -612,12 +1107,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _shareds_services_script_loader_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shareds/services/script-loader.service */ "./src/app/shareds/services/script-loader.service.ts");
 /* harmony import */ var _services_alert_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_services/alert.service */ "./src/app/auth/_services/alert.service.ts");
-/* harmony import */ var _directives_alert_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_directives/alert.component */ "./src/app/auth/_directives/alert.component.ts");
-/* harmony import */ var _shareds_services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../shareds/services/auth.service */ "./src/app/shareds/services/auth.service.ts");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _shareds_services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shareds/services/auth.service */ "./src/app/shareds/services/auth.service.ts");
+/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _shareds_services_notification_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../shareds/services/notification.service */ "./src/app/shareds/services/notification.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -636,9 +1130,9 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-
 var AuthComponent = /** @class */ (function () {
-    function AuthComponent(router, _script, _route, authService, _alertService, renderer, utilService, toastr, appService, cfr) {
+    function AuthComponent(router, _script, _route, authService, _alertService, renderer, utilService, toastr, notificationService) {
+        var _this = this;
         this.router = router;
         this._script = _script;
         this._route = _route;
@@ -647,18 +1141,23 @@ var AuthComponent = /** @class */ (function () {
         this.renderer = renderer;
         this.utilService = utilService;
         this.toastr = toastr;
-        this.appService = appService;
-        this.cfr = cfr;
+        this.notificationService = notificationService;
         this.model = {};
         this.isSuccess = false;
         this.isShowForgotPassword = false;
         this.email = '';
         this.isLoggingIn = false;
+        this.subscribers = {};
+        this.subscribers.onChangeMessage = this.authService.authMessage$
+            .subscribe(function (message) { return _this.message = message; });
     }
     AuthComponent.prototype.ngOnInit = function () {
         this.model.remember = true;
         this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/';
         this.utilService.focusElement('username');
+    };
+    AuthComponent.prototype.ngOnDestroy = function () {
+        this.subscribers.onChangeMessage.unsubscribe();
     };
     AuthComponent.prototype.ngAfterViewInit = function () {
         this.renderer.setStyle(this.loginWrapper.nativeElement, 'height', window.innerHeight + 'px');
@@ -685,11 +1184,11 @@ var AuthComponent = /** @class */ (function () {
         }
         this.isLoggingIn = true;
         this.authService.login(this.model.userName, this.model.password)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["finalize"])(function () { return _this.isLoggingIn = false; }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["finalize"])(function () { return _this.isLoggingIn = false; }))
             .subscribe(function (data) {
-            console.log(data.isLoggedIn);
             if (data.isLoggedIn) {
                 _this.message = data.message;
+                _this.notificationService.initNotificationConnection();
                 _this.router.navigateByUrl(_this.returnUrl);
             }
             else {
@@ -724,12 +1223,6 @@ var AuthComponent = /** @class */ (function () {
             _this.toastr.success(result.message);
         });
     };
-    AuthComponent.prototype.showAlert = function (target) {
-        this[target].clear();
-        var factory = this.cfr.resolveComponentFactory(_directives_alert_component__WEBPACK_IMPORTED_MODULE_4__["AlertComponent"]);
-        var ref = this[target].createComponent(factory);
-        ref.changeDetectorRef.detectChanges();
-    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('alertSignin', { read: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"])
@@ -755,13 +1248,12 @@ var AuthComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
             _shareds_services_script_loader_service__WEBPACK_IMPORTED_MODULE_2__["ScriptLoaderService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
-            _shareds_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"],
+            _shareds_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"],
             _services_alert_service__WEBPACK_IMPORTED_MODULE_3__["AlertService"],
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_6__["UtilService"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_7__["ToastrService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_8__["AppService"],
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]])
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_5__["UtilService"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_6__["ToastrService"],
+            _shareds_services_notification_service__WEBPACK_IMPORTED_MODULE_8__["NotificationService"]])
     ], AuthComponent);
     return AuthComponent;
 }());
@@ -960,7 +1452,289 @@ var LogoutComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"login overflow-h\" #loginWrapper>\r\n    <!-- BEGIN LOGO -->\r\n    <div class=\"logo\">\r\n        <a href=\"index.html\">\r\n            <img src=\"./assets/images/logo.png\" alt=\"\"> </a>\r\n    </div>\r\n    <!-- END LOGO -->\r\n    <!-- BEGIN LOGIN -->\r\n    <div class=\"content\">\r\n        <!-- BEGIN LOGIN FORM -->\r\n        <form class=\"login-form\" method=\"post\" novalidate=\"novalidate\" style=\"display: block;\" (ngSubmit)=\"signIn()\"\r\n              *ngIf=\"!isShowForgotPassword; else forgotPasswordTemplate\">\r\n            <h3 class=\"form-title font-green\">Đăng nhập</h3>\r\n            <div class=\"alert alert-danger display-hide\">\r\n                <button class=\"close\" data-close=\"alert\"></button>\r\n                <span> Vui lòng nhập tên đăng nhập và mật khẩu. </span>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <div class=\"alert alert-success center\"\r\n                     role=\"alert\" [class.alert-success]=\"isSuccess\"\r\n                     [class.alert-danger]=\"!isSuccess\" *ngIf=\"message\">\r\n                    {{message}}\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->\r\n                <label class=\"control-label visible-ie8 visible-ie9\">Tên đăng nhập</label>\r\n                <input class=\"form-control form-control-solid placeholder-no-fix valid\" type=\"text\" autocomplete=\"off\"\r\n                       id=\"username\"\r\n                       placeholder=\"Nhập tên đăng nhập\" name=\"username\" aria-required=\"true\" aria-invalid=\"false\"\r\n                       aria-describedby=\"username-error\"\r\n                       [(ngModel)]=\"model.userName\"></div>\r\n            <div class=\"alert alert-danger\" *ngIf=\"userNameErrorMessage\">{{ userNameErrorMessage }}</div>\r\n            <div class=\"form-group\">\r\n                <label class=\"control-label visible-ie8 visible-ie9\">Mật khẩu</label>\r\n                <input class=\"form-control form-control-solid placeholder-no-fix valid\" type=\"password\"\r\n                       autocomplete=\"off\" placeholder=\"Nhập mật khẩu\" name=\"password\" aria-required=\"true\"\r\n                       aria-invalid=\"false\" aria-describedby=\"password-error\"\r\n                       [(ngModel)]=\"model.password\"></div>\r\n            <div class=\"alert alert-danger\" *ngIf=\"passwordErrorMessage\">{{ passwordErrorMessage }}</div>\r\n            <div class=\"form-actions\">\r\n                <ghm-button icon=\"\" [loading]=\"isLoggingIn\">Đăng nhập</ghm-button>\r\n                <!--<button type=\"submit\" class=\"btn green uppercase\">Đăng nhập</button>-->\r\n                <!--<label class=\"rememberme check mt-checkbox mt-checkbox-outline\">-->\r\n                <!--<input type=\"checkbox\" name=\"remember\" value=\"1\">Remember-->\r\n                <!--<span></span>-->\r\n                <!--</label>-->\r\n                <!--<a href=\"javascript:;\" id=\"forget-password\" class=\"forget-password\" (click)=\"forgotPassword()\">Quên mật khẩu?</a>-->\r\n            </div>\r\n            <!--<div class=\"login-options\">-->\r\n            <!--<h4>Or login with</h4>-->\r\n            <!--<ul class=\"social-icons\">-->\r\n            <!--<li>-->\r\n            <!--<a class=\"social-icon-color facebook\" data-original-title=\"facebook\" href=\"javascript:;\"></a>-->\r\n            <!--</li>-->\r\n            <!--<li>-->\r\n            <!--<a class=\"social-icon-color twitter\" data-original-title=\"Twitter\" href=\"javascript:;\"></a>-->\r\n            <!--</li>-->\r\n            <!--<li>-->\r\n            <!--<a class=\"social-icon-color googleplus\" data-original-title=\"Goole Plus\"-->\r\n            <!--href=\"javascript:;\"></a>-->\r\n            <!--</li>-->\r\n            <!--<li>-->\r\n            <!--<a class=\"social-icon-color linkedin\" data-original-title=\"Linkedin\" href=\"javascript:;\"></a>-->\r\n            <!--</li>-->\r\n            <!--</ul>-->\r\n            <!--</div>-->\r\n            <div class=\"create-account\">\r\n                <p>\r\n                    <a href=\"javascript:;\" id=\"register-btn\" class=\"uppercase\" (click)=\"forgotPassword()\">Quên\r\n                        mật khẩu</a>\r\n                </p>\r\n            </div>\r\n        </form>\r\n        <!-- END LOGIN FORM -->\r\n        <!-- BEGIN FORGOT PASSWORD FORM -->\r\n        <ng-template #forgotPasswordTemplate>\r\n            <form class=\"forget-form\" method=\"post\" novalidate=\"novalidate\" (ngSubmit)=\"sendForgotPassword()\">\r\n                <h3 class=\"font-green\">Bạn quên mật khẩu ?</h3>\r\n                <p> Vui lòng nhập email vào ô bên dưới để khởi tạo lại mật khẩu. </p>\r\n                <div class=\"form-group\">\r\n                    <input class=\"form-control placeholder-no-fix\" type=\"text\" autocomplete=\"off\"\r\n                           id=\"forgot-password-email\"\r\n                           placeholder=\"Nhập email\"\r\n                           name=\"email\"\r\n                           [(ngModel)]=\"email\"></div>\r\n                <div class=\"form-actions\">\r\n                    <button type=\"button\" id=\"back-btn\" class=\"btn green btn-outline\"\r\n                            (click)=\"isShowForgotPassword = false\">Quay lại\r\n                    </button>\r\n                    <button type=\"submit\" class=\"btn btn-success uppercase pull-right\">Gửi</button>\r\n                </div>\r\n            </form>\r\n        </ng-template>\r\n\r\n        <!-- END FORGOT PASSWORD FORM -->\r\n        <!-- BEGIN REGISTRATION FORM -->\r\n        <!--<form class=\"register-form\" action=\"index.html\" method=\"post\" novalidate=\"novalidate\">-->\r\n        <!--<h3 class=\"font-green\">Sign Up</h3>-->\r\n        <!--<p class=\"hint\"> Enter your personal details below: </p>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">Full Name</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix\" type=\"text\" placeholder=\"Full Name\" name=\"fullname\">-->\r\n        <!--</div>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--&lt;!&ndash;ie8, ie9 does not support html5 placeholder, so we just show field title for that&ndash;&gt;-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">Email</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix\" type=\"text\" placeholder=\"Email\" name=\"email\"></div>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">Address</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix\" type=\"text\" placeholder=\"Address\" name=\"address\"></div>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">City/Town</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix\" type=\"text\" placeholder=\"City/Town\" name=\"city\"></div>-->\r\n        <!--<p class=\"hint\"> Enter your account details below: </p>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">Username</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix valid\" type=\"text\" autocomplete=\"off\"-->\r\n        <!--placeholder=\"Username\" name=\"username\" aria-required=\"true\" aria-invalid=\"false\"-->\r\n        <!--aria-describedby=\"username-error\"></div>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">Password</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix valid\" type=\"password\" autocomplete=\"off\"-->\r\n        <!--id=\"register_password\" placeholder=\"Password\" name=\"password\" aria-required=\"true\"-->\r\n        <!--aria-invalid=\"false\" aria-describedby=\"register_password-error\"></div>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">Re-type Your Password</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix\" type=\"password\" autocomplete=\"off\"-->\r\n        <!--placeholder=\"Re-type Your Password\" name=\"rpassword\"></div>-->\r\n        <!--<div class=\"form-group margin-top-20 margin-bottom-20\">-->\r\n        <!--<label class=\"mt-checkbox mt-checkbox-outline\">-->\r\n        <!--<input type=\"checkbox\" name=\"tnc\"> I agree to the-->\r\n        <!--<a href=\"javascript:;\">Terms of Service </a> &amp;-->\r\n        <!--<a href=\"javascript:;\">Privacy Policy </a>-->\r\n        <!--<span></span>-->\r\n        <!--</label>-->\r\n        <!--<div id=\"register_tnc_error\"></div>-->\r\n        <!--</div>-->\r\n        <!--<div class=\"form-actions\">-->\r\n        <!--<button type=\"button\" id=\"register-back-btn\" class=\"btn green btn-outline\">Trở lại</button>-->\r\n        <!--<button type=\"submit\" id=\"register-submit-btn\" class=\"btn btn-success uppercase pull-right\">Gửi-->\r\n        <!--</button>-->\r\n        <!--</div>-->\r\n        <!--</form>-->\r\n        <!-- END REGISTRATION FORM -->\r\n    </div>\r\n    <div class=\"copyright\"> 2018 GhmSoft - ThaiThinhMedic.</div>\r\n</div>\r\n\r\n<!--<div class=\"m-grid__item m-grid__item&#45;&#45;fluid m-grid m-grid&#45;&#45;ver-desktop m-grid&#45;&#45;desktop m-grid&#45;&#45;tablet-and-mobile m-grid&#45;&#45;hor-tablet-and-mobile m-login m-login&#45;&#45;1 m-login&#45;&#45;signin\" id=\"m_login\">-->\r\n<!--<div class=\"m-grid__item m-grid__item&#45;&#45;order-tablet-and-mobile-2 m-login__aside\">-->\r\n<!--<div class=\"m-stack m-stack&#45;&#45;hor m-stack&#45;&#45;desktop\">-->\r\n<!--<div class=\"m-stack__item m-stack__item&#45;&#45;fluid\">-->\r\n<!--<div class=\"m-login__wrapper\">-->\r\n<!--<div class=\"m-login__logo\">-->\r\n<!--<a href=\"#\">-->\r\n<!--<img src=\"./assets/images/logo.png\">-->\r\n<!--</a>-->\r\n<!--</div>-->\r\n<!--<div class=\"m-login__signin\">-->\r\n<!--<div class=\"m-login__head\">-->\r\n<!--<h3 class=\"m-login__title\">-->\r\n<!--Đăng nhập hệ thống-->\r\n<!--</h3>-->\r\n<!--<div class=\"m&#45;&#45;margin-top-40 m-alert m-alert&#45;&#45;outline m-alert&#45;&#45;outline-2x alert fade show\" role=\"alert\"-->\r\n<!--[class.alert-success]=\"isSuccess\"-->\r\n<!--[class.alert-danger]=\"!isSuccess\"-->\r\n<!--*ngIf=\"message\">-->\r\n<!--{{message}}-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--<form (ngSubmit)=\"signin()\" class=\"m-login__form m-form\" action=\"\">-->\r\n<!--&lt;!&ndash;<ng-template #alertSignin></ng-template>&ndash;&gt;-->\r\n<!--<div class=\"form-group m-form__group\">-->\r\n<!--<input class=\"form-control m-input\" type=\"text\" placeholder=\"Tên đăng nhập\" name=\"userName\" [(ngModel)]=\"model.userName\" autocomplete=\"off\">-->\r\n<!--<div class=\"alert alert-danger\" *ngIf=\"userNameErrorMessage\">-->\r\n<!--{{userNameErrorMessage}}-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--<div class=\"form-group m-form__group\">-->\r\n<!--<input class=\"form-control m-input m-login__form-input&#45;&#45;last\" type=\"password\" placeholder=\"Mật khẩu\" name=\"password\" [(ngModel)]=\"model.password\">-->\r\n<!--<div class=\"alert alert-danger\" *ngIf=\"passwordErrorMessage\">-->\r\n<!--{{passwordErrorMessage}}-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--<div class=\"row m-login__form-sub\">-->\r\n<!--&lt;!&ndash;<div class=\"col m&#45;&#45;align-left\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<label class=\"m-checkbox m-checkbox&#45;&#45;focus\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<input type=\"checkbox\" name=\"remember\" [(ngModel)]=\"model.remember\" #remember=\"ngModel\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Remember me&ndash;&gt;-->\r\n<!--&lt;!&ndash;<span></span>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</label>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--<div class=\"col m&#45;&#45;align-right\">-->\r\n<!--<a href=\"javascript:;\" id=\"m_login_forget_password\" class=\"m-link\">-->\r\n<!--Quên mật khẩu ?-->\r\n<!--</a>-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--<div class=\"m-login__form-action\">-->\r\n<!--<button [disabled]=\"loading\" [ngClass]=\"{'m-loader m-loader&#45;&#45;right m-loader&#45;&#45;light': loading}\" id=\"m_login_signin_submit\" class=\"btn btn-focus m-btn m-btn&#45;&#45;pill m-btn&#45;&#45;custom m-btn&#45;&#45;air\">-->\r\n<!--Đăng nhập-->\r\n<!--</button>-->\r\n<!--</div>-->\r\n<!--</form>-->\r\n<!--</div>-->\r\n<!--&lt;!&ndash;<div class=\"m-login__signup\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"m-login__head\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<h3 class=\"m-login__title\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Sign Up&ndash;&gt;-->\r\n<!--&lt;!&ndash;</h3>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"m-login__desc\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Enter your details to create your account:&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<form (ngSubmit)=\"f.form.valid && signup()\" #f=\"ngForm\" class=\"m-login__form m-form\" action=\"\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<ng-template #alertSignup></ng-template>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"form-group m-form__group\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<input class=\"form-control m-input\" type=\"text\" placeholder=\"Fullname\" name=\"fullname\" [(ngModel)]=\"model.fullname\" #fullname=\"ngModel\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"form-group m-form__group\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<input class=\"form-control m-input\" type=\"text\" placeholder=\"Email\" name=\"email\" [(ngModel)]=\"model.email\" #email=\"ngModel\" autocomplete=\"off\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"form-group m-form__group\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<input class=\"form-control m-input\" type=\"password\" placeholder=\"Password\" name=\"password\" [(ngModel)]=\"model.password\" #password=\"ngModel\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"form-group m-form__group\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<input class=\"form-control m-input m-login__form-input&#45;&#45;last\" type=\"password\" placeholder=\"Confirm Password\" name=\"rpassword\" [(ngModel)]=\"model.rpassword\" #rpassword=\"ngModel\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"row form-group m-form__group m-login__form-sub\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"col m&#45;&#45;align-left\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<label class=\"m-checkbox m-checkbox&#45;&#45;focus\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<input type=\"checkbox\" name=\"agree\" [(ngModel)]=\"model.agree\" #agree=\"ngModel\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;I Agree the&ndash;&gt;-->\r\n<!--&lt;!&ndash;<a href=\"#\" class=\"m-link m-link&#45;&#45;focus\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;terms and conditions&ndash;&gt;-->\r\n<!--&lt;!&ndash;</a>&ndash;&gt;-->\r\n<!--&lt;!&ndash;.&ndash;&gt;-->\r\n<!--&lt;!&ndash;<span></span>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</label>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<span class=\"m-form__help\"></span>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"m-login__form-action\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<button [disabled]=\"loading\" [ngClass]=\"{'m-loader m-loader&#45;&#45;right m-loader&#45;&#45;light': loading}\" id=\"m_login_signup_submit\" class=\"btn btn-focus m-btn m-btn&#45;&#45;pill m-btn&#45;&#45;custom m-btn&#45;&#45;air\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Sign Up&ndash;&gt;-->\r\n<!--&lt;!&ndash;</button>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<button [disabled]=\"loading\"  id=\"m_login_signup_cancel\" class=\"btn btn-outline-focus  m-btn m-btn&#45;&#45;pill m-btn&#45;&#45;custom\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Cancel&ndash;&gt;-->\r\n<!--&lt;!&ndash;</button>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</form>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--<div class=\"m-login__forget-password\">-->\r\n<!--<div class=\"m-login__head\">-->\r\n<!--<h3 class=\"m-login__title\">-->\r\n<!--Bạn quên mật khẩu ?-->\r\n<!--</h3>-->\r\n<!--<div class=\"m-login__desc\">-->\r\n<!--Nhập email của bạn đang tạo lại mật khẩu!-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--<form (ngSubmit)=\"f.form.valid && forgotPass()\" #f=\"ngForm\" class=\"m-login__form m-form\" action=\"\">-->\r\n<!--<ng-template #alertForgotPass></ng-template>-->\r\n<!--<div class=\"form-group m-form__group\">-->\r\n<!--<input class=\"form-control m-input\" type=\"text\" placeholder=\"Email\" name=\"email\" [(ngModel)]=\"model.email\" #email=\"ngModel\" id=\"m_email\" autocomplete=\"off\">-->\r\n<!--</div>-->\r\n<!--<div class=\"m-login__form-action\">-->\r\n<!--<button [disabled]=\"loading\" [ngClass]=\"{'m-loader m-loader&#45;&#45;right m-loader&#45;&#45;light': loading}\" id=\"m_login_forget_password_submit\" class=\"btn btn-focus m-btn m-btn&#45;&#45;pill m-btn&#45;&#45;custom m-btn&#45;&#45;air\">-->\r\n<!--Yêu cầu-->\r\n<!--</button>-->\r\n<!--<button [disabled]=\"loading\"  id=\"m_login_forget_password_cancel\" class=\"btn btn-outline-focus m-btn m-btn&#45;&#45;pill m-btn&#45;&#45;custom\">-->\r\n<!--Hủy bỏ-->\r\n<!--</button>-->\r\n<!--</div>-->\r\n<!--</form>-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--&lt;!&ndash;<div class=\"m-stack__item m-stack__item&#45;&#45;center\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"m-login__account\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<span class=\"m-login__account-msg\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Don't have an account yet ?&ndash;&gt;-->\r\n<!--&lt;!&ndash;</span>&ndash;&gt;-->\r\n<!--&lt;!&ndash;&nbsp;&nbsp;&ndash;&gt;-->\r\n<!--&lt;!&ndash;<a href=\"javascript:;\" id=\"m_login_signup\" class=\"m-link m-link&#45;&#45;focus m-login__account-link\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Sign Up&ndash;&gt;-->\r\n<!--&lt;!&ndash;</a>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--<div class=\"m-grid__item m-grid__item&#45;&#45;fluid m-grid m-grid&#45;&#45;center m-grid&#45;&#45;hor m-grid__item&#45;&#45;order-tablet-and-mobile-1\tm-login__content\" style=\"background-image: url(./assets/app/media/img//bg/bg-4.jpg)\">-->\r\n<!--<div class=\"m-grid__item m-grid__item&#45;&#45;middle\">-->\r\n<!--<h3 class=\"m-login__welcome\">-->\r\n<!--ThaiThinhMedic-->\r\n<!--</h3>-->\r\n<!--<p class=\"m-login__msg\">-->\r\n<!--Chào mừng bạn đến với trang thông tin nội bộ.-->\r\n<!--<br>-->\r\n<!--Công ty Cổ phần Bệnh viện Thái Thịnh-->\r\n<!--</p>-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n"
+module.exports = "<div class=\"login overflow-h\" #loginWrapper>\r\n    <!-- BEGIN LOGO -->\r\n    <div class=\"logo\">\r\n        <a href=\"index.html\">\r\n            <img src=\"./assets/images/logo.png\" alt=\"\"> </a>\r\n    </div>\r\n    <!-- END LOGO -->\r\n    <!-- BEGIN LOGIN -->\r\n    <div class=\"content\">\r\n        <!-- BEGIN LOGIN FORM -->\r\n        <form class=\"login-form\" method=\"post\" novalidate=\"novalidate\" style=\"display: block;\" (ngSubmit)=\"signIn()\"\r\n              *ngIf=\"!isShowForgotPassword; else forgotPasswordTemplate\">\r\n            <h3 class=\"form-title font-green\">Đăng nhập</h3>\r\n            <div class=\"alert alert-danger display-hide\">\r\n                <button class=\"close\" data-close=\"alert\"></button>\r\n                <span> Vui lòng nhập tên đăng nhập và mật khẩu. </span>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <div class=\"alert alert-success center\"\r\n                     role=\"alert\" [class.alert-success]=\"isSuccess\"\r\n                     [class.alert-danger]=\"!isSuccess\" *ngIf=\"message\" i18n=\"@@authMessage\">\r\n                    {message, select, invalid_username_or_password {Invalid username or password} other {}}\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->\r\n                <label class=\"control-label visible-ie8 visible-ie9\">Tên đăng nhập</label>\r\n                <input class=\"form-control form-control-solid placeholder-no-fix valid\" type=\"text\" autocomplete=\"off\"\r\n                       id=\"username\"\r\n                       placeholder=\"Nhập tên đăng nhập\" name=\"username\" aria-required=\"true\" aria-invalid=\"false\"\r\n                       aria-describedby=\"username-error\"\r\n                       [(ngModel)]=\"model.userName\"></div>\r\n            <div class=\"alert alert-danger\" *ngIf=\"userNameErrorMessage\">{{ userNameErrorMessage }}</div>\r\n            <div class=\"form-group\">\r\n                <label class=\"control-label visible-ie8 visible-ie9\">Mật khẩu</label>\r\n                <input class=\"form-control form-control-solid placeholder-no-fix valid\" type=\"password\"\r\n                       autocomplete=\"off\" placeholder=\"Nhập mật khẩu\" name=\"password\" aria-required=\"true\"\r\n                       aria-invalid=\"false\" aria-describedby=\"password-error\"\r\n                       [(ngModel)]=\"model.password\"></div>\r\n            <div class=\"alert alert-danger\" *ngIf=\"passwordErrorMessage\">{{ passwordErrorMessage }}</div>\r\n            <div class=\"form-actions\">\r\n                <ghm-button icon=\"\" [loading]=\"isLoggingIn\">Đăng nhập</ghm-button>\r\n                <!--<button type=\"submit\" class=\"btn green uppercase\">Đăng nhập</button>-->\r\n                <!--<label class=\"rememberme check mt-checkbox mt-checkbox-outline\">-->\r\n                <!--<input type=\"checkbox\" name=\"remember\" value=\"1\">Remember-->\r\n                <!--<span></span>-->\r\n                <!--</label>-->\r\n                <!--<a href=\"javascript:;\" id=\"forget-password\" class=\"forget-password\" (click)=\"forgotPassword()\">Quên mật khẩu?</a>-->\r\n            </div>\r\n            <!--<div class=\"login-options\">-->\r\n            <!--<h4>Or login with</h4>-->\r\n            <!--<ul class=\"social-icons\">-->\r\n            <!--<li>-->\r\n            <!--<a class=\"social-icon-color facebook\" data-original-title=\"facebook\" href=\"javascript:;\"></a>-->\r\n            <!--</li>-->\r\n            <!--<li>-->\r\n            <!--<a class=\"social-icon-color twitter\" data-original-title=\"Twitter\" href=\"javascript:;\"></a>-->\r\n            <!--</li>-->\r\n            <!--<li>-->\r\n            <!--<a class=\"social-icon-color googleplus\" data-original-title=\"Goole Plus\"-->\r\n            <!--href=\"javascript:;\"></a>-->\r\n            <!--</li>-->\r\n            <!--<li>-->\r\n            <!--<a class=\"social-icon-color linkedin\" data-original-title=\"Linkedin\" href=\"javascript:;\"></a>-->\r\n            <!--</li>-->\r\n            <!--</ul>-->\r\n            <!--</div>-->\r\n            <div class=\"create-account\">\r\n                <p>\r\n                    <a href=\"javascript:;\" id=\"register-btn\" class=\"uppercase\" (click)=\"forgotPassword()\">Quên\r\n                        mật khẩu</a>\r\n                </p>\r\n            </div>\r\n        </form>\r\n        <!-- END LOGIN FORM -->\r\n        <!-- BEGIN FORGOT PASSWORD FORM -->\r\n        <ng-template #forgotPasswordTemplate>\r\n            <form class=\"forget-form\" method=\"post\" novalidate=\"novalidate\" (ngSubmit)=\"sendForgotPassword()\">\r\n                <h3 class=\"font-green\">Bạn quên mật khẩu ?</h3>\r\n                <p> Vui lòng nhập email vào ô bên dưới để khởi tạo lại mật khẩu. </p>\r\n                <div class=\"form-group\">\r\n                    <input class=\"form-control placeholder-no-fix\" type=\"text\" autocomplete=\"off\"\r\n                           id=\"forgot-password-email\"\r\n                           placeholder=\"Nhập email\"\r\n                           name=\"email\"\r\n                           [(ngModel)]=\"email\"></div>\r\n                <div class=\"form-actions\">\r\n                    <button type=\"button\" id=\"back-btn\" class=\"btn green btn-outline\"\r\n                            (click)=\"isShowForgotPassword = false\">Quay lại\r\n                    </button>\r\n                    <button type=\"submit\" class=\"btn btn-success uppercase pull-right\">Gửi</button>\r\n                </div>\r\n            </form>\r\n        </ng-template>\r\n\r\n        <!-- END FORGOT PASSWORD FORM -->\r\n        <!-- BEGIN REGISTRATION FORM -->\r\n        <!--<form class=\"register-form\" action=\"index.html\" method=\"post\" novalidate=\"novalidate\">-->\r\n        <!--<h3 class=\"font-green\">Sign Up</h3>-->\r\n        <!--<p class=\"hint\"> Enter your personal details below: </p>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">Full Name</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix\" type=\"text\" placeholder=\"Full Name\" name=\"fullname\">-->\r\n        <!--</div>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--&lt;!&ndash;ie8, ie9 does not support html5 placeholder, so we just show field title for that&ndash;&gt;-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">Email</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix\" type=\"text\" placeholder=\"Email\" name=\"email\"></div>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">Address</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix\" type=\"text\" placeholder=\"Address\" name=\"address\"></div>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">City/Town</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix\" type=\"text\" placeholder=\"City/Town\" name=\"city\"></div>-->\r\n        <!--<p class=\"hint\"> Enter your account details below: </p>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">Username</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix valid\" type=\"text\" autocomplete=\"off\"-->\r\n        <!--placeholder=\"Username\" name=\"username\" aria-required=\"true\" aria-invalid=\"false\"-->\r\n        <!--aria-describedby=\"username-error\"></div>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">Password</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix valid\" type=\"password\" autocomplete=\"off\"-->\r\n        <!--id=\"register_password\" placeholder=\"Password\" name=\"password\" aria-required=\"true\"-->\r\n        <!--aria-invalid=\"false\" aria-describedby=\"register_password-error\"></div>-->\r\n        <!--<div class=\"form-group\">-->\r\n        <!--<label class=\"control-label visible-ie8 visible-ie9\">Re-type Your Password</label>-->\r\n        <!--<input class=\"form-control placeholder-no-fix\" type=\"password\" autocomplete=\"off\"-->\r\n        <!--placeholder=\"Re-type Your Password\" name=\"rpassword\"></div>-->\r\n        <!--<div class=\"form-group margin-top-20 margin-bottom-20\">-->\r\n        <!--<label class=\"mt-checkbox mt-checkbox-outline\">-->\r\n        <!--<input type=\"checkbox\" name=\"tnc\"> I agree to the-->\r\n        <!--<a href=\"javascript:;\">Terms of Service </a> &amp;-->\r\n        <!--<a href=\"javascript:;\">Privacy Policy </a>-->\r\n        <!--<span></span>-->\r\n        <!--</label>-->\r\n        <!--<div id=\"register_tnc_error\"></div>-->\r\n        <!--</div>-->\r\n        <!--<div class=\"form-actions\">-->\r\n        <!--<button type=\"button\" id=\"register-back-btn\" class=\"btn green btn-outline\">Trở lại</button>-->\r\n        <!--<button type=\"submit\" id=\"register-submit-btn\" class=\"btn btn-success uppercase pull-right\">Gửi-->\r\n        <!--</button>-->\r\n        <!--</div>-->\r\n        <!--</form>-->\r\n        <!-- END REGISTRATION FORM -->\r\n    </div>\r\n    <div class=\"copyright\"> 2019 A Quý Miền Núi</div>\r\n</div>\r\n\r\n<!--<div class=\"m-grid__item m-grid__item&#45;&#45;fluid m-grid m-grid&#45;&#45;ver-desktop m-grid&#45;&#45;desktop m-grid&#45;&#45;tablet-and-mobile m-grid&#45;&#45;hor-tablet-and-mobile m-login m-login&#45;&#45;1 m-login&#45;&#45;signin\" id=\"m_login\">-->\r\n<!--<div class=\"m-grid__item m-grid__item&#45;&#45;order-tablet-and-mobile-2 m-login__aside\">-->\r\n<!--<div class=\"m-stack m-stack&#45;&#45;hor m-stack&#45;&#45;desktop\">-->\r\n<!--<div class=\"m-stack__item m-stack__item&#45;&#45;fluid\">-->\r\n<!--<div class=\"m-login__wrapper\">-->\r\n<!--<div class=\"m-login__logo\">-->\r\n<!--<a href=\"#\">-->\r\n<!--<img src=\"./assets/images/logo.png\">-->\r\n<!--</a>-->\r\n<!--</div>-->\r\n<!--<div class=\"m-login__signin\">-->\r\n<!--<div class=\"m-login__head\">-->\r\n<!--<h3 class=\"m-login__title\">-->\r\n<!--Đăng nhập hệ thống-->\r\n<!--</h3>-->\r\n<!--<div class=\"m&#45;&#45;margin-top-40 m-alert m-alert&#45;&#45;outline m-alert&#45;&#45;outline-2x alert fade show\" role=\"alert\"-->\r\n<!--[class.alert-success]=\"isSuccess\"-->\r\n<!--[class.alert-danger]=\"!isSuccess\"-->\r\n<!--*ngIf=\"message\">-->\r\n<!--{{message}}-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--<form (ngSubmit)=\"signin()\" class=\"m-login__form m-form\" action=\"\">-->\r\n<!--&lt;!&ndash;<ng-template #alertSignin></ng-template>&ndash;&gt;-->\r\n<!--<div class=\"form-group m-form__group\">-->\r\n<!--<input class=\"form-control m-input\" type=\"text\" placeholder=\"Tên đăng nhập\" name=\"userName\" [(ngModel)]=\"model.userName\" autocomplete=\"off\">-->\r\n<!--<div class=\"alert alert-danger\" *ngIf=\"userNameErrorMessage\">-->\r\n<!--{{userNameErrorMessage}}-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--<div class=\"form-group m-form__group\">-->\r\n<!--<input class=\"form-control m-input m-login__form-input&#45;&#45;last\" type=\"password\" placeholder=\"Mật khẩu\" name=\"password\" [(ngModel)]=\"model.password\">-->\r\n<!--<div class=\"alert alert-danger\" *ngIf=\"passwordErrorMessage\">-->\r\n<!--{{passwordErrorMessage}}-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--<div class=\"row m-login__form-sub\">-->\r\n<!--&lt;!&ndash;<div class=\"col m&#45;&#45;align-left\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<label class=\"m-checkbox m-checkbox&#45;&#45;focus\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<input type=\"checkbox\" name=\"remember\" [(ngModel)]=\"model.remember\" #remember=\"ngModel\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Remember me&ndash;&gt;-->\r\n<!--&lt;!&ndash;<span></span>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</label>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--<div class=\"col m&#45;&#45;align-right\">-->\r\n<!--<a href=\"javascript:;\" id=\"m_login_forget_password\" class=\"m-link\">-->\r\n<!--Quên mật khẩu ?-->\r\n<!--</a>-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--<div class=\"m-login__form-action\">-->\r\n<!--<button [disabled]=\"loading\" [ngClass]=\"{'m-loader m-loader&#45;&#45;right m-loader&#45;&#45;light': loading}\" id=\"m_login_signin_submit\" class=\"btn btn-focus m-btn m-btn&#45;&#45;pill m-btn&#45;&#45;custom m-btn&#45;&#45;air\">-->\r\n<!--Đăng nhập-->\r\n<!--</button>-->\r\n<!--</div>-->\r\n<!--</form>-->\r\n<!--</div>-->\r\n<!--&lt;!&ndash;<div class=\"m-login__signup\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"m-login__head\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<h3 class=\"m-login__title\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Sign Up&ndash;&gt;-->\r\n<!--&lt;!&ndash;</h3>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"m-login__desc\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Enter your details to create your account:&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<form (ngSubmit)=\"f.form.valid && signup()\" #f=\"ngForm\" class=\"m-login__form m-form\" action=\"\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<ng-template #alertSignup></ng-template>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"form-group m-form__group\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<input class=\"form-control m-input\" type=\"text\" placeholder=\"Fullname\" name=\"fullname\" [(ngModel)]=\"model.fullname\" #fullname=\"ngModel\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"form-group m-form__group\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<input class=\"form-control m-input\" type=\"text\" placeholder=\"Email\" name=\"email\" [(ngModel)]=\"model.email\" #email=\"ngModel\" autocomplete=\"off\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"form-group m-form__group\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<input class=\"form-control m-input\" type=\"password\" placeholder=\"Password\" name=\"password\" [(ngModel)]=\"model.password\" #password=\"ngModel\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"form-group m-form__group\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<input class=\"form-control m-input m-login__form-input&#45;&#45;last\" type=\"password\" placeholder=\"Confirm Password\" name=\"rpassword\" [(ngModel)]=\"model.rpassword\" #rpassword=\"ngModel\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"row form-group m-form__group m-login__form-sub\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"col m&#45;&#45;align-left\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<label class=\"m-checkbox m-checkbox&#45;&#45;focus\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<input type=\"checkbox\" name=\"agree\" [(ngModel)]=\"model.agree\" #agree=\"ngModel\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;I Agree the&ndash;&gt;-->\r\n<!--&lt;!&ndash;<a href=\"#\" class=\"m-link m-link&#45;&#45;focus\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;terms and conditions&ndash;&gt;-->\r\n<!--&lt;!&ndash;</a>&ndash;&gt;-->\r\n<!--&lt;!&ndash;.&ndash;&gt;-->\r\n<!--&lt;!&ndash;<span></span>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</label>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<span class=\"m-form__help\"></span>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"m-login__form-action\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<button [disabled]=\"loading\" [ngClass]=\"{'m-loader m-loader&#45;&#45;right m-loader&#45;&#45;light': loading}\" id=\"m_login_signup_submit\" class=\"btn btn-focus m-btn m-btn&#45;&#45;pill m-btn&#45;&#45;custom m-btn&#45;&#45;air\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Sign Up&ndash;&gt;-->\r\n<!--&lt;!&ndash;</button>&ndash;&gt;-->\r\n<!--&lt;!&ndash;<button [disabled]=\"loading\"  id=\"m_login_signup_cancel\" class=\"btn btn-outline-focus  m-btn m-btn&#45;&#45;pill m-btn&#45;&#45;custom\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Cancel&ndash;&gt;-->\r\n<!--&lt;!&ndash;</button>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</form>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--<div class=\"m-login__forget-password\">-->\r\n<!--<div class=\"m-login__head\">-->\r\n<!--<h3 class=\"m-login__title\">-->\r\n<!--Bạn quên mật khẩu ?-->\r\n<!--</h3>-->\r\n<!--<div class=\"m-login__desc\">-->\r\n<!--Nhập email của bạn đang tạo lại mật khẩu!-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--<form (ngSubmit)=\"f.form.valid && forgotPass()\" #f=\"ngForm\" class=\"m-login__form m-form\" action=\"\">-->\r\n<!--<ng-template #alertForgotPass></ng-template>-->\r\n<!--<div class=\"form-group m-form__group\">-->\r\n<!--<input class=\"form-control m-input\" type=\"text\" placeholder=\"Email\" name=\"email\" [(ngModel)]=\"model.email\" #email=\"ngModel\" id=\"m_email\" autocomplete=\"off\">-->\r\n<!--</div>-->\r\n<!--<div class=\"m-login__form-action\">-->\r\n<!--<button [disabled]=\"loading\" [ngClass]=\"{'m-loader m-loader&#45;&#45;right m-loader&#45;&#45;light': loading}\" id=\"m_login_forget_password_submit\" class=\"btn btn-focus m-btn m-btn&#45;&#45;pill m-btn&#45;&#45;custom m-btn&#45;&#45;air\">-->\r\n<!--Yêu cầu-->\r\n<!--</button>-->\r\n<!--<button [disabled]=\"loading\"  id=\"m_login_forget_password_cancel\" class=\"btn btn-outline-focus m-btn m-btn&#45;&#45;pill m-btn&#45;&#45;custom\">-->\r\n<!--Hủy bỏ-->\r\n<!--</button>-->\r\n<!--</div>-->\r\n<!--</form>-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--&lt;!&ndash;<div class=\"m-stack__item m-stack__item&#45;&#45;center\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<div class=\"m-login__account\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;<span class=\"m-login__account-msg\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Don't have an account yet ?&ndash;&gt;-->\r\n<!--&lt;!&ndash;</span>&ndash;&gt;-->\r\n<!--&lt;!&ndash;&nbsp;&nbsp;&ndash;&gt;-->\r\n<!--&lt;!&ndash;<a href=\"javascript:;\" id=\"m_login_signup\" class=\"m-link m-link&#45;&#45;focus m-login__account-link\">&ndash;&gt;-->\r\n<!--&lt;!&ndash;Sign Up&ndash;&gt;-->\r\n<!--&lt;!&ndash;</a>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--<div class=\"m-grid__item m-grid__item&#45;&#45;fluid m-grid m-grid&#45;&#45;center m-grid&#45;&#45;hor m-grid__item&#45;&#45;order-tablet-and-mobile-1\tm-login__content\" style=\"background-image: url(./assets/app/media/img//bg/bg-4.jpg)\">-->\r\n<!--<div class=\"m-grid__item m-grid__item&#45;&#45;middle\">-->\r\n<!--<h3 class=\"m-login__welcome\">-->\r\n<!--ThaiThinhMedic-->\r\n<!--</h3>-->\r\n<!--<p class=\"m-login__msg\">-->\r\n<!--Chào mừng bạn đến với trang thông tin nội bộ.-->\r\n<!--<br>-->\r\n<!--Công ty Cổ phần Bệnh viện Thái Thịnh-->\r\n<!--</p>-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n"
+
+/***/ }),
+
+/***/ "./src/app/base-form.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/base-form.component.ts ***!
+  \****************************************/
+/*! exports provided: BaseFormComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BaseFormComponent", function() { return BaseFormComponent; });
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
+/* harmony import */ var _shareds_helpers_app_injector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./shareds/helpers/app-injector */ "./src/app/shareds/helpers/app-injector.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var BaseFormComponent = /** @class */ (function () {
+    function BaseFormComponent() {
+        var _this = this;
+        this.saveSuccessful = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.isSubmitted = false;
+        this.isSaving = false;
+        this.isUpdate = false;
+        this.formErrors = {};
+        this.validationMessages = {};
+        this.translationFormErrors = {};
+        this.translationValidationMessage = [];
+        this.subscribers = {};
+        this.isModified = false;
+        this.isCreateAnother = false;
+        this.languages = [];
+        // errorMessage$ = new Subject<string[]>();
+        // Permission.
+        this.permission = {
+            view: false,
+            add: false,
+            edit: false,
+            delete: false,
+            export: false,
+            print: false,
+            approve: false,
+            report: false
+        };
+        this._message = {
+            type: '',
+            content: ''
+        };
+        this.appService = _shareds_helpers_app_injector__WEBPACK_IMPORTED_MODULE_4__["AppInjector"].get(_shareds_services_app_service__WEBPACK_IMPORTED_MODULE_3__["AppService"]);
+        this.formBuilder = _shareds_helpers_app_injector__WEBPACK_IMPORTED_MODULE_4__["AppInjector"].get(_angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormBuilder"]);
+        this.renderLanguageData();
+        setTimeout(function () {
+            _this.permission = _this.appService.getPermissionByPageId();
+        });
+    }
+    Object.defineProperty(BaseFormComponent.prototype, "message", {
+        get: function () {
+            return this._message;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BaseFormComponent.prototype, "modelTranslations", {
+        get: function () {
+            return this.model.get('modelTranslations');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BaseFormComponent.prototype, "translations", {
+        get: function () {
+            return this.model.get('translations');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    BaseFormComponent.prototype.ngOnDestroy = function () {
+        for (var subscriberKey in this.subscribers) {
+            if (this.subscribers.hasOwnProperty(subscriberKey)) {
+                var subscriber = this.subscribers[subscriberKey];
+                if (subscriber instanceof rxjs__WEBPACK_IMPORTED_MODULE_2__["Subscriber"]) {
+                    subscriber.unsubscribe();
+                }
+            }
+        }
+    };
+    BaseFormComponent.prototype.setMessage = function (type, content) {
+        this._message.type = type;
+        this._message.content = content;
+    };
+    BaseFormComponent.prototype.resetMessage = function () {
+        this._message.type = '';
+        this._message.content = '';
+    };
+    BaseFormComponent.prototype.renderLanguageData = function () {
+        var _this = this;
+        this.languages = this.appService.languages.map(function (language) {
+            if (language.isDefault) {
+                _this.currentLanguage = language.languageId;
+            }
+            return { id: language.languageId, name: language.name, isSelected: language.isDefault };
+        });
+    };
+    BaseFormComponent.prototype.renderTranslationFormArray = function (buildFormFunction) {
+        var _this = this;
+        this.modelTranslationArray = this.model.get('modelTranslations');
+        this.languages.forEach(function (language) {
+            var formGroup = buildFormFunction(language.id);
+            _this.modelTranslationArray.push(formGroup);
+        });
+    };
+    BaseFormComponent.prototype.renderTranslationArray = function (buildFormFunction) {
+        var _this = this;
+        this.modelTranslationArray = this.model.get('translations');
+        this.languages.forEach(function (language) {
+            var formGroup = buildFormFunction(language.id);
+            _this.modelTranslationArray.push(formGroup);
+        });
+    };
+    BaseFormComponent.prototype.renderFormError = function (args) {
+        var _this = this;
+        var object = {};
+        args.forEach(function (item) {
+            if (item instanceof Object) {
+                object[Object.keys(item)[0]] = _this.renderFormError(Object.values(item)[0]);
+            }
+            else {
+                object[item] = '';
+            }
+        });
+        return object;
+    };
+    BaseFormComponent.prototype.renderFormErrorMessage = function (args) {
+        var _this = this;
+        var object = {};
+        args.forEach(function (item) {
+            if (item instanceof Object) {
+                object[Object.keys(item)[0]] = _this.renderFormErrorMessage(Object.values(item)[0]);
+            }
+            else {
+                object[item] = item;
+            }
+        });
+        return object;
+    };
+    BaseFormComponent.prototype.validateModel = function (isSubmit) {
+        if (isSubmit === void 0) { isSubmit = true; }
+        return this.validateFormGroup(this.model, this.formErrors, this.validationMessages, isSubmit);
+    };
+    BaseFormComponent.prototype.validateTranslationModel = function (isSubmit) {
+        var _this = this;
+        if (isSubmit === void 0) { isSubmit = true; }
+        return this.modelTranslations.controls.map(function (translationModel) {
+            var languageId = translationModel.value.languageId;
+            var isValid = _this.validateFormGroup(translationModel, _this.translationFormErrors[languageId], _this.translationValidationMessage[languageId], isSubmit);
+            return {
+                languageId: languageId,
+                isValid: isValid,
+            };
+        });
+    };
+    BaseFormComponent.prototype.validateTranslation = function (isSubmit) {
+        var _this = this;
+        if (isSubmit === void 0) { isSubmit = true; }
+        return this.translations.controls.map(function (translationModel) {
+            var languageId = translationModel.value.languageId;
+            var isValid = _this.validateFormGroup(translationModel, _this.translationFormErrors[languageId], _this.translationValidationMessage[languageId], isSubmit);
+            return {
+                languageId: languageId,
+                isValid: isValid,
+            };
+        });
+    };
+    BaseFormComponent.prototype.validateFormGroup = function (formGroup, formErrors, validationMessages, isSubmit, elements, data) {
+        if (!formGroup) {
+            return;
+        }
+        var form = formGroup;
+        return this.checkFormValid(form, formErrors, validationMessages, isSubmit);
+    };
+    BaseFormComponent.prototype.checkLanguageValid = function () {
+        var _this = this;
+        var languageValidCheck = this.validateTranslationModel();
+        var languageValid = languageValidCheck.map(function (languageCheck) {
+            if (!languageCheck.isValid) {
+                _this.currentLanguage = languageCheck.languageId;
+                return false;
+            }
+            else {
+                return true;
+            }
+        });
+        return !(languageValid.indexOf(false) > -1);
+    };
+    BaseFormComponent.prototype.validateLanguage = function () {
+        var _this = this;
+        var languageValidCheck = this.validateTranslation();
+        var languageValid = languageValidCheck.map(function (languageCheck) {
+            if (!languageCheck.isValid) {
+                _this.currentLanguage = languageCheck.languageId;
+                return false;
+            }
+            else {
+                return true;
+            }
+        });
+        return !(languageValid.indexOf(false) > -1);
+    };
+    BaseFormComponent.prototype.clearFormError = function (formErrors) {
+        for (var field in formErrors) {
+            if (typeof (formErrors[field]) === 'object' && field != null) {
+                this.clearFormError(formErrors[field]);
+            }
+            else {
+                formErrors[field] = '';
+            }
+        }
+    };
+    BaseFormComponent.prototype.checkFormValid = function (form, formErrors, validationMessages, isSubmit) {
+        var _this = this;
+        var inValidCount = 0;
+        var isValid = true;
+        var _loop_1 = function (field) {
+            if (typeof (formErrors[field]) === 'object' && field != null && form != null) {
+                var newFormGroup = form.get(field);
+                if (newFormGroup instanceof _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormArray"]) {
+                    newFormGroup.controls.forEach(function (control, index) {
+                        isValid = _this.checkFormValid(control, formErrors[field], validationMessages[field], isSubmit);
+                    });
+                }
+                else {
+                    isValid = this_1.checkFormValid(newFormGroup, formErrors[field], validationMessages[field], isSubmit);
+                }
+            }
+            else {
+                if (field != null && form != null) {
+                    formErrors[field] = '';
+                    var control = form.get(field);
+                    if (control && isSubmit) {
+                        control.markAsDirty();
+                    }
+                    if (control && control.dirty && !control.valid) {
+                        var messages = validationMessages[field];
+                        for (var key in control.errors) {
+                            if (control.errors.hasOwnProperty(key)) {
+                                formErrors[field] += messages[key];
+                                inValidCount++;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        var this_1 = this;
+        for (var field in formErrors) {
+            _loop_1(field);
+        }
+        return inValidCount === 0 && isValid;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        __metadata("design:type", Object)
+    ], BaseFormComponent.prototype, "saveSuccessful", void 0);
+    return BaseFormComponent;
+}());
+
+
 
 /***/ }),
 
@@ -977,19 +1751,95 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APP_CONFIG", function() { return APP_CONFIG; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
+//
+// export const APP_CONFIG_DI: IAppConfig = {
+//     CLIENT_ID: 'a3a3b45c-3665-44b2-931a-f840fdfca572',
+//     PAGE_SIZE: 10,
+//     CORE_API_URL: 'http://localhost:50001/api/v1/',
+//     HR_API_URL: 'http://localhost:5002/api/v1/',
+//     AUTHORITY: 'http://localhost:50008/auth',
+//     TASK_API_URL: 'http://localhost:5003/api/v1/',
+//     TIMEKEEPING_API_URL: 'http://localhost:50004/api/v1/',
+//     FILE_MANAGEMENT: 'http://localhost:50005/api/v1/',
+//     MAIL_API_URL: 'http://localhost:5006/api/v1/',
+//     WEBSITE_API_URL: 'http://localhost:50002/api/v1/',
+//     NOTIFICATION_URL: 'http://localhost:50004/',
+//     SCOPES: 'offline_access GHM_Core_Api GHM_Notification_Api GHM_File_Management_Api GHM_Website_Api GHM_Event_Api GHM_Warehouse_Api' +
+//     ' GHM_Customer_Api GHM_Internal_Api_Gateway',
+//     PATIENT_API_URL: 'http://localhost:50007/api/v1/',
+//     RELATIONSHIP_API_URL: 'http://localhost:5009/api/v1/',
+//     SURVEY_API_URL: 'http://localhost:5011/api/v1/',
+//     EVENT_API_URL: 'http://localhost:50003/api/v1/',
+//     FILE_URL: 'https://testfilemanager.ghmsoft.vn/',
+//     FILE_LOCAL_URL: 'http://localhost:50005/',
+//     API_GATEWAY_URL: 'http://localhost:50008/',
+//     WAREHOUSE_API_URL: 'http://localhost:50009/api/v1/'
+// };
+// quy test
 var APP_CONFIG_DI = {
     CLIENT_ID: 'a3a3b45c-3665-44b2-931a-f840fdfca572',
-    PAGE_SIZE: 20,
-    CORE_API_URL: 'http://localhost:5001/api/v1/',
+    PAGE_SIZE: 10,
+    CORE_API_URL: 'http://localhost:50001/api/v1/',
     HR_API_URL: 'http://localhost:5002/api/v1/',
-    AUTHORITY: 'http://localhost:5000/connect/token',
+    AUTHORITY: 'http://localhost:50008/auth',
     TASK_API_URL: 'http://localhost:5003/api/v1/',
-    TIMEKEEPING_API_URL: 'http://localhost:5004/api/v1/',
-    FILE_UPLOAD: 'http://localhost:5005/api/v1/',
+    TIMEKEEPING_API_URL: 'http://localhost:50004/api/v1/',
+    FILE_MANAGEMENT: 'http://localhost:50005/api/v1/',
     MAIL_API_URL: 'http://localhost:5006/api/v1/',
-    WEBSITE_API_URL: 'http://localhost:5007/api/',
-    SCOPES: 'offline_access GHM_Core_Api GHM_Hr_Api'
+    WEBSITE_API_URL: 'http://localhost:50002/api/v1/',
+    NOTIFICATION_URL: 'http://localhost:50004/',
+    SCOPES: 'offline_access GHM_Core_Api GHM_Notification_Api GHM_File_Management_Api GHM_Website_Api GHM_Event_Api GHM_Warehouse_Api' +
+        ' GHM_Customer_Api GHM_Internal_Api_Gateway',
+    PATIENT_API_URL: 'http://localhost:50007/api/v1/',
+    RELATIONSHIP_API_URL: 'http://localhost:5009/api/v1/',
+    SURVEY_API_URL: 'http://localhost:5011/api/v1/',
+    EVENT_API_URL: 'http://localhost:50003/api/v1/',
+    FILE_URL: 'https://testfilemanager.ghmsoft.vn/',
+    FILE_LOCAL_URL: 'http://localhost:50005/',
+    // API_GATEWAY_URL: 'http://localhost:50008/',
+    API_GATEWAY_URL: 'http://quyapigateway.ghmsoft.vn',
+    WAREHOUSE_API_URL: 'http://localhost:50009/api/v1/'
 };
+// export const APP_CONFIG_DI: IAppConfig = {
+//     CLIENT_ID: 'a3a3b45c-3665-44b2-931a-f840fdfca572',
+//     PAGE_SIZE: 10,
+//     CORE_API_URL: 'https://core.ghmsoft.vn/api/v1/',
+//     HR_API_URL: 'https://hr.ghmsoft.vn/api/v1/',
+//     AUTHORITY: 'https://auth.ghmsoft.vn/connect/token',
+//     TASK_API_URL: 'http://task.ghmsoft.vn/api/v1/',
+//     TIMEKEEPING_API_URL: 'http://timekeeping.ghmsoft.vn/api/v1/',
+//     FILE_MANAGEMENT: 'http://upload.ghmsoft.vn/api/v1/',
+//     MAIL_API_URL: 'http://mail.ghmsoft.vn/api/v1/',
+//     WEBSITE_API_URL: 'http://website.ghmsoft.vn/api/',
+//     NOTIFICATION_URL: 'https://notification.ghmsoft.vn/',
+//     SCOPES: 'offline_access GHM_Core_Api GHM_Hr_Api GHM_Survey_Api GHM_Notification_Api GHM_Patient_Api GHM_Relationship_Api',
+//     PATIENT_API_URL: 'https://customer.ghmsoft.vn/api/v1/',
+//     RELATIONSHIP_API_URL: 'https://relationship.ghmsoft.vn/api/v1/',
+//     SURVEY_API_URL: 'https://survey.ghmsoft.vn/api/v1/'
+// };
+// //
+// Test.
+// export const APP_CONFIG_DI: IAppConfig = {
+//     CLIENT_ID: 'a3a3b45c-3665-44b2-931a-f840fdfca572',
+//     PAGE_SIZE: 10,
+//     CORE_API_URL: 'https://testwebsitecore.ghmsoft.vn/api/v1/',
+//     HR_API_URL: '',
+//     TIMEKEEPING_API_URL: '',
+//     AUTHORITY: 'https://testwebsiteapigateway.ghmsoft.vn/auth/connect/token',
+//     FILE_MANAGEMENT: 'https://testfilemanager.ghmsoft.vn/api/v1/',
+//     WEBSITE_API_URL: 'https://testwebsite.ghmsoft.vn/api/v1/',
+//     NOTIFICATION_URL: 'https://testwebsitenotification.ghmsoft.vn',
+//     PATIENT_API_URL: '',
+//     SCOPES: 'offline_access GHM_Core_Api GHM_Notification_Api GHM_File_Management_Api GHM_Website_Api GHM_Event_Api' +
+//         ' GHM_Customer_Api GHM_Internal_Api_Gateway GHM_Warehouse_Api',
+//     TASK_API_URL: '',
+//     SURVEY_API_URL: '',
+//     MAIL_API_URL: '',
+//     RELATIONSHIP_API_URL: '',
+//     EVENT_API_URL: 'https://testevent.ghmsoft.vn/api/v1/',
+//     FILE_URL: 'https://testfilemanager.ghmsoft.vn/',
+//     API_GATEWAY_URL: 'https://testwebsiteapigateway.ghmsoft.vn/'
+// };
 var APP_CONFIG = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('app.config');
 
 
@@ -1019,9 +1869,13 @@ var PAGE_ID_DI = {
     CONFIG_ROLE: 3,
     CONFIG_CLIENT: 4,
     CONFIG_TENANT: 5,
+    CONFIG_ACCOUNT: 6,
+    CONFIG_WEBSITE: 8,
+    CONFIG_EMAIL: 9,
     // ------ SURVEY: 100 ------
     SURVEY: 100,
-    SURVEY_NEWS: 101,
+    SURVEY_LIST: 101,
+    SURVEY_NEWS: 114,
     SURVEY_CATEGORY: 102,
     SURVEY_QUESTION: 103,
     SURVEY_GROUP_QUESTION: 104,
@@ -1035,9 +1889,11 @@ var PAGE_ID_DI = {
     SURVEY_NEWS_DETAIL: 112,
     SURVEY_DASHBOARD: 112,
     SURVEY_PREVIEW: 113,
+    SURVEY_QUESTION_APPROVE: 114,
     // ------ WEBSITE: 200 ------
     WEBSITE: 200,
     NEWS: 201,
+    NEWS_LIST: 220,
     NEWS_CATEGORY: 202,
     NEWS_SPECIALIST: 203,
     NEWS_SERVICES: 204,
@@ -1053,6 +1909,9 @@ var PAGE_ID_DI = {
     FAQS: 214,
     WEBSITE_COURSE: 215,
     VIDEO: 216,
+    ALBUM: 227,
+    BANNER: 219,
+    FOLDER: 217,
     // ------ HR: 300 ------
     HR: 300,
     ORGANIZATION: 321,
@@ -1064,7 +1923,7 @@ var PAGE_ID_DI = {
     INSURANCE: 306,
     QUICK_INSERT_USER: 307,
     OFFICE: 308,
-    OFFICE_TITLE: 309,
+    OFFICE_POSITION: 309,
     TRAINING_HISTORY: 310,
     EMPLOYMENT_HISTORY: 311,
     COMMENDATION_DISCIPLINE: 312,
@@ -1116,7 +1975,39 @@ var PAGE_ID_DI = {
     TIMEKEEPING_IN_LATE_OUT_EARLY: 790,
     TIMEKEEPING_OVERTIME: 710,
     TIMEKEEPING_FORGOT_CHECK_IN: 711,
-    TIMEKEEPING_IN_LATE_OUT_EARLY_FREQUENTLY: 712
+    TIMEKEEPING_IN_LATE_OUT_EARLY_FREQUENTLY: 712,
+    // ----- PATIENT:  800 ------
+    PATIENT: 800,
+    CONFIG_JOB: 801,
+    CONFIG_PATIENT_SOURCE: 802,
+    CONFIG_PATIENT_SUBJECT: 803,
+    LIST_PATIENT: 804,
+    // ----- EVENTS: 10000 -----
+    EVENT: 10000,
+    EVENT_LIST: 10001,
+    // ------ BRAND: 20000 -----
+    BRAND: 20000,
+    // ----- PRODUCT ----
+    // PRODUCT_MANAGER: 30000,
+    // PRODUCT: 30001,
+    // PRODUCT_ATTRIBUTE: 30002,
+    // PRODUCT_CATEGORY: 30003,
+    // SUPPLIER: 30004,
+    // UNIT: 30007,
+    // ----- WAREHOUSE: 100000 -----
+    WAREHOUSE: 100000,
+    PRODUCT: 100001,
+    PRODUCT_ATTRIBUTE: 100002,
+    PRODUCT_CATEGORY: 100003,
+    SUPPLIER: 100004,
+    BRANDS: 100006,
+    UNIT: 100007,
+    WAREHOUSE_MANAGEMENT: 100009,
+    GOODS_RECEIPT_NOTE: 100010,
+    GOODS_DELIVERY_NOTE: 100011,
+    WAREHOUSE_CONFIG: 100012,
+    INVENTORY: 100015,
+    INVENTORY_REPORT: 100013
 };
 // Injection Tokens
 var PAGE_ID = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('page.config');
@@ -1210,13 +2101,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreModule", function() { return CoreModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _spinner_spinner_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
-/* harmony import */ var _spinner_spinner_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./spinner/spinner.component */ "./src/app/core/spinner/spinner.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _shareds_components_ghm_alert_ghm_alert_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../shareds/components/ghm-alert/ghm-alert.component */ "./src/app/shareds/components/ghm-alert/ghm-alert.component.ts");
-/* harmony import */ var _directives_ghm_label_directive__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./directives/ghm-label.directive */ "./src/app/core/directives/ghm-label.directive.ts");
-/* harmony import */ var _components_ghm_button_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/ghm-button.component */ "./src/app/core/components/ghm-button.component.ts");
-/* harmony import */ var _directives_ghm_image_directive__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./directives/ghm-image.directive */ "./src/app/core/directives/ghm-image.directive.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _shareds_components_ghm_alert_ghm_alert_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shareds/components/ghm-alert/ghm-alert.component */ "./src/app/shareds/components/ghm-alert/ghm-alert.component.ts");
+/* harmony import */ var _directives_ghm_label_directive__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./directives/ghm-label.directive */ "./src/app/core/directives/ghm-label.directive.ts");
+/* harmony import */ var _components_ghm_button_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/ghm-button.component */ "./src/app/core/components/ghm-button.component.ts");
+/* harmony import */ var _directives_ghm_image_directive__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./directives/ghm-image.directive */ "./src/app/core/directives/ghm-image.directive.ts");
+/* harmony import */ var _directives_ghm_dropdown_directive__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./directives/ghm-dropdown.directive */ "./src/app/core/directives/ghm-dropdown.directive.ts");
+/* harmony import */ var _pipes_safe_pipe__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pipes/safe.pipe */ "./src/app/core/pipes/safe.pipe.ts");
+/* harmony import */ var _directives_dynamic_component_host_directive__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./directives/dynamic-component-host.directive */ "./src/app/core/directives/dynamic-component-host.directive.ts");
+/* harmony import */ var _directives_ghm_text_selection_directive__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./directives/ghm-text-selection.directive */ "./src/app/core/directives/ghm-text-selection.directive.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1232,31 +2125,129 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 // Layouts
 var CoreModule = /** @class */ (function () {
     function CoreModule() {
     }
     CoreModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"]],
+            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
             exports: [
-                _spinner_spinner_component__WEBPACK_IMPORTED_MODULE_3__["SpinnerComponent"],
-                _shareds_components_ghm_alert_ghm_alert_component__WEBPACK_IMPORTED_MODULE_5__["GhmAlertComponent"],
-                _directives_ghm_label_directive__WEBPACK_IMPORTED_MODULE_6__["GhmLabelDirective"],
-                _components_ghm_button_component__WEBPACK_IMPORTED_MODULE_7__["GhmButtonComponent"],
-                _directives_ghm_image_directive__WEBPACK_IMPORTED_MODULE_8__["GhmImageDirective"]
+                // SpinnerComponent,
+                _shareds_components_ghm_alert_ghm_alert_component__WEBPACK_IMPORTED_MODULE_3__["GhmAlertComponent"],
+                _directives_ghm_label_directive__WEBPACK_IMPORTED_MODULE_4__["GhmLabelDirective"],
+                _components_ghm_button_component__WEBPACK_IMPORTED_MODULE_5__["GhmButtonComponent"],
+                _directives_ghm_image_directive__WEBPACK_IMPORTED_MODULE_6__["GhmImageDirective"],
+                _directives_dynamic_component_host_directive__WEBPACK_IMPORTED_MODULE_9__["DynamicComponentHostDirective"],
+                _directives_ghm_dropdown_directive__WEBPACK_IMPORTED_MODULE_7__["GhmDropdownDirective"],
+                _directives_ghm_text_selection_directive__WEBPACK_IMPORTED_MODULE_10__["GhmTextSelectionDirective"],
+                _pipes_safe_pipe__WEBPACK_IMPORTED_MODULE_8__["SafePipe"]
             ],
             declarations: [
-                _spinner_spinner_component__WEBPACK_IMPORTED_MODULE_3__["SpinnerComponent"],
-                _shareds_components_ghm_alert_ghm_alert_component__WEBPACK_IMPORTED_MODULE_5__["GhmAlertComponent"],
-                _directives_ghm_label_directive__WEBPACK_IMPORTED_MODULE_6__["GhmLabelDirective"],
-                _components_ghm_button_component__WEBPACK_IMPORTED_MODULE_7__["GhmButtonComponent"],
-                _directives_ghm_image_directive__WEBPACK_IMPORTED_MODULE_8__["GhmImageDirective"]
+                // SpinnerComponent,
+                _shareds_components_ghm_alert_ghm_alert_component__WEBPACK_IMPORTED_MODULE_3__["GhmAlertComponent"],
+                _directives_ghm_label_directive__WEBPACK_IMPORTED_MODULE_4__["GhmLabelDirective"],
+                _components_ghm_button_component__WEBPACK_IMPORTED_MODULE_5__["GhmButtonComponent"],
+                _directives_ghm_text_selection_directive__WEBPACK_IMPORTED_MODULE_10__["GhmTextSelectionDirective"],
+                _directives_dynamic_component_host_directive__WEBPACK_IMPORTED_MODULE_9__["DynamicComponentHostDirective"],
+                _directives_ghm_image_directive__WEBPACK_IMPORTED_MODULE_6__["GhmImageDirective"],
+                _directives_ghm_dropdown_directive__WEBPACK_IMPORTED_MODULE_7__["GhmDropdownDirective"],
+                _pipes_safe_pipe__WEBPACK_IMPORTED_MODULE_8__["SafePipe"]
             ],
-            providers: [_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_2__["SpinnerService"]],
         })
     ], CoreModule);
     return CoreModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/core/directives/dynamic-component-host.directive.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/core/directives/dynamic-component-host.directive.ts ***!
+  \*********************************************************************/
+/*! exports provided: DynamicComponentHostDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DynamicComponentHostDirective", function() { return DynamicComponentHostDirective; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DynamicComponentHostDirective = /** @class */ (function () {
+    function DynamicComponentHostDirective(viewContainerRef) {
+        this.viewContainerRef = viewContainerRef;
+    }
+    DynamicComponentHostDirective = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({ selector: '[dynamic-component-host]' }),
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]])
+    ], DynamicComponentHostDirective);
+    return DynamicComponentHostDirective;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/core/directives/ghm-dropdown.directive.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/core/directives/ghm-dropdown.directive.ts ***!
+  \***********************************************************/
+/*! exports provided: GhmDropdownDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GhmDropdownDirective", function() { return GhmDropdownDirective; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var GhmDropdownDirective = /** @class */ (function () {
+    function GhmDropdownDirective(el, renderer) {
+        this.el = el;
+        this.renderer = renderer;
+        this.flag = false;
+    }
+    GhmDropdownDirective.prototype.onClick = function (el) {
+        if (!this.el.nativeElement.contains(el.target)) {
+            this.renderer.removeClass(this.el.nativeElement, 'ghm-dropdown-open');
+        }
+        else {
+            this.renderer.addClass(this.el.nativeElement, 'ghm-dropdown-open');
+        }
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('document:click', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], GhmDropdownDirective.prototype, "onClick", null);
+    GhmDropdownDirective = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({ selector: '[ghmDropdown]' }),
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]])
+    ], GhmDropdownDirective);
+    return GhmDropdownDirective;
 }());
 
 
@@ -1274,6 +2265,7 @@ var CoreModule = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GhmImageDirective", function() { return GhmImageDirective; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../configs/app.config */ "./src/app/configs/app.config.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1283,13 +2275,26 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
 
 var GhmImageDirective = /** @class */ (function () {
-    function GhmImageDirective(el, renderer) {
+    function GhmImageDirective(appConfig, el, renderer) {
+        this.appConfig = appConfig;
         this.el = el;
         this.renderer = renderer;
-        this.errorImageUrl = '/assets/images/noavatar.png';
+        this.errorImageUrl = '/assets/images/no-image.png';
+        this.isUrlAbsolute = false;
     }
+    Object.defineProperty(GhmImageDirective.prototype, "src", {
+        set: function (value) {
+            this.renderer.setAttribute(this.el.nativeElement, 'src', "" + (!this.isUrlAbsolute ? this.appConfig.FILE_URL : '') + value);
+        },
+        enumerable: true,
+        configurable: true
+    });
     GhmImageDirective.prototype.error = function () {
         this.renderer.setAttribute(this.el.nativeElement, 'src', this.errorImageUrl);
     };
@@ -1298,14 +2303,24 @@ var GhmImageDirective = /** @class */ (function () {
         __metadata("design:type", Object)
     ], GhmImageDirective.prototype, "errorImageUrl", void 0);
     __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], GhmImageDirective.prototype, "isUrlAbsolute", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String),
+        __metadata("design:paramtypes", [String])
+    ], GhmImageDirective.prototype, "src", null);
+    __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('error', ['$event']),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", void 0)
     ], GhmImageDirective.prototype, "error", null);
     GhmImageDirective = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({ selector: '[ghm-image]' }),
-        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"],
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({ selector: '[ghmImage]' }),
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_1__["APP_CONFIG"])),
+        __metadata("design:paramtypes", [Object, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"],
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]])
     ], GhmImageDirective);
     return GhmImageDirective;
@@ -1404,6 +2419,89 @@ var GhmLabelDirective = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/core/directives/ghm-text-selection.directive.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/core/directives/ghm-text-selection.directive.ts ***!
+  \*****************************************************************/
+/*! exports provided: GhmTextSelectionDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GhmTextSelectionDirective", function() { return GhmTextSelectionDirective; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var GhmTextSelectionDirective = /** @class */ (function () {
+    function GhmTextSelectionDirective(el, renderer) {
+        this.el = el;
+        this.renderer = renderer;
+        this.renderer.listen(this.el.nativeElement, 'focus', function (event) {
+            var length = event.target.value ? event.target.value.length : 0;
+            event.target.setSelectionRange(0, length);
+        });
+    }
+    GhmTextSelectionDirective = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({ selector: '[ghm-text-selection]' }),
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]])
+    ], GhmTextSelectionDirective);
+    return GhmTextSelectionDirective;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/core/pipes/safe.pipe.ts":
+/*!*****************************************!*\
+  !*** ./src/app/core/pipes/safe.pipe.ts ***!
+  \*****************************************/
+/*! exports provided: SafePipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SafePipe", function() { return SafePipe; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var SafePipe = /** @class */ (function () {
+    function SafePipe(sanitizer) {
+        this.sanitizer = sanitizer;
+    }
+    SafePipe.prototype.transform = function (url) {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    };
+    SafePipe = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({ name: 'safe' }),
+        __metadata("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["DomSanitizer"]])
+    ], SafePipe);
+    return SafePipe;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/core/spinner/spinner.component.html":
 /*!*****************************************************!*\
   !*** ./src/app/core/spinner/spinner.component.html ***!
@@ -1422,7 +2520,7 @@ module.exports = "<div class=\"spinner-backdrop\" *ngIf=\"visible\"></div>\r\n<d
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".spinner-backdrop {\n  background: rgba(255, 255, 255, 0.5);\n  display: block;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  z-index: 9999; }\n\n.m-page-loader.m-page-loader--non-block {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  width: auto;\n  z-index: 99999; }\n\n.m-page-loader {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 1000;\n  -moz-justify-content: center;\n  -ms-justify-content: center;\n  justify-content: center;\n  -moz-align-items: center;\n  -ms-align-items: center;\n  align-items: center;\n  display: block; }\n\n.m-blockui {\n  background: #ffffff;\n  box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.2); }\n\n.m-blockui.m-blockui-no-shadow {\n  box-shadow: none; }\n\n.m-blockui > span {\n  color: #6f727d;\n  display: table-cell;\n  vertical-align: middle;\n  padding: 8px 15px;\n  font-size: 14px;\n  font-weight: 400; }\n\n.m-blockui.m-blockui--skin-dark {\n  background: #2c2e3e;\n  box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.4); }\n\n.m-blockui.m-blockui--skin-dark.m-blockui-no-shadow {\n  box-shadow: none; }\n\n.m-blockui.m-blockui--skin-dark > span {\n  color: #e6e6e6; }\n\n.m-loader {\n  position: relative; }\n\n.m-blockui > span > .m-loader, .m-blockui > span > .m-spinner {\n  margin-right: 10px; }\n\n.m-loader.m-loader--brand:before {\n  border-top-color: #716aca; }\n\n.m-loader:before {\n  width: 22.4px;\n  height: 22.4px;\n  margin-top: -11.2px;\n  margin-left: -11.2px;\n  border-top-width: 2px;\n  border-right-width: 2px; }\n\n.m-loader:before {\n  content: '';\n  box-sizing: border-box;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  border-top: 2px solid #07d;\n  border-right: 2px solid transparent;\n  border-radius: 50%;\n  -webkit-animation: m-loader-rotate 0.6s linear infinite;\n  animation: m-loader-rotate 0.6s linear infinite; }\n\n@-webkit-keyframes m-loader-rotate {\n  to {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n@keyframes m-loader-rotate {\n  to {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n"
+module.exports = ".spinner-backdrop {\n  background: rgba(255, 255, 255, 0.5);\n  display: block;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  z-index: 9999999; }\n\n.m-page-loader.m-page-loader--non-block {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  width: auto;\n  z-index: 999999999; }\n\n.m-page-loader {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 1000;\n  -moz-justify-content: center;\n  -ms-justify-content: center;\n  justify-content: center;\n  -moz-align-items: center;\n  -ms-align-items: center;\n  align-items: center;\n  display: block; }\n\n.m-blockui {\n  background: #ffffff;\n  box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.2); }\n\n.m-blockui.m-blockui-no-shadow {\n  box-shadow: none; }\n\n.m-blockui > span {\n  color: #6f727d;\n  display: table-cell;\n  vertical-align: middle;\n  padding: 8px 15px;\n  font-size: 14px;\n  font-weight: 400; }\n\n.m-blockui.m-blockui--skin-dark {\n  background: #2c2e3e;\n  box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.4); }\n\n.m-blockui.m-blockui--skin-dark.m-blockui-no-shadow {\n  box-shadow: none; }\n\n.m-blockui.m-blockui--skin-dark > span {\n  color: #e6e6e6; }\n\n.m-loader {\n  position: relative; }\n\n.m-blockui > span > .m-loader, .m-blockui > span > .m-spinner {\n  margin-right: 10px; }\n\n.m-loader.m-loader--brand:before {\n  border-top-color: #716aca; }\n\n.m-loader:before {\n  width: 22.4px;\n  height: 22.4px;\n  margin-top: -11.2px;\n  margin-left: -11.2px;\n  border-top-width: 2px;\n  border-right-width: 2px; }\n\n.m-loader:before {\n  content: '';\n  box-sizing: border-box;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  border-top: 2px solid #07d;\n  border-right: 2px solid transparent;\n  border-radius: 50%;\n  -webkit-animation: m-loader-rotate 0.6s linear infinite;\n  animation: m-loader-rotate 0.6s linear infinite; }\n\n@-webkit-keyframes m-loader-rotate {\n  to {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n@keyframes m-loader-rotate {\n  to {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n"
 
 /***/ }),
 
@@ -1451,15 +2549,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var SpinnerComponent = /** @class */ (function () {
     function SpinnerComponent(spinnerService) {
+        var _this = this;
         this.spinnerService = spinnerService;
         this.visible = false;
-    }
-    SpinnerComponent.prototype.ngOnInit = function () {
-        var _this = this;
         this.spinnerStateChanged = this.spinnerService.spinnerState
             .subscribe(function (state) {
             _this.visible = state.show;
+            _this.message = state.message;
         });
+    }
+    SpinnerComponent.prototype.ngOnInit = function () {
     };
     SpinnerComponent.prototype.ngOnDestroy = function () {
         this.spinnerStateChanged.unsubscribe();
@@ -1505,17 +2604,19 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var SpinnerService = /** @class */ (function () {
     function SpinnerService() {
-        this.spinnerSubject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.spinnerState = this.spinnerSubject.asObservable();
-        this.message$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.spinnerState = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]({
+            show: false,
+            message: ''
+        });
     }
     SpinnerService.prototype.show = function (message) {
-        console.log(message);
-        this.message$.next(message);
-        this.spinnerSubject.next({ show: true });
+        this.spinnerState.next({
+            show: true,
+            message: message
+        });
     };
     SpinnerService.prototype.hide = function () {
-        this.spinnerSubject.next({ show: false });
+        this.spinnerState.next({ show: false });
     };
     SpinnerService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
@@ -1544,6 +2645,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_Operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/Operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1561,12 +2663,14 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
+
 var PageService = /** @class */ (function () {
-    function PageService(appConfig, http) {
+    function PageService(appConfig, spinnerService, http) {
         this.appConfig = appConfig;
+        this.spinnerService = spinnerService;
         this.http = http;
-        this.url = 'pages/';
-        this.url = "" + this.appConfig.CORE_API_URL + this.url;
+        this.url = 'api/v1/core/pages';
+        this.url = "" + this.appConfig.API_GATEWAY_URL + this.url;
     }
     PageService.prototype.resolve = function (route, state) {
         var params = route.queryParams;
@@ -1591,30 +2695,34 @@ var PageService = /** @class */ (function () {
             return result.items;
         }));
     };
-    PageService.prototype.insert = function (pageMeta) {
-        return this.http.post("" + this.url, pageMeta);
+    PageService.prototype.insert = function (page) {
+        return this.http.post("" + this.url, page);
     };
     PageService.prototype.update = function (pageMeta) {
-        return this.http.post("" + this.url + pageMeta.id, pageMeta);
+        return this.http.post(this.url + "/" + pageMeta.id, pageMeta);
     };
     PageService.prototype.updateOrder = function (pageId, order) {
-        return this.http.post(this.url + "update-order", '', {
+        return this.http.post(this.url + "/update-order", '', {
             params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]()
                 .set('pageId', pageId.toString())
                 .set('order', order.toString())
         });
     };
     PageService.prototype.delete = function (id) {
-        return this.http.delete("" + this.url + id);
+        return this.http.delete(this.url + "/" + id);
     };
     PageService.prototype.getMyPages = function () {
-        return this.http.get(this.url + "get-my-pages");
+        return this.http.get(this.url + "/get-my-pages");
     };
     PageService.prototype.getPageTree = function () {
-        return this.http.get(this.url + "trees");
+        return this.http.get(this.url + "/trees");
     };
     PageService.prototype.getLanguageDetail = function (id) {
-        return this.http.get("" + this.url + id);
+        var _this = this;
+        this.spinnerService.show();
+        return this.http
+            .get(this.url + "/" + id)
+            .pipe(Object(rxjs_Operators__WEBPACK_IMPORTED_MODULE_3__["finalize"])(function () { return _this.spinnerService.hide(); }));
     };
     PageService.prototype.getActivatedPages = function () {
         return this.http.get(this.url + "/activated");
@@ -1622,7 +2730,8 @@ var PageService = /** @class */ (function () {
     PageService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_2__["APP_CONFIG"])),
-        __metadata("design:paramtypes", [Object, _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+        __metadata("design:paramtypes", [Object, _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_5__["SpinnerService"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], PageService);
     return PageService;
 }());
@@ -1686,6 +2795,580 @@ var GhmAlertComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/shareds/components/nh-modal/nh-dismiss.directive.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/shareds/components/nh-modal/nh-dismiss.directive.ts ***!
+  \*********************************************************************/
+/*! exports provided: NhDismissDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NhDismissDirective", function() { return NhDismissDirective; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _nh_modal_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nh-modal.service */ "./src/app/shareds/components/nh-modal/nh-modal.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var NhDismissDirective = /** @class */ (function () {
+    function NhDismissDirective(nhModalService) {
+        this.nhModalService = nhModalService;
+        this.dismiss = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+    }
+    NhDismissDirective.prototype.onElementClick = function (e) {
+        this.nhModalService.dismiss();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], NhDismissDirective.prototype, "dismiss", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('click', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], NhDismissDirective.prototype, "onElementClick", null);
+    NhDismissDirective = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
+            selector: '[nh-dismiss]'
+        }),
+        __metadata("design:paramtypes", [_nh_modal_service__WEBPACK_IMPORTED_MODULE_1__["NhModalService"]])
+    ], NhDismissDirective);
+    return NhDismissDirective;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shareds/components/nh-modal/nh-modal-content.component.ts":
+/*!***************************************************************************!*\
+  !*** ./src/app/shareds/components/nh-modal/nh-modal-content.component.ts ***!
+  \***************************************************************************/
+/*! exports provided: NhModalContentComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NhModalContentComponent", function() { return NhModalContentComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/**
+ * Created by HoangNH on 5/5/2017.
+ */
+
+var NhModalContentComponent = /** @class */ (function () {
+    function NhModalContentComponent() {
+        this.isLoading = false;
+        this.isBlockContent = false;
+    }
+    NhModalContentComponent.prototype.ngOnInit = function () {
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], NhModalContentComponent.prototype, "isLoading", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], NhModalContentComponent.prototype, "isBlockContent", void 0);
+    NhModalContentComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'nh-modal-content',
+            template: "\n        <div class=\"lock-form\" *ngIf=\"isBlockContent\"></div>\n        <div class=\"spinner\" *ngIf=\"isLoading; else contentTemplate\">\n            <div class=\"rect1\"></div>\n            <div class=\"rect2\"></div>\n            <div class=\"rect3\"></div>\n            <div class=\"rect4\"></div>\n            <div class=\"rect5\"></div>\n        </div>\n        <ng-template #contentTemplate>\n            <ng-content></ng-content>\n        </ng-template>\n    "
+        }),
+        __metadata("design:paramtypes", [])
+    ], NhModalContentComponent);
+    return NhModalContentComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shareds/components/nh-modal/nh-modal-footer.component.ts":
+/*!**************************************************************************!*\
+  !*** ./src/app/shareds/components/nh-modal/nh-modal-footer.component.ts ***!
+  \**************************************************************************/
+/*! exports provided: NhModalFooterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NhModalFooterComponent", function() { return NhModalFooterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/**
+ * Created by HoangNH on 5/5/2017.
+ */
+
+var NhModalFooterComponent = /** @class */ (function () {
+    function NhModalFooterComponent() {
+    }
+    NhModalFooterComponent.prototype.ngOnInit = function () {
+    };
+    NhModalFooterComponent.prototype.ngAfterViewInit = function () {
+    };
+    NhModalFooterComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'nh-modal-footer',
+            template: "\n        <ng-content></ng-content>\n    "
+        }),
+        __metadata("design:paramtypes", [])
+    ], NhModalFooterComponent);
+    return NhModalFooterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shareds/components/nh-modal/nh-modal-header.component.ts":
+/*!**************************************************************************!*\
+  !*** ./src/app/shareds/components/nh-modal/nh-modal-header.component.ts ***!
+  \**************************************************************************/
+/*! exports provided: NhModalHeaderComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NhModalHeaderComponent", function() { return NhModalHeaderComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _nh_modal_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nh-modal.service */ "./src/app/shareds/components/nh-modal/nh-modal.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/**
+ * Created by HoangNH on 5/5/2017.
+ */
+
+
+var NhModalHeaderComponent = /** @class */ (function () {
+    function NhModalHeaderComponent(nhModalService) {
+        this.nhModalService = nhModalService;
+        this.showCloseButton = true;
+    }
+    NhModalHeaderComponent.prototype.ngOnInit = function () {
+    };
+    NhModalHeaderComponent.prototype.closeModal = function () {
+        this.nhModalService.dismiss();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], NhModalHeaderComponent.prototype, "showCloseButton", void 0);
+    NhModalHeaderComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'nh-modal-header',
+            template: "\n        <div class=\"nh-modal-header-content\">\n            <ng-content></ng-content>\n        </div>\n        <div class=\"nh-modal-header-close-button\">\n            <svg\n                *ngIf=\"showCloseButton\"\n                (click)=\"closeModal()\"\n                width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" focusable=\"false\"\n                role=\"presentation\"\n                class=\"btn-close\">\n                <path\n                    d=\"M12 10.586L6.707 5.293a1 1 0 0 0-1.414 1.414L10.586 12l-5.293 5.293a1 1 0 0 0 1.414 1.414L12 13.414l5.293 5.293a1 1\n0 0 0 1.414-1.414L13.414 12l5.293-5.293a1 1 0 1 0-1.414-1.414L12 10.586z\"\n                    fill=\"currentColor\">\n                </path>\n            </svg>\n        </div>\n    ",
+        }),
+        __metadata("design:paramtypes", [_nh_modal_service__WEBPACK_IMPORTED_MODULE_1__["NhModalService"]])
+    ], NhModalHeaderComponent);
+    return NhModalHeaderComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shareds/components/nh-modal/nh-modal.component.scss":
+/*!*********************************************************************!*\
+  !*** ./src/app/shareds/components/nh-modal/nh-modal.component.scss ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".nh-modal-open .cdk-global-overlay-wrapper {\n  overflow-y: auto; }\n\n.nh-modal-container {\n  background: white;\n  margin: 0 auto; }\n\n.nh-modal-container.nh-modal-sm {\n    width: 300px; }\n\n.nh-modal-container.nh-modal-md {\n    width: 600px; }\n\n.nh-modal-container.nh-modal-lg {\n    width: 900px; }\n\n.nh-modal-container.nh-modal-full {\n    width: 98%; }\n\n.nh-modal-container nh-modal-header, .nh-modal-container nh-modal-content, .nh-modal-container nh-modal-footer {\n    padding: 7px 15px;\n    display: block;\n    width: 100%; }\n\n.nh-modal-container nh-modal-header {\n    flex: 1 100%;\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    justify-content: center;\n    border-bottom: 1px solid #ddd;\n    font-size: 16px;\n    background: white; }\n\n.nh-modal-container nh-modal-header.uppercase {\n      text-transform: uppercase; }\n\n.nh-modal-container nh-modal-header.bold {\n      font-weight: 700; }\n\n.nh-modal-container nh-modal-header .nh-modal-header-content {\n      flex: 10; }\n\n.nh-modal-container nh-modal-header .nh-modal-header-close-button {\n      flex: 1;\n      text-align: right;\n      color: #333; }\n\n.nh-modal-container nh-modal-content {\n    width: 100%;\n    overflow-y: auto;\n    background: white; }\n\n.nh-modal-container nh-modal-footer {\n    border-top: 1px solid #ddd;\n    background: white; }\n"
+
+/***/ }),
+
+/***/ "./src/app/shareds/components/nh-modal/nh-modal.component.ts":
+/*!*******************************************************************!*\
+  !*** ./src/app/shareds/components/nh-modal/nh-modal.component.ts ***!
+  \*******************************************************************/
+/*! exports provided: NhModalComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NhModalComponent", function() { return NhModalComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _nh_modal_header_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nh-modal-header.component */ "./src/app/shareds/components/nh-modal/nh-modal-header.component.ts");
+/* harmony import */ var _nh_modal_footer_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nh-modal-footer.component */ "./src/app/shareds/components/nh-modal/nh-modal-footer.component.ts");
+/* harmony import */ var _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/cdk/overlay */ "./node_modules/@angular/cdk/esm5/overlay.es5.js");
+/* harmony import */ var _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/cdk/portal */ "./node_modules/@angular/cdk/esm5/portal.es5.js");
+/* harmony import */ var _nh_modal_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nh-modal.service */ "./src/app/shareds/components/nh-modal/nh-modal.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/**
+ * Created by HoangNH on 5/5/2017.
+ */
+
+
+
+
+
+
+var NhModalComponent = /** @class */ (function () {
+    function NhModalComponent(el, overlay, viewContainerRef, renderer, nhModalService) {
+        var _this = this;
+        this.el = el;
+        this.overlay = overlay;
+        this.viewContainerRef = viewContainerRef;
+        this.renderer = renderer;
+        this.nhModalService = nhModalService;
+        this.effect = 'slideDown'; // zoom, fade, slideUp, slideDown, slideLeft, slideRight
+        this.size = 'sm';
+        this.hasBackdrop = true;
+        this.backdropStatic = false;
+        // -- Hàm không sử dụng.
+        this.onShow = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.onShown = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.onHide = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.onHidden = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.onClose = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        // END: -- Hàm không sử dụng.
+        this.show = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.shown = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.hide = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.hidden = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.close = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.isShow = false;
+        this.state = '';
+        this.hideState = ['zoomOut', 'fadeOut', 'slideUpHide', 'slideDownHide', 'slideLeftHide', 'slideRightHide'];
+        this.showState = '';
+        this.isDone = false;
+        this.positionStrategy = new _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["GlobalPositionStrategy"]();
+        this.changeState(true);
+        this.nhModalService.dismiss$.subscribe(function (result) {
+            _this.close.emit();
+            _this.dismiss();
+        });
+    }
+    NhModalComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.overlayRef = this.overlay.create({
+            positionStrategy: this.positionStrategy,
+            hasBackdrop: this.hasBackdrop
+        });
+        this.overlayRef.backdropClick().subscribe(function (event) {
+            if (_this.backdropStatic) {
+                return;
+            }
+            _this.dismiss();
+        });
+    };
+    NhModalComponent.prototype.windowResize = function () {
+        this.updatePosition();
+    };
+    NhModalComponent.prototype.open = function () {
+        this.show.emit();
+        this.renderer.addClass(document.body, 'nh-modal-open');
+        if (this.overlayRef && !this.overlayRef.hasAttached()) {
+            this.overlayRef.attach(new _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_4__["TemplatePortal"](this.modalTemplateRef, this.viewContainerRef));
+        }
+        this.updatePosition();
+    };
+    NhModalComponent.prototype.dismiss = function () {
+        this.hide.emit();
+        if (this.overlayRef.hasAttached()) {
+            this.overlayRef.detach();
+            this.hidden.emit();
+            this.renderer.removeClass(document.body, 'modal-open');
+        }
+    };
+    NhModalComponent.prototype.showContainerDone = function (event) {
+        if (event.fromState === 'hide' && event.toState === 'open') {
+            // this.changeState();
+            this.onShown.emit();
+        }
+        if (event.fromState === 'open' && event.toState === 'hide') {
+            this.onHidden.emit();
+        }
+    };
+    NhModalComponent.prototype.showEffectDone = function (event) {
+        if (this.hideState.indexOf(this.state) > -1) {
+            this.showState = 'hide';
+            this.renderer.setStyle(this.el.nativeElement, 'display', 'none');
+            this.onHidden.emit();
+        }
+        this.isDone = true;
+    };
+    NhModalComponent.prototype.changeState = function (isHide) {
+        if (isHide === void 0) { isHide = false; }
+        switch (this.effect) {
+            case 'zoom':
+                this.state = isHide ? 'zoomOut' : this.state === 'zoomIn' ? 'zoomOut' : 'zoomIn';
+                break;
+            case 'fade':
+                this.state = isHide ? 'fadeOut' : this.state === 'fadeIn' ? 'fadeOut' : 'fadeIn';
+                break;
+            case 'slideUp':
+                this.state = isHide ? 'slideUpHide' : this.state === 'slideUpShow' ? 'slideUpHide' : 'slideUpShow';
+                break;
+            case 'slideDown':
+                this.state = isHide ? 'slideDownHide' : this.state === 'slideDownShow' ? 'slideDownHide' : 'slideDownShow';
+                break;
+            case 'slideLeft':
+                this.state = isHide ? 'slideLeftHide' : this.state === 'slideLeftShow' ? 'slideLeftHide' : 'slideLeftShow';
+                break;
+            case 'slideRight':
+                this.state = isHide ? 'slideRightHide' : this.state === 'slideRightShow' ? 'slideRightHide' : 'slideRightShow';
+                break;
+            default:
+                this.state = isHide ? 'zoomOut' : this.state === 'zoomIn' ? 'zoomOut' : 'zoomIn';
+                break;
+        }
+    };
+    NhModalComponent.prototype.updatePosition = function () {
+        if (!this.overlayRef.hasAttached()) {
+            return;
+        }
+        if (this.size && this.size.toLowerCase() === 'full') {
+            this.renderer.setStyle(this.overlayRef.overlayElement, 'width', '100%');
+        }
+        var windowWidth = window.innerWidth;
+        var elementRect = this.overlayRef.overlayElement.getBoundingClientRect();
+        var left = windowWidth / 2 - elementRect.width / 2;
+        this.positionStrategy.top('55px');
+        this.positionStrategy.left(left + 'px');
+        this.positionStrategy.apply();
+        this.shown.emit();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChild"])(_nh_modal_header_component__WEBPACK_IMPORTED_MODULE_1__["NhModalHeaderComponent"]),
+        __metadata("design:type", _nh_modal_header_component__WEBPACK_IMPORTED_MODULE_1__["NhModalHeaderComponent"])
+    ], NhModalComponent.prototype, "modalHeaderComponents", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChild"])(_nh_modal_footer_component__WEBPACK_IMPORTED_MODULE_2__["NhModalFooterComponent"]),
+        __metadata("design:type", _nh_modal_footer_component__WEBPACK_IMPORTED_MODULE_2__["NhModalFooterComponent"])
+    ], NhModalComponent.prototype, "modalFooterComponents", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('modalTemplate'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"])
+    ], NhModalComponent.prototype, "modalTemplateRef", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "effect", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "size", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "hasBackdrop", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "backdropStatic", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "onShow", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "onShown", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "onHide", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "onHidden", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "onClose", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "show", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "shown", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "hide", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "hidden", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], NhModalComponent.prototype, "close", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('window:resize', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], NhModalComponent.prototype, "windowResize", null);
+    NhModalComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'nh-modal',
+            template: "\n        <ng-template #modalTemplate>\n            <div [ngClass]=\"'nh-modal-container nh-modal-' + size\">\n                <ng-content></ng-content>\n            </div><!-- END: nh-modal-container -->\n        </ng-template>\n    ",
+            styles: [__webpack_require__(/*! ./nh-modal.component.scss */ "./src/app/shareds/components/nh-modal/nh-modal.component.scss")],
+            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None
+        }),
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"],
+            _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["Overlay"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"],
+            _nh_modal_service__WEBPACK_IMPORTED_MODULE_5__["NhModalService"]])
+    ], NhModalComponent);
+    return NhModalComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shareds/components/nh-modal/nh-modal.module.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/shareds/components/nh-modal/nh-modal.module.ts ***!
+  \****************************************************************/
+/*! exports provided: NhModalModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NhModalModule", function() { return NhModalModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _nh_dismiss_directive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nh-dismiss.directive */ "./src/app/shareds/components/nh-modal/nh-dismiss.directive.ts");
+/* harmony import */ var _nh_modal_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
+/* harmony import */ var _nh_modal_header_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nh-modal-header.component */ "./src/app/shareds/components/nh-modal/nh-modal-header.component.ts");
+/* harmony import */ var _nh_modal_content_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nh-modal-content.component */ "./src/app/shareds/components/nh-modal/nh-modal-content.component.ts");
+/* harmony import */ var _nh_modal_footer_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nh-modal-footer.component */ "./src/app/shareds/components/nh-modal/nh-modal-footer.component.ts");
+/* harmony import */ var _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/cdk/overlay */ "./node_modules/@angular/cdk/esm5/overlay.es5.js");
+/* harmony import */ var _nh_modal_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./nh-modal.service */ "./src/app/shareds/components/nh-modal/nh-modal.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+/**
+ * Created by HoangNH on 5/5/2017.
+ */
+
+
+// Directives
+
+// Components
+
+
+
+
+
+
+var NhModalModule = /** @class */ (function () {
+    function NhModalModule() {
+    }
+    NhModalModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_7__["OverlayModule"]],
+            exports: [_nh_modal_component__WEBPACK_IMPORTED_MODULE_3__["NhModalComponent"], _nh_modal_header_component__WEBPACK_IMPORTED_MODULE_4__["NhModalHeaderComponent"], _nh_modal_content_component__WEBPACK_IMPORTED_MODULE_5__["NhModalContentComponent"], _nh_modal_footer_component__WEBPACK_IMPORTED_MODULE_6__["NhModalFooterComponent"],
+                _nh_dismiss_directive__WEBPACK_IMPORTED_MODULE_2__["NhDismissDirective"]
+            ],
+            declarations: [_nh_modal_component__WEBPACK_IMPORTED_MODULE_3__["NhModalComponent"], _nh_modal_header_component__WEBPACK_IMPORTED_MODULE_4__["NhModalHeaderComponent"], _nh_modal_content_component__WEBPACK_IMPORTED_MODULE_5__["NhModalContentComponent"], _nh_modal_footer_component__WEBPACK_IMPORTED_MODULE_6__["NhModalFooterComponent"],
+                // Internal components/directives
+                _nh_dismiss_directive__WEBPACK_IMPORTED_MODULE_2__["NhDismissDirective"]
+            ],
+            providers: [_nh_modal_service__WEBPACK_IMPORTED_MODULE_8__["NhModalService"]],
+        })
+    ], NhModalModule);
+    return NhModalModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shareds/components/nh-modal/nh-modal.service.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/shareds/components/nh-modal/nh-modal.service.ts ***!
+  \*****************************************************************/
+/*! exports provided: NhModalService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NhModalService", function() { return NhModalService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var NhModalService = /** @class */ (function () {
+    function NhModalService() {
+        this.dismiss$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+    }
+    NhModalService.prototype.dismiss = function () {
+        this.dismiss$.next();
+    };
+    NhModalService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [])
+    ], NhModalService);
+    return NhModalService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/shareds/constants/permission.const.ts":
 /*!*******************************************************!*\
   !*** ./src/app/shareds/constants/permission.const.ts ***!
@@ -1704,7 +3387,8 @@ var Permission = {
     export: 16,
     print: 32,
     approve: 64,
-    report: 128
+    report: 128,
+    full: 255
 };
 
 
@@ -1753,6 +3437,30 @@ function DestroySubscribers() {
 
 /***/ }),
 
+/***/ "./src/app/shareds/helpers/app-injector.ts":
+/*!*************************************************!*\
+  !*** ./src/app/shareds/helpers/app-injector.ts ***!
+  \*************************************************/
+/*! exports provided: AppInjector, setAppInjector */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppInjector", function() { return AppInjector; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setAppInjector", function() { return setAppInjector; });
+var AppInjector;
+function setAppInjector(injector) {
+    if (AppInjector) {
+        console.warn('App injector already set');
+    }
+    else {
+        AppInjector = injector;
+    }
+}
+
+
+/***/ }),
+
 /***/ "./src/app/shareds/layouts/admin-1/admin-1-layout.component.html":
 /*!***********************************************************************!*\
   !*** ./src/app/shareds/layouts/admin-1/admin-1-layout.component.html ***!
@@ -1760,7 +3468,7 @@ function DestroySubscribers() {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-wrapper\">\r\n    <div class=\"page-header navbar navbar-fixed-top\" app-header></div>\r\n    <!-- BEGIN HEADER & CONTENT DIVIDER -->\r\n    <div class=\"clearfix\"></div>\r\n    <!-- END HEADER & CONTENT DIVIDER -->\r\n    <div class=\"page-container\">\r\n        <div app-sidebar></div><!-- END: .page-sidebar-wrapper -->\r\n        <div class=\"page-content-wrapper\">\r\n            <!-- BEGIN CONTENT BODY -->\r\n            <div class=\"page-content\">\r\n                <div class=\"page-bar\">\r\n                    <ul class=\"page-breadcrumb\">\r\n                        <li>\r\n                            <a href=\"index.html\">Home</a>\r\n                            <i class=\"fa fa-circle\"></i>\r\n                        </li>\r\n                        <li>\r\n                            <span>Dashboard</span>\r\n                        </li>\r\n                    </ul>\r\n                    <div class=\"page-toolbar\">\r\n                        <div id=\"dashboard-report-range\" class=\"pull-right tooltips btn btn-sm\" data-container=\"body\"\r\n                             data-placement=\"bottom\" data-original-title=\"Change dashboard date range\">\r\n                            <i class=\"icon-calendar\"></i>&nbsp;\r\n                            <span class=\"thin uppercase hidden-xs\">April 9, 2018 - May 8, 2018</span>&nbsp;\r\n                            <i class=\"fa fa-angle-down\"></i>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <h1 class=\"page-title\"> {{ pageTitle$ | async }}\r\n                    <small>{{ moduleTitle$ | async }}</small>\r\n                </h1>\r\n                <router-outlet></router-outlet>\r\n            </div><!-- END: .page-content -->\r\n        </div><!-- END: .page-content-wrapper -->\r\n    </div><!-- END: .page-container -->\r\n</div><!-- END: .page-wrapper -->\r\n\r\n<!--&lt;!&ndash; BEGIN: Select themes &ndash;&gt;-->\r\n<!--<div class=\"theme-panel hidden-xs hidden-sm\">-->\r\n    <!--<div class=\"toggler\" (click)=\"isShowChooseTheme = true\"-->\r\n         <!--*ngIf=\"!isShowChooseTheme; else showChooseThemeTemplate\"></div>-->\r\n    <!--<ng-template #showChooseThemeTemplate>-->\r\n        <!--<div class=\"toggler-close\" style=\"display: block;\" (click)=\"isShowChooseTheme = false\"></div>-->\r\n        <!--<div class=\"theme-options\" style=\"display: block;\">-->\r\n            <!--<div class=\"theme-option theme-colors clearfix\">-->\r\n                <!--<span> THAY ĐỔI CHỦ ĐỀ </span>-->\r\n                <!--<ul>-->\r\n                    <!--<li class=\"color-{{theme}} tooltips current\" *ngFor=\"let theme of themes\"-->\r\n                        <!--(click)=\"chooseTheme(theme)\"></li>-->\r\n                <!--</ul>-->\r\n            <!--</div>-->\r\n        <!--</div>-->\r\n    <!--</ng-template>-->\r\n<!--</div>-->\r\n<!--&lt;!&ndash; END: Select theme &ndash;&gt;-->\r\n"
+module.exports = "<div class=\"page-wrapper\">\r\n    <div class=\"page-header navbar navbar-fixed-top\" app-header #header></div>\r\n    <!-- BEGIN HEADER & CONTENT DIVIDER -->\r\n    <div class=\"clearfix\"></div>\r\n    <!-- END HEADER & CONTENT DIVIDER -->\r\n    <div class=\"page-container\" #container>\r\n        <div app-sidebar></div><!-- END: .page-sidebar-wrapper -->\r\n        <div class=\"page-content-wrapper\">\r\n            <!-- BEGIN CONTENT BODY -->\r\n            <div class=\"page-content\" #pageContent>\r\n                <div class=\"row\">\r\n                    <div class=\"col-sm-12\">\r\n                        <div class=\"page-bar\">\r\n                            <ul class=\"page-breadcrumb\">\r\n                                <li>\r\n                                    <a href=\"index.html\">Home</a>\r\n                                    <i class=\"fa fa-circle\"></i>\r\n                                </li>\r\n                                <li>\r\n                                    <span>Dashboard</span>\r\n                                </li>\r\n                            </ul>\r\n                            <div class=\"page-toolbar\">\r\n                                <div id=\"dashboard-report-range\" class=\"pull-right tooltips btn btn-sm\"\r\n                                     data-container=\"body\"\r\n                                     data-placement=\"bottom\" data-original-title=\"Change dashboard date range\">\r\n                                    <i class=\"icon-calendar\"></i>&nbsp;\r\n                                    <span class=\"thin uppercase hidden-xs\">April 9, 2018 - May 8, 2018</span>&nbsp;\r\n                                    <i class=\"fa fa-angle-down\"></i>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <router-outlet></router-outlet>\r\n            </div><!-- END: .page-content -->\r\n        </div><!-- END: .page-content-wrapper -->\r\n    </div><!-- END: .page-container -->\r\n</div><!-- END: .page-wrapper -->\r\n\r\n<!--&lt;!&ndash; BEGIN: Select themes &ndash;&gt;-->\r\n<!--<div class=\"theme-panel hidden-xs hidden-sm\">-->\r\n<!--<div class=\"toggler\" (click)=\"isShowChooseTheme = true\"-->\r\n<!--*ngIf=\"!isShowChooseTheme; else showChooseThemeTemplate\"></div>-->\r\n<!--<ng-template #showChooseThemeTemplate>-->\r\n<!--<div class=\"toggler-close\" style=\"display: block;\" (click)=\"isShowChooseTheme = false\"></div>-->\r\n<!--<div class=\"theme-options\" style=\"display: block;\">-->\r\n<!--<div class=\"theme-option theme-colors clearfix\">-->\r\n<!--<span> THAY ĐỔI CHỦ ĐỀ </span>-->\r\n<!--<ul>-->\r\n<!--<li class=\"color-{{theme}} tooltips current\" *ngFor=\"let theme of themes\"-->\r\n<!--(click)=\"chooseTheme(theme)\"></li>-->\r\n<!--</ul>-->\r\n<!--</div>-->\r\n<!--</div>-->\r\n<!--</ng-template>-->\r\n<!--</div>-->\r\n<!--&lt;!&ndash; END: Select theme &ndash;&gt;-->\r\n"
 
 /***/ }),
 
@@ -1790,19 +3498,43 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var Admin1LayoutComponent = /** @class */ (function () {
-    function Admin1LayoutComponent(appService) {
+    function Admin1LayoutComponent(renderer, appService) {
+        this.renderer = renderer;
         this.appService = appService;
-        this.isShowChooseTheme = false;
-        // themeSubscriber;
-        this.themes = ['default', 'blue', 'darkblue', 'grey', 'light', 'light2'];
-        this.pageTitle$ = this.appService.pageTitle$.pipe();
-        this.moduleTitle$ = this.appService.moduleTitle$.pipe();
+        // this.pageTitle$ = this.appService.pageTitle$.pipe();
+        // this.moduleTitle$ = this.appService.moduleTitle$.pipe();
     }
+    Admin1LayoutComponent.prototype.onResize = function () {
+        this.calculateContentHeight();
+    };
     Admin1LayoutComponent.prototype.ngOnDestroy = function () {
     };
-    Admin1LayoutComponent.prototype.chooseTheme = function (themeName) {
-        this.appService.changeTheme(themeName);
+    Admin1LayoutComponent.prototype.ngAfterViewInit = function () {
+        this.calculateContentHeight();
     };
+    Admin1LayoutComponent.prototype.calculateContentHeight = function () {
+        var windowHeight = window.innerHeight;
+        var pageContentElement = this.pageContent.nativeElement;
+        this.renderer.setStyle(pageContentElement, 'height', windowHeight - 50 + "px");
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('header'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], Admin1LayoutComponent.prototype, "header", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('container'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], Admin1LayoutComponent.prototype, "container", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('pageContent'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], Admin1LayoutComponent.prototype, "pageContent", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('window:resize', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], Admin1LayoutComponent.prototype, "onResize", null);
     Admin1LayoutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-admin-1-layout',
@@ -1811,7 +3543,8 @@ var Admin1LayoutComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./styles/layout.css */ "./src/app/shareds/layouts/admin-1/styles/layout.css"), __webpack_require__(/*! ./styles/custom.css */ "./src/app/shareds/layouts/admin-1/styles/custom.css"), __webpack_require__(/*! ./styles/themes/default.min.css */ "./src/app/shareds/layouts/admin-1/styles/themes/default.min.css")]
         }),
         Object(_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_2__["DestroySubscribers"])(),
-        __metadata("design:paramtypes", [_services_app_service__WEBPACK_IMPORTED_MODULE_1__["AppService"]])
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"],
+            _services_app_service__WEBPACK_IMPORTED_MODULE_1__["AppService"]])
     ], Admin1LayoutComponent);
     return Admin1LayoutComponent;
 }());
@@ -1879,7 +3612,7 @@ var Admin1FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- BEGIN HEADER INNER -->\r\n<div class=\"page-header-inner \">\r\n    <!-- BEGIN LOGO -->\r\n    <div class=\"page-logo\">\r\n        <a href=\"index.html\">\r\n            <img src=\"../assets/layouts/layout/img/logo.png\" alt=\"logo\" class=\"logo-default\"/> </a>\r\n        <div class=\"menu-toggler sidebar-toggler\" (click)=\"toggleSidebar()\">\r\n            <span></span>\r\n        </div>\r\n    </div>\r\n    <!-- END LOGO -->\r\n    <!-- BEGIN RESPONSIVE MENU TOGGLER -->\r\n    <a href=\"javascript:;\" class=\"menu-toggler responsive-toggler\" data-toggle=\"collapse\"\r\n       data-target=\".navbar-collapse\">\r\n        <span></span>\r\n    </a>\r\n    <!-- END RESPONSIVE MENU TOGGLER -->\r\n    <!-- BEGIN TOP NAVIGATION MENU -->\r\n    <div class=\"top-menu\">\r\n        <ul class=\"nav navbar-nav pull-right\">\r\n            <!-- BEGIN NOTIFICATION DROPDOWN -->\r\n            <!-- DOC: Apply \"dropdown-dark\" class after \"dropdown-extended\" to change the dropdown styte -->\r\n            <!-- DOC: Apply \"dropdown-hoverable\" class after below \"dropdown\" and remove data-toggle=\"dropdown\" data-hover=\"dropdown\" data-close-others=\"true\" attributes to enable hover dropdown mode -->\r\n            <!-- DOC: Remove \"dropdown-hoverable\" and add data-toggle=\"dropdown\" data-hover=\"dropdown\" data-close-others=\"true\" attributes to the below A element with dropdown-toggle class -->\r\n            <li class=\"dropdown dropdown-extended dropdown-notification\" id=\"header_notification_bar\">\r\n                <a href=\"javascript:;\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\"\r\n                   data-close-others=\"true\">\r\n                    <i class=\"icon-bell\"></i>\r\n                    <span class=\"badge badge-default\"> 7 </span>\r\n                </a>\r\n                <ul class=\"dropdown-menu\">\r\n                    <li class=\"external\">\r\n                        <h3>\r\n                            <span class=\"bold\">12 pending</span> notifications</h3>\r\n                        <a href=\"page_user_profile_1.html\">view all</a>\r\n                    </li>\r\n                    <li>\r\n                        <ul class=\"dropdown-menu-list scroller\" style=\"height: 250px;\" data-handle-color=\"#637283\">\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                    <span class=\"time\">just now</span>\r\n                                    <span class=\"details\">\r\n                                                        <span class=\"label label-sm label-icon label-success\">\r\n                                                            <i class=\"fa fa-plus\"></i>\r\n                                                        </span> New user registered. </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                    <span class=\"time\">3 mins</span>\r\n                                    <span class=\"details\">\r\n                                                        <span class=\"label label-sm label-icon label-danger\">\r\n                                                            <i class=\"fa fa-bolt\"></i>\r\n                                                        </span> Server #12 overloaded. </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                    <span class=\"time\">10 mins</span>\r\n                                    <span class=\"details\">\r\n                                                        <span class=\"label label-sm label-icon label-warning\">\r\n                                                            <i class=\"fa fa-bell-o\"></i>\r\n                                                        </span> Server #2 not responding. </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                    <span class=\"time\">14 hrs</span>\r\n                                    <span class=\"details\">\r\n                                                        <span class=\"label label-sm label-icon label-info\">\r\n                                                            <i class=\"fa fa-bullhorn\"></i>\r\n                                                        </span> Application error. </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                    <span class=\"time\">2 days</span>\r\n                                    <span class=\"details\">\r\n                                                        <span class=\"label label-sm label-icon label-danger\">\r\n                                                            <i class=\"fa fa-bolt\"></i>\r\n                                                        </span> Database overloaded 68%. </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                    <span class=\"time\">3 days</span>\r\n                                    <span class=\"details\">\r\n                                                        <span class=\"label label-sm label-icon label-danger\">\r\n                                                            <i class=\"fa fa-bolt\"></i>\r\n                                                        </span> A user IP blocked. </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                    <span class=\"time\">4 days</span>\r\n                                    <span class=\"details\">\r\n                                                        <span class=\"label label-sm label-icon label-warning\">\r\n                                                            <i class=\"fa fa-bell-o\"></i>\r\n                                                        </span> Storage Server #4 not responding dfdfdfd. </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                    <span class=\"time\">5 days</span>\r\n                                    <span class=\"details\">\r\n                                                        <span class=\"label label-sm label-icon label-info\">\r\n                                                            <i class=\"fa fa-bullhorn\"></i>\r\n                                                        </span> System Error. </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                    <span class=\"time\">9 days</span>\r\n                                    <span class=\"details\">\r\n                                                        <span class=\"label label-sm label-icon label-danger\">\r\n                                                            <i class=\"fa fa-bolt\"></i>\r\n                                                        </span> Storage server failed. </span>\r\n                                </a>\r\n                            </li>\r\n                        </ul>\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <!-- END NOTIFICATION DROPDOWN -->\r\n            <!-- BEGIN INBOX DROPDOWN -->\r\n            <!-- DOC: Apply \"dropdown-dark\" class after below \"dropdown-extended\" to change the dropdown styte -->\r\n            <li class=\"dropdown dropdown-extended dropdown-inbox\" id=\"header_inbox_bar\">\r\n                <a href=\"javascript:;\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\"\r\n                   data-close-others=\"true\">\r\n                    <i class=\"icon-envelope-open\"></i>\r\n                    <span class=\"badge badge-default\"> 4 </span>\r\n                </a>\r\n                <ul class=\"dropdown-menu\">\r\n                    <li class=\"external\">\r\n                        <h3>You have\r\n                            <span class=\"bold\">7 New</span> Messages</h3>\r\n                        <a href=\"app_inbox.html\">view all</a>\r\n                    </li>\r\n                    <li>\r\n                        <ul class=\"dropdown-menu-list scroller\" style=\"height: 275px;\" data-handle-color=\"#637283\">\r\n                            <li>\r\n                                <a href=\"#\">\r\n                                                    <span class=\"photo\">\r\n                                                        <img src=\"../assets/layouts/layout3/img/avatar2.jpg\"\r\n                                                             class=\"img-circle\" alt=\"\"> </span>\r\n                                    <span class=\"subject\">\r\n                                                        <span class=\"from\"> Lisa Wong </span>\r\n                                                        <span class=\"time\">Just Now </span>\r\n                                                    </span>\r\n                                    <span class=\"message\"> Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"#\">\r\n                                                    <span class=\"photo\">\r\n                                                        <img src=\"../assets/layouts/layout3/img/avatar3.jpg\"\r\n                                                             class=\"img-circle\" alt=\"\"> </span>\r\n                                    <span class=\"subject\">\r\n                                                        <span class=\"from\"> Richard Doe </span>\r\n                                                        <span class=\"time\">16 mins </span>\r\n                                                    </span>\r\n                                    <span class=\"message\"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"#\">\r\n                                                    <span class=\"photo\">\r\n                                                        <img src=\"../assets/layouts/layout3/img/avatar1.jpg\"\r\n                                                             class=\"img-circle\" alt=\"\"> </span>\r\n                                    <span class=\"subject\">\r\n                                                        <span class=\"from\"> Bob Nilson </span>\r\n                                                        <span class=\"time\">2 hrs </span>\r\n                                                    </span>\r\n                                    <span class=\"message\"> Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"#\">\r\n                                                    <span class=\"photo\">\r\n                                                        <img src=\"../assets/layouts/layout3/img/avatar2.jpg\"\r\n                                                             class=\"img-circle\" alt=\"\"> </span>\r\n                                    <span class=\"subject\">\r\n                                                        <span class=\"from\"> Lisa Wong </span>\r\n                                                        <span class=\"time\">40 mins </span>\r\n                                                    </span>\r\n                                    <span class=\"message\"> Vivamus sed auctor 40% nibh congue nibh... </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"#\">\r\n                                                    <span class=\"photo\">\r\n                                                        <img src=\"../assets/layouts/layout3/img/avatar3.jpg\"\r\n                                                             class=\"img-circle\" alt=\"\"> </span>\r\n                                    <span class=\"subject\">\r\n                                                        <span class=\"from\"> Richard Doe </span>\r\n                                                        <span class=\"time\">46 mins </span>\r\n                                                    </span>\r\n                                    <span class=\"message\"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>\r\n                                </a>\r\n                            </li>\r\n                        </ul>\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <!-- END INBOX DROPDOWN -->\r\n            <!-- BEGIN TODO DROPDOWN -->\r\n            <!-- DOC: Apply \"dropdown-dark\" class after below \"dropdown-extended\" to change the dropdown styte -->\r\n            <li class=\"dropdown dropdown-extended dropdown-tasks\" id=\"header_task_bar\">\r\n                <a href=\"javascript:;\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\"\r\n                   data-close-others=\"true\">\r\n                    <i class=\"icon-calendar\"></i>\r\n                    <span class=\"badge badge-default\"> 3 </span>\r\n                </a>\r\n                <ul class=\"dropdown-menu extended tasks\">\r\n                    <li class=\"external\">\r\n                        <h3>You have\r\n                            <span class=\"bold\">12 pending</span> tasks</h3>\r\n                        <a href=\"app_todo.html\">view all</a>\r\n                    </li>\r\n                    <li>\r\n                        <ul class=\"dropdown-menu-list scroller\" style=\"height: 275px;\" data-handle-color=\"#637283\">\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                                    <span class=\"task\">\r\n                                                        <span class=\"desc\">New release v1.2 </span>\r\n                                                        <span class=\"percent\">30%</span>\r\n                                                    </span>\r\n                                    <span class=\"progress\">\r\n                                                        <span style=\"width: 40%;\"\r\n                                                              class=\"progress-bar progress-bar-success\"\r\n                                                              aria-valuenow=\"40\" aria-valuemin=\"0\" aria-valuemax=\"100\">\r\n                                                            <span class=\"sr-only\">40% Complete</span>\r\n                                                        </span>\r\n                                                    </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                                    <span class=\"task\">\r\n                                                        <span class=\"desc\">Application deployment</span>\r\n                                                        <span class=\"percent\">65%</span>\r\n                                                    </span>\r\n                                    <span class=\"progress\">\r\n                                                        <span style=\"width: 65%;\"\r\n                                                              class=\"progress-bar progress-bar-danger\"\r\n                                                              aria-valuenow=\"65\" aria-valuemin=\"0\" aria-valuemax=\"100\">\r\n                                                            <span class=\"sr-only\">65% Complete</span>\r\n                                                        </span>\r\n                                                    </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                                    <span class=\"task\">\r\n                                                        <span class=\"desc\">Mobile app release</span>\r\n                                                        <span class=\"percent\">98%</span>\r\n                                                    </span>\r\n                                    <span class=\"progress\">\r\n                                                        <span style=\"width: 98%;\"\r\n                                                              class=\"progress-bar progress-bar-success\"\r\n                                                              aria-valuenow=\"98\" aria-valuemin=\"0\" aria-valuemax=\"100\">\r\n                                                            <span class=\"sr-only\">98% Complete</span>\r\n                                                        </span>\r\n                                                    </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                                    <span class=\"task\">\r\n                                                        <span class=\"desc\">Database migration</span>\r\n                                                        <span class=\"percent\">10%</span>\r\n                                                    </span>\r\n                                    <span class=\"progress\">\r\n                                                        <span style=\"width: 10%;\"\r\n                                                              class=\"progress-bar progress-bar-warning\"\r\n                                                              aria-valuenow=\"10\" aria-valuemin=\"0\" aria-valuemax=\"100\">\r\n                                                            <span class=\"sr-only\">10% Complete</span>\r\n                                                        </span>\r\n                                                    </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                                    <span class=\"task\">\r\n                                                        <span class=\"desc\">Web server upgrade</span>\r\n                                                        <span class=\"percent\">58%</span>\r\n                                                    </span>\r\n                                    <span class=\"progress\">\r\n                                                        <span style=\"width: 58%;\" class=\"progress-bar progress-bar-info\"\r\n                                                              aria-valuenow=\"58\" aria-valuemin=\"0\" aria-valuemax=\"100\">\r\n                                                            <span class=\"sr-only\">58% Complete</span>\r\n                                                        </span>\r\n                                                    </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                                    <span class=\"task\">\r\n                                                        <span class=\"desc\">Mobile development</span>\r\n                                                        <span class=\"percent\">85%</span>\r\n                                                    </span>\r\n                                    <span class=\"progress\">\r\n                                                        <span style=\"width: 85%;\"\r\n                                                              class=\"progress-bar progress-bar-success\"\r\n                                                              aria-valuenow=\"85\" aria-valuemin=\"0\" aria-valuemax=\"100\">\r\n                                                            <span class=\"sr-only\">85% Complete</span>\r\n                                                        </span>\r\n                                                    </span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:;\">\r\n                                                    <span class=\"task\">\r\n                                                        <span class=\"desc\">New UI release</span>\r\n                                                        <span class=\"percent\">38%</span>\r\n                                                    </span>\r\n                                    <span class=\"progress progress-striped\">\r\n                                                        <span style=\"width: 38%;\"\r\n                                                              class=\"progress-bar progress-bar-important\"\r\n                                                              aria-valuenow=\"18\" aria-valuemin=\"0\" aria-valuemax=\"100\">\r\n                                                            <span class=\"sr-only\">38% Complete</span>\r\n                                                        </span>\r\n                                                    </span>\r\n                                </a>\r\n                            </li>\r\n                        </ul>\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <!-- END TODO DROPDOWN -->\r\n            <!-- BEGIN USER LOGIN DROPDOWN -->\r\n            <!-- DOC: Apply \"dropdown-dark\" class after below \"dropdown-extended\" to change the dropdown styte -->\r\n            <li class=\"dropdown dropdown-user\">\r\n                <a href=\"javascript:;\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\"\r\n                   data-close-others=\"true\">\r\n                    <img alt=\"\" class=\"img-circle\" src=\"../assets/layouts/layout/img/avatar3_small.jpg\"/>\r\n                    <span class=\"username username-hide-on-mobile\"> Nick </span>\r\n                    <i class=\"fa fa-angle-down\"></i>\r\n                </a>\r\n                <ul class=\"dropdown-menu dropdown-menu-default\">\r\n                    <li>\r\n                        <a href=\"page_user_profile_1.html\">\r\n                            <i class=\"icon-user\"></i> Thông tin cá nhân </a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"app_calendar.html\">\r\n                            <i class=\"icon-calendar\"></i> Đổi mật khẩu </a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"app_inbox.html\">\r\n                            <i class=\"icon-envelope-open\"></i> Danh sách công việc\r\n                        </a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"app_todo.html\">\r\n                            <i class=\"icon-rocket\"></i> Đánh giá hiệu quả công việc tháng\r\n                        </a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"app_todo.html\">\r\n                            <i class=\"icon-rocket\"></i> Đăng ký nghỉ\r\n                        </a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"app_todo.html\">\r\n                            <i class=\"icon-rocket\"></i> Đăng ký đi muộn về sớm\r\n                        </a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"app_todo.html\">\r\n                            <i class=\"icon-rocket\"></i> Đăng ký làm thêm giờ\r\n                        </a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"app_todo.html\">\r\n                            <i class=\"icon-rocket\"></i> Quên chấm công\r\n                        </a>\r\n                    </li>\r\n                    <li class=\"divider\"></li>\r\n                    <li>\r\n                        <a href=\"page_user_lock_1.html\">\r\n                            <i class=\"icon-lock\"></i> Lock Screen </a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"page_user_login_1.html\">\r\n                            <i class=\"icon-key\"></i> Log Out </a>\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <!-- END USER LOGIN DROPDOWN -->\r\n            <!-- BEGIN QUICK SIDEBAR TOGGLER -->\r\n            <!-- DOC: Apply \"dropdown-dark\" class after below \"dropdown-extended\" to change the dropdown styte -->\r\n            <li class=\"dropdown dropdown-quick-sidebar-toggler\">\r\n                <a href=\"javascript:;\" class=\"dropdown-toggle\" (click)=\"logout()\">\r\n                    <i class=\"icon-logout\"></i>\r\n                </a>\r\n            </li>\r\n            <!-- END QUICK SIDEBAR TOGGLER -->\r\n        </ul>\r\n    </div>\r\n    <!-- END TOP NAVIGATION MENU -->\r\n</div>\r\n<!-- END HEADER INNER -->\r\n<!-- END HEADER -->\r\n"
+module.exports = "<!-- BEGIN HEADER INNER -->\r\n<div class=\"page-header-inner \">\r\n    <!-- BEGIN LOGO -->\r\n    <div class=\"page-logo\">\r\n        <a href=\"index.html\">\r\n            <img src=\"../assets/layouts/layout/img/logo.png\" alt=\"logo\" class=\"logo-default\"/> </a>\r\n        <div class=\"menu-toggler sidebar-toggler\" (click)=\"toggleSidebar()\">\r\n            <span></span>\r\n        </div>\r\n    </div>\r\n    <!-- END LOGO -->\r\n    <!-- BEGIN RESPONSIVE MENU TOGGLER -->\r\n    <a href=\"javascript:;\" class=\"menu-toggler responsive-toggler\" data-toggle=\"collapse\"\r\n       data-target=\".navbar-collapse\">\r\n        <span></span>\r\n    </a>\r\n    <!-- END RESPONSIVE MENU TOGGLER -->\r\n    <!-- BEGIN TOP NAVIGATION MENU -->\r\n    <div class=\"top-menu\">\r\n        <ul class=\"nav navbar-nav pull-right\">\r\n            <!-- BEGIN NOTIFICATION DROPDOWN -->\r\n            <!-- DOC: Apply \"dropdown-dark\" class after \"dropdown-extended\" to change the dropdown styte -->\r\n            <!-- DOC: Apply \"dropdown-hoverable\" class after below \"dropdown\" and remove data-toggle=\"dropdown\" data-hover=\"dropdown\" data-close-others=\"true\" attributes to enable hover dropdown mode -->\r\n            <!-- DOC: Remove \"dropdown-hoverable\" and add data-toggle=\"dropdown\" data-hover=\"dropdown\" data-close-others=\"true\" attributes to the below A element with dropdown-toggle class -->\r\n            <li class=\"dropdown dropdown-extended dropdown-notification\"\r\n                id=\"header_notification_bar\"\r\n                ghmDropdown\r\n            >\r\n                <a href=\"javascript:;\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\"\r\n                   data-close-others=\"true\">\r\n                    <i class=\"icon-bell\"></i>\r\n                    <span class=\"badge badge-default\" *ngIf=\"totalNotifications > 0\"> {{ totalNotifications }} </span>\r\n                </a>\r\n                <ul class=\"dropdown-menu\">\r\n                    <li class=\"external\">\r\n                        <h3>\r\n                            <span class=\"bold\">\r\n                                {{ totalUnreadNotification }}\r\n                                <span i18n=\"@@pending\">pending</span>\r\n                            </span>\r\n                            <span i18n=\"@@notification\">notifications</span></h3>\r\n                        <!-- TODO: Add view all notifications -->\r\n                        <!--<a routerLink=\"/notifications\" i18n=\"@@viewAll\">View all</a>-->\r\n                    </li>\r\n                    <li>\r\n                        <ul class=\"dropdown-menu-list list-notify-container\" style=\"height: 250px;\"\r\n                            data-handle-color=\"#637283\">\r\n                            <ng-template ngFor let-item [ngForOf]=\"notifications\">\r\n                                <app-notification-item [notification]=\"item\"></app-notification-item>\r\n                            </ng-template>\r\n                        </ul>\r\n                    </li>\r\n                    <li class=\"load-more\">\r\n                        <button type=\"button\" i18n=\"@@loadMore\" [disabled]=\"currentPage > totalPages\"\r\n                                (click)=\"loadMore()\">Load more\r\n                        </button>\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <li class=\"dropdown dropdown-user\" ghmDropdown>\r\n                <a href=\"javascript:;\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\"\r\n                   data-close-others=\"true\">\r\n                    <img alt=\"\" ghmImage class=\"img-circle\" [src]=\"currentUser?.avatar\"/>\r\n                    <span class=\"username username-hide-on-mobile\"> {{ currentUser?.fullName }} </span>\r\n                    <i class=\"fa fa-angle-down\"></i>\r\n                </a>\r\n                <ul class=\"dropdown-menu dropdown-menu-default\">\r\n                    <li>\r\n                        <a href=\"page_user_profile_1.html\">\r\n                            <i class=\"icon-user\"></i> <span i18n=\"@@userProfile\">Profile</span> </a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"javascript://\" (click)=\"changePassword()\">\r\n                            <i class=\"icon-key\"></i>\r\n                            <span i18n=\"@@changePass\">Change password</span>\r\n                        </a>\r\n\r\n                    <li>\r\n                        <a routerLink=\"/config/settings\">\r\n                            <i class=\"icon-settings\"></i>\r\n                            <span i18n=\"@@userSettings\">User settings</span>\r\n                        </a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"javascript://\" (click)=\"signOut()\">\r\n                            <i class=\"icon-logout\"></i>\r\n                            <span i18n=\"@@signOut\">Sign Out</span>\r\n                        </a>\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <!-- END USER LOGIN DROPDOWN -->\r\n            <!-- BEGIN QUICK SIDEBAR TOGGLER -->\r\n            <!-- DOC: Apply \"dropdown-dark\" class after below \"dropdown-extended\" to change the dropdown styte -->\r\n            <li class=\"dropdown dropdown-quick-sidebar-toggler\">\r\n                <a href=\"javascript:;\" class=\"dropdown-toggle\" (click)=\"signOut()\">\r\n                    <i class=\"icon-logout\"></i>\r\n                </a>\r\n            </li>\r\n            <!-- END QUICK SIDEBAR TOGGLER -->\r\n        </ul>\r\n    </div>\r\n    <!-- END TOP NAVIGATION MENU -->\r\n</div>\r\n<!-- END HEADER INNER -->\r\n<!-- END HEADER -->\r\n\r\n<app-change-password></app-change-password>\r\n"
 
 /***/ }),
 
@@ -1894,8 +3627,15 @@ module.exports = "<!-- BEGIN HEADER INNER -->\r\n<div class=\"page-header-inner 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Admin1HeaderComponent", function() { return Admin1HeaderComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_app_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/auth.service */ "./src/app/shareds/services/auth.service.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../services/auth.service */ "./src/app/shareds/services/auth.service.ts");
+/* harmony import */ var _services_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/app.service */ "./src/app/shareds/services/app.service.ts");
+/* harmony import */ var _services_notification_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/notification.service */ "./src/app/shareds/services/notification.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_change_password_change_password_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/change-password/change-password.component */ "./src/app/shareds/layouts/components/change-password/change-password.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1908,21 +3648,80 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
+
+
+
 var Admin1HeaderComponent = /** @class */ (function () {
-    function Admin1HeaderComponent(renderer, appService, authService) {
+    function Admin1HeaderComponent(renderer, appService, authService, router, notificationService) {
         this.renderer = renderer;
         this.appService = appService;
         this.authService = authService;
+        this.router = router;
+        this.notificationService = notificationService;
+        this.totalNotifications = 0;
+        this.totalUnreadNotification = 0;
+        this.totalMails = 0;
+        this.notifications = [];
+        this.currentPage = 1;
+        this.totalPages = 0;
+        this.subscriptions = {};
     }
     Admin1HeaderComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.subscriptions.notificationReceived = this.notificationService.notificationReceived$
+            .subscribe(function (notification) {
+            if (notification) {
+                _this.totalNotifications += 1;
+                notification.createTimeText = moment__WEBPACK_IMPORTED_MODULE_6__(notification.createTime).fromNow();
+                _this.notifications.unshift(notification);
+            }
+        });
+        this.subscriptions.notificationCountUpdated = this.notificationService.notificationCountUpdated$.subscribe(function () {
+            _this.totalNotifications -= 1;
+        });
+        this.currentUser = this.appService.currentUser;
+        this.search();
+    };
+    Admin1HeaderComponent.prototype.ngOnDestroy = function () {
+        this.subscriptions.searchNotification.unsubscribe();
+        this.subscriptions.notificationReceived.unsubscribe();
+        this.subscriptions.notificationCountUpdated.unsubscribe();
     };
     Admin1HeaderComponent.prototype.toggleSidebar = function () {
         this.appService.toggleSidebar();
     };
-    Admin1HeaderComponent.prototype.logout = function () {
-        this.authService.logout();
-        this.appService.logout();
+    Admin1HeaderComponent.prototype.signOut = function () {
+        var _this = this;
+        this.notificationService.signOut()
+            .subscribe(function () {
+            _this.authService.signOut();
+        });
     };
+    Admin1HeaderComponent.prototype.loadMore = function () {
+        if (this.currentPage > this.totalPages) {
+            return;
+        }
+        this.currentPage += 1;
+        this.search();
+    };
+    Admin1HeaderComponent.prototype.changePassword = function () {
+        this.changePasswordComponent.show();
+    };
+    Admin1HeaderComponent.prototype.search = function () {
+        var _this = this;
+        this.subscriptions.searchNotification = this.notificationService.search(false, this.currentPage, 10)
+            .subscribe(function (result) {
+            _this.totalPages = Math.ceil(result.totalRows / 10);
+            _this.totalNotifications = result.totalRows;
+            _this.notifications = lodash__WEBPACK_IMPORTED_MODULE_5__["concat"](_this.notifications, result.items);
+        });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_components_change_password_change_password_component__WEBPACK_IMPORTED_MODULE_7__["ChangePasswordComponent"]),
+        __metadata("design:type", _components_change_password_change_password_component__WEBPACK_IMPORTED_MODULE_7__["ChangePasswordComponent"])
+    ], Admin1HeaderComponent.prototype, "changePasswordComponent", void 0);
     Admin1HeaderComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: '[app-header]',
@@ -1930,8 +3729,10 @@ var Admin1HeaderComponent = /** @class */ (function () {
             encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None
         }),
         __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"],
-            _services_app_service__WEBPACK_IMPORTED_MODULE_1__["AppService"],
-            _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
+            _services_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"],
+            _services_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+            _services_notification_service__WEBPACK_IMPORTED_MODULE_3__["NotificationService"]])
     ], Admin1HeaderComponent);
     return Admin1HeaderComponent;
 }());
@@ -1990,7 +3791,7 @@ var Admin1SidebarItemComponent = /** @class */ (function () {
     Admin1SidebarItemComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: '[app-sidebar-item]',
-            template: "\n        <a routerLink=\"/config/pages\" class=\"nav-link nav-toggle\" *ngIf=\"sidebarItem.children.length === 0; else openChildrenTemplate\">\n            <i [ngClass]=\"sidebarItem.icon\"></i>\n            <span class=\"title\"> {{ sidebarItem.name }} - {{ sidebarItem.url }}</span>\n            <span routerLinkActive=\"selected\"></span>\n        </a>\n        <ng-template #openChildrenTemplate>\n            <a href=\"javascript://\" class=\"nav-link nav-toggle\" (click)=\"showChildren($event, sidebarItem)\">\n                <i [ngClass]=\"sidebarItem.icon\"></i>\n                <span class=\"title\"> {{ sidebarItem.name }}</span>\n                <span routerLinkActive=\"selected\"></span>\n                <span routerLinkActive=\"open\" class=\"arrow\" *ngIf=\"sidebarItem.childCount > 0\"></span>\n            </a>\n        </ng-template>\n        <ul class=\"sub-menu\">\n            <li class=\"nav-item\" app-sidebar-item *ngFor=\"let item of sidebarItem.children\" [sidebarItem]=\"item\"\n                [routerLinkActive]=\"\" [ngClass]=\"rla.isActive ? 'active open' : ''\"  #rla=\"routerLinkActive\"></li>\n        </ul>\n    "
+            template: "\n        <a routerLink=\"/config/pages\" class=\"nav-link nav-toggle\"\n           *ngIf=\"sidebarItem.children.length === 0; else openChildrenTemplate\">\n            <i [ngClass]=\"sidebarItem.icon\"></i>\n            <span class=\"title\"> {{ sidebarItem.name }} - {{ sidebarItem.url }}</span>\n            <span routerLinkActive=\"selected\"></span>\n        </a>\n        <ng-template #openChildrenTemplate>\n            <a href=\"javascript://\" class=\"nav-link nav-toggle\" (click)=\"showChildren($event, sidebarItem)\">\n                <i [ngClass]=\"sidebarItem.icon\"></i>\n                <span class=\"title\"> {{ sidebarItem.name }}</span>\n                <span routerLinkActive=\"selected\"></span>\n                <span routerLinkActive=\"open\" class=\"arrow\" *ngIf=\"sidebarItem.childCount > 0\"></span>\n            </a>\n        </ng-template>\n        <ul class=\"sub-menu\">\n            <li class=\"nav-item\" app-sidebar-item *ngFor=\"let item of sidebarItem.children\" [sidebarItem]=\"item\"\n                [routerLinkActive]=\"\" [ngClass]=\"rla.isActive ? 'active open' : ''\" #rla=\"routerLinkActive\"></li>\n        </ul>\n    "
         }),
         __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]])
     ], Admin1SidebarItemComponent);
@@ -2136,7 +3937,7 @@ var Admin1SidebarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* here you can put your own css to customize and override the theme */\n"
+module.exports = "/* here you can put your own css to customize and override the theme */\r\n"
 
 /***/ }),
 
@@ -2147,7 +3948,7 @@ module.exports = "/* here you can put your own css to customize and override the
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "@charset \"UTF-8\";\n/* Cubic Bezier Transition */\n@media print {\n    body {\n        background-color: #fff !important;\n        direction: ltr;\n    }\n\n    .page-bar {\n        display: none;\n    }\n\n    .page-sidebar-wrapper {\n        display: none;\n    }\n\n    .page-quick-sidebar-wrapper {\n        display: none;\n    }\n\n    .theme-panel {\n        display: none;\n    }\n\n    .hidden-print {\n        display: none;\n    }\n\n    .page-footer {\n        display: none;\n    }\n\n    .no-page-break {\n        page-break-after: avoid;\n    }\n\n    .page-container {\n        margin: 0px !important;\n        padding: 0px !important;\n    }\n\n    .page-content {\n        padding: 0 !important;\n        min-height: 300px !important;\n        padding: 0px 20px 20px !important;\n        margin: 0 !important;\n    }\n\n    .table th,\n    .table td {\n        text-align: left !important;\n    }\n}\n/***\nPage Header\n***/\n.page-header.navbar {\n    width: 100%;\n    padding: 0 20px 0 20px;\n    margin: 0;\n    border: 0px;\n    padding: 0px;\n    box-shadow: none;\n    height: 50px;\n    min-height: 50px;\n    -webkit-filter: none;\n            filter: none;\n    background-image: none;\n    /* Fixed header */\n    /* Header logo */\n    /* Search box */\n    /* Menu Toggler */\n    /* Top menu */\n}\n.page-header.navbar.navbar-fixed-top {\n    z-index: 9995;\n}\n.page-header.navbar.navbar-static-top {\n    z-index: 9995;\n}\n.page-header.navbar .page-logo {\n    float: left;\n    display: block;\n    width: 235px;\n    height: 50px;\n    padding-left: 20px;\n    padding-right: 20px;\n}\n.page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo {\n    padding: 0;\n}\n.page-header.navbar .page-logo > .logo-image,\n.page-header.navbar .page-logo > a {\n    display: inline-block;\n    float: left;\n}\n.page-header.navbar .page-logo .logo-default {\n    margin: 18px 0 0 0;\n}\n.page-header.navbar .page-logo .logo-mini {\n    display: none;\n    margin-left: 5px;\n}\n.page-header.navbar .page-logo .text-logo {\n    padding-left: 20px;\n    padding-top: 12px;\n}\n.page-header.navbar .search-form {\n    display: inline-block;\n    width: 50px;\n    position: relative;\n    float: left;\n    transition: all 0.6s;\n}\n.page-header.navbar .search-form .input-group .form-control {\n    height: 50px;\n    border: 0;\n    background: transparent !important;\n    font-size: 13px;\n    padding-left: 0;\n    margin-left: 12px;\n    text-indent: -150000px;\n}\n.page-header.navbar .search-form .input-group .form-control:hover {\n    cursor: pointer;\n}\n.page-header.navbar .search-form .input-group .input-group-btn {\n    height: 50px;\n}\n.page-header.navbar .search-form .input-group .input-group-btn .btn.submit {\n    margin-left: -24px;\n    padding: 0;\n    width: 50px;\n    background: none;\n    margin-top: 4px;\n    display: block;\n}\n.page-header.navbar .search-form .input-group .input-group-btn .btn.submit > i {\n    font-size: 15px;\n}\n.page-header.navbar .search-form.open {\n    transition: all 0.6s;\n    width: 300px !important;\n}\n.page-header.navbar .search-form.open .input-group .form-control {\n    text-indent: 0;\n}\n.page-header.navbar .search-form.open .input-group .form-control:hover {\n    cursor: text;\n}\n.page-header.navbar .search-form.open .input-group .input-group-btn .btn.submit {\n    margin-left: 0;\n}\n.page-header.navbar .menu-toggler {\n    cursor: pointer;\n    opacity: 0.7;\n    filter: alpha(opacity=70);\n    display: block;\n    webkit-transition: opacity 0.3s;\n    transition: opacity 0.3s;\n}\n.page-header.navbar .menu-toggler > span {\n    outline: none !important;\n}\n.page-header.navbar .menu-toggler > span:hover {\n    background: #ffffff;\n}\n.page-header.navbar .menu-toggler > span:hover:before, .page-header.navbar .menu-toggler > span:hover:after {\n    background: #ffffff;\n}\n.page-header.navbar .menu-toggler > span,\n.page-header.navbar .menu-toggler > span:before,\n.page-header.navbar .menu-toggler > span:after {\n    display: inline-block;\n    width: 19px;\n    height: 1px;\n    background: #ffffff;\n    position: relative;\n    top: -6px;\n    transition: all ease .3s;\n}\n.page-header.navbar .menu-toggler > span:before,\n.page-header.navbar .menu-toggler > span:after {\n    position: absolute;\n    left: 0;\n    content: '';\n}\n.page-header.navbar .menu-toggler > span:before {\n    top: 6px;\n}\n.page-header.navbar .menu-toggler > span:after {\n    top: -6px;\n}\n.page-header.navbar .menu-toggler.th-toggle-exit > span {\n    background-color: transparent !important;\n}\n.page-header.navbar .menu-toggler.th-toggle-exit > span:after {\n    webkit-transform: translateY(6px) rotateZ(45deg);\n    -webkit-transform: translateY(6px) rotateZ(45deg);\n            transform: translateY(6px) rotateZ(45deg);\n}\n.page-header.navbar .menu-toggler.th-toggle-exit > span:before {\n    webkit-transform: translateY(-6px) rotateZ(-45deg);\n    -webkit-transform: translateY(-6px) rotateZ(-45deg);\n            transform: translateY(-6px) rotateZ(-45deg);\n}\n.page-header.navbar .menu-toggler:hover {\n    webkit-transition: opacity 0.3s;\n    transition: opacity 0.3s;\n    opacity: 1;\n    filter: alpha(opacity=100);\n}\n.page-header.navbar .menu-toggler.sidebar-toggler {\n    float: right;\n    margin: 15.5px 0 0 0;\n}\n.page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .menu-toggler.sidebar-toggler {\n    margin-right: 13px;\n}\n.page-header.navbar .menu-toggler.responsive-toggler {\n    display: none;\n    float: right;\n    margin: 15.5px 6px 0 6px;\n}\n.page-header.navbar .top-menu {\n    margin: 0;\n    padding: 0;\n    float: right;\n}\n.page-header.navbar .top-menu .navbar-nav {\n    padding: 0;\n    margin-right: 20px;\n    display: block;\n    /* Extended Dropdowns */\n    /* Notification */\n    /* Inbox */\n    /* Tasks */\n    /* User */\n    /* Language */\n    /* Dark version */\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown {\n    margin: 0px;\n    padding: 0px 4px;\n    height: 50px;\n    display: inline-block;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown:last-child {\n    padding-right: 0px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle {\n    margin: 0px;\n    padding: 19px 10px 10px 10px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle:last-child {\n    padding-right: 0;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > i {\n    font-size: 17px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > i.glyphicon {\n    font-size: 16px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > .badge {\n    font-family: \"Open Sans\", sans-serif;\n    position: absolute;\n    top: 10px;\n    right: 20px;\n    font-weight: 300;\n    padding: 3px 6px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle:focus {\n    background: none;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu {\n    margin-top: 1px;\n    border-radius: 4px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu:before {\n    position: absolute;\n    top: -7px;\n    right: 9px;\n    display: inline-block !important;\n    border-right: 7px solid transparent;\n    border-bottom: 7px solid #eee;\n    border-left: 7px solid transparent;\n    border-bottom-color: rgba(0, 0, 0, 0.2);\n    content: '';\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu:after {\n    position: absolute;\n    top: -6px;\n    right: 10px;\n    display: inline-block !important;\n    border-right: 6px solid transparent;\n    border-bottom: 6px solid #fff;\n    border-left: 6px solid transparent;\n    content: '';\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu > li > a {\n    color: #555;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu {\n    min-width: 160px;\n    max-width: 275px;\n    width: 275px;\n    z-index: 9995;\n    /* header notifications dropdowns */\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external {\n    display: block;\n    overflow: hidden;\n    padding: 15px 15px;\n    letter-spacing: 0.5px;\n    border-radius: 4px 4px 0 0;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external > h3 {\n    margin: 0;\n    padding: 0;\n    float: left;\n    font-size: 13px;\n    display: inline-block;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external > a {\n    display: inline-block;\n    padding: 0;\n    background: none;\n    clear: inherit;\n    font-size: 13px;\n    font-weight: 300;\n    position: absolute;\n    right: 10px;\n    border: 0;\n    margin-top: -1px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external > a:hover {\n    text-decoration: none;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list {\n    padding-right: 0 !important;\n    padding-left: 0;\n    list-style: none;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li > a {\n    display: block;\n    clear: both;\n    font-weight: 300;\n    line-height: 20px;\n    white-space: normal;\n    font-size: 13px;\n    padding: 16px 15px 18px;\n    text-shadow: none;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li > a:hover {\n    opacity: 1;\n    filter: alpha(opacity=100);\n    text-decoration: none;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li:first-child a {\n    border-top: none;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details {\n    overflow: hidden;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon {\n    margin-right: 10px;\n    border-radius: 50%;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon i {\n    margin-right: 2px;\n    margin-left: 1px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon .badge {\n    right: 15px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .time {\n    float: right;\n    max-width: 75px;\n    font-size: 11px;\n    font-weight: 400;\n    opacity: 0.7;\n    filter: alpha(opacity=70);\n    text-align: right;\n    padding: 1px 5px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .photo {\n    float: left;\n    margin: 0 6px 6px 0;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .photo img {\n    height: 40px;\n    width: 40px;\n    border-radius: 50% !important;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .subject {\n    display: block;\n    margin-left: 46px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .subject .from {\n    font-size: 13px;\n    font-weight: 600;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .subject .time {\n    font-size: 12px;\n    font-weight: 400;\n    opacity: 0.5;\n    filter: alpha(opacity=50);\n    float: right;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .message {\n    display: block !important;\n    font-size: 12px;\n    line-height: 1.3;\n    margin-left: 46px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .task {\n    margin-bottom: 5px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .task .desc {\n    font-size: 13px;\n    font-weight: 300;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .task .percent {\n    float: right;\n    font-weight: 600;\n    display: inline-block;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .progress {\n    display: block;\n    height: 8px;\n    margin: 8px 0 2px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .progress .progress-bar {\n    box-shadow: none;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle {\n    padding: 16px 6px 13px 8px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > .username {\n    display: inline-block;\n    font-size: 13px;\n    font-weight: 300;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > img {\n    float: left;\n    margin-top: -5px;\n    margin-right: 5px;\n    height: 29px;\n    display: inline-block;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > i {\n    display: inline-block;\n    margin-top: 5px;\n    margin: 0;\n    font-size: 13px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu {\n    width: 175px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li > a {\n    font-size: 14px;\n    font-weight: 300;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li > a i {\n    width: 15px;\n    display: inline-block;\n    margin-right: 9px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li > a .badge {\n    margin-right: 10px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language {\n    padding-left: 0;\n    padding-right: 0;\n    margin: 0;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle {\n    padding: 16px 3px 13px 7px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle > img {\n    margin-bottom: 2px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle > i {\n    font-size: 14px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-menu > li > a {\n    font-size: 13px;\n}\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-menu > li > a > img {\n    margin-bottom: 2px;\n    margin-right: 5px;\n}\n.page-header.navbar .top-menu .navbar-nav li.dropdown-dark .dropdown-menu:before {\n    border-left: none;\n    border-right: none;\n}\n.page-header.navbar .top-menu .navbar-nav li.dropdown-dark .dropdown-menu .dropdown-menu-list > li.external a {\n    background: none !important;\n    border: none !important;\n}\n/* Allow expanded search for above 768px */\n@media (min-width: 768px) {\n    /* 768px */\n    .page-header.navbar {\n        /* Search box */\n    }\n\n    .page-header.navbar .search-form.search-form-expanded {\n        width: 200px;\n    }\n\n    .page-header.navbar .search-form.search-form-expanded .input-group .form-control {\n        text-indent: 0;\n    }\n\n    .page-header.navbar .search-form.search-form-expanded .input-group .form-control:hover {\n        cursor: text;\n    }\n\n    .page-header.navbar .search-form.search-form-expanded .input-group .input-group-btn .btn.submit {\n        margin-left: 0;\n    }\n}\n/***\nHorizontal Menu\n***/\n.page-header.navbar {\n    /* Header container */\n    /* Mega menu */\n}\n.page-header.navbar .container {\n    position: relative;\n}\n.page-header.navbar .hor-menu {\n    margin: 0 0 0 -17px;\n    margin: 0;\n    float: left;\n}\n.page-header.navbar .hor-menu .navbar-nav {\n    min-height: 50px;\n    position: static;\n    /* Mega menu */\n    /* Mega Menu Dropdown */\n    /* Classic menu */\n}\n.page-header.navbar .hor-menu .navbar-nav.navbar-right .dropdown-menu {\n    left: auto;\n    right: 0;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown {\n    position: static;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu {\n    left: auto;\n    width: auto;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content {\n    font-family: \"Open Sans\", sans-serif;\n    padding: 15px;\n    margin: 0;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content.mega-menu-responsive-content {\n    padding: 10px 18px 10px 45px;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu {\n    padding: 0;\n    margin: 0;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu:last-child {\n    border-right: 0;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li {\n    margin: 0 !important;\n    list-style: none;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > h3 {\n    margin-top: 5px;\n    padding-left: 6px;\n    font-size: 15px;\n    font-weight: 400;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > a {\n    display: block;\n    white-space: normal;\n    font-family: \"Open Sans\", sans-serif;\n    padding: 7px;\n    margin: 0;\n    font-size: 14px;\n    font-weight: 300;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > a:hover {\n    text-decoration: none;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > a.iconify {\n    padding: 7px 7px 7px 30px;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > a.iconify > i {\n    position: absolute;\n    top: auto !important;\n    margin-left: -24px;\n    font-size: 15px;\n    margin-top: 3px !important;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > a .badge,\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > a .label {\n    margin-left: 5px;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown.mega-menu-full .dropdown-menu {\n    left: 20px;\n    right: 20px;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown:hover > .dropdown-menu {\n    display: block;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.menu-dropdown .dropdown-menu:after, .page-header.navbar .hor-menu .navbar-nav > li.menu-dropdown .dropdown-menu:before {\n    display: none !important;\n}\n.page-header.navbar .hor-menu .navbar-nav > li > a {\n    font-size: 14px;\n    font-weight: 400;\n    padding: 13px 13px;\n    min-height: 50px;\n}\n.page-header.navbar .hor-menu .navbar-nav > li > a:focus {\n    background: none !important;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.current .selected, .page-header.navbar .hor-menu .navbar-nav > li.active .selected {\n    left: 50%;\n    bottom: 0;\n    position: absolute;\n    border-left: 6px solid transparent;\n    border-right: 6px solid transparent;\n    border-top: 6px solid transparent;\n    display: inline-block;\n    margin: 0;\n    width: 0;\n    height: 0px;\n    margin-left: -7px;\n    margin-bottom: -6px;\n}\n.page-header.navbar .hor-menu .navbar-nav > li .dropdown-menu {\n    margin-top: 0;\n    border: none;\n}\n.page-header.navbar .hor-menu .navbar-nav > li .dropdown-menu li > a {\n    font-family: \"Open Sans\", sans-serif;\n    font-size: 14px;\n    font-weight: 300;\n    padding: 9px 10px;\n    white-space: normal;\n}\n.page-header.navbar .hor-menu .navbar-nav > li .dropdown-menu li > a .label,\n.page-header.navbar .hor-menu .navbar-nav > li .dropdown-menu li > a .badge {\n    font-weight: 300;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.classic-menu-dropdown .dropdown-menu {\n    min-width: 195px;\n    max-width: 235px;\n}\n.page-header.navbar .hor-menu .navbar-nav > li.classic-menu-dropdown:hover > .dropdown-menu {\n    display: block;\n}\n.page-header.navbar .hor-menu .navbar-nav > li .dropdown-submenu > .dropdown-menu {\n    top: 0;\n}\n.page-header.navbar .hor-menu .navbar-nav > li .dropdown-submenu > a:after {\n    top: 9px;\n    right: 10px;\n}\n/* Form medium devices upto large devices */\n@media (min-width: 992px) and (max-width: 1200px) {\n    /* 992px 1200px */\n    /* Boxed layout */\n    .page-boxed .page-header.navbar {\n        /* Top menu */\n    }\n\n    .page-boxed .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle .username.username-hide-on-mobile {\n        display: none;\n    }\n\n    .page-boxed .page-header.navbar .top-menu .navbar-nav > li.dropdown-language .dropdown-toggle .langname {\n        display: none;\n    }\n}\n@media (min-width: 992px) {\n    /* 992px */\n    /* Page header */\n    .page-header.navbar {\n        /* Header logo */\n    }\n\n    .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo {\n        padding: 0;\n    }\n\n    .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo {\n        width: 45px;\n    }\n\n    .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo .logo-default {\n        display: none;\n    }\n\n    /* Boxed Layout */\n    .page-boxed .page-header.navbar {\n        /* Page logo */\n        /* Top menu */\n    }\n\n    .page-boxed .page-header.navbar .page-logo {\n        width: 236px;\n    }\n\n    .page-boxed .page-header.navbar .top-menu .navbar-nav {\n        margin-right: 0px;\n    }\n\n    /* Sidebar closed & logo hidden */\n    .page-sidebar-closed.page-sidebar-closed-hide-logo.page-boxed .page-header.navbar {\n        /* Page logo */\n    }\n\n    .page-sidebar-closed.page-sidebar-closed-hide-logo.page-boxed .page-header.navbar .page-logo {\n        width: 46px;\n    }\n\n    /* Boxed layout & page sidebar fixed layout */\n    .page-boxed.page-sidebar-fixed .page-header.navbar {\n        /* Page logo */\n    }\n\n    .page-boxed.page-sidebar-fixed .page-header.navbar .page-logo {\n        width: 235px;\n    }\n}\n@media (max-width: 991px) {\n    /* 991px */\n    /* Page header */\n    .page-header.navbar {\n        padding: 0 20px 0 20px;\n        position: relative;\n        clear: both;\n        /* Page logo */\n        /* Menu Toggler */\n        /* Top Menu */\n    }\n\n    .page-header.navbar .page-logo {\n        width: auto;\n        padding: 0;\n        margin-right: 10px;\n        margin-left: 0px !important;\n        padding-left: 0px !important;\n    }\n\n    .page-header.navbar .page-logo img {\n        margin-left: 4px !important;\n    }\n\n    .page-header.navbar .menu-toggler.sidebar-toggler {\n        display: none !important;\n    }\n\n    .page-header.navbar .menu-toggler.responsive-toggler {\n        display: block;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav {\n        display: inline-block;\n        margin: 0 10px 0 0;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav > li {\n        float: left;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav .nav li.dropdown i {\n        display: inline-block;\n        position: relative;\n        top: 1px;\n        right: 0px;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav .open .dropdown-menu {\n        position: absolute;\n    }\n\n    /* Fixed header for mobile */\n    .page-header-fixed.page-header-fixed-mobile .navbar-fixed-top {\n        position: fixed;\n    }\n\n    /* Boxed Layout */\n    .page-boxed .page-header.navbar > .container {\n        max-width: none !important;\n        margin: 0 !important;\n        padding: 0 !important;\n    }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n    /* 768px & 991px */\n    /* Boxed Layout */\n    .page-boxed .page-header.navbar {\n        margin: auto !important;\n        padding: 0;\n    }\n\n    .page-boxed .page-header.navbar > .container {\n        margin: auto !important;\n    }\n}\n@media (max-width: 767px) {\n    /* 767px */\n    /* Page header */\n    .page-header.navbar {\n        padding: 0 10px 0 10px;\n        /* Header logo */\n        /* Search box */\n        /* Top navigation menu*/\n    }\n\n    .page-header.navbar .page-logo {\n        width: auto;\n    }\n\n    .page-header.navbar .search-form.open {\n        z-index: 3;\n        left: 10px;\n        right: 10px;\n        position: absolute;\n        width: auto !important;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-extended > .dropdown-menu {\n        max-width: 255px;\n        width: 255px;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu {\n        margin-right: -190px;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu:after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu:before {\n        margin-right: 190px;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu {\n        margin-right: -150px;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu:after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu:before {\n        margin-right: 150px;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu {\n        margin-right: -110px;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu:after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu:before {\n        margin-right: 110px;\n    }\n}\n@media (max-width: 580px) {\n    /* Page header */\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle .username.username-hide-on-mobile {\n        display: none;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-language .dropdown-toggle .langname {\n        display: none;\n    }\n}\n@media (max-width: 480px) {\n    /* 480px */\n    /* Fixed header for mobile */\n    .page-header-fixed.page-header-fixed-mobile .page-header.navbar {\n        height: 100px;\n    }\n\n    .page-header.navbar {\n        /* Top menu */\n    }\n\n    .page-header.navbar .top-menu {\n        display: block;\n        clear: both;\n        float: none;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav {\n        margin-right: 0;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle {\n        padding: 19px 6px 10px 6px;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-language .dropdown-toggle {\n        padding: 16px 4px 13px 2px;\n    }\n\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle {\n        padding: 16px 0px 13px 2px;\n    }\n}\n/***\nPace - Page Progress\n***/\n.pace .pace-progress {\n    z-index: 10005;\n    top: 50px;\n    height: 2px;\n    box-shadow: none;\n}\n.pace .pace-progress-inner {\n    box-shadow: none;\n}\n.pace .pace-inactive {\n    display: none;\n}\n.pace .pace-activity {\n    top: 54px;\n    z-index: 10005;\n    right: 20px;\n    border-radius: 10px !important;\n}\n@media (max-width: 480px) {\n    /* 480px */\n    .page-header-fixed .pace .pace-progress {\n        top: 100px;\n    }\n\n    .page-header-fixed .pace .pace-activity {\n        top: 104px;\n    }\n}\n/***\nPage container\n***/\n.page-container {\n    margin: 0px;\n    padding: 0px;\n    position: relative;\n    /* Fixed header */\n    /* Fixed footer for mobile */\n}\n.page-container:before, .page-container:after {\n    content: \" \";\n    display: table;\n}\n.page-container:after {\n    clear: both;\n}\n.page-header-fixed .page-container {\n    margin-top: 50px;\n}\n.page-footer-fixed.page-footer-fixed-mobile .page-container {\n    margin-bottom: 20px !important;\n}\n@media (min-width: 992px) {\n    /* Page container in fixed footer */\n    .page-footer-fixed .page-container {\n        margin-bottom: 20px !important;\n    }\n}\n@media (max-width: 991px) {\n    /* Page container */\n    .page-container {\n        margin: 0 !important;\n        padding: 0 !important;\n    }\n\n    .page-header-fixed.page-header-fixed-mobile .page-container {\n        margin-top: 50px !important;\n    }\n}\n@media (max-width: 480px) {\n    /* Page container */\n    .page-header-fixed.page-header-fixed-mobile .page-container {\n        margin-top: 100px !important;\n    }\n}\n/***\nPage sidebar\n***/\n/* Page Sidebar */\n.page-sidebar,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {\n    /* Default sidebar menu */\n    /* light sidebar menu */\n}\n.page-sidebar.navbar-collapse,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover.navbar-collapse {\n    padding: 0;\n    box-shadow: none;\n}\n.page-sidebar .page-sidebar-menu,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n    /* 1st level links */\n    /* all links */\n}\n.page-sidebar .page-sidebar-menu > li,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li {\n    display: block;\n    margin: 0;\n    padding: 0;\n    border: 0px;\n}\n.page-sidebar .page-sidebar-menu > li.sidebar-toggler-wrapper, .page-sidebar .page-sidebar-menu > li.sidebar-search-wrapper,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-toggler-wrapper,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-search-wrapper {\n    border: 0 !important;\n}\n.page-sidebar .page-sidebar-menu > li.sidebar-toggler-wrapper:before, .page-sidebar .page-sidebar-menu > li.sidebar-toggler-wrapper:after, .page-sidebar .page-sidebar-menu > li.sidebar-search-wrapper:before, .page-sidebar .page-sidebar-menu > li.sidebar-search-wrapper:after,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-toggler-wrapper:before,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-toggler-wrapper:after,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-search-wrapper:before,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-search-wrapper:after {\n    content: \" \";\n    display: table;\n}\n.page-sidebar .page-sidebar-menu > li.sidebar-toggler-wrapper:after, .page-sidebar .page-sidebar-menu > li.sidebar-search-wrapper:after,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-toggler-wrapper:after,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-search-wrapper:after {\n    clear: both;\n}\n.page-sidebar .page-sidebar-menu > li.start > a,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.start > a {\n    border-top-color: transparent !important;\n}\n.page-sidebar .page-sidebar-menu > li.last > a,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.last > a {\n    border-bottom-color: transparent !important;\n}\n.page-sidebar .page-sidebar-menu > li > a,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {\n    display: block;\n    position: relative;\n    margin: 0;\n    border: 0px;\n    padding: 10px 15px;\n    text-decoration: none;\n    font-size: 14px;\n    font-weight: 300;\n}\n.page-sidebar .page-sidebar-menu > li > a > i,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i {\n    font-size: 16px;\n    margin-right: 5px;\n    text-shadow: none;\n}\n.page-sidebar .page-sidebar-menu > li > a > i.glyphicon,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i.glyphicon {\n    margin-left: 1px;\n    margin-right: 4px;\n}\n.page-sidebar .page-sidebar-menu > li > a > [class^=\"icon-\"],\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > [class^=\"icon-\"] {\n    margin-left: 1px;\n    margin-right: 4px;\n}\n.page-sidebar-fixed .page-sidebar .page-sidebar-menu > li > a, .page-sidebar-fixed\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {\n    transition: all 0.2s ease;\n}\n.page-sidebar-reversed.page-sidebar-fixed .page-sidebar .page-sidebar-menu > li > a, .page-sidebar-reversed.page-sidebar-fixed\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {\n    transition: none;\n}\n.page-sidebar .page-sidebar-menu > li.heading,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.heading {\n    padding: 15px 15px 15px 15px;\n}\n.page-sidebar .page-sidebar-menu > li.heading > h3,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.heading > h3 {\n    margin: 0;\n    padding: 0;\n    font-size: 14px;\n    font-weight: 300;\n}\n.page-sidebar .page-sidebar-menu > li.heading + li > a,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.heading + li > a {\n    border-top: 0;\n}\n.page-sidebar .page-sidebar-menu > li.open > a,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.open > a {\n    font-size: 14px;\n}\n.page-sidebar .page-sidebar-menu > li.active > a,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a {\n    border: none;\n    text-shadow: none;\n    font-size: 14px;\n}\n.page-sidebar .page-sidebar-menu > li.active > a > .selected,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\n    display: block;\n    background-image: none;\n    /* will be set in a theme css file*/\n    float: right;\n    position: absolute;\n    right: 0px;\n    top: 8px;\n    background: none;\n    width: 0;\n    height: 0;\n    border-top: 12px solid transparent;\n    border-bottom: 12px solid transparent;\n    border-right: 12px solid #ffffff;\n}\n.page-sidebar-reversed .page-sidebar .page-sidebar-menu > li.active > a > .selected, .page-sidebar-reversed\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\n    right: auto;\n    left: 0;\n    border-right: 0;\n    border-left: 8px solid #ffffff;\n}\n.page-container-bg-solid .page-sidebar .page-sidebar-menu > li.active > a > .selected, .page-container-bg-solid\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\n    border-color: transparent #eef1f5 transparent transparent;\n}\n.page-container-bg-solid.page-sidebar-reversed .page-sidebar .page-sidebar-menu > li.active > a > .selected, .page-container-bg-solid.page-sidebar-reversed\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\n    border-color: transparent transparent transparent #eef1f5;\n}\n.page-sidebar .page-sidebar-menu li > a,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a {\n    position: relative;\n}\n.page-sidebar .page-sidebar-menu li > a > .arrow:before,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .arrow:before {\n    float: right;\n    width: 20px;\n    text-align: center;\n    display: inline;\n    font-size: 16px;\n    font-family: FontAwesome;\n    height: auto;\n    content: \"\\f104\";\n    font-weight: 300;\n    text-shadow: none;\n    position: absolute;\n    top: 4px;\n    right: 14px;\n}\n.page-sidebar .page-sidebar-menu li > a > .arrow.open:before,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .arrow.open:before {\n    content: \"\\f107\";\n}\n.page-sidebar .page-sidebar-menu li > a > .badge,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .badge {\n    float: right;\n    margin-top: 1px;\n    margin-right: 0px;\n    position: absolute;\n    right: 14px;\n    top: 6px;\n}\n.page-sidebar .page-sidebar-menu > li > a > .arrow:before,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > .arrow:before {\n    top: 8px;\n}\n.page-sidebar .page-sidebar-menu .sub-menu,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu {\n    list-style: none;\n    display: none;\n    padding: 0;\n    margin: 8px 0px 8px 0px;\n}\n.page-sidebar .page-sidebar-menu .sub-menu li,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li {\n    background: none;\n    margin: 0px;\n    padding: 0px;\n    margin-top: 1px !important;\n    /* 2nd level sub menu */\n}\n.page-sidebar .page-sidebar-menu .sub-menu li > a,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a {\n    display: block;\n    margin: 0;\n    padding: 6px 15px 6px 43px;\n    text-decoration: none;\n    font-size: 14px;\n    font-weight: 300;\n    background: none;\n}\n.page-sidebar .page-sidebar-menu .sub-menu li > a > i,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a > i {\n    font-size: 14px;\n}\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu {\n    margin: 0;\n}\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li {\n    /* 3rd level sub menu */\n}\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li > a,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li > a {\n    padding-left: 60px;\n}\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu {\n    margin: 0;\n}\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu > li > a,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu > li > a {\n    padding-left: 80px;\n}\n.page-sidebar .page-sidebar-menu .sub-menu.always-open,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu.always-open {\n    display: block;\n}\n.page-sidebar .page-sidebar-menu li.active > .sub-menu,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li.active > .sub-menu {\n    display: block;\n}\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li > a,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li > a {\n    border: 0;\n    margin: 0;\n    padding-left: 11px;\n    border-left: 4px solid transparent;\n}\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li .sub-menu,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li .sub-menu {\n    margin: 0;\n    padding: 1px 0;\n}\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li .sub-menu li > a,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li .sub-menu li > a {\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li .sub-menu li:first-child,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li .sub-menu li:first-child {\n    margin-top: 0 !important;\n}\n.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li > a, .page-sidebar-reversed\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li > a {\n    padding-left: 15px;\n    padding-right: 11px;\n    border-left: 0;\n    border-right: 4px solid transparent;\n}\n.page-sidebar .sidebar-toggler,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler {\n    webkit-transition: opacity 0.3s;\n    transition: opacity 0.3s;\n    display: block;\n    cursor: pointer;\n    opacity: 0.7;\n    filter: alpha(opacity=70);\n    padding: 6px 8px;\n    margin-top: 15px;\n    margin-right: 16px;\n    float: right;\n    border-radius: 4px;\n}\n.page-sidebar .sidebar-toggler > span,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span {\n    outline: none !important;\n}\n.page-sidebar .sidebar-toggler > span:hover,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:hover {\n    background: #ffffff;\n}\n.page-sidebar .sidebar-toggler > span:hover:before, .page-sidebar .sidebar-toggler > span:hover:after,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:hover:before,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:hover:after {\n    background: #ffffff;\n}\n.page-sidebar .sidebar-toggler > span,\n.page-sidebar .sidebar-toggler > span:before,\n.page-sidebar .sidebar-toggler > span:after,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:before,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:after {\n    display: inline-block;\n    width: 16px;\n    height: 1px;\n    background: #ffffff;\n    position: relative;\n    top: -5px;\n    transition: all ease .3s;\n}\n.page-sidebar .sidebar-toggler > span:before,\n.page-sidebar .sidebar-toggler > span:after,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:before,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:after {\n    position: absolute;\n    left: 0;\n    content: '';\n}\n.page-sidebar .sidebar-toggler > span:before,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:before {\n    top: 5px;\n}\n.page-sidebar .sidebar-toggler > span:after,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:after {\n    top: -5px;\n}\n.page-sidebar .sidebar-toggler.th-toggle-exit > span,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler.th-toggle-exit > span {\n    background-color: transparent !important;\n}\n.page-sidebar .sidebar-toggler.th-toggle-exit > span:after,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler.th-toggle-exit > span:after {\n    webkit-transform: translateY(5px) rotateZ(45deg);\n    -webkit-transform: translateY(5px) rotateZ(45deg);\n            transform: translateY(5px) rotateZ(45deg);\n}\n.page-sidebar .sidebar-toggler.th-toggle-exit > span:before,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler.th-toggle-exit > span:before {\n    webkit-transform: translateY(-5px) rotateZ(-45deg);\n    -webkit-transform: translateY(-5px) rotateZ(-45deg);\n            transform: translateY(-5px) rotateZ(-45deg);\n}\n.page-sidebar .sidebar-toggler:hover,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler:hover {\n    webkit-transition: opacity 0.3s;\n    transition: opacity 0.3s;\n    opacity: 1;\n    filter: alpha(opacity=100);\n}\n.page-sidebar .sidebar-search,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search {\n    padding: 0;\n    margin: 22px 18px 22px 18px;\n}\n.page-sidebar .sidebar-search .remove,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .remove {\n    display: none;\n}\n.page-sidebar .sidebar-search .remove > i,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .remove > i {\n    font-size: 16px;\n}\n.page-sidebar .sidebar-search .input-group,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group {\n    border-radius: 4px;\n}\n.page-sidebar .sidebar-search .input-group .form-control,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group .form-control {\n    border: 0;\n    font-size: 14px;\n    padding: 0;\n    height: auto;\n    line-height: auto;\n    border-radius: 4px;\n}\n.page-sidebar .sidebar-search .input-group .input-group-btn .btn,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group .input-group-btn .btn {\n    padding: 2px 0 0 0;\n    background-color: transparent;\n    background-repeat: no-repeat;\n    background-position: 100% 3px;\n}\n.page-sidebar .sidebar-search .input-group .input-group-btn .btn > i,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group .input-group-btn .btn > i {\n    font-size: 15px;\n}\n.page-sidebar .sidebar-search.sidebar-search-bordered,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search.sidebar-search-bordered {\n    margin: 25px 18px 25px 18px;\n}\n.page-sidebar .sidebar-search.sidebar-search-bordered .input-group .form-control,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search.sidebar-search-bordered .input-group .form-control {\n    font-size: 13px;\n    padding: 6px 8px;\n}\n.page-sidebar .sidebar-search.sidebar-search-bordered .input-group .input-group-btn .btn,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search.sidebar-search-bordered .input-group .input-group-btn .btn {\n    margin-right: 6px;\n}\n@media (min-width: 992px) {\n    /* 992px */\n    .page-sidebar {\n        width: 235px;\n        float: left;\n        position: relative;\n        margin-right: -100%;\n    }\n\n    .page-full-width .page-sidebar {\n        display: none !important;\n    }\n\n    .page-sidebar.collapse {\n        display: block;\n        max-height: none !important;\n    }\n\n    .page-sidebar-reversed .page-sidebar {\n        float: right;\n        margin-right: 0;\n        margin-left: -100%;\n    }\n\n    .page-sidebar-reversed.page-sidebar-fixed .page-sidebar {\n        margin-left: -235px;\n    }\n\n    .page-sidebar-reversed.page-sidebar-fixed .page-sidebar-wrapper {\n        position: relative;\n        float: right;\n    }\n\n    .page-sidebar-fixed .page-sidebar {\n        position: fixed !important;\n        margin-left: 0;\n        top: 50px;\n    }\n\n    .page-sidebar-fixed .page-sidebar-menu > li.last {\n        margin-bottom: 15px !important;\n    }\n\n    .page-sidebar-fixed .page-sidebar-menu .sub-menu {\n        height: auto !important;\n    }\n\n    /* Sidebar Closed */\n    .page-sidebar-closed .page-sidebar {\n        width: 45px !important;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {\n        /* sidebar */\n        width: 45px !important;\n        /* sidebar toggler */\n        /* sidebar search */\n        /* sidebar bordered search */\n        /* sidebar search expanded */\n        /* sidebar bordered search expanded */\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li {\n        /* hide opened sub menu */\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.open > .sub-menu,\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > .sub-menu {\n        display: none !important;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover {\n        width: 256px !important;\n        position: relative !important;\n        z-index: 10000;\n        display: block !important;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a {\n        border-radius: 0 4px 0 0;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > i {\n        margin-right: 10px;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .title {\n        display: inline !important;\n        padding-left: 15px;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .badge {\n        display: block !important;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .selected {\n        display: none;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover.heading {\n        width: 45px !important;\n        box-shadow: none;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu {\n        width: 210px;\n        position: absolute;\n        z-index: 2000;\n        left: 46px;\n        margin-top: 0;\n        top: 100%;\n        display: block !important;\n        border-radius: 0 0 4px 4px;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu > li > a {\n        padding-left: 15px !important;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu > li > .sub-menu > li > a {\n        padding-left: 30px !important;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu > li > .sub-menu > li > .sub-menu > li > a {\n        padding-left: 45px !important;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.heading > h3 {\n        display: none;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-toggler-wrapper .sidebar-toggler {\n        margin-right: 8px;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-toggler-wrapper:hover {\n        width: 45px !important;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-search-wrapper:hover {\n        width: 45px !important;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a {\n        padding-left: 11px;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a .selected {\n        right: -3px !important;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a > .badge,\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a > .title,\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a > .arrow {\n        display: none !important;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-toggler {\n        margin-left: 3px;\n        margin-right: 3px;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search .input-group {\n        border-color: transparent;\n        margin-left: -4px;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search .input-group .form-control {\n        display: none;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search .input-group .input-group-btn .btn {\n        display: block;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.sidebar-search-bordered .input-group {\n        padding: 5px 0 3px 0;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open {\n        height: 40px;\n        margin-top: 15px;\n        margin-bottom: 14px;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .input-group {\n        width: 210px;\n        position: relative;\n        z-index: 1;\n        margin-left: 24px;\n        padding: 0;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .input-group .form-control {\n        background: none;\n        border: 0;\n        display: block;\n        padding: 8px 8px;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .input-group .input-group-btn .btn {\n        display: block;\n        margin-right: 8px;\n        margin-top: 1px;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .remove {\n        background-repeat: no-repeat;\n        width: 11px;\n        height: 11px;\n        margin: 10px -5px 8px -7px;\n        display: block;\n        float: left;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open.sidebar-search-bordered {\n        height: 38px;\n        margin-top: 23px;\n        margin-bottom: 23px;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open.sidebar-search-bordered .input-group {\n        padding: 0;\n    }\n\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-light.page-sidebar-menu-closed > li > a {\n        padding-right: 11px;\n        padding-left: 7px;\n    }\n\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar {\n        margin-left: -45px;\n        width: 45px;\n    }\n\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {\n        /* sidebar */\n        /* sidebar search */\n    }\n\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > .sub-menu {\n        left: auto;\n        right: 46px;\n    }\n\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover {\n        margin-left: -211px;\n    }\n\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a {\n        border-radius: 4px 0 0 0;\n    }\n\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .title {\n        padding-left: 0;\n        padding-right: 15px;\n    }\n\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > i {\n        margin-right: 0;\n        margin-left: 2px;\n    }\n\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-search-wrapper:hover, .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-toggler-wrapper:hover {\n        margin-left: 0;\n    }\n\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .input-group {\n        margin-left: -227px;\n    }\n\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .input-group .input-group-btn .btn {\n        margin-right: 10px !important;\n    }\n\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .remove {\n        margin: 9px 4px 12px -16px !important;\n        float: right !important;\n    }\n\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-light.page-sidebar-menu-closed > li > a {\n        padding-right: 7px;\n        padding-left: 11px;\n    }\n\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {\n        width: 235px !important;\n        display: block;\n        z-index: 10000;\n    }\n\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu {\n        width: 235px !important;\n    }\n\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .selected {\n        display: none !important;\n    }\n\n    .page-sidebar-closed.page-sidebar-fixed.page-sidebar-reversed .page-sidebar:hover {\n        width: 235px !important;\n        z-index: 10000;\n        margin-left: -235px !important;\n    }\n\n    .page-sidebar-closed.page-sidebar-fixed.page-sidebar-reversed .page-sidebar:hover .page-sidebar-menu {\n        width: 235px !important;\n    }\n\n    .page-sidebar-closed.page-sidebar-hide .page-sidebar {\n        display: none !important;\n    }\n\n    /* Sidebar Menu Wirh Hoverable Submenu */\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li .sub-menu {\n        display: none;\n        width: 210px;\n        z-index: 2000;\n        position: absolute;\n        border-radius: 4px;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li .sub-menu > li > a {\n        margin: 3px;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li.active .sub-menu, .page-sidebar-menu.page-sidebar-menu-hover-submenu li.open .sub-menu {\n        display: none !important;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li a > .arrow {\n        display: none;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow {\n        display: block;\n        float: right;\n        position: absolute;\n        right: 0;\n        margin-top: -20px;\n        background: none;\n        width: 0;\n        height: 0;\n        border-style: solid;\n        border-top: 12px double transparent;\n        border-bottom: 12px double transparent;\n        border-left: 0;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow:after, .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow:before {\n        display: none;\n    }\n\n    .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow {\n        right: auto;\n        left: 0;\n        border-right: 0;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > .sub-menu {\n        display: inline-block !important;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > a > .arrow {\n        z-index: 1;\n        right: 0px;\n        margin-top: -23px;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > a > .selected {\n        display: none;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\n        margin-left: 235px;\n        margin-top: -40px;\n    }\n\n    .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\n        margin-left: -210px !important;\n    }\n\n    .page-sidebar-closed .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\n        margin-left: 0;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li > a {\n        padding-left: 15px;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li .sub-menu {\n        margin-left: 210px;\n        margin-top: -38px !important;\n    }\n\n    .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li .sub-menu {\n        margin-left: -210px !important;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li .sub-menu > li > a {\n        padding-left: 10px;\n        padding-right: 10px;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-light.page-sidebar-menu-hover-submenu li:hover > .sub-menu {\n        margin-top: -41px;\n    }\n\n    .page-sidebar-menu.page-sidebar-menu-light.page-sidebar-menu-hover-submenu li:hover > .sub-menu > li > .sub-menu {\n        margin-top: -41px;\n    }\n}\n.page-sidebar-wrapper .page-sidebar-menu > li.sidebar-mobile-offcanvas-toggler {\n    display: none;\n}\n@media (max-width: 991px) {\n    /* 991px */\n    .page-sidebar {\n        border-top: 0 !important;\n        margin: 20px;\n    }\n\n    .page-sidebar .sidebar-toggler {\n        display: none;\n    }\n\n    .page-sidebar .selected {\n        display: none !important;\n    }\n\n    .page-sidebar.navbar-collapse {\n        max-height: none;\n        /* set some max height to have a scrollable menu on mobile devices */\n    }\n\n    .page-sidebar.navbar-collapse.collapse {\n        display: none !important;\n    }\n\n    .page-sidebar.navbar-collapse.in {\n        border-top: 0 !important;\n        margin: 20px;\n        position: relative;\n        overflow: hidden !important;\n        overflow-y: auto !important;\n        display: block !important;\n    }\n\n    .page-sidebar.navbar-collapse.navbar-no-scroll {\n        max-height: none !important;\n    }\n\n    .page-sidebar .mega-menu-responsive-content {\n        padding: 10px 18px 10px 45px;\n    }\n\n    .page-full-width .page-sidebar-menu {\n        display: block;\n    }\n\n    .page-sidebar-mobile-offcanvas .page-sidebar-wrapper {\n        z-index: 10000;\n        position: fixed;\n        top: 0;\n        bottom: 0;\n        overflow-y: auto;\n        width: 235px;\n        left: -235px;\n        transition: all 0.3s;\n    }\n\n    .page-sidebar-mobile-offcanvas .page-sidebar-wrapper .page-sidebar {\n        margin: 0 !important;\n    }\n\n    .page-sidebar-mobile-offcanvas .page-sidebar-wrapper .page-sidebar .page-sidebar-menu {\n        width: 100%;\n        margin: 0 !important;\n        padding: 0 0 20px 0;\n    }\n\n    .page-sidebar-mobile-offcanvas .page-sidebar-wrapper .page-sidebar .page-sidebar-menu > li.sidebar-mobile-offcanvas-toggler {\n        display: block;\n        border: 0;\n        text-align: right;\n    }\n\n    .page-sidebar-mobile-offcanvas .page-sidebar-wrapper .page-sidebar .page-sidebar-menu > li.sidebar-mobile-offcanvas-toggler > a {\n        border: 0;\n    }\n\n    .page-sidebar-mobile-offcanvas .page-sidebar-wrapper .page-sidebar .page-sidebar-menu > li.sidebar-mobile-offcanvas-toggler > a:hover {\n        background: none;\n    }\n\n    .page-sidebar-mobile-offcanvas.page-sidebar-mobile-offcanvas-open .page-sidebar-wrapper {\n        left: 0;\n        transition: all 0.3s;\n    }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n    /* 768px & 991px */\n    .page-sidebar .btn-navbar.collapsed .arrow {\n        display: none;\n    }\n\n    .page-sidebar .btn-navbar .arrow {\n        position: absolute;\n        right: 25px;\n        width: 0;\n        height: 0;\n        top: 50px;\n        border-bottom: 15px solid #5f646b;\n        border-left: 15px solid transparent;\n        border-right: 15px solid transparent;\n    }\n}\n@media (max-width: 480px) {\n    /* 480px */\n    /* Page sidebar */\n    .page-sidebar,\n    .page-sidebar.in {\n        margin: 0 10px 10px 10px !important;\n    }\n\n    .page-header-fixed.page-header-fixed-mobile .page-sidebar, .page-header-fixed.page-header-fixed-mobile\n    .page-sidebar.in {\n        margin-top: 10px !important;\n    }\n}\n/***\nPage content\n***/\n/* Page title */\n.page-title {\n    padding: 0px;\n    font-size: 28px;\n    letter-spacing: -1px;\n    display: block;\n    color: #666;\n    margin: 0px 0px 15px 0px;\n    font-weight: 300;\n    /* subtitle */\n}\n.page-title small {\n    font-size: 14px;\n    letter-spacing: 0px;\n    font-weight: 300;\n    color: #888;\n}\n.page-content-white .page-title,\n.page-container-bg-solid .page-title {\n    color: #666;\n    margin-bottom: 20px;\n    margin-top: 20px;\n}\n.page-content-white .page-title small,\n.page-container-bg-solid .page-title small {\n    color: #666;\n}\n.page-content-white .page-title {\n    margin: 25px 0;\n    font-size: 24px;\n}\n/* Page breadcrumb */\n.page-bar {\n    padding: 0px;\n    background-color: #f1f4f7;\n    margin-bottom: 25px;\n    border-radius: 4px;\n}\n.page-bar:before, .page-bar:after {\n    content: \" \";\n    display: table;\n}\n.page-bar:after {\n    clear: both;\n}\n.page-bar .page-breadcrumb {\n    display: inline-block;\n    float: left;\n    padding: 8px;\n    margin: 0;\n    list-style: none;\n}\n.page-bar .page-breadcrumb > li {\n    display: inline-block;\n}\n.ie8 .page-bar .page-breadcrumb > li {\n    margin-right: 1px;\n}\n.page-bar .page-breadcrumb > li > a,\n.page-bar .page-breadcrumb > li > span {\n    color: #888;\n    font-size: 14px;\n    text-shadow: none;\n}\n.page-bar .page-breadcrumb > li > i {\n    color: #aaa;\n    font-size: 14px;\n    text-shadow: none;\n}\n.page-bar .page-breadcrumb > li > i[class^=\"icon-\"],\n.page-bar .page-breadcrumb > li > i[class*=\"icon-\"] {\n    color: gray;\n}\n.page-bar .page-toolbar {\n    display: inline-block;\n    float: right;\n    padding: 0;\n}\n.page-bar .page-toolbar .btn-fit-height {\n    border-radius: 0 4px 4px 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n.page-md .page-bar .page-toolbar .btn-fit-height {\n    padding-top: 9px;\n    padding-bottom: 9px;\n    box-shadow: none !important;\n}\n.page-content-white .page-bar,\n.page-container-bg-solid .page-bar {\n    background-color: #ffffff;\n    position: relative;\n    padding: 0px 20px;\n    margin: -25px -20px 0 -20px;\n}\n.page-content-white .page-bar .page-breadcrumb,\n.page-container-bg-solid .page-bar .page-breadcrumb {\n    padding: 11px 0;\n}\n.page-content-white .page-bar .page-breadcrumb > li > a,\n.page-content-white .page-bar .page-breadcrumb > li > span,\n.page-container-bg-solid .page-bar .page-breadcrumb > li > a,\n.page-container-bg-solid .page-bar .page-breadcrumb > li > span {\n    color: #888;\n}\n.page-content-white .page-bar .page-breadcrumb > li > i,\n.page-container-bg-solid .page-bar .page-breadcrumb > li > i {\n    color: #aaa;\n}\n.page-content-white .page-bar .page-breadcrumb > li > i.fa-circle,\n.page-container-bg-solid .page-bar .page-breadcrumb > li > i.fa-circle {\n    font-size: 5px;\n    margin: 0 5px;\n    position: relative;\n    top: -3px;\n    opacity: 0.4;\n    filter: alpha(opacity=40);\n}\n.page-content-white .page-bar .page-breadcrumb > li > i[class^=\"icon-\"],\n.page-content-white .page-bar .page-breadcrumb > li > i[class*=\"icon-\"],\n.page-container-bg-solid .page-bar .page-breadcrumb > li > i[class^=\"icon-\"],\n.page-container-bg-solid .page-bar .page-breadcrumb > li > i[class*=\"icon-\"] {\n    color: #8c8c8c;\n}\n.page-content-white .page-bar .page-toolbar,\n.page-container-bg-solid .page-bar .page-toolbar {\n    padding: 6px 0;\n}\n.page-content-white .page-bar .page-toolbar .btn,\n.page-container-bg-solid .page-bar .page-toolbar .btn {\n    margin-top: -2px;\n}\n.page-content-white .page-bar .page-toolbar .btn.btn-sm,\n.page-container-bg-solid .page-bar .page-toolbar .btn.btn-sm {\n    margin-top: 0px;\n}\n/* Page content */\n.page-content {\n    margin-top: 0px;\n    padding: 0px;\n    background-color: #fff;\n}\n.page-container-bg-solid .page-content {\n    background: #eef1f5;\n}\n.page-content-white .page-content .page-bar {\n    border-bottom: 1px solid #e7ecf1;\n}\n.page-content-white.page-md .page-content .page-bar,\n.page-container-bg-solid.page-md .page-content .page-bar {\n    border-radius: 0 !important;\n}\n.page-full-width .page-content {\n    margin-left: 0px !important;\n}\n@media (min-width: 992px) {\n    /* 992px */\n    /* Page content */\n    .page-content-wrapper {\n        float: left;\n        width: 100%;\n    }\n\n    .page-content-wrapper .page-content {\n        margin-left: 235px;\n        margin-top: 0px;\n        min-height: 600px;\n        padding: 25px 20px 10px 20px;\n    }\n\n    .page-content-wrapper .page-content.no-min-height {\n        min-height: auto;\n    }\n\n    .page-sidebar-fixed.page-sidebar-hover-on .page-content-wrapper .page-content {\n        margin-left: 45px;\n    }\n\n    .page-sidebar-reversed .page-content-wrapper .page-content {\n        margin-left: 0 !important;\n        margin-right: 235px !important;\n    }\n\n    .page-sidebar-reversed.page-sidebar-fixed.page-sidebar-hover-on .page-content-wrapper .page-content {\n        margin-left: 0;\n        margin-right: 45px;\n    }\n\n    .page-sidebar-reversed.page-sidebar-closed .page-content-wrapper .page-content {\n        margin-left: 0 !important;\n        margin-right: 45px !important;\n    }\n\n    .page-sidebar-closed .page-content-wrapper .page-content {\n        margin-left: 45px !important;\n    }\n\n    .page-sidebar-closed.page-sidebar-hide .page-content-wrapper .page-content {\n        margin-left: 0 !important;\n    }\n\n    .page-sidebar-closed.page-sidebar-reversed.page-sidebar-hide .page-content-wrapper .page-content {\n        margin-right: 0 !important;\n    }\n\n    .page-full-width .page-content-wrapper .page-content {\n        margin-left: 0px !important;\n    }\n}\n@media (max-width: 991px) {\n    /* 991px */\n    html,\n    body {\n        overflow-x: hidden;\n    }\n\n    /* Bg solid content's breadcrumb */\n    .page-content-white .page-bar,\n    .page-container-bg-solid .page-bar {\n        margin-top: -20px;\n    }\n\n    /* Boxed page container  */\n    .page-boxed > .container {\n        max-width: none !important;\n        margin: 0 !important;\n        padding: 0 !important;\n    }\n\n    /* Page content */\n    .page-content-wrapper .page-content {\n        margin: 0px !important;\n        padding: 20px 20px 20px 20px !important;\n        min-height: 280px;\n    }\n\n    .page-sidebar-mobile-offcanvas .page-wrapper {\n        left: 0;\n        transition: all 0.3s;\n    }\n\n    .page-sidebar-mobile-offcanvas .page-wrapper .page-header {\n        transition: all 0.3s;\n    }\n\n    .page-sidebar-mobile-offcanvas.page-sidebar-mobile-offcanvas-open {\n        overflow-x: hidden;\n        transition: all 0.3s;\n    }\n\n    .page-sidebar-mobile-offcanvas.page-sidebar-mobile-offcanvas-open .page-wrapper {\n        position: relative;\n        left: 235px;\n        transition: all 0.3s;\n    }\n\n    .page-sidebar-mobile-offcanvas.page-sidebar-mobile-offcanvas-open .page-wrapper .page-header {\n        transition: all 0.3s;\n    }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n    /*  768px & 991px */\n    /* Boxed page container */\n    .page-boxed > .container {\n        margin: auto !important;\n    }\n}\n@media (max-width: 767px) {\n    /* 767px */\n    /* Page content */\n    .page-content-wrapper .page-content {\n        padding: 20px 10px 10px 10px !important;\n        overflow: hidden;\n        /* Page title */\n    }\n\n    .page-content-wrapper .page-content .page-title {\n        margin-bottom: 20px;\n        font-size: 18px;\n    }\n\n    .page-content-wrapper .page-content .page-title small {\n        font-size: 13px;\n        padding-top: 3px;\n    }\n}\n@media (max-width: 480px) {\n    /* 480px */\n    /* Dashboard date range panel */\n    .page-content-wrapper .page-content .page-title small {\n        display: block;\n        clear: both;\n    }\n}\n/***\nPage footer\n***/\n.page-footer {\n    padding: 8px 20px 5px 20px;\n    font-size: 13px;\n    height: 33px;\n}\n.page-footer:before, .page-footer:after {\n    content: \" \";\n    display: table;\n}\n.page-footer:after {\n    clear: both;\n}\n.page-footer .page-footer-inner {\n    float: left;\n    display: inline-block;\n}\n.page-footer-fixed.page-footer-fixed-mobile .page-footer {\n    position: fixed;\n    left: 0;\n    right: 0;\n    z-index: 10000;\n    bottom: 0;\n}\n.page-footer-fixed.page-footer-fixed-mobile.page-sidebar-fixed .page-footer {\n    margin-left: 0 !important;\n}\n@media (min-width: 992px) {\n    /* 992px */\n    /* Default footer */\n    .page-footer {\n        clear: left;\n    }\n\n    /* Fixed footer */\n    .page-footer-fixed .page-footer {\n        position: fixed;\n        left: 0;\n        right: 0;\n        z-index: 10000;\n        bottom: 0;\n    }\n\n    /* Footer with footer sidebar */\n    .page-sidebar-fixed.page-sidebar-closed .page-footer {\n        margin-left: 45px;\n    }\n\n    .page-sidebar-fixed.page-footer-fixed .page-footer {\n        margin-left: 0 !important;\n    }\n\n    /* Fixed Sidebar */\n    .page-sidebar-fixed .page-footer {\n        margin-left: 235px;\n        padding: 8px 20px 5px 20px;\n    }\n\n    /* Boxed page */\n    .page-boxed .page-footer {\n        padding: 8px 0 5px 0;\n    }\n\n    .page-boxed.page-sidebar-fixed .page-footer {\n        padding-right: 20px;\n        padding-left: 20px;\n    }\n\n    /* Page sidebar reversed */\n    .page-sidebar-reversed.page-sidebar-fixed .page-footer {\n        margin-left: 0;\n        margin-right: 235px;\n        padding: 8px 20px 5px 20px;\n    }\n\n    .page-sidebar-reversed.page-sidebar-fixed.page-footer-fixed .page-footer {\n        margin-left: 0;\n        margin-right: 0;\n    }\n\n    .page-sidebar-reversed.page-sidebar-fixed.page-sidebar-closed .page-footer {\n        margin-right: 45px;\n    }\n}\n@media (max-width: 991px) {\n    /* 991px */\n    /* Boxed Layout */\n    .page-boxed .page-footer {\n        padding-left: 0px;\n        padding-right: 0px;\n    }\n}\n@media (max-width: 767px) {\n    /* 767px */\n    /* Default footer & boxed footer */\n    .page-footer,\n    .page-boxed .page-footer {\n        padding-left: 10px;\n        padding-right: 10px;\n    }\n\n    /* Fixed footer */\n    .page-footer-fixed .page-footer .container {\n        padding-left: 0;\n        padding-right: 0;\n    }\n}\n/* Scroll Top Top */\n.scroll-to-top {\n    display: inline-block;\n    padding: 1px;\n    text-align: center;\n    position: fixed;\n    bottom: 10px;\n    z-index: 10001;\n    display: none;\n    right: 10px;\n}\n.scroll-to-top > i {\n    display: inline-block;\n    color: #687991;\n    font-size: 30px;\n    opacity: 0.6;\n    filter: alpha(opacity=60);\n}\n.scroll-to-top:hover {\n    cursor: pointer;\n}\n.scroll-to-top:hover > i {\n    opacity: 1;\n    filter: alpha(opacity=100);\n}\n@media (min-width: 992px) {\n    /* 992px */\n    .scroll-to-top {\n        right: 20px;\n    }\n}\n@media (max-width: 991px) {\n    /* 991px */\n    .scroll-to-top {\n        bottom: 10px;\n        right: 10px;\n    }\n\n    .scroll-to-top > i {\n        font-size: 28px;\n    }\n}\n/***\nTheme Panel\n***/\n.theme-panel {\n    width: 420px;\n    margin-top: -13px;\n    margin-right: 0px;\n    z-index: 100;\n    float: right;\n    position: relative;\n    /* content solid bg color */\n}\n.theme-panel > .toggler {\n    top: 4px;\n    right: 0;\n    padding: 20px;\n    cursor: pointer;\n    position: absolute;\n    background: #536881 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjQ0OUUzMjRDN0M2NDExRTI4MkM1RDk5NEJBNzY1NzRDIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjQ0OUUzMjREN0M2NDExRTI4MkM1RDk5NEJBNzY1NzRDIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NDQ5RTMyNEE3QzY0MTFFMjgyQzVEOTk0QkE3NjU3NEMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NDQ5RTMyNEI3QzY0MTFFMjgyQzVEOTk0QkE3NjU3NEMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6mepK7AAABTklEQVR42mL8//8/A5EAXSEjMZoYB4sFQkD8Fk2MF4i/EHYW0AI0DAMgtgEQzwHib/8xwRMgLgJifiCWRtPHDDMP3QdEhxehkMEVRNgsOAPEW4D4ABBfhorpArEDEPsAsQk+C/AFEQjMAGItLGpgWAuqBhkIIatB1yAKxH+QDOfDYzgM86FZoovPgkaootMEXI7NJ6eheifgsgDk+s9QRfUkGA7D9VC9b6F8YyCWY/iPHdiTYYE9NoMY/2PPacJA/I7EpIktMzLQ3AImHIp1ychcWPUwQTMFCLshiTuQYQFMz3cgFoObixRJzNAUQGkynYkvH0xDy8XkZDQtfBZQo6hAUU/zwg5mARsQ/6JFcY3sXTa0IOIBYhtovLzFkePPA3EUFCNXODiDiBOazFSA+A6SuCgQv6JlncwPxB8IWMAMpf+SYwFI8x9yfAAQYAAn71zoqSBvKQAAAABJRU5ErkJggg==) center no-repeat;\n    border-radius: 4px;\n}\n.theme-panel > .toggler:hover {\n    background-color: #3f4f62 !important;\n}\n.theme-panel > .toggler-close {\n    display: none;\n    top: 4px;\n    right: 0;\n    padding: 20px;\n    z-index: 101;\n    cursor: pointer;\n    position: absolute;\n    background: #2b3643 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBDNzc0QTMxN0M2NDExRTI4Mjg4Q0JFRTIxNzU0N0JCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjBDNzc0QTMyN0M2NDExRTI4Mjg4Q0JFRTIxNzU0N0JCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MEM3NzRBMkY3QzY0MTFFMjgyODhDQkVFMjE3NTQ3QkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MEM3NzRBMzA3QzY0MTFFMjgyODhDQkVFMjE3NTQ3QkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7YgmDaAAAAfUlEQVR42qRTQQ7AIAiDZv//rhcSNhNcVMRJxklJS1uDrKpCRBflS2BEyRIrD3bJDHidomueDBgi8pN5BtQGL4iujwWIDfg5EIG9Cix2LoGTpe2TCFvlXrFEgEi5Kbb8x5l7oG4e0ZFlk5HnPUC0AEENi4QE0Q3gP7/qFmAAAIYt2+/Wj4MAAAAASUVORK5CYII=) center no-repeat !important;\n    border-radius: 4px;\n}\n.theme-panel > .toggler-close:hover {\n    background-color: #212933 !important;\n}\n.theme-panel > .theme-options {\n    top: 4px;\n    right: 0;\n    display: none;\n    position: absolute;\n    z-index: 100;\n    background: #2b3643;\n    border-radius: 4px;\n}\n.theme-panel > .theme-options > .theme-option {\n    color: #c6cfda;\n    padding: 15px;\n    border-top: 1px solid #354353;\n    margin-top: 0px;\n    margin-bottom: 0px;\n}\n.theme-panel > .theme-options > .theme-option > span {\n    text-transform: uppercase;\n    display: inline-block;\n    width: 145px;\n    font-size: 13px;\n    font-weight: 300;\n}\n.theme-panel > .theme-options > .theme-option > select.form-control {\n    display: inline;\n    width: 135px;\n    padding: 2px;\n    text-transform: lowercase;\n}\n.theme-panel > .theme-options > .theme-option.theme-colors {\n    border-top: 0;\n}\n.theme-panel > .theme-options > .theme-option.theme-colors > span {\n    display: block;\n    width: auto;\n}\n.theme-panel > .theme-options > .theme-option.theme-colors > ul {\n    list-style: none;\n    padding: 0;\n    display: block;\n    margin-bottom: 10px !important;\n    margin-top: 15px;\n}\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li {\n    width: 40px;\n    height: 40px;\n    margin: 0 4px;\n    cursor: pointer;\n    list-style: none;\n    float: left;\n    border: solid 1px #707070;\n    /* theme colors */\n}\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li:first-child {\n    margin-left: 0;\n}\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li:hover, .theme-panel > .theme-options > .theme-option.theme-colors > ul > li.current {\n    border: solid 2px #d64635;\n}\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-default {\n    background: #333438;\n}\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-darkblue {\n    background: #2b3643;\n}\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-blue {\n    background: #2D5F8B;\n}\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-grey {\n    background: #697380;\n}\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-light {\n    background: #F9FAFD;\n}\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-light2 {\n    background: #F1F1F1;\n}\n.page-content-white .theme-panel,\n.page-container-bg-solid .theme-panel {\n    position: absolute;\n    margin-top: 30px;\n    margin-right: 20px;\n    right: 0;\n}\n.page-content-white .theme-panel > .toggler1,\n.page-container-bg-solid .theme-panel > .toggler1 {\n    background: #BFCAD1 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjQ0OUUzMjRDN0M2NDExRTI4MkM1RDk5NEJBNzY1NzRDIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjQ0OUUzMjREN0M2NDExRTI4MkM1RDk5NEJBNzY1NzRDIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NDQ5RTMyNEE3QzY0MTFFMjgyQzVEOTk0QkE3NjU3NEMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NDQ5RTMyNEI3QzY0MTFFMjgyQzVEOTk0QkE3NjU3NEMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6mepK7AAABTklEQVR42mL8//8/A5EAXSEjMZoYB4sFQkD8Fk2MF4i/EHYW0AI0DAMgtgEQzwHib/8xwRMgLgJifiCWRtPHDDMP3QdEhxehkMEVRNgsOAPEW4D4ABBfhorpArEDEPsAsQk+C/AFEQjMAGItLGpgWAuqBhkIIatB1yAKxH+QDOfDYzgM86FZoovPgkaootMEXI7NJ6eheifgsgDk+s9QRfUkGA7D9VC9b6F8YyCWY/iPHdiTYYE9NoMY/2PPacJA/I7EpIktMzLQ3AImHIp1ychcWPUwQTMFCLshiTuQYQFMz3cgFoObixRJzNAUQGkynYkvH0xDy8XkZDQtfBZQo6hAUU/zwg5mARsQ/6JFcY3sXTa0IOIBYhtovLzFkePPA3EUFCNXODiDiBOazFSA+A6SuCgQv6JlncwPxB8IWMAMpf+SYwFI8x9yfAAQYAAn71zoqSBvKQAAAABJRU5ErkJggg==) center no-repeat;\n}\n.page-content-white.page-sidebar-reversed .theme-panel,\n.page-container-bg-solid.page-sidebar-reversed .theme-panel {\n    margin-right: 255px;\n}\n.page-content-white.page-sidebar-reversed.page-sidebar-closed .theme-panel,\n.page-container-bg-solid.page-sidebar-reversed.page-sidebar-closed .theme-panel {\n    margin-right: 65px;\n}\n/******************\nPage Quick Sidebar\n******************/\n/* Quick sidebar toggler */\n.page-header .top-menu .dropdown-quick-sidebar-toggler > .dropdown-toggle {\n    padding: 19px 10px 10px 10px !important;\n}\n.page-header .top-menu .dropdown-quick-sidebar-toggler > .dropdown-toggle i {\n    top: 0px;\n}\n.page-header .top-menu .dropdown-quick-sidebar-toggler > .dropdown-toggle i:before {\n    content: \"\" /*rtl:\"\"*/;\n}\n.page-quick-sidebar-open .page-header .top-menu .dropdown-quick-sidebar-toggler > .dropdown-toggle i:before {\n    content: \"\" /*rtl:\"\"*/;\n}\n/* Page Portlet Fullscreen */\n.page-portlet-fullscreen .page-quick-sidebar-wrapper,\n.page-portlet-fullscreen .page-quick-sidebar-toggler {\n    z-index: -1;\n}\n/* Quick sidebar toggler */\n.page-quick-sidebar-toggler {\n    overflow: hidden;\n    z-index: 99999;\n    display: none;\n    width: 28px;\n    height: 27px;\n    position: fixed;\n    top: 10px;\n    right: 15px;\n    text-align: center;\n    padding-top: 6px;\n}\n.page-quick-sidebar-toggler:hover {\n    background: #303a43;\n}\n.page-quick-sidebar-open .page-quick-sidebar-toggler {\n    display: inline-block;\n}\n.page-quick-sidebar-open .page-quick-sidebar-toggler:hover {\n    background: none;\n}\n.page-quick-sidebar-toggler > i {\n    color: #99a8b5;\n    font-size: 17px;\n}\n.page-quick-sidebar-toggler > i:hover {\n    color: #fff !important;\n}\n.page-quick-sidebar-open .page-quick-sidebar-toggler > i:before {\n    content: \"\" /*rtl:\"\"*/;\n}\n/* Quick sidebar wrapper */\n.page-quick-sidebar-wrapper {\n    transition: right 0.3s;\n    z-index: 10500;\n    position: fixed;\n    top: 0;\n    bottom: 0;\n    width: 320px;\n    right: -320px;\n    overflow: hidden;\n    color: #99a8b5;\n    background: #21282e;\n}\n.page-quick-sidebar-open .page-quick-sidebar-wrapper {\n    transition: right 0.3s;\n    right: 0;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar {\n    background: #21282e;\n    /* Quick sidebar tabs content */\n    /* Quick sidebar general list heading */\n    /* Quick sidebar general list-items */\n    /* Inner content */\n    /* Quick sidebar list */\n    /* Quick sidebar list item */\n    /* Quick sidebar list item shown */\n    /* Quick sidebar chat */\n    /* Quick sidebar alerts */\n    /* Quick sidebar settings */\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs {\n    margin: 0;\n    padding: 0;\n    border: 0;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li {\n    display: table-cell !important;\n    width: 1% !important;\n    padding: 0;\n    margin: 0;\n    float: none;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li > a {\n    position: relative;\n    display: block;\n    text-align: center;\n    border: 0;\n    height: auto;\n    font-size: 14px;\n    padding: 45px 15px 8px;\n    text-transform: uppercase;\n    background: none;\n    margin-right: 0;\n    color: #90a1af;\n    border: 0;\n    border-bottom: 3px solid rgba(243, 86, 93, 0.3);\n    border-radius: 0;\n    outline: none !important;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li > a > .badge {\n    position: absolute;\n    top: 45px;\n    right: 3px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li.active > a, .page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li:hover > a {\n    border: 0;\n    border-bottom: 3px solid #f3565d;\n    background: none;\n    color: #fff;\n    text-decoration: none;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu {\n    border: 0;\n    background: #36424c;\n    box-shadow: 5px 5px rgba(97, 117, 135, 0.1);\n    margin-top: 8px;\n    margin-right: 20px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu:before {\n    position: absolute;\n    top: -7px;\n    right: 19px;\n    display: inline-block !important;\n    border-right: 7px solid transparent;\n    border-left: 7px solid transparent;\n    border-bottom: 7px solid #36424c;\n    content: '';\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu:after {\n    position: absolute;\n    top: -6px;\n    right: 20px;\n    display: inline-block !important;\n    border-right: 6px solid transparent;\n    border-left: 6px solid transparent;\n    border-bottom: 7px solid #36424c;\n    content: '';\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li > a {\n    padding: 10px 15px;\n    color: #99a8b5;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li > a > i {\n    color: #93a3b1;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li:hover > a {\n    background: #3d4a55;\n    color: #99a8b5;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li:hover > a > i {\n    color: #9babb8;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li.active > a {\n    background: #38444f;\n    color: #99a8b5;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li.divider {\n    background-color: #3d4a55;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li.open > a.dropdown-toggle {\n    border-bottom: 3px solid #f3565d;\n    background: none;\n    text-decoration: none;\n    color: #90a1af;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .tab-content {\n    margin: 0;\n    padding: 0;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-heading {\n    font-size: 16px;\n    margin: 10px 10px;\n    color: #6c8296;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items {\n    margin: 0;\n    padding: 0;\n    list-style: none;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items > li {\n    margin: 0;\n    padding: 15px;\n    background: none;\n    border-bottom-width: 1px;\n    border-bottom-style: solid;\n    border-bottom-color: #273037;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items > li:hover {\n    background: #273037;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items > li:last-child {\n    border-bottom: 0;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items.borderless li {\n    border: 0;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .inner-content {\n    margin: 10px 10px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-list {\n    position: absolute !important;\n    width: 320px !important;\n    transition: margin 0.3s;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item {\n    width: 320px;\n    position: absolute !important;\n    width: 320px !important;\n    transition: margin 0.3s;\n    margin-left: 320px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav {\n    padding: 15px 10px 0px 10px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav .page-quick-sidebar-back-to-list {\n    vertical-align: middle;\n    display: inline-block;\n    font-size: 14px;\n    color: #90a1af;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav .page-quick-sidebar-back-to-list:hover {\n    text-decoration: none;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav .page-quick-sidebar-back-to-list > i {\n    font-size: 17px;\n    line-height: 17px;\n    vertical-align: top;\n    margin-right: 3px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list {\n    transition: margin 0.3s;\n    margin-left: -320px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list .slimScrollBar,\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list .slimScrollRail {\n    display: none !important;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-item {\n    transition: margin 0.3s;\n    margin-left: 0;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users {\n    padding: 10px 0;\n    position: relative;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media {\n    padding: 15px 15px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object {\n    border-radius: 50% !important;\n    width: 45.71429px;\n    opacity: 0.8;\n    filter: alpha(opacity=80);\n    float: left;\n    margin-right: 10px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object:before, .page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object:after {\n    content: \" \";\n    display: table;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object:after {\n    clear: both;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media:hover {\n    cursor: pointer;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media:hover .media-object {\n    opacity: 1;\n    filter: alpha(opacity=100);\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-body .media-heading {\n    margin: 5px 0 0 0;\n    font-size: 14px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-body .media-heading-sub {\n    font-size: 11px;\n    text-transform: uppercase;\n    color: #657b8d;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-body .media-heading-small {\n    font-size: 10px;\n    color: #5d7081;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-status {\n    margin-top: 10px;\n    right: 10px;\n    position: absolute;\n    display: inline-block;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages {\n    padding: 0px 10px;\n    position: relative;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post {\n    transition: display 0.3s;\n    padding: 5px 0;\n    margin: 10px auto;\n    font-size: 13px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .body {\n    color: #c3c3c3;\n    display: block;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .avatar {\n    width: 45.71429px;\n    border-radius: 50% !important;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .avatar {\n    float: left;\n    margin-right: 10px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .avatar {\n    float: right;\n    margin-left: 10px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .name {\n    font-size: 12px;\n    font-weight: 300;\n    color: #8496a7;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .datetime {\n    font-size: 12px;\n    font-weight: 300;\n    color: #8496a7;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message {\n    display: block;\n    padding: 5px;\n    position: relative;\n    color: #90a1af;\n    background: #36424c;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .message {\n    text-align: left;\n    margin-left: 55px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .message .arrow {\n    display: block;\n    position: absolute;\n    top: 9px;\n    left: -6px;\n    width: 0;\n    height: 0;\n    border-top: 6px solid transparent;\n    border-bottom: 6px solid transparent;\n    border-right-width: 6px;\n    border-right-style: solid;\n    border-right-color: #36424c;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .message {\n    margin-right: 55px;\n    text-align: right;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .message .arrow {\n    display: block;\n    position: absolute;\n    top: 9px;\n    right: -6px;\n    border-top: 6px solid transparent;\n    border-bottom: 6px solid transparent;\n    border-left-width: 6px;\n    border-left-style: solid;\n    border-left-color: #36424c;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .name,\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .datetime {\n    text-align: right;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-form {\n    padding: 20px 10px 15px 10px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list {\n    padding: 10px 0;\n    position: relative;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a {\n    color: #7e91a2;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a .label {\n    margin-top: 5px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a .desc {\n    text-decoration: underline;\n    padding: 0;\n    color: #788c9e;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a .date {\n    color: #5d7081;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list {\n    padding: 10px 0;\n    position: relative;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list .list-items li .bootstrap-switch {\n    margin-top: -3px;\n    float: right;\n    border: 0;\n    min-width: 59px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list .list-items li .form-control {\n    width: 75px !important;\n    padding: 4px 4px !important;\n    float: right;\n    border: 0;\n    margin-top: -4px;\n}\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list .list-items li select.form-control {\n    padding: 4px 0px !important;\n}\n.quick-nav {\n    position: fixed;\n    z-index: 10103;\n    top: 50%;\n    right: 10px;\n    margin-top: -230px;\n    pointer-events: none;\n}\n.quick-nav .quick-nav-bg {\n    /* this is the stretching navigation background */\n    position: absolute;\n    z-index: 10102;\n    top: 0;\n    right: 0;\n    width: 60px;\n    height: 60px;\n    border-radius: 30px !important;\n    background: #36C6D3;\n    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);\n    webkit-transition: height .2s, box-shadow .2s;\n    transition: height .2s, box-shadow .2s;\n}\n.quick-nav.nav-is-visible {\n    pointer-events: auto;\n}\n.quick-nav.nav-is-visible .quick-nav-bg {\n    height: 100%;\n    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);\n}\n.quick-nav-trigger {\n    position: absolute;\n    z-index: 10103;\n    top: 0;\n    right: 0;\n    height: 60px;\n    width: 60px;\n    border-radius: 50% !important;\n    overflow: hidden;\n    white-space: nowrap;\n    color: transparent;\n    pointer-events: auto;\n}\n.quick-nav-trigger span,\n.quick-nav-trigger span::after,\n.quick-nav-trigger span::before {\n    /* this is the hamburger icon */\n    position: absolute;\n    width: 16px;\n    height: 2px;\n    background-color: #ffffff;\n}\n.quick-nav-trigger span {\n    /* middle line of the hamburger icon */\n    webkit-transition: background-color 0.2s;\n    transition: background-color 0.2s;\n    left: 50%;\n    top: 50%;\n    bottom: auto;\n    right: auto;\n    webkit-transform: translateX(-50%) translateY(-50%);\n    -webkit-transform: translateX(-50%) translateY(-50%);\n            transform: translateX(-50%) translateY(-50%);\n}\n.quick-nav-trigger span::after,\n.quick-nav-trigger span::before {\n    /* top and bottom lines of the hamburger icon */\n    content: '';\n    top: 0;\n    left: 0;\n    -webkit-backface-visibility: hidden;\n    backface-visibility: hidden;\n    webkit-transition: transform 0.2s;\n    transition: -webkit-transform 0.2s;\n    transition: transform 0.2s;\n    transition: transform 0.2s, -webkit-transform 0.2s;\n}\n.quick-nav-trigger span::before {\n    webkit-transform: translateY(-6px);\n    -webkit-transform: translateY(-6px);\n            transform: translateY(-6px);\n}\n.quick-nav-trigger span::after {\n    webkit-transform: translateY(6px);\n    -webkit-transform: translateY(6px);\n            transform: translateY(6px);\n}\n.no-touch .quick-nav-trigger:hover ~ .quick-nav-bg {\n    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);\n}\n.nav-is-visible .quick-nav-trigger span {\n    background-color: transparent;\n}\n.nav-is-visible .quick-nav-trigger span::before {\n    webkit-transform: rotate(-45deg);\n    -webkit-transform: rotate(-45deg);\n            transform: rotate(-45deg);\n}\n.nav-is-visible .quick-nav-trigger span::after {\n    webkit-transform: rotate(45deg);\n    -webkit-transform: rotate(45deg);\n            transform: rotate(45deg);\n}\n.quick-nav ul {\n    position: relative;\n    z-index: 10103;\n    padding: 60px 0 0;\n    visibility: hidden;\n    webkit-transition: visibility 0.3s;\n    transition: visibility 0.3s;\n    text-align: right;\n    list-style: none;\n}\n.quick-nav ul > li a {\n    position: relative;\n    display: block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 calc(1em + 60px) 0 1em;\n    font-size: 1.4rem;\n    webkit-transition: color 0.2s;\n    transition: color 0.2s;\n}\n.quick-nav ul > li a:hover {\n    text-decoration: none;\n}\n.quick-nav ul > li a:hover > span {\n    text-decoration: none;\n}\n.quick-nav ul > li a > i {\n    /* navigation item icons */\n    content: '';\n    position: absolute;\n    height: 16px;\n    width: 16px;\n    font-size: 18px;\n    right: 24px;\n    top: 16px;\n    color: #ebebeb;\n}\n.quick-nav ul > li a::before {\n    /* line visible next to the active navigation item */\n    content: '';\n    position: absolute;\n    width: 3px;\n    height: 16px;\n    top: 50%;\n    right: 60px;\n    webkit-transform: translateX(3px) translateY(-50%) scaleY(0);\n    -webkit-transform: translateX(3px) translateY(-50%) scaleY(0);\n            transform: translateX(3px) translateY(-50%) scaleY(0);\n    background-color: #FF3F3F;\n}\n.quick-nav ul > li span {\n    /* navigation item labels */\n    color: #ebebeb;\n    font-weight: 400;\n    display: block;\n    opacity: 0;\n    webkit-transform: translateX(-25px);\n    -webkit-transform: translateX(-25px);\n            transform: translateX(-25px);\n}\n.quick-nav ul > li:last-child {\n    padding-bottom: 10px;\n}\n.quick-nav.nav-is-visible ul {\n    visibility: visible;\n}\n.quick-nav.nav-is-visible ul a::after {\n    /* navigation item icons */\n    webkit-transform: translateY(-50%) scale(1);\n    -webkit-transform: translateY(-50%) scale(1);\n            transform: translateY(-50%) scale(1);\n    -webkit-animation: scaleIn 0.15s backwards;\n    animation: scaleIn 0.15s backwards;\n    webkit-transition: opacity 0.2s;\n    transition: opacity 0.2s;\n}\n.quick-nav.nav-is-visible ul a:hover::after {\n    opacity: 1;\n}\n.quick-nav.nav-is-visible ul a:hover::before {\n    webkit-transform: translateX(3px) translateY(-50%) scaleY(2);\n    -webkit-transform: translateX(3px) translateY(-50%) scaleY(2);\n            transform: translateX(3px) translateY(-50%) scaleY(2);\n    webkit-transition: transform 0.15s 0.3s;\n    transition: -webkit-transform 0.15s 0.3s;\n    transition: transform 0.15s 0.3s;\n    transition: transform 0.15s 0.3s, -webkit-transform 0.15s 0.3s;\n}\n.quick-nav.nav-is-visible ul a:hover > span {\n    color: white;\n}\n.quick-nav.nav-is-visible ul a:hover > i {\n    color: #fafafa;\n}\n.quick-nav.nav-is-visible ul span {\n    opacity: 1;\n    webkit-transform: translateX(0);\n    -webkit-transform: translateX(0);\n            transform: translateX(0);\n    -webkit-animation: slideIn 0.15s backwards;\n    animation: slideIn 0.15s backwards;\n    webkit-transition: transform 0.2s;\n    transition: -webkit-transform 0.2s;\n    transition: transform 0.2s;\n    transition: transform 0.2s, -webkit-transform 0.2s;\n}\n.no-touch .quick-nav.nav-is-visible ul a:hover::after {\n    opacity: 1;\n}\n.no-touch .quick-nav.nav-is-visible ul a:hover span {\n    webkit-transform: translateX(-5px);\n    -webkit-transform: translateX(-5px);\n            transform: translateX(-5px);\n}\n.quick-nav-overlay {\n    display: none;\n    top: 0;\n    bottom: 0;\n    right: 0;\n    left: 0;\n    position: fixed;\n    z-index: 10101;\n    background: transparent;\n}\n.quick-nav.nav-is-visible + .quick-nav-overlay {\n    background: rgba(0, 0, 0, 0.8);\n    display: block;\n    transition: background .7s ease-out;\n}\n@media (max-width: 991px) {\n    /* 991px */\n    .quick-nav {\n        top: 120px;\n        margin-top: 0;\n    }\n}\n/***\nPage Loading\n***/\n.page-on-load {\n    background: #fefefe;\n}\n.page-on-load .page-header,\n.page-on-load .page-container,\n.page-on-load .page-footer,\n.page-on-load > .clearfix {\n    display: none;\n    transition: all 2s;\n}\n"
+module.exports = "@charset \"UTF-8\";\r\n/* Cubic Bezier Transition */\r\n@media print {\r\n    body {\r\n        background-color: #fff !important;\r\n        direction: ltr;\r\n    }\r\n\r\n    .page-bar {\r\n        display: none;\r\n    }\r\n\r\n    .page-sidebar-wrapper {\r\n        display: none;\r\n    }\r\n\r\n    .page-quick-sidebar-wrapper {\r\n        display: none;\r\n    }\r\n\r\n    .theme-panel {\r\n        display: none;\r\n    }\r\n\r\n    .hidden-print {\r\n        display: none;\r\n    }\r\n\r\n    .page-footer {\r\n        display: none;\r\n    }\r\n\r\n    .no-page-break {\r\n        page-break-after: avoid;\r\n    }\r\n\r\n    .page-container {\r\n        margin: 0px !important;\r\n        padding: 0px !important;\r\n    }\r\n\r\n    .page-content {\r\n        padding: 0 !important;\r\n        min-height: 300px !important;\r\n        padding: 0px 20px 20px !important;\r\n        margin: 0 !important;\r\n    }\r\n\r\n    .table th,\r\n    .table td {\r\n        text-align: left !important;\r\n    }\r\n}\r\n/***\r\nPage Header\r\n***/\r\n.page-header.navbar {\r\n    width: 100%;\r\n    padding: 0 20px 0 20px;\r\n    margin: 0;\r\n    border: 0px;\r\n    padding: 0px;\r\n    box-shadow: none;\r\n    height: 50px;\r\n    min-height: 50px;\r\n    -webkit-filter: none;\r\n            filter: none;\r\n    background-image: none;\r\n    /* Fixed header */\r\n    /* Header logo */\r\n    /* Search box */\r\n    /* Menu Toggler */\r\n    /* Top menu */\r\n}\r\n.page-header.navbar.navbar-fixed-top {\r\n    z-index: 888;\r\n}\r\n.page-header.navbar.navbar-static-top {\r\n    z-index: 888;\r\n}\r\n.page-header.navbar .page-logo {\r\n    float: left;\r\n    display: block;\r\n    width: 235px;\r\n    height: 50px;\r\n    padding-left: 20px;\r\n    padding-right: 20px;\r\n}\r\n.page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo {\r\n    padding: 0;\r\n}\r\n.page-header.navbar .page-logo > .logo-image,\r\n.page-header.navbar .page-logo > a {\r\n    display: inline-block;\r\n    float: left;\r\n}\r\n.page-header.navbar .page-logo .logo-default {\r\n    margin: 18px 0 0 0;\r\n}\r\n.page-header.navbar .page-logo .logo-mini {\r\n    display: none;\r\n    margin-left: 5px;\r\n}\r\n.page-header.navbar .page-logo .text-logo {\r\n    padding-left: 20px;\r\n    padding-top: 12px;\r\n}\r\n.page-header.navbar .search-form {\r\n    display: inline-block;\r\n    width: 50px;\r\n    position: relative;\r\n    float: left;\r\n    transition: all 0.6s;\r\n}\r\n.page-header.navbar .search-form .input-group .form-control {\r\n    height: 50px;\r\n    border: 0;\r\n    background: transparent !important;\r\n    font-size: 13px;\r\n    padding-left: 0;\r\n    margin-left: 12px;\r\n    text-indent: -150000px;\r\n}\r\n.page-header.navbar .search-form .input-group .form-control:hover {\r\n    cursor: pointer;\r\n}\r\n.page-header.navbar .search-form .input-group .input-group-btn {\r\n    height: 50px;\r\n}\r\n.page-header.navbar .search-form .input-group .input-group-btn .btn.submit {\r\n    margin-left: -24px;\r\n    padding: 0;\r\n    width: 50px;\r\n    background: none;\r\n    margin-top: 4px;\r\n    display: block;\r\n}\r\n.page-header.navbar .search-form .input-group .input-group-btn .btn.submit > i {\r\n    font-size: 15px;\r\n}\r\n.page-header.navbar .search-form.open {\r\n    transition: all 0.6s;\r\n    width: 300px !important;\r\n}\r\n.page-header.navbar .search-form.open .input-group .form-control {\r\n    text-indent: 0;\r\n}\r\n.page-header.navbar .search-form.open .input-group .form-control:hover {\r\n    cursor: text;\r\n}\r\n.page-header.navbar .search-form.open .input-group .input-group-btn .btn.submit {\r\n    margin-left: 0;\r\n}\r\n.page-header.navbar .menu-toggler {\r\n    cursor: pointer;\r\n    opacity: 0.7;\r\n    filter: alpha(opacity=70);\r\n    display: block;\r\n    webkit-transition: opacity 0.3s;\r\n    transition: opacity 0.3s;\r\n}\r\n.page-header.navbar .menu-toggler > span {\r\n    outline: none !important;\r\n}\r\n.page-header.navbar .menu-toggler > span:hover {\r\n    background: #ffffff;\r\n}\r\n.page-header.navbar .menu-toggler > span:hover:before, .page-header.navbar .menu-toggler > span:hover:after {\r\n    background: #ffffff;\r\n}\r\n.page-header.navbar .menu-toggler > span,\r\n.page-header.navbar .menu-toggler > span:before,\r\n.page-header.navbar .menu-toggler > span:after {\r\n    display: inline-block;\r\n    width: 19px;\r\n    height: 1px;\r\n    background: #ffffff;\r\n    position: relative;\r\n    top: -6px;\r\n    transition: all ease .3s;\r\n}\r\n.page-header.navbar .menu-toggler > span:before,\r\n.page-header.navbar .menu-toggler > span:after {\r\n    position: absolute;\r\n    left: 0;\r\n    content: '';\r\n}\r\n.page-header.navbar .menu-toggler > span:before {\r\n    top: 6px;\r\n}\r\n.page-header.navbar .menu-toggler > span:after {\r\n    top: -6px;\r\n}\r\n.page-header.navbar .menu-toggler.th-toggle-exit > span {\r\n    background-color: transparent !important;\r\n}\r\n.page-header.navbar .menu-toggler.th-toggle-exit > span:after {\r\n    webkit-transform: translateY(6px) rotateZ(45deg);\r\n    -webkit-transform: translateY(6px) rotateZ(45deg);\r\n            transform: translateY(6px) rotateZ(45deg);\r\n}\r\n.page-header.navbar .menu-toggler.th-toggle-exit > span:before {\r\n    webkit-transform: translateY(-6px) rotateZ(-45deg);\r\n    -webkit-transform: translateY(-6px) rotateZ(-45deg);\r\n            transform: translateY(-6px) rotateZ(-45deg);\r\n}\r\n.page-header.navbar .menu-toggler:hover {\r\n    webkit-transition: opacity 0.3s;\r\n    transition: opacity 0.3s;\r\n    opacity: 1;\r\n    filter: alpha(opacity=100);\r\n}\r\n.page-header.navbar .menu-toggler.sidebar-toggler {\r\n    float: right;\r\n    margin: 15.5px 0 0 0;\r\n}\r\n.page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .menu-toggler.sidebar-toggler {\r\n    margin-right: 13px;\r\n}\r\n.page-header.navbar .menu-toggler.responsive-toggler {\r\n    display: none;\r\n    float: right;\r\n    margin: 15.5px 6px 0 6px;\r\n}\r\n.page-header.navbar .top-menu {\r\n    margin: 0;\r\n    padding: 0;\r\n    float: right;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav {\r\n    padding: 0;\r\n    margin-right: 20px;\r\n    display: block;\r\n    /* Extended Dropdowns */\r\n    /* Notification */\r\n    /* Inbox */\r\n    /* Tasks */\r\n    /* User */\r\n    /* Language */\r\n    /* Dark version */\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown {\r\n    margin: 0px;\r\n    padding: 0px 4px;\r\n    height: 50px;\r\n    display: inline-block;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown:last-child {\r\n    padding-right: 0px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle {\r\n    margin: 0px;\r\n    padding: 19px 10px 10px 10px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle:last-child {\r\n    padding-right: 0;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > i {\r\n    font-size: 17px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > i.glyphicon {\r\n    font-size: 16px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > .badge {\r\n    font-family: \"Open Sans\", sans-serif;\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 20px;\r\n    font-weight: 300;\r\n    padding: 3px 6px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle:focus {\r\n    background: none;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu {\r\n    margin-top: 1px;\r\n    border-radius: 4px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu:before {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: 9px;\r\n    display: inline-block !important;\r\n    border-right: 7px solid transparent;\r\n    border-bottom: 7px solid #eee;\r\n    border-left: 7px solid transparent;\r\n    border-bottom-color: rgba(0, 0, 0, 0.2);\r\n    content: '';\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu:after {\r\n    position: absolute;\r\n    top: -6px;\r\n    right: 10px;\r\n    display: inline-block !important;\r\n    border-right: 6px solid transparent;\r\n    border-bottom: 6px solid #fff;\r\n    border-left: 6px solid transparent;\r\n    content: '';\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu > li > a {\r\n    color: #555;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu {\r\n    min-width: 160px;\r\n    max-width: 275px;\r\n    width: 275px;\r\n    z-index: 9995;\r\n    /* header notifications dropdowns */\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external {\r\n    display: block;\r\n    overflow: hidden;\r\n    padding: 15px 15px;\r\n    letter-spacing: 0.5px;\r\n    border-radius: 4px 4px 0 0;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external > h3 {\r\n    margin: 0;\r\n    padding: 0;\r\n    float: left;\r\n    font-size: 13px;\r\n    display: inline-block;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external > a {\r\n    display: inline-block;\r\n    padding: 0;\r\n    background: none;\r\n    clear: inherit;\r\n    font-size: 13px;\r\n    font-weight: 300;\r\n    position: absolute;\r\n    right: 10px;\r\n    border: 0;\r\n    margin-top: -1px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external > a:hover {\r\n    text-decoration: none;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list {\r\n    padding-right: 0 !important;\r\n    padding-left: 0;\r\n    list-style: none;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li > a {\r\n    display: block;\r\n    clear: both;\r\n    font-weight: 300;\r\n    line-height: 20px;\r\n    white-space: normal;\r\n    font-size: 13px;\r\n    padding: 16px 15px 18px;\r\n    text-shadow: none;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li > a:hover {\r\n    opacity: 1;\r\n    filter: alpha(opacity=100);\r\n    text-decoration: none;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li:first-child a {\r\n    border-top: none;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details {\r\n    overflow: hidden;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon {\r\n    margin-right: 10px;\r\n    border-radius: 50%;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon i {\r\n    margin-right: 2px;\r\n    margin-left: 1px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon .badge {\r\n    right: 15px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .time {\r\n    float: right;\r\n    max-width: 75px;\r\n    font-size: 11px;\r\n    font-weight: 400;\r\n    opacity: 0.7;\r\n    filter: alpha(opacity=70);\r\n    text-align: right;\r\n    padding: 1px 5px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .photo {\r\n    float: left;\r\n    margin: 0 6px 6px 0;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .photo img {\r\n    height: 40px;\r\n    width: 40px;\r\n    border-radius: 50% !important;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .subject {\r\n    display: block;\r\n    margin-left: 46px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .subject .from {\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .subject .time {\r\n    font-size: 12px;\r\n    font-weight: 400;\r\n    opacity: 0.5;\r\n    filter: alpha(opacity=50);\r\n    float: right;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .message {\r\n    display: block !important;\r\n    font-size: 12px;\r\n    line-height: 1.3;\r\n    margin-left: 46px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .task {\r\n    margin-bottom: 5px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .task .desc {\r\n    font-size: 13px;\r\n    font-weight: 300;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .task .percent {\r\n    float: right;\r\n    font-weight: 600;\r\n    display: inline-block;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .progress {\r\n    display: block;\r\n    height: 8px;\r\n    margin: 8px 0 2px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .progress .progress-bar {\r\n    box-shadow: none;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle {\r\n    padding: 16px 6px 13px 8px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > .username {\r\n    display: inline-block;\r\n    font-size: 13px;\r\n    font-weight: 300;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > img {\r\n    float: left;\r\n    margin-top: -5px;\r\n    margin-right: 5px;\r\n    height: 29px;\r\n    display: inline-block;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > i {\r\n    display: inline-block;\r\n    margin-top: 5px;\r\n    margin: 0;\r\n    font-size: 13px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu {\r\n    width: 175px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li > a {\r\n    font-size: 14px;\r\n    font-weight: 300;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li > a i {\r\n    width: 15px;\r\n    display: inline-block;\r\n    margin-right: 9px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li > a .badge {\r\n    margin-right: 10px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language {\r\n    padding-left: 0;\r\n    padding-right: 0;\r\n    margin: 0;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle {\r\n    padding: 16px 3px 13px 7px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle > img {\r\n    margin-bottom: 2px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle > i {\r\n    font-size: 14px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-menu > li > a {\r\n    font-size: 13px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-menu > li > a > img {\r\n    margin-bottom: 2px;\r\n    margin-right: 5px;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav li.dropdown-dark .dropdown-menu:before {\r\n    border-left: none;\r\n    border-right: none;\r\n}\r\n.page-header.navbar .top-menu .navbar-nav li.dropdown-dark .dropdown-menu .dropdown-menu-list > li.external a {\r\n    background: none !important;\r\n    border: none !important;\r\n}\r\n/* Allow expanded search for above 768px */\r\n@media (min-width: 768px) {\r\n    /* 768px */\r\n    .page-header.navbar {\r\n        /* Search box */\r\n    }\r\n\r\n    .page-header.navbar .search-form.search-form-expanded {\r\n        width: 200px;\r\n    }\r\n\r\n    .page-header.navbar .search-form.search-form-expanded .input-group .form-control {\r\n        text-indent: 0;\r\n    }\r\n\r\n    .page-header.navbar .search-form.search-form-expanded .input-group .form-control:hover {\r\n        cursor: text;\r\n    }\r\n\r\n    .page-header.navbar .search-form.search-form-expanded .input-group .input-group-btn .btn.submit {\r\n        margin-left: 0;\r\n    }\r\n}\r\n/***\r\nHorizontal Menu\r\n***/\r\n.page-header.navbar {\r\n    /* Header container */\r\n    /* Mega menu */\r\n}\r\n.page-header.navbar .container {\r\n    position: relative;\r\n}\r\n.page-header.navbar .hor-menu {\r\n    margin: 0 0 0 -17px;\r\n    margin: 0;\r\n    float: left;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav {\r\n    min-height: 50px;\r\n    position: static;\r\n    /* Mega menu */\r\n    /* Mega Menu Dropdown */\r\n    /* Classic menu */\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav.navbar-right .dropdown-menu {\r\n    left: auto;\r\n    right: 0;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown {\r\n    position: static;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu {\r\n    left: auto;\r\n    width: auto;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content {\r\n    font-family: \"Open Sans\", sans-serif;\r\n    padding: 15px;\r\n    margin: 0;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content.mega-menu-responsive-content {\r\n    padding: 10px 18px 10px 45px;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu {\r\n    padding: 0;\r\n    margin: 0;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu:last-child {\r\n    border-right: 0;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li {\r\n    margin: 0 !important;\r\n    list-style: none;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > h3 {\r\n    margin-top: 5px;\r\n    padding-left: 6px;\r\n    font-size: 15px;\r\n    font-weight: 400;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > a {\r\n    display: block;\r\n    white-space: normal;\r\n    font-family: \"Open Sans\", sans-serif;\r\n    padding: 7px;\r\n    margin: 0;\r\n    font-size: 14px;\r\n    font-weight: 300;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > a:hover {\r\n    text-decoration: none;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > a.iconify {\r\n    padding: 7px 7px 7px 30px;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > a.iconify > i {\r\n    position: absolute;\r\n    top: auto !important;\r\n    margin-left: -24px;\r\n    font-size: 15px;\r\n    margin-top: 3px !important;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > a .badge,\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > a .label {\r\n    margin-left: 5px;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown.mega-menu-full .dropdown-menu {\r\n    left: 20px;\r\n    right: 20px;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown:hover > .dropdown-menu {\r\n    display: block;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.menu-dropdown .dropdown-menu:after, .page-header.navbar .hor-menu .navbar-nav > li.menu-dropdown .dropdown-menu:before {\r\n    display: none !important;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li > a {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n    padding: 13px 13px;\r\n    min-height: 50px;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li > a:focus {\r\n    background: none !important;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.current .selected, .page-header.navbar .hor-menu .navbar-nav > li.active .selected {\r\n    left: 50%;\r\n    bottom: 0;\r\n    position: absolute;\r\n    border-left: 6px solid transparent;\r\n    border-right: 6px solid transparent;\r\n    border-top: 6px solid transparent;\r\n    display: inline-block;\r\n    margin: 0;\r\n    width: 0;\r\n    height: 0px;\r\n    margin-left: -7px;\r\n    margin-bottom: -6px;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li .dropdown-menu {\r\n    margin-top: 0;\r\n    border: none;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li .dropdown-menu li > a {\r\n    font-family: \"Open Sans\", sans-serif;\r\n    font-size: 14px;\r\n    font-weight: 300;\r\n    padding: 9px 10px;\r\n    white-space: normal;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li .dropdown-menu li > a .label,\r\n.page-header.navbar .hor-menu .navbar-nav > li .dropdown-menu li > a .badge {\r\n    font-weight: 300;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.classic-menu-dropdown .dropdown-menu {\r\n    min-width: 195px;\r\n    max-width: 235px;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li.classic-menu-dropdown:hover > .dropdown-menu {\r\n    display: block;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li .dropdown-submenu > .dropdown-menu {\r\n    top: 0;\r\n}\r\n.page-header.navbar .hor-menu .navbar-nav > li .dropdown-submenu > a:after {\r\n    top: 9px;\r\n    right: 10px;\r\n}\r\n/* Form medium devices upto large devices */\r\n@media (min-width: 992px) and (max-width: 1200px) {\r\n    /* 992px 1200px */\r\n    /* Boxed layout */\r\n    .page-boxed .page-header.navbar {\r\n        /* Top menu */\r\n    }\r\n\r\n    .page-boxed .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle .username.username-hide-on-mobile {\r\n        display: none;\r\n    }\r\n\r\n    .page-boxed .page-header.navbar .top-menu .navbar-nav > li.dropdown-language .dropdown-toggle .langname {\r\n        display: none;\r\n    }\r\n}\r\n@media (min-width: 992px) {\r\n    /* 992px */\r\n    /* Page header */\r\n    .page-header.navbar {\r\n        /* Header logo */\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo {\r\n        padding: 0;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo {\r\n        width: 45px;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo .logo-default {\r\n        display: none;\r\n    }\r\n\r\n    /* Boxed Layout */\r\n    .page-boxed .page-header.navbar {\r\n        /* Page logo */\r\n        /* Top menu */\r\n    }\r\n\r\n    .page-boxed .page-header.navbar .page-logo {\r\n        width: 236px;\r\n    }\r\n\r\n    .page-boxed .page-header.navbar .top-menu .navbar-nav {\r\n        margin-right: 0px;\r\n    }\r\n\r\n    /* Sidebar closed & logo hidden */\r\n    .page-sidebar-closed.page-sidebar-closed-hide-logo.page-boxed .page-header.navbar {\r\n        /* Page logo */\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-closed-hide-logo.page-boxed .page-header.navbar .page-logo {\r\n        width: 46px;\r\n    }\r\n\r\n    /* Boxed layout & page sidebar fixed layout */\r\n    .page-boxed.page-sidebar-fixed .page-header.navbar {\r\n        /* Page logo */\r\n    }\r\n\r\n    .page-boxed.page-sidebar-fixed .page-header.navbar .page-logo {\r\n        width: 235px;\r\n    }\r\n}\r\n@media (max-width: 991px) {\r\n    /* 991px */\r\n    /* Page header */\r\n    .page-header.navbar {\r\n        padding: 0 20px 0 20px;\r\n        position: relative;\r\n        clear: both;\r\n        /* Page logo */\r\n        /* Menu Toggler */\r\n        /* Top Menu */\r\n    }\r\n\r\n    .page-header.navbar .page-logo {\r\n        width: auto;\r\n        padding: 0;\r\n        margin-right: 10px;\r\n        margin-left: 0px !important;\r\n        padding-left: 0px !important;\r\n    }\r\n\r\n    .page-header.navbar .page-logo img {\r\n        margin-left: 4px !important;\r\n    }\r\n\r\n    .page-header.navbar .menu-toggler.sidebar-toggler {\r\n        display: none !important;\r\n    }\r\n\r\n    .page-header.navbar .menu-toggler.responsive-toggler {\r\n        display: block;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav {\r\n        display: inline-block;\r\n        margin: 0 10px 0 0;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav > li {\r\n        float: left;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav .nav li.dropdown i {\r\n        display: inline-block;\r\n        position: relative;\r\n        top: 1px;\r\n        right: 0px;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav .open .dropdown-menu {\r\n        position: absolute;\r\n    }\r\n\r\n    /* Fixed header for mobile */\r\n    .page-header-fixed.page-header-fixed-mobile .navbar-fixed-top {\r\n        position: fixed;\r\n    }\r\n\r\n    /* Boxed Layout */\r\n    .page-boxed .page-header.navbar > .container {\r\n        max-width: none !important;\r\n        margin: 0 !important;\r\n        padding: 0 !important;\r\n    }\r\n}\r\n@media (min-width: 768px) and (max-width: 991px) {\r\n    /* 768px & 991px */\r\n    /* Boxed Layout */\r\n    .page-boxed .page-header.navbar {\r\n        margin: auto !important;\r\n        padding: 0;\r\n    }\r\n\r\n    .page-boxed .page-header.navbar > .container {\r\n        margin: auto !important;\r\n    }\r\n}\r\n@media (max-width: 767px) {\r\n    /* 767px */\r\n    /* Page header */\r\n    .page-header.navbar {\r\n        padding: 0 10px 0 10px;\r\n        /* Header logo */\r\n        /* Search box */\r\n        /* Top navigation menu*/\r\n    }\r\n\r\n    .page-header.navbar .page-logo {\r\n        width: auto;\r\n    }\r\n\r\n    .page-header.navbar .search-form.open {\r\n        z-index: 3;\r\n        left: 10px;\r\n        right: 10px;\r\n        position: absolute;\r\n        width: auto !important;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-extended > .dropdown-menu {\r\n        max-width: 255px;\r\n        width: 255px;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu {\r\n        margin-right: -190px;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu:after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu:before {\r\n        margin-right: 190px;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu {\r\n        margin-right: -150px;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu:after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu:before {\r\n        margin-right: 150px;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu {\r\n        margin-right: -110px;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu:after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu:before {\r\n        margin-right: 110px;\r\n    }\r\n}\r\n@media (max-width: 580px) {\r\n    /* Page header */\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle .username.username-hide-on-mobile {\r\n        display: none;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-language .dropdown-toggle .langname {\r\n        display: none;\r\n    }\r\n}\r\n@media (max-width: 480px) {\r\n    /* 480px */\r\n    /* Fixed header for mobile */\r\n    .page-header-fixed.page-header-fixed-mobile .page-header.navbar {\r\n        height: 100px;\r\n    }\r\n\r\n    .page-header.navbar {\r\n        /* Top menu */\r\n    }\r\n\r\n    .page-header.navbar .top-menu {\r\n        display: block;\r\n        clear: both;\r\n        float: none;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav {\r\n        margin-right: 0;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle {\r\n        padding: 19px 6px 10px 6px;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-language .dropdown-toggle {\r\n        padding: 16px 4px 13px 2px;\r\n    }\r\n\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle {\r\n        padding: 16px 0px 13px 2px;\r\n    }\r\n}\r\n/***\r\nPace - Page Progress\r\n***/\r\n.pace .pace-progress {\r\n    z-index: 10005;\r\n    top: 50px;\r\n    height: 2px;\r\n    box-shadow: none;\r\n}\r\n.pace .pace-progress-inner {\r\n    box-shadow: none;\r\n}\r\n.pace .pace-inactive {\r\n    display: none;\r\n}\r\n.pace .pace-activity {\r\n    top: 54px;\r\n    z-index: 10005;\r\n    right: 20px;\r\n    border-radius: 10px !important;\r\n}\r\n@media (max-width: 480px) {\r\n    /* 480px */\r\n    .page-header-fixed .pace .pace-progress {\r\n        top: 100px;\r\n    }\r\n\r\n    .page-header-fixed .pace .pace-activity {\r\n        top: 104px;\r\n    }\r\n}\r\n/***\r\nPage container\r\n***/\r\n.page-container {\r\n    margin: 0px;\r\n    padding: 0px;\r\n    position: relative;\r\n    /* Fixed header */\r\n    /* Fixed footer for mobile */\r\n}\r\n.page-container:before, .page-container:after {\r\n    content: \" \";\r\n    display: table;\r\n}\r\n.page-container:after {\r\n    clear: both;\r\n}\r\n.page-header-fixed .page-container {\r\n    margin-top: 50px;\r\n}\r\n.page-footer-fixed.page-footer-fixed-mobile .page-container {\r\n    margin-bottom: 20px !important;\r\n}\r\n@media (min-width: 992px) {\r\n    /* Page container in fixed footer */\r\n    .page-footer-fixed .page-container {\r\n        margin-bottom: 20px !important;\r\n    }\r\n}\r\n@media (max-width: 991px) {\r\n    /* Page container */\r\n    .page-container {\r\n        margin: 0 !important;\r\n        padding: 0 !important;\r\n    }\r\n\r\n    .page-header-fixed.page-header-fixed-mobile .page-container {\r\n        margin-top: 50px !important;\r\n    }\r\n}\r\n@media (max-width: 480px) {\r\n    /* Page container */\r\n    .page-header-fixed.page-header-fixed-mobile .page-container {\r\n        margin-top: 100px !important;\r\n    }\r\n}\r\n/***\r\nPage sidebar\r\n***/\r\n/* Page Sidebar */\r\n.page-sidebar,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {\r\n    /* Default sidebar menu */\r\n    /* light sidebar menu */\r\n}\r\n.page-sidebar.navbar-collapse,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover.navbar-collapse {\r\n    padding: 0;\r\n    box-shadow: none;\r\n}\r\n.page-sidebar .page-sidebar-menu,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    /* 1st level links */\r\n    /* all links */\r\n}\r\n.page-sidebar .page-sidebar-menu > li,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li {\r\n    display: block;\r\n    margin: 0;\r\n    padding: 0;\r\n    border: 0px;\r\n}\r\n.page-sidebar .page-sidebar-menu > li.sidebar-toggler-wrapper, .page-sidebar .page-sidebar-menu > li.sidebar-search-wrapper,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-toggler-wrapper,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-search-wrapper {\r\n    border: 0 !important;\r\n}\r\n.page-sidebar .page-sidebar-menu > li.sidebar-toggler-wrapper:before, .page-sidebar .page-sidebar-menu > li.sidebar-toggler-wrapper:after, .page-sidebar .page-sidebar-menu > li.sidebar-search-wrapper:before, .page-sidebar .page-sidebar-menu > li.sidebar-search-wrapper:after,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-toggler-wrapper:before,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-toggler-wrapper:after,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-search-wrapper:before,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-search-wrapper:after {\r\n    content: \" \";\r\n    display: table;\r\n}\r\n.page-sidebar .page-sidebar-menu > li.sidebar-toggler-wrapper:after, .page-sidebar .page-sidebar-menu > li.sidebar-search-wrapper:after,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-toggler-wrapper:after,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.sidebar-search-wrapper:after {\r\n    clear: both;\r\n}\r\n.page-sidebar .page-sidebar-menu > li.start > a,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.start > a {\r\n    border-top-color: transparent !important;\r\n}\r\n.page-sidebar .page-sidebar-menu > li.last > a,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.last > a {\r\n    border-bottom-color: transparent !important;\r\n}\r\n.page-sidebar .page-sidebar-menu > li > a,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {\r\n    display: block;\r\n    position: relative;\r\n    margin: 0;\r\n    border: 0px;\r\n    padding: 10px 15px;\r\n    text-decoration: none;\r\n    font-size: 14px;\r\n    font-weight: 300;\r\n}\r\n.page-sidebar .page-sidebar-menu > li > a > i,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i {\r\n    font-size: 16px;\r\n    margin-right: 5px;\r\n    text-shadow: none;\r\n}\r\n.page-sidebar .page-sidebar-menu > li > a > i.glyphicon,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i.glyphicon {\r\n    margin-left: 1px;\r\n    margin-right: 4px;\r\n}\r\n.page-sidebar .page-sidebar-menu > li > a > [class^=\"icon-\"],\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > [class^=\"icon-\"] {\r\n    margin-left: 1px;\r\n    margin-right: 4px;\r\n}\r\n.page-sidebar-fixed .page-sidebar .page-sidebar-menu > li > a, .page-sidebar-fixed\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {\r\n    transition: all 0.2s ease;\r\n}\r\n.page-sidebar-reversed.page-sidebar-fixed .page-sidebar .page-sidebar-menu > li > a, .page-sidebar-reversed.page-sidebar-fixed\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {\r\n    transition: none;\r\n}\r\n.page-sidebar .page-sidebar-menu > li.heading,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.heading {\r\n    padding: 15px 15px 15px 15px;\r\n}\r\n.page-sidebar .page-sidebar-menu > li.heading > h3,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.heading > h3 {\r\n    margin: 0;\r\n    padding: 0;\r\n    font-size: 14px;\r\n    font-weight: 300;\r\n}\r\n.page-sidebar .page-sidebar-menu > li.heading + li > a,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.heading + li > a {\r\n    border-top: 0;\r\n}\r\n.page-sidebar .page-sidebar-menu > li.open > a,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.open > a {\r\n    font-size: 14px;\r\n}\r\n.page-sidebar .page-sidebar-menu > li.active > a,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a {\r\n    border: none;\r\n    text-shadow: none;\r\n    font-size: 14px;\r\n}\r\n.page-sidebar .page-sidebar-menu > li.active > a > .selected,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\r\n    display: block;\r\n    background-image: none;\r\n    /* will be set in a theme css file*/\r\n    float: right;\r\n    position: absolute;\r\n    right: 0px;\r\n    top: 8px;\r\n    background: none;\r\n    width: 0;\r\n    height: 0;\r\n    border-top: 12px solid transparent;\r\n    border-bottom: 12px solid transparent;\r\n    border-right: 12px solid #ffffff;\r\n}\r\n.page-sidebar-reversed .page-sidebar .page-sidebar-menu > li.active > a > .selected, .page-sidebar-reversed\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\r\n    right: auto;\r\n    left: 0;\r\n    border-right: 0;\r\n    border-left: 8px solid #ffffff;\r\n}\r\n.page-container-bg-solid .page-sidebar .page-sidebar-menu > li.active > a > .selected, .page-container-bg-solid\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\r\n    border-color: transparent #eef1f5 transparent transparent;\r\n}\r\n.page-container-bg-solid.page-sidebar-reversed .page-sidebar .page-sidebar-menu > li.active > a > .selected, .page-container-bg-solid.page-sidebar-reversed\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\r\n    border-color: transparent transparent transparent #eef1f5;\r\n}\r\n.page-sidebar .page-sidebar-menu li > a,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a {\r\n    position: relative;\r\n}\r\n.page-sidebar .page-sidebar-menu li > a > .arrow:before,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .arrow:before {\r\n    float: right;\r\n    width: 20px;\r\n    text-align: center;\r\n    display: inline;\r\n    font-size: 16px;\r\n    font-family: FontAwesome;\r\n    height: auto;\r\n    content: \"\\f104\";\r\n    font-weight: 300;\r\n    text-shadow: none;\r\n    position: absolute;\r\n    top: 4px;\r\n    right: 14px;\r\n}\r\n.page-sidebar .page-sidebar-menu li > a > .arrow.open:before,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .arrow.open:before {\r\n    content: \"\\f107\";\r\n}\r\n.page-sidebar .page-sidebar-menu li > a > .badge,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .badge {\r\n    float: right;\r\n    margin-top: 1px;\r\n    margin-right: 0px;\r\n    position: absolute;\r\n    right: 14px;\r\n    top: 6px;\r\n}\r\n.page-sidebar .page-sidebar-menu > li > a > .arrow:before,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > .arrow:before {\r\n    top: 8px;\r\n}\r\n.page-sidebar .page-sidebar-menu .sub-menu,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu {\r\n    list-style: none;\r\n    display: none;\r\n    padding: 0;\r\n    margin: 8px 0px 8px 0px;\r\n}\r\n.page-sidebar .page-sidebar-menu .sub-menu li,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li {\r\n    background: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n    margin-top: 1px !important;\r\n    /* 2nd level sub menu */\r\n}\r\n.page-sidebar .page-sidebar-menu .sub-menu li > a,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a {\r\n    display: block;\r\n    margin: 0;\r\n    padding: 6px 15px 6px 43px;\r\n    text-decoration: none;\r\n    font-size: 14px;\r\n    font-weight: 300;\r\n    background: none;\r\n}\r\n.page-sidebar .page-sidebar-menu .sub-menu li > a > i,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a > i {\r\n    font-size: 14px;\r\n}\r\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu {\r\n    margin: 0;\r\n}\r\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li {\r\n    /* 3rd level sub menu */\r\n}\r\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li > a,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li > a {\r\n    padding-left: 60px;\r\n}\r\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu {\r\n    margin: 0;\r\n}\r\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu > li > a,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu > li > a {\r\n    padding-left: 80px;\r\n}\r\n.page-sidebar .page-sidebar-menu .sub-menu.always-open,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu.always-open {\r\n    display: block;\r\n}\r\n.page-sidebar .page-sidebar-menu li.active > .sub-menu,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li.active > .sub-menu {\r\n    display: block;\r\n}\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li > a,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li > a {\r\n    border: 0;\r\n    margin: 0;\r\n    padding-left: 11px;\r\n    border-left: 4px solid transparent;\r\n}\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li .sub-menu,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li .sub-menu {\r\n    margin: 0;\r\n    padding: 1px 0;\r\n}\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li .sub-menu li > a,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li .sub-menu li > a {\r\n    padding-top: 8px;\r\n    padding-bottom: 8px;\r\n}\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li .sub-menu li:first-child,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li .sub-menu li:first-child {\r\n    margin-top: 0 !important;\r\n}\r\n.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-light > li > a, .page-sidebar-reversed\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-light > li > a {\r\n    padding-left: 15px;\r\n    padding-right: 11px;\r\n    border-left: 0;\r\n    border-right: 4px solid transparent;\r\n}\r\n.page-sidebar .sidebar-toggler,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler {\r\n    webkit-transition: opacity 0.3s;\r\n    transition: opacity 0.3s;\r\n    display: block;\r\n    cursor: pointer;\r\n    opacity: 0.7;\r\n    filter: alpha(opacity=70);\r\n    padding: 6px 8px;\r\n    margin-top: 15px;\r\n    margin-right: 16px;\r\n    float: right;\r\n    border-radius: 4px;\r\n}\r\n.page-sidebar .sidebar-toggler > span,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span {\r\n    outline: none !important;\r\n}\r\n.page-sidebar .sidebar-toggler > span:hover,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:hover {\r\n    background: #ffffff;\r\n}\r\n.page-sidebar .sidebar-toggler > span:hover:before, .page-sidebar .sidebar-toggler > span:hover:after,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:hover:before,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:hover:after {\r\n    background: #ffffff;\r\n}\r\n.page-sidebar .sidebar-toggler > span,\r\n.page-sidebar .sidebar-toggler > span:before,\r\n.page-sidebar .sidebar-toggler > span:after,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:before,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:after {\r\n    display: inline-block;\r\n    width: 16px;\r\n    height: 1px;\r\n    background: #ffffff;\r\n    position: relative;\r\n    top: -5px;\r\n    transition: all ease .3s;\r\n}\r\n.page-sidebar .sidebar-toggler > span:before,\r\n.page-sidebar .sidebar-toggler > span:after,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:before,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:after {\r\n    position: absolute;\r\n    left: 0;\r\n    content: '';\r\n}\r\n.page-sidebar .sidebar-toggler > span:before,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:before {\r\n    top: 5px;\r\n}\r\n.page-sidebar .sidebar-toggler > span:after,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler > span:after {\r\n    top: -5px;\r\n}\r\n.page-sidebar .sidebar-toggler.th-toggle-exit > span,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler.th-toggle-exit > span {\r\n    background-color: transparent !important;\r\n}\r\n.page-sidebar .sidebar-toggler.th-toggle-exit > span:after,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler.th-toggle-exit > span:after {\r\n    webkit-transform: translateY(5px) rotateZ(45deg);\r\n    -webkit-transform: translateY(5px) rotateZ(45deg);\r\n            transform: translateY(5px) rotateZ(45deg);\r\n}\r\n.page-sidebar .sidebar-toggler.th-toggle-exit > span:before,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler.th-toggle-exit > span:before {\r\n    webkit-transform: translateY(-5px) rotateZ(-45deg);\r\n    -webkit-transform: translateY(-5px) rotateZ(-45deg);\r\n            transform: translateY(-5px) rotateZ(-45deg);\r\n}\r\n.page-sidebar .sidebar-toggler:hover,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler:hover {\r\n    webkit-transition: opacity 0.3s;\r\n    transition: opacity 0.3s;\r\n    opacity: 1;\r\n    filter: alpha(opacity=100);\r\n}\r\n.page-sidebar .sidebar-search,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search {\r\n    padding: 0;\r\n    margin: 22px 18px 22px 18px;\r\n}\r\n.page-sidebar .sidebar-search .remove,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .remove {\r\n    display: none;\r\n}\r\n.page-sidebar .sidebar-search .remove > i,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .remove > i {\r\n    font-size: 16px;\r\n}\r\n.page-sidebar .sidebar-search .input-group,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group {\r\n    border-radius: 4px;\r\n}\r\n.page-sidebar .sidebar-search .input-group .form-control,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group .form-control {\r\n    border: 0;\r\n    font-size: 14px;\r\n    padding: 0;\r\n    height: auto;\r\n    line-height: auto;\r\n    border-radius: 4px;\r\n}\r\n.page-sidebar .sidebar-search .input-group .input-group-btn .btn,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group .input-group-btn .btn {\r\n    padding: 2px 0 0 0;\r\n    background-color: transparent;\r\n    background-repeat: no-repeat;\r\n    background-position: 100% 3px;\r\n}\r\n.page-sidebar .sidebar-search .input-group .input-group-btn .btn > i,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group .input-group-btn .btn > i {\r\n    font-size: 15px;\r\n}\r\n.page-sidebar .sidebar-search.sidebar-search-bordered,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search.sidebar-search-bordered {\r\n    margin: 25px 18px 25px 18px;\r\n}\r\n.page-sidebar .sidebar-search.sidebar-search-bordered .input-group .form-control,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search.sidebar-search-bordered .input-group .form-control {\r\n    font-size: 13px;\r\n    padding: 6px 8px;\r\n}\r\n.page-sidebar .sidebar-search.sidebar-search-bordered .input-group .input-group-btn .btn,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search.sidebar-search-bordered .input-group .input-group-btn .btn {\r\n    margin-right: 6px;\r\n}\r\n@media (min-width: 992px) {\r\n    /* 992px */\r\n    .page-sidebar {\r\n        width: 235px;\r\n        float: left;\r\n        position: relative;\r\n        margin-right: -100%;\r\n    }\r\n\r\n    .page-full-width .page-sidebar {\r\n        display: none !important;\r\n    }\r\n\r\n    .page-sidebar.collapse {\r\n        display: block;\r\n        max-height: none !important;\r\n    }\r\n\r\n    .page-sidebar-reversed .page-sidebar {\r\n        float: right;\r\n        margin-right: 0;\r\n        margin-left: -100%;\r\n    }\r\n\r\n    .page-sidebar-reversed.page-sidebar-fixed .page-sidebar {\r\n        margin-left: -235px;\r\n    }\r\n\r\n    .page-sidebar-reversed.page-sidebar-fixed .page-sidebar-wrapper {\r\n        position: relative;\r\n        float: right;\r\n    }\r\n\r\n    .page-sidebar-fixed .page-sidebar {\r\n        position: fixed !important;\r\n        margin-left: 0;\r\n        top: 50px;\r\n    }\r\n\r\n    .page-sidebar-fixed .page-sidebar-menu > li.last {\r\n        margin-bottom: 15px !important;\r\n    }\r\n\r\n    .page-sidebar-fixed .page-sidebar-menu .sub-menu {\r\n        height: auto !important;\r\n    }\r\n\r\n    /* Sidebar Closed */\r\n    .page-sidebar-closed .page-sidebar {\r\n        width: 45px !important;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {\r\n        /* sidebar */\r\n        width: 45px !important;\r\n        /* sidebar toggler */\r\n        /* sidebar search */\r\n        /* sidebar bordered search */\r\n        /* sidebar search expanded */\r\n        /* sidebar bordered search expanded */\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li {\r\n        /* hide opened sub menu */\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.open > .sub-menu,\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > .sub-menu {\r\n        display: none !important;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover {\r\n        width: 256px !important;\r\n        position: relative !important;\r\n        z-index: 10000;\r\n        display: block !important;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a {\r\n        border-radius: 0 4px 0 0;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > i {\r\n        margin-right: 10px;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .title {\r\n        display: inline !important;\r\n        padding-left: 15px;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .badge {\r\n        display: block !important;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .selected {\r\n        display: none;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover.heading {\r\n        width: 45px !important;\r\n        box-shadow: none;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu {\r\n        width: 210px;\r\n        position: absolute;\r\n        z-index: 2000;\r\n        left: 46px;\r\n        margin-top: 0;\r\n        top: 100%;\r\n        display: block !important;\r\n        border-radius: 0 0 4px 4px;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu > li > a {\r\n        padding-left: 15px !important;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu > li > .sub-menu > li > a {\r\n        padding-left: 30px !important;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu > li > .sub-menu > li > .sub-menu > li > a {\r\n        padding-left: 45px !important;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.heading > h3 {\r\n        display: none;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-toggler-wrapper .sidebar-toggler {\r\n        margin-right: 8px;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-toggler-wrapper:hover {\r\n        width: 45px !important;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-search-wrapper:hover {\r\n        width: 45px !important;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a {\r\n        padding-left: 11px;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a .selected {\r\n        right: -3px !important;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a > .badge,\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a > .title,\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a > .arrow {\r\n        display: none !important;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-toggler {\r\n        margin-left: 3px;\r\n        margin-right: 3px;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search .input-group {\r\n        border-color: transparent;\r\n        margin-left: -4px;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search .input-group .form-control {\r\n        display: none;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search .input-group .input-group-btn .btn {\r\n        display: block;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.sidebar-search-bordered .input-group {\r\n        padding: 5px 0 3px 0;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open {\r\n        height: 40px;\r\n        margin-top: 15px;\r\n        margin-bottom: 14px;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .input-group {\r\n        width: 210px;\r\n        position: relative;\r\n        z-index: 1;\r\n        margin-left: 24px;\r\n        padding: 0;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .input-group .form-control {\r\n        background: none;\r\n        border: 0;\r\n        display: block;\r\n        padding: 8px 8px;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .input-group .input-group-btn .btn {\r\n        display: block;\r\n        margin-right: 8px;\r\n        margin-top: 1px;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .remove {\r\n        background-repeat: no-repeat;\r\n        width: 11px;\r\n        height: 11px;\r\n        margin: 10px -5px 8px -7px;\r\n        display: block;\r\n        float: left;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open.sidebar-search-bordered {\r\n        height: 38px;\r\n        margin-top: 23px;\r\n        margin-bottom: 23px;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open.sidebar-search-bordered .input-group {\r\n        padding: 0;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-light.page-sidebar-menu-closed > li > a {\r\n        padding-right: 11px;\r\n        padding-left: 7px;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar {\r\n        margin-left: -45px;\r\n        width: 45px;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {\r\n        /* sidebar */\r\n        /* sidebar search */\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > .sub-menu {\r\n        left: auto;\r\n        right: 46px;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover {\r\n        margin-left: -211px;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a {\r\n        border-radius: 4px 0 0 0;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .title {\r\n        padding-left: 0;\r\n        padding-right: 15px;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > i {\r\n        margin-right: 0;\r\n        margin-left: 2px;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-search-wrapper:hover, .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.sidebar-toggler-wrapper:hover {\r\n        margin-left: 0;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .input-group {\r\n        margin-left: -227px;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .input-group .input-group-btn .btn {\r\n        margin-right: 10px !important;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed .sidebar-search.open .remove {\r\n        margin: 9px 4px 12px -16px !important;\r\n        float: right !important;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-light.page-sidebar-menu-closed > li > a {\r\n        padding-right: 7px;\r\n        padding-left: 11px;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {\r\n        width: 235px !important;\r\n        display: block;\r\n        z-index: 10000;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu {\r\n        width: 235px !important;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .selected {\r\n        display: none !important;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-fixed.page-sidebar-reversed .page-sidebar:hover {\r\n        width: 235px !important;\r\n        z-index: 10000;\r\n        margin-left: -235px !important;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-fixed.page-sidebar-reversed .page-sidebar:hover .page-sidebar-menu {\r\n        width: 235px !important;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-hide .page-sidebar {\r\n        display: none !important;\r\n    }\r\n\r\n    /* Sidebar Menu Wirh Hoverable Submenu */\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li .sub-menu {\r\n        display: none;\r\n        width: 210px;\r\n        z-index: 2000;\r\n        position: absolute;\r\n        border-radius: 4px;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li .sub-menu > li > a {\r\n        margin: 3px;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li.active .sub-menu, .page-sidebar-menu.page-sidebar-menu-hover-submenu li.open .sub-menu {\r\n        display: none !important;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li a > .arrow {\r\n        display: none;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow {\r\n        display: block;\r\n        float: right;\r\n        position: absolute;\r\n        right: 0;\r\n        margin-top: -20px;\r\n        background: none;\r\n        width: 0;\r\n        height: 0;\r\n        border-style: solid;\r\n        border-top: 12px double transparent;\r\n        border-bottom: 12px double transparent;\r\n        border-left: 0;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow:after, .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow:before {\r\n        display: none;\r\n    }\r\n\r\n    .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow {\r\n        right: auto;\r\n        left: 0;\r\n        border-right: 0;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > .sub-menu {\r\n        display: inline-block !important;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > a > .arrow {\r\n        z-index: 1;\r\n        right: 0px;\r\n        margin-top: -23px;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > a > .selected {\r\n        display: none;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\r\n        margin-left: 235px;\r\n        margin-top: -40px;\r\n    }\r\n\r\n    .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\r\n        margin-left: -210px !important;\r\n    }\r\n\r\n    .page-sidebar-closed .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\r\n        margin-left: 0;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li > a {\r\n        padding-left: 15px;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li .sub-menu {\r\n        margin-left: 210px;\r\n        margin-top: -38px !important;\r\n    }\r\n\r\n    .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li .sub-menu {\r\n        margin-left: -210px !important;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li .sub-menu > li > a {\r\n        padding-left: 10px;\r\n        padding-right: 10px;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-light.page-sidebar-menu-hover-submenu li:hover > .sub-menu {\r\n        margin-top: -41px;\r\n    }\r\n\r\n    .page-sidebar-menu.page-sidebar-menu-light.page-sidebar-menu-hover-submenu li:hover > .sub-menu > li > .sub-menu {\r\n        margin-top: -41px;\r\n    }\r\n}\r\n.page-sidebar-wrapper .page-sidebar-menu > li.sidebar-mobile-offcanvas-toggler {\r\n    display: none;\r\n}\r\n@media (max-width: 991px) {\r\n    /* 991px */\r\n    .page-sidebar {\r\n        border-top: 0 !important;\r\n        margin: 20px;\r\n    }\r\n\r\n    .page-sidebar .sidebar-toggler {\r\n        display: none;\r\n    }\r\n\r\n    .page-sidebar .selected {\r\n        display: none !important;\r\n    }\r\n\r\n    .page-sidebar.navbar-collapse {\r\n        max-height: none;\r\n        /* set some max height to have a scrollable menu on mobile devices */\r\n    }\r\n\r\n    .page-sidebar.navbar-collapse.collapse {\r\n        display: none !important;\r\n    }\r\n\r\n    .page-sidebar.navbar-collapse.in {\r\n        border-top: 0 !important;\r\n        margin: 20px;\r\n        position: relative;\r\n        overflow: hidden !important;\r\n        overflow-y: auto !important;\r\n        display: block !important;\r\n    }\r\n\r\n    .page-sidebar.navbar-collapse.navbar-no-scroll {\r\n        max-height: none !important;\r\n    }\r\n\r\n    .page-sidebar .mega-menu-responsive-content {\r\n        padding: 10px 18px 10px 45px;\r\n    }\r\n\r\n    .page-full-width .page-sidebar-menu {\r\n        display: block;\r\n    }\r\n\r\n    .page-sidebar-mobile-offcanvas .page-sidebar-wrapper {\r\n        z-index: 10000;\r\n        position: fixed;\r\n        top: 0;\r\n        bottom: 0;\r\n        overflow-y: auto;\r\n        width: 235px;\r\n        left: -235px;\r\n        transition: all 0.3s;\r\n    }\r\n\r\n    .page-sidebar-mobile-offcanvas .page-sidebar-wrapper .page-sidebar {\r\n        margin: 0 !important;\r\n    }\r\n\r\n    .page-sidebar-mobile-offcanvas .page-sidebar-wrapper .page-sidebar .page-sidebar-menu {\r\n        width: 100%;\r\n        margin: 0 !important;\r\n        padding: 0 0 20px 0;\r\n    }\r\n\r\n    .page-sidebar-mobile-offcanvas .page-sidebar-wrapper .page-sidebar .page-sidebar-menu > li.sidebar-mobile-offcanvas-toggler {\r\n        display: block;\r\n        border: 0;\r\n        text-align: right;\r\n    }\r\n\r\n    .page-sidebar-mobile-offcanvas .page-sidebar-wrapper .page-sidebar .page-sidebar-menu > li.sidebar-mobile-offcanvas-toggler > a {\r\n        border: 0;\r\n    }\r\n\r\n    .page-sidebar-mobile-offcanvas .page-sidebar-wrapper .page-sidebar .page-sidebar-menu > li.sidebar-mobile-offcanvas-toggler > a:hover {\r\n        background: none;\r\n    }\r\n\r\n    .page-sidebar-mobile-offcanvas.page-sidebar-mobile-offcanvas-open .page-sidebar-wrapper {\r\n        left: 0;\r\n        transition: all 0.3s;\r\n    }\r\n}\r\n@media (min-width: 768px) and (max-width: 991px) {\r\n    /* 768px & 991px */\r\n    .page-sidebar .btn-navbar.collapsed .arrow {\r\n        display: none;\r\n    }\r\n\r\n    .page-sidebar .btn-navbar .arrow {\r\n        position: absolute;\r\n        right: 25px;\r\n        width: 0;\r\n        height: 0;\r\n        top: 50px;\r\n        border-bottom: 15px solid #5f646b;\r\n        border-left: 15px solid transparent;\r\n        border-right: 15px solid transparent;\r\n    }\r\n}\r\n@media (max-width: 480px) {\r\n    /* 480px */\r\n    /* Page sidebar */\r\n    .page-sidebar,\r\n    .page-sidebar.in {\r\n        margin: 0 10px 10px 10px !important;\r\n    }\r\n\r\n    .page-header-fixed.page-header-fixed-mobile .page-sidebar, .page-header-fixed.page-header-fixed-mobile\r\n    .page-sidebar.in {\r\n        margin-top: 10px !important;\r\n    }\r\n}\r\n/***\r\nPage content\r\n***/\r\n/* Page title */\r\n.page-title {\r\n    padding: 0px;\r\n    font-size: 28px;\r\n    letter-spacing: -1px;\r\n    display: block;\r\n    color: #666;\r\n    margin: 0px 0px 15px 0px;\r\n    font-weight: 300;\r\n    /* subtitle */\r\n}\r\n.page-title small {\r\n    font-size: 14px;\r\n    letter-spacing: 0px;\r\n    font-weight: 300;\r\n    color: #888;\r\n}\r\n.page-content-white .page-title,\r\n.page-container-bg-solid .page-title {\r\n    color: #666;\r\n    margin-bottom: 20px;\r\n    margin-top: 20px;\r\n}\r\n.page-content-white .page-title small,\r\n.page-container-bg-solid .page-title small {\r\n    color: #666;\r\n}\r\n.page-content-white .page-title {\r\n    margin: 25px 0;\r\n    font-size: 24px;\r\n}\r\n/* Page breadcrumb */\r\n.page-bar {\r\n    padding: 0px;\r\n    background-color: #f1f4f7;\r\n    margin-bottom: 25px;\r\n    border-radius: 4px;\r\n}\r\n.page-bar:before, .page-bar:after {\r\n    content: \" \";\r\n    display: table;\r\n}\r\n.page-bar:after {\r\n    clear: both;\r\n}\r\n.page-bar .page-breadcrumb {\r\n    display: inline-block;\r\n    float: left;\r\n    padding: 8px;\r\n    margin: 0;\r\n    list-style: none;\r\n}\r\n.page-bar .page-breadcrumb > li {\r\n    display: inline-block;\r\n}\r\n.ie8 .page-bar .page-breadcrumb > li {\r\n    margin-right: 1px;\r\n}\r\n.page-bar .page-breadcrumb > li > a,\r\n.page-bar .page-breadcrumb > li > span {\r\n    color: #888;\r\n    font-size: 14px;\r\n    text-shadow: none;\r\n}\r\n.page-bar .page-breadcrumb > li > i {\r\n    color: #aaa;\r\n    font-size: 14px;\r\n    text-shadow: none;\r\n}\r\n.page-bar .page-breadcrumb > li > i[class^=\"icon-\"],\r\n.page-bar .page-breadcrumb > li > i[class*=\"icon-\"] {\r\n    color: gray;\r\n}\r\n.page-bar .page-toolbar {\r\n    display: inline-block;\r\n    float: right;\r\n    padding: 0;\r\n}\r\n.page-bar .page-toolbar .btn-fit-height {\r\n    border-radius: 0 4px 4px 0;\r\n    padding-top: 8px;\r\n    padding-bottom: 8px;\r\n}\r\n.page-md .page-bar .page-toolbar .btn-fit-height {\r\n    padding-top: 9px;\r\n    padding-bottom: 9px;\r\n    box-shadow: none !important;\r\n}\r\n.page-content-white .page-bar,\r\n.page-container-bg-solid .page-bar {\r\n    background-color: #ffffff;\r\n    position: relative;\r\n    padding: 0px 20px;\r\n    margin: -25px -20px 0 -20px;\r\n}\r\n.page-content-white .page-bar .page-breadcrumb,\r\n.page-container-bg-solid .page-bar .page-breadcrumb {\r\n    padding: 11px 0;\r\n}\r\n.page-content-white .page-bar .page-breadcrumb > li > a,\r\n.page-content-white .page-bar .page-breadcrumb > li > span,\r\n.page-container-bg-solid .page-bar .page-breadcrumb > li > a,\r\n.page-container-bg-solid .page-bar .page-breadcrumb > li > span {\r\n    color: #888;\r\n}\r\n.page-content-white .page-bar .page-breadcrumb > li > i,\r\n.page-container-bg-solid .page-bar .page-breadcrumb > li > i {\r\n    color: #aaa;\r\n}\r\n.page-content-white .page-bar .page-breadcrumb > li > i.fa-circle,\r\n.page-container-bg-solid .page-bar .page-breadcrumb > li > i.fa-circle {\r\n    font-size: 5px;\r\n    margin: 0 5px;\r\n    position: relative;\r\n    top: -3px;\r\n    opacity: 0.4;\r\n    filter: alpha(opacity=40);\r\n}\r\n.page-content-white .page-bar .page-breadcrumb > li > i[class^=\"icon-\"],\r\n.page-content-white .page-bar .page-breadcrumb > li > i[class*=\"icon-\"],\r\n.page-container-bg-solid .page-bar .page-breadcrumb > li > i[class^=\"icon-\"],\r\n.page-container-bg-solid .page-bar .page-breadcrumb > li > i[class*=\"icon-\"] {\r\n    color: #8c8c8c;\r\n}\r\n.page-content-white .page-bar .page-toolbar,\r\n.page-container-bg-solid .page-bar .page-toolbar {\r\n    padding: 6px 0;\r\n}\r\n.page-content-white .page-bar .page-toolbar .btn,\r\n.page-container-bg-solid .page-bar .page-toolbar .btn {\r\n    margin-top: -2px;\r\n}\r\n.page-content-white .page-bar .page-toolbar .btn.btn-sm,\r\n.page-container-bg-solid .page-bar .page-toolbar .btn.btn-sm {\r\n    margin-top: 0px;\r\n}\r\n/* Page content */\r\n.page-content {\r\n    margin-top: 0px;\r\n    padding: 0px;\r\n    background-color: #fff;\r\n}\r\n.page-container-bg-solid .page-content {\r\n    background: #eef1f5;\r\n}\r\n.page-content-white .page-content .page-bar {\r\n    border-bottom: 1px solid #e7ecf1;\r\n}\r\n.page-content-white.page-md .page-content .page-bar,\r\n.page-container-bg-solid.page-md .page-content .page-bar {\r\n    border-radius: 0 !important;\r\n}\r\n.page-full-width .page-content {\r\n    margin-left: 0px !important;\r\n}\r\n@media (min-width: 992px) {\r\n    /* 992px */\r\n    /* Page content */\r\n    .page-content-wrapper {\r\n        float: left;\r\n        width: 100%;\r\n    }\r\n\r\n    .page-content-wrapper .page-content {\r\n        margin-left: 235px;\r\n        margin-top: 0px;\r\n        min-height: 600px;\r\n        padding: 25px 20px 10px 20px;\r\n    }\r\n\r\n    .page-content-wrapper .page-content.no-min-height {\r\n        min-height: auto;\r\n    }\r\n\r\n    .page-sidebar-fixed.page-sidebar-hover-on .page-content-wrapper .page-content {\r\n        margin-left: 45px;\r\n    }\r\n\r\n    .page-sidebar-reversed .page-content-wrapper .page-content {\r\n        margin-left: 0 !important;\r\n        margin-right: 235px !important;\r\n    }\r\n\r\n    .page-sidebar-reversed.page-sidebar-fixed.page-sidebar-hover-on .page-content-wrapper .page-content {\r\n        margin-left: 0;\r\n        margin-right: 45px;\r\n    }\r\n\r\n    .page-sidebar-reversed.page-sidebar-closed .page-content-wrapper .page-content {\r\n        margin-left: 0 !important;\r\n        margin-right: 45px !important;\r\n    }\r\n\r\n    .page-sidebar-closed .page-content-wrapper .page-content {\r\n        margin-left: 45px !important;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-hide .page-content-wrapper .page-content {\r\n        margin-left: 0 !important;\r\n    }\r\n\r\n    .page-sidebar-closed.page-sidebar-reversed.page-sidebar-hide .page-content-wrapper .page-content {\r\n        margin-right: 0 !important;\r\n    }\r\n\r\n    .page-full-width .page-content-wrapper .page-content {\r\n        margin-left: 0px !important;\r\n    }\r\n}\r\n@media (max-width: 991px) {\r\n    /* 991px */\r\n    html,\r\n    body {\r\n        overflow-x: hidden;\r\n    }\r\n\r\n    /* Bg solid content's breadcrumb */\r\n    .page-content-white .page-bar,\r\n    .page-container-bg-solid .page-bar {\r\n        margin-top: -20px;\r\n    }\r\n\r\n    /* Boxed page container  */\r\n    .page-boxed > .container {\r\n        max-width: none !important;\r\n        margin: 0 !important;\r\n        padding: 0 !important;\r\n    }\r\n\r\n    /* Page content */\r\n    .page-content-wrapper .page-content {\r\n        margin: 0px !important;\r\n        padding: 20px 20px 20px 20px !important;\r\n        min-height: 280px;\r\n    }\r\n\r\n    .page-sidebar-mobile-offcanvas .page-wrapper {\r\n        left: 0;\r\n        transition: all 0.3s;\r\n    }\r\n\r\n    .page-sidebar-mobile-offcanvas .page-wrapper .page-header {\r\n        transition: all 0.3s;\r\n    }\r\n\r\n    .page-sidebar-mobile-offcanvas.page-sidebar-mobile-offcanvas-open {\r\n        overflow-x: hidden;\r\n        transition: all 0.3s;\r\n    }\r\n\r\n    .page-sidebar-mobile-offcanvas.page-sidebar-mobile-offcanvas-open .page-wrapper {\r\n        position: relative;\r\n        left: 235px;\r\n        transition: all 0.3s;\r\n    }\r\n\r\n    .page-sidebar-mobile-offcanvas.page-sidebar-mobile-offcanvas-open .page-wrapper .page-header {\r\n        transition: all 0.3s;\r\n    }\r\n}\r\n@media (min-width: 768px) and (max-width: 991px) {\r\n    /*  768px & 991px */\r\n    /* Boxed page container */\r\n    .page-boxed > .container {\r\n        margin: auto !important;\r\n    }\r\n}\r\n@media (max-width: 767px) {\r\n    /* 767px */\r\n    /* Page content */\r\n    .page-content-wrapper .page-content {\r\n        padding: 20px 10px 10px 10px !important;\r\n        overflow: hidden;\r\n        /* Page title */\r\n    }\r\n\r\n    .page-content-wrapper .page-content .page-title {\r\n        margin-bottom: 20px;\r\n        font-size: 18px;\r\n    }\r\n\r\n    .page-content-wrapper .page-content .page-title small {\r\n        font-size: 13px;\r\n        padding-top: 3px;\r\n    }\r\n}\r\n@media (max-width: 480px) {\r\n    /* 480px */\r\n    /* Dashboard date range panel */\r\n    .page-content-wrapper .page-content .page-title small {\r\n        display: block;\r\n        clear: both;\r\n    }\r\n}\r\n/***\r\nPage footer\r\n***/\r\n.page-footer {\r\n    padding: 8px 20px 5px 20px;\r\n    font-size: 13px;\r\n    height: 33px;\r\n}\r\n.page-footer:before, .page-footer:after {\r\n    content: \" \";\r\n    display: table;\r\n}\r\n.page-footer:after {\r\n    clear: both;\r\n}\r\n.page-footer .page-footer-inner {\r\n    float: left;\r\n    display: inline-block;\r\n}\r\n.page-footer-fixed.page-footer-fixed-mobile .page-footer {\r\n    position: fixed;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: 10000;\r\n    bottom: 0;\r\n}\r\n.page-footer-fixed.page-footer-fixed-mobile.page-sidebar-fixed .page-footer {\r\n    margin-left: 0 !important;\r\n}\r\n@media (min-width: 992px) {\r\n    /* 992px */\r\n    /* Default footer */\r\n    .page-footer {\r\n        clear: left;\r\n    }\r\n\r\n    /* Fixed footer */\r\n    .page-footer-fixed .page-footer {\r\n        position: fixed;\r\n        left: 0;\r\n        right: 0;\r\n        z-index: 10000;\r\n        bottom: 0;\r\n    }\r\n\r\n    /* Footer with footer sidebar */\r\n    .page-sidebar-fixed.page-sidebar-closed .page-footer {\r\n        margin-left: 45px;\r\n    }\r\n\r\n    .page-sidebar-fixed.page-footer-fixed .page-footer {\r\n        margin-left: 0 !important;\r\n    }\r\n\r\n    /* Fixed Sidebar */\r\n    .page-sidebar-fixed .page-footer {\r\n        margin-left: 235px;\r\n        padding: 8px 20px 5px 20px;\r\n    }\r\n\r\n    /* Boxed page */\r\n    .page-boxed .page-footer {\r\n        padding: 8px 0 5px 0;\r\n    }\r\n\r\n    .page-boxed.page-sidebar-fixed .page-footer {\r\n        padding-right: 20px;\r\n        padding-left: 20px;\r\n    }\r\n\r\n    /* Page sidebar reversed */\r\n    .page-sidebar-reversed.page-sidebar-fixed .page-footer {\r\n        margin-left: 0;\r\n        margin-right: 235px;\r\n        padding: 8px 20px 5px 20px;\r\n    }\r\n\r\n    .page-sidebar-reversed.page-sidebar-fixed.page-footer-fixed .page-footer {\r\n        margin-left: 0;\r\n        margin-right: 0;\r\n    }\r\n\r\n    .page-sidebar-reversed.page-sidebar-fixed.page-sidebar-closed .page-footer {\r\n        margin-right: 45px;\r\n    }\r\n}\r\n@media (max-width: 991px) {\r\n    /* 991px */\r\n    /* Boxed Layout */\r\n    .page-boxed .page-footer {\r\n        padding-left: 0px;\r\n        padding-right: 0px;\r\n    }\r\n}\r\n@media (max-width: 767px) {\r\n    /* 767px */\r\n    /* Default footer & boxed footer */\r\n    .page-footer,\r\n    .page-boxed .page-footer {\r\n        padding-left: 10px;\r\n        padding-right: 10px;\r\n    }\r\n\r\n    /* Fixed footer */\r\n    .page-footer-fixed .page-footer .container {\r\n        padding-left: 0;\r\n        padding-right: 0;\r\n    }\r\n}\r\n/* Scroll Top Top */\r\n.scroll-to-top {\r\n    display: inline-block;\r\n    padding: 1px;\r\n    text-align: center;\r\n    position: fixed;\r\n    bottom: 10px;\r\n    z-index: 10001;\r\n    display: none;\r\n    right: 10px;\r\n}\r\n.scroll-to-top > i {\r\n    display: inline-block;\r\n    color: #687991;\r\n    font-size: 30px;\r\n    opacity: 0.6;\r\n    filter: alpha(opacity=60);\r\n}\r\n.scroll-to-top:hover {\r\n    cursor: pointer;\r\n}\r\n.scroll-to-top:hover > i {\r\n    opacity: 1;\r\n    filter: alpha(opacity=100);\r\n}\r\n@media (min-width: 992px) {\r\n    /* 992px */\r\n    .scroll-to-top {\r\n        right: 20px;\r\n    }\r\n}\r\n@media (max-width: 991px) {\r\n    /* 991px */\r\n    .scroll-to-top {\r\n        bottom: 10px;\r\n        right: 10px;\r\n    }\r\n\r\n    .scroll-to-top > i {\r\n        font-size: 28px;\r\n    }\r\n}\r\n/***\r\nTheme Panel\r\n***/\r\n.theme-panel {\r\n    width: 420px;\r\n    margin-top: -13px;\r\n    margin-right: 0px;\r\n    z-index: 100;\r\n    float: right;\r\n    position: relative;\r\n    /* content solid bg color */\r\n}\r\n.theme-panel > .toggler {\r\n    top: 4px;\r\n    right: 0;\r\n    padding: 20px;\r\n    cursor: pointer;\r\n    position: absolute;\r\n    background: #536881 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjQ0OUUzMjRDN0M2NDExRTI4MkM1RDk5NEJBNzY1NzRDIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjQ0OUUzMjREN0M2NDExRTI4MkM1RDk5NEJBNzY1NzRDIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NDQ5RTMyNEE3QzY0MTFFMjgyQzVEOTk0QkE3NjU3NEMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NDQ5RTMyNEI3QzY0MTFFMjgyQzVEOTk0QkE3NjU3NEMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6mepK7AAABTklEQVR42mL8//8/A5EAXSEjMZoYB4sFQkD8Fk2MF4i/EHYW0AI0DAMgtgEQzwHib/8xwRMgLgJifiCWRtPHDDMP3QdEhxehkMEVRNgsOAPEW4D4ABBfhorpArEDEPsAsQk+C/AFEQjMAGItLGpgWAuqBhkIIatB1yAKxH+QDOfDYzgM86FZoovPgkaootMEXI7NJ6eheifgsgDk+s9QRfUkGA7D9VC9b6F8YyCWY/iPHdiTYYE9NoMY/2PPacJA/I7EpIktMzLQ3AImHIp1ychcWPUwQTMFCLshiTuQYQFMz3cgFoObixRJzNAUQGkynYkvH0xDy8XkZDQtfBZQo6hAUU/zwg5mARsQ/6JFcY3sXTa0IOIBYhtovLzFkePPA3EUFCNXODiDiBOazFSA+A6SuCgQv6JlncwPxB8IWMAMpf+SYwFI8x9yfAAQYAAn71zoqSBvKQAAAABJRU5ErkJggg==) center no-repeat;\r\n    border-radius: 4px;\r\n}\r\n.theme-panel > .toggler:hover {\r\n    background-color: #3f4f62 !important;\r\n}\r\n.theme-panel > .toggler-close {\r\n    display: none;\r\n    top: 4px;\r\n    right: 0;\r\n    padding: 20px;\r\n    z-index: 101;\r\n    cursor: pointer;\r\n    position: absolute;\r\n    background: #2b3643 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBDNzc0QTMxN0M2NDExRTI4Mjg4Q0JFRTIxNzU0N0JCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjBDNzc0QTMyN0M2NDExRTI4Mjg4Q0JFRTIxNzU0N0JCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MEM3NzRBMkY3QzY0MTFFMjgyODhDQkVFMjE3NTQ3QkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MEM3NzRBMzA3QzY0MTFFMjgyODhDQkVFMjE3NTQ3QkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7YgmDaAAAAfUlEQVR42qRTQQ7AIAiDZv//rhcSNhNcVMRJxklJS1uDrKpCRBflS2BEyRIrD3bJDHidomueDBgi8pN5BtQGL4iujwWIDfg5EIG9Cix2LoGTpe2TCFvlXrFEgEi5Kbb8x5l7oG4e0ZFlk5HnPUC0AEENi4QE0Q3gP7/qFmAAAIYt2+/Wj4MAAAAASUVORK5CYII=) center no-repeat !important;\r\n    border-radius: 4px;\r\n}\r\n.theme-panel > .toggler-close:hover {\r\n    background-color: #212933 !important;\r\n}\r\n.theme-panel > .theme-options {\r\n    top: 4px;\r\n    right: 0;\r\n    display: none;\r\n    position: absolute;\r\n    z-index: 100;\r\n    background: #2b3643;\r\n    border-radius: 4px;\r\n}\r\n.theme-panel > .theme-options > .theme-option {\r\n    color: #c6cfda;\r\n    padding: 15px;\r\n    border-top: 1px solid #354353;\r\n    margin-top: 0px;\r\n    margin-bottom: 0px;\r\n}\r\n.theme-panel > .theme-options > .theme-option > span {\r\n    text-transform: uppercase;\r\n    display: inline-block;\r\n    width: 145px;\r\n    font-size: 13px;\r\n    font-weight: 300;\r\n}\r\n.theme-panel > .theme-options > .theme-option > select.form-control {\r\n    display: inline;\r\n    width: 135px;\r\n    padding: 2px;\r\n    text-transform: lowercase;\r\n}\r\n.theme-panel > .theme-options > .theme-option.theme-colors {\r\n    border-top: 0;\r\n}\r\n.theme-panel > .theme-options > .theme-option.theme-colors > span {\r\n    display: block;\r\n    width: auto;\r\n}\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul {\r\n    list-style: none;\r\n    padding: 0;\r\n    display: block;\r\n    margin-bottom: 10px !important;\r\n    margin-top: 15px;\r\n}\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li {\r\n    width: 40px;\r\n    height: 40px;\r\n    margin: 0 4px;\r\n    cursor: pointer;\r\n    list-style: none;\r\n    float: left;\r\n    border: solid 1px #707070;\r\n    /* theme colors */\r\n}\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li:first-child {\r\n    margin-left: 0;\r\n}\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li:hover, .theme-panel > .theme-options > .theme-option.theme-colors > ul > li.current {\r\n    border: solid 2px #d64635;\r\n}\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-default {\r\n    background: #333438;\r\n}\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-darkblue {\r\n    background: #2b3643;\r\n}\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-blue {\r\n    background: #2D5F8B;\r\n}\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-grey {\r\n    background: #697380;\r\n}\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-light {\r\n    background: #F9FAFD;\r\n}\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-light2 {\r\n    background: #F1F1F1;\r\n}\r\n.page-content-white .theme-panel,\r\n.page-container-bg-solid .theme-panel {\r\n    position: absolute;\r\n    margin-top: 30px;\r\n    margin-right: 20px;\r\n    right: 0;\r\n}\r\n.page-content-white .theme-panel > .toggler1,\r\n.page-container-bg-solid .theme-panel > .toggler1 {\r\n    background: #BFCAD1 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjQ0OUUzMjRDN0M2NDExRTI4MkM1RDk5NEJBNzY1NzRDIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjQ0OUUzMjREN0M2NDExRTI4MkM1RDk5NEJBNzY1NzRDIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NDQ5RTMyNEE3QzY0MTFFMjgyQzVEOTk0QkE3NjU3NEMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NDQ5RTMyNEI3QzY0MTFFMjgyQzVEOTk0QkE3NjU3NEMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6mepK7AAABTklEQVR42mL8//8/A5EAXSEjMZoYB4sFQkD8Fk2MF4i/EHYW0AI0DAMgtgEQzwHib/8xwRMgLgJifiCWRtPHDDMP3QdEhxehkMEVRNgsOAPEW4D4ABBfhorpArEDEPsAsQk+C/AFEQjMAGItLGpgWAuqBhkIIatB1yAKxH+QDOfDYzgM86FZoovPgkaootMEXI7NJ6eheifgsgDk+s9QRfUkGA7D9VC9b6F8YyCWY/iPHdiTYYE9NoMY/2PPacJA/I7EpIktMzLQ3AImHIp1ychcWPUwQTMFCLshiTuQYQFMz3cgFoObixRJzNAUQGkynYkvH0xDy8XkZDQtfBZQo6hAUU/zwg5mARsQ/6JFcY3sXTa0IOIBYhtovLzFkePPA3EUFCNXODiDiBOazFSA+A6SuCgQv6JlncwPxB8IWMAMpf+SYwFI8x9yfAAQYAAn71zoqSBvKQAAAABJRU5ErkJggg==) center no-repeat;\r\n}\r\n.page-content-white.page-sidebar-reversed .theme-panel,\r\n.page-container-bg-solid.page-sidebar-reversed .theme-panel {\r\n    margin-right: 255px;\r\n}\r\n.page-content-white.page-sidebar-reversed.page-sidebar-closed .theme-panel,\r\n.page-container-bg-solid.page-sidebar-reversed.page-sidebar-closed .theme-panel {\r\n    margin-right: 65px;\r\n}\r\n/******************\r\nPage Quick Sidebar\r\n******************/\r\n/* Quick sidebar toggler */\r\n.page-header .top-menu .dropdown-quick-sidebar-toggler > .dropdown-toggle {\r\n    padding: 19px 10px 10px 10px !important;\r\n}\r\n.page-header .top-menu .dropdown-quick-sidebar-toggler > .dropdown-toggle i {\r\n    top: 0px;\r\n}\r\n.page-header .top-menu .dropdown-quick-sidebar-toggler > .dropdown-toggle i:before {\r\n    content: \"\" /*rtl:\"\"*/;\r\n}\r\n.page-quick-sidebar-open .page-header .top-menu .dropdown-quick-sidebar-toggler > .dropdown-toggle i:before {\r\n    content: \"\" /*rtl:\"\"*/;\r\n}\r\n/* Page Portlet Fullscreen */\r\n.page-portlet-fullscreen .page-quick-sidebar-wrapper,\r\n.page-portlet-fullscreen .page-quick-sidebar-toggler {\r\n    z-index: -1;\r\n}\r\n/* Quick sidebar toggler */\r\n.page-quick-sidebar-toggler {\r\n    overflow: hidden;\r\n    z-index: 99999;\r\n    display: none;\r\n    width: 28px;\r\n    height: 27px;\r\n    position: fixed;\r\n    top: 10px;\r\n    right: 15px;\r\n    text-align: center;\r\n    padding-top: 6px;\r\n}\r\n.page-quick-sidebar-toggler:hover {\r\n    background: #303a43;\r\n}\r\n.page-quick-sidebar-open .page-quick-sidebar-toggler {\r\n    display: inline-block;\r\n}\r\n.page-quick-sidebar-open .page-quick-sidebar-toggler:hover {\r\n    background: none;\r\n}\r\n.page-quick-sidebar-toggler > i {\r\n    color: #99a8b5;\r\n    font-size: 17px;\r\n}\r\n.page-quick-sidebar-toggler > i:hover {\r\n    color: #fff !important;\r\n}\r\n.page-quick-sidebar-open .page-quick-sidebar-toggler > i:before {\r\n    content: \"\" /*rtl:\"\"*/;\r\n}\r\n/* Quick sidebar wrapper */\r\n.page-quick-sidebar-wrapper {\r\n    transition: right 0.3s;\r\n    z-index: 10500;\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    width: 320px;\r\n    right: -320px;\r\n    overflow: hidden;\r\n    color: #99a8b5;\r\n    background: #21282e;\r\n}\r\n.page-quick-sidebar-open .page-quick-sidebar-wrapper {\r\n    transition: right 0.3s;\r\n    right: 0;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar {\r\n    background: #21282e;\r\n    /* Quick sidebar tabs content */\r\n    /* Quick sidebar general list heading */\r\n    /* Quick sidebar general list-items */\r\n    /* Inner content */\r\n    /* Quick sidebar list */\r\n    /* Quick sidebar list item */\r\n    /* Quick sidebar list item shown */\r\n    /* Quick sidebar chat */\r\n    /* Quick sidebar alerts */\r\n    /* Quick sidebar settings */\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs {\r\n    margin: 0;\r\n    padding: 0;\r\n    border: 0;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li {\r\n    display: table-cell !important;\r\n    width: 1% !important;\r\n    padding: 0;\r\n    margin: 0;\r\n    float: none;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li > a {\r\n    position: relative;\r\n    display: block;\r\n    text-align: center;\r\n    border: 0;\r\n    height: auto;\r\n    font-size: 14px;\r\n    padding: 45px 15px 8px;\r\n    text-transform: uppercase;\r\n    background: none;\r\n    margin-right: 0;\r\n    color: #90a1af;\r\n    border: 0;\r\n    border-bottom: 3px solid rgba(243, 86, 93, 0.3);\r\n    border-radius: 0;\r\n    outline: none !important;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li > a > .badge {\r\n    position: absolute;\r\n    top: 45px;\r\n    right: 3px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li.active > a, .page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li:hover > a {\r\n    border: 0;\r\n    border-bottom: 3px solid #f3565d;\r\n    background: none;\r\n    color: #fff;\r\n    text-decoration: none;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu {\r\n    border: 0;\r\n    background: #36424c;\r\n    box-shadow: 5px 5px rgba(97, 117, 135, 0.1);\r\n    margin-top: 8px;\r\n    margin-right: 20px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu:before {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: 19px;\r\n    display: inline-block !important;\r\n    border-right: 7px solid transparent;\r\n    border-left: 7px solid transparent;\r\n    border-bottom: 7px solid #36424c;\r\n    content: '';\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu:after {\r\n    position: absolute;\r\n    top: -6px;\r\n    right: 20px;\r\n    display: inline-block !important;\r\n    border-right: 6px solid transparent;\r\n    border-left: 6px solid transparent;\r\n    border-bottom: 7px solid #36424c;\r\n    content: '';\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li > a {\r\n    padding: 10px 15px;\r\n    color: #99a8b5;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li > a > i {\r\n    color: #93a3b1;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li:hover > a {\r\n    background: #3d4a55;\r\n    color: #99a8b5;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li:hover > a > i {\r\n    color: #9babb8;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li.active > a {\r\n    background: #38444f;\r\n    color: #99a8b5;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li.divider {\r\n    background-color: #3d4a55;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li.open > a.dropdown-toggle {\r\n    border-bottom: 3px solid #f3565d;\r\n    background: none;\r\n    text-decoration: none;\r\n    color: #90a1af;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .tab-content {\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-heading {\r\n    font-size: 16px;\r\n    margin: 10px 10px;\r\n    color: #6c8296;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items {\r\n    margin: 0;\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items > li {\r\n    margin: 0;\r\n    padding: 15px;\r\n    background: none;\r\n    border-bottom-width: 1px;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: #273037;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items > li:hover {\r\n    background: #273037;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items > li:last-child {\r\n    border-bottom: 0;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items.borderless li {\r\n    border: 0;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .inner-content {\r\n    margin: 10px 10px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-list {\r\n    position: absolute !important;\r\n    width: 320px !important;\r\n    transition: margin 0.3s;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item {\r\n    width: 320px;\r\n    position: absolute !important;\r\n    width: 320px !important;\r\n    transition: margin 0.3s;\r\n    margin-left: 320px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav {\r\n    padding: 15px 10px 0px 10px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav .page-quick-sidebar-back-to-list {\r\n    vertical-align: middle;\r\n    display: inline-block;\r\n    font-size: 14px;\r\n    color: #90a1af;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav .page-quick-sidebar-back-to-list:hover {\r\n    text-decoration: none;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav .page-quick-sidebar-back-to-list > i {\r\n    font-size: 17px;\r\n    line-height: 17px;\r\n    vertical-align: top;\r\n    margin-right: 3px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list {\r\n    transition: margin 0.3s;\r\n    margin-left: -320px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list .slimScrollBar,\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list .slimScrollRail {\r\n    display: none !important;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-item {\r\n    transition: margin 0.3s;\r\n    margin-left: 0;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users {\r\n    padding: 10px 0;\r\n    position: relative;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media {\r\n    padding: 15px 15px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object {\r\n    border-radius: 50% !important;\r\n    width: 45.71429px;\r\n    opacity: 0.8;\r\n    filter: alpha(opacity=80);\r\n    float: left;\r\n    margin-right: 10px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object:before, .page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object:after {\r\n    content: \" \";\r\n    display: table;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object:after {\r\n    clear: both;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media:hover {\r\n    cursor: pointer;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media:hover .media-object {\r\n    opacity: 1;\r\n    filter: alpha(opacity=100);\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-body .media-heading {\r\n    margin: 5px 0 0 0;\r\n    font-size: 14px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-body .media-heading-sub {\r\n    font-size: 11px;\r\n    text-transform: uppercase;\r\n    color: #657b8d;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-body .media-heading-small {\r\n    font-size: 10px;\r\n    color: #5d7081;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-status {\r\n    margin-top: 10px;\r\n    right: 10px;\r\n    position: absolute;\r\n    display: inline-block;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages {\r\n    padding: 0px 10px;\r\n    position: relative;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post {\r\n    transition: display 0.3s;\r\n    padding: 5px 0;\r\n    margin: 10px auto;\r\n    font-size: 13px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .body {\r\n    color: #c3c3c3;\r\n    display: block;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .avatar {\r\n    width: 45.71429px;\r\n    border-radius: 50% !important;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .avatar {\r\n    float: left;\r\n    margin-right: 10px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .avatar {\r\n    float: right;\r\n    margin-left: 10px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .name {\r\n    font-size: 12px;\r\n    font-weight: 300;\r\n    color: #8496a7;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .datetime {\r\n    font-size: 12px;\r\n    font-weight: 300;\r\n    color: #8496a7;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message {\r\n    display: block;\r\n    padding: 5px;\r\n    position: relative;\r\n    color: #90a1af;\r\n    background: #36424c;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .message {\r\n    text-align: left;\r\n    margin-left: 55px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .message .arrow {\r\n    display: block;\r\n    position: absolute;\r\n    top: 9px;\r\n    left: -6px;\r\n    width: 0;\r\n    height: 0;\r\n    border-top: 6px solid transparent;\r\n    border-bottom: 6px solid transparent;\r\n    border-right-width: 6px;\r\n    border-right-style: solid;\r\n    border-right-color: #36424c;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .message {\r\n    margin-right: 55px;\r\n    text-align: right;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .message .arrow {\r\n    display: block;\r\n    position: absolute;\r\n    top: 9px;\r\n    right: -6px;\r\n    border-top: 6px solid transparent;\r\n    border-bottom: 6px solid transparent;\r\n    border-left-width: 6px;\r\n    border-left-style: solid;\r\n    border-left-color: #36424c;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .name,\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .datetime {\r\n    text-align: right;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-form {\r\n    padding: 20px 10px 15px 10px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list {\r\n    padding: 10px 0;\r\n    position: relative;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a {\r\n    color: #7e91a2;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a .label {\r\n    margin-top: 5px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a .desc {\r\n    text-decoration: underline;\r\n    padding: 0;\r\n    color: #788c9e;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a .date {\r\n    color: #5d7081;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list {\r\n    padding: 10px 0;\r\n    position: relative;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list .list-items li .bootstrap-switch {\r\n    margin-top: -3px;\r\n    float: right;\r\n    border: 0;\r\n    min-width: 59px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list .list-items li .form-control {\r\n    width: 75px !important;\r\n    padding: 4px 4px !important;\r\n    float: right;\r\n    border: 0;\r\n    margin-top: -4px;\r\n}\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list .list-items li select.form-control {\r\n    padding: 4px 0px !important;\r\n}\r\n.quick-nav {\r\n    position: fixed;\r\n    z-index: 10103;\r\n    top: 50%;\r\n    right: 10px;\r\n    margin-top: -230px;\r\n    pointer-events: none;\r\n}\r\n.quick-nav .quick-nav-bg {\r\n    /* this is the stretching navigation background */\r\n    position: absolute;\r\n    z-index: 10102;\r\n    top: 0;\r\n    right: 0;\r\n    width: 60px;\r\n    height: 60px;\r\n    border-radius: 30px !important;\r\n    background: #36C6D3;\r\n    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);\r\n    webkit-transition: height .2s, box-shadow .2s;\r\n    transition: height .2s, box-shadow .2s;\r\n}\r\n.quick-nav.nav-is-visible {\r\n    pointer-events: auto;\r\n}\r\n.quick-nav.nav-is-visible .quick-nav-bg {\r\n    height: 100%;\r\n    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);\r\n}\r\n.quick-nav-trigger {\r\n    position: absolute;\r\n    z-index: 10103;\r\n    top: 0;\r\n    right: 0;\r\n    height: 60px;\r\n    width: 60px;\r\n    border-radius: 50% !important;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    color: transparent;\r\n    pointer-events: auto;\r\n}\r\n.quick-nav-trigger span,\r\n.quick-nav-trigger span::after,\r\n.quick-nav-trigger span::before {\r\n    /* this is the hamburger icon */\r\n    position: absolute;\r\n    width: 16px;\r\n    height: 2px;\r\n    background-color: #ffffff;\r\n}\r\n.quick-nav-trigger span {\r\n    /* middle line of the hamburger icon */\r\n    webkit-transition: background-color 0.2s;\r\n    transition: background-color 0.2s;\r\n    left: 50%;\r\n    top: 50%;\r\n    bottom: auto;\r\n    right: auto;\r\n    webkit-transform: translateX(-50%) translateY(-50%);\r\n    -webkit-transform: translateX(-50%) translateY(-50%);\r\n            transform: translateX(-50%) translateY(-50%);\r\n}\r\n.quick-nav-trigger span::after,\r\n.quick-nav-trigger span::before {\r\n    /* top and bottom lines of the hamburger icon */\r\n    content: '';\r\n    top: 0;\r\n    left: 0;\r\n    -webkit-backface-visibility: hidden;\r\n    backface-visibility: hidden;\r\n    webkit-transition: transform 0.2s;\r\n    transition: -webkit-transform 0.2s;\r\n    transition: transform 0.2s;\r\n    transition: transform 0.2s, -webkit-transform 0.2s;\r\n}\r\n.quick-nav-trigger span::before {\r\n    webkit-transform: translateY(-6px);\r\n    -webkit-transform: translateY(-6px);\r\n            transform: translateY(-6px);\r\n}\r\n.quick-nav-trigger span::after {\r\n    webkit-transform: translateY(6px);\r\n    -webkit-transform: translateY(6px);\r\n            transform: translateY(6px);\r\n}\r\n.no-touch .quick-nav-trigger:hover ~ .quick-nav-bg {\r\n    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);\r\n}\r\n.nav-is-visible .quick-nav-trigger span {\r\n    background-color: transparent;\r\n}\r\n.nav-is-visible .quick-nav-trigger span::before {\r\n    webkit-transform: rotate(-45deg);\r\n    -webkit-transform: rotate(-45deg);\r\n            transform: rotate(-45deg);\r\n}\r\n.nav-is-visible .quick-nav-trigger span::after {\r\n    webkit-transform: rotate(45deg);\r\n    -webkit-transform: rotate(45deg);\r\n            transform: rotate(45deg);\r\n}\r\n.quick-nav ul {\r\n    position: relative;\r\n    z-index: 10103;\r\n    padding: 60px 0 0;\r\n    visibility: hidden;\r\n    webkit-transition: visibility 0.3s;\r\n    transition: visibility 0.3s;\r\n    text-align: right;\r\n    list-style: none;\r\n}\r\n.quick-nav ul > li a {\r\n    position: relative;\r\n    display: block;\r\n    height: 50px;\r\n    line-height: 50px;\r\n    padding: 0 calc(1em + 60px) 0 1em;\r\n    font-size: 1.4rem;\r\n    webkit-transition: color 0.2s;\r\n    transition: color 0.2s;\r\n}\r\n.quick-nav ul > li a:hover {\r\n    text-decoration: none;\r\n}\r\n.quick-nav ul > li a:hover > span {\r\n    text-decoration: none;\r\n}\r\n.quick-nav ul > li a > i {\r\n    /* navigation item icons */\r\n    content: '';\r\n    position: absolute;\r\n    height: 16px;\r\n    width: 16px;\r\n    font-size: 18px;\r\n    right: 24px;\r\n    top: 16px;\r\n    color: #ebebeb;\r\n}\r\n.quick-nav ul > li a::before {\r\n    /* line visible next to the active navigation item */\r\n    content: '';\r\n    position: absolute;\r\n    width: 3px;\r\n    height: 16px;\r\n    top: 50%;\r\n    right: 60px;\r\n    webkit-transform: translateX(3px) translateY(-50%) scaleY(0);\r\n    -webkit-transform: translateX(3px) translateY(-50%) scaleY(0);\r\n            transform: translateX(3px) translateY(-50%) scaleY(0);\r\n    background-color: #FF3F3F;\r\n}\r\n.quick-nav ul > li span {\r\n    /* navigation item labels */\r\n    color: #ebebeb;\r\n    font-weight: 400;\r\n    display: block;\r\n    opacity: 0;\r\n    webkit-transform: translateX(-25px);\r\n    -webkit-transform: translateX(-25px);\r\n            transform: translateX(-25px);\r\n}\r\n.quick-nav ul > li:last-child {\r\n    padding-bottom: 10px;\r\n}\r\n.quick-nav.nav-is-visible ul {\r\n    visibility: visible;\r\n}\r\n.quick-nav.nav-is-visible ul a::after {\r\n    /* navigation item icons */\r\n    webkit-transform: translateY(-50%) scale(1);\r\n    -webkit-transform: translateY(-50%) scale(1);\r\n            transform: translateY(-50%) scale(1);\r\n    -webkit-animation: scaleIn 0.15s backwards;\r\n    animation: scaleIn 0.15s backwards;\r\n    webkit-transition: opacity 0.2s;\r\n    transition: opacity 0.2s;\r\n}\r\n.quick-nav.nav-is-visible ul a:hover::after {\r\n    opacity: 1;\r\n}\r\n.quick-nav.nav-is-visible ul a:hover::before {\r\n    webkit-transform: translateX(3px) translateY(-50%) scaleY(2);\r\n    -webkit-transform: translateX(3px) translateY(-50%) scaleY(2);\r\n            transform: translateX(3px) translateY(-50%) scaleY(2);\r\n    webkit-transition: transform 0.15s 0.3s;\r\n    transition: -webkit-transform 0.15s 0.3s;\r\n    transition: transform 0.15s 0.3s;\r\n    transition: transform 0.15s 0.3s, -webkit-transform 0.15s 0.3s;\r\n}\r\n.quick-nav.nav-is-visible ul a:hover > span {\r\n    color: white;\r\n}\r\n.quick-nav.nav-is-visible ul a:hover > i {\r\n    color: #fafafa;\r\n}\r\n.quick-nav.nav-is-visible ul span {\r\n    opacity: 1;\r\n    webkit-transform: translateX(0);\r\n    -webkit-transform: translateX(0);\r\n            transform: translateX(0);\r\n    -webkit-animation: slideIn 0.15s backwards;\r\n    animation: slideIn 0.15s backwards;\r\n    webkit-transition: transform 0.2s;\r\n    transition: -webkit-transform 0.2s;\r\n    transition: transform 0.2s;\r\n    transition: transform 0.2s, -webkit-transform 0.2s;\r\n}\r\n.no-touch .quick-nav.nav-is-visible ul a:hover::after {\r\n    opacity: 1;\r\n}\r\n.no-touch .quick-nav.nav-is-visible ul a:hover span {\r\n    webkit-transform: translateX(-5px);\r\n    -webkit-transform: translateX(-5px);\r\n            transform: translateX(-5px);\r\n}\r\n.quick-nav-overlay {\r\n    display: none;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    position: fixed;\r\n    z-index: 10101;\r\n    background: transparent;\r\n}\r\n.quick-nav.nav-is-visible + .quick-nav-overlay {\r\n    background: rgba(0, 0, 0, 0.8);\r\n    display: block;\r\n    transition: background .7s ease-out;\r\n}\r\n@media (max-width: 991px) {\r\n    /* 991px */\r\n    .quick-nav {\r\n        top: 120px;\r\n        margin-top: 0;\r\n    }\r\n}\r\n/***\r\nPage Loading\r\n***/\r\n.page-on-load {\r\n    background: #fefefe;\r\n}\r\n.page-on-load .page-header,\r\n.page-on-load .page-container,\r\n.page-on-load .page-footer,\r\n.page-on-load > .clearfix {\r\n    display: none;\r\n    transition: all 2s;\r\n}\r\n"
 
 /***/ }),
 
@@ -2407,7 +4208,7 @@ var Admin2SidebarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* here you can put your own css to customize and override the theme */\n"
+module.exports = "/* here you can put your own css to customize and override the theme */\r\n"
 
 /***/ }),
 
@@ -2418,7 +4219,7 @@ module.exports = "/* here you can put your own css to customize and override the
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "@charset \"UTF-8\";\n/* Cubic Bezier Transition */\n@media print {\n  body {\n    background-color: #fff !important; }\n  .page-bar {\n    display: none; }\n  .page-sidebar-wrapper {\n    display: none; }\n  .theme-panel {\n    display: none; }\n  .hidden-print {\n    display: none; }\n  .page-footer {\n    display: none; }\n  .no-page-break {\n    page-break-after: avoid; }\n  .page-container {\n    margin: 0px !important;\n    padding: 0px !important; }\n  .page-content {\n    padding: 0 !important;\n    min-height: 300px !important;\n    padding: 0px 20px 20px !important;\n    margin: 0 !important; }\n    .page-content > .portlet {\n      padding: 0;\n      margin: 0; }\n      .page-content > .portlet > .portlet-body {\n        padding: 0;\n        margin: 0; } }\n/***\nPage Header\n***/\n.page-header.navbar {\n  width: 100%;\n  padding: 0 20px 0 20px;\n  margin: 0;\n  border: 0px;\n  padding: 0px;\n  box-shadow: none;\n  height: 68px;\n  min-height: 68px;\n  -webkit-filter: none;\n          filter: none;\n  background-image: none;\n  /* Fixed header */\n  /* Header logo */\n  /* header top */\n  /* Search box */\n  /* Menu Toggler */\n  /* Top menu */ }\n.page-header.navbar.navbar-fixed-top {\n    z-index: 9995; }\n.page-header.navbar.navbar-static-top {\n    z-index: 9995; }\n.page-header.navbar .page-logo {\n    float: left;\n    display: block;\n    width: 195px;\n    height: 68px;\n    padding-left: 20px;\n    padding-right: 20px; }\n.page-header.navbar .page-logo > .logo-image,\n    .page-header.navbar .page-logo > a {\n      display: block;\n      float: left; }\n.page-header.navbar .page-logo .logo-default {\n      margin: 27px 0 0 0; }\n.page-header.navbar .page-logo .logo-mini {\n      display: none;\n      margin-left: 5px; }\n.page-header.navbar .page-logo .text-logo {\n      padding-left: 20px;\n      padding-top: 12px; }\n.page-header.navbar .page-top {\n    height: 68px;\n    background: #BAC0B6; }\n.page-header.navbar .search-form {\n    margin-left: 10px;\n    display: inline-block;\n    width: 68px;\n    position: relative;\n    float: left !important;\n    transition: all 0.6s; }\n.page-header.navbar .search-form .input-group .form-control {\n      height: 68px;\n      border: 0;\n      background: transparent !important;\n      font-size: 14px;\n      padding-left: 0;\n      margin-left: 12px;\n      text-indent: -150000px; }\n.page-header.navbar .search-form .input-group .form-control:hover {\n        cursor: pointer; }\n.page-header.navbar .search-form .input-group .input-group-btn {\n      height: 68px; }\n.page-header.navbar .search-form .input-group .input-group-btn .btn.submit {\n        margin-left: -24px;\n        padding: 0;\n        width: 68px;\n        background: none;\n        margin-top: 4px;\n        display: block; }\n.page-header.navbar .search-form .input-group .input-group-btn .btn.submit > i {\n          font-size: 15px; }\n.page-header.navbar .search-form.open {\n      transition: all 0.6s;\n      width: 300px !important; }\n.page-header.navbar .search-form.open .input-group .form-control {\n        text-indent: 0; }\n.page-header.navbar .search-form.open .input-group .form-control:hover {\n          cursor: text; }\n.page-header.navbar .search-form.open .input-group .input-group-btn .btn.submit {\n        margin-left: 0; }\n.page-header.navbar .menu-toggler {\n    display: block;\n    cursor: pointer;\n    opacity: 0.6;\n    filter: alpha(opacity=60);\n    width: 20px;\n    height: 20px;\n    background-repeat: no-repeat;\n    background-position: center center;\n    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAANCAYAAABPeYUaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACZJREFUeNpi/A8EDBQCFiBmpNQQJgYqgGFmCChgR2NnWMcOQIABAE66Bh4XiGmBAAAAAElFTkSuQmCC); }\n.page-header.navbar .menu-toggler:hover {\n      filter: alpha(opacity=100);\n      opacity: 1; }\n.page-header.navbar .menu-toggler.sidebar-toggler {\n      float: right;\n      margin: 23px 0 0 0; }\n.page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .menu-toggler.sidebar-toggler {\n        margin-right: 17px; }\n.page-header.navbar .menu-toggler.responsive-toggler {\n      display: none;\n      float: right;\n      margin: 24px 14px 0 6px;\n      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAANCAYAAABPeYUaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADFJREFUeNpinDhx4n8GCgETEDNSgvPy8hiZGKgAhpkhLEBMUexMmjRpNHYGdewABBgAceAK8OX65QQAAAAASUVORK5CYII=); }\n.page-header.navbar .page-actions {\n    margin: 17px 0 15px 15px;\n    padding: 0;\n    float: left; }\n.page-header.navbar .page-actions .btn-group .dropdown-menu:before {\n      left: 9px;\n      right: auto; }\n.page-header.navbar .page-actions .btn-group .dropdown-menu:after {\n      left: 10px;\n      right: auto; }\n.page-header.navbar .top-menu {\n    margin: 0;\n    padding: 0;\n    float: right; }\n.page-header.navbar .top-menu .navbar-nav {\n      padding: 0;\n      margin-right: 20px;\n      display: block;\n      /* Extended Dropdowns */\n      /* Notification */\n      /* Inbox */\n      /* Tasks */\n      /* User */\n      /* Quick Sidebar */\n      /* Language */\n      /* Dark version */ }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown {\n        margin: 0px;\n        padding: 0px;\n        height: 68px;\n        display: inline-block; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle {\n          margin: 0px;\n          padding: 28px 16px 19px 16px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle:last-child {\n            padding-right: 0; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > i {\n            font-size: 19px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > i.glyphicon {\n              top: 0;\n              font-size: 17px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > .badge {\n            font-family: \"Open Sans\", sans-serif;\n            position: absolute;\n            top: 17px;\n            right: 9px;\n            font-weight: 300;\n            padding: 3px 6px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle:focus {\n            background: none; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu {\n          margin-top: -6px;\n          border-radius: 4px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu:before {\n            position: absolute;\n            top: -7px;\n            right: 9px;\n            display: inline-block !important;\n            border-right: 7px solid transparent;\n            border-bottom: 7px solid #eee;\n            border-left: 7px solid transparent;\n            border-bottom-color: rgba(0, 0, 0, 0.2);\n            content: ''; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu:after {\n            position: absolute;\n            top: -6px;\n            right: 10px;\n            display: inline-block !important;\n            border-right: 6px solid transparent;\n            border-bottom: 6px solid #fff;\n            border-left: 6px solid transparent;\n            content: ''; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu > li > a {\n            color: #555; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu {\n        min-width: 160px;\n        max-width: 275px;\n        width: 275px;\n        z-index: 9995;\n        /* header notifications dropdowns */ }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external {\n          display: block;\n          overflow: hidden;\n          padding: 15px 15px;\n          letter-spacing: 0.5px;\n          border-radius: 4px 4px 0 0; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external > h3 {\n            margin: 0;\n            padding: 0;\n            float: left;\n            font-size: 13px;\n            display: inline-block; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external > a {\n            display: inline-block;\n            padding: 0;\n            background: none;\n            clear: inherit;\n            font-size: 13px;\n            font-weight: 300;\n            position: absolute;\n            right: 10px;\n            border: 0;\n            margin-top: -1px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external > a:hover {\n              text-decoration: underline; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list {\n          padding-right: 0 !important;\n          padding-left: 0;\n          list-style: none; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li > a {\n            display: block;\n            clear: both;\n            font-weight: 300;\n            line-height: 20px;\n            white-space: normal;\n            font-size: 13px;\n            padding: 16px 15px 18px;\n            text-shadow: none; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li > a:hover {\n              opacity: 1 ;\n              filter: alpha(opacity=100) ; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li:first-child a {\n            border-top: none; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details {\n        overflow: hidden; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon {\n          margin-right: 10px;\n          border-radius: 50%; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon i {\n            margin-right: 2px;\n            margin-left: 1px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon .badge {\n            right: 15px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .time {\n        float: right;\n        max-width: 75px;\n        font-size: 11px;\n        font-weight: 400;\n        opacity: 0.7 ;\n        filter: alpha(opacity=70) ;\n        text-align: right;\n        padding: 1px 5px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .photo {\n        float: left;\n        margin: 0 6px 6px 0; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .photo img {\n          height: 40px;\n          width: 40px;\n          border-radius: 50% !important; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .subject {\n        display: block;\n        margin-left: 46px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .subject .from {\n          font-size: 13px;\n          font-weight: 600; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .subject .time {\n          font-size: 12px;\n          font-weight: 400;\n          opacity: 0.5 ;\n          filter: alpha(opacity=50) ;\n          float: right; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .message {\n        display: block !important;\n        font-size: 12px;\n        line-height: 1.3;\n        margin-left: 46px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .task {\n        margin-bottom: 5px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .task .desc {\n          font-size: 13px;\n          font-weight: 300; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .task .percent {\n          float: right;\n          font-weight: 600;\n          display: inline-block; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .progress {\n        display: block;\n        height: 8px;\n        margin: 8px 0 2px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .progress .progress-bar {\n          box-shadow: none; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user {\n        padding: 0 0 0 10px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle {\n          padding: 24px 12px 24px 12px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > .username {\n            display: inline-block;\n            font-size: 14px;\n            font-weight: 400; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > img {\n            float: left;\n            margin-top: -8px;\n            margin-right: 7px;\n            height: 39px;\n            display: inline-block; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > i {\n            display: inline-block;\n            margin-top: 5px;\n            margin: 0;\n            font-size: 14px;\n            font-weight: 400; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu {\n          width: 175px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li > a {\n            font-size: 14px;\n            font-weight: 300; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li > a i {\n              width: 15px;\n              display: inline-block;\n              margin-right: 9px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li > a .badge {\n              margin-right: 10px; }\n.page-header.navbar .top-menu .navbar-nav > li.quick-sidebar-toggler {\n        cursor: pointer;\n        padding: 24px 12px 24px 12px; }\n.page-header.navbar .top-menu .navbar-nav > li.quick-sidebar-toggler > i {\n          top: 3px;\n          color: #c0cddc;\n          font-size: 19px; }\n.page-header.navbar .top-menu .navbar-nav > li.quick-sidebar-toggler > i:before {\n            content: \"\"/*rtl:\"\"*/; }\n.page-quick-sidebar-open .page-header.navbar .top-menu .navbar-nav > li.quick-sidebar-toggler > i:before {\n            content: \"\"/*rtl:\"\"*/; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language {\n        padding-left: 0;\n        padding-right: 0;\n        margin: 0; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle {\n          font-size: 13px;\n          padding: 24px 12px 24px 12px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle > img {\n            margin-bottom: 2px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle > i {\n            font-size: 14px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-menu > li > a {\n          font-size: 13px; }\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-menu > li > a > img {\n            margin-bottom: 2px;\n            margin-right: 5px; }\n.page-header.navbar .top-menu .navbar-nav li.dropdown-dark .dropdown-menu {\n        border: 0; }\n.page-header.navbar .top-menu .navbar-nav li.dropdown-dark .dropdown-menu:before {\n          border-left: none;\n          border-right: none; }\n.page-header.navbar .top-menu .navbar-nav li.dropdown-dark .dropdown-menu .dropdown-menu-list > li.external a {\n          background: none !important;\n          border: none !important; }\n/* Allow expanded search for above 768px */\n@media (min-width: 768px) {\n  /* 768px */\n  .page-header.navbar {\n    /* Search box */ }\n    .page-header.navbar .search-form.search-form-expanded {\n      width: 200px; }\n      .page-header.navbar .search-form.search-form-expanded .input-group .form-control {\n        text-indent: 0; }\n        .page-header.navbar .search-form.search-form-expanded .input-group .form-control:hover {\n          cursor: text; }\n      .page-header.navbar .search-form.search-form-expanded .input-group .input-group-btn .btn.submit {\n        margin-left: 0; } }\n/* Form medium devices upto large devices */\n@media (min-width: 992px) and (max-width: 1200px) {\n  /* 992px 1200px */\n  /* Boxed layout */\n  .page-boxed .page-header.navbar {\n    /* Top menu */ }\n    .page-boxed .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle .username.username-hide-on-mobile {\n      display: none; }\n    .page-boxed .page-header.navbar .top-menu .navbar-nav > li.dropdown-language .dropdown-toggle .langname {\n      display: none; } }\n@media (min-width: 992px) {\n  /* 992px */\n  /* Page header */\n  .page-header.navbar {\n    /* Header logo */ }\n    .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo {\n      padding: 0; }\n    .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo {\n      width: 54px; }\n      .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo .logo-default {\n        display: none; }\n  /* Boxed Layout */\n  .page-boxed .page-header.navbar {\n    /* Page logo */\n    /* Top menu */ }\n    .page-boxed .page-header.navbar .page-logo {\n      width: 195px; }\n    .page-boxed .page-header.navbar .top-menu .navbar-nav {\n      margin-right: 20px; }\n  /* Sidebar closed & logo hidden */\n  .page-sidebar-closed.page-sidebar-closed-hide-logo.page-boxed .page-header.navbar {\n    /* Page logo */ }\n    .page-sidebar-closed.page-sidebar-closed-hide-logo.page-boxed .page-header.navbar .page-logo {\n      width: 54px; }\n  /* Boxed layout & page sidebar fixed layout */\n  .page-boxed.page-sidebar-fixed .page-header.navbar {\n    /* Page logo */ }\n    .page-boxed.page-sidebar-fixed .page-header.navbar .page-logo {\n      width: 195px; } }\n@media (max-width: 991px) {\n  /* 991px */\n  /* Page header */\n  .page-header.navbar {\n    padding: 0;\n    margin: 0;\n    position: relative;\n    clear: both;\n    /* Page logo */\n    /* Menu Toggler */\n    /* Search form */\n    /* Top Menu */ }\n    .page-header.navbar .page-logo {\n      width: auto;\n      padding: 0 15px 0 10px; }\n      .page-header.navbar .page-logo img {\n        margin-left: 4px !important; }\n    .page-header.navbar .menu-toggler.sidebar-toggler {\n      display: none !important; }\n    .page-header.navbar .menu-toggler.responsive-toggler {\n      display: inline-block; }\n    .page-header.navbar .search-form {\n      margin-left: 0; }\n      .page-header.navbar .search-form.open {\n        width: 245px !important; }\n    .page-header.navbar .page-header-inner.container {\n      width: 100%;\n      max-width: none !important;\n      margin: 0 !important;\n      padding: 0 !important; }\n    .page-header.navbar .top-menu .navbar-nav {\n      display: inline-block;\n      margin: 0 10px 0 0; }\n      .page-header.navbar .top-menu .navbar-nav > li {\n        float: left; }\n      .page-header.navbar .top-menu .navbar-nav .nav li.dropdown i {\n        display: inline-block;\n        position: relative;\n        top: 1px;\n        right: 0px; }\n      .page-header.navbar .top-menu .navbar-nav .open .dropdown-menu {\n        position: absolute; }\n  /* Fixed header for mobile */\n  .page-header-fixed.page-header-fixed-mobile .navbar-fixed-top {\n    position: fixed; }\n  /* Boxed Layout */\n  .page-boxed .page-header.navbar > .container {\n    max-width: none !important;\n    margin: 0 !important;\n    padding: 0 !important; } }\n@media (min-width: 768px) and (max-width: 991px) {\n  /* 768px & 991px */\n  /* Boxed Layout */\n  .page-boxed .page-header.navbar {\n    margin: auto !important;\n    padding: 0; }\n    .page-boxed .page-header.navbar > .container {\n      margin: auto !important; } }\n@media (max-width: 767px) {\n  /* 767px */\n  /* Page header */\n  .page-header.navbar {\n    padding: 0;\n    /* Header logo */\n    /* Search box */\n    /* Top navigation menu*/ }\n    .page-header.navbar .page-logo {\n      width: auto; }\n    .page-header.navbar .search-form.open {\n      z-index: 3;\n      left: 10px;\n      right: 10px;\n      position: absolute;\n      width: auto !important;\n      margin: 0 -10px !important; }\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-extended > .dropdown-menu {\n      max-width: 245px;\n      width: 245px; }\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu {\n      margin-right: -170px; }\n      .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu:after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu:before {\n        margin-right: 170px; }\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu {\n      margin-right: -120px; }\n      .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu:after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu:before {\n        margin-right: 120px; }\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu {\n      margin-right: -80px; }\n      .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu:after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu:before {\n        margin-right: 80px; } }\n@media (max-width: 580px) {\n  /* Page header */\n  .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle .username.username-hide-on-mobile {\n    display: none; }\n  .page-header.navbar .top-menu .navbar-nav > li.dropdown-language .dropdown-toggle .langname {\n    display: none; } }\n@media (max-width: 767px) {\n  /* 767px */\n  .page-header.navbar {\n    height: 136px;\n    /* Top menu */ }\n    .page-header.navbar .top-menu .navbar-nav {\n      margin-right: 0; }\n      .page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle {\n        padding: 28px 10px 19px 10px; }\n      .page-header.navbar .top-menu .navbar-nav > li.dropdown-language .dropdown-toggle {\n        padding: 24px 6px 24px 6px; }\n      .page-header.navbar .top-menu .navbar-nav > li.dropdown-user {\n        margin-right: 10px; }\n        .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle {\n          padding: 24px 6px 24px 6px; }\n    .page-header.navbar .menu-toggler.responsive-toggler {\n      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAANCAYAAABPeYUaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACZJREFUeNpi/A8EDBQCFiBmpNQQJgYqgGFmCChgR2NnWMcOQIABAE66Bh4XiGmBAAAAAElFTkSuQmCC); }\n    .page-header.navbar .search-form {\n      margin-left: -12px; }\n    .page-header.navbar .page-top {\n      display: block;\n      clear: both; } }\n/***\nPace - Page Progress\n***/\n.pace .pace-progress {\n  z-index: 10000;\n  top: 66px;\n  height: 2px; }\n.pace .pace-progress-inner {\n  box-shadow: none; }\n.pace .pace-activity {\n  top: 70px;\n  right: 22px;\n  border-radius: 10px !important; }\n@media (max-width: 767px) {\n  /* 767px */\n  .page-header-fixed .pace .pace-progress {\n    top: 136px; }\n  .page-header-fixed .pace .pace-activity {\n    top: 276px;\n    right: 15px; } }\n/***\nPage container\n***/\n.page-container {\n  margin: 0px;\n  padding: 0px;\n  position: relative;\n  /* Fixed header */\n  /* Fixed footer for mobile */ }\n.page-container:before, .page-container:after {\n    content: \" \";\n    display: table; }\n.page-container:after {\n    clear: both; }\n.page-header-fixed .page-container {\n    margin-top: 68px; }\n.page-footer-fixed.page-footer-fixed-mobile .page-container {\n    margin-bottom: 20px !important; }\n@media (min-width: 1260px) {\n  /* 1200px */\n  .container {\n    width: 1270px; } }\n@media (min-width: 992px) {\n  /* Page container in fixed footer */\n  .page-footer-fixed .page-container {\n    margin-bottom: 20px !important; } }\n@media (max-width: 991px) {\n  /* Page container */\n  .page-container {\n    margin: 0 !important;\n    padding: 0 !important; }\n    .page-header-fixed.page-header-fixed-mobile .page-container {\n      margin-top: 68px !important; } }\n@media (max-width: 480px) {\n  /* Page container */\n  .page-header-fixed.page-header-fixed-mobile .page-container {\n    margin-top: 136px !important; } }\n/***\nPage sidebar\n***/\n/* IE8 fix */\n.ie8 .page-sidebar {\n  width: 195px;\n  float: left;\n  position: relative;\n  margin-right: -100%; }\n/* Page Sidebar */\n.page-sidebar,\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {\n  /* Default sidebar menu */\n  /* Compact sidebar menu */\n  /* Compact hoverable sidebar menu */ }\n.page-sidebar.navbar-collapse,\n  .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover.navbar-collapse {\n    padding: 0;\n    box-shadow: none; }\n.page-sidebar .page-sidebar-menu,\n  .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n    /* 1st level links */\n    /* all links */ }\n.page-sidebar .page-sidebar-menu > li,\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li {\n      display: block;\n      margin: 0;\n      padding: 0;\n      border: 0px; }\n.page-sidebar .page-sidebar-menu > li.start > a,\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.start > a {\n        border-top-color: transparent !important; }\n.page-sidebar .page-sidebar-menu > li.last > a,\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.last > a {\n        border-bottom-color: transparent !important; }\n.page-sidebar .page-sidebar-menu > li > a,\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {\n        min-height: 78px;\n        display: block;\n        position: relative;\n        margin: 0;\n        border: 0px;\n        padding: 17px 15px 15px 15px;\n        text-decoration: none;\n        font-size: 13px;\n        font-weight: 300;\n        text-align: center; }\n.page-sidebar .page-sidebar-menu > li > a > .title,\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > .title {\n          display: block;\n          text-align: center;\n          margin-top: 5px; }\n.page-sidebar .page-sidebar-menu > li > a > i,\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i {\n          font-size: 24px;\n          text-shadow: none;\n          font-weight: 300;\n          text-align: center; }\n.page-sidebar .page-sidebar-menu > li > a > i.glyphicon,\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i.glyphicon {\n          top: 3px;\n          margin-left: 1px;\n          margin-right: 4px; }\n.page-sidebar .page-sidebar-menu > li > a > [class^=\"icon-\"],\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > [class^=\"icon-\"] {\n          top: 2px;\n          margin-left: 1px;\n          margin-right: 4px; }\n.page-sidebar-fixed .page-sidebar .page-sidebar-menu > li > a, .page-sidebar-fixed\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {\n          transition: all 0.2s ease; }\n.page-sidebar-reversed.page-sidebar-fixed .page-sidebar .page-sidebar-menu > li > a, .page-sidebar-reversed.page-sidebar-fixed\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {\n          transition: none; }\n.page-sidebar .page-sidebar-menu > li.open > a,\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.open > a {\n        font-size: 13px; }\n.page-sidebar .page-sidebar-menu > li.active > a,\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a {\n        border: none;\n        text-shadow: none;\n        font-size: 13px; }\n.page-sidebar .page-sidebar-menu > li.active > a > .selected,\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\n          background-image: none;\n          /* will be set in a theme css file*/\n          float: right;\n          position: absolute;\n          right: -1px;\n          top: 26px;\n          background: none;\n          width: 0;\n          height: 0;\n          border-style: solid;\n          border-top: 12px double transparent;\n          border-bottom: 12px double transparent;\n          border-left: 0;\n          border-right: 8px solid #ffffff; }\n.page-sidebar-reversed .page-sidebar .page-sidebar-menu > li.active > a > .selected, .page-sidebar-reversed\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\n            right: auto;\n            left: -1px;\n            border-right: 0;\n            border-left: 8px solid #ffffff; }\n.page-container-bg-solid .page-sidebar .page-sidebar-menu > li.active > a > .selected, .page-container-bg-solid\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\n            border-color: transparent #eef1f5 transparent transparent; }\n.page-container-bg-solid.page-sidebar-reversed .page-sidebar .page-sidebar-menu > li.active > a > .selected, .page-container-bg-solid.page-sidebar-reversed\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\n            border-color: transparent transparent transparent #eef1f5; }\n.page-sidebar .page-sidebar-menu li > a > .arrow:before,\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .arrow:before {\n      width: 10px;\n      float: right;\n      margin-right: 5px;\n      margin-left: 5px;\n      margin-top: -32px;\n      display: inline;\n      font-size: 16px;\n      font-family: FontAwesome;\n      height: auto;\n      content: \"\\f104\";\n      font-weight: 300;\n      text-shadow: none; }\n.page-sidebar .page-sidebar-menu li > a > .arrow.open:before,\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .arrow.open:before {\n      content: \"\\f107\"; }\n.page-sidebar .page-sidebar-menu li > a > .badge,\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .badge {\n      float: right;\n      margin-top: 1px;\n      margin-right: 0px; }\n.page-sidebar .page-sidebar-menu .sub-menu,\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu {\n      list-style: none;\n      display: none;\n      padding: 0;\n      margin: 8px 0px 8px 0px; }\n.page-sidebar .page-sidebar-menu .sub-menu li,\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li {\n        background: none;\n        margin: 0px;\n        padding: 0px;\n        margin-top: 1px !important;\n        /* 2nd level sub menu */ }\n.page-sidebar .page-sidebar-menu .sub-menu li > a,\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a {\n          display: block;\n          margin: 0;\n          padding: 9px 15px 9px 15px;\n          text-decoration: none;\n          font-size: 13px;\n          font-weight: 300;\n          background: none; }\n.page-sidebar .page-sidebar-menu .sub-menu li > a > i,\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a > i {\n            font-size: 14px;\n            margin-right: 1px; }\n.page-sidebar .page-sidebar-menu .sub-menu li > a .arrow:before,\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a .arrow:before {\n            margin-top: -4px; }\n.page-sidebar .page-sidebar-menu .sub-menu li > a .arrow.open:before,\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a .arrow.open:before {\n            margin-top: -2px; }\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu,\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu {\n          margin: 0; }\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li,\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li {\n            /* 3rd level sub menu */ }\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li > a,\n            .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li > a {\n              padding-left: 30px; }\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu,\n            .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu {\n              margin: 0; }\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu > li > a,\n              .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu > li > a {\n                padding-left: 40px; }\n.page-sidebar .page-sidebar-menu .sub-menu.always-open,\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu.always-open {\n        display: block; }\n.page-sidebar .page-sidebar-menu li.active > .sub-menu,\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li.active > .sub-menu {\n      display: block; }\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact,\n  .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact {\n    /* first level links */\n    /* all links */ }\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact > li,\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact > li {\n      text-align: left; }\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact > li > a,\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact > li > a {\n        text-align: left;\n        min-height: 50px;\n        padding: 15px 15px 15px 15px; }\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact > li > a > .title,\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact > li > a > .title {\n          display: inline-block;\n          text-align: left;\n          margin-top: 0px; }\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact > li > a > i,\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact > li > a > i {\n          font-size: 16px;\n          /* $sidebar-menu-link-icon-font-size */\n          text-align: left; }\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact > li.active > a > .selected,\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact > li.active > a > .selected {\n        top: 14px; }\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact > li > .sub-menu > li > a,\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact > li > .sub-menu > li > a {\n        padding-left: 22px; }\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact li > a > .arrow:before,\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact li > a > .arrow:before {\n      margin-top: -1px; }\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact li > a > .arrow.open:before,\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact li > a > .arrow.open:before {\n      margin-top: -1px; }\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu,\n  .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu {\n    /* first level links */ }\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu > li > .sub-menu > li > a,\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu > li > .sub-menu > li > a {\n      padding-left: 15px; }\n@media (min-width: 992px) {\n  /* 992px */\n  .page-sidebar {\n    width: 195px;\n    float: left;\n    position: relative;\n    margin-right: -100%; }\n    .page-full-width .page-sidebar {\n      display: none !important; }\n    .page-sidebar.navbar-collapse {\n      max-height: none !important; }\n    .page-sidebar .page-sidebar-menu {\n      margin-bottom: 10px; }\n  .page-sidebar-reversed .page-sidebar {\n    float: right;\n    margin-right: 0;\n    margin-left: -100%; }\n  .page-sidebar-reversed.page-sidebar-fixed .page-sidebar {\n    margin-left: -195px; }\n  .page-sidebar-reversed.page-sidebar-fixed .page-sidebar-wrapper {\n    position: relative;\n    float: right; }\n  .page-sidebar-fixed .page-sidebar {\n    position: fixed !important;\n    margin-left: 0;\n    top: 68px; }\n  .page-sidebar-fixed .page-sidebar-menu > li.last {\n    margin-bottom: 15px !important; }\n  .page-sidebar-fixed .page-sidebar-menu .sub-menu {\n    height: auto !important; }\n  /* Sidebar Closed */\n  .page-sidebar-closed .page-sidebar {\n    width: 54px !important; }\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {\n      /* sidebar */\n      width: 54px !important; }\n      .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li {\n        /* hide opened sub menu */ }\n        .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.open > .sub-menu,\n        .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > .sub-menu {\n          display: none !important; }\n        .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover {\n          width: 249px !important;\n          position: relative !important;\n          z-index: 10000;\n          display: block !important; }\n          .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a {\n            border-radius: 0 4px 0 0;\n            text-align: left; }\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > i {\n              display: inline-block;\n              margin-right: 10px; }\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .title {\n              display: inline !important;\n              padding-left: 20px; }\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .badge {\n              display: block !important; }\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .selected {\n              display: none; }\n          .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu {\n            width: 194px;\n            position: absolute;\n            z-index: 2000;\n            left: 55px;\n            margin-top: 0;\n            top: 100%;\n            display: block !important;\n            border-radius: 0 0 4px 4px; }\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu > li > a {\n              padding-left: 15px !important; }\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu > li > .sub-menu > li > a {\n              padding-left: 30px !important; }\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu > li > .sub-menu > li > .sub-menu > li > a {\n              padding-left: 45px !important; }\n        .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a {\n          min-height: 54px;\n          padding-left: 11px; }\n          .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a .selected {\n            top: 16px;\n            right: -2px !important; }\n          .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a > .badge,\n          .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a > .title,\n          .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a > .arrow {\n            display: none !important; }\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-closed > li > a {\n      min-height: 50px;\n      padding-right: 11px;\n      padding-left: 18px; }\n  .page-sidebar-closed.page-sidebar-reversed .page-sidebar {\n    margin-left: -54px;\n    width: 54px; }\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {\n      /* sidebar */ }\n      .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > .sub-menu {\n        left: auto;\n        right: 55px; }\n      .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover {\n        margin-left: -195px; }\n        .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a {\n          border-radius: 4px 0 0 0; }\n          .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .title {\n            padding-left: 0;\n            padding-right: 15px; }\n          .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > i {\n            margin-right: 0;\n            margin-left: 2px; }\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-light.page-sidebar-menu-closed > li > a {\n      padding-right: 7px;\n      padding-left: 11px; }\n  .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {\n    width: 195px !important;\n    display: block;\n    z-index: 10000; }\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu {\n      width: 195px !important; }\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .selected {\n        display: none !important; }\n  .page-sidebar-closed.page-sidebar-fixed.page-sidebar-reversed .page-sidebar:hover {\n    width: 195px !important;\n    display: block;\n    z-index: 10000;\n    margin-left: -195px !important; }\n    .page-sidebar-closed.page-sidebar-fixed.page-sidebar-reversed .page-sidebar:hover .page-sidebar-menu {\n      width: 195px !important; }\n  .page-sidebar-closed.page-sidebar-hide .page-sidebar {\n    display: none !important; }\n  /* Default Sidebar Menu With Hoverable Submenu */\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu li .sub-menu {\n    display: none;\n    width: 194px;\n    z-index: 2000;\n    position: absolute;\n    border-radius: 4px; }\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li .sub-menu > li > a {\n      margin: 3px; }\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu li.active .sub-menu, .page-sidebar-menu.page-sidebar-menu-hover-submenu li.open .sub-menu {\n    display: none !important; }\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu li a > .arrow {\n    display: none; }\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow {\n    display: block;\n    float: right;\n    position: absolute;\n    right: 0;\n    margin-top: -20px;\n    background: none;\n    width: 0;\n    height: 0;\n    border-style: solid;\n    border-top: 12px double transparent;\n    border-bottom: 12px double transparent;\n    border-left: 0; }\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow:after, .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow:before {\n      display: none; }\n    .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow {\n      right: auto;\n      left: 0;\n      border-right: 0; }\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > .sub-menu {\n    display: inline-block !important; }\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > a > .arrow {\n    z-index: 1;\n    right: 0px;\n    margin-top: -36px; }\n    .page-fontawesome .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > a > .arrow {\n      margin-top: -34px; }\n    .page-glyphicons .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > a > .arrow {\n      margin-top: -38px; }\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\n    margin-left: 195px;\n    margin-top: -78px; }\n    .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\n      margin-left: -194px !important; }\n    .page-sidebar-closed .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\n      margin-left: 0; }\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li .sub-menu {\n      margin-left: 194px;\n      margin-top: -42px !important; }\n      .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li .sub-menu {\n        margin-left: -194px !important; }\n      .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li .sub-menu > li > a {\n        padding-left: 10px;\n        padding-right: 10px; }\n  /* Compact Sidebar Menu With Hoverable Submenu */\n  .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu li:hover > a > .arrow {\n    margin-top: -20px; }\n  .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu > li:hover > a > .arrow {\n    margin-top: -20px; }\n  .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\n    margin-top: -49px; } }\n@media (max-width: 991px) {\n  /* 991px */\n  .page-sidebar {\n    border-top: 0 !important;\n    margin: 20px; }\n    .page-sidebar .selected {\n      display: none !important; }\n    .page-sidebar.navbar-collapse {\n      max-height: none;\n      /* set some max height to have a scrollable menu on mobile devices */ }\n      .page-sidebar.navbar-collapse.collapse {\n        display: none !important; }\n      .page-sidebar.navbar-collapse.in {\n        border-top: 0 !important;\n        margin: 20px;\n        position: relative;\n        overflow: hidden !important;\n        overflow-y: auto !important;\n        display: block !important; }\n      .page-sidebar.navbar-collapse.navbar-no-scroll {\n        max-height: none !important; }\n    .page-sidebar .mega-menu-responsive-content {\n      padding: 10px 18px 10px 45px; }\n  .page-full-width .page-sidebar-menu {\n    display: block; } }\n@media (min-width: 768px) and (max-width: 991px) {\n  /* 768px & 991px */\n  .page-sidebar .btn-navbar.collapsed .arrow {\n    display: none; }\n  .page-sidebar .btn-navbar .arrow {\n    position: absolute;\n    right: 25px;\n    width: 0;\n    height: 0;\n    top: 50px;\n    border-bottom: 15px solid #5f646b;\n    border-left: 15px solid transparent;\n    border-right: 15px solid transparent; } }\n@media (max-width: 480px) {\n  /* 480px */\n  /* Page sidebar */\n  .page-sidebar,\n  .page-sidebar.in {\n    margin: 10px 10px 10px 10px !important; }\n    .page-header-fixed.page-header-fixed-mobile .page-sidebar, .page-header-fixed.page-header-fixed-mobile\n    .page-sidebar.in {\n      margin-top: 10px !important; } }\n/***\nPage content\n***/\n/* Page title */\n.page-title {\n  padding: 0px;\n  font-size: 26px;\n  letter-spacing: -1px;\n  line-height: 26px;\n  display: block;\n  color: #666;\n  margin: 0px 0px 20px 0px;\n  font-weight: 300;\n  font-family: \"Open Sans\", sans-serif;\n  /* subtitle */ }\n.page-title small {\n    font-size: 13px;\n    letter-spacing: 0px;\n    font-weight: 300;\n    color: #888; }\n.page-container-bg-solid .page-title {\n    color: #666; }\n.page-container-bg-solid .page-title small {\n      color: #666; }\n/* Page breadcrumb */\n.page-bar {\n  padding: 0px;\n  background-color: #ffffff;\n  margin-bottom: 20px;\n  border-radius: 4px; }\n.page-bar:before, .page-bar:after {\n    content: \" \";\n    display: table; }\n.page-bar:after {\n    clear: both; }\n.page-bar .page-breadcrumb {\n    display: inline-block;\n    float: left;\n    padding: 10px 6px;\n    margin: 0;\n    list-style: none; }\n.page-bar .page-breadcrumb > li {\n      display: inline-block; }\n.ie8 .page-bar .page-breadcrumb > li {\n        margin-right: 1px; }\n.page-bar .page-breadcrumb > li > a,\n      .page-bar .page-breadcrumb > li > span {\n        color: #888;\n        font-size: 13px;\n        text-shadow: none; }\n.page-bar .page-breadcrumb > li > i {\n        color: #aaa;\n        font-size: 14px;\n        text-shadow: none; }\n.page-bar .page-breadcrumb > li > i[class^=\"icon-\"],\n      .page-bar .page-breadcrumb > li > i[class*=\"icon-\"] {\n        color: #8c8c8c; }\n.page-bar .page-toolbar {\n    display: inline-block;\n    float: right; }\n.page-bar .page-toolbar .btn-fit-height {\n      border-radius: 0 4px 4px 0;\n      padding-top: 9px;\n      padding-bottom: 9px; }\n.page-md .page-bar .page-toolbar .btn-fit-height {\n        padding-top: 11px;\n        padding-bottom: 10px;\n        box-shadow: none !important; }\n.page-bar .page-toolbar .btn.btn-default {\n      border-color: #eee;\n      color: #999; }\n.page-bar .page-toolbar .btn.btn-default > i {\n        color: #999; }\n.page-bar .page-toolbar .btn.btn-sm {\n      margin-top: 0px; }\n.page-bar .page-toolbar .btn-dashboard-daterange {\n      padding: 8px 16px 8px 16px; }\n.page-bar .page-toolbar .btn-dashboard-daterange > i[class^=\"icon-\"] {\n        position: relative;\n        font-size: 20px;\n        opacity: 0.8 ;\n        filter: alpha(opacity=80) ;\n        top: 2px; }\n.page-bar .page-toolbar .btn-dashboard-daterange > i.fa-angle-down {\n        font-size: 16px;\n        opacity: 0.8 ;\n        filter: alpha(opacity=80) ; }\n/* Page content */\n.page-content {\n  margin-top: 0px;\n  padding: 0px;\n  background-color: #fff; }\n.page-container-bg-solid .page-content {\n    background: #eef1f5; }\n.page-full-width .page-content {\n    margin-left: 0px !important; }\n@media (min-width: 992px) {\n  /* 992px */\n  /* Page content */\n  .page-content-wrapper {\n    float: left;\n    width: 100%; }\n    .page-content-wrapper .page-content {\n      margin-left: 195px;\n      margin-top: 0px;\n      min-height: 600px;\n      padding: 25px 20px 10px 20px; }\n      .page-content-wrapper .page-content.no-min-height {\n        min-height: auto; }\n      .page-sidebar-fixed.page-sidebar-hover-on .page-content-wrapper .page-content {\n        margin-left: 54px; }\n      .page-sidebar-reversed .page-content-wrapper .page-content {\n        margin-left: 0 !important;\n        margin-right: 195px !important; }\n      .page-sidebar-reversed.page-sidebar-fixed.page-sidebar-hover-on .page-content-wrapper .page-content {\n        margin-left: 0;\n        margin-right: 54px; }\n      .page-sidebar-reversed.page-sidebar-closed .page-content-wrapper .page-content {\n        margin-left: 0 !important;\n        margin-right: 54px !important; }\n      .page-sidebar-closed .page-content-wrapper .page-content {\n        margin-left: 54px !important; }\n      .page-sidebar-closed.page-sidebar-hide .page-content-wrapper .page-content {\n        margin-left: 0 !important; }\n      .page-sidebar-closed.page-sidebar-reversed.page-sidebar-hide .page-content-wrapper .page-content {\n        margin-right: 0 !important; }\n      .page-full-width .page-content-wrapper .page-content {\n        margin-left: 0px !important; } }\n@media (max-width: 991px) {\n  /* 991px */\n  /* Boxed page container  */\n  .page-boxed > .container {\n    width: 100%;\n    max-width: none !important;\n    margin: 0 !important;\n    padding: 0 !important; }\n  /* Page content */\n  .page-content-wrapper .page-content {\n    margin: 0px !important;\n    padding: 20px !important;\n    min-height: 280px; } }\n@media (min-width: 768px) and (max-width: 991px) {\n  /*  768px & 991px */\n  /* Boxed page container */\n  .page-boxed > .container {\n    margin: auto !important; } }\n@media (max-width: 767px) {\n  /* 767px */\n  /* Page content */\n  .page-content-wrapper .page-content {\n    padding: 20px 10px 10px 10px !important;\n    overflow: hidden;\n    /* Page title */ }\n    .page-content-wrapper .page-content .page-title {\n      margin-bottom: 15px;\n      font-size: 20px; }\n      .page-content-wrapper .page-content .page-title small {\n        font-size: 13px;\n        padding-top: 3px; } }\n@media (max-width: 480px) {\n  /* 480px */\n  /* Dashboard date range panel */\n  .page-content-wrapper .page-content .page-title small {\n    display: block;\n    clear: both; } }\n/***\nPage footer\n***/\n.page-footer {\n  padding: 8px 20px 5px 20px;\n  font-size: 12px;\n  height: 33px; }\n.page-footer:before, .page-footer:after {\n    content: \" \";\n    display: table; }\n.page-footer:after {\n    clear: both; }\n.page-footer .page-footer-inner {\n    float: left;\n    display: inline-block; }\n.page-footer .page-footer-tools {\n    float: right;\n    display: inline-block; }\n.page-footer .page-footer-tools .go-top {\n      display: block;\n      text-decoration: none;\n      cursor: pointer;\n      margin-top: -2px;\n      margin-right: 0px;\n      margin-bottom: 0px;\n      font-size: 16px;\n      padding: 0px 6px 0px 6px; }\n.page-footer .page-footer-tools .go-top i {\n        font-size: 22px;\n        margin-bottom: 5px; }\n.page-footer-fixed.page-footer-fixed-mobile .page-footer {\n    position: fixed;\n    left: 0;\n    right: 0;\n    z-index: 10000;\n    bottom: 0; }\n.page-footer-fixed.page-footer-fixed-mobile.page-sidebar-fixed .page-footer {\n    margin-left: 0 !important; }\n@media (min-width: 992px) {\n  /* 992px */\n  /* Default footer */\n  .page-footer {\n    clear: left; }\n  /* Fixed footer */\n  .page-footer-fixed .page-footer {\n    position: fixed;\n    left: 0;\n    right: 0;\n    z-index: 10000;\n    bottom: 0; }\n  /* Footer with footer sidebar */\n  .page-sidebar-fixed.page-sidebar-closed .page-footer {\n    margin-left: 54px; }\n  .page-sidebar-fixed.page-footer-fixed .page-footer {\n    margin-left: 0 !important; }\n  /* Fixed Sidebar */\n  .page-sidebar-fixed .page-footer {\n    margin-left: 195px;\n    padding: 8px 20px 5px 20px; }\n  /* Boxed page */\n  .page-boxed .page-footer {\n    padding: 8px 0 5px 0; }\n  .page-boxed.page-sidebar-fixed .page-footer {\n    padding-right: 20px;\n    padding-left: 20px; }\n  /* Page sidebar reversed */\n  .page-sidebar-reversed.page-sidebar-fixed .page-footer {\n    margin-left: 0;\n    margin-right: 195px;\n    padding: 8px 20px 5px 20px; }\n  .page-sidebar-reversed.page-sidebar-fixed.page-footer-fixed .page-footer {\n    margin-left: 0;\n    margin-right: 0; }\n  .page-sidebar-reversed.page-sidebar-fixed.page-sidebar-closed .page-footer {\n    margin-right: 54px; } }\n@media (max-width: 991px) {\n  /* 991px */\n  /* Boxed Layout */\n  .page-footer {\n    padding-left: 10px;\n    padding-right: 10px; } }\n@media (max-width: 767px) {\n  /* 767px */\n  /* Default footer & boxed footer */\n  .page-footer,\n  .page-boxed .page-footer {\n    padding-left: 10px;\n    padding-right: 10px; }\n  /* Fixed footer */\n  .page-footer-fixed .page-footer .container {\n    padding-left: 0;\n    padding-right: 0; } }\n/* Scroll Top Top */\n.scroll-to-top {\n  display: inline-block;\n  padding: 2px;\n  text-align: center;\n  position: fixed;\n  z-index: 10001;\n  bottom: 10px;\n  display: none;\n  right: 10px; }\n.scroll-to-top > i {\n    display: inline-block;\n    color: #687991;\n    font-size: 32px;\n    opacity: 0.7 ;\n    filter: alpha(opacity=70) ; }\n.scroll-to-top:hover {\n    cursor: pointer; }\n.scroll-to-top:hover > i {\n      opacity: 1 ;\n      filter: alpha(opacity=100) ; }\n@media (min-width: 992px) {\n  /* 992px */\n  .scroll-to-top {\n    right: 10px; } }\n@media (max-width: 991px) {\n  /* 991px */\n  .scroll-to-top {\n    right: 10px; }\n    .scroll-to-top > i {\n      font-size: 28px; } }\n/***\nTheme Panel\n***/\n.theme-panel {\n  width: 400px;\n  margin-top: -15px;\n  margin-right: 0px;\n  z-index: 100;\n  float: right;\n  position: relative; }\n.theme-panel > .toggler {\n    top: 5px;\n    right: 1px;\n    height: 40px;\n    width: 40px;\n    border-radius: 50% !important;\n    cursor: pointer;\n    position: absolute;\n    text-align: center;\n    background-color: #fff; }\n.theme-panel > .toggler > i {\n      position: relative;\n      top: 12px;\n      font-size: 20px;\n      color: #9fb3ca; }\n.theme-panel > .toggler:hover {\n      background: #ACB5C3; }\n.theme-panel > .toggler:hover > i {\n        color: #fff; }\n.theme-panel > .toggler-close {\n    display: none;\n    top: 5px;\n    right: 1px;\n    z-index: 101;\n    cursor: pointer;\n    position: absolute; }\n.theme-panel > .toggler-close > i {\n      position: relative;\n      top: 12px;\n      right: 12px;\n      font-size: 20px;\n      color: #f2f2f2; }\n.theme-panel > .toggler-close:hover {\n      opacity: 0.8 ;\n      filter: alpha(opacity=80) ; }\n.theme-panel > .theme-options {\n    box-shadow: 5px 5px rgba(63, 77, 86, 0.1);\n    top: 4px;\n    right: 0;\n    display: none;\n    position: absolute;\n    z-index: 100;\n    background: #3f4d56;\n    border: 1px solid #39454d;\n    border-radius: 4px; }\n.theme-panel > .theme-options > .theme-option {\n      color: #eee;\n      padding: 11px;\n      border-top: 1px solid #46545f;\n      margin-top: 0px;\n      margin-bottom: 0px; }\n.theme-panel > .theme-options > .theme-option > span {\n        text-transform: uppercase;\n        display: inline-block;\n        width: 115px;\n        font-size: 13px;\n        font-weight: 300; }\n.theme-panel > .theme-options > .theme-option > select.form-control {\n        display: inline;\n        width: 100px;\n        padding: 2px;\n        text-transform: lowercase; }\n.theme-panel > .theme-options > .theme-option.theme-colors {\n        border-top: 0; }\n.theme-panel > .theme-options > .theme-option.theme-colors > span {\n          display: block;\n          width: auto; }\n.theme-panel > .theme-options > .theme-option.theme-colors > ul {\n          list-style: none;\n          padding: 0;\n          display: block;\n          margin-bottom: 10px !important;\n          margin-top: 15px; }\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li {\n            width: 46px;\n            height: 45px;\n            margin: 0 4px;\n            cursor: pointer;\n            list-style: none;\n            float: left;\n            border: solid 1px #707070;\n            /* theme colors */ }\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li:first-child {\n              margin-left: 0; }\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li:hover, .theme-panel > .theme-options > .theme-option.theme-colors > ul > li.current {\n              border: solid 2px #d64635; }\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-default {\n              background: #2b3643; }\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-dark {\n              background: #333438; }\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-blue {\n              background: #26344B; }\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-grey {\n              background: #4D5B69; }\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-light {\n              background: #f5f5f5; }\n/* Page Portlet Fullscreen */\n.page-portlet-fullscreen .page-quick-sidebar-wrapper,\n.page-portlet-fullscreen .page-quick-sidebar-toggler {\n  z-index: -1; }\n/* Quick sidebar toggler */\n.page-quick-sidebar-toggler {\n  overflow: hidden;\n  z-index: 99999;\n  display: none;\n  width: 28px;\n  height: 27px;\n  position: fixed;\n  top: 10px;\n  right: 15px;\n  text-align: center;\n  padding-top: 6px; }\n.page-quick-sidebar-toggler:hover {\n    background: #303a43; }\n.page-quick-sidebar-open .page-quick-sidebar-toggler {\n    display: inline-block; }\n.page-quick-sidebar-open .page-quick-sidebar-toggler:hover {\n      background: none; }\n.page-quick-sidebar-toggler > i {\n    color: #99a8b5;\n    font-size: 17px; }\n.page-quick-sidebar-toggler > i:hover {\n      color: #fff !important; }\n.page-quick-sidebar-open .page-quick-sidebar-toggler > i:before {\n      content: \"\"/*rtl:\"\"*/; }\n/* Quick sidebar wrapper */\n.page-quick-sidebar-wrapper {\n  transition: right 0.3s;\n  z-index: 9996;\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  width: 320px;\n  right: -320px;\n  overflow: hidden;\n  color: #99a8b5;\n  background: #21282e; }\n.page-quick-sidebar-open .page-quick-sidebar-wrapper {\n    transition: right 0.3s;\n    right: 0; }\n.page-quick-sidebar-wrapper .page-quick-sidebar {\n    background: #21282e;\n    /* Quick sidebar tabs content */\n    /* Quick sidebar general list heading */\n    /* Quick sidebar general list-items */\n    /* Inner content */\n    /* Quick sidebar list */\n    /* Quick sidebar list item */\n    /* Quick sidebar list item shown */\n    /* Quick sidebar chat */\n    /* Quick sidebar alerts */\n    /* Quick sidebar settings */ }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs {\n      margin: 0;\n      padding: 0;\n      border: 0; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li {\n        display: table-cell !important;\n        width: 1%  !important;\n        padding: 0;\n        margin: 0;\n        float: none; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li > a {\n          position: relative;\n          display: block;\n          text-align: center;\n          border: 0;\n          height: auto;\n          font-size: 14px;\n          padding: 45px 15px 8px;\n          text-transform: uppercase;\n          background: none;\n          margin-right: 0;\n          color: #90a1af;\n          border: 0;\n          border-bottom: 3px solid rgba(243, 86, 93, 0.3);\n          border-radius: 0;\n          outline: none !important; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li > a > .badge {\n            position: absolute;\n            top: 45px;\n            right: 3px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li.active > a, .page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li:hover > a {\n          border: 0;\n          border-bottom: 3px solid #f3565d;\n          background: none;\n          color: #fff;\n          text-decoration: none; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu {\n          border: 0;\n          background: #36424c;\n          box-shadow: 5px 5px rgba(97, 117, 135, 0.1);\n          margin-top: 8px;\n          margin-right: 20px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu:before {\n            position: absolute;\n            top: -7px;\n            right: 19px;\n            display: inline-block !important;\n            border-right: 7px solid transparent;\n            border-left: 7px solid transparent;\n            border-bottom: 7px solid #36424c;\n            content: ''; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu:after {\n            position: absolute;\n            top: -6px;\n            right: 20px;\n            display: inline-block !important;\n            border-right: 6px solid transparent;\n            border-left: 6px solid transparent;\n            border-bottom: 7px solid #36424c;\n            content: ''; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li > a {\n            padding: 10px 15px;\n            color: #99a8b5; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li > a > i {\n              color: #93a3b1; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li:hover > a {\n            background: #3d4a55;\n            color: #99a8b5; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li:hover > a > i {\n              color: #9babb8; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li.active > a {\n            background: #38444f;\n            color: #99a8b5; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li.divider {\n            background-color: #3d4a55; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li.open > a.dropdown-toggle {\n          border-bottom: 3px solid #f3565d;\n          background: none;\n          text-decoration: none;\n          color: #90a1af; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .tab-content {\n      margin: 0;\n      padding: 0; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-heading {\n      font-size: 16px;\n      margin: 10px 10px;\n      color: #6c8296; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items {\n      margin: 0;\n      padding: 0;\n      list-style: none; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items > li {\n        margin: 0;\n        padding: 15px;\n        background: none;\n        border-bottom-width: 1px;\n        border-bottom-style: solid;\n        border-bottom-color: #273037; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items > li:hover {\n          background: #273037; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items > li:last-child {\n          border-bottom: 0; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items.borderless li {\n        border: 0; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .inner-content {\n      margin: 10px 10px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-list {\n      position: absolute !important;\n      width: 320px !important;\n      transition: margin 0.3s; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item {\n      width: 320px;\n      position: absolute !important;\n      width: 320px !important;\n      transition: margin 0.3s;\n      margin-left: 320px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav {\n        padding: 15px 10px 0px 10px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav .page-quick-sidebar-back-to-list {\n          vertical-align: middle;\n          display: inline-block;\n          font-size: 14px;\n          color: #90a1af; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav .page-quick-sidebar-back-to-list:hover {\n            text-decoration: none; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav .page-quick-sidebar-back-to-list > i {\n            font-size: 17px;\n            line-height: 17px;\n            vertical-align: top;\n            margin-right: 3px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list {\n      transition: margin 0.3s;\n      margin-left: -320px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list .slimScrollBar,\n      .page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list .slimScrollRail {\n        display: none !important; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-item {\n      transition: margin 0.3s;\n      margin-left: 0; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users {\n      padding: 10px 0;\n      position: relative; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media {\n        padding: 15px 15px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object {\n          border-radius: 50% !important;\n          width: 45.71429px;\n          opacity: 0.8;\n          filter: alpha(opacity=80);\n          float: left;\n          margin-right: 10px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object:before, .page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object:after {\n            content: \" \";\n            display: table; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object:after {\n            clear: both; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media:hover {\n          cursor: pointer; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media:hover .media-object {\n            opacity: 1;\n            filter: alpha(opacity=100); }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-body .media-heading {\n          margin: 5px 0 0 0;\n          font-size: 14px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-body .media-heading-sub {\n          font-size: 11px;\n          text-transform: uppercase;\n          color: #657b8d; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-body .media-heading-small {\n          font-size: 10px;\n          color: #5d7081; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-status {\n          margin-top: 10px;\n          right: 10px;\n          position: absolute;\n          display: inline-block; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages {\n      padding: 0px 10px;\n      position: relative; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post {\n        transition: display 0.3s;\n        padding: 5px 0;\n        margin: 10px auto;\n        font-size: 13px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .body {\n          color: #c3c3c3;\n          display: block; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .avatar {\n          width: 45.71429px;\n          border-radius: 50% !important; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .avatar {\n          float: left;\n          margin-right: 10px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .avatar {\n          float: right;\n          margin-left: 10px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .name {\n          font-size: 12px;\n          font-weight: 300;\n          color: #8496a7; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .datetime {\n          font-size: 12px;\n          font-weight: 300;\n          color: #8496a7; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message {\n          display: block;\n          padding: 5px;\n          position: relative;\n          color: #90a1af;\n          background: #36424c; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .message {\n          text-align: left;\n          margin-left: 55px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .message .arrow {\n            display: block;\n            position: absolute;\n            top: 9px;\n            left: -6px;\n            width: 0;\n            height: 0;\n            border-top: 6px solid transparent;\n            border-bottom: 6px solid transparent;\n            border-right-width: 6px;\n            border-right-style: solid;\n            border-right-color: #36424c; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .message {\n          margin-right: 55px;\n          text-align: right; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .message .arrow {\n            display: block;\n            position: absolute;\n            top: 9px;\n            right: -6px;\n            border-top: 6px solid transparent;\n            border-bottom: 6px solid transparent;\n            border-left-width: 6px;\n            border-left-style: solid;\n            border-left-color: #36424c; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .name,\n        .page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .datetime {\n          text-align: right; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-form {\n      padding: 20px 10px 15px 10px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list {\n      padding: 10px 0;\n      position: relative; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a {\n        color: #7e91a2; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a .label {\n          margin-top: 5px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a .desc {\n          text-decoration: underline;\n          padding: 0;\n          color: #788c9e; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a .date {\n          color: #5d7081; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list {\n      padding: 10px 0;\n      position: relative; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list .list-items li .bootstrap-switch {\n        margin-top: -3px;\n        float: right;\n        border: 0;\n        min-width: 59px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list .list-items li .form-control {\n        width: 75px !important;\n        padding: 4px 4px !important;\n        float: right;\n        border: 0;\n        margin-top: -4px; }\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list .list-items li select.form-control {\n        padding: 4px 0px !important; }\n.quick-nav {\n  position: fixed;\n  z-index: 10103;\n  top: 50%;\n  right: 10px;\n  margin-top: -230px;\n  pointer-events: none; }\n.quick-nav .quick-nav-bg {\n    /* this is the stretching navigation background */\n    position: absolute;\n    z-index: 10102;\n    top: 0;\n    right: 0;\n    width: 60px;\n    height: 60px;\n    border-radius: 30px !important;\n    background: #36C6D3;\n    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);\n    webkit-transition: height .2s, box-shadow .2s;\n    transition: height .2s, box-shadow .2s; }\n.quick-nav.nav-is-visible {\n    pointer-events: auto; }\n.quick-nav.nav-is-visible .quick-nav-bg {\n    height: 100%;\n    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); }\n.quick-nav-trigger {\n  position: absolute;\n  z-index: 10103;\n  top: 0;\n  right: 0;\n  height: 60px;\n  width: 60px;\n  border-radius: 50% !important;\n  overflow: hidden;\n  white-space: nowrap;\n  color: transparent;\n  pointer-events: auto; }\n.quick-nav-trigger span,\n  .quick-nav-trigger span::after,\n  .quick-nav-trigger span::before {\n    /* this is the hamburger icon */\n    position: absolute;\n    width: 16px;\n    height: 2px;\n    background-color: #ffffff; }\n.quick-nav-trigger span {\n    /* middle line of the hamburger icon */\n    webkit-transition: background-color 0.2s;\n    transition: background-color 0.2s;\n    left: 50%;\n    top: 50%;\n    bottom: auto;\n    right: auto;\n    webkit-transform: translateX(-50%) translateY(-50%);\n    -webkit-transform: translateX(-50%) translateY(-50%);\n            transform: translateX(-50%) translateY(-50%); }\n.quick-nav-trigger span::after,\n  .quick-nav-trigger span::before {\n    /* top and bottom lines of the hamburger icon */\n    content: '';\n    top: 0;\n    left: 0;\n    -webkit-backface-visibility: hidden;\n    backface-visibility: hidden;\n    webkit-transition: transform 0.2s;\n    transition: -webkit-transform 0.2s;\n    transition: transform 0.2s;\n    transition: transform 0.2s, -webkit-transform 0.2s; }\n.quick-nav-trigger span::before {\n    webkit-transform: translateY(-6px);\n    -webkit-transform: translateY(-6px);\n            transform: translateY(-6px); }\n.quick-nav-trigger span::after {\n    webkit-transform: translateY(6px);\n    -webkit-transform: translateY(6px);\n            transform: translateY(6px); }\n.no-touch .quick-nav-trigger:hover ~ .quick-nav-bg {\n    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); }\n.nav-is-visible .quick-nav-trigger span {\n    background-color: transparent; }\n.nav-is-visible .quick-nav-trigger span::before {\n    webkit-transform: rotate(-45deg);\n    -webkit-transform: rotate(-45deg);\n            transform: rotate(-45deg); }\n.nav-is-visible .quick-nav-trigger span::after {\n    webkit-transform: rotate(45deg);\n    -webkit-transform: rotate(45deg);\n            transform: rotate(45deg); }\n.quick-nav ul {\n  position: relative;\n  z-index: 10103;\n  padding: 60px 0 0;\n  visibility: hidden;\n  webkit-transition: visibility 0.3s;\n  transition: visibility 0.3s;\n  text-align: right;\n  list-style: none; }\n.quick-nav ul > li a {\n    position: relative;\n    display: block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 calc(1em + 60px) 0 1em;\n    font-size: 1.4rem;\n    webkit-transition: color 0.2s;\n    transition: color 0.2s; }\n.quick-nav ul > li a:hover {\n      text-decoration: none; }\n.quick-nav ul > li a:hover > span {\n        text-decoration: none; }\n.quick-nav ul > li a > i {\n      /* navigation item icons */\n      content: '';\n      position: absolute;\n      height: 16px;\n      width: 16px;\n      font-size: 18px;\n      right: 24px;\n      top: 16px;\n      color: #ebebeb; }\n.quick-nav ul > li a::before {\n      /* line visible next to the active navigation item */\n      content: '';\n      position: absolute;\n      width: 3px;\n      height: 16px;\n      top: 50%;\n      right: 60px;\n      webkit-transform: translateX(3px) translateY(-50%) scaleY(0);\n      -webkit-transform: translateX(3px) translateY(-50%) scaleY(0);\n              transform: translateX(3px) translateY(-50%) scaleY(0);\n      background-color: #FF3F3F; }\n.quick-nav ul > li span {\n    /* navigation item labels */\n    color: #ebebeb;\n    font-weight: 400;\n    display: block;\n    opacity: 0;\n    webkit-transform: translateX(-25px);\n    -webkit-transform: translateX(-25px);\n            transform: translateX(-25px); }\n.quick-nav ul > li:last-child {\n    padding-bottom: 10px; }\n.quick-nav.nav-is-visible ul {\n  visibility: visible; }\n.quick-nav.nav-is-visible ul a::after {\n    /* navigation item icons */\n    webkit-transform: translateY(-50%) scale(1);\n    -webkit-transform: translateY(-50%) scale(1);\n            transform: translateY(-50%) scale(1);\n    -webkit-animation: scaleIn 0.15s backwards;\n    animation: scaleIn 0.15s backwards;\n    webkit-transition: opacity 0.2s;\n    transition: opacity 0.2s; }\n.quick-nav.nav-is-visible ul a:hover::after {\n    opacity: 1; }\n.quick-nav.nav-is-visible ul a:hover::before {\n    webkit-transform: translateX(3px) translateY(-50%) scaleY(2);\n    -webkit-transform: translateX(3px) translateY(-50%) scaleY(2);\n            transform: translateX(3px) translateY(-50%) scaleY(2);\n    webkit-transition: transform 0.15s 0.3s;\n    transition: -webkit-transform 0.15s 0.3s;\n    transition: transform 0.15s 0.3s;\n    transition: transform 0.15s 0.3s, -webkit-transform 0.15s 0.3s; }\n.quick-nav.nav-is-visible ul a:hover > span {\n    color: white; }\n.quick-nav.nav-is-visible ul a:hover > i {\n    color: #fafafa; }\n.quick-nav.nav-is-visible ul span {\n    opacity: 1;\n    webkit-transform: translateX(0);\n    -webkit-transform: translateX(0);\n            transform: translateX(0);\n    -webkit-animation: slideIn 0.15s backwards;\n    animation: slideIn 0.15s backwards;\n    webkit-transition: transform 0.2s;\n    transition: -webkit-transform 0.2s;\n    transition: transform 0.2s;\n    transition: transform 0.2s, -webkit-transform 0.2s; }\n.no-touch .quick-nav.nav-is-visible ul a:hover::after {\n    opacity: 1; }\n.no-touch .quick-nav.nav-is-visible ul a:hover span {\n    webkit-transform: translateX(-5px);\n    -webkit-transform: translateX(-5px);\n            transform: translateX(-5px); }\n.quick-nav-overlay {\n  display: none;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  position: fixed;\n  z-index: 10101;\n  background: transparent; }\n.quick-nav.nav-is-visible + .quick-nav-overlay {\n  background: rgba(0, 0, 0, 0.8);\n  display: block;\n  transition: background .7s ease-out; }\n@media (max-width: 991px) {\n  /* 991px */\n  .quick-nav {\n    top: 120px;\n    margin-top: 0; } }\n/***\nPage Loading\n***/\n.page-on-load {\n  background: #fefefe; }\n.page-on-load .page-header,\n  .page-on-load .page-container,\n  .page-on-load .page-footer,\n  .page-on-load > .clearfix {\n    display: none;\n    transition: all 2s; }\n"
+module.exports = "@charset \"UTF-8\";\r\n/* Cubic Bezier Transition */\r\n@media print {\r\n  body {\r\n    background-color: #fff !important; }\r\n  .page-bar {\r\n    display: none; }\r\n  .page-sidebar-wrapper {\r\n    display: none; }\r\n  .theme-panel {\r\n    display: none; }\r\n  .hidden-print {\r\n    display: none; }\r\n  .page-footer {\r\n    display: none; }\r\n  .no-page-break {\r\n    page-break-after: avoid; }\r\n  .page-container {\r\n    margin: 0px !important;\r\n    padding: 0px !important; }\r\n  .page-content {\r\n    padding: 0 !important;\r\n    min-height: 300px !important;\r\n    padding: 0px 20px 20px !important;\r\n    margin: 0 !important; }\r\n    .page-content > .portlet {\r\n      padding: 0;\r\n      margin: 0; }\r\n      .page-content > .portlet > .portlet-body {\r\n        padding: 0;\r\n        margin: 0; } }\r\n/***\r\nPage Header\r\n***/\r\n.page-header.navbar {\r\n  width: 100%;\r\n  padding: 0 20px 0 20px;\r\n  margin: 0;\r\n  border: 0px;\r\n  padding: 0px;\r\n  box-shadow: none;\r\n  height: 68px;\r\n  min-height: 68px;\r\n  -webkit-filter: none;\r\n          filter: none;\r\n  background-image: none;\r\n  /* Fixed header */\r\n  /* Header logo */\r\n  /* header top */\r\n  /* Search box */\r\n  /* Menu Toggler */\r\n  /* Top menu */ }\r\n.page-header.navbar.navbar-fixed-top {\r\n    z-index: 9995; }\r\n.page-header.navbar.navbar-static-top {\r\n    z-index: 9995; }\r\n.page-header.navbar .page-logo {\r\n    float: left;\r\n    display: block;\r\n    width: 195px;\r\n    height: 68px;\r\n    padding-left: 20px;\r\n    padding-right: 20px; }\r\n.page-header.navbar .page-logo > .logo-image,\r\n    .page-header.navbar .page-logo > a {\r\n      display: block;\r\n      float: left; }\r\n.page-header.navbar .page-logo .logo-default {\r\n      margin: 27px 0 0 0; }\r\n.page-header.navbar .page-logo .logo-mini {\r\n      display: none;\r\n      margin-left: 5px; }\r\n.page-header.navbar .page-logo .text-logo {\r\n      padding-left: 20px;\r\n      padding-top: 12px; }\r\n.page-header.navbar .page-top {\r\n    height: 68px;\r\n    background: #BAC0B6; }\r\n.page-header.navbar .search-form {\r\n    margin-left: 10px;\r\n    display: inline-block;\r\n    width: 68px;\r\n    position: relative;\r\n    float: left !important;\r\n    transition: all 0.6s; }\r\n.page-header.navbar .search-form .input-group .form-control {\r\n      height: 68px;\r\n      border: 0;\r\n      background: transparent !important;\r\n      font-size: 14px;\r\n      padding-left: 0;\r\n      margin-left: 12px;\r\n      text-indent: -150000px; }\r\n.page-header.navbar .search-form .input-group .form-control:hover {\r\n        cursor: pointer; }\r\n.page-header.navbar .search-form .input-group .input-group-btn {\r\n      height: 68px; }\r\n.page-header.navbar .search-form .input-group .input-group-btn .btn.submit {\r\n        margin-left: -24px;\r\n        padding: 0;\r\n        width: 68px;\r\n        background: none;\r\n        margin-top: 4px;\r\n        display: block; }\r\n.page-header.navbar .search-form .input-group .input-group-btn .btn.submit > i {\r\n          font-size: 15px; }\r\n.page-header.navbar .search-form.open {\r\n      transition: all 0.6s;\r\n      width: 300px !important; }\r\n.page-header.navbar .search-form.open .input-group .form-control {\r\n        text-indent: 0; }\r\n.page-header.navbar .search-form.open .input-group .form-control:hover {\r\n          cursor: text; }\r\n.page-header.navbar .search-form.open .input-group .input-group-btn .btn.submit {\r\n        margin-left: 0; }\r\n.page-header.navbar .menu-toggler {\r\n    display: block;\r\n    cursor: pointer;\r\n    opacity: 0.6;\r\n    filter: alpha(opacity=60);\r\n    width: 20px;\r\n    height: 20px;\r\n    background-repeat: no-repeat;\r\n    background-position: center center;\r\n    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAANCAYAAABPeYUaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACZJREFUeNpi/A8EDBQCFiBmpNQQJgYqgGFmCChgR2NnWMcOQIABAE66Bh4XiGmBAAAAAElFTkSuQmCC); }\r\n.page-header.navbar .menu-toggler:hover {\r\n      filter: alpha(opacity=100);\r\n      opacity: 1; }\r\n.page-header.navbar .menu-toggler.sidebar-toggler {\r\n      float: right;\r\n      margin: 23px 0 0 0; }\r\n.page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .menu-toggler.sidebar-toggler {\r\n        margin-right: 17px; }\r\n.page-header.navbar .menu-toggler.responsive-toggler {\r\n      display: none;\r\n      float: right;\r\n      margin: 24px 14px 0 6px;\r\n      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAANCAYAAABPeYUaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADFJREFUeNpinDhx4n8GCgETEDNSgvPy8hiZGKgAhpkhLEBMUexMmjRpNHYGdewABBgAceAK8OX65QQAAAAASUVORK5CYII=); }\r\n.page-header.navbar .page-actions {\r\n    margin: 17px 0 15px 15px;\r\n    padding: 0;\r\n    float: left; }\r\n.page-header.navbar .page-actions .btn-group .dropdown-menu:before {\r\n      left: 9px;\r\n      right: auto; }\r\n.page-header.navbar .page-actions .btn-group .dropdown-menu:after {\r\n      left: 10px;\r\n      right: auto; }\r\n.page-header.navbar .top-menu {\r\n    margin: 0;\r\n    padding: 0;\r\n    float: right; }\r\n.page-header.navbar .top-menu .navbar-nav {\r\n      padding: 0;\r\n      margin-right: 20px;\r\n      display: block;\r\n      /* Extended Dropdowns */\r\n      /* Notification */\r\n      /* Inbox */\r\n      /* Tasks */\r\n      /* User */\r\n      /* Quick Sidebar */\r\n      /* Language */\r\n      /* Dark version */ }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown {\r\n        margin: 0px;\r\n        padding: 0px;\r\n        height: 68px;\r\n        display: inline-block; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle {\r\n          margin: 0px;\r\n          padding: 28px 16px 19px 16px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle:last-child {\r\n            padding-right: 0; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > i {\r\n            font-size: 19px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > i.glyphicon {\r\n              top: 0;\r\n              font-size: 17px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > .badge {\r\n            font-family: \"Open Sans\", sans-serif;\r\n            position: absolute;\r\n            top: 17px;\r\n            right: 9px;\r\n            font-weight: 300;\r\n            padding: 3px 6px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle:focus {\r\n            background: none; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu {\r\n          margin-top: -6px;\r\n          border-radius: 4px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu:before {\r\n            position: absolute;\r\n            top: -7px;\r\n            right: 9px;\r\n            display: inline-block !important;\r\n            border-right: 7px solid transparent;\r\n            border-bottom: 7px solid #eee;\r\n            border-left: 7px solid transparent;\r\n            border-bottom-color: rgba(0, 0, 0, 0.2);\r\n            content: ''; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu:after {\r\n            position: absolute;\r\n            top: -6px;\r\n            right: 10px;\r\n            display: inline-block !important;\r\n            border-right: 6px solid transparent;\r\n            border-bottom: 6px solid #fff;\r\n            border-left: 6px solid transparent;\r\n            content: ''; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu > li > a {\r\n            color: #555; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu {\r\n        min-width: 160px;\r\n        max-width: 275px;\r\n        width: 275px;\r\n        z-index: 9995;\r\n        /* header notifications dropdowns */ }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external {\r\n          display: block;\r\n          overflow: hidden;\r\n          padding: 15px 15px;\r\n          letter-spacing: 0.5px;\r\n          border-radius: 4px 4px 0 0; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external > h3 {\r\n            margin: 0;\r\n            padding: 0;\r\n            float: left;\r\n            font-size: 13px;\r\n            display: inline-block; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external > a {\r\n            display: inline-block;\r\n            padding: 0;\r\n            background: none;\r\n            clear: inherit;\r\n            font-size: 13px;\r\n            font-weight: 300;\r\n            position: absolute;\r\n            right: 10px;\r\n            border: 0;\r\n            margin-top: -1px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu > li.external > a:hover {\r\n              text-decoration: underline; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list {\r\n          padding-right: 0 !important;\r\n          padding-left: 0;\r\n          list-style: none; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li > a {\r\n            display: block;\r\n            clear: both;\r\n            font-weight: 300;\r\n            line-height: 20px;\r\n            white-space: normal;\r\n            font-size: 13px;\r\n            padding: 16px 15px 18px;\r\n            text-shadow: none; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li > a:hover {\r\n              opacity: 1 ;\r\n              filter: alpha(opacity=100) ; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li:first-child a {\r\n            border-top: none; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details {\r\n        overflow: hidden; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon {\r\n          margin-right: 10px;\r\n          border-radius: 50%; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon i {\r\n            margin-right: 2px;\r\n            margin-left: 1px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon .badge {\r\n            right: 15px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .time {\r\n        float: right;\r\n        max-width: 75px;\r\n        font-size: 11px;\r\n        font-weight: 400;\r\n        opacity: 0.7 ;\r\n        filter: alpha(opacity=70) ;\r\n        text-align: right;\r\n        padding: 1px 5px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .photo {\r\n        float: left;\r\n        margin: 0 6px 6px 0; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .photo img {\r\n          height: 40px;\r\n          width: 40px;\r\n          border-radius: 50% !important; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .subject {\r\n        display: block;\r\n        margin-left: 46px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .subject .from {\r\n          font-size: 13px;\r\n          font-weight: 600; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .subject .time {\r\n          font-size: 12px;\r\n          font-weight: 400;\r\n          opacity: 0.5 ;\r\n          filter: alpha(opacity=50) ;\r\n          float: right; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox > .dropdown-menu .dropdown-menu-list > li .message {\r\n        display: block !important;\r\n        font-size: 12px;\r\n        line-height: 1.3;\r\n        margin-left: 46px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .task {\r\n        margin-bottom: 5px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .task .desc {\r\n          font-size: 13px;\r\n          font-weight: 300; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .task .percent {\r\n          float: right;\r\n          font-weight: 600;\r\n          display: inline-block; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .progress {\r\n        display: block;\r\n        height: 8px;\r\n        margin: 8px 0 2px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list > li .progress .progress-bar {\r\n          box-shadow: none; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user {\r\n        padding: 0 0 0 10px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle {\r\n          padding: 24px 12px 24px 12px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > .username {\r\n            display: inline-block;\r\n            font-size: 14px;\r\n            font-weight: 400; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > img {\r\n            float: left;\r\n            margin-top: -8px;\r\n            margin-right: 7px;\r\n            height: 39px;\r\n            display: inline-block; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > i {\r\n            display: inline-block;\r\n            margin-top: 5px;\r\n            margin: 0;\r\n            font-size: 14px;\r\n            font-weight: 400; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu {\r\n          width: 175px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li > a {\r\n            font-size: 14px;\r\n            font-weight: 300; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li > a i {\r\n              width: 15px;\r\n              display: inline-block;\r\n              margin-right: 9px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-menu > li > a .badge {\r\n              margin-right: 10px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.quick-sidebar-toggler {\r\n        cursor: pointer;\r\n        padding: 24px 12px 24px 12px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.quick-sidebar-toggler > i {\r\n          top: 3px;\r\n          color: #c0cddc;\r\n          font-size: 19px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.quick-sidebar-toggler > i:before {\r\n            content: \"\"/*rtl:\"\"*/; }\r\n.page-quick-sidebar-open .page-header.navbar .top-menu .navbar-nav > li.quick-sidebar-toggler > i:before {\r\n            content: \"\"/*rtl:\"\"*/; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language {\r\n        padding-left: 0;\r\n        padding-right: 0;\r\n        margin: 0; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle {\r\n          font-size: 13px;\r\n          padding: 24px 12px 24px 12px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle > img {\r\n            margin-bottom: 2px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle > i {\r\n            font-size: 14px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-menu > li > a {\r\n          font-size: 13px; }\r\n.page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-menu > li > a > img {\r\n            margin-bottom: 2px;\r\n            margin-right: 5px; }\r\n.page-header.navbar .top-menu .navbar-nav li.dropdown-dark .dropdown-menu {\r\n        border: 0; }\r\n.page-header.navbar .top-menu .navbar-nav li.dropdown-dark .dropdown-menu:before {\r\n          border-left: none;\r\n          border-right: none; }\r\n.page-header.navbar .top-menu .navbar-nav li.dropdown-dark .dropdown-menu .dropdown-menu-list > li.external a {\r\n          background: none !important;\r\n          border: none !important; }\r\n/* Allow expanded search for above 768px */\r\n@media (min-width: 768px) {\r\n  /* 768px */\r\n  .page-header.navbar {\r\n    /* Search box */ }\r\n    .page-header.navbar .search-form.search-form-expanded {\r\n      width: 200px; }\r\n      .page-header.navbar .search-form.search-form-expanded .input-group .form-control {\r\n        text-indent: 0; }\r\n        .page-header.navbar .search-form.search-form-expanded .input-group .form-control:hover {\r\n          cursor: text; }\r\n      .page-header.navbar .search-form.search-form-expanded .input-group .input-group-btn .btn.submit {\r\n        margin-left: 0; } }\r\n/* Form medium devices upto large devices */\r\n@media (min-width: 992px) and (max-width: 1200px) {\r\n  /* 992px 1200px */\r\n  /* Boxed layout */\r\n  .page-boxed .page-header.navbar {\r\n    /* Top menu */ }\r\n    .page-boxed .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle .username.username-hide-on-mobile {\r\n      display: none; }\r\n    .page-boxed .page-header.navbar .top-menu .navbar-nav > li.dropdown-language .dropdown-toggle .langname {\r\n      display: none; } }\r\n@media (min-width: 992px) {\r\n  /* 992px */\r\n  /* Page header */\r\n  .page-header.navbar {\r\n    /* Header logo */ }\r\n    .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo {\r\n      padding: 0; }\r\n    .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo {\r\n      width: 54px; }\r\n      .page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo .logo-default {\r\n        display: none; }\r\n  /* Boxed Layout */\r\n  .page-boxed .page-header.navbar {\r\n    /* Page logo */\r\n    /* Top menu */ }\r\n    .page-boxed .page-header.navbar .page-logo {\r\n      width: 195px; }\r\n    .page-boxed .page-header.navbar .top-menu .navbar-nav {\r\n      margin-right: 20px; }\r\n  /* Sidebar closed & logo hidden */\r\n  .page-sidebar-closed.page-sidebar-closed-hide-logo.page-boxed .page-header.navbar {\r\n    /* Page logo */ }\r\n    .page-sidebar-closed.page-sidebar-closed-hide-logo.page-boxed .page-header.navbar .page-logo {\r\n      width: 54px; }\r\n  /* Boxed layout & page sidebar fixed layout */\r\n  .page-boxed.page-sidebar-fixed .page-header.navbar {\r\n    /* Page logo */ }\r\n    .page-boxed.page-sidebar-fixed .page-header.navbar .page-logo {\r\n      width: 195px; } }\r\n@media (max-width: 991px) {\r\n  /* 991px */\r\n  /* Page header */\r\n  .page-header.navbar {\r\n    padding: 0;\r\n    margin: 0;\r\n    position: relative;\r\n    clear: both;\r\n    /* Page logo */\r\n    /* Menu Toggler */\r\n    /* Search form */\r\n    /* Top Menu */ }\r\n    .page-header.navbar .page-logo {\r\n      width: auto;\r\n      padding: 0 15px 0 10px; }\r\n      .page-header.navbar .page-logo img {\r\n        margin-left: 4px !important; }\r\n    .page-header.navbar .menu-toggler.sidebar-toggler {\r\n      display: none !important; }\r\n    .page-header.navbar .menu-toggler.responsive-toggler {\r\n      display: inline-block; }\r\n    .page-header.navbar .search-form {\r\n      margin-left: 0; }\r\n      .page-header.navbar .search-form.open {\r\n        width: 245px !important; }\r\n    .page-header.navbar .page-header-inner.container {\r\n      width: 100%;\r\n      max-width: none !important;\r\n      margin: 0 !important;\r\n      padding: 0 !important; }\r\n    .page-header.navbar .top-menu .navbar-nav {\r\n      display: inline-block;\r\n      margin: 0 10px 0 0; }\r\n      .page-header.navbar .top-menu .navbar-nav > li {\r\n        float: left; }\r\n      .page-header.navbar .top-menu .navbar-nav .nav li.dropdown i {\r\n        display: inline-block;\r\n        position: relative;\r\n        top: 1px;\r\n        right: 0px; }\r\n      .page-header.navbar .top-menu .navbar-nav .open .dropdown-menu {\r\n        position: absolute; }\r\n  /* Fixed header for mobile */\r\n  .page-header-fixed.page-header-fixed-mobile .navbar-fixed-top {\r\n    position: fixed; }\r\n  /* Boxed Layout */\r\n  .page-boxed .page-header.navbar > .container {\r\n    max-width: none !important;\r\n    margin: 0 !important;\r\n    padding: 0 !important; } }\r\n@media (min-width: 768px) and (max-width: 991px) {\r\n  /* 768px & 991px */\r\n  /* Boxed Layout */\r\n  .page-boxed .page-header.navbar {\r\n    margin: auto !important;\r\n    padding: 0; }\r\n    .page-boxed .page-header.navbar > .container {\r\n      margin: auto !important; } }\r\n@media (max-width: 767px) {\r\n  /* 767px */\r\n  /* Page header */\r\n  .page-header.navbar {\r\n    padding: 0;\r\n    /* Header logo */\r\n    /* Search box */\r\n    /* Top navigation menu*/ }\r\n    .page-header.navbar .page-logo {\r\n      width: auto; }\r\n    .page-header.navbar .search-form.open {\r\n      z-index: 3;\r\n      left: 10px;\r\n      right: 10px;\r\n      position: absolute;\r\n      width: auto !important;\r\n      margin: 0 -10px !important; }\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-extended > .dropdown-menu {\r\n      max-width: 245px;\r\n      width: 245px; }\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu {\r\n      margin-right: -170px; }\r\n      .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu:after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu:before {\r\n        margin-right: 170px; }\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu {\r\n      margin-right: -120px; }\r\n      .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu:after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu:before {\r\n        margin-right: 120px; }\r\n    .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu {\r\n      margin-right: -80px; }\r\n      .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu:after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu:before {\r\n        margin-right: 80px; } }\r\n@media (max-width: 580px) {\r\n  /* Page header */\r\n  .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle .username.username-hide-on-mobile {\r\n    display: none; }\r\n  .page-header.navbar .top-menu .navbar-nav > li.dropdown-language .dropdown-toggle .langname {\r\n    display: none; } }\r\n@media (max-width: 767px) {\r\n  /* 767px */\r\n  .page-header.navbar {\r\n    height: 136px;\r\n    /* Top menu */ }\r\n    .page-header.navbar .top-menu .navbar-nav {\r\n      margin-right: 0; }\r\n      .page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle {\r\n        padding: 28px 10px 19px 10px; }\r\n      .page-header.navbar .top-menu .navbar-nav > li.dropdown-language .dropdown-toggle {\r\n        padding: 24px 6px 24px 6px; }\r\n      .page-header.navbar .top-menu .navbar-nav > li.dropdown-user {\r\n        margin-right: 10px; }\r\n        .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle {\r\n          padding: 24px 6px 24px 6px; }\r\n    .page-header.navbar .menu-toggler.responsive-toggler {\r\n      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAANCAYAAABPeYUaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACZJREFUeNpi/A8EDBQCFiBmpNQQJgYqgGFmCChgR2NnWMcOQIABAE66Bh4XiGmBAAAAAElFTkSuQmCC); }\r\n    .page-header.navbar .search-form {\r\n      margin-left: -12px; }\r\n    .page-header.navbar .page-top {\r\n      display: block;\r\n      clear: both; } }\r\n/***\r\nPace - Page Progress\r\n***/\r\n.pace .pace-progress {\r\n  z-index: 10000;\r\n  top: 66px;\r\n  height: 2px; }\r\n.pace .pace-progress-inner {\r\n  box-shadow: none; }\r\n.pace .pace-activity {\r\n  top: 70px;\r\n  right: 22px;\r\n  border-radius: 10px !important; }\r\n@media (max-width: 767px) {\r\n  /* 767px */\r\n  .page-header-fixed .pace .pace-progress {\r\n    top: 136px; }\r\n  .page-header-fixed .pace .pace-activity {\r\n    top: 276px;\r\n    right: 15px; } }\r\n/***\r\nPage container\r\n***/\r\n.page-container {\r\n  margin: 0px;\r\n  padding: 0px;\r\n  position: relative;\r\n  /* Fixed header */\r\n  /* Fixed footer for mobile */ }\r\n.page-container:before, .page-container:after {\r\n    content: \" \";\r\n    display: table; }\r\n.page-container:after {\r\n    clear: both; }\r\n.page-header-fixed .page-container {\r\n    margin-top: 68px; }\r\n.page-footer-fixed.page-footer-fixed-mobile .page-container {\r\n    margin-bottom: 20px !important; }\r\n@media (min-width: 1260px) {\r\n  /* 1200px */\r\n  .container {\r\n    width: 1270px; } }\r\n@media (min-width: 992px) {\r\n  /* Page container in fixed footer */\r\n  .page-footer-fixed .page-container {\r\n    margin-bottom: 20px !important; } }\r\n@media (max-width: 991px) {\r\n  /* Page container */\r\n  .page-container {\r\n    margin: 0 !important;\r\n    padding: 0 !important; }\r\n    .page-header-fixed.page-header-fixed-mobile .page-container {\r\n      margin-top: 68px !important; } }\r\n@media (max-width: 480px) {\r\n  /* Page container */\r\n  .page-header-fixed.page-header-fixed-mobile .page-container {\r\n    margin-top: 136px !important; } }\r\n/***\r\nPage sidebar\r\n***/\r\n/* IE8 fix */\r\n.ie8 .page-sidebar {\r\n  width: 195px;\r\n  float: left;\r\n  position: relative;\r\n  margin-right: -100%; }\r\n/* Page Sidebar */\r\n.page-sidebar,\r\n.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {\r\n  /* Default sidebar menu */\r\n  /* Compact sidebar menu */\r\n  /* Compact hoverable sidebar menu */ }\r\n.page-sidebar.navbar-collapse,\r\n  .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover.navbar-collapse {\r\n    padding: 0;\r\n    box-shadow: none; }\r\n.page-sidebar .page-sidebar-menu,\r\n  .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    /* 1st level links */\r\n    /* all links */ }\r\n.page-sidebar .page-sidebar-menu > li,\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li {\r\n      display: block;\r\n      margin: 0;\r\n      padding: 0;\r\n      border: 0px; }\r\n.page-sidebar .page-sidebar-menu > li.start > a,\r\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.start > a {\r\n        border-top-color: transparent !important; }\r\n.page-sidebar .page-sidebar-menu > li.last > a,\r\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.last > a {\r\n        border-bottom-color: transparent !important; }\r\n.page-sidebar .page-sidebar-menu > li > a,\r\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {\r\n        min-height: 78px;\r\n        display: block;\r\n        position: relative;\r\n        margin: 0;\r\n        border: 0px;\r\n        padding: 17px 15px 15px 15px;\r\n        text-decoration: none;\r\n        font-size: 13px;\r\n        font-weight: 300;\r\n        text-align: center; }\r\n.page-sidebar .page-sidebar-menu > li > a > .title,\r\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > .title {\r\n          display: block;\r\n          text-align: center;\r\n          margin-top: 5px; }\r\n.page-sidebar .page-sidebar-menu > li > a > i,\r\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i {\r\n          font-size: 24px;\r\n          text-shadow: none;\r\n          font-weight: 300;\r\n          text-align: center; }\r\n.page-sidebar .page-sidebar-menu > li > a > i.glyphicon,\r\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i.glyphicon {\r\n          top: 3px;\r\n          margin-left: 1px;\r\n          margin-right: 4px; }\r\n.page-sidebar .page-sidebar-menu > li > a > [class^=\"icon-\"],\r\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > [class^=\"icon-\"] {\r\n          top: 2px;\r\n          margin-left: 1px;\r\n          margin-right: 4px; }\r\n.page-sidebar-fixed .page-sidebar .page-sidebar-menu > li > a, .page-sidebar-fixed\r\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {\r\n          transition: all 0.2s ease; }\r\n.page-sidebar-reversed.page-sidebar-fixed .page-sidebar .page-sidebar-menu > li > a, .page-sidebar-reversed.page-sidebar-fixed\r\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {\r\n          transition: none; }\r\n.page-sidebar .page-sidebar-menu > li.open > a,\r\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.open > a {\r\n        font-size: 13px; }\r\n.page-sidebar .page-sidebar-menu > li.active > a,\r\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a {\r\n        border: none;\r\n        text-shadow: none;\r\n        font-size: 13px; }\r\n.page-sidebar .page-sidebar-menu > li.active > a > .selected,\r\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\r\n          background-image: none;\r\n          /* will be set in a theme css file*/\r\n          float: right;\r\n          position: absolute;\r\n          right: -1px;\r\n          top: 26px;\r\n          background: none;\r\n          width: 0;\r\n          height: 0;\r\n          border-style: solid;\r\n          border-top: 12px double transparent;\r\n          border-bottom: 12px double transparent;\r\n          border-left: 0;\r\n          border-right: 8px solid #ffffff; }\r\n.page-sidebar-reversed .page-sidebar .page-sidebar-menu > li.active > a > .selected, .page-sidebar-reversed\r\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\r\n            right: auto;\r\n            left: -1px;\r\n            border-right: 0;\r\n            border-left: 8px solid #ffffff; }\r\n.page-container-bg-solid .page-sidebar .page-sidebar-menu > li.active > a > .selected, .page-container-bg-solid\r\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\r\n            border-color: transparent #eef1f5 transparent transparent; }\r\n.page-container-bg-solid.page-sidebar-reversed .page-sidebar .page-sidebar-menu > li.active > a > .selected, .page-container-bg-solid.page-sidebar-reversed\r\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {\r\n            border-color: transparent transparent transparent #eef1f5; }\r\n.page-sidebar .page-sidebar-menu li > a > .arrow:before,\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .arrow:before {\r\n      width: 10px;\r\n      float: right;\r\n      margin-right: 5px;\r\n      margin-left: 5px;\r\n      margin-top: -32px;\r\n      display: inline;\r\n      font-size: 16px;\r\n      font-family: FontAwesome;\r\n      height: auto;\r\n      content: \"\\f104\";\r\n      font-weight: 300;\r\n      text-shadow: none; }\r\n.page-sidebar .page-sidebar-menu li > a > .arrow.open:before,\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .arrow.open:before {\r\n      content: \"\\f107\"; }\r\n.page-sidebar .page-sidebar-menu li > a > .badge,\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .badge {\r\n      float: right;\r\n      margin-top: 1px;\r\n      margin-right: 0px; }\r\n.page-sidebar .page-sidebar-menu .sub-menu,\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu {\r\n      list-style: none;\r\n      display: none;\r\n      padding: 0;\r\n      margin: 8px 0px 8px 0px; }\r\n.page-sidebar .page-sidebar-menu .sub-menu li,\r\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li {\r\n        background: none;\r\n        margin: 0px;\r\n        padding: 0px;\r\n        margin-top: 1px !important;\r\n        /* 2nd level sub menu */ }\r\n.page-sidebar .page-sidebar-menu .sub-menu li > a,\r\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a {\r\n          display: block;\r\n          margin: 0;\r\n          padding: 9px 15px 9px 15px;\r\n          text-decoration: none;\r\n          font-size: 13px;\r\n          font-weight: 300;\r\n          background: none; }\r\n.page-sidebar .page-sidebar-menu .sub-menu li > a > i,\r\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a > i {\r\n            font-size: 14px;\r\n            margin-right: 1px; }\r\n.page-sidebar .page-sidebar-menu .sub-menu li > a .arrow:before,\r\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a .arrow:before {\r\n            margin-top: -4px; }\r\n.page-sidebar .page-sidebar-menu .sub-menu li > a .arrow.open:before,\r\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a .arrow.open:before {\r\n            margin-top: -2px; }\r\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu,\r\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu {\r\n          margin: 0; }\r\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li,\r\n          .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li {\r\n            /* 3rd level sub menu */ }\r\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li > a,\r\n            .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li > a {\r\n              padding-left: 30px; }\r\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu,\r\n            .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu {\r\n              margin: 0; }\r\n.page-sidebar .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu > li > a,\r\n              .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > .sub-menu > li > .sub-menu > li > a {\r\n                padding-left: 40px; }\r\n.page-sidebar .page-sidebar-menu .sub-menu.always-open,\r\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu.always-open {\r\n        display: block; }\r\n.page-sidebar .page-sidebar-menu li.active > .sub-menu,\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li.active > .sub-menu {\r\n      display: block; }\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact,\r\n  .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact {\r\n    /* first level links */\r\n    /* all links */ }\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact > li,\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact > li {\r\n      text-align: left; }\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact > li > a,\r\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact > li > a {\r\n        text-align: left;\r\n        min-height: 50px;\r\n        padding: 15px 15px 15px 15px; }\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact > li > a > .title,\r\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact > li > a > .title {\r\n          display: inline-block;\r\n          text-align: left;\r\n          margin-top: 0px; }\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact > li > a > i,\r\n        .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact > li > a > i {\r\n          font-size: 16px;\r\n          /* $sidebar-menu-link-icon-font-size */\r\n          text-align: left; }\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact > li.active > a > .selected,\r\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact > li.active > a > .selected {\r\n        top: 14px; }\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact > li > .sub-menu > li > a,\r\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact > li > .sub-menu > li > a {\r\n        padding-left: 22px; }\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact li > a > .arrow:before,\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact li > a > .arrow:before {\r\n      margin-top: -1px; }\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact li > a > .arrow.open:before,\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact li > a > .arrow.open:before {\r\n      margin-top: -1px; }\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu,\r\n  .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu {\r\n    /* first level links */ }\r\n.page-sidebar .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu > li > .sub-menu > li > a,\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu > li > .sub-menu > li > a {\r\n      padding-left: 15px; }\r\n@media (min-width: 992px) {\r\n  /* 992px */\r\n  .page-sidebar {\r\n    width: 195px;\r\n    float: left;\r\n    position: relative;\r\n    margin-right: -100%; }\r\n    .page-full-width .page-sidebar {\r\n      display: none !important; }\r\n    .page-sidebar.navbar-collapse {\r\n      max-height: none !important; }\r\n    .page-sidebar .page-sidebar-menu {\r\n      margin-bottom: 10px; }\r\n  .page-sidebar-reversed .page-sidebar {\r\n    float: right;\r\n    margin-right: 0;\r\n    margin-left: -100%; }\r\n  .page-sidebar-reversed.page-sidebar-fixed .page-sidebar {\r\n    margin-left: -195px; }\r\n  .page-sidebar-reversed.page-sidebar-fixed .page-sidebar-wrapper {\r\n    position: relative;\r\n    float: right; }\r\n  .page-sidebar-fixed .page-sidebar {\r\n    position: fixed !important;\r\n    margin-left: 0;\r\n    top: 68px; }\r\n  .page-sidebar-fixed .page-sidebar-menu > li.last {\r\n    margin-bottom: 15px !important; }\r\n  .page-sidebar-fixed .page-sidebar-menu .sub-menu {\r\n    height: auto !important; }\r\n  /* Sidebar Closed */\r\n  .page-sidebar-closed .page-sidebar {\r\n    width: 54px !important; }\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {\r\n      /* sidebar */\r\n      width: 54px !important; }\r\n      .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li {\r\n        /* hide opened sub menu */ }\r\n        .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li.open > .sub-menu,\r\n        .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > .sub-menu {\r\n          display: none !important; }\r\n        .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover {\r\n          width: 249px !important;\r\n          position: relative !important;\r\n          z-index: 10000;\r\n          display: block !important; }\r\n          .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a {\r\n            border-radius: 0 4px 0 0;\r\n            text-align: left; }\r\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > i {\r\n              display: inline-block;\r\n              margin-right: 10px; }\r\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .title {\r\n              display: inline !important;\r\n              padding-left: 20px; }\r\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .badge {\r\n              display: block !important; }\r\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .selected {\r\n              display: none; }\r\n          .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu {\r\n            width: 194px;\r\n            position: absolute;\r\n            z-index: 2000;\r\n            left: 55px;\r\n            margin-top: 0;\r\n            top: 100%;\r\n            display: block !important;\r\n            border-radius: 0 0 4px 4px; }\r\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu > li > a {\r\n              padding-left: 15px !important; }\r\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu > li > .sub-menu > li > a {\r\n              padding-left: 30px !important; }\r\n            .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > .sub-menu > li > .sub-menu > li > .sub-menu > li > a {\r\n              padding-left: 45px !important; }\r\n        .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a {\r\n          min-height: 54px;\r\n          padding-left: 11px; }\r\n          .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a .selected {\r\n            top: 16px;\r\n            right: -2px !important; }\r\n          .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a > .badge,\r\n          .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a > .title,\r\n          .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > a > .arrow {\r\n            display: none !important; }\r\n    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-closed > li > a {\r\n      min-height: 50px;\r\n      padding-right: 11px;\r\n      padding-left: 18px; }\r\n  .page-sidebar-closed.page-sidebar-reversed .page-sidebar {\r\n    margin-left: -54px;\r\n    width: 54px; }\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {\r\n      /* sidebar */ }\r\n      .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > .sub-menu {\r\n        left: auto;\r\n        right: 55px; }\r\n      .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover {\r\n        margin-left: -195px; }\r\n        .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a {\r\n          border-radius: 4px 0 0 0; }\r\n          .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > .title {\r\n            padding-left: 0;\r\n            padding-right: 15px; }\r\n          .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover > a > i {\r\n            margin-right: 0;\r\n            margin-left: 2px; }\r\n    .page-sidebar-closed.page-sidebar-reversed .page-sidebar .page-sidebar-menu.page-sidebar-menu-light.page-sidebar-menu-closed > li > a {\r\n      padding-right: 7px;\r\n      padding-left: 11px; }\r\n  .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {\r\n    width: 195px !important;\r\n    display: block;\r\n    z-index: 10000; }\r\n    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu {\r\n      width: 195px !important; }\r\n      .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .selected {\r\n        display: none !important; }\r\n  .page-sidebar-closed.page-sidebar-fixed.page-sidebar-reversed .page-sidebar:hover {\r\n    width: 195px !important;\r\n    display: block;\r\n    z-index: 10000;\r\n    margin-left: -195px !important; }\r\n    .page-sidebar-closed.page-sidebar-fixed.page-sidebar-reversed .page-sidebar:hover .page-sidebar-menu {\r\n      width: 195px !important; }\r\n  .page-sidebar-closed.page-sidebar-hide .page-sidebar {\r\n    display: none !important; }\r\n  /* Default Sidebar Menu With Hoverable Submenu */\r\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu li .sub-menu {\r\n    display: none;\r\n    width: 194px;\r\n    z-index: 2000;\r\n    position: absolute;\r\n    border-radius: 4px; }\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li .sub-menu > li > a {\r\n      margin: 3px; }\r\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu li.active .sub-menu, .page-sidebar-menu.page-sidebar-menu-hover-submenu li.open .sub-menu {\r\n    display: none !important; }\r\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu li a > .arrow {\r\n    display: none; }\r\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow {\r\n    display: block;\r\n    float: right;\r\n    position: absolute;\r\n    right: 0;\r\n    margin-top: -20px;\r\n    background: none;\r\n    width: 0;\r\n    height: 0;\r\n    border-style: solid;\r\n    border-top: 12px double transparent;\r\n    border-bottom: 12px double transparent;\r\n    border-left: 0; }\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow:after, .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow:before {\r\n      display: none; }\r\n    .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > a > .arrow {\r\n      right: auto;\r\n      left: 0;\r\n      border-right: 0; }\r\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu li:hover > .sub-menu {\r\n    display: inline-block !important; }\r\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > a > .arrow {\r\n    z-index: 1;\r\n    right: 0px;\r\n    margin-top: -36px; }\r\n    .page-fontawesome .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > a > .arrow {\r\n      margin-top: -34px; }\r\n    .page-glyphicons .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > a > .arrow {\r\n      margin-top: -38px; }\r\n  .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\r\n    margin-left: 195px;\r\n    margin-top: -78px; }\r\n    .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\r\n      margin-left: -194px !important; }\r\n    .page-sidebar-closed .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\r\n      margin-left: 0; }\r\n    .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li .sub-menu {\r\n      margin-left: 194px;\r\n      margin-top: -42px !important; }\r\n      .page-sidebar-reversed .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li .sub-menu {\r\n        margin-left: -194px !important; }\r\n      .page-sidebar-menu.page-sidebar-menu-hover-submenu > li:hover > .sub-menu > li .sub-menu > li > a {\r\n        padding-left: 10px;\r\n        padding-right: 10px; }\r\n  /* Compact Sidebar Menu With Hoverable Submenu */\r\n  .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu li:hover > a > .arrow {\r\n    margin-top: -20px; }\r\n  .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu > li:hover > a > .arrow {\r\n    margin-top: -20px; }\r\n  .page-sidebar-menu.page-sidebar-menu-compact.page-sidebar-menu-hover-submenu > li:hover > .sub-menu {\r\n    margin-top: -49px; } }\r\n@media (max-width: 991px) {\r\n  /* 991px */\r\n  .page-sidebar {\r\n    border-top: 0 !important;\r\n    margin: 20px; }\r\n    .page-sidebar .selected {\r\n      display: none !important; }\r\n    .page-sidebar.navbar-collapse {\r\n      max-height: none;\r\n      /* set some max height to have a scrollable menu on mobile devices */ }\r\n      .page-sidebar.navbar-collapse.collapse {\r\n        display: none !important; }\r\n      .page-sidebar.navbar-collapse.in {\r\n        border-top: 0 !important;\r\n        margin: 20px;\r\n        position: relative;\r\n        overflow: hidden !important;\r\n        overflow-y: auto !important;\r\n        display: block !important; }\r\n      .page-sidebar.navbar-collapse.navbar-no-scroll {\r\n        max-height: none !important; }\r\n    .page-sidebar .mega-menu-responsive-content {\r\n      padding: 10px 18px 10px 45px; }\r\n  .page-full-width .page-sidebar-menu {\r\n    display: block; } }\r\n@media (min-width: 768px) and (max-width: 991px) {\r\n  /* 768px & 991px */\r\n  .page-sidebar .btn-navbar.collapsed .arrow {\r\n    display: none; }\r\n  .page-sidebar .btn-navbar .arrow {\r\n    position: absolute;\r\n    right: 25px;\r\n    width: 0;\r\n    height: 0;\r\n    top: 50px;\r\n    border-bottom: 15px solid #5f646b;\r\n    border-left: 15px solid transparent;\r\n    border-right: 15px solid transparent; } }\r\n@media (max-width: 480px) {\r\n  /* 480px */\r\n  /* Page sidebar */\r\n  .page-sidebar,\r\n  .page-sidebar.in {\r\n    margin: 10px 10px 10px 10px !important; }\r\n    .page-header-fixed.page-header-fixed-mobile .page-sidebar, .page-header-fixed.page-header-fixed-mobile\r\n    .page-sidebar.in {\r\n      margin-top: 10px !important; } }\r\n/***\r\nPage content\r\n***/\r\n/* Page title */\r\n.page-title {\r\n  padding: 0px;\r\n  font-size: 26px;\r\n  letter-spacing: -1px;\r\n  line-height: 26px;\r\n  display: block;\r\n  color: #666;\r\n  margin: 0px 0px 20px 0px;\r\n  font-weight: 300;\r\n  font-family: \"Open Sans\", sans-serif;\r\n  /* subtitle */ }\r\n.page-title small {\r\n    font-size: 13px;\r\n    letter-spacing: 0px;\r\n    font-weight: 300;\r\n    color: #888; }\r\n.page-container-bg-solid .page-title {\r\n    color: #666; }\r\n.page-container-bg-solid .page-title small {\r\n      color: #666; }\r\n/* Page breadcrumb */\r\n.page-bar {\r\n  padding: 0px;\r\n  background-color: #ffffff;\r\n  margin-bottom: 20px;\r\n  border-radius: 4px; }\r\n.page-bar:before, .page-bar:after {\r\n    content: \" \";\r\n    display: table; }\r\n.page-bar:after {\r\n    clear: both; }\r\n.page-bar .page-breadcrumb {\r\n    display: inline-block;\r\n    float: left;\r\n    padding: 10px 6px;\r\n    margin: 0;\r\n    list-style: none; }\r\n.page-bar .page-breadcrumb > li {\r\n      display: inline-block; }\r\n.ie8 .page-bar .page-breadcrumb > li {\r\n        margin-right: 1px; }\r\n.page-bar .page-breadcrumb > li > a,\r\n      .page-bar .page-breadcrumb > li > span {\r\n        color: #888;\r\n        font-size: 13px;\r\n        text-shadow: none; }\r\n.page-bar .page-breadcrumb > li > i {\r\n        color: #aaa;\r\n        font-size: 14px;\r\n        text-shadow: none; }\r\n.page-bar .page-breadcrumb > li > i[class^=\"icon-\"],\r\n      .page-bar .page-breadcrumb > li > i[class*=\"icon-\"] {\r\n        color: #8c8c8c; }\r\n.page-bar .page-toolbar {\r\n    display: inline-block;\r\n    float: right; }\r\n.page-bar .page-toolbar .btn-fit-height {\r\n      border-radius: 0 4px 4px 0;\r\n      padding-top: 9px;\r\n      padding-bottom: 9px; }\r\n.page-md .page-bar .page-toolbar .btn-fit-height {\r\n        padding-top: 11px;\r\n        padding-bottom: 10px;\r\n        box-shadow: none !important; }\r\n.page-bar .page-toolbar .btn.btn-default {\r\n      border-color: #eee;\r\n      color: #999; }\r\n.page-bar .page-toolbar .btn.btn-default > i {\r\n        color: #999; }\r\n.page-bar .page-toolbar .btn.btn-sm {\r\n      margin-top: 0px; }\r\n.page-bar .page-toolbar .btn-dashboard-daterange {\r\n      padding: 8px 16px 8px 16px; }\r\n.page-bar .page-toolbar .btn-dashboard-daterange > i[class^=\"icon-\"] {\r\n        position: relative;\r\n        font-size: 20px;\r\n        opacity: 0.8 ;\r\n        filter: alpha(opacity=80) ;\r\n        top: 2px; }\r\n.page-bar .page-toolbar .btn-dashboard-daterange > i.fa-angle-down {\r\n        font-size: 16px;\r\n        opacity: 0.8 ;\r\n        filter: alpha(opacity=80) ; }\r\n/* Page content */\r\n.page-content {\r\n  margin-top: 0px;\r\n  padding: 0px;\r\n  background-color: #fff; }\r\n.page-container-bg-solid .page-content {\r\n    background: #eef1f5; }\r\n.page-full-width .page-content {\r\n    margin-left: 0px !important; }\r\n@media (min-width: 992px) {\r\n  /* 992px */\r\n  /* Page content */\r\n  .page-content-wrapper {\r\n    float: left;\r\n    width: 100%; }\r\n    .page-content-wrapper .page-content {\r\n      margin-left: 195px;\r\n      margin-top: 0px;\r\n      min-height: 600px;\r\n      padding: 25px 20px 10px 20px; }\r\n      .page-content-wrapper .page-content.no-min-height {\r\n        min-height: auto; }\r\n      .page-sidebar-fixed.page-sidebar-hover-on .page-content-wrapper .page-content {\r\n        margin-left: 54px; }\r\n      .page-sidebar-reversed .page-content-wrapper .page-content {\r\n        margin-left: 0 !important;\r\n        margin-right: 195px !important; }\r\n      .page-sidebar-reversed.page-sidebar-fixed.page-sidebar-hover-on .page-content-wrapper .page-content {\r\n        margin-left: 0;\r\n        margin-right: 54px; }\r\n      .page-sidebar-reversed.page-sidebar-closed .page-content-wrapper .page-content {\r\n        margin-left: 0 !important;\r\n        margin-right: 54px !important; }\r\n      .page-sidebar-closed .page-content-wrapper .page-content {\r\n        margin-left: 54px !important; }\r\n      .page-sidebar-closed.page-sidebar-hide .page-content-wrapper .page-content {\r\n        margin-left: 0 !important; }\r\n      .page-sidebar-closed.page-sidebar-reversed.page-sidebar-hide .page-content-wrapper .page-content {\r\n        margin-right: 0 !important; }\r\n      .page-full-width .page-content-wrapper .page-content {\r\n        margin-left: 0px !important; } }\r\n@media (max-width: 991px) {\r\n  /* 991px */\r\n  /* Boxed page container  */\r\n  .page-boxed > .container {\r\n    width: 100%;\r\n    max-width: none !important;\r\n    margin: 0 !important;\r\n    padding: 0 !important; }\r\n  /* Page content */\r\n  .page-content-wrapper .page-content {\r\n    margin: 0px !important;\r\n    padding: 20px !important;\r\n    min-height: 280px; } }\r\n@media (min-width: 768px) and (max-width: 991px) {\r\n  /*  768px & 991px */\r\n  /* Boxed page container */\r\n  .page-boxed > .container {\r\n    margin: auto !important; } }\r\n@media (max-width: 767px) {\r\n  /* 767px */\r\n  /* Page content */\r\n  .page-content-wrapper .page-content {\r\n    padding: 20px 10px 10px 10px !important;\r\n    overflow: hidden;\r\n    /* Page title */ }\r\n    .page-content-wrapper .page-content .page-title {\r\n      margin-bottom: 15px;\r\n      font-size: 20px; }\r\n      .page-content-wrapper .page-content .page-title small {\r\n        font-size: 13px;\r\n        padding-top: 3px; } }\r\n@media (max-width: 480px) {\r\n  /* 480px */\r\n  /* Dashboard date range panel */\r\n  .page-content-wrapper .page-content .page-title small {\r\n    display: block;\r\n    clear: both; } }\r\n/***\r\nPage footer\r\n***/\r\n.page-footer {\r\n  padding: 8px 20px 5px 20px;\r\n  font-size: 12px;\r\n  height: 33px; }\r\n.page-footer:before, .page-footer:after {\r\n    content: \" \";\r\n    display: table; }\r\n.page-footer:after {\r\n    clear: both; }\r\n.page-footer .page-footer-inner {\r\n    float: left;\r\n    display: inline-block; }\r\n.page-footer .page-footer-tools {\r\n    float: right;\r\n    display: inline-block; }\r\n.page-footer .page-footer-tools .go-top {\r\n      display: block;\r\n      text-decoration: none;\r\n      cursor: pointer;\r\n      margin-top: -2px;\r\n      margin-right: 0px;\r\n      margin-bottom: 0px;\r\n      font-size: 16px;\r\n      padding: 0px 6px 0px 6px; }\r\n.page-footer .page-footer-tools .go-top i {\r\n        font-size: 22px;\r\n        margin-bottom: 5px; }\r\n.page-footer-fixed.page-footer-fixed-mobile .page-footer {\r\n    position: fixed;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: 10000;\r\n    bottom: 0; }\r\n.page-footer-fixed.page-footer-fixed-mobile.page-sidebar-fixed .page-footer {\r\n    margin-left: 0 !important; }\r\n@media (min-width: 992px) {\r\n  /* 992px */\r\n  /* Default footer */\r\n  .page-footer {\r\n    clear: left; }\r\n  /* Fixed footer */\r\n  .page-footer-fixed .page-footer {\r\n    position: fixed;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: 10000;\r\n    bottom: 0; }\r\n  /* Footer with footer sidebar */\r\n  .page-sidebar-fixed.page-sidebar-closed .page-footer {\r\n    margin-left: 54px; }\r\n  .page-sidebar-fixed.page-footer-fixed .page-footer {\r\n    margin-left: 0 !important; }\r\n  /* Fixed Sidebar */\r\n  .page-sidebar-fixed .page-footer {\r\n    margin-left: 195px;\r\n    padding: 8px 20px 5px 20px; }\r\n  /* Boxed page */\r\n  .page-boxed .page-footer {\r\n    padding: 8px 0 5px 0; }\r\n  .page-boxed.page-sidebar-fixed .page-footer {\r\n    padding-right: 20px;\r\n    padding-left: 20px; }\r\n  /* Page sidebar reversed */\r\n  .page-sidebar-reversed.page-sidebar-fixed .page-footer {\r\n    margin-left: 0;\r\n    margin-right: 195px;\r\n    padding: 8px 20px 5px 20px; }\r\n  .page-sidebar-reversed.page-sidebar-fixed.page-footer-fixed .page-footer {\r\n    margin-left: 0;\r\n    margin-right: 0; }\r\n  .page-sidebar-reversed.page-sidebar-fixed.page-sidebar-closed .page-footer {\r\n    margin-right: 54px; } }\r\n@media (max-width: 991px) {\r\n  /* 991px */\r\n  /* Boxed Layout */\r\n  .page-footer {\r\n    padding-left: 10px;\r\n    padding-right: 10px; } }\r\n@media (max-width: 767px) {\r\n  /* 767px */\r\n  /* Default footer & boxed footer */\r\n  .page-footer,\r\n  .page-boxed .page-footer {\r\n    padding-left: 10px;\r\n    padding-right: 10px; }\r\n  /* Fixed footer */\r\n  .page-footer-fixed .page-footer .container {\r\n    padding-left: 0;\r\n    padding-right: 0; } }\r\n/* Scroll Top Top */\r\n.scroll-to-top {\r\n  display: inline-block;\r\n  padding: 2px;\r\n  text-align: center;\r\n  position: fixed;\r\n  z-index: 10001;\r\n  bottom: 10px;\r\n  display: none;\r\n  right: 10px; }\r\n.scroll-to-top > i {\r\n    display: inline-block;\r\n    color: #687991;\r\n    font-size: 32px;\r\n    opacity: 0.7 ;\r\n    filter: alpha(opacity=70) ; }\r\n.scroll-to-top:hover {\r\n    cursor: pointer; }\r\n.scroll-to-top:hover > i {\r\n      opacity: 1 ;\r\n      filter: alpha(opacity=100) ; }\r\n@media (min-width: 992px) {\r\n  /* 992px */\r\n  .scroll-to-top {\r\n    right: 10px; } }\r\n@media (max-width: 991px) {\r\n  /* 991px */\r\n  .scroll-to-top {\r\n    right: 10px; }\r\n    .scroll-to-top > i {\r\n      font-size: 28px; } }\r\n/***\r\nTheme Panel\r\n***/\r\n.theme-panel {\r\n  width: 400px;\r\n  margin-top: -15px;\r\n  margin-right: 0px;\r\n  z-index: 100;\r\n  float: right;\r\n  position: relative; }\r\n.theme-panel > .toggler {\r\n    top: 5px;\r\n    right: 1px;\r\n    height: 40px;\r\n    width: 40px;\r\n    border-radius: 50% !important;\r\n    cursor: pointer;\r\n    position: absolute;\r\n    text-align: center;\r\n    background-color: #fff; }\r\n.theme-panel > .toggler > i {\r\n      position: relative;\r\n      top: 12px;\r\n      font-size: 20px;\r\n      color: #9fb3ca; }\r\n.theme-panel > .toggler:hover {\r\n      background: #ACB5C3; }\r\n.theme-panel > .toggler:hover > i {\r\n        color: #fff; }\r\n.theme-panel > .toggler-close {\r\n    display: none;\r\n    top: 5px;\r\n    right: 1px;\r\n    z-index: 101;\r\n    cursor: pointer;\r\n    position: absolute; }\r\n.theme-panel > .toggler-close > i {\r\n      position: relative;\r\n      top: 12px;\r\n      right: 12px;\r\n      font-size: 20px;\r\n      color: #f2f2f2; }\r\n.theme-panel > .toggler-close:hover {\r\n      opacity: 0.8 ;\r\n      filter: alpha(opacity=80) ; }\r\n.theme-panel > .theme-options {\r\n    box-shadow: 5px 5px rgba(63, 77, 86, 0.1);\r\n    top: 4px;\r\n    right: 0;\r\n    display: none;\r\n    position: absolute;\r\n    z-index: 100;\r\n    background: #3f4d56;\r\n    border: 1px solid #39454d;\r\n    border-radius: 4px; }\r\n.theme-panel > .theme-options > .theme-option {\r\n      color: #eee;\r\n      padding: 11px;\r\n      border-top: 1px solid #46545f;\r\n      margin-top: 0px;\r\n      margin-bottom: 0px; }\r\n.theme-panel > .theme-options > .theme-option > span {\r\n        text-transform: uppercase;\r\n        display: inline-block;\r\n        width: 115px;\r\n        font-size: 13px;\r\n        font-weight: 300; }\r\n.theme-panel > .theme-options > .theme-option > select.form-control {\r\n        display: inline;\r\n        width: 100px;\r\n        padding: 2px;\r\n        text-transform: lowercase; }\r\n.theme-panel > .theme-options > .theme-option.theme-colors {\r\n        border-top: 0; }\r\n.theme-panel > .theme-options > .theme-option.theme-colors > span {\r\n          display: block;\r\n          width: auto; }\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul {\r\n          list-style: none;\r\n          padding: 0;\r\n          display: block;\r\n          margin-bottom: 10px !important;\r\n          margin-top: 15px; }\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li {\r\n            width: 46px;\r\n            height: 45px;\r\n            margin: 0 4px;\r\n            cursor: pointer;\r\n            list-style: none;\r\n            float: left;\r\n            border: solid 1px #707070;\r\n            /* theme colors */ }\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li:first-child {\r\n              margin-left: 0; }\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li:hover, .theme-panel > .theme-options > .theme-option.theme-colors > ul > li.current {\r\n              border: solid 2px #d64635; }\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-default {\r\n              background: #2b3643; }\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-dark {\r\n              background: #333438; }\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-blue {\r\n              background: #26344B; }\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-grey {\r\n              background: #4D5B69; }\r\n.theme-panel > .theme-options > .theme-option.theme-colors > ul > li.color-light {\r\n              background: #f5f5f5; }\r\n/* Page Portlet Fullscreen */\r\n.page-portlet-fullscreen .page-quick-sidebar-wrapper,\r\n.page-portlet-fullscreen .page-quick-sidebar-toggler {\r\n  z-index: -1; }\r\n/* Quick sidebar toggler */\r\n.page-quick-sidebar-toggler {\r\n  overflow: hidden;\r\n  z-index: 99999;\r\n  display: none;\r\n  width: 28px;\r\n  height: 27px;\r\n  position: fixed;\r\n  top: 10px;\r\n  right: 15px;\r\n  text-align: center;\r\n  padding-top: 6px; }\r\n.page-quick-sidebar-toggler:hover {\r\n    background: #303a43; }\r\n.page-quick-sidebar-open .page-quick-sidebar-toggler {\r\n    display: inline-block; }\r\n.page-quick-sidebar-open .page-quick-sidebar-toggler:hover {\r\n      background: none; }\r\n.page-quick-sidebar-toggler > i {\r\n    color: #99a8b5;\r\n    font-size: 17px; }\r\n.page-quick-sidebar-toggler > i:hover {\r\n      color: #fff !important; }\r\n.page-quick-sidebar-open .page-quick-sidebar-toggler > i:before {\r\n      content: \"\"/*rtl:\"\"*/; }\r\n/* Quick sidebar wrapper */\r\n.page-quick-sidebar-wrapper {\r\n  transition: right 0.3s;\r\n  z-index: 9996;\r\n  position: fixed;\r\n  top: 0;\r\n  bottom: 0;\r\n  width: 320px;\r\n  right: -320px;\r\n  overflow: hidden;\r\n  color: #99a8b5;\r\n  background: #21282e; }\r\n.page-quick-sidebar-open .page-quick-sidebar-wrapper {\r\n    transition: right 0.3s;\r\n    right: 0; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar {\r\n    background: #21282e;\r\n    /* Quick sidebar tabs content */\r\n    /* Quick sidebar general list heading */\r\n    /* Quick sidebar general list-items */\r\n    /* Inner content */\r\n    /* Quick sidebar list */\r\n    /* Quick sidebar list item */\r\n    /* Quick sidebar list item shown */\r\n    /* Quick sidebar chat */\r\n    /* Quick sidebar alerts */\r\n    /* Quick sidebar settings */ }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs {\r\n      margin: 0;\r\n      padding: 0;\r\n      border: 0; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li {\r\n        display: table-cell !important;\r\n        width: 1%  !important;\r\n        padding: 0;\r\n        margin: 0;\r\n        float: none; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li > a {\r\n          position: relative;\r\n          display: block;\r\n          text-align: center;\r\n          border: 0;\r\n          height: auto;\r\n          font-size: 14px;\r\n          padding: 45px 15px 8px;\r\n          text-transform: uppercase;\r\n          background: none;\r\n          margin-right: 0;\r\n          color: #90a1af;\r\n          border: 0;\r\n          border-bottom: 3px solid rgba(243, 86, 93, 0.3);\r\n          border-radius: 0;\r\n          outline: none !important; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li > a > .badge {\r\n            position: absolute;\r\n            top: 45px;\r\n            right: 3px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li.active > a, .page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li:hover > a {\r\n          border: 0;\r\n          border-bottom: 3px solid #f3565d;\r\n          background: none;\r\n          color: #fff;\r\n          text-decoration: none; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu {\r\n          border: 0;\r\n          background: #36424c;\r\n          box-shadow: 5px 5px rgba(97, 117, 135, 0.1);\r\n          margin-top: 8px;\r\n          margin-right: 20px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu:before {\r\n            position: absolute;\r\n            top: -7px;\r\n            right: 19px;\r\n            display: inline-block !important;\r\n            border-right: 7px solid transparent;\r\n            border-left: 7px solid transparent;\r\n            border-bottom: 7px solid #36424c;\r\n            content: ''; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu:after {\r\n            position: absolute;\r\n            top: -6px;\r\n            right: 20px;\r\n            display: inline-block !important;\r\n            border-right: 6px solid transparent;\r\n            border-left: 6px solid transparent;\r\n            border-bottom: 7px solid #36424c;\r\n            content: ''; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li > a {\r\n            padding: 10px 15px;\r\n            color: #99a8b5; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li > a > i {\r\n              color: #93a3b1; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li:hover > a {\r\n            background: #3d4a55;\r\n            color: #99a8b5; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li:hover > a > i {\r\n              color: #9babb8; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li.active > a {\r\n            background: #38444f;\r\n            color: #99a8b5; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li .dropdown-menu > li.divider {\r\n            background-color: #3d4a55; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li.open > a.dropdown-toggle {\r\n          border-bottom: 3px solid #f3565d;\r\n          background: none;\r\n          text-decoration: none;\r\n          color: #90a1af; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .tab-content {\r\n      margin: 0;\r\n      padding: 0; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-heading {\r\n      font-size: 16px;\r\n      margin: 10px 10px;\r\n      color: #6c8296; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items {\r\n      margin: 0;\r\n      padding: 0;\r\n      list-style: none; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items > li {\r\n        margin: 0;\r\n        padding: 15px;\r\n        background: none;\r\n        border-bottom-width: 1px;\r\n        border-bottom-style: solid;\r\n        border-bottom-color: #273037; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items > li:hover {\r\n          background: #273037; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items > li:last-child {\r\n          border-bottom: 0; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .list-items.borderless li {\r\n        border: 0; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .inner-content {\r\n      margin: 10px 10px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-list {\r\n      position: absolute !important;\r\n      width: 320px !important;\r\n      transition: margin 0.3s; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item {\r\n      width: 320px;\r\n      position: absolute !important;\r\n      width: 320px !important;\r\n      transition: margin 0.3s;\r\n      margin-left: 320px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav {\r\n        padding: 15px 10px 0px 10px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav .page-quick-sidebar-back-to-list {\r\n          vertical-align: middle;\r\n          display: inline-block;\r\n          font-size: 14px;\r\n          color: #90a1af; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav .page-quick-sidebar-back-to-list:hover {\r\n            text-decoration: none; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item .page-quick-sidebar-nav .page-quick-sidebar-back-to-list > i {\r\n            font-size: 17px;\r\n            line-height: 17px;\r\n            vertical-align: top;\r\n            margin-right: 3px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list {\r\n      transition: margin 0.3s;\r\n      margin-left: -320px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list .slimScrollBar,\r\n      .page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list .slimScrollRail {\r\n        display: none !important; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-item {\r\n      transition: margin 0.3s;\r\n      margin-left: 0; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users {\r\n      padding: 10px 0;\r\n      position: relative; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media {\r\n        padding: 15px 15px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object {\r\n          border-radius: 50% !important;\r\n          width: 45.71429px;\r\n          opacity: 0.8;\r\n          filter: alpha(opacity=80);\r\n          float: left;\r\n          margin-right: 10px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object:before, .page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object:after {\r\n            content: \" \";\r\n            display: table; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-object:after {\r\n            clear: both; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media:hover {\r\n          cursor: pointer; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media:hover .media-object {\r\n            opacity: 1;\r\n            filter: alpha(opacity=100); }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-body .media-heading {\r\n          margin: 5px 0 0 0;\r\n          font-size: 14px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-body .media-heading-sub {\r\n          font-size: 11px;\r\n          text-transform: uppercase;\r\n          color: #657b8d; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-body .media-heading-small {\r\n          font-size: 10px;\r\n          color: #5d7081; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-users .media-list .media .media-status {\r\n          margin-top: 10px;\r\n          right: 10px;\r\n          position: absolute;\r\n          display: inline-block; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages {\r\n      padding: 0px 10px;\r\n      position: relative; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post {\r\n        transition: display 0.3s;\r\n        padding: 5px 0;\r\n        margin: 10px auto;\r\n        font-size: 13px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .body {\r\n          color: #c3c3c3;\r\n          display: block; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .avatar {\r\n          width: 45.71429px;\r\n          border-radius: 50% !important; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .avatar {\r\n          float: left;\r\n          margin-right: 10px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .avatar {\r\n          float: right;\r\n          margin-left: 10px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .name {\r\n          font-size: 12px;\r\n          font-weight: 300;\r\n          color: #8496a7; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .datetime {\r\n          font-size: 12px;\r\n          font-weight: 300;\r\n          color: #8496a7; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post .message {\r\n          display: block;\r\n          padding: 5px;\r\n          position: relative;\r\n          color: #90a1af;\r\n          background: #36424c; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .message {\r\n          text-align: left;\r\n          margin-left: 55px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.in .message .arrow {\r\n            display: block;\r\n            position: absolute;\r\n            top: 9px;\r\n            left: -6px;\r\n            width: 0;\r\n            height: 0;\r\n            border-top: 6px solid transparent;\r\n            border-bottom: 6px solid transparent;\r\n            border-right-width: 6px;\r\n            border-right-style: solid;\r\n            border-right-color: #36424c; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .message {\r\n          margin-right: 55px;\r\n          text-align: right; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .message .arrow {\r\n            display: block;\r\n            position: absolute;\r\n            top: 9px;\r\n            right: -6px;\r\n            border-top: 6px solid transparent;\r\n            border-bottom: 6px solid transparent;\r\n            border-left-width: 6px;\r\n            border-left-style: solid;\r\n            border-left-color: #36424c; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .name,\r\n        .page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-messages .post.out .datetime {\r\n          text-align: right; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-chat .page-quick-sidebar-chat-user .page-quick-sidebar-chat-user-form {\r\n      padding: 20px 10px 15px 10px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list {\r\n      padding: 10px 0;\r\n      position: relative; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a {\r\n        color: #7e91a2; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a .label {\r\n          margin-top: 5px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a .desc {\r\n          text-decoration: underline;\r\n          padding: 0;\r\n          color: #788c9e; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-alerts .page-quick-sidebar-alerts-list .feeds li a .date {\r\n          color: #5d7081; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list {\r\n      padding: 10px 0;\r\n      position: relative; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list .list-items li .bootstrap-switch {\r\n        margin-top: -3px;\r\n        float: right;\r\n        border: 0;\r\n        min-width: 59px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list .list-items li .form-control {\r\n        width: 75px !important;\r\n        padding: 4px 4px !important;\r\n        float: right;\r\n        border: 0;\r\n        margin-top: -4px; }\r\n.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list .list-items li select.form-control {\r\n        padding: 4px 0px !important; }\r\n.quick-nav {\r\n  position: fixed;\r\n  z-index: 10103;\r\n  top: 50%;\r\n  right: 10px;\r\n  margin-top: -230px;\r\n  pointer-events: none; }\r\n.quick-nav .quick-nav-bg {\r\n    /* this is the stretching navigation background */\r\n    position: absolute;\r\n    z-index: 10102;\r\n    top: 0;\r\n    right: 0;\r\n    width: 60px;\r\n    height: 60px;\r\n    border-radius: 30px !important;\r\n    background: #36C6D3;\r\n    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);\r\n    webkit-transition: height .2s, box-shadow .2s;\r\n    transition: height .2s, box-shadow .2s; }\r\n.quick-nav.nav-is-visible {\r\n    pointer-events: auto; }\r\n.quick-nav.nav-is-visible .quick-nav-bg {\r\n    height: 100%;\r\n    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); }\r\n.quick-nav-trigger {\r\n  position: absolute;\r\n  z-index: 10103;\r\n  top: 0;\r\n  right: 0;\r\n  height: 60px;\r\n  width: 60px;\r\n  border-radius: 50% !important;\r\n  overflow: hidden;\r\n  white-space: nowrap;\r\n  color: transparent;\r\n  pointer-events: auto; }\r\n.quick-nav-trigger span,\r\n  .quick-nav-trigger span::after,\r\n  .quick-nav-trigger span::before {\r\n    /* this is the hamburger icon */\r\n    position: absolute;\r\n    width: 16px;\r\n    height: 2px;\r\n    background-color: #ffffff; }\r\n.quick-nav-trigger span {\r\n    /* middle line of the hamburger icon */\r\n    webkit-transition: background-color 0.2s;\r\n    transition: background-color 0.2s;\r\n    left: 50%;\r\n    top: 50%;\r\n    bottom: auto;\r\n    right: auto;\r\n    webkit-transform: translateX(-50%) translateY(-50%);\r\n    -webkit-transform: translateX(-50%) translateY(-50%);\r\n            transform: translateX(-50%) translateY(-50%); }\r\n.quick-nav-trigger span::after,\r\n  .quick-nav-trigger span::before {\r\n    /* top and bottom lines of the hamburger icon */\r\n    content: '';\r\n    top: 0;\r\n    left: 0;\r\n    -webkit-backface-visibility: hidden;\r\n    backface-visibility: hidden;\r\n    webkit-transition: transform 0.2s;\r\n    transition: -webkit-transform 0.2s;\r\n    transition: transform 0.2s;\r\n    transition: transform 0.2s, -webkit-transform 0.2s; }\r\n.quick-nav-trigger span::before {\r\n    webkit-transform: translateY(-6px);\r\n    -webkit-transform: translateY(-6px);\r\n            transform: translateY(-6px); }\r\n.quick-nav-trigger span::after {\r\n    webkit-transform: translateY(6px);\r\n    -webkit-transform: translateY(6px);\r\n            transform: translateY(6px); }\r\n.no-touch .quick-nav-trigger:hover ~ .quick-nav-bg {\r\n    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); }\r\n.nav-is-visible .quick-nav-trigger span {\r\n    background-color: transparent; }\r\n.nav-is-visible .quick-nav-trigger span::before {\r\n    webkit-transform: rotate(-45deg);\r\n    -webkit-transform: rotate(-45deg);\r\n            transform: rotate(-45deg); }\r\n.nav-is-visible .quick-nav-trigger span::after {\r\n    webkit-transform: rotate(45deg);\r\n    -webkit-transform: rotate(45deg);\r\n            transform: rotate(45deg); }\r\n.quick-nav ul {\r\n  position: relative;\r\n  z-index: 10103;\r\n  padding: 60px 0 0;\r\n  visibility: hidden;\r\n  webkit-transition: visibility 0.3s;\r\n  transition: visibility 0.3s;\r\n  text-align: right;\r\n  list-style: none; }\r\n.quick-nav ul > li a {\r\n    position: relative;\r\n    display: block;\r\n    height: 50px;\r\n    line-height: 50px;\r\n    padding: 0 calc(1em + 60px) 0 1em;\r\n    font-size: 1.4rem;\r\n    webkit-transition: color 0.2s;\r\n    transition: color 0.2s; }\r\n.quick-nav ul > li a:hover {\r\n      text-decoration: none; }\r\n.quick-nav ul > li a:hover > span {\r\n        text-decoration: none; }\r\n.quick-nav ul > li a > i {\r\n      /* navigation item icons */\r\n      content: '';\r\n      position: absolute;\r\n      height: 16px;\r\n      width: 16px;\r\n      font-size: 18px;\r\n      right: 24px;\r\n      top: 16px;\r\n      color: #ebebeb; }\r\n.quick-nav ul > li a::before {\r\n      /* line visible next to the active navigation item */\r\n      content: '';\r\n      position: absolute;\r\n      width: 3px;\r\n      height: 16px;\r\n      top: 50%;\r\n      right: 60px;\r\n      webkit-transform: translateX(3px) translateY(-50%) scaleY(0);\r\n      -webkit-transform: translateX(3px) translateY(-50%) scaleY(0);\r\n              transform: translateX(3px) translateY(-50%) scaleY(0);\r\n      background-color: #FF3F3F; }\r\n.quick-nav ul > li span {\r\n    /* navigation item labels */\r\n    color: #ebebeb;\r\n    font-weight: 400;\r\n    display: block;\r\n    opacity: 0;\r\n    webkit-transform: translateX(-25px);\r\n    -webkit-transform: translateX(-25px);\r\n            transform: translateX(-25px); }\r\n.quick-nav ul > li:last-child {\r\n    padding-bottom: 10px; }\r\n.quick-nav.nav-is-visible ul {\r\n  visibility: visible; }\r\n.quick-nav.nav-is-visible ul a::after {\r\n    /* navigation item icons */\r\n    webkit-transform: translateY(-50%) scale(1);\r\n    -webkit-transform: translateY(-50%) scale(1);\r\n            transform: translateY(-50%) scale(1);\r\n    -webkit-animation: scaleIn 0.15s backwards;\r\n    animation: scaleIn 0.15s backwards;\r\n    webkit-transition: opacity 0.2s;\r\n    transition: opacity 0.2s; }\r\n.quick-nav.nav-is-visible ul a:hover::after {\r\n    opacity: 1; }\r\n.quick-nav.nav-is-visible ul a:hover::before {\r\n    webkit-transform: translateX(3px) translateY(-50%) scaleY(2);\r\n    -webkit-transform: translateX(3px) translateY(-50%) scaleY(2);\r\n            transform: translateX(3px) translateY(-50%) scaleY(2);\r\n    webkit-transition: transform 0.15s 0.3s;\r\n    transition: -webkit-transform 0.15s 0.3s;\r\n    transition: transform 0.15s 0.3s;\r\n    transition: transform 0.15s 0.3s, -webkit-transform 0.15s 0.3s; }\r\n.quick-nav.nav-is-visible ul a:hover > span {\r\n    color: white; }\r\n.quick-nav.nav-is-visible ul a:hover > i {\r\n    color: #fafafa; }\r\n.quick-nav.nav-is-visible ul span {\r\n    opacity: 1;\r\n    webkit-transform: translateX(0);\r\n    -webkit-transform: translateX(0);\r\n            transform: translateX(0);\r\n    -webkit-animation: slideIn 0.15s backwards;\r\n    animation: slideIn 0.15s backwards;\r\n    webkit-transition: transform 0.2s;\r\n    transition: -webkit-transform 0.2s;\r\n    transition: transform 0.2s;\r\n    transition: transform 0.2s, -webkit-transform 0.2s; }\r\n.no-touch .quick-nav.nav-is-visible ul a:hover::after {\r\n    opacity: 1; }\r\n.no-touch .quick-nav.nav-is-visible ul a:hover span {\r\n    webkit-transform: translateX(-5px);\r\n    -webkit-transform: translateX(-5px);\r\n            transform: translateX(-5px); }\r\n.quick-nav-overlay {\r\n  display: none;\r\n  top: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  left: 0;\r\n  position: fixed;\r\n  z-index: 10101;\r\n  background: transparent; }\r\n.quick-nav.nav-is-visible + .quick-nav-overlay {\r\n  background: rgba(0, 0, 0, 0.8);\r\n  display: block;\r\n  transition: background .7s ease-out; }\r\n@media (max-width: 991px) {\r\n  /* 991px */\r\n  .quick-nav {\r\n    top: 120px;\r\n    margin-top: 0; } }\r\n/***\r\nPage Loading\r\n***/\r\n.page-on-load {\r\n  background: #fefefe; }\r\n.page-on-load .page-header,\r\n  .page-on-load .page-container,\r\n  .page-on-load .page-footer,\r\n  .page-on-load > .clearfix {\r\n    display: none;\r\n    transition: all 2s; }\r\n"
 
 /***/ }),
 
@@ -2433,6 +4234,320 @@ module.exports = ".page-header.navbar .page-logo{background:#17C4BB}.page-header
 
 /***/ }),
 
+/***/ "./src/app/shareds/layouts/components/change-password/account.service.ts":
+/*!*******************************************************************************!*\
+  !*** ./src/app/shareds/layouts/components/change-password/account.service.ts ***!
+  \*******************************************************************************/
+/*! exports provided: AccountService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountService", function() { return AccountService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../configs/app.config */ "./src/app/configs/app.config.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+
+
+var AccountService = /** @class */ (function () {
+    function AccountService(appConfig, toastr, http) {
+        this.toastr = toastr;
+        this.http = http;
+        this.url = 'api/v1/core/accounts';
+        this.url = "" + appConfig.API_GATEWAY_URL + this.url;
+    }
+    AccountService.prototype.updatePassword = function (updatePassword) {
+        var _this = this;
+        return this.http.post(this.url + "/change-password", updatePassword)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (result) {
+            _this.toastr.success(result.message);
+            return result;
+        }));
+    };
+    AccountService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_2__["APP_CONFIG"])),
+        __metadata("design:paramtypes", [Object, ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], AccountService);
+    return AccountService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shareds/layouts/components/change-password/change-password.component.html":
+/*!*******************************************************************************************!*\
+  !*** ./src/app/shareds/layouts/components/change-password/change-password.component.html ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<nh-modal #changePasswordModal>\r\n    <nh-modal-header class=\"uppercase font-green-sharp bold\">\r\n        <i class=\"icon-key cm-mgr-5\"></i> <span i18n=\"@@changePassword\">Change password</span>\r\n    </nh-modal-header>\r\n    <form action=\"\" class=\"form-horizontal\" [formGroup]=\"model\" (ngSubmit)=\"save()\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\"\r\n                 [class.has-error]=\"formErrors.oldPassword\">\r\n                <label ghmLabel=\"Old password\"\r\n                       i18n-ghmLabel=\"oldPassword\"\r\n                       [required]=\"true\" class=\"col-sm-12\"></label>\r\n                <div class=\"col-sm-12\">\r\n                    <input id=\"oldPassword\"\r\n                           type=\"password\"\r\n                           autocomplete=\"new-password\"\r\n                           class=\"form-control\" i18n-placeholder=\"@@enterOldPassword\"\r\n                           placeholder=\"Enter old password\"\r\n                           formControlName=\"oldPassword\">\r\n                    <span class=\"help-block\">\r\n                        {\r\n                        formErrors?.oldPassword,\r\n                        select, required {Please enter old password} maxlength {Old password not allowed over 50 characters}\r\n                        }\r\n                    </span>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\"\r\n                 [class.has-error]=\"formErrors.newPassword\">\r\n                <label ghmLabel=\"New password\"\r\n                       i18n-ghmLabel=\"newPassword\"\r\n                       [required]=\"true\" class=\"col-sm-12\"></label>\r\n                <div class=\"col-sm-12\">\r\n                    <input type=\"password\"\r\n                           autocomplete=\"off\"\r\n                           class=\"form-control\"\r\n                           i18n-placeholder=\"@@enterNewPassword\"\r\n                           placeholder=\"Enter new password\"\r\n                           formControlName=\"newPassword\"\r\n                           autocomplete=\"off\">\r\n                    <span class=\"help-block\">\r\n                        {\r\n                        formErrors?.newPassword,\r\n                        select, required {Please enter new password} maxlength {New password not allowed over 50 characters}\r\n                        }\r\n                    </span>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\"\r\n                 [class.has-error]=\"formErrors.confirmNewPassword\">\r\n                <label ghmLabel=\"Confirm password\"\r\n                       i18n-ghmLabel=\"newPassword\"\r\n                       [required]=\"true\" class=\"col-sm-12\"></label>\r\n                <div class=\"col-sm-12\">\r\n                    <input type=\"password\"\r\n                           autocomplete=\"off\"\r\n                           class=\"form-control\"\r\n                           i18n-placeholder=\"@@enterConfirmPassword\"\r\n                           placeholder=\"Enter confirm password\"\r\n                           formControlName=\"confirmNewPassword\"\r\n                           autocomplete=\"off\">\r\n                    <span class=\"help-block\">\r\n                        {\r\n                        formErrors?.confirmNewPassword,\r\n                        select,\r\n                        required {Please enter confirm password}\r\n                        maxlength {Confirm password not allowed over 50 characters}\r\n                        validateEqual {Confirm new password doesn't match}\r\n                        }\r\n                    </span>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer class=\"text-right\">\r\n            <button class=\"btn blue cm-mgr-5\" i18n=\"@@save\">\r\n                Save\r\n            </button>\r\n            <button type=\"button\" class=\"btn default\" nh-dismiss i18n=\"@@cancel\">\r\n                Cancel\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/shareds/layouts/components/change-password/change-password.component.ts":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/shareds/layouts/components/change-password/change-password.component.ts ***!
+  \*****************************************************************************************/
+/*! exports provided: ChangePasswordComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangePasswordComponent", function() { return ChangePasswordComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
+/* harmony import */ var _base_form_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../base-form.component */ "./src/app/base-form.component.ts");
+/* harmony import */ var _account_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./account.service */ "./src/app/shareds/layouts/components/change-password/account.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _change_password_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./change-password.model */ "./src/app/shareds/layouts/components/change-password/change-password.model.ts");
+/* harmony import */ var _validators_validator_equal_validator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../validators/validator-equal.validator */ "./src/app/validators/validator-equal.validator.ts");
+/* harmony import */ var _services_util_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../services/auth.service */ "./src/app/shareds/services/auth.service.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+var ChangePasswordComponent = /** @class */ (function (_super) {
+    __extends(ChangePasswordComponent, _super);
+    function ChangePasswordComponent(accountService, equalValidator, utilService, authService, fb) {
+        var _this = _super.call(this) || this;
+        _this.accountService = accountService;
+        _this.equalValidator = equalValidator;
+        _this.utilService = utilService;
+        _this.authService = authService;
+        _this.fb = fb;
+        _this.changePassword = new _change_password_model__WEBPACK_IMPORTED_MODULE_5__["ChangePassword"]();
+        return _this;
+    }
+    ChangePasswordComponent.prototype.ngOnInit = function () {
+        this.buildForm();
+    };
+    ChangePasswordComponent.prototype.show = function () {
+        this.changePasswordModal.open();
+        this.utilService.focusElement('oldPassword');
+    };
+    ChangePasswordComponent.prototype.save = function () {
+        var _this = this;
+        var isValid = this.validateModel(true);
+        if (isValid) {
+            this.changePassword = this.model.value;
+            this.subscribers.changePassword = this.accountService.updatePassword(this.changePassword)
+                .subscribe(function () {
+                _this.model.reset();
+                _this.authService.signOut();
+                // setTimeout(() => {
+                //     this.changePasswordModal.dismiss();
+                // }, 500);
+            });
+        }
+    };
+    ChangePasswordComponent.prototype.buildForm = function () {
+        var _this = this;
+        this.formErrors = this.renderFormError(['oldPassword', 'newPassword', 'confirmNewPassword']);
+        this.validationMessages = this.renderFormErrorMessage([
+            { 'oldPassword': ['required', 'maxlength'] },
+            { 'newPassword': ['required', 'maxlength'] },
+            { 'confirmNewPassword': ['required', 'maxlength', 'validateEqual'] },
+        ]);
+        this.model = this.fb.group({
+            oldPassword: [this.changePassword.oldPassword, [
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(50)
+                ]],
+            newPassword: [this.changePassword.newPassword, [
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(50)
+                ]],
+            confirmNewPassword: [this.changePassword.confirmNewPassword, [
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(50),
+                    this.equalValidator.validate('newPassword')
+                ]]
+        });
+        this.model.valueChanges.subscribe(function () { return _this.validateModel(false); });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('changePasswordModal'),
+        __metadata("design:type", _components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_1__["NhModalComponent"])
+    ], ChangePasswordComponent.prototype, "changePasswordModal", void 0);
+    ChangePasswordComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-change-password',
+            template: __webpack_require__(/*! ./change-password.component.html */ "./src/app/shareds/layouts/components/change-password/change-password.component.html"),
+            providers: [_validators_validator_equal_validator__WEBPACK_IMPORTED_MODULE_6__["EqualValidator"], _account_service__WEBPACK_IMPORTED_MODULE_3__["AccountService"]]
+        }),
+        __metadata("design:paramtypes", [_account_service__WEBPACK_IMPORTED_MODULE_3__["AccountService"],
+            _validators_validator_equal_validator__WEBPACK_IMPORTED_MODULE_6__["EqualValidator"],
+            _services_util_service__WEBPACK_IMPORTED_MODULE_7__["UtilService"],
+            _services_auth_service__WEBPACK_IMPORTED_MODULE_8__["AuthService"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"]])
+    ], ChangePasswordComponent);
+    return ChangePasswordComponent;
+}(_base_form_component__WEBPACK_IMPORTED_MODULE_2__["BaseFormComponent"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/shareds/layouts/components/change-password/change-password.model.ts":
+/*!*************************************************************************************!*\
+  !*** ./src/app/shareds/layouts/components/change-password/change-password.model.ts ***!
+  \*************************************************************************************/
+/*! exports provided: ChangePassword */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangePassword", function() { return ChangePassword; });
+var ChangePassword = /** @class */ (function () {
+    function ChangePassword() {
+    }
+    return ChangePassword;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shareds/layouts/components/notification-item/notification-item.component.html":
+/*!***********************************************************************************************!*\
+  !*** ./src/app/shareds/layouts/components/notification-item/notification-item.component.html ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<li class=\"notify-item info\"\r\n    [class.readed]=\"notification.isRead\"\r\n    (click)=\"read(notification)\">\r\n    <div class=\"notify-left\">\r\n        <a href=\"javascript://\">\r\n            <img ghmImage\r\n                 alt=\"{{ notification.senderFullName }}\" class=\"img-circle avatar-sm\"\r\n                 [src]=\"notification.senderAvatar\">\r\n        </a>\r\n    </div>\r\n    <div class=\"notify-body\">\r\n        <div [innerHTML]=\"notification.title\"></div>\r\n        <div class=\"times\">\r\n            <i class=\"fa fa-clock-o\"></i> {{ notification.createTimeText }}\r\n        </div>\r\n    </div>\r\n</li>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/shareds/layouts/components/notification-item/notification-item.component.scss":
+/*!***********************************************************************************************!*\
+  !*** ./src/app/shareds/layouts/components/notification-item/notification-item.component.scss ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "app-notification-item {\n  display: block;\n  border-bottom: 1px solid #ddd; }\n  app-notification-item:last-child {\n    border-bottom: none; }\n  app-notification-item .notify-item {\n    padding: 10px;\n    border-bottom: 1px solid #ddd;\n    border-top: none !important;\n    position: relative;\n    font-size: 12.5px;\n    margin-top: 0;\n    margin-bottom: 0;\n    display: table; }\n  app-notification-item .notify-item:hover {\n      background-color: #eaeaea !important; }\n  app-notification-item .notify-item:last-child {\n      border-bottom: none !important; }\n  app-notification-item .notify-item.info {\n      border-left: 3px solid dodgerblue; }\n  app-notification-item .notify-item.warning {\n      border-left: 3px solid darkorange; }\n  app-notification-item .notify-item.danger {\n      border-left: 3px solid darkred; }\n  app-notification-item .notify-item.success {\n      border-left: 3px solid forestgreen; }\n  app-notification-item .notify-item.readed {\n      border-left: 3px solid #ddd; }\n  app-notification-item .notify-item:hover {\n      cursor: pointer; }\n  app-notification-item .notify-item .notify-left, app-notification-item .notify-item .notify-body {\n      display: table-cell;\n      vertical-align: top; }\n  app-notification-item .notify-item .notify-left {\n      float: left;\n      padding-right: 10px; }\n  app-notification-item .notify-item .notify-body {\n      width: 1000px; }\n  app-notification-item .notify-item .content {\n      margin: 0;\n      padding-right: 20px; }\n  app-notification-item .notify-item button.notification-close {\n      border: none;\n      font-size: 10px;\n      background: transparent;\n      position: absolute;\n      top: 10px;\n      right: 10px; }\n  app-notification-item .notify-item button.notification-close:active, app-notification-item .notify-item button.notification-close:focus {\n        outline: none; }\n  app-notification-item .notify-item .times {\n      margin-top: 5px; }\n"
+
+/***/ }),
+
+/***/ "./src/app/shareds/layouts/components/notification-item/notification-item.component.ts":
+/*!*********************************************************************************************!*\
+  !*** ./src/app/shareds/layouts/components/notification-item/notification-item.component.ts ***!
+  \*********************************************************************************************/
+/*! exports provided: NotificationItemComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationItemComponent", function() { return NotificationItemComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_notification_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/notification.service */ "./src/app/shareds/services/notification.service.ts");
+/* harmony import */ var _models_notification_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../models/notification.model */ "./src/app/shareds/models/notification.model.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var NotificationItemComponent = /** @class */ (function () {
+    function NotificationItemComponent(router, notificationService) {
+        this.router = router;
+        this.notificationService = notificationService;
+        this.subscriptions = {};
+    }
+    NotificationItemComponent.prototype.ngOnInit = function () {
+    };
+    NotificationItemComponent.prototype.ngOnDestroy = function () {
+        if (this.subscriptions && this.subscriptions.updateIsRead) {
+            this.subscriptions.updateIsRead.unsubscribe();
+        }
+    };
+    NotificationItemComponent.prototype.read = function (notification) {
+        var _this = this;
+        this.subscriptions.updateIsRead = this.notificationService.updateIsRead(notification.id, true)
+            .subscribe(function () {
+            notification.isRead = !notification.isRead;
+            _this.notificationService.notificationCountUpdated$.next();
+            if (notification.url) {
+                _this.router.navigateByUrl(notification.url);
+            }
+        });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _models_notification_model__WEBPACK_IMPORTED_MODULE_3__["Notification"])
+    ], NotificationItemComponent.prototype, "notification", void 0);
+    NotificationItemComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-notification-item',
+            template: __webpack_require__(/*! ./notification-item.component.html */ "./src/app/shareds/layouts/components/notification-item/notification-item.component.html"),
+            styles: [__webpack_require__(/*! ./notification-item.component.scss */ "./src/app/shareds/layouts/components/notification-item/notification-item.component.scss")],
+            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _services_notification_service__WEBPACK_IMPORTED_MODULE_2__["NotificationService"]])
+    ], NotificationItemComponent);
+    return NotificationItemComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/shareds/layouts/layout.component.html":
 /*!*******************************************************!*\
   !*** ./src/app/shareds/layouts/layout.component.html ***!
@@ -2441,6 +4556,17 @@ module.exports = ".page-header.navbar .page-logo{background:#17C4BB}.page-header
 /***/ (function(module, exports) {
 
 module.exports = "<ng-template app-layout-directive></ng-template><!-- for dynamic load layout -->\r\n"
+
+/***/ }),
+
+/***/ "./src/app/shareds/layouts/layout.component.scss":
+/*!*******************************************************!*\
+  !*** ./src/app/shareds/layouts/layout.component.scss ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "app-admin-1-layout div.top-menu ul.navbar-nav li.dropdown.ghm-dropdown-open > ul.dropdown-menu {\n  display: block;\n  overflow-y: auto; }\n\napp-admin-1-layout div.top-menu ul.dropdown-menu {\n  width: 350px !important;\n  max-width: 350px !important; }\n\napp-admin-1-layout .dropdown-notification .list-notify-container {\n  max-height: 450px;\n  overflow-y: auto;\n  padding-left: 0; }\n\napp-admin-1-layout .dropdown-notification .load-more {\n  display: block;\n  width: 100%; }\n\napp-admin-1-layout .dropdown-notification .load-more button {\n    display: block;\n    width: 100%;\n    text-align: center;\n    background: none;\n    border: none;\n    padding: 10px; }\n\napp-admin-1-layout .dropdown-notification .load-more button:hover {\n      background: #eaeaea; }\n"
 
 /***/ }),
 
@@ -2500,9 +4626,7 @@ var LayoutComponent = /** @class */ (function () {
                     break;
             }
         });
-        this.appService.theme$.subscribe(function (themeName) {
-            _this.renderStyleSheetLink(_this.appService.renderCssUrl(themeName ? themeName : 'default'));
-        });
+        this.initTheme();
     };
     LayoutComponent.prototype.loadComponent = function (theme) {
         if (theme === void 0) { theme = _admin_1_admin_1_layout_component__WEBPACK_IMPORTED_MODULE_2__["Admin1LayoutComponent"]; }
@@ -2533,6 +4657,29 @@ var LayoutComponent = /** @class */ (function () {
             this.renderer.appendChild(headTag, linkTag);
         }
     };
+    // private renderBaseThemeUrl(layout: string) {
+    //     switch (layout) {
+    //         case 'layout1':
+    //             this.baseThemeUrl = '/assets/styles/admin1/themes/';
+    //             break;
+    //         case 'layout2':
+    //             this.baseThemeUrl = '/assets/styles/admin2/themes/';
+    //             break;
+    //         default:
+    //             this.baseThemeUrl = '/assets/styles/admin1/themes/';
+    //             break;
+    //     }
+    // }
+    LayoutComponent.prototype.initTheme = function () {
+        var _this = this;
+        var themeValue = this.appService.theme$.getValue();
+        if (themeValue) {
+            this.renderStyleSheetLink(this.appService.renderCssUrl(themeValue));
+        }
+        this.appService.theme$.subscribe(function (themeName) {
+            _this.renderStyleSheetLink(_this.appService.renderCssUrl(themeName ? themeName : 'default'));
+        });
+    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_layout_directive__WEBPACK_IMPORTED_MODULE_1__["LayoutDirective"]),
         __metadata("design:type", _layout_directive__WEBPACK_IMPORTED_MODULE_1__["LayoutDirective"])
@@ -2540,7 +4687,9 @@ var LayoutComponent = /** @class */ (function () {
     LayoutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-layout',
-            template: __webpack_require__(/*! ./layout.component.html */ "./src/app/shareds/layouts/layout.component.html")
+            template: __webpack_require__(/*! ./layout.component.html */ "./src/app/shareds/layouts/layout.component.html"),
+            styles: [__webpack_require__(/*! ./layout.component.scss */ "./src/app/shareds/layouts/layout.component.scss")],
+            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None
         }),
         __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"],
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"],
@@ -2618,6 +4767,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../configs/app.config */ "./src/app/configs/app.config.ts");
 /* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
 /* harmony import */ var _admin_1_sidebar_admin_1_sidebar_item_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./admin-1/sidebar/admin-1-sidebar-item.component */ "./src/app/shareds/layouts/admin-1/sidebar/admin-1-sidebar-item.component.ts");
+/* harmony import */ var _core_core_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../core/core.module */ "./src/app/core/core.module.ts");
+/* harmony import */ var _components_notification_item_notification_item_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/notification-item/notification-item.component */ "./src/app/shareds/layouts/components/notification-item/notification-item.component.ts");
+/* harmony import */ var _components_change_password_change_password_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/change-password/change-password.component */ "./src/app/shareds/layouts/components/change-password/change-password.component.ts");
+/* harmony import */ var _components_nh_modal_nh_modal_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../components/nh-modal/nh-modal.module */ "./src/app/shareds/components/nh-modal/nh-modal.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2642,15 +4795,20 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
+
 var LayoutModule = /** @class */ (function () {
     function LayoutModule() {
     }
     LayoutModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatCheckboxModule"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatTooltipModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _core_core_module__WEBPACK_IMPORTED_MODULE_18__["CoreModule"], _components_nh_modal_nh_modal_module__WEBPACK_IMPORTED_MODULE_21__["NhModalModule"]
             ],
             declarations: [_layout_component__WEBPACK_IMPORTED_MODULE_5__["LayoutComponent"], _layout_directive__WEBPACK_IMPORTED_MODULE_6__["LayoutDirective"],
+                _components_notification_item_notification_item_component__WEBPACK_IMPORTED_MODULE_19__["NotificationItemComponent"], _components_change_password_change_password_component__WEBPACK_IMPORTED_MODULE_20__["ChangePasswordComponent"],
                 // Admin 1 templates.
                 _admin_1_admin_1_layout_component__WEBPACK_IMPORTED_MODULE_10__["Admin1LayoutComponent"], _admin_1_header_admin_1_header_component__WEBPACK_IMPORTED_MODULE_7__["Admin1HeaderComponent"], _admin_1_sidebar_admin_1_sidebar_component__WEBPACK_IMPORTED_MODULE_8__["Admin1SidebarComponent"], _admin_1_footer_admin_1_footer_component__WEBPACK_IMPORTED_MODULE_9__["Admin1FooterComponent"],
                 _admin_1_sidebar_admin_1_sidebar_item_component__WEBPACK_IMPORTED_MODULE_17__["Admin1SidebarItemComponent"],
@@ -2770,6 +4928,33 @@ var BriefUser = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/shareds/models/notification.model.ts":
+/*!******************************************************!*\
+  !*** ./src/app/shareds/models/notification.model.ts ***!
+  \******************************************************/
+/*! exports provided: Notification, NotificationType */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Notification", function() { return Notification; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationType", function() { return NotificationType; });
+var Notification = /** @class */ (function () {
+    function Notification() {
+    }
+    return Notification;
+}());
+
+var NotificationType = {
+    warning: 0,
+    info: 1,
+    danger: 2,
+    user: 3
+};
+
+
+/***/ }),
+
 /***/ "./src/app/shareds/services/app.service.ts":
 /*!*************************************************!*\
   !*** ./src/app/shareds/services/app.service.ts ***!
@@ -2817,7 +5002,6 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 var AppService = /** @class */ (function () {
     function AppService(appConfig, injector, title, toastr) {
-        var _this = this;
         this.appConfig = appConfig;
         this.injector = injector;
         this.title = title;
@@ -2832,8 +5016,9 @@ var AppService = /** @class */ (function () {
         this.layout$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('layout1');
         this.theme$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('');
         this.pageId$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](0);
-        this.moduleTitle$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.pageTitle$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.modelStateMessages$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        // moduleTitle$ = new Subject<string>();
+        // pageTitle$ = new Subject<string>();sidebarItems$
         this.isCloseSidebar$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](false);
         this.locale = 'vi';
         this.momentDateTimeLocalFormat = {
@@ -2842,9 +5027,8 @@ var AppService = /** @class */ (function () {
                 'shortDate': 'DD/MM/YYYY'
             }
         };
-        this.pageTitle$.subscribe(function (pageTitle) {
-            _this.title.setTitle(pageTitle);
-        });
+        this.url = 'api/v1/core/apps';
+        this.url = "" + this.appConfig.API_GATEWAY_URL + this.url;
     }
     AppService.prototype.resolve = function () {
         return this.initApp();
@@ -2966,9 +5150,17 @@ var AppService = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(AppService.prototype, "currentLanguage", {
+        get: function () {
+            var languageInfo = lodash__WEBPACK_IMPORTED_MODULE_6__["find"](this.languages, function (language) { return language.isDefault; });
+            return languageInfo.languageId;
+        },
+        enumerable: true,
+        configurable: true
+    });
     AppService.prototype.initApp = function () {
         var _this = this;
-        return this.http.get(this.appConfig.CORE_API_URL + "app")
+        return this.http.get("" + this.url)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (result) {
             _this.setupSidebarItem(result.pages);
             _this.permissions = result.permissions;
@@ -2980,33 +5172,25 @@ var AppService = /** @class */ (function () {
     AppService.prototype.toggleSidebar = function () {
         var currentValue = this.isCloseSidebar$.getValue();
         this.isCloseSidebar$.next(currentValue == null || currentValue === undefined ? true : !currentValue);
-        this.http.get(this.appConfig.CORE_API_URL + "/user-settings/close-sidebar/" + !currentValue)
+        this.http.get(this.url + "/user-settings/close-sidebar/" + !currentValue)
             .subscribe();
     };
-    AppService.prototype.setupPage = function (rootPageId, pageId, moduleTitle, pageTitle) {
+    AppService.prototype.setupPage = function (rootPageId, pageId, pageTitle, moduleTitle) {
         this.pageId$.next(pageId);
-        this.moduleTitle$.next(moduleTitle);
-        this.pageTitle$.next(pageTitle);
+        this.title.setTitle(pageTitle);
+        // this.moduleTitle$.next(moduleTitle);
+        // this.pageTitle$.next(pageTitle);
     };
     AppService.prototype.changeTheme = function (themeName) {
         this.theme$.next(themeName);
-        this.http.get(this.appConfig.CORE_API_URL + "/user-settings/change-theme/" + themeName)
+        this.http.get(this.url + "/user-settings/change-theme/" + themeName)
             .subscribe();
-    };
-    AppService.prototype.checkPermission = function (permission) {
-        var pageId = this.pageId$.getValue();
-        var permissionInfo = lodash__WEBPACK_IMPORTED_MODULE_6__["find"](this.permissions, function (permissionItem) {
-            return permissionItem.pageId === pageId;
-        });
-        if (!permissionInfo) {
-            return false;
-        }
-        return (permissionInfo.permission & permission) === permission;
     };
     AppService.prototype.renderCssUrl = function (themeName) {
         return this.themeBaseUrl + themeName + '.min.css';
     };
-    AppService.prototype.getPermissionByPageId = function () {
+    AppService.prototype.getPermissionByPageId = function (pageId) {
+        pageId = pageId ? pageId : this.pageId$.getValue();
         var superAdmin = lodash__WEBPACK_IMPORTED_MODULE_6__["find"](this.permissions, function (permission) {
             return permission.roleId === 'SuperAdministrator';
         });
@@ -3023,14 +5207,14 @@ var AppService = /** @class */ (function () {
             };
         }
         return {
-            view: this.checkPermission(_constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].view),
-            add: this.checkPermission(_constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].add),
-            edit: this.checkPermission(_constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].edit),
-            delete: this.checkPermission(_constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].delete),
-            export: this.checkPermission(_constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].export),
-            print: this.checkPermission(_constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].print),
-            approve: this.checkPermission(_constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].approve),
-            report: this.checkPermission(_constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].report)
+            view: this.checkPermission(pageId, _constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].view),
+            add: this.checkPermission(pageId, _constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].add),
+            edit: this.checkPermission(pageId, _constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].edit),
+            delete: this.checkPermission(pageId, _constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].delete),
+            export: this.checkPermission(pageId, _constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].export),
+            print: this.checkPermission(pageId, _constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].print),
+            approve: this.checkPermission(pageId, _constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].approve),
+            report: this.checkPermission(pageId, _constants_permission_const__WEBPACK_IMPORTED_MODULE_8__["Permission"].report)
         };
     };
     AppService.prototype.logout = function () {
@@ -3050,6 +5234,18 @@ var AppService = /** @class */ (function () {
             this.toastr.success(result.message);
         }
     };
+    AppService.prototype.getListActiveSearch = function () {
+        return this.http.get(this.url + "/list-active-search");
+    };
+    AppService.prototype.checkPermission = function (pageId, permission) {
+        var permissionInfo = lodash__WEBPACK_IMPORTED_MODULE_6__["find"](this.permissions, function (permissionItem) {
+            return permissionItem.pageId === pageId;
+        });
+        if (!permissionInfo) {
+            return false;
+        }
+        return (permissionInfo.permissions & permission) === permission;
+    };
     AppService.prototype.setupAppSetting = function (userSettings) {
         var _this = this;
         var appSetting = {};
@@ -3058,15 +5254,15 @@ var AppService = /** @class */ (function () {
                 switch (userSetting.key) {
                     case 'IsCloseSidebar':
                         appSetting.isCloseSidebar = userSetting.value === 'True';
-                        _this.isCloseSidebar$.next(_this.appSetting.isCloseSidebar);
+                        _this.isCloseSidebar$.next(appSetting.isCloseSidebar);
                         break;
                     case 'ThemeName':
                         appSetting.theme = userSetting.value;
-                        _this.theme$.next(_this.appSetting.theme);
+                        _this.theme$.next(appSetting.theme);
                         break;
                     case 'Layout':
                         appSetting.layout = userSetting.value;
-                        _this.layout$.next(_this.appSetting.layout);
+                        _this.layout$.next(appSetting.layout);
                         break;
                 }
             });
@@ -3164,7 +5360,7 @@ var AppService = /** @class */ (function () {
     };
     AppService.prototype.getSidebarItems = function () {
         var _this = this;
-        this.http.get(this.appConfig.CORE_API_URL + "app/sidebar-items")
+        this.http.get(this.url + "/sidebar-items")
             .subscribe(function (result) {
             var sidebarItems = _this.renderSidebarItem(result, null);
             _this.sidebarItems = sidebarItems;
@@ -3173,28 +5369,28 @@ var AppService = /** @class */ (function () {
     };
     AppService.prototype.getAppSetting = function () {
         var _this = this;
-        this.http.get(this.appConfig.CORE_API_URL + "app/settings")
+        this.http.get(this.url + "/settings")
             .subscribe(function (result) {
             _this.appSetting = _this.setupAppSetting(result);
         });
     };
     AppService.prototype.getCurrentUser = function () {
         var _this = this;
-        this.http.get(this.appConfig.CORE_API_URL + "app/user")
+        this.http.get(this.url + "/apps/user")
             .subscribe(function (result) {
             _this.currentUser = result;
         });
     };
     AppService.prototype.getPermissions = function () {
         var _this = this;
-        this.http.get(this.appConfig.CORE_API_URL + "app/permissions")
+        this.http.get(this.url + "/permissions")
             .subscribe(function (result) {
             _this.permissions = result;
         });
     };
     AppService.prototype.getLanguages = function () {
         var _this = this;
-        this.http.get(this.appConfig.CORE_API_URL + "app/languages")
+        this.http.get(this.url + "/languages")
             .subscribe(function (result) {
             _this.languages = result;
         });
@@ -3249,7 +5445,6 @@ var AuthGuardService = /** @class */ (function () {
         return isLoggedIn;
     };
     AuthGuardService.prototype.checkLogin = function (url) {
-        // console.log('check login', this.authService.isLoggedIn);
         if (this.authService.isLoggedIn) {
             return true;
         }
@@ -3285,6 +5480,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../configs/app.config */ "./src/app/configs/app.config.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3303,6 +5499,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
+
 var SigninData = /** @class */ (function () {
     function SigninData(isLoggedIn, message) {
         this.isLoggedIn = isLoggedIn;
@@ -3312,11 +5509,13 @@ var SigninData = /** @class */ (function () {
 }());
 
 var AuthService = /** @class */ (function () {
-    function AuthService(appConfig, router, http) {
+    function AuthService(appConfig, router, toastr, http) {
         this.appConfig = appConfig;
         this.router = router;
+        this.toastr = toastr;
         this.http = http;
         this.user = null;
+        this.authMessage$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
     }
     AuthService.prototype.resolve = function () {
         if (this.isLoggedIn) {
@@ -3369,19 +5568,13 @@ var AuthService = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    AuthService.prototype.getClaims = function () {
-        return this.user.profile;
-    };
-    AuthService.prototype.getAuthorizationHeaderValue = function () {
-        return this.user.token_type + " " + this.user.access_token;
-    };
     AuthService.prototype.login = function (userName, password) {
         var _this = this;
         if (this.isLoggedIn) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(new SigninData(true, 'Đã đăng nhập'));
         }
         var body = "grant_type=password&userName=" + userName + "&password=" + password + "\n            &client_id=" + this.appConfig.CLIENT_ID + "&scope=" + this.appConfig.SCOPES;
-        return this.http.post(this.appConfig.AUTHORITY, body, {
+        return this.http.post(this.appConfig.API_GATEWAY_URL + "auth/connect/token", body, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Content-Type': 'application/x-www-form-urlencoded'
             })
@@ -3391,6 +5584,10 @@ var AuthService = /** @class */ (function () {
             _this.refreshToken = result.refresh_token;
             return new SigninData(true, 'Đăng nhập thành công.');
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (response) {
+            var error = response.error;
+            if (error.error === 'invalid_grant' && error.error_description) {
+                _this.authMessage$.next(error.error_description);
+            }
             _this.resetAuthService();
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(new SigninData(false, response.error));
         }));
@@ -3398,7 +5595,7 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.getRefreshToken = function () {
         var _this = this;
         var body = "grant_type=refresh_token&client_id=" + this.appConfig.CLIENT_ID + "&refresh_token=" + this.refreshToken;
-        return this.http.post(this.appConfig.AUTHORITY, body, {
+        return this.http.post(this.appConfig.API_GATEWAY_URL + "auth/connect/token", body, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Content-Type': 'application/x-www-form-urlencoded'
             })
@@ -3415,14 +5612,13 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.resetAuthService = function () {
         this.token = '';
         this.refreshToken = '';
-        localStorage.removeItem('_t');
-        localStorage.removeItem('_rt');
-    };
-    AuthService.prototype.logout = function () {
         this.isLoggedIn = false;
         if (localStorage) {
             localStorage.clear();
         }
+    };
+    AuthService.prototype.signOut = function () {
+        this.resetAuthService();
         this.router.navigateByUrl('/login');
     };
     AuthService.prototype.forgotPassword = function (email) {
@@ -3434,6 +5630,7 @@ var AuthService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_4__["APP_CONFIG"])),
         __metadata("design:paramtypes", [Object, _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_6__["ToastrService"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], AuthService);
     return AuthService;
@@ -3461,7 +5658,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../configs/app.config */ "./src/app/configs/app.config.ts");
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth.service */ "./src/app/shareds/services/auth.service.ts");
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3482,7 +5678,6 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
 var InterceptorService = /** @class */ (function () {
     function InterceptorService(appConfig, injector, router, toastr) {
         this.appConfig = appConfig;
@@ -3494,17 +5689,30 @@ var InterceptorService = /** @class */ (function () {
         var _this = this;
         var contentType = req.headers.get('Content-Type');
         var authService = this.injector.get(_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"]);
-        var spinnerService = this.injector.get(_core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_8__["SpinnerService"]);
-        var apiReq = req.clone({
-            headers: req.headers.set('Access-Control-Allow-Origin', '*')
-                .set('Content-Type', contentType ? contentType : 'application/json')
-                .set('Charset', 'UTF-8')
-                .set('Accept', 'application/json')
-                .set('Accept-Language', 'vi-VN')
-                .set('Authorization', "bearer " + authService.token)
-        });
+        var apiReq;
+        if (contentType === 'clear') {
+            apiReq = req.clone({
+                headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
+                    .set('Access-Control-Allow-Origin', '*')
+                    .set('Accept', 'application/json')
+                    .set('Accept-Language', 'vi-VN')
+                    .set('Authorization', "bearer " + authService.token)
+            });
+        }
+        else {
+            apiReq = req.clone({
+                headers: req.headers.set('Access-Control-Allow-Origin', '*')
+                    .set('Content-Type', contentType ? contentType : 'application/json')
+                    .set('Accept', 'application/json')
+                    .set('Accept-Language', 'vi-VN')
+                    .set('Authorization', "bearer " + authService.token)
+            });
+        }
+        if (apiReq.headers.get('Content-Type') === 'clear') {
+            apiReq.headers.delete('Content-Type', 'clear');
+        }
         return next.handle(apiReq)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["finalize"])(function () { return spinnerService.hide(); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (response) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (response) {
             if (response instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpErrorResponse"]) {
                 if (response.status === 401) {
                     return authService
@@ -3519,17 +5727,15 @@ var InterceptorService = /** @class */ (function () {
                                 if (refreshTokenResponse instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpErrorResponse"]) {
                                     _this.handlingError(refreshTokenResponse, authService);
                                 }
-                                authService.logout();
+                                authService.signOut();
                                 return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(null);
                             }));
                         }
                         else {
-                            console.log('here');
-                            authService.logout();
+                            authService.signOut();
                             return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])("Can't fresh token. ReLogin please.");
                         }
                     }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (errorResponse) {
-                        console.log('ỏ here');
                         _this.handlingError(errorResponse, authService);
                         return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])("Can't fresh token. ReLogin please.");
                     }));
@@ -3554,14 +5760,14 @@ var InterceptorService = /** @class */ (function () {
                     }
                     else if (error.error) {
                         if (error.error === 'invalid_client') {
-                            authService.logout();
+                            authService.signOut();
                             this.toastr.error('Client invalid please contact with administrator.');
                         }
                         else if (error.error === 'invalid_grant') {
-                            authService.logout();
+                            authService.signOut();
                         }
                         else if (error.error_description && error.error_description !== 'account_does_not_exists') {
-                            authService.logout();
+                            authService.signOut();
                             this.toastr.error(error.error_description);
                         }
                         else if (error.error_description === 'account_does_not_exists') {
@@ -3609,21 +5815,28 @@ var InterceptorService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/shareds/services/notify.service.ts":
-/*!****************************************************!*\
-  !*** ./src/app/shareds/services/notify.service.ts ***!
-  \****************************************************/
-/*! exports provided: NotifyService */
+/***/ "./src/app/shareds/services/notification.service.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/shareds/services/notification.service.ts ***!
+  \**********************************************************/
+/*! exports provided: NotificationService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotifyService", function() { return NotifyService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationService", function() { return NotificationService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../configs/app.config */ "./src/app/configs/app.config.ts");
-/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth.service */ "./src/app/shareds/services/auth.service.ts");
+/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../configs/app.config */ "./src/app/configs/app.config.ts");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth.service */ "./src/app/shareds/services/auth.service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3636,80 +5849,84 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-/**
- * Created by HoangNH on 3/15/2017.
- */
 
 
 
 
 
-var NotifyService = /** @class */ (function () {
-    function NotifyService(appConfig, http, authService) {
-        // this.authService.onLogin.subscribe(() => this.start());
-        // this.authService.onLogout.subscribe(() => this.stop());
-        this.http = http;
+
+
+
+
+
+var NotificationService = /** @class */ (function () {
+    function NotificationService(appConfig, authService, toastr, spinnerService, http) {
+        this.appConfig = appConfig;
         this.authService = authService;
-        this.startingSubject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.onReceiveNotification = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.onReceiveUnreadNotifyCount = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.getTotalMail = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.getListMail = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.setValueMailContent = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.setValueMailSideBarContent = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.setValueMailIsDraft = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.removeTinymce = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        // console.log('init notify hub');
-        // console.log($.hubConnection());
-        // this.connection = $.hubConnection();
-        // this.connection.url = appConfig.signalrUrl;
-        // this.notifyHubProxy = this.connection.createHubProxy('notifyHub');
-        // this.registerOnSererEvents();
+        this.toastr = toastr;
+        this.spinnerService = spinnerService;
+        this.http = http;
+        this.url = 'api/v1/notifications';
+        this.notificationReceived$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.notificationCountUpdated$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.url = this.appConfig.NOTIFICATION_URL + "/" + this.url;
+        this.initNotificationConnection();
     }
-    NotifyService.prototype.start = function () {
-        // this.connection.qs = {'access_token': this.authService.token};
-        // this.connection.start()
-        //     .done(() => {
-        //         this.startingSubject.next();
-        //         console.log('connect to notify hub success');
-        //     })
-        //     .fail((error: any) => {
-        //         this.startingSubject.error(error);
-        //         console.log('connect to notify hub fail');
-        //     });
-    };
-    NotifyService.prototype.stop = function () {
-        console.log('notify service stoped');
-        // this.connection.stop();
-    };
-    NotifyService.prototype.updateIsRead = function (id) {
-        return this.http.post("notify/update-is-read", '', {
-            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]().set('id', id.toString())
-        });
-    };
-    NotifyService.prototype.getListNotification = function (page, pageSize) {
-        return this.http.get("notify/get-list-notify", {
-            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]().set('page', page.toString())
-                .set('pageSize', pageSize.toString())
-        });
-    };
-    NotifyService.prototype.getTotalUnreadNotify = function () {
-        return this.http.get("/notify/get-unread-count");
-    };
-    NotifyService.prototype.registerOnSererEvents = function () {
+    NotificationService.prototype.initNotificationConnection = function () {
         var _this = this;
-        this.notifyHubProxy.on('receiveNotification', function (result) {
-            var notify = JSON.parse(result);
-            _this.onReceiveNotification.next(notify);
-        });
+        var self = this;
+        if (this.authService.token) {
+            this.connection = new signalR.HubConnectionBuilder()
+                .withUrl(this.appConfig.NOTIFICATION_URL + "/notifications?token=" + this.authService.token)
+                .build();
+            this.connection
+                .start()
+                .catch(function (error) { return console.error(error.toString()); });
+            this.connection.on('NotificationReceived', function (notification) {
+                _this.toastr.info(notification.title, '', {
+                    enableHtml: true
+                });
+                _this.notificationReceived$.next(notification);
+            });
+            this.connection.on('LoggedOut', function () {
+                self.authService.signOut();
+            });
+        }
     };
-    NotifyService = __decorate([
+    NotificationService.prototype.search = function (isRead, page, pageSize) {
+        if (page === void 0) { page = 1; }
+        if (pageSize === void 0) { pageSize = 10; }
+        return this.http.get("" + this.url, {
+            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpParams"]()
+                .set('isRead', isRead != null && isRead !== undefined ? isRead.toString() : '')
+                .set('page', page ? page.toString() : '1')
+                .set('pageSize', pageSize ? pageSize.toString() : '10')
+        }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (result) {
+            lodash__WEBPACK_IMPORTED_MODULE_7__["each"](result.items, function (notification) {
+                notification.createTimeText = moment__WEBPACK_IMPORTED_MODULE_6__(notification.createTime).fromNow();
+            });
+            return result;
+        }));
+    };
+    NotificationService.prototype.updateIsRead = function (id, isRead) {
+        var _this = this;
+        this.spinnerService.show();
+        return this.http
+            .post(this.url + "/" + id, isRead)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["finalize"])(function () { return _this.spinnerService.hide(); }));
+    };
+    NotificationService.prototype.signOut = function () {
+        return this.http.get(this.url + "/disconnect");
+    };
+    NotificationService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_3__["APP_CONFIG"])),
-        __metadata("design:paramtypes", [Object, _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
-            _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
-    ], NotifyService);
-    return NotifyService;
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_1__["APP_CONFIG"])),
+        __metadata("design:paramtypes", [Object, _auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_8__["ToastrService"],
+            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_9__["SpinnerService"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
+    ], NotificationService);
+    return NotificationService;
 }());
 
 
@@ -3814,61 +6031,6 @@ var ScriptLoaderService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])()
     ], ScriptLoaderService);
     return ScriptLoaderService;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/shareds/services/test.service.ts":
-/*!**************************************************!*\
-  !*** ./src/app/shareds/services/test.service.ts ***!
-  \**************************************************/
-/*! exports provided: TestService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TestService", function() { return TestService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var TestService = /** @class */ (function () {
-    function TestService(injector) {
-        this.injector = injector;
-    }
-    Object.defineProperty(TestService.prototype, "appSettings", {
-        get: function () {
-            return 1;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(TestService.prototype, "http", {
-        get: function () {
-            return this.injector.get(_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    TestService.prototype.initApp = function () {
-        return 1;
-    };
-    TestService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"]])
-    ], TestService);
-    return TestService;
 }());
 
 
@@ -4159,6 +6321,64 @@ var UtilService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/validators/validator-equal.validator.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/validators/validator-equal.validator.ts ***!
+  \*********************************************************/
+/*! exports provided: EqualValidator */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EqualValidator", function() { return EqualValidator; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var EqualValidator = /** @class */ (function () {
+    function EqualValidator() {
+    }
+    EqualValidator.prototype.validate = function (ref) {
+        return function (c) {
+            var v = c.value;
+            var to = c.root.get(ref);
+            if (to && v !== to.value) {
+                return { validateEqual: false };
+            }
+            return null;
+        };
+    };
+    EqualValidator.prototype.updateEqualRef = function (ref) {
+        return function (c) {
+            var v = c.value;
+            var r = c.root.get(ref);
+            if (r && v === r.value) {
+                delete r.errors['validateEqual'];
+            }
+            if (r && v !== r.value) {
+                r.setErrors({ validateEqual: false });
+            }
+            return null;
+        };
+    };
+    EqualValidator = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [])
+    ], EqualValidator);
+    return EqualValidator;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/environments/environment.ts":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -4218,7 +6438,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Project\Clients\GHM-Application\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\Quy\ghmwebsitemanagementclient\src\main.ts */"./src/main.ts");
 
 
 /***/ })

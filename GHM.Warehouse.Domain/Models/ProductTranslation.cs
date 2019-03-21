@@ -9,6 +9,10 @@
         public string Description { get; set; }
         public string UnsignName { get; set; }
         public bool IsDelete { get; set; }
+        public string MetaDescription { get; set; }
+        public string MetaKeyword { get; set; }
+        public string SeoLink { get; set; }
+        public string Content { get; set; }
         public ProductTranslation()
         {
             IsDelete = false;

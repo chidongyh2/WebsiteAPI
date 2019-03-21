@@ -148,4 +148,10 @@ table {
     height: auto !important;
 }
 
+.mat-checkbox-layout .mat-checkbox-label {
+    white-space: normal !important;
+}
 
+.cdk-overlay-container {
+    z-index: 99999 !important;
+}

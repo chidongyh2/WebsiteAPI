@@ -56,6 +56,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
                         x.IsActive,
                         x.IsManagementByLot,
                         x.Thumbnail,
+                        x.IsHot,
+                        x.IsHomePage,
+                        x.Status,
                         pt.Name,
                     }).Join(Context.Set<ProductsCategory>().Where(specCategory), p => p.Id, pc => pc.ProductId, (p, pc) => new
                     {
@@ -64,6 +67,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
                         p.IsManagementByLot,
                         p.Thumbnail,
                         p.Name,
+                        p.IsHot,
+                        p.IsHomePage,
+                        p.Status,
                         pc.CategoryId
                     }).Join(Context.Set<ProductCategoryTranslation>().Where(x => !x.IsDelete && x.LanguageId == languageId && x.TenantId == tenantId),
                 pca => pca.CategoryId, pcat => pcat.ProductCategoryId, (pca, pcat) => new
@@ -74,10 +80,13 @@ namespace GHM.Warehouse.Infrastructure.Repository
                     pca.Thumbnail,
                     pca.Name,
                     pca.CategoryId,
+                    pca.IsHot,
+                    pca.IsHomePage,
+                    pca.Status,
                     ProductCategoryName = pcat.Name,
                 });
 
-            var queryProductCategory = queryProduct.GroupBy(x => new { x.Id, x.IsActive, x.IsManagementByLot, x.Name, x.Thumbnail },
+            var queryProductCategory = queryProduct.GroupBy(x => new { x.Id, x.IsActive, x.IsManagementByLot, x.Name, x.Thumbnail, x.IsHot, x.IsHomePage, x.Status },
                 (key, g) => new
                 {
                     key.Id,
@@ -85,6 +94,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
                     key.IsManagementByLot,
                     key.Name,
                     key.Thumbnail,
+                    key.IsHot,
+                    key.IsHomePage,
+                    key.Status,
                     ProductCategoryNames = g.Select(x => x.ProductCategoryName).ToList()
                 });
 
@@ -110,6 +122,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
                     IsManagementByLot = x.p.IsManagementByLot,
                     Thumbnail = x.p.Thumbnail,
                     Name = x.p.Name,
+                    Status = x.p.Status,
+                    IsHot = x.p.IsHot,
+                    isHomePage = x.p.IsHomePage,
                     DefaultUnit = pu.Name,
                     //CategoryId = x.p.CategoryId,
                     CategoryNames = x.p.ProductCategoryNames

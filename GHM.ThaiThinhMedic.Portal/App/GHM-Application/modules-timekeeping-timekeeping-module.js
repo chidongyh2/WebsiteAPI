@@ -513,7 +513,7 @@ var Machine = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"portlet light bordered portlet-holiday\">\r\n    <div class=\"portlet-title\">\r\n        <div class=\"caption\">\r\n            <span class=\"fas fa-desktop\"></span>\r\n            <span class=\"caption-subject bold uppercase\"> Cấu hình máy chấm công.</span>\r\n        </div>\r\n        <div class=\"actions\">\r\n            <a href=\"javascript:;\" class=\"btn btn-circle btn-default\" (click)=\"machineFormModal.show()\">\r\n                <i class=\"fa fa-plus\"></i> Thêm </a>\r\n        </div>\r\n    </div>\r\n    <div class=\"portlet-body\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-striped table-hover\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"middle center w50\">Số máy</th>\r\n                    <th class=\"middle center\">Tên máy</th>\r\n                    <th class=\"middle center\">IP</th>\r\n                    <th class=\"middle center w50\">Port</th>\r\n                    <th class=\"middle center\"></th>\r\n                </tr>\r\n                </thead>\r\n                <tbody *ngIf=\"listMachine.length === 0; else machineContentTemplate\">\r\n                <tr>\r\n                    <td colspan=\"5\" class=\"center bold\">\r\n                        Chưa cấu hình máy chấm công. Click <a href=\"javascript://\" (click)=\"machineFormModal.show()\">vào\r\n                        đây</a> để thêm mới máy chấm công\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n                <ng-template #machineContentTemplate>\r\n                    <tbody *ngIf=\"!isSearching; else loadingTemplate\">\r\n                    <tr *ngFor=\"let machine of listMachine\">\r\n                        <td class=\"center\">{{machine.no}}</td>\r\n                        <td>{{machine.name}}</td>\r\n                        <td>{{machine.ip}}</td>\r\n                        <td>{{machine.port}}</td>\r\n                        <td class=\"center w100\">\r\n                            <button type=\"button\" mat-mini-fab color=\"primary\" (click)=\"edit(machine)\"\r\n                                    matTooltip=\"Sửa\"\r\n                                    matTooltipPosition=\"above\">\r\n                                <!--<i class=\"fa fa-edit\"></i>-->\r\n                                <mat-icon>edit</mat-icon>\r\n                            </button>\r\n                            <button type=\"button\" mat-mini-fab color=\"warn\" (click)=\"delete(machine)\"\r\n                                    matTooltip=\"Xóa\" matTooltipPosition=\"above\">\r\n                                <!--<i class=\"fa fa-trash-o\"></i>-->\r\n                                <mat-icon>delete</mat-icon>\r\n                            </button>\r\n                        </td>\r\n                    </tr>\r\n                    </tbody>\r\n                </ng-template>\r\n                <ng-template #loadingTemplate>\r\n                    <div class=\"center\">\r\n                        <div class=\"spinner\">\r\n                            <div class=\"rect1\"></div>\r\n                            <div class=\"rect2\"></div>\r\n                            <div class=\"rect3\"></div>\r\n                            <div class=\"rect4\"></div>\r\n                            <div class=\"rect5\"></div>\r\n                        </div>\r\n                    </div>\r\n                </ng-template>\r\n            </table><!-- END: .table -->\r\n        </div>\r\n    </div>\r\n</div><!-- END: .portlet-config-symbol -->\r\n\r\n<nh-modal #machineFormModal [size]=\"'md'\" (onShown)=\"onMachineFormModalShown()\" (onHidden)=\"onMachineFormModalHidden()\">\r\n    <nh-modal-header [showCloseButton]=\"true\">\r\n        <h4>\r\n            <i class=\"fa fa-edit\" *ngIf=\"isUpdate\"></i>\r\n            <i class=\"fa fa-plus\" *ngIf=\"!isUpdate\"></i>\r\n            <span>{{ isUpdate ? 'Cập nhật thông tin máy chấm công' : 'Thêm mới máy chấm công'}}</span>\r\n        </h4>\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"formModel\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Số máy chấm công\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <nh-select\r\n                        [data]=\"listMachineNo\"\r\n                        [title]=\"'-- chọn Số máy chấm công --'\"\r\n                        [isEnable]=\"!isUpdate\"\r\n                        formControlName=\"no\"\r\n                    ></nh-select>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.no && isSubmitted\">\r\n                        {{ formErrors.no }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Tên máy chấm công\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <input type=\"text\" class=\"form-control\" id=\"machineName\"\r\n                           placeholder=\"Nhập tên máy chấm công\" formControlName=\"name\">\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.name && isSubmitted\">\r\n                        {{ formErrors.name }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"IP máy chấm công\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <input type=\"text\" class=\"form-control\" id=\"machineIp\"\r\n                           placeholder=\"Nhập IP máy chấm công\" formControlName=\"ip\">\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.ip && isSubmitted\">\r\n                        {{ formErrors.ip }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Port\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <input type=\"text\" class=\"form-control\" id=\"machinePort\"\r\n                           placeholder=\"Nhập công kết nối đến máy chấm công\" formControlName=\"port\">\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.port && isSubmitted\">\r\n                        {{ formErrors.port }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Series\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <div class=\"input-group\">\r\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Số seri\" formControlName=\"serialNumber\">\r\n                        <span class=\"input-group-btn\">\r\n                            <button class=\"btn btn-default\" type=\"button\"\r\n                                    (click)=\"getSerialNumber()\">Lấy về seri</button>\r\n                        </span>\r\n                    </div>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.serialNumber && isSubmitted\">\r\n                        {{ formErrors.serialNumber }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button type=\"submit\" mat-raised-button color=\"primary\">\r\n                <!--<i class=\"fa fa-save\" *ngIf=\"!isSaving\"></i>-->\r\n                <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>-->\r\n                <mat-icon>save</mat-icon>\r\n                Lưu lại\r\n            </button>\r\n            <button type=\"button\" mat-raised-button nh-dismiss=\"true\">\r\n                <!--<i class=\"fa fa-times\"></i>-->\r\n                <mat-icon>close</mat-icon>\r\n                Đóng lại\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
+module.exports = "<div class=\"portlet light bordered portlet-holiday\">\r\n    <div class=\"portlet-title\">\r\n        <div class=\"caption\">\r\n            <span class=\"fas fa-desktop\"></span>\r\n            <span class=\"caption-subject bold uppercase\"> Cấu hình máy chấm công.</span>\r\n        </div>\r\n        <div class=\"actions\">\r\n            <a href=\"javascript:;\" class=\"btn btn-circle btn-default\" (click)=\"machineFormModal.show()\">\r\n                <i class=\"fa fa-plus\"></i> Thêm </a>\r\n        </div>\r\n    </div>\r\n    <div class=\"portlet-body\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-striped table-hover\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"middle center w50\">Số máy</th>\r\n                    <th class=\"middle center\">Tên máy</th>\r\n                    <th class=\"middle center\">IP</th>\r\n                    <th class=\"middle center w50\">Port</th>\r\n                    <th class=\"middle center\"></th>\r\n                </tr>\r\n                </thead>\r\n                <tbody *ngIf=\"listMachine.length === 0; else machineContentTemplate\">\r\n                <tr>\r\n                    <td colspan=\"5\" class=\"center bold\">\r\n                        Chưa cấu hình máy chấm công. Click <a href=\"javascript://\" (click)=\"machineFormModal.show()\">vào\r\n                        đây</a> để thêm mới máy chấm công\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n                <ng-template #machineContentTemplate>\r\n                    <tbody *ngIf=\"!isSearching; else loadingTemplate\">\r\n                    <tr *ngFor=\"let machine of listMachine\">\r\n                        <td class=\"center\">{{machine.no}}</td>\r\n                        <td>{{machine.name}}</td>\r\n                        <td>{{machine.ip}}</td>\r\n                        <td>{{machine.port}}</td>\r\n                        <td class=\"center w100\">\r\n                            <button type=\"button\" mat-mini-fab color=\"primary\" (click)=\"edit(machine)\"\r\n                                    matTooltip=\"Sửa\"\r\n                                    matTooltipPosition=\"above\">\r\n                                <!--<i class=\"fa fa-edit\"></i>-->\r\n                                <mat-icon>edit</mat-icon>\r\n                            </button>\r\n                            <button type=\"button\" mat-mini-fab color=\"warn\" (click)=\"delete(machine)\"\r\n                                    matTooltip=\"Xóa\" matTooltipPosition=\"above\">\r\n                                <!--<i class=\"fa fa-trash-o\"></i>-->\r\n                                <mat-icon>delete</mat-icon>\r\n                            </button>\r\n                        </td>\r\n                    </tr>\r\n                    </tbody>\r\n                </ng-template>\r\n                <ng-template #loadingTemplate>\r\n                    <div class=\"center\">\r\n                        <div class=\"spinner\">\r\n                            <div class=\"rect1\"></div>\r\n                            <div class=\"rect2\"></div>\r\n                            <div class=\"rect3\"></div>\r\n                            <div class=\"rect4\"></div>\r\n                            <div class=\"rect5\"></div>\r\n                        </div>\r\n                    </div>\r\n                </ng-template>\r\n            </table><!-- END: .table -->\r\n        </div>\r\n    </div>\r\n</div><!-- END: .portlet-config-symbol -->\r\n\r\n<nh-modal #machineFormModal [size]=\"'md'\" (shown)=\"onMachineFormModalShown()\" (hidden)=\"onMachineFormModalHidden()\">\r\n    <nh-modal-header [showCloseButton]=\"true\">\r\n        <h4>\r\n            <i class=\"fa fa-edit\" *ngIf=\"isUpdate\"></i>\r\n            <i class=\"fa fa-plus\" *ngIf=\"!isUpdate\"></i>\r\n            <span>{{ isUpdate ? 'Cập nhật thông tin máy chấm công' : 'Thêm mới máy chấm công'}}</span>\r\n        </h4>\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"formModel\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Số máy chấm công\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <nh-select\r\n                        [data]=\"listMachineNo\"\r\n                        [title]=\"'-- chọn Số máy chấm công --'\"\r\n                        [isEnable]=\"!isUpdate\"\r\n                        formControlName=\"no\"\r\n                    ></nh-select>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.no && isSubmitted\">\r\n                        {{ formErrors.no }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Tên máy chấm công\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <input type=\"text\" class=\"form-control\" id=\"machineName\"\r\n                           placeholder=\"Nhập tên máy chấm công\" formControlName=\"name\">\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.name && isSubmitted\">\r\n                        {{ formErrors.name }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"IP máy chấm công\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <input type=\"text\" class=\"form-control\" id=\"machineIp\"\r\n                           placeholder=\"Nhập IP máy chấm công\" formControlName=\"ip\">\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.ip && isSubmitted\">\r\n                        {{ formErrors.ip }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Port\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <input type=\"text\" class=\"form-control\" id=\"machinePort\"\r\n                           placeholder=\"Nhập công kết nối đến máy chấm công\" formControlName=\"port\">\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.port && isSubmitted\">\r\n                        {{ formErrors.port }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Series\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <div class=\"input-group\">\r\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Số seri\" formControlName=\"serialNumber\">\r\n                        <span class=\"input-group-btn\">\r\n                            <button class=\"btn btn-default\" type=\"button\"\r\n                                    (click)=\"getSerialNumber()\">Lấy về seri</button>\r\n                        </span>\r\n                    </div>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.serialNumber && isSubmitted\">\r\n                        {{ formErrors.serialNumber }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button type=\"submit\" mat-raised-button color=\"primary\">\r\n                <!--<i class=\"fa fa-save\" *ngIf=\"!isSaving\"></i>-->\r\n                <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>-->\r\n                <mat-icon>save</mat-icon>\r\n                Lưu lại\r\n            </button>\r\n            <button type=\"button\" mat-raised-button nh-dismiss=\"true\">\r\n                <!--<i class=\"fa fa-times\"></i>-->\r\n                <mat-icon>close</mat-icon>\r\n                Đóng lại\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
 
 /***/ }),
 
@@ -615,7 +615,7 @@ var TimekeepingMachineComponent = /** @class */ (function (_super) {
     TimekeepingMachineComponent.prototype.edit = function (machine) {
         this.isUpdate = true;
         this.formModel.patchValue(machine);
-        this.machineFormModal.show();
+        this.machineFormModal.open();
     };
     TimekeepingMachineComponent.prototype.delete = function (machine) {
         // swal({
@@ -627,7 +627,7 @@ var TimekeepingMachineComponent = /** @class */ (function (_super) {
         //     confirmButtonText: 'Đồng ý',
         //     cancelButtonText: 'Hủy bỏ'
         // }).then(() => {
-        //     this.spinnerService.show('Đang xóa máy chấm công...');
+        //     this.spinnerService.open('Đang xóa máy chấm công...');
         //     this.timekeepingConfigService.deleteMachine(machine.id)
         //         .finally(() => this.spinnerService.hide())
         //         .subscribe(result => {
@@ -806,7 +806,7 @@ var ShiftGroup = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"portlet light bordered portlet-holiday\">\r\n    <div class=\"portlet-title\">\r\n        <div class=\"caption\">\r\n            <i class=\"far fa-calendar-check\"></i>\r\n            <span class=\"caption-subject bold uppercase\"> Cấu hình ca làm việc.</span>\r\n        </div>\r\n    </div>\r\n    <div class=\"portlet-body\">\r\n        <mat-tab-group>\r\n            <mat-tab class=\"tab-shift-group\">\r\n                <ng-template mat-tab-label>\r\n                    <i class=\"fa fa-th-list cm-mgr-5\"></i> Danh sách nhóm ca làm việc\r\n                </ng-template>\r\n                <div class=\"cm-pdt-10\">\r\n                    <div class=\"text-right cm-mgb-10\">\r\n                        <button mat-raised-button color=\"primary\" type=\"button\" (click)=\"showShiftGroupFormModal()\">\r\n                            <i class=\"fa fa-plus\"></i>\r\n                            Thêm nhóm\r\n                        </button>\r\n                    </div>\r\n                    <div class=\"table-responsive\">\r\n                        <table class=\"table table-bordered table-striped table-hover\">\r\n                            <thead>\r\n                            <tr>\r\n                                <th class=\"center w50\">STT</th>\r\n                                <th class=\"center\">Tên nhóm</th>\r\n                                <th class=\"center\">Mô tả</th>\r\n                                <th class=\"center w100\">Sử dụng</th>\r\n                                <th class=\"center w100\"></th>\r\n                            </tr>\r\n                            </thead>\r\n                            <tbody *ngIf=\"isSearchingShiftGroup\">\r\n                            <tr>\r\n                                <td colspan=\"5\">\r\n                                    <div class=\"spinner\">\r\n                                        <div class=\"rect1\"></div>\r\n                                        <div class=\"rect2\"></div>\r\n                                        <div class=\"rect3\"></div>\r\n                                        <div class=\"rect4\"></div>\r\n                                        <div class=\"rect5\"></div>\r\n                                    </div>\r\n                                </td>\r\n                            </tr>\r\n                            </tbody>\r\n                            <tbody\r\n                                *ngIf=\"listShiftGroups.length === 0 && !isSearchingShiftGroup; else shiftGroupContentTemplate\">\r\n                            <tr>\r\n                                <td colspan=\"5\" class=\"center bold\">\r\n                                    Chưa cấu hình nhóm ca làm việc click\r\n                                    <a href=\"javascript://\" (click)=\"showShiftGroupFormModal()\">vào đây</a>\r\n                                    để thêm cấu hình nhóm ca làm việc\r\n                                </td>\r\n                            </tr>\r\n                            </tbody>\r\n                            <tbody>\r\n                            <ng-template #shiftGroupContentTemplate>\r\n                            <tbody>\r\n                            <tr *ngFor=\"let shiftGroup of listShiftGroups; let i = index\">\r\n                                <td class=\"center\">{{ i + 1 }}</td>\r\n                                <td>\r\n                                    what the fuck?\r\n                                    <a href=\"javascript://\" (click)=\"editGroup(shiftGroup)\">{{ shiftGroup.name }}</a>\r\n                                </td>\r\n                                <td>{{ shiftGroup.description }}</td>\r\n                                <td class=\"center\">\r\n                                    <mat-checkbox color=\"primary\" [checked]=\"shiftGroup.isActive\"\r\n                                                  (change)=\"updateGroupActive(shiftGroup)\"\r\n                                    ></mat-checkbox>\r\n                                </td>\r\n                                <td class=\"center\">\r\n                                    <button type=\"button\" mat-mini-fab color=\"primary\"\r\n                                            matTooltip=\"Sửa\" matTooltipPosition=\"above\"\r\n                                            (click)=\"editGroup(shiftGroup)\">\r\n                                        <!--<i class=\"fa fa-edit\"></i>-->\r\n                                        <mat-icon>edit</mat-icon>\r\n                                    </button>\r\n                                    <button type=\"button\" mat-mini-fab color=\"warn\"\r\n                                            matTooltip=\"Xóa\" matTooltipPosition=\"above\"\r\n                                            (click)=\"deleteGroup(shiftGroup)\">\r\n                                        <!--<i class=\"fa fa-trash-o\"></i>-->\r\n                                        <mat-icon>delete</mat-icon>\r\n                                    </button>\r\n                                </td>\r\n                            </tr>\r\n                            </tbody>\r\n                            </ng-template>\r\n                            </tbody>\r\n                        </table>\r\n                    </div>\r\n                </div><!-- END: .table-responsive -->\r\n            </mat-tab><!-- END: .tab-shift-group -->\r\n            <mat-tab class=\"tab-shift\">\r\n                <ng-template mat-tab-label>\r\n                    <i class=\"fa fa-codepen cm-mgr-5\"></i> Danh sách ca làm việc\r\n                </ng-template>\r\n                <div class=\"text-right cm-mgb-10 cm-pdt-10\">\r\n                    <button mat-raised-button color=\"primary\" type=\"button\" (click)=\"showShiftFormModal()\">\r\n                        <i class=\"fa fa-plus cm-mgr-5\"></i>\r\n                        Thêm ca làm việc\r\n                    </button>\r\n                </div>\r\n                <div class=\"table-responsive\">\r\n                    <table class=\"table table-bordered table-striped table-hover\">\r\n                        <thead>\r\n                        <tr>\r\n                            <th class=\"center w50\">STT</th>\r\n                            <th class=\"center\">Tên ca</th>\r\n                            <th class=\"center\">Vào</th>\r\n                            <th class=\"center\">Ra</th>\r\n                            <th class=\"center\"></th>\r\n                        </tr>\r\n                        </thead>\r\n                        <tbody *ngIf=\"listShifts.length === 0; else shiftContentTemplate\">\r\n                        <tr>\r\n                            <td colspan=\"5\" class=\"bold center\">\r\n                                Chưa cấu hình ca làm việc click\r\n                                <a href=\"javascript://\" (click)=\"showShiftFormModal()\">vào đây</a>\r\n                                để thêm cấu hình ca làm việc\r\n                            </td>\r\n                        </tr>\r\n                        </tbody>\r\n                        <ng-template #shiftContentTemplate>\r\n                            <tbody>\r\n                            <tr *ngFor=\"let shift of listShifts; let i = index\">\r\n                                <td class=\"center\">{{i+1}}</td>\r\n                                <td>\r\n                                    <a href=\"javascript://\" (click)=\"edit(shift)\">{{shift.name}}</a>\r\n                                </td>\r\n                                <td class=\"text-right\">{{shift.startTime?.hour}}:{{shift.startTime?.minute}}</td>\r\n                                <td class=\"text-right\">{{shift.endTime?.hour}}:{{shift.endTime?.minute}}</td>\r\n                                <td class=\"center w100\">\r\n                                    <button type=\"button\" mat-mini-fab color=\"primary\" (click)=\"edit(shift)\"\r\n                                            matTooltip=\"Sửa\" matTooltipPosition=\"above\">\r\n                                        <!--<i class=\"fa fa-edit\"></i>-->\r\n                                        <mat-icon>edit</mat-icon>\r\n                                    </button>\r\n                                    <button type=\"button\" mat-mini-fab color=\"warn\" (click)=\"delete(shift)\"\r\n                                            matTooltip=\"Xóa\" matTooltipPosition=\"above\">\r\n                                        <!--<i class=\"fa fa-trash-o\"></i>-->\r\n                                        <mat-icon>delete</mat-icon>\r\n                                    </button>\r\n                                </td>\r\n                            </tr>\r\n                            </tbody>\r\n                        </ng-template>\r\n                    </table>\r\n                </div>\r\n            </mat-tab><!-- END: .tab-shift -->\r\n        </mat-tab-group>\r\n\r\n        <nh-modal #timekeepingShiftGroupModal (onShown)=\"onGroupModalShow()\" [size]=\"'md'\">\r\n            <nh-modal-header [showCloseButton]=\"true\">\r\n                <h4 class=\"title\">\r\n                    <i class=\"fa fa-th-list\"></i>\r\n                    Danh sách nhóm ca làm việc\r\n                </h4>\r\n            </nh-modal-header>\r\n            <nh-modal-content>\r\n                <div class=\"text-right cm-mgb-10\">\r\n                    <button class=\"btn btn-primary\" type=\"button\" (click)=\"showShiftGroupFormModal()\">\r\n                        <i class=\"fa fa-plus\"></i>\r\n                        Thêm mới nhóm\r\n                    </button>\r\n                </div>\r\n                <div class=\"table-responsive\">\r\n                    <table class=\"table table-bordered table-striped table-hover\">\r\n                        <thead>\r\n                        <tr>\r\n                            <th class=\"center w50\">STT</th>\r\n                            <th class=\"center\">Tên nhóm</th>\r\n                            <th class=\"center\">Mô tả</th>\r\n                            <th class=\"center w100\">Sử dụng</th>\r\n                            <th class=\"center w100\"></th>\r\n                        </tr>\r\n                        </thead>\r\n                        <tbody *ngIf=\"isSearchingShiftGroup\">\r\n                        <tr>\r\n                            <td colspan=\"5\">\r\n                                <div class=\"spinner\">\r\n                                    <div class=\"rect1\"></div>\r\n                                    <div class=\"rect2\"></div>\r\n                                    <div class=\"rect3\"></div>\r\n                                    <div class=\"rect4\"></div>\r\n                                    <div class=\"rect5\"></div>\r\n                                </div>\r\n                            </td>\r\n                        </tr>\r\n                        </tbody>\r\n                        <tbody\r\n                            *ngIf=\"listShiftGroups.length === 0 && !isSearchingShiftGroup; else shiftGroupContentTemplate\">\r\n                        <tr>\r\n                            <td colspan=\"5\" class=\"center bold\">\r\n                                Chưa cấu hình nhóm ca làm việc click\r\n                                <a href=\"javascript://\" (click)=\"showShiftGroupFormModal()\">vào đây</a>\r\n                                để thêm cấu hình ca làm việc\r\n                            </td>\r\n                        </tr>\r\n                        </tbody>\r\n                        <tbody>\r\n                        <ng-template #shiftGroupContentTemplate>\r\n                        <tbody>\r\n                        <tr *ngFor=\"let shiftGroup of listShiftGroups; let i = index\">\r\n                            <td class=\"center\">{{ i + 1 }}</td>\r\n                            <td>{{ shiftGroup.name }}</td>\r\n                            <td>{{ shiftGroup.description }}</td>\r\n                            <td class=\"center\">\r\n                                <mat-checkbox color=\"primary\" [checked]=\"shiftGroup.isActive\"\r\n                                              (change)=\"updateGroupActive(shiftGroup)\"\r\n                                ></mat-checkbox>\r\n                            </td>\r\n                            <td class=\"center w100\">\r\n                                <button type=\"button\"\r\n                                        mat-mini-fab color=\"primary\"\r\n                                        (click)=\"editGroup(shiftGroup)\">\r\n                                    <!--<i class=\"fa fa-edit\"></i>-->\r\n                                    <mat-icon>edit</mat-icon>\r\n                                </button>\r\n                                <button class=\"btn btn-danger btn-sm\"\r\n                                        mat-mini-fab color=\"warn\"\r\n                                        (click)=\"deleteGroup(shiftGroup)\">\r\n                                    <!--<i class=\"fa fa-trash-o\"></i>-->\r\n                                    <mat-icon>delete</mat-icon>\r\n                                </button>\r\n                            </td>\r\n                        </tr>\r\n                        </tbody>\r\n                        </ng-template>\r\n                        </tbody>\r\n                    </table>\r\n                </div>\r\n            </nh-modal-content>\r\n            <nh-modal-footer>\r\n                <button type=\"button\"\r\n                        mat-raised-button color=\"default\"\r\n                        nh-dismiss=\"true\">\r\n                    <!--<i class=\"fa fa-times\"></i>-->\r\n                    <mat-icon>close</mat-icon>\r\n                    Đóng lại\r\n                </button>\r\n            </nh-modal-footer>\r\n        </nh-modal><!-- END: timekeepingShiftGroupModal -->\r\n\r\n        <nh-modal #timekeepingShiftFormModal [size]=\"'md'\"\r\n                  (onShown)=\"onShowShiftFormModal()\"\r\n                  (onHidden)=\"onHiddenModal()\">\r\n            <nh-modal-header [showCloseButton]=\"true\">\r\n                <h4 class=\"title\">\r\n                    <i class=\"fa\"\r\n                       [class.fa-plus]=\"!isUpdate\"\r\n                       [class.fa-edit]=\"isUpdate\"\r\n                    ></i>\r\n                    <span *ngIf=\"isUpdate; else addNewTextTemplate\">Cập nhật ca làm việc</span>\r\n                    <ng-template #addNewTextTemplate>\r\n                        Thêm mới ca làm việc\r\n                    </ng-template>\r\n                </h4>\r\n            </nh-modal-header>\r\n            <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"formModel\">\r\n                <nh-modal-content>\r\n                    <div class=\"portlet box blue\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption\">\r\n                                <i class=\"fa fa-gift\"></i>Thông tin ca làm việc\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"\r\n                                       ghmLabel=\"Tên ca làm việc\"></label>\r\n                                <div class=\"col-sm-8 col-md-9\">\r\n                                    <input type=\"text\" class=\"form-control\" id=\"shiftName\"\r\n                                           placeholder=\"Nhập tên ca làm việc\" formControlName=\"name\">\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.name && isSubmitted\">\r\n                                        {{ formErrors.name }}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"\r\n                                       ghmLabel=\"Tên báo cáo\"></label>\r\n                                <div class=\"col-sm-8 col-md-9\">\r\n                                    <input class=\"form-control\" id=\"reportName\"\r\n                                           placeholder=\"Nhập tên ca làm việc\" formControlName=\"reportName\">\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.reportName && isSubmitted\">\r\n                                        {{ formErrors.reportName }}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"\r\n                                       ghmLabel=\"Mã ca\"></label>\r\n                                <div class=\"col-sm-8 col-md-9\">\r\n                                    <input type=\"text\" class=\"form-control\" id=\"shiftCode\"\r\n                                           placeholder=\"Nhập ký hiệu ca VD: S - Ca sáng C - Ca chiều T - Ca tối\"\r\n                                           formControlName=\"code\">\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.code && isSubmitted\">\r\n                                        {{ formErrors.code }}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-md-3 col-sm-4 control-label\"\r\n                                       ghmLabel=\"Là ca gối của ca\"></label>\r\n                                <div class=\"col-sm-8 col-md-9\">\r\n                                    <nh-select\r\n                                        [data]=\"listShifts\"\r\n                                        [title]=\"'-- Vui lòng chọn ca --'\"\r\n                                        formControlName=\"referenceId\"\r\n                                    ></nh-select>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-md-3 col-sm-4 control-label\"\r\n                                       ghmLabel=\"Thời gian được phép\"></label>\r\n                                <div class=\"col-sm-8 col-md-9\">\r\n                                    <div class=\"input-group\">\r\n                                        <input type=\"text\" class=\"form-control\" placeholder=\"Thời gian được phép đi trê\"\r\n                                               formControlName=\"inLatency\">\r\n                                        <span class=\"input-group-addon\">Phút đi trễ</span>\r\n                                        <input type=\"text\" class=\"form-control\" placeholder=\"Thời gian được phép về sớm\"\r\n                                               formControlName=\"outLatency\">\r\n                                        <span class=\"input-group-addon\">Phút về sớm</span>\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.inLatency && isSubmitted\">\r\n                                        {{ formErrors.inLatency }}\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.outLatency && isSubmitted\">\r\n                                        {{ formErrors.outLatency }}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"ccol-md-2 col-sm-4 control-label\" ghmLabel=\"Giờ bắt đầu ca\"\r\n                                       [required]=\"true\"></label>\r\n                                <div class=\"col-sm-8 col-md-3\" formGroupName=\"startTime\">\r\n                                    <div class=\"input-group-input\" role=\"group\">\r\n                                        <input type=\"text\" class=\"form-control w70\" placeholder=\"Giờ\"\r\n                                               formControlName=\"hour\">\r\n                                        <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                        <input type=\"text\" class=\"form-control w70\" placeholder=\"Phút\"\r\n                                               formControlName=\"minute\">\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.startTime.hour && isSubmitted\">\r\n                                        {{ formErrors.startTime.hour }}\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.startTime.minute && isSubmitted\">\r\n                                        {{ formErrors.startTime.minute }}\r\n                                    </div>\r\n                                </div>\r\n                                <label for=\"\" class=\"col-md-2 col-sm-4 control-label\" ghmLabel=\"Giờ kết thúc ca\"\r\n                                       [required]=\"true\"></label>\r\n                                <div class=\"col-sm-8 col-md-4\" formGroupName=\"endTime\">\r\n                                    <div class=\"input-group-input\" role=\"group\">\r\n                                        <input type=\"text\" class=\"form-control w70\" placeholder=\"Giờ\"\r\n                                               formControlName=\"hour\">\r\n                                        <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                        <input type=\"text\" class=\"form-control w70\" placeholder=\"Phút\"\r\n                                               formControlName=\"minute\">\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.endTime.hour && isSubmitted\">\r\n                                        {{ formErrors.endTime.hour }}\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.endTime.minute && isSubmitted\">\r\n                                        {{ formErrors.endTime.minute }}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"\" ghmLabel=\"Tính\" [required]=\"true\"></label>\r\n                                <div class=\"col-sm-8 col-md-9\">\r\n                                    <div class=\"input-group\">\r\n                                        <input type=\"text\" class=\"form-control\"\r\n                                               placeholder=\"Nhập số công sẽ được tính cho ca làm việc này\"\r\n                                               formControlName=\"workUnit\">\r\n                                        <span class=\"input-group-addon\">Công</span>\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.workUnit && isSubmitted\">\r\n                                        {{ formErrors.workUnit }}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <hr>\r\n                    <div class=\"portlet box blue\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption\">\r\n                                <i class=\"fa fa-gift\"></i>Thời gian hiểu ca\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <div formGroupName=\"meaningTime\">\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" ghmLabel=\"Giờ bắt đầu ca vào\"\r\n                                           [required]=\"true\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\" formGroupName=\"startTimeIn\">\r\n                                        <div class=\"input-group-input\" role=\"group\">\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Giờ\"\r\n                                                   formControlName=\"hour\">\r\n                                            <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Phút\"\r\n                                                   formControlName=\"minute\">\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.startTimeIn.hour && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.startTimeIn.hour }}\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.startTimeIn.minute && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.startTimeIn.minute }}\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" ghmLabel=\"Giờ kết thúc ca vào\"\r\n                                           [required]=\"true\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\" formGroupName=\"endTimeIn\">\r\n                                        <div class=\"input-group-input\" role=\"group\">\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Giờ\"\r\n                                                   formControlName=\"hour\">\r\n                                            <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Phút\"\r\n                                                   formControlName=\"minute\">\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.endTimeIn.hour && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.endTimeIn.hour }}\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.endTimeIn.minute && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.endTimeIn.minute }}\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" ghmLabel=\"Giờ bắt đầu ca ra\"\r\n                                           [required]=\"true\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\" formGroupName=\"startTimeOut\">\r\n                                        <div class=\"input-group-input\" role=\"group\">\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Giờ\"\r\n                                                   formControlName=\"hour\">\r\n                                            <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Phút\"\r\n                                                   formControlName=\"minute\">\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.startTimeOut.hour && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.startTimeOut.hour }}\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.startTimeOut.minute && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.startTimeOut.minute }}\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" ghmLabel=\"Giờ kết thúc ca ra\"\r\n                                           [required]=\"true\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\" formGroupName=\"endTimeOut\">\r\n                                        <div class=\"input-group-input\" role=\"group\">\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Giờ\"\r\n                                                   formControlName=\"hour\">\r\n                                            <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Phút\"\r\n                                                   formControlName=\"minute\">\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.endTimeOut.hour && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.endTimeOut.hour }}\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.endTimeOut.minute && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.endTimeOut.minute }}\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <div class=\"col-sm-8 col-md-9 col-sm-offset-4 col-md-offset-3\">\r\n                                    <mat-slide-toggle color=\"primary\" formControlName=\"isOvertime\">Ca này được tính là\r\n                                        làm thêm giờ\r\n                                    </mat-slide-toggle>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </nh-modal-content>\r\n                <nh-modal-footer>\r\n                    <button type=\"submit\" mat-raised-button color=\"primary\">\r\n                        <!--<i class=\"fa fa-save\" *ngIf=\"!isSaving\"></i>-->\r\n                        <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>-->\r\n                        <mat-icon>save</mat-icon>\r\n                        Lưu lại\r\n                    </button>\r\n                    <button type=\"button\" mat-raised-button nh-dismiss=\"true\">\r\n                        <!--<i class=\"fa fa-times\"></i>-->\r\n                        <mat-icon>close</mat-icon>\r\n                        Đóng lại\r\n                    </button>\r\n                </nh-modal-footer>\r\n            </form>\r\n        </nh-modal><!-- END: timekeepingShiftFormModal -->\r\n\r\n        <nh-modal #timekeepingShiftGroupFormModal [size]=\"'sm'\" (onHidden)=\"onHiddenModal()\">\r\n            <nh-modal-header [showCloseButton]=\"true\">\r\n                <h4 class=\"title\">\r\n                    <i class=\"fa\"\r\n                       [class.fa-plus]=\"!isUpdate\"\r\n                       [class.fa-edit]=\"isUpdate\"\r\n                    ></i>\r\n                    <span *ngIf=\"isUpdate; else addNewTextTemplate\">Cập nhật nhóm</span>\r\n                    <ng-template #addNewTextTemplate>\r\n                        Thêm mới nhóm\r\n                    </ng-template>\r\n                </h4>\r\n            </nh-modal-header>\r\n            <form class=\"form-horizontal\" (ngSubmit)=\"saveGroup()\" [formGroup]=\"groupFormModel\">\r\n                <nh-modal-content>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"\r\n                               ghmLabel=\"Tên nhóm\"></label>\r\n                        <div class=\"col-sm-8 col-md-9\">\r\n                            <input type=\"text\" class=\"form-control\" id=\"shiftGroupName\"\r\n                                   placeholder=\"Nhập tên nhóm ca làm việc\"\r\n                                   formControlName=\"name\">\r\n                            <div class=\"alert alert-danger\" *ngIf=\"groupFormErrors.name && isSubmitted\">\r\n                                {{ groupFormErrors.name }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"\" class=\"col-md-3 col-sm-4 control-label\"\r\n                               ghmLabel=\"Mô tả\"></label>\r\n                        <div class=\"col-sm-8 col-md-9\">\r\n                            <textarea type=\"text\" class=\"form-control\" id=\"shiftGroupDescription\"\r\n                                      placeholder=\"Nhập mô tả nhóm ca làm việc\"\r\n                                      formControlName=\"description\"></textarea>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"groupFormErrors.description && isSubmitted\">\r\n                                {{ groupFormErrors.description }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <div class=\"col-sm-8 col-md-9 col-sm-offset-4 col-md-offset-3\">\r\n                            <mat-slide-toggle color=\"primary\" formControlName=\"isActive\">Sử dụng nhóm này\r\n                            </mat-slide-toggle>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n\r\n                        <label for=\"\" class=\"col-md-3 col-sm-4 control-label\"\r\n                               ghmLabel=\"Ca làm việc\"></label>\r\n                        <div class=\"col-sm-8 col-md-9\">\r\n                            <nh-select\r\n                                #selectShiftDropdown\r\n                                [multiple]=\"true\"\r\n                                [data]=\"listShifts\"\r\n                                [title]=\"'-- Chọn ca làm việc --'\"\r\n                                (onSelectItem)=\"onSelectShift($event)\"\r\n                            ></nh-select>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"groupFormErrors.shifts && isSubmitted\">\r\n                                {{ groupFormErrors.shifts }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <div class=\"col-sm-8 col-md-9 col-sm-offset-4 col-md-offset-3\">\r\n                            <table class=\"table table-bordered table-striped table-hover\">\r\n                                <thead>\r\n                                <tr>\r\n                                    <th class=\"center w50\">STT</th>\r\n                                    <th class=\"center\">Tên ca</th>\r\n                                    <th class=\"center\">Mã ca</th>\r\n                                    <th class=\"center w100\">Vào</th>\r\n                                    <th class=\"center w100\">Ra</th>\r\n                                </tr>\r\n                                </thead>\r\n                                <tbody>\r\n                                <tr *ngFor=\"let item of groupFormModel.value.shifts; let i = index\">\r\n                                    <td class=\"center\">{{i+ 1}}</td>\r\n                                    <td>{{item.name}}</td>\r\n                                    <td class=\"center\">{{item.code}}</td>\r\n                                    <td>{{item.startTime.hour}}:{{item.startTime.minute}}</td>\r\n                                    <td>{{item.endTime.hour}}:{{item.endTime.minute}}</td>\r\n                                </tr>\r\n                                </tbody>\r\n                            </table>\r\n                        </div>\r\n                    </div>\r\n                </nh-modal-content>\r\n                <nh-modal-footer>\r\n                    <button type=\"submit\" mat-raised-button color=\"primary\">\r\n                        <!--<i class=\"fa fa-save\" *ngIf=\"!isSaving\"></i>-->\r\n                        <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>-->\r\n                        <mat-icon>save</mat-icon>\r\n                        Lưu lại\r\n                    </button>\r\n                    <button type=\"button\" mat-raised-button nh-dismiss=\"true\">\r\n                        <!--<i class=\"fa fa-times\"></i>-->\r\n                        <mat-icon>close</mat-icon>\r\n                        Đóng lại\r\n                    </button>\r\n                </nh-modal-footer>\r\n            </form>\r\n        </nh-modal><!-- END: timekeepingShiftGroupFormModal -->\r\n    </div>\r\n</div><!-- END: .portlet-shift -->\r\n"
+module.exports = "<div class=\"portlet light bordered portlet-holiday\">\r\n    <div class=\"portlet-title\">\r\n        <div class=\"caption\">\r\n            <i class=\"far fa-calendar-check\"></i>\r\n            <span class=\"caption-subject bold uppercase\"> Cấu hình ca làm việc.</span>\r\n        </div>\r\n    </div>\r\n    <div class=\"portlet-body\">\r\n        <mat-tab-group>\r\n            <mat-tab class=\"tab-shift-group\">\r\n                <ng-template mat-tab-label>\r\n                    <i class=\"fa fa-th-list cm-mgr-5\"></i> Danh sách nhóm ca làm việc\r\n                </ng-template>\r\n                <div class=\"cm-pdt-10\">\r\n                    <div class=\"text-right cm-mgb-10\">\r\n                        <button mat-raised-button color=\"primary\" type=\"button\" (click)=\"showShiftGroupFormModal()\">\r\n                            <i class=\"fa fa-plus\"></i>\r\n                            Thêm nhóm\r\n                        </button>\r\n                    </div>\r\n                    <div class=\"table-responsive\">\r\n                        <table class=\"table table-bordered table-striped table-hover\">\r\n                            <thead>\r\n                            <tr>\r\n                                <th class=\"center w50\">STT</th>\r\n                                <th class=\"center\">Tên nhóm</th>\r\n                                <th class=\"center\">Mô tả</th>\r\n                                <th class=\"center w100\">Sử dụng</th>\r\n                                <th class=\"center w100\"></th>\r\n                            </tr>\r\n                            </thead>\r\n                            <tbody *ngIf=\"isSearchingShiftGroup\">\r\n                            <tr>\r\n                                <td colspan=\"5\">\r\n                                    <div class=\"spinner\">\r\n                                        <div class=\"rect1\"></div>\r\n                                        <div class=\"rect2\"></div>\r\n                                        <div class=\"rect3\"></div>\r\n                                        <div class=\"rect4\"></div>\r\n                                        <div class=\"rect5\"></div>\r\n                                    </div>\r\n                                </td>\r\n                            </tr>\r\n                            </tbody>\r\n                            <tbody\r\n                                *ngIf=\"listShiftGroups.length === 0 && !isSearchingShiftGroup; else shiftGroupContentTemplate\">\r\n                            <tr>\r\n                                <td colspan=\"5\" class=\"center bold\">\r\n                                    Chưa cấu hình nhóm ca làm việc click\r\n                                    <a href=\"javascript://\" (click)=\"showShiftGroupFormModal()\">vào đây</a>\r\n                                    để thêm cấu hình nhóm ca làm việc\r\n                                </td>\r\n                            </tr>\r\n                            </tbody>\r\n                            <tbody>\r\n                            <ng-template #shiftGroupContentTemplate>\r\n                            <tbody>\r\n                            <tr *ngFor=\"let shiftGroup of listShiftGroups; let i = index\">\r\n                                <td class=\"center\">{{ i + 1 }}</td>\r\n                                <td>\r\n                                    what the fuck?\r\n                                    <a href=\"javascript://\" (click)=\"editGroup(shiftGroup)\">{{ shiftGroup.name }}</a>\r\n                                </td>\r\n                                <td>{{ shiftGroup.description }}</td>\r\n                                <td class=\"center\">\r\n                                    <mat-checkbox color=\"primary\" [checked]=\"shiftGroup.isActive\"\r\n                                                  (change)=\"updateGroupActive(shiftGroup)\"\r\n                                    ></mat-checkbox>\r\n                                </td>\r\n                                <td class=\"center\">\r\n                                    <button type=\"button\" mat-mini-fab color=\"primary\"\r\n                                            matTooltip=\"Sửa\" matTooltipPosition=\"above\"\r\n                                            (click)=\"editGroup(shiftGroup)\">\r\n                                        <!--<i class=\"fa fa-edit\"></i>-->\r\n                                        <mat-icon>edit</mat-icon>\r\n                                    </button>\r\n                                    <button type=\"button\" mat-mini-fab color=\"warn\"\r\n                                            matTooltip=\"Xóa\" matTooltipPosition=\"above\"\r\n                                            (click)=\"deleteGroup(shiftGroup)\">\r\n                                        <!--<i class=\"fa fa-trash-o\"></i>-->\r\n                                        <mat-icon>delete</mat-icon>\r\n                                    </button>\r\n                                </td>\r\n                            </tr>\r\n                            </tbody>\r\n                            </ng-template>\r\n                            </tbody>\r\n                        </table>\r\n                    </div>\r\n                </div><!-- END: .table-responsive -->\r\n            </mat-tab><!-- END: .tab-shift-group -->\r\n            <mat-tab class=\"tab-shift\">\r\n                <ng-template mat-tab-label>\r\n                    <i class=\"fa fa-codepen cm-mgr-5\"></i> Danh sách ca làm việc\r\n                </ng-template>\r\n                <div class=\"text-right cm-mgb-10 cm-pdt-10\">\r\n                    <button mat-raised-button color=\"primary\" type=\"button\" (click)=\"showShiftFormModal()\">\r\n                        <i class=\"fa fa-plus cm-mgr-5\"></i>\r\n                        Thêm ca làm việc\r\n                    </button>\r\n                </div>\r\n                <div class=\"table-responsive\">\r\n                    <table class=\"table table-bordered table-striped table-hover\">\r\n                        <thead>\r\n                        <tr>\r\n                            <th class=\"center w50\">STT</th>\r\n                            <th class=\"center\">Tên ca</th>\r\n                            <th class=\"center\">Vào</th>\r\n                            <th class=\"center\">Ra</th>\r\n                            <th class=\"center\"></th>\r\n                        </tr>\r\n                        </thead>\r\n                        <tbody *ngIf=\"listShifts.length === 0; else shiftContentTemplate\">\r\n                        <tr>\r\n                            <td colspan=\"5\" class=\"bold center\">\r\n                                Chưa cấu hình ca làm việc click\r\n                                <a href=\"javascript://\" (click)=\"showShiftFormModal()\">vào đây</a>\r\n                                để thêm cấu hình ca làm việc\r\n                            </td>\r\n                        </tr>\r\n                        </tbody>\r\n                        <ng-template #shiftContentTemplate>\r\n                            <tbody>\r\n                            <tr *ngFor=\"let shift of listShifts; let i = index\">\r\n                                <td class=\"center\">{{i+1}}</td>\r\n                                <td>\r\n                                    <a href=\"javascript://\" (click)=\"edit(shift)\">{{shift.name}}</a>\r\n                                </td>\r\n                                <td class=\"text-right\">{{shift.startTime?.hour}}:{{shift.startTime?.minute}}</td>\r\n                                <td class=\"text-right\">{{shift.endTime?.hour}}:{{shift.endTime?.minute}}</td>\r\n                                <td class=\"center w100\">\r\n                                    <button type=\"button\" mat-mini-fab color=\"primary\" (click)=\"edit(shift)\"\r\n                                            matTooltip=\"Sửa\" matTooltipPosition=\"above\">\r\n                                        <!--<i class=\"fa fa-edit\"></i>-->\r\n                                        <mat-icon>edit</mat-icon>\r\n                                    </button>\r\n                                    <button type=\"button\" mat-mini-fab color=\"warn\" (click)=\"delete(shift)\"\r\n                                            matTooltip=\"Xóa\" matTooltipPosition=\"above\">\r\n                                        <!--<i class=\"fa fa-trash-o\"></i>-->\r\n                                        <mat-icon>delete</mat-icon>\r\n                                    </button>\r\n                                </td>\r\n                            </tr>\r\n                            </tbody>\r\n                        </ng-template>\r\n                    </table>\r\n                </div>\r\n            </mat-tab><!-- END: .tab-shift -->\r\n        </mat-tab-group>\r\n\r\n        <nh-modal #timekeepingShiftGroupModal (onShown)=\"onGroupModalShow()\" [size]=\"'md'\">\r\n            <nh-modal-header [showCloseButton]=\"true\">\r\n                <h4 class=\"title\">\r\n                    <i class=\"fa fa-th-list\"></i>\r\n                    Danh sách nhóm ca làm việc\r\n                </h4>\r\n            </nh-modal-header>\r\n            <nh-modal-content>\r\n                <div class=\"text-right cm-mgb-10\">\r\n                    <button class=\"btn btn-primary\" type=\"button\" (click)=\"showShiftGroupFormModal()\">\r\n                        <i class=\"fa fa-plus\"></i>\r\n                        Thêm mới nhóm\r\n                    </button>\r\n                </div>\r\n                <div class=\"table-responsive\">\r\n                    <table class=\"table table-bordered table-striped table-hover\">\r\n                        <thead>\r\n                        <tr>\r\n                            <th class=\"center w50\">STT</th>\r\n                            <th class=\"center\">Tên nhóm</th>\r\n                            <th class=\"center\">Mô tả</th>\r\n                            <th class=\"center w100\">Sử dụng</th>\r\n                            <th class=\"center w100\"></th>\r\n                        </tr>\r\n                        </thead>\r\n                        <tbody *ngIf=\"isSearchingShiftGroup\">\r\n                        <tr>\r\n                            <td colspan=\"5\">\r\n                                <div class=\"spinner\">\r\n                                    <div class=\"rect1\"></div>\r\n                                    <div class=\"rect2\"></div>\r\n                                    <div class=\"rect3\"></div>\r\n                                    <div class=\"rect4\"></div>\r\n                                    <div class=\"rect5\"></div>\r\n                                </div>\r\n                            </td>\r\n                        </tr>\r\n                        </tbody>\r\n                        <tbody\r\n                            *ngIf=\"listShiftGroups.length === 0 && !isSearchingShiftGroup; else shiftGroupContentTemplate\">\r\n                        <tr>\r\n                            <td colspan=\"5\" class=\"center bold\">\r\n                                Chưa cấu hình nhóm ca làm việc click\r\n                                <a href=\"javascript://\" (click)=\"showShiftGroupFormModal()\">vào đây</a>\r\n                                để thêm cấu hình ca làm việc\r\n                            </td>\r\n                        </tr>\r\n                        </tbody>\r\n                        <tbody>\r\n                        <ng-template #shiftGroupContentTemplate>\r\n                        <tbody>\r\n                        <tr *ngFor=\"let shiftGroup of listShiftGroups; let i = index\">\r\n                            <td class=\"center\">{{ i + 1 }}</td>\r\n                            <td>{{ shiftGroup.name }}</td>\r\n                            <td>{{ shiftGroup.description }}</td>\r\n                            <td class=\"center\">\r\n                                <mat-checkbox color=\"primary\" [checked]=\"shiftGroup.isActive\"\r\n                                              (change)=\"updateGroupActive(shiftGroup)\"\r\n                                ></mat-checkbox>\r\n                            </td>\r\n                            <td class=\"center w100\">\r\n                                <button type=\"button\"\r\n                                        mat-mini-fab color=\"primary\"\r\n                                        (click)=\"editGroup(shiftGroup)\">\r\n                                    <!--<i class=\"fa fa-edit\"></i>-->\r\n                                    <mat-icon>edit</mat-icon>\r\n                                </button>\r\n                                <button class=\"btn btn-danger btn-sm\"\r\n                                        mat-mini-fab color=\"warn\"\r\n                                        (click)=\"deleteGroup(shiftGroup)\">\r\n                                    <!--<i class=\"fa fa-trash-o\"></i>-->\r\n                                    <mat-icon>delete</mat-icon>\r\n                                </button>\r\n                            </td>\r\n                        </tr>\r\n                        </tbody>\r\n                        </ng-template>\r\n                        </tbody>\r\n                    </table>\r\n                </div>\r\n            </nh-modal-content>\r\n            <nh-modal-footer>\r\n                <button type=\"button\"\r\n                        mat-raised-button color=\"default\"\r\n                        nh-dismiss=\"true\">\r\n                    <!--<i class=\"fa fa-times\"></i>-->\r\n                    <mat-icon>close</mat-icon>\r\n                    Đóng lại\r\n                </button>\r\n            </nh-modal-footer>\r\n        </nh-modal><!-- END: timekeepingShiftGroupModal -->\r\n\r\n        <nh-modal #timekeepingShiftFormModal [size]=\"'md'\"\r\n                  (show)=\"onShowShiftFormModal()\"\r\n                  (hidden)=\"onHiddenModal()\">\r\n            <nh-modal-header [showCloseButton]=\"true\">\r\n                <h4 class=\"title\">\r\n                    <i class=\"fa\"\r\n                       [class.fa-plus]=\"!isUpdate\"\r\n                       [class.fa-edit]=\"isUpdate\"\r\n                    ></i>\r\n                    <span *ngIf=\"isUpdate; else addNewTextTemplate\">Cập nhật ca làm việc</span>\r\n                    <ng-template #addNewTextTemplate>\r\n                        Thêm mới ca làm việc\r\n                    </ng-template>\r\n                </h4>\r\n            </nh-modal-header>\r\n            <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"formModel\">\r\n                <nh-modal-content>\r\n                    <div class=\"portlet box blue\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption\">\r\n                                <i class=\"fa fa-gift\"></i>Thông tin ca làm việc\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"\r\n                                       ghmLabel=\"Tên ca làm việc\"></label>\r\n                                <div class=\"col-sm-8 col-md-9\">\r\n                                    <input type=\"text\" class=\"form-control\" id=\"shiftName\"\r\n                                           placeholder=\"Nhập tên ca làm việc\" formControlName=\"name\">\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.name && isSubmitted\">\r\n                                        {{ formErrors.name }}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"\r\n                                       ghmLabel=\"Tên báo cáo\"></label>\r\n                                <div class=\"col-sm-8 col-md-9\">\r\n                                    <input class=\"form-control\" id=\"reportName\"\r\n                                           placeholder=\"Nhập tên ca làm việc\" formControlName=\"reportName\">\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.reportName && isSubmitted\">\r\n                                        {{ formErrors.reportName }}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"\r\n                                       ghmLabel=\"Mã ca\"></label>\r\n                                <div class=\"col-sm-8 col-md-9\">\r\n                                    <input type=\"text\" class=\"form-control\" id=\"shiftCode\"\r\n                                           placeholder=\"Nhập ký hiệu ca VD: S - Ca sáng C - Ca chiều T - Ca tối\"\r\n                                           formControlName=\"code\">\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.code && isSubmitted\">\r\n                                        {{ formErrors.code }}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-md-3 col-sm-4 control-label\"\r\n                                       ghmLabel=\"Là ca gối của ca\"></label>\r\n                                <div class=\"col-sm-8 col-md-9\">\r\n                                    <nh-select\r\n                                        [data]=\"listShifts\"\r\n                                        [title]=\"'-- Vui lòng chọn ca --'\"\r\n                                        formControlName=\"referenceId\"\r\n                                    ></nh-select>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-md-3 col-sm-4 control-label\"\r\n                                       ghmLabel=\"Thời gian được phép\"></label>\r\n                                <div class=\"col-sm-8 col-md-9\">\r\n                                    <div class=\"input-group\">\r\n                                        <input type=\"text\" class=\"form-control\" placeholder=\"Thời gian được phép đi trê\"\r\n                                               formControlName=\"inLatency\">\r\n                                        <span class=\"input-group-addon\">Phút đi trễ</span>\r\n                                        <input type=\"text\" class=\"form-control\" placeholder=\"Thời gian được phép về sớm\"\r\n                                               formControlName=\"outLatency\">\r\n                                        <span class=\"input-group-addon\">Phút về sớm</span>\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.inLatency && isSubmitted\">\r\n                                        {{ formErrors.inLatency }}\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.outLatency && isSubmitted\">\r\n                                        {{ formErrors.outLatency }}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"ccol-md-2 col-sm-4 control-label\" ghmLabel=\"Giờ bắt đầu ca\"\r\n                                       [required]=\"true\"></label>\r\n                                <div class=\"col-sm-8 col-md-3\" formGroupName=\"startTime\">\r\n                                    <div class=\"input-group-input\" role=\"group\">\r\n                                        <input type=\"text\" class=\"form-control w70\" placeholder=\"Giờ\"\r\n                                               formControlName=\"hour\">\r\n                                        <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                        <input type=\"text\" class=\"form-control w70\" placeholder=\"Phút\"\r\n                                               formControlName=\"minute\">\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.startTime.hour && isSubmitted\">\r\n                                        {{ formErrors.startTime.hour }}\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.startTime.minute && isSubmitted\">\r\n                                        {{ formErrors.startTime.minute }}\r\n                                    </div>\r\n                                </div>\r\n                                <label for=\"\" class=\"col-md-2 col-sm-4 control-label\" ghmLabel=\"Giờ kết thúc ca\"\r\n                                       [required]=\"true\"></label>\r\n                                <div class=\"col-sm-8 col-md-4\" formGroupName=\"endTime\">\r\n                                    <div class=\"input-group-input\" role=\"group\">\r\n                                        <input type=\"text\" class=\"form-control w70\" placeholder=\"Giờ\"\r\n                                               formControlName=\"hour\">\r\n                                        <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                        <input type=\"text\" class=\"form-control w70\" placeholder=\"Phút\"\r\n                                               formControlName=\"minute\">\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.endTime.hour && isSubmitted\">\r\n                                        {{ formErrors.endTime.hour }}\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.endTime.minute && isSubmitted\">\r\n                                        {{ formErrors.endTime.minute }}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"\" ghmLabel=\"Tính\" [required]=\"true\"></label>\r\n                                <div class=\"col-sm-8 col-md-9\">\r\n                                    <div class=\"input-group\">\r\n                                        <input type=\"text\" class=\"form-control\"\r\n                                               placeholder=\"Nhập số công sẽ được tính cho ca làm việc này\"\r\n                                               formControlName=\"workUnit\">\r\n                                        <span class=\"input-group-addon\">Công</span>\r\n                                    </div>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.workUnit && isSubmitted\">\r\n                                        {{ formErrors.workUnit }}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <hr>\r\n                    <div class=\"portlet box blue\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption\">\r\n                                <i class=\"fa fa-gift\"></i>Thời gian hiểu ca\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <div formGroupName=\"meaningTime\">\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" ghmLabel=\"Giờ bắt đầu ca vào\"\r\n                                           [required]=\"true\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\" formGroupName=\"startTimeIn\">\r\n                                        <div class=\"input-group-input\" role=\"group\">\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Giờ\"\r\n                                                   formControlName=\"hour\">\r\n                                            <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Phút\"\r\n                                                   formControlName=\"minute\">\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.startTimeIn.hour && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.startTimeIn.hour }}\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.startTimeIn.minute && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.startTimeIn.minute }}\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" ghmLabel=\"Giờ kết thúc ca vào\"\r\n                                           [required]=\"true\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\" formGroupName=\"endTimeIn\">\r\n                                        <div class=\"input-group-input\" role=\"group\">\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Giờ\"\r\n                                                   formControlName=\"hour\">\r\n                                            <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Phút\"\r\n                                                   formControlName=\"minute\">\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.endTimeIn.hour && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.endTimeIn.hour }}\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.endTimeIn.minute && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.endTimeIn.minute }}\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" ghmLabel=\"Giờ bắt đầu ca ra\"\r\n                                           [required]=\"true\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\" formGroupName=\"startTimeOut\">\r\n                                        <div class=\"input-group-input\" role=\"group\">\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Giờ\"\r\n                                                   formControlName=\"hour\">\r\n                                            <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Phút\"\r\n                                                   formControlName=\"minute\">\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.startTimeOut.hour && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.startTimeOut.hour }}\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.startTimeOut.minute && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.startTimeOut.minute }}\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" ghmLabel=\"Giờ kết thúc ca ra\"\r\n                                           [required]=\"true\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\" formGroupName=\"endTimeOut\">\r\n                                        <div class=\"input-group-input\" role=\"group\">\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Giờ\"\r\n                                                   formControlName=\"hour\">\r\n                                            <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                            <input type=\"text\" class=\"form-control w70\" placeholder=\"Phút\"\r\n                                                   formControlName=\"minute\">\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.endTimeOut.hour && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.endTimeOut.hour }}\r\n                                        </div>\r\n                                        <div class=\"alert alert-danger\"\r\n                                             *ngIf=\"formErrors.meaningTime.endTimeOut.minute && isSubmitted\">\r\n                                            {{ formErrors.meaningTime.endTimeOut.minute }}\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <div class=\"col-sm-8 col-md-9 col-sm-offset-4 col-md-offset-3\">\r\n                                    <mat-slide-toggle color=\"primary\" formControlName=\"isOvertime\">Ca này được tính là\r\n                                        làm thêm giờ\r\n                                    </mat-slide-toggle>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </nh-modal-content>\r\n                <nh-modal-footer>\r\n                    <button type=\"submit\" mat-raised-button color=\"primary\">\r\n                        <!--<i class=\"fa fa-save\" *ngIf=\"!isSaving\"></i>-->\r\n                        <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>-->\r\n                        <mat-icon>save</mat-icon>\r\n                        Lưu lại\r\n                    </button>\r\n                    <button type=\"button\" mat-raised-button nh-dismiss=\"true\">\r\n                        <!--<i class=\"fa fa-times\"></i>-->\r\n                        <mat-icon>close</mat-icon>\r\n                        Đóng lại\r\n                    </button>\r\n                </nh-modal-footer>\r\n            </form>\r\n        </nh-modal><!-- END: timekeepingShiftFormModal -->\r\n\r\n        <nh-modal #timekeepingShiftGroupFormModal [size]=\"'sm'\" (hidden)=\"onHiddenModal()\">\r\n            <nh-modal-header [showCloseButton]=\"true\">\r\n                <h4 class=\"title\">\r\n                    <i class=\"fa\"\r\n                       [class.fa-plus]=\"!isUpdate\"\r\n                       [class.fa-edit]=\"isUpdate\"\r\n                    ></i>\r\n                    <span *ngIf=\"isUpdate; else addNewTextTemplate\">Cập nhật nhóm</span>\r\n                    <ng-template #addNewTextTemplate>\r\n                        Thêm mới nhóm\r\n                    </ng-template>\r\n                </h4>\r\n            </nh-modal-header>\r\n            <form class=\"form-horizontal\" (ngSubmit)=\"saveGroup()\" [formGroup]=\"groupFormModel\">\r\n                <nh-modal-content>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"\r\n                               ghmLabel=\"Tên nhóm\"></label>\r\n                        <div class=\"col-sm-8 col-md-9\">\r\n                            <input type=\"text\" class=\"form-control\" id=\"shiftGroupName\"\r\n                                   placeholder=\"Nhập tên nhóm ca làm việc\"\r\n                                   formControlName=\"name\">\r\n                            <div class=\"alert alert-danger\" *ngIf=\"groupFormErrors.name && isSubmitted\">\r\n                                {{ groupFormErrors.name }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"\" class=\"col-md-3 col-sm-4 control-label\"\r\n                               ghmLabel=\"Mô tả\"></label>\r\n                        <div class=\"col-sm-8 col-md-9\">\r\n                            <textarea type=\"text\" class=\"form-control\" id=\"shiftGroupDescription\"\r\n                                      placeholder=\"Nhập mô tả nhóm ca làm việc\"\r\n                                      formControlName=\"description\"></textarea>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"groupFormErrors.description && isSubmitted\">\r\n                                {{ groupFormErrors.description }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <div class=\"col-sm-8 col-md-9 col-sm-offset-4 col-md-offset-3\">\r\n                            <mat-slide-toggle color=\"primary\" formControlName=\"isActive\">Sử dụng nhóm này\r\n                            </mat-slide-toggle>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n\r\n                        <label for=\"\" class=\"col-md-3 col-sm-4 control-label\"\r\n                               ghmLabel=\"Ca làm việc\"></label>\r\n                        <div class=\"col-sm-8 col-md-9\">\r\n                            <nh-select\r\n                                #selectShiftDropdown\r\n                                [multiple]=\"true\"\r\n                                [data]=\"listShifts\"\r\n                                [title]=\"'-- Chọn ca làm việc --'\"\r\n                                (onSelectItem)=\"onSelectShift($event)\"\r\n                            ></nh-select>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"groupFormErrors.shifts && isSubmitted\">\r\n                                {{ groupFormErrors.shifts }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <div class=\"col-sm-8 col-md-9 col-sm-offset-4 col-md-offset-3\">\r\n                            <table class=\"table table-bordered table-striped table-hover\">\r\n                                <thead>\r\n                                <tr>\r\n                                    <th class=\"center w50\">STT</th>\r\n                                    <th class=\"center\">Tên ca</th>\r\n                                    <th class=\"center\">Mã ca</th>\r\n                                    <th class=\"center w100\">Vào</th>\r\n                                    <th class=\"center w100\">Ra</th>\r\n                                </tr>\r\n                                </thead>\r\n                                <tbody>\r\n                                <tr *ngFor=\"let item of groupFormModel.value.shifts; let i = index\">\r\n                                    <td class=\"center\">{{i+ 1}}</td>\r\n                                    <td>{{item.name}}</td>\r\n                                    <td class=\"center\">{{item.code}}</td>\r\n                                    <td>{{item.startTime.hour}}:{{item.startTime.minute}}</td>\r\n                                    <td>{{item.endTime.hour}}:{{item.endTime.minute}}</td>\r\n                                </tr>\r\n                                </tbody>\r\n                            </table>\r\n                        </div>\r\n                    </div>\r\n                </nh-modal-content>\r\n                <nh-modal-footer>\r\n                    <button type=\"submit\" mat-raised-button color=\"primary\">\r\n                        <!--<i class=\"fa fa-save\" *ngIf=\"!isSaving\"></i>-->\r\n                        <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>-->\r\n                        <mat-icon>save</mat-icon>\r\n                        Lưu lại\r\n                    </button>\r\n                    <button type=\"button\" mat-raised-button nh-dismiss=\"true\">\r\n                        <!--<i class=\"fa fa-times\"></i>-->\r\n                        <mat-icon>close</mat-icon>\r\n                        Đóng lại\r\n                    </button>\r\n                </nh-modal-footer>\r\n            </form>\r\n        </nh-modal><!-- END: timekeepingShiftGroupFormModal -->\r\n    </div>\r\n</div><!-- END: .portlet-shift -->\r\n"
 
 /***/ }),
 
@@ -916,26 +916,26 @@ var TimekeepingConfigShiftComponent = /** @class */ (function (_super) {
         this.groupFormModel.patchValue({ 'shifts': shifts });
     };
     TimekeepingConfigShiftComponent.prototype.showShiftFormModal = function () {
-        this.timekeepingShiftFormModal.show();
+        this.timekeepingShiftFormModal.open();
         this.utilService.focusElement('shiftName');
     };
     TimekeepingConfigShiftComponent.prototype.showShifGroupModal = function () {
-        this.timekeepingShiftGroupModal.show();
+        this.timekeepingShiftGroupModal.open();
     };
     TimekeepingConfigShiftComponent.prototype.showShiftGroupFormModal = function () {
-        this.timekeepingShiftGroupFormModal.show();
+        this.timekeepingShiftGroupFormModal.open();
         this.utilService.focusElement('shiftGroupName');
     };
     TimekeepingConfigShiftComponent.prototype.edit = function (shift) {
         this.isUpdate = true;
         this.formModel.patchValue(shift);
-        this.timekeepingShiftFormModal.show();
+        this.timekeepingShiftFormModal.open();
     };
     TimekeepingConfigShiftComponent.prototype.editGroup = function (shiftGroup) {
         console.log(shiftGroup);
         this.groupFormModel.patchValue(shiftGroup);
         this.isUpdate = true;
-        this.timekeepingShiftGroupFormModal.show();
+        this.timekeepingShiftGroupFormModal.open();
     };
     TimekeepingConfigShiftComponent.prototype.delete = function (shift) {
         // swal({
@@ -947,7 +947,7 @@ var TimekeepingConfigShiftComponent = /** @class */ (function (_super) {
         //     confirmButtonText: 'Đồng ý',
         //     cancelButtonText: 'Hủy bỏ'
         // }).then(() => {
-        //     this.spinnerService.show('Đang tiến hành xóa dữ liệu. Vui lòng đợi...');
+        //     this.spinnerService.open('Đang tiến hành xóa dữ liệu. Vui lòng đợi...');
         //     this.timekeepingConfigService.deleteShift(shift.id)
         //         .finally(() => this.spinnerService.hide())
         //         .subscribe(() => {
@@ -969,7 +969,7 @@ var TimekeepingConfigShiftComponent = /** @class */ (function (_super) {
         //     confirmButtonText: 'Đồng ý',
         //     cancelButtonText: 'Hủy bỏ'
         // }).then(() => {
-        //     this.spinnerService.show('Đang tiến hành xóa dữ liệu. Vui lòng đợi.');
+        //     this.spinnerService.open('Đang tiến hành xóa dữ liệu. Vui lòng đợi.');
         //     this.timekeepingConfigService.deleteShiftGroup(shiftGroup.id)
         //         .finally(() => this.spinnerService.hide())
         //         .subscribe(() => {
@@ -1686,7 +1686,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../configs/app.config */ "./src/app/configs/app.config.ts");
 /* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
 /* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1712,7 +1711,6 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 /**
  * Created by HoangIT21 on 7/4/2017.
  */
-
 
 
 
@@ -1755,7 +1753,6 @@ var TimekeepingConfigComponent = /** @class */ (function (_super) {
             template: __webpack_require__(/*! ./timekeeping-config.component.html */ "./src/app/modules/timekeeping/config/timekeeping-config.component.html"),
             providers: [_timekeeping_config_service__WEBPACK_IMPORTED_MODULE_4__["TimekeepingConfigService"]]
         }),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_8__["CheckPermission"])(),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_5__["APP_CONFIG"])),
         __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_6__["PAGE_ID"])),
         __metadata("design:paramtypes", [Object, Object, _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
@@ -1939,8 +1936,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
 /* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
-/* harmony import */ var _hr_organization_office_services_office_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../hr/organization/office/services/office.service */ "./src/app/modules/hr/organization/office/services/office.service.ts");
+/* harmony import */ var _hr_organization_office_services_office_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../hr/organization/office/services/office.service */ "./src/app/modules/hr/organization/office/services/office.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1966,7 +1962,6 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 /**
  * Created by HoangIT21 on 7/10/2017.
  */
-
 
 
 
@@ -2153,7 +2148,7 @@ var TimekeepingWorkScheduleComponent = /** @class */ (function (_super) {
         });
     };
     TimekeepingWorkScheduleComponent.prototype.showConfigModal = function () {
-        this.configModal.show();
+        this.configModal.open();
     };
     TimekeepingWorkScheduleComponent.prototype.hasChecked = function (value, valueCheck) {
         return (value & valueCheck) === valueCheck;
@@ -2166,14 +2161,13 @@ var TimekeepingWorkScheduleComponent = /** @class */ (function (_super) {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-timekeeping-work-schedule',
             template: __webpack_require__(/*! ./timekeeping-work-schedule.component.html */ "./src/app/modules/timekeeping/config/work-schedule/timekeeping-work-schedule.component.html"),
-            providers: [_hr_organization_office_services_office_service__WEBPACK_IMPORTED_MODULE_14__["OfficeService"], _timekeeping_config_service__WEBPACK_IMPORTED_MODULE_7__["TimekeepingConfigService"], _timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_8__["TimekeepingWorkScheduleService"]]
+            providers: [_hr_organization_office_services_office_service__WEBPACK_IMPORTED_MODULE_13__["OfficeService"], _timekeeping_config_service__WEBPACK_IMPORTED_MODULE_7__["TimekeepingConfigService"], _timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_8__["TimekeepingWorkScheduleService"]]
         }),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_13__["CheckPermission"])(),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_10__["PAGE_ID"])),
         __metadata("design:paramtypes", [Object, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["Title"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"],
-            _hr_organization_office_services_office_service__WEBPACK_IMPORTED_MODULE_14__["OfficeService"],
+            _hr_organization_office_services_office_service__WEBPACK_IMPORTED_MODULE_13__["OfficeService"],
             _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_6__["SpinnerService"],
             _timekeeping_config_service__WEBPACK_IMPORTED_MODULE_7__["TimekeepingConfigService"],
             _timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_8__["TimekeepingWorkScheduleService"],
@@ -2337,18 +2331,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SyncDataComponent", function() { return SyncDataComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../base.component */ "./src/app/base.component.ts");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _config_timekeeping_config_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../config/timekeeping-config.service */ "./src/app/modules/timekeeping/config/timekeeping-config.service.ts");
-/* harmony import */ var _sync_data_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sync-data.service */ "./src/app/modules/timekeeping/connect/sync-data/sync-data.service.ts");
-/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../configs/app.config */ "./src/app/configs/app.config.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var _shareds_services_notify_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../shareds/services/notify.service */ "./src/app/shareds/services/notify.service.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _config_timekeeping_config_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config/timekeeping-config.service */ "./src/app/modules/timekeeping/config/timekeeping-config.service.ts");
+/* harmony import */ var _sync_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sync-data.service */ "./src/app/modules/timekeeping/connect/sync-data/sync-data.service.ts");
+/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
+/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../configs/app.config */ "./src/app/configs/app.config.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var _shareds_services_notify_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../shareds/services/notify.service */ "./src/app/shareds/services/notify.service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../base-list.component */ "./src/app/base-list.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2382,17 +2374,14 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
 var SyncDataComponent = /** @class */ (function (_super) {
     __extends(SyncDataComponent, _super);
-    function SyncDataComponent(appConfig, pageId, changeRef, title, notifyService, appService, timekeepingConfigService, syncDataService) {
+    function SyncDataComponent(appConfig, pageId, changeRef, title, notifyService, timekeepingConfigService, syncDataService) {
         var _this = _super.call(this) || this;
         _this.appConfig = appConfig;
         _this.changeRef = changeRef;
         _this.title = title;
         _this.notifyService = notifyService;
-        _this.appService = appService;
         _this.timekeepingConfigService = timekeepingConfigService;
         _this.syncDataService = syncDataService;
         _this.machines = [];
@@ -2405,7 +2394,7 @@ var SyncDataComponent = /** @class */ (function (_super) {
         _this.connectMachines = [];
         _this.isSearching = true;
         _this.timekeepingConfigService.searchMachine()
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["finalize"])(function () { return _this.isSearching = false; }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["finalize"])(function () { return _this.isSearching = false; }))
             .subscribe(function (result) {
             _this.machines = result;
         });
@@ -2428,7 +2417,7 @@ var SyncDataComponent = /** @class */ (function (_super) {
             console.log('onNoRecordFound', machineId, machineName);
         });
         hubProxy.on('onConnectFail', function (machineId, machineName) {
-            lodash__WEBPACK_IMPORTED_MODULE_3__["each"](_this.connectMachines, function (machine) {
+            lodash__WEBPACK_IMPORTED_MODULE_2__["each"](_this.connectMachines, function (machine) {
                 if (machine.id === machineId) {
                     machine.status = _this.CONNECT_STATUS.FAIL;
                     _this.changeRef.detectChanges();
@@ -2437,7 +2426,7 @@ var SyncDataComponent = /** @class */ (function (_super) {
             console.log('onConnectFail', machineId, machineName);
         });
         hubProxy.on('onConnectSuccess', function (machineId, machineName) {
-            lodash__WEBPACK_IMPORTED_MODULE_3__["each"](_this.connectMachines, function (machine) {
+            lodash__WEBPACK_IMPORTED_MODULE_2__["each"](_this.connectMachines, function (machine) {
                 if (machine.id === machineId) {
                     machine.status = _this.CONNECT_STATUS.SUCCESS;
                     // Hiển thị loading dữ liệu
@@ -2463,8 +2452,8 @@ var SyncDataComponent = /** @class */ (function (_super) {
     SyncDataComponent.prototype.syncAll = function () {
         var _this = this;
         this.sync(null);
-        this.detailModalComponent.show();
-        this.connectMachines = lodash__WEBPACK_IMPORTED_MODULE_3__["map"](this.machines, function (machine) {
+        this.detailModalComponent.open();
+        this.connectMachines = lodash__WEBPACK_IMPORTED_MODULE_2__["map"](this.machines, function (machine) {
             return {
                 id: machine.id,
                 name: machine.name,
@@ -2473,7 +2462,7 @@ var SyncDataComponent = /** @class */ (function (_super) {
         });
     };
     SyncDataComponent.prototype.syncData = function (machine) {
-        this.detailModalComponent.show();
+        this.detailModalComponent.open();
         this.sync(machine.id);
         this.connectMachines.push({
             id: machine.id,
@@ -2482,36 +2471,33 @@ var SyncDataComponent = /** @class */ (function (_super) {
         });
     };
     SyncDataComponent.prototype.sync = function (machineId) {
-        var _this = this;
-        this.isSaving = true;
+        // this.isSaving = true;
         this.syncDataService.syncData(this.enrollNumber, this.fromDate, this.toDate, machineId)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["finalize"])(function () { return _this.isSaving = false; }))
+            // .pipe(finalize(() => this.isSaving = false))
             .subscribe(function (result) {
             console.log('Đang tiến hành đông bộ dữ liệu.');
         });
     };
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_6__["NhModalComponent"]),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_6__["NhModalComponent"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_5__["NhModalComponent"]),
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_5__["NhModalComponent"])
     ], SyncDataComponent.prototype, "detailModalComponent", void 0);
     SyncDataComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-sync-data-component',
             template: __webpack_require__(/*! ./sync-data.component.html */ "./src/app/modules/timekeeping/connect/sync-data/sync-data.component.html"),
-            providers: [_config_timekeeping_config_service__WEBPACK_IMPORTED_MODULE_4__["TimekeepingConfigService"], _sync_data_service__WEBPACK_IMPORTED_MODULE_5__["SyncDataService"]]
+            providers: [_config_timekeeping_config_service__WEBPACK_IMPORTED_MODULE_3__["TimekeepingConfigService"], _sync_data_service__WEBPACK_IMPORTED_MODULE_4__["SyncDataService"]]
         }),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_12__["CheckPermission"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_7__["APP_CONFIG"])),
-        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_8__["PAGE_ID"])),
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_6__["APP_CONFIG"])),
+        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_7__["PAGE_ID"])),
         __metadata("design:paramtypes", [Object, Object, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"],
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["Title"],
-            _shareds_services_notify_service__WEBPACK_IMPORTED_MODULE_9__["NotifyService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_10__["AppService"],
-            _config_timekeeping_config_service__WEBPACK_IMPORTED_MODULE_4__["TimekeepingConfigService"],
-            _sync_data_service__WEBPACK_IMPORTED_MODULE_5__["SyncDataService"]])
+            _shareds_services_notify_service__WEBPACK_IMPORTED_MODULE_8__["NotifyService"],
+            _config_timekeeping_config_service__WEBPACK_IMPORTED_MODULE_3__["TimekeepingConfigService"],
+            _sync_data_service__WEBPACK_IMPORTED_MODULE_4__["SyncDataService"]])
     ], SyncDataComponent);
     return SyncDataComponent;
-}(_base_component__WEBPACK_IMPORTED_MODULE_2__["BaseComponent"]));
+}(_base_list_component__WEBPACK_IMPORTED_MODULE_10__["BaseListComponent"]));
 
 
 
@@ -2657,7 +2643,7 @@ var DayOffDate = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nh-modal #dayOffRegisterModal [size]=\"'md'\" class=\"form\">\r\n    <nh-modal-header [showCloseButton]=\"true\">\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-registered\"></i> Đăng ký nghỉ\r\n        </h4>\r\n\r\n        <div class=\"row\" *ngIf=\"warningMessage\">\r\n            <div class=\"col-sm-12\">\r\n                <div class=\"alert alert-warning\">\r\n                    {{warningMessage}}\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal form-bordered\" (ngSubmit)=\"save()\" [formGroup]=\"formModel\">\r\n        <nh-modal-content class=\"form-body\"\r\n                          [isLoading]=\"isSearching\"\r\n                          [isBlockContent]=\"isLockForm\">\r\n            <div class=\"form-group\">\r\n                <!--<div class=\"col-sm-12\"-->\r\n                     <!--*ngIf=\"formModel.value.method === METHODS.ANNUAL_LEAVE && currentUser?.holidayRemain > 0\">-->\r\n                    <!--<div class=\"alert alert-info cm-mgb-0\">-->\r\n                        <!--<b>Thông báo: </b> Bạn còn {{currentUser?.holidayRemain}} ngày phép trong năm nay.-->\r\n                    <!--</div>-->\r\n                <!--</div>-->\r\n                <!--<div class=\"col-sm-12\"-->\r\n                     <!--*ngIf=\"formModel.value.method === METHODS.ANNUAL_LEAVE && (currentUser?.holidayRemain === 0 || !currentUser.holidayRemain)\">-->\r\n                    <!--<div class=\"alert alert-danger cm-mgb-0\">-->\r\n                        <!--<b>Thông báo: </b> Số ngày phép của bạn trong năm nay đã hết. Bạn không thể đăng ký nghỉ phép-->\r\n                        <!--thêm.-->\r\n                    <!--</div>-->\r\n                <!--</div>-->\r\n                <div class=\"col-sm-12\" *ngIf=\"errorMessage\">\r\n                    <div class=\"alert alert-info cm-mgb-0\">\r\n                        <b>Xin lỗi: </b> {{errorMessage}}\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-sm-12\" *ngIf=\"listShifts == null\">\r\n                    <div class=\"alert alert-danger cm-mgb-0\">\r\n                        <b>Xin lỗi: </b> Bạn chưa được cấu hình ca làm việc. Vui lòng liên hệ với bộ phận nhân sự để\r\n                        được trợ giúp.\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Từ ngày\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <nh-date [id]=\"'register-from-date'\"\r\n                             [type]=\"'inputButton'\"\r\n                             [title]=\"'Chọn nghỉ từ ngày'\"\r\n                             formControlName=\"fromDate\"\r\n                             (selectedDateEvent)=\"onSelectFromDate($event)\"></nh-date>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.fromDate\">\r\n                        {{ formErrors.fromDate }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Đến ngày\" class=\"col-md-3 col-sm-4 control-label\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <nh-date [id]=\"'register-to-date'\"\r\n                             [type]=\"'inputButton'\"\r\n                             [title]=\"'Chọn nghỉ đến ngày'\"\r\n                             formControlName=\"toDate\"\r\n                             (selectedDateEvent)=\"onSelectToDate($event)\"\r\n                             (removedDateEvent)=\"onSelectToDate(null)\"></nh-date>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Hình thức nghỉ\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <nh-select [data]=\"listMethod\" [title]=\"'-- Chọn hình thức xin nghỉ --'\"\r\n                               formControlName=\"method\"\r\n                               (onSelectItem)=\"onSelectMethod($event)\"></nh-select>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\"\r\n                 *ngIf=\"formModel.value.method !== METHODS.INSURANCE_LEAVE && listShifts\">\r\n                <label ghmLabel=\"Chọn ca nghỉ\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <table class=\"table table-bordered table-striped table-hover table-main\">\r\n                        <thead>\r\n                        <tr>\r\n                            <th class=\"center middle\" [attr.rowspan]=\"listShifts.length\">Ngày</th>\r\n                            <th class=\"center middle\" [attr.colspan]=\"listShifts.length\">Ca làm việc</th>\r\n                        </tr>\r\n                        <tr>\r\n                            <th class=\"center middle\" *ngFor=\"let shift of listShifts\">\r\n                                {{shift.reportName}}\r\n                            </th>\r\n                        </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                        <tr *ngFor=\"let date of listDates\">\r\n                            <td class=\"center\">\r\n                                <div class=\"bold\">{{date.dateText}}</div>\r\n                                <label class=\"label-color\">({{date.dateName}})</label>\r\n                            </td>\r\n                            <td *ngFor=\"let shift of date.shifts\"\r\n                                class=\"center middle\">\r\n                                <nh-select *ngIf=\"shift.isShowDay && !shift.isHoliday\"\r\n                                           [data]=\"listShortMethod\" [title]=\"'-'\"\r\n                                           [(value)]=\"shift.method\"\r\n                                           (onSelectItem)=\"onDayMethodSelect(shift, $event)\"></nh-select>\r\n                            </td>\r\n                        </tr>\r\n                        </tbody>\r\n                    </table><!-- END: table -->\r\n                    <ul>\r\n                        <li *ngFor=\"let item of listStats\">\r\n                            {{item.name}}: <b>{{item.quantity}} Ngày</b>\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Lý do xin nghỉ\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-8 col-md-9\">\r\n                    <textarea rows=\"4\" class=\"form-control\" placeholder=\"Vui lòng nhập lý do xin nghỉ\"\r\n                              (keydown.enter)=\"save()\" formControlName=\"reason\"></textarea>\r\n                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.reason\">\r\n                        {{ formErrors.reason }}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button mat-raised-button color=\"primary\">\r\n                <nh-icon-loading [isLoading]=\"isSaving\"></nh-icon-loading>\r\n                {{isUpdate ? 'Cập nhật' : 'Đăng ký'}}\r\n            </button>\r\n            <button type=\"button\" nh-dismiss=\"true\" mat-raised-button>\r\n                <i class=\"fa fa-times\"></i>\r\n                Hủy\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
+module.exports = "<nh-modal #dayOffRegisterModal [size]=\"'md'\" class=\"form\">\r\n    <nh-modal-header [showCloseButton]=\"true\">\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-registered\"></i> Đăng ký nghỉ\r\n        </h4>\r\n\r\n        <div class=\"row\" *ngIf=\"warningMessage\">\r\n            <div class=\"col-sm-12\">\r\n                <div class=\"alert alert-warning\">\r\n                    {{warningMessage}}\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal form-bordered\" (ngSubmit)=\"save()\" [formGroup]=\"formModel\">\r\n        <!--<nh-modal-content class=\"form-body\"-->\r\n                          <!--[isLoading]=\"isSearching\"-->\r\n                          <!--[isBlockContent]=\"isLockForm\">-->\r\n            <!--<div class=\"form-group\">-->\r\n                <!--&lt;!&ndash;<div class=\"col-sm-12\"&ndash;&gt;-->\r\n                     <!--&lt;!&ndash;*ngIf=\"formModel.value.method === METHODS.ANNUAL_LEAVE && currentUser?.holidayRemain > 0\">&ndash;&gt;-->\r\n                    <!--&lt;!&ndash;<div class=\"alert alert-info cm-mgb-0\">&ndash;&gt;-->\r\n                        <!--&lt;!&ndash;<b>Thông báo: </b> Bạn còn {{currentUser?.holidayRemain}} ngày phép trong năm nay.&ndash;&gt;-->\r\n                    <!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n                <!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n                <!--&lt;!&ndash;<div class=\"col-sm-12\"&ndash;&gt;-->\r\n                     <!--&lt;!&ndash;*ngIf=\"formModel.value.method === METHODS.ANNUAL_LEAVE && (currentUser?.holidayRemain === 0 || !currentUser.holidayRemain)\">&ndash;&gt;-->\r\n                    <!--&lt;!&ndash;<div class=\"alert alert-danger cm-mgb-0\">&ndash;&gt;-->\r\n                        <!--&lt;!&ndash;<b>Thông báo: </b> Số ngày phép của bạn trong năm nay đã hết. Bạn không thể đăng ký nghỉ phép&ndash;&gt;-->\r\n                        <!--&lt;!&ndash;thêm.&ndash;&gt;-->\r\n                    <!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n                <!--&lt;!&ndash;</div>&ndash;&gt;-->\r\n                <!--<div class=\"col-sm-12\" *ngIf=\"errorMessage\">-->\r\n                    <!--<div class=\"alert alert-info cm-mgb-0\">-->\r\n                        <!--<b>Xin lỗi: </b> {{errorMessage}}-->\r\n                    <!--</div>-->\r\n                <!--</div>-->\r\n                <!--<div class=\"col-sm-12\" *ngIf=\"listShifts == null\">-->\r\n                    <!--<div class=\"alert alert-danger cm-mgb-0\">-->\r\n                        <!--<b>Xin lỗi: </b> Bạn chưa được cấu hình ca làm việc. Vui lòng liên hệ với bộ phận nhân sự để-->\r\n                        <!--được trợ giúp.-->\r\n                    <!--</div>-->\r\n                <!--</div>-->\r\n            <!--</div>-->\r\n            <!--<div class=\"form-group\">-->\r\n                <!--<label ghmLabel=\"Từ ngày\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>-->\r\n                <!--<div class=\"col-sm-8 col-md-9\">-->\r\n                    <!--<nh-date [id]=\"'register-from-date'\"-->\r\n                             <!--[type]=\"'inputButton'\"-->\r\n                             <!--[title]=\"'Chọn nghỉ từ ngày'\"-->\r\n                             <!--formControlName=\"fromDate\"-->\r\n                             <!--(selectedDateEvent)=\"onSelectFromDate($event)\"></nh-date>-->\r\n                    <!--<div class=\"alert alert-danger\" *ngIf=\"formErrors.fromDate\">-->\r\n                        <!--{{ formErrors.fromDate }}-->\r\n                    <!--</div>-->\r\n                <!--</div>-->\r\n            <!--</div>-->\r\n            <!--<div class=\"form-group\">-->\r\n                <!--<label ghmLabel=\"Đến ngày\" class=\"col-md-3 col-sm-4 control-label\"></label>-->\r\n                <!--<div class=\"col-sm-8 col-md-9\">-->\r\n                    <!--<nh-date [id]=\"'register-to-date'\"-->\r\n                             <!--[type]=\"'inputButton'\"-->\r\n                             <!--[title]=\"'Chọn nghỉ đến ngày'\"-->\r\n                             <!--formControlName=\"toDate\"-->\r\n                             <!--(selectedDateEvent)=\"onSelectToDate($event)\"-->\r\n                             <!--(removedDateEvent)=\"onSelectToDate(null)\"></nh-date>-->\r\n                <!--</div>-->\r\n            <!--</div>-->\r\n            <!--<div class=\"form-group\">-->\r\n                <!--<label ghmLabel=\"Hình thức nghỉ\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>-->\r\n                <!--<div class=\"col-sm-8 col-md-9\">-->\r\n                    <!--<nh-select [data]=\"listMethod\" [title]=\"'&#45;&#45; Chọn hình thức xin nghỉ &#45;&#45;'\"-->\r\n                               <!--formControlName=\"method\"-->\r\n                               <!--(onSelectItem)=\"onSelectMethod($event)\"></nh-select>-->\r\n                <!--</div>-->\r\n            <!--</div>-->\r\n            <!--<div class=\"form-group\"-->\r\n                 <!--*ngIf=\"formModel.value.method !== METHODS.INSURANCE_LEAVE && listShifts\">-->\r\n                <!--<label ghmLabel=\"Chọn ca nghỉ\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>-->\r\n                <!--<div class=\"col-sm-8 col-md-9\">-->\r\n                    <!--<table class=\"table table-bordered table-striped table-hover table-main\">-->\r\n                        <!--<thead>-->\r\n                        <!--<tr>-->\r\n                            <!--<th class=\"center middle\" [attr.rowspan]=\"listShifts.length\">Ngày</th>-->\r\n                            <!--<th class=\"center middle\" [attr.colspan]=\"listShifts.length\">Ca làm việc</th>-->\r\n                        <!--</tr>-->\r\n                        <!--<tr>-->\r\n                            <!--<th class=\"center middle\" *ngFor=\"let shift of listShifts\">-->\r\n                                <!--{{shift.reportName}}-->\r\n                            <!--</th>-->\r\n                        <!--</tr>-->\r\n                        <!--</thead>-->\r\n                        <!--<tbody>-->\r\n                        <!--<tr *ngFor=\"let date of listDates\">-->\r\n                            <!--<td class=\"center\">-->\r\n                                <!--<div class=\"bold\">{{date.dateText}}</div>-->\r\n                                <!--<label class=\"label-color\">({{date.dateName}})</label>-->\r\n                            <!--</td>-->\r\n                            <!--<td *ngFor=\"let shift of date.shifts\"-->\r\n                                <!--class=\"center middle\">-->\r\n                                <!--<nh-select *ngIf=\"shift.isShowDay && !shift.isHoliday\"-->\r\n                                           <!--[data]=\"listShortMethod\" [title]=\"'-'\"-->\r\n                                           <!--[(value)]=\"shift.method\"-->\r\n                                           <!--(onSelectItem)=\"onDayMethodSelect(shift, $event)\"></nh-select>-->\r\n                            <!--</td>-->\r\n                        <!--</tr>-->\r\n                        <!--</tbody>-->\r\n                    <!--</table>&lt;!&ndash; END: table &ndash;&gt;-->\r\n                    <!--<ul>-->\r\n                        <!--<li *ngFor=\"let item of listStats\">-->\r\n                            <!--{{item.name}}: <b>{{item.quantity}} Ngày</b>-->\r\n                        <!--</li>-->\r\n                    <!--</ul>-->\r\n                <!--</div>-->\r\n            <!--</div>-->\r\n            <!--<div class=\"form-group\">-->\r\n                <!--<label ghmLabel=\"Lý do xin nghỉ\" class=\"col-md-3 col-sm-4 control-label\" [required]=\"true\"></label>-->\r\n                <!--<div class=\"col-sm-8 col-md-9\">-->\r\n                    <!--<textarea rows=\"4\" class=\"form-control\" placeholder=\"Vui lòng nhập lý do xin nghỉ\"-->\r\n                              <!--(keydown.enter)=\"save()\" formControlName=\"reason\"></textarea>-->\r\n                    <!--<div class=\"alert alert-danger\" *ngIf=\"formErrors.reason\">-->\r\n                        <!--{{ formErrors.reason }}-->\r\n                    <!--</div>-->\r\n                <!--</div>-->\r\n            <!--</div>-->\r\n        <!--</nh-modal-content>-->\r\n        <nh-modal-footer>\r\n            <button mat-raised-button color=\"primary\">\r\n                <nh-icon-loading [isLoading]=\"isSaving\"></nh-icon-loading>\r\n                {{isUpdate ? 'Cập nhật' : 'Đăng ký'}}\r\n            </button>\r\n            <button type=\"button\" nh-dismiss=\"true\" mat-raised-button>\r\n                <i class=\"fa fa-times\"></i>\r\n                Hủy\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
 
 /***/ }),
 
@@ -2672,22 +2658,20 @@ module.exports = "<nh-modal #dayOffRegisterModal [size]=\"'md'\" class=\"form\">
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimekeepingDayOffRegisterComponent", function() { return TimekeepingDayOffRegisterComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../base.component */ "./src/app/base.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _timekeeping_dayoff_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./timekeeping-dayoff.service */ "./src/app/modules/timekeeping/day-off/timekeeping-dayoff.service.ts");
-/* harmony import */ var _config_holiday_timekeeping_holiday_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../config/holiday/timekeeping-holiday.service */ "./src/app/modules/timekeeping/config/holiday/timekeeping-holiday.service.ts");
-/* harmony import */ var _shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../shareds/decorator/destroy-subscribes.decorator */ "./src/app/shareds/decorator/destroy-subscribes.decorator.ts");
-/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var _day_off_model__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./day-off.model */ "./src/app/modules/timekeeping/day-off/day-off.model.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../config/work-schedule/timekeeping-work-schedule.service */ "./src/app/modules/timekeeping/config/work-schedule/timekeeping-work-schedule.service.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _timekeeping_dayoff_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./timekeeping-dayoff.service */ "./src/app/modules/timekeeping/day-off/timekeeping-dayoff.service.ts");
+/* harmony import */ var _config_holiday_timekeeping_holiday_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../config/holiday/timekeeping-holiday.service */ "./src/app/modules/timekeeping/config/holiday/timekeeping-holiday.service.ts");
+/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
+/* harmony import */ var _day_off_model__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./day-off.model */ "./src/app/modules/timekeeping/day-off/day-off.model.ts");
+/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../config/work-schedule/timekeeping-work-schedule.service */ "./src/app/modules/timekeeping/config/work-schedule/timekeeping-work-schedule.service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _base_form_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../base-form.component */ "./src/app/base-form.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2723,15 +2707,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-
-
 var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
     __extends(TimekeepingDayOffRegisterComponent, _super);
-    function TimekeepingDayOffRegisterComponent(fb, toastr, appService, dayOffService, utilService, workScheduleService, holidayService) {
+    function TimekeepingDayOffRegisterComponent(fb, toastr, dayOffService, utilService, workScheduleService, holidayService) {
         var _this = _super.call(this) || this;
         _this.fb = fb;
         _this.toastr = toastr;
-        _this.appService = appService;
         _this.dayOffService = dayOffService;
         _this.utilService = utilService;
         _this.workScheduleService = workScheduleService;
@@ -2741,8 +2722,8 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
         _this.listShortMethod = [];
         _this.listStats = [];
         _this.listHolidays = [];
-        _this.model = new _day_off_model__WEBPACK_IMPORTED_MODULE_10__["DayOff"]();
-        _this.dayOffDate = new _day_off_model__WEBPACK_IMPORTED_MODULE_10__["DayOffDate"]();
+        _this.dayOff = new _day_off_model__WEBPACK_IMPORTED_MODULE_8__["DayOff"]();
+        _this.dayOffDate = new _day_off_model__WEBPACK_IMPORTED_MODULE_8__["DayOffDate"]();
         _this.errorMessage = '';
         _this.listShifts = [];
         _this.listDates = [];
@@ -2798,7 +2779,7 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
         this.buildForm();
         this.subscribers.onDayOffRegisterShow = this.dayOffRegisterModal.onShown.subscribe(function () {
             _this.workScheduleService.getMyWorkSchedule()
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["finalize"])(function () { return _this.isSearching = false; }))
+                // .pipe(finalize(() => this.isSearching = false))
                 .subscribe(function (result) {
                 _this.isLockForm = false;
                 _this.warningMessage = '';
@@ -2833,13 +2814,13 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
         this.calculateStats();
     };
     TimekeepingDayOffRegisterComponent.prototype.showModal = function () {
-        this.dayOffRegisterModal.show();
+        this.dayOffRegisterModal.open();
     };
     TimekeepingDayOffRegisterComponent.prototype.setUpdate = function (dayOffRegister) {
         var _this = this;
         this.isUpdate = true;
-        lodash__WEBPACK_IMPORTED_MODULE_5__["each"](dayOffRegister.dates, function (date) {
-            date.date = moment__WEBPACK_IMPORTED_MODULE_4__(date.date, _this.appService.momentDateTimeLocalFormat[_this.appService.locale].shortDate);
+        lodash__WEBPACK_IMPORTED_MODULE_4__["each"](dayOffRegister.dates, function (date) {
+            date.date = moment__WEBPACK_IMPORTED_MODULE_3__(date.date, _this.appService.momentDateTimeLocalFormat[_this.appService.locale].shortDate);
             date.dateText = date.date.date() + "/" + (date.date.month() + 1);
             date.dateName = _this.getDayName(date.date.day());
             date.isShowDay = _this.utilService.bitwiseCheck(date.shiftWorkingDaysValue, _this.getDayValue(date.date.day()));
@@ -2854,7 +2835,7 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
         var _this = this;
         this.model = this.formModel.value;
         // Nếu là nghỉ phép sẽ kiểm tra với số ngày phép còn lại.
-        if (this.model.method === this.METHODS.ANNUAL_LEAVE && this.model.toDate) {
+        if (this.dayOff.method === this.METHODS.ANNUAL_LEAVE && this.dayOff.toDate) {
             // TODO: Check this
             // Check total annual leave days
             // if (this.totalAnnualLeave > this.currentUser.holidayRemain) {
@@ -2862,18 +2843,18 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
             //     return;
             // }
         }
-        if (!this.isUpdate && (this.model.method == null || this.model.method === undefined)) {
+        if (!this.isUpdate && (this.dayOff.method == null || this.dayOff.method === undefined)) {
             this.toastr.error('Vui lòng chọn hình thức nghỉ');
             return;
         }
         var isValid = this.utilService.onValueChanged(this.formModel, this.formErrors, this.validationMessages, true);
         if (isValid) {
             var listDayOffDate = this.convertListDatesDisplayToListDates();
-            this.model.dates = listDayOffDate;
+            this.dayOff.dates = listDayOffDate;
             this.isSaving = true;
             if (this.isUpdate) {
                 this.dayOffService.update(this.model)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["finalize"])(function () { return _this.isSaving = false; }))
+                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["finalize"])(function () { return _this.isSaving = false; }))
                     .subscribe(function () {
                     _this.toastr.success('Cập nhật thông tin nghỉ phép thành công.');
                     _this.dayOffRegisterModal.dismiss();
@@ -2883,7 +2864,7 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
             }
             else {
                 this.dayOffService.insert(this.model)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["finalize"])(function () { return _this.isSaving = false; }))
+                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["finalize"])(function () { return _this.isSaving = false; }))
                     .subscribe(function () {
                     _this.toastr.success('Đăng ký nghỉ phép thành công. Vui lòng chờ cấp trên phê duyệt.');
                     _this.dayOffRegisterModal.dismiss();
@@ -2896,15 +2877,15 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
     TimekeepingDayOffRegisterComponent.prototype.buildForm = function () {
         var _this = this;
         this.formModel = this.fb.group({
-            'id': [this.model.id],
-            'fromDate': [this.model.fromDate],
-            'toDate': [this.model.toDate],
-            'method': [this.model.method],
-            'dayOff': [this.model.dayOff],
-            'dayWork': [this.model.dayWork],
-            'reason': [this.model.reason, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(500)
+            'id': [this.dayOff.id],
+            'fromDate': [this.dayOff.fromDate],
+            'toDate': [this.dayOff.toDate],
+            'method': [this.dayOff.method],
+            'dayOff': [this.dayOff.dayOff],
+            'dayWork': [this.dayOff.dayWork],
+            'reason': [this.dayOff.reason, [
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].maxLength(500)
                 ]],
             // 'shifts': [this.model.shifts],
             'dates': this.fb.array([])
@@ -2937,8 +2918,8 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
     TimekeepingDayOffRegisterComponent.prototype.calculateListDate = function () {
         var _this = this;
         var formValue = this.formModel.value;
-        var fromDate = moment__WEBPACK_IMPORTED_MODULE_4__(formValue.fromDate, this.appService.momentDateTimeLocalFormat[this.appService.locale].shortDate);
-        var toDate = formValue.toDate ? moment__WEBPACK_IMPORTED_MODULE_4__(formValue.toDate, this.appService.momentDateTimeLocalFormat[this.appService.locale].shortDate) : fromDate;
+        var fromDate = moment__WEBPACK_IMPORTED_MODULE_3__(formValue.fromDate, this.appService.momentDateTimeLocalFormat[this.appService.locale].shortDate);
+        var toDate = formValue.toDate ? moment__WEBPACK_IMPORTED_MODULE_3__(formValue.toDate, this.appService.momentDateTimeLocalFormat[this.appService.locale].shortDate) : fromDate;
         var diff = fromDate.diff(toDate, 'days');
         if (!this.listShifts) {
             this.toastr.error('Bạn chưa được cấu hình ca làm việc. Vui lòng liên hệ với bộ phận nhân sự.');
@@ -2952,7 +2933,7 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
         if (diff !== 0) {
             this.listShifts.forEach(function (shift) {
                 for (var i = 0; i <= Math.abs(diff); i++) {
-                    var newDay = moment__WEBPACK_IMPORTED_MODULE_4__(fromDate).add(i, 'days');
+                    var newDay = moment__WEBPACK_IMPORTED_MODULE_3__(fromDate).add(i, 'days');
                     var weekDay = newDay.day();
                     datesArray.push({
                         shiftId: shift.id,
@@ -3001,8 +2982,8 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
         this.totalInsuranceLeave = 0;
         this.totalCompensatory = 0;
         this.totalEntitlement = 0;
-        lodash__WEBPACK_IMPORTED_MODULE_5__["each"](this.listDates, function (date) {
-            lodash__WEBPACK_IMPORTED_MODULE_5__["each"](date.shifts, function (shift) {
+        lodash__WEBPACK_IMPORTED_MODULE_4__["each"](this.listDates, function (date) {
+            lodash__WEBPACK_IMPORTED_MODULE_4__["each"](date.shifts, function (shift) {
                 _this.totalAnnualLeave += shift.method === _this.METHODS.ANNUAL_LEAVE
                     && (shift.workingDaysValue & shift.value) === shift.value && !shift.isHoliday ? shift.workUnit : 0;
                 _this.totalUnpaidLeave += shift.method === _this.METHODS.UNPAID_LEAVE
@@ -3024,14 +3005,14 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
         ];
     };
     TimekeepingDayOffRegisterComponent.prototype.checkDayIsHoliday = function (day) {
-        var thisYear = moment__WEBPACK_IMPORTED_MODULE_4__().year();
-        var holiday = lodash__WEBPACK_IMPORTED_MODULE_5__["find"](this.listHolidays, function (holidayConfig) {
+        var thisYear = moment__WEBPACK_IMPORTED_MODULE_3__().year();
+        var holiday = lodash__WEBPACK_IMPORTED_MODULE_4__["find"](this.listHolidays, function (holidayConfig) {
             if (holidayConfig.toDay != null && holidayConfig.toDay.day != null && holidayConfig.toDay.month != null) {
                 var fromDay = new Date(thisYear, holidayConfig.fromDay.month - 1, holidayConfig.fromDay.day);
                 var toDay = new Date(thisYear, holidayConfig.toDay.month - 1, holidayConfig.toDay.day);
-                var dateDiff = moment__WEBPACK_IMPORTED_MODULE_4__(toDay).diff(fromDay, 'days');
+                var dateDiff = moment__WEBPACK_IMPORTED_MODULE_3__(toDay).diff(fromDay, 'days');
                 for (var i = 0; i <= dateDiff; i++) {
-                    var currentDay = moment__WEBPACK_IMPORTED_MODULE_4__(fromDay).add(i, 'day');
+                    var currentDay = moment__WEBPACK_IMPORTED_MODULE_3__(fromDay).add(i, 'day');
                     return currentDay.date() === day.date() && currentDay.month() === day.month();
                 }
             }
@@ -3042,7 +3023,7 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
         return holiday != null && holiday !== undefined;
     };
     TimekeepingDayOffRegisterComponent.prototype.renderListDates = function (dates) {
-        var groupDates = lodash__WEBPACK_IMPORTED_MODULE_5__["groupBy"](dates, function (date) {
+        var groupDates = lodash__WEBPACK_IMPORTED_MODULE_4__["groupBy"](dates, function (date) {
             return date.date;
         });
         if (groupDates) {
@@ -3056,7 +3037,7 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
                         dateName: firstDate.dateName,
                         shifts: []
                     };
-                    lodash__WEBPACK_IMPORTED_MODULE_5__["each"](groupDates[key], function (groupDate) {
+                    lodash__WEBPACK_IMPORTED_MODULE_4__["each"](groupDates[key], function (groupDate) {
                         newDate_1.shifts.push({
                             id: groupDate.shiftId,
                             code: groupDate.shiftCode,
@@ -3082,9 +3063,9 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
     TimekeepingDayOffRegisterComponent.prototype.convertListDatesDisplayToListDates = function () {
         var _this = this;
         var listDayOff = [];
-        lodash__WEBPACK_IMPORTED_MODULE_5__["each"](this.listDates, function (date) {
-            lodash__WEBPACK_IMPORTED_MODULE_5__["each"](date.shifts, function (shift) {
-                var dayOff = new _day_off_model__WEBPACK_IMPORTED_MODULE_10__["DayOffDate"]();
+        lodash__WEBPACK_IMPORTED_MODULE_4__["each"](this.listDates, function (date) {
+            lodash__WEBPACK_IMPORTED_MODULE_4__["each"](date.shifts, function (shift) {
+                var dayOff = new _day_off_model__WEBPACK_IMPORTED_MODULE_8__["DayOffDate"]();
                 dayOff.date = date.date.format(_this.appService.momentDateTimeLocalFormat[_this.appService.locale].shortDate);
                 dayOff.dateText = date.dateText;
                 dayOff.dateName = date.dateName;
@@ -3121,7 +3102,7 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('dayOffRegisterModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_9__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_7__["NhModalComponent"])
     ], TimekeepingDayOffRegisterComponent.prototype, "dayOffRegisterModal", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
@@ -3131,19 +3112,17 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-timekeeping-day-off-register',
             template: __webpack_require__(/*! ./timekeeping-day-off-register.component.html */ "./src/app/modules/timekeeping/day-off/timekeeping-day-off-register.component.html"),
-            providers: [_timekeeping_dayoff_service__WEBPACK_IMPORTED_MODULE_6__["TimekeepingDayOffService"], _config_holiday_timekeeping_holiday_service__WEBPACK_IMPORTED_MODULE_7__["TimekeepingHolidayService"]]
+            providers: [_timekeeping_dayoff_service__WEBPACK_IMPORTED_MODULE_5__["TimekeepingDayOffService"], _config_holiday_timekeeping_holiday_service__WEBPACK_IMPORTED_MODULE_6__["TimekeepingHolidayService"]]
         }),
-        Object(_shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_8__["DestroySubscribers"])(),
-        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_3__["ToastrService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_11__["AppService"],
-            _timekeeping_dayoff_service__WEBPACK_IMPORTED_MODULE_6__["TimekeepingDayOffService"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_12__["UtilService"],
-            _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_13__["TimekeepingWorkScheduleService"],
-            _config_holiday_timekeeping_holiday_service__WEBPACK_IMPORTED_MODULE_7__["TimekeepingHolidayService"]])
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_2__["ToastrService"],
+            _timekeeping_dayoff_service__WEBPACK_IMPORTED_MODULE_5__["TimekeepingDayOffService"],
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_9__["UtilService"],
+            _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_10__["TimekeepingWorkScheduleService"],
+            _config_holiday_timekeeping_holiday_service__WEBPACK_IMPORTED_MODULE_6__["TimekeepingHolidayService"]])
     ], TimekeepingDayOffRegisterComponent);
     return TimekeepingDayOffRegisterComponent;
-}(_base_component__WEBPACK_IMPORTED_MODULE_1__["BaseComponent"]));
+}(_base_form_component__WEBPACK_IMPORTED_MODULE_12__["BaseFormComponent"]));
 
 
 
@@ -3156,7 +3135,7 @@ var TimekeepingDayOffRegisterComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <!--<div class=\"btn-group cm-mgb-10\" role=\"group\" *ngIf=\"currentUser?.isLeader\">-->\r\n            <!--<button type=\"button\" class=\"btn btn-default\" (click)=\"search(1, 0)\"-->\r\n                    <!--[class.active]=\"searchType === 0\">-->\r\n                <!--Bản đăng ký của tôi-->\r\n            <!--</button>-->\r\n            <!--<button type=\"button\" class=\"btn btn-default\" (click)=\"search(1, 1)\"-->\r\n                    <!--[class.active]=\"searchType === 1\">-->\r\n                <!--Nhân viên do tôi quản lý-->\r\n            <!--</button>-->\r\n            <!--<button type=\"button\" class=\"btn btn-default\" (click)=\"search(1, 2)\"-->\r\n                    <!--[class.active]=\"searchType === 2\">-->\r\n                <!--Nhân viên do tôi phê duyệt-->\r\n            <!--</button>-->\r\n        <!--</div>-->\r\n\r\n        <div class=\"row\">\r\n            <form class=\"cm-mgb-10 form-inline\" (ngSubmit)=\"search(1)\">\r\n                <div class=\"form-group\">\r\n                    <input class=\"form-control\" placeholder=\"Nhập tên nhân viên cần tìm\"\r\n                           (keypress)=\"keyword = keywordInput.value\"\r\n                           #keywordInput>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <nh-date\r\n                        [type]=\"'inputButton'\"\r\n                        [title]=\"'Lọc từ ngày'\"\r\n                        (selectedDateEvent)=\"onSelectFromDate($event)\"></nh-date>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <nh-date\r\n                        [type]=\"'inputButton'\"\r\n                        [title]=\"'Lọc đến ngày ngày'\"\r\n                        (selectedDateEvent)=\"onSelectToDate($event)\"></nh-date>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <nh-select\r\n                        [data]=\"[\r\n                                    {id: 0, name: 'Mới'},\r\n                                    {id: 1, name: 'Chờ QLTT duyệt'},\r\n                                    {id: 2, name: 'QLTT duyệt chờ QLPD duyệt'},\r\n                                    {id: 3, name: 'QLTT không duyệt'},\r\n                                    {id: 4, name: 'QLPD duyệt'},\r\n                                    {id: 5, name: 'QLPD không duyệt'}\r\n                                ]\"\r\n                        [title]=\"'-- Tất cả trạng thái --'\"\r\n                        (onSelectItem)=\"onSelectStatus($event)\"\r\n                    ></nh-select>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <button mat-raised-button color=\"primary\">\r\n                        <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSearching\"></i>\r\n                        <i class=\"fa fa-search\" *ngIf=\"!isSearching\"></i>\r\n                        Tìm kiếm\r\n                    </button>\r\n                </div>\r\n\r\n                <div class=\"form-group pull-right\" (click)=\"showRegisterModal()\">\r\n                    <button mat-raised-button color=\"primary\">\r\n                        <i class=\"fa fa-plus\"></i>\r\n                        Đăng ký\r\n                    </button>\r\n                </div>\r\n            </form>\r\n        </div>\r\n\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-striped table-hover table-main\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center middle w50\">#</th>\r\n                    <th class=\"center middle\">Tên nhân viên</th>\r\n                    <th class=\"center middle\">Từ ngày</th>\r\n                    <th class=\"center middle\">Đến ngày</th>\r\n                    <th class=\"center middle\">Số ngày</th>\r\n                    <th class=\"center middle\">Ngày đăng ký</th>\r\n                    <th class=\"center middle\">Trạng thái</th>\r\n                    <th class=\"center middle w150\">Hành động</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody *ngIf=\"isSearching; else contentTemplate\">\r\n                <tr>\r\n                    <td colspan=\"9\">\r\n                        <div class=\"spinner\">\r\n                            <div class=\"rect1\"></div>\r\n                            <div class=\"rect2\"></div>\r\n                            <div class=\"rect3\"></div>\r\n                            <div class=\"rect4\"></div>\r\n                            <div class=\"rect5\"></div>\r\n                        </div>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n                <ng-template #contentTemplate>\r\n                    <tbody>\r\n                    <tr *ngFor=\"let item of listDayOff; let i = index\">\r\n                        <td class=\"center middle\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n                        <td class=\"middle bold\">\r\n                            <a href=\"javascript://\" (click)=\"showDetail(item)\">{{item.fullName}}</a>\r\n                        </td>\r\n                        <td class=\"middle\">{{item.fromDate | dateTimeFormat:'DD/MM/YYYY':true}}</td>\r\n                        <td class=\"middle\">{{item.toDate | dateTimeFormat:'DD/MM/YYYY':true}}</td>\r\n                        <td class=\"middle text-right bold\">{{item.totalDays}}</td>\r\n                        <td class=\"middle\">{{item.registerDate | dateTimeFormat:'DD/MM/YYYY'}}</td>\r\n                        <td class=\"middle\"\r\n                            [class.color-blue]=\"item.status === 0 || item.status === 2\"\r\n                            [class.color-green]=\"item.status === 1 || item.status=== 4\"\r\n                            [class.color-red]=\"item.status === 3 || item.status === 5\">\r\n                            {{item.statusText}}\r\n                        </td>\r\n                        <td class=\"center middle\">\r\n                            <button type=\"button\" mat-mini-fab color=\"primary\"\r\n                                    *ngIf=\"(currentUser?.id === item.userId || currentUser?.id === item.creatorId)\r\n                                    && (item.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || item.status === DAYOFF_STATUS.MANAGER_DECLINE)\"\r\n                                    matTooltip=\"Chỉnh sửa\" matTooltipPosition=\"above\"\r\n                                    (click)=\"edit(item)\">\r\n                                <i class=\"fa fa-edit\"></i>\r\n                            </button>\r\n                            <button type=\"button\" mat-mini-fab color=\"warn\"\r\n                                    *ngIf=\"(currentUser?.id === item.userId || currentUser?.id === item.creatorId)\r\n                                    && (item.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || item.status === DAYOFF_STATUS.MANAGER_DECLINE)\"\r\n                                    matTooltip=\"Xóa\" matTooltipPosition=\"above\"\r\n                                    (click)=\"delete(item)\">\r\n                                <i class=\"fa fa-trash-o\"></i>\r\n                            </button>\r\n                            <button type=\"button\" mat-mini-fab color=\"default\"\r\n                                    matTooltip=\"Chi tiết\" matTooltipPosition=\"above\"\r\n                                    (click)=\"showDetail(item)\">\r\n                                <i class=\"fa fa-eye\"></i>\r\n                            </button>\r\n                        </td>\r\n                    </tr>\r\n                    </tbody>\r\n                </ng-template>\r\n            </table>\r\n        </div>\r\n\r\n        <ghm-paging [totalRows]=\"totalRows\" [currentPage]=\"currentPage\" [pageShow]=\"6\"\r\n                (pageClick)=\"search(1, searchType)\"\r\n                [isDisabled]=\"isSearching\" [pageName]=\"'đơn xin nghỉ'\"></ghm-paging>\r\n    </div>\r\n</div>\r\n\r\n<nh-modal #dayOffDetailModal size=\"lg\">\r\n    <nh-modal-header [showCloseButton]=\"true\">\r\n        <h4>\r\n            <i class=\"fa fa-check\"></i>\r\n            Chi tiết đơn xin nghỉ\r\n        </h4>\r\n    </nh-modal-header>\r\n    <nh-modal-content [isLoading]=\"isGettingDetail\">\r\n        <div class=\"form\">\r\n            <div class=\"form-horizontal form-bordered\">\r\n                <div class=\"form-body\">\r\n                    <div class=\"col-sm-12\">\r\n                        <div class=\"portlet light bordered\">\r\n                            <div class=\"portlet-title\">\r\n                                <div class=\"caption font-green-sharp\">\r\n                                    <i class=\"icon-share font-green-sharp\"></i>\r\n                                    <span class=\"caption-subject bold uppercase\"> Thông tin đơn xin nghỉ</span>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"portlet-body\">\r\n                                <div class=\"form-group\">\r\n                                    <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                           ghmLabel=\"Nhân viên\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\">\r\n                                        {{dayOffDetail?.fullName}}\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                           ghmLabel=\"Từ ngày\" [required]=\"true\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\">\r\n                                        {{dayOffDetail?.fromDate | dateTimeFormat:'DD/MM/YYYY':true}}\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                           ghmLabel=\"Đến ngày\" [required]=\"true\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\">\r\n                                        {{dayOffDetail?.toDate | dateTimeFormat:'DD/MM/YYYY':true}}\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                           ghmLabel=\"Tổng số ngày\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\">\r\n                                        <div class=\"col-sm-8 col-md-9\">\r\n                                            {{dayOffDetail?.totalDays}}\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"Tổng số ngày được duyệt\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9\">\r\n                                            {{dayOffDetail?.totalApprovedDays}}\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"Trạng thái đơn\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9\">\r\n                                            <div class=\"bold\"\r\n                                                 [class.color-blue]=\"dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\"\r\n                                                 [class.color-green]=\"dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE || dayOffDetail?.status=== DAYOFF_STATUS.APPROVER_APPROVE\"\r\n                                                 [class.color-red]=\"dayOffDetail?.status === DAYOFF_STATUS.MANAGER_DECLINE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE\">\r\n                                                {{dayOffDetail?.statusText}}\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"QLTT ghi chú\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9\">\r\n                                            <div\r\n                                                *ngIf=\"(searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\r\n                                            || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_APPROVE\r\n                                            || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE\r\n                                            || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_DECLINE))\r\n                                            || ((searchType === 2 || searchType == 0) && dayOffDetail.managerNote)\"\r\n                                            >{{dayOffDetail?.managerNote}}\r\n                                            </div>\r\n                                            <textarea\r\n                                                *ngIf=\"searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE\r\n                                            || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE)\"\r\n                                                name=\"managerNote\" class=\"form-control\" rows=\"3\"\r\n                                                placeholder=\"Nhập nội dung ghi chú\"\r\n                                                [(ngModel)]=\"dayOffDetail.managerNote\"\r\n                                            ></textarea>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"QLPD ghi chú\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9\">\r\n                                            <div\r\n                                                *ngIf=\"dayOffDetail?.status === DAYOFF_STATUS.APPROVER_APPROVE\r\n                                            || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE\">\r\n                                                {{dayOffDetail?.approverNote}}\r\n                                            </div>\r\n                                            <textarea\r\n                                                *ngIf=\"searchType === 2 && dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\"\r\n                                                name=\"approverNote\" class=\"form-control\" rows=\"3\"\r\n                                                placeholder=\"Nhập nội dung ghi chú\"\r\n                                                [(ngModel)]=\"dayOffDetail.approverNote\"\r\n                                            ></textarea>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\" *ngIf=\"dayOffDetail?.managerDeclineReason\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"Lý do QLTT không duyệt\" [required]=\"true\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9 color-red bold\">\r\n                                            <div class=\"bold\">{{dayOffDetail?.managerDeclineReason}}</div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\" *ngIf=\"dayOffDetail?.approverDeclineReason\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"Lý do QLPD không duyệt\" [required]=\"true\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9 color-red bold\">\r\n                                            <div class=\"bold\">{{dayOffDetail?.approverDeclineReason}}</div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"Lý do xin nghỉ\" [required]=\"true\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9\">\r\n                                            <div class=\"bold\">\r\n                                                {{dayOffDetail?.reason ? dayOffDetail?.reason : 'Không có lý do'}}\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"col-sm-12\">\r\n                            <div class=\"portlet light bordered\">\r\n                                <div class=\"portlet-title\">\r\n                                    <div class=\"caption font-green-sharp\">\r\n                                        <i class=\"icon-share font-green-sharp\"></i>\r\n                                        <span class=\"caption-subject bold uppercase\"> Chi tiết ca xin nghỉ</span>\r\n                                    </div>\r\n                                    <div class=\"actions\"\r\n                                         *ngIf=\"\r\n                                        (currentUser?.id === dayOffDetail?.managerUserId && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE))\r\n                                        || (currentUser?.id === dayOffDetail?.approverUserId && (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE))\r\n                                    \">\r\n                                        <a href=\"javascript:;\" class=\"btn btn-circle btn-success btn-sm\"\r\n                                           (click)=\"approveAll(true)\"\r\n                                           [class.disabled]=\"isSaving\">\r\n                                            <i class=\"fa fa-check\"></i>\r\n                                            Duyệt tất cả </a>\r\n                                        <a href=\"javascript:;\" class=\"btn btn-circle btn-danger btn-sm\"\r\n                                           (click)=\"declineAll()\"\r\n                                           [class.disabled]=\"isSaving\">\r\n                                            <i class=\"fa fa-times\"></i> Không duyệt tất cả </a>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"portlet-body\">\r\n                                    <ul>\r\n                                        <li *ngFor=\"let item of listStats\">\r\n                                            {{item?.name}}: <b>{{item?.quantity}} Ngày</b>\r\n                                        </li>\r\n                                    </ul>\r\n                                    <div class=\"alert alert-warning\">\r\n                                        <div class=\"bold\">Lưu ý:</div>\r\n                                        <ul>\r\n                                            <li>Trường hợp không chọn mặc định sẽ là không duyệt.</li>\r\n                                            <li>Trong trường hợp không duyệt vui lòng nêu rõ lý\r\n                                                do vì sao không duyệt.\r\n                                            </li>\r\n                                        </ul>\r\n                                    </div>\r\n                                    <table class=\"table table-bordered table-striped table-hover table-main\">\r\n                                        <thead>\r\n                                        <tr>\r\n                                            <th class=\"center middle w70\">Ngày</th>\r\n                                            <th class=\"center middle w100\">Ca</th>\r\n                                            <th class=\"center middle\">Hình thức nghỉ</th>\r\n                                            <th class=\"center middle w150\">Trạng thái</th>\r\n                                            <th class=\"center middle w150\">Ghi chú</th>\r\n                                            <th class=\"center middle w150\">Lý do không duyệt</th>\r\n                                            <th class=\"center middle\"\r\n                                                *ngIf=\"currentUser?.id === dayOffDetail?.managerUserId || currentUser?.id === dayOffDetail?.approverUserId\">\r\n                                                Hành động\r\n                                            </th>\r\n                                        </tr>\r\n                                        </thead>\r\n                                        <tbody>\r\n                                        <ng-container *ngFor=\"let date of listDates\">\r\n                                            <tr *ngFor=\"let shift of date.shifts; let shiftIndex = index\">\r\n                                                <td class=\"center middle\" *ngIf=\"shiftIndex === 0\"\r\n                                                    [attr.rowspan]=\"date.shifts?.length\">\r\n                                                    <div class=\"bold\">{{date.dateText}}</div>\r\n                                                    <label for=\"\" class=\"label-color\">({{date.dateName}})</label>\r\n                                                </td>\r\n                                                <td class=\"center middle\">\r\n                                                    <div class=\"bold\">{{shift.reportName}}</div>\r\n                                                </td>\r\n                                                <td class=\"center middle w100 bold\">{{shift.methodName}}</td>\r\n                                                <td class=\"middle\">\r\n                                                    <div [class.color-green]=\"shift?.isManagerApprove\"\r\n                                                         [class.color-red]=\"shift?.isManagerApprove === false\">{{\r\n                                                        dayOffDetail?.status == dayOffDetail?.status ===\r\n                                                        DAYOFF_STATUS.WAIT_MANAGER_APPROVE ? 'Chờ QLTT duyệt' :\r\n                                                        shift?.isManagerApprove === true ? 'QLTT đã duyệt' :\r\n                                                        shift?.isManagerApprove === false ? 'QLTT không duyệt' : ''}}\r\n                                                    </div>\r\n                                                    <div [class.color-green]=\"shift?.isApproverApprove\"\r\n                                                         [class.color-red]=\"shift?.isApproverApprove === false\">{{\r\n                                                        dayOffDetail?.status == dayOffDetail?.status ===\r\n                                                        DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\r\n                                                        ? 'QLTT đã duyệt chờ QLPD duyệt' :\r\n                                                        shift?.isApproverApprove === true ? 'QLPD đã duyệt' :\r\n                                                        shift?.isApproverApprove === false ? 'QLPD không duyệt' : ''}}\r\n                                                    </div>\r\n                                                </td>\r\n                                                <td class=\"w150\">\r\n                                                    <div *ngIf=\"shift.managerNote && (\r\n                                                    searchType === 0 || searchType === 2 || (\r\n                                                    searchType === 1 && shift.managerNote &&\r\n                                                    (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE\r\n                                                    || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_DECLINE\r\n                                                    || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE)))\">\r\n                                                        QLTT:\r\n                                                        {{shift.managerNote}}\r\n                                                    </div>\r\n                                                    <div *ngIf=\"shift.approverNote && (\r\n                                                    searchType === 0 || searchType === 1 || (searchType === 2 && shift.approverNote &&\r\n                                                    (dayOffDetail?.status === DAYOFF_STATUS.APPROVER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE)))\">\r\n                                                        QLPD:\r\n                                                        {{shift.approverNote}}\r\n                                                    </div>\r\n                                                    <ng-container *ngIf=\"shift.method !== DAYOFF_METHOD.WEEK_LEAVE\r\n                                                && shift.method\r\n                                                && shift.method !== DAYOFF_METHOD.HOLIDAY_LEAVE\r\n                                                && shift.method !== DAYOFF_METHOD.UNAUTHORIZED_LEAVE\r\n&& ((searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE))\r\n|| (searchType === 2 && (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE)))\">\r\n                                                    <textarea\r\n                                                        *ngIf=\"searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE\r\n                                                    || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE)\"\r\n                                                        [attr.name]=\"'manager-note' + shiftIndex\" class=\"form-control\"\r\n                                                        placeholder=\"Nhập nội dung ghi chú\"\r\n                                                        rows=\"3\" [(ngModel)]=\"shift.managerNote\"></textarea>\r\n                                                        <textarea\r\n                                                            *ngIf=\"searchType === 2 && dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\"\r\n                                                            [attr.name]=\"'approver-note' + shiftIndex\"\r\n                                                            class=\"form-control\"\r\n                                                            placeholder=\"Nhập nội dung ghi chú\"\r\n                                                            rows=\"3\" [(ngModel)]=\"shift.approverNote\"></textarea>\r\n                                                    </ng-container>\r\n                                                </td>\r\n                                                <td class=\"w150 color-red\">\r\n                                                    <div *ngIf=\"shift.managerDeclineReason && (\r\n                                                    searchType === 0 || searchType === 2 || (\r\n                                                    searchType === 1 &&\r\n                                                    (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE\r\n                                                    || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_DECLINE\r\n                                                    || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE)))\">\r\n                                                        QLTT:\r\n                                                        {{shift.managerDeclineReason}}\r\n                                                    </div>\r\n                                                    <div *ngIf=\"shift.approverDeclineReason && (\r\n                                                    searchType === 0 || searchType === 1 || (searchType === 2 &&\r\n                                                    (dayOffDetail?.status === DAYOFF_STATUS.APPROVER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE)))\">\r\n                                                        QLPD:\r\n                                                        {{shift.approverDeclineReason}}\r\n                                                    </div>\r\n                                                    <ng-container *ngIf=\"shift.method !== DAYOFF_METHOD.WEEK_LEAVE\r\n                                                && shift.method\r\n                                                && shift.method !== DAYOFF_METHOD.HOLIDAY_LEAVE\r\n                                                && shift.method !== DAYOFF_METHOD.UNAUTHORIZED_LEAVE\r\n&& ((searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE))\r\n|| (searchType === 2 && (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE)))\">\r\n                                                    <textarea\r\n                                                        *ngIf=\"searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE\r\n                                                    || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE)\"\r\n                                                        [attr.name]=\"'manager-decline-reason-' + shiftIndex\"\r\n                                                        class=\"form-control\"\r\n                                                        [attr.id]=\"'manager-decline-reason-' + shiftIndex\"\r\n                                                        placeholder=\"Nhập nội dung ghi chú\"\r\n                                                        rows=\"3\" [(ngModel)]=\"shift.managerDeclineReason\"\r\n                                                        [readonly]=\"shift.isManagerApprove\"\r\n                                                    ></textarea>\r\n                                                        <textarea\r\n                                                            *ngIf=\"searchType === 2 && dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\"\r\n                                                            [attr.name]=\"'approver-decline-reason' + shiftIndex\"\r\n                                                            [attr.id]=\"'approver-decline-reason-' + shiftIndex\"\r\n                                                            class=\"form-control\"\r\n                                                            placeholder=\"Nhập nội dung ghi chú\"\r\n                                                            [readonly]=\"shift.isApproverApprove\"\r\n                                                            rows=\"3\"\r\n                                                            [(ngModel)]=\"shift.approverDeclineReason\"></textarea>\r\n                                                    </ng-container>\r\n                                                </td>\r\n                                                <td class=\"center middle w100\"\r\n                                                    *ngIf=\"currentUser?.id === dayOffDetail?.managerUserId || currentUser?.id === dayOffDetail?.approverUserId\">\r\n                                                    <ng-container *ngIf=\"shift.method !== DAYOFF_METHOD.WEEK_LEAVE\r\n                                                && shift.method !== DAYOFF_METHOD.HOLIDAY_LEAVE\r\n                                                && shift.method !== DAYOFF_METHOD.UNAUTHORIZED_LEAVE\r\n&& ((searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE))\r\n|| (searchType === 2 && (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE)))\">\r\n                                                        <button mat-mini-fab color=\"primary\"\r\n                                                                matTooltip=\"Duyệt\" matTooltipPosition=\"above\"\r\n                                                                *ngIf=\"\r\n                                                            ((searchType === 1 && (shift.isManagerApprove == null || shift.isManagerApprove === false))\r\n                                                            || (searchType === 2 && (shift.isApproverApprove === null || shift.isApproverApprove === false)))\r\n                                                            && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE\r\n                                                            || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_DECLINE\r\n                                                            || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE)\"\r\n                                                                (click)=\"approve(shift, true, shiftIndex)\">\r\n                                                            <i class=\"fa fa-check\"></i>\r\n                                                        </button>\r\n                                                        <button mat-mini-fab color=\"warn\"\r\n                                                                matTooltip=\"Không duyệt\" matTooltipPosition=\"above\"\r\n                                                                *ngIf=\"\r\n                                                            ((searchType === 1 && (shift.isManagerApprove == null || shift.isManagerApprove === true))\r\n                                                            || (searchType === 2 && (shift.isApproverApprove === null || shift.isApproverApprove === true)))\r\n                                                            && dayOffDetail?.method !== DAYOFF_METHOD.WEEK_LEAVE\r\n&& dayOffDetail?.method !== DAYOFF_METHOD.HOLIDAY_LEAVE && dayOffDetail?.method !== DAYOFF_METHOD.UNAUTHORIZED_LEAVE\"\r\n                                                                (click)=\"approve(shift, false, shiftIndex)\">\r\n                                                            <i class=\"fa fa-times\"></i>\r\n                                                        </button>\r\n                                                    </ng-container>\r\n                                                </td>\r\n                                            </tr>\r\n                                        </ng-container>\r\n                                        </tbody>\r\n                                    </table><!-- END: table -->\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div><!-- END: .form-body -->\r\n                </div><!-- END: .form-horizontal -->\r\n            </div>\r\n        </div>\r\n    </nh-modal-content>\r\n    <nh-modal-footer>\r\n        <button type=\" button\r\n                            \" class=\"btn btn-default disabled\"\r\n                *ngIf=\"currentUser?.id === dayOffDetail?.managerUserId && dayOffDetail?.status ===\r\n                            DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\">\r\n            <i class=\"icon-clock\"></i>\r\n            {{dayOffDetail?.statusText}}\r\n        </button>\r\n\r\n        <ng-container *ngIf=\"(currentUser?.id === dayOffDetail?.managerUserId || currentUser?.id === dayOffDetail?.approverUserId)\r\n            && ((dayOffDetail?.managerUserId === currentUser?.id && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE))\r\n            || (dayOffDetail?.approverUserId == currentUser?.id && dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE))\">\r\n            <button type=\"button\" mat-raised-button color=\"primary\" (click)=\"confirm()\">\r\n                <i class=\"fa fa-check\"></i>\r\n                {{(dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status ===\r\n                DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\r\n                ? 'Xác nhận' : 'Gửi lại')}}\r\n            </button>\r\n        </ng-container>\r\n        <button type=\"button\" nh-dismiss=\"true\" mat-raised-button>\r\n            <i class=\"fa fa-times\"></i>\r\n            Đóng lại\r\n        </button>\r\n    </nh-modal-footer>\r\n</nh-modal>\r\n\r\n<!-- TODO: Check this -->\r\n<!--<timekeeping-day-off-register-->\r\n    <!--(onSaveSuccess)=\"$event ? search(1) : search(currentPage)\"-->\r\n<!--&gt;</timekeeping-day-off-register>-->\r\n"
+module.exports = "<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <!--<div class=\"btn-group cm-mgb-10\" role=\"group\" *ngIf=\"currentUser?.isLeader\">-->\r\n        <!--<button type=\"button\" class=\"btn btn-default\" (click)=\"search(1, 0)\"-->\r\n        <!--[class.active]=\"searchType === 0\">-->\r\n        <!--Bản đăng ký của tôi-->\r\n        <!--</button>-->\r\n        <!--<button type=\"button\" class=\"btn btn-default\" (click)=\"search(1, 1)\"-->\r\n        <!--[class.active]=\"searchType === 1\">-->\r\n        <!--Nhân viên do tôi quản lý-->\r\n        <!--</button>-->\r\n        <!--<button type=\"button\" class=\"btn btn-default\" (click)=\"search(1, 2)\"-->\r\n        <!--[class.active]=\"searchType === 2\">-->\r\n        <!--Nhân viên do tôi phê duyệt-->\r\n        <!--</button>-->\r\n        <!--</div>-->\r\n\r\n        <div class=\"row\">\r\n            <form class=\"cm-mgb-10 form-inline\" (ngSubmit)=\"search(1)\">\r\n                <div class=\"form-group\">\r\n                    <input class=\"form-control\" placeholder=\"Nhập tên nhân viên cần tìm\"\r\n                           (keypress)=\"keyword = keywordInput.value\"\r\n                           #keywordInput>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <nh-date\r\n                        [type]=\"'inputButton'\"\r\n                        [title]=\"'Lọc từ ngày'\"\r\n                        (selectedDateEvent)=\"onSelectFromDate($event)\"></nh-date>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <nh-date\r\n                        [type]=\"'inputButton'\"\r\n                        [title]=\"'Lọc đến ngày ngày'\"\r\n                        (selectedDateEvent)=\"onSelectToDate($event)\"></nh-date>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <nh-select\r\n                        [data]=\"[\r\n                                    {id: 0, name: 'Mới'},\r\n                                    {id: 1, name: 'Chờ QLTT duyệt'},\r\n                                    {id: 2, name: 'QLTT duyệt chờ QLPD duyệt'},\r\n                                    {id: 3, name: 'QLTT không duyệt'},\r\n                                    {id: 4, name: 'QLPD duyệt'},\r\n                                    {id: 5, name: 'QLPD không duyệt'}\r\n                                ]\"\r\n                        [title]=\"'-- Tất cả trạng thái --'\"\r\n                        (onSelectItem)=\"onSelectStatus($event)\"\r\n                    ></nh-select>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <button mat-raised-button color=\"primary\">\r\n                        <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSearching\"></i>\r\n                        <i class=\"fa fa-search\" *ngIf=\"!isSearching\"></i>\r\n                        Tìm kiếm\r\n                    </button>\r\n                </div>\r\n\r\n                <div class=\"form-group pull-right\" (click)=\"showRegisterModal()\">\r\n                    <button mat-raised-button color=\"primary\">\r\n                        <i class=\"fa fa-plus\"></i>\r\n                        Đăng ký\r\n                    </button>\r\n                </div>\r\n            </form>\r\n        </div>\r\n\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-striped table-hover table-main\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center middle w50\">#</th>\r\n                    <th class=\"center middle\">Tên nhân viên</th>\r\n                    <th class=\"center middle\">Từ ngày</th>\r\n                    <th class=\"center middle\">Đến ngày</th>\r\n                    <th class=\"center middle\">Số ngày</th>\r\n                    <th class=\"center middle\">Ngày đăng ký</th>\r\n                    <th class=\"center middle\">Trạng thái</th>\r\n                    <th class=\"center middle w150\">Hành động</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody *ngIf=\"isSearching; else contentTemplate\">\r\n                <tr>\r\n                    <td colspan=\"9\">\r\n                        <div class=\"spinner\">\r\n                            <div class=\"rect1\"></div>\r\n                            <div class=\"rect2\"></div>\r\n                            <div class=\"rect3\"></div>\r\n                            <div class=\"rect4\"></div>\r\n                            <div class=\"rect5\"></div>\r\n                        </div>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n                <ng-template #contentTemplate>\r\n                    <tbody>\r\n                    <tr *ngFor=\"let item of listDayOff; let i = index\">\r\n                        <td class=\"center middle\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n                        <td class=\"middle bold\">\r\n                            <a href=\"javascript://\" (click)=\"showDetail(item)\">{{item.fullName}}</a>\r\n                        </td>\r\n                        <td class=\"middle\">{{item.fromDate | dateTimeFormat:'DD/MM/YYYY':true}}</td>\r\n                        <td class=\"middle\">{{item.toDate | dateTimeFormat:'DD/MM/YYYY':true}}</td>\r\n                        <td class=\"middle text-right bold\">{{item.totalDays}}</td>\r\n                        <td class=\"middle\">{{item.registerDate | dateTimeFormat:'DD/MM/YYYY'}}</td>\r\n                        <td class=\"middle\"\r\n                            [class.color-blue]=\"item.status === 0 || item.status === 2\"\r\n                            [class.color-green]=\"item.status === 1 || item.status=== 4\"\r\n                            [class.color-red]=\"item.status === 3 || item.status === 5\">\r\n                            {{item.statusText}}\r\n                        </td>\r\n                        <td class=\"center middle\">\r\n                            <button type=\"button\" mat-mini-fab color=\"primary\"\r\n                                    *ngIf=\"(currentUser?.id === item.userId || currentUser?.id === item.creatorId)\r\n                                    && (item.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || item.status === DAYOFF_STATUS.MANAGER_DECLINE)\"\r\n                                    matTooltip=\"Chỉnh sửa\" matTooltipPosition=\"above\"\r\n                                    (click)=\"edit(item)\">\r\n                                <i class=\"fa fa-edit\"></i>\r\n                            </button>\r\n                            <button type=\"button\" mat-mini-fab color=\"warn\"\r\n                                    *ngIf=\"(currentUser?.id === item.userId || currentUser?.id === item.creatorId)\r\n                                    && (item.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || item.status === DAYOFF_STATUS.MANAGER_DECLINE)\"\r\n                                    matTooltip=\"Xóa\" matTooltipPosition=\"above\"\r\n                                    (click)=\"delete(item)\">\r\n                                <i class=\"fa fa-trash-o\"></i>\r\n                            </button>\r\n                            <button type=\"button\" mat-mini-fab color=\"default\"\r\n                                    matTooltip=\"Chi tiết\" matTooltipPosition=\"above\"\r\n                                    (click)=\"showDetail(item)\">\r\n                                <i class=\"fa fa-eye\"></i>\r\n                            </button>\r\n                        </td>\r\n                    </tr>\r\n                    </tbody>\r\n                </ng-template>\r\n            </table>\r\n        </div>\r\n\r\n        <ghm-paging [totalRows]=\"totalRows\" [currentPage]=\"currentPage\" [pageShow]=\"6\"\r\n                    (pageClick)=\"search(1, searchType)\"\r\n                    [isDisabled]=\"isSearching\" [pageName]=\"'đơn xin nghỉ'\"></ghm-paging>\r\n    </div>\r\n</div>\r\n\r\n<nh-modal #dayOffDetailModal size=\"lg\">\r\n    <nh-modal-header [showCloseButton]=\"true\">\r\n        <h4>\r\n            <i class=\"fa fa-check\"></i>\r\n            Chi tiết đơn xin nghỉ\r\n        </h4>\r\n    </nh-modal-header>\r\n    <nh-modal-content >\r\n        <div class=\"form\">\r\n            <div class=\"form-horizontal form-bordered\">\r\n                <div class=\"form-body\">\r\n                    <div class=\"col-sm-12\">\r\n                        <div class=\"portlet light bordered\">\r\n                            <div class=\"portlet-title\">\r\n                                <div class=\"caption font-green-sharp\">\r\n                                    <i class=\"icon-share font-green-sharp\"></i>\r\n                                    <span class=\"caption-subject bold uppercase\"> Thông tin đơn xin nghỉ</span>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"portlet-body\">\r\n                                <div class=\"form-group\">\r\n                                    <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                           ghmLabel=\"Nhân viên\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\">\r\n                                        {{dayOffDetail?.fullName}}\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                           ghmLabel=\"Từ ngày\" [required]=\"true\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\">\r\n                                        {{dayOffDetail?.fromDate | dateTimeFormat:'DD/MM/YYYY':true}}\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                           ghmLabel=\"Đến ngày\" [required]=\"true\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\">\r\n                                        {{dayOffDetail?.toDate | dateTimeFormat:'DD/MM/YYYY':true}}\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group\">\r\n                                    <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                           ghmLabel=\"Tổng số ngày\"></label>\r\n                                    <div class=\"col-sm-8 col-md-9\">\r\n                                        <div class=\"col-sm-8 col-md-9\">\r\n                                            {{dayOffDetail?.totalDays}}\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"Tổng số ngày được duyệt\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9\">\r\n                                            {{dayOffDetail?.totalApprovedDays}}\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"Trạng thái đơn\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9\">\r\n                                            <div class=\"bold\"\r\n                                                 [class.color-blue]=\"dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\"\r\n                                                 [class.color-green]=\"dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE || dayOffDetail?.status=== DAYOFF_STATUS.APPROVER_APPROVE\"\r\n                                                 [class.color-red]=\"dayOffDetail?.status === DAYOFF_STATUS.MANAGER_DECLINE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE\">\r\n                                                {{dayOffDetail?.statusText}}\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"QLTT ghi chú\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9\">\r\n                                            <div\r\n                                                *ngIf=\"(searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\r\n                                            || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_APPROVE\r\n                                            || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE\r\n                                            || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_DECLINE))\r\n                                            || ((searchType === 2 || searchType == 0) && dayOffDetail.managerNote)\"\r\n                                            >{{dayOffDetail?.managerNote}}\r\n                                            </div>\r\n                                            <textarea\r\n                                                *ngIf=\"searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE\r\n                                            || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE)\"\r\n                                                name=\"managerNote\" class=\"form-control\" rows=\"3\"\r\n                                                placeholder=\"Nhập nội dung ghi chú\"\r\n                                                [(ngModel)]=\"dayOffDetail.managerNote\"\r\n                                            ></textarea>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"QLPD ghi chú\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9\">\r\n                                            <div\r\n                                                *ngIf=\"dayOffDetail?.status === DAYOFF_STATUS.APPROVER_APPROVE\r\n                                            || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE\">\r\n                                                {{dayOffDetail?.approverNote}}\r\n                                            </div>\r\n                                            <textarea\r\n                                                *ngIf=\"searchType === 2 && dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\"\r\n                                                name=\"approverNote\" class=\"form-control\" rows=\"3\"\r\n                                                placeholder=\"Nhập nội dung ghi chú\"\r\n                                                [(ngModel)]=\"dayOffDetail.approverNote\"\r\n                                            ></textarea>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\" *ngIf=\"dayOffDetail?.managerDeclineReason\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"Lý do QLTT không duyệt\" [required]=\"true\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9 color-red bold\">\r\n                                            <div class=\"bold\">{{dayOffDetail?.managerDeclineReason}}</div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\" *ngIf=\"dayOffDetail?.approverDeclineReason\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"Lý do QLPD không duyệt\" [required]=\"true\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9 color-red bold\">\r\n                                            <div class=\"bold\">{{dayOffDetail?.approverDeclineReason}}</div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-md-3 col-sm-4 control-label label-color\"\r\n                                               ghmLabel=\"Lý do xin nghỉ\" [required]=\"true\"></label>\r\n                                        <div class=\"col-sm-8 col-md-9\">\r\n                                            <div class=\"bold\">\r\n                                                {{dayOffDetail?.reason ? dayOffDetail?.reason : 'Không có lý do'}}\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"col-sm-12\">\r\n                            <div class=\"portlet light bordered\">\r\n                                <div class=\"portlet-title\">\r\n                                    <div class=\"caption font-green-sharp\">\r\n                                        <i class=\"icon-share font-green-sharp\"></i>\r\n                                        <span class=\"caption-subject bold uppercase\"> Chi tiết ca xin nghỉ</span>\r\n                                    </div>\r\n                                    <div class=\"actions\"\r\n                                         *ngIf=\"\r\n                                        (currentUser?.id === dayOffDetail?.managerUserId && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE))\r\n                                        || (currentUser?.id === dayOffDetail?.approverUserId && (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE))\r\n                                    \">\r\n                                        <a href=\"javascript:;\" class=\"btn btn-circle btn-success btn-sm\"\r\n                                           (click)=\"approveAll(true)\"\r\n                                           [class.disabled]=\"isSaving\">\r\n                                            <i class=\"fa fa-check\"></i>\r\n                                            Duyệt tất cả </a>\r\n                                        <a href=\"javascript:;\" class=\"btn btn-circle btn-danger btn-sm\"\r\n                                           (click)=\"declineAll()\"\r\n                                           [class.disabled]=\"isSaving\">\r\n                                            <i class=\"fa fa-times\"></i> Không duyệt tất cả </a>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"portlet-body\">\r\n                                    <ul>\r\n                                        <li *ngFor=\"let item of listStats\">\r\n                                            {{item?.name}}: <b>{{item?.quantity}} Ngày</b>\r\n                                        </li>\r\n                                    </ul>\r\n                                    <div class=\"alert alert-warning\">\r\n                                        <div class=\"bold\">Lưu ý:</div>\r\n                                        <ul>\r\n                                            <li>Trường hợp không chọn mặc định sẽ là không duyệt.</li>\r\n                                            <li>Trong trường hợp không duyệt vui lòng nêu rõ lý\r\n                                                do vì sao không duyệt.\r\n                                            </li>\r\n                                        </ul>\r\n                                    </div>\r\n                                    <table class=\"table table-bordered table-striped table-hover table-main\">\r\n                                        <thead>\r\n                                        <tr>\r\n                                            <th class=\"center middle w70\">Ngày</th>\r\n                                            <th class=\"center middle w100\">Ca</th>\r\n                                            <th class=\"center middle\">Hình thức nghỉ</th>\r\n                                            <th class=\"center middle w150\">Trạng thái</th>\r\n                                            <th class=\"center middle w150\">Ghi chú</th>\r\n                                            <th class=\"center middle w150\">Lý do không duyệt</th>\r\n                                            <th class=\"center middle\"\r\n                                                *ngIf=\"currentUser?.id === dayOffDetail?.managerUserId || currentUser?.id === dayOffDetail?.approverUserId\">\r\n                                                Hành động\r\n                                            </th>\r\n                                        </tr>\r\n                                        </thead>\r\n                                        <tbody>\r\n                                        <ng-container *ngFor=\"let date of listDates\">\r\n                                            <tr *ngFor=\"let shift of date.shifts; let shiftIndex = index\">\r\n                                                <td class=\"center middle\" *ngIf=\"shiftIndex === 0\"\r\n                                                    [attr.rowspan]=\"date.shifts?.length\">\r\n                                                    <div class=\"bold\">{{date.dateText}}</div>\r\n                                                    <label for=\"\" class=\"label-color\">({{date.dateName}})</label>\r\n                                                </td>\r\n                                                <td class=\"center middle\">\r\n                                                    <div class=\"bold\">{{shift.reportName}}</div>\r\n                                                </td>\r\n                                                <td class=\"center middle w100 bold\">{{shift.methodName}}</td>\r\n                                                <td class=\"middle\">\r\n                                                    <div [class.color-green]=\"shift?.isManagerApprove\"\r\n                                                         [class.color-red]=\"shift?.isManagerApprove === false\">{{\r\n                                                        dayOffDetail?.status == dayOffDetail?.status ===\r\n                                                        DAYOFF_STATUS.WAIT_MANAGER_APPROVE ? 'Chờ QLTT duyệt' :\r\n                                                        shift?.isManagerApprove === true ? 'QLTT đã duyệt' :\r\n                                                        shift?.isManagerApprove === false ? 'QLTT không duyệt' : ''}}\r\n                                                    </div>\r\n                                                    <div [class.color-green]=\"shift?.isApproverApprove\"\r\n                                                         [class.color-red]=\"shift?.isApproverApprove === false\">{{\r\n                                                        dayOffDetail?.status == dayOffDetail?.status ===\r\n                                                        DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\r\n                                                        ? 'QLTT đã duyệt chờ QLPD duyệt' :\r\n                                                        shift?.isApproverApprove === true ? 'QLPD đã duyệt' :\r\n                                                        shift?.isApproverApprove === false ? 'QLPD không duyệt' : ''}}\r\n                                                    </div>\r\n                                                </td>\r\n                                                <td class=\"w150\">\r\n                                                    <div *ngIf=\"shift.managerNote && (\r\n                                                    searchType === 0 || searchType === 2 || (\r\n                                                    searchType === 1 && shift.managerNote &&\r\n                                                    (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE\r\n                                                    || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_DECLINE\r\n                                                    || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE)))\">\r\n                                                        QLTT:\r\n                                                        {{shift.managerNote}}\r\n                                                    </div>\r\n                                                    <div *ngIf=\"shift.approverNote && (\r\n                                                    searchType === 0 || searchType === 1 || (searchType === 2 && shift.approverNote &&\r\n                                                    (dayOffDetail?.status === DAYOFF_STATUS.APPROVER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE)))\">\r\n                                                        QLPD:\r\n                                                        {{shift.approverNote}}\r\n                                                    </div>\r\n                                                    <ng-container *ngIf=\"shift.method !== DAYOFF_METHOD.WEEK_LEAVE\r\n                                                && shift.method\r\n                                                && shift.method !== DAYOFF_METHOD.HOLIDAY_LEAVE\r\n                                                && shift.method !== DAYOFF_METHOD.UNAUTHORIZED_LEAVE\r\n&& ((searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE))\r\n|| (searchType === 2 && (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE)))\">\r\n                                                    <textarea\r\n                                                        *ngIf=\"searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE\r\n                                                    || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE)\"\r\n                                                        [attr.name]=\"'manager-note' + shiftIndex\" class=\"form-control\"\r\n                                                        placeholder=\"Nhập nội dung ghi chú\"\r\n                                                        rows=\"3\" [(ngModel)]=\"shift.managerNote\"></textarea>\r\n                                                        <textarea\r\n                                                            *ngIf=\"searchType === 2 && dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\"\r\n                                                            [attr.name]=\"'approver-note' + shiftIndex\"\r\n                                                            class=\"form-control\"\r\n                                                            placeholder=\"Nhập nội dung ghi chú\"\r\n                                                            rows=\"3\" [(ngModel)]=\"shift.approverNote\"></textarea>\r\n                                                    </ng-container>\r\n                                                </td>\r\n                                                <td class=\"w150 color-red\">\r\n                                                    <div *ngIf=\"shift.managerDeclineReason && (\r\n                                                    searchType === 0 || searchType === 2 || (\r\n                                                    searchType === 1 &&\r\n                                                    (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE\r\n                                                    || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_DECLINE\r\n                                                    || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE)))\">\r\n                                                        QLTT:\r\n                                                        {{shift.managerDeclineReason}}\r\n                                                    </div>\r\n                                                    <div *ngIf=\"shift.approverDeclineReason && (\r\n                                                    searchType === 0 || searchType === 1 || (searchType === 2 &&\r\n                                                    (dayOffDetail?.status === DAYOFF_STATUS.APPROVER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE)))\">\r\n                                                        QLPD:\r\n                                                        {{shift.approverDeclineReason}}\r\n                                                    </div>\r\n                                                    <ng-container *ngIf=\"shift.method !== DAYOFF_METHOD.WEEK_LEAVE\r\n                                                && shift.method\r\n                                                && shift.method !== DAYOFF_METHOD.HOLIDAY_LEAVE\r\n                                                && shift.method !== DAYOFF_METHOD.UNAUTHORIZED_LEAVE\r\n&& ((searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE))\r\n|| (searchType === 2 && (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE)))\">\r\n                                                    <textarea\r\n                                                        *ngIf=\"searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE\r\n                                                    || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE)\"\r\n                                                        [attr.name]=\"'manager-decline-reason-' + shiftIndex\"\r\n                                                        class=\"form-control\"\r\n                                                        [attr.id]=\"'manager-decline-reason-' + shiftIndex\"\r\n                                                        placeholder=\"Nhập nội dung ghi chú\"\r\n                                                        rows=\"3\" [(ngModel)]=\"shift.managerDeclineReason\"\r\n                                                        [readonly]=\"shift.isManagerApprove\"\r\n                                                    ></textarea>\r\n                                                        <textarea\r\n                                                            *ngIf=\"searchType === 2 && dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\"\r\n                                                            [attr.name]=\"'approver-decline-reason' + shiftIndex\"\r\n                                                            [attr.id]=\"'approver-decline-reason-' + shiftIndex\"\r\n                                                            class=\"form-control\"\r\n                                                            placeholder=\"Nhập nội dung ghi chú\"\r\n                                                            [readonly]=\"shift.isApproverApprove\"\r\n                                                            rows=\"3\"\r\n                                                            [(ngModel)]=\"shift.approverDeclineReason\"></textarea>\r\n                                                    </ng-container>\r\n                                                </td>\r\n                                                <td class=\"center middle w100\"\r\n                                                    *ngIf=\"currentUser?.id === dayOffDetail?.managerUserId || currentUser?.id === dayOffDetail?.approverUserId\">\r\n                                                    <ng-container *ngIf=\"shift.method !== DAYOFF_METHOD.WEEK_LEAVE\r\n                                                && shift.method !== DAYOFF_METHOD.HOLIDAY_LEAVE\r\n                                                && shift.method !== DAYOFF_METHOD.UNAUTHORIZED_LEAVE\r\n&& ((searchType === 1 && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE))\r\n|| (searchType === 2 && (dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE)))\">\r\n                                                        <button mat-mini-fab color=\"primary\"\r\n                                                                matTooltip=\"Duyệt\" matTooltipPosition=\"above\"\r\n                                                                *ngIf=\"\r\n                                                            ((searchType === 1 && (shift.isManagerApprove == null || shift.isManagerApprove === false))\r\n                                                            || (searchType === 2 && (shift.isApproverApprove === null || shift.isApproverApprove === false)))\r\n                                                            && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE\r\n                                                            || dayOffDetail?.status === DAYOFF_STATUS.MANAGER_DECLINE\r\n                                                            || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE)\"\r\n                                                                (click)=\"approve(shift, true, shiftIndex)\">\r\n                                                            <i class=\"fa fa-check\"></i>\r\n                                                        </button>\r\n                                                        <button mat-mini-fab color=\"warn\"\r\n                                                                matTooltip=\"Không duyệt\" matTooltipPosition=\"above\"\r\n                                                                *ngIf=\"\r\n                                                            ((searchType === 1 && (shift.isManagerApprove == null || shift.isManagerApprove === true))\r\n                                                            || (searchType === 2 && (shift.isApproverApprove === null || shift.isApproverApprove === true)))\r\n                                                            && dayOffDetail?.method !== DAYOFF_METHOD.WEEK_LEAVE\r\n&& dayOffDetail?.method !== DAYOFF_METHOD.HOLIDAY_LEAVE && dayOffDetail?.method !== DAYOFF_METHOD.UNAUTHORIZED_LEAVE\"\r\n                                                                (click)=\"approve(shift, false, shiftIndex)\">\r\n                                                            <i class=\"fa fa-times\"></i>\r\n                                                        </button>\r\n                                                    </ng-container>\r\n                                                </td>\r\n                                            </tr>\r\n                                        </ng-container>\r\n                                        </tbody>\r\n                                    </table><!-- END: table -->\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div><!-- END: .form-body -->\r\n                </div><!-- END: .form-horizontal -->\r\n            </div>\r\n        </div>\r\n    </nh-modal-content>\r\n    <nh-modal-footer>\r\n        <button type=\" button\r\n                            \" class=\"btn btn-default disabled\"\r\n                *ngIf=\"currentUser?.id === dayOffDetail?.managerUserId && dayOffDetail?.status ===\r\n                            DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\">\r\n            <i class=\"icon-clock\"></i>\r\n            {{dayOffDetail?.statusText}}\r\n        </button>\r\n\r\n        <ng-container *ngIf=\"(currentUser?.id === dayOffDetail?.managerUserId || currentUser?.id === dayOffDetail?.approverUserId)\r\n            && ((dayOffDetail?.managerUserId === currentUser?.id && (dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status === DAYOFF_STATUS.APPROVER_DECLINE))\r\n            || (dayOffDetail?.approverUserId == currentUser?.id && dayOffDetail?.status === DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE))\">\r\n            <button type=\"button\" mat-raised-button color=\"primary\" (click)=\"confirm()\">\r\n                <i class=\"fa fa-check\"></i>\r\n                {{(dayOffDetail?.status === DAYOFF_STATUS.WAIT_MANAGER_APPROVE || dayOffDetail?.status ===\r\n                DAYOFF_STATUS.MANAGER_APPROVE_WAIT_APPROVER_APPROVE\r\n                ? 'Xác nhận' : 'Gửi lại')}}\r\n            </button>\r\n        </ng-container>\r\n        <button type=\"button\" nh-dismiss=\"true\" mat-raised-button>\r\n            <i class=\"fa fa-times\"></i>\r\n            Đóng lại\r\n        </button>\r\n    </nh-modal-footer>\r\n</nh-modal>\r\n\r\n<!-- TODO: Check this -->\r\n<!--<timekeeping-day-off-register-->\r\n<!--(onSaveSuccess)=\"$event ? search(1) : search(currentPage)\"-->\r\n<!--&gt;</timekeeping-day-off-register>-->\r\n"
 
 /***/ }),
 
@@ -3176,26 +3155,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../base.component */ "./src/app/base.component.ts");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _timekeeping_day_off_register_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./timekeeping-day-off-register.component */ "./src/app/modules/timekeeping/day-off/timekeeping-day-off-register.component.ts");
-/* harmony import */ var _shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../shareds/decorator/destroy-subscribes.decorator */ "./src/app/shareds/decorator/destroy-subscribes.decorator.ts");
-/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var _day_off_model__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./day-off.model */ "./src/app/modules/timekeeping/day-off/day-off.model.ts");
-/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../configs/app.config */ "./src/app/configs/app.config.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../config/work-schedule/timekeeping-work-schedule.service */ "./src/app/modules/timekeeping/config/work-schedule/timekeeping-work-schedule.service.ts");
-/* harmony import */ var _timekeeping_dayoff_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./timekeeping-dayoff.service */ "./src/app/modules/timekeeping/day-off/timekeeping-dayoff.service.ts");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../../shareds/models/filter-link.model */ "./src/app/shareds/models/filter-link.model.ts");
-/* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! rxjs/internal/operators */ "./node_modules/rxjs/internal/operators/index.js");
-/* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _timekeeping_day_off_register_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./timekeeping-day-off-register.component */ "./src/app/modules/timekeeping/day-off/timekeeping-day-off-register.component.ts");
+/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
+/* harmony import */ var _day_off_model__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./day-off.model */ "./src/app/modules/timekeeping/day-off/day-off.model.ts");
+/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../configs/app.config */ "./src/app/configs/app.config.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../config/work-schedule/timekeeping-work-schedule.service */ "./src/app/modules/timekeeping/config/work-schedule/timekeeping-work-schedule.service.ts");
+/* harmony import */ var _timekeeping_dayoff_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./timekeeping-dayoff.service */ "./src/app/modules/timekeeping/day-off/timekeeping-dayoff.service.ts");
+/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../shareds/models/filter-link.model */ "./src/app/shareds/models/filter-link.model.ts");
+/* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! rxjs/internal/operators */ "./node_modules/rxjs/internal/operators/index.js");
+/* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../base-list.component */ "./src/app/base-list.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3240,23 +3216,19 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
-
 var TimekeepingDayOffComponent = /** @class */ (function (_super) {
     __extends(TimekeepingDayOffComponent, _super);
-    function TimekeepingDayOffComponent(appConfig, pageId, location, title, route, toastr, appService, workScheduleService, dayOffService, utilService) {
+    function TimekeepingDayOffComponent(appConfig, pageId, location, title, route, toastr, workScheduleService, dayOffService, utilService) {
         var _this = _super.call(this) || this;
         _this.location = location;
         _this.title = title;
         _this.route = route;
         _this.toastr = toastr;
-        _this.appService = appService;
         _this.workScheduleService = workScheduleService;
         _this.dayOffService = dayOffService;
         _this.utilService = utilService;
         _this.listDayOff = [];
-        _this.dayOffDetail = new _day_off_model__WEBPACK_IMPORTED_MODULE_12__["DayOff"]();
+        _this.dayOffDetail = new _day_off_model__WEBPACK_IMPORTED_MODULE_10__["DayOff"]();
         _this.isGettingDetail = false;
         _this.listDates = [];
         _this.listShifts = [];
@@ -3305,7 +3277,7 @@ var TimekeepingDayOffComponent = /** @class */ (function (_super) {
             _this.pageSize = params.pageSize ? params.pageSize : appConfig.pageSize;
         });
         _this.workScheduleService.getMyWorkSchedule()
-            .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_20__["finalize"])(function () { return _this.isSearching = false; }))
+            .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_17__["finalize"])(function () { return _this.isSearching = false; }))
             .subscribe(function (result) {
             _this.listShifts = result.shifts;
         });
@@ -3325,7 +3297,6 @@ var TimekeepingDayOffComponent = /** @class */ (function (_super) {
             }
             if (params.showRegister) {
                 setTimeout(function () {
-                    _this.isUpdate = false;
                     _this.dayOffRegisterComponent.showModal();
                 });
             }
@@ -3349,10 +3320,10 @@ var TimekeepingDayOffComponent = /** @class */ (function (_super) {
             // }, 500);
             if (id) {
                 setTimeout(function () {
-                    _this.detailModal.show();
+                    _this.detailModal.open();
                     _this.isGettingDetail = true;
                     _this.dayOffService.getDetail(id)
-                        .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_20__["finalize"])(function () { return _this.isGettingDetail = false; }))
+                        .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_17__["finalize"])(function () { return _this.isGettingDetail = false; }))
                         .subscribe(function (dayOffRegister) {
                         _this.showDetail(dayOffRegister);
                     });
@@ -3404,9 +3375,8 @@ var TimekeepingDayOffComponent = /** @class */ (function (_super) {
         this.isApprove = isApprove;
         var note = this.searchType === 1 ? this.dayOffDetail.managerNote : this.dayOffDetail.approverNote;
         var declineReason = this.searchType === 1 ? this.dayOffDetail.managerDeclineReason : this.dayOffDetail.approverDeclineReason;
-        this.isSaving = true;
         this.dayOffService.approveAll(this.dayOffDetail.id, this.isApprove, note, declineReason)
-            .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_20__["finalize"])(function () { return _this.isSaving = false; }))
+            // .pipe(finalize(() => this.isSaving = false))
             .subscribe(function (result) {
             _this.toastr.success(result.message);
             _this.dayOffDetail.status = result.data.status;
@@ -3495,7 +3465,7 @@ var TimekeepingDayOffComponent = /** @class */ (function (_super) {
     };
     TimekeepingDayOffComponent.prototype.showRegisterModal = function () {
         this.dayOffRegisterComponent.isUpdate = false;
-        this.dayOffRegisterComponent.formModel.reset(new _day_off_model__WEBPACK_IMPORTED_MODULE_12__["DayOff"]());
+        this.dayOffRegisterComponent.formModel.reset(new _day_off_model__WEBPACK_IMPORTED_MODULE_10__["DayOff"]());
         this.dayOffRegisterComponent.listDates = [];
         this.dayOffRegisterComponent.showModal();
     };
@@ -3504,7 +3474,7 @@ var TimekeepingDayOffComponent = /** @class */ (function (_super) {
         this.dayOffDetail.statusText = this.getStatusText(this.dayOffDetail.status);
         this.renderListDates(this.dayOffDetail.dates);
         this.renderDetailLink();
-        this.detailModal.show();
+        this.detailModal.open();
         this.calculateStats();
     };
     TimekeepingDayOffComponent.prototype.onSelectFromDate = function (date) {
@@ -3526,7 +3496,7 @@ var TimekeepingDayOffComponent = /** @class */ (function (_super) {
         this.renderFilterLink();
         this.isSearching = true;
         this.dayOffService.searchDayOff(this.keyword, this.searchType, this.fromDateSearch, this.toDateSearch, this.statusSearch, this.currentPage, this.pageSize)
-            .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_20__["finalize"])(function () { return _this.isSearching = false; }))
+            .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_17__["finalize"])(function () { return _this.isSearching = false; }))
             .subscribe(function (result) {
             _this.renderListRegister(result);
         });
@@ -3574,7 +3544,7 @@ var TimekeepingDayOffComponent = /** @class */ (function (_super) {
     // }
     TimekeepingDayOffComponent.prototype.cancel = function (dayOffRegister) {
         var _this = this;
-        sweetalert2__WEBPACK_IMPORTED_MODULE_8___default()({
+        sweetalert2__WEBPACK_IMPORTED_MODULE_7___default()({
             title: '',
             text: "B\u1EA1n c\u00F3 ch\u1EAFc ch\u1EAFn mu\u1ED1n x\u00F3a b\u1EA3n \u0111\u0103ng k\u00FD ngh\u1EC9 n\u00E0y?",
             type: 'warning',
@@ -3700,21 +3670,21 @@ var TimekeepingDayOffComponent = /** @class */ (function (_super) {
     TimekeepingDayOffComponent.prototype.renderDetailLink = function () {
         var path = '/timekeeping/day-off';
         var query = this.utilService.renderLocationFilter([
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('id', this.dayOffDetail.id),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('type', this.searchType),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('id', this.dayOffDetail.id),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('type', this.searchType),
         ]);
         this.location.go(path, query);
     };
     TimekeepingDayOffComponent.prototype.renderFilterLink = function () {
         var path = '/timekeeping/day-off';
         var query = this.utilService.renderLocationFilter([
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('keyword', this.keyword),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('status', this.statusSearch),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('fromDate', this.fromDateSearch),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('toDate', this.toDateSearch),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('type', this.searchType),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('page', this.currentPage),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('pageSize', this.pageSize)
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('keyword', this.keyword),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('status', this.statusSearch),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('fromDate', this.fromDateSearch),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('toDate', this.toDateSearch),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('type', this.searchType),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('page', this.currentPage),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('pageSize', this.pageSize)
         ]);
         // this.appService.updateTabItem(`${path}?${query}`);
         this.location.go(path, query);
@@ -3723,7 +3693,7 @@ var TimekeepingDayOffComponent = /** @class */ (function (_super) {
         var listDayOff = [];
         lodash__WEBPACK_IMPORTED_MODULE_3__["each"](this.listDates, function (date) {
             lodash__WEBPACK_IMPORTED_MODULE_3__["each"](date.shifts, function (shift) {
-                var dayOff = new _day_off_model__WEBPACK_IMPORTED_MODULE_12__["DayOffDate"]();
+                var dayOff = new _day_off_model__WEBPACK_IMPORTED_MODULE_10__["DayOffDate"]();
                 dayOff.date = date.date;
                 dayOff.dateText = date.dateText;
                 dayOff.dateName = date.dateName;
@@ -3799,11 +3769,11 @@ var TimekeepingDayOffComponent = /** @class */ (function (_super) {
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('dayOffDetailModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_9__["NhModalComponent"])
     ], TimekeepingDayOffComponent.prototype, "detailModal", void 0);
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_timekeeping_day_off_register_component__WEBPACK_IMPORTED_MODULE_9__["TimekeepingDayOffRegisterComponent"]),
-        __metadata("design:type", _timekeeping_day_off_register_component__WEBPACK_IMPORTED_MODULE_9__["TimekeepingDayOffRegisterComponent"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_timekeeping_day_off_register_component__WEBPACK_IMPORTED_MODULE_8__["TimekeepingDayOffRegisterComponent"]),
+        __metadata("design:type", _timekeeping_day_off_register_component__WEBPACK_IMPORTED_MODULE_8__["TimekeepingDayOffRegisterComponent"])
     ], TimekeepingDayOffComponent.prototype, "dayOffRegisterComponent", void 0);
     TimekeepingDayOffComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -3811,21 +3781,18 @@ var TimekeepingDayOffComponent = /** @class */ (function (_super) {
             template: __webpack_require__(/*! ./timekeeping-day-off.component.html */ "./src/app/modules/timekeeping/day-off/timekeeping-day-off.component.html"),
             providers: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"], { provide: _angular_common__WEBPACK_IMPORTED_MODULE_1__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_1__["PathLocationStrategy"] }]
         }),
-        Object(_shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_10__["DestroySubscribers"])(),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_21__["CheckPermission"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_13__["APP_CONFIG"])),
-        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_14__["PAGE_ID"])),
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_11__["APP_CONFIG"])),
+        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_12__["PAGE_ID"])),
         __metadata("design:paramtypes", [Object, Object, _angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"],
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__["Title"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_15__["AppService"],
-            _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_16__["TimekeepingWorkScheduleService"],
-            _timekeeping_dayoff_service__WEBPACK_IMPORTED_MODULE_17__["TimekeepingDayOffService"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_18__["UtilService"]])
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["Title"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"],
+            _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_13__["TimekeepingWorkScheduleService"],
+            _timekeeping_dayoff_service__WEBPACK_IMPORTED_MODULE_14__["TimekeepingDayOffService"],
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_15__["UtilService"]])
     ], TimekeepingDayOffComponent);
     return TimekeepingDayOffComponent;
-}(_base_component__WEBPACK_IMPORTED_MODULE_4__["BaseComponent"]));
+}(_base_list_component__WEBPACK_IMPORTED_MODULE_18__["BaseListComponent"]));
 
 
 
@@ -3964,7 +3931,7 @@ var ForgotCheckIn = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"btn-group\" role=\"group\">\r\n            <button type=\"button\" class=\"btn btn-default\" [class.active]=\"type === 0\" (click)=\"changeType(0)\">\r\n                Đơn của tôi\r\n            </button>\r\n            <!--<button type=\"button\" class=\"btn btn-default\"-->\r\n                    <!--*ngIf=\"currentUser?.isLeader\"-->\r\n                    <!--[class.active]=\"type === 1\" (click)=\"changeType(1)\">-->\r\n                <!--Duyệt đăng ký-->\r\n            <!--</button>-->\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <form action=\"\" class=\"form-inline\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Vui lòng nhập tên nhân viên cần tìm\"\r\n                       (keyup)=\"keyword = keywordInput.value\" #keywordInput/>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    title=\"-- Chọn tháng\"\r\n                    [data]=\"listMonth\"\r\n                    [(value)]=\"month\"\r\n                    (onSelectItem)=\"onSelectMonth($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    title=\"-- Chọn năm --\"\r\n                    [data]=\"listYear\"\r\n                    [(value)]=\"year\"\r\n                    (onSelectItem)=\"onSelectYear($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    title=\"-- Trạng thái --\"\r\n                    [data]=\"[{id: 0, name: 'Mới'},{id: 1, name: 'QLTT đã duyệt'},{id: 2, name: 'QLTT không duyệt'}]\"\r\n                    (onSelectItem)=\"onSelectStatus($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button mat-raised-button color=\"primary\">\r\n                    <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSearching\"></i>\r\n                    <i class=\"fa fa-search\" *ngIf=\"!isSearching\"></i>\r\n                </button>\r\n            </div>\r\n            <div class=\"form-group pull-right\">\r\n                <button type=\"button\" mat-raised-button color=\"primary\" (click)=\"showRegisterModal()\">\r\n                    <i class=\"fa fa-plus\"></i>\r\n                    Đăng ký\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-hover table-striped table-main\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center w50\">#</th>\r\n                    <th class=\"center\">Nhân viên</th>\r\n                    <th class=\"center\">Ngày đăng ký</th>\r\n                    <th class=\"center\">Hình thức</th>\r\n                    <th class=\"center w150\">Trạng thái</th>\r\n                    <th class=\"center\">Hành động</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let item of listForgotCheckIn$ | async; let i = index\">\r\n                    <td class=\"center middle\">{{(currentPage - 1) * pageSize + i + 1}}</td>\r\n                    <td class=\"middle\">\r\n                        <a href=\"javascript://\" (click)=\"detail(item)\">{{item.fullName}}</a>\r\n                    </td>\r\n                    <td class=\"middle\">{{item.registerDate | dateTimeFormat:'DD/MM/YYYY'}}</td>\r\n                    <td class=\"middle\">{{item.isCheckIn ? 'Quên chấm công vào' : 'Quên chấm công ra'}}</td>\r\n                    <td class=\"middle\"\r\n                        [class.color-red]=\"item.status === STATUS.MANAGER_DECLINE\"\r\n                        [class.color-green]=\"item.status === STATUS.MANAGER_APPROVE\"\r\n                    >{{item.statusText}}\r\n                    </td>\r\n                    <td class=\"center middle w150\">\r\n                        <button type=\"button\" mat-mini-fab color=\"default\" (click)=\"detail(item)\"><i\r\n                            class=\"fa fa-eye\"></i></button>\r\n\r\n                        <ng-container\r\n                            *ngIf=\"currentUser?.id === item.managerUserId && item.status === STATUS.WAITING_MANAGER_APPROVE\">\r\n                            <button type=\"button\" mat-mini-fab color=\"primary\"\r\n                                    (click)=\"approve(item, true)\">\r\n                                <i class=\"fa fa-check\"></i>\r\n                            </button>\r\n                            <button type=\"button\" mat-mini-fab color=\"warn\"\r\n                                    (click)=\"approve(item, false)\">\r\n                                <i class=\"fa fa-times\"></i>\r\n                            </button>\r\n                        </ng-container>\r\n\r\n                        <ng-container\r\n                            *ngIf=\"currentUser?.id === item.userId && item.status === STATUS.WAITING_MANAGER_APPROVE\">\r\n                            <button type=\"button\" mat-mini-fab color=\"primary\" (click)=\"edit(item)\">\r\n                                <i class=\"fa fa-edit\"></i></button>\r\n                            <button type=\"button\" mat-mini-fab color=\"warn\" (click)=\"delete(item)\"><i\r\n                                class=\"fa fa-trash-o\"></i></button>\r\n                        </ng-container>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n    <ghm-paging [totalRows]=\"totalRows$ | async\" [currentPage]=\"currentPage\" [pageShow]=\"6\" (pageClick)=\"search($event)\"\r\n            [isDisabled]=\"isSearching\" [pageName]=\"'đăng ký làm thêm giờ'\"></ghm-paging>\r\n</div>\r\n\r\n<nh-modal #registerFormModal size=\"md\">\r\n    <nh-modal-header>\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-calendar-times-o\"></i>\r\n            Đăng ký quên chấm công.\r\n        </h4>\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\" *ngIf=\"isHasApprovePermission\">\r\n                <label ghmLabel=\"Nhân viên\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                <div class=\"col-sm-8\">\r\n                    <!-- TODO: Check this -->\r\n                    <!--<nh-suggestion-->\r\n                        <!--url=\"/forgot-checkin/search-user\"-->\r\n                        <!--placeholder=\"Chọn nhân viên.\"-->\r\n                        <!--formControlName=\"userId\"-->\r\n                    <!--&gt;</nh-suggestion>-->\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ngày\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <nh-date\r\n                        title=\"Chọn thời gian\"\r\n                        formControlName=\"registerDate\"\r\n                        [type]=\"'inputButton'\"></nh-date>\r\n                    <div class=\"alert alert-danger\"\r\n                         *ngIf=\"formErrors.registerDate\">\r\n                        {{ formErrors.registerDate}}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ca làm việc\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <div class=\"btn-group\" role=\"group\" *ngFor=\"let shift of listShift$ | async\">\r\n                        <button type=\"button\" class=\"btn btn-default\"\r\n                                [class.active]=\"model.value.shiftId === shift.id\"\r\n                                (click)=\"model.patchValue({shiftId: shift.id})\">{{shift.reportName}}\r\n                        </button>\r\n                    </div>\r\n                    <div class=\"alert alert-danger\"\r\n                         *ngIf=\"formErrors.shiftId\">\r\n                        {{ formErrors.shiftId}}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Hình thức\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <div class=\"btn-group\" role=\"group\">\r\n                        <button type=\"button\" class=\"btn btn-default\" [class.active]=\"model.value.isCheckIn\"\r\n                                (click)=\"model.patchValue({isCheckIn: true})\"> Quên chấm công vào\r\n                        </button>\r\n                        <button type=\"button\" class=\"btn btn-default\" [class.active]=\"!model.value.isCheckIn\"\r\n                                (click)=\"model.patchValue({isCheckIn: false})\"> Quên chấm công ra\r\n                        </button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ghi chú\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nội dung ghi chú\"\r\n                              formControlName=\"note\"></textarea>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button mat-raised-button color=\"primary\">\r\n                <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>\r\n                <i class=\"fa fa-save\" *ngIf=\"!isSaving\"></i>\r\n                Đăng ký\r\n            </button>\r\n            <button mat-raised-button type=\"button\" nh-dismiss=\"true\">\r\n                <i class=\"fa fa-times\"></i>\r\n                Đóng lại\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n\r\n<nh-modal #detailModal size=\"md\">\r\n    <nh-modal-header>\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-register\"></i>\r\n            Chi tiết đăng ký quên chấm công nhân viên: \"{{forgotCheckIn?.fullName}}\" ngày {{forgotCheckIn?.registerDate\r\n            | dateTimeFormat:'DD/MM/YYYY'}}\r\n        </h4>\r\n    </nh-modal-header>\r\n\r\n    <nh-modal-content class=\"form\">\r\n        <div class=\"form-horizontal form-bordered\">\r\n            <div class=\"form-body\">\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Ngày\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\">\r\n                            {{forgotCheckIn?.registerDate | dateTimeFormat:'DD/MM/YYYY'}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Ca làm việc\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\">\r\n                            {{forgotCheckIn?.shiftReportName}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Hình thức\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\">\r\n                            {{forgotCheckIn?.isCheckIn ? 'Quên chấm công vào' : 'Quên chấm công ra'}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Ghi chú\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold height-auto\">\r\n                            {{forgotCheckIn?.note}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Trạng thái\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\"\r\n                             [class.color-green]=\"forgotCheckIn?.status === STATUS.MANAGER_APPROVE\"\r\n                             [class.color-red]=\"forgotCheckIn?.status === STATUS.MANAGER_DECLINE\">\r\n                            {{forgotCheckIn?.statusText}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\" *ngIf=\"forgotCheckIn.status === STATUS.MANAGER_DECLINE\">\r\n                    <label ghmLabel=\"Lý do\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold auto-height\">\r\n                            {{forgotCheckIn?.declineReason}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </nh-modal-content>\r\n    <nh-modal-footer>\r\n        <button mat-raised-button color=\"primary\"\r\n                *ngIf=\"currentUser?.id === forgotCheckIn?.managerUserId && forgotCheckIn?.status === STATUS.WAITING_MANAGER_APPROVE\"\r\n                (click)=\"approve(forgotCheckIn, true, true)\">\r\n            <i class=\"fa fa-check\"></i>\r\n            Duyệt\r\n        </button>\r\n        <button mat-raised-button color=\"warn\"\r\n                *ngIf=\"currentUser?.id === forgotCheckIn?.managerUserId && forgotCheckIn?.status === STATUS.WAITING_MANAGER_APPROVE\"\r\n                (click)=\"approve(forgotCheckIn, false, true)\">\r\n            <i class=\"fa fa-times\"></i>\r\n            Không duyệt\r\n        </button>\r\n        <button type=\"button\" mat-raised-button color=\"default\" nh-dismiss=\"true\">\r\n            <i class=\"fa fa-times\"></i>\r\n            Đóng lại\r\n        </button>\r\n    </nh-modal-footer>\r\n</nh-modal>\r\n"
+module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"btn-group\" role=\"group\">\r\n            <button type=\"button\" class=\"btn btn-default\" [class.active]=\"type === 0\" (click)=\"changeType(0)\">\r\n                Đơn của tôi\r\n            </button>\r\n            <!--<button type=\"button\" class=\"btn btn-default\"-->\r\n                    <!--*ngIf=\"currentUser?.isLeader\"-->\r\n                    <!--[class.active]=\"type === 1\" (click)=\"changeType(1)\">-->\r\n                <!--Duyệt đăng ký-->\r\n            <!--</button>-->\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <form action=\"\" class=\"form-inline\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Vui lòng nhập tên nhân viên cần tìm\"\r\n                       (keyup)=\"keyword = keywordInput.value\" #keywordInput/>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    title=\"-- Chọn tháng\"\r\n                    [data]=\"listMonth\"\r\n                    [(value)]=\"month\"\r\n                    (onSelectItem)=\"onSelectMonth($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    title=\"-- Chọn năm --\"\r\n                    [data]=\"listYear\"\r\n                    [(value)]=\"year\"\r\n                    (onSelectItem)=\"onSelectYear($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    title=\"-- Trạng thái --\"\r\n                    [data]=\"[{id: 0, name: 'Mới'},{id: 1, name: 'QLTT đã duyệt'},{id: 2, name: 'QLTT không duyệt'}]\"\r\n                    (onSelectItem)=\"onSelectStatus($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button mat-raised-button color=\"primary\">\r\n                    <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSearching\"></i>\r\n                    <i class=\"fa fa-search\" *ngIf=\"!isSearching\"></i>\r\n                </button>\r\n            </div>\r\n            <div class=\"form-group pull-right\">\r\n                <button type=\"button\" mat-raised-button color=\"primary\" (click)=\"showRegisterModal()\">\r\n                    <i class=\"fa fa-plus\"></i>\r\n                    Đăng ký\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-hover table-striped table-main\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center w50\">#</th>\r\n                    <th class=\"center\">Nhân viên</th>\r\n                    <th class=\"center\">Ngày đăng ký</th>\r\n                    <th class=\"center\">Hình thức</th>\r\n                    <th class=\"center w150\">Trạng thái</th>\r\n                    <th class=\"center\">Hành động</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let item of listForgotCheckIn$ | async; let i = index\">\r\n                    <td class=\"center middle\">{{(currentPage - 1) * pageSize + i + 1}}</td>\r\n                    <td class=\"middle\">\r\n                        <a href=\"javascript://\" (click)=\"detail(item)\">{{item.fullName}}</a>\r\n                    </td>\r\n                    <td class=\"middle\">{{item.registerDate | dateTimeFormat:'DD/MM/YYYY'}}</td>\r\n                    <td class=\"middle\">{{item.isCheckIn ? 'Quên chấm công vào' : 'Quên chấm công ra'}}</td>\r\n                    <td class=\"middle\"\r\n                        [class.color-red]=\"item.status === STATUS.MANAGER_DECLINE\"\r\n                        [class.color-green]=\"item.status === STATUS.MANAGER_APPROVE\"\r\n                    >{{item.statusText}}\r\n                    </td>\r\n                    <td class=\"center middle w150\">\r\n                        <button type=\"button\" mat-mini-fab color=\"default\" (click)=\"detail(item)\"><i\r\n                            class=\"fa fa-eye\"></i></button>\r\n\r\n                        <!--<ng-container-->\r\n                            <!--*ngIf=\"currentUser?.id === item.managerUserId && item.status === STATUS.WAITING_MANAGER_APPROVE\">-->\r\n                            <!--<button type=\"button\" mat-mini-fab color=\"primary\"-->\r\n                                    <!--(click)=\"approve(item, true)\">-->\r\n                                <!--<i class=\"fa fa-check\"></i>-->\r\n                            <!--</button>-->\r\n                            <!--<button type=\"button\" mat-mini-fab color=\"warn\"-->\r\n                                    <!--(click)=\"approve(item, false)\">-->\r\n                                <!--<i class=\"fa fa-times\"></i>-->\r\n                            <!--</button>-->\r\n                        <!--</ng-container>-->\r\n\r\n                        <ng-container\r\n                            *ngIf=\"currentUser?.id === item.userId && item.status === STATUS.WAITING_MANAGER_APPROVE\">\r\n                            <button type=\"button\" mat-mini-fab color=\"primary\" (click)=\"edit(item)\">\r\n                                <i class=\"fa fa-edit\"></i></button>\r\n                            <button type=\"button\" mat-mini-fab color=\"warn\" (click)=\"delete(item)\"><i\r\n                                class=\"fa fa-trash-o\"></i></button>\r\n                        </ng-container>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n    <ghm-paging [totalRows]=\"totalRows$ | async\" [currentPage]=\"currentPage\" [pageShow]=\"6\" (pageClick)=\"search($event)\"\r\n            [isDisabled]=\"isSearching\" [pageName]=\"'đăng ký làm thêm giờ'\"></ghm-paging>\r\n</div>\r\n\r\n<nh-modal #registerFormModal size=\"md\">\r\n    <nh-modal-header>\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-calendar-times-o\"></i>\r\n            Đăng ký quên chấm công.\r\n        </h4>\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <!--<div class=\"form-group\" *ngIf=\"isHasApprovePermission\">-->\r\n                <!--<label ghmLabel=\"Nhân viên\" class=\"col-md-2 col-sm-3 control-label\"></label>-->\r\n                <!--<div class=\"col-sm-8\">-->\r\n                    <!--&lt;!&ndash; TODO: Check this &ndash;&gt;-->\r\n                    <!--&lt;!&ndash;<nh-suggestion&ndash;&gt;-->\r\n                        <!--&lt;!&ndash;url=\"/forgot-checkin/search-user\"&ndash;&gt;-->\r\n                        <!--&lt;!&ndash;placeholder=\"Chọn nhân viên.\"&ndash;&gt;-->\r\n                        <!--&lt;!&ndash;formControlName=\"userId\"&ndash;&gt;-->\r\n                    <!--&lt;!&ndash;&gt;</nh-suggestion>&ndash;&gt;-->\r\n                <!--</div>-->\r\n            <!--</div>-->\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ngày\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <nh-date\r\n                        title=\"Chọn thời gian\"\r\n                        formControlName=\"registerDate\"\r\n                        [type]=\"'inputButton'\"></nh-date>\r\n                    <!--<div class=\"alert alert-danger\"-->\r\n                         <!--*ngIf=\"formErrors.registerDate\">-->\r\n                        <!--{{ formErrors.registerDate}}-->\r\n                    <!--</div>-->\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ca làm việc\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <div class=\"btn-group\" role=\"group\" *ngFor=\"let shift of listShift$ | async\">\r\n                        <button type=\"button\" class=\"btn btn-default\"\r\n                                [class.active]=\"model.value.shiftId === shift.id\"\r\n                                (click)=\"model.patchValue({shiftId: shift.id})\">{{shift.reportName}}\r\n                        </button>\r\n                    </div>\r\n                    <!--<div class=\"alert alert-danger\"-->\r\n                         <!--*ngIf=\"formErrors.shiftId\">-->\r\n                        <!--{{ formErrors.shiftId}}-->\r\n                    <!--</div>-->\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Hình thức\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <div class=\"btn-group\" role=\"group\">\r\n                        <button type=\"button\" class=\"btn btn-default\" [class.active]=\"model.value.isCheckIn\"\r\n                                (click)=\"model.patchValue({isCheckIn: true})\"> Quên chấm công vào\r\n                        </button>\r\n                        <button type=\"button\" class=\"btn btn-default\" [class.active]=\"!model.value.isCheckIn\"\r\n                                (click)=\"model.patchValue({isCheckIn: false})\"> Quên chấm công ra\r\n                        </button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ghi chú\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nội dung ghi chú\"\r\n                              formControlName=\"note\"></textarea>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <!--<button mat-raised-button color=\"primary\">-->\r\n                <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>-->\r\n                <!--<i class=\"fa fa-save\" *ngIf=\"!isSaving\"></i>-->\r\n                <!--Đăng ký-->\r\n            <!--</button>-->\r\n            <button mat-raised-button type=\"button\" nh-dismiss=\"true\">\r\n                <i class=\"fa fa-times\"></i>\r\n                Đóng lại\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n\r\n<nh-modal #detailModal size=\"md\">\r\n    <nh-modal-header>\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-register\"></i>\r\n            Chi tiết đăng ký quên chấm công nhân viên: \"{{forgotCheckIn?.fullName}}\" ngày {{forgotCheckIn?.registerDate\r\n            | dateTimeFormat:'DD/MM/YYYY'}}\r\n        </h4>\r\n    </nh-modal-header>\r\n\r\n    <nh-modal-content class=\"form\">\r\n        <div class=\"form-horizontal form-bordered\">\r\n            <div class=\"form-body\">\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Ngày\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\">\r\n                            {{forgotCheckIn?.registerDate | dateTimeFormat:'DD/MM/YYYY'}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Ca làm việc\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\">\r\n                            {{forgotCheckIn?.shiftReportName}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Hình thức\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\">\r\n                            {{forgotCheckIn?.isCheckIn ? 'Quên chấm công vào' : 'Quên chấm công ra'}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Ghi chú\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold height-auto\">\r\n                            {{forgotCheckIn?.note}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label ghmLabel=\"Trạng thái\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\"\r\n                             [class.color-green]=\"forgotCheckIn?.status === STATUS.MANAGER_APPROVE\"\r\n                             [class.color-red]=\"forgotCheckIn?.status === STATUS.MANAGER_DECLINE\">\r\n                            {{forgotCheckIn?.statusText}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\" *ngIf=\"forgotCheckIn.status === STATUS.MANAGER_DECLINE\">\r\n                    <label ghmLabel=\"Lý do\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold auto-height\">\r\n                            {{forgotCheckIn?.declineReason}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </nh-modal-content>\r\n    <nh-modal-footer>\r\n        <!--<button mat-raised-button color=\"primary\"-->\r\n                <!--*ngIf=\"currentUser?.id === forgotCheckIn?.managerUserId && forgotCheckIn?.status === STATUS.WAITING_MANAGER_APPROVE\"-->\r\n                <!--(click)=\"approve(forgotCheckIn, true, true)\">-->\r\n            <!--<i class=\"fa fa-check\"></i>-->\r\n            <!--Duyệt-->\r\n        <!--</button>-->\r\n        <!--<button mat-raised-button color=\"warn\"-->\r\n                <!--*ngIf=\"currentUser?.id === forgotCheckIn?.managerUserId && forgotCheckIn?.status === STATUS.WAITING_MANAGER_APPROVE\"-->\r\n                <!--(click)=\"approve(forgotCheckIn, false, true)\">-->\r\n            <!--<i class=\"fa fa-times\"></i>-->\r\n            <!--Không duyệt-->\r\n        <!--</button>-->\r\n        <button type=\"button\" mat-raised-button color=\"default\" nh-dismiss=\"true\">\r\n            <i class=\"fa fa-times\"></i>\r\n            Đóng lại\r\n        </button>\r\n    </nh-modal-footer>\r\n</nh-modal>\r\n"
 
 /***/ }),
 
@@ -3979,24 +3946,21 @@ module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimekeepingForgotCheckinComponent", function() { return TimekeepingForgotCheckinComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../base.component */ "./src/app/base.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../shareds/decorator/destroy-subscribes.decorator */ "./src/app/shareds/decorator/destroy-subscribes.decorator.ts");
-/* harmony import */ var _timekeeping_forgot_checkin_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./timekeeping-forgot-checkin.service */ "./src/app/modules/timekeeping/forgot-checkin/timekeeping-forgot-checkin.service.ts");
-/* harmony import */ var _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../config/work-schedule/timekeeping-work-schedule.service */ "./src/app/modules/timekeeping/config/work-schedule/timekeeping-work-schedule.service.ts");
-/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var _forgot_checkin_model__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./forgot-checkin.model */ "./src/app/modules/timekeeping/forgot-checkin/forgot-checkin.model.ts");
-/* harmony import */ var _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../shareds/models/filter-link.model */ "./src/app/shareds/models/filter-link.model.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _timekeeping_forgot_checkin_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./timekeeping-forgot-checkin.service */ "./src/app/modules/timekeeping/forgot-checkin/timekeeping-forgot-checkin.service.ts");
+/* harmony import */ var _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../config/work-schedule/timekeeping-work-schedule.service */ "./src/app/modules/timekeeping/config/work-schedule/timekeeping-work-schedule.service.ts");
+/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
+/* harmony import */ var _forgot_checkin_model__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./forgot-checkin.model */ "./src/app/modules/timekeeping/forgot-checkin/forgot-checkin.model.ts");
+/* harmony import */ var _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../shareds/models/filter-link.model */ "./src/app/shareds/models/filter-link.model.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../base-list.component */ "./src/app/base-list.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4035,19 +3999,15 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
-
 var TimekeepingForgotCheckinComponent = /** @class */ (function (_super) {
     __extends(TimekeepingForgotCheckinComponent, _super);
-    function TimekeepingForgotCheckinComponent(pageId, location, title, route, fb, toastr, appService, utilService, forgotCheckInService, workscheduleService) {
+    function TimekeepingForgotCheckinComponent(pageId, location, title, route, fb, toastr, utilService, forgotCheckInService, workscheduleService) {
         var _this = _super.call(this) || this;
         _this.location = location;
         _this.title = title;
         _this.route = route;
         _this.fb = fb;
         _this.toastr = toastr;
-        _this.appService = appService;
         _this.utilService = utilService;
         _this.forgotCheckInService = forgotCheckInService;
         _this.workscheduleService = workscheduleService;
@@ -4057,7 +4017,7 @@ var TimekeepingForgotCheckinComponent = /** @class */ (function (_super) {
             { id: 1, name: 'Làm thủ thuật' },
             { id: 2, name: 'Tăng cường' },
             { id: 3, name: 'Trực trưa' }];
-        _this.forgotCheckIn = new _forgot_checkin_model__WEBPACK_IMPORTED_MODULE_12__["ForgotCheckIn"]();
+        _this.forgotCheckIn = new _forgot_checkin_model__WEBPACK_IMPORTED_MODULE_10__["ForgotCheckIn"]();
         _this.type = 0;
         _this.isGettingDetail = false;
         _this.research = false;
@@ -4085,8 +4045,8 @@ var TimekeepingForgotCheckinComponent = /** @class */ (function (_super) {
             }
             if (params.showRegister) {
                 setTimeout(function () {
-                    _this.isUpdate = false;
-                    _this.registerFormModal.show();
+                    // this.isUpdate = false;
+                    _this.registerFormModal.open();
                 }, 100);
             }
             if (params.month) {
@@ -4103,13 +4063,13 @@ var TimekeepingForgotCheckinComponent = /** @class */ (function (_super) {
             }
         });
         this.listShift$ = this.workscheduleService.getMyWorkScheduleShift()
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_17__["map"])(function (result) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["map"])(function (result) {
             return result;
         }));
         this.listForgotCheckIn$ = this.route.data
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_17__["map"])(function (result) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["map"])(function (result) {
             var overtimes = result.data;
-            _this.totalRows$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Observable"](function (o) { return o.next(overtimes.totalRows); });
+            _this.totalRows$ = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Observable"](function (o) { return o.next(overtimes.totalRows); });
             return overtimes.items.map(function (item) {
                 item.statusText = _this.getStatusText(item.status);
                 return item;
@@ -4127,9 +4087,9 @@ var TimekeepingForgotCheckinComponent = /** @class */ (function (_super) {
         var _this = this;
         setTimeout(function () {
             _this.isGettingDetail = true;
-            _this.detailModal.show();
+            _this.detailModal.open();
             _this.forgotCheckInService.getDetail(id)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_17__["finalize"])(function () { return _this.isGettingDetail = false; }))
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["finalize"])(function () { return _this.isGettingDetail = false; }))
                 .subscribe(function (forgotCheckIn) {
                 _this.forgotCheckIn = forgotCheckIn;
                 _this.forgotCheckIn.statusText = _this.getStatusText(forgotCheckIn.status);
@@ -4155,8 +4115,8 @@ var TimekeepingForgotCheckinComponent = /** @class */ (function (_super) {
         this.renderFilterLink();
         this.listForgotCheckIn$ = this.forgotCheckInService
             .search(this.month, this.year, this.type, this.userId, this.status, this.currentPage, this.pageSize)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_17__["finalize"])(function () { return _this.isSearching = false; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_17__["map"])(function (result) {
-            _this.totalRows$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Observable"](function (o) { return o.next(result.totalRows); });
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["finalize"])(function () { return _this.isSearching = false; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["map"])(function (result) {
+            _this.totalRows$ = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Observable"](function (o) { return o.next(result.totalRows); });
             return result.items.map(function (item) {
                 item.statusText = _this.getStatusText(item.status);
                 return item;
@@ -4164,18 +4124,18 @@ var TimekeepingForgotCheckinComponent = /** @class */ (function (_super) {
         }));
     };
     TimekeepingForgotCheckinComponent.prototype.showRegisterModal = function () {
-        this.isUpdate = false;
-        this.registerFormModal.show();
+        // this.isUpdate = false;
+        this.registerFormModal.open();
     };
     TimekeepingForgotCheckinComponent.prototype.edit = function (overtimeRegister) {
-        this.isUpdate = true;
+        // this.isUpdate = true;
         this.model.patchValue(overtimeRegister);
-        this.registerFormModal.show();
+        this.registerFormModal.open();
     };
     TimekeepingForgotCheckinComponent.prototype.detail = function (overtimeRegister) {
         this.forgotCheckIn = overtimeRegister;
         this.forgotCheckIn.statusText = this.getStatusText(this.forgotCheckIn.status);
-        this.detailModal.show();
+        this.detailModal.open();
     };
     TimekeepingForgotCheckinComponent.prototype.delete = function (overtimeRegister) {
         // swal({
@@ -4231,35 +4191,35 @@ var TimekeepingForgotCheckinComponent = /** @class */ (function (_super) {
         }
     };
     TimekeepingForgotCheckinComponent.prototype.save = function () {
-        var _this = this;
         this.forgotCheckIn = this.model.value;
-        var isValid = this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages, true);
-        if (isValid) {
-            if (this.totalMinutes === '') {
-                this.toastr.error('Giá trị thời gian "từ" không được phép lớn hơn giá trị thời gian "đến".');
-                return;
-            }
-            this.forgotCheckIn = this.model.value;
-            this.isSaving = true;
-            if (this.isUpdate) {
-                this.subscribers.update = this.forgotCheckInService.update(this.forgotCheckIn)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_17__["finalize"])(function () { return _this.isSaving = false; }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message, result.title);
-                    _this.registerFormModal.dismiss();
-                    _this.search(_this.currentPage);
-                });
-            }
-            else {
-                this.subscribers.insert = this.forgotCheckInService.insert(this.forgotCheckIn)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_17__["finalize"])(function () { return _this.isSaving = false; }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message, result.title);
-                    _this.model.reset();
-                    _this.search(_this.currentPage);
-                });
-            }
-        }
+        // const isValid = this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages, true);
+        // if (isValid) {
+        //     if (this.totalMinutes === '') {
+        //         this.toastr.error('Giá trị thời gian "từ" không được phép lớn hơn giá trị thời gian "đến".');
+        //         return;
+        //     }
+        //
+        //     this.forgotCheckIn = this.model.value;
+        //     this.isSaving = true;
+        //
+        //     if (this.isUpdate) {
+        //         this.subscribers.update = this.forgotCheckInService.update(this.forgotCheckIn)
+        //             .pipe(finalize(() => this.isSaving = false))
+        //             .subscribe((result: IResponseResult) => {
+        //                 this.toastr.success(result.message, result.title);
+        //                 this.registerFormModal.dismiss();
+        //                 this.search(this.currentPage);
+        //             });
+        //     } else {
+        //         this.subscribers.insert = this.forgotCheckInService.insert(this.forgotCheckIn)
+        //             .pipe(finalize(() => this.isSaving = false))
+        //             .subscribe((result: IResponseResult) => {
+        //                 this.toastr.success(result.message, result.title);
+        //                 this.model.reset();
+        //                 this.search(this.currentPage);
+        //             });
+        //     }
+        // }
     };
     TimekeepingForgotCheckinComponent.prototype.changeType = function (type) {
         this.type = type;
@@ -4276,54 +4236,56 @@ var TimekeepingForgotCheckinComponent = /** @class */ (function (_super) {
         });
     };
     TimekeepingForgotCheckinComponent.prototype.builForm = function () {
-        var _this = this;
-        this.renderFormValidation();
-        this.model = this.fb.group({
-            'id': [this.forgotCheckIn.id],
-            'userId': [this.forgotCheckIn.userId],
-            'registerDate': [this.forgotCheckIn.registerDate, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required
-                ]],
-            'shiftId': [this.forgotCheckIn.shiftId, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required
-                ]],
-            'note': [this.forgotCheckIn.note, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(500)
-                ]],
-            'isCheckIn': [this.forgotCheckIn.isCheckIn]
-        });
-        this.model.valueChanges.subscribe(function (values) { return _this.utilService.onValueChanged(_this.model, _this.formErrors, _this.validationMessages); });
+        // this.renderFormValidation();
+        // this.model = this.fb.group({
+        //     'id': [this.forgotCheckIn.id],
+        //     'userId': [this.forgotCheckIn.userId],
+        //     'registerDate': [this.forgotCheckIn.registerDate, [
+        //         Validators.required
+        //     ]],
+        //     'shiftId': [this.forgotCheckIn.shiftId, [
+        //         Validators.required
+        //     ]],
+        //     'note': [this.forgotCheckIn.note, [
+        //         Validators.maxLength(500)
+        //     ]],
+        //     'isCheckIn': [this.forgotCheckIn.isCheckIn]
+        // });
+        //
+        // this.model.valueChanges.subscribe(values =>
+        // this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages));
     };
     TimekeepingForgotCheckinComponent.prototype.renderFormValidation = function () {
-        this.formErrors = {
-            'shiftId': '',
-            'registerDate': '',
-            'note': '',
-            'isCheckIn': ''
-        };
-        this.validationMessages = {
-            'shiftId': {
-                'required': 'Vui lòng chọn ca làm việc.'
-            },
-            'registerDate': {
-                'required': 'Vui lòng chọn ngày làm thêm.'
-            },
-            'note': {
-                'maxLength': 'Ghi chú không được phép vượt quá 500 ký tự'
-            },
-            'isCheckIn': {
-                'required': 'Vui lòng chọn hình thức.'
-            }
-        };
+        // this.formErrors = {
+        //     'shiftId': '',
+        //     'registerDate': '',
+        //     'note': '',
+        //     'isCheckIn': ''
+        // };
+        //
+        // this.validationMessages = {
+        //     'shiftId': {
+        //         'required': 'Vui lòng chọn ca làm việc.'
+        //     },
+        //     'registerDate': {
+        //         'required': 'Vui lòng chọn ngày làm thêm.'
+        //     },
+        //     'note': {
+        //         'maxLength': 'Ghi chú không được phép vượt quá 500 ký tự'
+        //     },
+        //     'isCheckIn': {
+        //         'required': 'Vui lòng chọn hình thức.'
+        //     }
+        // };
     };
     TimekeepingForgotCheckinComponent.prototype.renderFilterLink = function () {
         var path = '/timekeeping/forgot-checkin';
         var query = this.utilService.renderLocationFilter([
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_13__["FilterLink"]('type', this.type),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_13__["FilterLink"]('month', this.month),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_13__["FilterLink"]('year', this.year),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_13__["FilterLink"]('userId', this.userId),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_13__["FilterLink"]('status', this.status)
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_11__["FilterLink"]('type', this.type),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_11__["FilterLink"]('month', this.month),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_11__["FilterLink"]('year', this.year),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_11__["FilterLink"]('userId', this.userId),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_11__["FilterLink"]('status', this.status)
         ]);
         this.location.go(path, query);
     };
@@ -4334,34 +4296,31 @@ var TimekeepingForgotCheckinComponent = /** @class */ (function (_super) {
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('registerFormModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_9__["NhModalComponent"])
     ], TimekeepingForgotCheckinComponent.prototype, "registerFormModal", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('detailModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_9__["NhModalComponent"])
     ], TimekeepingForgotCheckinComponent.prototype, "detailModal", void 0);
     TimekeepingForgotCheckinComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-timekeeping-forgot-checkin',
             template: __webpack_require__(/*! ./timekeeping-forgot-checkin.component.html */ "./src/app/modules/timekeeping/forgot-checkin/timekeeping-forgot-checkin.component.html"),
-            providers: [_timekeeping_forgot_checkin_service__WEBPACK_IMPORTED_MODULE_9__["TimekeepingForgotCheckinService"], _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_10__["TimekeepingWorkScheduleService"],
-                _angular_common__WEBPACK_IMPORTED_MODULE_7__["Location"], { provide: _angular_common__WEBPACK_IMPORTED_MODULE_7__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_7__["PathLocationStrategy"] }]
+            providers: [_timekeeping_forgot_checkin_service__WEBPACK_IMPORTED_MODULE_7__["TimekeepingForgotCheckinService"], _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_8__["TimekeepingWorkScheduleService"],
+                _angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"], { provide: _angular_common__WEBPACK_IMPORTED_MODULE_6__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_6__["PathLocationStrategy"] }]
         }),
-        Object(_shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_8__["DestroySubscribers"])(),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_18__["CheckPermission"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_14__["PAGE_ID"])),
-        __metadata("design:paramtypes", [Object, _angular_common__WEBPACK_IMPORTED_MODULE_7__["Location"],
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["Title"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_15__["AppService"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_16__["UtilService"],
-            _timekeeping_forgot_checkin_service__WEBPACK_IMPORTED_MODULE_9__["TimekeepingForgotCheckinService"],
-            _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_10__["TimekeepingWorkScheduleService"]])
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_12__["PAGE_ID"])),
+        __metadata("design:paramtypes", [Object, _angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["Title"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_3__["ToastrService"],
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_13__["UtilService"],
+            _timekeeping_forgot_checkin_service__WEBPACK_IMPORTED_MODULE_7__["TimekeepingForgotCheckinService"],
+            _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_8__["TimekeepingWorkScheduleService"]])
     ], TimekeepingForgotCheckinComponent);
     return TimekeepingForgotCheckinComponent;
-}(_base_component__WEBPACK_IMPORTED_MODULE_1__["BaseComponent"]));
+}(_base_list_component__WEBPACK_IMPORTED_MODULE_15__["BaseListComponent"]));
 
 
 
@@ -4518,7 +4477,7 @@ var InLateOutEarlyShift = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"btn-group\" role=\"group\">\r\n            <button type=\"button\" class=\"btn btn-default\" [class.active]=\"type === 0\" (click)=\"changeType(0)\">\r\n                Đơn của tôi\r\n            </button>\r\n            <!--<button type=\"button\" class=\"btn btn-default\"-->\r\n                    <!--*ngIf=\"currentUser?.isLeader\"-->\r\n                    <!--[class.active]=\"type === 1\" (click)=\"changeType(1)\">-->\r\n                <!--Duyệt đăng ký-->\r\n            <!--</button>-->\r\n            <!--<button type=\"button\" class=\"btn btn-default\"-->\r\n                    <!--*ngIf=\"isHasApprovePermission || currentUser?.isAdmin\"-->\r\n                    <!--[class.active]=\"type === 2\" (click)=\"changeType(2)\">-->\r\n                <!--Đơn do tôi tạo-->\r\n            <!--</button>-->\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <form action=\"\" class=\"form-inline\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    [data]=\"listMonth\"\r\n                    title=\"-- Chọn tháng --\"\r\n                    [(value)]=\"month\"\r\n                    (onSelectItem)=\"search(1)\"\r\n                ></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    [data]=\"listYear\"\r\n                    title=\"-- Chọn năm --\"\r\n                    [(value)]=\"year\"\r\n                    (onSelectItem)=\"search(1)\"\r\n                ></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    [data]=\"[{id: true, name: 'Đã xác nhận'}, {id: false, name: 'Chưa xác nhận'}]\"\r\n                    title=\"-- Chọn trạng thái --\"\r\n                    [(value)]=\"isConfirm\"\r\n                    (onSelectItem)=\"search(1)\"\r\n                ></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button mat-raised-button color=\"primary\" title=\"Tìm kiếm\">\r\n                    <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSearching\"></i>-->\r\n                    <i class=\"fa fa-search\"></i>\r\n                </button>\r\n            </div>\r\n            <div class=\"form-group pull-right\">\r\n                <button type=\"button\" mat-raised-button color=\"primary\" (click)=\"showRegisterForm()\">\r\n                    <i class=\"fa fa-plus\"></i>\r\n                    Đăng ký\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <!-- BEGIN: table.list-in-out -->\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-striped table-hover list-in-out table-main\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center w50\">#</th>\r\n                    <th class=\"center\">Nhân viên</th>\r\n                    <th class=\"center\">Ngày</th>\r\n                    <th class=\"center\">Nhân viên đăng ký</th>\r\n                    <th class=\"center\">Trạng thái</th>\r\n                    <th class=\"center w150\">Hành động</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let item of listInOut$ | async; let i = index\">\r\n                    <td class=\"center middle\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n                    <td class=\"middle\">\r\n                        <a href=\"javascript://\" (click)=\"detail(item)\">{{item.fullName}}</a>\r\n                    </td>\r\n                    <td class=\"middle\">{{item.registerDate | dateTimeFormat:'DD/MM/YYYY'}}</td>\r\n                    <td class=\"middle\">{{item.creatorFullName}}</td>\r\n                    <td class=\"center middle\">{{item.isConfirmed ? 'Đã xác nhận' : 'Chưa xác nhận'}}</td>\r\n                    <td class=\"center middle\">\r\n                        <button type=\"button\" mat-mini-fab color=\"default\" (click)=\"detail(item)\">\r\n                            <i class=\"fa fa-eye\"></i>\r\n                        </button>\r\n                        <ng-container\r\n                            *ngIf=\"(type === 0 || (type === 2 && item.creatorId === currentUser?.id)) && !item.isConfirmed\">\r\n                            <button type=\"button\" mat-mini-fab color=\"primary\" (click)=\"edit(item)\">\r\n                                <i class=\"fa fa-edit\"></i>\r\n                            </button>\r\n                            <button type=\"button\" mat-mini-fab color=\"warn\" (click)=\"delete(item)\">\r\n                                <i class=\"fa fa-trash\"></i>\r\n                            </button>\r\n                        </ng-container>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n        <!-- END: table.list-in-out -->\r\n        <ghm-paging [totalRows]=\"totalRows$ | async\" [currentPage]=\"currentPage\" [pageShow]=\"6\" (pageClick)=\"search($event)\"\r\n                [isDisabled]=\"isSearching\" [pageName]=\"'đi muộn về sớm'\"></ghm-paging>\r\n    </div>\r\n</div>\r\n\r\n<nh-modal #formModal size=\"md\" (onHidden)=\"onFormModalHidden()\">\r\n    <nh-modal-header>\r\n        <i class=\"fa fa-clock-o\"></i>\r\n        {{isUpdate ? 'Cập nhật đi muộn về sớm' : 'đăng ký đi muộn về sớm'}}\r\n    </nh-modal-header>\r\n    <div class=\"form\">\r\n        <form action=\"\" class=\"form-horizontal form-bordered\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n            <nh-modal-content>\r\n                <div class=\"form-body\">\r\n                    <div class=\"form-group\" *ngIf=\"listShift.length === 0\">\r\n                        <div class=\"col-sm-12\">\r\n                            <div class=\"alert alert-danger\">\r\n                                Xin lỗi: Bạn chưa được cấu hình ca làm việc. Vui lòng liên hệ với bộ phận nhân sự để\r\n                                được trợ giúp.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <div class=\"col-sm-12\">\r\n                            <div class=\"alert alert-warning\">\r\n                                Sô phút xin phép đi muộn về sớm tối đa là {{maxInOutMin}} phút\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <div class=\"col-sm-12\">\r\n                            <div class=\"alert alert-success\" *ngIf=\"totalApprovedTimes < maxInOutTimes\">\r\n                                Bạn còn {{maxInOutTimes}} lần được phép đi muộn về sớm trong tháng này.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\" *ngIf=\"isHasApprovePermission\">\r\n                        <label ghmLabel=\"Nhân viên\" class=\"control-label col-sm-4\"></label>\r\n                        <div class=\"col-sm-8\">\r\n                            <ghm-user-suggestion\r\n                                [sources]=\"listUserSuggestion\"\r\n                                [selectedUsers]=\"selectedUser\"\r\n                                [isLoading]=\"isSearchingUser\"\r\n                                (onSelectUser)=\"onSelectUser($event)\"\r\n                                (onRemoveUser)=\"onRemoveUser()\"\r\n                                (onKeyUp)=\"onUserSuggestionKeyUp($event)\"\r\n                                placeholder=\"Nhập tên nhân viên\"\r\n                            ></ghm-user-suggestion>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label ghmLabel=\"Ngày\" class=\"control-label col-sm-4\" [required]=\"true\"></label>\r\n                        <div class=\"col-sm-8\">\r\n                            <nh-date formControlName=\"registerDate\"\r\n                                     [type]=\"'inputButton'\"\r\n                                     [title]=\"'Chọn ngày xin đi muộn về sớm'\"\r\n                            ></nh-date>\r\n                            <div class=\"alert alert-danger\" *ngIf=\"formErrors.registerDate\">\r\n                                {{ formErrors.registerDate }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label ghmLabel=\"Hình thức\" class=\"control-label col-sm-4\" [required]=\"true\"></label>\r\n                        <div class=\"col-sm-8\">\r\n                            <div class=\"\" formArrayName=\"shifts\"\r\n                                 *ngFor=\"let shift of shifts.controls; let shiftIndex = index\">\r\n                                <div class=\"portlet light bordered\">\r\n                                    <div class=\"portlet-title\">\r\n                                        <div class=\"caption\">\r\n                                            <i class=\"icon-speech font-green\"></i>\r\n                                            <span class=\"caption-subject bold font-green uppercase\">Hình thức đi muộn về sớm.</span>\r\n                                        </div>\r\n                                        <div class=\"actions\">\r\n                                            <a class=\"btn btn-circle btn-icon-only btn-default\" href=\"javascript://\"\r\n                                               (click)=\"removeMethod(shiftIndex)\">\r\n                                                <i class=\"fa fa-times\"></i>\r\n                                            </a>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"portlet-body\" [formGroupName]=\"shiftIndex\">\r\n                                        <div class=\"form-group border-none cm-mgb-10\">\r\n                                            <mat-slide-toggle color=\"primary\"\r\n                                                              [checked]=\"shift.value.isInLate\"\r\n                                                              (change)=\"onChangeIsInLate(shift)\">\r\n                                                {{shift.value.isInLate ? 'Đi muộn' : 'Về sớm'}}\r\n                                            </mat-slide-toggle>\r\n                                            <div class=\"alert alert-danger\"\r\n                                                 *ngIf=\"formErrors.shifts.isInLate\">\r\n                                                {{ formErrors.shifts.isInLate }}\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group border-none cm-mgb-10\">\r\n                                            <label for=\"\" class=\"\">Ca làm việc</label>\r\n                                            <nh-select\r\n                                                title=\"-- Chọn ca làm việc --\"\r\n                                                [data]=\"listShift\"\r\n                                                formControlName=\"shiftId\"\r\n                                            ></nh-select>\r\n                                            <div class=\"alert alert-danger\"\r\n                                                 *ngIf=\"formErrors.shifts.shiftId\">\r\n                                                {{ formErrors.shifts.shiftId }}\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group border-none cm-mgb-10\">\r\n                                            <label for=\"\" class=\"\">Số phút</label>\r\n                                            <input type=\"text\" class=\"form-control\"\r\n                                                   placeholder=\"Nhập số phút\"\r\n                                                   autocomplete=\"off\"\r\n                                                   formControlName=\"totalMin\"\r\n                                                   [attr.id]=\"'totalMin' + shift.value.shiftId + shift.value.isInLate\"\r\n                                            >\r\n                                            <div *ngIf=\"shift.value.timeText\"\r\n                                                 [class.bold]=\"shift.value.isUse\"\r\n                                                 [class.hint-color]=\"!shift.value.isUse\">\r\n                                                {{shift.value.timeText}}\r\n                                            </div>\r\n                                            <div class=\"alert alert-danger\"\r\n                                                 *ngIf=\"formErrors.shifts.totalMin\">\r\n                                                {{ formErrors.shifts.totalMin }}\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group border-none cm-mgb-10\">\r\n                                            <label for=\"\" class=\"\">\r\n                                                Lý do {{shift.value.isInLate ? 'đi muộn' : 'về sớm'}}\r\n                                            </label>\r\n                                            <textarea class=\"form-control\" rows=\"3\"\r\n                                                      placeholder=\"Vui lòng nhập lý do\"\r\n                                                      formControlName=\"reason\"\r\n                                                      [attr.id]=\"'reason' + shift.value.shiftId + shift.value.isInLate\">\r\n                                            </textarea>\r\n                                            <div *ngIf=\"formErrors.shifts.reason\"\r\n                                                 class=\"alert alert-danger\">\r\n                                                {{formErrors.shifts.reason}}\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <button type=\"button\" mat-raised-button color=\"primary\" (click)=\"addNewMethod()\"\r\n                                    *ngIf=\"totalApprovedTimes < maxInOutTimes; else notEnoughTimesTemplate\">\r\n                                <i class=\"fa fa-plus\"></i>\r\n                                Thêm hình thức nghỉ\r\n                            </button>\r\n                            <ng-template #notEnoughTimesTemplate>\r\n                                <span\r\n                                    class=\"color-red\">Rất tiếc. Bạn đã sử dụng hết số lần được phép đi muộn về sớm trong tháng này.</span>\r\n                            </ng-template>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </nh-modal-content>\r\n            <nh-modal-footer>\r\n                <button mat-raised-button color=\"primary\">\r\n                    <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>-->\r\n                    <i class=\"fa fa-save\"></i>\r\n                    Lưu lại\r\n                </button>\r\n                <button type=\"button\" mat-raised-button nh-dismiss=\"true\">\r\n                    <i class=\"fa fa-times\"></i>\r\n                    Đóng lại\r\n                </button>\r\n            </nh-modal-footer>\r\n        </form>\r\n    </div>\r\n</nh-modal>\r\n\r\n<nh-modal #detailModal size=\"md\">\r\n    <nh-modal-header>\r\n        <i class=\"fa fa-clock-o\"></i>\r\n        Chi tiết đi muộn về sớm: \"{{inOut?.fullName}}\"\r\n    </nh-modal-header>\r\n    <nh-modal-content>\r\n        <div class=\"form-horizontal\">\r\n            <div class=\"form-group\">\r\n                <div class=\"col-sm-12\">\r\n                    <div class=\"alert alert-info\" *ngIf=\"totalApprovedInLateOutEarly > 0\">\r\n                        {{inOut?.fullName}} đã được duyệt {{totalApprovedInLateOutEarly}} lần đi muộn về sớm trong\r\n                        tháng {{inOut?.month}} năm {{inOut?.year}}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <div class=\"col-sm-12\">\r\n                    <label class=\"label-color\">Ngày:</label>\r\n                    <span class=\"\">\r\n                        {{inOut?.registerDate | dateTimeFormat:'DD/MM/YYYY'}}\r\n                        </span>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\" *ngFor=\"let shift of inOut?.shifts\">\r\n                <div class=\"col-sm-12 cm-mgt-20\">\r\n                    <div class=\"portlet light bordered\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption\">\r\n                                <i class=\"fa fa-clock-o\"></i>\r\n                                <span class=\"caption-subject bold uppercase\"> {{shift?.isInLate ? 'Đi muộn' : 'Về sớm'}} {{shift.shiftReportName}}</span>\r\n                            </div>\r\n                            <div class=\"actions\">\r\n                                <a href=\"javascript:;\" class=\"btn btn-circle btn-sm btn-success\"\r\n                                   *ngIf=\"!inOut?.isConfirmed && (inOut?.managerUserId === currentUser?.id) && (shift.isApprove == null || shift.isApprove === undefined)\"\r\n                                   (click)=\"approve(shift, true)\">\r\n                                    <i class=\"fa fa-check\"></i> Duyệt </a>\r\n                                <a href=\"javascript:;\" class=\"btn btn-circle btn-sm btn-danger\"\r\n                                   *ngIf=\"!inOut?.isConfirmed && (inOut?.managerUserId === currentUser?.id) && shift.isApprove !== false\"\r\n                                   (click)=\"approve(shift, false)\">\r\n                                    <i class=\"fa fa-times\"></i>\r\n                                    {{shift.isApprove == true ? 'Hủy duyệt' : 'Không duyệt'}}\r\n                                </a>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <div class=\"row\">\r\n                                <div class=\"col-sm-8\">\r\n                                    <div class=\"form-group\">\r\n                                        <div class=\"col-sm-12\">\r\n                                            <label for=\"\" class=\"label-color\">Lý do\r\n                                                {{shift.isInLate ? 'đi muộn' : 'về sớm'}}:</label>\r\n                                            <div class=\"form-control\">\r\n                                                {{shift.reason}}\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group cm-mgt-10\" *ngIf=\"shift.declineReason\">\r\n                                        <div class=\"col-sm-12\">\r\n                                            <label for=\"\" class=\"label-color\">Lý do không duyệt:</label>\r\n                                            <div class=\"color-red form-control\">\r\n                                                {{shift.declineReason}}\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"col-sm-4\">\r\n                                    <div class=\"form-group\">\r\n                                        <div class=\"col-sm-12\">\r\n                                            <label for=\"\" class=\"label-color\">Số phút:</label>\r\n                                            <span>{{shift.totalMin}}</span>\r\n                                            <span class=\"bold\">({{shift.timeText}})</span>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <div class=\"col-sm-12\">\r\n                                            <label for=\"\" class=\"label-color\">Trạng thái:</label>\r\n                                            <span\r\n                                                [class.color-green]=\"shift.isApprove\"\r\n                                                [class.color-red]=\"shift.isApprove === false\"\r\n                                            >\r\n                                    {{shift.isApprove === undefined || shift.isApprove == null ? 'Chờ QLTT duyệt' : shift.isApprove ? 'QLTT đã duyệt' : 'QLTT không duyệt'}}\r\n                                </span>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\" *ngIf=\"inOut?.isConfirmed\">\r\n                                        <div class=\"col-sm-12\">\r\n                                            <label for=\"\" class=\"label-color\">Ngày xác nhận:</label>\r\n                                            {{inOut?.confirmDateTime | dateTimeFormat:'DD/MM/YYYY'}}\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </nh-modal-content>\r\n    <nh-modal-footer>\r\n        <button type=\"button\" mat-raised-button color=\"primary\"\r\n                *ngIf=\"!inOut?.isConfirmed && (inOut?.managerUserId === currentUser?.id)\"\r\n                (click)=\"confirm()\">\r\n            <i class=\"fa fa-check\"></i>\r\n            <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>-->\r\n            Xác nhận\r\n        </button>\r\n        <button type=\"button\" mat-raised-button nh-dismiss=\"true\">\r\n            <i class=\"fa fa-times\"></i>\r\n            Đóng lại\r\n        </button>\r\n    </nh-modal-footer>\r\n</nh-modal>\r\n"
+module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"btn-group\" role=\"group\">\r\n            <button type=\"button\" class=\"btn btn-default\" [class.active]=\"type === 0\" (click)=\"changeType(0)\">\r\n                Đơn của tôi\r\n            </button>\r\n            <!--<button type=\"button\" class=\"btn btn-default\"-->\r\n                    <!--*ngIf=\"currentUser?.isLeader\"-->\r\n                    <!--[class.active]=\"type === 1\" (click)=\"changeType(1)\">-->\r\n                <!--Duyệt đăng ký-->\r\n            <!--</button>-->\r\n            <!--<button type=\"button\" class=\"btn btn-default\"-->\r\n                    <!--*ngIf=\"isHasApprovePermission || currentUser?.isAdmin\"-->\r\n                    <!--[class.active]=\"type === 2\" (click)=\"changeType(2)\">-->\r\n                <!--Đơn do tôi tạo-->\r\n            <!--</button>-->\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <form action=\"\" class=\"form-inline\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    [data]=\"listMonth\"\r\n                    title=\"-- Chọn tháng --\"\r\n                    [(value)]=\"month\"\r\n                    (onSelectItem)=\"search(1)\"\r\n                ></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    [data]=\"listYear\"\r\n                    title=\"-- Chọn năm --\"\r\n                    [(value)]=\"year\"\r\n                    (onSelectItem)=\"search(1)\"\r\n                ></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    [data]=\"[{id: true, name: 'Đã xác nhận'}, {id: false, name: 'Chưa xác nhận'}]\"\r\n                    title=\"-- Chọn trạng thái --\"\r\n                    [(value)]=\"isConfirm\"\r\n                    (onSelectItem)=\"search(1)\"\r\n                ></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button mat-raised-button color=\"primary\" title=\"Tìm kiếm\">\r\n                    <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSearching\"></i>-->\r\n                    <i class=\"fa fa-search\"></i>\r\n                </button>\r\n            </div>\r\n            <div class=\"form-group pull-right\">\r\n                <button type=\"button\" mat-raised-button color=\"primary\" (click)=\"showRegisterForm()\">\r\n                    <i class=\"fa fa-plus\"></i>\r\n                    Đăng ký\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <!-- BEGIN: table.list-in-out -->\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-striped table-hover list-in-out table-main\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center w50\">#</th>\r\n                    <th class=\"center\">Nhân viên</th>\r\n                    <th class=\"center\">Ngày</th>\r\n                    <th class=\"center\">Nhân viên đăng ký</th>\r\n                    <th class=\"center\">Trạng thái</th>\r\n                    <th class=\"center w150\">Hành động</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let item of listInOut$ | async; let i = index\">\r\n                    <td class=\"center middle\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n                    <td class=\"middle\">\r\n                        <a href=\"javascript://\" (click)=\"detail(item)\">{{item.fullName}}</a>\r\n                    </td>\r\n                    <td class=\"middle\">{{item.registerDate | dateTimeFormat:'DD/MM/YYYY'}}</td>\r\n                    <td class=\"middle\">{{item.creatorFullName}}</td>\r\n                    <td class=\"center middle\">{{item.isConfirmed ? 'Đã xác nhận' : 'Chưa xác nhận'}}</td>\r\n                    <td class=\"center middle\">\r\n                        <button type=\"button\" mat-mini-fab color=\"default\" (click)=\"detail(item)\">\r\n                            <i class=\"fa fa-eye\"></i>\r\n                        </button>\r\n                        <ng-container\r\n                            *ngIf=\"(type === 0 || (type === 2 && item.creatorId === currentUser?.id)) && !item.isConfirmed\">\r\n                            <button type=\"button\" mat-mini-fab color=\"primary\" (click)=\"edit(item)\">\r\n                                <i class=\"fa fa-edit\"></i>\r\n                            </button>\r\n                            <button type=\"button\" mat-mini-fab color=\"warn\" (click)=\"delete(item)\">\r\n                                <i class=\"fa fa-trash\"></i>\r\n                            </button>\r\n                        </ng-container>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n        <!-- END: table.list-in-out -->\r\n        <ghm-paging [totalRows]=\"totalRows$ | async\" [currentPage]=\"currentPage\" [pageShow]=\"6\" (pageClick)=\"search($event)\"\r\n                [isDisabled]=\"isSearching\" [pageName]=\"'đi muộn về sớm'\"></ghm-paging>\r\n    </div>\r\n</div>\r\n\r\n<nh-modal #formModal size=\"md\" (hidden)=\"onFormModalHidden()\">\r\n    <nh-modal-header>\r\n        <i class=\"fa fa-clock-o\"></i>\r\n        <!--{{isUpdate ? 'Cập nhật đi muộn về sớm' : 'đăng ký đi muộn về sớm'}}-->\r\n    </nh-modal-header>\r\n    <div class=\"form\">\r\n        <form action=\"\" class=\"form-horizontal form-bordered\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n            <nh-modal-content>\r\n                <div class=\"form-body\">\r\n                    <div class=\"form-group\" *ngIf=\"listShift.length === 0\">\r\n                        <div class=\"col-sm-12\">\r\n                            <div class=\"alert alert-danger\">\r\n                                Xin lỗi: Bạn chưa được cấu hình ca làm việc. Vui lòng liên hệ với bộ phận nhân sự để\r\n                                được trợ giúp.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <div class=\"col-sm-12\">\r\n                            <div class=\"alert alert-warning\">\r\n                                Sô phút xin phép đi muộn về sớm tối đa là {{maxInOutMin}} phút\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <div class=\"col-sm-12\">\r\n                            <div class=\"alert alert-success\" *ngIf=\"totalApprovedTimes < maxInOutTimes\">\r\n                                Bạn còn {{maxInOutTimes}} lần được phép đi muộn về sớm trong tháng này.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <!--<div class=\"form-group\" *ngIf=\"isHasApprovePermission\">-->\r\n                        <!--<label ghmLabel=\"Nhân viên\" class=\"control-label col-sm-4\"></label>-->\r\n                        <!--<div class=\"col-sm-8\">-->\r\n                            <!--&lt;!&ndash;<ghm-user-suggestion&ndash;&gt;-->\r\n                                <!--&lt;!&ndash;[sources]=\"listUserSuggestion\"&ndash;&gt;-->\r\n                                <!--&lt;!&ndash;[selectedUsers]=\"selectedUser\"&ndash;&gt;-->\r\n                                <!--&lt;!&ndash;[isLoading]=\"isSearchingUser\"&ndash;&gt;-->\r\n                                <!--&lt;!&ndash;(onSelectUser)=\"onSelectUser($event)\"&ndash;&gt;-->\r\n                                <!--&lt;!&ndash;(onRemoveUser)=\"onRemoveUser()\"&ndash;&gt;-->\r\n                                <!--&lt;!&ndash;(onKeyUp)=\"onUserSuggestionKeyUp($event)\"&ndash;&gt;-->\r\n                                <!--&lt;!&ndash;placeholder=\"Nhập tên nhân viên\"&ndash;&gt;-->\r\n                            <!--&lt;!&ndash;&gt;</ghm-user-suggestion>&ndash;&gt;-->\r\n                        <!--</div>-->\r\n                    <!--</div>-->\r\n                    <!--<div class=\"form-group\">-->\r\n                        <!--<label ghmLabel=\"Ngày\" class=\"control-label col-sm-4\" [required]=\"true\"></label>-->\r\n                        <!--<div class=\"col-sm-8\">-->\r\n                            <!--<nh-date formControlName=\"registerDate\"-->\r\n                                     <!--[type]=\"'inputButton'\"-->\r\n                                     <!--[title]=\"'Chọn ngày xin đi muộn về sớm'\"-->\r\n                            <!--&gt;</nh-date>-->\r\n                            <!--<div class=\"alert alert-danger\" *ngIf=\"formErrors.registerDate\">-->\r\n                                <!--{{ formErrors.registerDate }}-->\r\n                            <!--</div>-->\r\n                        <!--</div>-->\r\n                    <!--</div>-->\r\n                    <div class=\"form-group\">\r\n                        <label ghmLabel=\"Hình thức\" class=\"control-label col-sm-4\" [required]=\"true\"></label>\r\n                        <div class=\"col-sm-8\">\r\n                            <div class=\"\" formArrayName=\"shifts\"\r\n                                 *ngFor=\"let shift of shifts.controls; let shiftIndex = index\">\r\n                                <div class=\"portlet light bordered\">\r\n                                    <div class=\"portlet-title\">\r\n                                        <div class=\"caption\">\r\n                                            <i class=\"icon-speech font-green\"></i>\r\n                                            <span class=\"caption-subject bold font-green uppercase\">Hình thức đi muộn về sớm.</span>\r\n                                        </div>\r\n                                        <div class=\"actions\">\r\n                                            <a class=\"btn btn-circle btn-icon-only btn-default\" href=\"javascript://\"\r\n                                               (click)=\"removeMethod(shiftIndex)\">\r\n                                                <i class=\"fa fa-times\"></i>\r\n                                            </a>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"portlet-body\" [formGroupName]=\"shiftIndex\">\r\n                                        <div class=\"form-group border-none cm-mgb-10\">\r\n                                            <mat-slide-toggle color=\"primary\"\r\n                                                              [checked]=\"shift.value.isInLate\"\r\n                                                              (change)=\"onChangeIsInLate(shift)\">\r\n                                                {{shift.value.isInLate ? 'Đi muộn' : 'Về sớm'}}\r\n                                            </mat-slide-toggle>\r\n                                            <!--<div class=\"alert alert-danger\"-->\r\n                                                 <!--*ngIf=\"formErrors.shifts.isInLate\">-->\r\n                                                <!--{{ formErrors.shifts.isInLate }}-->\r\n                                            <!--</div>-->\r\n                                        </div>\r\n                                        <div class=\"form-group border-none cm-mgb-10\">\r\n                                            <label for=\"\" class=\"\">Ca làm việc</label>\r\n                                            <nh-select\r\n                                                title=\"-- Chọn ca làm việc --\"\r\n                                                [data]=\"listShift\"\r\n                                                formControlName=\"shiftId\"\r\n                                            ></nh-select>\r\n                                            <!--<div class=\"alert alert-danger\"-->\r\n                                                 <!--*ngIf=\"formErrors.shifts.shiftId\">-->\r\n                                                <!--{{ formErrors.shifts.shiftId }}-->\r\n                                            <!--</div>-->\r\n                                        </div>\r\n                                        <div class=\"form-group border-none cm-mgb-10\">\r\n                                            <label for=\"\" class=\"\">Số phút</label>\r\n                                            <input type=\"text\" class=\"form-control\"\r\n                                                   placeholder=\"Nhập số phút\"\r\n                                                   autocomplete=\"off\"\r\n                                                   formControlName=\"totalMin\"\r\n                                                   [attr.id]=\"'totalMin' + shift.value.shiftId + shift.value.isInLate\"\r\n                                            >\r\n                                            <div *ngIf=\"shift.value.timeText\"\r\n                                                 [class.bold]=\"shift.value.isUse\"\r\n                                                 [class.hint-color]=\"!shift.value.isUse\">\r\n                                                {{shift.value.timeText}}\r\n                                            </div>\r\n                                            <!--<div class=\"alert alert-danger\"-->\r\n                                                 <!--*ngIf=\"formErrors.shifts.totalMin\">-->\r\n                                                <!--{{ formErrors.shifts.totalMin }}-->\r\n                                            <!--</div>-->\r\n                                        </div>\r\n                                        <div class=\"form-group border-none cm-mgb-10\">\r\n                                            <label for=\"\" class=\"\">\r\n                                                Lý do {{shift.value.isInLate ? 'đi muộn' : 'về sớm'}}\r\n                                            </label>\r\n                                            <textarea class=\"form-control\" rows=\"3\"\r\n                                                      placeholder=\"Vui lòng nhập lý do\"\r\n                                                      formControlName=\"reason\"\r\n                                                      [attr.id]=\"'reason' + shift.value.shiftId + shift.value.isInLate\">\r\n                                            </textarea>\r\n                                            <!--<div *ngIf=\"formErrors.shifts.reason\"-->\r\n                                                 <!--class=\"alert alert-danger\">-->\r\n                                                <!--{{formErrors.shifts.reason}}-->\r\n                                            <!--</div>-->\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <button type=\"button\" mat-raised-button color=\"primary\" (click)=\"addNewMethod()\"\r\n                                    *ngIf=\"totalApprovedTimes < maxInOutTimes; else notEnoughTimesTemplate\">\r\n                                <i class=\"fa fa-plus\"></i>\r\n                                Thêm hình thức nghỉ\r\n                            </button>\r\n                            <ng-template #notEnoughTimesTemplate>\r\n                                <span\r\n                                    class=\"color-red\">Rất tiếc. Bạn đã sử dụng hết số lần được phép đi muộn về sớm trong tháng này.</span>\r\n                            </ng-template>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </nh-modal-content>\r\n            <nh-modal-footer>\r\n                <button mat-raised-button color=\"primary\">\r\n                    <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>-->\r\n                    <i class=\"fa fa-save\"></i>\r\n                    Lưu lại\r\n                </button>\r\n                <button type=\"button\" mat-raised-button nh-dismiss=\"true\">\r\n                    <i class=\"fa fa-times\"></i>\r\n                    Đóng lại\r\n                </button>\r\n            </nh-modal-footer>\r\n        </form>\r\n    </div>\r\n</nh-modal>\r\n\r\n<nh-modal #detailModal size=\"md\">\r\n    <nh-modal-header>\r\n        <i class=\"fa fa-clock-o\"></i>\r\n        Chi tiết đi muộn về sớm: \"{{inOut?.fullName}}\"\r\n    </nh-modal-header>\r\n    <nh-modal-content>\r\n        <div class=\"form-horizontal\">\r\n            <div class=\"form-group\">\r\n                <div class=\"col-sm-12\">\r\n                    <div class=\"alert alert-info\" *ngIf=\"totalApprovedInLateOutEarly > 0\">\r\n                        {{inOut?.fullName}} đã được duyệt {{totalApprovedInLateOutEarly}} lần đi muộn về sớm trong\r\n                        tháng {{inOut?.month}} năm {{inOut?.year}}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <div class=\"col-sm-12\">\r\n                    <label class=\"label-color\">Ngày:</label>\r\n                    <span class=\"\">\r\n                        {{inOut?.registerDate | dateTimeFormat:'DD/MM/YYYY'}}\r\n                        </span>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\" *ngFor=\"let shift of inOut?.shifts\">\r\n                <div class=\"col-sm-12 cm-mgt-20\">\r\n                    <div class=\"portlet light bordered\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption\">\r\n                                <i class=\"fa fa-clock-o\"></i>\r\n                                <span class=\"caption-subject bold uppercase\"> {{shift?.isInLate ? 'Đi muộn' : 'Về sớm'}} {{shift.shiftReportName}}</span>\r\n                            </div>\r\n                            <div class=\"actions\">\r\n                                <a href=\"javascript:;\" class=\"btn btn-circle btn-sm btn-success\"\r\n                                   *ngIf=\"!inOut?.isConfirmed && (inOut?.managerUserId === currentUser?.id) && (shift.isApprove == null || shift.isApprove === undefined)\"\r\n                                   (click)=\"approve(shift, true)\">\r\n                                    <i class=\"fa fa-check\"></i> Duyệt </a>\r\n                                <a href=\"javascript:;\" class=\"btn btn-circle btn-sm btn-danger\"\r\n                                   *ngIf=\"!inOut?.isConfirmed && (inOut?.managerUserId === currentUser?.id) && shift.isApprove !== false\"\r\n                                   (click)=\"approve(shift, false)\">\r\n                                    <i class=\"fa fa-times\"></i>\r\n                                    {{shift.isApprove == true ? 'Hủy duyệt' : 'Không duyệt'}}\r\n                                </a>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <div class=\"row\">\r\n                                <div class=\"col-sm-8\">\r\n                                    <div class=\"form-group\">\r\n                                        <div class=\"col-sm-12\">\r\n                                            <label for=\"\" class=\"label-color\">Lý do\r\n                                                {{shift.isInLate ? 'đi muộn' : 'về sớm'}}:</label>\r\n                                            <div class=\"form-control\">\r\n                                                {{shift.reason}}\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group cm-mgt-10\" *ngIf=\"shift.declineReason\">\r\n                                        <div class=\"col-sm-12\">\r\n                                            <label for=\"\" class=\"label-color\">Lý do không duyệt:</label>\r\n                                            <div class=\"color-red form-control\">\r\n                                                {{shift.declineReason}}\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"col-sm-4\">\r\n                                    <div class=\"form-group\">\r\n                                        <div class=\"col-sm-12\">\r\n                                            <label for=\"\" class=\"label-color\">Số phút:</label>\r\n                                            <span>{{shift.totalMin}}</span>\r\n                                            <span class=\"bold\">({{shift.timeText}})</span>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <div class=\"col-sm-12\">\r\n                                            <label for=\"\" class=\"label-color\">Trạng thái:</label>\r\n                                            <span\r\n                                                [class.color-green]=\"shift.isApprove\"\r\n                                                [class.color-red]=\"shift.isApprove === false\"\r\n                                            >\r\n                                    {{shift.isApprove === undefined || shift.isApprove == null ? 'Chờ QLTT duyệt' : shift.isApprove ? 'QLTT đã duyệt' : 'QLTT không duyệt'}}\r\n                                </span>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\" *ngIf=\"inOut?.isConfirmed\">\r\n                                        <div class=\"col-sm-12\">\r\n                                            <label for=\"\" class=\"label-color\">Ngày xác nhận:</label>\r\n                                            {{inOut?.confirmDateTime | dateTimeFormat:'DD/MM/YYYY'}}\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </nh-modal-content>\r\n    <nh-modal-footer>\r\n        <button type=\"button\" mat-raised-button color=\"primary\"\r\n                *ngIf=\"!inOut?.isConfirmed && (inOut?.managerUserId === currentUser?.id)\"\r\n                (click)=\"confirm()\">\r\n            <i class=\"fa fa-check\"></i>\r\n            <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>-->\r\n            Xác nhận\r\n        </button>\r\n        <button type=\"button\" mat-raised-button nh-dismiss=\"true\">\r\n            <i class=\"fa fa-times\"></i>\r\n            Đóng lại\r\n        </button>\r\n    </nh-modal-footer>\r\n</nh-modal>\r\n"
 
 /***/ }),
 
@@ -4538,31 +4497,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../base.component */ "./src/app/base.component.ts");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
-/* harmony import */ var _validators_number_validator__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../validators/number.validator */ "./src/app/validators/number.validator.ts");
-/* harmony import */ var _shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../shareds/decorator/destroy-subscribes.decorator */ "./src/app/shareds/decorator/destroy-subscribes.decorator.ts");
-/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var _in_out_model__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./in-out.model */ "./src/app/modules/timekeeping/in-out/in-out.model.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _hr_user_services_user_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../hr/user/services/user.service */ "./src/app/modules/hr/user/services/user.service.ts");
-/* harmony import */ var _timekeeping_in_out_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./timekeeping-in-out.service */ "./src/app/modules/timekeeping/in-out/timekeeping-in-out.service.ts");
-/* harmony import */ var _config_timekeeping_config_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../config/timekeeping-config.service */ "./src/app/modules/timekeeping/config/timekeeping-config.service.ts");
-/* harmony import */ var _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../config/work-schedule/timekeeping-work-schedule.service */ "./src/app/modules/timekeeping/config/work-schedule/timekeeping-work-schedule.service.ts");
-/* harmony import */ var _shareds_components_nh_select_nh_select_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../../shareds/components/nh-select/nh-select.component */ "./src/app/shareds/components/nh-select/nh-select.component.ts");
-/* harmony import */ var _in_late_out_early_update_approve_status_model__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./in-late-out-early-update-approve-status.model */ "./src/app/modules/timekeeping/in-out/in-late-out-early-update-approve-status.model.ts");
-/* harmony import */ var _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../../shareds/models/filter-link.model */ "./src/app/shareds/models/filter-link.model.ts");
-/* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! rxjs/internal/operators */ "./node_modules/rxjs/internal/operators/index.js");
-/* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_26__);
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
+/* harmony import */ var _validators_number_validator__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../validators/number.validator */ "./src/app/validators/number.validator.ts");
+/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
+/* harmony import */ var _in_out_model__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./in-out.model */ "./src/app/modules/timekeeping/in-out/in-out.model.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var _hr_user_services_user_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../hr/user/services/user.service */ "./src/app/modules/hr/user/services/user.service.ts");
+/* harmony import */ var _timekeeping_in_out_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./timekeeping-in-out.service */ "./src/app/modules/timekeeping/in-out/timekeeping-in-out.service.ts");
+/* harmony import */ var _config_timekeeping_config_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../config/timekeeping-config.service */ "./src/app/modules/timekeeping/config/timekeeping-config.service.ts");
+/* harmony import */ var _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../config/work-schedule/timekeeping-work-schedule.service */ "./src/app/modules/timekeeping/config/work-schedule/timekeeping-work-schedule.service.ts");
+/* harmony import */ var _shareds_components_nh_select_nh_select_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../../shareds/components/nh-select/nh-select.component */ "./src/app/shareds/components/nh-select/nh-select.component.ts");
+/* harmony import */ var _in_late_out_early_update_approve_status_model__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./in-late-out-early-update-approve-status.model */ "./src/app/modules/timekeeping/in-out/in-late-out-early-update-approve-status.model.ts");
+/* harmony import */ var _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../../shareds/models/filter-link.model */ "./src/app/shareds/models/filter-link.model.ts");
+/* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! rxjs/internal/operators */ "./node_modules/rxjs/internal/operators/index.js");
+/* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_23__);
+/* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../../base-list.component */ "./src/app/base-list.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4610,19 +4566,15 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
-
 var TimekeepingInOutComponent = /** @class */ (function (_super) {
     __extends(TimekeepingInOutComponent, _super);
-    function TimekeepingInOutComponent(pageId, location, title, route, fb, toastr, appService, numberValidators, utilService, userService, spinnerService, inOutService, timekeepingConfigService, workscheduleService) {
+    function TimekeepingInOutComponent(pageId, location, title, route, fb, toastr, numberValidators, utilService, userService, spinnerService, inOutService, timekeepingConfigService, workscheduleService) {
         var _this = _super.call(this) || this;
         _this.location = location;
         _this.title = title;
         _this.route = route;
         _this.fb = fb;
         _this.toastr = toastr;
-        _this.appService = appService;
         _this.numberValidators = numberValidators;
         _this.utilService = utilService;
         _this.userService = userService;
@@ -4637,8 +4589,8 @@ var TimekeepingInOutComponent = /** @class */ (function (_super) {
         _this.isGettingDetail = false;
         _this.listMonth = [];
         _this.listYear = [];
-        _this.inOut = new _in_out_model__WEBPACK_IMPORTED_MODULE_15__["InOut"]();
-        _this.shift = new _in_out_model__WEBPACK_IMPORTED_MODULE_15__["InLateOutEarlyShift"]();
+        _this.inOut = new _in_out_model__WEBPACK_IMPORTED_MODULE_13__["InOut"]();
+        _this.shift = new _in_out_model__WEBPACK_IMPORTED_MODULE_13__["InLateOutEarlyShift"]();
         _this.maxInOutMin = 0;
         _this.maxInOutTimes = 0;
         _this.totalApprovedTimes = 0;
@@ -4648,13 +4600,13 @@ var TimekeepingInOutComponent = /** @class */ (function (_super) {
             MANAGER_APPROVE: 1,
             MANAGER_DECLINE: 2
         };
-        _this.userSuggestionKeyword$ = new rxjs__WEBPACK_IMPORTED_MODULE_8__["Subject"]();
+        _this.userSuggestionKeyword$ = new rxjs__WEBPACK_IMPORTED_MODULE_7__["Subject"]();
         _this.title.setTitle('Danh sách đăng ký đi muộn về sớm.');
         _this.appService.setupPage(pageId.HR, pageId.TIMEKEEPING_IN_LATE_OUT_EARLY, 'Chấm công', 'Danh sách đăng ký đi muộn về sớm.');
         // this.getPermission(this.appService);
         // this.currentUser = this.appService.currentUser;
         _this.userSuggestionKeyword$
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["debounceTime"])(500), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["distinctUntilChanged"])())
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["debounceTime"])(500), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["distinctUntilChanged"])())
             .subscribe(function (keyword) {
             // TODO: Check this later.
             // this.subscribers.searchUserSuggestion = this.userService.searchForSuggestion(keyword, '', 1, 20)
@@ -4680,25 +4632,25 @@ var TimekeepingInOutComponent = /** @class */ (function (_super) {
                 _this.type = parseInt(params.type);
             }
             if (params.id) {
-                _this.detailModal.show();
+                _this.detailModal.open();
                 _this.getDetail(params.id);
             }
             if (params.showRegister) {
                 setTimeout(function () {
-                    _this.isUpdate = false;
-                    _this.formModal.show();
+                    // this.isUpdate = false;
+                    _this.formModal.open();
                 });
             }
         });
         this.subscribers.listShift = this.workscheduleService.getMyWorkScheduleShift()
             .subscribe(function (result) {
             lodash__WEBPACK_IMPORTED_MODULE_1__["each"](result, function (myWorkScheduleShift) {
-                _this.listShift = _this.listShift.concat([new _shareds_components_nh_select_nh_select_component__WEBPACK_IMPORTED_MODULE_23__["NhSelectData"](myWorkScheduleShift.id, myWorkScheduleShift
+                _this.listShift = _this.listShift.concat([new _shareds_components_nh_select_nh_select_component__WEBPACK_IMPORTED_MODULE_20__["NhSelectData"](myWorkScheduleShift.id, myWorkScheduleShift
                         .reportName, myWorkScheduleShift)]);
             });
         });
         this.listInOut$ = this.route.data
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (result) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (result) {
             var searchResult = result.data;
             return searchResult.items;
         }));
@@ -4727,7 +4679,7 @@ var TimekeepingInOutComponent = /** @class */ (function (_super) {
             }
         });
         // Get total approved times
-        this.getTotalApprovedTimes(this.currentUser.id);
+        // this.getTotalApprovedTimes(this.currentUser.id);
     };
     TimekeepingInOutComponent.prototype.onChangeIsInLate = function (shiftModel) {
         shiftModel.patchValue({ isInLate: !shiftModel.value.isInLate });
@@ -4761,13 +4713,13 @@ var TimekeepingInOutComponent = /** @class */ (function (_super) {
         this.search(1);
     };
     TimekeepingInOutComponent.prototype.showRegisterForm = function () {
-        this.isUpdate = false;
-        this.model.reset(new _in_out_model__WEBPACK_IMPORTED_MODULE_15__["InOut"]());
-        this.formModal.show();
+        // this.isUpdate = false;
+        this.model.reset(new _in_out_model__WEBPACK_IMPORTED_MODULE_13__["InOut"]());
+        this.formModal.open();
     };
     TimekeepingInOutComponent.prototype.edit = function (inOut) {
         var _this = this;
-        this.isUpdate = true;
+        // this.isUpdate = true;
         this.inOut = inOut;
         // TODO: Check this later.
         // this.selectedUser = new UserSuggestion(inOut.userId, inOut.fullName, inOut.titleId, inOut.titleName, inOut.officeId,
@@ -4785,7 +4737,7 @@ var TimekeepingInOutComponent = /** @class */ (function (_super) {
                 });
                 _this.shifts.push(shiftModel);
             });
-            _this.formModal.show();
+            _this.formModal.open();
         }, 100);
     };
     TimekeepingInOutComponent.prototype.detail = function (inOut) {
@@ -4795,13 +4747,13 @@ var TimekeepingInOutComponent = /** @class */ (function (_super) {
                 ? shift.startTime : shift.endTime, shift.totalMin, shift.isInLate);
         });
         this.inOut = inOut;
-        this.detailModal.show();
+        this.detailModal.open();
     };
     TimekeepingInOutComponent.prototype.getDetail = function (id) {
         var _this = this;
         this.isGettingDetail = true;
         this.subscribers.getInOutDetail = this.inOutService.getDetail(id)
-            .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_26__["finalize"])(function () { return _this.isGettingDetail = false; }))
+            .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_23__["finalize"])(function () { return _this.isGettingDetail = false; }))
             .subscribe(function (result) {
             lodash__WEBPACK_IMPORTED_MODULE_1__["each"](result.info.shifts, function (shift) {
                 shift.timeText = _this.utilService.addTimeToTimeObject(shift.startTime, shift.totalMin, shift.isInLate);
@@ -4836,42 +4788,40 @@ var TimekeepingInOutComponent = /** @class */ (function (_super) {
         this.renderFilterLink();
         this.spinnerService.show();
         this.listInOut$ = this.inOutService.search(this.month, this.year, this.type, this.userId, this.isConfirm, this.currentPage, this.pageSize)
-            .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_26__["finalize"])(function () { return _this.spinnerService.hide(); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["map"])(function (result) {
-            _this.totalRows$ = new rxjs__WEBPACK_IMPORTED_MODULE_8__["Observable"](function (observable) { return observable.next(result.totalRows); });
+            .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_23__["finalize"])(function () { return _this.spinnerService.hide(); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (result) {
+            _this.totalRows$ = new rxjs__WEBPACK_IMPORTED_MODULE_7__["Observable"](function (observable) { return observable.next(result.totalRows); });
             return result.items;
         }));
     };
     TimekeepingInOutComponent.prototype.save = function () {
-        var _this = this;
-        var isValid = this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages, true);
-        if (isValid) {
-            // Kiểm tra ca đăng ký có bị lặp không.
-            this.inOut = this.model.value;
-            if (this.shifts.length === 0) {
-                this.toastr.error('Vui lòng chọn ít nhất một hình thức đi muộn hoặc về sớm.');
-                return;
-            }
-            this.spinnerService.show();
-            if (this.isUpdate) {
-                this.inOutService.update(this.inOut)
-                    .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_26__["finalize"])(function () { return _this.spinnerService.hide(); }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message);
-                    _this.model.reset(new _in_out_model__WEBPACK_IMPORTED_MODULE_15__["InOut"]());
-                    _this.search(1);
-                    _this.formModal.dismiss();
-                });
-            }
-            else {
-                this.inOutService.insert(this.inOut)
-                    .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_26__["finalize"])(function () { return _this.spinnerService.hide(); }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message);
-                    _this.model.reset();
-                    _this.search(1);
-                });
-            }
-        }
+        // const isValid = this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages, true);
+        // if (isValid) {
+        //     // Kiểm tra ca đăng ký có bị lặp không.
+        //     this.inOut = this.model.value;
+        //     if (this.shifts.length === 0) {
+        //         this.toastr.error('Vui lòng chọn ít nhất một hình thức đi muộn hoặc về sớm.');
+        //         return;
+        //     }
+        //     this.spinnerService.show();
+        //     // if (this.isUpdate) {
+        //     //     this.inOutService.update(this.inOut)
+        //     //         .pipe(finalize(() => this.spinnerService.hide()))
+        //     //         .subscribe((result: IActionResultResponse) => {
+        //     //             this.toastr.success(result.message);
+        //     //             this.model.reset(new InOut());
+        //     //             this.search(1);
+        //     //             this.formModal.dismiss();
+        //     //         });
+        //     // } else {
+        //     //     this.inOutService.insert(this.inOut)
+        //     //         .pipe(finalize(() => this.spinnerService.hide()))
+        //     //         .subscribe((result: IActionResultResponse) => {
+        //     //             this.toastr.success(result.message);
+        //     //             this.model.reset();
+        //     //             this.search(1);
+        //     //         });
+        //     // }
+        // }
     };
     TimekeepingInOutComponent.prototype.approve = function (shift, isApprove) {
         if (!isApprove) {
@@ -4896,10 +4846,10 @@ var TimekeepingInOutComponent = /** @class */ (function (_super) {
     };
     TimekeepingInOutComponent.prototype.confirm = function () {
         var _this = this;
-        var inLateOutEarlyUpdateApproveStatus = new _in_late_out_early_update_approve_status_model__WEBPACK_IMPORTED_MODULE_24__["InLateOutEarlyUpdateApproveStatusModel"]();
+        var inLateOutEarlyUpdateApproveStatus = new _in_late_out_early_update_approve_status_model__WEBPACK_IMPORTED_MODULE_21__["InLateOutEarlyUpdateApproveStatusModel"]();
         inLateOutEarlyUpdateApproveStatus.id = this.inOut.id;
         inLateOutEarlyUpdateApproveStatus.shifts = this.inOut.shifts.map(function (shift) {
-            return new _in_late_out_early_update_approve_status_model__WEBPACK_IMPORTED_MODULE_24__["InLateOutEarlyUpdateApproveStatusShiftModel"](shift.shiftId, shift.isInLate, shift.isApprove, shift.declineReason);
+            return new _in_late_out_early_update_approve_status_model__WEBPACK_IMPORTED_MODULE_21__["InLateOutEarlyUpdateApproveStatusShiftModel"](shift.shiftId, shift.isInLate, shift.isApprove, shift.declineReason);
         });
         var totalUnApproveInValidCount = lodash__WEBPACK_IMPORTED_MODULE_1__["countBy"](inLateOutEarlyUpdateApproveStatus.shifts, function (shift) {
             return !shift.isApprove && !shift.declineReason;
@@ -4910,7 +4860,7 @@ var TimekeepingInOutComponent = /** @class */ (function (_super) {
         }
         this.spinnerService.show();
         this.inOutService.approve(inLateOutEarlyUpdateApproveStatus)
-            .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_26__["finalize"])(function () { return _this.spinnerService.hide(); }))
+            .pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_23__["finalize"])(function () { return _this.spinnerService.hide(); }))
             .subscribe(function (result) {
             _this.toastr.success(result.message);
             _this.inOut.isConfirmed = true;
@@ -4930,62 +4880,60 @@ var TimekeepingInOutComponent = /** @class */ (function (_super) {
         });
     };
     TimekeepingInOutComponent.prototype.buildShiftForm = function () {
-        var _this = this;
         var shiftForm = this.fb.group({
             'isInLate': [this.shift.isInLate, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required
                 ]],
             'shiftId': [this.shift.shiftId, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required
                 ]],
             'startTime': [this.shift.startTime],
             'endTime': [this.shift.endTime],
             'totalMin': [this.shift.totalMin, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required,
                     this.numberValidators.isValid
                 ]],
             'reason': [this.shift.reason, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required,
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(500)
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].maxLength(500)
                 ]],
             'timeText': [this.shift.timeText]
         });
-        this.model.valueChanges.subscribe(function () { return _this.utilService.onValueChanged(shiftForm, _this.formErrors, _this.validationMessages); });
+        // this.model.valueChanges.subscribe(() => this.utilService.onValueChanged(shiftForm, this.formErrors, this.validationMessages));
         return shiftForm;
     };
     TimekeepingInOutComponent.prototype.buildForm = function () {
-        var _this = this;
         this.model = this.fb.group({
             'id': [this.inOut.id],
             'userId': [this.inOut.userId],
             'registerDate': [this.inOut.registerDate, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required
                 ]],
             'shifts': this.fb.array([])
         });
-        this.formErrors = this.utilService.renderFormError([
-            'registerDate',
-            { 'shifts': ['shiftId', 'totalMin', 'reason'] }
-        ]);
-        this.validationMessages = {
-            'registerDate': {
-                'required': 'Vui lòng chọn ngày xin đi trễ về sớm.'
-            },
-            'shifts': {
-                'shiftId': {
-                    'required': 'Vui lòng chọn ca làm việc',
-                },
-                'totalMin': {
-                    'required': 'Vui lòng nhập số phút xin đi muộn về sớm.',
-                    'isValid': 'Số phút xin đi muộn về sớm phải là số.'
-                },
-                'reason': {
-                    'required': 'Vui lòng nhập lý do xin đi muộn về sớm.',
-                    'maxlength': 'Lý do xin đi muộn về sớm không được phép vượt quá 500 ký tự.'
-                },
-            }
-        };
-        this.model.valueChanges.subscribe(function () { return _this.utilService.onValueChanged(_this.model, _this.formErrors, _this.validationMessages); });
+        // this.formErrors = this.utilService.renderFormError([
+        //     'registerDate',
+        //     {'shifts': ['shiftId', 'totalMin', 'reason']}
+        // ]);
+        // this.validationMessages = {
+        //     'registerDate': {
+        //         'required': 'Vui lòng chọn ngày xin đi trễ về sớm.'
+        //     },
+        //     'shifts': {
+        //         'shiftId': {
+        //             'required': 'Vui lòng chọn ca làm việc',
+        //         },
+        //         'totalMin': {
+        //             'required': 'Vui lòng nhập số phút xin đi muộn về sớm.',
+        //             'isValid': 'Số phút xin đi muộn về sớm phải là số.'
+        //         },
+        //         'reason': {
+        //             'required': 'Vui lòng nhập lý do xin đi muộn về sớm.',
+        //             'maxlength': 'Lý do xin đi muộn về sớm không được phép vượt quá 500 ký tự.'
+        //         },
+        //     }
+        // };
+        // this.model.valueChanges.subscribe(() => this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages));
     };
     TimekeepingInOutComponent.prototype.getStatusText = function (status) {
         return status === this.STATUS.WAITING_MANAGER_APPROVE ? 'Chờ QLTT phê duyệt'
@@ -4994,21 +4942,21 @@ var TimekeepingInOutComponent = /** @class */ (function (_super) {
     TimekeepingInOutComponent.prototype.renderFilterLink = function () {
         var path = '/timekeeping/in-out';
         var query = this.utilService.renderLocationFilter([
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_25__["FilterLink"]('type', this.type),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_25__["FilterLink"]('month', this.month),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_25__["FilterLink"]('year', this.year),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_25__["FilterLink"]('userId', this.userId)
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_22__["FilterLink"]('type', this.type),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_22__["FilterLink"]('month', this.month),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_22__["FilterLink"]('year', this.year),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_22__["FilterLink"]('userId', this.userId)
         ]);
         this.location.go(path, query);
     };
     TimekeepingInOutComponent.prototype.initShiftValidators = function () {
         var validators = {
             totalMin: [
-                _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required,
+                _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required,
                 this.numberValidators.isValid
             ],
             reason: [
-                _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required
+                _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required
             ]
         };
         return validators;
@@ -5027,38 +4975,35 @@ var TimekeepingInOutComponent = /** @class */ (function (_super) {
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('formModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_14__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_12__["NhModalComponent"])
     ], TimekeepingInOutComponent.prototype, "formModal", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('detailModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_14__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_12__["NhModalComponent"])
     ], TimekeepingInOutComponent.prototype, "detailModal", void 0);
     TimekeepingInOutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-timkeeping-in-out',
             template: __webpack_require__(/*! ./timekeeping-in-out.component.html */ "./src/app/modules/timekeeping/in-out/timekeeping-in-out.component.html"),
-            providers: [_angular_common__WEBPACK_IMPORTED_MODULE_10__["Location"], { provide: _angular_common__WEBPACK_IMPORTED_MODULE_10__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_10__["PathLocationStrategy"] },
-                _validators_number_validator__WEBPACK_IMPORTED_MODULE_12__["NumberValidator"]]
+            providers: [_angular_common__WEBPACK_IMPORTED_MODULE_9__["Location"], { provide: _angular_common__WEBPACK_IMPORTED_MODULE_9__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_9__["PathLocationStrategy"] },
+                _validators_number_validator__WEBPACK_IMPORTED_MODULE_11__["NumberValidator"]]
         }),
-        Object(_shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_13__["DestroySubscribers"])(),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_27__["CheckPermission"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_16__["PAGE_ID"])),
-        __metadata("design:paramtypes", [Object, _angular_common__WEBPACK_IMPORTED_MODULE_10__["Location"],
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__["Title"],
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_14__["PAGE_ID"])),
+        __metadata("design:paramtypes", [Object, _angular_common__WEBPACK_IMPORTED_MODULE_9__["Location"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["Title"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormBuilder"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_17__["AppService"],
-            _validators_number_validator__WEBPACK_IMPORTED_MODULE_12__["NumberValidator"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_18__["UtilService"],
-            _hr_user_services_user_service__WEBPACK_IMPORTED_MODULE_19__["UserService"],
-            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_11__["SpinnerService"],
-            _timekeeping_in_out_service__WEBPACK_IMPORTED_MODULE_20__["TimekeepingInOutService"],
-            _config_timekeeping_config_service__WEBPACK_IMPORTED_MODULE_21__["TimekeepingConfigService"],
-            _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_22__["TimekeepingWorkScheduleService"]])
+            _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"],
+            _validators_number_validator__WEBPACK_IMPORTED_MODULE_11__["NumberValidator"],
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_15__["UtilService"],
+            _hr_user_services_user_service__WEBPACK_IMPORTED_MODULE_16__["UserService"],
+            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_10__["SpinnerService"],
+            _timekeeping_in_out_service__WEBPACK_IMPORTED_MODULE_17__["TimekeepingInOutService"],
+            _config_timekeeping_config_service__WEBPACK_IMPORTED_MODULE_18__["TimekeepingConfigService"],
+            _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_19__["TimekeepingWorkScheduleService"]])
     ], TimekeepingInOutComponent);
     return TimekeepingInOutComponent;
-}(_base_component__WEBPACK_IMPORTED_MODULE_4__["BaseComponent"]));
+}(_base_list_component__WEBPACK_IMPORTED_MODULE_24__["BaseListComponent"]));
 
 
 
@@ -5180,7 +5125,7 @@ var OvertimeRegister = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <form action=\"\" class=\"form-inline\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Vui lòng nhập tên nhân viên cần tìm\"\r\n                       (keyup)=\"keyword = keywordInput.value\" #keywordInput/>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select [data]=\"listMonth\" [title]=\"'-- Chọn tháng'\"\r\n                           (onSelectItem)=\"onSelectMonth($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select [data]=\"listYear\" [title]=\"'-- Chọn năm --'\"\r\n                           (onSelectItem)=\"onSelectYear($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button class=\"btn blue\">\r\n                    <i class=\"fa-spinner fa-pulse\" *ngIf=\"isSearching\"></i>\r\n                    <i class=\"fa fa-search\" *ngIf=\"!isSearching\"></i>\r\n                </button>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button class=\"btn blue\" (click)=\"showRegisterFormModal()\">\r\n                    <i class=\"fa fa-plus\"></i>\r\n                    Đăng ký\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-hover table-striped\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center w50\">#</th>\r\n                    <th class=\"center\">Nhân viên</th>\r\n                    <th class=\"center\">Ngày đăng ký</th>\r\n                    <th class=\"center\">Thời gian thêm giờ</th>\r\n                    <th class=\"center w100\">Trạng thái</th>\r\n                    <th class=\"center\">Hành động</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let item of listOvertimeRegisters\">\r\n                    <td class=\"center\">{{(currentPage - 1) * pageSize + i + 1}}</td>\r\n                    <td>{{item.fullName}}</td>\r\n                    <td>{{item.registerTime | dateTimeFormat:'DD/MM/YYYY HH:mm'}}</td>\r\n                    <td>{{item.totalMinutes}}</td>\r\n                    <td>{{item.statusText}}</td>\r\n                    <td>\r\n                        <div class=\"btn-group btn-group-circle btn-group-solid\"\r\n                             *ngIf=\"currentUser?.id === item.managerUserId && item.status === STATUS.WAITING_FOR_MANAGER_APRPOVE; else readOnlyTemplate\">\r\n                            <button type=\"button\" class=\"btn red btn-outline\"\r\n                                    (click)=\"approve(item, false)\">\r\n                                <i class=\"fa fa-times\"></i>\r\n                            </button>\r\n                            <button type=\"button\" class=\"btn green btn-outline\"\r\n                                    (click)=\"approve(item, true)\">\r\n                                <i class=\"fa fa-check\"></i>\r\n                            </button>\r\n                            <button type=\"button\" class=\"btn blue btn-outline\" (click)=\"detail(item)\"><i\r\n                                class=\"fa fa-eye\"></i></button>\r\n                        </div>\r\n\r\n                        <ng-template #readOnlyTemplate>\r\n                            <button type=\"button\" class=\"btn blue outline\" (click)=\"showDetail(item)\"><i\r\n                                class=\"fa fa-eye\"></i></button>\r\n                        </ng-template>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<nh-modal #registerFormModal>\r\n    <nh-modal-header>\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-calendar\"></i>\r\n            {{isUpdate ? 'Cập nhật thông tin đăng ký làm thêm giờ.' : 'Thêm mới ca làm thêm giờ.'}}\r\n        </h4>\r\n    </nh-modal-header>\r\n    <form action=\"\" class=\"form-horizontal\" (ngSubmit)=\"save()\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Chọn nhân viên\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Chọn ca làm việc\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Số giờ làm thêm\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ghi chú\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nội dung ghi chú\"></textarea>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n    </form>\r\n    <nh-modal-footer></nh-modal-footer>\r\n</nh-modal>\r\n\r\n<nh-modal #detailModal>\r\n    <nh-modal-header>\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-register\"></i>\r\n            Chi tiết đăng ký làm thêm giờ của nhân viên: \"{{overtimeRegister?.fullName}}\"\r\n        </h4>\r\n    </nh-modal-header>\r\n    <form action=\"\" class=\"form-horizontal\" (ngSubmit)=\"save()\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"\r\n                       ghmLabel=\"Chọn nhân viên\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"\r\n                       ghmLabel=\"Chọn ca làm việc\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"\r\n                       ghmLabel=\"Số giờ làm thêm\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"\r\n                       ghmLabel=\"Ghi chú\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nội dung ghi chú\"></textarea>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n    </form>\r\n    <nh-modal-footer></nh-modal-footer>\r\n</nh-modal>\r\n"
+module.exports = "<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <form action=\"\" class=\"form-inline\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group\">\r\n                <!--<input type=\"text\" class=\"form-control\" placeholder=\"Vui lòng nhập tên nhân viên cần tìm\"-->\r\n                       <!--(keyup)=\"keyword = keywordInput.value\" #keywordInput/>-->\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select [data]=\"listMonth\" [title]=\"'-- Chọn tháng'\"\r\n                           (onSelectItem)=\"onSelectMonth($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select [data]=\"listYear\" [title]=\"'-- Chọn năm --'\"\r\n                           (onSelectItem)=\"onSelectYear($event)\"></nh-select>\r\n            </div>\r\n            <!--<div class=\"form-group\">-->\r\n                <!--<button class=\"btn blue\">-->\r\n                    <!--<i class=\"fa-spinner fa-pulse\" *ngIf=\"isSearching\"></i>-->\r\n                    <!--<i class=\"fa fa-search\" *ngIf=\"!isSearching\"></i>-->\r\n                <!--</button>-->\r\n            <!--</div>-->\r\n            <div class=\"form-group\">\r\n                <button class=\"btn blue\" (click)=\"showRegisterFormModal()\">\r\n                    <i class=\"fa fa-plus\"></i>\r\n                    Đăng ký\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-hover table-striped\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center w50\">#</th>\r\n                    <th class=\"center\">Nhân viên</th>\r\n                    <th class=\"center\">Ngày đăng ký</th>\r\n                    <th class=\"center\">Thời gian thêm giờ</th>\r\n                    <th class=\"center w100\">Trạng thái</th>\r\n                    <th class=\"center\">Hành động</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <!--<tr *ngFor=\"let item of listOvertimeRegisters\">-->\r\n                    <!--<td class=\"center\">{{(currentPage - 1) * pageSize + i + 1}}</td>-->\r\n                    <!--<td>{{item.fullName}}</td>-->\r\n                    <!--<td>{{item.registerTime | dateTimeFormat:'DD/MM/YYYY HH:mm'}}</td>-->\r\n                    <!--<td>{{item.totalMinutes}}</td>-->\r\n                    <!--<td>{{item.statusText}}</td>-->\r\n                    <!--<td>-->\r\n                        <!--<div class=\"btn-group btn-group-circle btn-group-solid\"-->\r\n                             <!--*ngIf=\"currentUser?.id === item.managerUserId && item.status === STATUS.WAITING_FOR_MANAGER_APRPOVE; else readOnlyTemplate\">-->\r\n                            <!--<button type=\"button\" class=\"btn red btn-outline\"-->\r\n                                    <!--(click)=\"approve(item, false)\">-->\r\n                                <!--<i class=\"fa fa-times\"></i>-->\r\n                            <!--</button>-->\r\n                            <!--<button type=\"button\" class=\"btn green btn-outline\"-->\r\n                                    <!--(click)=\"approve(item, true)\">-->\r\n                                <!--<i class=\"fa fa-check\"></i>-->\r\n                            <!--</button>-->\r\n                            <!--<button type=\"button\" class=\"btn blue btn-outline\" (click)=\"detail(item)\"><i-->\r\n                                <!--class=\"fa fa-eye\"></i></button>-->\r\n                        <!--</div>-->\r\n\r\n                        <!--<ng-template #readOnlyTemplate>-->\r\n                            <!--<button type=\"button\" class=\"btn blue outline\" (click)=\"showDetail(item)\"><i-->\r\n                                <!--class=\"fa fa-eye\"></i></button>-->\r\n                        <!--</ng-template>-->\r\n                    <!--</td>-->\r\n                <!--</tr>-->\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<nh-modal #registerFormModal>\r\n    <nh-modal-header>\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-calendar\"></i>\r\n            {{isUpdate ? 'Cập nhật thông tin đăng ký làm thêm giờ.' : 'Thêm mới ca làm thêm giờ.'}}\r\n        </h4>\r\n    </nh-modal-header>\r\n    <form action=\"\" class=\"form-horizontal\" (ngSubmit)=\"save()\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Chọn nhân viên\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Chọn ca làm việc\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Số giờ làm thêm\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ghi chú\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nội dung ghi chú\"></textarea>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n    </form>\r\n    <nh-modal-footer></nh-modal-footer>\r\n</nh-modal>\r\n\r\n<nh-modal #detailModal>\r\n    <nh-modal-header>\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-register\"></i>\r\n            Chi tiết đăng ký làm thêm giờ của nhân viên: \"{{overtimeRegister?.fullName}}\"\r\n        </h4>\r\n    </nh-modal-header>\r\n    <form action=\"\" class=\"form-horizontal\" (ngSubmit)=\"save()\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"\r\n                       ghmLabel=\"Chọn nhân viên\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"\r\n                       ghmLabel=\"Chọn ca làm việc\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"\r\n                       ghmLabel=\"Số giờ làm thêm\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"\r\n                       ghmLabel=\"Ghi chú\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nội dung ghi chú\"></textarea>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n    </form>\r\n    <nh-modal-footer></nh-modal-footer>\r\n</nh-modal>\r\n"
 
 /***/ }),
 
@@ -5195,17 +5140,15 @@ module.exports = "<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n      
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimekeepingOvertimeRegisterComponent", function() { return TimekeepingOvertimeRegisterComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../base.component */ "./src/app/base.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var _overtime_register_model__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./overtime-register.model */ "./src/app/modules/timekeeping/overtime-register/overtime-register.model.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
+/* harmony import */ var _overtime_register_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./overtime-register.model */ "./src/app/modules/timekeeping/overtime-register/overtime-register.model.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var _base_form_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../base-form.component */ "./src/app/base-form.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -5237,19 +5180,16 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
 var TimekeepingOvertimeRegisterComponent = /** @class */ (function (_super) {
     __extends(TimekeepingOvertimeRegisterComponent, _super);
-    function TimekeepingOvertimeRegisterComponent(pageId, title, fb, appService, utilService) {
+    function TimekeepingOvertimeRegisterComponent(pageId, title, fb, utilService) {
         var _this = _super.call(this) || this;
         _this.title = title;
         _this.fb = fb;
-        _this.appService = appService;
         _this.utilService = utilService;
         _this.listMonth = [];
         _this.listYear = [];
-        _this.overtimeRegister = new _overtime_register_model__WEBPACK_IMPORTED_MODULE_6__["OvertimeRegister"]();
+        _this.overtimeRegister = new _overtime_register_model__WEBPACK_IMPORTED_MODULE_5__["OvertimeRegister"]();
         _this.listOvertimeRegisters = [];
         _this.STATUS = {
             WAITING_FOR_MANAGER_APRPOVE: 0,
@@ -5269,22 +5209,22 @@ var TimekeepingOvertimeRegisterComponent = /** @class */ (function (_super) {
         this.listYear = this.utilService.initListYear();
     };
     TimekeepingOvertimeRegisterComponent.prototype.search = function (currentPage) {
-        this.currentPage = currentPage;
-        this.isSearching = true;
+        // this.currentPage = currentPage;
+        // this.isSearching = true;
     };
     TimekeepingOvertimeRegisterComponent.prototype.edit = function (overtimeRegister) {
         this.model.patchValue(overtimeRegister);
-        this.registerFormModal.show();
+        this.registerFormModal.open();
     };
     TimekeepingOvertimeRegisterComponent.prototype.detail = function (overtimeRegister) {
         this.overtimeRegister = overtimeRegister;
-        this.detailModal.show();
+        this.detailModal.open();
     };
     TimekeepingOvertimeRegisterComponent.prototype.delete = function (overtimeRegister) {
     };
     TimekeepingOvertimeRegisterComponent.prototype.approve = function (overtimeRegister, isApprove) {
         if (!isApprove) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+            sweetalert2__WEBPACK_IMPORTED_MODULE_3___default()({
                 title: "B\u1EA1n c\u00F3 ch\u1EAFc ch\u1EAFn mu\u1ED1n kh\u00F4ng duy\u1EC7t cho \u0111\u01A1n \u0111\u0103ng k\u00FD l\u00E0m th\u00EAm gi\u1EDD c\u1EE7a: \"" + overtimeRegister.fullName + "\"",
                 text: 'Lưu ý: sau khi xóa bạn không thể lấy lại được người dùng này.',
                 type: 'warning',
@@ -5293,7 +5233,7 @@ var TimekeepingOvertimeRegisterComponent = /** @class */ (function (_super) {
                 confirmButtonText: 'Đồng ý',
                 cancelButtonText: 'Hủy bỏ'
             }).then(function () {
-                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default()({
                     input: 'textarea',
                     inputPlaceholder: 'Vui lòng cho biết lý do vì sao không duyệt!',
                     showCancelButton: true,
@@ -5329,18 +5269,19 @@ var TimekeepingOvertimeRegisterComponent = /** @class */ (function (_super) {
     };
     TimekeepingOvertimeRegisterComponent.prototype.updateApproveStatus = function (id, isApprove, note) {
         // this.overtimeRegisterService.approve(id, isApprove, note)
-        // .subscribe(() => this.toastr.success(isApprove ? 'Duyệt đăng ký làm thêm giờ thành công.' : 'Không duyệt đăng ký làm thêm giờ thành công.'));
+        // .subscribe(() => this.toastr.success(isApprove ? 'Duyệt đăng ký làm thêm giờ thành công.'
+        // : 'Không duyệt đăng ký làm thêm giờ thành công.'));
     };
     TimekeepingOvertimeRegisterComponent.prototype.builForm = function () {
         this.model = this.fb.group({
             'userId': [this.overtimeRegister.userId, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required
                 ]],
             'note': [this.overtimeRegister.note, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(500)
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].maxLength(500)
                 ]],
             'totalMinutes': [this.overtimeRegister.totalMinutes, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required
                 ]]
         });
         this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages);
@@ -5361,26 +5302,24 @@ var TimekeepingOvertimeRegisterComponent = /** @class */ (function (_super) {
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('registerFormModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_5__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_4__["NhModalComponent"])
     ], TimekeepingOvertimeRegisterComponent.prototype, "registerFormModal", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('detailModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_5__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_4__["NhModalComponent"])
     ], TimekeepingOvertimeRegisterComponent.prototype, "detailModal", void 0);
     TimekeepingOvertimeRegisterComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-timekeeping-overtime-register',
             template: __webpack_require__(/*! ./timekeeping-overtime-register.component.html */ "./src/app/modules/timekeeping/overtime-register/timekeeping-overtime-register.component.html"),
         }),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_10__["CheckPermission"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_7__["PAGE_ID"])),
-        __metadata("design:paramtypes", [Object, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["Title"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_8__["AppService"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_9__["UtilService"]])
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_6__["PAGE_ID"])),
+        __metadata("design:paramtypes", [Object, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["Title"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_7__["UtilService"]])
     ], TimekeepingOvertimeRegisterComponent);
     return TimekeepingOvertimeRegisterComponent;
-}(_base_component__WEBPACK_IMPORTED_MODULE_1__["BaseComponent"]));
+}(_base_form_component__WEBPACK_IMPORTED_MODULE_8__["BaseFormComponent"]));
 
 
 
@@ -5393,7 +5332,7 @@ var TimekeepingOvertimeRegisterComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"btn-group\" role=\"group\">\r\n            <button type=\"button\" class=\"btn btn-default\" [class.active]=\"type === 0\" (click)=\"changeType(0)\">\r\n                Đơn của tôi\r\n            </button>\r\n            <!--<button type=\"button\" class=\"btn btn-default\"-->\r\n                    <!--*ngIf=\"currentUser?.isLeader == 1 || currentUser?.isLeader == 2\"-->\r\n                    <!--[class.active]=\"type === 1\" (click)=\"changeType(1)\">-->\r\n                <!--Duyệt đăng ký-->\r\n            <!--</button>-->\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <form action=\"\" class=\"form-inline\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Vui lòng nhập tên nhân viên cần tìm\"\r\n                       (keyup)=\"keyword = keywordInput.value\" #keywordInput/>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    title=\"-- Chọn tháng\"\r\n                    [data]=\"listMonth\"\r\n                    [value]=\"month\"\r\n                    (onSelectItem)=\"onSelectMonth($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    title=\"-- Chọn năm --\"\r\n                    [data]=\"listYear\"\r\n                    [value]=\"year\"\r\n                    (onSelectItem)=\"onSelectYear($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    title=\"-- Trạng thái --\"\r\n                    [data]=\"[{id: 0, name: 'Mới'},{id: 1, name: 'QLTT đã duyệt'},{id: 2, name: 'QLTT không duyệt'}]\"\r\n                    (onSelectItem)=\"onSelectStatus($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button mat-raised-button color=\"primary\">\r\n                    <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSearching\"></i>\r\n                    <i class=\"fa fa-search\" *ngIf=\"!isSearching\"></i>\r\n                </button>\r\n            </div>\r\n            <div class=\"form-group pull-right\">\r\n                <button type=\"button\" mat-raised-button color=\"primary\" (click)=\"showRegisterModal()\">\r\n                    <i class=\"fa fa-plus\"></i>\r\n                    Đăng ký\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-hover table-striped table-main\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center w50\">#</th>\r\n                    <th class=\"center\">Nhân viên</th>\r\n                    <th class=\"center\">Ngày đăng ký</th>\r\n                    <th class=\"center\">Thời gian thêm giờ</th>\r\n                    <th class=\"center w150\">Trạng thái</th>\r\n                    <th class=\"center\">Hành động</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let item of $listOvertimeRegisters | async; let i = index\">\r\n                    <td class=\"center middle\">{{(currentPage - 1) * pageSize + i + 1}}</td>\r\n                    <td class=\"middle\">\r\n                        <a href=\"javascript://\" (click)=\"detail(item)\">{{item.fullName}}</a>\r\n                    </td>\r\n                    <td class=\"middle\">{{item.registerTime | dateTimeFormat:'DD/MM/YYYY HH:mm'}}</td>\r\n                    <td class=\"middle text-right\">{{item.totalMinutesText}}</td>\r\n                    <td class=\"middle\"\r\n                        [class.color-red]=\"item.status === STATUS.MANAGER_DECLINE\"\r\n                        [class.color-green]=\"item.status === STATUS.MANAGER_APPROVE\"\r\n                    >{{item.statusText}}\r\n                    </td>\r\n                    <td class=\"center middle w150\">\r\n                        <button type=\"button\" mat-mini-fab color=\"default\" (click)=\"detail(item)\"><i\r\n                            class=\"fa fa-eye\"></i></button>\r\n\r\n                        <ng-container\r\n                            *ngIf=\"currentUser?.id === item.managerUserId && item.status === STATUS.WAITING_MANAGER_APPROVE\">\r\n                            <button type=\"button\" mat-mini-fab color=\"primary\"\r\n                                    (click)=\"approve(item, true)\">\r\n                                <i class=\"fa fa-check\"></i>\r\n                            </button>\r\n                            <button type=\"button\" mat-mini-fab color=\"warn\"\r\n                                    (click)=\"approve(item, false)\">\r\n                                <i class=\"fa fa-times\"></i>\r\n                            </button>\r\n                        </ng-container>\r\n\r\n                        <ng-container\r\n                            *ngIf=\"currentUser?.id === item.userId && item.status === STATUS.WAITING_MANAGER_APPROVE\">\r\n                            <button type=\"button\" mat-mini-fab color=\"primary\" (click)=\"edit(item)\">\r\n                                <i class=\"fa fa-edit\"></i></button>\r\n                            <button type=\"button\" mat-mini-fab color=\"warn\" (click)=\"delete(item)\"><i\r\n                                class=\"fa fa-trash-o\"></i></button>\r\n                        </ng-container>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n    <ghm-paging [totalRows]=\"totalRows$ | async\" [currentPage]=\"currentPage\" [pageShow]=\"6\" (pageClick)=\"search($event)\"\r\n            [isDisabled]=\"isSearching\" [pageName]=\"'đăng ký làm thêm giờ'\"></ghm-paging>\r\n</div>\r\n\r\n<nh-modal #registerFormModal size=\"md\">\r\n    <nh-modal-header>\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-icon-clock\"></i>\r\n            Đăng ký làm thêm giờ\r\n        </h4>\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\" *ngIf=\"(listShift$ | async)?.length === 0 || (listShift$ | async) == null\">\r\n                <div class=\"col-sm-12\">\r\n                    <div class=\"alert alert-danger\">\r\n                        Xin lỗi: Bạn chưa được cấu hình ca làm việc. Vui lòng liên hệ với bộ phận nhân sự để được trợ giúp.\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ngày\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <nh-date\r\n                        title=\"Chọn thời gian\"\r\n                        formControlName=\"registerDate\"\r\n                        [type]=\"'inputButton'\"></nh-date>\r\n                    <div class=\"alert alert-danger\"\r\n                         *ngIf=\"formErrors.registerDate\">\r\n                        {{ formErrors.registerDate}}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ca làm việc\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <div class=\"btn-group\" role=\"group\" *ngFor=\"let shift of listShift$ | async\">\r\n                        <button type=\"button\" class=\"btn btn-default\"\r\n                                [class.active]=\"model.value.shiftId === shift.id\"\r\n                                (click)=\"model.patchValue({shiftId: shift.id})\">{{shift.name}}\r\n                        </button>\r\n                    </div>\r\n                    <div class=\"alert alert-danger\"\r\n                         *ngIf=\"formErrors.shiftId\">\r\n                        {{ formErrors.shiftId}}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Từ\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-4\">\r\n                    <div class=\"row\" formGroupName=\"from\">\r\n                        <div class=\"col-sm-12\">\r\n                            <div class=\"input-group-input\" role=\"group\">\r\n                                <input class=\"form-control w70\" formControlName=\"hour\" placeholder=\"Giờ\" type=\"text\">\r\n                                <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                <input class=\"form-control w70\" formControlName=\"minute\" placeholder=\"Phút\" type=\"text\">\r\n                            </div>\r\n                            <div class=\"alert alert-danger\"\r\n                                 *ngIf=\"formErrors.from.hour || formErrors.from.minute\">\r\n                                {{ formErrors.from.hour }} {{ formErrors.from.minute }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <label ghmLabel=\"Đến\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-4\">\r\n                    <div class=\"row\" formGroupName=\"to\">\r\n                        <div class=\"col-sm-12\">\r\n                            <div class=\"input-group-input\" role=\"group\">\r\n                                <input class=\"form-control w70\" formControlName=\"hour\" placeholder=\"Giờ\" type=\"text\">\r\n                                <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                <input class=\"form-control w70\" formControlName=\"minute\" placeholder=\"Phút\" type=\"text\">\r\n                            </div>\r\n                            <div class=\"alert alert-danger\"\r\n                                 *ngIf=\"formErrors.to.hour || formErrors.to.minute\">\r\n                                {{ formErrors.to.hour }} {{ formErrors.to.minute }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <div class=\"col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3\">\r\n                    Tổng số phút: {{totalMinutes}}\r\n                    <span *ngIf=\"totalMinutes == ''\" class=\"color-red\">Giá trị thời gian \"từ\" không được phép lớn hơn giá trị thời gian \"đến\"</span>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Hình thức\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <nh-select\r\n                        title=\"-- Chọn hình thức làm thêm --\"\r\n                        [data]=\"listType\"\r\n                        formControlName=\"type\">\r\n                    </nh-select>\r\n                    <div class=\"alert alert-danger\"\r\n                         *ngIf=\"formErrors.type\">\r\n                        {{ formErrors.type}}\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nội dung ghi chú\"\r\n                              formControlName=\"note\"></textarea>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button mat-raised-button color=\"primary\">\r\n                <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>\r\n                <i class=\"fa fa-send\" *ngIf=\"!isSaving\"></i>\r\n                Gửi\r\n            </button>\r\n            <button mat-raised-button type=\"button\" nh-dismiss=\"true\">\r\n                <i class=\"fa fa-times\"></i>\r\n                Đóng lại\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n\r\n<nh-modal #detailModal size=\"md\" (onHidden)=\"onDetailModalHidden()\">\r\n    <nh-modal-header>\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-register\"></i>\r\n            Chi tiết đăng ký làm thêm giờ của nhân viên: \"{{overtimeRegister?.fullName}}\"\r\n        </h4>\r\n    </nh-modal-header>\r\n\r\n    <nh-modal-content class=\"form\">\r\n        <div class=\"form-horizontal form-bordered\">\r\n            <div class=\"form-body\">\r\n                <div class=\"form-group\">\r\n                    <label for=\"\" [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Ngày\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\">\r\n                            {{overtimeRegister?.registerDate | dateTimeFormat:'DD/MM/YYYY hh:mm'}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"\" [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Ca làm việc\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\">\r\n                            {{overtimeRegister?.shiftReportName}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"\" [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Từ\"></label>\r\n                    <div class=\"col-sm-2\">\r\n                        <div class=\"bold\">\r\n                            {{overtimeRegister?.from.hour}}\r\n                            <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                            {{overtimeRegister?.from.minute}}\r\n                        </div>\r\n                    </div>\r\n                    <label for=\"\" [class]=\"'col-sm-2 control-label'\"\r\n                           text=\"Đến\"></label>\r\n                    <div class=\"col-sm-4\">\r\n                        <div class=\"bold\">\r\n                            {{overtimeRegister?.to.hour}}\r\n                            <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                            {{overtimeRegister?.to.minute}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Tổng số phút\"></label>\r\n                    <div class=\"col-sm-9 col-md-10\">\r\n                        <div class=\"bold\">\r\n                            {{overtimeRegister?.totalMinutesText}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"\" [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Hình thức\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\">\r\n                            {{overtimeRegister?.typeText}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"\" [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Ghi chú\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold height-auto\">\r\n                            {{overtimeRegister?.note}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"\" [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Trạng thái\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\"\r\n                             [class.color-green]=\"overtimeRegister?.status === STATUS.MANAGER_APPROVE\"\r\n                             [class.color-red]=\"overtimeRegister?.status === STATUS.MANAGER_DECLINE\">\r\n                            {{overtimeRegister?.statusText}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\" *ngIf=\"overtimeRegister.status === STATUS.MANAGER_DECLINE\">\r\n                    <label [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Lý do\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold auto-height\">\r\n                            {{overtimeRegister?.declineReason}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </nh-modal-content>\r\n    <nh-modal-footer>\r\n        <button mat-raised-button color=\"primary\"\r\n                *ngIf=\"currentUser?.id === overtimeRegister?.managerUserId && overtimeRegister?.status === STATUS.WAITING_MANAGER_APPROVE\"\r\n                (click)=\"approve(overtimeRegister, true, true)\">\r\n            <i class=\"fa fa-check\"></i>\r\n            Duyệt\r\n        </button>\r\n        <button mat-raised-button color=\"warn\"\r\n                *ngIf=\"currentUser?.id === overtimeRegister?.managerUserId && overtimeRegister?.status === STATUS.WAITING_MANAGER_APPROVE\"\r\n                (click)=\"approve(overtimeRegister, false, true)\">\r\n            <i class=\"fa fa-times\"></i>\r\n            Không duyệt\r\n        </button>\r\n        <button type=\"button\" mat-raised-button color=\"default\" nh-dismiss=\"true\">\r\n            <i class=\"fa fa-times\"></i>\r\n            Đóng lại\r\n        </button>\r\n    </nh-modal-footer>\r\n</nh-modal>\r\n"
+module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"btn-group\" role=\"group\">\r\n            <button type=\"button\" class=\"btn btn-default\" [class.active]=\"type === 0\" (click)=\"changeType(0)\">\r\n                Đơn của tôi\r\n            </button>\r\n            <!--<button type=\"button\" class=\"btn btn-default\"-->\r\n                    <!--*ngIf=\"currentUser?.isLeader == 1 || currentUser?.isLeader == 2\"-->\r\n                    <!--[class.active]=\"type === 1\" (click)=\"changeType(1)\">-->\r\n                <!--Duyệt đăng ký-->\r\n            <!--</button>-->\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <form action=\"\" class=\"form-inline\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Vui lòng nhập tên nhân viên cần tìm\"\r\n                       (keyup)=\"keyword = keywordInput.value\" #keywordInput/>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    title=\"-- Chọn tháng\"\r\n                    [data]=\"listMonth\"\r\n                    [value]=\"month\"\r\n                    (onSelectItem)=\"onSelectMonth($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    title=\"-- Chọn năm --\"\r\n                    [data]=\"listYear\"\r\n                    [value]=\"year\"\r\n                    (onSelectItem)=\"onSelectYear($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-select\r\n                    title=\"-- Trạng thái --\"\r\n                    [data]=\"[{id: 0, name: 'Mới'},{id: 1, name: 'QLTT đã duyệt'},{id: 2, name: 'QLTT không duyệt'}]\"\r\n                    (onSelectItem)=\"onSelectStatus($event)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button mat-raised-button color=\"primary\">\r\n                    <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSearching\"></i>\r\n                    <i class=\"fa fa-search\" *ngIf=\"!isSearching\"></i>\r\n                </button>\r\n            </div>\r\n            <div class=\"form-group pull-right\">\r\n                <button type=\"button\" mat-raised-button color=\"primary\" (click)=\"showRegisterModal()\">\r\n                    <i class=\"fa fa-plus\"></i>\r\n                    Đăng ký\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-hover table-striped table-main\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center w50\">#</th>\r\n                    <th class=\"center\">Nhân viên</th>\r\n                    <th class=\"center\">Ngày đăng ký</th>\r\n                    <th class=\"center\">Thời gian thêm giờ</th>\r\n                    <th class=\"center w150\">Trạng thái</th>\r\n                    <th class=\"center\">Hành động</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let item of $listOvertimeRegisters | async; let i = index\">\r\n                    <td class=\"center middle\">{{(currentPage - 1) * pageSize + i + 1}}</td>\r\n                    <td class=\"middle\">\r\n                        <a href=\"javascript://\" (click)=\"detail(item)\">{{item.fullName}}</a>\r\n                    </td>\r\n                    <td class=\"middle\">{{item.registerTime | dateTimeFormat:'DD/MM/YYYY HH:mm'}}</td>\r\n                    <td class=\"middle text-right\">{{item.totalMinutesText}}</td>\r\n                    <td class=\"middle\"\r\n                        [class.color-red]=\"item.status === STATUS.MANAGER_DECLINE\"\r\n                        [class.color-green]=\"item.status === STATUS.MANAGER_APPROVE\"\r\n                    >{{item.statusText}}\r\n                    </td>\r\n                    <td class=\"center middle w150\">\r\n                        <button type=\"button\" mat-mini-fab color=\"default\" (click)=\"detail(item)\"><i\r\n                            class=\"fa fa-eye\"></i></button>\r\n\r\n                        <ng-container\r\n                            *ngIf=\"currentUser?.id === item.managerUserId && item.status === STATUS.WAITING_MANAGER_APPROVE\">\r\n                            <button type=\"button\" mat-mini-fab color=\"primary\"\r\n                                    (click)=\"approve(item, true)\">\r\n                                <i class=\"fa fa-check\"></i>\r\n                            </button>\r\n                            <button type=\"button\" mat-mini-fab color=\"warn\"\r\n                                    (click)=\"approve(item, false)\">\r\n                                <i class=\"fa fa-times\"></i>\r\n                            </button>\r\n                        </ng-container>\r\n\r\n                        <ng-container\r\n                            *ngIf=\"currentUser?.id === item.userId && item.status === STATUS.WAITING_MANAGER_APPROVE\">\r\n                            <button type=\"button\" mat-mini-fab color=\"primary\" (click)=\"edit(item)\">\r\n                                <i class=\"fa fa-edit\"></i></button>\r\n                            <button type=\"button\" mat-mini-fab color=\"warn\" (click)=\"delete(item)\"><i\r\n                                class=\"fa fa-trash-o\"></i></button>\r\n                        </ng-container>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n    <ghm-paging [totalRows]=\"totalRows$ | async\" [currentPage]=\"currentPage\" [pageShow]=\"6\" (pageClick)=\"search($event)\"\r\n            [isDisabled]=\"isSearching\" [pageName]=\"'đăng ký làm thêm giờ'\"></ghm-paging>\r\n</div>\r\n\r\n<nh-modal #registerFormModal size=\"md\">\r\n    <nh-modal-header>\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-icon-clock\"></i>\r\n            Đăng ký làm thêm giờ\r\n        </h4>\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\" *ngIf=\"(listShift$ | async)?.length === 0 || (listShift$ | async) == null\">\r\n                <div class=\"col-sm-12\">\r\n                    <div class=\"alert alert-danger\">\r\n                        Xin lỗi: Bạn chưa được cấu hình ca làm việc. Vui lòng liên hệ với bộ phận nhân sự để được trợ giúp.\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ngày\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <nh-date\r\n                        title=\"Chọn thời gian\"\r\n                        formControlName=\"registerDate\"\r\n                        [type]=\"'inputButton'\"></nh-date>\r\n                    <!--<div class=\"alert alert-danger\"-->\r\n                         <!--*ngIf=\"formErrors.registerDate\">-->\r\n                        <!--{{ formErrors.registerDate}}-->\r\n                    <!--</div>-->\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Ca làm việc\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <div class=\"btn-group\" role=\"group\" *ngFor=\"let shift of listShift$ | async\">\r\n                        <button type=\"button\" class=\"btn btn-default\"\r\n                                [class.active]=\"model.value.shiftId === shift.id\"\r\n                                (click)=\"model.patchValue({shiftId: shift.id})\">{{shift.name}}\r\n                        </button>\r\n                    </div>\r\n                    <!--<div class=\"alert alert-danger\"-->\r\n                         <!--*ngIf=\"formErrors.shiftId\">-->\r\n                        <!--{{ formErrors.shiftId}}-->\r\n                    <!--</div>-->\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Từ\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-4\">\r\n                    <div class=\"row\" formGroupName=\"from\">\r\n                        <div class=\"col-sm-12\">\r\n                            <div class=\"input-group-input\" role=\"group\">\r\n                                <input class=\"form-control w70\" formControlName=\"hour\" placeholder=\"Giờ\" type=\"text\">\r\n                                <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                <input class=\"form-control w70\" formControlName=\"minute\" placeholder=\"Phút\" type=\"text\">\r\n                            </div>\r\n                            <!--<div class=\"alert alert-danger\"-->\r\n                                 <!--*ngIf=\"formErrors.from.hour || formErrors.from.minute\">-->\r\n                                <!--{{ formErrors.from.hour }} {{ formErrors.from.minute }}-->\r\n                            <!--</div>-->\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <label ghmLabel=\"Đến\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-sm-4\">\r\n                    <div class=\"row\" formGroupName=\"to\">\r\n                        <div class=\"col-sm-12\">\r\n                            <div class=\"input-group-input\" role=\"group\">\r\n                                <input class=\"form-control w70\" formControlName=\"hour\" placeholder=\"Giờ\" type=\"text\">\r\n                                <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                                <input class=\"form-control w70\" formControlName=\"minute\" placeholder=\"Phút\" type=\"text\">\r\n                            </div>\r\n                            <!--<div class=\"alert alert-danger\"-->\r\n                                 <!--*ngIf=\"formErrors.to.hour || formErrors.to.minute\">-->\r\n                                <!--{{ formErrors.to.hour }} {{ formErrors.to.minute }}-->\r\n                            <!--</div>-->\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <div class=\"col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3\">\r\n                    Tổng số phút: {{totalMinutes}}\r\n                    <span *ngIf=\"totalMinutes == ''\" class=\"color-red\">Giá trị thời gian \"từ\" không được phép lớn hơn giá trị thời gian \"đến\"</span>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"Hình thức\" class=\"col-md-2 col-sm-3 control-label\" [required]=\"true\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <nh-select\r\n                        title=\"-- Chọn hình thức làm thêm --\"\r\n                        [data]=\"listType\"\r\n                        formControlName=\"type\">\r\n                    </nh-select>\r\n                    <!--<div class=\"alert alert-danger\"-->\r\n                         <!--*ngIf=\"formErrors.type\">-->\r\n                        <!--{{ formErrors.type}}-->\r\n                    <!--</div>-->\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label ghmLabel=\"\" class=\"col-md-2 col-sm-3 control-label\"></label>\r\n                <div class=\"col-md-10 col-sm-9\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nội dung ghi chú\"\r\n                              formControlName=\"note\"></textarea>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <!--<nh-modal-footer>-->\r\n            <!--<button mat-raised-button color=\"primary\">-->\r\n                <!--<i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSaving\"></i>-->\r\n                <!--<i class=\"fa fa-send\" *ngIf=\"!isSaving\"></i>-->\r\n                <!--Gửi-->\r\n            <!--</button>-->\r\n            <!--<button mat-raised-button type=\"button\" nh-dismiss=\"true\">-->\r\n                <!--<i class=\"fa fa-times\"></i>-->\r\n                <!--Đóng lại-->\r\n            <!--</button>-->\r\n        <!--</nh-modal-footer>-->\r\n    </form>\r\n</nh-modal>\r\n\r\n<nh-modal #detailModal size=\"md\" (hidden)=\"onDetailModalHidden()\">\r\n    <nh-modal-header>\r\n        <h4 class=\"title\">\r\n            <i class=\"fa fa-register\"></i>\r\n            Chi tiết đăng ký làm thêm giờ của nhân viên: \"{{overtimeRegister?.fullName}}\"\r\n        </h4>\r\n    </nh-modal-header>\r\n\r\n    <nh-modal-content class=\"form\">\r\n        <div class=\"form-horizontal form-bordered\">\r\n            <div class=\"form-body\">\r\n                <div class=\"form-group\">\r\n                    <label for=\"\" [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Ngày\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\">\r\n                            {{overtimeRegister?.registerDate | dateTimeFormat:'DD/MM/YYYY hh:mm'}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"\" [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Ca làm việc\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\">\r\n                            {{overtimeRegister?.shiftReportName}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"\" [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Từ\"></label>\r\n                    <div class=\"col-sm-2\">\r\n                        <div class=\"bold\">\r\n                            {{overtimeRegister?.from.hour}}\r\n                            <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                            {{overtimeRegister?.from.minute}}\r\n                        </div>\r\n                    </div>\r\n                    <label for=\"\" [class]=\"'col-sm-2 control-label'\"\r\n                           text=\"Đến\"></label>\r\n                    <div class=\"col-sm-4\">\r\n                        <div class=\"bold\">\r\n                            {{overtimeRegister?.to.hour}}\r\n                            <span class=\"cm-pdt-10 cm-pdl-5 cm-pdr-5\">:</span>\r\n                            {{overtimeRegister?.to.minute}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Tổng số phút\"></label>\r\n                    <div class=\"col-sm-9 col-md-10\">\r\n                        <div class=\"bold\">\r\n                            {{overtimeRegister?.totalMinutesText}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"\" [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Hình thức\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\">\r\n                            {{overtimeRegister?.typeText}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"\" [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Ghi chú\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold height-auto\">\r\n                            {{overtimeRegister?.note}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"\" [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Trạng thái\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold\"\r\n                             [class.color-green]=\"overtimeRegister?.status === STATUS.MANAGER_APPROVE\"\r\n                             [class.color-red]=\"overtimeRegister?.status === STATUS.MANAGER_DECLINE\">\r\n                            {{overtimeRegister?.statusText}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\" *ngIf=\"overtimeRegister.status === STATUS.MANAGER_DECLINE\">\r\n                    <label [class]=\"'col-md-2 col-sm-3 control-label'\"\r\n                           text=\"Lý do\"></label>\r\n                    <div class=\"col-md-10 col-sm-9\">\r\n                        <div class=\"bold auto-height\">\r\n                            {{overtimeRegister?.declineReason}}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </nh-modal-content>\r\n    <nh-modal-footer>\r\n        <button mat-raised-button color=\"primary\"\r\n                *ngIf=\"currentUser?.id === overtimeRegister?.managerUserId && overtimeRegister?.status === STATUS.WAITING_MANAGER_APPROVE\"\r\n                (click)=\"approve(overtimeRegister, true, true)\">\r\n            <i class=\"fa fa-check\"></i>\r\n            Duyệt\r\n        </button>\r\n        <button mat-raised-button color=\"warn\"\r\n                *ngIf=\"currentUser?.id === overtimeRegister?.managerUserId && overtimeRegister?.status === STATUS.WAITING_MANAGER_APPROVE\"\r\n                (click)=\"approve(overtimeRegister, false, true)\">\r\n            <i class=\"fa fa-times\"></i>\r\n            Không duyệt\r\n        </button>\r\n        <button type=\"button\" mat-raised-button color=\"default\" nh-dismiss=\"true\">\r\n            <i class=\"fa fa-times\"></i>\r\n            Đóng lại\r\n        </button>\r\n    </nh-modal-footer>\r\n</nh-modal>\r\n"
 
 /***/ }),
 
@@ -5408,27 +5347,24 @@ module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimekeepingOvertimeComponent", function() { return TimekeepingOvertimeComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../base.component */ "./src/app/base.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _timekeeping_overtime_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./timekeeping-overtime.service */ "./src/app/modules/timekeeping/overtime-register/timekeeping-overtime.service.ts");
-/* harmony import */ var _validators_number_validator__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../validators/number.validator */ "./src/app/validators/number.validator.ts");
-/* harmony import */ var _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../config/work-schedule/timekeeping-work-schedule.service */ "./src/app/modules/timekeeping/config/work-schedule/timekeeping-work-schedule.service.ts");
-/* harmony import */ var _shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../shareds/decorator/destroy-subscribes.decorator */ "./src/app/shareds/decorator/destroy-subscribes.decorator.ts");
-/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var _overtime_register_model__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./overtime-register.model */ "./src/app/modules/timekeeping/overtime-register/overtime-register.model.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../../shareds/models/filter-link.model */ "./src/app/shareds/models/filter-link.model.ts");
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _timekeeping_overtime_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./timekeeping-overtime.service */ "./src/app/modules/timekeeping/overtime-register/timekeeping-overtime.service.ts");
+/* harmony import */ var _validators_number_validator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../validators/number.validator */ "./src/app/validators/number.validator.ts");
+/* harmony import */ var _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../config/work-schedule/timekeeping-work-schedule.service */ "./src/app/modules/timekeeping/config/work-schedule/timekeeping-work-schedule.service.ts");
+/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
+/* harmony import */ var _overtime_register_model__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./overtime-register.model */ "./src/app/modules/timekeeping/overtime-register/overtime-register.model.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../shareds/models/filter-link.model */ "./src/app/shareds/models/filter-link.model.ts");
+/* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../base-list.component */ "./src/app/base-list.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -5469,19 +5405,15 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
-
 var TimekeepingOvertimeComponent = /** @class */ (function (_super) {
     __extends(TimekeepingOvertimeComponent, _super);
-    function TimekeepingOvertimeComponent(pageId, location, title, route, fb, toastr, appService, utilService, overtimeService, numberValidator, workscheduleService) {
+    function TimekeepingOvertimeComponent(pageId, location, title, route, fb, toastr, utilService, overtimeService, numberValidator, workscheduleService) {
         var _this = _super.call(this) || this;
         _this.location = location;
         _this.title = title;
         _this.route = route;
         _this.fb = fb;
         _this.toastr = toastr;
-        _this.appService = appService;
         _this.utilService = utilService;
         _this.overtimeService = overtimeService;
         _this.numberValidator = numberValidator;
@@ -5492,7 +5424,7 @@ var TimekeepingOvertimeComponent = /** @class */ (function (_super) {
             { id: 1, name: 'Làm thủ thuật' },
             { id: 2, name: 'Tăng cường' },
             { id: 3, name: 'Trực trưa' }];
-        _this.overtimeRegister = new _overtime_register_model__WEBPACK_IMPORTED_MODULE_15__["OvertimeRegister"]();
+        _this.overtimeRegister = new _overtime_register_model__WEBPACK_IMPORTED_MODULE_13__["OvertimeRegister"]();
         _this.type = 0;
         _this.isGettingDetail = false;
         _this.research = false;
@@ -5522,20 +5454,20 @@ var TimekeepingOvertimeComponent = /** @class */ (function (_super) {
             }
             if (params.showRegister) {
                 setTimeout(function () {
-                    _this.isUpdate = false;
-                    _this.model.reset(new _overtime_register_model__WEBPACK_IMPORTED_MODULE_15__["OvertimeRegister"]());
-                    _this.registerFormModal.show();
+                    // this.isUpdate = false;
+                    _this.model.reset(new _overtime_register_model__WEBPACK_IMPORTED_MODULE_13__["OvertimeRegister"]());
+                    _this.registerFormModal.open();
                 });
             }
         });
         this.listShift$ = this.workscheduleService.getMyWorkScheduleShift()
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(function (result) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (result) {
             return result;
-        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["share"])());
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["share"])());
         this.$listOvertimeRegisters = this.route.data
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(function (result) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (result) {
             var overtimes = result.data;
-            _this.totalRows$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Observable"](function (o) { return o.next(overtimes.totalRows); });
+            _this.totalRows$ = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Observable"](function (o) { return o.next(overtimes.totalRows); });
             return overtimes.items.map(function (item) {
                 item.statusText = _this.getStatusText(item.status);
                 var totalHour = Math.floor(item.totalMinutes / 60);
@@ -5561,9 +5493,9 @@ var TimekeepingOvertimeComponent = /** @class */ (function (_super) {
         var _this = this;
         setTimeout(function () {
             _this.isGettingDetail = true;
-            _this.detailModal.show();
+            _this.detailModal.open();
             _this.overtimeService.getDetail(id)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["finalize"])(function () { return _this.isGettingDetail = false; }))
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(function () { return _this.isGettingDetail = false; }))
                 .subscribe(function (overTimeRegister) {
                 _this.overtimeRegister = overTimeRegister;
                 _this.overtimeRegister.statusText = _this.getStatusText(overTimeRegister.status);
@@ -5590,8 +5522,8 @@ var TimekeepingOvertimeComponent = /** @class */ (function (_super) {
         this.isSearching = true;
         this.renderFilterLink();
         this.$listOvertimeRegisters = this.overtimeService.search(this.userId, this.month, this.year, this.type, this.status, this.currentPage, this.pageSize)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["finalize"])(function () { return _this.isSearching = false; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(function (result) {
-            _this.totalRows$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Observable"](function (o) { return o.next(result.totalRows); });
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(function () { return _this.isSearching = false; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (result) {
+            _this.totalRows$ = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Observable"](function (o) { return o.next(result.totalRows); });
             return result.items.map(function (item) {
                 item.statusText = _this.getStatusText(item.status);
                 var totalHour = Math.floor(item.totalMinutes / 60);
@@ -5602,21 +5534,21 @@ var TimekeepingOvertimeComponent = /** @class */ (function (_super) {
         }));
     };
     TimekeepingOvertimeComponent.prototype.showRegisterModal = function () {
-        this.isUpdate = false;
-        this.model.reset(new _overtime_register_model__WEBPACK_IMPORTED_MODULE_15__["OvertimeRegister"]());
-        this.registerFormModal.show();
+        // this.isUpdate = false;
+        this.model.reset(new _overtime_register_model__WEBPACK_IMPORTED_MODULE_13__["OvertimeRegister"]());
+        this.registerFormModal.open();
     };
     TimekeepingOvertimeComponent.prototype.edit = function (overtimeRegister) {
-        this.isUpdate = true;
+        // this.isUpdate = true;
         this.model.patchValue(overtimeRegister);
-        this.registerFormModal.show();
+        this.registerFormModal.open();
     };
     TimekeepingOvertimeComponent.prototype.detail = function (overtimeRegister) {
         this.overtimeRegister = overtimeRegister;
         this.overtimeRegister.statusText = this.getStatusText(this.overtimeRegister.status);
         this.overtimeRegister.totalMinutesText = this.calculateHour(this.overtimeRegister.totalMinutes);
         this.overtimeRegister.typeText = this.getTypeText(this.overtimeRegister.type);
-        this.detailModal.show();
+        this.detailModal.open();
     };
     TimekeepingOvertimeComponent.prototype.delete = function (overtimeRegister) {
         // swal({
@@ -5668,35 +5600,35 @@ var TimekeepingOvertimeComponent = /** @class */ (function (_super) {
         // }
     };
     TimekeepingOvertimeComponent.prototype.save = function () {
-        var _this = this;
         this.overtimeRegister = this.model.value;
-        var isValid = this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages, true);
-        if (isValid) {
-            if (this.totalMinutes === '') {
-                this.toastr.error('Giá trị thời gian "từ" không được phép lớn hơn giá trị thời gian "đến".');
-                return;
-            }
-            this.overtimeRegister = this.model.value;
-            this.isSaving = true;
-            if (this.isUpdate) {
-                this.subscribers.update = this.overtimeService.update(this.overtimeRegister)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["finalize"])(function () { return _this.isSaving = false; }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message, result.title);
-                    _this.registerFormModal.dismiss();
-                    _this.search(_this.currentPage);
-                });
-            }
-            else {
-                this.subscribers.insert = this.overtimeService.insert(this.overtimeRegister)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["finalize"])(function () { return _this.isSaving = false; }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message, result.title);
-                    _this.model.reset();
-                    _this.search(_this.currentPage);
-                });
-            }
-        }
+        // const isValid = this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages, true);
+        // if (isValid) {
+        //     if (this.totalMinutes === '') {
+        //         this.toastr.error('Giá trị thời gian "từ" không được phép lớn hơn giá trị thời gian "đến".');
+        //         return;
+        //     }
+        //
+        //     this.overtimeRegister = this.model.value;
+        //     // this.isSaving = true;
+        //
+        //     // if (this.isUpdate) {
+        //     //     this.subscribers.update = this.overtimeService.update(this.overtimeRegister)
+        //     //         .pipe(finalize(() => this.isSaving = false))
+        //     //         .subscribe((result: IResponseResult) => {
+        //     //             this.toastr.success(result.message, result.title);
+        //     //             this.registerFormModal.dismiss();
+        //     //             this.search(this.currentPage);
+        //     //         });
+        //     // } else {
+        //     //     this.subscribers.insert = this.overtimeService.insert(this.overtimeRegister)
+        //     //         .pipe(finalize(() => this.isSaving = false))
+        //     //         .subscribe((result: IResponseResult) => {
+        //     //             this.toastr.success(result.message, result.title);
+        //     //             this.model.reset();
+        //     //             this.search(this.currentPage);
+        //     //         });
+        //     // }
+        // }
     };
     TimekeepingOvertimeComponent.prototype.changeType = function (type) {
         this.type = type;
@@ -5719,47 +5651,47 @@ var TimekeepingOvertimeComponent = /** @class */ (function (_super) {
             'id': [this.overtimeRegister.id],
             'userId': [this.overtimeRegister.userId],
             'registerDate': [this.overtimeRegister.registerDate, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required
                 ]],
             'shiftId': [this.overtimeRegister.shiftId, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required
                 ]],
             'from': this.fb.group({
                 'hour': [this.overtimeRegister.from.hour, [
-                        _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
+                        _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required,
                         this.numberValidator.isValid,
                         this.numberValidator.range({ fromValue: 0, toValue: 23 })
                     ]],
                 'minute': [this.overtimeRegister.from.minute, [
-                        _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
+                        _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required,
                         this.numberValidator.isValid,
                         this.numberValidator.range({ fromValue: 0, toValue: 59 })
                     ]]
             }),
             'to': this.fb.group({
                 'hour': [this.overtimeRegister.to.hour, [
-                        _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
+                        _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required,
                         this.numberValidator.isValid,
                         this.numberValidator.range({ fromValue: 0, toValue: 23 })
                     ]],
                 'minute': [this.overtimeRegister.to.minute, [
-                        _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
+                        _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required,
                         this.numberValidator.isValid,
                         this.numberValidator.range({ fromValue: 0, toValue: 59 })
                     ]]
             }),
             'totalMinutes': [this.overtimeRegister.totalMinutes, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required
                 ]],
             'type': [this.overtimeRegister.type, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required
                 ]],
             'note': [this.overtimeRegister.note, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(500)
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].maxLength(500)
                 ]]
         });
         this.model.valueChanges.subscribe(function (values) {
-            _this.utilService.onValueChanged(_this.model, _this.formErrors, _this.validationMessages);
+            // this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages);
             var from = values.from;
             var to = values.to;
             if (from.hour && from.minute && to.hour && to.minute) {
@@ -5771,61 +5703,62 @@ var TimekeepingOvertimeComponent = /** @class */ (function (_super) {
         });
     };
     TimekeepingOvertimeComponent.prototype.renderFormValidation = function () {
-        this.formErrors = {
-            'shiftId': '',
-            'registerDate': '',
-            'note': '',
-            'type': '',
-            'from': this.utilService.renderFormError(['hour', 'minute']),
-            'to': this.utilService.renderFormError(['hour', 'minute'])
-        };
-        this.validationMessages = {
-            'shiftId': {
-                'required': 'Vui lòng chọn ca làm việc.'
-            },
-            'registerDate': {
-                'required': 'Vui lòng chọn ngày làm thêm.'
-            },
-            'note': {
-                'maxLength': 'Ghi chú không được phép vượt quá 500 ký tự.'
-            },
-            'type': {
-                'required': 'Vui lòng chọn hình thức xin nghỉ.'
-            },
-            'from': {
-                'hour': {
-                    'required': 'Vui lòng nhập giờ bắt đầu làm thêm.',
-                    'isValid': 'Giờ xin nghỉ phải là số bắt đầu làm thêm.',
-                    'invalidRange': 'Giờ bắt đầu làm thêm phải từ 0 đến 23 giờ.'
-                },
-                'minute': {
-                    'required': 'Vui lòng nhập phút bắt đầu làm thêm giờ.',
-                    'isValid': 'Phút bắt đầu làm thêm giờ phải là số.',
-                    'invalidRange': 'Phút bắt làm thêm giờ phải từ 0 đến 59 phút.'
-                }
-            },
-            'to': {
-                'hour': {
-                    'required': 'Vui lòng nhập giờ kết thúc làm thêm giờ.',
-                    'isValid': 'Giờ kết thúc làm thêm giờ phải là số.',
-                    'invalidRange': 'Giờ kết thúc làm thêm giờ phải từ 0 đến 23 giờ.'
-                },
-                'minute': {
-                    'required': 'Vui lòng nhập số phút kết thúc làm thêm giờ.',
-                    'isValid': 'Phút kết thúc làm thêm giờ phải là số.',
-                    'invalidRange': 'Phút làm thêm giờ phải từ 0 đến 59 phút.'
-                }
-            }
-        };
+        // this.formErrors = {
+        //     'shiftId': '',
+        //     'registerDate': '',
+        //     'note': '',
+        //     'type': '',
+        //     'from': this.utilService.renderFormError(['hour', 'minute']),
+        //     'to': this.utilService.renderFormError(['hour', 'minute'])
+        // };
+        //
+        // this.validationMessages = {
+        //     'shiftId': {
+        //         'required': 'Vui lòng chọn ca làm việc.'
+        //     },
+        //     'registerDate': {
+        //         'required': 'Vui lòng chọn ngày làm thêm.'
+        //     },
+        //     'note': {
+        //         'maxLength': 'Ghi chú không được phép vượt quá 500 ký tự.'
+        //     },
+        //     'type': {
+        //         'required': 'Vui lòng chọn hình thức xin nghỉ.'
+        //     },
+        //     'from': {
+        //         'hour': {
+        //             'required': 'Vui lòng nhập giờ bắt đầu làm thêm.',
+        //             'isValid': 'Giờ xin nghỉ phải là số bắt đầu làm thêm.',
+        //             'invalidRange': 'Giờ bắt đầu làm thêm phải từ 0 đến 23 giờ.'
+        //         },
+        //         'minute': {
+        //             'required': 'Vui lòng nhập phút bắt đầu làm thêm giờ.',
+        //             'isValid': 'Phút bắt đầu làm thêm giờ phải là số.',
+        //             'invalidRange': 'Phút bắt làm thêm giờ phải từ 0 đến 59 phút.'
+        //         }
+        //     },
+        //     'to': {
+        //         'hour': {
+        //             'required': 'Vui lòng nhập giờ kết thúc làm thêm giờ.',
+        //             'isValid': 'Giờ kết thúc làm thêm giờ phải là số.',
+        //             'invalidRange': 'Giờ kết thúc làm thêm giờ phải từ 0 đến 23 giờ.'
+        //         },
+        //         'minute': {
+        //             'required': 'Vui lòng nhập số phút kết thúc làm thêm giờ.',
+        //             'isValid': 'Phút kết thúc làm thêm giờ phải là số.',
+        //             'invalidRange': 'Phút làm thêm giờ phải từ 0 đến 59 phút.'
+        //         }
+        //     }
+        // };
     };
     TimekeepingOvertimeComponent.prototype.renderFilterLink = function () {
         var path = '/timekeeping/overtime';
         var query = this.utilService.renderLocationFilter([
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('type', this.type),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('month', this.month),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('year', this.year),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('userId', this.userId),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_19__["FilterLink"]('status', this.status)
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('type', this.type),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('month', this.month),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('year', this.year),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('userId', this.userId),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_16__["FilterLink"]('status', this.status)
         ]);
         this.location.go(path, query);
     };
@@ -5840,41 +5773,38 @@ var TimekeepingOvertimeComponent = /** @class */ (function (_super) {
                 : status === this.STATUS.MANAGER_DECLINE ? 'QLTT không duyệt' : '';
     };
     TimekeepingOvertimeComponent.prototype.getTypeText = function (type) {
-        return lodash__WEBPACK_IMPORTED_MODULE_9__["find"](this.listType, function (item) {
+        return lodash__WEBPACK_IMPORTED_MODULE_8__["find"](this.listType, function (item) {
             return item.id === type;
         }).name;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('registerFormModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_14__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_12__["NhModalComponent"])
     ], TimekeepingOvertimeComponent.prototype, "registerFormModal", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('detailModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_14__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_12__["NhModalComponent"])
     ], TimekeepingOvertimeComponent.prototype, "detailModal", void 0);
     TimekeepingOvertimeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-timekeeping-overtime-register',
             template: __webpack_require__(/*! ./timekeeping-overtime.component.html */ "./src/app/modules/timekeeping/overtime-register/timekeeping-overtime.component.html"),
-            providers: [_timekeeping_overtime_service__WEBPACK_IMPORTED_MODULE_10__["TimekeepingOvertimeService"], _validators_number_validator__WEBPACK_IMPORTED_MODULE_11__["NumberValidator"], _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_12__["TimekeepingWorkScheduleService"],
-                _angular_common__WEBPACK_IMPORTED_MODULE_8__["Location"], { provide: _angular_common__WEBPACK_IMPORTED_MODULE_8__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_8__["PathLocationStrategy"] }]
+            providers: [_timekeeping_overtime_service__WEBPACK_IMPORTED_MODULE_9__["TimekeepingOvertimeService"], _validators_number_validator__WEBPACK_IMPORTED_MODULE_10__["NumberValidator"], _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_11__["TimekeepingWorkScheduleService"],
+                _angular_common__WEBPACK_IMPORTED_MODULE_7__["Location"], { provide: _angular_common__WEBPACK_IMPORTED_MODULE_7__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_7__["PathLocationStrategy"] }]
         }),
-        Object(_shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_13__["DestroySubscribers"])(),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_20__["CheckPermission"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_16__["PAGE_ID"])),
-        __metadata("design:paramtypes", [Object, _angular_common__WEBPACK_IMPORTED_MODULE_8__["Location"],
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["Title"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_17__["AppService"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_18__["UtilService"],
-            _timekeeping_overtime_service__WEBPACK_IMPORTED_MODULE_10__["TimekeepingOvertimeService"],
-            _validators_number_validator__WEBPACK_IMPORTED_MODULE_11__["NumberValidator"],
-            _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_12__["TimekeepingWorkScheduleService"]])
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_14__["PAGE_ID"])),
+        __metadata("design:paramtypes", [Object, _angular_common__WEBPACK_IMPORTED_MODULE_7__["Location"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["Title"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_3__["ToastrService"],
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_15__["UtilService"],
+            _timekeeping_overtime_service__WEBPACK_IMPORTED_MODULE_9__["TimekeepingOvertimeService"],
+            _validators_number_validator__WEBPACK_IMPORTED_MODULE_10__["NumberValidator"],
+            _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_11__["TimekeepingWorkScheduleService"]])
     ], TimekeepingOvertimeComponent);
     return TimekeepingOvertimeComponent;
-}(_base_component__WEBPACK_IMPORTED_MODULE_1__["BaseComponent"]));
+}(_base_list_component__WEBPACK_IMPORTED_MODULE_17__["BaseListComponent"]));
 
 
 
@@ -5988,25 +5918,23 @@ module.exports = "<!--&lt;!&ndash;BEGIN: View my timesheet&ndash;&gt;-->\r\n<!--
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimekeepingTimesheetComponent", function() { return TimekeepingTimesheetComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../base.component */ "./src/app/base.component.ts");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
-/* harmony import */ var _shareds_services_helper_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../shareds/services/helper.service */ "./src/app/shareds/services/helper.service.ts");
-/* harmony import */ var _timesheet_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./timesheet.service */ "./src/app/modules/timekeeping/time-sheet/timesheet.service.ts");
-/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./view-models/report-by-shift.viewmodel */ "./src/app/modules/timekeeping/time-sheet/view-models/report-by-shift.viewmodel.ts");
-/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../configs/app.config */ "./src/app/configs/app.config.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
-/* harmony import */ var _hr_organization_office_services_office_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../hr/organization/office/services/office.service */ "./src/app/modules/hr/organization/office/services/office.service.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
+/* harmony import */ var _shareds_services_helper_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../shareds/services/helper.service */ "./src/app/shareds/services/helper.service.ts");
+/* harmony import */ var _timesheet_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./timesheet.service */ "./src/app/modules/timekeeping/time-sheet/timesheet.service.ts");
+/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
+/* harmony import */ var _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./view-models/report-by-shift.viewmodel */ "./src/app/modules/timekeeping/time-sheet/view-models/report-by-shift.viewmodel.ts");
+/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../configs/app.config */ "./src/app/configs/app.config.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var _hr_organization_office_services_office_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../hr/organization/office/services/office.service */ "./src/app/modules/hr/organization/office/services/office.service.ts");
+/* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../base-list.component */ "./src/app/base-list.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -6045,11 +5973,9 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
 var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
     __extends(TimekeepingTimesheetComponent, _super);
-    function TimekeepingTimesheetComponent(appConfig, pageId, title, toastr, utilService, helperService, spinnerService, appService, officeService, timeSheetService) {
+    function TimekeepingTimesheetComponent(appConfig, pageId, title, toastr, utilService, helperService, spinnerService, officeService, timeSheetService) {
         var _this = _super.call(this) || this;
         _this.appConfig = appConfig;
         _this.title = title;
@@ -6057,7 +5983,6 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
         _this.utilService = utilService;
         _this.helperService = helperService;
         _this.spinnerService = spinnerService;
-        _this.appService = appService;
         _this.officeService = officeService;
         _this.timeSheetService = timeSheetService;
         _this.officeTree = [];
@@ -6172,7 +6097,7 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
     });
     Object.defineProperty(TimekeepingTimesheetComponent.prototype, "totalValidMeal", {
         get: function () {
-            return lodash__WEBPACK_IMPORTED_MODULE_4__["sumBy"](this.listReportByMonthDetail, function (detail) {
+            return lodash__WEBPACK_IMPORTED_MODULE_3__["sumBy"](this.listReportByMonthDetail, function (detail) {
                 return detail.isValidMeal ? 1 : 0;
             });
         },
@@ -6223,7 +6148,7 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
         //     if (!this.currentUser.isAdmin && !this.isHasViewPermission) {
         //         this.officeId = this.currentUser.officeId;
         //     }
-        //     this.spinnerService.show();
+        //     this.spinnerService.open();
         //     if (this.viewType === 0) {
         //         this.initDayInMonth();
         //         this.timeSheetService.getListTimeSheet(this.keyword, this.officeId, this.month, this.year)
@@ -6252,7 +6177,7 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
     };
     TimekeepingTimesheetComponent.prototype.detail = function (shiftId, enrollNumber, fullName, workingDay) {
         if (workingDay) {
-            this.reportByShiftDetail = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_11__["ReportByShiftDetail"](shiftId, enrollNumber, fullName, workingDay.day + "/" + workingDay.month + "/" + workingDay.year, workingDay.day, workingDay.month, workingDay.year, workingDay.inDateTime, workingDay.outDateTime, workingDay.inSoonMin, workingDay.outSoonMin, workingDay.inLateMin, workingDay.outLateMin, workingDay.status, workingDay.inLatencyMin, workingDay.outLatencyMin, workingDay.inLatencyReason, workingDay.outLatencyReason);
+            this.reportByShiftDetail = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_10__["ReportByShiftDetail"](shiftId, enrollNumber, fullName, workingDay.day + "/" + workingDay.month + "/" + workingDay.year, workingDay.day, workingDay.month, workingDay.year, workingDay.inDateTime, workingDay.outDateTime, workingDay.inSoonMin, workingDay.outSoonMin, workingDay.inLateMin, workingDay.outLateMin, workingDay.status, workingDay.inLatencyMin, workingDay.outLatencyMin, workingDay.inLatencyReason, workingDay.outLatencyReason);
             // Trường hợp là lịch sử lấy về danh sách lịch sử checkin checkout
             if (this.shiftDetailViewType === 1) {
                 this.getCheckInCheckOutHistory();
@@ -6262,7 +6187,7 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
             this.toastr.error('Không có dữ liệu chấm công ca làm việc này.');
         }
         if (workingDay.status == null) {
-            this.shiftDetailModal.show();
+            this.shiftDetailModal.open();
         }
     };
     TimekeepingTimesheetComponent.prototype.markAsValid = function (isCheckIn) {
@@ -6319,25 +6244,25 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
         var _this = this;
         console.log(monthReport);
         this.reportByMonthDetail = monthReport;
-        this.reportMonthDetailModal.show();
+        this.reportMonthDetailModal.open();
         this.spinnerService.show();
-        monthReport.reportShiftAggregates = lodash__WEBPACK_IMPORTED_MODULE_4__["orderBy"](monthReport.reportShiftAggregates, ['shiftId'], ['asc']);
+        monthReport.reportShiftAggregates = lodash__WEBPACK_IMPORTED_MODULE_3__["orderBy"](monthReport.reportShiftAggregates, ['shiftId'], ['asc']);
         this.reportMonthDetail = monthReport;
         this.reportMonthDetail.totalInLateMinText = this.utilService.getHourTextFromMinute(this.reportMonthDetail.totalInLateMin);
         this.reportMonthDetail.totalInSoonMinText = this.utilService.getHourTextFromMinute(this.reportMonthDetail.totalInSoonMin);
         this.reportMonthDetail.totalOutLateMinText = this.utilService.getHourTextFromMinute(this.reportMonthDetail.totalOutLateMin);
         this.reportMonthDetail.totalOutSoonMinText = this.utilService.getHourTextFromMinute(this.reportMonthDetail.totalOutSoonMin);
         this.timeSheetService.getUserTimesheet(monthReport.enrollNumber, this.month, this.year)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(function () { return _this.spinnerService.hide(); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["finalize"])(function () { return _this.spinnerService.hide(); }))
             .subscribe(function (result) {
             _this.renderMonthDetail(result);
         });
     };
     TimekeepingTimesheetComponent.prototype.getShiftTotal = function (shift, reportShiftAggregates) {
-        var currentShiftAggregate = lodash__WEBPACK_IMPORTED_MODULE_4__["filter"](reportShiftAggregates, function (reportShiftAggregate) {
+        var currentShiftAggregate = lodash__WEBPACK_IMPORTED_MODULE_3__["filter"](reportShiftAggregates, function (reportShiftAggregate) {
             return reportShiftAggregate.shiftId === shift.shiftId;
         });
-        return lodash__WEBPACK_IMPORTED_MODULE_4__["sumBy"](currentShiftAggregate, function (o) {
+        return lodash__WEBPACK_IMPORTED_MODULE_3__["sumBy"](currentShiftAggregate, function (o) {
             return o.totalDays;
         });
     };
@@ -6345,11 +6270,11 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
         var _this = this;
         this.isLoadingPrinter = true;
         this.timeSheetService.getDataForPrint(this.officeId, this.month, this.year)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(function () { return _this.isLoadingPrinter = false; }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["finalize"])(function () { return _this.isLoadingPrinter = false; }))
             .subscribe(function (result) {
             if (result) {
-                _this.listShifts = lodash__WEBPACK_IMPORTED_MODULE_4__["orderBy"](result.listReportByMonth[0].reportShiftAggregates, ['shiftId'], ['asc']);
-                _this.listReportByMonth = lodash__WEBPACK_IMPORTED_MODULE_4__["orderBy"](lodash__WEBPACK_IMPORTED_MODULE_4__["map"](result.listReportByMonth, function (reportByMonth) {
+                _this.listShifts = lodash__WEBPACK_IMPORTED_MODULE_3__["orderBy"](result.listReportByMonth[0].reportShiftAggregates, ['shiftId'], ['asc']);
+                _this.listReportByMonth = lodash__WEBPACK_IMPORTED_MODULE_3__["orderBy"](lodash__WEBPACK_IMPORTED_MODULE_3__["map"](result.listReportByMonth, function (reportByMonth) {
                     var reportByMonthItem = reportByMonth;
                     reportByMonthItem.totalOvertimeText = _this.utilService.getHourTextFromMinute(reportByMonthItem.totalOvertime);
                     return reportByMonthItem;
@@ -6365,12 +6290,12 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
         });
     };
     TimekeepingTimesheetComponent.prototype.initDayInMonth = function () {
-        var daysInMonth = moment__WEBPACK_IMPORTED_MODULE_3__("1/" + this.month + "/" + this.year, 'DD/MM/YYYY').daysInMonth();
+        var daysInMonth = moment__WEBPACK_IMPORTED_MODULE_2__("1/" + this.month + "/" + this.year, 'DD/MM/YYYY').daysInMonth();
         this.daysInMonth = [];
         for (var i = 1; i <= daysInMonth; i++) {
             this.daysInMonth = this.daysInMonth.concat([{
                     day: i,
-                    isSunday: moment__WEBPACK_IMPORTED_MODULE_3__(i + "/" + this.month + "/" + this.year, 'DD/MM/YYYY').days() === 0
+                    isSunday: moment__WEBPACK_IMPORTED_MODULE_2__(i + "/" + this.month + "/" + this.year, 'DD/MM/YYYY').days() === 0
                 }]);
         }
     };
@@ -6380,7 +6305,7 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
         }
     };
     TimekeepingTimesheetComponent.prototype.initListYear = function () {
-        var currentYear = moment__WEBPACK_IMPORTED_MODULE_3__().year();
+        var currentYear = moment__WEBPACK_IMPORTED_MODULE_2__().year();
         for (var year = 2016; year < currentYear + 1; year++) {
             this.listYear.push({ id: year, name: year });
         }
@@ -6389,20 +6314,20 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
         var _this = this;
         this.spinnerService.show();
         this.officeService.getTree()
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(function () { return _this.spinnerService.hide(); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["finalize"])(function () { return _this.spinnerService.hide(); }))
             .subscribe(function (result) { return _this.officeTree = result; });
     };
     TimekeepingTimesheetComponent.prototype.initDefaultMonthAndYear = function () {
-        this.month = moment__WEBPACK_IMPORTED_MODULE_3__().month() + 1;
-        this.year = moment__WEBPACK_IMPORTED_MODULE_3__().year();
+        this.month = moment__WEBPACK_IMPORTED_MODULE_2__().month() + 1;
+        this.year = moment__WEBPACK_IMPORTED_MODULE_2__().year();
     };
     TimekeepingTimesheetComponent.prototype.getCheckInCheckOutHistory = function () {
         var _this = this;
         this.isLoadingHistory = true;
         this.timeSheetService.getCheckInCheckOutHistory(this.reportByShiftDetail.enrollNumber, this.reportByShiftDetail.day, this.reportByShiftDetail.month, this.reportByShiftDetail.year)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(function () { return _this.isLoadingHistory = false; }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["finalize"])(function () { return _this.isLoadingHistory = false; }))
             .subscribe(function (result) {
-            var shiftGroup = lodash__WEBPACK_IMPORTED_MODULE_4__["groupBy"](result, function (item) {
+            var shiftGroup = lodash__WEBPACK_IMPORTED_MODULE_3__["groupBy"](result, function (item) {
                 return item.shiftId;
             });
             _this.listCheckInCheckOutHistory = [];
@@ -6417,20 +6342,20 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
                     shift.forEach(function (item) {
                         history_1.checkInTimes = history_1.checkInTimes.concat([item.checkInTime]);
                     });
-                    history_1.checkInTimes = lodash__WEBPACK_IMPORTED_MODULE_4__["orderBy"](history_1.checkInTimes, ['checkInTime'], ['asc']);
+                    history_1.checkInTimes = lodash__WEBPACK_IMPORTED_MODULE_3__["orderBy"](history_1.checkInTimes, ['checkInTime'], ['asc']);
                     _this.listCheckInCheckOutHistory = _this.listCheckInCheckOutHistory.concat([history_1]);
                 }
             };
             for (var key in shiftGroup) {
                 _loop_1(key);
             }
-            _this.listCheckInCheckOutHistory = lodash__WEBPACK_IMPORTED_MODULE_4__["orderBy"](_this.listCheckInCheckOutHistory, ['shiftId'], ['asc']);
+            _this.listCheckInCheckOutHistory = lodash__WEBPACK_IMPORTED_MODULE_3__["orderBy"](_this.listCheckInCheckOutHistory, ['shiftId'], ['asc']);
         });
     };
     TimekeepingTimesheetComponent.prototype.renderMonthDetail = function (result) {
         var _this = this;
         this.listReportByMonthDetail = [];
-        var groupDays = lodash__WEBPACK_IMPORTED_MODULE_4__["groupBy"](result, function (item) {
+        var groupDays = lodash__WEBPACK_IMPORTED_MODULE_3__["groupBy"](result, function (item) {
             return item.day;
         });
         var _loop_2 = function (key) {
@@ -6462,10 +6387,10 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
                             // totalMin: item.totalWorkingMin + (item.totalOvertimeMin ? item.totalOvertimeMin : 0)
                         }]);
                 });
-                day.isValidMeal = lodash__WEBPACK_IMPORTED_MODULE_4__["sumBy"](dayDetails_1, function (item) {
+                day.isValidMeal = lodash__WEBPACK_IMPORTED_MODULE_3__["sumBy"](dayDetails_1, function (item) {
                     return item.totalWorkingMin + (item.totalOvertimeMin ? item.totalOvertimeMin : 0);
                 }) > 270;
-                day.dayDetail = lodash__WEBPACK_IMPORTED_MODULE_4__["orderBy"](dayDetails_1, ['shiftId'], ['asc']);
+                day.dayDetail = lodash__WEBPACK_IMPORTED_MODULE_3__["orderBy"](dayDetails_1, ['shiftId'], ['asc']);
                 this_1.listReportByMonthDetail = this_1.listReportByMonthDetail.concat([day]);
             }
         };
@@ -6498,9 +6423,9 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
         var _this = this;
         this.spinnerService.show();
         this.listMyTimeSheet$ = this.timeSheetService.getMyTimeSheet(this.month, this.year)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(function () { return _this.spinnerService.hide(); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (result) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["finalize"])(function () { return _this.spinnerService.hide(); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (result) {
             var listMyReportByShift = [];
-            var groupByMonth = lodash__WEBPACK_IMPORTED_MODULE_4__["groupBy"](result, function (item) {
+            var groupByMonth = lodash__WEBPACK_IMPORTED_MODULE_3__["groupBy"](result, function (item) {
                 return item.month;
             });
             if (groupByMonth) {
@@ -6508,27 +6433,27 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
                     if (groupByMonth.hasOwnProperty(key)) {
                         var groupByMonthItems = groupByMonth[key];
                         var firstItem = groupByMonthItems[0];
-                        var myReportByShift = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_11__["MyReportByShift"](firstItem.enrollNumber, firstItem.userId, firstItem.fullName, firstItem.month, firstItem.year, []);
-                        var groupByShifts = lodash__WEBPACK_IMPORTED_MODULE_4__["groupBy"](groupByMonthItems, function (monthItem) {
+                        var myReportByShift = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_10__["MyReportByShift"](firstItem.enrollNumber, firstItem.userId, firstItem.fullName, firstItem.month, firstItem.year, []);
+                        var groupByShifts = lodash__WEBPACK_IMPORTED_MODULE_3__["groupBy"](groupByMonthItems, function (monthItem) {
                             return monthItem.shiftId;
                         });
                         if (groupByShifts) {
                             var _loop_3 = function (shiftKey) {
                                 if (groupByShifts.hasOwnProperty(shiftKey)) {
                                     var shifts_1 = groupByShifts[shiftKey];
-                                    var shiftItem_1 = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_11__["ReportByShiftShifts"](shifts_1[0].shiftId, shifts_1[0].shiftCode, shifts_1[0].shiftReportName, []);
+                                    var shiftItem_1 = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_10__["ReportByShiftShifts"](shifts_1[0].shiftId, shifts_1[0].shiftCode, shifts_1[0].shiftReportName, []);
                                     _this.daysInMonth.forEach(function (day) {
-                                        var workingDays = lodash__WEBPACK_IMPORTED_MODULE_4__["find"](shifts_1, function (item) {
+                                        var workingDays = lodash__WEBPACK_IMPORTED_MODULE_3__["find"](shifts_1, function (item) {
                                             return day.day === item.day;
                                         });
                                         // Trường hợp có đi làm
                                         if (workingDays) {
-                                            var workingDay = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_11__["WorkingDays"](workingDays.day, workingDays.month, workingDays.year, workingDays.inTime, workingDays.outTime, workingDays.in, workingDays.out, workingDays.inSoonMin, workingDays.outSoonMin, workingDays.inLateMin, workingDays.outLateMin, workingDays.quarter, workingDays.isValid, workingDays.isValidWorkSchedule, workingDays.isSunday, workingDays.isHoliday, workingDays.totalWorkingMin, workingDays.totalOvertimeMin, workingDays.workUnit, workingDays.status);
+                                            var workingDay = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_10__["WorkingDays"](workingDays.day, workingDays.month, workingDays.year, workingDays.inTime, workingDays.outTime, workingDays.in, workingDays.out, workingDays.inSoonMin, workingDays.outSoonMin, workingDays.inLateMin, workingDays.outLateMin, workingDays.quarter, workingDays.isValid, workingDays.isValidWorkSchedule, workingDays.isSunday, workingDays.isHoliday, workingDays.totalWorkingMin, workingDays.totalOvertimeMin, workingDays.workUnit, workingDays.status);
                                             workingDay.reason = workingDays.reason;
                                             shiftItem_1.workingDays = shiftItem_1.workingDays.concat([workingDay]);
                                         }
                                         else {
-                                            var dayOff = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_11__["WorkingDays"](day.day, _this.month, _this.year);
+                                            var dayOff = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_10__["WorkingDays"](day.day, _this.month, _this.year);
                                             dayOff.status = -1;
                                             dayOff.isSunday = day.isSunday;
                                             dayOff.reason = day.reason;
@@ -6553,11 +6478,11 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
         var _this = this;
         this.spinnerService.show();
         this.timeSheetService.getMyTimeSheetResult(this.month, this.year)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(function () { return _this.spinnerService.hide(); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["finalize"])(function () { return _this.spinnerService.hide(); }))
             .subscribe(function (result) {
             if (result && result.length > 0) {
-                _this.listShifts = lodash__WEBPACK_IMPORTED_MODULE_4__["orderBy"](result[0].reportShiftAggregates, ['shiftId'], ['asc']);
-                _this.listReportByMonth = lodash__WEBPACK_IMPORTED_MODULE_4__["orderBy"](result, ['userId'], ['asc']);
+                _this.listShifts = lodash__WEBPACK_IMPORTED_MODULE_3__["orderBy"](result[0].reportShiftAggregates, ['shiftId'], ['asc']);
+                _this.listReportByMonth = lodash__WEBPACK_IMPORTED_MODULE_3__["orderBy"](result, ['userId'], ['asc']);
             }
             else {
                 _this.listReportByMonth = [];
@@ -6575,33 +6500,33 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
     TimekeepingTimesheetComponent.prototype.renderListReportByShift = function (result) {
         var _this = this;
         this.listReports = [];
-        var groupByUsers = lodash__WEBPACK_IMPORTED_MODULE_4__["groupBy"](result, function (item) {
+        var groupByUsers = lodash__WEBPACK_IMPORTED_MODULE_3__["groupBy"](result, function (item) {
             return item.userId;
         });
         for (var key in groupByUsers) {
             if (groupByUsers.hasOwnProperty(key)) {
                 var items = groupByUsers[key];
-                var firstItem = lodash__WEBPACK_IMPORTED_MODULE_4__["first"](items);
-                var reportItem = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_11__["ReportByShift"](firstItem.enrollNumber, firstItem.userId, firstItem.fullName, []);
-                var groupByShifts = lodash__WEBPACK_IMPORTED_MODULE_4__["groupBy"](items, function (item) {
+                var firstItem = lodash__WEBPACK_IMPORTED_MODULE_3__["first"](items);
+                var reportItem = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_10__["ReportByShift"](firstItem.enrollNumber, firstItem.userId, firstItem.fullName, []);
+                var groupByShifts = lodash__WEBPACK_IMPORTED_MODULE_3__["groupBy"](items, function (item) {
                     return item.shiftId;
                 });
                 var _loop_4 = function (shiftKey) {
                     if (groupByShifts.hasOwnProperty(shiftKey)) {
                         var shifts_2 = groupByShifts[shiftKey];
-                        var shiftItem_2 = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_11__["ReportByShiftShifts"](shifts_2[0].shiftId, shifts_2[0].shiftCode, shifts_2[0].shiftReportName, []);
+                        var shiftItem_2 = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_10__["ReportByShiftShifts"](shifts_2[0].shiftId, shifts_2[0].shiftCode, shifts_2[0].shiftReportName, []);
                         this_2.daysInMonth.forEach(function (day) {
-                            var workingDays = lodash__WEBPACK_IMPORTED_MODULE_4__["find"](shifts_2, function (item) {
+                            var workingDays = lodash__WEBPACK_IMPORTED_MODULE_3__["find"](shifts_2, function (item) {
                                 return day.day === item.day;
                             });
                             // Trường hợp có đi làm
                             if (workingDays) {
-                                var workingDay = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_11__["WorkingDays"](workingDays.day, workingDays.month, workingDays.year, workingDays.inTime, workingDays.outTime, workingDays.in, workingDays.out, workingDays.inSoonMin, workingDays.outSoonMin, workingDays.inLateMin, workingDays.outLateMin, workingDays.quarter, workingDays.isValid, workingDays.isValidWorkSchedule, workingDays.isSunday, workingDays.isHoliday, workingDays.totalWorkingMin, workingDays.totalOvertimeMin, workingDays.workUnit, workingDays.status, workingDays.inLatencyMin, workingDays.outLatencyMin, workingDays.inLatencyReason, workingDays.outLatencyReason);
+                                var workingDay = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_10__["WorkingDays"](workingDays.day, workingDays.month, workingDays.year, workingDays.inTime, workingDays.outTime, workingDays.in, workingDays.out, workingDays.inSoonMin, workingDays.outSoonMin, workingDays.inLateMin, workingDays.outLateMin, workingDays.quarter, workingDays.isValid, workingDays.isValidWorkSchedule, workingDays.isSunday, workingDays.isHoliday, workingDays.totalWorkingMin, workingDays.totalOvertimeMin, workingDays.workUnit, workingDays.status, workingDays.inLatencyMin, workingDays.outLatencyMin, workingDays.inLatencyReason, workingDays.outLatencyReason);
                                 workingDay.reason = workingDays.reason;
                                 shiftItem_2.workingDays = shiftItem_2.workingDays.concat([workingDay]);
                             }
                             else {
-                                var dayOff = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_11__["WorkingDays"](day.day, _this.month, _this.year);
+                                var dayOff = new _view_models_report_by_shift_viewmodel__WEBPACK_IMPORTED_MODULE_10__["WorkingDays"](day.day, _this.month, _this.year);
                                 dayOff.status = -1;
                                 dayOff.isSunday = day.isSunday;
                                 dayOff.reason = day.reason;
@@ -6621,15 +6546,15 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('shiftDetailModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_10__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_9__["NhModalComponent"])
     ], TimekeepingTimesheetComponent.prototype, "shiftDetailModal", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('reportMonthDetailModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_10__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_9__["NhModalComponent"])
     ], TimekeepingTimesheetComponent.prototype, "reportMonthDetailModal", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('dayOffDetailModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_10__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_9__["NhModalComponent"])
     ], TimekeepingTimesheetComponent.prototype, "dayOffDetailModal", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('reportByShiftTableElement'),
@@ -6643,22 +6568,20 @@ var TimekeepingTimesheetComponent = /** @class */ (function (_super) {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-time-sheet',
             template: __webpack_require__(/*! ./timekeeping-timesheet.component.html */ "./src/app/modules/timekeeping/time-sheet/timekeeping-timesheet.component.html"),
-            providers: [_hr_organization_office_services_office_service__WEBPACK_IMPORTED_MODULE_17__["OfficeService"], _timesheet_service__WEBPACK_IMPORTED_MODULE_9__["TimeSheetService"], _shareds_services_helper_service__WEBPACK_IMPORTED_MODULE_8__["HelperService"]]
+            providers: [_hr_organization_office_services_office_service__WEBPACK_IMPORTED_MODULE_14__["OfficeService"], _timesheet_service__WEBPACK_IMPORTED_MODULE_8__["TimeSheetService"], _shareds_services_helper_service__WEBPACK_IMPORTED_MODULE_7__["HelperService"]]
         }),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_16__["CheckPermission"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_12__["APP_CONFIG"])),
-        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_13__["PAGE_ID"])),
-        __metadata("design:paramtypes", [Object, Object, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["Title"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_14__["UtilService"],
-            _shareds_services_helper_service__WEBPACK_IMPORTED_MODULE_8__["HelperService"],
-            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_7__["SpinnerService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_15__["AppService"],
-            _hr_organization_office_services_office_service__WEBPACK_IMPORTED_MODULE_17__["OfficeService"],
-            _timesheet_service__WEBPACK_IMPORTED_MODULE_9__["TimeSheetService"]])
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_11__["APP_CONFIG"])),
+        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_12__["PAGE_ID"])),
+        __metadata("design:paramtypes", [Object, Object, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["Title"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"],
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_13__["UtilService"],
+            _shareds_services_helper_service__WEBPACK_IMPORTED_MODULE_7__["HelperService"],
+            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_6__["SpinnerService"],
+            _hr_organization_office_services_office_service__WEBPACK_IMPORTED_MODULE_14__["OfficeService"],
+            _timesheet_service__WEBPACK_IMPORTED_MODULE_8__["TimeSheetService"]])
     ], TimekeepingTimesheetComponent);
     return TimekeepingTimesheetComponent;
-}(_base_component__WEBPACK_IMPORTED_MODULE_1__["BaseComponent"]));
+}(_base_list_component__WEBPACK_IMPORTED_MODULE_15__["BaseListComponent"]));
 
 
 
@@ -7119,7 +7042,7 @@ var InOutFrequentlyService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <form class=\"form-inline\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Nhập từ khóa tìm kiếm.\"\r\n                       name=\"searchInputKeyword\" [(ngModel)]=\"keyword\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-date\r\n                    name=\"fromDateSearch\"\r\n                    [type]=\"'inputButton'\"\r\n                    [placeholder]=\"'chọn từ ngày'\"\r\n                    [allowRemove]=\"true\"\r\n                    [mask]=\"true\"\r\n                    [(ngModel)]=\"fromDate\"\r\n                    (selectedDateEvent)=\"search(1)\"\r\n                    (removedDateEvent)=\"search(1)\"\r\n                ></nh-date>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-date\r\n                    name=\"toDateSearch\"\r\n                    [type]=\"'inputButton'\"\r\n                    [placeholder]=\"'Chọn đến ngày'\"\r\n                    [allowRemove]=\"true\"\r\n                    [mask]=\"true\"\r\n                    [(ngModel)]=\"toDate\"\r\n                    (selectedDateEvent)=\"search(1)\"\r\n                    (removedDateEvent)=\"search(1)\"\r\n                ></nh-date>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button mat-raised-button color=\"primary\">\r\n                    <mat-icon>search</mat-icon>\r\n                </button>\r\n            </div>\r\n            <div class=\"form-group pull-right\" (click)=\"addNew()\" *ngIf=\"isHasInsertPermission\">\r\n                <button type=\"button\" mat-raised-button color=\"primary\">\r\n                    <mat-icon>add</mat-icon>\r\n                    Thêm mới\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-striped table-hover table-main\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center middle w50\">#</th>\r\n                    <th class=\"center middle w250\">Nhân viên</th>\r\n                    <th class=\"center middle w100\">Ngày áp dụng</th>\r\n                    <th class=\"center middle w100\">Thời gian áp dụng</th>\r\n                    <th class=\"center middle\">Lý do</th>\r\n                    <th class=\"center middle w50\">Sử dụng</th>\r\n                    <th class=\"center middle w100\"></th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let item of listInOutFrequently; let i = index\">\r\n                    <td class=\"center w50\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n                    <td>\r\n                        <div class=\"media\">\r\n                            <div class=\"media-left\">\r\n                                <a href=\"javascript://\">\r\n                                    <nh-image\r\n                                        [cssClass]=\"'avatar-sm rounded-avatar'\"\r\n                                        [value]=\"item.avatar\"\r\n                                        [alt]=\"item.fullName\" [width]=\"39\" [height]=\"39\"></nh-image>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"media-body\">\r\n                                <h4 class=\"media-heading\">{{item.fullName}}</h4>\r\n                                <p>{{item.titleName}} - {{item.officeName}}</p>\r\n                            </div>\r\n                        </div>\r\n                    </td>\r\n                    <td>{{item.fromDate | dateTimeFormat:'DD/MM/YYYY'}}</td>\r\n                    <td>{{item.toDate | dateTimeFormat:'DD/MM/YYYY'}}</td>\r\n                    <td>{{item.reason}}</td>\r\n                    <td class=\"center\">\r\n                        <mat-icon *ngIf=\"item.isActive\" class=\"color-green\">done</mat-icon>\r\n                    </td>\r\n                    <td class=\"center w100\">\r\n                        <button type=\"button\" mat-mini-fab color=\"primary\" matTooltip=\"Chỉnh sửa\"\r\n                                matTooltipPosition=\"below\" (click)=\"edit(item)\">\r\n                            <mat-icon>edit</mat-icon>\r\n                        </button>\r\n                        <button type=\"button\" mat-mini-fab color=\"warn\" matTooltip=\"Xóa\" matTooltipPosition=\"below\"\r\n                                (click)=\"delete(item)\">\r\n                            <mat-icon>delete</mat-icon>\r\n                        </button>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n        <ghm-paging [totalRows]=\"totalRows\" [currentPage]=\"currentPage\" [pageShow]=\"6\" (pageClick)=\"search($event)\"\r\n                [isDisabled]=\"isSearching\" [pageName]=\"'đi muộn về sớm'\"></ghm-paging>\r\n    </div>\r\n</div>\r\n\r\n<nh-modal #fromModal>\r\n    <!--<nh-modal-header [showCloseButton]=\"true\">-->\r\n    <!--<i class=\"fa fa-suitcase\"></i>-->\r\n    <!--{{isUpdate ? 'Chỉnh sửa đăng ký đi muộn về sớm dài hạn' : 'Thêm mới đăng ký đi muộn về sớm dài hạn'}}-->\r\n    <!--</nh-modal-header>-->\r\n    <form class=\"form-horizontal form-bordered\" [formGroup]=\"model\" (ngSubmit)=\"save()\">\r\n        <nh-modal-content>\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-6\">\r\n                    <div class=\"portlet light bordered\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption font-green-sharp\">\r\n                                <i class=\"icon-speech font-green-sharp\"></i>\r\n                                <span class=\"caption-subject bold uppercase\"> {{isUpdate ? 'Cập nhật thông tin đăng ký' : 'Thêm mới thông tin đăng ký'}} </span>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-sm-4 control-label\">Nhân viên <span\r\n                                    class=\"color-red\">*</span>:</label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <ghm-user-suggestion\r\n                                        *ngIf=\"!isUpdate; else userReadonlyTemplate\"\r\n                                        [sources]=\"listUserSuggestion\"\r\n                                        [selectedUsers]=\"selectedUser\"\r\n                                        [isLoading]=\"isSearchingUser\"\r\n                                        (onSelectUser)=\"onSelectUser($event)\"\r\n                                        (onRemoveUser)=\"onRemoveUser()\"\r\n                                        (onKeyUp)=\"onUserSuggestionKeyUp($event)\"\r\n                                        placeholder=\"Nhập tên nhân viên\"\r\n                                    ></ghm-user-suggestion>\r\n                                    <ng-template #userReadonlyTemplate>\r\n                                        <div class=\"media\">\r\n                                            <div class=\"media-left\">\r\n                                                <a href=\"#\">\r\n                                                    <!--<img class=\"media-object\" src=\"\" alt=\"...\">-->\r\n                                                    <nh-image\r\n                                                        [cssClass]=\"'avatar-sm rounded-avatar'\"\r\n                                                        [alt]=\"model.value.fullName\"\r\n                                                        [value]=\"model.value.avatar\"></nh-image>\r\n                                                </a>\r\n                                            </div>\r\n                                            <div class=\"media-body\">\r\n                                                <h4 class=\"media-heading\">{{model.value.fullName}}</h4>\r\n                                                {{ model.value?.titleName }} - {{ model.value?.officeName }}\r\n                                            </div>\r\n                                        </div>\r\n                                    </ng-template>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.userId\">\r\n                                        {{formErrors.userId}}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-sm-4 control-label\">Ngày bắt đầu:</label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <nh-date\r\n                                        formControlName=\"fromDate\"\r\n                                        [type]=\"'inputButton'\"\r\n                                        [placeholder]=\"'Chọn ngày bắt đầu'\"\r\n                                        [allowRemove]=\"true\"\r\n                                        [mask]=\"true\"\r\n                                        (removedDateEvent)=\"onRemoveFromDate()\"\r\n                                    ></nh-date>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.fromDate\">\r\n                                        {{formErrors.fromDate}}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-sm-4 control-label\">Ngày kết thúc:</label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <nh-date\r\n                                        formControlName=\"toDate\"\r\n                                        [type]=\"'inputButton'\"\r\n                                        [placeholder]=\"'Chọn ngày kết thúc'\"\r\n                                        [allowRemove]=\"true\"\r\n                                        [mask]=\"true\"\r\n                                        (removedDateEvent)=\"onRemoveToDate()\"\r\n                                    ></nh-date>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.toDate\">\r\n                                        {{formErrors.toDate}}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-sm-4 control-label\">Lý do <span\r\n                                    class=\"color-red\">*</span>:</label>\r\n                                <div class=\"col-sm-8\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nhập lý do xin đi muộn về sớm.\"\r\n                              formControlName=\"reason\"></textarea>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.reason\">\r\n                                        {{formErrors.reason}}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-sm-4 control-label\">Ghi chú:</label>\r\n                                <div class=\"col-sm-8\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nhập nội dung ghi chú.\"\r\n                              formControlName=\"note\"></textarea>\r\n                                    <div class=\"alert alert-danger\" *ngIf=\"formErrors.note\">\r\n                                        {{formErrors.note}}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <div class=\"col-sm-8 col-sm-offset-4\">\r\n                                    <mat-checkbox color=\"primary\" formControlName=\"isActive\">Kích hoạt</mat-checkbox>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div><!-- END: infomation -->\r\n                <div class=\"col-sm-6\">\r\n                    <div class=\"portlet light bordered\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption font-green-sharp\">\r\n                                <i class=\"icon-speech font-green-sharp\"></i>\r\n                                <span class=\"caption-subject bold uppercase\"> Chi tiết ca xin nghỉ</span>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <div class=\"cm-mgb-10 text-right\">\r\n                                <button type=\"button\" mat-raised-button color=\"primary\" (click)=\"addDetail()\">\r\n                                    <mat-icon>add</mat-icon>\r\n                                    Thêm ca xin nghỉ\r\n                                </button>\r\n                            </div>\r\n                            <div class=\"note\" *ngIf=\"listInOutFrequentlyDetail.length === 0; else tableContentTemplate\">\r\n                                Vui lòng chọn thêm mới ca xin nghỉ.\r\n                            </div>\r\n                            <ng-template #tableContentTemplate>\r\n                                <table class=\"table table-hover table-bordered table-striped\">\r\n                                    <tbody>\r\n                                    <tr *ngFor=\"let item of listInOutFrequentlyDetail; let i = index\">\r\n                                        <td class=\"center middle\">{{item.dayOfWeekName}}</td>\r\n                                        <td class=\"middle\">{{item.shiftReportName}}</td>\r\n                                        <td class=\"middle\">{{item.isInLate ? 'Đi muộn' : 'Về sớm'}}</td>\r\n                                        <td class=\"middle\">{{item.totalMinutes}} phút</td>\r\n                                        <td class=\"center middle w100\">\r\n                                            <button type=\"button\" mat-mini-fab color=\"primary\"\r\n                                                    (click)=\"editDetail(item, i)\">\r\n                                                <mat-icon>edit</mat-icon>\r\n                                            </button>\r\n                                            <button type=\"button\" mat-mini-fab color=\"warn\"\r\n                                                    (click)=\"deleteDetail(item)\">\r\n                                                <mat-icon>delete</mat-icon>\r\n                                            </button>\r\n                                        </td>\r\n                                    </tr>\r\n                                    </tbody>\r\n                                </table>\r\n                            </ng-template>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button mat-raised-button color=\"primary\">\r\n                <!--<i class=\"fa fa-save\"></i>-->\r\n                <mat-icon>save</mat-icon>\r\n                Lưu lại\r\n            </button>\r\n            <button type=\"button\" nh-dismiss=\"true\" mat-raised-button color=\"default\">\r\n                <!--<i class=\"fa fa-times\"></i>-->\r\n                <mat-icon>close</mat-icon>\r\n                Đóng lại\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form><!-- END: form -->\r\n</nh-modal>\r\n\r\n\r\n<nh-modal #fromDetailModal size=\"sm\">\r\n    <form class=\"form-horizontal form-bordered\" (ngSubmit)=\"saveDetail()\" [formGroup]=\"detailModel\">\r\n        <nh-modal-content>\r\n            <div class=\"row\">\r\n                <div class=\"portlet light bordered\">\r\n                    <div class=\"portlet-title\">\r\n                        <div class=\"caption font-green-sharp\">\r\n                            <i class=\"icon-speech font-green-sharp\"></i>\r\n                            <span class=\"caption-subject bold uppercase\"> {{isUpdateDetail ? 'Chỉnh sửa chi tiết ca xin nghỉ' : 'Thêm mới ca xin nghỉ'}}</span>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"portlet-body\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\" class=\"col-sm-4 control-label\">Ngày xin nghỉ\r\n                                <span class=\"color-red\">*</span></label>\r\n                            <div class=\"col-sm-8\">\r\n                                <nh-select\r\n                                    title=\"-- Chọn ngày xin nghỉ --\"\r\n                                    formControlName=\"dayOfWeek\"\r\n                                    [data]=\"dayOfWeeks\"></nh-select>\r\n                                <div class=\"alert alert-danger\" *ngIf=\"detailFormErrors.dayOfWeek\">\r\n                                    {{detailFormErrors.dayOfWeek}}\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\" class=\"col-sm-4 control-label\">Chọn ca làm việc\r\n                                <span class=\"color-red\">*</span>:</label>\r\n                            <div class=\"col-sm-8\">\r\n                                <nh-select\r\n                                    title=\"-- Chọn ca làm việc --\"\r\n                                    formControlName=\"shiftId\"\r\n                                    [data]=\"shifts\"\r\n                                    (onSelectItem)=\"onSelectShift($event)\"\r\n                                ></nh-select>\r\n                                <div class=\"alert alert-danger\" *ngIf=\"detailFormErrors.shiftId\">\r\n                                    {{detailFormErrors.shiftId}}\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\" class=\"col-sm-4 control-label\">Số phút:</label>\r\n                            <div class=\"col-sm-8\">\r\n                                <div class=\"input-group\">\r\n                                    <input type=\"text\" class=\"form-control\"\r\n                                           placeholder=\"Nhập số phút {{detailModel.value.isInLate ? 'đi muộn' : 'về sớm'}}\"\r\n                                           formControlName=\"totalMinutes\">\r\n                                    <div class=\"input-group-btn\">\r\n                                        <button type=\"button\" class=\"btn btn-default dropdown-toggle\"\r\n                                                data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                                            {{detailModel.value.isInLate ? 'Đi muộn' : 'Về sớm'}}<span\r\n                                            class=\"caret\"></span></button>\r\n                                        <ul class=\"dropdown-menu dropdown-menu-right\">\r\n                                            <li><a href=\"javascript://\" (click)=\"onChangeIsInLateValue(true)\">Đi\r\n                                                muộn</a></li>\r\n                                            <li><a href=\"javascript://\" (click)=\"onChangeIsInLateValue(false)\">Về\r\n                                                sớm</a></li>\r\n                                        </ul>\r\n                                    </div><!-- /btn-group -->\r\n                                </div>\r\n                                <div class=\"alert alert-danger\" *ngIf=\"detailFormErrors.totalMinutes\">\r\n                                    {{detailFormErrors.totalMinutes}}\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button mat-raised-button color=\"primary\">\r\n                <!--<i class=\"fa fa-save\"></i>-->\r\n                <mat-icon *ngIf=\"!isUpdateDetail\">add</mat-icon>\r\n                <mat-icon *ngIf=\"isUpdateDetail\">save</mat-icon>\r\n                {{isUpdateDetail ? 'Lưu lại' : 'Thêm'}}\r\n            </button>\r\n            <button type=\"button\" nh-dismiss=\"true\" mat-raised-button color=\"default\">\r\n                <!--<i class=\"fa fa-times\"></i>-->\r\n                <mat-icon>close</mat-icon>\r\n                Đóng lại\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form><!-- END: form -->\r\n</nh-modal>\r\n"
+module.exports = "<div class=\"row cm-mgb-10\">\r\n    <div class=\"col-sm-12\">\r\n        <form class=\"form-inline\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Nhập từ khóa tìm kiếm.\"\r\n                       name=\"searchInputKeyword\" [(ngModel)]=\"keyword\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-date\r\n                    name=\"fromDateSearch\"\r\n                    [type]=\"'inputButton'\"\r\n                    [placeholder]=\"'chọn từ ngày'\"\r\n                    [allowRemove]=\"true\"\r\n                    [mask]=\"true\"\r\n                    [(ngModel)]=\"fromDate\"\r\n                    (selectedDateEvent)=\"search(1)\"\r\n                    (removedDateEvent)=\"search(1)\"\r\n                ></nh-date>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <nh-date\r\n                    name=\"toDateSearch\"\r\n                    [type]=\"'inputButton'\"\r\n                    [placeholder]=\"'Chọn đến ngày'\"\r\n                    [allowRemove]=\"true\"\r\n                    [mask]=\"true\"\r\n                    [(ngModel)]=\"toDate\"\r\n                    (selectedDateEvent)=\"search(1)\"\r\n                    (removedDateEvent)=\"search(1)\"\r\n                ></nh-date>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button mat-raised-button color=\"primary\">\r\n                    <mat-icon>search</mat-icon>\r\n                </button>\r\n            </div>\r\n            <!--<div class=\"form-group pull-right\" (click)=\"addNew()\" *ngIf=\"isHasInsertPermission\">-->\r\n                <!--<button type=\"button\" mat-raised-button color=\"primary\">-->\r\n                    <!--<mat-icon>add</mat-icon>-->\r\n                    <!--Thêm mới-->\r\n                <!--</button>-->\r\n            <!--</div>-->\r\n        </form>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-striped table-hover table-main\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center middle w50\">#</th>\r\n                    <th class=\"center middle w250\">Nhân viên</th>\r\n                    <th class=\"center middle w100\">Ngày áp dụng</th>\r\n                    <th class=\"center middle w100\">Thời gian áp dụng</th>\r\n                    <th class=\"center middle\">Lý do</th>\r\n                    <th class=\"center middle w50\">Sử dụng</th>\r\n                    <th class=\"center middle w100\"></th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let item of listInOutFrequently; let i = index\">\r\n                    <td class=\"center w50\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n                    <td>\r\n                        <div class=\"media\">\r\n                            <div class=\"media-left\">\r\n                                <a href=\"javascript://\">\r\n                                    <nh-image\r\n                                        [cssClass]=\"'avatar-sm rounded-avatar'\"\r\n                                        [value]=\"item.avatar\"\r\n                                        [alt]=\"item.fullName\" [width]=\"39\" [height]=\"39\"></nh-image>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"media-body\">\r\n                                <h4 class=\"media-heading\">{{item.fullName}}</h4>\r\n                                <p>{{item.titleName}} - {{item.officeName}}</p>\r\n                            </div>\r\n                        </div>\r\n                    </td>\r\n                    <td>{{item.fromDate | dateTimeFormat:'DD/MM/YYYY'}}</td>\r\n                    <td>{{item.toDate | dateTimeFormat:'DD/MM/YYYY'}}</td>\r\n                    <td>{{item.reason}}</td>\r\n                    <td class=\"center\">\r\n                        <mat-icon *ngIf=\"item.isActive\" class=\"color-green\">done</mat-icon>\r\n                    </td>\r\n                    <td class=\"center w100\">\r\n                        <button type=\"button\" mat-mini-fab color=\"primary\" matTooltip=\"Chỉnh sửa\"\r\n                                matTooltipPosition=\"below\" (click)=\"edit(item)\">\r\n                            <mat-icon>edit</mat-icon>\r\n                        </button>\r\n                        <button type=\"button\" mat-mini-fab color=\"warn\" matTooltip=\"Xóa\" matTooltipPosition=\"below\"\r\n                                (click)=\"delete(item)\">\r\n                            <mat-icon>delete</mat-icon>\r\n                        </button>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n        <ghm-paging [totalRows]=\"totalRows\" [currentPage]=\"currentPage\" [pageShow]=\"6\" (pageClick)=\"search($event)\"\r\n                [isDisabled]=\"isSearching\" [pageName]=\"'đi muộn về sớm'\"></ghm-paging>\r\n    </div>\r\n</div>\r\n\r\n<nh-modal #fromModal>\r\n    <!--<nh-modal-header [showCloseButton]=\"true\">-->\r\n    <!--<i class=\"fa fa-suitcase\"></i>-->\r\n    <!--{{isUpdate ? 'Chỉnh sửa đăng ký đi muộn về sớm dài hạn' : 'Thêm mới đăng ký đi muộn về sớm dài hạn'}}-->\r\n    <!--</nh-modal-header>-->\r\n    <form class=\"form-horizontal form-bordered\" [formGroup]=\"model\" (ngSubmit)=\"save()\">\r\n        <nh-modal-content>\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-6\">\r\n                    <div class=\"portlet light bordered\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption font-green-sharp\">\r\n                                <i class=\"icon-speech font-green-sharp\"></i>\r\n                                <!--<span class=\"caption-subject bold uppercase\"> {{isUpdate ? 'Cập nhật thông tin đăng ký' : 'Thêm mới thông tin đăng ký'}} </span>-->\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-sm-4 control-label\">Nhân viên <span\r\n                                    class=\"color-red\">*</span>:</label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <!--<ghm-user-suggestion-->\r\n                                        <!--*ngIf=\"!isUpdate; else userReadonlyTemplate\"-->\r\n                                        <!--[sources]=\"listUserSuggestion\"-->\r\n                                        <!--[selectedUsers]=\"selectedUser\"-->\r\n                                        <!--[isLoading]=\"isSearchingUser\"-->\r\n                                        <!--(onSelectUser)=\"onSelectUser($event)\"-->\r\n                                        <!--(onRemoveUser)=\"onRemoveUser()\"-->\r\n                                        <!--(onKeyUp)=\"onUserSuggestionKeyUp($event)\"-->\r\n                                        <!--placeholder=\"Nhập tên nhân viên\"-->\r\n                                    <!--&gt;</ghm-user-suggestion>-->\r\n                                    <ng-template #userReadonlyTemplate>\r\n                                        <div class=\"media\">\r\n                                            <div class=\"media-left\">\r\n                                                <a href=\"#\">\r\n                                                    <!--<img class=\"media-object\" src=\"\" alt=\"...\">-->\r\n                                                    <nh-image\r\n                                                        [cssClass]=\"'avatar-sm rounded-avatar'\"\r\n                                                        [alt]=\"model.value.fullName\"\r\n                                                        [value]=\"model.value.avatar\"></nh-image>\r\n                                                </a>\r\n                                            </div>\r\n                                            <div class=\"media-body\">\r\n                                                <h4 class=\"media-heading\">{{model.value.fullName}}</h4>\r\n                                                {{ model.value?.titleName }} - {{ model.value?.officeName }}\r\n                                            </div>\r\n                                        </div>\r\n                                    </ng-template>\r\n                                    <!--<div class=\"alert alert-danger\" *ngIf=\"formErrors.userId\">-->\r\n                                        <!--{{formErrors.userId}}-->\r\n                                    <!--</div>-->\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-sm-4 control-label\">Ngày bắt đầu:</label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <nh-date\r\n                                        formControlName=\"fromDate\"\r\n                                        [type]=\"'inputButton'\"\r\n                                        [placeholder]=\"'Chọn ngày bắt đầu'\"\r\n                                        [allowRemove]=\"true\"\r\n                                        [mask]=\"true\"\r\n                                        (removedDateEvent)=\"onRemoveFromDate()\"\r\n                                    ></nh-date>\r\n                                    <!--<div class=\"alert alert-danger\" *ngIf=\"formErrors.fromDate\">-->\r\n                                        <!--{{formErrors.fromDate}}-->\r\n                                    <!--</div>-->\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-sm-4 control-label\">Ngày kết thúc:</label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <nh-date\r\n                                        formControlName=\"toDate\"\r\n                                        [type]=\"'inputButton'\"\r\n                                        [placeholder]=\"'Chọn ngày kết thúc'\"\r\n                                        [allowRemove]=\"true\"\r\n                                        [mask]=\"true\"\r\n                                        (removedDateEvent)=\"onRemoveToDate()\"\r\n                                    ></nh-date>\r\n                                    <!--<div class=\"alert alert-danger\" *ngIf=\"formErrors.toDate\">-->\r\n                                        <!--{{formErrors.toDate}}-->\r\n                                    <!--</div>-->\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-sm-4 control-label\">Lý do <span\r\n                                    class=\"color-red\">*</span>:</label>\r\n                                <div class=\"col-sm-8\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nhập lý do xin đi muộn về sớm.\"\r\n                              formControlName=\"reason\"></textarea>\r\n                                    <!--<div class=\"alert alert-danger\" *ngIf=\"formErrors.reason\">-->\r\n                                        <!--{{formErrors.reason}}-->\r\n                                    <!--</div>-->\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <label for=\"\" class=\"col-sm-4 control-label\">Ghi chú:</label>\r\n                                <div class=\"col-sm-8\">\r\n                    <textarea class=\"form-control\" rows=\"3\" placeholder=\"Nhập nội dung ghi chú.\"\r\n                              formControlName=\"note\"></textarea>\r\n                                    <!--<div class=\"alert alert-danger\" *ngIf=\"formErrors.note\">-->\r\n                                        <!--{{formErrors.note}}-->\r\n                                    <!--</div>-->\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <div class=\"col-sm-8 col-sm-offset-4\">\r\n                                    <mat-checkbox color=\"primary\" formControlName=\"isActive\">Kích hoạt</mat-checkbox>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div><!-- END: infomation -->\r\n                <div class=\"col-sm-6\">\r\n                    <div class=\"portlet light bordered\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption font-green-sharp\">\r\n                                <i class=\"icon-speech font-green-sharp\"></i>\r\n                                <span class=\"caption-subject bold uppercase\"> Chi tiết ca xin nghỉ</span>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <div class=\"cm-mgb-10 text-right\">\r\n                                <button type=\"button\" mat-raised-button color=\"primary\" (click)=\"addDetail()\">\r\n                                    <mat-icon>add</mat-icon>\r\n                                    Thêm ca xin nghỉ\r\n                                </button>\r\n                            </div>\r\n                            <div class=\"note\" *ngIf=\"listInOutFrequentlyDetail.length === 0; else tableContentTemplate\">\r\n                                Vui lòng chọn thêm mới ca xin nghỉ.\r\n                            </div>\r\n                            <ng-template #tableContentTemplate>\r\n                                <table class=\"table table-hover table-bordered table-striped\">\r\n                                    <tbody>\r\n                                    <tr *ngFor=\"let item of listInOutFrequentlyDetail; let i = index\">\r\n                                        <td class=\"center middle\">{{item.dayOfWeekName}}</td>\r\n                                        <td class=\"middle\">{{item.shiftReportName}}</td>\r\n                                        <td class=\"middle\">{{item.isInLate ? 'Đi muộn' : 'Về sớm'}}</td>\r\n                                        <td class=\"middle\">{{item.totalMinutes}} phút</td>\r\n                                        <td class=\"center middle w100\">\r\n                                            <button type=\"button\" mat-mini-fab color=\"primary\"\r\n                                                    (click)=\"editDetail(item, i)\">\r\n                                                <mat-icon>edit</mat-icon>\r\n                                            </button>\r\n                                            <button type=\"button\" mat-mini-fab color=\"warn\"\r\n                                                    (click)=\"deleteDetail(item)\">\r\n                                                <mat-icon>delete</mat-icon>\r\n                                            </button>\r\n                                        </td>\r\n                                    </tr>\r\n                                    </tbody>\r\n                                </table>\r\n                            </ng-template>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button mat-raised-button color=\"primary\">\r\n                <!--<i class=\"fa fa-save\"></i>-->\r\n                <mat-icon>save</mat-icon>\r\n                Lưu lại\r\n            </button>\r\n            <button type=\"button\" nh-dismiss=\"true\" mat-raised-button color=\"default\">\r\n                <!--<i class=\"fa fa-times\"></i>-->\r\n                <mat-icon>close</mat-icon>\r\n                Đóng lại\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form><!-- END: form -->\r\n</nh-modal>\r\n\r\n\r\n<nh-modal #fromDetailModal size=\"sm\">\r\n    <form class=\"form-horizontal form-bordered\" (ngSubmit)=\"saveDetail()\" [formGroup]=\"detailModel\">\r\n        <nh-modal-content>\r\n            <div class=\"row\">\r\n                <div class=\"portlet light bordered\">\r\n                    <div class=\"portlet-title\">\r\n                        <div class=\"caption font-green-sharp\">\r\n                            <i class=\"icon-speech font-green-sharp\"></i>\r\n                            <span class=\"caption-subject bold uppercase\"> {{isUpdateDetail ? 'Chỉnh sửa chi tiết ca xin nghỉ' : 'Thêm mới ca xin nghỉ'}}</span>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"portlet-body\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\" class=\"col-sm-4 control-label\">Ngày xin nghỉ\r\n                                <span class=\"color-red\">*</span></label>\r\n                            <div class=\"col-sm-8\">\r\n                                <nh-select\r\n                                    title=\"-- Chọn ngày xin nghỉ --\"\r\n                                    formControlName=\"dayOfWeek\"\r\n                                    [data]=\"dayOfWeeks\"></nh-select>\r\n                                <div class=\"alert alert-danger\" *ngIf=\"detailFormErrors.dayOfWeek\">\r\n                                    {{detailFormErrors.dayOfWeek}}\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\" class=\"col-sm-4 control-label\">Chọn ca làm việc\r\n                                <span class=\"color-red\">*</span>:</label>\r\n                            <div class=\"col-sm-8\">\r\n                                <nh-select\r\n                                    title=\"-- Chọn ca làm việc --\"\r\n                                    formControlName=\"shiftId\"\r\n                                    [data]=\"shifts\"\r\n                                    (onSelectItem)=\"onSelectShift($event)\"\r\n                                ></nh-select>\r\n                                <div class=\"alert alert-danger\" *ngIf=\"detailFormErrors.shiftId\">\r\n                                    {{detailFormErrors.shiftId}}\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\" class=\"col-sm-4 control-label\">Số phút:</label>\r\n                            <div class=\"col-sm-8\">\r\n                                <div class=\"input-group\">\r\n                                    <input type=\"text\" class=\"form-control\"\r\n                                           placeholder=\"Nhập số phút {{detailModel.value.isInLate ? 'đi muộn' : 'về sớm'}}\"\r\n                                           formControlName=\"totalMinutes\">\r\n                                    <div class=\"input-group-btn\">\r\n                                        <button type=\"button\" class=\"btn btn-default dropdown-toggle\"\r\n                                                data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                                            {{detailModel.value.isInLate ? 'Đi muộn' : 'Về sớm'}}<span\r\n                                            class=\"caret\"></span></button>\r\n                                        <ul class=\"dropdown-menu dropdown-menu-right\">\r\n                                            <li><a href=\"javascript://\" (click)=\"onChangeIsInLateValue(true)\">Đi\r\n                                                muộn</a></li>\r\n                                            <li><a href=\"javascript://\" (click)=\"onChangeIsInLateValue(false)\">Về\r\n                                                sớm</a></li>\r\n                                        </ul>\r\n                                    </div><!-- /btn-group -->\r\n                                </div>\r\n                                <div class=\"alert alert-danger\" *ngIf=\"detailFormErrors.totalMinutes\">\r\n                                    {{detailFormErrors.totalMinutes}}\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <button mat-raised-button color=\"primary\">\r\n                <!--<i class=\"fa fa-save\"></i>-->\r\n                <mat-icon *ngIf=\"!isUpdateDetail\">add</mat-icon>\r\n                <mat-icon *ngIf=\"isUpdateDetail\">save</mat-icon>\r\n                {{isUpdateDetail ? 'Lưu lại' : 'Thêm'}}\r\n            </button>\r\n            <button type=\"button\" nh-dismiss=\"true\" mat-raised-button color=\"default\">\r\n                <!--<i class=\"fa fa-times\"></i>-->\r\n                <mat-icon>close</mat-icon>\r\n                Đóng lại\r\n            </button>\r\n        </nh-modal-footer>\r\n    </form><!-- END: form -->\r\n</nh-modal>\r\n"
 
 /***/ }),
 
@@ -7135,26 +7058,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimekeepingInOutFrequentlyComponent", function() { return TimekeepingInOutFrequentlyComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../base.component */ "./src/app/base.component.ts");
-/* harmony import */ var _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./in-out-frequently.model */ "./src/app/modules/timekeeping/timekeeping-in-out-frequently/in-out-frequently.model.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
-/* harmony import */ var _in_out_frequently_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./in-out-frequently.service */ "./src/app/modules/timekeeping/timekeeping-in-out-frequently/in-out-frequently.service.ts");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _validators_number_validator__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../validators/number.validator */ "./src/app/validators/number.validator.ts");
-/* harmony import */ var _shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../shareds/decorator/destroy-subscribes.decorator */ "./src/app/shareds/decorator/destroy-subscribes.decorator.ts");
-/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../config/work-schedule/timekeeping-work-schedule.service */ "./src/app/modules/timekeeping/config/work-schedule/timekeeping-work-schedule.service.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var _hr_user_services_user_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../hr/user/services/user.service */ "./src/app/modules/hr/user/services/user.service.ts");
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
+/* harmony import */ var _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./in-out-frequently.model */ "./src/app/modules/timekeeping/timekeeping-in-out-frequently/in-out-frequently.model.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
+/* harmony import */ var _in_out_frequently_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./in-out-frequently.service */ "./src/app/modules/timekeeping/timekeeping-in-out-frequently/in-out-frequently.service.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _validators_number_validator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../validators/number.validator */ "./src/app/validators/number.validator.ts");
+/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
+/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../config/work-schedule/timekeeping-work-schedule.service */ "./src/app/modules/timekeeping/config/work-schedule/timekeeping-work-schedule.service.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var _hr_user_services_user_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../hr/user/services/user.service */ "./src/app/modules/hr/user/services/user.service.ts");
+/* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../base-list.component */ "./src/app/base-list.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -7194,13 +7112,9 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
-
-
 var TimekeepingInOutFrequentlyComponent = /** @class */ (function (_super) {
     __extends(TimekeepingInOutFrequentlyComponent, _super);
-    function TimekeepingInOutFrequentlyComponent(pageId, title, route, toastr, fb, numberValidator, utilService, spinnerService, appService, userService, workScheduleService, inOutFrequentlyService) {
+    function TimekeepingInOutFrequentlyComponent(pageId, title, route, toastr, fb, numberValidator, utilService, spinnerService, userService, workScheduleService, inOutFrequentlyService) {
         var _this = _super.call(this) || this;
         _this.title = title;
         _this.route = route;
@@ -7209,18 +7123,17 @@ var TimekeepingInOutFrequentlyComponent = /** @class */ (function (_super) {
         _this.numberValidator = numberValidator;
         _this.utilService = utilService;
         _this.spinnerService = spinnerService;
-        _this.appService = appService;
         _this.userService = userService;
         _this.workScheduleService = workScheduleService;
         _this.inOutFrequentlyService = inOutFrequentlyService;
         _this.isUpdateDetail = false;
         _this.currentDetailIndex = -1;
-        _this.inOutFrequently = new _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_3__["InOutFrequently"]();
-        _this.inOutFrequentlyDetail = new _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_3__["InOutFrequentlyDetail"]();
+        _this.inOutFrequently = new _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_2__["InOutFrequently"]();
+        _this.inOutFrequentlyDetail = new _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_2__["InOutFrequentlyDetail"]();
         _this.listInOutFrequently = [];
         _this.listInOutFrequentlyDetail = [];
         _this.listUserSuggestion = [];
-        _this.userSuggestionKeyword$ = new rxjs__WEBPACK_IMPORTED_MODULE_8__["Subject"]();
+        _this.userSuggestionKeyword$ = new rxjs__WEBPACK_IMPORTED_MODULE_7__["Subject"]();
         _this.isSearchingUser = false;
         _this.detailFormErrors = {};
         _this.detailValidationMessage = {};
@@ -7243,7 +7156,7 @@ var TimekeepingInOutFrequentlyComponent = /** @class */ (function (_super) {
         this.subscribers.detailFormModal = this.formDetailModal.onHidden.subscribe(function () {
             _this.isUpdateDetail = false;
             _this.detailModel.reset();
-            _this.inOutFrequentlyDetail = new _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_3__["InOutFrequentlyDetail"]();
+            _this.inOutFrequentlyDetail = new _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_2__["InOutFrequentlyDetail"]();
         });
         this.subscribers.routeData = this.route.data.subscribe(function (result) {
             var data = result.data;
@@ -7272,22 +7185,22 @@ var TimekeepingInOutFrequentlyComponent = /** @class */ (function (_super) {
         this.detailModel.patchValue({ shiftReportName: shift.name });
     };
     TimekeepingInOutFrequentlyComponent.prototype.search = function (currentPage) {
-        var _this = this;
-        this.currentPage = this.currentPage;
-        this.spinnerService.show();
-        this.subscribers.search = this.inOutFrequentlyService.search(this.keyword, this.isActiveSearch, this.fromDate, this.toDate, this.currentPage, this.pageSize)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["finalize"])(function () { return _this.spinnerService.hide(); }))
-            .subscribe(function (result) {
-            _this.listInOutFrequently = result.items;
-            _this.totalRows = result.totalRows;
-        });
+        // this.currentPage = this.currentPage;
+        // this.spinnerService.open();
+        // this.subscribers.search = this.inOutFrequentlyService.search(this.keyword, this.isActiveSearch, this.fromDate, this.toDate,
+        //     this.currentPage, this.pageSize)
+        //     .pipe(finalize(() => this.spinnerService.hide()))
+        //     .subscribe((result: ISearchResult<InOutFrequently>) => {
+        //         this.listInOutFrequently = result.items;
+        //         this.totalRows = result.totalRows;
+        //     });
     };
     TimekeepingInOutFrequentlyComponent.prototype.addNew = function () {
-        this.isUpdate = false;
-        this.model.reset(new _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_3__["InOutFrequently"]());
+        // this.isUpdate = false;
+        this.model.reset(new _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_2__["InOutFrequently"]());
         this.listInOutFrequentlyDetail = [];
         this.selectedUser = null;
-        this.formModal.show();
+        this.formModal.open();
     };
     TimekeepingInOutFrequentlyComponent.prototype.addDetail = function () {
         this.isUpdateDetail = false;
@@ -7295,134 +7208,135 @@ var TimekeepingInOutFrequentlyComponent = /** @class */ (function (_super) {
             this.toastr.error('Vui lòng chọn người dùng đăng ký.');
             return;
         }
-        this.detailModel.reset(new _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_3__["InOutFrequentlyDetail"]());
-        this.formDetailModal.show();
+        this.detailModel.reset(new _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_2__["InOutFrequentlyDetail"]());
+        this.formDetailModal.open();
     };
     TimekeepingInOutFrequentlyComponent.prototype.edit = function (inOutFrequently) {
-        var _this = this;
-        this.isUpdate = true;
-        // TODO: Check this later.
-        // this.selectedUser = new UserSuggestion(inOutFrequently.userId, inOutFrequently.fullName,
-        //     this.inOutFrequently.titleId, inOutFrequently.titleName,
-        //     inOutFrequently.officeId, inOutFrequently.officeName, inOutFrequently.avatar, true, true);
-        this.listInOutFrequentlyDetail = inOutFrequently.inOutFrequentlyDetails.map(function (item) {
-            item.dayOfWeekName = _this.getDayOfWeekName(item.dayOfWeek);
-            return item;
-        });
-        this.model.patchValue(inOutFrequently);
-        this.formModal.show();
-        this.getWorkScheduleByUserId(inOutFrequently.userId);
+        // this.isUpdate = true;
+        // // TODO: Check this later.
+        // // this.selectedUser = new UserSuggestion(inOutFrequently.userId, inOutFrequently.fullName,
+        // //     this.inOutFrequently.titleId, inOutFrequently.titleName,
+        // //     inOutFrequently.officeId, inOutFrequently.officeName, inOutFrequently.avatar, true, true);
+        // this.listInOutFrequentlyDetail = inOutFrequently.inOutFrequentlyDetails.map((item: InOutFrequentlyDetail) => {
+        //     item.dayOfWeekName = this.getDayOfWeekName(item.dayOfWeek);
+        //     return item;
+        // });
+        // this.model.patchValue(inOutFrequently);
+        // this.formModal.open();
+        // this.getWorkScheduleByUserId(inOutFrequently.userId);
     };
     TimekeepingInOutFrequentlyComponent.prototype.editDetail = function (inOutFrequentlyDetail, index) {
         this.currentDetailIndex = index;
         this.isUpdateDetail = true;
         this.detailModel.patchValue(inOutFrequentlyDetail);
-        this.formDetailModal.show();
+        this.formDetailModal.open();
     };
     TimekeepingInOutFrequentlyComponent.prototype.save = function () {
-        var _this = this;
-        var isValid = this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages, true);
-        if (isValid) {
-            if (this.listInOutFrequentlyDetail.length === 0) {
-                this.toastr.error('Vui lòng chọn thêm ít nhất 1 ca làm việc.');
-                return;
-            }
-            this.inOutFrequently = this.model.value;
-            this.inOutFrequently.inOutFrequentlyDetails = this.listInOutFrequentlyDetail;
-            if (this.isUpdate) {
-                this.spinnerService.show('Đang cập nhật thông tin đăng ký đi muộn về sớm.');
-                this.inOutFrequentlyService.update(this.inOutFrequently)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["finalize"])(function () { return _this.spinnerService.hide(); }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message);
-                    // Find item in list
-                    // const inOutFrequently = _.find(this.listInOutFrequently, (item: InOutFrequently) => {
-                    //     return item.id === this.inOutFrequently.id;
-                    // });
-                    //
-                    // if (inOutFrequently) {
-                    //     inOutFrequently.userId = this.inOutFrequently.userId;
-                    //     inOutFrequently.fullName = this.inOutFrequently.fullName;
-                    //     inOutFrequently.titleId = this.inOutFrequently.titleId;
-                    //     inOutFrequently.titleName = this.inOutFrequently.titleName;
-                    //     inOutFrequently.avatar = this.inOutFrequently.avatar;
-                    //     inOutFrequently.officeId = this.inOutFrequently.officeId;
-                    //     inOutFrequently.officeName = this.inOutFrequently.officeName;
-                    //     inOutFrequently.fromDate = this.inOutFrequently.fromDate;
-                    //     inOutFrequently.toDate = this.inOutFrequently.toDate;
-                    //     inOutFrequently.reason = this.inOutFrequently.reason;
-                    //     inOutFrequently.note = this.inOutFrequently.note;
-                    //     inOutFrequently.inOutFrequentlyDetails = this.inOutFrequently.inOutFrequentlyDetails;
-                    //     inOutFrequently.isActive = this.inOutFrequently.isActive;
-                    // }
-                    _this.formModal.dismiss();
-                    _this.search(_this.currentPage);
-                });
-            }
-            else {
-                this.spinnerService.show('Đang thêm mới đăng ký đi muộn về sớm.');
-                this.inOutFrequentlyService.insert(this.inOutFrequently)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["finalize"])(function () { return _this.spinnerService.hide(); }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message);
-                    _this.model.reset(new _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_3__["InOutFrequently"]());
-                    _this.selectedUser = null;
-                    _this.listInOutFrequentlyDetail = [];
-                    _this.search(1);
-                });
-            }
-        }
+        // const isValid = this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages, true);
+        // if (isValid) {
+        //     if (this.listInOutFrequentlyDetail.length === 0) {
+        //         this.toastr.error('Vui lòng chọn thêm ít nhất 1 ca làm việc.');
+        //         return;
+        //     }
+        //     this.inOutFrequently = this.model.value;
+        //     this.inOutFrequently.inOutFrequentlyDetails = this.listInOutFrequentlyDetail;
+        //     // if (this.isUpdate) {
+        //     //     this.spinnerService.open('Đang cập nhật thông tin đăng ký đi muộn về sớm.');
+        //     //     this.inOutFrequentlyService.update(this.inOutFrequently)
+        //     //         .pipe(finalize(() => this.spinnerService.hide()))
+        //     //         .subscribe((result: IActionResultResponse) => {
+        //     //             this.toastr.success(result.message);
+        //     //
+        //     //             // Find item in list
+        //     //             // const inOutFrequently = _.find(this.listInOutFrequently, (item: InOutFrequently) => {
+        //     //             //     return item.id === this.inOutFrequently.id;
+        //     //             // });
+        //     //             //
+        //     //             // if (inOutFrequently) {
+        //     //             //     inOutFrequently.userId = this.inOutFrequently.userId;
+        //     //             //     inOutFrequently.fullName = this.inOutFrequently.fullName;
+        //     //             //     inOutFrequently.titleId = this.inOutFrequently.titleId;
+        //     //             //     inOutFrequently.titleName = this.inOutFrequently.titleName;
+        //     //             //     inOutFrequently.avatar = this.inOutFrequently.avatar;
+        //     //             //     inOutFrequently.officeId = this.inOutFrequently.officeId;
+        //     //             //     inOutFrequently.officeName = this.inOutFrequently.officeName;
+        //     //             //     inOutFrequently.fromDate = this.inOutFrequently.fromDate;
+        //     //             //     inOutFrequently.toDate = this.inOutFrequently.toDate;
+        //     //             //     inOutFrequently.reason = this.inOutFrequently.reason;
+        //     //             //     inOutFrequently.note = this.inOutFrequently.note;
+        //     //             //     inOutFrequently.inOutFrequentlyDetails = this.inOutFrequently.inOutFrequentlyDetails;
+        //     //             //     inOutFrequently.isActive = this.inOutFrequently.isActive;
+        //     //             // }
+        //     //
+        //     //             this.formModal.dismiss();
+        //     //             this.search(this.currentPage);
+        //     //         });
+        //     // } else {
+        //     //     this.spinnerService.open('Đang thêm mới đăng ký đi muộn về sớm.');
+        //     //     this.inOutFrequentlyService.insert(this.inOutFrequently)
+        //     //         .pipe(finalize(() => this.spinnerService.hide()))
+        //     //         .subscribe((result: IActionResultResponse) => {
+        //     //             this.toastr.success(result.message);
+        //     //             this.model.reset(new InOutFrequently());
+        //     //             this.selectedUser = null;
+        //     //             this.listInOutFrequentlyDetail = [];
+        //     //             this.search(1);
+        //     //         });
+        //     // }
+        // }
     };
     TimekeepingInOutFrequentlyComponent.prototype.saveDetail = function () {
-        var _this = this;
-        var isValid = this.utilService.onValueChanged(this.detailModel, this.detailFormErrors, this.detailValidationMessage, true);
-        if (isValid) {
-            this.inOutFrequentlyDetail = this.detailModel.value;
-            if (this.isUpdate && this.isUpdateDetail) {
-                this.spinnerService.show('Đang cập nhật thông tin chi tiết ca xin đi muộn về sớm. Vui lòng đợi...');
-                this.inOutFrequentlyService.updateDetail(this.model.value.id, this.inOutFrequentlyDetail)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["finalize"])(function () { return _this.spinnerService.hide(); }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message);
-                    var detail = _this.listInOutFrequentlyDetail[_this.currentDetailIndex];
-                    if (detail) {
-                        detail.isInLate = _this.inOutFrequentlyDetail.isInLate;
-                        detail.shiftId = _this.inOutFrequentlyDetail.shiftId;
-                        detail.shiftReportName = _this.inOutFrequentlyDetail.shiftReportName;
-                        detail.totalMinutes = _this.inOutFrequentlyDetail.totalMinutes;
-                        detail.dayOfWeek = _this.inOutFrequentlyDetail.dayOfWeek;
-                        detail.dayOfWeekName = _this.getDayOfWeekName(_this.inOutFrequentlyDetail.dayOfWeek);
-                    }
-                    setTimeout(function () { return _this.formDetailModal.dismiss(); });
-                });
-            }
-            else if (this.isUpdate && !this.isUpdateDetail) {
-                this.spinnerService.show('Đang thêm mới chi tiết ca xin đi muộn về sớm. Vui lòng đợi...');
-                this.inOutFrequentlyService.insertDetail(this.model.value.id, this.inOutFrequentlyDetail)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["finalize"])(function () { return _this.spinnerService.hide(); }))
-                    .subscribe(function (result) {
-                    _this.toastr.success(result.message);
-                    _this.detailModel.reset(new _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_3__["InOutFrequentlyDetail"]());
-                    _this.inOutFrequentlyDetail.dayOfWeekName = _this.getDayOfWeekName(_this.inOutFrequentlyDetail.dayOfWeek);
-                    _this.inOutFrequentlyDetail.id = result.data.id;
-                    _this.listInOutFrequentlyDetail = _this.listInOutFrequentlyDetail.concat([lodash__WEBPACK_IMPORTED_MODULE_10__["clone"](_this.inOutFrequentlyDetail)]);
-                });
-            }
-            else {
-                // Check exists
-                var exists = lodash__WEBPACK_IMPORTED_MODULE_10__["find"](this.listInOutFrequentlyDetail, function (inOutFrequentlyDetail) {
-                    return inOutFrequentlyDetail.dayOfWeek === _this.inOutFrequentlyDetail.dayOfWeek
-                        && inOutFrequentlyDetail.shiftId === _this.inOutFrequentlyDetail.shiftId
-                        && inOutFrequentlyDetail.isInLate === _this.inOutFrequentlyDetail.isInLate;
-                });
-                if (!exists) {
-                    this.listInOutFrequentlyDetail = this.listInOutFrequentlyDetail.concat([new _in_out_frequently_model__WEBPACK_IMPORTED_MODULE_3__["InOutFrequentlyDetail"](this.inOutFrequentlyDetail.dayOfWeek, this.inOutFrequentlyDetail.shiftId, this.inOutFrequentlyDetail.shiftReportName, this.inOutFrequentlyDetail.isInLate, this.inOutFrequentlyDetail.totalMinutes)]);
-                }
-                else {
-                    this.toastr.error('Chi tiết ca làm việc đã tồn tại.');
-                }
-            }
-        }
+        // const isValid = this.utilService.onValueChanged(this.detailModel, this.detailFormErrors,
+        //     this.detailValidationMessage, true);
+        // if (isValid) {
+        //     this.inOutFrequentlyDetail = this.detailModel.value;
+        //
+        //     if (this.isUpdate && this.isUpdateDetail) {
+        //         this.spinnerService.open('Đang cập nhật thông tin chi tiết ca xin đi muộn về sớm. Vui lòng đợi...');
+        //         this.inOutFrequentlyService.updateDetail(this.model.value.id, this.inOutFrequentlyDetail)
+        //             .pipe(finalize(() => this.spinnerService.hide()))
+        //             .subscribe((result: IActionResultResponse) => {
+        //                 this.toastr.success(result.message);
+        //                 const detail = this.listInOutFrequentlyDetail[this.currentDetailIndex];
+        //                 if (detail) {
+        //                     detail.isInLate = this.inOutFrequentlyDetail.isInLate;
+        //                     detail.shiftId = this.inOutFrequentlyDetail.shiftId;
+        //                     detail.shiftReportName = this.inOutFrequentlyDetail.shiftReportName;
+        //                     detail.totalMinutes = this.inOutFrequentlyDetail.totalMinutes;
+        //                     detail.dayOfWeek = this.inOutFrequentlyDetail.dayOfWeek;
+        //                     detail.dayOfWeekName = this.getDayOfWeekName(this.inOutFrequentlyDetail.dayOfWeek);
+        //                 }
+        //                 setTimeout(() => this.formDetailModal.dismiss());
+        //             });
+        //     } else if (this.isUpdate && !this.isUpdateDetail) {
+        //         this.spinnerService.open('Đang thêm mới chi tiết ca xin đi muộn về sớm. Vui lòng đợi...');
+        //         this.inOutFrequentlyService.insertDetail(this.model.value.id, this.inOutFrequentlyDetail)
+        //             .pipe(finalize(() => this.spinnerService.hide()))
+        //             .subscribe((result: IActionResultResponse<any>) => {
+        //                 this.toastr.success(result.message);
+        //                 this.detailModel.reset(new InOutFrequentlyDetail());
+        //                 this.inOutFrequentlyDetail.dayOfWeekName = this.getDayOfWeekName(this.inOutFrequentlyDetail.dayOfWeek);
+        //                 this.inOutFrequentlyDetail.id = result.data.id;
+        //                 this.listInOutFrequentlyDetail = [...this.listInOutFrequentlyDetail, _.clone(this.inOutFrequentlyDetail)];
+        //             });
+        //     } else {
+        //         // Check exists
+        //         const exists = _.find(this.listInOutFrequentlyDetail, (inOutFrequentlyDetail: InOutFrequentlyDetail) => {
+        //             return inOutFrequentlyDetail.dayOfWeek === this.inOutFrequentlyDetail.dayOfWeek
+        //                 && inOutFrequentlyDetail.shiftId === this.inOutFrequentlyDetail.shiftId
+        //                 && inOutFrequentlyDetail.isInLate === this.inOutFrequentlyDetail.isInLate;
+        //         });
+        //
+        //         if (!exists) {
+        //             this.listInOutFrequentlyDetail = [...this.listInOutFrequentlyDetail,
+        //                 new InOutFrequentlyDetail(this.inOutFrequentlyDetail.dayOfWeek, this.inOutFrequentlyDetail.shiftId,
+        //                     this.inOutFrequentlyDetail.shiftReportName, this.inOutFrequentlyDetail.isInLate,
+        //                     this.inOutFrequentlyDetail.totalMinutes)];
+        //         } else {
+        //             this.toastr.error('Chi tiết ca làm việc đã tồn tại.');
+        //         }
+        //     }
+        // }
     };
     TimekeepingInOutFrequentlyComponent.prototype.delete = function (inOutFrequently) {
         // swal({
@@ -7434,7 +7348,7 @@ var TimekeepingInOutFrequentlyComponent = /** @class */ (function (_super) {
         //     confirmButtonText: 'Đồng ý',
         //     cancelButtonText: 'Hủy bỏ'
         // }).then(() => {
-        //     this.spinnerService.show();
+        //     this.spinnerService.open();
         //     this.inOutFrequentlyService.delete(inOutFrequently.id)
         //         .finally(() => this.spinnerService.hide())
         //         .subscribe((result: IActionResultResponse) => {
@@ -7445,34 +7359,33 @@ var TimekeepingInOutFrequentlyComponent = /** @class */ (function (_super) {
         // });
     };
     TimekeepingInOutFrequentlyComponent.prototype.deleteDetail = function (inOutFrequentlyDetail) {
-        if (this.isUpdate) {
-            // swal({
-            //     title: '',
-            //     text: `Bạn có chắc chắn muốn xóa chi tiết đăng ký này không?`,
-            //     type: 'warning',
-            //     showCancelButton: true,
-            //     confirmButtonColor: '#DD6B55',
-            //     confirmButtonText: 'Đồng ý',
-            //     cancelButtonText: 'Hủy bỏ'
-            // }).then(() => {
-            //     this.spinnerService.show();
-            //     this.inOutFrequentlyService.deleteDetail(this.model.value.id, inOutFrequentlyDetail.id)
-            //         .finally(() => this.spinnerService.hide())
-            //         .subscribe((result: IActionResultResponse) => {
-            //             this.toastr.success(result.message);
-            //             _.remove(this.listInOutFrequentlyDetail, (item: InOutFrequentlyDetail) => {
-            //                 return item.id === inOutFrequentlyDetail.id;
-            //             });
-            //         });
-            // }, () => {
-            // });
-        }
-        else {
-            lodash__WEBPACK_IMPORTED_MODULE_10__["remove"](this.listInOutFrequentlyDetail, function (item) {
-                return item.dayOfWeek === inOutFrequentlyDetail.dayOfWeek && item.shiftId === inOutFrequentlyDetail.shiftId
-                    && item.isInLate === inOutFrequentlyDetail.isInLate;
-            });
-        }
+        // if (this.isUpdate) {
+        //     // swal({
+        //     //     title: '',
+        //     //     text: `Bạn có chắc chắn muốn xóa chi tiết đăng ký này không?`,
+        //     //     type: 'warning',
+        //     //     showCancelButton: true,
+        //     //     confirmButtonColor: '#DD6B55',
+        //     //     confirmButtonText: 'Đồng ý',
+        //     //     cancelButtonText: 'Hủy bỏ'
+        //     // }).then(() => {
+        //     //     this.spinnerService.open();
+        //     //     this.inOutFrequentlyService.deleteDetail(this.model.value.id, inOutFrequentlyDetail.id)
+        //     //         .finally(() => this.spinnerService.hide())
+        //     //         .subscribe((result: IActionResultResponse) => {
+        //     //             this.toastr.success(result.message);
+        //     //             _.remove(this.listInOutFrequentlyDetail, (item: InOutFrequentlyDetail) => {
+        //     //                 return item.id === inOutFrequentlyDetail.id;
+        //     //             });
+        //     //         });
+        //     // }, () => {
+        //     // });
+        // } else {
+        //     _.remove(this.listInOutFrequentlyDetail, (item: InOutFrequentlyDetail) => {
+        //         return item.dayOfWeek === inOutFrequentlyDetail.dayOfWeek && item.shiftId === inOutFrequentlyDetail.shiftId
+        //             && item.isInLate === inOutFrequentlyDetail.isInLate;
+        //     });
+        // }
     };
     TimekeepingInOutFrequentlyComponent.prototype.onSelectUser = function (user) {
         this.selectedUser = user;
@@ -7499,7 +7412,7 @@ var TimekeepingInOutFrequentlyComponent = /** @class */ (function (_super) {
         // Get work schedule by userId
         this.spinnerService.show('Đang lấy thông tin ca làm việc. Vui lòng đợi...');
         this.subscribers.shifts = this.workScheduleService.getWorkScheduleShift(userId)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["finalize"])(function () { return _this.spinnerService.hide(); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["finalize"])(function () { return _this.spinnerService.hide(); }))
             .subscribe(function (shifts) {
             _this.shifts = shifts.map(function (item) {
                 return { id: item.id, name: item.reportName };
@@ -7507,42 +7420,42 @@ var TimekeepingInOutFrequentlyComponent = /** @class */ (function (_super) {
         });
     };
     TimekeepingInOutFrequentlyComponent.prototype.buildForm = function () {
-        this.formErrors = this.utilService.renderFormError(['userId', 'reason', 'note']);
-        this.validationMessages = {
-            'userId': {
-                'required': 'Vui lòng chọn nhân viên đăng ký.'
-            },
-            'reason': {
-                'required': 'Vui lòng nhập lý do xin đi muộn về sớm.',
-                'maxlength': 'Lý do đi muộn về sớm không được phép lớn hơn 500 ký tự.'
-            },
-            'note': {
-                'maxlength': 'Ghi chú không được phép lớn hơn 500 ký tự.'
-            }
-        };
-        this.model = this.fb.group({
-            'id': [this.inOutFrequently.id],
-            'userId': [this.inOutFrequently.userId, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required
-                ]],
-            'fullName': [this.inOutFrequently.fullName],
-            'avatar': [this.inOutFrequently.avatar],
-            'titleId': [this.inOutFrequently.titleId],
-            'titleName': [this.inOutFrequently.titleName],
-            'officeId': [this.inOutFrequently.officeId],
-            'officeName': [this.inOutFrequently.officeName],
-            'fromDate': [this.inOutFrequently.fromDate],
-            'toDate': [this.inOutFrequently.toDate],
-            'reason': [this.inOutFrequently.reason, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(500)
-                ]],
-            'note': [this.inOutFrequently.note, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(500)
-                ]],
-            'isActive': [this.inOutFrequently.isActive]
-        });
-        this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages);
+        // this.formErrors = this.utilService.renderFormError(['userId', 'reason', 'note']);
+        // this.validationMessages = {
+        //     'userId': {
+        //         'required': 'Vui lòng chọn nhân viên đăng ký.'
+        //     },
+        //     'reason': {
+        //         'required': 'Vui lòng nhập lý do xin đi muộn về sớm.',
+        //         'maxlength': 'Lý do đi muộn về sớm không được phép lớn hơn 500 ký tự.'
+        //     },
+        //     'note': {
+        //         'maxlength': 'Ghi chú không được phép lớn hơn 500 ký tự.'
+        //     }
+        // };
+        // this.model = this.fb.group({
+        //     'id': [this.inOutFrequently.id],
+        //     'userId': [this.inOutFrequently.userId, [
+        //         Validators.required
+        //     ]],
+        //     'fullName': [this.inOutFrequently.fullName],
+        //     'avatar': [this.inOutFrequently.avatar],
+        //     'titleId': [this.inOutFrequently.titleId],
+        //     'titleName': [this.inOutFrequently.titleName],
+        //     'officeId': [this.inOutFrequently.officeId],
+        //     'officeName': [this.inOutFrequently.officeName],
+        //     'fromDate': [this.inOutFrequently.fromDate],
+        //     'toDate': [this.inOutFrequently.toDate],
+        //     'reason': [this.inOutFrequently.reason, [
+        //         Validators.required,
+        //         Validators.maxLength(500)
+        //     ]],
+        //     'note': [this.inOutFrequently.note, [
+        //         Validators.maxLength(500)
+        //     ]],
+        //     'isActive': [this.inOutFrequently.isActive]
+        // });
+        // this.utilService.onValueChanged(this.model, this.formErrors, this.validationMessages);
     };
     TimekeepingInOutFrequentlyComponent.prototype.buildFormDetail = function () {
         this.detailFormErrors = this.utilService.renderFormError(['dayOfWeek', 'shiftId', 'totalMinutes']);
@@ -7561,15 +7474,15 @@ var TimekeepingInOutFrequentlyComponent = /** @class */ (function (_super) {
         this.detailModel = this.fb.group({
             'id': [this.inOutFrequentlyDetail.id],
             'dayOfWeek': [this.inOutFrequentlyDetail.dayOfWeek, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required
                 ]],
             'shiftId': [this.inOutFrequentlyDetail.shiftId, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required
                 ]],
             'shiftReportName': [this.inOutFrequentlyDetail.shiftReportName],
             'isInLate': [this.inOutFrequentlyDetail.isInLate],
             'totalMinutes': [this.inOutFrequentlyDetail.totalMinutes, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required,
                     this.numberValidator.isValid
                 ]]
         });
@@ -7577,35 +7490,32 @@ var TimekeepingInOutFrequentlyComponent = /** @class */ (function (_super) {
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('fromModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_14__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__["NhModalComponent"])
     ], TimekeepingInOutFrequentlyComponent.prototype, "formModal", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('fromDetailModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_14__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__["NhModalComponent"])
     ], TimekeepingInOutFrequentlyComponent.prototype, "formDetailModal", void 0);
     TimekeepingInOutFrequentlyComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-timekeeping-in-out-frequently',
             template: __webpack_require__(/*! ./timekeeping-in-out-frequently.component.html */ "./src/app/modules/timekeeping/timekeeping-in-out-frequently/timekeeping-in-out-frequently.component.html"),
-            providers: [_validators_number_validator__WEBPACK_IMPORTED_MODULE_12__["NumberValidator"]]
+            providers: [_validators_number_validator__WEBPACK_IMPORTED_MODULE_10__["NumberValidator"]]
         }),
-        Object(_shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_13__["DestroySubscribers"])(),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_20__["CheckPermission"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_18__["PAGE_ID"])),
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_14__["PAGE_ID"])),
         __metadata("design:paramtypes", [Object, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["Title"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_11__["ActivatedRoute"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_7__["ToastrService"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"],
-            _validators_number_validator__WEBPACK_IMPORTED_MODULE_12__["NumberValidator"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_15__["UtilService"],
-            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_5__["SpinnerService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_16__["AppService"],
-            _hr_user_services_user_service__WEBPACK_IMPORTED_MODULE_19__["UserService"],
-            _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_17__["TimekeepingWorkScheduleService"],
-            _in_out_frequently_service__WEBPACK_IMPORTED_MODULE_6__["InOutFrequentlyService"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_9__["ActivatedRoute"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_6__["ToastrService"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"],
+            _validators_number_validator__WEBPACK_IMPORTED_MODULE_10__["NumberValidator"],
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_12__["UtilService"],
+            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_4__["SpinnerService"],
+            _hr_user_services_user_service__WEBPACK_IMPORTED_MODULE_15__["UserService"],
+            _config_work_schedule_timekeeping_work_schedule_service__WEBPACK_IMPORTED_MODULE_13__["TimekeepingWorkScheduleService"],
+            _in_out_frequently_service__WEBPACK_IMPORTED_MODULE_5__["InOutFrequentlyService"]])
     ], TimekeepingInOutFrequentlyComponent);
     return TimekeepingInOutFrequentlyComponent;
-}(_base_component__WEBPACK_IMPORTED_MODULE_2__["BaseComponent"]));
+}(_base_list_component__WEBPACK_IMPORTED_MODULE_16__["BaseListComponent"]));
 
 
 
@@ -8349,10 +8259,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NhTabModule", function() { return NhTabModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _nh_tab_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nh-tab.service */ "./src/app/shareds/components/nh-tab/nh-tab.service.ts");
-/* harmony import */ var _nh_tab_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nh-tab.component */ "./src/app/shareds/components/nh-tab/nh-tab.component.ts");
-/* harmony import */ var _nh_tab_panel_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nh-tab-panel.component */ "./src/app/shareds/components/nh-tab/nh-tab-panel.component.ts");
-/* harmony import */ var _nh_tab_host_directive__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nh-tab-host.directive */ "./src/app/shareds/components/nh-tab/nh-tab-host.directive.ts");
+/* harmony import */ var _nh_tab_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nh-tab.component */ "./src/app/shareds/components/nh-tab/nh-tab.component.ts");
+/* harmony import */ var _nh_tab_pane_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nh-tab-pane.component */ "./src/app/shareds/components/nh-tab/nh-tab-pane.component.ts");
+/* harmony import */ var _nh_tab_host_directive__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nh-tab-host.directive */ "./src/app/shareds/components/nh-tab/nh-tab-host.directive.ts");
+/* harmony import */ var _nh_tab_title_directive__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nh-tab-title.directive */ "./src/app/shareds/components/nh-tab/nh-tab-title.directive.ts");
+/* harmony import */ var _nh_tab_title_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nh-tab-title.component */ "./src/app/shareds/components/nh-tab/nh-tab-title.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8364,11 +8275,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
  */
 
 
-// Services
-
 
 
 // Directives
+
+
 
 var NhTabModule = /** @class */ (function () {
     function NhTabModule() {
@@ -8376,12 +8287,118 @@ var NhTabModule = /** @class */ (function () {
     NhTabModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]],
-            exports: [_nh_tab_component__WEBPACK_IMPORTED_MODULE_3__["NhTabComponent"], _nh_tab_panel_component__WEBPACK_IMPORTED_MODULE_4__["NhTabPanelComponent"]],
-            declarations: [_nh_tab_component__WEBPACK_IMPORTED_MODULE_3__["NhTabComponent"], _nh_tab_panel_component__WEBPACK_IMPORTED_MODULE_4__["NhTabPanelComponent"], _nh_tab_host_directive__WEBPACK_IMPORTED_MODULE_5__["NhTabHostDirective"]],
-            providers: [_nh_tab_service__WEBPACK_IMPORTED_MODULE_2__["NhTabService"]],
+            exports: [_nh_tab_component__WEBPACK_IMPORTED_MODULE_2__["NhTabComponent"], _nh_tab_pane_component__WEBPACK_IMPORTED_MODULE_3__["NhTabPaneComponent"], _nh_tab_title_directive__WEBPACK_IMPORTED_MODULE_5__["NhTabTitleDirective"]],
+            declarations: [_nh_tab_component__WEBPACK_IMPORTED_MODULE_2__["NhTabComponent"], _nh_tab_pane_component__WEBPACK_IMPORTED_MODULE_3__["NhTabPaneComponent"], _nh_tab_host_directive__WEBPACK_IMPORTED_MODULE_4__["NhTabHostDirective"], _nh_tab_title_directive__WEBPACK_IMPORTED_MODULE_5__["NhTabTitleDirective"], _nh_tab_title_component__WEBPACK_IMPORTED_MODULE_6__["NhTabTitleComponent"]]
         })
     ], NhTabModule);
     return NhTabModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shareds/services/notify.service.ts":
+/*!****************************************************!*\
+  !*** ./src/app/shareds/services/notify.service.ts ***!
+  \****************************************************/
+/*! exports provided: NotifyService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotifyService", function() { return NotifyService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../configs/app.config */ "./src/app/configs/app.config.ts");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth.service */ "./src/app/shareds/services/auth.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+/**
+ * Created by HoangNH on 3/15/2017.
+ */
+
+
+
+
+
+var NotifyService = /** @class */ (function () {
+    function NotifyService(appConfig, http, authService) {
+        // this.authService.onLogin.subscribe(() => this.start());
+        // this.authService.onLogout.subscribe(() => this.stop());
+        this.http = http;
+        this.authService = authService;
+        this.startingSubject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.onReceiveNotification = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.onReceiveUnreadNotifyCount = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.getTotalMail = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.getListMail = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.setValueMailContent = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.setValueMailSideBarContent = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.setValueMailIsDraft = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.removeTinymce = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        // console.log('init notify hub');
+        // console.log($.hubConnection());
+        // this.connection = $.hubConnection();
+        // this.connection.url = appConfig.signalrUrl;
+        // this.notifyHubProxy = this.connection.createHubProxy('notifyHub');
+        // this.registerOnSererEvents();
+    }
+    NotifyService.prototype.start = function () {
+        // this.connection.qs = {'access_token': this.authService.token};
+        // this.connection.start()
+        //     .done(() => {
+        //         this.startingSubject.next();
+        //         console.log('connect to notify hub success');
+        //     })
+        //     .fail((error: any) => {
+        //         this.startingSubject.error(error);
+        //         console.log('connect to notify hub fail');
+        //     });
+    };
+    NotifyService.prototype.stop = function () {
+        console.log('notify service stoped');
+        // this.connection.stop();
+    };
+    NotifyService.prototype.updateIsRead = function (id) {
+        return this.http.post("notify/update-is-read", '', {
+            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]().set('id', id.toString())
+        });
+    };
+    NotifyService.prototype.getListNotification = function (page, pageSize) {
+        return this.http.get("notify/get-list-notify", {
+            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]().set('page', page.toString())
+                .set('pageSize', pageSize.toString())
+        });
+    };
+    NotifyService.prototype.getTotalUnreadNotify = function () {
+        return this.http.get("/notify/get-unread-count");
+    };
+    NotifyService.prototype.registerOnSererEvents = function () {
+        var _this = this;
+        this.notifyHubProxy.on('receiveNotification', function (result) {
+            var notify = JSON.parse(result);
+            _this.onReceiveNotification.next(notify);
+        });
+    };
+    NotifyService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_3__["APP_CONFIG"])),
+        __metadata("design:paramtypes", [Object, _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]])
+    ], NotifyService);
+    return NotifyService;
 }());
 
 

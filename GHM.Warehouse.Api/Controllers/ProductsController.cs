@@ -6,6 +6,7 @@ using GHM.Infrastructure;
 using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.CustomAttributes;
 using GHM.Infrastructure.Filters;
+using GHM.Warehouse.Domain.Constants;
 using GHM.Warehouse.Domain.IRepository;
 using GHM.Warehouse.Domain.IServices;
 using GHM.Warehouse.Domain.ModelMetas;
@@ -83,6 +84,17 @@ namespace GHM.Warehouse.Api.Controllers
             return Ok(result);
         }
 
+        [Route("updateApprove/{id}/{status}"), AcceptVerbs("POST")]
+        [AllowPermission(PageId.Product, Permission.Approve)]
+        [CheckPermission]
+        public async Task<IActionResult> updateAprrove(string id, ApproverStatus status)
+        {
+            var result = await _productService.UpdateAprrove(CurrentUser.TenantId, id, status);
+            if (result.Code < 0)
+                return BadRequest(result);
+            return Ok(result);
+        }
+
         [Route("suggestions"), AcceptVerbs("GET")]
         [AllowPermission(PageId.Product, Permission.View)]
         [CheckPermission]
@@ -115,6 +127,14 @@ namespace GHM.Warehouse.Api.Controllers
             return Ok(result);
         }
 
+        [Route("translation/{id}"), AcceptVerbs("GET")]
+        [AllowPermission(PageId.Product, Permission.View)]
+        [CheckPermission]
+        public async Task<IActionResult> GetProductTranslationById(string id)
+        {
+            var result = await _productService.GetProductTranslationById(CurrentUser.TenantId, id);
+            return Ok(result);
+        }
         #region ProductAttribute
         //[Route("{id}/values"), AcceptVerbs("POST"), ValidateModel]
         //[AllowPermission(PageId.Product, Permission.Insert)]

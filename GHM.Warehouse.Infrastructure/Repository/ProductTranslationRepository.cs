@@ -5,6 +5,9 @@ using GHM.Warehouse.Domain.IRepository;
 using GHM.Warehouse.Domain.Models;
 using GHM.Warehouse.Domain.ViewModels;
 using GHM.Infrastructure.SqlServer;
+using System.Linq.Expressions;
+using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace GHM.Warehouse.Infrastructure.Repository
 {
@@ -71,6 +74,21 @@ namespace GHM.Warehouse.Infrastructure.Repository
             name = name.Trim();
             return await _productTranslationRepository.ExistAsync(x =>
                 x.ProductId != productId && x.TenantId == tenantId && x.LanguageId == languageId && x.Name == name && !x.IsDelete);
+        }
+
+        public Task<List<ProductTranslationViewModel>> GetAllById(string tenantId, string id)
+        {
+            Expression<Func<ProductTranslation, bool>> spec = x => !x.IsDelete && x.TenantId == tenantId && x.ProductId == id;
+
+            var query = Context.Set<ProductTranslation>().Where(spec).Select(x => new ProductTranslationViewModel
+            {
+                Id = x.ProductId,
+                LanguageId = x.LanguageId,
+                Name = x.Name,
+                SeoLink = x.SeoLink
+            }).ToListAsync();
+
+            return query;
         }
     }
 }

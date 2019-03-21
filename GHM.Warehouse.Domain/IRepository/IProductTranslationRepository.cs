@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using GHM.Warehouse.Domain.Models;
+using GHM.Warehouse.Domain.ViewModels;
 
 namespace GHM.Warehouse.Domain.IRepository
 {
@@ -21,5 +22,7 @@ namespace GHM.Warehouse.Domain.IRepository
         Task<List<ProductTranslation>> GetsProductId(string productId, bool isReadOnly = false);
 
         Task<bool> CheckExists(string productId, string tenantId, string languageId, string name);
+
+        Task<List<ProductTranslationViewModel>> GetAllById(string tenantId, string id);
     }
 }

@@ -1,259 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["modules-hr-organization-organization-module"],{
 
-/***/ "./src/app/base-form.component.ts":
-/*!****************************************!*\
-  !*** ./src/app/base-form.component.ts ***!
-  \****************************************/
-/*! exports provided: BaseFormComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BaseFormComponent", function() { return BaseFormComponent; });
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var BaseFormComponent = /** @class */ (function () {
-    function BaseFormComponent() {
-        this.saveSuccessful = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        this._message = {
-            type: '',
-            content: ''
-        };
-        this.isSubmitted = false;
-        this.isSaving = false;
-        this.isUpdate = false;
-        this.formErrors = {};
-        this.validationMessages = {};
-        this.translationFormErrors = {};
-        this.translationValidationMessage = [];
-        this.subscribers = {};
-        this.isModified = false;
-        this.isCreateAnother = false;
-        this.languages = [];
-        // Permission.
-        this.permission = {
-            view: false,
-            insert: false,
-            update: false,
-            delete: false,
-            export: false,
-            print: false,
-            approve: false,
-            report: false
-        };
-    }
-    Object.defineProperty(BaseFormComponent.prototype, "message", {
-        get: function () {
-            return this._message;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(BaseFormComponent.prototype, "modelTranslations", {
-        get: function () {
-            return this.model.get('modelTranslations');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    BaseFormComponent.prototype.setMessage = function (type, content) {
-        this._message.type = type;
-        this._message.content = content;
-    };
-    BaseFormComponent.prototype.resetMessage = function () {
-        this._message.type = '';
-        this._message.content = '';
-    };
-    BaseFormComponent.prototype.renderLanguageData = function (appService) {
-        var _this = this;
-        this.languages = appService.languages.map(function (language) {
-            if (language.isDefault) {
-                _this.currentLanguage = language.languageId;
-            }
-            return { id: language.languageId, name: language.name, isSelected: language.isDefault };
-        });
-    };
-    BaseFormComponent.prototype.renderTranslationFormArray = function (buildFormFunction) {
-        var _this = this;
-        this.modelTranslationArray = this.model.get('modelTranslations');
-        this.languages.forEach(function (language) {
-            var formGroup = buildFormFunction(language.id);
-            _this.modelTranslationArray.push(formGroup);
-        });
-    };
-    BaseFormComponent.prototype.renderFormError = function (args) {
-        var _this = this;
-        var object = {};
-        args.forEach(function (item) {
-            if (item instanceof Object) {
-                object[Object.keys(item)[0]] = _this.renderFormError(Object.values(item)[0]);
-            }
-            else {
-                object[item] = '';
-            }
-        });
-        return object;
-    };
-    BaseFormComponent.prototype.renderFormErrorMessage = function (args) {
-        var _this = this;
-        var object = {};
-        args.forEach(function (item) {
-            if (item instanceof Object) {
-                object[Object.keys(item)[0]] = _this.renderFormErrorMessage(Object.values(item)[0]);
-            }
-            else {
-                object[item] = item;
-            }
-        });
-        return object;
-    };
-    BaseFormComponent.prototype.validateModel = function (isSubmit) {
-        if (isSubmit === void 0) { isSubmit = true; }
-        return this.validateFormGroup(this.model, this.formErrors, this.validationMessages, isSubmit);
-    };
-    BaseFormComponent.prototype.validateTranslationModel = function (isSubmit) {
-        var _this = this;
-        if (isSubmit === void 0) { isSubmit = true; }
-        return this.modelTranslations.controls.map(function (translationModel) {
-            var languageId = translationModel.value.languageId;
-            var isValid = _this.validateFormGroup(translationModel, _this.translationFormErrors[languageId], _this.translationValidationMessage[languageId], isSubmit);
-            return {
-                languageId: languageId,
-                isValid: isValid,
-            };
-        });
-    };
-    BaseFormComponent.prototype.validateFormGroup = function (formGroup, formErrors, validationMessages, isSubmit, elements, data) {
-        if (!formGroup) {
-            return;
-        }
-        var form = formGroup;
-        return this.checkFormValid(form, formErrors, validationMessages, isSubmit);
-    };
-    BaseFormComponent.prototype.checkLanguageValid = function () {
-        var _this = this;
-        var languageValidCheck = this.validateTranslationModel();
-        var languageValid = languageValidCheck.map(function (languageCheck) {
-            if (!languageCheck.isValid) {
-                _this.currentLanguage = languageCheck.languageId;
-                return false;
-            }
-            else {
-                return true;
-            }
-        });
-        return !(languageValid.indexOf(false) > -1);
-    };
-    BaseFormComponent.prototype.checkFormValid = function (form, formErrors, validationMessages, isSubmit) {
-        var _this = this;
-        var inValidCount = 0;
-        var isValid = true;
-        var _loop_1 = function (field) {
-            if (typeof (formErrors[field]) === 'object' && field != null && form != null) {
-                var newFormGroup = form.get(field);
-                if (newFormGroup instanceof _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormArray"]) {
-                    newFormGroup.controls.forEach(function (control, index) {
-                        isValid = _this.checkFormValid(control, formErrors[field], validationMessages[field], isSubmit);
-                    });
-                }
-                else {
-                    isValid = this_1.checkFormValid(newFormGroup, formErrors[field], validationMessages[field], isSubmit);
-                }
-            }
-            else {
-                if (field != null && form != null) {
-                    formErrors[field] = '';
-                    var control = form.get(field);
-                    if (control && isSubmit) {
-                        control.markAsDirty();
-                    }
-                    if (control && control.dirty && !control.valid) {
-                        var messages = validationMessages[field];
-                        for (var key in control.errors) {
-                            if (control.errors.hasOwnProperty(key)) {
-                                formErrors[field] += messages[key];
-                                inValidCount++;
-                            }
-                        }
-                    }
-                }
-            }
-        };
-        var this_1 = this;
-        for (var field in formErrors) {
-            _loop_1(field);
-        }
-        return inValidCount === 0 && isValid;
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
-        __metadata("design:type", Object)
-    ], BaseFormComponent.prototype, "saveSuccessful", void 0);
-    return BaseFormComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/base-list.component.ts":
-/*!****************************************!*\
-  !*** ./src/app/base-list.component.ts ***!
-  \****************************************/
-/*! exports provided: BaseListComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BaseListComponent", function() { return BaseListComponent; });
-var BaseListComponent = /** @class */ (function () {
-    function BaseListComponent() {
-        this.currentPage = 1;
-        this.pageSize = 20;
-        this.totalRows = 0;
-        this.isSearching = false;
-        this.listItems = [];
-        this.subscribers = {};
-        // Permission.
-        this.permission = {
-            view: false,
-            add: false,
-            edit: false,
-            delete: false,
-            export: false,
-            print: false,
-            approve: false,
-            report: false
-        };
-        // getPermission(appService: AppService, pageId: number) {
-        //     this.permission.view = appService.checkPermission(pageId, Permission.view);
-        //     this.permission.add = appService.checkPermission(pageId, Permission.insert);
-        //     this.permission.edit = appService.checkPermission(pageId, Permission.update);
-        //     this.permission.delete = appService.checkPermission(pageId, Permission.delete);
-        //     this.permission.export = appService.checkPermission(pageId, Permission.export);
-        //     this.permission.print = appService.checkPermission(pageId, Permission.print);
-        //     this.permission.approve = appService.checkPermission(pageId, Permission.approve);
-        //     this.permission.report = appService.checkPermission(pageId, Permission.report);
-        // }
-    }
-    return BaseListComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/base.component.ts":
 /*!***********************************!*\
   !*** ./src/app/base.component.ts ***!
@@ -441,7 +187,7 @@ var Office = /** @class */ (function () {
         this.order = order ? order : 0;
         this.status = status;
         this.parentId = parentId;
-        this.isActive = isActive ? isActive : false;
+        this.isActive = isActive ? isActive : true;
     }
     return Office;
 }());
@@ -457,7 +203,7 @@ var Office = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nh-modal #officeContactFormModal\r\n          size=\"sm\"\r\n          (onHidden)=\"onModalHidden()\">\r\n    <nh-modal-header>\r\n\r\n    </nh-modal-header>\r\n    <form action=\"\" class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\"\r\n                 [class.has-error]=\"formErrors.userId\">\r\n                <label i18n=\"@@fullName\" i18n-ghmLabel ghmLabel=\"Full name\"\r\n                       class=\"col-sm-12\"\r\n                       [required]=\"true\"></label>\r\n                <div class=\"col-sm-12\">\r\n                    <ghm-user-suggestion\r\n                        [selectedUser]=\"selectedUser\"\r\n                        (userSelected)=\"onUserSelected($event)\"\r\n                    ></ghm-user-suggestion>\r\n                    <span class=\"help-block\">\r\n                        {\r\n                        formErrors.userId,\r\n                        select, required {Title name is required}\r\n                        }\r\n                    </span>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\"\r\n                 [class.has-error]=\"formErrors.phoneNumber\">\r\n                <label i18n=\"@@phoneNumber\" i18n-ghmLabel ghmLabel=\"PhoneNumber\"\r\n                       class=\"col-sm-12\"\r\n                       [required]=\"true\"></label>\r\n                <div class=\"col-sm-12\">\r\n                    <input type=\"text\" class=\"form-control\" formControlName=\"phoneNumber\"\r\n                           i18n-placeholder=\"@@enterPhoneNumber\"\r\n                           placeholder=\"Enter phone number.\">\r\n                    <span class=\"help-block\">\r\n                        {\r\n                        formErrors.phoneNumber,\r\n                        select, required {Phone number is required} maxlength {Phone number not allowed over 50 characters}\r\n                        }\r\n                    </span>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\"\r\n                 [class.has-error]=\"formErrors.email\">\r\n                <label i18n=\"@@email\" i18n-ghmLabel ghmLabel=\"Email\"\r\n                       class=\"col-sm-12\"></label>\r\n                <div class=\"col-sm-12\">\r\n                    <input type=\"text\" class=\"form-control\" formControlName=\"email\"\r\n                           i18n-placeholder=\"@@enterEmail\"\r\n                           placeholder=\"Enter email address.\">\r\n                    <span class=\"help-block\">\r\n                        {\r\n                        formErrors.email,\r\n                        select, maxlength {Email not allowed over 500 characters}\r\n                        }\r\n                    </span>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\"\r\n                 [class.has-error]=\"formErrors.fax\">\r\n                <label i18n=\"@@fax\" i18n-ghmLabel ghmLabel=\"Fax\"\r\n                       class=\"col-sm-12\"\r\n                ></label>\r\n                <div class=\"col-sm-12\">\r\n                    <input type=\"text\" class=\"form-control\" formControlName=\"fax\"\r\n                           i18n-placeholder=\"@@enterFax\"\r\n                           placeholder=\"Enter fax.\">\r\n                    <span class=\"help-block\">\r\n                        {\r\n                        formErrors.fax,\r\n                        select, maxlength {Fax not allowed over 50 characters}\r\n                        }\r\n                    </span>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <mat-checkbox [checked]=\"isCreateAnother\" (change)=\"isCreateAnother = !isCreateAnother\"\r\n                          *ngIf=\"!isUpdate\"\r\n                          i18n=\"@@isCreateAnother\"\r\n                          class=\"cm-mgr-5\"\r\n                          color=\"primary\">\r\n                Create another\r\n            </mat-checkbox>\r\n            <ghm-button classes=\"btn btn-primary cm-mgr-5\" [loading]=\"isSaving\" i18n=\"@@save\">\r\n                Save\r\n            </ghm-button>\r\n            <ghm-button type=\"button\" classes=\"btn btn-default\"\r\n                        nh-dismiss=\"true\"\r\n                        [loading]=\"isSaving\"\r\n                        i18n=\"@@cancel\">\r\n                Cancel\r\n            </ghm-button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
+module.exports = "<nh-modal #officeContactFormModal\r\n          size=\"sm\"\r\n          (hidden)=\"onModalHidden()\">\r\n    <form action=\"\" class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"form-group\"\r\n                 [class.has-error]=\"formErrors.userId\">\r\n                <label i18n=\"@@fullName\" i18n-ghmLabel ghmLabel=\"Full name\"\r\n                       class=\"col-sm-12\"\r\n                       [required]=\"true\"></label>\r\n                <div class=\"col-sm-12\">\r\n                    <ghm-user-suggestion\r\n                        [selectedUser]=\"selectedUser\"\r\n                        (userSelected)=\"onUserSelected($event)\"\r\n                    ></ghm-user-suggestion>\r\n                    <span class=\"help-block\">\r\n                        {\r\n                        formErrors.userId,\r\n                        select, required {Please select user}\r\n                        }\r\n                    </span>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\"\r\n                 [class.has-error]=\"formErrors.phoneNumber\">\r\n                <label i18n=\"@@phoneNumber\" i18n-ghmLabel ghmLabel=\"PhoneNumber\"\r\n                       class=\"col-sm-12\"\r\n                       [required]=\"true\"></label>\r\n                <div class=\"col-sm-12\">\r\n                    <input type=\"text\" class=\"form-control\" formControlName=\"phoneNumber\"\r\n                           i18n-placeholder=\"@@enterPhoneNumber\"\r\n                           placeholder=\"Enter phone number.\">\r\n                    <span class=\"help-block\">\r\n                        {\r\n                        formErrors.phoneNumber,\r\n                        select,\r\n                        required {Phone number is required}\r\n                        maxlength {Phone number not allowed over 50 characters}\r\n                        pattern {Phone number invalid}\r\n                        }\r\n                    </span>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\"\r\n                 [class.has-error]=\"formErrors.email\">\r\n                <label i18n=\"@@email\" i18n-ghmLabel ghmLabel=\"Email\"\r\n                       class=\"col-sm-12\"></label>\r\n                <div class=\"col-sm-12\">\r\n                    <input type=\"text\" class=\"form-control\" formControlName=\"email\"\r\n                           i18n-placeholder=\"@@enterEmail\"\r\n                           placeholder=\"Enter email address.\">\r\n                    <span class=\"help-block\">\r\n                        {\r\n                        formErrors.email,\r\n                        select,\r\n                        maxlength {Email not allowed over 500 characters}\r\n                        pattern {Email invalid}\r\n                        }\r\n                    </span>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\"\r\n                 [class.has-error]=\"formErrors.fax\">\r\n                <label i18n=\"@@fax\" i18n-ghmLabel ghmLabel=\"Fax\"\r\n                       class=\"col-sm-12\"\r\n                ></label>\r\n                <div class=\"col-sm-12\">\r\n                    {{formErrors.fax}}\r\n                    <input type=\"text\" class=\"form-control\" formControlName=\"fax\"\r\n                           i18n-placeholder=\"@@enterFax\"\r\n                           placeholder=\"Enter fax.\">\r\n                    <span class=\"help-block\">\r\n                        {\r\n                        formErrors.fax,\r\n                        select,\r\n                        maxlength {Fax not allowed over 50 characters}\r\n                        pattern {Fax invalid}\r\n                        }\r\n                    </span>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <mat-checkbox [checked]=\"isCreateAnother\" (change)=\"isCreateAnother = !isCreateAnother\"\r\n                          *ngIf=\"!isUpdate\"\r\n                          i18n=\"@@isCreateAnother\"\r\n                          class=\"cm-mgr-5\"\r\n                          color=\"primary\">\r\n                Create another\r\n            </mat-checkbox>\r\n            <ghm-button classes=\"btn btn-primary cm-mgr-5\" [loading]=\"isSaving\" i18n=\"@@save\">\r\n                Save\r\n            </ghm-button>\r\n            <ghm-button type=\"button\" classes=\"btn btn-default\"\r\n                        nh-dismiss=\"true\"\r\n                        [loading]=\"isSaving\"\r\n                        i18n=\"@@cancel\">\r\n                Cancel\r\n            </ghm-button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
 
 /***/ }),
 
@@ -476,10 +222,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
 /* harmony import */ var _services_office_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/office.service */ "./src/app/modules/hr/organization/office/services/office.service.ts");
 /* harmony import */ var _models_office_contact_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../models/office-contact.model */ "./src/app/modules/hr/organization/office/models/office-contact.model.ts");
-/* harmony import */ var _shareds_components_ghm_user_suggestion_ghm_user_suggestion_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../shareds/components/ghm-user-suggestion/ghm-user-suggestion.component */ "./src/app/shareds/components/ghm-user-suggestion/ghm-user-suggestion.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _shareds_constants_pattern_const__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../shareds/constants/pattern.const */ "./src/app/shareds/constants/pattern.const.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -522,17 +268,18 @@ var OfficeContactFormComponent = /** @class */ (function (_super) {
         this.buildForm();
     };
     OfficeContactFormComponent.prototype.onModalHidden = function () {
-        this.model.reset();
         this.selectedUser = null;
+        this.model.reset();
     };
     OfficeContactFormComponent.prototype.onUserSelected = function (user) {
+        this.selectedUser = user;
         if (user) {
             this.model.patchValue({
                 userId: user.id,
                 fullName: user.fullName,
                 avatar: user.avatar,
-                officeName: user.officeName,
-                positionName: user.positionName
+                officeName: '',
+                positionName: ''
             });
         }
         else {
@@ -547,14 +294,14 @@ var OfficeContactFormComponent = /** @class */ (function (_super) {
     };
     OfficeContactFormComponent.prototype.add = function () {
         this.isUpdate = false;
-        this.model.reset();
-        this.officeContactFormModal.show();
+        this.officeContactFormModal.open();
     };
     OfficeContactFormComponent.prototype.edit = function (officeContact) {
-        this.isUpdate = true;
-        this.selectedUser = new _shareds_components_ghm_user_suggestion_ghm_user_suggestion_component__WEBPACK_IMPORTED_MODULE_5__["UserSuggestion"](officeContact.userId, officeContact.fullName, officeContact.officeName, officeContact.positionName, officeContact.avatar);
-        this.model.patchValue(officeContact);
-        this.officeContactFormModal.show();
+        // this.isUpdate = true;
+        // this.selectedUser = new UserSuggestion(officeContact.userId, officeContact.fullName, officeContact.officeName,
+        //     officeContact.positionName, officeContact.avatar);
+        // this.model.patchValue(officeContact);
+        // this.officeContactFormModal.open();
     };
     OfficeContactFormComponent.prototype.save = function () {
         var isValid = this.validateModel(true);
@@ -574,7 +321,7 @@ var OfficeContactFormComponent = /** @class */ (function (_super) {
             this.isSaving = true;
             this.officeService
                 .updateContact(this.officeId, this.contact.id, this.contact)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["finalize"])(function () { return _this.isSaving = false; }))
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["finalize"])(function () { return _this.isSaving = false; }))
                 .subscribe(function () {
                 _this.saveSuccessful.emit(_this.contact);
                 _this.officeContactFormModal.dismiss();
@@ -592,7 +339,7 @@ var OfficeContactFormComponent = /** @class */ (function (_super) {
             this.isSaving = true;
             this.officeService
                 .addContact(this.officeId, this.contact)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["finalize"])(function () { return _this.isSaving = false; }))
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["finalize"])(function () { return _this.isSaving = false; }))
                 .subscribe(function (result) {
                 _this.contact.id = result.data;
                 _this.saveSuccessful.emit(_this.contact);
@@ -612,37 +359,40 @@ var OfficeContactFormComponent = /** @class */ (function (_super) {
         this.formErrors = this.renderFormError(['userId', 'phoneNumber', 'email', 'fax']);
         this.validationMessages = this.renderFormErrorMessage([
             { 'userId': ['required', 'maxlength'] },
-            { 'phoneNumber': ['required', 'maxlength'] },
-            { 'email': ['maxlength'] },
-            { 'fax': ['maxlength'] },
+            { 'phoneNumber': ['required', 'maxlength', 'pattern'] },
+            { 'email': ['maxlength', 'pattern'] },
+            { 'fax': ['maxlength', 'pattern'] },
         ]);
         this.model = this.fb.group({
             id: [this.contact.id],
             userId: [this.contact.userId, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required,
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(50)
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].maxLength(50)
                 ]],
             fullName: [this.contact.fullName],
             avatar: [this.contact.avatar],
             officeName: [this.contact.officeName],
             positionName: [this.contact.positionName],
             phoneNumber: [this.contact.phoneNumber, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required,
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(50)
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].maxLength(50),
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].pattern(_shareds_constants_pattern_const__WEBPACK_IMPORTED_MODULE_8__["Pattern"].phoneNumber)
                 ]],
             email: [this.contact.email, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(500)
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].maxLength(500),
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].pattern(_shareds_constants_pattern_const__WEBPACK_IMPORTED_MODULE_8__["Pattern"].email)
                 ]],
             fax: [this.contact.fax, [
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(50)
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].maxLength(50),
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_5__["Validators"].pattern(_shareds_constants_pattern_const__WEBPACK_IMPORTED_MODULE_8__["Pattern"].phoneNumber)
                 ]]
         });
         this.model.valueChanges.subscribe(function () { return _this.validateModel(false); });
     };
     OfficeContactFormComponent.prototype.afterSave = function () {
         if (this.isCreateAnother) {
-            this.model.reset();
             this.selectedUser = null;
+            this.model.reset();
         }
         else {
             this.officeContactFormModal.dismiss();
@@ -661,8 +411,8 @@ var OfficeContactFormComponent = /** @class */ (function (_super) {
             selector: 'app-office-contact-form',
             template: __webpack_require__(/*! ./office-contact-form.component.html */ "./src/app/modules/hr/organization/office/office-contact/office-contact-form.component.html")
         }),
-        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormBuilder"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_7__["UtilService"],
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"],
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_6__["UtilService"],
             _services_office_service__WEBPACK_IMPORTED_MODULE_3__["OfficeService"]])
     ], OfficeContactFormComponent);
     return OfficeContactFormComponent;
@@ -679,7 +429,7 @@ var OfficeContactFormComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h4 class=\"title caption-subject font-blue-madison bold uppercase\" i18n=\"@@contactInfo\"> Contact info </h4>\r\n<hr>\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12 text-right\">\r\n        <button type=\"button\" class=\"btn btn-primary\" i18n=\"@@add\" (click)=\"add()\">\r\n            Add\r\n        </button>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <table class=\"table table-stripped table-hover\">\r\n            <thead>\r\n            <tr>\r\n                <th class=\"center w50\" i18n=\"@@no\">No</th>\r\n                <th i18n=\"@@Contact\">Contact</th>\r\n                <th i18n=\"@@phoneNumber\">Phone number</th>\r\n                <th i18n=\"@@email\">Email</th>\r\n                <th i18n=\"@@fax\">Fax</th>\r\n                <th i18n=\"@@actions\">Actions</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let contact of officeContacts; index as i\">\r\n                <td class=\"center middle\">{{ i + 1 }}</td>\r\n                <td class=\"middle\">\r\n                    <div class=\"media\">\r\n                        <div class=\"media-left\">\r\n                            <a href=\"javascript://\">\r\n                                <img ghm-image class=\"media-object avatar-md\"\r\n                                     src=\"{{ contact.avatar }}\"\r\n                                     alt=\"{{ contact.fullName }}\">\r\n                            </a>\r\n                        </div>\r\n                        <div class=\"media-body\">\r\n                            <h4 class=\"media-heading\">{{ contact.fullName }}</h4>\r\n                            <div class=\"description\">{{ contact.officeName }} - {{ contact.positionName }}</div>\r\n                        </div>\r\n                    </div>\r\n                </td>\r\n                <td class=\"middle\">{{ contact.phoneNumber }}</td>\r\n                <td class=\"middle\">{{ contact.email }}</td>\r\n                <td class=\"middle\">{{ contact.fax }}</td>\r\n                <td class=\"text-right middle w100\">\r\n                    <button type=\"button\" class=\"btn btn-primary btn-sm\" (click)=\"edit(contact)\">\r\n                        <i class=\"fa fa-edit\"></i>\r\n                    </button>\r\n                    <button type=\"button\" class=\"btn btn-danger btn-sm\" (delete)=\"delete(delete)\">\r\n                        <i class=\"fa fa-trash-o\"></i>\r\n                    </button>\r\n                </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n\r\n<app-office-contact-form\r\n    [officeId]=\"officeId\"\r\n    (saveSuccessful)=\"onSaveSuccess($event)\"\r\n></app-office-contact-form>\r\n"
+module.exports = "<h4 class=\"title caption-subject font-blue-madison bold uppercase\" i18n=\"@@contactInfo\"> Contact info </h4>\r\n<hr>\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12 text-right\">\r\n        <button type=\"button\" class=\"btn btn-primary\" i18n=\"@@add\" (click)=\"add()\">\r\n            Add\r\n        </button>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-stripped table-hover\">\r\n                <thead>\r\n                <tr>\r\n                    <th class=\"center w50\" i18n=\"@@no\">No</th>\r\n                    <th class=\"w250\" i18n=\"@@Contact\">Contact</th>\r\n                    <th i18n=\"@@phoneNumber\">Phone number</th>\r\n                    <th i18n=\"@@email\">Email</th>\r\n                    <th i18n=\"@@fax\">Fax</th>\r\n                    <th class=\"w150\" i18n=\"@@actions\">Actions</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr *ngFor=\"let contact of officeContacts; index as i\">\r\n                    <td class=\"center middle\">{{ i + 1 }}</td>\r\n                    <td class=\"middle\">\r\n                        <div class=\"media\">\r\n                            <div class=\"media-left\">\r\n                                <a href=\"javascript://\">\r\n                                    <img ghmImage class=\"media-object avatar-md\"\r\n                                         [src]=\"contact.avatar\"\r\n                                         alt=\"{{ contact.fullName }}\">\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"media-body\">\r\n                                <h4 class=\"media-heading\">{{ contact.fullName }}</h4>\r\n                                <div class=\"description\">{{ contact.officeName }} - {{ contact.positionName }}</div>\r\n                            </div>\r\n                        </div>\r\n                    </td>\r\n                    <td class=\"middle\">{{ contact.phoneNumber }}</td>\r\n                    <td class=\"middle\">{{ contact.email }}</td>\r\n                    <td class=\"middle\">{{ contact.fax }}</td>\r\n                    <td class=\"text-right middle w100\">\r\n                        <button type=\"button\" class=\"btn btn-primary btn-sm\" (click)=\"edit(contact)\">\r\n                            <i class=\"fa fa-edit\"></i>\r\n                        </button>\r\n                        <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"delete(contact.id)\">\r\n                            <i class=\"fa fa-trash-o\"></i>\r\n                        </button>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<app-office-contact-form\r\n    [officeId]=\"officeId\"\r\n    (saveSuccessful)=\"onSaveSuccess($event)\"\r\n></app-office-contact-form>\r\n"
 
 /***/ }),
 
@@ -805,7 +555,7 @@ var OfficeContactComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nh-modal #officeDetailModal size=\"lg\">\r\n    <nh-modal-header>\r\n        <span i18n=\"@@officeDetailTitle\">Office detail: </span>\r\n    </nh-modal-header>\r\n    <nh-modal-content>\r\n        <div class=\"row\">\r\n            <div class=\"col-sm-4\">\r\n                <div class=\"portlet light bordered\">\r\n                    <div class=\"portlet-title\">\r\n                        <div class=\"caption font-green-sharp\">\r\n                            <i class=\"icon-speech font-green-sharp\"></i>\r\n                            <span class=\"caption-subject bold uppercase\" i18n=\"@@officeOrganizationTitle\">Office organization</span>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"portlet-body\">\r\n                        <nh-tree\r\n                            [data]=\"officeTree\"\r\n                            (nodeSelected)=\"onNodeSelected($event)\">\r\n                        </nh-tree>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <!-- END: .col-sm-4 -->\r\n            <div class=\"col-sm-8\">\r\n                <div class=\"portlet light bordered\">\r\n                    <div class=\"portlet-title\">\r\n                        <div class=\"caption font-green-sharp\">\r\n                            <i class=\"icon-speech font-green-sharp\"></i>\r\n                            <span class=\"caption-subject bold uppercase\" i18n=\"@@officeOrganizationFormTitle\">\r\n                                    {isUpdate, select, 0 {Add new office} 1 {Update office} other {}}\r\n                                </span>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"portlet-body\">\r\n                        <div class=\"form-horizontal\">\r\n                            <div class=\"tabbable-custom\">\r\n                                <ul class=\"nav nav-tabs \">\r\n                                    <li [class.active]=\"item.id === currentLanguage\"\r\n                                        *ngFor=\"let item of languages\">\r\n                                        <a href=\"javascript://\" (click)=\"currentLanguage = item.id\">\r\n                                            {{ item.name }}\r\n                                        </a>\r\n                                    </li>\r\n                                </ul>\r\n\r\n                                <div class=\"tab-content\">\r\n                                    <div class=\"tab-pane active\">\r\n                                        <div class=\"form-group\">\r\n                                            <label i18n-ghmLabel=\"@@parentOffice\" ghmLabel=\"Parent office\"\r\n                                                   class=\"col-sm-3 control-label\"></label>\r\n                                            <div class=\"col-sm-3\">\r\n                                                <div class=\"form-group\">{{ officeDetail?.parentName }}</div>\r\n                                            </div>\r\n                                            <label i18n-ghmLabel=\"@@officeCode\" ghmLabel=\"Office code\"\r\n                                                   class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                            <div class=\"col-sm-3\">\r\n                                                <div class=\"form-group\">{{ officeDetail?.code }}</div>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group\"\r\n                                             *ngFor=\"let translation of officeDetail?.officeTranslations\"\r\n                                             [hidden]=\"translation.languageId != currentLanguage\">\r\n                                            <label i18n-ghmLabel=\"@@officeName\" ghmLabel=\"Office name\"\r\n                                                   class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                            <div class=\"col-sm-3\">\r\n                                                <div class=\"form-control\">{{ translation.name }}</div>\r\n                                            </div>\r\n                                            <label i18n-ghmLabel=\"@@shortName\" ghmLabel=\"Short name\"\r\n                                                   class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                            <div class=\"col-sm-3\">\r\n                                                <div class=\"form-control\">{{ translation.shortName }}</div>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group\">\r\n                                            <label i18n-ghmLabel=\"@@officeType\" ghmLabel=\"Office type\"\r\n                                                   class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                            <div class=\"col-sm-3\">\r\n                                                <div class=\"form-control\" i18n=\"@@officeType\">\r\n\r\n                                                </div>\r\n                                            </div>\r\n                                            <label i18n-ghmLabel=\"@@status\" ghmLabel=\"Status\"\r\n                                                   class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                            <div class=\"col-sm-3\">\r\n                                                <i class=\"fa fa-check color-green\" *ngIf=\"officeDetail?.isActive\"></i>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group\"\r\n                                             *ngFor=\"let translation of officeDetail?.officeTranslations\"\r\n                                             [hidden]=\"translation.languageId !== currentLanguage\">\r\n                                            <label i18n=\"@@description\" i18n-ghmLabel ghmLabel=\"Description\"\r\n                                                   class=\"col-sm-3 control-label\"></label>\r\n                                            <div class=\"col-sm-9\">\r\n                                                <div class=\"form-control\">{{ translation.description }}\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group\"\r\n                                             *ngFor=\"let translation of officeDetail?.officeTranslations\"\r\n                                             [hidden]=\"translation.languageId !== currentLanguage\">\r\n                                            <label i18n=\"@@address\" i18n-ghmLabel ghmLabel=\"Address\"\r\n                                                   class=\"col-sm-3 control-label\"></label>\r\n                                            <div class=\"col-sm-9\">\r\n                                                <div class=\"form-control\">{{ translation.address }}</div>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group\">\r\n                                            <div class=\"col-sm-12\">\r\n                                                <h4 class=\"title\" i18n=\"@@contactInfo\"> Contact info </h4>\r\n                                                <hr>\r\n                                                <table class=\"table table-stripped table-hover\">\r\n                                                    <thead>\r\n                                                    <tr>\r\n                                                        <th class=\"center w50\" i18n=\"@@no\">No</th>\r\n                                                        <th i18n=\"@@Contact\">Contact</th>\r\n                                                        <th i18n=\"@@phoneNumber\">Phone number</th>\r\n                                                        <th i18n=\"@@email\">Email</th>\r\n                                                        <th i18n=\"@@fax\">Fax</th>\r\n                                                        <th i18n=\"@@actions\">Actions</th>\r\n                                                    </tr>\r\n                                                    </thead>\r\n                                                    <tbody>\r\n                                                    <tr *ngFor=\"let contact of officeDetail?.officeContacts; index as i\">\r\n                                                        <td class=\"center middle\">{{ i + 1 }}</td>\r\n                                                        <td class=\"middle\">\r\n\r\n                                                        </td>\r\n                                                        <td class=\"middle\">{{ contact.phoneNumber }}</td>\r\n                                                        <td class=\"middle\">{{ contact.email }}</td>\r\n                                                        <td class=\"middle\">{{ contact.fax }}</td>\r\n                                                        <td class=\"text-right middle\">\r\n                                                            <button type=\"button\" class=\"btn btn-primary btn-sm\">\r\n                                                                <i class=\"fa fa-edit\"></i>\r\n                                                            </button>\r\n                                                            <button type=\"button\" class=\"btn btn-danger btn-sm\">\r\n                                                                <i class=\"fa fa-trash-o\"></i>\r\n                                                            </button>\r\n                                                        </td>\r\n                                                    </tr>\r\n                                                    </tbody>\r\n                                                </table>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <!-- END: .tab-pane -->\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <!-- END: .col-sm-8 -->\r\n        </div>\r\n    </nh-modal-content>\r\n    <nh-modal-footer>\r\n        <ghm-button classes=\"btn btn-default\"\r\n                    nh-dismiss=\"true\"\r\n                    type=\"button\">\r\n            <span i18n=\"@@close\">Close</span>\r\n        </ghm-button>\r\n    </nh-modal-footer>\r\n</nh-modal>\r\n"
+module.exports = "<nh-modal #officeDetailModal size=\"lg\"\r\n          (shown)=\"onModalShown()\"\r\n          (hidden)=\"onModalHidden()\">\r\n    <nh-modal-content>\r\n        <div class=\"row\">\r\n            <div class=\"col-sm-4\">\r\n                <div class=\"portlet light bordered\">\r\n                    <div class=\"portlet-title\">\r\n                        <div class=\"caption font-green-sharp\">\r\n                            <i class=\"icon-speech font-green-sharp\"></i>\r\n                            <span class=\"caption-subject bold uppercase\" i18n=\"@@officeOrganizationTitle\">Office organization</span>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"portlet-body\">\r\n                        <nh-tree\r\n                            [data]=\"officeTree\"\r\n                            (nodeSelected)=\"onNodeSelected($event)\">\r\n                        </nh-tree>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <!-- END: .col-sm-4 -->\r\n            <div class=\"col-sm-8\">\r\n                <div class=\"portlet light bordered\">\r\n                    <div class=\"portlet-title\">\r\n                        <div class=\"caption font-green-sharp\">\r\n                            <i class=\"icon-speech font-green-sharp\"></i>\r\n                            <span class=\"caption-subject bold uppercase\" i18n=\"@@officeDetailTitle\">\r\n                                Office detail\r\n                            </span>\r\n                        </div>\r\n                        <div class=\"actions\" *ngIf=\"permission.edit || permission.delete\">\r\n                            <a href=\"javascript://\"\r\n                               class=\"btn btn-circle btn-primary cm-mgr-5\"\r\n                               *ngIf=\"permission.edit\"\r\n                               (click)=\"edit()\"\r\n                            >\r\n                                <i class=\"fa fa-edit\"></i>\r\n                            </a>\r\n                            <a href=\"javascript:;\" class=\"btn btn-circle red-sunglo\"\r\n                               *ngIf=\"permission.delete\"\r\n                               [swal]=\"confirmDeleteOffice\" (confirm)=\"deleteOffice()\">\r\n                                <i class=\"fa fa-trash-o\"></i>\r\n                            </a>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"portlet-body\">\r\n                        <div class=\"form-horizontal\">\r\n                            <div class=\"tabbable-custom\">\r\n                                <ul class=\"nav nav-tabs \">\r\n                                    <li [class.active]=\"viewType === 0\">\r\n                                        <a href=\"javascript://\" (click)=\"changeViewType(0)\" i18n=\"@@officeInfo\">\r\n                                            Office info\r\n                                        </a>\r\n                                    </li>\r\n                                    <li [class.active]=\"viewType === 1\">\r\n                                        <a href=\"javascript://\" (click)=\"changeViewType(1)\" i18n=\"@@listPosition\">\r\n                                            List positions\r\n                                        </a>\r\n                                    </li>\r\n                                </ul>\r\n\r\n                                <div class=\"tab-content\">\r\n                                    <div class=\"tab-pane active\">\r\n                                        <ng-container *ngIf=\"viewType ===  0; else listPositionTemplate\">\r\n                                            <div class=\"form-group\">\r\n                                                <label i18n-ghmLabel=\"@@parentOffice\" ghmLabel=\"Parent office\"\r\n                                                       class=\"col-sm-3 control-label\"></label>\r\n                                                <div class=\"col-sm-3\">\r\n                                                    <div class=\"form-control\">{{ officeDetail?.parentName }}</div>\r\n                                                </div>\r\n                                                <label i18n-ghmLabel=\"@@officeCode\" ghmLabel=\"Office code\"\r\n                                                       class=\"col-sm-3 control-label\"></label>\r\n                                                <div class=\"col-sm-3\">\r\n                                                    <div class=\"form-control\">{{ officeDetail?.code }}</div>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"form-group\">\r\n                                                <label i18n-ghmLabel=\"@@officeName\" ghmLabel=\"Office name\"\r\n                                                       class=\"col-sm-3 control-label\"></label>\r\n                                                <div class=\"col-sm-3\">\r\n                                                    <div class=\"form-control\">{{ officeDetail?.name }}</div>\r\n                                                </div>\r\n                                                <label i18n-ghmLabel=\"@@shortName\" ghmLabel=\"Short name\"\r\n                                                       class=\"col-sm-3 control-label\"></label>\r\n                                                <div class=\"col-sm-3\">\r\n                                                    <div class=\"form-control\">{{ officeDetail?.shortName }}</div>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"form-group\">\r\n                                                <label i18n-ghmLabel=\"@@officeType\" ghmLabel=\"Office type\"\r\n                                                       class=\"col-sm-3 control-label\"></label>\r\n                                                <div class=\"col-sm-3\">\r\n                                                    <div class=\"form-control\" i18n=\"@@officeType\">\r\n\r\n                                                    </div>\r\n                                                </div>\r\n                                                <label i18n-ghmLabel=\"@@status\" ghmLabel=\"Status\"\r\n                                                       class=\"col-sm-3 control-label\"></label>\r\n                                                <div class=\"col-sm-3\">\r\n                                                <span class=\"badge cm-mgt-10\"\r\n                                                      [class.badge-success]=\"officeDetail?.isActive\"\r\n                                                      [class.badge-danger]=\"!officeDetail?.isActive\"\r\n                                                >\r\n                                                    {officeDetail?.isActive, select, 0 {InActivated} 1 {Activated} other {}}\r\n                                                </span>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"form-group\">\r\n                                                <label i18n=\"@@description\" i18n-ghmLabel ghmLabel=\"Description\"\r\n                                                       class=\"col-sm-3 control-label\"></label>\r\n                                                <div class=\"col-sm-9\">\r\n                                                    <div class=\"form-control height-auto\">{{ officeDetail?.description\r\n                                                        }}\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"form-group\">\r\n                                                <label i18n=\"@@address\" i18n-ghmLabel ghmLabel=\"Address\"\r\n                                                       class=\"col-sm-3 control-label\"></label>\r\n                                                <div class=\"col-sm-9\">\r\n                                                    <div class=\"form-control height-auto\">{{ officeDetail?.address }}\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"form-group\">\r\n                                                <div class=\"col-sm-12\">\r\n                                                    <app-office-contact\r\n                                                        #detailOfficeContact\r\n                                                        [officeId]=\"officeDetail?.id\"\r\n                                                        [officeContacts]=\"officeDetail?.officeContacts\">\r\n                                                    </app-office-contact>\r\n                                                </div>\r\n                                            </div>\r\n                                        </ng-container>\r\n                                    </div>\r\n                                    <!-- END: .tab-pane -->\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <!-- END: .col-sm-8 -->\r\n        </div>\r\n    </nh-modal-content>\r\n    <nh-modal-footer>\r\n        <ghm-button classes=\"btn btn-default\"\r\n                    nh-dismiss=\"true\"\r\n                    type=\"button\">\r\n            <span i18n=\"@@close\">Close</span>\r\n        </ghm-button>\r\n    </nh-modal-footer>\r\n</nh-modal>\r\n\r\n<nh-modal #addPositionModal size=\"sm\"\r\n          [backdropStatic]=\"true\"\r\n          (onShown)=\"onAddPositionModalShown()\">\r\n    <nh-modal-header>\r\n        <span i18n=\"@@addPosition\">Add position</span>\r\n    </nh-modal-header>\r\n    <nh-modal-content>\r\n        <nh-suggestion\r\n            i18n-placeholder=\"@@typePositionNameForSearch\"\r\n            placeholder=\"Type position name for search\"\r\n            [multiple]=\"true\"\r\n            [sources]=\"positions\"\r\n            [selectedItems]=\"selectedPositions\"\r\n            [loading]=\"isSearchingPositions\"\r\n            (searched)=\"searchPositionForSuggestion($event)\"\r\n        ></nh-suggestion>\r\n    </nh-modal-content>\r\n    <nh-modal-footer>\r\n        <button type=\"button\" class=\"btn btn-primary\" i18n=\"@@accept\" (click)=\"acceptAddPosition()\">\r\n            Accept\r\n        </button>\r\n    </nh-modal-footer>\r\n</nh-modal>\r\n\r\n<ng-template #listPositionTemplate>\r\n    <form class=\"form-inline\" (ngSubmit)=\"searchPosition(1)\">\r\n        <div class=\"col-sm-12\">\r\n            <div class=\"form-group cm-mgr-5\">\r\n                <div class=\"input-group\">\r\n                    <input type=\"text\" class=\"form-control\"\r\n                           i18n-placeholder=\"@@enterKeyword\"\r\n                           placeholder=\"Enter keyword\"\r\n                           name=\"searchPositionKeyword\"\r\n                           [(ngModel)]=\"keyword\">\r\n                    <span class=\"input-group-btn\">\r\n                        <button class=\"btn btn-primary\" type=\"submit\">\r\n                            <i class=\"fa fa-spinner fa-pulse\" *ngIf=\"isSearching\"></i>\r\n                            <i class=\"fa fa-search\" *ngIf=\"!isSearching\"></i>\r\n                        </button>\r\n                    </span>\r\n                </div>\r\n            </div>\r\n            <!--<div class=\"form-group\">-->\r\n                <!--<ghm-button-->\r\n                    <!--*ngIf=\"permission.delete\"-->\r\n                    <!--icon=\"fa fa-search\"-->\r\n                    <!--classes=\"btn btn-primary\"-->\r\n                    <!--[loading]=\"isSearching\"-->\r\n                <!--&gt;-->\r\n                <!--</ghm-button>-->\r\n            <!--</div>-->\r\n            <div class=\"form-group pull-right\" *ngIf=\"officePermission.add\">\r\n                <button type=\"button\" class=\"btn btn-primary\" i18n=\"@@add\" (click)=\"showAddPositionModal()\">\r\n                    Add\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </form>\r\n    <table class=\"table table-stripped table-hover\">\r\n        <thead>\r\n        <tr>\r\n            <th class=\"center w50\" i18n=\"@@no\">No</th>\r\n            <th i18n=\"@@positionName\">Position Name</th>\r\n            <th class=\"center w100\" i18n=\"@@isManager\">Is Manager</th>\r\n            <th class=\"center w100\" i18n=\"@@isMultiple\">Is Multiple</th>\r\n            <th class=\"w70 center\" i18n=\"@@actions\">Actions</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr *ngFor=\"let item of listItems; let i = index\">\r\n            <td class=\"center\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n            <td>{{ item.positionName }}</td>\r\n            <td class=\"center\">\r\n                <i class=\"fa fa-check color-green\" *ngIf=\"item.isManager\"></i>\r\n            </td>\r\n            <td class=\"center\">\r\n                <i class=\"fa fa-check color-green\" *ngIf=\"item.isMultiple\"></i>\r\n            </td>\r\n            <td class=\"center\">\r\n                <ghm-button\r\n                    *ngIf=\"permission.delete\"\r\n                    icon=\"fa fa-trash-o\" classes=\"btn btn-danger btn-sm\"\r\n                    [swal]=\"confirmDeleteOfficePosition\"\r\n                    (confirm)=\"deletePosition(item.positionId)\"></ghm-button>\r\n            </td>\r\n        </tr>\r\n        </tbody>\r\n    </table>\r\n    <ghm-paging\r\n        i18n-pageName=\"@@position\"\r\n        pageName=\"Position\"\r\n        [totalRows]=\"totalRows\"\r\n        [currentPage]=\"currentPage\"\r\n        [pageShow]=\"6\"\r\n        [isDisabled]=\"isSearching\"\r\n        (pageClick)=\"searchPosition($event)\"></ghm-paging>\r\n</ng-template>\r\n\r\n<swal\r\n    #confirmDeleteOfficePosition\r\n    i18n-title=\"@@confirmDeleteOfficePositionTitle\"\r\n    i18n-text=\"@@confirmDeleteOfficePositionText\"\r\n    title=\"Are you sure want to remove this position out of office.\"\r\n    text=\"You can't recover after delete.\"\r\n    type=\"question\"\r\n    i18n-confirmButtonText=\"@@accept\"\r\n    i18n-cancelButtonText=\"@@cancel\"\r\n    confirmButtonText=\"Accept\"\r\n    cancelButtonText=\"Cancel\"\r\n    [showCancelButton]=\"true\"\r\n    [focusCancel]=\"true\">\r\n</swal>\r\n\r\n<swal\r\n    #confirmDeleteOffice\r\n    i18n-title=\"@@confirmDeleteOfficeTitle\"\r\n    i18n-text=\"@@confirmDeleteOfficeText\"\r\n    title=\"Are you sure want to delete this office.\"\r\n    text=\"You can't recover this office after delete.\"\r\n    type=\"question\"\r\n    i18n-confirmButtonText=\"@@accept\"\r\n    i18n-cancelButtonText=\"@@cancel\"\r\n    confirmButtonText=\"Accept\"\r\n    cancelButtonText=\"Cancel\"\r\n    [showCancelButton]=\"true\"\r\n    [focusCancel]=\"true\">\r\n</swal>\r\n"
 
 /***/ }),
 
@@ -822,9 +572,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_office_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/office.service */ "./src/app/modules/hr/organization/office/services/office.service.ts");
 /* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var _shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../shareds/decorator/destroy-subscribes.decorator */ "./src/app/shareds/decorator/destroy-subscribes.decorator.ts");
-/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
+/* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../base-list.component */ "./src/app/base-list.component.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var _services_office_position_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/office-position.service */ "./src/app/modules/hr/organization/office/services/office-position.service.ts");
+/* harmony import */ var _position_position_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../position/position.service */ "./src/app/modules/hr/organization/position/position.service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -834,61 +598,178 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 
 
 
 
 
 
-var OfficeDetailComponent = /** @class */ (function () {
-    function OfficeDetailComponent(appService, spinnerService, officeService) {
-        var _this = this;
-        this.appService = appService;
-        this.spinnerService = spinnerService;
-        this.officeService = officeService;
-        this.officeTree = [];
-        this.subscribers = {};
-        this.languages = [];
-        this.currentLanguage = '';
-        this.languages = this.appService.languages.map(function (language) {
-            if (language.isDefault) {
-                _this.currentLanguage = language.languageId;
-            }
-            return { id: language.languageId, name: language.name, isSelected: language.isDefault };
-        });
+
+
+
+
+var OfficeDetailComponent = /** @class */ (function (_super) {
+    __extends(OfficeDetailComponent, _super);
+    function OfficeDetailComponent(pageId, location, router, positionService, officePositionService, officeService) {
+        var _this = _super.call(this) || this;
+        _this.pageId = pageId;
+        _this.location = location;
+        _this.router = router;
+        _this.positionService = positionService;
+        _this.officePositionService = officePositionService;
+        _this.officeService = officeService;
+        _this.officeDeleted = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        _this.edited = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        _this.officeTree = [];
+        _this.subscribers = {};
+        _this.viewType = 0;
+        _this.positions = [];
+        _this.selectedPositions = [];
+        _this.isSearchingPositions = false;
+        return _this;
     }
     OfficeDetailComponent.prototype.ngOnInit = function () {
+        this.officePermission = this.appService.getPermissionByPageId(this.pageId.OFFICE);
     };
-    OfficeDetailComponent.prototype.onNodeSelected = function (node) {
-        this.getDetail(node.id);
-    };
-    OfficeDetailComponent.prototype.getDetail = function (officeId) {
+    OfficeDetailComponent.prototype.onModalShown = function () {
         var _this = this;
-        this.spinnerService.show();
         this.subscribers.getTree = this.officeService.getTree()
             .subscribe(function (result) { return _this.officeTree = result; });
-        this.subscribers.getDetail = this.officeService.getDetail(officeId)
+        this.viewType = 0;
+    };
+    OfficeDetailComponent.prototype.onModalHidden = function () {
+        this.location.go('/organization/offices');
+    };
+    OfficeDetailComponent.prototype.onNodeSelected = function (node) {
+        this.selectedOfficeId = node.id;
+        this.getDataByViewType();
+    };
+    OfficeDetailComponent.prototype.edit = function () {
+        this.officeDetailModal.dismiss();
+        this.edited.emit(this.officeDetail.id);
+    };
+    OfficeDetailComponent.prototype.deleteOffice = function () {
+        var _this = this;
+        this.officeService.delete(this.officeDetail.id)
+            .subscribe(function () {
+            _this.officeDeleted.emit();
+        });
+    };
+    OfficeDetailComponent.prototype.changeViewType = function (viewType) {
+        if (this.viewType === viewType) {
+            return;
+        }
+        if (viewType === 1) {
+            this.keyword = '';
+        }
+        this.viewType = viewType;
+        this.getDataByViewType();
+    };
+    OfficeDetailComponent.prototype.showDetail = function (officeId) {
+        this.selectedOfficeId = officeId;
+        this.getDetail();
+        this.officeDetailModal.open();
+    };
+    OfficeDetailComponent.prototype.closeModal = function () {
+        this.officeDetailModal.dismiss();
+    };
+    OfficeDetailComponent.prototype.getDetail = function () {
+        var _this = this;
+        this.subscribers.getDetail = this.officeService.getDetail(this.selectedOfficeId)
             .subscribe(function (result) {
             _this.officeDetail = result.data;
-            _this.officeDetailModal.show();
         });
+    };
+    OfficeDetailComponent.prototype.searchPosition = function (currentPage) {
+        var _this = this;
+        this.currentPage = currentPage;
+        this.subscribers.searchPositions = this.officePositionService
+            .search(this.keyword, this.selectedOfficeId, this.currentPage, this.pageSize)
+            .subscribe(function (result) {
+            _this.totalRows = result.totalRows;
+            _this.listItems = result.items;
+        });
+    };
+    OfficeDetailComponent.prototype.deletePosition = function (positionId) {
+        var _this = this;
+        this.subscribers.deletePosition = this.officePositionService.delete(positionId, this.officeDetail.id)
+            .subscribe(function () { return _this.searchPosition(_this.currentPage); });
+    };
+    OfficeDetailComponent.prototype.searchPositionForSuggestion = function (keyword) {
+        var _this = this;
+        this.isSearchingPositions = true;
+        this.subscribers.searchForSuggestion =
+            this.positionService.searchForSuggestion(keyword)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["finalize"])(function () { return _this.isSearchingPositions = false; }))
+                .subscribe(function (result) { return _this.positions = result; });
+    };
+    OfficeDetailComponent.prototype.showAddPositionModal = function () {
+        this.addPositionModal.open();
+    };
+    OfficeDetailComponent.prototype.acceptAddPosition = function () {
+        var _this = this;
+        this.officePositionService
+            .insert(this.selectedOfficeId, this.selectedPositions.map(function (item) {
+            return item.id;
+        }))
+            .subscribe(function () {
+            _this.addPositionModal.dismiss();
+            _this.searchPosition(1);
+        });
+    };
+    OfficeDetailComponent.prototype.onAddPositionModalShown = function () {
+        this.selectedPositions = [];
+    };
+    OfficeDetailComponent.prototype.getDataByViewType = function () {
+        switch (this.viewType) {
+            case 0:
+                this.getDetail();
+                break;
+            case 1:
+                this.searchPosition(1);
+                break;
+            default:
+                this.getDetail();
+                break;
+        }
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('officeDetailModal'),
         __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_2__["NhModalComponent"])
     ], OfficeDetailComponent.prototype, "officeDetailModal", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('addPositionModal'),
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_2__["NhModalComponent"])
+    ], OfficeDetailComponent.prototype, "addPositionModal", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], OfficeDetailComponent.prototype, "officeDeleted", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], OfficeDetailComponent.prototype, "edited", void 0);
     OfficeDetailComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-office-detail',
-            template: __webpack_require__(/*! ./office-detail.component.html */ "./src/app/modules/hr/organization/office/office-detail/office-detail.component.html")
+            template: __webpack_require__(/*! ./office-detail.component.html */ "./src/app/modules/hr/organization/office/office-detail/office-detail.component.html"),
+            providers: [
+                _services_office_position_service__WEBPACK_IMPORTED_MODULE_5__["OfficePositionService"],
+                _angular_common__WEBPACK_IMPORTED_MODULE_8__["Location"], { provide: _angular_common__WEBPACK_IMPORTED_MODULE_8__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_8__["PathLocationStrategy"] }
+            ]
         }),
-        Object(_shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_3__["DestroySubscribers"])(),
-        __metadata("design:paramtypes", [_shareds_services_app_service__WEBPACK_IMPORTED_MODULE_5__["AppService"],
-            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_4__["SpinnerService"],
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_4__["PAGE_ID"])),
+        __metadata("design:paramtypes", [Object, _angular_common__WEBPACK_IMPORTED_MODULE_8__["Location"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_9__["Router"],
+            _position_position_service__WEBPACK_IMPORTED_MODULE_6__["PositionService"],
+            _services_office_position_service__WEBPACK_IMPORTED_MODULE_5__["OfficePositionService"],
             _services_office_service__WEBPACK_IMPORTED_MODULE_1__["OfficeService"]])
     ], OfficeDetailComponent);
     return OfficeDetailComponent;
-}());
+}(_base_list_component__WEBPACK_IMPORTED_MODULE_3__["BaseListComponent"]));
 
 
 
@@ -901,7 +782,7 @@ var OfficeDetailComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nh-modal #officeFormModal size=\"full\"\r\n          (onShown)=\"onModalShow()\"\r\n          (onHidden)=\"onModalHidden()\">\r\n    <nh-modal-header>\r\n        {isUpdate, select, 0 {Add new office} 1 {Update office} other {}}\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-4\">\r\n                    <div class=\"portlet light bordered\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption font-green-sharp\">\r\n                                <i class=\"icon-speech font-green-sharp\"></i>\r\n                                <span class=\"caption-subject font-blue-madison bold uppercase\"\r\n                                      i18n=\"@@officeOrganizationTitle\">Office organization</span>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <nh-tree [data]=\"officeTree\">\r\n                            </nh-tree>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <!-- END: .col-sm-4 -->\r\n                <div class=\"col-sm-8\">\r\n                    <div class=\"portlet light bordered\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption font-green-sharp\">\r\n                                <i class=\"icon-speech font-green-sharp\"></i>\r\n                                <span class=\"caption-subject font-blue-madison bold uppercase\"\r\n                                      i18n=\"@@officeOrganizationFormTitle\">\r\n                                    {isUpdate, select, 0 {Add new office} 1 {Update office} other {}}\r\n                                </span>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <div class=\"tabbable-custom\">\r\n                                <ul class=\"nav nav-tabs \">\r\n                                    <li [class.active]=\"item.id === currentLanguage\"\r\n                                        *ngFor=\"let item of languages; let i = index\">\r\n                                        <a href=\"javascript://\" (click)=\"currentLanguage = item.id\">\r\n                                            {{ item.name }}\r\n                                        </a>\r\n                                    </li>\r\n                                </ul>\r\n                                <div class=\"tab-content\" formArrayName=\"modelTranslations\">\r\n                                    <div class=\"tab-pane active\">\r\n                                        <div class=\"form-group\">\r\n                                            <label i18n-ghmLabel=\"@@parentOffice\" ghmLabel=\"Parent office\"\r\n                                                   class=\"col-sm-3 control-label\"></label>\r\n                                            <div class=\"col-sm-3\" [formGroup]=\"model\">\r\n                                                <nh-dropdown-tree\r\n                                                    [data]=\"officeTree\" i18n-title=\"@@selectParentOffice\"\r\n                                                    title=\"-- Select parent office --\"\r\n                                                    formControlName=\"parentId\">\r\n                                                </nh-dropdown-tree>\r\n                                            </div>\r\n                                            <label i18n-ghmLabel=\"@@officeCode\" ghmLabel=\"Office code\"\r\n                                                   class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                            <div class=\"col-sm-3\" [formGroup]=\"model\">\r\n                                                <input type=\"text\" class=\"form-control\"\r\n                                                       i18n-placeholder=\"@@enterOfficeCodePlaceHolder\"\r\n                                                       placeholder=\"Enter office code please.\"\r\n                                                       formControlName=\"code\">\r\n                                                <span class=\"help-block\">\r\n                                                    { formErrors?.code, select, required {Office code is required} maxlength {Office code not allowed over 50 characters} }\r\n                                                </span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group\"\r\n                                             *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                             [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                             [formGroupName]=\"i\"\r\n                                             [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.name\">\r\n                                            <label i18n-ghmLabel=\"@@officeName\" ghmLabel=\"Office name\"\r\n                                                   class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                            <div class=\"col-sm-3\">\r\n                                                <input type=\"text\" class=\"form-control\"\r\n                                                       i18n-placeholder=\"@@enterOfficeNamePlaceHolder\"\r\n                                                       placeholder=\"Enter office name.\"\r\n                                                       formControlName=\"name\">\r\n                                                <span class=\"help-block\">\r\n                                                    { translationFormErrors[modelTranslation.value.languageId]?.name, select, required {Office name is required} maxlength {Office\r\n                                                    name not allowed over 256 characters} }\r\n                                                </span>\r\n                                            </div>\r\n                                            <label i18n-ghmLabel=\"@@shortName\" ghmLabel=\"Short name\"\r\n                                                   class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                            <div class=\"col-sm-3\">\r\n                                                <input type=\"text\" class=\"form-control\"\r\n                                                       i18n-placeholder=\"@@enterShortNamePlaceHolder\"\r\n                                                       placeholder=\"Enter short name please.\"\r\n                                                       formControlName=\"shortName\">\r\n                                                <span class=\"help-block\">\r\n                                                    { translationFormErrors[modelTranslation.value.languageId]?.shortName, select, required {Short name is required} maxlength\r\n                                                    {Short name not allowed over 50 characters} }\r\n                                                </span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group\" [formGroup]=\"model\">\r\n                                            <label i18n-ghmLabel=\"@@officeType\" ghmLabel=\"Office type\"\r\n                                                   class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                            <div class=\"col-sm-3\">\r\n                                                <nh-select [data]=\"officeTypes\" i18n-title=\"@@selectOfficeType\"\r\n                                                           title=\"-- Select office type --\"\r\n                                                           formControlName=\"officeType\"></nh-select>\r\n                                                <span class=\"help-block\">\r\n                                                    { formErrors?.officeType, select, required {Please select office type} }\r\n                                                </span>\r\n                                            </div>\r\n                                            <label i18n-ghmLabel=\"@@status\" ghmLabel=\"Status\"\r\n                                                   class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                            <div class=\"col-sm-3\">\r\n                                                <mat-slide-toggle color=\"primary\" formControlName=\"isActive\"\r\n                                                                  i18n=\"@@isActive\">\r\n                                                    {model.value.isActive, select, 0 {Inactive} 1 {Active}}\r\n                                                </mat-slide-toggle>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group\"\r\n                                             [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                             *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                             [formGroupName]=\"i\"\r\n                                             [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.description\">\r\n                                            <label i18n=\"@@description\" i18n-ghmLabel ghmLabel=\"Description\"\r\n                                                   class=\"col-sm-3 control-label\"></label>\r\n                                            <div class=\"col-sm-9\">\r\n                                                <textarea class=\"form-control\" rows=\"3\" formControlName=\"description\"\r\n                                                          i18n=\"@@enterDescriptionPlaceholder\" i18n-placeholder\r\n                                                          placeholder=\"Enter description.\"></textarea>\r\n                                                <span class=\"help-block\">\r\n                                                    { translationFormErrors[modelTranslation.value.languageId]?.description, select, maxlength {Title description not allowed\r\n                                                    over 500 characters} }\r\n                                                </span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group\"\r\n                                             [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                             *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                             [formGroupName]=\"i\"\r\n                                             [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.address\">\r\n                                            <label i18n=\"@@address\" i18n-ghmLabel ghmLabel=\"Address\"\r\n                                                   class=\"col-sm-3 control-label\"></label>\r\n                                            <div class=\"col-sm-9\">\r\n                                                <textarea class=\"form-control\" rows=\"3\" formControlName=\"address\"\r\n                                                          i18n=\"@@enterAddressPlaceholder\" i18n-placeholder\r\n                                                          placeholder=\"Enter address.\"></textarea>\r\n                                                <span class=\"help-block\">\r\n                                                    { translationFormErrors[modelTranslation.value.languageId]?.description, select, maxlength {Title description not allowed\r\n                                                    over 500 characters} }\r\n                                                </span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group\">\r\n                                            <div class=\"col-sm-12\">\r\n                                                <app-office-contact\r\n                                                    [officeId]=\"id\"\r\n                                                    [officeContacts]=\"contacts\">\r\n                                                </app-office-contact>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <!-- END: .tab-pane -->\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <!-- END: .col-sm-8 -->\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <mat-checkbox [checked]=\"isCreateAnother\" (change)=\"isCreateAnother = !isCreateAnother\"\r\n                          *ngIf=\"!isUpdate\"\r\n                          i18n=\"@@isCreateAnother\"\r\n                          class=\"cm-mgr-5\"\r\n                          color=\"primary\">\r\n                Create another\r\n            </mat-checkbox>\r\n            <ghm-button classes=\"btn btn-primary cm-mgr-5\"\r\n                        [loading]=\"isSaving\">\r\n                <span i18n=\"@@Save\">Save</span>\r\n            </ghm-button>\r\n            <ghm-button classes=\"btn btn-default\"\r\n                        nh-dismiss=\"true\"\r\n                        [type]=\"'button'\"\r\n                        [loading]=\"isSaving\">\r\n                <span i18n=\"@@close\">Close</span>\r\n            </ghm-button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
+module.exports = "<nh-modal #officeFormModal size=\"full\"\r\n          (shown)=\"onModalShow()\"\r\n          (hidden)=\"onModalHidden()\">\r\n    <nh-modal-header>\r\n        {isUpdate, select, 0 {Add new office} 1 {Update office} other {}}\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-4\">\r\n                    <div class=\"portlet light bordered\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption font-green-sharp\">\r\n                                <i class=\"icon-speech font-green-sharp\"></i>\r\n                                <span class=\"caption-subject font-blue-madison bold uppercase\"\r\n                                      i18n=\"@@officeOrganizationTitle\">Office organization</span>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <nh-tree [data]=\"officeTree\">\r\n                            </nh-tree>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <!-- END: .col-sm-4 -->\r\n                <div class=\"col-sm-8\">\r\n                    <div class=\"portlet light bordered\">\r\n                        <div class=\"portlet-title\">\r\n                            <div class=\"caption font-green-sharp\">\r\n                                <i class=\"icon-speech font-green-sharp\"></i>\r\n                                <span class=\"caption-subject font-blue-madison bold uppercase\"\r\n                                      i18n=\"@@officeOrganizationFormTitle\">\r\n                                    {isUpdate, select, 0 {Add new office} 1 {Update office} other {}}\r\n                                </span>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"portlet-body\">\r\n                            <div class=\"tabbable-custom\">\r\n                                <ul class=\"nav nav-tabs \">\r\n                                    <li [class.active]=\"item.id === currentLanguage\"\r\n                                        *ngFor=\"let item of languages; let i = index\">\r\n                                        <a href=\"javascript://\" (click)=\"currentLanguage = item.id\">\r\n                                            {{ item.name }}\r\n                                        </a>\r\n                                    </li>\r\n                                </ul>\r\n                                <div class=\"tab-content\" formArrayName=\"modelTranslations\">\r\n                                    <div class=\"tab-pane active\">\r\n                                        <div class=\"form-group\">\r\n                                            <label i18n-ghmLabel=\"@@parentOffice\" ghmLabel=\"Parent office\"\r\n                                                   class=\"col-sm-3 control-label\"></label>\r\n                                            <div class=\"col-sm-3\" [formGroup]=\"model\">\r\n                                                <nh-dropdown-tree\r\n                                                    [data]=\"officeTree\" i18n-title=\"@@selectParentOffice\"\r\n                                                    title=\"-- Select parent office --\"\r\n                                                    formControlName=\"parentId\">\r\n                                                </nh-dropdown-tree>\r\n                                            </div>\r\n                                            <span\r\n                                                [class.has-error]=\"formErrors?.code\">\r\n                                                <label i18n-ghmLabel=\"@@officeCode\" ghmLabel=\"Office code\"\r\n                                                       class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                                <div class=\"col-sm-3\" [formGroup]=\"model\">\r\n                                                    <input type=\"text\" class=\"form-control\"\r\n                                                           i18n-placeholder=\"@@enterOfficeCodePlaceHolder\"\r\n                                                           placeholder=\"Enter office code please.\"\r\n                                                           formControlName=\"code\">\r\n                                                    <span class=\"help-block\">\r\n                                                        {\r\n                                                            formErrors?.code, select,\r\n                                                            required {Office code is required}\r\n                                                            maxlength {Office code not allowed over 50 characters}\r\n                                                            pattern {Office code just only contain characters a-z, A-Z, 0-9}\r\n                                                        }\r\n                                                    </span>\r\n                                                </div>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"form-group\"\r\n                                             *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                             [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                             [formGroupName]=\"i\">\r\n                                            <span\r\n                                                [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.name\">\r\n                                                <label i18n-ghmLabel=\"@@officeName\" ghmLabel=\"Office name\"\r\n                                                       class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                                <div class=\"col-sm-3\">\r\n                                                    <input type=\"text\" class=\"form-control\"\r\n                                                           i18n-placeholder=\"@@enterOfficeNamePlaceHolder\"\r\n                                                           placeholder=\"Enter office name.\"\r\n                                                           formControlName=\"name\">\r\n                                                    <span class=\"help-block\">\r\n                                                        { translationFormErrors[modelTranslation.value.languageId]?.name, select, required {Office name is required} maxlength {Office\r\n                                                        name not allowed over 256 characters} }\r\n                                                    </span>\r\n                                                </div>\r\n                                            </span>\r\n                                            <span\r\n                                                [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.shortName\">\r\n                                                <label i18n-ghmLabel=\"@@shortName\" ghmLabel=\"Short name\"\r\n                                                       class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                                <div class=\"col-sm-3\">\r\n                                                    <input type=\"text\" class=\"form-control\"\r\n                                                           i18n-placeholder=\"@@enterShortNamePlaceHolder\"\r\n                                                           placeholder=\"Enter short name please.\"\r\n                                                           formControlName=\"shortName\">\r\n                                                    <span class=\"help-block\">\r\n                                                        { translationFormErrors[modelTranslation.value.languageId]?.shortName, select, required {Short name is required} maxlength\r\n                                                        {Short name not allowed over 50 characters} }\r\n                                                    </span>\r\n                                                </div>\r\n                                            </span>\r\n                                        </div>\r\n                                        <div class=\"form-group\" [formGroup]=\"model\">\r\n                                            <label i18n-ghmLabel=\"@@officeType\" ghmLabel=\"Office type\"\r\n                                                   class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                            <div class=\"col-sm-3\">\r\n                                                <nh-select [data]=\"officeTypes\" i18n-title=\"@@selectOfficeType\"\r\n                                                           title=\"-- Select office type --\"\r\n                                                           formControlName=\"officeType\"></nh-select>\r\n                                                <span class=\"help-block\">\r\n                                                    { formErrors?.officeType, select, required {Please select office type} }\r\n                                                </span>\r\n                                            </div>\r\n                                            <label i18n-ghmLabel=\"@@status\" ghmLabel=\"Status\"\r\n                                                   class=\"col-sm-3 control-label\" [required]=\"true\"></label>\r\n                                            <div class=\"col-sm-3\">\r\n                                                <mat-slide-toggle color=\"primary\" formControlName=\"isActive\"\r\n                                                                  i18n=\"@@isActive\">\r\n                                                    {model.value.isActive, select, 0 {Inactive} 1 {Active}}\r\n                                                </mat-slide-toggle>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group\"\r\n                                             [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                             *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                             [formGroupName]=\"i\"\r\n                                             [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.description\">\r\n                                            <label i18n=\"@@description\" i18n-ghmLabel ghmLabel=\"Description\"\r\n                                                   class=\"col-sm-3 control-label\"></label>\r\n                                            <div class=\"col-sm-9\">\r\n                                                <textarea class=\"form-control\" rows=\"3\" formControlName=\"description\"\r\n                                                          i18n=\"@@enterDescriptionPlaceholder\" i18n-placeholder\r\n                                                          placeholder=\"Enter description.\"></textarea>\r\n                                                <span class=\"help-block\">\r\n                                                    { translationFormErrors[modelTranslation.value.languageId]?.description, select, maxlength {Title description not allowed\r\n                                                    over 500 characters} }\r\n                                                </span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group\"\r\n                                             [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                             *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                             [formGroupName]=\"i\"\r\n                                             [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.address\">\r\n                                            <label i18n=\"@@address\" i18n-ghmLabel ghmLabel=\"Address\"\r\n                                                   class=\"col-sm-3 control-label\"></label>\r\n                                            <div class=\"col-sm-9\">\r\n                                                <textarea class=\"form-control\" rows=\"3\" formControlName=\"address\"\r\n                                                          i18n=\"@@enterAddressPlaceholder\" i18n-placeholder\r\n                                                          placeholder=\"Enter address.\"></textarea>\r\n                                                <span class=\"help-block\">\r\n                                                    { translationFormErrors[modelTranslation.value.languageId]?.description, select, maxlength {Title description not allowed\r\n                                                    over 500 characters} }\r\n                                                </span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group\">\r\n                                            <div class=\"col-sm-12\">\r\n                                                <app-office-contact\r\n                                                    #officeFormContact\r\n                                                    [officeId]=\"id\"\r\n                                                    [officeContacts]=\"contacts\">\r\n                                                </app-office-contact>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <!-- END: .tab-pane -->\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <!-- END: .col-sm-8 -->\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <mat-checkbox [checked]=\"isCreateAnother\" (change)=\"isCreateAnother = !isCreateAnother\"\r\n                          *ngIf=\"!isUpdate\"\r\n                          i18n=\"@@isCreateAnother\"\r\n                          class=\"cm-mgr-5\"\r\n                          color=\"primary\">\r\n                Create another\r\n            </mat-checkbox>\r\n            <ghm-button classes=\"btn btn-primary cm-mgr-5\"\r\n                        [loading]=\"isSaving\">\r\n                <span i18n=\"@@Save\">Save</span>\r\n            </ghm-button>\r\n            <ghm-button classes=\"btn btn-default\"\r\n                        nh-dismiss=\"true\"\r\n                        [type]=\"'button'\"\r\n                        [loading]=\"isSaving\">\r\n                <span i18n=\"@@close\">Close</span>\r\n            </ghm-button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
 
 /***/ }),
 
@@ -926,12 +807,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
 /* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
 /* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
-/* harmony import */ var _models_office_translation_model__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../models/office-translation.model */ "./src/app/modules/hr/organization/office/models/office-translation.model.ts");
-/* harmony import */ var _models_office_contact_model__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../models/office-contact.model */ "./src/app/modules/hr/organization/office/models/office-contact.model.ts");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
+/* harmony import */ var _models_office_translation_model__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../models/office-translation.model */ "./src/app/modules/hr/organization/office/models/office-translation.model.ts");
+/* harmony import */ var _models_office_contact_model__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../models/office-contact.model */ "./src/app/modules/hr/organization/office/models/office-contact.model.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -972,23 +853,22 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 var OfficeFormComponent = /** @class */ (function (_super) {
     __extends(OfficeFormComponent, _super);
-    function OfficeFormComponent(pageId, fb, officeService, toastr, spinnerService, appService, utilService) {
+    function OfficeFormComponent(pageId, location, fb, officeService, toastr, spinnerService, utilService) {
         var _this = _super.call(this) || this;
+        _this.location = location;
         _this.fb = fb;
         _this.officeService = officeService;
         _this.toastr = toastr;
         _this.spinnerService = spinnerService;
-        _this.appService = appService;
         _this.utilService = utilService;
         _this.onEditorKeyup = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         _this.onCloseForm = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         _this.office = new _models_office_model__WEBPACK_IMPORTED_MODULE_5__["Office"]();
-        _this.contact = new _models_office_contact_model__WEBPACK_IMPORTED_MODULE_14__["OfficeContact"]();
+        _this.contact = new _models_office_contact_model__WEBPACK_IMPORTED_MODULE_13__["OfficeContact"]();
         _this.officeTree = [];
-        _this.modelTranslation = new _models_office_translation_model__WEBPACK_IMPORTED_MODULE_13__["OfficeTranslation"]();
+        _this.modelTranslation = new _models_office_translation_model__WEBPACK_IMPORTED_MODULE_12__["OfficeTranslation"]();
         _this.contactFormErrors = {};
         _this.contactValidationMessages = {};
-        _this.pageTitle = 'Thêm mới phòng ban';
         _this.isGettingTree = false;
         _this.officeTypes = [];
         _this.contacts = [];
@@ -1024,7 +904,6 @@ var OfficeFormComponent = /** @class */ (function (_super) {
             });
             return translationModel;
         };
-        _this.renderLanguageData(appService);
         _this.renderOfficeType();
         return _this;
     }
@@ -1039,19 +918,21 @@ var OfficeFormComponent = /** @class */ (function (_super) {
     OfficeFormComponent.prototype.onModalHidden = function () {
         this.isUpdate = false;
         this.resetForm();
+        this.location.go('/organization/offices');
         if (this.isModified) {
             this.saveSuccessful.emit();
         }
     };
     OfficeFormComponent.prototype.add = function () {
         this.getOfficeTree();
-        this.officeFormModal.show();
+        this.validateModel(false);
+        this.officeFormModal.open();
     };
     OfficeFormComponent.prototype.edit = function (id) {
         this.isUpdate = true;
         this.id = id;
         this.getDetail(id);
-        this.officeFormModal.show();
+        this.officeFormModal.open();
     };
     OfficeFormComponent.prototype.save = function () {
         var _this = this;
@@ -1066,7 +947,7 @@ var OfficeFormComponent = /** @class */ (function (_super) {
                     .update(this.id, this.office)
                     .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["finalize"])(function () { return (_this.isSaving = false); }))
                     .subscribe(function () {
-                    _this.isModified;
+                    _this.isModified = true;
                     _this.officeFormModal.dismiss();
                 });
             }
@@ -1132,7 +1013,7 @@ var OfficeFormComponent = /** @class */ (function (_super) {
     OfficeFormComponent.prototype.getDetail = function (id) {
         var _this = this;
         this.subscribers.officeDetail = this.officeService
-            .getDetail(id)
+            .getEditDetail(id)
             .subscribe(function (result) {
             var officeDetail = result.data;
             if (officeDetail) {
@@ -1145,7 +1026,7 @@ var OfficeFormComponent = /** @class */ (function (_super) {
                 });
                 if (officeDetail.officeTranslations && officeDetail.officeTranslations.length > 0) {
                     _this.modelTranslations.controls.forEach(function (model) {
-                        var detail = lodash__WEBPACK_IMPORTED_MODULE_15__["find"](officeDetail.officeTranslations, function (officeTranslation) {
+                        var detail = lodash__WEBPACK_IMPORTED_MODULE_14__["find"](officeDetail.officeTranslations, function (officeTranslation) {
                             return (officeTranslation.languageId ===
                                 model.value.languageId);
                         });
@@ -1182,7 +1063,8 @@ var OfficeFormComponent = /** @class */ (function (_super) {
             'code'
         ]);
         this.validationMessages = this.utilService.renderFormErrorMessage([
-            { officeType: ['required'] }
+            { officeType: ['required'] },
+            { code: ['required', 'maxlength', 'pattern'] }
         ]);
         this.model = this.fb.group({
             officeType: [this.office.officeType],
@@ -1192,7 +1074,11 @@ var OfficeFormComponent = /** @class */ (function (_super) {
             //         '(([^<>()\[\]\.,;:\s@"]+(\.[^<>()\[\]\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,})'
             //     )
             // ]],
-            code: [this.office.code],
+            code: [this.office.code, [
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].maxLength(50),
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern('^[a-zA-Z0-9]+$')
+                ]],
             order: [this.office.order],
             parentId: [this.office.parentId],
             isActive: [this.office.isActive],
@@ -1218,6 +1104,8 @@ var OfficeFormComponent = /** @class */ (function (_super) {
             });
         });
         this.contacts = [];
+        this.clearFormError(this.formErrors);
+        this.clearFormError(this.translationFormErrors);
     };
     OfficeFormComponent.prototype.renderOfficeType = function () {
         this.officeTypes = [
@@ -1250,7 +1138,7 @@ var OfficeFormComponent = /** @class */ (function (_super) {
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('officeFormModal'),
-        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_12__["NhModalComponent"])
+        __metadata("design:type", _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_11__["NhModalComponent"])
     ], OfficeFormComponent.prototype, "officeFormModal", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_office_title_office_title_component__WEBPACK_IMPORTED_MODULE_3__["OfficeTitleComponent"]),
@@ -1272,14 +1160,17 @@ var OfficeFormComponent = /** @class */ (function (_super) {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-office-form',
             template: __webpack_require__(/*! ./office-form.component.html */ "./src/app/modules/hr/organization/office/office-form/office-form.component.html"),
-            providers: [_services_office_service__WEBPACK_IMPORTED_MODULE_4__["OfficeService"]]
+            providers: [
+                _services_office_service__WEBPACK_IMPORTED_MODULE_4__["OfficeService"],
+                _angular_common__WEBPACK_IMPORTED_MODULE_15__["Location"], { provide: _angular_common__WEBPACK_IMPORTED_MODULE_15__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_15__["PathLocationStrategy"] }
+            ]
         }),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_8__["PAGE_ID"])),
-        __metadata("design:paramtypes", [Object, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
+        __metadata("design:paramtypes", [Object, _angular_common__WEBPACK_IMPORTED_MODULE_15__["Location"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
             _services_office_service__WEBPACK_IMPORTED_MODULE_4__["OfficeService"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_2__["ToastrService"],
             _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_9__["SpinnerService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_11__["AppService"],
             _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_10__["UtilService"]])
     ], OfficeFormComponent);
     return OfficeFormComponent;
@@ -1364,28 +1255,31 @@ var OfficeTitleComponent = /** @class */ (function (_super) {
         // });
     };
     OfficeTitleComponent.prototype.onSelectTitle = function (title) {
-        var _this = this;
-        this.isSaving = true;
-        this.officeTitleService.insert(title.id, this.officeId).subscribe(function (result) {
-            _this.isSaving = false;
-            if (result === -1) {
-                _this.toastr.error("Ch\u1EE9c danh " + title.name + " \u0111\u00E3 t\u1ED3n t\u1EA1i trong ph\u00F2ng ban n\u00E0y. Vui l\u00F2ng ki\u1EC3m tra l\u1EA1i");
-                return;
-            }
-            if (result === -2) {
-                _this.toastr.error('Chức danh không tồn tại hoặc đã bị xóa. Vui lòng kiểm tra lại hoặc liên hệ với quản trị viên.');
-                return;
-            }
-            if (result === -3) {
-                _this.toastr.error('Thông tin phòng ban không tồn tại hoặc đã bị xóa. Vui lòng kiểm tra lại hoặc liên hệ với quản trị viên');
-                return;
-            }
-            if (result > 0) {
-                _this.search(1);
-                _this.toastr.success('Thêm chức danh vào phòng ban thành công.');
-                return;
-            }
-        });
+        // this.isSaving = true;
+        // this.officeTitleService.insert(title.id, this.officeId).subscribe(result => {
+        //     this.isSaving = false;
+        //
+        //     if (result === -1) {
+        //         this.toastr.error(`Chức danh ${title.name} đã tồn tại trong phòng ban này. Vui lòng kiểm tra lại`);
+        //         return;
+        //     }
+        //
+        //     if (result === -2) {
+        //         this.toastr.error('Chức danh không tồn tại hoặc đã bị xóa. Vui lòng kiểm tra lại hoặc liên hệ với quản trị viên.');
+        //         return;
+        //     }
+        //
+        //     if (result === -3) {
+        //         this.toastr.error('Thông tin phòng ban không tồn tại hoặc đã bị xóa. Vui lòng kiểm tra lại hoặc liên hệ với quản trị viên');
+        //         return;
+        //     }
+        //
+        //     if (result > 0) {
+        //         this.search(1);
+        //         this.toastr.success('Thêm chức danh vào phòng ban thành công.');
+        //         return;
+        //     }
+        // });
     };
     OfficeTitleComponent.prototype.search = function (currentPage) {
         this.currentPage = currentPage;
@@ -1459,7 +1353,7 @@ var OfficeTitleComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <form class=\"form-inline cm-mgb-10\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group cm-mgr-5\">\r\n                <input type=\"text\" class=\"form-control\" i18n=\"@@enterKeyword\" i18n-placeholder\r\n                       placeholder=\"Enter keyword.\" name=\"keyword\" [(ngModel)]=\"keyword\">\r\n            </div>\r\n            <div class=\"form-group cm-mgr-5\">\r\n                <nh-select [data]=\"[{id: true, name: 'Kích hoạt'}, {id: false, name: 'Chưa kích hoạt'}]\"\r\n                           [title]=\"'-- Lọc theo trạng thái --'\"\r\n                           [(value)]=\"isActive\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group cm-mgr-5\">\r\n                <ghm-button icon=\"fa search\" classes=\"btn btn-primary\" [loading]=\"isSearching\">\r\n                    <i class=\"fa fa-search\"></i>\r\n                </ghm-button>\r\n            </div>\r\n            <div class=\"form-group cm-mgr-5\">\r\n                <button class=\"btn btn-default\" (click)=\"refresh()\">\r\n                    <i class=\"fa fa-refresh\"></i>\r\n                </button>\r\n            </div>\r\n            <div class=\"form-group pull-right\">\r\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"add()\"\r\n                        i18n=\"@@add\" *ngIf=\"permission.add\">\r\n                    <i class=\"fa fa-plus\"></i>\r\n                    Add\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n    <div class=\"col-sm-12\">\r\n        <table class=\"table table-hover table-stripped\">\r\n            <thead>\r\n            <tr>\r\n                <th class=\"center middle w50\" i18n=\"@@no\">No</th>\r\n                <th class=\"middle\" i18n=\"@@officeName\">Office name</th>\r\n                <th class=\"middle\" i18n=\"@@parentOffice\">Parent office</th>\r\n                <th class=\"middle\" i18n=\"@@officeCode\">Office code</th>\r\n                <th class=\"middle\" i18n=\"@@officeCode\">Office type</th>\r\n                <th class=\"middle w50\" i18n=\"@@activeStatus\">Active status</th>\r\n                <th class=\"text-right middle w150\" i18n=\"@@actions\" *ngIf=\"permission.edit || permission.delete\">\r\n                    Actions\r\n                </th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let office of listItems$ | async; let i = index\">\r\n                <td class=\"center middle\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n                <td class=\"middle\">\r\n                    <!--<i *ngFor=\"let item of createRange(office.level)\"-->\r\n                    <!--class=\"fa fa-long-arrow-right cm-mgr-5 color-blue\"></i>-->\r\n                    <a href=\"javasript://\" (click)=\"edit(office.id)\"\r\n                       *ngIf=\"permission.edit; else officeNameWithoutEdit\">\r\n                        <span [innerHTML]=\"office.nameLevel\"></span>\r\n                        {{office.name}}\r\n                    </a>\r\n                    <ng-template #officeNameWithoutEdit>\r\n                        {{ office.name }}\r\n                    </ng-template>\r\n                </td>\r\n                <td class=\"middle\">\r\n                    {{ office.parentName }}\r\n                </td>\r\n                <td class=\"middle\">{{ office.code }}</td>\r\n                <td class=\"middle\">\r\n                        <span i18n=\"@@officeType\" class=\"badge\"\r\n                              [class.badge-info]=\"office.officeType == 0\"\r\n                              [class.badge-success]=\"office.officeType == 1\"\r\n                              [class.badge-danger]=\"office.officeType == 2\"\r\n                              [class.badge-warning]=\"office.officeType == 3\"\r\n                        >\r\n                            {office.officeType, plural, =0 {Normal} =1 {Hr} =2 {Director} =3 {Stand alone company} other {N/A}}\r\n                        </span>\r\n                </td>\r\n                <td class=\"middle\">\r\n                        <span class=\"badge\" [class.badge-danger]=\"!office.isActive\"\r\n                              [class.badge-success]=\"office.isActive\">{office.activeStatus, select, active {Activated} inActive {In active}}</span>\r\n                </td>\r\n                <td class=\"text-right middle\" *ngIf=\"permission.edit || permission.delete\">\r\n                    <ghm-button *ngIf=\"permission.edit\" icon=\"fa fa-eye\" classes=\"btn btn-default btn-sm\"\r\n                                (clicked)=\"detail(office.id)\"></ghm-button>\r\n                    <ghm-button *ngIf=\"permission.edit\" icon=\"fa fa-edit\" classes=\"btn btn-primary btn-sm\"\r\n                                (clicked)=\"edit(office.id)\"></ghm-button>\r\n                    <ghm-button *ngIf=\"permission.delete\" icon=\"fa fa-trash-o\" classes=\"btn btn-danger btn-sm\"\r\n                                [swal]=\"confirmDeleteOffice\" (confirm)=\"delete(office.id)\"></ghm-button>\r\n                </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n        <ghm-paging [totalRows]=\"totalRows\" [currentPage]=\"currentPage\" [pageShow]=\"6\" (pageClick)=\"search($event)\"\r\n                    [isDisabled]=\"isSearching\"\r\n                    i18n=\"@@title\" i18n-pageName pageName=\"Office name\"></ghm-paging>\r\n    </div>\r\n</div>\r\n\r\n<app-office-form (saveSuccessful)=\"search(1)\"></app-office-form>\r\n<app-office-detail></app-office-detail>\r\n<swal #confirmDeleteOffice\r\n      i18n-title=\"@@confirmDeleteOfficeTitle\"\r\n      i18n-text=\"@@confirmDeleteOfficeText\"\r\n      title=\"Are you sure for delete this office?\"\r\n      text=\"You can't recover this office after delete.\"\r\n      type=\"question\" [showCancelButton]=\"true\">\r\n</swal>\r\n"
+module.exports = "<h1 class=\"page-title\">\r\n    <span class=\"cm-mgr-5\" i18n=\"@@listOfficePageTitle\">List office</span>\r\n    <small i18n=\"@@officeModuleTitle\">Office management</small>\r\n</h1>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <form class=\"form-inline cm-mgb-10\" (ngSubmit)=\"search(1)\">\r\n            <div class=\"form-group cm-mgr-5\">\r\n                <input type=\"text\" class=\"form-control\" i18n=\"@@enterKeyword\" i18n-placeholder\r\n                       placeholder=\"Enter keyword.\" name=\"keyword\" [(ngModel)]=\"keyword\">\r\n            </div>\r\n            <div class=\"form-group cm-mgr-5\">\r\n                <nh-select\r\n                    i18n-title=\"@@filterByStatusTitle\"\r\n                    title=\"-- Filter by status --\"\r\n                    [data]=\"listActiveSearch\"\r\n                    [(value)]=\"isActive\"\r\n                    (onSelectItem)=\"search(1)\"></nh-select>\r\n            </div>\r\n            <div class=\"form-group cm-mgr-5\">\r\n                <ghm-button icon=\"fa search\" classes=\"btn btn-primary\" [loading]=\"isSearching\">\r\n                    <i class=\"fa fa-search\"></i>\r\n                </ghm-button>\r\n            </div>\r\n            <div class=\"form-group cm-mgr-5\">\r\n                <button class=\"btn btn-default\" (click)=\"refresh()\">\r\n                    <i class=\"fa fa-refresh\"></i>\r\n                </button>\r\n            </div>\r\n            <div class=\"form-group pull-right\">\r\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"add()\"\r\n                        i18n=\"@@add\" *ngIf=\"permission.add\">\r\n                    Add\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n    <div class=\"col-sm-12\">\r\n        <table class=\"table table-hover table-stripped\">\r\n            <thead>\r\n            <tr>\r\n                <th class=\"center middle w50\" i18n=\"@@no\">No</th>\r\n                <th class=\"middle\" i18n=\"@@officeName\">Office name</th>\r\n                <th class=\"middle\" i18n=\"@@parentOffice\">Parent office</th>\r\n                <th class=\"middle\" i18n=\"@@officeCode\">Office code</th>\r\n                <th class=\"middle\" i18n=\"@@officeCode\">Office type</th>\r\n                <th class=\"middle w50\" i18n=\"@@activeStatus\">Active status</th>\r\n                <th class=\"text-right middle w150\" i18n=\"@@actions\" *ngIf=\"permission.edit || permission.delete\">\r\n                    Actions\r\n                </th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let office of listItems$ | async; let i = index\">\r\n                <td class=\"center middle\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n                <td class=\"middle\">\r\n                    <!--<i *ngFor=\"let item of createRange(office.level)\"-->\r\n                    <!--class=\"fa fa-long-arrow-right cm-mgr-5 color-blue\"></i>-->\r\n                    <a href=\"javasript://\" (click)=\"edit(office.id)\"\r\n                       *ngIf=\"permission.edit; else officeNameWithoutEdit\">\r\n                        <span [innerHTML]=\"office.nameLevel\"></span>\r\n                        {{office.name}}\r\n                    </a>\r\n                    <ng-template #officeNameWithoutEdit>\r\n                        {{ office.name }}\r\n                    </ng-template>\r\n                </td>\r\n                <td class=\"middle\">\r\n                    {{ office.parentName }}\r\n                </td>\r\n                <td class=\"middle\">{{ office.code }}</td>\r\n                <td class=\"middle\">\r\n                        <span i18n=\"@@officeType\" class=\"badge\"\r\n                              [class.badge-info]=\"office.officeType == 0\"\r\n                              [class.badge-success]=\"office.officeType == 1\"\r\n                              [class.badge-danger]=\"office.officeType == 2\"\r\n                              [class.badge-warning]=\"office.officeType == 3\"\r\n                        >\r\n                            {office.officeType, plural, =0 {Normal} =1 {Hr} =2 {Director} =3 {Stand alone company} other {N/A}}\r\n                        </span>\r\n                </td>\r\n                <td class=\"middle\">\r\n                        <span class=\"badge\" [class.badge-danger]=\"!office.isActive\"\r\n                              [class.badge-success]=\"office.isActive\">{office.activeStatus, select, active {Activated} inActive {In active}}</span>\r\n                </td>\r\n                <td class=\"text-right middle\" *ngIf=\"permission.edit || permission.delete\">\r\n                    <ghm-button *ngIf=\"permission.edit\" icon=\"fa fa-eye\" classes=\"btn btn-default btn-sm\"\r\n                                (clicked)=\"detail(office.id)\"></ghm-button>\r\n                    <ghm-button *ngIf=\"permission.edit\" icon=\"fa fa-edit\" classes=\"btn btn-primary btn-sm\"\r\n                                (clicked)=\"edit(office.id)\"></ghm-button>\r\n                    <ghm-button *ngIf=\"permission.delete\" icon=\"fa fa-trash-o\" classes=\"btn btn-danger btn-sm\"\r\n                                [swal]=\"confirmDeleteOffice\" (confirm)=\"delete(office.id)\"></ghm-button>\r\n                </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n        <ghm-paging\r\n            [totalRows]=\"totalRows\"\r\n            [currentPage]=\"currentPage\"\r\n            [pageSize]=\"pageSize\"\r\n            [pageShow]=\"6\"\r\n            [isDisabled]=\"isSearching\"\r\n            (pageClick)=\"search($event)\"></ghm-paging>\r\n    </div>\r\n</div>\r\n\r\n<app-office-form (saveSuccessful)=\"search(1)\"></app-office-form>\r\n<app-office-detail (edited)=\"edit($event)\"></app-office-detail>\r\n<swal #confirmDeleteOffice\r\n      i18n-title=\"@@confirmDeleteOfficeTitle\"\r\n      i18n-text=\"@@confirmDeleteOfficeText\"\r\n      title=\"Are you sure for delete this office?\"\r\n      text=\"You can't recover this office after delete.\"\r\n      type=\"question\"\r\n      i18n-confirmButtonText=\"@@accept\"\r\n      i18n-cancelButtonText=\"@@cancel\"\r\n      confirmButtonText=\"Accept\"\r\n      cancelButtonText=\"Cancel\"\r\n      [showCancelButton]=\"true\">\r\n</swal>\r\n"
 
 /***/ }),
 
@@ -1483,11 +1377,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
 /* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
 /* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _office_form_office_form_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./office-form/office-form.component */ "./src/app/modules/hr/organization/office/office-form/office-form.component.ts");
-/* harmony import */ var _shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../shareds/decorator/destroy-subscribes.decorator */ "./src/app/shareds/decorator/destroy-subscribes.decorator.ts");
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
-/* harmony import */ var _office_detail_office_detail_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./office-detail/office-detail.component */ "./src/app/modules/hr/organization/office/office-detail/office-detail.component.ts");
+/* harmony import */ var _office_form_office_form_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./office-form/office-form.component */ "./src/app/modules/hr/organization/office/office-form/office-form.component.ts");
+/* harmony import */ var _office_detail_office_detail_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./office-detail/office-detail.component */ "./src/app/modules/hr/organization/office/office-detail/office-detail.component.ts");
+/* harmony import */ var _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../shareds/models/filter-link.model */ "./src/app/shareds/models/filter-link.model.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1524,27 +1417,29 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
 var OfficeComponent = /** @class */ (function (_super) {
     __extends(OfficeComponent, _super);
-    function OfficeComponent(pageId, route, router, title, spinnerService, utilService, officeService, appService) {
+    function OfficeComponent(pageId, location, route, router, title, spinnerService, utilService, officeService) {
         var _this = _super.call(this) || this;
         _this.pageId = pageId;
+        _this.location = location;
         _this.route = route;
         _this.router = router;
         _this.title = title;
         _this.spinnerService = spinnerService;
         _this.utilService = utilService;
         _this.officeService = officeService;
-        _this.appService = appService;
         _this.status = null;
+        _this.listActiveSearch = [];
         // Test.
         _this.data = [];
+        _this.subscribers.getListActiveSearch = _this.appService.getListActiveSearch()
+            .subscribe(function (result) { return _this.listActiveSearch = result; });
         return _this;
     }
     OfficeComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.appService.setupPage(this.pageId.HR, this.pageId.OFFICE, 'Quản lý phòng ban', 'Danh sách phòng ban');
+        this.appService.setupPage(this.pageId.HR, this.pageId.OFFICE);
         this.listItems$ = this.route.data.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (result) {
             var data = result.data;
             _this.totalRows = data.totalRows;
@@ -1553,9 +1448,21 @@ var OfficeComponent = /** @class */ (function (_super) {
         this.officeService.searchForSuggestion('')
             .subscribe(function (result) { return _this.data = result; });
     };
+    OfficeComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        this.subscribers.queryParams = this.route.queryParams.subscribe(function (params) {
+            var url = _this.router.url;
+            var id = params.id;
+            if (url.indexOf('detail') > -1 && id) {
+                setTimeout(function () { return _this.detail(id); });
+            }
+            if (url.indexOf('edit') && id) {
+                setTimeout(function () { return _this.edit(id); });
+            }
+        });
+    };
     OfficeComponent.prototype.onSuggestionSearched = function (keyword) {
         var _this = this;
-        console.log(keyword);
         this.officeService.searchForSuggestion(keyword)
             .subscribe(function (result) { return _this.data = result; });
     };
@@ -1563,6 +1470,7 @@ var OfficeComponent = /** @class */ (function (_super) {
         var _this = this;
         this.currentPage = currentPage;
         this.isSearching = true;
+        this.renderFilterLink();
         this.listItems$ = this.officeService
             .search(this.keyword, this.isActive, this.currentPage, this.pageSize)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["finalize"])(function () { return (_this.isSearching = false); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (result) {
@@ -1572,19 +1480,23 @@ var OfficeComponent = /** @class */ (function (_super) {
     };
     OfficeComponent.prototype.refresh = function () {
         this.keyword = '';
+        this.isActive = null;
     };
     OfficeComponent.prototype.add = function () {
         this.officeFormComponent.add();
     };
     OfficeComponent.prototype.edit = function (officeId) {
+        this.location.go("/organization/offices/edit?id=" + officeId);
         this.officeFormComponent.edit(officeId);
     };
     OfficeComponent.prototype.detail = function (officeId) {
-        this.officeDetailComponent.getDetail(officeId);
+        this.location.go("/organization/offices/detail?id=" + officeId);
+        this.officeDetailComponent.showDetail(officeId);
     };
     OfficeComponent.prototype.delete = function (officeId) {
         var _this = this;
-        this.subscribers.deleteOffice = this.officeService.delete(officeId).subscribe(function () { return _this.search(1); });
+        this.subscribers.deleteOffice = this.officeService.delete(officeId)
+            .subscribe(function () { return _this.search(1); });
     };
     OfficeComponent.prototype.onChangeActiveStatus = function (office) {
         office.isActive = !office.isActive;
@@ -1621,37 +1533,272 @@ var OfficeComponent = /** @class */ (function (_super) {
         }
         return items;
     };
+    OfficeComponent.prototype.renderFilterLink = function () {
+        var path = '/organization/offices';
+        var query = this.utilService.renderLocationFilter([
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_12__["FilterLink"]('keyword', this.keyword),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_12__["FilterLink"]('page', this.currentPage),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_12__["FilterLink"]('pageSize', this.pageSize)
+        ]);
+        this.location.go(path, query);
+    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_shareds_components_nh_tab_nh_tab_component__WEBPACK_IMPORTED_MODULE_5__["NhTabComponent"]),
         __metadata("design:type", _shareds_components_nh_tab_nh_tab_component__WEBPACK_IMPORTED_MODULE_5__["NhTabComponent"])
     ], OfficeComponent.prototype, "tabComponent", void 0);
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_office_form_office_form_component__WEBPACK_IMPORTED_MODULE_11__["OfficeFormComponent"]),
-        __metadata("design:type", _office_form_office_form_component__WEBPACK_IMPORTED_MODULE_11__["OfficeFormComponent"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_office_form_office_form_component__WEBPACK_IMPORTED_MODULE_10__["OfficeFormComponent"]),
+        __metadata("design:type", _office_form_office_form_component__WEBPACK_IMPORTED_MODULE_10__["OfficeFormComponent"])
     ], OfficeComponent.prototype, "officeFormComponent", void 0);
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_office_detail_office_detail_component__WEBPACK_IMPORTED_MODULE_14__["OfficeDetailComponent"]),
-        __metadata("design:type", _office_detail_office_detail_component__WEBPACK_IMPORTED_MODULE_14__["OfficeDetailComponent"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_office_detail_office_detail_component__WEBPACK_IMPORTED_MODULE_11__["OfficeDetailComponent"]),
+        __metadata("design:type", _office_detail_office_detail_component__WEBPACK_IMPORTED_MODULE_11__["OfficeDetailComponent"])
     ], OfficeComponent.prototype, "officeDetailComponent", void 0);
     OfficeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-office',
             template: __webpack_require__(/*! ./office.component.html */ "./src/app/modules/hr/organization/office/office.component.html"),
-            providers: [_services_office_service__WEBPACK_IMPORTED_MODULE_4__["OfficeService"]]
+            providers: [
+                _services_office_service__WEBPACK_IMPORTED_MODULE_4__["OfficeService"],
+                _angular_common__WEBPACK_IMPORTED_MODULE_13__["Location"], { provide: _angular_common__WEBPACK_IMPORTED_MODULE_13__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_13__["PathLocationStrategy"] }
+            ]
         }),
-        Object(_shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_12__["DestroySubscribers"])(),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_13__["CheckPermission"])(),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_7__["PAGE_ID"])),
-        __metadata("design:paramtypes", [Object, _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+        __metadata("design:paramtypes", [Object, _angular_common__WEBPACK_IMPORTED_MODULE_13__["Location"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["Title"],
             _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_8__["SpinnerService"],
             _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_9__["UtilService"],
-            _services_office_service__WEBPACK_IMPORTED_MODULE_4__["OfficeService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_10__["AppService"]])
+            _services_office_service__WEBPACK_IMPORTED_MODULE_4__["OfficeService"]])
     ], OfficeComponent);
     return OfficeComponent;
 }(_base_list_component__WEBPACK_IMPORTED_MODULE_6__["BaseListComponent"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/modules/hr/organization/office/services/office.service.ts":
+/*!***************************************************************************!*\
+  !*** ./src/app/modules/hr/organization/office/services/office.service.ts ***!
+  \***************************************************************************/
+/*! exports provided: OfficeService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OfficeService", function() { return OfficeService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _configs_app_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../configs/app.config */ "./src/app/configs/app.config.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
+/* harmony import */ var _shareds_components_nh_suggestion_nh_suggestion_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../shareds/components/nh-suggestion/nh-suggestion.component */ "./src/app/shareds/components/nh-suggestion/nh-suggestion.component.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+
+
+
+
+var OfficeService = /** @class */ (function () {
+    function OfficeService(appConfig, spinnerService, toastr, http) {
+        this.appConfig = appConfig;
+        this.spinnerService = spinnerService;
+        this.toastr = toastr;
+        this.http = http;
+        this.url = 'offices/';
+        this.url = "" + appConfig.HR_API_URL + this.url;
+    }
+    OfficeService.prototype.resolve = function (route, state) {
+        var queryParams = route.queryParams;
+        return this.search(queryParams.keyword, queryParams.isActive, queryParams.page, queryParams.pageSize);
+    };
+    OfficeService.prototype.search = function (keyword, isActive, page, pageSize) {
+        if (page === void 0) { page = 1; }
+        if (pageSize === void 0) { pageSize = 10; }
+        return this.http
+            .get("" + this.url, {
+            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
+                .set('keyword', keyword ? keyword : '')
+                .set('isActive', isActive != null ? isActive.toString() : '')
+                .set('page', page ? page.toString() : '0')
+                .set('pageSize', pageSize ? pageSize.toString() : this.appConfig.PAGE_SIZE.toString())
+        })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (result) {
+            result.items.forEach(function (item) {
+                item.activeStatus = item.isActive
+                    ? 'active'
+                    : 'inActive';
+                var level = item.idPath.split('.');
+                item.nameLevel = '';
+                for (var i = 1; i < level.length; i++) {
+                    item.nameLevel += '<i class="fa fa-long-arrow-right cm-mgr-5"></i>';
+                }
+            });
+            return result;
+        }));
+    };
+    OfficeService.prototype.searchName = function (keyword, isActive, page, pageSize) {
+        if (page === void 0) { page = 1; }
+        if (pageSize === void 0) { pageSize = 20; }
+        return this.http.get("" + this.url, {
+            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
+                .set('keyword', keyword ? keyword : '')
+                .set('isActive', isActive != null ? isActive.toString() : '')
+                .set('page', page ? page.toString() : '0')
+                .set('pageSize', pageSize ? pageSize.toString() : '10')
+        });
+    };
+    OfficeService.prototype.getDetail = function (id) {
+        var _this = this;
+        this.spinnerService.show();
+        return this.http.get("" + this.url + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["finalize"])(function () { return _this.spinnerService.hide(); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (result) {
+            var data = result.data;
+            data.activeStatus = data.isActive ? 'active' : 'inActive';
+            return result;
+        }));
+    };
+    OfficeService.prototype.getEditDetail = function (id) {
+        var _this = this;
+        this.spinnerService.show();
+        return this.http.get(this.url + "edit/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["finalize"])(function () { return _this.spinnerService.hide(); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (result) {
+            var data = result.data;
+            data.activeStatus = data.isActive ? 'active' : 'inActive';
+            return result;
+        }));
+    };
+    OfficeService.prototype.insert = function (office) {
+        var _this = this;
+        return this.http.post("" + this.url, {
+            isActive: office.isActive,
+            code: office.code,
+            officeType: office.officeType,
+            parentId: office.parentId,
+            officeTranslations: office.modelTranslations,
+            officeContacts: office.officeContacts
+        })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (result) {
+            _this.toastr.success(result.message);
+            return result;
+        }));
+    };
+    OfficeService.prototype.update = function (id, office) {
+        var _this = this;
+        return this.http.post("" + this.url + id, {
+            isActive: office.isActive,
+            code: office.code,
+            officeType: office.officeType,
+            parentId: office.parentId,
+            officeTranslations: office.modelTranslations,
+            officeContacts: office.officeContacts
+        })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (result) {
+            _this.toastr.success(result.message);
+            return result;
+        }));
+    };
+    // updateIsActive(office: Office): Observable<IActionResultResponse> {
+    //     return this.http.post(`${this.url}update-active-status`, '', {
+    //         params: new HttpParams()
+    //             .set('id', office.id.toString())
+    //             .set('isActive', office.isActive.toString())
+    //     }) as Observable<IActionResultResponse>;
+    // }
+    OfficeService.prototype.delete = function (id) {
+        var _this = this;
+        this.spinnerService.show();
+        return this.http.delete("" + this.url + id)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["finalize"])(function () { return _this.spinnerService.hide(); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (result) {
+            _this.toastr.success(result.message);
+            return result;
+        }));
+    };
+    OfficeService.prototype.getTree = function () {
+        return this.http.get(this.url + "trees");
+    };
+    OfficeService.prototype.getOfficeUserTree = function () {
+        return this.http.get("" + this.url);
+    };
+    OfficeService.prototype.getOfficeUserTreeLazy = function (parentId) {
+        return this.http.get("" + this.url, {
+            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]().set('parentId', parentId ? parentId.toString() : '')
+        });
+    };
+    OfficeService.prototype.searchForSuggestion = function (keyword) {
+        return this.http
+            .get(this.url + "suggestions", {
+            params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
+                .set('keyword', keyword ? keyword : '')
+        })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (result) {
+            return result.items.map(function (item) {
+                return new _shareds_components_nh_suggestion_nh_suggestion_component__WEBPACK_IMPORTED_MODULE_6__["NhSuggestion"](item.id, item.name);
+            });
+        }));
+    };
+    // Contacts.
+    OfficeService.prototype.updateContact = function (officeId, id, contact) {
+        var _this = this;
+        return this.http
+            .post("" + this.url + officeId + "/contacts/" + id, {
+            userId: contact.userId,
+            email: contact.email,
+            phoneNumber: contact.phoneNumber,
+            fax: contact.fax
+        })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (result) {
+            _this.toastr.success(result.message);
+            return result;
+        }));
+    };
+    OfficeService.prototype.addContact = function (officeId, contact) {
+        var _this = this;
+        return this.http
+            .post("" + this.url + officeId + "/contacts", {
+            userId: contact.userId,
+            email: contact.email,
+            phoneNumber: contact.phoneNumber,
+            fax: contact.fax
+        })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (result) {
+            _this.toastr.success(result.message);
+            return result;
+        }));
+    };
+    OfficeService.prototype.deleteContact = function (officeId, contactId) {
+        var _this = this;
+        this.spinnerService.show();
+        return this.http
+            .delete("" + this.url + officeId + "/contacts/" + contactId)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["finalize"])(function () { return _this.spinnerService.hide(); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (result) {
+            _this.toastr.success(result.message);
+            return result;
+        }));
+    };
+    OfficeService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_app_config__WEBPACK_IMPORTED_MODULE_3__["APP_CONFIG"])),
+        __metadata("design:paramtypes", [Object, _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_5__["SpinnerService"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], OfficeService);
+    return OfficeService;
+}());
 
 
 
@@ -1701,7 +1848,11 @@ var routes = [
         path: 'offices', component: _office_office_component__WEBPACK_IMPORTED_MODULE_2__["OfficeComponent"],
         resolve: {
             data: _office_services_office_service__WEBPACK_IMPORTED_MODULE_3__["OfficeService"]
-        }
+        },
+        children: [
+            { path: 'detail', component: _office_office_component__WEBPACK_IMPORTED_MODULE_2__["OfficeComponent"] },
+            { path: 'edit', component: _office_office_component__WEBPACK_IMPORTED_MODULE_2__["OfficeComponent"] },
+        ]
     },
     {
         path: 'titles', component: _title_title_component__WEBPACK_IMPORTED_MODULE_4__["TitleComponent"],
@@ -1861,7 +2012,7 @@ var PositionTranslation = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nh-modal #positionFormModal\r\n          size=\"md\"\r\n          (onShown)=\"onModalShown()\"\r\n          (onHidden)=\"onModalHidden()\">\r\n    <nh-modal-header>\r\n        <i class=\"fa fa-graduation-cap\"></i>\r\n        <span i18n=\"@@positionFormTitle\">{isUpdate, select, 1 {Update position} 0 {Add new position}}</span>\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"tabbable-custom\">\r\n                <ul class=\"nav nav-tabs \" *ngIf=\"languages.length > 1\">\r\n                    <li [class.active]=\"item.id === currentLanguage\"\r\n                        *ngFor=\"let item of languages; let i = index\">\r\n                        <a href=\"javascript://\" (click)=\"currentLanguage = item.id\"> {{ item.name }} </a>\r\n                    </li>\r\n                </ul>\r\n\r\n                <div class=\"tab-content\">\r\n                    <div class=\"tab-pane active\">\r\n                        <div class=\"form-group\"\r\n                             [class.has-error]=\"formErrors.titleId\">\r\n                            <label i18n=\"@@selectTitle\" i18n-ghmLabel ghmLabel=\"Select title\"\r\n                                   class=\"col-sm-4 control-label\"\r\n                                   [required]=\"true\"\r\n                            ></label>\r\n                            <div class=\"col-sm-2\">\r\n                                <nh-select\r\n                                    i18n=\"@@selectTitlePlaceholder\"\r\n                                    i18n-title\r\n                                    [data]=\"titles\"\r\n                                    title=\"-- Select title --\"\r\n                                    formControlName=\"titleId\"></nh-select>\r\n                                <span class=\"help-block\">\r\n                                        {\r\n                                        formErrors.titleId,\r\n                                        select, required {Please select title} other {}\r\n                                        }\r\n                                    </span>\r\n                            </div>\r\n                            <span formArrayName=\"modelTranslations\">\r\n                                <span\r\n                                    *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                    [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                    [formGroupName]=\"i\"\r\n                                    [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.name\">\r\n                                    <label i18n=\"@@shortName\" i18n-ghmLabel ghmLabel=\"Short name\"\r\n                                           class=\"col-sm-2 control-label\"\r\n                                           [required]=\"true\"\r\n                                    ></label>\r\n                                    <div class=\"col-sm-4\">\r\n                                        <input type=\"text\" class=\"form-control\"\r\n                                               i18n=\"@@enterTitleShortNamePlaceHolder\" i18n-placeholder\r\n                                               placeholder=\"Enter title short name.\"\r\n                                               formControlName=\"shortName\">\r\n                                        <span class=\"help-block\">\r\n                                            {\r\n                                            translationFormErrors[modelTranslation.value.languageId]?.shortName,\r\n                                            select, required {Position short name is required} maxlength {Position short name not allowed over 20 characters}\r\n                                            }\r\n                                        </span>\r\n                                    </div>\r\n                                </span>\r\n                            </span>\r\n                        </div>\r\n                        <div formArrayName=\"modelTranslations\">\r\n                            <div class=\"form-group\"\r\n                                 *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                 [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                 [formGroupName]=\"i\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.name\">\r\n                                <label i18n=\"@@positionName\" i18n-ghmLabel\r\n                                       ghmLabel=\"Position name\" for=\"\" class=\"col-sm-4 control-label\"\r\n                                       [required]=\"true\"></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <input type=\"text\" i18n=\"@@enterPositionName\" i18n-placeholder\r\n                                           placeholder=\"Enter position name\" class=\"form-control\" id=\"name\"\r\n                                           formControlName=\"name\" #name>\r\n                                    <span class=\"help-block\">\r\n                                        {\r\n                                        translationFormErrors[modelTranslation.value.languageId]?.name,\r\n                                        select, required {Position name is required} maxlength {Position name not allowed over 256 characters}\r\n                                        }\r\n                                    </span>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <div class=\"col-sm-8 col-sm-offset-4\">\r\n                                <mat-checkbox color=\"primary\" formControlName=\"isActive\" i18n=\"@@isActive\">\r\n                                    {model.value.isActive, select, 0 {Inactive} 1 {Active}}\r\n                                </mat-checkbox>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <div class=\"col-sm-8 col-sm-offset-4\">\r\n                                <mat-checkbox color=\"primary\" formControlName=\"isManager\" i18n=\"@@isManager\">\r\n                                    Is manager\r\n                                </mat-checkbox>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <div class=\"col-sm-8 col-sm-offset-4\">\r\n                                <mat-checkbox color=\"primary\" formControlName=\"isMultiple\" i18n=\"@@isMultiple\">\r\n                                    Is multiple\r\n                                </mat-checkbox>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label i18n-ghmLabel=\"@@description\" ghmLabel=\"Use for office\"\r\n                                   class=\"col-sm-4 control-label\"\r\n                            ></label>\r\n                            <div class=\"col-sm-8\">\r\n                                <nh-suggestion\r\n                                    i18n-placeholder=\"@@officeSuggestionPlaceholder\"\r\n                                    placeholder=\"Type office name for suggestion\"\r\n                                    [multiple]=\"true\"\r\n                                    [sources]=\"offices\"\r\n                                    [loading]=\"isSearchingOffice\"\r\n                                    [selectedItems]=\"selectedOffices\"\r\n                                    (searched)=\"onSearched($event)\"\r\n                                    (itemSelected)=\"onSelectedOffice($event)\"\r\n                                ></nh-suggestion>\r\n                            </div>\r\n                        </div>\r\n                        <div formArrayName=\"modelTranslations\">\r\n                            <div class=\"form-group\"\r\n                                 *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                 [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                 [formGroupName]=\"i\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.description\">\r\n                                <label i18n=\"@@description\" i18n-ghmLabel ghmLabel=\"Description\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                ></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <textarea class=\"form-control\" rows=\"2\" formControlName=\"description\"\r\n                                              i18n=\"@@enterDescriptionPlaceholder\" i18n-placeholder\r\n                                              placeholder=\"Enter description.\"></textarea>\r\n                                    <span class=\"help-block\">\r\n                                        {\r\n                                        translationFormErrors[modelTranslation.value.languageId]?.description,\r\n                                        select, maxlength {Title description not allowed over 500 characters}\r\n                                        }\r\n                                    </span>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\"\r\n                                 *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                 [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                 [formGroupName]=\"i\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.purpose\">\r\n                                <label i18n=\"@@purposse\" i18n-ghmLabel ghmLabel=\"Purpose\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                ></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <textarea class=\"form-control\" rows=\"2\" formControlName=\"purpose\"\r\n                                              i18n=\"@@enterPurposePlaceholder\" i18n-placeholder\r\n                                              placeholder=\"Enter purpose.\"></textarea>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\"\r\n                                 *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                 [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                 [formGroupName]=\"i\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.otherRequire\">\r\n                                <label i18n=\"@@otherRequire\" i18n-ghmLabel ghmLabel=\"Other require\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                ></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <textarea class=\"form-control\" rows=\"2\" formControlName=\"otherRequire\"\r\n                                              i18n=\"@@enterOtherRequirePlaceholder\" i18n-placeholder\r\n                                              placeholder=\"Enter other require.\"></textarea>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\"\r\n                                 *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                 [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                 [formGroupName]=\"i\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.responsibility\">\r\n                                <label i18n=\"@@responsibility\" i18n-ghmLabel ghmLabel=\"Responsibility\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                ></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <textarea class=\"form-control\" rows=\"2\" formControlName=\"responsibility\"\r\n                                              i18n=\"@@enterResponsibilityPlaceholder\" i18n-placeholder\r\n                                              placeholder=\"Enter responsibility.\"></textarea>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <mat-checkbox [checked]=\"isCreateAnother\" (change)=\"isCreateAnother = !isCreateAnother\"\r\n                          *ngIf=\"!isUpdate\"\r\n                          i18n=\"@@isCreateAnother\"\r\n                          class=\"cm-mgr-5\"\r\n                          color=\"primary\">\r\n                Create another\r\n            </mat-checkbox>\r\n            <ghm-button classes=\"btn btn-primary cm-mgr-5\" [loading]=\"isSaving\" i18n=\"@@save\">\r\n                Save\r\n            </ghm-button>\r\n            <ghm-button classes=\"btn btn-default\" i18n=\"@@cancel\"\r\n                        type=\"button\" nh-dismiss=\"true\">\r\n                Cancel\r\n            </ghm-button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
+module.exports = "<nh-modal #positionFormModal\r\n          size=\"md\"\r\n          (show)=\"onModalShown()\"\r\n          (hidden)=\"onModalHidden()\">\r\n    <nh-modal-header>\r\n        <i class=\"fa fa-graduation-cap\"></i>\r\n        <span i18n=\"@@positionFormTitle\">{isUpdate, select, 1 {Update position} 0 {Add new position}}</span>\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"tabbable-custom\">\r\n                <ul class=\"nav nav-tabs \" *ngIf=\"languages.length > 1\">\r\n                    <li [class.active]=\"item.id === currentLanguage\"\r\n                        *ngFor=\"let item of languages; let i = index\">\r\n                        <a href=\"javascript://\" (click)=\"currentLanguage = item.id\"> {{ item.name }} </a>\r\n                    </li>\r\n                </ul>\r\n                <div class=\"tab-content\">\r\n                    <div class=\"tab-pane active\">\r\n                        <div class=\"form-group\"\r\n                             [class.has-error]=\"formErrors.titleId\">\r\n                            <label i18n=\"@@selectTitle\" i18n-ghmLabel ghmLabel=\"Select title\"\r\n                                   class=\"col-sm-4 control-label\"\r\n                                   [required]=\"true\"\r\n                            ></label>\r\n                            <div class=\"col-sm-2\">\r\n                                <nh-select\r\n                                    i18n=\"@@selectTitlePlaceholder\"\r\n                                    i18n-title\r\n                                    [data]=\"titles\"\r\n                                    title=\"-- Select title --\"\r\n                                    formControlName=\"titleId\"></nh-select>\r\n                                <span class=\"help-block\">\r\n                                        {\r\n                                        formErrors.titleId,\r\n                                        select, required {Please select title} other {}\r\n                                        }\r\n                                    </span>\r\n                            </div>\r\n                            <span formArrayName=\"modelTranslations\">\r\n                                <span\r\n                                    *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                    [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                    [formGroupName]=\"i\"\r\n                                    [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.name\">\r\n                                    <label i18n=\"@@shortName\" i18n-ghmLabel ghmLabel=\"Short name\"\r\n                                           class=\"col-sm-2 control-label\"\r\n                                           [required]=\"true\"\r\n                                    ></label>\r\n                                    <div class=\"col-sm-4\">\r\n                                        <input type=\"text\" class=\"form-control\"\r\n                                               i18n=\"@@enterTitleShortNamePlaceHolder\" i18n-placeholder\r\n                                               placeholder=\"Enter title short name.\"\r\n                                               formControlName=\"shortName\">\r\n                                        <span class=\"help-block\">\r\n                                            {\r\n                                            translationFormErrors[modelTranslation.value.languageId]?.shortName,\r\n                                            select, required {Position short name is required} maxlength {Position short name not allowed over 20 characters}\r\n                                            }\r\n                                        </span>\r\n                                    </div>\r\n                                </span>\r\n                            </span>\r\n                        </div>\r\n                        <div formArrayName=\"modelTranslations\">\r\n                            <div class=\"form-group\"\r\n                                 *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                 [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                 [formGroupName]=\"i\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.name\">\r\n                                <label i18n=\"@@positionName\" i18n-ghmLabel\r\n                                       ghmLabel=\"Position name\" for=\"\" class=\"col-sm-4 control-label\"\r\n                                       [required]=\"true\"></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <input type=\"text\" i18n=\"@@enterPositionName\" i18n-placeholder\r\n                                           placeholder=\"Enter position name\" class=\"form-control\" id=\"name\"\r\n                                           formControlName=\"name\" #name>\r\n                                    <span class=\"help-block\">\r\n                                        {\r\n                                        translationFormErrors[modelTranslation.value.languageId]?.name,\r\n                                        select, required {Position name is required} maxlength {Position name not allowed over 256 characters}\r\n                                        }\r\n                                    </span>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <div class=\"col-sm-8 col-sm-offset-4\">\r\n                                <mat-checkbox color=\"primary\" formControlName=\"isActive\" i18n=\"@@isActive\">\r\n                                    {model.value.isActive, select, 0 {Inactive} 1 {Active}}\r\n                                </mat-checkbox>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <div class=\"col-sm-8 col-sm-offset-4\">\r\n                                <mat-checkbox color=\"primary\" formControlName=\"isManager\" i18n=\"@@isManager\">\r\n                                    Is manager\r\n                                </mat-checkbox>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <div class=\"col-sm-8 col-sm-offset-4\">\r\n                                <mat-checkbox color=\"primary\" formControlName=\"isMultiple\" i18n=\"@@isMultiple\">\r\n                                    Is multiple\r\n                                </mat-checkbox>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label i18n-ghmLabel=\"@@description\" ghmLabel=\"Use for office\"\r\n                                   class=\"col-sm-4 control-label\"\r\n                            ></label>\r\n                            <div class=\"col-sm-8\">\r\n                                <nh-suggestion\r\n                                    i18n-placeholder=\"@@officeSuggestionPlaceholder\"\r\n                                    placeholder=\"Type office name for suggestion\"\r\n                                    [multiple]=\"true\"\r\n                                    [sources]=\"offices\"\r\n                                    [loading]=\"isSearchingOffice\"\r\n                                    [selectedItems]=\"selectedOffices\"\r\n                                    (searched)=\"onSearched($event)\"\r\n                                    (itemSelected)=\"onSelectedOffice($event)\"\r\n                                ></nh-suggestion>\r\n                            </div>\r\n                        </div>\r\n                        <div formArrayName=\"modelTranslations\">\r\n                            <div class=\"form-group\"\r\n                                 *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                 [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                 [formGroupName]=\"i\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.description\">\r\n                                <label i18n=\"@@description\" i18n-ghmLabel ghmLabel=\"Description\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                ></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <textarea class=\"form-control\" rows=\"2\" formControlName=\"description\"\r\n                                              i18n=\"@@enterDescriptionPlaceholder\" i18n-placeholder\r\n                                              placeholder=\"Enter description.\"></textarea>\r\n                                    <span class=\"help-block\">\r\n                                        {\r\n                                        translationFormErrors[modelTranslation.value.languageId]?.description,\r\n                                        select, maxlength {Title description not allowed over 500 characters}\r\n                                        }\r\n                                    </span>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\"\r\n                                 *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                 [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                 [formGroupName]=\"i\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.purpose\">\r\n                                <label i18n=\"@@purposse\" i18n-ghmLabel ghmLabel=\"Purpose\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                ></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <textarea class=\"form-control\" rows=\"2\" formControlName=\"purpose\"\r\n                                              i18n=\"@@enterPurposePlaceholder\" i18n-placeholder\r\n                                              placeholder=\"Enter purpose.\"></textarea>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\"\r\n                                 *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                 [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                 [formGroupName]=\"i\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.otherRequire\">\r\n                                <label i18n=\"@@otherRequire\" i18n-ghmLabel ghmLabel=\"Other require\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                ></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <textarea class=\"form-control\" rows=\"2\" formControlName=\"otherRequire\"\r\n                                              i18n=\"@@enterOtherRequirePlaceholder\" i18n-placeholder\r\n                                              placeholder=\"Enter other require.\"></textarea>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\"\r\n                                 *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\"\r\n                                 [hidden]=\"modelTranslation.value.languageId !== currentLanguage\"\r\n                                 [formGroupName]=\"i\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.responsibility\">\r\n                                <label i18n=\"@@responsibility\" i18n-ghmLabel ghmLabel=\"Responsibility\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                ></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <textarea class=\"form-control\" rows=\"2\" formControlName=\"responsibility\"\r\n                                              i18n=\"@@enterResponsibilityPlaceholder\" i18n-placeholder\r\n                                              placeholder=\"Enter responsibility.\"></textarea>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <!--<button type=\"button\" (click)=\"\"></button>-->\r\n            <mat-checkbox [checked]=\"isCreateAnother\" (change)=\"isCreateAnother = !isCreateAnother\"\r\n                          *ngIf=\"!isUpdate\"\r\n                          i18n=\"@@isCreateAnother\"\r\n                          class=\"cm-mgr-5\"\r\n                          color=\"primary\">\r\n                Create another\r\n            </mat-checkbox>\r\n            <ghm-button classes=\"btn btn-primary cm-mgr-5\" [loading]=\"isSaving\" i18n=\"@@save\">\r\n                Save\r\n            </ghm-button>\r\n            <ghm-button classes=\"btn btn-default\" i18n=\"@@cancel\"\r\n                        type=\"button\" nh-dismiss=\"true\">\r\n                Cancel\r\n            </ghm-button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
 
 /***/ }),
 
@@ -1885,13 +2036,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
 /* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
 /* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
-/* harmony import */ var _models_position_translation_model__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../models/position-translation.model */ "./src/app/modules/hr/organization/position/models/position-translation.model.ts");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _title_title_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../title/title.service */ "./src/app/modules/hr/organization/title/title.service.ts");
-/* harmony import */ var _office_services_office_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../office/services/office.service */ "./src/app/modules/hr/organization/office/services/office.service.ts");
+/* harmony import */ var _models_position_translation_model__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../models/position-translation.model */ "./src/app/modules/hr/organization/position/models/position-translation.model.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _title_title_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../title/title.service */ "./src/app/modules/hr/organization/title/title.service.ts");
+/* harmony import */ var _office_services_office_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../office/services/office.service */ "./src/app/modules/hr/organization/office/services/office.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1928,11 +2077,9 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
 var PositionFormComponent = /** @class */ (function (_super) {
     __extends(PositionFormComponent, _super);
-    function PositionFormComponent(pageId, fb, renderer, positionService, toastr, utilService, appService, officeService, titleService, spinnerService) {
+    function PositionFormComponent(pageId, fb, renderer, positionService, toastr, utilService, officeService, titleService) {
         var _this = _super.call(this) || this;
         _this.pageId = pageId;
         _this.fb = fb;
@@ -1940,13 +2087,11 @@ var PositionFormComponent = /** @class */ (function (_super) {
         _this.positionService = positionService;
         _this.toastr = toastr;
         _this.utilService = utilService;
-        _this.appService = appService;
         _this.officeService = officeService;
         _this.titleService = titleService;
-        _this.spinnerService = spinnerService;
         _this.onSaveSuccess = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         _this.position = new _position_model__WEBPACK_IMPORTED_MODULE_4__["Position"]();
-        _this.titleTranslation = new _models_position_translation_model__WEBPACK_IMPORTED_MODULE_12__["PositionTranslation"]();
+        _this.titleTranslation = new _models_position_translation_model__WEBPACK_IMPORTED_MODULE_10__["PositionTranslation"]();
         _this.titles = [];
         _this.selectedOffices = [];
         _this.offices = [];
@@ -1978,7 +2123,6 @@ var PositionFormComponent = /** @class */ (function (_super) {
             translationModel.valueChanges.subscribe(function (data) { return _this.validateTranslationModel(false); });
             return translationModel;
         };
-        _this.renderLanguageData(appService);
         return _this;
     }
     PositionFormComponent.prototype.ngOnInit = function () {
@@ -1996,6 +2140,7 @@ var PositionFormComponent = /** @class */ (function (_super) {
         this.isModified = false;
     };
     PositionFormComponent.prototype.onModalHidden = function () {
+        this.validateModel(false);
         this.resetModel();
         this.isUpdate = false;
         this.selectedOffices = [];
@@ -2043,6 +2188,7 @@ var PositionFormComponent = /** @class */ (function (_super) {
                         _this.positionFormModal.dismiss();
                     }
                     else {
+                        _this.validateModel(false);
                         _this.resetModel();
                     }
                 });
@@ -2051,13 +2197,14 @@ var PositionFormComponent = /** @class */ (function (_super) {
     };
     PositionFormComponent.prototype.add = function () {
         this.isUpdate = false;
-        this.positionFormModal.show();
+        this.validateModel(false);
+        this.positionFormModal.open();
     };
     PositionFormComponent.prototype.edit = function (position) {
         this.isUpdate = true;
         this.position = position;
         this.getDetail(position.id);
-        this.positionFormModal.show();
+        this.positionFormModal.open();
     };
     PositionFormComponent.prototype.resetModel = function () {
         this.isUpdate = false;
@@ -2078,10 +2225,11 @@ var PositionFormComponent = /** @class */ (function (_super) {
                 responsibility: ''
             });
         });
+        this.clearFormError(this.formErrors);
+        this.clearFormError(this.translationFormErrors);
     };
     PositionFormComponent.prototype.getDetail = function (id) {
         var _this = this;
-        this.spinnerService.show();
         this.subscribers.getPositionDetail = this.positionService.getDetail(id)
             .subscribe(function (result) {
             var positionDetail = result.data;
@@ -2097,7 +2245,7 @@ var PositionFormComponent = /** @class */ (function (_super) {
                 });
                 if (positionDetail.positionTranslations && positionDetail.positionTranslations.length > 0) {
                     _this.modelTranslations.controls.forEach(function (model) {
-                        var detail = lodash__WEBPACK_IMPORTED_MODULE_13__["find"](positionDetail.positionTranslations, function (positionTranslation) {
+                        var detail = lodash__WEBPACK_IMPORTED_MODULE_11__["find"](positionDetail.positionTranslations, function (positionTranslation) {
                             return positionTranslation.languageId === model.value.languageId;
                         });
                         if (detail) {
@@ -2158,10 +2306,8 @@ var PositionFormComponent = /** @class */ (function (_super) {
             _position_service__WEBPACK_IMPORTED_MODULE_3__["PositionService"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_2__["ToastrService"],
             _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_9__["UtilService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_10__["AppService"],
-            _office_services_office_service__WEBPACK_IMPORTED_MODULE_15__["OfficeService"],
-            _title_title_service__WEBPACK_IMPORTED_MODULE_14__["TitleService"],
-            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_11__["SpinnerService"]])
+            _office_services_office_service__WEBPACK_IMPORTED_MODULE_13__["OfficeService"],
+            _title_title_service__WEBPACK_IMPORTED_MODULE_12__["TitleService"]])
     ], PositionFormComponent);
     return PositionFormComponent;
 }(_base_form_component__WEBPACK_IMPORTED_MODULE_6__["BaseFormComponent"]));
@@ -2177,7 +2323,7 @@ var PositionFormComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"form-inline cm-mgb-10\" (ngSubmit)=\"search(1)\" #positionSearchForm=\"ngForm\">\r\n    <div class=\"form-group\">\r\n        <input type=\"text\" class=\"form-control\"\r\n               i18n=\"@@enterSearchKeyWord\"\r\n               i18n-placeholder\r\n               placeholder=\"Enter search keyword\" #searchBox\r\n               (keyup)=\"keyword = searchBox.value\">\r\n    </div>\r\n    <div class=\"form-group cm-mgr-5\">\r\n        <button type=\"submit\" class=\"btn btn-primary\">\r\n            <i class=\"fa fa-search\" *ngIf=\"!isSearching\"></i>\r\n            <i class=\"fa fa-pulse fa-spinner\" *ngIf=\"isSearching\"></i>\r\n        </button>\r\n    </div>\r\n    <div class=\"form-group cm-mgr-5\">\r\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"refresh()\">\r\n            <i class=\"fa fa-refresh\"></i>\r\n        </button>\r\n    </div>\r\n    <div class=\"form-group pull-right\">\r\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"add()\" i18n=\"@@add\">\r\n            Add\r\n        </button>\r\n    </div>\r\n</form><!-- END: search-form -->\r\n\r\n<div class=\"table-responsive\">\r\n    <table class=\"table table-hover table-stripped\">\r\n        <thead>\r\n        <tr>\r\n            <th class=\"middle center w50\" i18n=\"@@no\">STT</th>\r\n            <th class=\"middle w250\" i18n=\"@@positionName\">Position name</th>\r\n            <th class=\"middle w100\" i18n=\"@@shortName\">Short name</th>\r\n            <th class=\"middle\" i18n=\"@@description\">Description</th>\r\n            <th class=\"middle text-right w100\" i18n=\"@@action\">Action</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr *ngFor=\"let position of listItems$ | async; let i = index\">\r\n            <td class=\"center middle\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n            <td class=\"middle\">\r\n                <a href=\"javascript://\" (click)=\"edit(position.id)\"\r\n                   *ngIf=\"permission.edit; else positionNameWithoutEdit\">{{position.name}}</a>\r\n                <ng-template #positionNameWithoutEdit>\r\n                    {{ position.name }}\r\n                </ng-template>\r\n            </td>\r\n            <td class=\"middle\">{{ position.shortName }}</td>\r\n            <td class=\"middle\">{{ position.description }}</td>\r\n            <td class=\"text-right middle\">\r\n                <button\r\n                    class=\"btn btn-primary btn-sm\"\r\n                    i18n=\"@@edit\"\r\n                    i18n-matTooltip\r\n                    matTooltip=\"Edit\"\r\n                        [matTooltipPosition]=\"'above'\"\r\n                        (click)=\"edit(position)\">\r\n                    <i class=\"fa fa-pencil\"></i>\r\n                </button>\r\n                <ghm-button\r\n                    *ngIf=\"permission.delete\"\r\n                    icon=\"fa fa-trash-o\" classes=\"btn btn-danger btn-sm\"\r\n                    [swal]=\"confirmDeletePosition\"\r\n                    (confirm)=\"delete(position.id)\"></ghm-button>\r\n            </td>\r\n        </tr>\r\n        </tbody>\r\n    </table>\r\n</div><!-- END: table-responsive -->\r\n\r\n<ghm-paging [totalRows]=\"totalRows\" [currentPage]=\"currentPage\" [pageShow]=\"6\" (pageClick)=\"search($event)\"\r\n            [isDisabled]=\"isSearching\"\r\n            i18n=\"@@position\"\r\n            i18n-pageName\r\n            pageName=\"Position\"></ghm-paging>\r\n\r\n<app-position-form (saveSuccessful)=\"search(currentPage)\"></app-position-form>\r\n\r\n<swal\r\n    #confirmDeletePosition\r\n    i18n-title=\"@@confirmDeletePositionTitle\"\r\n    i18n-text=\"@@confirmDeletePositionText\"\r\n    title=\"Are you sure for delete this position?\"\r\n    text=\"You can't recover this position after delete.\"\r\n    type=\"question\"\r\n    [showCancelButton]=\"true\"\r\n    [focusCancel]=\"true\">\r\n</swal>\r\n"
+module.exports = "<h1 class=\"page-title\">\r\n    <span class=\"cm-mgr-5\" i18n=\"@@listPositionPageTitle\">List position</span>\r\n    <small i18n=\"@@positionModuleTitle\">Position management</small>\r\n</h1>\r\n\r\n<form class=\"form-inline cm-mgb-10\" (ngSubmit)=\"search(1)\" #positionSearchForm=\"ngForm\">\r\n    <div class=\"form-group cm-mgr-5\">\r\n        <input type=\"text\" class=\"form-control\"\r\n               i18n=\"@@enterSearchKeyWord\"\r\n               i18n-placeholder\r\n               placeholder=\"Enter search keyword\" #searchBox\r\n               (keyup)=\"keyword = searchBox.value\">\r\n    </div>\r\n    <div class=\"form-group cm-mgr-5\">\r\n        <button type=\"submit\" class=\"btn btn-primary\">\r\n            <i class=\"fa fa-search\" *ngIf=\"!isSearching\"></i>\r\n            <i class=\"fa fa-pulse fa-spinner\" *ngIf=\"isSearching\"></i>\r\n        </button>\r\n    </div>\r\n    <div class=\"form-group cm-mgr-5\">\r\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"refresh()\">\r\n            <i class=\"fa fa-refresh\"></i>\r\n        </button>\r\n    </div>\r\n    <div class=\"form-group pull-right\" *ngIf=\"permission.add\">\r\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"add()\" i18n=\"@@add\">\r\n            Add\r\n        </button>\r\n    </div>\r\n</form><!-- END: search-form -->\r\n\r\n<div class=\"table-responsive\">\r\n    <table class=\"table table-hover table-stripped\">\r\n        <thead>\r\n        <tr>\r\n            <th class=\"middle center w50\" i18n=\"@@no\">STT</th>\r\n            <th class=\"middle w250\" i18n=\"@@positionName\">Position name</th>\r\n            <th class=\"middle w100\" i18n=\"@@shortName\">Short name</th>\r\n            <th class=\"middle w100\" i18n=\"@@isManager\">Is manager</th>\r\n            <th class=\"middle w100\" i18n=\"@@isMultiple\">Is multiple</th>\r\n            <th class=\"middle\" i18n=\"@@description\">Description</th>\r\n            <th class=\"middle text-right w100\" i18n=\"@@action\">Action</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr *ngFor=\"let position of listItems$ | async; let i = index\">\r\n            <td class=\"center middle\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n            <td class=\"middle\">\r\n                <a href=\"javascript://\" (click)=\"edit(position)\"\r\n                   *ngIf=\"permission.edit; else positionNameWithoutEdit\">{{position.name}}</a>\r\n                <ng-template #positionNameWithoutEdit>\r\n                    {{ position.name }}\r\n                </ng-template>\r\n            </td>\r\n            <td class=\"middle\">{{ position.shortName }}</td>\r\n            <td class=\"middle center\">\r\n                <i class=\"fa fa-check color-green\" *ngIf=\"position.isManager\"></i>\r\n            </td>\r\n            <td class=\"middle center\">\r\n                <i class=\"fa fa-check color-green\" *ngIf=\"position.isMultiple\"></i>\r\n            </td>\r\n            <td class=\"middle\">{{ position.description }}</td>\r\n            <td class=\"text-right middle\">\r\n                <button\r\n                    class=\"btn btn-primary btn-sm\"\r\n                    i18n=\"@@edit\"\r\n                    i18n-matTooltip\r\n                    matTooltip=\"Edit\"\r\n                    [matTooltipPosition]=\"'above'\"\r\n                    (click)=\"edit(position)\">\r\n                    <i class=\"fa fa-pencil\"></i>\r\n                </button>\r\n                <ghm-button\r\n                    *ngIf=\"permission.delete\"\r\n                    icon=\"fa fa-trash-o\" classes=\"btn btn-danger btn-sm\"\r\n                    [swal]=\"confirmDeletePosition\"\r\n                    (confirm)=\"delete(position.id)\"></ghm-button>\r\n            </td>\r\n        </tr>\r\n        </tbody>\r\n    </table>\r\n</div><!-- END: table-responsive -->\r\n\r\n<ghm-paging [totalRows]=\"totalRows\"\r\n            [currentPage]=\"currentPage\"\r\n            [pageShow]=\"6\"\r\n            [isDisabled]=\"isSearching\"\r\n            [pageSize]=\"pageSize\"\r\n            (pageClick)=\"search($event)\"\r\n></ghm-paging>\r\n\r\n<app-position-form (saveSuccessful)=\"search(currentPage)\"></app-position-form>\r\n\r\n<swal\r\n    #confirmDeletePosition\r\n    i18n-title=\"@@confirmDeletePositionTitle\"\r\n    i18n-text=\"@@confirmDeletePositionText\"\r\n    title=\"Are you sure for delete this position?\"\r\n    text=\"You can't recover this position after delete.\"\r\n    type=\"question\"\r\n    i18n-confirmButtonText=\"@@accept\"\r\n    i18n-cancelButtonText=\"@@cancel\"\r\n    confirmButtonText=\"Accept\"\r\n    cancelButtonText=\"Cancel\">\r\n</swal>\r\n"
 
 /***/ }),
 
@@ -2203,10 +2349,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
 /* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
 /* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../shareds/models/filter-link.model */ "./src/app/shareds/models/filter-link.model.ts");
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
-/* harmony import */ var _shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../../shareds/decorator/destroy-subscribes.decorator */ "./src/app/shareds/decorator/destroy-subscribes.decorator.ts");
+/* harmony import */ var _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../shareds/models/filter-link.model */ "./src/app/shareds/models/filter-link.model.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2243,12 +2386,9 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
-
 var PositionComponent = /** @class */ (function (_super) {
     __extends(PositionComponent, _super);
-    function PositionComponent(pageId, location, positionService, spinnerService, toastr, router, route, utilService, appService) {
+    function PositionComponent(pageId, location, positionService, spinnerService, toastr, router, route, utilService) {
         var _this = _super.call(this) || this;
         _this.pageId = pageId;
         _this.location = location;
@@ -2258,10 +2398,8 @@ var PositionComponent = /** @class */ (function (_super) {
         _this.router = router;
         _this.route = route;
         _this.utilService = utilService;
-        _this.appService = appService;
         _this.searchTerm = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         return _this;
-        // this.getPermission(this.appService);
     }
     PositionComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -2310,8 +2448,8 @@ var PositionComponent = /** @class */ (function (_super) {
     PositionComponent.prototype.renderFilterLink = function () {
         var path = '/organization/positions';
         var query = this.utilService.renderLocationFilter([
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_13__["FilterLink"]('pageId', this.currentPage),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_13__["FilterLink"]('pageSize', this.pageSize)
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_12__["FilterLink"]('pageId', this.currentPage),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_12__["FilterLink"]('pageSize', this.pageSize)
         ]);
         this.location.go(path, query);
     };
@@ -2325,8 +2463,6 @@ var PositionComponent = /** @class */ (function (_super) {
             template: __webpack_require__(/*! ./position.component.html */ "./src/app/modules/hr/organization/position/position.component.html"),
             providers: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"], { provide: _angular_common__WEBPACK_IMPORTED_MODULE_1__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_1__["PathLocationStrategy"] }]
         }),
-        Object(_shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_15__["DestroySubscribers"])(),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_14__["CheckPermission"])(),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_9__["PAGE_ID"])),
         __metadata("design:paramtypes", [Object, _angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"],
             _position_service__WEBPACK_IMPORTED_MODULE_7__["PositionService"],
@@ -2334,8 +2470,7 @@ var PositionComponent = /** @class */ (function (_super) {
             ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_11__["UtilService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_12__["AppService"]])
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_11__["UtilService"]])
     ], PositionComponent);
     return PositionComponent;
 }(_base_list_component__WEBPACK_IMPORTED_MODULE_8__["BaseListComponent"]));
@@ -2396,7 +2531,7 @@ var TitleTranslation = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nh-modal #titleFormModal\r\n          size=\"md\"\r\n          (onShown)=\"onTitleFormModalShown()\"\r\n          (onHidden)=\"onTitleFormModalHidden()\">\r\n    <nh-modal-header>\r\n        <i class=\"fa fa-user-secret\" aria-hidden=\"true\"></i>\r\n        <!--<span *ngIf=\"isUpdate; else addNewTitleTemplate\" i18n=\"@@updateTitle\">Update title</span>-->\r\n        <!--<ng-template #addNewTitleTemplate i18N=\"@@addNewTitle\">-->\r\n        <!--Add new title-->\r\n        <!--</ng-template>-->\r\n        <span i18n=\"@@titleFormTitle\">{isUpdate, select, 1 {Update title} 0 {Add new title}}</span>\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"tabbable-custom\">\r\n                <ul class=\"nav nav-tabs \">\r\n                    <li [class.active]=\"item.id === currentLanguage\"\r\n                        *ngFor=\"let item of languages; let i = index\">\r\n                        <a href=\"javascript://\" (click)=\"currentLanguage = item.id\"> {{ item.name }} </a>\r\n                    </li>\r\n                </ul>\r\n                <div class=\"tab-content\" formArrayName=\"modelTranslations\">\r\n                    <div class=\"tab-pane\"\r\n                         [class.active]=\"modelTranslation.value.languageId === currentLanguage\"\r\n                         *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\" [formGroupName]=\"i\">\r\n                        <div>\r\n                            <div class=\"form-group\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.name\">\r\n                                <label i18n=\"@@titleName\" i18n-ghmLabel ghmLabel=\"Title name\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                       [required]=\"true\"></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <input type=\"text\" class=\"form-control\" i18n=\"@@enterTitleNamePlaceHolder\"\r\n                                           i18n-placeholder\r\n                                           placeholder=\"Enter page name.\"\r\n                                           formControlName=\"name\">\r\n                                    <span class=\"help-block\">\r\n                                        {\r\n                                        translationFormErrors[modelTranslation.value.languageId]?.name,\r\n                                        select, required {Title name is required} maxlength {Title name not allowed over 256 characters}\r\n                                        }\r\n                                    </span>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.shortName\">\r\n                                <label i18n=\"@@shortName\" i18n-ghmLabel ghmLabel=\"Short name\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                       [required]=\"true\"></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <input type=\"text\" class=\"form-control\"\r\n                                           i18n=\"@@enterTitleShortNamePlaceHolder\" i18n-placeholder\r\n                                           placeholder=\"Enter title short name.\"\r\n                                           formControlName=\"shortName\">\r\n                                    <span class=\"help-block\">\r\n                                        {\r\n                                        translationFormErrors[modelTranslation.value.languageId]?.shortName,\r\n                                        select, required {Title short name is required} maxlength {Title short name not allowed over 50 characters}\r\n                                        }\r\n                                    </span>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.description\">\r\n                                <label i18n=\"@@description\" i18n-ghmLabel ghmLabel=\"Description\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                ></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <textarea class=\"form-control\" rows=\"3\" formControlName=\"description\"\r\n                                              i18n=\"@@enterDescriptionPlaceholder\" i18n-placeholder\r\n                                              placeholder=\"Enter description.\"></textarea>\r\n                                    <span class=\"help-block\">\r\n                                        {\r\n                                        translationFormErrors[modelTranslation.value.languageId]?.description,\r\n                                        select, maxlength {Title description not allowed over 500 characters}\r\n                                        }\r\n                                    </span>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\" [formGroup]=\"model\">\r\n                                <div class=\"col-sm-8 col-sm-offset-4\">\r\n                                    <mat-checkbox color=\"primary\" formControlName=\"isActive\" i18n=\"@@isActive\">\r\n                                        {model.value.isActive, select, 0 {Inactive} 1 {Active}}\r\n                                    </mat-checkbox>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <mat-checkbox [checked]=\"isCreateAnother\" (change)=\"isCreateAnother = !isCreateAnother\"\r\n                          *ngIf=\"!isUpdate\"\r\n                          i18n=\"@@isCreateAnother\"\r\n                          class=\"cm-mgr-5\"\r\n                          color=\"primary\">\r\n                Create another\r\n            </mat-checkbox>\r\n            <ghm-button classes=\"btn btn-primary cm-mgr-5\" [loading]=\"isSaving\" i18n=\"@@save\">\r\n                Save\r\n            </ghm-button>\r\n            <ghm-button type=\"button\" classes=\"btn btn-default\"\r\n                        nh-dismiss=\"true\"\r\n                        [loading]=\"isSaving\"\r\n                        i18n=\"@@cancel\">\r\n                Cancel\r\n            </ghm-button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
+module.exports = "<nh-modal #titleFormModal\r\n          size=\"md\"\r\n          (shown)=\"onTitleFormModalShown()\"\r\n          (hidden)=\"onTitleFormModalHidden()\">\r\n    <nh-modal-header>\r\n        <i class=\"fa fa-user-secret\" aria-hidden=\"true\"></i>\r\n        <!--<span *ngIf=\"isUpdate; else addNewTitleTemplate\" i18n=\"@@updateTitle\">Update title</span>-->\r\n        <!--<ng-template #addNewTitleTemplate i18N=\"@@addNewTitle\">-->\r\n        <!--Add new title-->\r\n        <!--</ng-template>-->\r\n        <span i18n=\"@@titleFormTitle\">{isUpdate, select, 1 {Update title} 0 {Add new title}}</span>\r\n    </nh-modal-header>\r\n    <form class=\"form-horizontal\" (ngSubmit)=\"save()\" [formGroup]=\"model\">\r\n        <nh-modal-content>\r\n            <div class=\"tabbable-custom\">\r\n                <ul class=\"nav nav-tabs \">\r\n                    <li [class.active]=\"item.id === currentLanguage\"\r\n                        *ngFor=\"let item of languages; let i = index\">\r\n                        <a href=\"javascript://\" (click)=\"currentLanguage = item.id\"> {{ item.name }} </a>\r\n                    </li>\r\n                </ul>\r\n                <div class=\"tab-content\" formArrayName=\"modelTranslations\">\r\n                    <div class=\"tab-pane\"\r\n                         [class.active]=\"modelTranslation.value.languageId === currentLanguage\"\r\n                         *ngFor=\"let modelTranslation of modelTranslations.controls; index as i\" [formGroupName]=\"i\">\r\n                        <div>\r\n                            <div class=\"form-group\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.name\">\r\n                                <label i18n=\"@@titleName\" i18n-ghmLabel ghmLabel=\"Title name\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                       [required]=\"true\"></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <input type=\"text\" class=\"form-control\" i18n=\"@@enterTitleNamePlaceHolder\"\r\n                                           i18n-placeholder\r\n                                           placeholder=\"Enter page name.\"\r\n                                           formControlName=\"name\">\r\n                                    <span class=\"help-block\">\r\n                                        {\r\n                                        translationFormErrors[modelTranslation.value.languageId]?.name,\r\n                                        select, required {Title name is required} maxlength {Title name not allowed over 256 characters}\r\n                                        }\r\n                                    </span>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.shortName\">\r\n                                <label i18n=\"@@shortName\" i18n-ghmLabel ghmLabel=\"Short name\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                       [required]=\"true\"></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <input type=\"text\" class=\"form-control\"\r\n                                           i18n=\"@@enterTitleShortNamePlaceHolder\" i18n-placeholder\r\n                                           placeholder=\"Enter title short name.\"\r\n                                           formControlName=\"shortName\">\r\n                                    <span class=\"help-block\">\r\n                                        {\r\n                                        translationFormErrors[modelTranslation.value.languageId]?.shortName,\r\n                                        select, required {Title short name is required} maxlength {Title short name not allowed over 50 characters}\r\n                                        }\r\n                                    </span>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\"\r\n                                 [class.has-error]=\"translationFormErrors[modelTranslation.value.languageId]?.description\">\r\n                                <label i18n=\"@@description\" i18n-ghmLabel ghmLabel=\"Description\"\r\n                                       class=\"col-sm-4 control-label\"\r\n                                ></label>\r\n                                <div class=\"col-sm-8\">\r\n                                    <textarea class=\"form-control\" rows=\"3\" formControlName=\"description\"\r\n                                              i18n=\"@@enterDescriptionPlaceholder\" i18n-placeholder\r\n                                              placeholder=\"Enter description.\"></textarea>\r\n                                    <span class=\"help-block\">\r\n                                        {\r\n                                        translationFormErrors[modelTranslation.value.languageId]?.description,\r\n                                        select, maxlength {Title description not allowed over 500 characters}\r\n                                        }\r\n                                    </span>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"form-group\" [formGroup]=\"model\">\r\n                                <div class=\"col-sm-8 col-sm-offset-4\">\r\n                                    <mat-checkbox color=\"primary\" formControlName=\"isActive\" i18n=\"@@isActive\">\r\n                                        {model.value.isActive, select, 0 {Inactive} 1 {Active}}\r\n                                    </mat-checkbox>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nh-modal-content>\r\n        <nh-modal-footer>\r\n            <mat-checkbox [checked]=\"isCreateAnother\" (change)=\"isCreateAnother = !isCreateAnother\"\r\n                          *ngIf=\"!isUpdate\"\r\n                          i18n=\"@@isCreateAnother\"\r\n                          class=\"cm-mgr-5\"\r\n                          color=\"primary\">\r\n                Create another\r\n            </mat-checkbox>\r\n            <ghm-button classes=\"btn btn-primary cm-mgr-5\" [loading]=\"isSaving\" i18n=\"@@save\">\r\n                Save\r\n            </ghm-button>\r\n            <ghm-button type=\"button\" classes=\"btn btn-default\"\r\n                        nh-dismiss=\"true\"\r\n                        [loading]=\"isSaving\"\r\n                        i18n=\"@@cancel\">\r\n                Cancel\r\n            </ghm-button>\r\n        </nh-modal-footer>\r\n    </form>\r\n</nh-modal>\r\n"
 
 /***/ }),
 
@@ -2421,10 +2556,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shareds_components_nh_modal_nh_modal_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../shareds/components/nh-modal/nh-modal.component */ "./src/app/shareds/components/nh-modal/nh-modal.component.ts");
 /* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
 /* harmony import */ var _models_title_translation_model__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../models/title-translation.model */ "./src/app/modules/hr/organization/title/models/title-translation.model.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_11__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2459,25 +2592,21 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
 var TitleFormComponent = /** @class */ (function (_super) {
     __extends(TitleFormComponent, _super);
-    function TitleFormComponent(pageId, fb, route, router, titleService, spinnerService, appService, utilService) {
+    function TitleFormComponent(pageId, fb, route, router, titleService, utilService) {
         var _this = _super.call(this) || this;
         _this.pageId = pageId;
         _this.fb = fb;
         _this.route = route;
         _this.router = router;
         _this.titleService = titleService;
-        _this.spinnerService = spinnerService;
-        _this.appService = appService;
         _this.utilService = utilService;
         _this.title = new _title_model__WEBPACK_IMPORTED_MODULE_4__["Title"]();
         _this.modelTranslation = new _models_title_translation_model__WEBPACK_IMPORTED_MODULE_10__["TitleTranslation"]();
         _this.buildFormLanguage = function (language) {
-            _this.translationFormErrors[language] = _this.utilService.renderFormError(['name', 'shortName', 'description']);
-            _this.translationValidationMessage[language] = _this.utilService.renderFormErrorMessage([
+            _this.translationFormErrors[language] = _this.renderFormError(['name', 'shortName', 'description']);
+            _this.translationValidationMessage[language] = _this.renderFormErrorMessage([
                 { 'name': ['required', 'maxlength'] },
                 { 'description': ['maxlength'] },
                 { 'shortName': ['required', 'maxlength'] }
@@ -2499,7 +2628,6 @@ var TitleFormComponent = /** @class */ (function (_super) {
             pageTranslationModel.valueChanges.subscribe(function (data) { return _this.validateTranslationModel(false); });
             return pageTranslationModel;
         };
-        _this.renderLanguageData(appService);
         return _this;
     }
     TitleFormComponent.prototype.ngOnInit = function () {
@@ -2515,13 +2643,14 @@ var TitleFormComponent = /** @class */ (function (_super) {
         }
     };
     TitleFormComponent.prototype.add = function () {
-        this.titleFormModal.show();
+        this.titleFormModal.open();
+        this.validateModel(false);
     };
     TitleFormComponent.prototype.edit = function (title) {
         this.isUpdate = true;
         this.title = title;
         this.getDetail(title.id);
-        this.titleFormModal.show();
+        this.titleFormModal.open();
     };
     TitleFormComponent.prototype.save = function () {
         var _this = this;
@@ -2556,7 +2685,6 @@ var TitleFormComponent = /** @class */ (function (_super) {
     };
     TitleFormComponent.prototype.getDetail = function (id) {
         var _this = this;
-        this.spinnerService.show();
         this.subscribers.getTitleDetail = this.titleService.getDetail(id)
             .subscribe(function (result) {
             var titleDetail = result.data;
@@ -2569,7 +2697,7 @@ var TitleFormComponent = /** @class */ (function (_super) {
                 });
                 if (titleDetail.titleTranslations && titleDetail.titleTranslations.length > 0) {
                     _this.modelTranslations.controls.forEach(function (model) {
-                        var detail = lodash__WEBPACK_IMPORTED_MODULE_12__["find"](titleDetail.titleTranslations, function (titleTranslation) {
+                        var detail = lodash__WEBPACK_IMPORTED_MODULE_11__["find"](titleDetail.titleTranslations, function (titleTranslation) {
                             return titleTranslation.languageId === model.value.languageId;
                         });
                         if (detail) {
@@ -2586,11 +2714,10 @@ var TitleFormComponent = /** @class */ (function (_super) {
     };
     TitleFormComponent.prototype.buildForm = function () {
         var _this = this;
-        this.formErrors = this.utilService.renderFormError(['name', 'shortName', 'description', 'positionId']);
+        this.formErrors = this.utilService.renderFormError(['name', 'shortName', 'description']);
         this.validationMessages = this.utilService.renderFormErrorMessage([
             { 'name': ['required', 'maxlength'] },
             { 'shortName': ['required', 'maxlength'] },
-            { 'positionId': ['required'] },
         ]);
         this.model = this.fb.group({
             'id': [this.title.id],
@@ -2612,6 +2739,8 @@ var TitleFormComponent = /** @class */ (function (_super) {
                 description: ''
             });
         });
+        this.clearFormError(this.formErrors);
+        this.clearFormError(this.translationFormErrors);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('titleFormModal'),
@@ -2627,8 +2756,6 @@ var TitleFormComponent = /** @class */ (function (_super) {
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
             _title_service__WEBPACK_IMPORTED_MODULE_5__["TitleService"],
-            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_13__["SpinnerService"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_11__["AppService"],
             _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_9__["UtilService"]])
     ], TitleFormComponent);
     return TitleFormComponent;
@@ -2645,7 +2772,7 @@ var TitleFormComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"form-inline cm-mgb-10\" (ngSubmit)=\"search(1)\">\r\n    <div class=\"form-group cm-mgr-5\">\r\n        <input type=\"text\" class=\"form-control\" i18n=\"@@enterKeyword\" i18n-placeholder placeholder=\"Enter keyword.\"\r\n               name=\"keyword\" [(ngModel)]=\"keyword\">\r\n    </div>\r\n    <div class=\"form-group cm-mgr-5\">\r\n        <nh-select\r\n            [data]=\"[{id: false, name: 'Chưa kích hoạt'},{id: true, name: 'Đã kích hoạt'}]\"\r\n            [title]=\"'-- Tất cả trạng thái --'\"\r\n            [(value)]=\"isActive\"\r\n            (onSelectItem)=\"search(1)\"></nh-select>\r\n    </div>\r\n    <div class=\"form-group cm-mgr-5\">\r\n        <button class=\"btn btn-primary\" [disabled]=\"isSearching\">\r\n            <i class=\"fa fa-search\" *ngIf=\"!isSearching\"></i>\r\n            <i class=\"fa fa-pulse fa-spinner\" *ngIf=\"isSearching\"></i>\r\n        </button>\r\n    </div>\r\n    <div class=\"form-group cm-mgr-5\">\r\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"refresh()\">\r\n            <i class=\"fa fa-refresh\"></i>\r\n        </button>\r\n    </div>\r\n    <div class=\"form-group pull-right\">\r\n        <button class=\"btn btn-primary\" (click)=\"add()\" i18n=\"@@add\"\r\n                *ngIf=\"permission.add\">\r\n            Add\r\n        </button>\r\n    </div>\r\n</form>\r\n<div class=\"table-responsive\">\r\n    <table class=\"table table-hover table-stripped\">\r\n        <thead>\r\n        <tr>\r\n            <th class=\"middle center w50\" i18n=\"@@no\">No</th>\r\n            <th class=\"middle\" i18n=\"@@titleName\">Title name</th>\r\n            <th class=\"middle w100\" i18n=\"@@shortName\">Short name</th>\r\n            <th class=\"middle w70 middle\" i18n=\"@@status\">Status</th>\r\n            <th class=\"middle\" i18n=\"@@description\">Description</th>\r\n            <th class=\"middle center w150\" i18n=\"@@action\" *ngIf=\"permission.edit || permission.delete\">Action</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr *ngFor=\"let title of listItems$ | async; let i = index\">\r\n            <td class=\"center middle\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n            <td class=\"middle\">\r\n                <a href=\"javascript://\"\r\n                   (click)=\"edit(title)\"\r\n                   *ngIf=\"permission.edit; else noEditTemplate\">{{ title.name }}</a>\r\n                <ng-template #noEditTemplate>\r\n                    {{ title.name }}\r\n                </ng-template>\r\n            </td>\r\n            <td class=\"middle\">{{ title.shortName }}</td>\r\n            <td class=\"middle\">\r\n                <span class=\"badge\"\r\n                      [class.badge-success]=\"title.isActive\"\r\n                      [class.badge-danger]=\"!title.isActive\">{title.activeStatus, select, active {Active} inActive {Inactive}}</span>\r\n            </td>\r\n            <td class=\"middle\">{{ title.description }}</td>\r\n            <td class=\"center middle w150\" *ngIf=\"permission.edit || permission.delete\">\r\n                <ghm-button\r\n                    *ngIf=\"permission.edit\"\r\n                    icon=\"fa fa-edit\" classes=\"btn btn-primary btn-sm\"\r\n                    (clicked)=\"edit(title)\"></ghm-button>\r\n                <ghm-button\r\n                    *ngIf=\"permission.delete\"\r\n                    icon=\"fa fa-trash-o\" classes=\"btn btn-danger btn-sm\"\r\n                    [swal]=\"confirmDeleteTitle\"\r\n                    (confirm)=\"delete(title.id)\"></ghm-button>\r\n            </td>\r\n        </tr>\r\n        </tbody>\r\n    </table>\r\n</div>\r\n<ghm-paging [totalRows]=\"totalRows\" [currentPage]=\"currentPage\" [pageShow]=\"6\"\r\n            (pageClick)=\"search($event)\"\r\n            [isDisabled]=\"isSearching\"\r\n            i18n=\"@@title\" i18n-pageName pageName=\"Title\"></ghm-paging>\r\n\r\n<app-title-form (saveSuccessful)=\"search(currentPage)\"></app-title-form>\r\n\r\n<swal\r\n    #confirmDeleteTitle\r\n    i18n-title=\"@@confirmDeleteTitle\"\r\n    i18n-text=\"@@confirmDeleteText\"\r\n    title=\"Are you sure for delete this title?\"\r\n    text=\"You can't recover this title after delete.\"\r\n    type=\"question\"\r\n    [showCancelButton]=\"true\"\r\n    [focusCancel]=\"true\">\r\n</swal>\r\n"
+module.exports = "<h1 class=\"page-title\">\r\n    <span class=\"cm-mgr-5\" i18n=\"@@listTitlePageTitle\">List title</span>\r\n    <small i18n=\"@@titleModuleTitle\">Title management</small>\r\n</h1>\r\n\r\n<form class=\"form-inline cm-mgb-10\" (ngSubmit)=\"search(1)\">\r\n    <div class=\"form-group cm-mgr-5\">\r\n        <input type=\"text\" class=\"form-control\" i18n=\"@@enterKeyword\" i18n-placeholder placeholder=\"Enter keyword.\"\r\n               name=\"keyword\" [(ngModel)]=\"keyword\">\r\n    </div>\r\n    <div class=\"form-group cm-mgr-5\">\r\n        <nh-select\r\n            i18n-title=\"@@filterByStatusTitle\"\r\n            title=\"-- Filter by status --\"\r\n            [data]=\"listActiveSearch\"\r\n            [(value)]=\"isActive\"\r\n            (onSelectItem)=\"search(1)\"></nh-select>\r\n    </div>\r\n    <div class=\"form-group cm-mgr-5\">\r\n        <button class=\"btn btn-primary\" [disabled]=\"isSearching\">\r\n            <i class=\"fa fa-search\" *ngIf=\"!isSearching\"></i>\r\n            <i class=\"fa fa-pulse fa-spinner\" *ngIf=\"isSearching\"></i>\r\n        </button>\r\n    </div>\r\n    <div class=\"form-group cm-mgr-5\">\r\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"refresh()\">\r\n            <i class=\"fa fa-refresh\"></i>\r\n        </button>\r\n    </div>\r\n    <div class=\"form-group pull-right\">\r\n        <button class=\"btn btn-primary\" (click)=\"add()\" i18n=\"@@add\"\r\n                *ngIf=\"permission.add\">\r\n            Add\r\n        </button>\r\n    </div>\r\n</form>\r\n<div class=\"table-responsive\">\r\n    <table class=\"table table-hover table-stripped\">\r\n        <thead>\r\n        <tr>\r\n            <th class=\"middle center w50\" i18n=\"@@no\">No</th>\r\n            <th class=\"middle\" i18n=\"@@titleName\">Title name</th>\r\n            <th class=\"middle w100\" i18n=\"@@shortName\">Short name</th>\r\n            <th class=\"middle w70 middle\" i18n=\"@@status\">Status</th>\r\n            <th class=\"middle\" i18n=\"@@description\">Description</th>\r\n            <th class=\"middle text-right w150\" i18n=\"@@action\" *ngIf=\"permission.edit || permission.delete\">Action</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr *ngFor=\"let title of listItems$ | async; let i = index\">\r\n            <td class=\"center middle\">{{ (currentPage - 1) * pageSize + i + 1 }}</td>\r\n            <td class=\"middle\">\r\n                <a href=\"javascript://\"\r\n                   (click)=\"edit(title)\"\r\n                   *ngIf=\"permission.edit; else noEditTemplate\">{{ title.name }}</a>\r\n                <ng-template #noEditTemplate>\r\n                    {{ title.name }}\r\n                </ng-template>\r\n            </td>\r\n            <td class=\"middle\">{{ title.shortName }}</td>\r\n            <td class=\"middle\">\r\n                <span class=\"badge\"\r\n                      [class.badge-success]=\"title.isActive\"\r\n                      [class.badge-danger]=\"!title.isActive\">{title.activeStatus, select, active {Active} inActive {Inactive}}</span>\r\n            </td>\r\n            <td class=\"middle\">{{ title.description }}</td>\r\n            <td class=\"middle text-right w150\" *ngIf=\"permission.edit || permission.delete\">\r\n                <ghm-button\r\n                    *ngIf=\"permission.edit\"\r\n                    icon=\"fa fa-edit\" classes=\"btn btn-primary btn-sm\"\r\n                    (clicked)=\"edit(title)\"></ghm-button>\r\n                <ghm-button\r\n                    *ngIf=\"permission.delete\"\r\n                    icon=\"fa fa-trash-o\" classes=\"btn btn-danger btn-sm\"\r\n                    [swal]=\"confirmDeleteTitle\"\r\n                    (confirm)=\"delete(title.id)\"></ghm-button>\r\n            </td>\r\n        </tr>\r\n        </tbody>\r\n    </table>\r\n</div>\r\n<ghm-paging [totalRows]=\"totalRows\"\r\n            [currentPage]=\"currentPage\"\r\n            [pageShow]=\"6\"\r\n            [isDisabled]=\"isSearching\"\r\n            [pageSize]=\"pageSize\"\r\n            (pageClick)=\"search($event)\"\r\n></ghm-paging>\r\n\r\n<app-title-form (saveSuccessful)=\"search(currentPage)\"></app-title-form>\r\n\r\n<swal\r\n    #confirmDeleteTitle\r\n    i18n-title=\"@@confirmDeleteTitle\"\r\n    i18n-text=\"@@confirmDeleteText\"\r\n    title=\"Are you sure for delete this title?\"\r\n    text=\"You can't recover this title after delete.\"\r\n    type=\"question\"\r\n    i18n-confirmButtonText=\"@@accept\"\r\n    i18n-cancelButtonText=\"@@cancel\"\r\n    confirmButtonText=\"Accept\"\r\n    cancelButtonText=\"Cancel\">\r\n</swal>\r\n"
 
 /***/ }),
 
@@ -2662,19 +2789,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _title_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./title.model */ "./src/app/modules/hr/organization/title/title.model.ts");
-/* harmony import */ var _title_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./title.service */ "./src/app/modules/hr/organization/title/title.service.ts");
-/* harmony import */ var _title_form_title_form_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./title-form/title-form.component */ "./src/app/modules/hr/organization/title/title-form/title-form.component.ts");
-/* harmony import */ var _shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../shareds/decorator/destroy-subscribes.decorator */ "./src/app/shareds/decorator/destroy-subscribes.decorator.ts");
-/* harmony import */ var _shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../shareds/decorator/check-permission.decorator */ "./src/app/shareds/decorator/check-permission.decorator.ts");
-/* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../base-list.component */ "./src/app/base-list.component.ts");
-/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
-/* harmony import */ var _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../shareds/services/app.service */ "./src/app/shareds/services/app.service.ts");
-/* harmony import */ var _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../core/spinner/spinner.service */ "./src/app/core/spinner/spinner.service.ts");
-/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
-/* harmony import */ var _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../../shareds/models/filter-link.model */ "./src/app/shareds/models/filter-link.model.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _title_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./title.model */ "./src/app/modules/hr/organization/title/title.model.ts");
+/* harmony import */ var _title_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./title.service */ "./src/app/modules/hr/organization/title/title.service.ts");
+/* harmony import */ var _title_form_title_form_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./title-form/title-form.component */ "./src/app/modules/hr/organization/title/title-form/title-form.component.ts");
+/* harmony import */ var _base_list_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../base-list.component */ "./src/app/base-list.component.ts");
+/* harmony import */ var _configs_page_id_config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../configs/page-id.config */ "./src/app/configs/page-id.config.ts");
+/* harmony import */ var _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../shareds/services/util.service */ "./src/app/shareds/services/util.service.ts");
+/* harmony import */ var _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../shareds/models/filter-link.model */ "./src/app/shareds/models/filter-link.model.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2708,25 +2830,20 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
-
-
-
-
-
 var TitleComponent = /** @class */ (function (_super) {
     __extends(TitleComponent, _super);
-    function TitleComponent(pageId, location, appService, spinnerService, titleService, toastr, utilService, router, route) {
+    function TitleComponent(pageId, location, titleService, utilService, router, route) {
         var _this = _super.call(this) || this;
         _this.pageId = pageId;
         _this.location = location;
-        _this.appService = appService;
-        _this.spinnerService = spinnerService;
         _this.titleService = titleService;
-        _this.toastr = toastr;
         _this.utilService = utilService;
         _this.router = router;
         _this.route = route;
-        _this.title = new _title_model__WEBPACK_IMPORTED_MODULE_5__["Title"]();
+        _this.title = new _title_model__WEBPACK_IMPORTED_MODULE_4__["Title"]();
+        _this.listActiveSearch = [];
+        _this.subscribers.getListActiveSearch = _this.appService.getListActiveSearch()
+            .subscribe(function (result) { return _this.listActiveSearch = result; });
         return _this;
     }
     TitleComponent.prototype.ngOnInit = function () {
@@ -2782,37 +2899,32 @@ var TitleComponent = /** @class */ (function (_super) {
     TitleComponent.prototype.renderFilterLink = function () {
         var path = '/organization/titles';
         var query = this.utilService.renderLocationFilter([
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_15__["FilterLink"]('keyword', this.keyword),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_15__["FilterLink"]('isActive', this.isActive),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_15__["FilterLink"]('pageId', this.currentPage),
-            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_15__["FilterLink"]('pageSize', this.pageSize)
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_10__["FilterLink"]('keyword', this.keyword),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_10__["FilterLink"]('isActive', this.isActive),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_10__["FilterLink"]('pageId', this.currentPage),
+            new _shareds_models_filter_link_model__WEBPACK_IMPORTED_MODULE_10__["FilterLink"]('pageSize', this.pageSize)
         ]);
         this.location.go(path, query);
     };
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_title_form_title_form_component__WEBPACK_IMPORTED_MODULE_7__["TitleFormComponent"]),
-        __metadata("design:type", _title_form_title_form_component__WEBPACK_IMPORTED_MODULE_7__["TitleFormComponent"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_title_form_title_form_component__WEBPACK_IMPORTED_MODULE_6__["TitleFormComponent"]),
+        __metadata("design:type", _title_form_title_form_component__WEBPACK_IMPORTED_MODULE_6__["TitleFormComponent"])
     ], TitleComponent.prototype, "titleFormComponent", void 0);
     TitleComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-title-component',
             template: __webpack_require__(/*! ./title.component.html */ "./src/app/modules/hr/organization/title/title.component.html"),
-            providers: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"], { provide: _angular_common__WEBPACK_IMPORTED_MODULE_4__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_4__["PathLocationStrategy"] }]
+            providers: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"], { provide: _angular_common__WEBPACK_IMPORTED_MODULE_3__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_3__["PathLocationStrategy"] }]
         }),
-        Object(_shareds_decorator_destroy_subscribes_decorator__WEBPACK_IMPORTED_MODULE_8__["DestroySubscribers"])(),
-        Object(_shareds_decorator_check_permission_decorator__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])(),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_11__["PAGE_ID"])),
-        __metadata("design:paramtypes", [Object, _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"],
-            _shareds_services_app_service__WEBPACK_IMPORTED_MODULE_12__["AppService"],
-            _core_spinner_spinner_service__WEBPACK_IMPORTED_MODULE_13__["SpinnerService"],
-            _title_service__WEBPACK_IMPORTED_MODULE_6__["TitleService"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_3__["ToastrService"],
-            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_14__["UtilService"],
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_configs_page_id_config__WEBPACK_IMPORTED_MODULE_8__["PAGE_ID"])),
+        __metadata("design:paramtypes", [Object, _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"],
+            _title_service__WEBPACK_IMPORTED_MODULE_5__["TitleService"],
+            _shareds_services_util_service__WEBPACK_IMPORTED_MODULE_9__["UtilService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
     ], TitleComponent);
     return TitleComponent;
-}(_base_list_component__WEBPACK_IMPORTED_MODULE_10__["BaseListComponent"]));
+}(_base_list_component__WEBPACK_IMPORTED_MODULE_7__["BaseListComponent"]));
 
 
 
@@ -2842,577 +2954,22 @@ var Title = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/shareds/components/nh-tree/nh-dropdown-tree.component.html":
-/*!****************************************************************************!*\
-  !*** ./src/app/shareds/components/nh-tree/nh-dropdown-tree.component.html ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"nh-tree-dropdown\">\r\n    <button class=\"nh-tree-label btn btn-default text-ellipsis\" type=\"button\" (click)=\"dropdownButtonClick()\">\r\n        {{ selectTitle }}\r\n        <span class=\"caret\"></span>\r\n    </button>\r\n    <div class=\"nh-content-wrapper\" [hidden]=\"!isShow\"\r\n         [style.width]=\"width + 'px'\">\r\n        <ul class=\"nh-tree-default-value\">\r\n            <li class=\"center\"><a href=\"javascript://\" (click)=\"selectDefaultNode()\">{{ title }}</a></li>\r\n        </ul>\r\n        <div class=\"nh-tree-content\">\r\n            <nh-tree\r\n                [data]=\"data\"\r\n                [isMultiple]=\"isMultiple\"\r\n                [selectedIds]=\"value\"\r\n                (nodeSelected)=\"onNodeSelected($event)\"\r\n                (nodeExpanded)=\"onNodeExpanded($event)\"\r\n            ></nh-tree>\r\n        </div>\r\n        <div class=\"nh-tree-footer\" *ngIf=\"isMultiple\">\r\n            <button class=\"btn btn-primary\" type=\"button\" (click)=\"acceptButtonClick()\">\r\n                {{ acceptText }}\r\n            </button>\r\n            <button class=\"btn btn-danger\" type=\"button\" (click)=\"cancelButtonClick()\">\r\n                {{ cancelText }}\r\n            </button>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
-
-/***/ }),
-
-/***/ "./src/app/shareds/components/nh-tree/nh-dropdown-tree.component.ts":
-/*!**************************************************************************!*\
-  !*** ./src/app/shareds/components/nh-tree/nh-dropdown-tree.component.ts ***!
-  \**************************************************************************/
-/*! exports provided: NHDropdownTreeComponent */
+/***/ "./src/app/shareds/constants/pattern.const.ts":
+/*!****************************************************!*\
+  !*** ./src/app/shareds/constants/pattern.const.ts ***!
+  \****************************************************/
+/*! exports provided: Pattern */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NHDropdownTreeComponent", function() { return NHDropdownTreeComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pattern", function() { return Pattern; });
+var Pattern = {
+    phoneNumber: '^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$',
+    email: '^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$',
+    whiteSpace: '.*\\S.*',
+    url: '(http(s)?://)?([\\w-]+\\.)+[\\w-]+(/[\\w- ;,./?%&=]*)?'
 };
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var NHDropdownTreeComponent = /** @class */ (function () {
-    function NHDropdownTreeComponent(el) {
-        this.el = el;
-        this.isMultiple = false;
-        this.title = '-- Nhập nội dung --';
-        this.selectedText = '';
-        this.width = 250;
-        this.acceptText = 'Đồng ý';
-        this.cancelText = 'Hủy bỏ';
-        this.accepted = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.canceled = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.buttonClicked = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.nodeExpanded = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.nodeSelected = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.isShow = false;
-        this.selectedTexts = [];
-        this.selectTitle = '-- Nhập nội dung --';
-        this.listSelected = [];
-        this.propagateChange = function () {
-        };
-    }
-    NHDropdownTreeComponent_1 = NHDropdownTreeComponent;
-    Object.defineProperty(NHDropdownTreeComponent.prototype, "value", {
-        get: function () {
-            return this._value;
-        },
-        set: function (value) {
-            this._value = value;
-            this.setTitle();
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NHDropdownTreeComponent.prototype, "data", {
-        get: function () {
-            return this._data;
-        },
-        set: function (value) {
-            this._data = value;
-            this.setTitle();
-        },
-        enumerable: true,
-        configurable: true
-    });
-    NHDropdownTreeComponent.prototype.ngOnInit = function () {
-    };
-    NHDropdownTreeComponent.prototype.registerOnChange = function (fn) {
-        this.propagateChange = fn;
-    };
-    NHDropdownTreeComponent.prototype.writeValue = function (value) {
-        this.value = value;
-    };
-    NHDropdownTreeComponent.prototype.registerOnTouched = function () {
-    };
-    NHDropdownTreeComponent.prototype.onClick = function (event) {
-        if (!this.el.nativeElement.contains(event.target)) {
-            // or some similar check
-            this.isShow = false;
-        }
-    };
-    NHDropdownTreeComponent.prototype.acceptButtonClick = function () {
-        this.isShow = false;
-        this.accepted.emit(this.listSelected);
-        var selectedNodeName = lodash__WEBPACK_IMPORTED_MODULE_2__(this.listSelected)
-            .map('text')
-            .value()
-            .toString();
-        this.selectTitle = selectedNodeName ? selectedNodeName : this.title;
-    };
-    NHDropdownTreeComponent.prototype.cancelButtonClick = function () {
-        this.canceled.emit();
-        this.isShow = false;
-    };
-    NHDropdownTreeComponent.prototype.expandButtonClick = function () {
-    };
-    NHDropdownTreeComponent.prototype.dropdownButtonClick = function () {
-        var _this = this;
-        setTimeout(function () {
-            _this.isShow = !_this.isShow;
-            if (!_this.isMultiple) {
-                _this.buttonClicked.emit(_this.isShow);
-            }
-        });
-    };
-    NHDropdownTreeComponent.prototype.onNodeSelected = function (node) {
-        if (!this.isMultiple) {
-            this.isShow = false;
-            this.selectTitle = node.text;
-            this.propagateChange(node.id);
-            this.nodeSelected.emit(node);
-        }
-        else {
-            if (node.isSelected) {
-                var isExists = lodash__WEBPACK_IMPORTED_MODULE_2__["find"](this.listSelected, function (item) {
-                    return item.id === node.id;
-                });
-                if (!isExists) {
-                    this.listSelected.push(node);
-                }
-            }
-            else {
-                lodash__WEBPACK_IMPORTED_MODULE_2__["remove"](this.listSelected, node);
-            }
-        }
-    };
-    NHDropdownTreeComponent.prototype.onNodeExpanded = function (node) {
-        this.nodeExpanded.emit(node);
-    };
-    NHDropdownTreeComponent.prototype.selectDefaultNode = function () {
-        this.isShow = false;
-        this.selectTitle = this.title;
-        this.nodeSelected.emit(null);
-        this.propagateChange(null);
-        if (this.isMultiple) {
-            this.accepted.emit(null);
-        }
-    };
-    NHDropdownTreeComponent.prototype.getNodesSelected = function (data, parentId) {
-        var _this = this;
-        var listNodes = lodash__WEBPACK_IMPORTED_MODULE_2__["filter"](data, function (node) {
-            return node.parentId === parentId;
-        });
-        if (listNodes) {
-            lodash__WEBPACK_IMPORTED_MODULE_2__["each"](listNodes, function (node) {
-                if (_this.value === node.id) {
-                    _this.selectedTexts.push(node.text);
-                }
-                else {
-                    _this.getNodesSelected(node.children, node.id);
-                }
-            });
-        }
-    };
-    NHDropdownTreeComponent.prototype.getSelectedNode = function (data) {
-        var _this = this;
-        lodash__WEBPACK_IMPORTED_MODULE_2__["each"](data, function (node) {
-            if (node.id === _this.value) {
-                _this.selectTitle = node.text;
-                return false;
-            }
-            else {
-                _this.selectTitle = _this.title;
-                _this.getSelectedNode(node.children);
-            }
-        });
-    };
-    NHDropdownTreeComponent.prototype.setTitle = function () {
-        if (this.isMultiple) {
-            this.getNodesSelected(this.data, null);
-            this.selectTitle = this.selectedTexts && this.selectedTexts.length > 0
-                ? this.selectedTexts.join()
-                : this.title;
-        }
-        else {
-            this.getSelectedNode(this.data);
-        }
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NHDropdownTreeComponent.prototype, "isMultiple", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NHDropdownTreeComponent.prototype, "title", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NHDropdownTreeComponent.prototype, "selectedText", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NHDropdownTreeComponent.prototype, "width", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NHDropdownTreeComponent.prototype, "acceptText", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NHDropdownTreeComponent.prototype, "cancelText", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], NHDropdownTreeComponent.prototype, "accepted", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], NHDropdownTreeComponent.prototype, "canceled", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], NHDropdownTreeComponent.prototype, "buttonClicked", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], NHDropdownTreeComponent.prototype, "nodeExpanded", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], NHDropdownTreeComponent.prototype, "nodeSelected", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object),
-        __metadata("design:paramtypes", [Object])
-    ], NHDropdownTreeComponent.prototype, "value", null);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Array),
-        __metadata("design:paramtypes", [Array])
-    ], NHDropdownTreeComponent.prototype, "data", null);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('document:click', ['$event']),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", void 0)
-    ], NHDropdownTreeComponent.prototype, "onClick", null);
-    NHDropdownTreeComponent = NHDropdownTreeComponent_1 = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'nh-dropdown-tree',
-            template: __webpack_require__(/*! ./nh-dropdown-tree.component.html */ "./src/app/shareds/components/nh-tree/nh-dropdown-tree.component.html"),
-            styles: [__webpack_require__(/*! ./nh-tree.scss */ "./src/app/shareds/components/nh-tree/nh-tree.scss")],
-            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
-            providers: [
-                {
-                    provide: _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NG_VALUE_ACCESSOR"],
-                    useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(function () { return NHDropdownTreeComponent_1; }),
-                    multi: true
-                }
-            ]
-        }),
-        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
-    ], NHDropdownTreeComponent);
-    return NHDropdownTreeComponent;
-    var NHDropdownTreeComponent_1;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/shareds/components/nh-tree/nh-tree.component.html":
-/*!*******************************************************************!*\
-  !*** ./src/app/shareds/components/nh-tree/nh-tree.component.html ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<ul class=\"nh-tree nh-root-tree\">\r\n    <ng-template #recursiveTree let-data>\r\n        <li *ngFor=\"let node of data\"\r\n            [class.selected]=\"node.isSelected\">\r\n            <i class=\"nh-tree-icon\"\r\n               (click)=\"expand(node)\"\r\n               [class.nh-tree-loading]=\"node.isLoading && node.childCount && node.childCount > 0\"\r\n               [class.nh-tree-node-close]=\"!node.state.opened && ((node.childCount && node.childCount > 0)\r\n                   || (node.children && node.children.length > 0))\"\r\n               [class.nh-tree-node-open]=\"node.state.opened && ((node.childCount && node.childCount > 0)\r\n                   || (node.children && node.children.length > 0))\"\r\n            ></i>\r\n            <a href=\"javascript://\" (click)=\"selectNode(node)\" [attr.title]=\"node.text\">\r\n                <i class=\"nh-tree-icon\"\r\n                   [ngClass]=\"node.icon ? node.icon + ' nh-custom-icon' : 'nh-tree-icon-folder'\"></i>\r\n                {{ node.text }}\r\n            </a>\r\n            <ul *ngIf=\"node.children.length > 0\" class=\"sub-tree\"\r\n                [@toogleTreeSubmenu]=\"node.state.opened ? 'sub-tree-open' : 'sub-tree-close'\">\r\n                <ng-container *ngTemplateOutlet=\"recursiveTree; context:{ $implicit: node.children }\"></ng-container>\r\n            </ul>\r\n        </li>\r\n    </ng-template>\r\n    <ng-container *ngTemplateOutlet=\"recursiveTree; context:{ $implicit: data }\"></ng-container>\r\n</ul>\r\n"
-
-/***/ }),
-
-/***/ "./src/app/shareds/components/nh-tree/nh-tree.component.ts":
-/*!*****************************************************************!*\
-  !*** ./src/app/shareds/components/nh-tree/nh-tree.component.ts ***!
-  \*****************************************************************/
-/*! exports provided: NHTreeComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NHTreeComponent", function() { return NHTreeComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var NHTreeComponent = /** @class */ (function () {
-    function NHTreeComponent(http) {
-        this.http = http;
-        // @Input() data: TreeData[];
-        this.isMultiple = false;
-        this.isChildren = false;
-        this.isOpen = true;
-        // @Input() selectedIds = [];
-        this.nodeSelected = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.nodeExpanded = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this._data = [];
-        this._selectedIds = [];
-    }
-    NHTreeComponent.prototype.ngOnInit = function () {
-    };
-    Object.defineProperty(NHTreeComponent.prototype, "data", {
-        get: function () {
-            return this._data;
-        },
-        set: function (value) {
-            var _this = this;
-            this._data = lodash__WEBPACK_IMPORTED_MODULE_2__["cloneDeep"](value);
-            setTimeout(function () {
-                _this.updateSelectedStatus(_this.data);
-            });
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NHTreeComponent.prototype, "selectedIds", {
-        get: function () {
-            return this._selectedIds;
-        },
-        set: function (value) {
-            var _this = this;
-            this._selectedIds = lodash__WEBPACK_IMPORTED_MODULE_2__["cloneDeep"](value);
-            setTimeout(function () {
-                _this.updateSelectedStatus(_this.data);
-            });
-        },
-        enumerable: true,
-        configurable: true
-    });
-    NHTreeComponent.prototype.ngOnChanges = function (changes) {
-    };
-    NHTreeComponent.prototype.selectNode = function (node) {
-        if (!this.isMultiple) {
-            this.resetSelectedNote(this.data, null);
-            node.isSelected = true;
-        }
-        else {
-            node.isSelected = !node.isSelected;
-        }
-        this.nodeSelected.emit(node);
-    };
-    NHTreeComponent.prototype.expand = function (node) {
-        if (this.lazyLoadURL && node.children.length === 0) {
-            node.isLoading = true;
-            var childrens = this.http.get("" + this.lazyLoadURL + node.id);
-            childrens.subscribe(function (result) {
-                node.isLoading = false;
-                node.children = result;
-            });
-        }
-        node.state.opened = !node.state.opened;
-        this.nodeExpanded.emit(node);
-    };
-    NHTreeComponent.prototype.resetSelectedNote = function (treeNodes, parentId) {
-        var _this = this;
-        if (!treeNodes || treeNodes.length <= 0) {
-            return;
-        }
-        lodash__WEBPACK_IMPORTED_MODULE_2__["each"](treeNodes, function (node) {
-            node.isSelected = false;
-            if (node.parentId === parentId) {
-                lodash__WEBPACK_IMPORTED_MODULE_2__["each"](node.children, function (item) {
-                    item.isSelected = false;
-                    _this.resetSelectedNote(item.children, item.id);
-                });
-            }
-        });
-    };
-    NHTreeComponent.prototype.updateSelectedStatus = function (nodes, parentId) {
-        var _this = this;
-        if (parentId === void 0) { parentId = null; }
-        var parentNodes = lodash__WEBPACK_IMPORTED_MODULE_2__["filter"](nodes, function (node) {
-            return node.parentId === parentId;
-        });
-        if (parentNodes && parentNodes.length > 0) {
-            lodash__WEBPACK_IMPORTED_MODULE_2__["each"](parentNodes, function (nodeItem) {
-                nodeItem.isSelected =
-                    _this.selectedIds &&
-                        _this.selectedIds.length > 0 &&
-                        _this.selectedIds
-                            .toString()
-                            .indexOf(nodeItem.id.toString()) > -1;
-                _this.updateSelectedStatus(nodeItem.children, nodeItem.id);
-            });
-        }
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NHTreeComponent.prototype, "isMultiple", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NHTreeComponent.prototype, "isChildren", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NHTreeComponent.prototype, "isOpen", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], NHTreeComponent.prototype, "lazyLoadURL", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], NHTreeComponent.prototype, "nodeSelected", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], NHTreeComponent.prototype, "nodeExpanded", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Array),
-        __metadata("design:paramtypes", [Array])
-    ], NHTreeComponent.prototype, "data", null);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Array),
-        __metadata("design:paramtypes", [Array])
-    ], NHTreeComponent.prototype, "selectedIds", null);
-    NHTreeComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'nh-tree',
-            template: __webpack_require__(/*! ./nh-tree.component.html */ "./src/app/shareds/components/nh-tree/nh-tree.component.html"),
-            styles: [__webpack_require__(/*! ./nh-tree.scss */ "./src/app/shareds/components/nh-tree/nh-tree.scss")],
-            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
-            animations: [
-                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('toogleTreeSubmenu', [
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('sub-tree-open', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
-                        height: '*',
-                        opacity: '1',
-                        display: 'block'
-                    })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('sub-tree-close', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
-                        height: '0',
-                        opacity: '0',
-                        display: 'none'
-                    })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["transition"])('sub-tree-open => sub-tree-close', [
-                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["animate"])(150, Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
-                            height: '0'
-                        }))
-                    ]),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["transition"])('sub-tree-close => sub-tree-open', [
-                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["animate"])(150, Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
-                            height: '*'
-                        }))
-                    ])
-                ])
-            ]
-        }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
-    ], NHTreeComponent);
-    return NHTreeComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/shareds/components/nh-tree/nh-tree.module.ts":
-/*!**************************************************************!*\
-  !*** ./src/app/shareds/components/nh-tree/nh-tree.module.ts ***!
-  \**************************************************************/
-/*! exports provided: NHTreeModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NHTreeModule", function() { return NHTreeModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _nh_tree_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nh-tree.component */ "./src/app/shareds/components/nh-tree/nh-tree.component.ts");
-/* harmony import */ var _nh_dropdown_tree_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nh-dropdown-tree.component */ "./src/app/shareds/components/nh-tree/nh-dropdown-tree.component.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-// Component
-
-
-var NHTreeModule = /** @class */ (function () {
-    function NHTreeModule() {
-    }
-    NHTreeModule = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]],
-            declarations: [
-                _nh_tree_component__WEBPACK_IMPORTED_MODULE_2__["NHTreeComponent"], _nh_dropdown_tree_component__WEBPACK_IMPORTED_MODULE_3__["NHDropdownTreeComponent"]
-            ],
-            exports: [_nh_tree_component__WEBPACK_IMPORTED_MODULE_2__["NHTreeComponent"], _nh_dropdown_tree_component__WEBPACK_IMPORTED_MODULE_3__["NHDropdownTreeComponent"]]
-        })
-    ], NHTreeModule);
-    return NHTreeModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/shareds/components/nh-tree/nh-tree.scss":
-/*!*********************************************************!*\
-  !*** ./src/app/shareds/components/nh-tree/nh-tree.scss ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "ul.nh-tree-default-value {\n  list-style: none;\n  border-bottom: 1px solid #ddd;\n  padding: 6px 0;\n  margin-bottom: 0; }\n\nul.nh-tree {\n  padding-left: 0;\n  margin: 0;\n  list-style-type: none;\n  list-style-image: none;\n  width: 100%;\n  overflow: auto; }\n\nul.nh-tree * {\n    padding: 0;\n    margin: 0; }\n\nul.nh-tree.nh-root-tree > li {\n    margin-right: 0; }\n\nul.nh-tree .nh-tree-icon, ul.nh-tree .nh-tree-node {\n    background-image: url(\"/assets/images/32px.png\");\n    background-repeat: no-repeat; }\n\nul.nh-tree li {\n    display: block;\n    min-height: 24px;\n    line-height: 24px;\n    margin-left: 24px;\n    min-width: 24px;\n    white-space: nowrap; }\n\nul.nh-tree li.nh-tree-node {\n      background-position: -292px -4px;\n      background-repeat: repeat-y; }\n\nul.nh-tree li.selected > a {\n      background-color: #007455;\n      color: white;\n      cursor: auto; }\n\nul.nh-tree li.selected > a i.nh-custom-icon {\n        background: #007455;\n        color: #fff; }\n\nul.nh-tree li:last-child {\n      background: none !important; }\n\nul.nh-tree li .nh-tree-icon {\n      width: 24px;\n      height: 24px;\n      line-height: 24px;\n      display: inline-block;\n      background-position: -68px -4px;\n      vertical-align: top; }\n\nul.nh-tree li .nh-tree-icon:hover {\n        cursor: pointer; }\n\nul.nh-tree li .nh-tree-icon.nh-tree-loading {\n        background-image: url(\"/assets/images/loading.gif\");\n        background-repeat: no-repeat;\n        background-position: 3px 5px !important; }\n\nul.nh-tree li .nh-tree-node-open {\n      background-position: -132px -4px !important; }\n\nul.nh-tree li .nh-tree-node-close {\n      background-position: -100px -4px; }\n\nul.nh-tree li .nh-tree-icon-folder {\n      background-position: -260px -4px; }\n\nul.nh-tree li .nh-tree-icon-folder-open {\n      background-position: -260px -4px; }\n\nul.nh-tree li .nh-icon-checkbox {\n      background-position: -166px -4px; }\n\nul.nh-tree li .hh-icon-checkbox-checked {\n      background-position: -230px -4px; }\n\nul.nh-tree li .nh-icon-child-check {\n      background-position: -196px -4px; }\n\nul.nh-tree li .nh-custom-icon {\n      background: #fff; }\n\nul.nh-tree li a {\n      line-height: 24px;\n      height: 24px;\n      display: inline-block;\n      color: #000;\n      white-space: nowrap;\n      text-overflow: ellipsis;\n      padding: 0 4px 0 1px;\n      margin: 0;\n      vertical-align: top; }\n\nul.nh-tree li a:hover {\n        background-color: #007455;\n        color: white;\n        cursor: auto;\n        text-decoration: none; }\n\nul.nh-tree li a:hover i.nh-custom-icon {\n          background: #007455;\n          color: #fff; }\n\nul.nh-tree li a:active, ul.nh-tree li a:focus, ul.nh-tree li a:visited {\n        outline: none;\n        text-decoration: none; }\n\n.nh-tree-dropdown {\n  position: relative; }\n\n.nh-tree-dropdown button {\n    border-radius: 0; }\n\n.nh-tree-dropdown .nh-content-wrapper {\n    position: absolute;\n    top: 100%;\n    left: 0;\n    border: 1px solid #ddd;\n    min-width: 250px;\n    box-shadow: 5px 5px rgba(102, 102, 102, 0.1);\n    margin-bottom: 10px;\n    background: white;\n    z-index: 9999;\n    overflow-x: auto; }\n\n.nh-tree-dropdown .nh-content-wrapper .nh-tree-content {\n      padding: 10px; }\n\n.nh-tree-dropdown .nh-content-wrapper .nh-tree-footer {\n      border-top: 1px solid #ddd;\n      padding: 10px; }\n"
-
-/***/ }),
-
-/***/ "./src/app/shareds/decorator/check-permission.decorator.ts":
-/*!*****************************************************************!*\
-  !*** ./src/app/shareds/decorator/check-permission.decorator.ts ***!
-  \*****************************************************************/
-/*! exports provided: CheckPermission */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
-function CheckPermission() {
-    return function (target) {
-        target.prototype.ngAfterViewInit = function ngOnInitDecorator() {
-            var _this = this;
-            setTimeout(function () {
-                _this.permission = _this.appService.getPermissionByPageId();
-                if (!_this.permission.view) {
-                    _this.router.navigateByUrl('/error/permission');
-                }
-            });
-        };
-        // returning the decorated class
-        return target;
-    };
-}
 
 
 /***/ })
