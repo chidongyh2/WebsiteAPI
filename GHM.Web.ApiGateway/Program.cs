@@ -24,13 +24,12 @@ namespace GHM.Web.ApiGateway
             //    .Build()
             //    .Run();
 
-            CreateWebHostBuilder(args).Build().Run();
+            CreateWebHostBuilder(args).Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        public static IWebHost CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel()
-                .UseIISIntegration()
+                .UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
@@ -40,6 +39,6 @@ namespace GHM.Web.ApiGateway
                         .AddJsonFile($"configuration.{hostingContext.HostingEnvironment.EnvironmentName}.json", false, true)
                         .AddEnvironmentVariables();
                 })
-                .UseStartup<Startup>();
+                .UseStartup<Startup>().Build();
     }
 }

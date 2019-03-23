@@ -107,19 +107,6 @@
         "AllowedScopes": [ "GHM_Core_Api" ]
       }
     },
-    {
-      "DownstreamPathTemplate": "/api/v{version}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 20009
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
-      "UseServiceDiscovery": false
-    },
     // BEGIN: Warehouse
     {
       "DownstreamPathTemplate": "/api/v{version}/{everything}",

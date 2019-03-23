@@ -1,136 +1,136 @@
-//{
-//  "ReRoutes": [
-//    // BEGIN: Pages
-//    {
-//      "DownstreamPathTemplate": "/{everything}",
-//      "DownstreamScheme": "http",
-//      "DownstreamHostAndPorts": [
-//        {
-//          "Host": "localhost",
-//          "Port": 50000
-//        }
-//      ],
-//      "UpstreamPathTemplate": "/auth/{everything}",
-//      "UpstreamHttpMethod": [ "Get", "Post" ],
-//      "UseServiceDiscovery": false
-//    },
-//    // BEGIN: Events
-//    {
-//      "DownstreamPathTemplate": "/api/v{version}/{everything}",
-//      "DownstreamScheme": "http",
-//      "DownstreamHostAndPorts": [
-//        {
-//          "Host": "localhost",
-//          "Port": 50003
-//        }
-//      ],
-//      "UpstreamPathTemplate": "/api/v{version}/events/{everything}",
-//      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-//      "UseServiceDiscovery": false,
-//      "AuthenticationOptions": {
-//        "AuthenticationProviderKey": "IdentityApiKey",
-//        "AllowedScopes": [ "GHM_Event_Api" ]
-//      }
-//    },
-//    // END: Events.
-//    // BEGIN: Pages
-//    {
-//      "DownstreamPathTemplate": "/api/v{version}/{everything}",
-//      "DownstreamScheme": "http",
-//      "DownstreamHostAndPorts": [
-//        {
-//          "Host": "localhost",
-//          "Port": 50001
-//        }
-//      ],
-//      "UpstreamPathTemplate": "/api/v{version}/core/{everything}",
-//      "UpstreamHttpMethod": [ "Get", "Post" ],
-//      "UseServiceDiscovery": false,
-//      "AuthenticationOptions": {
-//        "AuthenticationProviderKey": "IdentityApiKey",
-//        "AllowedScopes": [ "GHM_Core_Api" ]
-//      }
-//    },
-//    // BEGIN: Website
-//    {
-//      "DownstreamPathTemplate": "/api/v{version}/{everything}",
-//      "DownstreamScheme": "http",
-//      "DownstreamHostAndPorts": [
-//        {
-//          "Host": "localhost",
-//          "Port": 50002
-//        }
-//      ],
-//      "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
-//      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-//      "UseServiceDiscovery": false,
-//      "AuthenticationOptions": {
-//        "AuthenticationProviderKey": "IdentityApiKey",
-//        "AllowedScopes": [ "GHM_Website_Api" ]
-//      }
-//    },
-//    // BEGIN: Product
+{
+  "ReRoutes": [
+    // BEGIN: Pages
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50000
+        }
+      ],
+      "UpstreamPathTemplate": "/auth/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UseServiceDiscovery": false
+    },
+    // BEGIN: Events
+    {
+      "DownstreamPathTemplate": "/api/v{version}/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50003
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v{version}/events/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UseServiceDiscovery": false,
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "GHM_Event_Api" ]
+      }
+    },
+    // END: Events.
+    // BEGIN: Pages
+    {
+      "DownstreamPathTemplate": "/api/v{version}/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v{version}/core/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UseServiceDiscovery": false,
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "GHM_Core_Api" ]
+      }
+    },
+    // BEGIN: Website
+    {
+      "DownstreamPathTemplate": "/api/v{version}/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50002
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UseServiceDiscovery": false,
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "GHM_Website_Api" ]
+      }
+    },
+    // BEGIN: Product
 
-//    // BEGIN: Notifications
-//    {
-//      "DownstreamPathTemplate": "/api/v{version}/notifications/{everything}",
-//      "DownstreamScheme": "http",
-//      "DownstreamHostAndPorts": [
-//        {
-//          "Host": "localhost",
-//          "Port": 50004
-//        }
-//      ],
-//      "UpstreamPathTemplate": "/api/v{version}/notifications/{everything}",
-//      "UpstreamHttpMethod": [ "Get", "Post" ],
-//      "UseServiceDiscovery": false,
-//      "AuthenticationOptions": {
-//        "AuthenticationProviderKey": "IdentityApiKey",
-//        "AllowedScopes": [ "GHM_Core_Api" ]
-//      }
-//    },
-//    // BEGIN: Notifications
-//    {
-//      "DownstreamPathTemplate": "/notifications/{everything}",
-//      "DownstreamScheme": "http",
-//      "DownstreamHostAndPorts": [
-//        {
-//          "Host": "localhost",
-//          "Port": 50004
-//        }
-//      ],
-//      "UpstreamPathTemplate": "/notifications/{everything}",
-//      "UpstreamHttpMethod": [ "Get", "Post" ],
-//      "UseServiceDiscovery": false
-//    },
-//    {
-//      "DownstreamPathTemplate": "/api/v{version}/notifications",
-//      "DownstreamScheme": "http",
-//      "DownstreamHostAndPorts": [
-//        {
-//          "Host": "localhost",
-//          "Port": 50004
-//        }
-//      ],
-//      "UpstreamPathTemplate": "/api/v{version}/notifications",
-//      "UpstreamHttpMethod": [ "Get", "Post" ],
-//      "UseServiceDiscovery": false
-//    },
-//    // BEGIN: Warehouse
-//    {
-//      "DownstreamPathTemplate": "/api/v{version}/{everything}",
-//      "DownstreamScheme": "http",
-//      "DownstreamHostAndPorts": [
-//        {
-//          "Host": "localhost",
-//          "Port": 50009
-//        }
-//      ],
-//      "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",
-//      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
-//      "UseServiceDiscovery": false
-//    }
-//  ],
+    // BEGIN: Notifications
+    {
+      "DownstreamPathTemplate": "/api/v{version}/notifications/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50004
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v{version}/notifications/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UseServiceDiscovery": false,
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "GHM_Core_Api" ]
+      }
+    },
+    // BEGIN: Notifications
+    {
+      "DownstreamPathTemplate": "/notifications/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50004
+        }
+      ],
+      "UpstreamPathTemplate": "/notifications/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UseServiceDiscovery": false
+    },
+    {
+      "DownstreamPathTemplate": "/api/v{version}/notifications",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50004
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v{version}/notifications",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UseServiceDiscovery": false
+    },
+    // BEGIN: Warehouse
+    {
+      "DownstreamPathTemplate": "/api/v{version}/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50009
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
+      "UseServiceDiscovery": false
+    }
+  ],
 
-//  "GlobalConfiguration": {}
-//}
+  "GlobalConfiguration": {}
+}
