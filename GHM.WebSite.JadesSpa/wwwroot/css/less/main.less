@@ -1,0 +1,1329 @@
+﻿@import "config.less";
+
+#backToTop {
+    bottom: 20px;
+    position: fixed;
+    right: 25px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 45px;
+    opacity: .8;
+    color: #fff;
+
+    &:hover {
+        background-color: @main-color;
+    }
+}
+
+#news-slider {
+    margin-top: 40px;
+    position: relative;
+
+    .owl-dots {
+        position: absolute;
+    }
+
+    .item {
+        padding: 2px;
+
+        .wrap-item {
+            width: 258px !important;
+            height: 290px;
+            position: relative;
+            background: linear-gradient(to right,#fcbb16 0%,#f6d68a 50%,#fcbb16 100%);
+
+            img {
+                width: 258px !important;
+                height: 290px;
+                border: 1px solid transparent;
+            }
+
+            span {
+                width: 256px;
+                height: 75px;
+                text-transform: uppercase;
+                font-family: VLALLROUNDGOTHIC-BOOK;
+                font-size: 20px;
+                color: @main-color;
+                position: absolute;
+                z-index: 9999;
+                bottom: 0px;
+                text-align: center;
+                height: 75px;
+                margin-left: 1px;
+                margin-bottom: 1px;
+                background-image: linear-gradient(to right, #fcbb16 0%, #f9e0b2 50%, #fcbb16 100%);
+                line-height: 75px;
+            }
+        }
+    }
+
+    &:hover {
+        .ISAction {
+            display: block;
+        }
+    }
+}
+
+.lSAction {
+    .lSPrev {
+        position: absolute;
+        top: 50%;
+        left: -60px;
+        margin-top: -20px;
+        color: @main-color;
+        font-size: 40px !important;
+        height: 40px;
+        line-height: 40px;
+        width: 40px;
+
+        &:hover {
+            color: @color-white;
+        }
+    }
+
+    .lSNext {
+        position: absolute;
+        top: 50%;
+        right: -60px;
+        margin-top: -20px;
+        color: @main-color;
+        font-size: 40px !important;
+        height: 40px;
+        line-height: 40px;
+        width: 40px;
+
+        &:hover {
+            color: @color-white;
+        }
+    }
+}
+
+#hotline {
+    bottom: 150px;
+    position: fixed;
+    right: 25px;
+    z-index: 1000;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 45px;
+}
+
+#message {
+    bottom: 80px;
+    position: fixed;
+    right: 25px;
+    z-index: 1000;
+    border-radius: 4px;
+    height: 40px;
+    width: 40px;
+    line-height: 45px;
+}
+
+#about {
+    height: 260px;
+
+    .container {
+        padding-top: 65px;
+
+        @media @mobile {
+            padding-top: 20px;
+        }
+
+        .row {
+            text-align: center;
+            color: @main-color;
+
+            .titlebar {
+                @media @mobile {
+                    font-size: 22px;
+                }
+
+                font-family: VLALLROUNDGOTHIC-BOOK;
+            }
+
+            .content {
+                p {
+                    span {
+                        @media @mobile {
+                            font-size: 18px !important;
+                        }
+
+                        font-family: vlauthenticaregular !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#news-hot {
+    background-image: url('../../images/bgr-web/background-image/nen-pc_05.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media @not_mobile {
+        height: 605px;
+    }
+
+    @media @mobile {
+        padding-bottom: 20px;
+    }
+
+    .container {
+        padding-top: 40px;
+
+        @media @mobile {
+            padding-top: 15px;
+        }
+
+        .row {
+            color: @color-text-white;
+            text-align: center;
+
+            .titlebar {
+                color: @color-text-white;
+                text-align: center;
+                text-transform: uppercase;
+                font-family: VLALLROUNDGOTHIC-BOOK;
+
+                @media @mobile {
+                    font-size: 22px;
+                }
+
+                @media @not_mobile {
+                    &:before, &:after {
+                        width: 5%;
+                        height: 2px;
+                        background: @color-text-white;
+                        content: '';
+                        display: inline-block;
+                        color: white;
+                        top: -10px;
+                        position: relative;
+                    }
+                }
+            }
+
+            .descriptionbar {
+                font-family: vlauthenticaregular;
+
+                @media @mobile {
+                    font-size: 18px !important;
+                }
+            }
+
+            .wrap-hr {
+                padding-top: 15px;
+            }
+        }
+
+        .item-hot {
+            .item {
+                background-image: linear-gradient(to right, #fcbb16 0%, #f9e0b2 50%, #fcbb16 100%);
+                font-size: 18px;
+                font-family: VLALLROUNDGOTHIC-BOOK;
+                color: @main-color;
+                margin-top: 15px;
+
+                img {
+                    border: 1px solid transparent;
+                }
+
+                .text-description {
+                    width: 100%;
+                    max-height: 75px;
+                    background: linear-gradient(to right, #fcbb16 0%, #f9e0b2 50%, #fcbb16 100%);
+                    overflow: hidden;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+#news-introduce {
+    background-image: url('../../images/bgr-web/background-image/nen-pc_06.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 20px;
+
+    @media @not_mobile {
+        height: 610px;
+    }
+
+    .row {
+        @media @not_mobile {
+            padding-top: 30px;
+            margin-top: 15px;
+            margin-bottom: 35px;
+            margin: 0 20%;
+        }
+
+        margin: 0px 5px;
+        margin-bottom: 10px;
+        color: @main-color;
+        text-align: center;
+
+
+
+        .titlebar {
+            color: @main-color;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: VLALLROUNDGOTHIC-BOOK;
+
+            @media @not_mobile {
+
+                &:before, &:after {
+                    width: 5%;
+                    height: 2px;
+                    background: @main-color;
+                    content: '';
+                    display: inline-block;
+                    color: white;
+                    top: -10px;
+                    position: relative;
+                }
+            }
+        }
+
+        .descriptionbar {
+            font-family: vlauthenticaregular;
+        }
+
+        .wrap-hr {
+            padding-top: 15px;
+
+            hr {
+                background-color: @main-color;
+                height: 2px;
+            }
+        }
+    }
+
+    .wrap-item {
+        @media @not_mobile {
+            margin: 0 15%;
+        }
+
+        .item {
+            text-align: center;
+
+            .wrap-image {
+                background: @main-color;
+                border-radius: 30px 20px;
+
+                @media @mobile {
+                    border-radius: 20px 10px !important;
+                    padding: 0px 1px 2px 5px
+                }
+
+                @media @not_mobile {
+                    width: 280px;
+                    height: 280px;
+                }
+
+                padding: 0px 1px 2px 10px;
+
+                img {
+                    border: 1px solid @main-color;
+
+                    @media @not_mobile {
+                        width: 270px;
+                        height: 270px;
+                    }
+
+                    border-radius: 10px;
+                }
+            }
+
+            .wrap-text {
+                color: @main-color;
+                font-family: VLALLROUNDGOTHIC-BOOK;
+                font-size: 20px;
+                margin-top: 15px;
+                text-transform: uppercase;
+
+                @media @mobile {
+                    text-transform: uppercase;
+                    margin-top: 5px !important;
+                }
+            }
+        }
+    }
+}
+
+.news-angency {
+    background-image: url('../../images/bgr web/trang chu/image-05.jpg');
+    background-position: initial;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media @mobile {
+        background-image: none;
+    }
+
+    #wrap-subintroduce {
+        background-color: #ededed;
+
+        @media @not_mobile {
+            height: 580px;
+        }
+
+        .wrap-content {
+            @media @not_mobile {
+                margin: 0 15%;
+            }
+
+            #video {
+                @media @not_mobile {
+                    border-right: 1px solid @main-color;
+                    padding-left: 50px;
+                    margin-top: 80px;
+                    padding-bottom: 30px;
+                }
+
+                @media @mobile {
+                    margin: 0px !important;
+                    padding: 0px !important;
+                }
+
+                #wrap-content-video {
+                    @media @mobile {
+                        margin: 0px !important;
+                        padding: 0px !important;
+                    }
+
+                    .video-container {
+                        @media @mobile {
+                            margin: 0px !important;
+                            padding: 0px !important;
+                        }
+
+                        .video-default {
+                            iframe {
+                                width: 100% !important;
+                                height: 230px !important;
+                            }
+                        }
+                    }
+                }
+
+                #wrap-next {
+                    font-size: 20px;
+                    color: @main-color;
+                    margin-bottom: 20px;
+
+                    @media @mobile {
+                        margin: 0px !important;
+                        padding: 0px !important;
+                    }
+
+                    .titlebar {
+                        padding: 5px 10px;
+                        color: @main-color;
+                        text-transform: uppercase;
+                        background: linear-gradient(to right,#fcbb16 0%,#f6d68a 50%,#fcbb16 100%) !important;
+                        font-family: VLALLROUNDGOTHIC-BOOK;
+                        border-radius: 10px;
+                        box-shadow: 3px 3px 5px 3px lightgrey;
+
+                        @media @mobile {
+                            font-size: 18px !important;
+                        }
+                    }
+
+                    .pull-right {
+                        @media @not_mobile {
+                            margin-right: 20px;
+                        }
+
+                        @media @mobile {
+                            margin-top: 5px;
+                        }
+
+                        i {
+                            margin-top: 20px;
+                            border: 1px solid @main-color;
+                            padding: 3px 10px;
+                            border-radius: 5px;
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                iframe {
+                    width: 515px !important;
+                    height: 305px !important;
+                }
+            }
+
+            #response-customer {
+                @media @not_mobile {
+                    padding-left: 50px;
+                    margin-top: 80px;
+                    padding-bottom: 30px;
+                }
+
+                .wrap-next {
+                    font-size: 20px;
+                    color: @main-color;
+                    margin-bottom: 20px;
+
+                    @media @mobile {
+                        margin: 0px !important;
+                        padding: 0px !important;
+                    }
+
+                    .titlebar {
+                        padding: 5px 10px;
+                        color: @main-color;
+                        text-transform: uppercase;
+                        background: linear-gradient(to right,#fcbb16 0%,#f6d68a 50%,#fcbb16 100%) !important;
+                        font-family: VLALLROUNDGOTHIC-BOOK;
+                        border-radius: 10px;
+                        box-shadow: 3px 3px 5px 3px lightgrey;
+
+                        @media @mobile {
+                            font-size: 18px;
+                        }
+                    }
+
+                    .pull-right {
+                        @media @not_mobile {
+                            margin-right: 20px;
+                        }
+
+                        i {
+                            margin-top: 20px;
+                            border: 1px solid @main-color;
+                            padding: 3px 10px;
+                            border-radius: 5px;
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                .wrap-item {
+                    @media @mobile {
+                        margin: 0px;
+                        padding: 0px;
+                    }
+
+                    .media {
+                        @media @not_mobile {
+                            margin-right: 85px;
+                            max-height: 95px;
+                            overflow: hidden;
+                        }
+
+                        .media-left {
+                            img {
+                                @media @mobile {
+                                    width: 60px;
+                                    height: 60px;
+                                }
+
+                                border: 1px solid green;
+                                border-radius: 50%;
+                                /* padding-top: 20px; */
+                                margin-top: 10px;
+                            }
+                        }
+
+                        .media-body {
+                            font-family: Roboto-Regular;
+
+                            h5 {
+                                color: @main-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#newsAndBranch {
+    .container {
+        padding-top: 40px;
+
+        @media @mobile {
+            padding-top: 20px;
+        }
+
+        .row {
+            .titlebar {
+                color: @main-color;
+                text-align: center;
+                text-transform: uppercase;
+                font-family: VLALLROUNDGOTHIC-BOOK;
+
+                @media @not_mobile {
+                    &:before, &:after {
+                        width: 10%;
+                        height: 2px;
+                        background: @main-color;
+                        content: '';
+                        display: inline-block;
+                        color: white;
+                        top: -10px;
+                        position: relative;
+                    }
+                }
+            }
+
+            .descriptionbar {
+                color: @main-color;
+                text-align: center;
+                font-family: vlauthenticaregular;
+                padding-bottom: 30px;
+
+                @media @mobile {
+                    padding-bottom: 50px
+                }
+            }
+
+            .wrap-hr {
+                padding-top: 15px;
+
+                hr {
+                    background-color: @main-color;
+                    height: 2px;
+                }
+            }
+
+           
+        }
+    }
+}
+.block-news {
+    @media @not_mobile {
+        height: 770px;
+    }
+
+    .row {
+        .news-default {
+            @media @not_mobile {
+                width: 580px !important;
+            }
+
+            @media @mobile {
+                margin-bottom: 20px;
+            }
+
+            .news-image {
+                border: 2px solid @main-color;
+                border-radius: 12px;
+
+                @media @not_mobile {
+                    width: 580px !important;
+                    height: 380px;
+                }
+            }
+
+            .news-content {
+                font-family: Roboto-Regular;
+
+                .title {
+                    font-weight: bold;
+                    font-size: 26px;
+
+                    a {
+                        color: #556b20;
+                    }
+                }
+
+                .summary {
+                    color: #848484;
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .list-news {
+            @media @not_mobile {
+                margin-left: 10px;
+            }
+
+            .news-item {
+                font-family: Roboto-Regular;
+                font-size: 20px;
+
+                @media @mobile {
+                    height: 175px;
+                    overflow: hidden;
+                    margin-bottom: 20px;
+                }
+
+                @media @not_mobile {
+                    margin-bottom: 30px;
+                    width: 250px;
+                    max-height: 200px;
+                    overflow: hidden;
+                    margin-left: 15px;
+                    padding: 0px;
+                }
+
+                a {
+                    color: #848484;
+                }
+
+                .news-image {
+                    border: 2px solid @main-color;
+                    border-radius: 12px;
+                }
+
+                .image-content {
+                    @media @not_mobile {
+                        width: 250px;
+                        height: 145px;
+                    }
+
+                    .img-overlay {
+                        background: rgba(0,0,0,.25);
+                        display: inline-block;
+                        height: 145px;
+                        left: 0;
+                        opacity: 0;
+                        position: absolute;
+                        top: 0;
+                        border-radius: 12px;
+                        width: 100%;
+
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                &:hover {
+                    a {
+                        color: #556b20;
+                    }
+                }
+            }
+        }
+    }
+}
+.contact {
+    padding-top: 55px;
+    padding-bottom: 60px;
+    background-image: url('../../images/bgr web/bgr lien he-19.jpg');
+    background-position: initial;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+
+    @media @mobile {
+        background-image: none;
+        padding: 20px 0px;
+    }
+
+    .titlebar {
+        color: @color-text;
+        padding-bottom: 5px !important;
+        margin-top: 0px;
+
+        @media @mobile {
+            padding-top: 0px;
+        }
+    }
+
+    hr {
+        margin-bottom: 80px;
+        border: 1px solid @color-text;
+
+        @media @mobile {
+            margin-bottom: 50px;
+        }
+    }
+
+    .item-contact {
+        background-color: #F5F5F5;
+        position: relative;
+        text-align: center;
+        display: flex;
+        /*align-items: center;*/
+        justify-content: center;
+        margin-bottom: 40px;
+        min-height: 300px;
+        /*&:last-child {
+            @media @mobile {
+                margin-bottom: 20px;
+            }
+        }*/
+        .icon {
+            color: @main-color;
+            position: absolute;
+            top: -40px;
+            left: auto;
+            right: auto;
+            font-size: 50px;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+
+            @media @mobile {
+                padding-top: 20px;
+            }
+
+            i {
+                background-color: @color-white;
+                border-radius: 100%;
+                border: 3px solid #f5f5f5;
+                width: 80px;
+                height: 80px;
+                line-height: 80px;
+            }
+        }
+
+        .content {
+            padding-top: 60px;
+
+            .title {
+                color: @main-color;
+                text-transform: uppercase;
+                font-size: 20px;
+                font-weight: 600;
+                padding-bottom: 10px;
+            }
+
+            .value {
+                color: @color-text;
+                font-size: 18px;
+
+                a {
+                    color: @color-text;
+                    font-size: 18px;
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .angency-system {
+        background-color: #F5F5F5;
+        margin-bottom: 20px;
+        margin-right: -20px;
+        overflow-y: scroll;
+
+        @media @mobile {
+            margin-right: unset;
+        }
+
+        .header {
+            height: 20px;
+            background-color: #EAE9E5;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0px;
+            background-color: #F5F5F5;
+
+            li {
+                font-size: 16px;
+                color: @color-text;
+                padding: 10px 15px;
+                border-bottom: 1px solid @border-color;
+                cursor: pointer;
+
+                .title {
+                    margin-top: 10px;
+                    margin-bottom: 5px;
+                    color: @color-text-bold;
+                    font-size: 16px;
+                    font-family: OpenSans-Bold;
+                }
+
+                .content {
+                    p {
+                        color: @color-text-opacity;
+                        font-size: 16px;
+                        padding: 3px 0px;
+                        margin-bottom: 0px;
+                    }
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+
+            .select {
+                background-color: #4285F4;
+
+                .title {
+                    color: @color-white;
+                }
+
+                .content {
+                    p {
+                        color: @color-white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#abums {
+    padding-top: 0px;
+    padding-bottom: 20px;
+    background-image: url('../../images/bgr-web/bgr tin tuc-sk va ld.jpg');
+    background-size: 100% auto;
+    background-position: initial;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+
+    @media @mobile {
+        background-image: none;
+    }
+
+    .titlebar {
+        color: @color-text;
+        padding-bottom: 5px !important;
+        padding-top: 20px;
+
+        @media @mobile {
+            padding-top: 0px;
+        }
+    }
+
+    hr {
+        margin-bottom: 0px;
+    }
+
+    .btn-toolbar {
+        padding: 25px 0px;
+    }
+
+    .content {
+        .abum-photo {
+            .title-border {
+                padding-bottom: 10px;
+            }
+
+            &:first-child {
+                padding-bottom: 10px;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+
+    #social-network {
+        background-color: @main-color;
+
+        .btn-scoical {
+            color: @color-white;
+        }
+    }
+}
+
+#news {
+    /*background-image: url('../../images/bgr web/bgr tin tuc_sk va ld.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;*/
+    .even {
+        background-color: @color-white;
+    }
+
+    .odd {
+        background-color: #f5f5f5;
+    }
+
+    .titlebar {
+        color: @color-text;
+        padding-bottom: 5px !important;
+        padding-top: 20px;
+    }
+
+    hr {
+        margin-bottom: 20px;
+    }
+
+    .block-news {
+        padding-bottom: 10px;
+    }
+}
+
+#category-news {
+   background-image: url('../../images/bgr-web/bgr tin tuc-sk va ld.jpg');
+    background-position: inherit;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+
+    @media @mobile {
+        background-image: none;
+    }
+
+    .titlebar {
+        color: @color-text;
+    }
+
+    hr {
+        margin-bottom: 25px;
+    }
+
+    .news-item {
+        padding: 0px;
+
+        .title {
+            padding: 10px 0;
+            font-size: 16px;
+            min-height: 70px;
+
+            @media @mobile {
+                font-size: 14px;
+                min-height: 80px;
+            }
+        }
+    }
+}
+
+#news-detail {
+    background-image: url('../../images/bgr-web/bgr trang tin tuc_tin tuc chi tiet.jpg');
+    background-position: inherit;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+
+    @media @mobile {
+        background-image: none;
+    }
+}
+
+.news-detail {
+    @media @mobile {
+        background-image: none;
+    }
+
+    .title {
+        color: @main-color;
+        font-size: 28px;
+        margin-bottom: 0;
+        /*text-transform: uppercase;*/
+        font-family: OpenSans-Bold;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    #social-network {
+        ul {
+            height: unset;
+        }
+
+        li {
+            padding: 10px 5px;
+
+            a {
+                font-size: 18px;
+            }
+        }
+    }
+
+    .content {
+        padding-bottom: 30px;
+        padding-top: 0px;
+
+        img {
+            padding: 0px;
+        }
+
+        table {
+            tr {
+                td {
+                    p {
+                        padding: 0px !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sidebar-news-detail {
+    padding-top: 15px;
+
+    .title {
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 10px;
+        background-color: @main-color;
+
+        h2 {
+            color: @color-white;
+            margin-bottom: 0px;
+            margin-top: 0px;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+    }
+
+    .content {
+        padding-left: 10px;
+
+        ul {
+            padding-left: 0px;
+
+            li {
+                .media-left {
+                    min-width: 72px;
+                    min-height: 72px;
+                    overflow: hidden;
+                    padding-right: 12px;
+                }
+
+                .media-body {
+                    a {
+                        color: @color-text;
+                        transition: 0.3s ease;
+
+                        &:hover {
+                            text-decoration: none;
+                            color: @main-color;
+                        }
+                    }
+
+                    p {
+                        color: @color-text-bold;
+                        font-size: 14px;
+                        font-family: OpenSans;
+                    }
+
+                    .calendar {
+                        color: @color-text-opacity;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sidebar-event {
+    padding-top: 15px;
+
+    .title {
+        padding: 10px;
+        /*margin-bottom: 10px;*/
+        background-color: @main-color;
+
+        h2 {
+            color: @color-white;
+            margin-bottom: 0px;
+            margin-top: 0px;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+    }
+
+    .content {
+        ul {
+            padding-left: 0px;
+
+            li {
+                background-color: #f2f2f2;
+                padding: 5px 20px;
+
+                a {
+                    text-transform: uppercase;
+                    font-size: 18px;
+                    color: @color-text;
+                    font-family: OpenSans;
+                    transition: 0.3s ease;
+
+                    @media @mobile {
+                        font-size: 16px
+                    }
+
+                    &:hover {
+                        text-decoration: none;
+                        color: @main-color;
+                    }
+                }
+
+                border-bottom: 2px solid @color-white;
+            }
+        }
+    }
+}
+
+.sidebar-event-fixtop {
+    position: fixed;
+    top: 50px;
+    width: 262px;
+}
+.video-item {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+
+    .thumbnail-video {
+        img {
+            width: 100%;
+        }
+    }
+
+    .title-video-default {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding: 10px;
+        padding-top: 0px;
+
+        a {
+            text-decoration: none;
+            font-size: 20px;
+            color: @main-color;
+
+            @media @mobile {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .title-video {
+        margin-top: 0px;
+        padding-top: 10px;
+        font-size: 16px;
+        min-height: 60px;
+
+        @media @mobile {
+            min-height: 60px;
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+            color: @color-text;
+        }
+    }
+
+    .description {
+        padding: 10px;
+        font-size: 14px;
+        color: @color-text-opacity;
+        padding-top: 0px;
+        /*min-height:80px;*/
+    }
+
+    &:hover {
+        a {
+            color: @main-color;
+        }
+    }
+
+    .thumbnail-video {
+        display: block;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        background: @color-white;
+
+        a {
+            img {
+                width: 100%;
+                min-height: 200px;
+
+                @media @mobile {
+                    min-height: unset;
+                }
+            }
+        }
+    }
+
+    margin-bottom: 10px;
+}
+
+.duration_video {
+    position: absolute;
+    left: 40%;
+    bottom: 43%;
+    font-size: 15px;
+    color: @color-white;
+    height: 36px;
+    width: 48px;
+    line-height: 36px;
+    background-color: #333;
+    border-radius: 7px;
+    text-align: center;
+    opacity: .8;
+    vertical-align: middle;
+
+    @media @mobile {
+        height: 21px;
+        width: 28px;
+        line-height: 21px;
+        border-radius: 4px;
+        font-size: 10px;
+    }
+}
+.line {
+    margin-bottom: 15px;
+    border-top: 1px solid #b2b2b2;
+    margin-top: -6px;
+    height: 1px;
+    width: 100%;
+}
+
+.pagination {
+    li {
+        a {
+            border-radius: 100%;
+            height: 25px;
+            width: 25px;
+            line-height: 25px;
+            border: none !important;
+            font-size: 22px;
+            padding: 5px;
+            margin: 0 5px;
+            color: #5f5b61;
+            text-align: center;
+            vertical-align: middle;
+            padding-top: 0px;
+        }
+
+        &:first-child, &:last-child {
+            padding-right: 5px;
+
+            a {
+                &:hover, &:focus, &:active {
+                    background-color: none;
+                    background: none;
+                }
+            }
+        }
+
+        .active {
+            color: @main-color;
+        }
+
+        .disabled {
+            color: #b2bec3;
+            cursor: context-menu;
+
+            &:hover {
+                color: #b2bec3;
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+﻿@model MenuObject
+
+@{
+    var path = $"{Context.Request.Path}";
+    var absoluteUri = $"{Context.Request.Host}{Context.Request.Path}";
+}
+@if (Model != null)
+{
+    var list = Model.ListMenuItem.Where(x => x.ParentId == Model.ParentId);
+    foreach (var item in list)
+    {
+        var childCount = Model.ListMenuItem.Count(x => x.ParentId == item.Id);
+        <li class="@(childCount > 0 ? "dropdown" : "")">
+            <a data-toggle="@(childCount > 0 ? "dropdown" : "")" role="button" href="@( $"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : item.Url)}")"
+               class="@((item.NamePath != null && path.Contains(item.NamePath) || item.Url == absoluteUri) ? "transition active data-toggle" : "transition data-toggle")"
+               title="@item.Name">
+                @item.Name
+                @if (childCount > 0)
+                {
+                    <i class="fa fa-angle-down pull-right visible-xs"></i>
+                    <i class="fa fa-angle-up pull-right visible-xs hidden-xs"></i>
+                }
+            </a>
+
+            @if (Model.ListMenuItem.Count(x => x.ParentId == item.Id) > 0)
+            {
+                <ul class="dropdown-menu">
+                    @{
+                        var menuObject = new MenuObject
+                        {
+                            ListMenuItem = Model.ListMenuItem,
+                            ParentId = item.Id
+                        };
+                        <partial name="_MenuItem" model="menuObject" />
+                    }
+                </ul>
+            }
+        </li>
+    }
+}

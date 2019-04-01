@@ -34,13 +34,14 @@ namespace GHM.Core.Api
         }
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel((builderContext, options) =>
-                {
-                    options.Configure(builderContext.Configuration.GetSection("Kestrel"));
-                })
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
+                //    .UseKestrel((builderContext, options) =>
+                //    {
+                //        options.Configure(builderContext.Configuration.GetSection("Kestrel"));
+                //    })
+                //    .UseContentRoot(Directory.GetCurrentDirectory())
+                //    .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseUrls("http://localhost:50001")
                 .Build();
     }
 }

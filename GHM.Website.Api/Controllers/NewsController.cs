@@ -218,7 +218,7 @@ namespace GHM.Website.Api.Controllers
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        [Route("category/{tenantId}/{seoLink}/{page}/{pageSize}/{languageId?}"), AcceptVerbs("GET")]
+        [Route("getNewsByCategory/{tenantId}/{seoLink}/{page}/{pageSize}/{languageId?}"), AcceptVerbs("GET")]
         [CheckPermission]
         public async Task<IActionResult> GetNewsByCategoryId(string tenantId, string seoLink, string languageId,
             int page = 1, int pageSize = 20)

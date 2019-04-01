@@ -1,0 +1,46 @@
+﻿@{
+    var listCategoryWidthNew = ViewBag.ListNews as List<CategoryWidthNewsViewModel>;
+    var url = ViewBag.Url;
+}
+<div id="news-hot">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="center titlebar">
+                    @Resource.TitleHot
+                </h2>
+            </div>
+            <div class="col-sm-12">
+                <h2 class="descriptionbar">@Resource.DescriptionHot</h2>
+            </div>
+        </div>
+        @if (listCategoryWidthNew != null && listCategoryWidthNew.Any())
+        {
+            <div id="news-slider" class="hidden-xs">
+                @foreach (var item in listCategoryWidthNew)
+                {
+                    <partial name="_BlockNews" model="item" />
+                }
+            </div>
+            <div class="list-items item-hot row visible-xs">
+                @foreach (var item in listCategoryWidthNew)
+                {
+                    @foreach (var news in item.ListNews)
+                    {
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="item">
+                                <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                                    <img class="news-image zoom img-responsive lazy" src="@(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")"
+                                         onerror="this.src='/images/no-image.png'"
+                                         alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
+
+                                </a>
+                                <div class="text-description">@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)</div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+    </div>
+</div>

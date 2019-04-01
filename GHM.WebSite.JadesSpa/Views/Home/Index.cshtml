@@ -1,0 +1,31 @@
+﻿@{
+    var mainBanner = ViewBag.MainBanner as BannerViewModel;
+}
+<link href="~/lib/lightslider/css/lightslider.min.css" rel="stylesheet" />
+<link href="~/lib/bxslide/jquery.bxslider.min.css" rel="stylesheet" />
+<link href="~/lib/LayerSlider/static/css/layerslider.min.css" rel="stylesheet" />
+<partial name="_MainSlider" />
+<partial name="_About" />
+<partial name="_NewsHot" />
+<partial name="_NewsAndIntroduce" />
+<partial name="_NewsAndBranch" />
+
+@section scripts {
+    <script src="~/lib/bxslide/jquery.bxslider.min.js"></script>
+    <script src="~/lib/bxslide/js/jsSlider.min.js"></script>
+    <script src="~/lib/LayerSlider/static/js/greensock.min.js"></script>
+    <script src="~/lib/LayerSlider/static/js/layerslider.kreaturamedia.jquery.min.js"></script>
+    <script src="~/lib/LayerSlider/static/js/layerslider.transitions.min.js"></script>
+    <script src="~/lib/owl.carousel/owl-carousel/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/js/home.min.js"></script>
+    <script type="text/javascript" src="~/js/viewmodel/about.viewmodel.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#layerslider_1").layerSlider({
+                responsiveUnder: 1170, layersContainer: 1170, pauseOnHover: false, forceLoopNum: false, autoPlayVideos: false,
+                skinsPath: "lib/LayerSlider/static/skins/"
+            }); 
+        })
+    </script>
+}
+

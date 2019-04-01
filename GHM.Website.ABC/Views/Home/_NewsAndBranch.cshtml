@@ -2,6 +2,7 @@
     var listCategoryWidthNew = ViewBag.ListNews as List<CategoryWidthNewsViewModel>;
     var categoryIdDefault = listCategoryWidthNew != null && listCategoryWidthNew.Count > 0 ? listCategoryWidthNew.FirstOrDefault().CategoryId : 0;
     var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
+    var url = ViewBag.Url;
 }
 <link href="~/lib/lightslider/css/lightslider.css" rel="stylesheet" />
 <div class="news-angency">

@@ -1,0 +1,38 @@
+﻿
+@{
+    var breadcrumbs = ViewBag.Breadcrumb as List<Breadcrumb>;
+}
+
+<div class="header">
+    <img src="@($"/image?url={ViewBag.ImageBanner}")" class="img-responsive" onerror="this.src='/images/no-image.png'"/>
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="list-inline">
+                        <li class="list-items">
+                            <a href="/">@Resource.Home</a>
+                        </li>
+                        @if (breadcrumbs != null && breadcrumbs.Any())
+                        {
+                            foreach (var item in breadcrumbs)
+                            {
+                                <li class="list-items">
+                                    @if (item.IsCurrent)
+                                    {
+                                        <span>@item.Name</span>
+                                    }
+                                    else
+                                    {
+                                        <a href="/@string.Format("{0}", string.IsNullOrEmpty(item.Url) ? item.NamePath : item.Url)">@item.Name</a>
+                                    }
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

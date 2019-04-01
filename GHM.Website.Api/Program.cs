@@ -20,6 +20,7 @@ namespace GHM.Website.Api
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseUrls("http://localhost:50002")
                 .Build();
     }
 }

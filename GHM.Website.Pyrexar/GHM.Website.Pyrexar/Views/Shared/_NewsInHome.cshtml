@@ -1,5 +1,7 @@
 ﻿@model List<NewsSearchViewModel>;
-
+@{ 
+    var url = ViewBag.Url;
+}
 @if (Model != null && Model.Any())
 {
     var i = 0;
@@ -29,7 +31,7 @@
                     <div class="block hidden-sm hidden-xs">
                         <div class="thumbnail-new">
                             <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                                <img class="lazy img-responsive w100pc" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : news.FeatureImage)}")"
+                                <img class="lazy img-responsive w100pc" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}")"
                                      onerror="this.src='/images/no-image.png'"
                                      alt="@(!string.IsNullOrEmpty(news.AltImage) ? news.AltImage : news.Title)" />
                             </a>
@@ -43,7 +45,7 @@
                     <div class="block hidden-sm hidden-xs">
                         <div class="thumbnail-new ">
                             <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                                <img class="lazy img-responsive w100pc" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : news.FeatureImage)}")"
+                                <img class="lazy img-responsive w100pc" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}")"
                                      onerror="this.src='/images/no-image.png'"
                                      alt="@(!string.IsNullOrEmpty(news.AltImage) ? news.AltImage : news.Title)" />
                             </a>

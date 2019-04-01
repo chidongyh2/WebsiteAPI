@@ -39,15 +39,15 @@ namespace GHM.Website.Pyrexar.Controllers
             var httpClientService = new HttpClientService();
 
             var researchSeoLink = CultureInfo.CurrentCulture.Name == "vi-VN" ? "nghien-cuu" : "research";
-            var listResearch = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/{researchSeoLink}/1/3/{CultureInfo.CurrentCulture.Name}");
+            var listResearch = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/{researchSeoLink}/1/3/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListResearch = listResearch?.Items;
 
             var productSeoLink = CultureInfo.CurrentCulture.Name == "vi-VN" ? "san-pham" : "product";
-            var listProducts = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/{productSeoLink}/1/6/{CultureInfo.CurrentCulture.Name}");
+            var listProducts = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/{productSeoLink}/1/6/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListProduct = listProducts?.Items;
 
             var homeSeoLink = CultureInfo.CurrentCulture.Name == "vi-VN" ? "trang-chu" : "home";
-            var listNewsInHome = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/{homeSeoLink}/1/6/{CultureInfo.CurrentCulture.Name}");
+            var listNewsInHome = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/{homeSeoLink}/1/6/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListNewsInHome = listNewsInHome?.Items;
 
             //if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))

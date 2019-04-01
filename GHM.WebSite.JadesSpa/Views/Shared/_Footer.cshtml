@@ -1,0 +1,144 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+    var listMenuItem = ViewBag.FooterMenuNav as List<MenuItemViewModel>;
+    var listBrand = ViewBag.ListBrands as List<BrandSearchViewModel>;
+}
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="logo">
+                    <a href="/" title="@websiteSetting?.Brand">
+                        <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? websiteSetting.Logo : "/images/Trang chu/Logo ABC tren-duoi.png" )"
+                             alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) ? websiteSetting?.Brand : ViewBag.Title)"
+                             onerror="this.src='/images/no-image.png'" />
+                    </a>
+                </div>
+            </div>
+            <div id="wrap-content-branch" class="col-sm-5">
+                <div class="contact-info">
+                    <ul>
+                        @if (listBranch != null && listBranch.Any())
+                        {
+                            foreach (var branchs in listBranch.Where(x => x.IsOffice.Value))
+                            {
+                                <li class="branch"><h6>@branchs?.Name</h6></li>
+                                <li class="address"><i class="fa fa-map-marker"> @branchs?.Address</i></li>
+                                <li class="work-time"><i class="fa fa-clock-o"> @branchs?.WorkTime</i></li>
+                                @if (branchs.BranchContactDetails != null && branchs.BranchContactDetails.Any())
+                                {
+                                    @foreach (var branchItem in branchs.BranchContactDetails)
+                                    {
+                                        switch (branchItem.ContactType)
+                                        {
+                                            case ContactType.MobilePhone:
+                                                <li class="">
+                                                    <i class="fa fa-phone"></i>
+                                                    @branchItem.ContactValue
+                                                </li>
+                                                break;
+                                            case ContactType.Fax:
+                                                <li class="">
+                                                    @branchItem.ContactValue
+                                                </li>
+                                                break;
+                                            case ContactType.Email:
+                                                <li class="">
+                                                    <i class="fa fa-envelope"></i>
+                                                    <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a>
+                                                </li>
+                                                break;
+                                            case ContactType.HomePhone:
+                                                <li class="">
+                                                    <i class="fa fa-phone"></i>
+                                                    @branchItem.ContactValue
+                                                </li>
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="social-info">
+                    <h4 class="hotline">@Resource.HotLine</h4>
+                    <h4 class="hotline-value">@websiteSetting?.Hotline</h4>
+                    <ul class="list-inline">
+                        @if (listSocialNetWork != null && listSocialNetWork.Any())
+                        {
+                            @foreach (var socialNetwork in listSocialNetWork)
+                            {
+                                <li class="list-items">
+                                    <a href="@socialNetwork.Url" class="btn-scocial">
+                                        @if (!string.IsNullOrEmpty(socialNetwork.Icon))
+                                        {
+                                            <i class="fa @(socialNetwork.Icon)"></i>
+                                        }
+                                    </a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <button class="btn-send-message" data-toggle="modal" data-target="#myModal" type="button">GỬI TIN NHẮN</button>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <form class="form-horizontal" id="contact_form" data-bind="submit: sendFeedback">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">@Resource.SendMessage</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="message">
+                            <div class="form-group" data-bind="attr: {class: isContactNameError() ? 'col-xs-6 cm-pdr-0 has-error' : 'col-xs-6 cm-pdr-0'}">
+                                <div class="col-xs-12">
+                                    <input id="contact_full_name" type="text" class="form-control" placeholder="@Resource.FullNamePlaceHolder" value="" data-bind="value: contactName, hasFocus: isContactNameFocus" />
+                                </div>
+                                
+                            </div>
+                            <div class="form-group" data-bind="attr: {class: isPhoneNumberError() ? 'col-xs-6 cm-pdl-5 has-error' : 'col-xs-6 cm-pdl-5'}">
+                                <div class="col-xs-12">
+                                    <input type="text" class="form-control" placeholder="@Resource.PhoneNumberPlaceHolder" value="" data-bind="value: contactPhoneNumber, hasFocus: isPhoneNumberFocus" />
+                                </div>
+                            </div>
+                            <div class="form-group" data-bind="attr: {class: isEmailError() ? 'form-group has-error' : 'form-group'}">
+                                <div class="col-xs-12">
+                                    <input type="text" class="form-control" placeholder="@Resource.EmailPlaceHolder" value="" data-bind="value: contactEmail, hasFocus: isEmailFocus" />
+                                </div>
+                            </div>
+                            <div class="form-group" data-bind="attr: {class: isContentError() ? 'form-group has-error' : 'form-group'}">
+                                <div class="col-xs-12">
+                                    <textarea type="text" class="form-control" placeholder="@Resource.ContentPlaceHolder" rows="4" data-bind="value: contactContent, hasFocus: isContentFocus"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 submit">
+                                    <button type="submit" class="btn btn-send-message" data-bind="enable: !isSendingContact()">
+                                        <i class="fa fa-envelope-o" data-bind="visible: !isSendingContact()"></i>
+                                        <i class="fa fa-spinner fa-pulse" data-bind="visible: isSendingContact()" style="display: none"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</footer>
+<div class="copy-right center">
+    Copyright 2018 - @DateTime.Now.Year - @websiteSetting?.Brand - All rights reserved
+</div>

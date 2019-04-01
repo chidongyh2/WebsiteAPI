@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutABC" xml:space="preserve">
+    <value>Về</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>Về Chúng Tôi</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Địa chỉ</value>
+  </data>
+  <data name="AllCourses" xml:space="preserve">
+    <value>Tất cả các buổi</value>
+  </data>
+  <data name="AmieaFamous" xml:space="preserve">
+    <value>AMIEA THƯƠNG HIỆU NỔI TIẾNG TOÀN CẦU</value>
+  </data>
+  <data name="AngencySystem" xml:space="preserve">
+    <value>Hệ thống đại lý</value>
+  </data>
+  <data name="BenefitsofHyperthermiainCancerTreatment" xml:space="preserve">
+    <value>Lợi ích của tăng thân nhiệt trong điều trị ung thư</value>
+  </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Tin Tức</value>
+  </data>
+  <data name="BlogDescription" xml:space="preserve">
+    <value>Tin tức và bình luận</value>
+  </data>
+  <data name="Brand" xml:space="preserve">
+    <value>Thương hiệu</value>
+  </data>
+  <data name="CertificateSafeAmiea" xml:space="preserve">
+    <value>Chứng nhận về an toàn chất lượng</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Liên Hệ</value>
+  </data>
+  <data name="ContactInformation" xml:space="preserve">
+    <value>Thông tin liên hệ</value>
+  </data>
+  <data name="ContactPyrexar" xml:space="preserve">
+    <value>Liên hệ với Pyrexar</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="ContentPlaceHolder" xml:space="preserve">
+    <value>Để lại nội dung liên hệ của bạn</value>
+  </data>
+  <data name="Contents" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Ngày</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Buổi</value>
+  </data>
+  <data name="DescriptionHot" xml:space="preserve">
+    <value>"Chúng tôi chọn lọc những sản phẩm tốt nhất để chăm sóc cho bạn"</value>
+  </data>
+  <data name="DescriptionIntroduce" xml:space="preserve">
+    <value>"Chúng tôi chọn lọc những sản phẩm tốt nhất để chăm sóc cho bạn"</value>
+  </data>
+  <data name="DescriptionVideo" xml:space="preserve">
+    <value>Bộ sưu tập video từ nhiều nguồn khác nhau</value>
+  </data>
+  <data name="DistributionAgents" xml:space="preserve">
+    <value>Đại lý phân phối</value>
+  </data>
+  <data name="EmailPlaceHolder" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EquipmentIntroduce" xml:space="preserve">
+    <value>Trang thiết bị</value>
+  </data>
+  <data name="EventDetail" xml:space="preserve">
+    <value>Chi tiết sự kiện</value>
+  </data>
+  <data name="EventImage" xml:space="preserve">
+    <value>Hình ảnh sự kiện</value>
+  </data>
+  <data name="EventIntroduction" xml:space="preserve">
+    <value>Giới thiệu sự kiện</value>
+  </data>
+  <data name="EventProfessionals" xml:space="preserve">
+    <value>Chuyên gia tham dự</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>Sự kiện</value>
+  </data>
+  <data name="ExclusiveBrand" xml:space="preserve">
+    <value>Thương hiệu độc quyền tại việt nam</value>
+  </data>
+  <data name="ExpertTeamIntroductuce" xml:space="preserve">
+    <value>Đội ngũ chuyên viên</value>
+  </data>
+  <data name="Founder" xml:space="preserve">
+    <value>Nhà sáng lập</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Họ và Tên</value>
+  </data>
+  <data name="FullNamePlaceHolder" xml:space="preserve">
+    <value>Họ và tên</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Trang Chủ</value>
+  </data>
+  <data name="HomePhone" xml:space="preserve">
+    <value>Điện thoại bàn</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Giờ</value>
+  </data>
+  <data name="HyperthermiaBlog" xml:space="preserve">
+    <value>Hyperthermia Blog</value>
+  </data>
+  <data name="InfrastructureIntroduce" xml:space="preserve">
+    <value>Cơ sở vật chất</value>
+  </data>
+  <data name="LibraryImage" xml:space="preserve">
+    <value>Thư viện ảnh</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>Phút</value>
+  </data>
+  <data name="NellyProgress" xml:space="preserve">
+    <value>Nelly De Vuyst Vì sự phát triển của ngành làm đẹp việt nam</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Tin Tức</value>
+  </data>
+  <data name="NewsRelated" xml:space="preserve">
+    <value>Tin tức liên quan</value>
+  </data>
+  <data name="NewSuggestionDescription" xml:space="preserve">
+    <value>"Chúng tôi hạnh phúc khi được chia sẻ cùng bạn câu chuyện làm đẹp &amp; cuộc sống"</value>
+  </data>
+  <data name="NewSuggestionTitle" xml:space="preserve">
+    <value>Tin tức &amp; Trải nghiệm</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Số điện thoại</value>
+  </data>
+  <data name="PhoneNumberPlaceHolder" xml:space="preserve">
+    <value>Số điện thoại</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Sản phẩm</value>
+  </data>
+  <data name="Professionals" xml:space="preserve">
+    <value>Chuyên gia</value>
+  </data>
+  <data name="ProgressAmiea" xml:space="preserve">
+    <value>Định hướng phát triển</value>
+  </data>
+  <data name="ProgressAmieaDescription" xml:space="preserve">
+    <value>ĐỊNH HƯỚNG PHÁT TRIỂN CỦA SẢN PHẨM MANG LẠI SỰ SÁNG TẠO CHO NGƯỜI SỬ DỤNG</value>
+  </data>
+  <data name="RecentBlogs" xml:space="preserve">
+    <value>Bài Viết Mới Nhất</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Đăng ký</value>
+  </data>
+  <data name="RegisterNows" xml:space="preserve">
+    <value>Đăng ký ngay</value>
+  </data>
+  <data name="Second" xml:space="preserve">
+    <value>Giây</value>
+  </data>
+  <data name="Seminars" xml:space="preserve">
+    <value>Hội thảo</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
+  <data name="SendMessage" xml:space="preserve">
+    <value>Gửi tin nhắn</value>
+  </data>
+  <data name="ServicesIntroduce" xml:space="preserve">
+    <value>Dịch vụ khách hàng</value>
+  </data>
+  <data name="Sponsors" xml:space="preserve">
+    <value>Đơn vị tài trợ</value>
+  </data>
+  <data name="TechnologyAmiea" xml:space="preserve">
+    <value>CÔNG NGHỆ AMIEA SẢN XUẤT TẠI ĐỨC</value>
+  </data>
+  <data name="TimeEvent" xml:space="preserve">
+    <value>Thời gian diễn ra sự kiện</value>
+  </data>
+  <data name="TitleHeader" xml:space="preserve">
+    <value>Chào mừng bạn đến Jade Spa</value>
+  </data>
+  <data name="TitleHot" xml:space="preserve">
+    <value>Dịch vụ nổi bật</value>
+  </data>
+  <data name="TitleIntroduce" xml:space="preserve">
+    <value>Tại sao lựa chọn Jade Spa</value>
+  </data>
+  <data name="VideoLibrary" xml:space="preserve">
+    <value>Thư Viện Video</value>
+  </data>
+  <data name="ViewDetail" xml:space="preserve">
+    <value>Tìm hiểu thêm</value>
+  </data>
+  <data name="ViewMore" xml:space="preserve">
+    <value>Xem thêm</value>
+  </data>
+  <data name="ViewProduct" xml:space="preserve">
+    <value>Xem ngay sản phẩm</value>
+  </data>
+  <data name="WhyIsOrganic" xml:space="preserve">
+    <value>Tại sao là hữu cơ</value>
+  </data>
+  <data name="WhySelectNellyDeVuyst" xml:space="preserve">
+    <value>4 lý do khiến các sao hollygood yên tâm lựa chọn sản phẩm của nelly</value>
+  </data>
+  <data name="WorkTime" xml:space="preserve">
+    <value>Thời gian làm việc</value>
+  </data>
+  <data name="YourNeeds" xml:space="preserve">
+    <value>Đáp ứng mọi nhu cầu của bạn</value>
+  </data>
+  <data name="SpaceSpa" xml:space="preserve">
+    <value>Không gian Spa</value>
+  </data>
+  <data name="ResponseCustomer" xml:space="preserve">
+    <value>Cảm Nhận Khách hàng</value>
+  </data>
+  <data name="HotLine" xml:space="preserve">
+    <value>HOTLINE</value>
+  </data>
+</root>

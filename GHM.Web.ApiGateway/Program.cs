@@ -29,8 +29,8 @@ namespace GHM.Web.ApiGateway
 
         public static IWebHost CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
-                .UseContentRoot(Directory.GetCurrentDirectory())
+                //.UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
+                //.UseContentRoot(Directory.GetCurrentDirectory())
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     config
@@ -39,6 +39,8 @@ namespace GHM.Web.ApiGateway
                         .AddJsonFile($"configuration.{hostingContext.HostingEnvironment.EnvironmentName}.json", false, true)
                         .AddEnvironmentVariables();
                 })
-                .UseStartup<Startup>().Build();
+                .UseStartup<Startup>()
+                .UseUrls("http://localhost:50008")
+            .Build();
     }
 }

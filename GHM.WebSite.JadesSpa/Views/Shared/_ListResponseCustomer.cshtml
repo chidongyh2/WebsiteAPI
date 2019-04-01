@@ -1,0 +1,39 @@
+﻿@{
+    var listResponseCustomer = Model as List<NewsSearchViewModel>;
+    var url = ViewBag.Url;
+}
+@if (listResponseCustomer != null && listResponseCustomer.Any())
+{
+    <div id="response-customer">
+        <div class="col-sm-12 wrap-next">
+            <div class="pull-left">
+                <h3 class="titlebar">@Resource.ResponseCustomer</h3>
+            </div>
+            <div class="pull-right">
+                <i class="fa fa-caret-left" data-bind="click: function() {   setCurrentPage(0);  }"></i>
+                <i class="fa fa-caret-right" data-bind="click: function() {   setCurrentPage(1);  }"></i>
+            </div>
+        </div>
+        <span class="clearfix"></span>
+        <div class="wrap-item col-sm-12">
+            @if (listResponseCustomer != null && listResponseCustomer.Any())
+            {
+            <div id="wrap-response" data-bind="foreach: $root.listCommentCustomer()">
+                <div class="media">
+                    <div class="media-left">
+                        <img class="mr-3 lazy" data-bind="attr: { src: '/image?url=@(url)'+ FeatureImage + '&width=82&height=82'}">
+</div>
+
+<div class="media-body">
+                        <h5 class="mt-0" data-bind="text: Title"></h5>
+                        <span data-bind="text: Description"></span>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+}
+    <script type="text/javascript">
+        var listResponseCustomer = @(listResponseCustomer != null ? Html.Raw(JsonConvert.SerializeObject(Model)) : "[]");
+    </script>

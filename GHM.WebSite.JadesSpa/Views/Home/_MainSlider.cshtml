@@ -1,0 +1,119 @@
+﻿@*@model BannerViewModel;
+    @if (Model != null && Model.BannerItems != null && Model.BannerItems.Any())
+    {
+        <section id="slider">
+            <div id="layerslider_1" class="ls-wp-container" style="width: 100%; left:0px; height: 600px; max-width: 1920px; margin: 0 auto; margin-bottom: 0px;">
+                @{
+                    int index = 0;
+                    @foreach (var bannerItem in Model.BannerItems)
+                    {
+                        index = index + 1;
+                        <div class="ls-slide" data-ls="slidedelay:10000;transition2d:4;">
+                            <a href="@bannerItem.Url" title="@bannerItem.Name">
+                                <img class="img-responsive lazy" src="@(string.IsNullOrEmpty(bannerItem.Image) ? "/images/no-image.png" : bannerItem.Image)"
+                                     onerror="this.src='/images/no-image.png'"
+                                     alt="@bannerItem.Alt" />
+                            </a>
+                            <h4>@index</h4>
+                        </div>
+                    }
+                }
+            </div>
+        </section>
+    }*@
+<section id="slider">
+    <div id="layerslider_1" class="ls-wp-container" style="width: 100%; left:0px; height: 600px; max-width: 1920px; margin: 0 auto; margin-bottom: 0px;">
+        <div class="ls-slide" data-ls="slidedelay:10000;transition2d:4;">
+            <img src="/images/slider/Banner.jpg" style="top: 0px; left: 0px;margin-top:0px !important; margin-left:0px !important" class="ls-bg" alt="Slide background">
+            @*<img class="ls-l" style="top: 0px; left: 1px; white-space: nowrap;" data-src="~/images/slider/bannerQC.jpg" alt="">*@
+        </div>
+        <div class="ls-slide" data-ls="slidedelay:10000;transition2d:4;">
+            <img src="~/lib/LayerSlider/static/img/blank.gif" data-src="/images/slider/bg3.gif" class="lazy ls-bg" alt="Slide background">
+            <img class="ls-l lazy" style="top: 185px; left: 427px; white-space: nowrap;" data-ls="offsetxin:50;offsetyin:100;durationin:2000;delayin:1500;easingin:easeOutBack;offsetxout:50;durationout:1000;easingout:easeInBack;parallaxlevel:1;" src="~/lib/LayerSlider/static/img/blank.gif" data-src="/images/slider/feather1.png" alt="">
+            <img class="ls-l lazy" style="top: 23px; left: 356px; white-space: nowrap;" data-ls="offsetxin:100;offsetyin:-150;durationin:6000;delayin:1500;easingin:easeOutBack;offsetxout:100;durationout:1000;showuntil:7000;easingout:easeInBack;parallaxlevel:3;" src="~/lib/LayerSlider/static/img/blank.gif" data-src="/images/slider/feather2.png" alt="">
+            <p class="ls-l" style="top: 200px; left: 0px; font-weight: 500; font-family: Raleway, Open Sans, sans-serif;font-size:40px;color:#000000;white-space: nowrap;" data-ls="offsetxin:0;durationin:2500;delayin:2000;rotateyin:90;transformoriginin:left 50% 0;offsetxout:0;rotateyout:-90;transformoriginout:left 50% 0;">Chăm sóc da toàn diện</p>
+            <!--<p class="ls-l" style="top: 386px; left: 3px; border-radius: 3px; color: #FFFFFF; cursor: pointer; display: inline-block; line-height: 50px; outline: medium none; position: relative; text-transform: capitalize; transition: all 0.3s ease 0s; z-index: 1; background: none repeat scroll 0 0 #263944; padding: 0 20px; font-size: 16px; font-weight: 300; font-family: Raleway, Open Sans, sans-serif;white-space: nowrap;" data-ls="offsetxin:0;durationin:400;delayin:4500;easingin:linear;rotateyin:90;transformoriginin:left 50% 0;offsetxout:0;durationout:100;showuntil:5400;easingout:linear;rotateyout:90;transformoriginout:left 50% 0;">Purchase Theme</p>-->
+            <p class="ls-l" style="top: 273px; left: 00px; font-family: Raleway, Open Sans, sans-serif;font-size:14px;line-height:28px;color:#000000;white-space: nowrap;" data-ls="offsetxin:0;durationin:2000;delayin:3500;">
+                Chúng tôi chọn lọc những sản phẩm tốt nhất cho làn da của bạn. <br>Cam kết giúp bạn cải thiện làn da đẹp một cách tự nhiên, khỏe mạnh, đẩy lùi lão hóa.
+            </p>
+            <img class="ls-l lazy" style="top: -84px; left: 401px; white-space: nowrap;" src="~/lib/LayerSlider/static/img/blank.gif" data-src="/images/slider/woman2.png" alt=""><img class="ls-l" style="top: 13px; left: 977px; white-space: nowrap;" data-ls="offsetxin:50;offsetyin:100;durationin:2000;delayin:2500;easingin:easeOutBack;offsetxout:50;durationout:1000;easingout:easeInBack;parallaxlevel:1;" src="~/lib/LayerSlider/static/img/blank.gif" data-src="~/images/slider/feather3.png" alt="">
+            <img class="ls-l lazy" style="top: 230px; left: 973px; white-space: nowrap;" data-ls="offsetxin:100;offsetyin:-150;durationin:6000;delayin:1500;easingin:easeOutBack;offsetxout:100;durationout:1000;showuntil:7000;easingout:easeInBack;parallaxlevel:3;" src="~/lib/LayerSlider/static/img/blank.gif" data-src="/images/slider/feather4.png" alt="">
+        </div>
+        <div class="ls-slide" data-ls="slidedelay:10000;transition2d:4;">
+            <img src="~/lib/LayerSlider/static/img/blank.gif" data-src="/images/slider/bg2.gif" class="lazy ls-bg" alt="Slide background">
+            <p class="ls-l" style="top: 44%; left: 50%; font-weight: 300; font-family: Lato, Open Sans, sans-serif;font-size:30px;color:#ffffff;white-space: nowrap;" data-ls="offsetxin:50;durationin:750;easingin:easeOutBack;skewxin:-50;offsetxout:-50;durationout:600;showuntil:500;easingout:easeInBack;skewxout:50;">Phong cách</p>
+            <p class="ls-l" style="top: 50%; left: 50%; font-weight: 300; font-family: Lato, Open Sans, sans-serif;font-size:50px;color:#ffffff;white-space: nowrap;" data-ls="offsetxin:-100;durationin:750;delayin:250;easingin:easeOutBack;skewxin:-50;offsetxout:100;durationout:600;showuntil:500;easingout:easeInBack;skewxout:50;">CHÂU ÂU</p>
+            <p class="ls-l" style="top: 234px; left: 400px; font-weight: 500; font-family: Raleway, Open Sans, sans-serif;font-size:20px;color:#ffffff;white-space: nowrap;" data-ls="offsetxin:0;durationin:2500;delayin:3500;rotateyin:90;transformoriginin:left 50% 0;offsetxout:0;durationout:1500;showuntil:4000;rotateyout:-90;transformoriginout:left 50% 0;">Hơn 20.000 khách hàng đã trải nghiệm và hài lòng</p>
+            <img class="ls-l lazy" style="top: 273px; left: 400px; white-space: nowrap;" data-ls="delayin:2500;" src="~/lib/LayerSlider/static/img/blank.gif" data-src="/images/slider/beauty-text1.png" alt="">
+            <!--<p class="ls-l" style="top: 323px; left: 401px; border-radius: 3px; color: #FFFFFF; cursor: pointer; display: inline-block; line-height: 50px; outline: medium none; position: relative; text-transform: capitalize; transition: all 0.3s ease 0s; z-index: 1; background: none repeat scroll 0 0 #7c002b; padding: 0 20px; font-size: 16px; font-weight: 300; font-family: Raleway, Open Sans;white-space: nowrap;" data-ls="offsetxin:0;offsetyin:400;durationin:1500;delayin:4500;offsetxout:0;offsetyout:200;durationout:1000;showuntil:7000;">Explore Now</p>-->
+        </div>
+        <div class="ls-slide" data-ls="slidedelay:10000;transition2d:3,5;timeshift:-3000;">
+            <img src="~/lib/LayerSlider/static/img/blank.gif" data-src="/images/slider/bg3.png" class="lazy ls-bg" alt="Slide background">
+            @*<h2 class="ls-l" style="top: -37px; left: 304px; font-weight: 300; font-family: Lato, Open Sans, sans-serif;font-size:200px;color:#ffffff;white-space: nowrap;" data-ls="offsetxin:0;durationin:2000;delayin:1000;scalexin:0;scaleyin:0;offsetxout:0;durationout:2000;showuntil:7000;scalexout:2;scaleyout:2;">&amp;</h2>*@
+            <h2 class="ls-l" style="top: 60px; left: 0px; font-weight: 500; font-family: Raleway, Lato, Open Sans, sans-serif;font-size:40px;color:#7aa127;white-space: nowrap;" data-ls="offsetxin:50;durationin:1600;rotateyin:60;transformoriginin:right 50% 0;offsetxout:-50;rotateyout:-60;transformoriginout:left 50% 0;">Số 1 Massage Bầu</h2>
+            <p class="ls-l" style="top: 68px; left: 419px; font-weight: 500; font-family: Lato, Open Sans, sans-serif;font-size:30px;color:#3c3c3c;white-space: nowrap;" data-ls="offsetxin:-50;durationin:1300;delayin:2000;rotateyin:-60;transformoriginin:left 50% 0;offsetxout:50;rotateyout:60;transformoriginout:right 50% 0;">Chăm Sóc Sau Sinh</p>
+            <p class="ls-l" style="top: 139px; left: 3px; font-weight: 300; text-align: left; font-style: italic; font-family: " Raleway, Lato, Open Sans, sans-serif;font-size:16px;line-height:34px;color:#3c3c3c;white-space: nowrap;" data-ls="offsetxin:0;durationin:2000;delayin:3500;transformoriginin:0 0 0;offsetxout:0;durationout:500;rotateyout:-90;transformoriginout:right 50% 0;">
+                Nơi khởi nguồn trị liệu <span style="color: #7aa127; font-weight: 500;">Massage Bầu & Chăm Sóc Sau Sinh</span> tại Việt Nam<br><span style="color: #7aa127; font-weight: 500;">Đơn vị duy nhất</span> được chứng nhận bởi <span style="color: #7aa127; font-weight: 500;">Hiệp Hội Trị Liệu Massage Hoa Kỳ (AMTA)</span>
+            </p><img class="ls-l lazy" style="top: 0px; left: 695px; z-index: 5; width: 480px; white-space: nowrap;" data-ls="offsetxin:0;delayin:500;offsetxout:0;offsetyout:50;" src="~/lib/LayerSlider/static/img/blank.gif" data-src="/images/slider/woman.png" alt="">
+            <img class="ls-l lazy" style="top: 289px; left: 790px; white-space: nowrap;" data-ls="offsetxin:0;durationin:300;delayin:3498;offsetxout:0;durationout:750;showuntil:1;scalexout:10;scaleyout:10;" src="~/lib/LayerSlider/static/img/blank.gif" data-src="/images/slider/slide-a-6.png" alt="">
+            <div class="ls-l" style="top: 250px; left: 0px; width: 60px; white-space: nowrap;" data-ls="offsetxin:50;durationin:1500;delayin:4000;rotateyin:90;scalexin:3;scaleyin:3;transformoriginin:left 50% 0;offsetxout:-50;durationout:0;rotateout:90;scalexout:0.5;scaleyout:0.5;">
+                <div class="icon-list">
+                    <i class="fa fa-heartbeat"> </i>
+                    <h3> Phục hồi sức khỏe </h3>
+                </div>
+            </div>
+            <div class="ls-l" style="top: 250px; left: 340px; width: 60px; white-space: nowrap;" data-ls="offsetxin:50;durationin:1500;delayin:4500;rotateyin:90;scalexin:3;scaleyin:3;transformoriginin:left 50% 0;offsetxout:-50;durationout:0;rotateout:90;scalexout:0.5;scaleyout:0.5;">
+                <div class="icon-list">
+                    <i class="fa fa-leaf "> </i>
+                    <h3> Duy trì làn da đẹp</h3>
+                </div>
+            </div>
+            <div class="ls-l" style="top: 320px; left: 0px; font-size: 16px; white-space: nowrap;" data-ls="offsetxin:50;durationin:1500;delayin:5000;easingin:easeInQuint;rotateyin:90;transformoriginin:left 50% 0;offsetxout:-50;durationout:0;rotateout:90;scalexout:0.5;scaleyout:0.5;">
+                <div class="icon-list">
+                    <i class="fa fa-connectdevelop"> </i>
+                    <h3> Giảm căng thẳng, trầm cảm</h3>
+                </div>
+            </div>
+            <div class="ls-l" style="top: 320px; left: 340px; white-space: nowrap;" data-ls="offsetxin:50;durationin:1500;delayin:6000;rotateyin:90;transformoriginin:left 50% 0;offsetxout:-50;durationout:0;rotateout:90;scalexout:0.5;scaleyout:0.5;">
+                <div class="icon-list">
+                    <i class="fa fa-female"> </i>
+                    <h3> Vóc dáng thon gọn</h3>
+                </div>
+            </div>
+            <div class="ls-l" style="top: 390px; left: 0px; width: 60px; white-space: nowrap;" data-ls="offsetxin:50;durationin:1500;delayin:6500;rotateyin:90;scalexin:3;scaleyin:3;transformoriginin:left 50% 0;offsetxout:-50;durationout:0;rotateout:90;scalexout:0.5;scaleyout:0.5;">
+                <div class="icon-list">
+                    <i class="fa fa-hand-rock-o"> </i>
+                    <h3> Giảm đau mỏi cơ bắp</h3>
+                </div>
+            </div>
+            <div class="ls-l" style="top: 390px; left: 340px; width: 60px; white-space: nowrap;" data-ls="offsetxin:50;durationin:1500;delayin:7000;rotateyin:90;scalexin:3;scaleyin:3;transformoriginin:left 50% 0;offsetxout:-50;durationout:0;rotateout:90;scalexout:0.5;scaleyout:0.5;">
+                <div class="icon-list">
+                    <i class="fa fa-paw"> </i>
+                    <h3> Giúp bé thư giãn, tăng cân đều</h3>
+                </div>
+            </div>
+            <div class="ls-l" style="top: 460px; left: 0px; width: 60px; white-space: nowrap;" data-ls="offsetxin:50;durationin:1500;delayin:7500;rotateyin:90;scalexin:3;scaleyin:3;transformoriginin:left 50% 0;offsetxout:-50;durationout:0;rotateout:90;scalexout:0.5;scaleyout:0.5;">
+                <div class="icon-list">
+                    <i class="fa fa-thumbs-up"> </i>
+                    <h3> Giúp mẹ ngủ ngon</h3>
+                </div>
+            </div><img class="ls-l lazy" style="top: 289px; left: 790px; white-space: nowrap;" data-ls="offsetxin:0;durationin:300;delayin:3498;offsetxout:0;durationout:1000;showuntil:1;scalexout:20;scaleyout:20;" src="~/lib/LayerSlider/static/img/blank.gif" data-src="/images/slider/slide-a-6.png" alt="">
+            <div class="ls-l" style="top: 460px; left: 340px; width: 60px; white-space: nowrap;" data-ls="offsetxin:50;durationin:1500;delayin:8000;rotateyin:90;scalexin:3;scaleyin:3;transformoriginin:left 50% 0;offsetxout:-50;durationout:0;rotateout:90;scalexout:0.5;scaleyout:0.5;">
+                <div class="icon-list">
+                    <i class="fa fa-plus"> </i>
+                    <h3> Hỗ trợ quá trình lâm bồn</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- **Slider Section - End** -->
+@section knockout{
+    <script type="text/javascript">
+        $(function () {
+            $("#layerslider_1").layerSlider({
+                responsiveUnder: 1170, layersContainer: 1170, pauseOnHover: false, forceLoopNum: false, autoPlayVideos: false,
+                skinsPath: "/lib/LayerSlider/static/skins/"
+            });
+        })
+    </script>
+}

@@ -1,0 +1,84 @@
+﻿@{
+    var listCategoryWidthNew = ViewBag.ListNews as List<CategoryWidthNewsViewModel>;
+    var categoryIdDefault = listCategoryWidthNew != null && listCategoryWidthNew.Count > 0 ? listCategoryWidthNew.FirstOrDefault().CategoryId : 0;
+    var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
+    var listVideo = ViewBag.ListVideoHomePage as List<VideoViewModel>;
+    var listResponseCustomer = ViewBag.ListResponseCustomer as List<NewsSearchViewModel>;
+}
+<link href="~/lib/lightslider/css/lightslider.css" rel="stylesheet" />
+<div class="news-angency">
+    @if (listCategoryWidthNew != null && listCategoryWidthNew.Any())
+    {
+        var listCategory = listCategoryWidthNew.Select(x => new
+        {
+            x.CategoryId,
+            x.CategoryName
+        });
+        <div id="newsAndBranch">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2 class="center titlebar">
+                            @Resource.NewSuggestionTitle
+                        </h2>
+                      
+                    </div>
+                    <div class="col-sm-12">
+                        <h2 class="descriptionbar">@Resource.NewSuggestionDesciption</h2>
+                    </div>
+                    <div class="col-sm-12">
+                        @{
+                            foreach (var categoryNews in listCategoryWidthNew)
+                            {
+                                <partial name="_BlockNewsSuggestion" model="categoryNews" />
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="wrap-subintroduce">
+            <div class="wrap-content">
+                <div class="col-sm-6">
+                    <partial name="_ListVideo" model="listVideo" />
+                </div>
+                <div class="col-sm-6">
+                    <partial name="_ListResponseCustomer" model="listResponseCustomer" />
+                </div>
+            </div>
+        </div>
+        <span class="clearfix"></span>
+    }
+    @*@if (listBranch != null)
+    {
+        <div id="agency">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 center">
+                            <h2 class="titlebar">@Resource.DistributionAgents</h2>
+                            <hr />
+                        </div>
+                        <div class="col-sm-12">
+                            <div id="agencySlider">
+                                @foreach (var branch in listBranch)
+                                {
+                                    <div class="item">
+                                        <a href="@branch.Website" title="@branch.Name">
+                                            <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(branch.Logo) ? "/images/no-image.png" : branch.Logo)}")"
+                                                 onerror="this.src='/images/no-image.png'"
+                                                 alt="@branch.Name" />
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    }*@
+</div>
+<script type="text/javascript">
+    var categoryIdDefault = @categoryIdDefault;
+</script>
+
+

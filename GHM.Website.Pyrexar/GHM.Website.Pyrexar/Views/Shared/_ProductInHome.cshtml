@@ -1,4 +1,7 @@
 ﻿@model List<NewsSearchViewModel>
+@{ 
+    var url = ViewBag.Url;
+}
 @if (Model != null && Model.Any())
 {
     <div class="product-in-home">
@@ -13,7 +16,7 @@
                         <div class="item">
                             <div class="image-content">
                                 <a href="@($"/{product.SeoLink}.html")" title="@(string.IsNullOrEmpty(product.MetaTitle) ? product.Title : product.MetaTitle)">
-                                    <img class="news-image img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(product.FeatureImage) ? "/images/no-image.png" : product.FeatureImage)}&width=480&height=360")"
+                                    <img class="news-image img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(product.FeatureImage) ? "/images/no-image.png" : $"{url}{product.FeatureImage}")}&width=480&height=360")"
                                          onerror="this.src='/images/no-image.png'"
                                          alt="@(string.IsNullOrEmpty(product.AltImage) ? product.Title : product.AltImage)" />
                                 </a>

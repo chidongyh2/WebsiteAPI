@@ -4,6 +4,7 @@
     var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
     var listLanguage = ViewBag.ListLanguage as List<TenantLanguageViewModel>;
     var path = $"{Context.Request.Path}";
+    var url = ViewBag.Url;
 }
 
 <header id="header">
@@ -11,7 +12,7 @@
         <div class="container">
             <div class="nav-header">
                 <a href="/" class="navbar-brand">
-                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? websiteSetting.Logo : "/images/Trang chu/Logo ABC tren-duoi.png" )"
+                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? $"{url}{websiteSetting.Logo}" : "/images/Trang chu/Logo ABC tren-duoi.png" )"
                          alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "Phun xăm thẩm mỹ amiea")"
                          onerror="this.src='/images/no-image.png'" />
                 </a>
@@ -35,7 +36,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a href="/" class="navbar-brand">
-                        <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.LogoMobile) ? websiteSetting.LogoMobile : "/images/Logo GHM-04.png" )"
+                        <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.LogoMobile) ? $"{url}{websiteSetting.LogoMobile}" : "/images/Logo GHM-04.png" )"
                              alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "Phun xăm thẩm mỹ amiea")"
                              onerror="this.src='/images/no-image.png'" />
                     </a>

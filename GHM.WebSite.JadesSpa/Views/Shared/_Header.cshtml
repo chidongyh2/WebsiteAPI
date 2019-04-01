@@ -1,0 +1,122 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listMenuItem = ViewBag.MainNav as List<MenuItemViewModel>;
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+    var listLanguage = ViewBag.ListLanguage as List<TenantLanguageViewModel>;
+    var path = $"{Context.Request.Path}";
+}
+
+<header id="header">
+    <div class="header-top hidden-xs">
+        <div class="container">
+            <div class="nav-header">
+                <span class="nav-left">
+                   @Resource.TitleHeader
+                </span>
+                <span class="nav-right">
+                    @if (websiteSetting.Hotline != null && websiteSetting.Hotline.Any())
+                    {
+                        <i class="fa fa-mobile"></i><span>@websiteSetting.Hotline | </span>
+                    }
+                    @if (websiteSetting.Brand != null && websiteSetting.Brand.Any())
+                    {
+                        <i class="fa fa-envelope"></i><span>@websiteSetting.Brand</span>
+                    }
+                </span>
+                @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>*@
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <nav class="navbar navbar-inverse navbar-expand-lg">
+            <div class="container wrap">
+                <a href="/" class="navbar-brand">
+                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.LogoMobile) ? "/images/logo-cu.png" : "/images/Logo GHM-04.png" )"
+                         alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "Phun xăm thẩm mỹ amiea")"
+                         onerror="this.src='/images/no-image.png'" />
+                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" aria-controls="abcMainNav" data-target="#abcMainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-collapse collapse" id="abcMainNav">
+                    <ul class="nav navbar-nav">
+                        @if (listMenuItem != null && listMenuItem.Any())
+                        {
+                            var menuObject = new MenuObject
+                            {
+                                ListMenuItem = listMenuItem,
+                                ParentId = null,
+                            };
+                            <partial name="_MenuItem" model="menuObject" />
+                        }
+                        <li class="visible-xs">
+                            <div class="list-social-network">
+                                @foreach (var socialNetWork in listSocialNetWork)
+                                {
+                                    <div class="list-items">
+                                        <a href="@socialNetWork.Url" class="btn-scoical" title="@websiteSetting?.Brand">
+                                            @if (!string.IsNullOrEmpty(socialNetWork.Icon))
+                                            {
+                                                @*<img data-src="@($"/image?url={(string.IsNullOrEmpty(socialNetWork.Image) ? "/images/no-image.png" : socialNetWork.Image)}&width=25&height=25&type=1")"
+                                alt="@socialNetWork.Name"
+                                class="lazy" />*@
+                                                <i class="fa @socialNetWork.Icon"></i>
+                                            }
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            @if (listLanguage != null && listLanguage.Any() && listLanguage.Count > 1)
+            {
+                <div class="header-tool">
+                    <div class="btn-group">
+                        @if (ViewBag.CurrentLanguage == "vi-VN")
+                        {
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <img src="/images/vi.png"> Vietnamese<span class="caret"></span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <img src="~/images/en.png"> English<span class="caret"></span>
+                            </a>
+                        }
+                            <ul class="dropdown-menu pull-right">
+                                @foreach (var language in listLanguage)
+                                {
+                                    <li>
+                                        <a href="/change-language/@language.LanguageId?url=@path">
+                                            @if (language.LanguageId == "vi-VN")
+                                            {
+                                                <img src="/images/vi.png">
+                                            }
+                                            else
+                                            {
+                                                <img src="~/images/en.png">
+                                            }
+                                            @language.Name
+                                        </a>
+                                    </li>
+                                   
+                                }
+                            </ul>
+                    </div>
+                </div>
+            }
+        </nav>
+    </div>
+</header>
