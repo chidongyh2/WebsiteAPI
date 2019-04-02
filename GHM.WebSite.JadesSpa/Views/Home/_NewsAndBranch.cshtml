@@ -1,19 +1,13 @@
 ﻿@{
-    var listCategoryWidthNew = ViewBag.ListNews as List<CategoryWidthNewsViewModel>;
-    var categoryIdDefault = listCategoryWidthNew != null && listCategoryWidthNew.Count > 0 ? listCategoryWidthNew.FirstOrDefault().CategoryId : 0;
+    var listNewsHomePage = ViewBag.ListNews as List<NewsSearchViewModel>;
     var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
     var listVideo = ViewBag.ListVideoHomePage as List<VideoViewModel>;
     var listResponseCustomer = ViewBag.ListResponseCustomer as List<NewsSearchViewModel>;
 }
 <link href="~/lib/lightslider/css/lightslider.css" rel="stylesheet" />
 <div class="news-angency">
-    @if (listCategoryWidthNew != null && listCategoryWidthNew.Any())
+    @if (listNewsHomePage != null && listNewsHomePage.Any())
     {
-        var listCategory = listCategoryWidthNew.Select(x => new
-        {
-            x.CategoryId,
-            x.CategoryName
-        });
         <div id="newsAndBranch">
             <div class="container">
                 <div class="row">
@@ -27,12 +21,7 @@
                         <h2 class="descriptionbar">@Resource.NewSuggestionDesciption</h2>
                     </div>
                     <div class="col-sm-12">
-                        @{
-                            foreach (var categoryNews in listCategoryWidthNew)
-                            {
-                                <partial name="_BlockNewsSuggestion" model="categoryNews" />
-                            }
-                        }
+                            <partial name="_BlockNewsSuggestion" model="listNewsHomePage" />
                     </div>
                 </div>
             </div>
@@ -77,8 +66,8 @@
             </div>
     }*@
 </div>
-<script type="text/javascript">
+@*<script type="text/javascript">
     var categoryIdDefault = @categoryIdDefault;
-</script>
+</script>*@
 
 

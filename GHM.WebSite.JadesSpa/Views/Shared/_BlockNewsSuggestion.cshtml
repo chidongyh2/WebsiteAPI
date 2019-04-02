@@ -1,18 +1,18 @@
-﻿@model CategoryWidthNewsViewModel;
+﻿@model List<NewsSearchViewModel>;
 @{
-    var newsDefault = Model != null && Model.ListNews.Any() ? Model.ListNews.FirstOrDefault() : null;
+    var newsDefault = Model != null && Model.Any() ? Model.FirstOrDefault() : null;
     var url = ViewBag.Url;
 }
 
-@if (Model != null && Model.ListNews.Any())
+@if (Model != null && Model.Any())
 {
-    <div class="block-news portfolio-item @Model.CategoryId">
+    <div class="block-news portfolio-item">
         <div class="row">
             <div class="col-sm-6 ">
                 <div class="news-default">
                     <div class="image-content">
                         <a href="@($"/{ newsDefault.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsDefault.MetaTitle) ? newsDefault.Title : newsDefault.MetaTitle)">
-                            <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsDefault.FeatureImage) ? "/images/no-image.png" : $"{url}{newsDefault.FeatureImage}")}&width=580&height=380")"
+                            <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsDefault.FeatureImage) ? "/images/no-image.png" : $"{url}{newsDefault.FeatureImage}")}&width=640&height=360")"
                                  onerror="this.src='/images/no-image.png'"
                                  alt="@(string.IsNullOrEmpty(newsDefault.AltImage) ? newsDefault.Title : newsDefault.AltImage)" />
                             <span class="img-overlay"></span>
@@ -32,7 +32,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="row list-news">
-                    @foreach (var news in Model.ListNews.Where(x => x.Id != newsDefault.Id))
+                    @foreach (var news in Model.Where( x => x.Id != newsDefault.Id))
                     {
                         <div class="col-xs-6 news-item">
                             <div class="image-content">
@@ -53,19 +53,19 @@
                 </div>
             </div>
             @*<div class="col-sm-12">
-                <div class="pull-right hidden-xs">
-                    <a class="btn btn-view-more" href="@(string.Format("/{0}", Model.SeoLink))">
-                        @Resource.ViewMore
-                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="center visible-xs">
-                    <a class="btn btn-view-more" href="@(string.Format("/{0}", Model.SeoLink))">
-                        @Resource.ViewMore
-                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </div>*@
+            <div class="pull-right hidden-xs">
+                <a class="btn btn-view-more" href="@(string.Format("/{0}", Model.SeoLink))">
+                    @Resource.ViewMore
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="center visible-xs">
+                <a class="btn btn-view-more" href="@(string.Format("/{0}", Model.SeoLink))">
+                    @Resource.ViewMore
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>*@
         </div>
     </div>
 }

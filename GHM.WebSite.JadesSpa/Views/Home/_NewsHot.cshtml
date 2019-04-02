@@ -1,5 +1,5 @@
 ﻿@{
-    var listCategoryWidthNew = ViewBag.ListNews as List<CategoryWidthNewsViewModel>;
+    var listCategoryWidthNew = ViewBag.ListServices as List<CategorySearchViewModel>;
     var url = ViewBag.Url;
 }
 <div id="news-hot">
@@ -17,28 +17,21 @@
         @if (listCategoryWidthNew != null && listCategoryWidthNew.Any())
         {
             <div id="news-slider" class="hidden-xs">
-                @foreach (var item in listCategoryWidthNew)
-                {
-                    <partial name="_BlockNews" model="item" />
-                }
+                    <partial name="_BlockCategories" model="listCategoryWidthNew" />
             </div>
             <div class="list-items item-hot row visible-xs">
                 @foreach (var item in listCategoryWidthNew)
                 {
-                    @foreach (var news in item.ListNews)
-                    {
-                        <div class="col-sm-6 col-xs-6">
-                            <div class="item">
-                                <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                                    <img class="news-image zoom img-responsive lazy" src="@(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")"
-                                         onerror="this.src='/images/no-image.png'"
-                                         alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
+                    <div class="col-sm-6 col-xs-6">
+                        <div class="item">
+                            <a href="@($"/{ item.SeoLink}.html")">
+                                <img class="news-image zoom img-responsive lazy" src="@(string.IsNullOrEmpty(item.BannerImage) ? "/images/no-image.png" : $"{url}{item.BannerImage}")"
+                                        onerror="this.src='/images/no-image.png'"/>
 
-                                </a>
-                                <div class="text-description">@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)</div>
-                            </div>
+                            </a>
+                            <div class="text-description">@(string.IsNullOrEmpty(item.Name) ? "No Title" : item.Name)</div>
                         </div>
-                    }
+                    </div>
                 }
             </div>
         }

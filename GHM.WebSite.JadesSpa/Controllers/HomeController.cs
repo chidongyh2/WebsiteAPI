@@ -18,6 +18,7 @@ using System.Text;
 using GHM.Website.JadesSpa.Utils;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
+using GHM.WebSite.JadesSpa.ViewModels;
 
 namespace GHM.Website.JadesSpa.Controllers
 {
@@ -44,14 +45,17 @@ namespace GHM.Website.JadesSpa.Controllers
             var httpClientService = new HttpClientService();
             ViewBag.ListVideoHomePage = await httpClientService.GetAsync<List<VideoViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/videos/home-page/{apiService.TenantId}/20/{CultureInfo.CurrentCulture.Name}");
 
-            var listNews = await httpClientService.GetAsync<SearchResult<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category-with-news-in-home/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
-            ViewBag.ListNews = listNews?.Items;
+            var listNews = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/home-page/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
+            ViewBag.ListNews = listNews;
 
             var listMenuContact = await httpClientService.GetAsync<List<MenuItemViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/position/{(int)Position.Middle}/items/menu/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
             ViewBag.MenuContact = listMenuContact;
 
-            var listResponseCustomer = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/suc-khoe-sac-dep/1/20/{CultureInfo.CurrentCulture.Name}");
+            var listResponseCustomer = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/y-kien-khach-hang/1/20/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListResponseCustomer = listResponseCustomer?.Items;
+
+            var listServices = await httpClientService.GetAsync<SearchResult<CategorySearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/category-home-page/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
+            ViewBag.ListServices = listServices?.Items;
 
             var listVaue = await httpClientService.GetAsync<List<ValueViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/core-values/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListValue = listVaue;

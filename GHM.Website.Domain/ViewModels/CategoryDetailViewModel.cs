@@ -11,6 +11,7 @@ namespace GHM.Website.Domain.ViewModels
         public int? ParentId { get; set; }
         public int Order { get; set; }
         public bool? IsHomePage { get; set; }
+        public string BannerImage { get; set; }
         public List<CategoryTranslation> CategoryTranslations { get; set; }
     }
 }

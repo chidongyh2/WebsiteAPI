@@ -6,6 +6,7 @@ namespace GHM.Website.Domain.ModelMetas
     {
         public bool IsActive { get; set; }
         public int? ParentId { get; set; }
+        public string BannerImage { get; set; }
         public string CreatorId { get; set; }
         public string CreatorFullName { get; set; }
         public string CreatorAvatar { get; set; }

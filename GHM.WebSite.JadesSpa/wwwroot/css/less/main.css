@@ -497,6 +497,8 @@
   }
 }
 .news-angency #wrap-subintroduce .wrap-content #response-customer .wrap-item .media .media-left img {
+  width: 82px;
+  height: 82px;
   border: 1px solid green;
   border-radius: 50%;
   /* padding-top: 20px; */

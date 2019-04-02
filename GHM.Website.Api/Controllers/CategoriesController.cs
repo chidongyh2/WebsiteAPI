@@ -149,6 +149,12 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
+        [Route("category-home-page/{tenantId}/{languageId?}")]
+        public async Task<IActionResult> GetListCategoryHomePage(string tenantId, string languageId)
+        {
+            var result = await _categoryService.GetCategoryHomePage(tenantId, languageId ?? CultureInfo.CurrentCulture.Name);
+            return Ok(result);
+        }
         [Route("sitemap/{tenantId}/{languageId?}")]
         public async Task<IActionResult> GetSeoLinlForSiteMap(string tenantId, string languageId)
         {

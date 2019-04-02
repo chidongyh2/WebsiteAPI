@@ -18,22 +18,24 @@
         <div class="wrap-item col-sm-12">
             @if (listResponseCustomer != null && listResponseCustomer.Any())
             {
-            <div id="wrap-response" data-bind="foreach: $root.listCommentCustomer()">
-                <div class="media">
-                    <div class="media-left">
-                        <img class="mr-3 lazy" data-bind="attr: { src: '/image?url=@(url)'+ FeatureImage + '&width=82&height=82'}">
-</div>
+                <div id="wrap-response" data-bind="foreach: $root.listCommentCustomer()">
+                    <div class="media">
+                        <div class="media-left">
+                            <img class="mr-3 lazy" data-bind="attr: { src: '/image?url=@(url)'+ FeatureImage + '&width=82&height=82'}"
+                                onerror="this.src='/images/no-avartar.jpg'" />
+                            
+                        </div>
 
-<div class="media-body">
-                        <h5 class="mt-0" data-bind="text: Title"></h5>
-                        <span data-bind="text: Description"></span>
+                        <div class="media-body">
+                            <h5 class="mt-0" data-bind="text: Title"></h5>
+                            <span data-bind="text: Description"></span>
+                        </div>
                     </div>
                 </div>
-            </div>
             }
         </div>
     </div>
 }
-    <script type="text/javascript">
+<script type="text/javascript">
         var listResponseCustomer = @(listResponseCustomer != null ? Html.Raw(JsonConvert.SerializeObject(Model)) : "[]");
-    </script>
+</script>

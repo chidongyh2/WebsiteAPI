@@ -1,4 +1,6 @@
-﻿function AboutViewModel() {
+﻿'use strict';
+
+function AboutViewModel() {
     var self = this;
     self.description = ko.observable();
     self.order = ko.observable();
@@ -51,7 +53,7 @@
             self.videoTitle(self.listVideo()[self.currentVideo()].Title);
             self.videoLinkId(self.listVideo()[self.currentVideo()].VideoLinkId);
         }
-    }
+    };
     self.nextVideo = function () {
         if (ko.utils.unwrapObservable(self.currentVideo()) == ko.utils.unwrapObservable(self.listVideo().length - 1)) {
             console.log(self.currentVideo());
@@ -65,13 +67,13 @@
             self.videoTitle(self.listVideo()[self.currentVideo()].Title);
             self.videoLinkId(self.listVideo()[self.currentVideo()].VideoLinkId);
         }
-    }
+    };
     self.setCurrentPage = function (value) {
         if (value == 0) {
             if (ko.utils.unwrapObservable(self.currentPageComment()) == 1) {
                 self.currentPageComment(self.totalPage());
             } else {
-                self.currentPageComment(self.currentPageComment()- 1);
+                self.currentPageComment(self.currentPageComment() - 1);
             }
         } else {
             if (ko.utils.unwrapObservable(self.currentPageComment()) == ko.utils.unwrapObservable(self.totalPage())) {
@@ -81,23 +83,24 @@
             }
         }
         self.pushListComment();
-    }
+    };
     self.pushListComment = function () {
+
         self.listCommentCustomer([]);
         if (ko.utils.unwrapObservable(self.currentPageComment()) == ko.utils.unwrapObservable(self.totalPage())) {
             for (i = 0; i < 3; i++) {
                 self.listCommentCustomer.push(self.listResponseCustomer()[i]);
             }
         } else {
-            for (i = ((ko.utils.unwrapObservable(self.currentPageComment) - 1) * 3); i < (((ko.utils.unwrapObservable(self.currentPageComment) - 1) * 3) + 3); i++) {
+            for (i = ko.utils.unwrapObservable(self.currentPageComment() - 1) * 3; i < ko.utils.unwrapObservable(self.currentPageComment()) * 3 + 3; i++) {
                 self.listCommentCustomer.push(self.listResponseCustomer()[i]);
             }
         }
-    }
+    };
     $(document).ready(function () {
         self.listVideo(listVideo);
         self.listResponseCustomer(listResponseCustomer);
-        self.totalPage(Math.ceil((self.listResponseCustomer().length / 3)));
+        self.totalPage(Math.ceil(self.listResponseCustomer().length / 3));
         self.pushListComment();
         self.videoLinkId(videoLinkId);
         self.videoTitle(videoTitle);
@@ -110,3 +113,4 @@
 
 var viewModel = new AboutViewModel();
 ko.applyBindings(viewModel, document.getElementsByClassName("body-content")[0]);
+

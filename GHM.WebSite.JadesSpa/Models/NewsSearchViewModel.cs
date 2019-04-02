@@ -18,5 +18,6 @@ namespace GHM.Website.JadesSpa.ViewModels
         public string SeoLink { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime? LastUpdate { get; set; }
+        public bool? IsHot { get; set; }
     }
 }

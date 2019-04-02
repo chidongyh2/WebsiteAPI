@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace GHM.Website.Domain.ViewModels
+namespace GHM.Website.JadesSpa.ViewModels
 {
-    public class CategorySearchForSelectViewModel
+    public class CategorySearchViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string BannerImage { get; set; }
         public string SeoLink { get; set; }
-
     }
 }

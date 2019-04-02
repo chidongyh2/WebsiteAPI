@@ -11,6 +11,7 @@ namespace GHM.Website.Domain.Models
         public string IdPath { get; set; }
         public int? ParentId { get; set; }
         public string CreatorAvatar { get; set; }
+        public string BannerImage { get; set; }
         public int Order { get; set; }
         public string OrderPath { get; set; }
         public bool? IsHomePage { get; set; }

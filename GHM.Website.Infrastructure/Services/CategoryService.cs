@@ -46,6 +46,7 @@ namespace GHM.Website.Infrastructure.Services
                 CreatorId = categoryMeta.CreatorId,
                 CreatorFullName = categoryMeta.CreatorFullName,
                 IsActive = categoryMeta.IsActive,
+                BannerImage = categoryMeta.BannerImage,
                 IdPath = "-1",
                 IsHomePage = categoryMeta.IsHomePage,
                 CreatorAvatar = categoryMeta.CreatorAvatar,
@@ -129,6 +130,7 @@ namespace GHM.Website.Infrastructure.Services
             info.OrderPath = categoryMeta.Order.ToString();
             info.ConcurrencyStamp = Guid.NewGuid().ToString();
             info.LastUpdate = DateTime.Now;
+            info.BannerImage = categoryMeta.BannerImage;
             info.IsHomePage = categoryMeta.IsHomePage;
             if (info.ParentId != categoryMeta.ParentId)
             {
@@ -310,6 +312,7 @@ namespace GHM.Website.Infrastructure.Services
                 ConcurrencyStamp = categoryInfo.ConcurrencyStamp,
                 IsActive = categoryInfo.IsActive,
                 Order = categoryInfo.Order,
+                BannerImage = categoryInfo.BannerImage,
                 IsHomePage = categoryInfo.IsHomePage,
                 CategoryTranslations = await _categoryTranslationRepository.GetByCategoryId(id)
             };
@@ -433,6 +436,17 @@ namespace GHM.Website.Infrastructure.Services
                     UnsignName = categoryTranslationMeta.Name.Trim().StripVietnameseChars().ToUpper(),
                     SeoLink = categoryTranslationMeta.SeoLink
                 }
+            };
+        }
+
+        public async Task<SearchResult<CategorySearchForSelectViewModel>> GetCategoryHomePage(string tenantId, string languageId)
+        {
+            var items = await _categoryRepository.SearchForHomePage(tenantId, languageId);
+
+            return new SearchResult<CategorySearchForSelectViewModel>
+            {
+                Code = 1,
+                Items = items
             };
         }
         #endregion

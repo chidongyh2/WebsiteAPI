@@ -8,6 +8,7 @@ namespace GHM.Website.JadesSpa.ViewModels
         public int CategoryId { set; get; }
         public string CategoryName { get; set; }
         public string SeoLink { get; set; }
+        public string BannerImage { get; set; }
         public List<NewsSearchViewModel> ListNews { get; set; }
     }
 }

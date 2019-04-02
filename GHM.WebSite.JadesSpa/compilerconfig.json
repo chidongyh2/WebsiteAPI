@@ -32,7 +32,7 @@
     "inputFile": "wwwroot/css/less/main.less"
   },
   {
-    "outputFile": "wwwroot/js/viewmodel/about.viewmodel.es5.js",
+    "outputFile": "wwwroot/js/viewmodel/about.viewmodel.min.js",
     "inputFile": "wwwroot/js/viewmodel/about.viewmodel.js"
   },
   {
@@ -78,5 +78,9 @@
   {
     "outputFile": "wwwroot/lib/LayerSlider/static/js/greensock.es5.js",
     "inputFile": "wwwroot/lib/LayerSlider/static/js/greensock.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/about.viewmodel.es5.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/about.viewmodel.es5.js"
   }
 ]

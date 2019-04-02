@@ -242,5 +242,23 @@ namespace GHM.Website.Infrastructure.Repository
                    categoryTranslation.SeoLink
                ).AsNoTracking().ToList();
         }
+
+        public async Task<List<CategorySearchForSelectViewModel>> SearchForHomePage(string tenantId, string languageId)
+        {
+            Expression<Func<Category, bool>> spec = x => x.TenantId == tenantId && x.IsHomePage == true;
+            Expression<Func<CategoryTranslation, bool>> specTranslate = x => x.TenantId == tenantId && x.LanguageId == languageId;
+
+            var query = Context.Set<Category>().Where(spec)
+                .Join(Context.Set<CategoryTranslation>().Where(specTranslate),
+                category => category.Id, categoryTranslaion => categoryTranslaion.CategoryId,
+                (category, CategoryTranslation) => new CategorySearchForSelectViewModel
+                {
+                    Id = category.Id,
+                    BannerImage = category.BannerImage,
+                    Name = CategoryTranslation.Name,
+                    SeoLink = CategoryTranslation.SeoLink
+                });
+            return await query.AsNoTracking().ToListAsync();
+        }
     }
 }

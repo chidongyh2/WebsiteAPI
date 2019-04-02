@@ -5,6 +5,9 @@ $(document).ready(function () {
     $("#backToTop").click(function () {
         $("html, body").animate({ scrollTop: 0 }, 500);
     });
+
+    $('.lazy').Lazy();
+
     $('.navbar-toggle').click(function () {
         isShowToggle = !isShowToggle;
         if (!isShowToggle) {

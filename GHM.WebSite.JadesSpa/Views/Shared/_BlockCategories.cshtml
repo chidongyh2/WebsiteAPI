@@ -1,0 +1,23 @@
+﻿@model List<CategorySearchViewModel>;
+@{
+    var url = ViewBag.Url;
+}
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var news in Model)
+    {
+        <div class="item">
+            <div class="wrap-item">
+                <a href="@($"/{ news.SeoLink}.html")">
+                    <img class="news-image zoom img-responsive lazy" src="@(string.IsNullOrEmpty(news.BannerImage) ? "/images/no-image.png" : $"{url}{news.BannerImage}")"
+                         onerror="this.src='/images/no-image.png'"/>
+
+                </a>
+                <span>@(string.IsNullOrEmpty(news.Name) ? "No Name" : news.Name)</span>
+            </div>
+        </div>
+
+    }
+}
+
