@@ -419,7 +419,7 @@ namespace GHM.Website.Infrastructure.Repository
                 .ToListAsync();
         }
 
-        public Task<List<NewsSearchClientViewModel>> GetNewsByCategoryId(string tenantId, string languageId, string seoLink, int page, int pageSize, out int totalRows)
+        public Task<List<NewsSearchClientViewModel>> GetNewsByCategorySeoLink(string tenantId, string languageId, string seoLink, int page, int pageSize, out int totalRows)
         {
             Expression<Func<CategoryTranslation, bool>> speccnTranslation = x => x.SeoLink == seoLink && !x.IsDelete && x.LanguageId == languageId && x.TenantId == tenantId;
             Expression<Func<News, bool>> spec = x => x.TenantId == tenantId && !x.IsDelete && x.IsActive && x.Status == ApproverStatus.Approved;
@@ -586,6 +586,84 @@ namespace GHM.Website.Infrastructure.Repository
                          };
 
             return result.OrderBy(x => x.Order).AsNoTracking().ToListAsync();
+        }
+
+        public Task<List<NewsSearchClientViewModel>> GetNewsByCategoryId(string tenantId, string languageId, string categoryId, int page, int pageSize, out int totalRows)
+        {
+            Expression<Func<CategoryTranslation, bool>> speccnTranslation = x => x.CategoryId == int.Parse(categoryId) && !x.IsDelete && x.LanguageId == languageId && x.TenantId == tenantId;
+            Expression<Func<News, bool>> spec = x => x.TenantId == tenantId && !x.IsDelete && x.IsActive && x.Status == ApproverStatus.Approved;
+            Expression<Func<NewsTranslation, bool>> specTranslation = x => x.LanguageId == languageId && !x.IsDelete && x.TenantId == tenantId;
+
+            var query = Context.Set<CategoryTranslation>().Where(speccnTranslation)
+                .Join(Context.Set<CategoriesNews>(), ct => ct.CategoryId, cn => cn.CategoryId, (ct, cn) => new { ct.CategoryId, cn.NewsId })
+                .Join(Context.Set<News>().Where(spec),
+                    ctn => ctn.NewsId,
+                    n => n.Id,
+                    (ctn, n) => new { n, ctn })
+                    .Join(Context.Set<NewsTranslation>().Where(specTranslation),
+                    ncn => ncn.n.Id,
+                    nt => nt.NewsId,
+                    (ncn, nt) => new NewsSearchClientViewModel
+                    {
+                        Id = ncn.n.Id,
+                        LikeCount = ncn.n.LikeCount,
+                        CommentCount = ncn.n.CommentCount,
+                        ViewCount = ncn.n.ViewCount,
+                        FeatureImage = ncn.n.FeatureImage,
+                        AltImage = ncn.n.AltImage,
+                        Source = ncn.n.Source,
+                        Title = nt.Title,
+                        MetaTitle = nt.MetaTitle,
+                        Description = nt.Description,
+                        SeoLink = nt.SeoLink,
+                        LastUpdate = ncn.n.LastUpdate,
+                        CreateTime = ncn.n.CreateTime
+                    }
+                ).AsNoTracking();
+            totalRows = query.Count();
+
+            return query
+                .OrderByDescending(x => x.LastUpdate)
+                .ThenByDescending(x => x.CreateTime)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+
+        public async Task<NewsDetailForClientViewModel> GetDetailForClient(string teantId, string newsId, string languageId)
+        {
+            Expression<Func<News, bool>> specn = x => x.TenantId == teantId && x.Id == newsId && !x.IsDelete && x.IsActive;
+            Expression<Func<NewsTranslation, bool>> spect = x => x.TenantId == teantId && x.NewsId == newsId && x.LanguageId == languageId;
+
+            var query = Context.Set<News>().Where(specn)
+                .Join(Context.Set<NewsTranslation>().Where(spect), n => n.Id, nt => nt.NewsId,
+                (n, nt) => new NewsDetailForClientViewModel
+                {
+                    Id = n.Id,
+                    AltImage = n.AltImage,
+                    CommentCount = n.CommentCount,
+                    CreateTime = n.CreateTime,
+                    Description = nt.Description,
+                    FeatureImage = n.FeatureImage,
+                    IsHot = n.IsHot,
+                    LastUpdate = n.LastUpdate,
+                    LikeCount = n.LikeCount,
+                    MetaTitle = nt.MetaTitle,
+                    SeoLink = nt.SeoLink,
+                    Source = n.Source,
+                    Title = nt.Title,
+                    BannerImage = n.BannerImage,
+                    Content = nt.Content,
+                    IsHomePage = n.IsHomePage,
+                    LastUpdateIsHomePage = n.LastUpdateIsHomePage,
+                    LastUpdateIsHot = n.LastUpdateIsHot,
+                    MetaDescription = nt.MetaDescription,
+                    MetaKeyword = nt.MetaKeyword,
+                    UnsignName = nt.UnsignName,
+                    ViewCount = n.ViewCount
+
+                });
+            return await query.FirstOrDefaultAsync();
         }
     }
 }

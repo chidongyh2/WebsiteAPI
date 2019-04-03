@@ -43,5 +43,6 @@ namespace GHM.Website.Domain.IRepository
         Task<List<string>> GetAllSeoLinkForSitemap(string tenantId, string languageId);
 
         Task<List<CategorySearchForSelectViewModel>> SearchForHomePage(string tenantId, string languageId);
+
     }
 }

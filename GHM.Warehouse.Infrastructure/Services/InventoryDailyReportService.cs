@@ -194,7 +194,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                 Month = (byte)entryDate.Month,
                 Year = entryDate.Year,
                 Quarter = entryDate.GetQuarter(),
-                UnitId = await _productUnitRepository.GetDefaultUnitId(productId)
+                UnitId = await _productUnitRepository.GetDefaultUnitId(productId, tenantId)
             };
 
             var result = await _inventoryDailyReportRepository.Insert(inventoryDailReportInfo);

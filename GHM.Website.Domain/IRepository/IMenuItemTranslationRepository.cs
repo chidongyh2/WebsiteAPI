@@ -24,5 +24,7 @@ namespace GHM.Website.Domain.IRepository
         Task<MenuItemTranslation> GetInfo(int menuItemId, string languageId, bool isReadonly = false);
 
         Task<List<MenuItemTranslationViewModel>> GetsByMenuItemId(int menuItemId);
+
+        Task<MenuItemViewModel> GetInfoBySeoLink(string tenantId, string seoLink, string languageId);
     }
 }

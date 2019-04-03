@@ -36,9 +36,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await Context.SaveChangesAsync();
         }
 
-        public async Task<int> Delete(string productId)
+        public async Task<int> Delete(string productId, string tenantId)
         {
-            var info = await _productTranslationRepository.GetsAsync(false, x => x.ProductId == productId);
+            var info = await _productTranslationRepository.GetsAsync(false, x => x.ProductId == productId && x.TenantId == tenantId);
             if (info == null || !info.Any())
                 return -1;
             foreach (var productTranslation in info)
@@ -48,9 +48,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await Context.SaveChangesAsync();
         }
 
-        public async Task<int> ForceDelete(string productId)
+        public async Task<int> ForceDelete(string productId, string tenantId)
         {
-            var info = await _productTranslationRepository.GetsAsync(false, x => x.ProductId == productId);
+            var info = await _productTranslationRepository.GetsAsync(false, x => x.ProductId == productId && x.TenantId == tenantId);
             if (info == null || !info.Any())
                 return -1;
 
@@ -58,13 +58,13 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await Context.SaveChangesAsync();
         }
 
-        public async Task<ProductTranslation> GetInfo(string productId, string languageId, bool isReadOnly = false)
+        public async Task<ProductTranslation> GetInfo(string productId, string languageId, string tenantId, bool isReadOnly = false)
         {
-            return await _productTranslationRepository.GetAsync(isReadOnly, x => x.ProductId == productId
+            return await _productTranslationRepository.GetAsync(isReadOnly, x => x.ProductId == productId && x.TenantId == tenantId
                                                                                           && x.LanguageId == languageId && !x.IsDelete);
         }
 
-        public async Task<List<ProductTranslation>> GetsProductId(string productId, bool isReadOnly = false)
+        public async Task<List<ProductTranslation>> GetsProductId(string productId, string tenantId, bool isReadOnly = false)
         {
             return await _productTranslationRepository.GetsAsync(true, x => x.ProductId == productId && !x.IsDelete);
         }

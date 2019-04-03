@@ -7,8 +7,8 @@
     public class ProductCategoriesAttribute
     {
         public int CategoryId { get; set; }
-
         public string AttributeId { get; set; }
+        public string TenantId { get; set; }
 
         public ProductCategoriesAttribute()
         {

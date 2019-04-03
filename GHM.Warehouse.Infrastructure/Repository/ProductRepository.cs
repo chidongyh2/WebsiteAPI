@@ -24,8 +24,8 @@ namespace GHM.Warehouse.Infrastructure.Repository
             bool? isActive, int page, int pageSize, out int totalRows)
         {
             Expression<Func<Product, bool>> spec = x => !x.IsDelete && x.TenantId == tenantId;
-            Expression<Func<ProductTranslation, bool>> specTranslation = pt => pt.LanguageId == languageId && !pt.IsDelete;
-            Expression<Func<ProductsCategory, bool>> specCategory = x => true;
+            Expression<Func<ProductTranslation, bool>> specTranslation = pt => pt.LanguageId == languageId && pt.TenantId == tenantId &&!pt.IsDelete;
+            Expression<Func<ProductsCategory, bool>> specCategory = x => x.TenantId == tenantId;
 
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -105,8 +105,8 @@ namespace GHM.Warehouse.Infrastructure.Repository
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize);
 
-            var queryProductUnit = Context.Set<ProductUnit>().Where(x => x.IsDefault && !x.ToDate.HasValue && x.IsDefault)
-                                  .Join(Context.Set<UnitTranslation>().Where(x => !x.IsDelete && x.LanguageId == languageId),
+            var queryProductUnit = Context.Set<ProductUnit>().Where(x => x.IsDefault && !x.ToDate.HasValue && x.IsDefault && x.TenantId == tenantId)
+                                  .Join(Context.Set<UnitTranslation>().Where(x => !x.IsDelete && x.LanguageId == languageId && x.TenantId == tenantId),
                                    pu => pu.UnitId, ut => ut.UnitId, (pu, ut) => new
                                    {
                                        pu.ProductId,
@@ -145,9 +145,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await Context.SaveChangesAsync();
         }
 
-        public async Task<int> Delete(string productId)
+        public async Task<int> Delete(string productId, string tenantId)
         {
-            var info = await GetInfo(productId);
+            var info = await GetInfo(tenantId, productId);
             if (info == null)
                 return -1;
 
@@ -155,9 +155,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await Context.SaveChangesAsync();
         }
 
-        public async Task<int> ForceDelete(string productId)
+        public async Task<int> ForceDelete(string productId, string tenantId)
         {
-            var info = await GetInfo(productId);
+            var info = await GetInfo(tenantId, productId);
             if (info == null)
                 return -1;
 
@@ -165,10 +165,6 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await Context.SaveChangesAsync();
         }
 
-        public async Task<Product> GetInfo(string productId, bool isReadonly = false)
-        {
-            return await _productRepository.GetAsync(isReadonly, x => x.Id == productId && !x.IsDelete);
-        }
 
         //public async Task<int> UpdateExWarehousePrice(string tenantId, string productId, decimal exWarehousePrice)
         //{

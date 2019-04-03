@@ -10,14 +10,14 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<int> Inserts(List<ProductImage> productImages);
 
-        Task<int> Delete(string productImageId);
+        Task<int> Delete(string productImageId, string tenantId);
 
-        Task<int> DeleteByProductId(string productId);
+        Task<int> DeleteByProductId(string productId, string tennantId);
 
-        Task<ProductImage> GetInfo(string productImageId, bool isReadOnly = false);
+        Task<ProductImage> GetInfo(string productImageId, string tenantId, bool isReadOnly = false);
 
-        Task<List<ProductImage>> GetsProductId(string productId, bool isReadOnly = false);
+        Task<List<ProductImage>> GetsProductId(string productId, string tenantId, bool isReadOnly = false);
 
-        Task<bool> CheckExists(string productId, string Url);
+        Task<bool> CheckExists(string productId, string Url, string tenantId);
     }
 }

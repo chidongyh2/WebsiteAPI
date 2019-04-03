@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
+using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.Models;
 using GHM.Infrastructure.Services;
@@ -46,14 +48,37 @@ namespace GHM.Website.JadesSpa.Controllers
             return View();
         }
 
-        [Route("{seoLink}/{page?}/{pageSize?}")]
+        [Route("/search/{*seoLink}")]
         public async Task<ActionResult> CategoryNews(string seoLink, int page = 1, int pageSize = 12)
         {
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
             var httpClientService = new HttpClientService();
-            var categoryInfo = await httpClientService.GetAsync<CategoryTranslationViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/category/{apiService.TenantId}/{seoLink}/{CultureInfo.CurrentCulture.Name}");
-            ViewBag.CategoryInfo = categoryInfo;
+
+           var menuInfo = await httpClientService.GetAsync<MenuItemViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menu/get-by-seoLink/{apiService.TenantId}/{seoLink}/{CultureInfo.CurrentCulture.Name}");
+
+           if(menuInfo == null)
+            {
+                return Redirect("../Home/Index");
+            }
+            else
+            {
+                if(menuInfo.SubjectType == SubjectType.NewsCategory)
+                {
+                    var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+                    ViewBag.ListNews = listNews?.Items;
+                    ViewBag.TotalRows = listNews?.TotalRows;
+                    return View("../News/CategoryNews");
+                } else if(menuInfo.SubjectType == SubjectType.News)
+                {
+                    var newsDetail = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/detail/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+                    ViewBag.NewsDetail = newsDetail;
+                    return View("../News/Detail");
+                }
+            }
+
+            //var categoryInfo = await httpClientService.GetAsync<CategoryTranslationViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/category/{apiService.TenantId}/{seoLink}/{CultureInfo.CurrentCulture.Name}");
+            //ViewBag.CategoryInfo = categoryInfo;
 
             //if (categoryInfo?.ChildCount > 0)
             //{
@@ -62,26 +87,26 @@ namespace GHM.Website.JadesSpa.Controllers
             //}
             //else
             //{
-            var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/{seoLink}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
-                ViewBag.ListNews = listNews?.Items;
-                ViewBag.TotalRows = listNews?.TotalRows;
+            //var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/{seoLink}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+            //    ViewBag.ListNews = listNews?.Items;
+            //    ViewBag.TotalRows = listNews?.TotalRows;
             //}
 
-            ViewBag.SeoLink = seoLink;
-            ViewBag.Page = page;
+            //ViewBag.SeoLink = seoLink;
+            //ViewBag.Page = page;
 
-            var breadcrumbs = new List<Breadcrumb>
-            {
-                 new Breadcrumb()
-                {
-                    Name = categoryInfo.Name,
-                    IsCurrent = true,
-                },
-            };
+            //var breadcrumbs = new List<Breadcrumb>
+            //{
+            //     new Breadcrumb()
+            //    {
+            //        Name = categoryInfo.Name,
+            //        IsCurrent = true,
+            //    },
+            //};
 
-            ViewBag.Breadcrumb = breadcrumbs;
+            //ViewBag.Breadcrumb = breadcrumbs;
 
-            return View();
+            return View("../Home/Index");
         }
 
         [Route("{seoLink}.html")]

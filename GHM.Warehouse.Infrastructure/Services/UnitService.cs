@@ -45,7 +45,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             if (unitInfo == null)
                 return new ActionResultResponse(-1, _resourceService.GetString("Unit does not exists."));
 
-            var isExistsProductUnit = await _productUnitRepository.CheckExists(id);
+            var isExistsProductUnit = await _productUnitRepository.CheckExists(id, tenantId);
             if(isExistsProductUnit)
                 return new ActionResultResponse(-1, _resourceService.GetString("Unit already use."));
 

@@ -220,13 +220,21 @@ namespace GHM.Website.Api.Controllers
         /// <returns></returns>
         [Route("getNewsByCategory/{tenantId}/{seoLink}/{page}/{pageSize}/{languageId?}"), AcceptVerbs("GET")]
         [CheckPermission]
-        public async Task<IActionResult> GetNewsByCategoryId(string tenantId, string seoLink, string languageId,
+        public async Task<IActionResult> GetNewsByCategorySeoLink(string tenantId, string seoLink, string languageId,
             int page = 1, int pageSize = 20)
         {
-            var result = await _newsService.GetNewsByCategoryId(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, page, pageSize);
+            var result = await _newsService.GetNewsByCategorySeoLink(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, page, pageSize);
             return Ok(result);
         }
 
+        [Route("getNewsByCategoryById/{tenantId}/{categoryId}/{page}/{pageSize}/{languageId?}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetNewsByCategoryId(string tenantId, string categoryId, string languageId,
+           int page = 1, int pageSize = 20)
+        {
+            var result = await _newsService.GetNewsByCategoryIdAsync(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, categoryId, page, pageSize);
+            return Ok(result);
+        }
         /// <summary>
         ///  Lấy chi tiết tin tức theo seo link
         /// </summary>
@@ -278,7 +286,13 @@ namespace GHM.Website.Api.Controllers
             var result = await _newsService.GetCategoryWidthNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, selectTop, false, true);
             return Ok(result);
         }
-
+        [Route("detail/{tenantId}/{subjectId}/{languageId}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetNewsDetail(string tenantId, string subjectId, string languageId)
+        {
+            var result = await _newsService.GetDetailForClient(tenantId, subjectId, languageId ?? CultureInfo.CurrentCulture.Name);
+            return Ok(result);
+        }
         #endregion
     }
 }

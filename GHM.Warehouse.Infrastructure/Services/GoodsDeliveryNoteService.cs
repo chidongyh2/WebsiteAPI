@@ -1306,7 +1306,7 @@ namespace GHM.Warehouse.Infrastructure.Services
         public async Task<ActionResultResponse<ProductInfoDeliveryViewModel>> GetProductInfoInDelivery(string tenantId, string languageId,
             string productId, string warehouseId)
         {
-            var info = await _productRepository.GetInfo(productId);
+            var info = await _productRepository.GetInfo(tenantId, productId);
             if (info == null)
                 return new ActionResultResponse<ProductInfoDeliveryViewModel>(-1, _resourceService.GetString("Product does not exists."));
 

@@ -15,11 +15,9 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<int> Update(Product product);
 
-        Task<int> Delete(string productId);
+        Task<int> Delete(string productId, string tenantId);
 
-        Task<int> ForceDelete(string productId);
-
-        Task<Product> GetInfo(string productId, bool isReadonly = false);
+        Task<int> ForceDelete(string productId, string tenantId);
 
         //Task<int> UpdateExWarehousePrice(string tenantId, string productId, decimal exWarehousePrice);
 

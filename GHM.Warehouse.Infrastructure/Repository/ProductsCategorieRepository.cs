@@ -29,9 +29,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await Context.SaveChangesAsync();
         }
 
-        public async Task<int> DeleteByProductId(string productId)
+        public async Task<int> DeleteByProductId(string productId, string tenantId)
         {
-            var info = await _productsCategorieRepository.GetsAsync(false, x => x.ProductId == productId);
+            var info = await _productsCategorieRepository.GetsAsync(false, x => x.ProductId == productId && x.TenantId == tenantId);
             if (info == null || !info.Any())
                 return -1;
 
@@ -74,9 +74,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return query;
         }
 
-        public async Task<List<ProductsCategory>> GetByProductId(string productId)
+        public async Task<List<ProductsCategory>> GetByProductId(string productId, string tenantId)
         {
-            return await _productsCategorieRepository.GetsAsync(false, x => x.ProductId == productId);
+            return await _productsCategorieRepository.GetsAsync(false, x => x.ProductId == productId && x.TenantId == tenantId);
         }
 
         public async Task<bool> CheckExists(string productId, int categoryId)

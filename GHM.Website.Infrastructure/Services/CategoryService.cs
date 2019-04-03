@@ -449,6 +449,11 @@ namespace GHM.Website.Infrastructure.Services
                 Items = items
             };
         }
+
+        public async Task<bool> CheckExistForClient(string tenantId, string seoLink, string languageId)
+        {
+            return await _categoryTranslationRepository.CheckExistsBySeoLink(tenantId, seoLink, languageId);
+        }
         #endregion
     }
 }

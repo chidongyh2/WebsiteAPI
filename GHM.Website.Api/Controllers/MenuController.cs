@@ -176,6 +176,13 @@ namespace GHM.Website.Api.Controllers
             var result = await _menuService.GetAllActivatedMenuItemByPosition(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, position);
             return Ok(result);
         }
+        [Route("get-by-seoLink/{tenantId}/{seoLink}/{languageId?}"), AcceptVerbs("GET")]
+        public async Task<IActionResult> GetInfoBySeoLink(string tenantId, string seoLink, string languageId)
+        {
+            var result = await _menuService.GetDetailBySeoLink(tenantId, seoLink, languageId ?? CultureInfo.CurrentCulture.Name);
+
+            return Ok(result);
+        }
         #endregion
     }
 }

@@ -32,9 +32,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await Context.SaveChangesAsync();
         }
 
-        public async Task<int> Delete(string productUnitId)
+        public async Task<int> Delete(string productUnitId, string tenantId)
         {
-            var info = await GetInfo(productUnitId);
+            var info = await GetInfo(productUnitId, tenantId);
             if (info == null)
                 return -1;
 
@@ -56,7 +56,7 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await Context.SaveChangesAsync();
         }
 
-        public async Task<int> UpdateToDateByProductUnitGroupId(string productUnitGroupId)
+        public async Task<int> UpdateToDateByProductUnitGroupId(string productUnitGroupId, string tenantId)
         {
             // TODO: Check
             //var info = await _productUnitRepository.GetsAsync(false, x => x.ProductUnitGroupId == productUnitGroupId);
@@ -70,9 +70,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return 1;
         }
 
-        public async Task<ProductUnit> GetInfo(string productUnitId, bool isReadOnly = false)
+        public async Task<ProductUnit> GetInfo(string productUnitId, string tenantId, bool isReadOnly = false)
         {
-            return await _productUnitRepository.GetAsync(isReadOnly, x => x.Id == productUnitId && !x.IsDelete
+            return await _productUnitRepository.GetAsync(isReadOnly, x => x.Id == productUnitId && x.TenantId == tenantId && !x.IsDelete
                                                                           && !x.ToDate.HasValue);
         }
 
@@ -88,14 +88,14 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await _productUnitRepository.ExistAsync(x => x.TenantId == tenantId && x.ProductId == productId && x.UnitId == unitId && !x.IsDelete);
         }
 
-        public async Task<bool> CheckExists(string unitId)
+        public async Task<bool> CheckExists(string unitId, string tenantId)
         {
-            return await _productUnitRepository.ExistAsync(x => x.UnitId == unitId);
+            return await _productUnitRepository.ExistAsync(x => x.UnitId == unitId && x.TenantId == tenantId);
         }
 
-        public async Task<List<ProductUnit>> GetsProductId(string productId, bool isReadOnly = false)
+        public async Task<List<ProductUnit>> GetsProductId(string productId, string tenantId, bool isReadOnly = false)
         {
-            return await _productUnitRepository.GetsAsync(isReadOnly, x => x.ProductId == productId && !x.IsDelete);
+            return await _productUnitRepository.GetsAsync(isReadOnly, x => x.ProductId == productId && !x.IsDelete && x.TenantId == tenantId);
         }
 
         public async Task<List<ProductUnitViewModel>> GetsByProductId(string productId)
@@ -115,10 +115,10 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await query.ToListAsync();
         }
 
-        public async Task<string> GetDefaultUnitId(string productId)
+        public async Task<string> GetDefaultUnitId(string productId, string tenantId)
         {
             return await _productUnitRepository.GetAsAsync(x => x.UnitId,
-                x => x.ProductId == productId && x.IsDefault && !x.ToDate.HasValue && !x.IsDelete);
+                x => x.ProductId == productId && x.TenantId == tenantId && x.IsDefault && !x.ToDate.HasValue && !x.IsDelete);
         }
 
         public async Task<ProductUnitViewModel> GetDefaultUnit(string tenantId, string productId)
@@ -185,15 +185,15 @@ namespace GHM.Warehouse.Infrastructure.Repository
                           }).ToListAsync();
         }
 
-        public async Task<bool> CheckDefaultUnitExists(string productId)
+        public async Task<bool> CheckDefaultUnitExists(string productId, string tenantId)
         {
             return await _productUnitRepository.ExistAsync(x =>
-                x.ProductId == productId && !x.IsDelete && !x.ToDate.HasValue);
+                x.ProductId == productId && x.TenantId == tenantId && !x.IsDelete && !x.ToDate.HasValue);
         }
 
-        public async Task<int> ForceDeleteByProductId(string productId)
+        public async Task<int> ForceDeleteByProductId(string productId, string tenantId)
         {
-            var productUnits = await _productUnitRepository.GetsAsync(false, x => x.ProductId == productId);
+            var productUnits = await _productUnitRepository.GetsAsync(false, x => x.ProductId == productId && x.TenantId == tenantId);
             if (productUnits == null || !productUnits.Any())
                 return -1;
 
@@ -211,5 +211,6 @@ namespace GHM.Warehouse.Infrastructure.Repository
         {
             return await Context.SaveChangesAsync();
         }
+
     }
 }

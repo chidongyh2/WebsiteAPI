@@ -4,5 +4,6 @@
     {
         public string ProductId { get; set; }
         public int CategoryId { get; set; }
+        public string TenantId { get; set; }
     }
 }

@@ -29,5 +29,7 @@ namespace GHM.Website.Domain.IRepository
         Task<CategoryTranslation> GetActiveInfo(string tenantId, string languageId, int categoryId);
 
         Task<CategoryTranslation> GetActiveBySeoLink(string tenantId, string languageId, string seoLink);
+
+        Task<bool> CheckExistsBySeoLink(string tenantId, string seoLink, string languageId);
     }
 }

@@ -256,7 +256,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                 return new ActionResultResponse(-3,
                     _warehouseResourceService.GetString("Product attribute used by product attribute value. You can not delete product attribute."));
 
-            var isProductValueExists = await _productAttributeRepository.CheckExistProductAttributeId(productAttributeId);
+            var isProductValueExists = await _productAttributeRepository.CheckExistProductAttributeId(productAttributeId, tenantId);
             if (isProductValueExists)
                 return new ActionResultResponse(-2, _warehouseResourceService.GetString("This product attribute has been used by product. You can not delete this product attribute."));
 

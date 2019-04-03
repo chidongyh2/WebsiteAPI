@@ -5,7 +5,8 @@ using GHM.Website.Domain.IRepository;
 using GHM.Website.Domain.Models;
 using GHM.Website.Domain.ViewModels;
 using GHM.Infrastructure.SqlServer;
-
+using System.Linq.Expressions;
+using System;
 
 namespace GHM.Website.Infrastructure.Repository
 {
@@ -79,6 +80,31 @@ namespace GHM.Website.Infrastructure.Repository
                 NamePath = x.NamePath,
                 Description = x.Description
             }, x => x.MenuItemId == menuItemId);
+        }
+
+        public async Task<MenuItemViewModel> GetInfoBySeoLink(string tenantId, string seoLink, string languageId)
+        {
+            Expression<Func<MenuItemTranslation, bool>> specTranslate = x => x.TenantId == tenantId && x.NamePath == seoLink && x.LanguageId == languageId;
+            Expression<Func<MenuItem, bool>> specMenu = x => x.TenantId == tenantId && x.IsActive;
+
+            var query = Context.Set<MenuItemTranslation>().Where(specTranslate)
+                .Join(Context.Set<MenuItem>().Where(specMenu), mnt => mnt.MenuItemId,
+                mn => mn.Id, (mnt, mn) => new MenuItemViewModel
+                {
+                    Id = mn.Id,
+                    ChildCount = mn.ChildCount,
+                    SubjectId = mn.SubjectId,
+                    SubjectType = mn.SubjectType,
+                    ConcurrencyStamp = mn.ConcurrencyStamp,
+                    Icon = mn.Icon,
+                    Image = mn.Image,
+                    IsActive = mn.IsActive,
+                    Level = mn.Level,
+                    Order = mn.Order,
+                    ParentId = mn.ParentId,
+                    Url = mn.Url
+                });
+            return query.SingleOrDefault();
         }
     }
 }

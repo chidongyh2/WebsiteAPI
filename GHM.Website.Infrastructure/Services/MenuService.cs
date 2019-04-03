@@ -852,6 +852,11 @@ namespace GHM.Website.Infrastructure.Services
         {
             await _menuItemTranslationRepository.ForceDelete(menuItemId);
         }
+
+        public async Task<MenuItemViewModel> GetDetailBySeoLink(string tenantId, string seoLink, string languageId)
+        {
+           return  await _menuItemTranslationRepository.GetInfoBySeoLink(tenantId, seoLink, languageId);
+        }
         #endregion
 
     }

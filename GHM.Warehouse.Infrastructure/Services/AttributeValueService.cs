@@ -252,7 +252,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             if (info.AttributeId != productAttributeId)
                 return new ActionResultResponse(-4, _sharedResourceService.GetString(ErrorMessage.NotHavePermission));
 
-            var isProductValueExists = await _productAttributeRepository.CheckExistProductAttributeValueId(productAttributeId);
+            var isProductValueExists = await _productAttributeRepository.CheckExistProductAttributeValueId(productAttributeId, tenantId);
             if (isProductValueExists)
                 return new ActionResultResponse(-2, _warehouseResourceService.GetString
                     ("This product attribute value has been used by product.You can not delete this product attribute value."));

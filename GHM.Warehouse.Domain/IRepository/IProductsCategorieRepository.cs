@@ -11,7 +11,7 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<int> Inserts(List<ProductsCategory> productsCategories);
 
-        Task<int> DeleteByProductId(string productId);
+        Task<int> DeleteByProductId(string productId, string tenantId);
 
         Task<int> Delete(string productId, int categoryId);
 
@@ -21,7 +21,7 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<bool> CheckExists(string productId, int categoryId);
 
-        Task<List<ProductsCategory>> GetByProductId(string productId);
+        Task<List<ProductsCategory>> GetByProductId(string productId, string tenantId);
 
         Task<bool> CheckCategoryHasProduct(int categoryId);
     }

@@ -753,9 +753,9 @@ namespace GHM.Website.Infrastructure.Services
             return await _newsRepository.GetListTopNewsHot(tenantId, languageId, selectTop);
         }
 
-        public async Task<SearchResult<NewsSearchClientViewModel>> GetNewsByCategoryId(string tenantId, string languageId, string seoLink, int page, int pageSize)
+        public async Task<SearchResult<NewsSearchClientViewModel>> GetNewsByCategorySeoLink(string tenantId, string languageId, string seoLink, int page, int pageSize)
         {
-            var items = await _newsRepository.GetNewsByCategoryId(tenantId, languageId, seoLink, page, pageSize, out var totalRows);
+            var items = await _newsRepository.GetNewsByCategorySeoLink(tenantId, languageId, seoLink, page, pageSize, out var totalRows);
             return new SearchResult<NewsSearchClientViewModel>
             {
                 TotalRows = totalRows,
@@ -869,6 +869,21 @@ namespace GHM.Website.Infrastructure.Services
                 IsSystem = false
             };
             new NotificationHelper().Send(notification);
+        }
+
+        public async Task<SearchResult<NewsSearchClientViewModel>> GetNewsByCategoryIdAsync(string tenantId, string languageId, string categoryId, int page, int pageSize)
+        {
+            var items = await _newsRepository.GetNewsByCategoryId(tenantId, languageId, categoryId, page, pageSize, out int totalRows);
+            return new SearchResult<NewsSearchClientViewModel>
+            {
+                TotalRows = totalRows,
+                Items = items
+            };
+        }
+
+        public async Task<NewsDetailForClientViewModel> GetDetailForClient(string teantId, string newsId, string languageId)
+        {
+            return await _newsRepository.GetDetailForClient(teantId, newsId, languageId);
         }
     }
 }

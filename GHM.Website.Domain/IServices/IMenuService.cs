@@ -43,5 +43,7 @@ namespace GHM.Website.Domain.IServices
         Task<List<MenuItemSearchViewModel>> GetAllActivatedMenuItem(string tenantId, string languageId, string menuId);
 
         Task<List<MenuItemSearchViewModel>> GetAllActivatedMenuItemByPosition(string tenantId, string languageId, Position position);
+
+        Task<MenuItemViewModel> GetDetailBySeoLink(string tenantId, string seoLink, string v);
     }
 }

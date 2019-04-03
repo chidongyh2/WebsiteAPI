@@ -13,10 +13,10 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<int> Inserts(List<ProductAttributeValue> productAttributeValues);
 
-        Task<bool> CheckExists(string productAttributeId, string attributeValueId);
+        Task<bool> CheckExists(string productAttributeId, string attributeValueId, string tenantId);
 
-        Task<List<ProductAttributeValueViewModel>> GetsByProductAttributeId(string productAttributeId);
+        Task<List<ProductAttributeValueViewModel>> GetsByProductAttributeId(string productAttributeId, string tenantId);
 
-        Task<int> DeleteByProductAttributeId(string productAttributeId);
+        Task<int> DeleteByProductAttributeId(string productAttributeId, string tenantId);
     }
 }

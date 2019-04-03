@@ -50,7 +50,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             if (productUnit.IsDefault)
             {
                 // Kiểm tra đã tồn tại đơn vị mặc định chưa.
-                var isDefaultUnitExists = await _productUnitRepository.CheckDefaultUnitExists(productUnit.ProductId);
+                var isDefaultUnitExists = await _productUnitRepository.CheckDefaultUnitExists(productUnit.ProductId, productUnit.TenantId);
                 if (isDefaultUnitExists)
                     return new ActionResultResponse(-3, _sharedResourceService.GetString(ErrorMessage.AlreadyExists, _resourceService.GetString("default unit")));
             }

@@ -22,12 +22,7 @@ namespace GHM.Core.Infrastructure.Repository
         {
             _approverConfigRepository = Context.GetRepository<ApproverConfig>();
         }
-
-        public async Task<bool> CheckExistsUserId(string userId, ApproverConfigType type)
-        {
-            return await _approverConfigRepository.ExistAsync(x => x.UserId == userId && x.Type == type);
-        }
-
+        
         public async Task<bool> CheckExistsUserId(string tenantId, string userId, ApproverConfigType type)
         {
             return await _approverConfigRepository.ExistAsync(x => x.TenantId == tenantId && x.UserId == userId && x.Type == type);

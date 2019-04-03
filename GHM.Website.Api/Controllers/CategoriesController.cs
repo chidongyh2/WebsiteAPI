@@ -161,6 +161,12 @@ namespace GHM.Website.Api.Controllers
             var result = await _categoryService.GetAllSeoLinkForSitemap(tenantId, languageId ?? CultureInfo.CurrentCulture.Name);
             return Ok(result);
         }
+        [Route("category-exist/{tenantId}/{seoLink}/{languageId?}")]
+        public async Task<IActionResult> CategoryCheckExist(string tenantId, string seoLink, string languageId)
+        {
+            var result = await _categoryService.CheckExistForClient(tenantId, seoLink, languageId);
+            return Ok(result);
+        }   
         #endregion
 
     }

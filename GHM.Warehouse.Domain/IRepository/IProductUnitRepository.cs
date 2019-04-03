@@ -11,23 +11,23 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<int> Inserts(List<ProductUnit> productUnits);
 
-        Task<int> Delete(string productUnitId);
+        Task<int> Delete(string productUnitId, string tenantId);
 
         Task<int> Delete(string tenantId, string productId, string unitId);
 
-        Task<int> UpdateToDateByProductUnitGroupId(string productUnitGroupId);
+        Task<int> UpdateToDateByProductUnitGroupId(string productUnitGroupId, string tenantId);
 
-        Task<ProductUnit> GetInfo(string productUnitId, bool isReadOnly = false);
+        Task<ProductUnit> GetInfo(string productUnitId, string tenantId, bool isReadOnly = false);
 
         Task<ProductUnit> GetInfo(string tenantId, string productId, string unitId);
 
         Task<bool> CheckExists(string tenantId, string productId, string unitId);
 
-        Task<bool> CheckExists(string unitId);
+        Task<bool> CheckExists(string unitId, string tenantId);
 
-        Task<List<ProductUnit>> GetsProductId(string productId, bool isReadOnly = false);
+        Task<List<ProductUnit>> GetsProductId(string productId, string tenantId, bool isReadOnly = false);
 
-        Task<string> GetDefaultUnitId(string productId);
+        Task<string> GetDefaultUnitId(string productId, string tenantId);
 
         Task<ProductUnitViewModel> GetDefaultUnit(string tenantId, string productId);
 
@@ -38,9 +38,9 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<List<ProductUnit>> GetsAll(string tenantId, string productId, bool isReadOnly = false);
 
-        Task<bool> CheckDefaultUnitExists(string productId);
+        Task<bool> CheckDefaultUnitExists(string productId, string tenantId);
 
-        Task<int> ForceDeleteByProductId(string productId);
+        Task<int> ForceDeleteByProductId(string productId, string tenantId);
 
         Task<int> Update(ProductUnit productUnit);
     }

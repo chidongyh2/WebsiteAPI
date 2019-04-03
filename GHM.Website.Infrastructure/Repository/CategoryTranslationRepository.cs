@@ -99,5 +99,10 @@ namespace GHM.Website.Infrastructure.Repository
                 x.TenantId == tenantId && x.LanguageId == languageId
                 && x.SeoLink == seoLink && !x.IsDelete);
         }
+
+        public async Task<bool> CheckExistsBySeoLink(string tenantId, string seoLink, string languageId)
+        {
+            return await _categoryTranslationRepository.ExistAsync(x => x.TenantId == tenantId && x.SeoLink == seoLink && x.LanguageId == languageId);
+        }
     }
 }

@@ -95,7 +95,7 @@ namespace GHM.Warehouse.Infrastructure
             // Product
             builder.Entity<Product>()
                 .ToTable("Products")
-                .HasKey(x => x.Id);
+                .HasKey(x => new { x.Id, x.TenantId });
 
             // ProductTranslation
             builder.Entity<ProductTranslation>()
@@ -105,7 +105,7 @@ namespace GHM.Warehouse.Infrastructure
             builder.Entity<ProductTranslation>()
                 .HasOne(x => x.Product)
                 .WithMany(xt => xt.Translations)
-                .HasForeignKey(xt => xt.ProductId);
+                .HasForeignKey(xt =>new { xt.ProductId, xt.TenantId });
 
             // ProductsCategory
             builder.Entity<ProductsCategory>()

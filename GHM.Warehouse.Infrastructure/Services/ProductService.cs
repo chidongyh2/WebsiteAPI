@@ -238,7 +238,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                 foreach (var productImage in productMeta.Images)
                 {
                     //  Check name exists.
-                    var isExists = await _productImageRepository.CheckExists(product.Id, productImage.Url);
+                    var isExists = await _productImageRepository.CheckExists(product.Id, productImage.Url, tenantId);
                     if (isExists)
                     {
                         await RollbackInsert();
@@ -252,7 +252,8 @@ namespace GHM.Warehouse.Infrastructure.Services
                     {
                         ProductId = product.Id,
                         Url = productImage.Url.Trim(),
-                        Description = productImage.Description?.Trim()
+                        Description = productImage.Description?.Trim(),
+                        TenantId = tenantId
                     };
 
                     productImages.Add(productImageInsert);
@@ -287,7 +288,8 @@ namespace GHM.Warehouse.Infrastructure.Services
                     var productCategorieInsert = new ProductsCategory
                     {
                         ProductId = product.Id,
-                        CategoryId = categoryId
+                        CategoryId = categoryId,
+                        TenantId = tenantId
                     };
 
                     productCategories.Add(productCategorieInsert);
@@ -395,27 +397,27 @@ namespace GHM.Warehouse.Infrastructure.Services
 
             async Task RollbackInsert()
             {
-                await _productRepository.ForceDelete(product.Id);
+                await _productRepository.ForceDelete(product.Id, tenantId);
             }
 
             async Task RollbackInsertTranslation()
             {
-                await _productTranslationRepository.ForceDelete(product.Id);
+                await _productTranslationRepository.ForceDelete(product.Id, tenantId);
             }
 
             async Task RollbackInsertImage()
             {
-                await _productImageRepository.DeleteByProductId(product.Id);
+                await _productImageRepository.DeleteByProductId(product.Id, tenantId);
             }
 
             async Task RollbackInsertCategorie()
             {
-                await _productsCategorieRepository.DeleteByProductId(product.Id);
+                await _productsCategorieRepository.DeleteByProductId(product.Id, tenantId);
             }
 
             async Task RollbackInsertProductUnit()
             {
-                await _productUnitRepository.ForceDeleteByProductId(product.Id);
+                await _productUnitRepository.ForceDeleteByProductId(product.Id, tenantId);
             }
 
             async Task RollbackInsertProductConversionUnit()
@@ -425,15 +427,15 @@ namespace GHM.Warehouse.Infrastructure.Services
 
             async Task RollbackInsertProductValues()
             {
-                await _productAttributeRepository.ForceDelete(product.Id);
+                await _productAttributeRepository.ForceDelete(product.Id, tenantId);
             }
-            #endregion Local functions
+                #endregion Local functions
         }
 
         public async Task<ActionResultResponse<string>> Update(string tenantId, string lastUpdateUserId,
             string lastUpdateFullName, string lastUpdateAvatar, string productId, ProductMeta productMeta)
         {
-            var info = await _productRepository.GetInfo(productId);
+            var info = await _productRepository.GetInfo(tenantId, productId);
             if (info == null)
                 return new ActionResultResponse<string>(-1, _resourceService.GetString("Product does not exists."));
 
@@ -464,7 +466,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             }
             else
             {
-                await _productImageRepository.DeleteByProductId(productId);
+                await _productImageRepository.DeleteByProductId(productId, tenantId);
             }
             #endregion
 
@@ -516,7 +518,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                         return new ActionResultResponse<string>(-4, _resourceService.GetString("Product name: \"{0}\" already exists."));
 
                     var productTranslationInfo =
-                        await _productTranslationRepository.GetInfo(info.Id, productTranslation.LanguageId);
+                        await _productTranslationRepository.GetInfo(info.Id, productTranslation.LanguageId, tenantId);
                     if (productTranslationInfo != null)
                     {
                         productTranslationInfo.Name = productTranslation.Name.Trim();
@@ -546,13 +548,13 @@ namespace GHM.Warehouse.Infrastructure.Services
 
             async Task<ActionResultResponse<string>> UpdateProductImages()
             {
-                await _productImageRepository.DeleteByProductId(productId);
+                await _productImageRepository.DeleteByProductId(productId, tenantId);
 
                 var productImages = new List<ProductImage>();
                 foreach (var productImage in productMeta.Images)
                 {
                     //  Check name exists.
-                    var isExists = await _productImageRepository.CheckExists(productId, productImage.Url);
+                    var isExists = await _productImageRepository.CheckExists(productId, productImage.Url, tenantId);
                     if (isExists)
                     {
                         return new ActionResultResponse<string>(-5,
@@ -564,7 +566,8 @@ namespace GHM.Warehouse.Infrastructure.Services
                     {
                         ProductId = productId,
                         Url = productImage.Url.Trim(),
-                        Description = productImage.Description?.Trim()
+                        Description = productImage.Description?.Trim(),
+                        TenantId = tenantId
                     };
 
                     productImages.Add(productImageInsert);
@@ -582,7 +585,7 @@ namespace GHM.Warehouse.Infrastructure.Services
 
             async Task<ActionResultResponse<string>> UpdateProductsCategories()
             {
-                await _productsCategorieRepository.DeleteByProductId(productId);
+                await _productsCategorieRepository.DeleteByProductId(productId, tenantId);
 
                 var productCategories = new List<ProductsCategory>();
                 foreach (var productCategorie in productMeta.Categories)
@@ -590,7 +593,8 @@ namespace GHM.Warehouse.Infrastructure.Services
                     var productCategorieInsert = new ProductsCategory
                     {
                         ProductId = productId,
-                        CategoryId = productCategorie
+                        CategoryId = productCategorie,
+                        TenantId = tenantId
                     };
                     productCategories.Add(productCategorieInsert);
                 }
@@ -608,7 +612,7 @@ namespace GHM.Warehouse.Infrastructure.Services
         private async Task<ActionResultResponse<string>> UpdateProductAttribute(string tenantId, string productId, string lastUpdateUserId, string lastUpdateFullName,
             List<ProductAttributeMeta> productAttributeMetas)
         {
-            var productAttributes = await _productAttributeRepository.GetsByProductId(productId);
+            var productAttributes = await _productAttributeRepository.GetsByProductId(productId, tenantId);
             var productAttributeIds = productAttributes.Select(x => x.AttributeId).ToList();
             var productAttributeMetaIds = productAttributeMetas.Select(x => x.AttributeId).ToList();
             //foreach (var productAttributeMeta in productAttributeMetas)
@@ -677,7 +681,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                         }
 
                         // Xóa giá trị cũ.
-                        var result = await _productAttributeValueRepository.DeleteByProductAttributeId(productAttribute.Id);
+                        var result = await _productAttributeValueRepository.DeleteByProductAttributeId(productAttribute.Id, tenantId);
                         if (result <= 0)
                             return new ActionResultResponse<string>(-4,
                                 _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
@@ -753,7 +757,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             #region Thay đổi đơn vị mặc định.
             if (defaultUnit.UnitId != defaultUnitMeta.UnitId)
             {
-                var productUnit = await _productUnitRepository.GetInfo(defaultUnit.Id);
+                var productUnit = await _productUnitRepository.GetInfo(defaultUnit.Id, tenantId);
                 productUnit.ToDate = DateTime.Now;
                 var resultUpdateDefaultUnit = await _productUnitRepository.Update(productUnit);
                 if (resultUpdateDefaultUnit <= 0)
@@ -949,7 +953,7 @@ namespace GHM.Warehouse.Infrastructure.Services
 
         public async Task<ActionResultResponse> Delete(string tenantId, string productId)
         {
-            var info = await _productRepository.GetInfo(productId);
+            var info = await _productRepository.GetInfo(tenantId, productId);
             if (info == null)
                 return new ActionResultResponse(-1, _resourceService.GetString("Product does not exists."));
 
@@ -960,22 +964,22 @@ namespace GHM.Warehouse.Infrastructure.Services
             if (isGoodsExists)
                 return new ActionResultResponse(-2, _resourceService.GetString("This product has been used in the goods receipt note."));
 
-            var result = await _productRepository.Delete(productId);
-            await _productTranslationRepository.Delete(productId);
+            var result = await _productRepository.Delete(productId, tenantId);
+            await _productTranslationRepository.Delete(productId, tenantId);
             return new ActionResultResponse(result, _resourceService.GetString("Delete product successful."));
         }
 
         public async Task<ActionResultResponse<ProductDetailViewModel>> GetDetail(string tenantId, string productId)
         {
-            var info = await _productRepository.GetInfo(productId);
+            var info = await _productRepository.GetInfo(tenantId, productId);
             if (info == null)
                 return new ActionResultResponse<ProductDetailViewModel>(-1, _resourceService.GetString("Product does not exists."));
 
             if (info.TenantId != tenantId)
                 return new ActionResultResponse<ProductDetailViewModel>(-2, _sharedResourceService.GetString(ErrorMessage.NotHavePermission));
 
-            var productTranslations = await _productTranslationRepository.GetsProductId(productId);
-            var productImages = await _productImageRepository.GetsProductId(productId);
+            var productTranslations = await _productTranslationRepository.GetsProductId(productId, tenantId);
+            var productImages = await _productImageRepository.GetsProductId(productId, tenantId);
             var productCategories = await _productsCategorieRepository.GetProductCategoryNameByProductId(tenantId, productId);
             var productAttributes = await _productAttributeRepository.GetProductValueByProductId(tenantId, productId);
             //var productUnits = await _productUnitRepository.GetsByProductId(productId);
@@ -1013,12 +1017,14 @@ namespace GHM.Warehouse.Infrastructure.Services
                     Content = x.Content,
                     MetaDescription = x.MetaDescription,
                     MetaKeyword = x.MetaKeyword,
-                    SeoLink = x.SeoLink
+                    SeoLink = x.SeoLink,
+                    TenantId = tenantId
                 }).ToList(),
                 Images = productImages?.Select(x => new ProductImageViewModel
                 {
                     Url = x.Url,
-                    Description = x.Description
+                    Description = x.Description,
+                    TenantId = tenantId
                 }).ToList(),
                 Categories = productCategories,
                 Attributes = productAttributes,
@@ -1066,7 +1072,7 @@ namespace GHM.Warehouse.Infrastructure.Services
         public async Task<ActionResultResponse> UpdateIsActive(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string lastUpdateAvatar,
             string productId, bool isActive)
         {
-            var info = await _productRepository.GetInfo(productId);
+            var info = await _productRepository.GetInfo(tenantId, productId);
             if (info == null)
                 return new ActionResultResponse(-1, _resourceService.GetString("Product does not exists."));
 
@@ -1083,7 +1089,7 @@ namespace GHM.Warehouse.Infrastructure.Services
         public async Task<ActionResultResponse> UpdateIsManagementByLot(string tenantId, string lastUpdateUserId, string lastUpdateFullName,
             string lastUpdateAvatar, string productId, bool isManagementByLot)
         {
-            var info = await _productRepository.GetInfo(productId);
+            var info = await _productRepository.GetInfo(tenantId, productId);
             if (info == null)
                 return new ActionResultResponse(-1, _resourceService.GetString("Product does not exists."));
 
@@ -1104,7 +1110,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             if (!isProductExists)
                 return new ActionResultResponse<string>(-1, _resourceService.GetString("Product does not exists."));
 
-            var info = await _productAttributeRepository.GetInfo(productValueId);
+            var info = await _productAttributeRepository.GetInfo(productValueId, tenantId);
             if (info == null)
                 return new ActionResultResponse<string>(-3, _resourceService.GetString("Product value does not exists."));
 
@@ -1257,7 +1263,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             if (!isProductExists)
                 return new ActionResultResponse(-1, _resourceService.GetString("Product does not exists."));
 
-            var info = await _productUnitRepository.GetInfo(productUnitId);
+            var info = await _productUnitRepository.GetInfo(productUnitId, tenantId);
             if (info == null)
                 return new ActionResultResponse(-2, _resourceService.GetString("Product unit does not exists."));
 
@@ -1267,13 +1273,13 @@ namespace GHM.Warehouse.Infrastructure.Services
             // bo sung dieu kien check xoa
             //check dieu kien conver
 
-            var result = await _productUnitRepository.Delete(productUnitId);
+            var result = await _productUnitRepository.Delete(productUnitId, tenantId);
             return new ActionResultResponse(result, _resourceService.GetString("Delete product unit successful."));
         }
 
         public async Task<SearchResult<ProductCategoriesAttributeViewModel>> GetProductCategoryAttributeByProductId(string tenantId, string languageId, string productId)
         {
-            var listProductCategory = await _productsCategorieRepository.GetByProductId(productId);
+            var listProductCategory = await _productsCategorieRepository.GetByProductId(productId, tenantId);
             if (listProductCategory != null && listProductCategory.Any())
             {
                 var categoriyIds = listProductCategory.Select(x => x.CategoryId).ToList();
@@ -1375,7 +1381,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                     var resultInsertValues = await _productAttributeValueRepository.Inserts(listProductAttributeValues);
                     if (resultInsertValues <= 0)
                     {
-                        await _productAttributeValueRepository.DeleteByProductAttributeId(productAttribute.Id);
+                        await _productAttributeValueRepository.DeleteByProductAttributeId(productAttribute.Id, tenantId);
                         return new ActionResultResponse<string>(result, _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
                     }
                 }

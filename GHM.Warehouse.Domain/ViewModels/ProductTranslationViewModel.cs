@@ -11,5 +11,6 @@
         public string MetaKeyword { get; set; }
         public string SeoLink { get; set; }
         public string Content { get; set; }
+        public string TenantId { get; set; }
     }
 }

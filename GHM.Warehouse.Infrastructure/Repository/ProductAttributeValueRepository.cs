@@ -32,13 +32,13 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await Context.SaveChangesAsync();
         }
 
-        public async Task<bool> CheckExists(string productAttributeId, string attributeValueId)
+        public async Task<bool> CheckExists(string productAttributeId, string attributeValueId, string tenantId)
         {
             return await _productAttributeValueRepository.ExistAsync(x =>
                 x.ProductAttributeId == productAttributeId && x.AttributeValueId == attributeValueId);
         }
 
-        public async Task<List<ProductAttributeValueViewModel>> GetsByProductAttributeId(string productAttributeId)
+        public async Task<List<ProductAttributeValueViewModel>> GetsByProductAttributeId(string productAttributeId, string tenantId)
         {
             var query = from pav in Context.Set<ProductAttributeValue>()
                         join avt in Context.Set<AttributeValueTranslation>() on pav.AttributeValueId equals avt.AttributeValueId
@@ -51,7 +51,7 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await query.ToListAsync();
         }
 
-        public async Task<int> DeleteByProductAttributeId(string productAttributeId)
+        public async Task<int> DeleteByProductAttributeId(string productAttributeId, string tenantId)
         {
             var productAttributeValues =
                 await _productAttributeValueRepository.GetsAsync(false,

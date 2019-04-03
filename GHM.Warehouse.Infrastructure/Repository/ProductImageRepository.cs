@@ -29,9 +29,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await Context.SaveChangesAsync();
         }
 
-        public async Task<int> Delete(string productImageId)
+        public async Task<int> Delete(string productImageId, string tenantId)
         {
-            var info = await GetInfo(productImageId);
+            var info = await GetInfo(productImageId, tenantId);
             if (info == null)
                 return -1;
 
@@ -49,7 +49,7 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await Context.SaveChangesAsync();
         }
 
-        public async Task<ProductImage> GetInfo(string productImageId, bool isReadOnly = false)
+        public async Task<ProductImage> GetInfo(string productImageId, string tenantId, bool isReadOnly = false)
         {
             return await _productImageRepository.GetAsync(isReadOnly, x => x.Id == productImageId);
         }
@@ -64,6 +64,26 @@ namespace GHM.Warehouse.Infrastructure.Repository
             Url = Url.Trim();
             return await _productImageRepository.ExistAsync(x =>
                 x.ProductId == productId && x.Url == Url);
+        }
+
+        public async  Task<int> DeleteByProductId(string productId, string tennantId)
+        {
+            var listProductImage = await GetsProductId(productId, tennantId);
+            foreach(var item in listProductImage)
+            {
+                item.IsDelete = true;
+            }
+            return await Context.SaveChangesAsync();
+        }
+       
+        public  async Task<List<ProductImage>> GetsProductId(string productId, string tenantId, bool isReadOnly = false)
+        {
+            return await _productImageRepository.GetsAsync(isReadOnly, x => x.TenantId == tenantId && !x.IsDelete && x.ProductId == productId);
+        }
+
+        public Task<bool> CheckExists(string productId, string url, string tenantId)
+        {
+            return _productImageRepository.ExistAsync(x => x.TenantId == tenantId && x.ProductId == productId && x.Url == url & !x.IsDelete);
         }
     }
 }

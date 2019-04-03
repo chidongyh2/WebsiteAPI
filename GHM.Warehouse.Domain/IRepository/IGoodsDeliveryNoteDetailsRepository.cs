@@ -26,7 +26,7 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<GoodsDeliveryNoteDetail> GetInfo(string goodsDeliveryNoteId, string id, bool isReadOnly = false);
 
-        Task<GoodsDeliveryNoteDetail> GetInfoByTenant(string teantId, string id, bool isReadOnly = false);
+        Task<GoodsDeliveryNoteDetail> GetInfoByTenant(string tenantId, string id, bool isReadOnly = false);
 
         Task<bool> CheckExistsByProductId(string goodsDeliveryNoteId, string productId);
 
