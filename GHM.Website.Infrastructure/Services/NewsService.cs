@@ -871,19 +871,26 @@ namespace GHM.Website.Infrastructure.Services
             new NotificationHelper().Send(notification);
         }
 
-        public async Task<SearchResult<NewsSearchClientViewModel>> GetNewsByCategoryIdAsync(string tenantId, string languageId, string categoryId, int page, int pageSize)
+        public async Task<ActionResultResponse<CategoryWidthNewsViewModel>> GetNewsByCategoryIdAsync(string tenantId, string languageId, string categoryId, int page, int pageSize)
         {
-            var items = await _newsRepository.GetNewsByCategoryId(tenantId, languageId, categoryId, page, pageSize, out int totalRows);
-            return new SearchResult<NewsSearchClientViewModel>
+            var categoryWithNews = await _categoryRepository.GetCategoryForWithNews(tenantId, categoryId, languageId);
+            categoryWithNews.ListNews = await _newsRepository.GetNewsByCategoryId(tenantId, languageId, categoryId, page, pageSize,out int totalRows);
+            categoryWithNews.TotalNews = totalRows;
+            return new ActionResultResponse<CategoryWidthNewsViewModel>
             {
-                TotalRows = totalRows,
-                Items = items
+                Code = 1,
+                Data = categoryWithNews
             };
         }
 
         public async Task<NewsDetailForClientViewModel> GetDetailForClient(string teantId, string newsId, string languageId)
         {
             return await _newsRepository.GetDetailForClient(teantId, newsId, languageId);
+        }
+
+        public async Task<bool> CheckNewsExistBySeoLink(string tenantId, string seoLink, string languageId)
+        {
+            return await _newsTranslationRepository.CheckExistBySeoLink(tenantId, seoLink, languageId);
         }
     }
 }

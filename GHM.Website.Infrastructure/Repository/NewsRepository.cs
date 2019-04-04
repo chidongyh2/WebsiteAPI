@@ -590,44 +590,56 @@ namespace GHM.Website.Infrastructure.Repository
 
         public Task<List<NewsSearchClientViewModel>> GetNewsByCategoryId(string tenantId, string languageId, string categoryId, int page, int pageSize, out int totalRows)
         {
-            Expression<Func<CategoryTranslation, bool>> speccnTranslation = x => x.CategoryId == int.Parse(categoryId) && !x.IsDelete && x.LanguageId == languageId && x.TenantId == tenantId;
+            Expression<Func<Category, bool>> specCategory = x => x.TenantId == tenantId && !x.IsDelete && x.IsActive && x.Id == int.Parse(categoryId);
             Expression<Func<News, bool>> spec = x => x.TenantId == tenantId && !x.IsDelete && x.IsActive && x.Status == ApproverStatus.Approved;
             Expression<Func<NewsTranslation, bool>> specTranslation = x => x.LanguageId == languageId && !x.IsDelete && x.TenantId == tenantId;
-
-            var query = Context.Set<CategoryTranslation>().Where(speccnTranslation)
-                .Join(Context.Set<CategoriesNews>(), ct => ct.CategoryId, cn => cn.CategoryId, (ct, cn) => new { ct.CategoryId, cn.NewsId })
-                .Join(Context.Set<News>().Where(spec),
-                    ctn => ctn.NewsId,
-                    n => n.Id,
-                    (ctn, n) => new { n, ctn })
-                    .Join(Context.Set<NewsTranslation>().Where(specTranslation),
-                    ncn => ncn.n.Id,
-                    nt => nt.NewsId,
-                    (ncn, nt) => new NewsSearchClientViewModel
-                    {
-                        Id = ncn.n.Id,
-                        LikeCount = ncn.n.LikeCount,
-                        CommentCount = ncn.n.CommentCount,
-                        ViewCount = ncn.n.ViewCount,
-                        FeatureImage = ncn.n.FeatureImage,
-                        AltImage = ncn.n.AltImage,
-                        Source = ncn.n.Source,
-                        Title = nt.Title,
-                        MetaTitle = nt.MetaTitle,
-                        Description = nt.Description,
-                        SeoLink = nt.SeoLink,
-                        LastUpdate = ncn.n.LastUpdate,
-                        CreateTime = ncn.n.CreateTime
-                    }
-                ).AsNoTracking();
-            totalRows = query.Count();
-
-            return query
-                .OrderByDescending(x => x.LastUpdate)
-                .ThenByDescending(x => x.CreateTime)
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+            //var query = Context.Set<CategoryTranslation>().Where(speccnTranslation)
+            //    .Join(Context.Set<CategoriesNews>(), ct => ct.CategoryId, cn => cn.CategoryId, (ct, cn) => new { ct.CategoryId, cn.NewsId })
+            //    .Join(Context.Set<News>().Where(spec),
+            //        ctn => ctn.NewsId,
+            //        n => n.Id,
+            //        (ctn, n) => new { n, ctn })
+            //        .Join(Context.Set<NewsTranslation>().Where(specTranslation),
+            //        ncn => ncn.n.Id,
+            //        nt => nt.NewsId,
+            //        (ncn, nt) => new NewsSearchClientViewModel
+            //        {
+            //            Id = ncn.n.Id,
+            //            LikeCount = ncn.n.LikeCount,
+            //            CommentCount = ncn.n.CommentCount,
+            //            ViewCount = ncn.n.ViewCount,
+            //            FeatureImage = ncn.n.FeatureImage,
+            //            AltImage = ncn.n.AltImage,
+            //            Source = ncn.n.Source,
+            //            Title = nt.Title,
+            //            MetaTitle = nt.MetaTitle,
+            //            Description = nt.Description,
+            //            SeoLink = nt.SeoLink,
+            //            LastUpdate = ncn.n.LastUpdate,
+            //            CreateTime = ncn.n.CreateTime
+            //        }
+            //    ).AsNoTracking();
+            //totalRows = query.Count();
+            var result = from category in Context.Set<Category>().Where(specCategory)
+                         join categoryNews in Context.Set<CategoriesNews>() on category.Id equals categoryNews.CategoryId
+                         join news in Context.Set<News>().Where(spec) on categoryNews.NewsId equals news.Id
+                         join newsTranslation in Context.Set<NewsTranslation>().Where(specTranslation) on news.Id equals newsTranslation.NewsId
+                         select new NewsSearchClientViewModel
+                         { 
+                                 Id = news.Id,
+                                 AltImage = news.AltImage,
+                                 FeatureImage = news.FeatureImage,
+                                 CreateTime = news.CreateTime,
+                                 LastUpdate =news.LastUpdate,
+                                 IsHot = news.IsHot,
+                                 Source = news.Source,
+                                 SeoLink = newsTranslation.SeoLink,
+                                 Title = newsTranslation.Title,
+                                 MetaTitle = newsTranslation.MetaTitle,
+                                 Description = newsTranslation.Description
+                         };
+            totalRows = result.Count();
+            return  result.OrderByDescending(x => x.LastUpdate).Skip((page -1) * pageSize).Take(pageSize).ToListAsync();
         }
 
         public async Task<NewsDetailForClientViewModel> GetDetailForClient(string teantId, string newsId, string languageId)
