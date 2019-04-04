@@ -1,6 +1,9 @@
 ﻿@model string;
+@{ 
+    var url = ViewBag.Url;
+}
 @if(!string.IsNullOrEmpty(Model)){
 <div class="header">
-    <img data-src="@($"/image?url={Model}")" class="lazy"/>   
+    <img data-src="@($"/image?url={url}{Model}")" class="lazy"/>   
 </div>
 }

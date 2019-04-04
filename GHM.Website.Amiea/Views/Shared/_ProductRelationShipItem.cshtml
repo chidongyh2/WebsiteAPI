@@ -1,11 +1,13 @@
 ﻿@model NewsSearchViewModel
-
+@{ 
+    var url = ViewBag.Url;
+}
 @if (Model != null)
 {
     <div class="media-left">
         <div class="image-content">
             <a href="@($"/{ Model.SeoLink}.html")" title="@(string.IsNullOrEmpty(Model.MetaTitle) ? Model.Title : Model.MetaTitle)">
-                <img class="img-responsive zoom lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(Model.FeatureImage) ? "/images/no-image.png" : Model.FeatureImage)}&width=480&height=360")"
+                <img class="img-responsive zoom lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(Model.FeatureImage) ? "/images/no-image.png" : $"{url}{Model.FeatureImage}")}&width=480&height=360")"
                      onerror="this.src='/images/no-image.png'"
                      alt="@(string.IsNullOrEmpty(Model.AltImage) ? Model.Title : Model.AltImage)" />
             </a>
