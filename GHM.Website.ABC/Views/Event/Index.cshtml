@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = Resource.Events;
     var listEvent = ViewBag.Events as List<EventViewModel>;
+    var url = ViewBag.Url;
 }
 
 <link href="~/css/less/event.min.css" rel="stylesheet" />
@@ -21,7 +22,7 @@
                         <div class="thumbnail-event">
                             <a data-bind="attr: {href: '/su-kien/' + SeoLink + '.html', title: Name }">
                                 <img class="img-responsive lazy"
-                                     data-bind="attr: {src: '/image?url=https://testfilemanager.ghmsoft.vn/' + Thumbnail + '&width=640&height=360', title: Name}"
+                                     data-bind="attr: {src: '/image?url=@url' + Thumbnail + '&width=640&height=360', title: Name}"
                                      onerror="this.src='/images/no-image.png'" />
                                 <span class="img-overlay"></span>
                             </a>

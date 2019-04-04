@@ -48,7 +48,7 @@ namespace GHM.Website.JadesSpa.Controllers
             return View();
         }
 
-        [Route("/search/{*seoLink}")]
+        [Route("search/{*seoLink}")]
         public async Task<ActionResult> CategoryNews(string seoLink, int page = 1, int pageSize = 12)
         {
             var requestUrl = _configuration.GetApiUrl();
