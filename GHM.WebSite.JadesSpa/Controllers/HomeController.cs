@@ -73,8 +73,11 @@ namespace GHM.Website.JadesSpa.Controllers
 
             return View();
         }
-
-        public async Task<IActionResult> About()
+        public async Task<ActionResult> Coordinator(string segment, int page = 1, int pageSize = 12)
+        {
+            return Ok();
+        }
+            public async Task<IActionResult> About()
         {
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();

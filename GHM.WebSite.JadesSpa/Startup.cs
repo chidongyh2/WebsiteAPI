@@ -111,7 +111,34 @@ namespace GHM.WebSite.JadesSpa
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                      "Slug",
+                      "{*segment}",
+                      new { controller = "Home", action = "Coordinator" },
+                      new { segment = new CustomUrlConstraint() }
+                  );
             });
+        }
+        public class CustomUrlConstraint : IRouteConstraint
+        {
+            public bool Match(HttpContext httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
+            {
+                //var menuRepository = DependencyResolver.Current.GetService<IMenuRepository>();
+                //var categoryReposiroty = DependencyResolver.Current.GetService<ICategoryRepository>();
+                //if (values[parameterName] != null)
+                //{
+                //    var permalink = values[parameterName].ToString();
+                //    var isMenuExists = menuRepository.CheckNamePathExists(permalink);
+                //    var isCategoryExists = categoryReposiroty.CheckCateogryIsContainBySeoLink(permalink);
+                //    return isMenuExists || isCategoryExists;
+                //}
+                return false;
+            }
+
+            public bool Match(HttpContext httpContext, IRouter route, string routeKey, RouteValueDictionary values, RouteDirection routeDirection)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
