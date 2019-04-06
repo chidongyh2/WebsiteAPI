@@ -351,4 +351,7 @@
   <data name="HotLine" xml:space="preserve">
     <value>HOTLINE</value>
   </data>
+  <data name="NewsHot" xml:space="preserve">
+    <value>Tin hót</value>
+  </data>
 </root>

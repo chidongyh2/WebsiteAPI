@@ -892,5 +892,15 @@ namespace GHM.Website.Infrastructure.Services
         {
             return await _newsTranslationRepository.CheckExistBySeoLink(tenantId, seoLink, languageId);
         }
+
+        public async Task<List<NewsSearchClientViewModel>> GetNewsRelatedById(string tenantId, string newsId, string languageId, int page, int pageSize)
+        {
+            var apiUrls = _configuration.GetApiUrl();
+            if (apiUrls == null) return new List<NewsSearchClientViewModel>();
+
+            var resultNews = await new HttpClientService()
+                     .GetAsync<List<string>>($"{apiUrls.CoreApiUrl}/tags/{tenantId}/{languageId}/{(int)TagType.News}/{newsId}");
+            return await _newsRepository.GetListTopNewsRelated(tenantId, languageId, resultNews, pageSize);
+        }
     }
 }

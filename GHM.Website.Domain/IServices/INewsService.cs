@@ -62,5 +62,9 @@ namespace GHM.Website.Domain.IServices
         Task<ActionResultResponse<CategoryWidthNewsViewModel>> GetNewsByCategoryIdAsync(string tenantId, string languageId, string categoryId, int page, int pageSize);
 
         Task<bool> CheckNewsExistBySeoLink(string tenantId, string seoLink, string languageId);
+
+        Task<List<NewsSearchClientViewModel>> GetNewsRelatedById(string tenantId, string newsId, string v, int page, int pageSize);
+
+        // Task<List<NewsSearchClientViewModel>> GetListTopNewsRelatedByCategoryId(string tenantId, string v, object categoryId, int selectTop);
     }
 }

@@ -132,7 +132,7 @@ namespace GHM.WebSite.JadesSpa
             public bool Match(HttpContext httpContext, IRouter route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
             {
                
-                if(values[parameterName] != null)
+                if(values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he"))
                 {
                     var permalink = values[parameterName].ToString();
                     string[] link = permalink.Split('.');

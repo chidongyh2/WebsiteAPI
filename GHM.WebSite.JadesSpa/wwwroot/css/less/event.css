@@ -16,7 +16,7 @@
 }
 @font-face {
   font-family: 'vlauthenticaregular';
-  src: url('../../lib/font-roboto/vlauthenticaregular.otf') format('opentype');
+  src: url('../../lib/font-roboto/vlauthenticaregular.otf') format('truetype');
 }
 .events {
   background-image: url('../../images/bgr web/bgr trang tin tuc_su kien-uu dai.jpg');

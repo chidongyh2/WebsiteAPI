@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Favicon) ? websiteSetting.Favicon : "/favicon.ico")" type="image/x-icon">
+    <link rel="icon" href="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Favicon) ? $"{ViewBag.Url}/{websiteSetting.Favicon}" : "/favicon.ico")" type="image/x-icon">
     <link rel="alternate" href="@absoluteUri" hreflang="vi-VN" />
     <link rel="canonical" href="@absoluteUri" />
     <meta name="author" content="jadespa jadespa.vn">
@@ -77,10 +77,10 @@
     <script src="~/lib/jquery.lazy-master/jquery.lazy.es5.min.js"></script>
     <script src="~/js/site.min.js"></script>
     <script src="~/lib/lightslider/js/lightslider.es5.min.js"></script>
-    <script src="~/lib/LayerSlider/static/js/greensock.min.js"></script>
-    <script src="~/lib/LayerSlider/static/js/layerslider.kreaturamedia.jquery.min.js"></script>
-    <script src="~/lib/LayerSlider/static/js/layerslider.transitions.min.js"></script>
     <script src="~/js/viewmodel/contact.viewmodel.min.js"></script>
+    <script src="~/lib/LayerSlider/static/js/layerslider.kreaturamedia.jquery.js"></script>
+    <script src="~/lib/LayerSlider/static/js/greensock.js"></script>
+    <script src="~/lib/LayerSlider/static/js/layerslider.transitions.js"></script>
     <script>
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];

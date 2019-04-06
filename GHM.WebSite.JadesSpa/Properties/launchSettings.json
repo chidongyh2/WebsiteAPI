@@ -17,7 +17,8 @@
       "launchBrowser": true,
       "launchUrl": "http://localhost:51760",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_ENVIRONMENT_Product": "Production"
       }
     },
     "GHM.WebSite.JadesSpa": {

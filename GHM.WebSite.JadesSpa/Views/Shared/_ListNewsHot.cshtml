@@ -1,10 +1,12 @@
 ﻿@model List<NewsSearchViewModel>
-
+@{
+    var url = ViewBag.Url;
+}
 @if (Model != null && Model.Any())
 {
     <div class="sidebar-news-detail">
         <div class="title">
-            <h2>@Resource.NewsRelated</h2>
+            <h2>@Resource.NewsHot</h2>
         </div>
         <div class="content">
             <ul class="list-style-none">
@@ -14,15 +16,17 @@
                         <div class="media">
                             <div class="media-left">
                                 <a href="@($"/{news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                                    <img class="img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : news.FeatureImage)}&width=108&height=72")"
+                                    <img class="img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}&width=108&height=72")"
                                          onerror="this.src='/images/no-image.png'"
                                          alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
                                 </a>
                             </div>
                             <div class="media-body">
                                 <a href="@($"/{news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">@news.Title</a>
-                                <p class="calendar"><i class="fa fa-calendar"></i> @news.LastUpdate?.ToString("dd/MM/yyyy")</p>
                             </div>
+                        </div>
+                        <div class="news-description">
+                            <span>@Common.SubString(news.Description, 150)</span>
                         </div>
                     </li>
                 }

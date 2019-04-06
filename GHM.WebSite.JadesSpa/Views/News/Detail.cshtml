@@ -1,10 +1,20 @@
 ﻿@model NewsDetailViewModel
 @{
     ViewBag.Title = Model?.MetaTitle != null ? Model?.MetaTitle : Model?.Title;
-    var listNewsRelated = ViewBag.listNewRelated as List<NewsSearchViewModel>;
+    //var listNewsRelated = ViewBag.listNewRelated as List<NewsSearchViewModel>;
+    ViewBag.ImageBanner = Model.BannerImage != null ? Model.BannerImage : "uploads/images/bannerNews.png";
     ViewBag.MetaTitle = Model?.MetaTitle;
     ViewBag.Description = Model?.MetaDescription;
     ViewBag.Keyword = Model?.MetaKeyword;
+    var breadcrumbs = new List<Breadcrumb>
+    {
+        new Breadcrumb()
+        {
+            Name = Resource.News,
+              IsCurrent = true,
+        }
+    };
+    ViewBag.Breadcrumb = breadcrumbs;
     ViewBag.Image = Model?.FeatureImage;
     var absoluteUri = $"{Context.Request.Host}{Context.Request.Path}";
 }
@@ -14,7 +24,7 @@
         @if (Model != null)
         {
             <div class="row">
-                <div class="col-sm-9">
+                <div class="col-sm-12">
                     <div class="news-detail">
                         <h1 class="title">
                             @Model.Title
@@ -64,13 +74,13 @@
                             </ul>
                         </div>
                         <div class="content">
-                            @Html.Raw(Model.Content)
+                            @Html.Raw(Model.Content.Replace("image-content.ashx?name=/", ViewBag.Url))
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <partial name="_SideBarEvent" />
-                    <partial name="_SideBarNewsRelated" model="listNewsRelated" />
+                    @*<partial name="_SideBarEvent" />*@
+                    @*<partial name="_SideBarNewsRelated" model="listNewsRelated" />*@
                 </div>
             </div>
         }

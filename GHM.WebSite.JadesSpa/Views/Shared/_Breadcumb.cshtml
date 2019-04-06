@@ -4,7 +4,7 @@
 }
 
 <div class="header">
-    <img src="@($"/image?url={ViewBag.ImageBanner}")" class="img-responsive" onerror="this.src='/images/no-image.png'"/>
+    <img src="@($"/image?url={ViewBag.Url}{ViewBag.ImageBanner}")" class="img-responsive" onerror="this.src='/images/no-image.png'"/>
     <div class="breadcrumb">
         <div class="container">
             <div class="row">
@@ -20,7 +20,7 @@
                                 <li class="list-items">
                                     @if (item.IsCurrent)
                                     {
-                                        <span>@item.Name</span>
+                                        <span><i class="fa fa-angle-double-right"></i> @item.Name</span>
                                     }
                                     else
                                     {

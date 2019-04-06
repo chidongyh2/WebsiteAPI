@@ -209,6 +209,13 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
+        //[Route("related-by-category/{tenantId}/{categoryId}/{selectTop}/{languageId?}"), AcceptVerbs("GET")]
+        //[CheckPermission]
+        //public async Task<IActionResult> GetListTopNewsRelatedByCategoryId(string tenantId, string seoLink, int selectTop, string languageId)
+        //{
+        //    var result = await _newsService.GetListTopNewsRelatedByCategoryId(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, categoryId, selectTop);
+        //    return Ok(result);
+        //}
         /// <summary>
         /// Lấy tin tức theo loại tin tức
         /// </summary>
@@ -226,7 +233,13 @@ namespace GHM.Website.Api.Controllers
             var result = await _newsService.GetNewsByCategorySeoLink(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, page, pageSize);
             return Ok(result);
         }
-
+        [Route("getNewsRelatedById/{tenantId}/{NewsId}/{languageId}/{page}/{pageSize}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetNewsRelatedById(string tenantId, string newsId, string languageId, int page = 1, int pageSize = 20)
+        {
+            var result = await _newsService.GetNewsRelatedById(tenantId, newsId, languageId ?? CultureInfo.CurrentCulture.Name, page, pageSize);
+            return Ok(result);
+        }
         [Route("getNewsByCategoryById/{tenantId}/{categoryId}/{page}/{pageSize}/{languageId?}"), AcceptVerbs("GET")]
         [CheckPermission]
         public async Task<IActionResult> GetNewsByCategoryId(string tenantId, string categoryId, string languageId,
@@ -293,7 +306,14 @@ namespace GHM.Website.Api.Controllers
             var result = await _newsService.GetDetailForClient(tenantId, subjectId, languageId ?? CultureInfo.CurrentCulture.Name);
             return Ok(result);
         }
-
+        //get for Jadespa
+        [Route("get-detail-frombody"), AcceptVerbs("POST")]
+        [CheckPermission]
+        public async Task<IActionResult> GetNewsDetailFromBody(CategoryClientMeta newsClientMeta)
+        {
+            var result = await _newsService.GetClient(newsClientMeta.TenantId, newsClientMeta.LanguageId ?? CultureInfo.CurrentCulture.Name, newsClientMeta.SeoLink);
+            return Ok(result);
+        }
         [Route("check-exist"), AcceptVerbs("POST")]
         [CheckPermission]
         public async Task<IActionResult> CheckNewsExistBySeoLink(string tenantId, string seoLink, string languageId)

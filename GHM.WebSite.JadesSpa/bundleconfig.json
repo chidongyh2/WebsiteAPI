@@ -37,5 +37,11 @@
     "inputFiles": [
       "wwwroot/js/viewmodel/about.viewmodel.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/banner.min.js",
+    "inputFiles": [
+      "wwwroot/js/banner.js"
+    ]
   }
 ]

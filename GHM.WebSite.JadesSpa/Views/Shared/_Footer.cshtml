@@ -11,7 +11,7 @@
             <div class="col-sm-3">
                 <div class="logo">
                     <a href="/" title="@websiteSetting?.Brand">
-                        <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? websiteSetting.Logo : "/images/Trang chu/Logo ABC tren-duoi.png" )"
+                        <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? $"{ViewBag.Url}{websiteSetting.Logo}" : "/images/Trang chu/Logo ABC tren-duoi.png" )"
                              alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) ? websiteSetting?.Brand : ViewBag.Title)"
                              onerror="this.src='/images/no-image.png'" />
                     </a>
