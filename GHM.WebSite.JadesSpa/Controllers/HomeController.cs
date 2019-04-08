@@ -19,6 +19,7 @@ using GHM.Website.JadesSpa.Utils;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
 using GHM.WebSite.JadesSpa.ViewModels;
+using GHM.Infrastructure.Constants;
 
 namespace GHM.Website.JadesSpa.Controllers
 {
@@ -73,7 +74,42 @@ namespace GHM.Website.JadesSpa.Controllers
 
             return View();
         }
+        public async Task<ActionResult> Coordinator(string segment, int page = 1, int pageSize = 12)
+        {
+            var requestUrl = _configuration.GetApiUrl();
+            var apiService = _configuration.GetApiServiceInfo();
+            var httpClientService = new HttpClientService();
+            ViewBag.Page = page;
+            ViewBag.PageSize = pageSize;
+            var menuInfo = await httpClientService.PostAsync<MenuItemViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/get-by-seoLink",
+                new Dictionary<string, string> {
+                    {"TenantId", apiService.TenantId },
+                    {"seoLink", segment },
+                    {"languageId", CultureInfo.CurrentCulture.Name }
+                });
+            if(menuInfo == null)
+            {
+                return View("../NotFound/Index");
+            } else
+            {
+                if (menuInfo.SubjectType == SubjectType.NewsCategory)
+                {
+                    var categoryWithNews = await httpClientService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+                    return View("../News/CategoryNews", categoryWithNews.Data);
+                }
+                else if (menuInfo.SubjectType == SubjectType.News)
+                {
+                    var newsDetail = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/detail/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+                    ViewBag.NewsDetail = newsDetail;
+                    return View("../News/Detail");
+                } else
+                {
+                    return View("../NotFound/Index");
+                }
+            }
 
+          
+        }
         public async Task<IActionResult> About()
         {
             var requestUrl = _configuration.GetApiUrl();

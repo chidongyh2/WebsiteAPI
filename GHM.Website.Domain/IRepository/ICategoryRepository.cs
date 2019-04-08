@@ -44,5 +44,6 @@ namespace GHM.Website.Domain.IRepository
 
         Task<List<CategorySearchForSelectViewModel>> SearchForHomePage(string tenantId, string languageId);
 
+        Task<CategoryWidthNewsViewModel> GetCategoryForWithNews(string tenantId, string categoryId, string languageId);
     }
 }

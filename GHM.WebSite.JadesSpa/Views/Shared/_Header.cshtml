@@ -4,6 +4,7 @@
     var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
     var listLanguage = ViewBag.ListLanguage as List<TenantLanguageViewModel>;
     var path = $"{Context.Request.Path}";
+    var url = ViewBag.Url;
 }
 
 <header id="header">
@@ -36,8 +37,8 @@
         <nav class="navbar navbar-inverse navbar-expand-lg">
             <div class="container wrap">
                 <a href="/" class="navbar-brand">
-                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.LogoMobile) ? "/images/logo-cu.png" : "/images/Logo GHM-04.png" )"
-                         alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "Hệ thống Jadespa")"
+                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.LogoMobile) ? "/images/logo-cu.png" : $"{url}{websiteSetting.LogoMobile}" )"
+                         alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "Phun xăm thẩm mỹ amiea")"
                          onerror="this.src='/images/no-image.png'" />
                 </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" aria-controls="abcMainNav" data-target="#abcMainNav" aria-expanded="false" aria-label="Toggle navigation">

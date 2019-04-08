@@ -105,7 +105,7 @@
     <Content Update="Views\News\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\News\_NewsItem.cshtml">
+    <Content Update="Views\Shared\_NewsItem.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Shared\_BlockNews.cshtml">

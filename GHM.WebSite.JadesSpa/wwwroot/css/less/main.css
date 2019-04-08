@@ -1167,3 +1167,34 @@
 .pagination li .disabled:hover {
   color: #b2bec3;
 }
+#category-news {
+  background-image: url('../../images/bgr web/bgr tin tuc-sk va ld.jpg');
+  background-position: inherit;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+@media only screen and (max-width: 768px) {
+  #category-news {
+    background-image: none;
+  }
+}
+#category-news .titlebar {
+  color: #7aa127;
+}
+#category-news hr {
+  margin-bottom: 25px;
+}
+#category-news .news-item {
+  padding: 0px;
+}
+#category-news .news-item .title {
+  padding: 10px 0;
+  font-size: 16px;
+  min-height: 70px;
+}
+@media only screen and (max-width: 768px) {
+  #category-news .news-item .title {
+    font-size: 14px;
+    min-height: 80px;
+  }
+}

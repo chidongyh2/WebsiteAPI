@@ -100,5 +100,10 @@ namespace GHM.Website.Infrastructure.Repository
             return await _newsTranslationRepository.GetAsAsync(x => x.NewsId,
                 x => x.TenantId == tenantId && x.LanguageId == languageId && x.SeoLink == seoLink && !x.IsDelete);
         }
+
+        public async Task<bool> CheckExistBySeoLink(string tenantId, string seoLink, string languageId)
+        {
+            return await _newsTranslationRepository.ExistAsync(x => x.TenantId == tenantId && x.SeoLink == seoLink && x.LanguageId == languageId && !x.IsDelete);
+        }
     }
 }

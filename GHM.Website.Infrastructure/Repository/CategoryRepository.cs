@@ -260,5 +260,20 @@ namespace GHM.Website.Infrastructure.Repository
                 });
             return await query.AsNoTracking().ToListAsync();
         }
+
+        public async Task<CategoryWidthNewsViewModel> GetCategoryForWithNews(string tenantId, string categoryId, string languageId)
+        {
+            Expression<Func<Category, bool>> spec = x => x.TenantId == tenantId && x.Id == int.Parse(categoryId) && !x.IsDelete && x.IsActive;
+            Expression<Func<CategoryTranslation, bool>> specT = x => x.TenantId == tenantId && x.CategoryId == int.Parse(categoryId) && x.LanguageId == languageId;
+            var query = Context.Set<Category>().Where(spec)
+                .Join(Context.Set<CategoryTranslation>().Where(specT), c => c.Id, ct => ct.CategoryId, (c, ct) => new CategoryWidthNewsViewModel
+                {
+                    CategoryId = c.Id,
+                    BannerImage = c.BannerImage,
+                    CategoryName = ct.Name,
+                    SeoLink = ct.SeoLink,
+                });
+            return await query.AsNoTracking().FirstOrDefaultAsync();
+        }
     }
 }

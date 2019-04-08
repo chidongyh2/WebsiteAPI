@@ -4,7 +4,9 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentValidation.AspNetCore;
+using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.ModelBinders;
+using GHM.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -21,6 +23,7 @@ namespace GHM.WebSite.JadesSpa
 {
     public class Startup
     {
+       
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -111,9 +114,57 @@ namespace GHM.WebSite.JadesSpa
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-
-
+                routes.MapRoute(
+                      "Slug",
+                      "{*segment}",
+                      new { controller = "Home", action = "Coordinator" },
+                      new { segment = new CustomUrlConstraint(Configuration) }
+                  );
             });
+        }
+        public class CustomUrlConstraint : IRouteConstraint
+        {
+            private readonly IConfiguration _configuration;
+            public CustomUrlConstraint(IConfiguration configuration)
+            {
+                _configuration = configuration;
+            }
+            public bool Match(HttpContext httpContext, IRouter route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
+            {
+               
+                if(values[parameterName] != null)
+                {
+                    var permalink = values[parameterName].ToString();
+                    string[] link = permalink.Split('.');
+                    var requestUrl = _configuration.GetApiUrl();
+                    var apiService = _configuration.GetApiServiceInfo();
+                    var httpClientService = new HttpClientService();
+                    var isCategoryExist = httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/check-category-exist", 
+                        new Dictionary<string, string>
+                        {
+                            {"TenantId", apiService.TenantId},
+                            {"seoLink", link[0] },
+                            {"languageId",  CultureInfo.CurrentCulture.Name}
+                        });
+                    var isNewsExist = httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/check-exist", new Dictionary<string, string>
+                        {
+                            {"TenantId", apiService.TenantId},
+                            {"seoLink", link[0] },
+                            {"languageId",  CultureInfo.CurrentCulture.Name}
+                        });
+                    return isCategoryExist.Result || isNewsExist.Result;
+                }
+                //var menuRepository = DependencyResolver.Current.GetService<IMenuRepository>();
+                //var categoryReposiroty = DependencyResolver.Current.GetService<ICategoryRepository>();
+                //if (values[parameterName] != null)
+                //{
+                //    var permalink = values[parameterName].ToString();
+                //    var isMenuExists = menuRepository.CheckNamePathExists(permalink);
+                //    var isCategoryExists = categoryReposiroty.CheckCateogryIsContainBySeoLink(permalink);
+                //    return isMenuExists || isCategoryExists;
+                //}
+                return false;
+            }   
         }
     }
 }
