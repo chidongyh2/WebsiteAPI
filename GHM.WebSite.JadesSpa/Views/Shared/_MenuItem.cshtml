@@ -3,6 +3,7 @@
 @{
     var path = $"{Context.Request.Path}";
     var absoluteUri = $"{Context.Request.Host}{Context.Request.Path}";
+    var url = ViewBag.Url;
 }
 @if (Model != null)
 {

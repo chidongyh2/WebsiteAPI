@@ -56,7 +56,9 @@
   height: 290px;
   border: 1px solid transparent;
 }
-#news-slider .item .wrap-item span {
+#news-slider .item .wrap-item .slide-description {
+  text-decoration: none;
+  cursor: pointer;
   width: 256px;
   text-transform: uppercase;
   font-family: VLALLROUNDGOTHIC-BOOK;
@@ -192,6 +194,9 @@
   line-height: 45px;
 }
 #about {
+  background-image: url('../../images/bgr-web/background-image/nen-pc_04.jpg');
+  background-repeat: repeat;
+  background-size: cover;
   height: 260px;
 }
 #about .container {
@@ -312,6 +317,7 @@
   background: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);
   overflow: hidden;
   text-align: center;
+  cursor: pointer;
 }
 @media only screen and (max-width: 768px) {
   #news-hot .container .item-hot .item .text-description {

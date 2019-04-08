@@ -29,7 +29,7 @@
                                         onerror="this.src='/images/no-image.png'"/>
 
                             </a>
-                            <div class="text-description">@(string.IsNullOrEmpty(item.Name) ? "No Title" : item.Name)</div>
+                            <a  href="@($"/{ item.SeoLink}.html")" class="text-description">@(string.IsNullOrEmpty(item.Name) ? "No Title" : item.Name)</a>
                         </div>
                     </div>
                 }

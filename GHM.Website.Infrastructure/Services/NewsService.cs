@@ -772,7 +772,8 @@ namespace GHM.Website.Infrastructure.Services
             var newsId = await _newsTranslationRepository.GetNewsIdBySeoLink(tenantId, languageId, seoLink);
 
             var resultNews = await new HttpClientService()
-                     .GetAsync<List<string>>($"{apiUrls.CoreApiUrl}/tags/{tenantId}/{languageId}/{(int)TagType.News}/{newsId}");
+                        .GetAsync<List<string>>($"{apiUrls.CoreApiUrl}/tags/{tenantId}/{languageId}/{(int)TagType.News}/{newsId}");
+
             return await _newsRepository.GetListTopNewsRelated(tenantId, languageId, resultNews, selectTop);
 
         }
@@ -897,10 +898,16 @@ namespace GHM.Website.Infrastructure.Services
         {
             var apiUrls = _configuration.GetApiUrl();
             if (apiUrls == null) return new List<NewsSearchClientViewModel>();
-
             var resultNews = await new HttpClientService()
                      .GetAsync<List<string>>($"{apiUrls.CoreApiUrl}/tags/{tenantId}/{languageId}/{(int)TagType.News}/{newsId}");
-            return await _newsRepository.GetListTopNewsRelated(tenantId, languageId, resultNews, pageSize);
+            if(resultNews == null)
+            {
+                return await _newsRepository.GetListNewsRelated(tenantId, languageId, newsId, pageSize);
+            } else
+            {
+                return await _newsRepository.GetListTopNewsRelated(tenantId, languageId, resultNews, pageSize);
+            }
+           
         }
     }
 }

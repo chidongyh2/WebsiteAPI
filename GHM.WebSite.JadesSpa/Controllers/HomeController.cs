@@ -103,6 +103,8 @@ namespace GHM.Website.JadesSpa.Controllers
 
                     if (newInfo != null)
                     {
+                        var newsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{newInfo.Id}/{CultureInfo.CurrentCulture.Name}/1/3");
+                        ViewBag.NewsRelated = newsRelated;
                         return View("../News/Detail", newInfo);
                     }
                     else

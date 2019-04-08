@@ -6,8 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="appsettings.Development.json" />
-    <Content Remove="appsettings.json" />
     <Content Remove="bundleconfig.json" />
     <Content Remove="compilerconfig.json" />
     <Content Remove="wwwroot\js\viewmodel\about.viewmodel.es5.js" />

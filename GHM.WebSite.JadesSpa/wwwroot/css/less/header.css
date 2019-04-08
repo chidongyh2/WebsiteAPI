@@ -250,6 +250,25 @@
   }
   .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu li {
     margin: 0px;
+    /*.fa-facebook {
+                                        padding: 6px 13px;
+                                    }
+
+                                    .fa-linkedin {
+                                        padding: 6px 9px;
+                                    }
+
+                                    .fa-twitter {
+                                        padding: 6px 8px;
+                                    }
+
+                                    .fa-google-plus {
+                                        padding: 6px 3px;
+                                    }
+
+                                    .fa-youtube {
+                                        padding: 5px 8px;
+                                    }*/
   }
   .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu li a {
     padding: 5px 5px !important;

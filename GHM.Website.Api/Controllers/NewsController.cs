@@ -209,6 +209,7 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
+
         //[Route("related-by-category/{tenantId}/{categoryId}/{selectTop}/{languageId?}"), AcceptVerbs("GET")]
         //[CheckPermission]
         //public async Task<IActionResult> GetListTopNewsRelatedByCategoryId(string tenantId, string seoLink, int selectTop, string languageId)
