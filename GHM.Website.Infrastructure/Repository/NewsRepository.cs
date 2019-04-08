@@ -677,5 +677,52 @@ namespace GHM.Website.Infrastructure.Repository
                 });
             return await query.FirstOrDefaultAsync();
         }
+
+        public async Task<List<NewsSearchClientViewModel>> GetListNewsRelated(string tenantId, string languageId, string newsId, int pageSize)
+        {
+            Expression<Func<News, bool>> spec = x => x.TenantId == tenantId && !x.IsDelete && x.IsActive && x.Status == ApproverStatus.Approved && x.Id != newsId;
+            Expression<Func<NewsTranslation, bool>> specTranslation = x => x.TenantId == tenantId && x.LanguageId == languageId && !x.IsDelete;
+
+            var listCategoryId = Context.Set<CategoriesNews>().Where(x => x.NewsId == newsId).Select(r => r.CategoryId).ToList();
+
+            //var query = Context.Set<News>().AsNoTracking().Where(spec)
+            //    .Join(Context.Set<NewsTranslation>().AsNoTracking().Where(specTranslation),
+            //        news => news.Id,
+            //        newsTranslation => newsTranslation.NewsId, (news, newsTranslation) =>
+            //            new NewsSearchClientViewModel
+            //            {
+            //                Id = news.Id,
+            //                FeatureImage = news.FeatureImage,
+            //                AltImage = news.AltImage,
+            //                Source = news.Source,
+            //                Title = newsTranslation.Title,
+            //                MetaTitle = newsTranslation.MetaTitle,
+            //                Description = newsTranslation.Description,
+            //                SeoLink = newsTranslation.SeoLink,
+            //                LastUpdate = news.LastUpdate,
+            //                CreateTime = news.CreateTime
+            //            });
+            var query = from cn in Context.Set<CategoriesNews>().Where(x => listCategoryId.Contains(x.CategoryId))
+                        join n in Context.Set<News>().Where(spec) on cn.NewsId equals n.Id
+                        join nt in Context.Set<NewsTranslation>().Where(specTranslation) on n.Id equals nt.NewsId
+                        select new NewsSearchClientViewModel
+                        {
+                            Id = n.Id,
+                            FeatureImage = n.FeatureImage,
+                            AltImage = n.AltImage,
+                            Source = n.Source,
+                            Title = nt.Title,
+                            MetaTitle = nt.MetaTitle,
+                            Description = nt.Description,
+                            SeoLink = nt.SeoLink,
+                            LastUpdate = n.LastUpdate,
+                            CreateTime = n.CreateTime
+                        };
+            return await query
+                .OrderByDescending(x => x.LastUpdate)
+                .ThenByDescending(x => x.CreateTime)
+                .Take(pageSize)
+                .ToListAsync();
+        }
     }
 }

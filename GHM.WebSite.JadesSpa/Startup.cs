@@ -53,7 +53,7 @@ namespace GHM.WebSite.JadesSpa
             services.AddSession();
             services.Configure<RequestLocalizationOptions>(options =>
             {
-                options.DefaultRequestCulture = new RequestCulture("vi-VN");
+                options.DefaultRequestCulture = new RequestCulture(new CultureInfo("vi-VN"));
             });
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -61,7 +61,6 @@ namespace GHM.WebSite.JadesSpa
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, options =>
             {
@@ -84,7 +83,6 @@ namespace GHM.WebSite.JadesSpa
             .AddHttpCompression();
         }
    
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
@@ -104,6 +102,24 @@ namespace GHM.WebSite.JadesSpa
                 new CultureInfo("vi-VN"),
                 new CultureInfo("en-US"),
             };
+
+            var defaultCulture = new CultureInfo("vi-VN");
+            var localizationOptions = new RequestLocalizationOptions()
+            {
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures,
+                DefaultRequestCulture = new RequestCulture(defaultCulture),
+                FallBackToParentCultures = false,
+                FallBackToParentUICultures = false,
+                RequestCultureProviders = new List<IRequestCultureProvider>
+                {
+                    new QueryStringRequestCultureProvider(),
+                    new CookieRequestCultureProvider()
+                },
+            };
+
+            app.UseRequestLocalization(localizationOptions);
+
             app.UseMiddleware<RequestLocalizationMiddleware>();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -132,7 +148,7 @@ namespace GHM.WebSite.JadesSpa
             public bool Match(HttpContext httpContext, IRouter route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
             {
                
-                if(values[parameterName] != null)
+                if(values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he"))
                 {
                     var permalink = values[parameterName].ToString();
                     string[] link = permalink.Split('.');

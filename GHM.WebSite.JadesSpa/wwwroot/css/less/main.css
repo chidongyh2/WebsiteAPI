@@ -16,7 +16,7 @@
 }
 @font-face {
   font-family: 'vlauthenticaregular';
-  src: url('../../lib/font-roboto/vlauthenticaregular.otf') format('opentype');
+  src: url('../../lib/font-roboto/vlauthenticaregular.otf') format('truetype');
 }
 #backToTop {
   bottom: 20px;
@@ -49,14 +49,16 @@
   width: 258px !important;
   height: 290px;
   position: relative;
-  background: linear-gradient(to right, #fcbb16 0%, #f6d68a 50%, #fcbb16 100%);
+  background: linear-gradient(to right, #f8a102 0%, #f6d68a 50%, #f8a102 100%);
 }
 #news-slider .item .wrap-item img {
   width: 258px !important;
   height: 290px;
   border: 1px solid transparent;
 }
-#news-slider .item .wrap-item span {
+#news-slider .item .wrap-item .slide-description {
+  text-decoration: none;
+  cursor: pointer;
   width: 256px;
   text-transform: uppercase;
   font-family: VLALLROUNDGOTHIC-BOOK;
@@ -69,7 +71,7 @@
   height: 75px;
   margin-left: 1px;
   margin-bottom: 1px;
-  background-image: linear-gradient(to right, #fcbb16 0%, #f9e0b2 50%, #fcbb16 100%);
+  background-image: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);
   line-height: 75px;
 }
 #news-slider:hover .ISAction {
@@ -113,6 +115,74 @@
   text-align: center;
   line-height: 45px;
 }
+#myCarousel .active .item a {
+  font-size: 40px;
+  height: 40px;
+  width: 40px;
+}
+#myCarousel .active .item a img {
+  max-height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  /*-webkit-animation: zoomin 18s ease-in infinite;
+                    animation: zoomin 18s ease-in infinite;
+                    transition: all 1s ease-in-out;*/
+  overflow: hidden;
+}
+@media only screen and (max-width: 768px) {
+  #myCarousel .active .item a img {
+    max-height: unset;
+  }
+}
+#myCarousel img {
+  max-height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  display: block;
+}
+@media only screen and (max-width: 768px) {
+  #myCarousel img {
+    max-height: unset;
+  }
+}
+#myCarousel .fa-angle-left {
+  left: 50%;
+}
+#myCarousel .fa-angle-right {
+  right: 50%;
+}
+#myCarousel .owl-dots {
+  text-align: center;
+  margin-top: 10px;
+}
+#myCarousel .owl-dots .owl-dot {
+  padding: 0 2px !important;
+}
+#myCarousel .owl-dots .owl-dot span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 1px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #7aa127;
+  border-radius: 12px;
+  font-size: 12px;
+}
+#myCarousel .owl-dots .owl-dot span:focus {
+  border: none !important;
+}
+#myCarousel .owl-dots .active {
+  border: none;
+}
+#myCarousel .owl-dots .active span {
+  background-color: #7aa127;
+}
 #message {
   bottom: 80px;
   position: fixed;
@@ -124,6 +194,9 @@
   line-height: 45px;
 }
 #about {
+  background-image: url('../../images/bgr-web/background-image/nen-pc_04.jpg');
+  background-repeat: repeat;
+  background-size: cover;
   height: 260px;
 }
 #about .container {
@@ -139,6 +212,7 @@
   color: #7aa127;
 }
 #about .container .row .titlebar {
+  text-transform: uppercase;
   font-family: VLALLROUNDGOTHIC-BOOK;
 }
 @media only screen and (max-width: 768px) {
@@ -146,8 +220,13 @@
     font-size: 22px;
   }
 }
-#about .container .row .content p span {
+#about .container .row .content {
   font-family: vlauthenticaregular !important;
+}
+@media only screen and (min-width: 768px) {
+  #about .container .row .content {
+    font-size: 32px;
+  }
 }
 @media only screen and (max-width: 768px) {
   #about .container .row .content p span {
@@ -195,7 +274,7 @@
 @media only screen and (min-width: 768px) {
   #news-hot .container .row .titlebar:before,
   #news-hot .container .row .titlebar:after {
-    width: 5%;
+    width: 10%;
     height: 2px;
     background: #eef0f1;
     content: '';
@@ -217,7 +296,7 @@
   padding-top: 15px;
 }
 #news-hot .container .item-hot .item {
-  background-image: linear-gradient(to right, #fcbb16 0%, #f9e0b2 50%, #fcbb16 100%);
+  background-image: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);
   font-size: 18px;
   font-family: VLALLROUNDGOTHIC-BOOK;
   color: #7aa127;
@@ -226,12 +305,24 @@
 #news-hot .container .item-hot .item img {
   border: 1px solid transparent;
 }
+@media only screen and (max-width: 768px) {
+  #news-hot .container .item-hot .item img {
+    max-height: 132px;
+    min-width: 100%;
+  }
+}
 #news-hot .container .item-hot .item .text-description {
   width: 100%;
   max-height: 75px;
-  background: linear-gradient(to right, #fcbb16 0%, #f9e0b2 50%, #fcbb16 100%);
+  background: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);
   overflow: hidden;
   text-align: center;
+  cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+  #news-hot .container .item-hot .item .text-description {
+    height: 50px;
+  }
 }
 #news-introduce {
   background-image: url('../../images/bgr-web/background-image/nen-pc_06.jpg');
@@ -267,7 +358,7 @@
 @media only screen and (min-width: 768px) {
   #news-introduce .row .titlebar:before,
   #news-introduce .row .titlebar:after {
-    width: 5%;
+    width: 10%;
     height: 2px;
     background: #7aa127;
     content: '';
@@ -325,7 +416,7 @@
 #news-introduce .wrap-item .item .wrap-text {
   color: #7aa127;
   font-family: VLALLROUNDGOTHIC-BOOK;
-  font-size: 20px;
+  font-size: 16px;
   margin-top: 15px;
   text-transform: uppercase;
 }
@@ -404,7 +495,7 @@
   padding: 5px 10px;
   color: #7aa127;
   text-transform: uppercase;
-  background: linear-gradient(to right, #fcbb16 0%, #f6d68a 50%, #fcbb16 100%) !important;
+  background: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%) !important;
   font-family: VLALLROUNDGOTHIC-BOOK;
   border-radius: 10px;
   box-shadow: 3px 3px 5px 3px lightgrey;
@@ -459,7 +550,7 @@
   padding: 5px 10px;
   color: #7aa127;
   text-transform: uppercase;
-  background: linear-gradient(to right, #fcbb16 0%, #f6d68a 50%, #fcbb16 100%) !important;
+  background: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%) !important;
   font-family: VLALLROUNDGOTHIC-BOOK;
   border-radius: 10px;
   box-shadow: 3px 3px 5px 3px lightgrey;
@@ -591,7 +682,7 @@
 }
 .block-news .row .news-default .news-content .title {
   font-weight: bold;
-  font-size: 26px;
+  font-size: 20px;
 }
 .block-news .row .news-default .news-content .title a {
   color: #556b20;
@@ -614,6 +705,7 @@
     height: 175px;
     overflow: hidden;
     margin-bottom: 20px;
+    font-size: 16px;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -632,6 +724,12 @@
 .block-news .row .list-news .news-item .news-image {
   border: 2px solid #7aa127;
   border-radius: 12px;
+}
+@media only screen and (max-width: 768px) {
+  .block-news .row .list-news .news-item .news-image {
+    height: 94px;
+    width: 100%;
+  }
 }
 @media only screen and (min-width: 768px) {
   .block-news .row .list-news .news-item .image-content {
@@ -671,9 +769,11 @@
   }
 }
 .contact .titlebar {
+  text-align: center;
   color: #7aa127;
   padding-bottom: 5px !important;
   margin-top: 0px;
+  text-transform: uppercase;
 }
 @media only screen and (max-width: 768px) {
   .contact .titlebar {
@@ -733,10 +833,11 @@
 }
 .contact .item-contact .content .title {
   color: #7aa127;
-  text-transform: uppercase;
   font-size: 20px;
   font-weight: 600;
   padding-bottom: 10px;
+  text-align: center;
+  text-transform: uppercase;
 }
 .contact .item-contact .content .value {
   color: #7aa127;
@@ -801,6 +902,9 @@
 }
 .contact .angency-system ul .select .content p {
   color: #FFFFFF;
+}
+.breadcrumb .container .row .list-inline li {
+  font-size: 16px;
 }
 #abums {
   padding-top: 0px;
@@ -869,12 +973,6 @@
 #news .block-news {
   padding-bottom: 10px;
 }
-#category-news {
-  background-image: url('../../images/bgr-web/bgr tin tuc-sk va ld.jpg');
-  background-position: inherit;
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-}
 @media only screen and (max-width: 768px) {
   #category-news {
     background-image: none;
@@ -888,16 +986,87 @@
 }
 #category-news .news-item {
   padding: 0px;
+  margin-top: 30px;
 }
-#category-news .news-item .title {
-  padding: 10px 0;
+#category-news .news-item .image-content img {
+  min-height: 250px;
+  max-height: 270px;
+}
+@media only screen and (min-width: 768px) {
+  #category-news .news-item .wrap-text-content {
+    padding-left: 30px;
+    padding-right: 31px;
+  }
+}
+#category-news .news-item .wrap-text-content .title {
+  min-height: 50px;
+  padding: 5px 0px;
   font-size: 16px;
-  min-height: 70px;
+}
+#category-news .news-item .wrap-text-content .title a {
+  color: #7aa127;
 }
 @media only screen and (max-width: 768px) {
-  #category-news .news-item .title {
+  #category-news .news-item .wrap-text-content .title a {
+    font-size: 20px;
+  }
+}
+#category-news .news-item .wrap-text-content .title a:hover {
+  text-decoration: none;
+  color: #af0838;
+}
+@media only screen and (max-width: 768px) {
+  #category-news .news-item .wrap-text-content .title {
     font-size: 14px;
-    min-height: 80px;
+  }
+}
+#category-news .news-item .wrap-text-content .wrap-interact {
+  padding-bottom: 10px;
+}
+@media only screen and (max-width: 768px) {
+  #category-news .news-item .wrap-text-content .wrap-interact {
+    font-size: 16px;
+  }
+}
+#category-news .news-item .wrap-text-content .wrap-interact .item {
+  padding-right: 5px;
+}
+@media only screen and (max-width: 768px) {
+  #category-news .news-item .wrap-text-content .description {
+    font-size: 16px;
+  }
+}
+#category-news .news-item .wrap-text-content .btn-main {
+  margin-top: 10px;
+  background-color: #7aa127;
+  border: #7aa127;
+  color: #fff;
+  border-radius: 0;
+  transition: background-color 0.3s linear;
+}
+#category-news .news-item .wrap-text-content .btn-main:hover {
+  color: grey;
+}
+.content .list-style-none li {
+  margin: 40px 0px;
+  list-style: none;
+}
+@media only screen and (max-width: 768px) {
+  .content .list-style-none li .media .media-body a {
+    font-size: 18px;
+  }
+}
+.content .list-style-none li .media .media-body a:hover {
+  color: #af0838;
+}
+@media only screen and (max-width: 768px) {
+  .content .list-style-none li .news-description {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .content .list-style-none li {
+    margin: 20px 0px;
   }
 }
 #news-detail {
@@ -914,6 +1083,10 @@
 @media only screen and (max-width: 768px) {
   .news-detail {
     background-image: none;
+  }
+  .news-detail .content img {
+    width: 100%;
+    object-fit: cover;
   }
 }
 .news-detail .title {
@@ -1167,34 +1340,27 @@
 .pagination li .disabled:hover {
   color: #b2bec3;
 }
-#category-news {
-  background-image: url('../../images/bgr web/bgr tin tuc-sk va ld.jpg');
-  background-position: inherit;
-  background-size: 100% auto;
-  background-repeat: no-repeat;
+.header img {
+  height: 300px !important;
+  object-fit: cover;
+  width: 100% !important;
+}
+.sidebar-news-detail .title {
+  font-family: VLALLROUNDGOTHIC-BOOK;
+}
+.titlebar {
+  font-size: 32px;
 }
 @media only screen and (max-width: 768px) {
-  #category-news {
-    background-image: none;
+  .titlebar {
+    font-size: 22px !important;
   }
 }
-#category-news .titlebar {
-  color: #7aa127;
-}
-#category-news hr {
-  margin-bottom: 25px;
-}
-#category-news .news-item {
-  padding: 0px;
-}
-#category-news .news-item .title {
-  padding: 10px 0;
-  font-size: 16px;
-  min-height: 70px;
+.descriptionbar {
+  font-size: 32px;
 }
 @media only screen and (max-width: 768px) {
-  #category-news .news-item .title {
-    font-size: 14px;
-    min-height: 80px;
+  .descriptionbar {
+    font-size: 20px;
   }
 }

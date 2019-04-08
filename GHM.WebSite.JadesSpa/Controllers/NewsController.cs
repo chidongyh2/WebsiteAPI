@@ -25,57 +25,47 @@ namespace GHM.Website.JadesSpa.Controllers
             _cache = cache;
         }
 
-        [Route("tin-tuc")]
-        public async Task<ActionResult> Index()
-        {
-            var requestUrl = _configuration.GetApiUrl();
-            var apiService = _configuration.GetApiServiceInfo();
-            var httpClientService = new HttpClientService();
-            var listNews = await httpClientService.GetAsync<SearchResult<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category-with-news/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
-            ViewBag.ListCategoryWidthNews = listNews.Items;
+        //[Route("tin-tuc")]
+        //public async Task<ActionResult> Index(int page = 1, int pageSize = 12)
+        //{
+        //    var requestUrl = _configuration.GetApiUrl();
+        //    var apiService = _configuration.GetApiServiceInfo();
+        //    var httpClientService = new HttpClientService();
+        //    var categoryWithNews = await httpClientService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{0}/ {page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+        //    // var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/related-by-category/{apiService.TenantId}/{categoryWithNews.Data.SeoLink}/5/{CultureInfo.CurrentCulture.Name}");
+        //    var listNewsHot = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/newest/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
+        //    ViewBag.ListNewsHot = listNewsHot;
+        //    return View("../News/CategoryNews", categoryWithNews.Data);
+        //}
 
-            var breadcrumbs = new List<Breadcrumb>
-            {
-                new Breadcrumb()
-                {
-                    Name = Resources.Resource.News,
-                    IsCurrent = true,
-                }
-            };
+        //[Route("search/{*seoLink}")]
+        //public async Task<ActionResult> CategoryNews(string seoLink, int page = 1, int pageSize = 12)
+        //{
+        //    var requestUrl = _configuration.GetApiUrl();
+        //    var apiService = _configuration.GetApiServiceInfo();
+        //    var httpClientService = new HttpClientService();
 
-            ViewBag.Breadcrumb = breadcrumbs;
+        //   var menuInfo = await httpClientService.GetAsync<MenuItemViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menu/get-by-seoLink/{apiService.TenantId}/{seoLink}/{CultureInfo.CurrentCulture.Name}");
 
-            return View();
-        }
-
-        [Route("search/{*seoLink}")]
-        public async Task<ActionResult> CategoryNews(string seoLink, int page = 1, int pageSize = 12)
-        {
-            var requestUrl = _configuration.GetApiUrl();
-            var apiService = _configuration.GetApiServiceInfo();
-            var httpClientService = new HttpClientService();
-
-           var menuInfo = await httpClientService.GetAsync<MenuItemViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menu/get-by-seoLink/{apiService.TenantId}/{seoLink}/{CultureInfo.CurrentCulture.Name}");
-
-           if(menuInfo == null)
-            {
-                return Redirect("../Home/Index");
-            }
-            else
-            {
-                if(menuInfo.SubjectType == SubjectType.NewsCategory)
-                {
-                    var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
-                    ViewBag.ListNews = listNews?.Items;
-                    ViewBag.TotalRows = listNews?.TotalRows;
-                    return View("../News/CategoryNews");
-                } else if(menuInfo.SubjectType == SubjectType.News)
-                {
-                    var newsDetail = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/detail/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
-                    ViewBag.NewsDetail = newsDetail;
-                    return View("../News/Detail");
-                }
-            }
+        //   if(menuInfo == null)
+        //    {
+        //        return Redirect("../Home/Index");
+        //    }
+        //    else
+        //    {
+        //        if(menuInfo.SubjectType == SubjectType.NewsCategory)
+        //        {
+        //            var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+        //            ViewBag.ListNews = listNews?.Items;
+        //            ViewBag.TotalRows = listNews?.TotalRows;
+        //            return View("../News/CategoryNews");
+        //        } else if(menuInfo.SubjectType == SubjectType.News)
+        //        {
+        //            var newsDetail = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/detail/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+        //            ViewBag.NewsDetail = newsDetail;
+        //            return View("../News/Detail");
+        //        }
+        //    }
 
             //var categoryInfo = await httpClientService.GetAsync<CategoryTranslationViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/category/{apiService.TenantId}/{seoLink}/{CultureInfo.CurrentCulture.Name}");
             //ViewBag.CategoryInfo = categoryInfo;
@@ -106,38 +96,38 @@ namespace GHM.Website.JadesSpa.Controllers
 
             //ViewBag.Breadcrumb = breadcrumbs;
 
-            return View("../Home/Index");
-        }
+            //return View("../Home/Index");
+        //}
 
-        [Route("{seoLink}.html")]
-        public async Task<ActionResult> Detail(string seoLink)
-        {
-            var requestUrl = _configuration.GetApiUrl();
-            var apiService = _configuration.GetApiServiceInfo();
-            var httpClientService = new HttpClientService();
+        //[Route("{seoLink}.html")]
+        //public async Task<ActionResult> Detail(string seoLink)
+        //{
+        //    var requestUrl = _configuration.GetApiUrl();
+        //    var apiService = _configuration.GetApiServiceInfo();
+        //    var httpClientService = new HttpClientService();
 
-            var newsDetail = await httpClientService.GetAsync<NewsDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/client/{apiService.TenantId}/{seoLink}/{CultureInfo.CurrentCulture.Name}");
+        //    var newsDetail = await httpClientService.GetAsync<NewsDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/client/{apiService.TenantId}/{seoLink}/{CultureInfo.CurrentCulture.Name}");
 
-            var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/related/{apiService.TenantId}/{seoLink}/20");
-            ViewBag.listNewRelated = listNewsRelated;
+        //    var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/related/{apiService.TenantId}/{seoLink}/20");
+        //    ViewBag.listNewRelated = listNewsRelated;
 
-            var listEvent = await httpClientService.GetAsync<SearchResult<EventViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/events/events/all/{apiService.TenantId}/1/10/{CultureInfo.CurrentCulture.Name}");
-            ViewBag.ListEventSideBar = listEvent?.Items;
+        //    var listEvent = await httpClientService.GetAsync<SearchResult<EventViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/events/events/all/{apiService.TenantId}/1/10/{CultureInfo.CurrentCulture.Name}");
+        //    ViewBag.ListEventSideBar = listEvent?.Items;
 
-            var breadcrumbs = new List<Breadcrumb>
-            {
-                new Breadcrumb()
-                {
-                    Name = Resources.Resource.News,
-                    IsCurrent = false,
-                    NamePath = "tin-tuc",
-                    Url = "tin-tuc",
-                }
-            };
+        //    var breadcrumbs = new List<Breadcrumb>
+        //    {
+        //        new Breadcrumb()
+        //        {
+        //            Name = Resources.Resource.News,
+        //            IsCurrent = false,
+        //            NamePath = "tin-tuc",
+        //            Url = "tin-tuc",
+        //        }
+        //    };
 
-            ViewBag.Breadcrumb = breadcrumbs;
+        //    ViewBag.Breadcrumb = breadcrumbs;
 
-            return View(newsDetail);
-        }
+        //    return View(newsDetail);
+        //}
     }
 }

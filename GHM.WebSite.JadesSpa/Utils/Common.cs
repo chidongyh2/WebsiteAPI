@@ -31,7 +31,7 @@ namespace GHM.Website.JadesSpa.Utils
             {
                 nLength--;
             }
-            mSource = mSource.Substring(0, nLength);
+            mSource = mSource.Substring(0, nLength) + "...";
             return mSource;
         }
 

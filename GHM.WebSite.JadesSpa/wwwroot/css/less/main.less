@@ -34,7 +34,7 @@
             width: 258px !important;
             height: 290px;
             position: relative;
-            background: linear-gradient(to right,#fcbb16 0%,#f6d68a 50%,#fcbb16 100%);
+            background: linear-gradient(to right,#f8a102 0%,#f6d68a 50%,#f8a102 100%);
 
             img {
                 width: 258px !important;
@@ -42,7 +42,9 @@
                 border: 1px solid transparent;
             }
 
-            span {
+            .slide-description {
+                text-decoration: none;
+                cursor: pointer;
                 width: 256px;
                 height: 75px;
                 text-transform: uppercase;
@@ -56,7 +58,7 @@
                 height: 75px;
                 margin-left: 1px;
                 margin-bottom: 1px;
-                background-image: linear-gradient(to right, #fcbb16 0%, #f9e0b2 50%, #fcbb16 100%);
+                background-image: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);
                 line-height: 75px;
             }
         }
@@ -113,7 +115,88 @@
     text-align: center;
     line-height: 45px;
 }
+#myCarousel {
+    .active {
+        .item {
+            a {
+                font-size: 40px;
+                height: 40px;
+                width: 40px;
 
+                img {
+                    max-height: 600px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    height: auto;
+                    object-fit: cover;
+                    display: block;
+                    /*-webkit-animation: zoomin 18s ease-in infinite;
+                    animation: zoomin 18s ease-in infinite;
+                    transition: all 1s ease-in-out;*/
+                    overflow: hidden;
+
+                    @media @mobile {
+                        max-height: unset;
+                    }
+                }
+            }
+        }
+    }
+
+    img {
+        max-height: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        display: block;
+
+        @media @mobile {
+            max-height: unset;
+        }
+    }
+
+    .fa-angle-left {
+        left: 50%;
+    }
+
+    .fa-angle-right {
+        right: 50%;
+    }
+
+    .owl-dots {
+        text-align: center;
+        margin-top: 10px;
+
+        .owl-dot {
+            padding: 0 2px !important;
+
+            span {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                margin: 1px;
+                text-indent: -999px;
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0);
+                border: 1px solid @main-color;
+                border-radius: 12px;
+                font-size: 12px;
+
+                &:focus {
+                    border: none !important;
+                }
+            }
+        }
+
+        .active {
+            border: none;
+
+            span {
+                background-color: @main-color;
+            }
+        }
+    }
+}
 #message {
     bottom: 80px;
     position: fixed;
@@ -126,6 +209,9 @@
 }
 
 #about {
+    background-image: url('../../images/bgr-web/background-image/nen-pc_04.jpg');
+    background-repeat: repeat;
+    background-size: cover;
     height: 260px;
 
     .container {
@@ -140,6 +226,7 @@
             color: @main-color;
 
             .titlebar {
+                text-transform: uppercase;
                 @media @mobile {
                     font-size: 22px;
                 }
@@ -148,13 +235,16 @@
             }
 
             .content {
+                font-family: vlauthenticaregular !important;
+                @media @not_mobile {
+                    font-size: 32px;
+                }
+
                 p {
                     span {
                         @media @mobile {
                             font-size: 18px !important;
                         }
-
-                        font-family: vlauthenticaregular !important;
                     }
                 }
             }
@@ -198,7 +288,7 @@
 
                 @media @not_mobile {
                     &:before, &:after {
-                        width: 5%;
+                        width: 10%;
                         height: 2px;
                         background: @color-text-white;
                         content: '';
@@ -225,7 +315,7 @@
 
         .item-hot {
             .item {
-                background-image: linear-gradient(to right, #fcbb16 0%, #f9e0b2 50%, #fcbb16 100%);
+                background-image: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);
                 font-size: 18px;
                 font-family: VLALLROUNDGOTHIC-BOOK;
                 color: @main-color;
@@ -233,14 +323,24 @@
 
                 img {
                     border: 1px solid transparent;
+
+                    @media @mobile {
+                        max-height: 132px;
+                        min-width: 100%;
+                    }
                 }
 
                 .text-description {
                     width: 100%;
                     max-height: 75px;
-                    background: linear-gradient(to right, #fcbb16 0%, #f9e0b2 50%, #fcbb16 100%);
+                    background: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);
                     overflow: hidden;
                     text-align: center;
+                    cursor: pointer;
+
+                    @media @mobile {
+                        height: 50px;
+                    }
                 }
             }
         }
@@ -281,7 +381,7 @@
             @media @not_mobile {
 
                 &:before, &:after {
-                    width: 5%;
+                    width: 10%;
                     height: 2px;
                     background: @main-color;
                     content: '';
@@ -346,7 +446,7 @@
             .wrap-text {
                 color: @main-color;
                 font-family: VLALLROUNDGOTHIC-BOOK;
-                font-size: 20px;
+                font-size: 16px;
                 margin-top: 15px;
                 text-transform: uppercase;
 
@@ -429,7 +529,7 @@
                         padding: 5px 10px;
                         color: @main-color;
                         text-transform: uppercase;
-                        background: linear-gradient(to right,#fcbb16 0%,#f6d68a 50%,#fcbb16 100%) !important;
+                        background: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%) !important;
                         font-family: VLALLROUNDGOTHIC-BOOK;
                         border-radius: 10px;
                         box-shadow: 3px 3px 5px 3px lightgrey;
@@ -488,7 +588,7 @@
                         padding: 5px 10px;
                         color: @main-color;
                         text-transform: uppercase;
-                        background: linear-gradient(to right,#fcbb16 0%,#f6d68a 50%,#fcbb16 100%) !important;
+                        background: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%) !important;
                         font-family: VLALLROUNDGOTHIC-BOOK;
                         border-radius: 10px;
                         box-shadow: 3px 3px 5px 3px lightgrey;
@@ -642,7 +742,7 @@
 
                 .title {
                     font-weight: bold;
-                    font-size: 26px;
+                    font-size: 20px;
 
                     a {
                         color: #556b20;
@@ -664,11 +764,12 @@
             .news-item {
                 font-family: Roboto-Regular;
                 font-size: 20px;
-
+       
                 @media @mobile {
                     height: 175px;
                     overflow: hidden;
                     margin-bottom: 20px;
+                    font-size: 16px;
                 }
 
                 @media @not_mobile {
@@ -687,6 +788,10 @@
                 .news-image {
                     border: 2px solid @main-color;
                     border-radius: 12px;
+                    @media @mobile {
+                        height: 94px;
+                        width: 100%;
+                    }
                 }
 
                 .image-content {
@@ -694,7 +799,7 @@
                         width: 250px;
                         height: 145px;
                     }
-
+                   
                     .img-overlay {
                         background: rgba(0,0,0,.25);
                         display: inline-block;
@@ -736,10 +841,11 @@
     }
 
     .titlebar {
+        text-align: center;
         color: @color-text;
         padding-bottom: 5px !important;
         margin-top: 0px;
-
+        text-transform: uppercase;
         @media @mobile {
             padding-top: 0px;
         }
@@ -802,6 +908,8 @@
                 font-size: 20px;
                 font-weight: 600;
                 padding-bottom: 10px;
+                text-align: center;
+                text-transform: uppercase;
             }
 
             .value {
@@ -886,7 +994,17 @@
         }
     }
 }
-
+.breadcrumb {
+    .container {
+        .row {
+            .list-inline {
+                li {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
 #abums {
     padding-top: 0px;
     padding-bottom: 20px;
@@ -972,11 +1090,6 @@
 }
 
 #category-news {
-    background-image: url('../../images/bgr-web/bgr tin tuc-sk va ld.jpg');
-    background-position: inherit;
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-
     @media @mobile {
         background-image: none;
     }
@@ -991,16 +1104,104 @@
 
     .news-item {
         padding: 0px;
+        margin-top: 30px;
 
-        .title {
-            padding: 10px 0;
-            font-size: 16px;
-            min-height: 70px;
-
-            @media @mobile {
-                font-size: 14px;
-                min-height: 80px;
+        .image-content {
+            img {
+                min-height: 250px;
+                max-height: 270px;
+               
             }
+        }
+
+        .wrap-text-content {
+            @media @not_mobile {
+                padding-left: 30px;
+                padding-right: 31px;
+            }
+
+            .title {
+                min-height: 50px;
+
+                a {
+                    color: @main-color;
+
+                    @media @mobile {
+                        font-size: 20px;
+                    }
+
+                    &:hover {
+                        text-decoration: none;
+                        color: #af0838;
+                    }
+                }
+
+                padding: 5px 0px;
+                font-size: 16px;
+
+                @media @mobile {
+                    font-size: 14px;
+                }
+            }
+
+            .wrap-interact {
+                @media @mobile {
+                    font-size: 16px;
+                }
+
+                padding-bottom: 10px;
+
+                .item {
+                    padding-right: 5px;
+                }
+            }
+
+            .description {
+                @media @mobile {
+                    font-size: 16px;
+                }
+            }
+
+            .btn-main {
+                margin-top: 10px;
+                background-color: @main-color;
+                border: @main-color;
+                color: #fff;
+                border-radius: 0;
+                transition: background-color .3s linear;
+
+                &:hover {
+                    color: grey;
+                }
+            }
+        }
+    }
+}
+.content {
+    .list-style-none {
+        li {
+            .media {
+                .media-body {
+                    a {
+                        @media @mobile {
+                            font-size: 18px;
+                        }
+                        &:hover {
+                            color: #af0838;
+                        }
+                    }
+                }
+            }
+            .news-description {
+                @media @mobile {
+                    font-size: 16px;
+                }
+            }
+            margin: 40px 0px;
+            @media @mobile {
+                margin: 20px 0px; 
+            }
+            list-style: none;
         }
     }
 }
@@ -1019,6 +1220,12 @@
 .news-detail {
     @media @mobile {
         background-image: none;
+        .content {
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
     }
 
     .title {
@@ -1333,36 +1540,27 @@
     }
 }
 
-#category-news {
-    background-image: url('../../images/bgr web/bgr tin tuc-sk va ld.jpg');
-    background-position: inherit;
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-
+.header {
+    img {
+        height: 300px !important;
+        object-fit: cover;
+        width: 100% !important;
+    }
+}
+.sidebar-news-detail {
+    .title {
+        font-family: VLALLROUNDGOTHIC-BOOK;
+    }
+}
+.titlebar {
+    font-size: 32px;
     @media @mobile {
-        background-image: none;
+        font-size: 22px !important;
     }
-
-    .titlebar {
-        color: @color-text;
-    }
-
-    hr {
-        margin-bottom: 25px;
-    }
-
-    .news-item {
-        padding: 0px;
-
-        .title {
-            padding: 10px 0;
-            font-size: 16px;
-            min-height: 70px;
-
-            @media @mobile {
-                font-size: 14px;
-                min-height: 80px;
-            }
-        }
+}
+.descriptionbar {
+    font-size: 32px;
+    @media @mobile {
+        font-size: 20px;
     }
 }

@@ -87,28 +87,59 @@ namespace GHM.Website.JadesSpa.Controllers
                     {"seoLink", segment },
                     {"languageId", CultureInfo.CurrentCulture.Name }
                 });
-            if(menuInfo == null)
+            if (menuInfo == null)
             {
-                return View("../NotFound/Index");
-            } else
+                string[] segmentArray = segment.Split('.');
+                bool isNews = segmentArray[1].ToLower().Equals("html");
+                bool isProduct = segmentArray[1].ToLower().Equals("htm");
+                if (isNews)
+                {
+                    var newInfo = await httpClientService.PostAsync<NewsDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/get-detail-frombody",
+                  new Dictionary<string, string> {
+                        {"TenantId", apiService.TenantId },
+                        {"seoLink", segmentArray[0] },
+                        {"languageId", CultureInfo.CurrentCulture.Name }
+                  });
+
+                    if (newInfo != null)
+                    {
+                        var newsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{newInfo.Id}/{CultureInfo.CurrentCulture.Name}/1/3");
+                        ViewBag.NewsRelated = newsRelated;
+                        return View("../News/Detail", newInfo);
+                    }
+                    else
+                    {
+                        return View("../NotFound/Index");
+                    }
+                } else
+                {
+                    return View("../NotFound/Index");
+                }
+            }
+            else
             {
                 if (menuInfo.SubjectType == SubjectType.NewsCategory)
                 {
                     var categoryWithNews = await httpClientService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+                    // var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/related-by-category/{apiService.TenantId}/{categoryWithNews.Data.SeoLink}/5/{CultureInfo.CurrentCulture.Name}");
+                    var listNewsHot = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/newest/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
+                    ViewBag.ListNewsHot = listNewsHot;
                     return View("../News/CategoryNews", categoryWithNews.Data);
                 }
                 else if (menuInfo.SubjectType == SubjectType.News)
                 {
                     var newsDetail = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/detail/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
                     ViewBag.NewsDetail = newsDetail;
-                    return View("../News/Detail");
-                } else
+                    //var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{menuInfo.SubjectId}/{CultureInfo.CurrentCulture.Name}/20");
+                    return View("../News/Detail", newsDetail);
+                }
+                else
                 {
                     return View("../NotFound/Index");
                 }
             }
 
-          
+
         }
         public async Task<IActionResult> About()
         {

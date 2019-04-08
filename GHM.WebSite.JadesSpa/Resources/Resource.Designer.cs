@@ -466,6 +466,15 @@ namespace GHM.Website.JadesSpa.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to News Hot.
+        /// </summary>
+        public static string NewsHot {
+            get {
+                return ResourceManager.GetString("NewsHot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to News Related.
         /// </summary>
         public static string NewsRelated {
