@@ -857,6 +857,29 @@ namespace GHM.Website.Infrastructure.Services
         {
            return  await _menuItemTranslationRepository.GetInfoBySeoLink(tenantId, seoLink, languageId);
         }
+
+        public async Task<MenuDetailViewModel> GetAllActivatedMenuByPosition(string tenantId, string languageId, Position position)
+        {
+            var menuInfo = await _menuRepository.GetInfoByPosition(tenantId, position);
+
+            if (menuInfo == null)
+                return null;
+            var listMenuItems = await _menuItemRepository.GetAllActivatedMenuItem(tenantId, menuInfo.Id, languageId);
+
+            return new MenuDetailViewModel
+            {
+                Id = menuInfo.Id,
+                Position = menuInfo.Position,
+                ConcurrencyStamp = menuInfo.ConcurrencyStamp,
+                Description = menuInfo.Description,
+                EffectType = menuInfo.EffectType,
+                Icon = menuInfo.Icon,
+                Name = menuInfo.Name,
+                Order = menuInfo.Order,
+                IsActive = menuInfo.IsActive,
+                MenuItems = listMenuItems
+            };
+        }
         #endregion
 
     }

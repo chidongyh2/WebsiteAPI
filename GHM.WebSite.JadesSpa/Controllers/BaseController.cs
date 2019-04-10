@@ -45,12 +45,12 @@ namespace GHM.Website.JadesSpa.Controllers
             //ViewBag.Url = "http://localhost:50005/";
             ViewBag.Url = "http://quyfile.ghmsoft.vn/";
             ViewBag.ListLanguage = GetLanguage();
-            //ViewBag.CurrentLanguage = CultureInfo.CurrentCulture.Name;
+            ViewBag.CurrentLanguage = CultureInfo.CurrentCulture.Name;
         }
 
         private List<MenuItemViewModel> GetMainMenu()
         {
-            if (_cache.TryGetValue(CacheParam.MainNav, out List<MenuItemViewModel> menus))
+            if (_cache.TryGetValue($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
             {
                 return menus;
             }
@@ -67,7 +67,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
         private WebsiteSetting GetSetting()
         {
-            if (_cache.TryGetValue(CacheParam.Setting, out WebsiteSetting setting))
+            if (_cache.TryGetValue($"{CacheParam.Setting}{CultureInfo.CurrentCulture.Name}", out WebsiteSetting setting))
             {
                 return setting;
             }
@@ -106,7 +106,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
         private List<BranchContactSearchViewModel> GetBranch()
         {
-            if (_cache.TryGetValue(CacheParam.Branch, out List<BranchContactSearchViewModel> branchs))
+            if (_cache.TryGetValue($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", out List<BranchContactSearchViewModel> branchs))
             {
                 return branchs;
             }
@@ -124,7 +124,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
         private List<SocialNetworkViewModel> GetSocialNetwork()
         {
-            if (_cache.TryGetValue(CacheParam.SocialNetwork, out List<SocialNetworkViewModel> socialNetwork))
+            if (_cache.TryGetValue($"{CacheParam.SocialNetwork}{CultureInfo.CurrentCulture.Name}", out List<SocialNetworkViewModel> socialNetwork))
             {
                 return socialNetwork;
             }
@@ -141,7 +141,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
         private List<BrandSearchViewModel> GetAllBrand()
         {
-            if (_cache.TryGetValue(CacheParam.Brand, out List<BrandSearchViewModel> brands))
+            if (_cache.TryGetValue($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", out List<BrandSearchViewModel> brands))
             {
                 return brands;
             }
@@ -158,7 +158,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
         private List<MenuItemViewModel> GetFooterMenu()
         {
-            if (_cache.TryGetValue(CacheParam.FooterNav, out List<MenuItemViewModel> menus))
+            if (_cache.TryGetValue($"{CacheParam.FooterNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
             {
                 return menus;
             }
@@ -176,7 +176,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
         private List<TenantLanguageViewModel> GetLanguage()
         {
-            if (_cache.TryGetValue(CacheParam.Language, out List<TenantLanguageViewModel> languages))
+            if (_cache.TryGetValue($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", out List<TenantLanguageViewModel> languages))
             {
                 return languages;
             }

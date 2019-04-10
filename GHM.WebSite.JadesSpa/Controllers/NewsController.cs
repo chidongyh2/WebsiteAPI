@@ -24,7 +24,21 @@ namespace GHM.Website.JadesSpa.Controllers
             _configuration = configuration;
             _cache = cache;
         }
+        [Route("view-more-news"), AcceptVerbs("POST")]
+        public async Task<IActionResult> GetNewsByCategory(string categoryId, int page = 1, int pageSize = 6)
+        {
+            if(page == 3)
+            {
+                pageSize = 5;
+            }
+            var requestUrl = _configuration.GetApiUrl();
+            var apiService = _configuration.GetApiServiceInfo();
+            var httpService = new HttpClientService();
+            var listNews = await httpService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{categoryId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+            var item = listNews?.Data;
 
+            return Json(listNews.Data.ListNews);
+        }
         //[Route("tin-tuc")]
         //public async Task<ActionResult> Index(int page = 1, int pageSize = 12)
         //{

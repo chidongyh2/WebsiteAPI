@@ -9,6 +9,14 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
 
+    .container {
+        .col-sm-4 {
+            @media @mobile {
+                text-align: center;
+            }
+        }
+    }
+
     @media @mobile {
         background-size: auto 100%;
     }
@@ -49,7 +57,7 @@
                 padding-left: 0px;
 
                 @media @mobile {
-                    text-align: center;
+                    //text-align: center;
                 }
 
                 .branch {
@@ -66,6 +74,7 @@
                     padding: 3px 2px;
                     color: @color-text-white;
                     font-size: 16px !important;
+                    font-family: Roboto-Regular;
 
                     i {
                         padding-right: 5px;
@@ -151,13 +160,11 @@
         border-radius: 15px;
         margin-left: 25px;
         border: none;
-        @media @mobile {
-            margin-left: 80px;
-        }
+
         &:hover {
-            color: aqua;
+            color: grey;
             opacity: 0.6;
-            transform:inherit;
+            transform: inherit;
         }
     }
 }
@@ -176,6 +183,10 @@
     .message {
         .submit {
             text-align: center;
+        }
+
+        .form-group {
+            margin-top: 10px;
         }
     }
 }

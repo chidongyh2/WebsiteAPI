@@ -18,7 +18,6 @@ using System.Text;
 using GHM.Website.JadesSpa.Utils;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
-using GHM.WebSite.JadesSpa.ViewModels;
 using GHM.Infrastructure.Constants;
 
 namespace GHM.Website.JadesSpa.Controllers
@@ -57,9 +56,9 @@ namespace GHM.Website.JadesSpa.Controllers
 
             var listServices = await httpClientService.GetAsync<SearchResult<CategorySearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/category-home-page/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListServices = listServices?.Items;
-
-            var listVaue = await httpClientService.GetAsync<List<ValueViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/core-values/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
-            ViewBag.ListValue = listVaue;
+            
+            var middleMenu = await httpClientService.GetAsync<MenuDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/get-all-menu-position/{(int)Position.Middle}/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
+            ViewBag.MiddleMenu = middleMenu;
             //if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
             //{
             //    ViewBag.MainBanner = banners;
@@ -124,6 +123,7 @@ namespace GHM.Website.JadesSpa.Controllers
                     // var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/related-by-category/{apiService.TenantId}/{categoryWithNews.Data.SeoLink}/5/{CultureInfo.CurrentCulture.Name}");
                     var listNewsHot = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/newest/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
                     ViewBag.ListNewsHot = listNewsHot;
+                    ViewBag.CategoryId = categoryWithNews.Data.CategoryId;
                     return View("../News/CategoryNews", categoryWithNews.Data);
                 }
                 else if (menuInfo.SubjectType == SubjectType.News)
@@ -160,6 +160,7 @@ namespace GHM.Website.JadesSpa.Controllers
                 new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
             );
 
+            var test = Response.Cookies.ToString();
             return Redirect(url);
         }
 

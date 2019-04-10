@@ -16,5 +16,6 @@ namespace GHM.Website.Domain.ViewModels
         public bool IsActive { get; set; }
         public Position Position { get; set; }
         public string ConcurrencyStamp { get; set; }
+        public List<MenuItemSearchViewModel> MenuItems { get; set; }
     }
 }

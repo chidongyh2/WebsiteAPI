@@ -20,7 +20,7 @@
     height: 45px;
 
     .nav-header {
-        padding-top:7px;
+        padding-top: 7px;
         padding-left: 0px;
         display: flex;
         height: auto;
@@ -212,6 +212,26 @@
                                     padding: 0.5em 0.6em;
                                     background-color: @color-text-white;
                                     color: @main-color;
+
+                                    &.fa-facebook {
+                                        padding: 10px 15px;
+                                    }
+
+                                    &.fa-linkedin {
+                                        padding: 10px 13px;
+                                    }
+
+                                    &.fa-twitter {
+                                        padding: 10px 13px;
+                                    }
+
+                                    &.fa-google-plus {
+                                        padding: 10px 9px;
+                                    }
+
+                                    &.fa-youtube {
+                                        padding: 10px 13px;
+                                    }
                                 }
                             }
                         }
@@ -277,26 +297,6 @@
                                             border-bottom: 1px solid @color-white !important;
                                         }
                                     }
-
-                                    /*.fa-facebook {
-                                        padding: 6px 13px;
-                                    }
-
-                                    .fa-linkedin {
-                                        padding: 6px 9px;
-                                    }
-
-                                    .fa-twitter {
-                                        padding: 6px 8px;
-                                    }
-
-                                    .fa-google-plus {
-                                        padding: 6px 3px;
-                                    }
-
-                                    .fa-youtube {
-                                        padding: 5px 8px;
-                                    }*/
                                 }
                             }
                         }
@@ -347,10 +347,13 @@
         z-index: 1030;
 
         .header-tool {
-            padding-top: 20px;
-
+            position: absolute;
+            right: 0;
+            padding-top: 30px;
+            padding-right: 10px;
             .btn-group {
                 a {
+                    font-size:16px;
                     &:hover, :focus, :active {
                         text-decoration: none !important;
                     }

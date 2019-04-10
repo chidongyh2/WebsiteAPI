@@ -24,12 +24,14 @@
                 {
                     <div class="col-sm-6 col-xs-6">
                         <div class="item">
-                            <a href="@($"/{ item.SeoLink}.html")">
-                                <img class="news-image zoom img-responsive lazy" src="@(string.IsNullOrEmpty(item.BannerImage) ? "/images/no-image.png" : $"{url}{item.BannerImage}")"
-                                        onerror="this.src='/images/no-image.png'"/>
+                            <div style="overflow: hidden">
+                                <a href="@($"/{ item.SeoLink}.html")">
+                                    <img class="news-image zoom img-responsive lazy" data-src="/image?url=@(string.IsNullOrEmpty(item.BannerImage) ? "/images/no-image.png" : $"{url}{item.BannerImage}&width=258&height=290")"
+                                         onerror="this.src='/images/no-image.png'" />
 
-                            </a>
-                            <a  href="@($"/{ item.SeoLink}.html")" class="text-description">@(string.IsNullOrEmpty(item.Name) ? "No Title" : item.Name)</a>
+                                </a>
+                            </div>
+                            <a href="@($"/{ item.SeoLink}.html")" class="text-description">@(string.IsNullOrEmpty(item.Name) ? "No Title" : item.Name)</a>
                         </div>
                     </div>
                 }

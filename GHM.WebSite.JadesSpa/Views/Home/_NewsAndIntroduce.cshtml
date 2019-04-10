@@ -1,57 +1,93 @@
-﻿
+﻿@{
+    var menuDetail = ViewBag.MiddleMenu as MenuDetailViewModel;
+}
 <div id="news-introduce">
-    <div class="row">
-        <div class="col-sm-12">
-            <h2 class="center titlebar">
-                @Resource.TitleIntroduce
-            </h2>
-        
-        </div>
-        <div class="col-sm-12">
-            <h2 class="descriptionbar">@Resource.DescriptionIntroduce</h2>
-        </div>
-    </div>
-    <div class="row wrap-item">
-        <div class="col-sm-3 col-xs-6">
-            <div class="item">
-                <div class="wrap-image">
-                    <img class="news-image zoom img-responsive lazy" data-src="images/introduce/infrastructure.jpg" alt="" />
-                </div>
-                <div class="wrap-text">
-                    <span>@Resource.InfrastructureIntroduce</span>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="center titlebar">
+                    @menuDetail.Name
+                </h2>
 
             </div>
-        </div>
-        <div class="col-sm-3 col-xs-6">
-            <div class="item">
-                <div class="wrap-image">
-                    <img class="news-image zoom img-responsive lazy" data-src="images/introduce/expertTeam.jpg" alt="" />
-                </div>
-                <div class="wrap-text">
-                    <span>@Resource.ExpertTeamIntroductuce</span>
-                </div>
+            <div class="col-sm-12">
+                <h2 class="descriptionbar">@menuDetail.Description</h2>
             </div>
         </div>
-        <div class="col-sm-3 col-xs-6">
-            <div class="item">
-                <div class="wrap-image">
-                    <img class="news-image zoom img-responsive lazy" data-src="images/introduce/equipment.jpg" alt="" />
-                </div>
-                <div class="wrap-text">
-                    <span>@Resource.EquipmentIntroduce</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3 col-xs-6">
-            <div class="item">
-                <div class="wrap-image">
-                    <img class="news-image zoom img-responsive lazy" data-src="images/introduce/service.jpg" alt="" />
-                </div>
-                <div class="wrap-text">
-                    <span>@Resource.ServicesIntroduce</span>
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="middle-menu-slide" class="hidden-xs">
+                    @if (menuDetail.MenuItems != null && menuDetail.MenuItems.Any())
+                    {
+                        @foreach (var item in menuDetail.MenuItems)
+                        {
+                            <div class="item">
+                                <div class="wrap-image zoom">
+                                    <a href="@($"{item.NamePath}.html")">
+                                        <img class="news-image img-responsive lazy"
+                                             src="@($"/image?url={(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{item.Image}")}&width=270&height=270")" alt="" />
+                                    </a>
+                                </div>
+                                <div class="wrap-text">
+                                    <a href="@($"{item.NamePath}.html")">@item.Name</a>
+                                </div>
+                            </div>
+                        }
+                    }
                 </div>
             </div>
         </div>
     </div>
+    <div id="wrap-item" class="row wrap-item visible-xs">
+        @if (menuDetail.MenuItems != null && menuDetail.MenuItems.Any())
+        {
+            @foreach (var item in menuDetail.MenuItems)
+            {
+                <div class="col-sm-3 col-xs-6">
+                    <div class="item">
+                        <div class="wrap-image">
+                            <a href="@($"{item.NamePath}.html")">
+                                <img class="news-image zoom img-responsive lazy"
+                                     data-src="@($"/image?url={(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{item.Image}")}")" alt="" />
+                            </a>
+                        </div>
+                        <div class="wrap-text">
+                            <a href="@($"{item.NamePath}.html")">@item.Name</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        @*<div class="col-sm-3 col-xs-6">
+                <div class="item">
+                    <div class="wrap-image">
+                        <img class="news-image zoom img-responsive lazy" data-src="images/introduce/expertTeam.jpg" alt="" />
+                    </div>
+                    <div class="wrap-text">
+                        <span>@Resource.ExpertTeamIntroductuce</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <div class="item">
+                    <div class="wrap-image">
+                        <img class="news-image zoom img-responsive lazy" data-src="images/introduce/equipment.jpg" alt="" />
+                    </div>
+                    <div class="wrap-text">
+                        <span>@Resource.EquipmentIntroduce</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <div class="item">
+                    <div class="wrap-image">
+                        <img class="news-image zoom img-responsive lazy" data-src="images/introduce/service.jpg" alt="" />
+                    </div>
+                    <div class="wrap-text">
+                        <span>@Resource.ServicesIntroduce</span>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+
 </div>

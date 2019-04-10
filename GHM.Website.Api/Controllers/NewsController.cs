@@ -244,7 +244,7 @@ namespace GHM.Website.Api.Controllers
         [Route("getNewsByCategoryById/{tenantId}/{categoryId}/{page}/{pageSize}/{languageId?}"), AcceptVerbs("GET")]
         [CheckPermission]
         public async Task<IActionResult> GetNewsByCategoryId(string tenantId, string categoryId, string languageId,
-           int page = 1, int pageSize = 20)
+           int page = 1, int pageSize = 12)
         {
             var result = await _newsService.GetNewsByCategoryIdAsync(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, categoryId, page, pageSize);
             return Ok(result);

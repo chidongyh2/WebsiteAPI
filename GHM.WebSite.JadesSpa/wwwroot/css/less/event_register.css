@@ -4,11 +4,11 @@
 }
 @font-face {
   font-family: 'Roboto-Bold';
-  src: url('../../lib/Font-Roboto/Roboto-Bold_1.tff') format('truetype');
+  src: url('../../lib/font-roboto/roboto-bold_1.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Roboto-Regular';
-  src: url('../../lib/Font-Roboto/Roboto-Regular.tff') format('truetype');
+  src: url('../../lib/font-roboto/roboto-regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'VLALLROUNDGOTHIC-BOOK';
@@ -634,7 +634,7 @@ nav #registerMainNav li:hover > ul {
   }
 }
 #video .video-container #video-silder .carousel-caption p {
-  color: #7aa127;
+  color: #609930;
   font-size: 25px;
 }
 @media only screen and (max-width: 768px) {
@@ -790,7 +790,7 @@ nav #registerMainNav li:hover > ul {
   margin-top: 20px;
 }
 #register #register_form .submit .btn-send-message:hover {
-  background-color: #7aa127;
+  background-color: #609930;
 }
 #register .social-network ul {
   text-align: center;

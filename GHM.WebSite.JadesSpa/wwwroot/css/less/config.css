@@ -4,11 +4,11 @@
 }
 @font-face {
   font-family: 'Roboto-Bold';
-  src: url('../../lib/Font-Roboto/Roboto-Bold_1.tff') format('truetype');
+  src: url('../../lib/font-roboto/roboto-bold_1.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Roboto-Regular';
-  src: url('../../lib/Font-Roboto/Roboto-Regular.tff') format('truetype');
+  src: url('../../lib/font-roboto/roboto-regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'VLALLROUNDGOTHIC-BOOK';
