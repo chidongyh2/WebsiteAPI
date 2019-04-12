@@ -37,7 +37,8 @@ namespace GHM.Website.Pyrexar.Controllers
             ViewBag.BranchContacts = GetBranch();
             ViewBag.SocialNetwork = GetSocialNetwork();
             ViewBag.ListNewsNewest = GetListNews();
-            ViewBag.Url = "http://localhost:50005/";
+            //ViewBag.Url = "http://localhost:50005/";
+            ViewBag.Url = "https://websitefile.ghmsoft.vn/";
             ViewBag.CurrentLanguage = CultureInfo.CurrentCulture.Name;
         }
 

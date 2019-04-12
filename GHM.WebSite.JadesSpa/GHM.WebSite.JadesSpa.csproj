@@ -30,6 +30,7 @@
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="wwwroot\js\viewmodel\about.viewmodel.es5.js" />
+    <None Include="wwwroot\uploads\files\2017\03\17101536704592-Ban giao cong viec 19.7.2016_Nguyen The Anh.xlsx" />
   </ItemGroup>
 
 

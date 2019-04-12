@@ -30,16 +30,15 @@ namespace GHM.Web.ApiGateway
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             var authenticationProviderKey = "IdentityApiKey";
-            services.AddAuthentication("Bearer")
-                .AddIdentityServerAuthentication(authenticationProviderKey, options =>
-                {
-                    options.Authority = Configuration.GetSection("Authority").Value;
-                    options.RequireHttpsMetadata = false;
-                    options.ApiName = "GHM_Internal_Api_Gateway";
-                    options.SupportedTokens = SupportedTokens.Both;
-                    options.ApiSecret = Configuration.GetSection("ApiSecret").Value;
-                });
-
+                services.AddAuthentication("Bearer")
+                    .AddIdentityServerAuthentication(authenticationProviderKey, options =>
+                    {
+                        options.Authority = Configuration.GetSection("Authority").Value;
+                        options.RequireHttpsMetadata = false;
+                        options.ApiName = "GHM_Internal_Api_Gateway";
+                        options.SupportedTokens = SupportedTokens.Both;
+                        options.ApiSecret = Configuration.GetSection("ApiSecret").Value;
+                    });      
             services.AddOcelot();
         }
 
