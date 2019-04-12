@@ -74,7 +74,10 @@ new Breadcrumb()
                                 </ul>
                             </div>
                         <div class="content">
-                            @Html.Raw(Model.Content.Replace("image-content.ashx?name=/", ViewBag.Url))
+                            @{ 
+                               var content = Model.Content.Replace("image-content.ashx?name=/", ViewBag.Url);
+                            }
+                            @Html.Raw(content.Replace("uploads/", $"{ViewBag.Url}uploads/"))
                         </div>
                     </div>
                 </div>
