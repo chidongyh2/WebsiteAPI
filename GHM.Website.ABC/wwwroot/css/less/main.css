@@ -1464,7 +1464,10 @@ table tr td p {
   padding-bottom: 10px;
 }
 #category-news {
-  background: green;
+  background-image: url('../../images/bgr web/bgr tin tuc-sk va ld.jpg');
+  background-position: inherit;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
 }
 @media only screen and (max-width: 768px) {
   #category-news {

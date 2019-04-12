@@ -78,18 +78,18 @@ nav .navbar-toggle {
   float: left;
   margin-left: 0px;
   border: none;
-  color: #609930;
+  color: #29314e;
   margin-right: 0px;
   padding: 9px 10px;
 }
 nav .navbar-toggle .icon-bar {
-  background-color: #609930 !important;
+  background-color: #29314e !important;
   height: 3px;
 }
 nav .navbar-toggle:hover,
 nav .navbar-toggle:active,
 nav .navbar-toggle:focus {
-  background-color: #609930 !important;
+  background-color: #29314e !important;
 }
 nav .navbar-toggle:hover .icon-bar,
 nav .navbar-toggle:active .icon-bar,
@@ -158,7 +158,7 @@ nav #ameiaMainNav ul li .selected-nav {
   color: #29314e;
 }
 nav #ameiaMainNav ul li .active {
-  color: #609930;
+  color: #29314e;
   border-bottom: 2px solid #004ff2;
 }
 @media only screen and (max-width: 768px) {
@@ -255,7 +255,7 @@ nav .header-tool {
   padding-top: 40px;
 }
 nav .header-tool .btn-group a {
-  color: #609930;
+  color: #29314e;
 }
 nav .header-tool .btn-group a:hover,
 nav .header-tool .btn-group a :focus,

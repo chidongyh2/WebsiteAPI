@@ -562,13 +562,14 @@ namespace GHM.Website.Infrastructure.Repository
                          join categoryNews in Context.Set<CategoriesNews>() on category.Id equals categoryNews.CategoryId
                          join news in Context.Set<News>().Where(spec) on categoryNews.NewsId equals news.Id
                          join newsTranslation in Context.Set<NewsTranslation>().Where(specTranslation) on news.Id equals newsTranslation.NewsId
-                         group new { news, newsTranslation } by new { category.Id, categoryTranslation.Name, categoryTranslation.SeoLink, category.Order } into g
+                         group new { news, newsTranslation } by new { category.Id, categoryTranslation.Name, categoryTranslation.SeoLink, category.Order, categoryTranslation.Description} into g
                          select new CategoryWidthNewsViewModel
                          {
                              CategoryId = g.Key.Id,
                              CategoryName = g.Key.Name,
                              SeoLink = g.Key.SeoLink,
                              Order = g.Key.Order,
+                             Description = g.Key.Description,
                              ListNews = g.Select(x => new NewsSearchClientViewModel
                              {
                                  Id = x.news.Id,
@@ -723,6 +724,56 @@ namespace GHM.Website.Infrastructure.Repository
                 .ThenByDescending(x => x.CreateTime)
                 .Take(pageSize)
                 .ToListAsync();
+        }
+
+        public Task<CategoryWidthNewsViewModel> GetCategoryWithNews(string tenantId, string languageId, int categoryId, int selectTop, bool isHomePage)
+        {
+            Expression<Func<News, bool>> spec = x => x.TenantId == tenantId && !x.IsDelete && x.IsActive && x.Status == ApproverStatus.Approved;
+            Expression<Func<NewsTranslation, bool>> specTranslation = x => x.TenantId == tenantId && x.LanguageId == languageId && !x.IsDelete;
+            Expression<Func<Category, bool>> specCate = x => x.TenantId == tenantId && x.IsActive && !x.IsDelete;
+            Expression<Func<CategoryTranslation, bool>> specCategoryTranslation = x => !x.IsDelete && x.LanguageId == languageId && x.TenantId == tenantId;
+
+            if (isHomePage)
+            {
+                specCate = specCate.And(x => x.IsHomePage.Value);
+                spec = spec.And(x => x.IsHomePage.Value);
+            }
+
+            if (categoryId > 0)
+            {
+                specCate = specCate.And(x => x.Id == categoryId);
+            }
+
+            var result = from category in Context.Set<Category>().Where(specCate)
+                         join categoryTranslation in Context.Set<CategoryTranslation>().Where(specCategoryTranslation) on category.Id equals categoryTranslation.CategoryId
+                         join categoryNews in Context.Set<CategoriesNews>() on category.Id equals categoryNews.CategoryId
+                         join news in Context.Set<News>().Where(spec) on categoryNews.NewsId equals news.Id
+                         join newsTranslation in Context.Set<NewsTranslation>().Where(specTranslation) on news.Id equals newsTranslation.NewsId
+                         group new { news, newsTranslation } by new { category.Id, categoryTranslation.Name, categoryTranslation.SeoLink, category.Order, categoryTranslation.Description } into g
+                         select new CategoryWidthNewsViewModel
+                         {
+                             CategoryId = g.Key.Id,
+                             CategoryName = g.Key.Name,
+                             SeoLink = g.Key.SeoLink,
+                             Order = g.Key.Order,
+                             Description = g.Key.Description,
+                             ListNews = g.Select(x => new NewsSearchClientViewModel
+                             {
+                                 Id = x.news.Id,
+                                 AltImage = x.news.AltImage,
+                                 FeatureImage = x.news.FeatureImage,
+                                 CreateTime = x.news.CreateTime,
+                                 LastUpdate = x.news.LastUpdate,
+                                 IsHot = x.news.IsHot,
+                                 Source = x.news.Source,
+                                 SeoLink = x.newsTranslation.SeoLink,
+                                 Title = x.newsTranslation.Title,
+                                 MetaTitle = x.newsTranslation.MetaTitle,
+                                 Description = x.newsTranslation.Description,
+                             }).OrderByDescending(x => x.LastUpdate).Take(selectTop).ToList()
+                         };
+
+            return result.OrderBy(x => x.Order).AsNoTracking().FirstOrDefaultAsync();
         }
     }
 }

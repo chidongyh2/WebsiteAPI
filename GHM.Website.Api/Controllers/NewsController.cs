@@ -297,7 +297,7 @@ namespace GHM.Website.Api.Controllers
         [CheckPermission]
         public async Task<IActionResult> GetNewsWidthParentCategory(string tenantId, string languageId, string seoLink, int selectTop = 5)
         {
-            var result = await _newsService.GetCategoryWidthNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, selectTop, false, true);
+            var result = await _newsService.GetCategoryWithNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, selectTop, false, true);
             return Ok(result);
         }
         [Route("detail/{tenantId}/{subjectId}/{languageId}"), AcceptVerbs("GET")]

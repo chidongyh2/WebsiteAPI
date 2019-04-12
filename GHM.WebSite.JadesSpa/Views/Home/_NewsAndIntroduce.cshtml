@@ -1,35 +1,35 @@
 ﻿@{
-    var menuDetail = ViewBag.MiddleMenu as MenuDetailViewModel;
+    var categoryWidthNews = ViewBag.CategoryMiddle as CategoryWidthNewsViewModel;
 }
 <div id="news-introduce">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="center titlebar">
-                    @menuDetail.Name
+                    @categoryWidthNews.CategoryName
                 </h2>
 
             </div>
             <div class="col-sm-12">
-                <h2 class="descriptionbar">@menuDetail.Description</h2>
+                <h2 class="descriptionbar">@categoryWidthNews.Description</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
                 <div id="middle-menu-slide" class="hidden-xs">
-                    @if (menuDetail.MenuItems != null && menuDetail.MenuItems.Any())
+                    @if (categoryWidthNews.ListNews != null && categoryWidthNews.ListNews.Any())
                     {
-                        @foreach (var item in menuDetail.MenuItems)
+                        @foreach (var item in categoryWidthNews.ListNews)
                         {
                             <div class="item">
                                 <div class="wrap-image zoom">
-                                    <a href="@($"{item.NamePath}.html")">
+                                    <a href="@($"{item.SeoLink}.html")">
                                         <img class="news-image img-responsive lazy"
-                                             src="@($"/image?url={(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{item.Image}")}&width=270&height=270")" alt="" />
+                                             src="@($"/image?url={(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")}&width=270&height=270")" alt="" />
                                     </a>
                                 </div>
                                 <div class="wrap-text">
-                                    <a href="@($"{item.NamePath}.html")">@item.Name</a>
+                                    <a href="@($"{item.SeoLink}.html")">@item.Title</a>
                                 </div>
                             </div>
                         }
@@ -39,20 +39,20 @@
         </div>
     </div>
     <div id="wrap-item" class="row wrap-item visible-xs">
-        @if (menuDetail.MenuItems != null && menuDetail.MenuItems.Any())
+        @if (categoryWidthNews.ListNews != null && categoryWidthNews.ListNews.Any())
         {
-            @foreach (var item in menuDetail.MenuItems)
+            @foreach (var item in categoryWidthNews.ListNews)
             {
                 <div class="col-sm-3 col-xs-6">
                     <div class="item">
                         <div class="wrap-image">
-                            <a href="@($"{item.NamePath}.html")">
+                            <a href="@($"{item.SeoLink}.html")">
                                 <img class="news-image zoom img-responsive lazy"
-                                     data-src="@($"/image?url={(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{item.Image}")}")" alt="" />
+                                     data-src="@($"/image?url={(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")}")" alt="" />
                             </a>
                         </div>
                         <div class="wrap-text">
-                            <a href="@($"{item.NamePath}.html")">@item.Name</a>
+                            <a href="@($"{item.SeoLink}.html")">@item.Title</a>
                         </div>
                     </div>
                 </div>

@@ -62,7 +62,7 @@
                             {
                                 <div class="item">
                                     <a href="@branch.Website" title="@branch.Name">
-                                        <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(branch.Logo) ? "/images/no-image.png" : branch.Logo)}")"
+                                        <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(branch.Logo) ? "/images/no-image.png" : $"{ViewBag.Url}{branch.Logo}")}")"
                                         onerror="this.src='/images/no-image.png'"
                                         alt="@branch.Name" />
                                     </a>

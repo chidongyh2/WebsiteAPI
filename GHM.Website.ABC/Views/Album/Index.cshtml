@@ -32,7 +32,7 @@
                                         <a data-bind="attr: { href: url, title: title }"
                                            data-fancybox>
                                             <img class="img-responsive zoom lazy"
-                                                 data-bind="attr: {src: '/image?url=' + thumbnail + '&width=640&height=360', title: title }"
+                                                 data-bind="attr: {src: '/image?url=@ViewBag.Url' + thumbnail + '&width=640&height=360', title: title }"
                                                  onerror="this.src='/images/no-image.png'" />
                                             <span class="duration_video"><i class="fa fa-play"></i></span>
                                         </a>

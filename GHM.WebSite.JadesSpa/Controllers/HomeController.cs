@@ -35,10 +35,10 @@ namespace GHM.Website.JadesSpa.Controllers
         public async Task<ActionResult> Index()
         {
             var absoluteUri = $"{Request.Host}{Request.Path}";
-            if (absoluteUri.Contains("pmuasia.amiea.vn"))
-            {
-                return Redirect("/dang-ky-su-kien");
-            }
+            //if (absoluteUri.Contains("pmuasia.amiea.vn"))
+            //{
+            //    return Redirect("/dang-ky-su-kien");
+            //}
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -56,9 +56,11 @@ namespace GHM.Website.JadesSpa.Controllers
 
             var listServices = await httpClientService.GetAsync<SearchResult<CategorySearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/category-home-page/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListServices = listServices?.Items;
-            
-            var middleMenu = await httpClientService.GetAsync<MenuDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/get-all-menu-position/{(int)Position.Middle}/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
-            ViewBag.MiddleMenu = middleMenu;
+
+            //var middleMenu = await httpClientService.GetAsync<MenuDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/get-all-menu-position/{(int)Position.Middle}/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
+            //ViewBag.MiddleMenu = middleMenu;
+            var categoryMiddle = await httpClientService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/get-news-width-parent-category/{apiService.TenantId}/tai-sao-lua-chon-jade-spa/5/{CultureInfo.CurrentCulture.Name}");
+            ViewBag.CategoryMiddle = categoryMiddle?.Data;
             //if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
             //{
             //    ViewBag.MainBanner = banners;
