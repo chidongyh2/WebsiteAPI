@@ -27,7 +27,6 @@
                             <a href="@($"/{ item.SeoLink}.html")">
                                 <img class="news-image zoom img-responsive lazy" src="@(string.IsNullOrEmpty(item.BannerImage) ? "/images/no-image.png" : $"{url}{item.BannerImage}")"
                                         onerror="this.src='/images/no-image.png'"/>
-
                             </a>
                             <a  href="@($"/{ item.SeoLink}.html")" class="text-description">@(string.IsNullOrEmpty(item.Name) ? "No Title" : item.Name)</a>
                         </div>
