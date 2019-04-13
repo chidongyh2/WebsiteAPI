@@ -55,7 +55,7 @@ namespace GHM.Website.Infrastructure.Repository
 
             totalRows = _brandRepository.Count(spec);
 
-            return query.OrderByDescending(x => x.Name)
+            return query.OrderBy(x => x.Name)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();

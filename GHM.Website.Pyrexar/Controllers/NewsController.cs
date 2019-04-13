@@ -23,7 +23,7 @@ namespace GHM.Website.Pyrexar.Controllers
             _cache = cache;
         }
 
-        [Route("asasa/{seoLink}/{page?}/{pageSize?}")]
+        [Route("{seoLink}/{page?}/{pageSize?}")]
         public async Task<ActionResult> Index(string seoLink, int page = 1, int pageSize = 20)
         {
             var requestUrl = _configuration.GetApiUrl();

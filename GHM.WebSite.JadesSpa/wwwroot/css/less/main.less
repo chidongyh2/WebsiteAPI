@@ -477,6 +477,8 @@
                 }
 
                 @media @mobile {
+                    height: 50px;
+                    overflow: hidden;
                     margin-top: 5px !important;
                 }
             }
@@ -666,7 +668,7 @@
                     }
 
                     .titlebar {
-                        font-size: 22px;
+                        font-size: 20px !important;
                         padding: 5px 10px;
                         color: @main-color;
                         text-transform: uppercase;
@@ -1681,6 +1683,16 @@
    }
 }
 .category-mobile {
-   text-align: center;
-   padding-bottom: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+
+    .btn-main-color {
+        background-color: @main-color;
+        border: none !important;
+
+        &:hover, &:active {
+            border: none !important;
+            background-color: @main-color;
+        }
+    }
 }

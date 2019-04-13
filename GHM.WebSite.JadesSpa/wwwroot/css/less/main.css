@@ -446,6 +446,8 @@
 }
 @media only screen and (max-width: 768px) {
   #news-introduce .wrap-item .item .wrap-text {
+    height: 50px;
+    overflow: hidden;
     margin-top: 5px !important;
   }
 }
@@ -623,7 +625,7 @@
   }
 }
 .news-angency #wrap-subintroduce .wrap-content #response-customer .wrap-next .titlebar {
-  font-size: 22px;
+  font-size: 20px !important;
   padding: 5px 10px;
   color: #609930;
   text-transform: uppercase;
@@ -1452,4 +1454,13 @@
 .category-mobile {
   text-align: center;
   padding-bottom: 10px;
+}
+.category-mobile .btn-main-color {
+  background-color: #609930;
+  border: none !important;
+}
+.category-mobile .btn-main-color:hover,
+.category-mobile .btn-main-color:active {
+  border: none !important;
+  background-color: #609930;
 }

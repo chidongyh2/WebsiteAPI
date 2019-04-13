@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="UA-130493156-1" />
     <meta name="google-site-verification" content="googlec28344b56e4c52a2.html" />
-    <link rel="icon" href="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Favicon) ? websiteSetting.Favicon : "/favicon.ico")" type="image/x-icon">
+    <link rel="icon" href="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Favicon) ? $"{ViewBag.Url}{websiteSetting.Favicon}" : "/favicon.ico")" type="image/x-icon">
     <link rel="alternate" href="@absoluteUri" />
     <link rel="canonical" href="@absoluteUri" />
     <meta name="author" content="amiea.vn">

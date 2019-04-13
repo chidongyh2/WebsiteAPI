@@ -90,5 +90,9 @@
   {
     "outputFile": "wwwroot/js/viewmodel/category-news.viewmodel.es5.min.es5.js",
     "inputFile": "wwwroot/js/viewmodel/category-news.viewmodel.es5.min.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/category-news.viewmodel.es5.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/category-news.viewmodel.es5.js"
   }
 ]

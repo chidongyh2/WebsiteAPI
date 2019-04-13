@@ -85,6 +85,7 @@ function ContactViewModel() {
                 self.contactEmail("");
                 self.contactPhoneNumber("");
                 self.contactContent("");
+                return;
             }
         });
     };

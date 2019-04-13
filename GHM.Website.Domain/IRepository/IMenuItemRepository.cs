@@ -41,6 +41,8 @@ namespace GHM.Website.Domain.IRepository
 
         Task<bool> CheckExistsBySubjectId(string subjectId, SubjectType subjectType);
 
+        Task<bool> CheckExistsBySubjectId(string tenantId, string subjectId, SubjectType subjectType, string menuId);
+
         Task<int> UpdateOrderAndParentId(List<MenuItemUpdate> listMenuItem);
     }
 }

@@ -65,17 +65,40 @@ IsCurrent = true,
         <div class="container">
             <div class="col-sm-12 visible-xs">
                 <partial name="_BlockNewsSuggestion" model="CategoryWidthNews.ListNews" />
-                
-                <view-more  params="categoryId: @($"{ViewBag.CategoryId}")">
+                <view-more params="categoryId: @($"{ViewBag.CategoryId}")">
                 </view-more>
-                  
-                </div>
                 <template id="btn-viewmore">
+                    <div class="block-news portfolio-item">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="row list-news">
+                                    <div data-bind="foreach: listNews">
+                                        <div class="col-xs-6 news-item">
+                                            <div class="image-content">
+                                                <a data-bind="attr : {href: seoLink, title: metaTitle}">
+                                                    <img class="news-image zoom img-responsive lazy"
+                                                         data-bind="attr : {src: '/image?url=@ViewBag.Url'+ featureImage + '&width=250&height=145', alt: altImage ? title : altImage}"
+                                                         onerror="this.src='/images/no-image.png'" />
+                                                    <span class="img-overlay"></span>
+                                                </a>
+                                            </div>
+                                            <div class="title">
+                                                <a data-bind="attr: {href:'/' + seoLink + '.html', title: metaTitle ? title : metaTitle }"></a>
+                                                <div data-bind="text : $parent.handleString($data,title, 70)">
 
-                    <button data-bind="click: function(){viewMore()}" type="button" class="btn btn-primary">@Resource.ViewMore</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button data-bind="click: function(){viewMore()}" type="button" class="btn btn-primary btn-main-color"><i data-bind="attr : {class: isLoadding() === true ? 'fa fa-pulse fa-spinner' : ''}"></i>@Resource.ViewMore</button>
                 </template>
             </div>
         </div>
+    </div>
     </div>
     @section scripts {
         <script type="text/javascript">

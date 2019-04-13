@@ -578,6 +578,116 @@ namespace GHM.Website.Infrastructure.Services
             var childCountid = await _menuItemRepository.GetChildCount(menuItemInfo.Id);
             await _menuItemRepository.UpdateChildCount(menuItemInfo.Id, childCountid);
 
+            #region insert MenuItem Translation ItemSelect.
+            //switch (menuItemMeta.SubjectType)
+            //{
+            //    case SubjectType.News:
+
+            //        var listMenuItemTranslationInsert = new List<MenuItemTranslationMeta>();
+            //        if (menuItemMeta.ListMenuItemSelected != null && menuItemMeta.ListMenuItemSelected.Any())
+            //        {
+            //            foreach (var menuItem in menuItemMeta.ListMenuItemSelected)
+            //            {
+            //                var checkMenuExistBySubjectId = await _menuItemRepository.CheckExistsBySubjectId(tenantId, menuItem.Id, SubjectType.News, menuId);
+            //                if(!checkMenuExistBySubjectId)
+            //                {
+            //                    var listNewsTranslation = await _newsTranslationRepository.GetInfo(menuItem.Id, menuItem.LanguageId, true);
+            //                    var menuItemInsert = new MenuItem();
+            //                    menuItemInsert.MenuId = menuId;
+            //                    menuItemInsert.SubjectId = menuItem.Id;
+            //                    menuItemInsert.Icon = menuItem.Icon;
+            //                    menuItemInsert.Image = menuItem.Image;
+            //                    menuItemInsert.IsActive = menuItemMeta.IsActive;
+            //                    menuItemInsert.ParentId = menuItemInfo.ParentId;
+            //                    menuItemInsert.IdPath = menuItemInfo.IdPath.Replace(menuItemInfo.Id.ToString(), menuItemInsert.Id.ToString());
+            //                    menuItemInsert.Url = listNewsTranslation.SeoLink;
+            //                    menuItemInsert.Order = menuItemMeta.Order;
+            //                    menuItemInsert.OrderPath = menuItemInfo.OrderPath.Replace(menuItem.Order.ToString(), menuItemMeta.Order.ToString());
+            //                    menuItemInsert.Level = menuItemInfo.Level;
+            //                    menuItemInsert.ChildCount = menuItemInfo.ChildCount;
+            //                    menuItemInsert.CreatorId = lastUpdateUserId;
+            //                    menuItemInsert.CreatorFullName = lastUpdateFullName;
+            //                    var insertMenu = await _menuItemRepository.Insert(menuItemInsert);
+
+            //                    var listNewsTranslation = await _newsTranslationRepository.GetByNewsId(menuItemMeta.ListMenuItemSelected);
+            //                    listMenuItemTranslationInsert.Add(new MenuItemTranslationMeta
+            //                    {
+            //                        LanguageId = menuItemTranslation.LanguageId,
+            //                        Name = menuItemTranslation.Title,
+            //                        NamePath = $"{menuItemTranslation.SeoLink}.html",
+            //                    });
+            //                }
+
+            //            }
+
+            //            var resultInsertTranslation = await InsertMenuItemTranslation(menuItem, listMenuItemTranslationInsert);
+            //            if (resultInsertTranslation.Code <= 0)
+            //                return resultInsertTranslation;
+            //        }
+            //        break;
+
+            //    case SubjectType.NewsCategory:
+            //        var listCategoryTranslation = await _categoryTranslationRepositoryRepository.GetByCategoryId(int.Parse(menuItemSelect.Id));
+            //        var listMenuItemTranslationCategoryInsert = new List<MenuItemTranslationMeta>();
+            //        if (listCategoryTranslation != null && listCategoryTranslation.Any())
+            //        {
+            //            foreach (var menuItemTranslation in listCategoryTranslation)
+            //            {
+            //                listMenuItemTranslationCategoryInsert.Add(new MenuItemTranslationMeta
+            //                {
+            //                    LanguageId = menuItemTranslation.LanguageId,
+            //                    Name = menuItemTranslation.Name,
+            //                    NamePath = menuItemTranslation.SeoLink,
+            //                });
+            //            }
+
+            //            var resultInsertTranslation = await InsertMenuItemTranslation(menuItem, listMenuItemTranslationCategoryInsert);
+            //            if (resultInsertTranslation.Code <= 0)
+            //                return resultInsertTranslation;
+            //        }
+            //        break;
+            //    case SubjectType.Product:
+            //        var listProductTranslation = await httpClient.GetAsync<List<ProductTranslationViewModel>>($"{apiUrls.WarehouseApiUrl}/products/translation/{menuItem.Id}");
+            //        var listMenuItemTranslationProduct = new List<MenuItemTranslationMeta>();
+            //        if (listProductTranslation != null && listProductTranslation.Any())
+            //        {
+            //            foreach (var productTranslationItem in listProductTranslation)
+            //            {
+            //                listMenuItemTranslationProduct.Add(new MenuItemTranslationMeta
+            //                {
+            //                    LanguageId = productTranslationItem.LanguageId,
+            //                    Name = productTranslationItem.Name,
+            //                    NamePath = $"{productTranslationItem.SeoLink}.html",
+            //                });
+            //            }
+
+            //            var resultInsertTranslation = await InsertMenuItemTranslation(menuItem, listMenuItemTranslationProduct);
+            //            if (resultInsertTranslation.Code <= 0)
+            //                return resultInsertTranslation;
+            //        }
+            //        break;
+            //    case SubjectType.ProductCategory:
+            //        var listProductCategoryTranslation = await httpClient.GetAsync<List<ProductTranslationViewModel>>($"{apiUrls.WarehouseApiUrl}/product-categories/{menuItem.Id}, true, 1, 10000"); ;
+            //        var listMenuItemProductCategoryTranslationInsert = new List<MenuItemTranslationMeta>();
+            //        if (listProductCategoryTranslation != null && listProductCategoryTranslation.Any())
+            //        {
+            //            foreach (var menuItemTranslation in listProductCategoryTranslation)
+            //            {
+            //                listMenuItemProductCategoryTranslationInsert.Add(new MenuItemTranslationMeta
+            //                {
+            //                    LanguageId = menuItemTranslation.LanguageId,
+            //                    Name = menuItemTranslation.Name,
+            //                    NamePath = menuItemTranslation.SeoLink,
+            //                });
+            //            }
+
+            //            var resultInsertTranslation = await InsertMenuItemTranslation(menuItem, listMenuItemProductCategoryTranslationInsert);
+            //            if (resultInsertTranslation.Code <= 0)
+            //                return resultInsertTranslation;
+            //        }
+            //        break;
+            //}
+            #endregion
             // Update menu item translation.
             var resultUpdateTranslation = await UpdateMenuItemTranslation();
             return new ActionResultResponse(resultUpdateTranslation.Code <= 0
