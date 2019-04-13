@@ -234,6 +234,14 @@ namespace GHM.Website.Api.Controllers
             var result = await _newsService.GetNewsByCategorySeoLink(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, page, pageSize);
             return Ok(result);
         }
+        [Route("category/{tenantId}/{seoLink}/{page}/{pageSize}/{languageId?}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetNewsByCategorySeoLink2(string tenantId, string seoLink, string languageId,
+          int page = 1, int pageSize = 20)
+        {
+            var result = await _newsService.GetNewsByCategorySeoLink(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, page, pageSize);
+            return Ok(result);
+        }
         [Route("getNewsRelatedById/{tenantId}/{NewsId}/{languageId}/{page}/{pageSize}"), AcceptVerbs("GET")]
         [CheckPermission]
         public async Task<IActionResult> GetNewsRelatedById(string tenantId, string newsId, string languageId, int page = 1, int pageSize = 20)
