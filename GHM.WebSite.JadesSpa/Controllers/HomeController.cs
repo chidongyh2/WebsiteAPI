@@ -35,10 +35,6 @@ namespace GHM.Website.JadesSpa.Controllers
         public async Task<ActionResult> Index()
         {
             var absoluteUri = $"{Request.Host}{Request.Path}";
-            //if (absoluteUri.Contains("pmuasia.amiea.vn"))
-            //{
-            //    return Redirect("/dang-ky-su-kien");
-            //}
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
