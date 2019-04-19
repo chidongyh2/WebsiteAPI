@@ -1,55 +1,93 @@
-﻿
+﻿@{
+    var categoryWidthNews = ViewBag.CategoryMiddle as CategoryWidthNewsViewModel;
+}
 <div id="news-introduce">
-    <div class="row">
-        <div class="col-sm-12">
-            <h2 class="center titlebar">
-                @Resource.TitleIntroduce
-            </h2>        
-        </div>
-        <div class="col-sm-12">
-            <h2 class="descriptionbar">@Resource.DescriptionIntroduce</h2>
-        </div>
-    </div>
-    <div class="row wrap-item">
-        <div class="col-sm-3 col-xs-6">
-            <div class="item">
-                <div class="wrap-image">
-                    <img class="news-image zoom img-responsive lazy" data-src="images/introduce/infrastructure.jpg" alt="" />
-                </div>
-                <div class="wrap-text">
-                    <span>@Resource.InfrastructureIntroduce</span>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="center titlebar">
+                    @categoryWidthNews.CategoryName
+                </h2>
+
+            </div>
+            <div class="col-sm-12">
+                <h2 class="descriptionbar">@categoryWidthNews.Description</h2>
             </div>
         </div>
-        <div class="col-sm-3 col-xs-6">
-            <div class="item">
-                <div class="wrap-image">
-                    <img class="news-image zoom img-responsive lazy" data-src="images/introduce/expertTeam.jpg" alt="" />
-                </div>
-                <div class="wrap-text">
-                    <span>@Resource.ExpertTeamIntroductuce</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3 col-xs-6">
-            <div class="item">
-                <div class="wrap-image">
-                    <img class="news-image zoom img-responsive lazy" data-src="images/introduce/equipment.jpg" alt="" />
-                </div>
-                <div class="wrap-text">
-                    <span>@Resource.EquipmentIntroduce</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3 col-xs-6">
-            <div class="item">
-                <div class="wrap-image">
-                    <img class="news-image zoom img-responsive lazy" data-src="images/introduce/service.jpg" alt="" />
-                </div>
-                <div class="wrap-text">
-                    <span>@Resource.ServicesIntroduce</span>
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="middle-menu-slide" class="hidden-xs">
+                    @if (categoryWidthNews.ListNews != null && categoryWidthNews.ListNews.Any())
+                    {
+                        @foreach (var item in categoryWidthNews.ListNews)
+                        {
+                            <div class="item">
+                                <div class="wrap-image zoom">
+                                    <a href="@($"{item.SeoLink}.html")">
+                                        <img class="news-image img-responsive lazy"
+                                             src="@($"/image?url={(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")}&width=270&height=270")" alt="" />
+                                    </a>
+                                </div>
+                                <div class="wrap-text">
+                                    <a href="@($"{item.SeoLink}.html")">@item.Title</a>
+                                </div>
+                            </div>
+                        }
+                    }
                 </div>
             </div>
         </div>
     </div>
+    <div id="wrap-item" class="row wrap-item visible-xs">
+        @if (categoryWidthNews.ListNews != null && categoryWidthNews.ListNews.Any())
+        {
+            @foreach (var item in categoryWidthNews.ListNews)
+            {
+                <div class="col-sm-3 col-xs-6">
+                    <div class="item">
+                        <div class="wrap-image">
+                            <a href="@($"{item.SeoLink}.html")">
+                                <img class="news-image zoom img-responsive lazy"
+                                     data-src="@($"/image?url={(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")}")" alt="" />
+                            </a>
+                        </div>
+                        <div class="wrap-text">
+                            <a href="@($"{item.SeoLink}.html")">@item.Title</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        @*<div class="col-sm-3 col-xs-6">
+                <div class="item">
+                    <div class="wrap-image">
+                        <img class="news-image zoom img-responsive lazy" data-src="images/introduce/expertTeam.jpg" alt="" />
+                    </div>
+                    <div class="wrap-text">
+                        <span>@Resource.ExpertTeamIntroductuce</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <div class="item">
+                    <div class="wrap-image">
+                        <img class="news-image zoom img-responsive lazy" data-src="images/introduce/equipment.jpg" alt="" />
+                    </div>
+                    <div class="wrap-text">
+                        <span>@Resource.EquipmentIntroduce</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <div class="item">
+                    <div class="wrap-image">
+                        <img class="news-image zoom img-responsive lazy" data-src="images/introduce/service.jpg" alt="" />
+                    </div>
+                    <div class="wrap-text">
+                        <span>@Resource.ServicesIntroduce</span>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+
 </div>
