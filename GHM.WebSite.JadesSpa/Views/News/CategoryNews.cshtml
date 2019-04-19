@@ -25,12 +25,14 @@ IsCurrent = true,
         <div class="container">
             <div class="row hidden-xs">
                 <div class="col-sm-9">
-                    @foreach (var news in Model.ListNews)
-                    {
-                        <div class="col-sm-6">
-                            <partial name="_NewsItem" model="news" />
-                        </div>
-                    }
+                    <div class="row">
+                        @foreach (var news in Model.ListNews)
+                        {
+                            <div class="col-sm-6">
+                                <partial name="_NewsItem" model="news" />
+                            </div>
+                        }
+                    </div>
                     <div class="row">
                         <div class="col-sm-12 center">
                             <ul class="pagination">

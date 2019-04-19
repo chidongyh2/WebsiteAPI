@@ -22,7 +22,7 @@
                     <ul>
                         @if (listBranch != null && listBranch.Any())
                         {
-                            foreach (var branchs in listBranch.Where(x => x.IsOffice.Value))
+                            foreach (var branchs in listBranch)
                             {
                                 <li class="branch"><h6>@branchs?.Name</h6></li>
                                 <li class="address"><i class="fa fa-map-marker"> @branchs?.Address</i></li>
@@ -62,7 +62,6 @@
                                     }
                                 }
                             }
-
                         }
                     </ul>
                 </div>

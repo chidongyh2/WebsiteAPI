@@ -47,7 +47,7 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
         var b = $(window).scrollTop();
-        if (b > 50 || $(window).innerWidth() < 768) {
+        if (b > 150 || $(window).innerWidth() < 768) {
             $(".navbar").addClass("navbar-fixed-top");
             $("#backToTop").css("display", "block");
             $(".header-top").css("display", "none");

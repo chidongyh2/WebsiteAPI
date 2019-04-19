@@ -888,6 +888,12 @@ body {
   height: 20px;
   background-color: #EAE9E5;
 }
+@media only screen and (max-width: 768px) {
+  .contact .angency-system .header img {
+    height: auto !important;
+    width: 100%;
+  }
+}
 .contact .angency-system ul {
   list-style-type: none;
   padding-left: 0px;

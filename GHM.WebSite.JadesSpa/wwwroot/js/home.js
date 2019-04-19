@@ -7,7 +7,7 @@
         speed: 1500,
         pause: 3000,
         slideEndAnimation: false,
-        slideMargin: 20,
+        slideMargin: 15,
         pauseOnHover: false,
         controls: true,
         prevHtml: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
@@ -16,8 +16,8 @@
     });
     $("#middle-menu-slide").lightSlider({
         item: 4,
-        auto: true,
-        loop: true,
+        auto: false,
+        loop: false,
         slideMove: 1,
         speed: 1500,
         pause: 3000,

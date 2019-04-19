@@ -12,11 +12,11 @@
 }
 @font-face {
   font-family: 'VLALLROUNDGOTHIC-BOOK';
-  src: url('../../lib/Font-Roboto/VLALLROUNDGOTHIC-BOOK.otf') format('truetype');
+  src: url('../../lib/Font-Roboto/VLALLROUNDGOTHIC-BOOK.OTF') format('truetype');
 }
 @font-face {
   font-family: 'vlauthenticaregular';
-  src: url('../../lib/font-roboto/vlauthenticaregular.otf') format('truetype');
+  src: url('../../lib/font-roboto/VLAUTHENTICAREGULAR.OTF') format('truetype');
 }
 #footer {
   color: #FFFFFF;
@@ -199,7 +199,7 @@
 }
 .copy-right {
   text-align: center;
-  height: 45px;
+  min-height: 45px;
   font-size: 15px;
   line-height: 40px;
   color: #eef0f1;

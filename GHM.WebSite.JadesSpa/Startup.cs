@@ -22,8 +22,7 @@ using WebMarkupMin.AspNetCore2;
 namespace GHM.WebSite.JadesSpa
 {
     public class Startup
-    {
-       
+    {       
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;

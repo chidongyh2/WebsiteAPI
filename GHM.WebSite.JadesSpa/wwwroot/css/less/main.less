@@ -34,7 +34,7 @@
             /*width: 258px !important;
             height: 290px;*/
             /*position: relative;*/
-            background: linear-gradient(to right,#f8a102 0%,#f6d68a 50%,#f8a102 100%);
+            background: linear-gradient(to right,#B78114 0%,#FDED98 70%,#B78114 100%);
             /*&:hover {
                     img {
                         visibility: hidden;
@@ -42,9 +42,7 @@
                     width: 100%;
                     background-color: #931c1f;
                     opacity: 0.9;
-                    text-decoration: none;
- 
-
+                    text-decoration: none; 
             }*/
             img {
                 /*width: 258px !important;
@@ -277,9 +275,11 @@
     background-image: url('../../images/bgr-web/background-image/nen-pc_05.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    padding-top: 40px;
+    padding-bottom: 80px;
 
     @media @not_mobile {
-        height: 605px;
+        /*height: 605px;*/
     }
 
     @media @mobile {
@@ -287,8 +287,6 @@
     }
 
     .container {
-        padding-top: 40px;
-
         @media @mobile {
             padding-top: 15px;
         }
@@ -374,59 +372,50 @@
     background-image: url('../../images/bgr-web/background-image/nen-pc_06.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    padding-bottom: 20px;
+    
+    padding-top:40px;
+    padding-bottom: 60px;
 
     @media @not_mobile {
-        height: 610px;
+        /*height: 610px;*/
     }
 
+    margin: 0px 5px;
+    margin-bottom: 10px;
+    color: @main-color;
+    text-align: center;
 
-    .row {
-        @media @not_mobile {
-            margin-top: 15px;
-            margin-bottom: 35px;
-            /*margin: 0 20%;*/
-        }
-
-        margin: 0px 5px;
-        margin-bottom: 10px;
+    .titlebar {
         color: @main-color;
         text-align: center;
+        text-transform: uppercase;
+        font-family: VLALLROUNDGOTHIC-BOOK;
 
+        @media @not_mobile {
 
-
-        .titlebar {
-            color: @main-color;
-            text-align: center;
-            text-transform: uppercase;
-            font-family: VLALLROUNDGOTHIC-BOOK;
-
-            @media @not_mobile {
-
-                &:before, &:after {
-                    width: 10%;
-                    height: 2px;
-                    background: @main-color;
-                    content: '';
-                    display: inline-block;
-                    color: white;
-                    top: -10px;
-                    position: relative;
-                }
-            }
-        }
-
-        .descriptionbar {
-            font-family: vlauthenticaregular;
-        }
-
-        .wrap-hr {
-            padding-top: 15px;
-
-            hr {
-                background-color: @main-color;
+            &:before, &:after {
+                width: 10%;
                 height: 2px;
+                background: @main-color;
+                content: '';
+                display: inline-block;
+                color: white;
+                top: -10px;
+                position: relative;
             }
+        }
+    }
+
+    .descriptionbar {
+        font-family: vlauthenticaregular;
+    }
+
+    .wrap-hr {
+        padding-top: 15px;
+
+        hr {
+            background-color: @main-color;
+            height: 2px;
         }
     }
 
@@ -493,7 +482,8 @@
             text-align: center;
             margin-top: 10px;
             min-height: 300px;
-             .wrap-image {
+
+            .wrap-image {
                 background: @main-color;
                 border-radius: 30px 20px;
 
@@ -780,7 +770,7 @@
                 color: @main-color;
                 text-align: center;
                 font-family: vlauthenticaregular;
-                padding-bottom: 30px;
+                padding-bottom: 40px;
 
                 @media @mobile {
                     padding-bottom: 50px
@@ -815,9 +805,17 @@
                 margin-bottom: 20px;
             }
 
-            .news-image {
+            .image-content {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                overflow-y: hidden;
+                display: block;
                 border: 2px solid @main-color;
                 border-radius: 12px;
+            }
+
+            .news-image {
             }
 
             .news-content {
@@ -886,7 +884,6 @@
                 }
 
                 .image-content {
-
                     .img-overlay {
                         background: rgba(0,0,0,.25);
                         display: inline-block;
@@ -1215,8 +1212,9 @@
 
         .wrap-text-content {
             @media @not_mobile {
-                padding-left: 30px;
+                /*padding-left: 30px;*/
                 padding-right: 31px;
+                min-height:190px;
             }
 
             .title {
@@ -1312,11 +1310,10 @@
 }
 
 #news-detail {
-    background-image: url('../../images/bgr-web/bgr trang tin tuc_tin tuc chi tiet.jpg');
+    /*background-image: url('../../images/bgr-web/bgr trang tin tuc_tin tuc chi tiet.jpg');
     background-position: inherit;
     background-repeat: no-repeat;
-    background-size: 100% auto;
-
+    background-size: 100% auto;*/
     @media @mobile {
         background-image: none;
     }
@@ -1354,6 +1351,8 @@
 
             a {
                 font-size: 18px;
+                text-align: center;
+                color: #424242;
             }
         }
     }
@@ -1403,6 +1402,8 @@
             padding-left: 0px;
 
             li {
+                margin: 15px 0;
+
                 .media-left {
                     min-width: 72px;
                     min-height: 72px;
@@ -1611,7 +1612,7 @@
             width: 25px;
             line-height: 25px;
             border: none !important;
-            font-size: 22px;
+            font-size: 16px;
             padding: 5px;
             margin: 0 5px;
             color: #5f5b61;
@@ -1651,6 +1652,10 @@
         height: 300px !important;
         object-fit: cover;
         width: 100% !important;
+
+        @media @mobile{
+            height: auto !important;
+        }
     }
 }
 
@@ -1677,11 +1682,12 @@
 }
 
 .zoom {
-   &:hover {
+    &:hover {
         transform: scale(1.05);
-     transition: ease-in-out 500ms;
-   }
+        transition: ease-in-out 500ms;
+    }
 }
+
 .category-mobile {
     text-align: center;
     padding-bottom: 10px;
@@ -1694,5 +1700,51 @@
             border: none !important;
             background-color: @main-color;
         }
+    }
+}
+
+.header {
+    img {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .breadcrumb {
+        background-color: #E8E8E8;
+        margin-bottom: 0px !important;
+        border-radius: unset;
+
+        ul {
+            padding-left: 0px;
+            list-style-type: none;
+            margin-bottom: 0px;
+
+            li {
+                a {
+                    color: @main-color;
+                    font-size: 14px;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                padding: 0px 10px;
+                border-right: 1px solid @color-text-bold;
+
+                &:last-child {
+                    border-right: none;
+                    color: @color-text;
+                }
+
+                &:first-child {
+                    padding-left: 0px;
+                }
+            }
+        }
+    }
+    /*min-height: 650px;*/
+    @media @mobile {
+        height: unset;
     }
 }

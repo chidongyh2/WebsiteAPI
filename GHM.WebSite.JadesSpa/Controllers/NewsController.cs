@@ -39,6 +39,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
             return Json(listNews.Data.ListNews);
         }
+
         //[Route("tin-tuc")]
         //public async Task<ActionResult> Index(int page = 1, int pageSize = 12)
         //{
