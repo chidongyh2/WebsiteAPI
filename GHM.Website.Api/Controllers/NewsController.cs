@@ -234,6 +234,14 @@ namespace GHM.Website.Api.Controllers
             var result = await _newsService.GetNewsByCategorySeoLink(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, page, pageSize);
             return Ok(result);
         }
+        [Route("category/{tenantId}/{seoLink}/{page}/{pageSize}/{languageId?}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetNewsByCategorySeoLink2(string tenantId, string seoLink, string languageId,
+          int page = 1, int pageSize = 20)
+        {
+            var result = await _newsService.GetNewsByCategorySeoLink(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, page, pageSize);
+            return Ok(result);
+        }
         [Route("getNewsRelatedById/{tenantId}/{NewsId}/{languageId}/{page}/{pageSize}"), AcceptVerbs("GET")]
         [CheckPermission]
         public async Task<IActionResult> GetNewsRelatedById(string tenantId, string newsId, string languageId, int page = 1, int pageSize = 20)
@@ -244,7 +252,7 @@ namespace GHM.Website.Api.Controllers
         [Route("getNewsByCategoryById/{tenantId}/{categoryId}/{page}/{pageSize}/{languageId?}"), AcceptVerbs("GET")]
         [CheckPermission]
         public async Task<IActionResult> GetNewsByCategoryId(string tenantId, string categoryId, string languageId,
-           int page = 1, int pageSize = 20)
+           int page = 1, int pageSize = 12)
         {
             var result = await _newsService.GetNewsByCategoryIdAsync(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, categoryId, page, pageSize);
             return Ok(result);
@@ -297,7 +305,7 @@ namespace GHM.Website.Api.Controllers
         [CheckPermission]
         public async Task<IActionResult> GetNewsWidthParentCategory(string tenantId, string languageId, string seoLink, int selectTop = 5)
         {
-            var result = await _newsService.GetCategoryWidthNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, selectTop, false, true);
+            var result = await _newsService.GetCategoryWithNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, selectTop, false, true);
             return Ok(result);
         }
         [Route("detail/{tenantId}/{subjectId}/{languageId}"), AcceptVerbs("GET")]

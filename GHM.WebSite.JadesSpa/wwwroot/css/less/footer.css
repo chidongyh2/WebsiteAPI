@@ -4,11 +4,11 @@
 }
 @font-face {
   font-family: 'Roboto-Bold';
-  src: url('../../lib/Font-Roboto/Roboto-Bold_1.tff') format('truetype');
+  src: url('../../lib/font-roboto/roboto-bold_1.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Roboto-Regular';
-  src: url('../../lib/Font-Roboto/Roboto-Regular.tff') format('truetype');
+  src: url('../../lib/font-roboto/roboto-regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'VLALLROUNDGOTHIC-BOOK';
@@ -26,6 +26,11 @@
   background-position: initial;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+@media only screen and (max-width: 768px) {
+  #footer .container .col-sm-4 {
+    text-align: center;
+  }
 }
 @media only screen and (max-width: 768px) {
   #footer {
@@ -67,9 +72,6 @@
   padding-left: 0px;
 }
 @media only screen and (max-width: 768px) {
-  #footer #wrap-content-branch .contact-info ul {
-    text-align: center;
-  }
 }
 #footer #wrap-content-branch .contact-info ul .branch {
   background-image: linear-gradient(to right, #ffffff, rgba(255, 0, 0, 0));
@@ -83,6 +85,7 @@
   padding: 3px 2px;
   color: #eef0f1;
   font-size: 16px !important;
+  font-family: Roboto-Regular;
   font-size: 14px;
 }
 #footer #wrap-content-branch .contact-info ul li i {
@@ -149,13 +152,8 @@
   margin-left: 25px;
   border: none;
 }
-@media only screen and (max-width: 768px) {
-  #footer .btn-send-message {
-    margin-left: 80px;
-  }
-}
 #footer .btn-send-message:hover {
-  color: aqua;
+  color: grey;
   opacity: 0.6;
   transform: inherit;
 }
@@ -168,13 +166,16 @@
   text-align: center;
   text-transform: uppercase;
   font-size: 22px;
-  color: #7aa127;
+  color: #609930;
 }
 #myModal .message .submit {
   text-align: center;
 }
+#myModal .message .form-group {
+  margin-top: 10px;
+}
 .footer-bottom {
-  background-color: #7aa127;
+  background-color: #609930;
 }
 .footer-bottom .brand {
   display: flex;
@@ -202,5 +203,5 @@
   font-size: 15px;
   line-height: 40px;
   color: #eef0f1;
-  background-color: #7aa127;
+  background-color: #609930;
 }

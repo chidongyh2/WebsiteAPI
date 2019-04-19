@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using GHM.Infrastructure;
 using GHM.Infrastructure.Constants;
@@ -176,6 +177,15 @@ namespace GHM.Website.Api.Controllers
             var result = await _menuService.GetAllActivatedMenuItemByPosition(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, position);
             return Ok(result);
         }
+
+        [Route("get-all-menu-position/{position}/{tenantId}/{languageId?}"), AcceptVerbs("GET")]
+        public async Task<IActionResult> GetAllMenuPositon(Position position, string tenantId, string languageId)
+        {
+            var result = await _menuService.GetAllActivatedMenuByPosition(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, position);
+            return Ok(result);
+
+        }
+
         [Route("get-by-seoLink"), AcceptVerbs("POST")]
         public async Task<IActionResult> GetInfoBySeoLink(CategoryClientMeta categoryMeta)
         {

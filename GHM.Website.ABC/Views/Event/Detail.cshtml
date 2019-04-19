@@ -51,14 +51,14 @@
                                 <div class="item">
                                     <div data-bind="css: { selected :  $root.imageId() === Id}">
                                         <a href="javascript://" data-bind="attr: { title: Title }, click: $root.selectImage" class="thumbnail">
-                                            <img class="img-responsive" data-bind="attr: { src: '/image?url=' + Thumbnail + '&width=640&height=360', alt: Title }"
+                                            <img class="img-responsive" data-bind="attr: { src: '/image?url=@ViewBag.Url' + Thumbnail + '&width=640&height=360', alt: Title }"
                                                  onerror="this.src='/images/no-image.png'" />
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="img-responsive image-default">
-                                <img class="img-responsive w100pc" data-bind="attr: { src: '/image?url=' + imageUrl() + '&width=640&height=360', alt: imageTitle() }"
+                                <img class="img-responsive w100pc" data-bind="attr: { src: '/image?url=@ViewBag.Url' + imageUrl() + '&width=640&height=360', alt: imageTitle() }"
                                      onerror="this.src='/images/no-image.png'" />
                             </div>
                         </div>

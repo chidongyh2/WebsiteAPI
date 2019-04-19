@@ -7,7 +7,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 20000
+          "Port": 50000
         }
       ],
       "UpstreamPathTemplate": "/auth/{everything}",
@@ -21,7 +21,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 20003
+          "Port": 50003
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/events/{everything}",
@@ -36,7 +36,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 20001
+          "Port": 50001
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/core/{everything}",
@@ -50,7 +50,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 20002
+          "Port": 50002
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
@@ -64,7 +64,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 20011
+          "Port": 50011
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/products/{everything}",
@@ -82,7 +82,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 20004
+          "Port": 50004
         }
       ],
       "UpstreamPathTemplate": "/notifications",
@@ -96,7 +96,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 20005
+          "Port": 50005
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/files/{everything}",
@@ -114,7 +114,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 20009
+          "Port": 50009
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",

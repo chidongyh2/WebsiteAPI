@@ -219,5 +219,10 @@ namespace GHM.Website.Infrastructure.Repository
         {
             return await Context.SaveChangesAsync();
         }
+
+        public async Task<bool> CheckExistsBySubjectId(string tenantId, string subjectId, SubjectType subjectType, string menuId)
+        {
+            return await _menuItemRepository.ExistAsync(x => x.TenantId == tenantId && x.SubjectId == subjectId && x.SubjectType == subjectType && x.MenuId == menuId);
+        }
     }
 }

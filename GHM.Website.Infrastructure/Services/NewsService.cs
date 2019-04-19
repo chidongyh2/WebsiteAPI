@@ -909,5 +909,28 @@ namespace GHM.Website.Infrastructure.Services
             }
            
         }
+
+        public async Task<ActionResultResponse<CategoryWidthNewsViewModel>> GetCategoryWithNews(string tenantId, string languageId, string seoLink, int selectTop, bool isHomePage, bool isParent)
+        {
+            if (isParent)
+            {
+                var categoryInfo = await _categoryTranslationRepository.GetActiveBySeoLink(tenantId, languageId, seoLink);
+                if (categoryInfo == null)
+                    return new ActionResultResponse<CategoryWidthNewsViewModel>
+                    {
+                        Data = null,
+                    };
+
+                return new ActionResultResponse<CategoryWidthNewsViewModel>
+                {
+                    Data = await _newsRepository.GetCategoryWithNews(tenantId, languageId, categoryInfo.CategoryId, selectTop, isHomePage),
+                };
+            }
+
+            return new ActionResultResponse<CategoryWidthNewsViewModel>
+            {
+                Data = await _newsRepository.GetCategoryWithNews(tenantId, languageId, -1, selectTop, isHomePage),
+            };
+        }
     }
 }

@@ -28,38 +28,51 @@
     }
 
     .item {
-        padding: 2px;
+        overflow: hidden;
 
         .wrap-item {
-            width: 258px !important;
-            height: 290px;
-            position: relative;
+            /*width: 258px !important;
+            height: 290px;*/
+            /*position: relative;*/
             background: linear-gradient(to right,#f8a102 0%,#f6d68a 50%,#f8a102 100%);
+            /*&:hover {
+                    img {
+                        visibility: hidden;
+                    }
+                    width: 100%;
+                    background-color: #931c1f;
+                    opacity: 0.9;
+                    text-decoration: none;
+ 
 
+            }*/
             img {
-                width: 258px !important;
-                height: 290px;
+                /*width: 258px !important;
+                height: 290px;*/
+                padding: 2px 2px 0px 2px;
                 border: 1px solid transparent;
             }
 
-            .slide-description {
-                text-decoration: none;
-                cursor: pointer;
-                width: 256px;
-                height: 75px;
-                text-transform: uppercase;
-                font-family: VLALLROUNDGOTHIC-BOOK;
-                font-size: 20px;
-                color: @main-color;
-                position: absolute;
-                z-index: 9999;
-                bottom: 0px;
+            .title {
                 text-align: center;
                 height: 75px;
-                margin-left: 1px;
-                margin-bottom: 1px;
-                background-image: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);
                 line-height: 75px;
+
+                .slide-description {
+                    text-decoration: none;
+                    cursor: pointer;
+                    width: 100%;
+                    /*height: 75px;*/
+                    text-transform: uppercase;
+                    font-family: VLALLROUNDGOTHIC-BOOK;
+                    font-size: 20px;
+                    color: @main-color;
+                    /*position: absolute;*/
+                    z-index: 9999;
+                    bottom: 0px;
+                    text-align: center;
+                    /*background-image: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);*/
+                }
             }
         }
     }
@@ -115,6 +128,7 @@
     text-align: center;
     line-height: 45px;
 }
+
 #myCarousel {
     .active {
         .item {
@@ -197,6 +211,7 @@
         }
     }
 }
+
 #message {
     bottom: 80px;
     position: fixed;
@@ -214,6 +229,10 @@
     background-size: cover;
     height: 260px;
 
+    @media @mobile {
+        max-height: 160px;
+    }
+
     .container {
         padding-top: 65px;
 
@@ -227,6 +246,7 @@
 
             .titlebar {
                 text-transform: uppercase;
+
                 @media @mobile {
                     font-size: 22px;
                 }
@@ -236,6 +256,7 @@
 
             .content {
                 font-family: vlauthenticaregular !important;
+
                 @media @not_mobile {
                     font-size: 32px;
                 }
@@ -325,12 +346,13 @@
                     border: 1px solid transparent;
 
                     @media @mobile {
-                        max-height: 132px;
+                        height: 132px;
                         min-width: 100%;
                     }
                 }
 
                 .text-description {
+                    color: @main-color;
                     width: 100%;
                     max-height: 75px;
                     background: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);
@@ -339,6 +361,7 @@
                     cursor: pointer;
 
                     @media @mobile {
+                        display: inline-grid;
                         height: 50px;
                     }
                 }
@@ -357,12 +380,12 @@
         height: 610px;
     }
 
+
     .row {
         @media @not_mobile {
-            padding-top: 30px;
             margin-top: 15px;
             margin-bottom: 35px;
-            margin: 0 20%;
+            /*margin: 0 20%;*/
         }
 
         margin: 0px 5px;
@@ -409,7 +432,7 @@
 
     .wrap-item {
         @media @not_mobile {
-            margin: 0 15%;
+            /*margin: 0 15%;*/
         }
 
         .item {
@@ -421,12 +444,67 @@
 
                 @media @mobile {
                     border-radius: 20px 10px !important;
+                    padding: 0px 1px 2px 5px;
+                }
+
+                @media @not_mobile {
+                    /*width: 280px;
+                    height: 280px;*/
+                }
+                /*padding: 0px 1px 2px 10px;*/
+                img {
+                    border: 1px solid @main-color;
+                    width: 100%;
+
+                    @media @not_mobile {
+                        /*width: 270px;
+                        height: 270px;*/
+                    }
+
+                    border-radius: 10px;
+                }
+            }
+
+            .wrap-text {
+                margin-top: 15px;
+
+                a {
+                    text-decoration: none;
+                    color: @main-color;
+                    font-family: VLALLROUNDGOTHIC-BOOK;
+                    font-size: 18px;
+                    text-transform: uppercase;
+                }
+
+                @media @mobile {
+                    height: 50px;
+                    overflow: hidden;
+                    margin-top: 5px !important;
+                }
+            }
+        }
+    }
+
+    #middle-menu-slide {
+        /*margin-left: 15%;*/
+        margin-top: 50px;
+
+        .item {
+            text-align: center;
+            margin-top: 10px;
+            min-height: 300px;
+             .wrap-image {
+                background: @main-color;
+                border-radius: 30px 20px;
+
+                @media @mobile {
+                    border-radius: 20px 10px !important;
                     padding: 0px 1px 2px 5px
                 }
 
                 @media @not_mobile {
-                    width: 280px;
-                    height: 280px;
+                    /*width: 280px;
+                    height: 280px;*/
                 }
 
                 padding: 0px 1px 2px 10px;
@@ -435,8 +513,8 @@
                     border: 1px solid @main-color;
 
                     @media @not_mobile {
-                        width: 270px;
-                        height: 270px;
+                        /*width: 270px;
+                        height: 270px;*/
                     }
 
                     border-radius: 10px;
@@ -444,14 +522,19 @@
             }
 
             .wrap-text {
-                color: @main-color;
-                font-family: VLALLROUNDGOTHIC-BOOK;
-                font-size: 16px;
-                margin-top: 15px;
-                text-transform: uppercase;
+                width: 100%;
+                margin-top: 5px;
+                overflow: hidden;
+
+                a {
+                    text-decoration: none;
+                    color: @main-color;
+                    font-family: VLALLROUNDGOTHIC-BOOK;
+                    font-size: 18px;
+                    text-transform: uppercase;
+                }
 
                 @media @mobile {
-                    text-transform: uppercase;
                     margin-top: 5px !important;
                 }
             }
@@ -509,7 +592,7 @@
                         .video-default {
                             iframe {
                                 width: 100% !important;
-                                height: 230px !important;
+                                height: 305px !important;
                             }
                         }
                     }
@@ -526,6 +609,7 @@
                     }
 
                     .titlebar {
+                        font-size: 22px !important;
                         padding: 5px 10px;
                         color: @main-color;
                         text-transform: uppercase;
@@ -569,7 +653,6 @@
 
             #response-customer {
                 @media @not_mobile {
-                    padding-left: 50px;
                     margin-top: 80px;
                     padding-bottom: 30px;
                 }
@@ -585,6 +668,7 @@
                     }
 
                     .titlebar {
+                        font-size: 20px !important;
                         padding: 5px 10px;
                         color: @main-color;
                         text-transform: uppercase;
@@ -649,7 +733,10 @@
                         .media-body {
                             font-family: Roboto-Regular;
 
-                            h5 {
+                            a {
+                                font-weight: bold;
+                                font-size: 14px;
+                                display: block;
                                 color: @main-color;
                             }
                         }
@@ -714,7 +801,8 @@
 
 .block-news {
     @media @not_mobile {
-        height: 770px;
+        max-height: 770px;
+        margin-bottom: 100px;
     }
 
     .row {
@@ -730,21 +818,18 @@
             .news-image {
                 border: 2px solid @main-color;
                 border-radius: 12px;
-
-                @media @not_mobile {
-                    width: 580px !important;
-                    height: 380px;
-                }
             }
 
             .news-content {
                 font-family: Roboto-Regular;
 
                 .title {
+                    padding-top: 5px;
                     font-weight: bold;
                     font-size: 20px;
 
                     a {
+                        text-decoration: none;
                         color: #556b20;
                     }
                 }
@@ -764,9 +849,9 @@
             .news-item {
                 font-family: Roboto-Regular;
                 font-size: 20px;
-       
+
                 @media @mobile {
-                    height: 175px;
+                    height: 168px;
                     overflow: hidden;
                     margin-bottom: 20px;
                     font-size: 16px;
@@ -775,19 +860,25 @@
                 @media @not_mobile {
                     margin-bottom: 30px;
                     width: 250px;
-                    max-height: 200px;
+                    max-height: 205px;
                     overflow: hidden;
                     margin-left: 15px;
                     padding: 0px;
                 }
 
+                .title {
+                    padding-top: 5px;
+                }
+
                 a {
+                    text-decoration: none;
                     color: #848484;
                 }
 
                 .news-image {
                     border: 2px solid @main-color;
                     border-radius: 12px;
+
                     @media @mobile {
                         height: 94px;
                         width: 100%;
@@ -795,11 +886,7 @@
                 }
 
                 .image-content {
-                    @media @not_mobile {
-                        width: 250px;
-                        height: 145px;
-                    }
-                   
+
                     .img-overlay {
                         background: rgba(0,0,0,.25);
                         display: inline-block;
@@ -846,6 +933,7 @@
         padding-bottom: 5px !important;
         margin-top: 0px;
         text-transform: uppercase;
+
         @media @mobile {
             padding-top: 0px;
         }
@@ -979,7 +1067,7 @@
             }
 
             .select {
-                background-color: #4285F4;
+                background-color: @main-color;
 
                 .title {
                     color: @color-white;
@@ -994,17 +1082,29 @@
         }
     }
 }
+
 .breadcrumb {
     .container {
         .row {
             .list-inline {
                 li {
+                    a {
+                        &:hover {
+                            color: #af0838;
+                        }
+                    }
+
                     font-size: 16px;
+
+                    span {
+                        color: @main-color;
+                    }
                 }
             }
         }
     }
 }
+
 #abums {
     padding-top: 0px;
     padding-bottom: 20px;
@@ -1110,7 +1210,6 @@
             img {
                 min-height: 250px;
                 max-height: 270px;
-               
             }
         }
 
@@ -1177,6 +1276,7 @@
         }
     }
 }
+
 .content {
     .list-style-none {
         li {
@@ -1186,21 +1286,26 @@
                         @media @mobile {
                             font-size: 18px;
                         }
+
                         &:hover {
                             color: #af0838;
                         }
                     }
                 }
             }
+
             .news-description {
                 @media @mobile {
                     font-size: 16px;
                 }
             }
+
             margin: 40px 0px;
+
             @media @mobile {
-                margin: 20px 0px; 
+                margin: 20px 0px;
             }
+
             list-style: none;
         }
     }
@@ -1220,6 +1325,7 @@
 .news-detail {
     @media @mobile {
         background-image: none;
+
         .content {
             img {
                 width: 100%;
@@ -1547,20 +1653,46 @@
         width: 100% !important;
     }
 }
+
 .sidebar-news-detail {
     .title {
         font-family: VLALLROUNDGOTHIC-BOOK;
     }
 }
+
 .titlebar {
     font-size: 32px;
+
     @media @mobile {
         font-size: 22px !important;
     }
 }
+
 .descriptionbar {
     font-size: 32px;
+
     @media @mobile {
         font-size: 20px;
+    }
+}
+
+.zoom {
+   &:hover {
+        transform: scale(1.05);
+     transition: ease-in-out 500ms;
+   }
+}
+.category-mobile {
+    text-align: center;
+    padding-bottom: 10px;
+
+    .btn-main-color {
+        background-color: @main-color;
+        border: none !important;
+
+        &:hover, &:active {
+            border: none !important;
+            background-color: @main-color;
+        }
     }
 }

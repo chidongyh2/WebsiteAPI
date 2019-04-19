@@ -105,7 +105,7 @@
                                     <div class="item">
                                         <div class="certificate-item">
                                             <a href="@banner.Url" title="@banner.Name" class="thumbnail-image">
-                                                <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(banner.Image) ? "/images/no-image.png" : banner.Image)}&width=320&height=180")"
+                                                <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(banner.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{banner.Image}")}&width=320&height=180")"
                                                      onerror="this.src='/images/no-image.png'"
                                                      alt="@banner.Name" />
                                             </a>
@@ -166,7 +166,7 @@
                                     <div class="item">
                                         
                                             <a href="@banner.Url" title="@banner.Name" class="thumbnail-image">
-                                                <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(banner.Image) ? "/images/no-image.png" : banner.Image)}&width=320&height=180")"
+                                                <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(banner.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{banner.Image}")}&width=320&height=180")"
                                                      onerror="this.src='/images/no-image.png'"
                                                      alt="@banner.Name" />
                                             </a>

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using GHM.Core.Domain.IServices;
 using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.Filters;
@@ -66,6 +67,7 @@ namespace GHM.Core.Api.Controllers
             var result = await _aproverConfigService.CheckExistsUserId(tenantId, userId, type);
 
             return Ok(result);
+
         }
 
         [Route("types"), AcceptVerbs("GET")]

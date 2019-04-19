@@ -29,7 +29,7 @@ namespace GHM.Website.Amiea.Controllers
             var apiService = _configuration.GetApiServiceInfo();
             var httpClientService = new HttpClientService();
             pageSize = seoLink == "tin-tuc" || seoLink.Contains("su-kien") ? 12 : 6;
-            var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/{seoLink}/{page}/{pageSize}");
+            var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/{seoLink}/{page}/{pageSize}");
 
             ViewBag.ListNews = listNews?.Items;
             ViewBag.TotalRows = listNews?.TotalRows;
@@ -43,7 +43,7 @@ namespace GHM.Website.Amiea.Controllers
 
             if (categoryProductRelations != null && categoryProductRelations?.Data != null)
             {
-                var listProducts = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/{categoryProductRelations?.Data?.SeoLink}/1/4");
+                var listProducts = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/{categoryProductRelations?.Data?.SeoLink}/1/4");
                 ViewBag.ListProduct = listProducts?.Items;
             }
 
@@ -67,7 +67,7 @@ namespace GHM.Website.Amiea.Controllers
             var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/related/{apiService.TenantId}/{seoLink}/4");
             ViewBag.listNewRelated = listNewsRelated;
 
-            var listProducts = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/san-pham/1/4");
+            var listProducts = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/san-pham/1/4");
 
             ViewBag.ListProduct = listProducts?.Items;
 

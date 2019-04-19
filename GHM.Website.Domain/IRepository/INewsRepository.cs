@@ -58,6 +58,8 @@ namespace GHM.Website.Domain.IRepository
 
         Task<List<CategoryWidthNewsViewModel>> GetCategoryWidthNews(string tenantId, string languageId, int categoryId, int selectTop, bool isHomePage);
 
+        Task<CategoryWidthNewsViewModel> GetCategoryWithNews(string tenantId, string languageId, int categoryId, int selectTop, bool isHomePage);
+
         Task<List<NewsSearchClientViewModel>> GetNewsByCategoryId(string tenantId, string languageId, string categoryId, int page, int pageSize, out int totalRows);
 
         Task<NewsDetailForClientViewModel> GetDetailForClient(string teantId, string newsId, string languageId);

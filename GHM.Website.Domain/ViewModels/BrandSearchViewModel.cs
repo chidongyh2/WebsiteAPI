@@ -19,6 +19,7 @@
         public string Address { get; set; }
 
         public string Logo { get; set; }
+       
     }
 
 }

@@ -69,7 +69,6 @@
         "AllowedScopes": [ "GHM_Core_Api" ]
       }
     },
-    // BEGIN: Product
 
     // BEGIN: Notifications
     {

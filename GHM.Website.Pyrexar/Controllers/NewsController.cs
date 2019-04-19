@@ -23,20 +23,20 @@ namespace GHM.Website.Pyrexar.Controllers
             _cache = cache;
         }
 
-        [Route("asasa/{seoLink}/{page?}/{pageSize?}")]
+        [Route("{seoLink}/{page?}/{pageSize?}")]
         public async Task<ActionResult> Index(string seoLink, int page = 1, int pageSize = 20)
         {
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
             
             var httpClientService = new HttpClientService();
-            var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/{seoLink}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+            var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/{seoLink}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
 
             ViewBag.ListNews = listNews?.Items;
             ViewBag.TotalRows = listNews?.TotalRows;
 
             var newsSeoLink = CultureInfo.CurrentCulture.Name == "vi-VN" ? "tin-tuc" : "blog";
-            var listNewsRecent = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/{newsSeoLink}/{1}/{30}/{CultureInfo.CurrentCulture.Name}");
+            var listNewsRecent = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/{newsSeoLink}/{1}/{30}/{CultureInfo.CurrentCulture.Name}");
 
             ViewBag.ListNewsRecent = listNewsRecent?.Items;
             ViewBag.SeoLink = seoLink;
@@ -55,7 +55,7 @@ namespace GHM.Website.Pyrexar.Controllers
             var newsDetail = await httpClientService.GetAsync<NewsDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/client/{apiService.TenantId}/{seoLink}/{CultureInfo.CurrentCulture.Name}");
 
             var newsSeoLink = CultureInfo.CurrentCulture.Name == "vi-VN" ? "tin-tuc" : "blog";
-            var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/{"tin-tuc"}/{1}/{30}/{CultureInfo.CurrentCulture.Name}");
+            var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/{"tin-tuc"}/{1}/{30}/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListNewsRecent = listNews?.Items;
 
             return View(newsDetail);

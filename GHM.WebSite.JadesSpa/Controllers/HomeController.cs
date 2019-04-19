@@ -18,7 +18,6 @@ using System.Text;
 using GHM.Website.JadesSpa.Utils;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
-using GHM.WebSite.JadesSpa.ViewModels;
 using GHM.Infrastructure.Constants;
 
 namespace GHM.Website.JadesSpa.Controllers
@@ -36,10 +35,10 @@ namespace GHM.Website.JadesSpa.Controllers
         public async Task<ActionResult> Index()
         {
             var absoluteUri = $"{Request.Host}{Request.Path}";
-            if (absoluteUri.Contains("pmuasia.amiea.vn"))
-            {
-                return Redirect("/dang-ky-su-kien");
-            }
+            //if (absoluteUri.Contains("pmuasia.amiea.vn"))
+            //{
+            //    return Redirect("/dang-ky-su-kien");
+            //}
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -58,8 +57,10 @@ namespace GHM.Website.JadesSpa.Controllers
             var listServices = await httpClientService.GetAsync<SearchResult<CategorySearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/category-home-page/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListServices = listServices?.Items;
 
-            var listVaue = await httpClientService.GetAsync<List<ValueViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/core-values/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
-            ViewBag.ListValue = listVaue;
+            //var middleMenu = await httpClientService.GetAsync<MenuDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/get-all-menu-position/{(int)Position.Middle}/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
+            //ViewBag.MiddleMenu = middleMenu;
+            var categoryMiddle = await httpClientService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/get-news-width-parent-category/{apiService.TenantId}/tai-sao-lua-chon-jade-spa/5/{CultureInfo.CurrentCulture.Name}");
+            ViewBag.CategoryMiddle = categoryMiddle?.Data;
             //if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
             //{
             //    ViewBag.MainBanner = banners;
@@ -124,6 +125,7 @@ namespace GHM.Website.JadesSpa.Controllers
                     // var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/related-by-category/{apiService.TenantId}/{categoryWithNews.Data.SeoLink}/5/{CultureInfo.CurrentCulture.Name}");
                     var listNewsHot = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/newest/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
                     ViewBag.ListNewsHot = listNewsHot;
+                    ViewBag.CategoryId = categoryWithNews.Data.CategoryId;
                     return View("../News/CategoryNews", categoryWithNews.Data);
                 }
                 else if (menuInfo.SubjectType == SubjectType.News)
@@ -160,6 +162,7 @@ namespace GHM.Website.JadesSpa.Controllers
                 new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
             );
 
+            var test = Response.Cookies.ToString();
             return Redirect(url);
         }
 

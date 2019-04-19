@@ -43,5 +43,23 @@
     "inputFiles": [
       "wwwroot/js/banner.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/angency-system.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/angency-system.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/category-news.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/category-news.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/contact.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/contact.viewmodel.js"
+    ]
   }
 ]

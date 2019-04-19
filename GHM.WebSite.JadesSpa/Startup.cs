@@ -103,6 +103,8 @@ namespace GHM.WebSite.JadesSpa
                 new CultureInfo("en-US"),
             };
 
+            app.UseMiddleware<RequestLocalizationMiddleware>();
+
             var defaultCulture = new CultureInfo("vi-VN");
             var localizationOptions = new RequestLocalizationOptions()
             {
@@ -117,12 +119,24 @@ namespace GHM.WebSite.JadesSpa
                     new CookieRequestCultureProvider()
                 },
             };
-
-            app.UseRequestLocalization(localizationOptions);
-
-            app.UseMiddleware<RequestLocalizationMiddleware>();
+            app.UseRequestLocalization(localizationOptions);        
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(
+                new StaticFileOptions
+                {
+                    OnPrepareResponse = context =>
+                    {
+                        // Cache static file for 7 day
+                        string path = context.Context.Request.Path;
+                        if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg"))
+                        {
+                            TimeSpan maxAge = new TimeSpan(7, 0, 0, 0); // 1 ngày
+                            context.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
+                        }
+                    }
+                }
+            );
+            app.UseWebMarkupMin();//Minify content
             app.UseCookiePolicy();
             #endregion
             app.UseMvc(routes =>

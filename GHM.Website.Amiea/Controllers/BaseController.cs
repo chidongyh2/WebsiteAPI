@@ -32,7 +32,8 @@ namespace GHM.Website.Amiea.Controllers
             ViewBag.WebsiteSetting = GetSetting();
             ViewBag.BranchContacts = GetBranch();
             ViewBag.SocialNetwork = GetSocialNetwork();
-            ViewBag.Url = "http://localhost:50005";
+            //ViewBag.Url = "http://localhost:50005/";
+            ViewBag.Url = "https://websitefile.ghmsoft.vn/";
         }
 
         private List<MenuItemViewModel> GetMainMenu()
