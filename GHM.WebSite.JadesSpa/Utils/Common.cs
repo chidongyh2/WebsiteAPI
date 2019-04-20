@@ -115,8 +115,8 @@ namespace GHM.Website.JadesSpa.Utils
         {
             string scheme = url.ActionContext.HttpContext.Request.Scheme;
             return url.Action(actionName, controllerName, routeValues, scheme);
-        }
-        
+        }        
+
     }
 }
 

@@ -39,8 +39,9 @@
             self.isSelectVideo(true);
         }
     };
+
     self.previousVideo = function () {
-        if (ko.utils.unwrapObservable(self.currentVideo()) == 0) {
+        if (ko.utils.unwrapObservable(self.currentVideo()) === 0) {
             self.videoLinkId(self.listVideo()[self.listVideo().length - 1].Id);
             self.videoTitle(self.listVideo()[self.listVideo().length - 1].Title);
             self.currentVideo(self.listVideo().length - 1);
@@ -51,9 +52,10 @@
             self.videoTitle(self.listVideo()[self.currentVideo()].Title);
             self.videoLinkId(self.listVideo()[self.currentVideo()].VideoLinkId);
         }
-    }
+    };
+
     self.nextVideo = function () {
-        if (ko.utils.unwrapObservable(self.currentVideo()) == ko.utils.unwrapObservable(self.listVideo().length - 1)) {
+        if (ko.utils.unwrapObservable(self.currentVideo()) === ko.utils.unwrapObservable(self.listVideo().length - 1)) {
             console.log(self.currentVideo());
             self.currentVideo(0);
             self.videoLinkId(self.listVideo()[self.currentVideo()].Id);
@@ -65,39 +67,42 @@
             self.videoTitle(self.listVideo()[self.currentVideo()].Title);
             self.videoLinkId(self.listVideo()[self.currentVideo()].VideoLinkId);
         }
-    }
+    };
+
     self.setCurrentPage = function (value) {
-        if (value == 0) {
-            if (ko.utils.unwrapObservable(self.currentPageComment()) == 1) {
+        if (value === 0) {
+            if (ko.utils.unwrapObservable(self.currentPageComment()) === 1) {
                 self.currentPageComment(self.totalPage());
             } else {
-                self.currentPageComment(self.currentPageComment()- 1);
+                self.currentPageComment(self.currentPageComment() - 1);
             }
         } else {
-            if (ko.utils.unwrapObservable(self.currentPageComment()) == ko.utils.unwrapObservable(self.totalPage())) {
+            if (ko.utils.unwrapObservable(self.currentPageComment()) === ko.utils.unwrapObservable(self.totalPage())) {
                 self.currentPageComment(1);
             } else {
                 self.currentPageComment(self.currentPageComment() + 1);
             }
         }
         self.pushListComment();
-    }
+    };
+
     self.pushListComment = function () {
         self.listCommentCustomer([]);
-        if (ko.utils.unwrapObservable(self.currentPageComment()) == ko.utils.unwrapObservable(self.totalPage())) {
-            for (i = 0; i < 3; i++) {
+        if (ko.utils.unwrapObservable(self.currentPageComment()) === ko.utils.unwrapObservable(self.totalPage())) {
+            for (var i = 0; i < 3; i++) {
                 self.listCommentCustomer.push(self.listResponseCustomer()[i]);
             }
         } else {
-            for (i = ((ko.utils.unwrapObservable(self.currentPageComment) - 1) * 3); i < (((ko.utils.unwrapObservable(self.currentPageComment) - 1) * 3) + 3); i++) {
-                self.listCommentCustomer.push(self.listResponseCustomer()[i]);
+            for (var j = ((ko.utils.unwrapObservable(self.currentPageComment) - 1) * 3); j < (((ko.utils.unwrapObservable(self.currentPageComment) - 1) * 3) + 3); j++) {
+                self.listCommentCustomer.push(self.listResponseCustomer()[j]);
             }
         }
-    }
+    };
+
     $(document).ready(function () {
         self.listVideo(listVideo);
         self.listResponseCustomer(listResponseCustomer);
-        self.totalPage(Math.ceil((self.listResponseCustomer().length / 3)));
+        self.totalPage(Math.ceil(self.listResponseCustomer().length / 3));
         self.pushListComment();
         self.videoLinkId(videoLinkId);
         self.videoTitle(videoTitle);

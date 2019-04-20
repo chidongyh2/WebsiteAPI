@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using System.Globalization;
 using System.Linq;
 
+
 namespace GHM.Website.JadesSpa.Controllers
 {
     public abstract class BaseController : Controller
