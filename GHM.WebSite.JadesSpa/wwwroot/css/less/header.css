@@ -297,7 +297,25 @@
 .header-bottom nav .navbar-collapse ul li .dropdown-menu {
   position: absolute;
   opacity: 1;
+  padding-top: 0px;
+  list-style: none;
+  /*display: none;*/
+  width: 100%;
+  position: static;
+  top: 0;
+  left: 0;
+  text-align: left;
+  min-width: 300px;
+  padding-left: 0;
+  background: #609930;
+  -webkit-transition-property: opacity,top;
+  transition-property: opacity,top;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  z-index: 1030;
   top: 100%;
+  margin-top: 1px;
+  padding-bottom: 10px;
 }
 @media only screen and (min-width: 768px) {
   .header-bottom nav .navbar-collapse ul li .dropdown-menu {
@@ -331,6 +349,7 @@
   border: none !important;
   border-radius: unset;
   font-family: VLALLROUNDGOTHIC-BOOK;
+  cursor: pointer;
 }
 .header-bottom nav .header-tool {
   position: absolute;

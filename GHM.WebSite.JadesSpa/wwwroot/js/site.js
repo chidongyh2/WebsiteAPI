@@ -28,13 +28,13 @@ $(document).ready(function () {
             $(".header-top").css("display", "none");
 
             var windowWidth = window.innerWidth;
-            if (windowWidth < 768) {
-                isShowToggle = true;
-                $(".navbar-header").addClass("visible-xs");
-                $(".navbar-header").removeClass("hidden-xs");
-                $('.navbar-collapse').css("display", "none");
-                $('.navbar-collapse').removeClass("in");
-            }
+            //if (windowWidth < 768) {
+            //    isShowToggle = true;
+            //    $(".navbar-header").addClass("visible-xs");
+            //    $(".navbar-header").removeClass("hidden-xs");
+            //    $('.navbar-collapse').css("display", "none");
+            //    $('.navbar-collapse').removeClass("in");
+            //}
         } else {
             $(".navbar").removeClass("navbar-fixed-top");
             $("#backToTop").css("display", "none");
