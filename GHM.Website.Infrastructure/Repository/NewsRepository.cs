@@ -562,7 +562,7 @@ namespace GHM.Website.Infrastructure.Repository
                          join categoryNews in Context.Set<CategoriesNews>() on category.Id equals categoryNews.CategoryId
                          join news in Context.Set<News>().Where(spec) on categoryNews.NewsId equals news.Id
                          join newsTranslation in Context.Set<NewsTranslation>().Where(specTranslation) on news.Id equals newsTranslation.NewsId
-                         group new { news, newsTranslation } by new { category.Id, categoryTranslation.Name, categoryTranslation.SeoLink, category.Order, categoryTranslation.Description} into g
+                         group new { news, newsTranslation } by new { category.Id, categoryTranslation.Name, categoryTranslation.SeoLink, category.Order, categoryTranslation.Description } into g
                          select new CategoryWidthNewsViewModel
                          {
                              CategoryId = g.Key.Id,
@@ -626,21 +626,21 @@ namespace GHM.Website.Infrastructure.Repository
                          join news in Context.Set<News>().Where(spec) on categoryNews.NewsId equals news.Id
                          join newsTranslation in Context.Set<NewsTranslation>().Where(specTranslation) on news.Id equals newsTranslation.NewsId
                          select new NewsSearchClientViewModel
-                         { 
-                                 Id = news.Id,
-                                 AltImage = news.AltImage,
-                                 FeatureImage = news.FeatureImage,
-                                 CreateTime = news.CreateTime,
-                                 LastUpdate =news.LastUpdate,
-                                 IsHot = news.IsHot,
-                                 Source = news.Source,
-                                 SeoLink = newsTranslation.SeoLink,
-                                 Title = newsTranslation.Title,
-                                 MetaTitle = newsTranslation.MetaTitle,
-                                 Description = newsTranslation.Description
+                         {
+                             Id = news.Id,
+                             AltImage = news.AltImage,
+                             FeatureImage = news.FeatureImage,
+                             CreateTime = news.CreateTime,
+                             LastUpdate = news.LastUpdate,
+                             IsHot = news.IsHot,
+                             Source = news.Source,
+                             SeoLink = newsTranslation.SeoLink,
+                             Title = newsTranslation.Title,
+                             MetaTitle = newsTranslation.MetaTitle,
+                             Description = newsTranslation.Description
                          };
             totalRows = result.Count();
-            return  result.OrderByDescending(x => x.LastUpdate).Skip((page -1) * pageSize).Take(pageSize).ToListAsync();
+            return result.OrderByDescending(x => x.LastUpdate).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
         }
 
         public async Task<NewsDetailForClientViewModel> GetDetailForClient(string teantId, string newsId, string languageId)
@@ -774,6 +774,38 @@ namespace GHM.Website.Infrastructure.Repository
                          };
 
             return result.OrderBy(x => x.Order).AsNoTracking().FirstOrDefaultAsync();
+        }
+
+        public async Task<List<NewsSearchClientViewModel>> GetListNewsRelatedForClient(string tenantId, string languageId, string newsId, int pageSize)
+        {
+            Expression<Func<CategoriesNews, bool>> specCN = x => x.NewsId == newsId;
+            Expression<Func<Category, bool>> specC = x => x.IsActive && !x.IsDelete && x.TenantId == tenantId;
+            Expression<Func<News, bool>> specN = x => x.IsActive && !x.IsDelete && x.TenantId == tenantId;
+            Expression<Func<NewsTranslation, bool>> specNT = x => !x.IsDelete && x.LanguageId == languageId;
+
+            var category = Context.Set<CategoriesNews>().Where(specCN).FirstOrDefault();
+
+            var query = from cn in Context.Set<CategoriesNews>().Where(x => x.CategoryId == category.CategoryId)
+                        join n in Context.Set<News>().Where(specN) on cn.NewsId equals n.Id
+                        join nt in Context.Set<NewsTranslation>().Where(specNT) on n.Id equals nt.NewsId
+                        select new NewsSearchClientViewModel
+                        {
+                            Id = n.Id,
+                            AltImage = n.AltImage,
+                            CommentCount = n.CommentCount,
+                            CreateTime = n.CreateTime,
+                            Description = nt.Description,
+                            FeatureImage = n.FeatureImage,
+                            IsHot = n.IsHot,
+                            LastUpdate = n.LastUpdate,
+                            LikeCount = n.LikeCount,
+                            MetaTitle = nt.MetaTitle,
+                            SeoLink = nt.SeoLink,
+                            Source = n.Source,
+                            Title = nt.Title,
+                            ViewCount = n.ViewCount
+                        };
+            return await query.OrderByDescending(x => x.Id).Take(pageSize).ToListAsync();
         }
     }
 }

@@ -70,7 +70,23 @@
       }
     },
     // BEGIN: Product
-
+    {
+      "DownstreamPathTemplate": "/api/v{version}/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50011
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v{version}/products/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UseServiceDiscovery": false,
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "GHM_Product_Api" ]
+      }
+    },
     // BEGIN: Notifications
     {
       "DownstreamPathTemplate": "/api/v{version}/notifications/{everything}",
@@ -114,20 +130,6 @@
       ],
       "UpstreamPathTemplate": "/api/v{version}/notifications",
       "UpstreamHttpMethod": [ "Get", "Post" ],
-      "UseServiceDiscovery": false
-    },
-    // BEGIN: Warehouse
-    {
-      "DownstreamPathTemplate": "/api/v{version}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 50009
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
       "UseServiceDiscovery": false
     }
   ],

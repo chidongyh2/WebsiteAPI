@@ -25,7 +25,7 @@
 }
 @media only screen and (max-width: 768px) {
   .navbar-fixed-top {
-    /*top: 15px;*/
+    *padding-top: 10px 0px;
   }
 }
 /*.scroll-fixed-navbar {
@@ -311,7 +311,6 @@
   text-align: left;
   min-width: 300px;
   padding-left: 0;
-  background: #609930;
   -webkit-transition-property: opacity,top;
   transition-property: opacity,top;
   -webkit-transition-duration: 0.5s;
@@ -329,6 +328,7 @@
 @media only screen and (max-width: 768px) {
   .header-bottom nav .navbar-collapse ul li .dropdown-menu {
     position: static;
+    background-color: none;
   }
 }
 .header-bottom nav .navbar-collapse ul li .dropdown-menu li {

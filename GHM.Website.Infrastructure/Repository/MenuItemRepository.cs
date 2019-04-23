@@ -133,7 +133,37 @@ namespace GHM.Website.Infrastructure.Repository
                 .ToListAsync();
         }
 
-   
+        public async Task<List<MenuItemSearchViewModel>> GetAllActivatedMenuItemForClient(string tenantId, string menuId, string languageId)
+        {
+            var query = Context.Set<MenuItem>().Where(x => x.IsActive && x.TenantId == tenantId && x.MenuId == menuId)
+                .Join(Context.Set<MenuItemTranslation>().Where(x => x.LanguageId == languageId), x => x.Id,
+                    xt => xt.MenuItemId, (x, xt) => new MenuItemSearchViewModel
+                    {
+                        Id = x.Id,
+                        MenuId = x.MenuId,
+                        SubjectId = x.SubjectId,
+                        SubjectType = x.SubjectType,
+                        Icon = x.Icon,
+                        Image = x.Image,
+                        Url = x.Url,
+                        Name = xt.Name,
+                        IsActive = x.IsActive,
+                        ParentId = x.ParentId,
+                        IdPath = x.IdPath,
+                        Order = x.Order,
+                        OrderPath = x.OrderPath,
+                        Level = x.Level,
+                        ChildCount = x.ChildCount,
+                        ParentName = xt.ParentName,
+                        NamePath = xt.NamePath,
+                        Description = xt.Description
+                    });
+            return await query
+                .AsNoTracking()
+                .OrderBy(c => c.Order)
+                .ToListAsync();
+        }
+
         public  Task<List<MenuItemForSelectViewModel>> GetAllMenuItemForSelect(string tenantId, string languageId, string keyword, string menuId, int page, int pageSize,
             out int totalRows)
         {

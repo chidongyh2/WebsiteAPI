@@ -896,18 +896,7 @@ namespace GHM.Website.Infrastructure.Services
 
         public async Task<List<NewsSearchClientViewModel>> GetNewsRelatedById(string tenantId, string newsId, string languageId, int page, int pageSize)
         {
-            var apiUrls = _configuration.GetApiUrl();
-            if (apiUrls == null) return new List<NewsSearchClientViewModel>();
-            var resultNews = await new HttpClientService()
-                     .GetAsync<List<string>>($"{apiUrls.CoreApiUrl}/tags/{tenantId}/{languageId}/{(int)TagType.News}/{newsId}");
-            if(resultNews == null)
-            {
-                return await _newsRepository.GetListNewsRelated(tenantId, languageId, newsId, pageSize);
-            } else
-            {
-                return await _newsRepository.GetListTopNewsRelated(tenantId, languageId, resultNews, pageSize);
-            }
-           
+            return await _newsRepository.GetListNewsRelatedForClient(tenantId, languageId, newsId, pageSize);       
         }
 
         public async Task<ActionResultResponse<CategoryWidthNewsViewModel>> GetCategoryWithNews(string tenantId, string languageId, string seoLink, int selectTop, bool isHomePage, bool isParent)
