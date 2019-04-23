@@ -62,7 +62,7 @@ namespace GHM.WebSite.JadesSpa
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, options =>
             {
                 options.ResourcesPath = "Resources";
-            }).AddDataAnnotationsLocalization();           
+            }).AddDataAnnotationsLocalization();
 
             services.AddWebMarkupMin(
             options =>

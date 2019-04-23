@@ -63,7 +63,7 @@
 #news-slider .item .wrap-item img {
   /*width: 258px !important;
                 height: 290px;*/
-  padding: 2px 2px 0px 2px;
+  padding: 8px 2px 0px 2px;
   border: 1px solid transparent;
   margin: 0 auto;
 }
@@ -313,7 +313,7 @@
   padding-top: 15px;
 }
 #news-hot .container .item-hot .item {
-  background-image: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);
+  background-image: linear-gradient(to right, #B78114 0%, #FDED98 70%, #B78114 100%);
   font-size: 18px;
   font-family: VLALLROUNDGOTHIC-BOOK;
   color: #609930;
@@ -332,7 +332,7 @@
   color: #609930;
   width: 100%;
   max-height: 75px;
-  background: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);
+  background: linear-gradient(to right, #B78114 0%, #FDED98 70%, #B78114 100%);
   overflow: hidden;
   text-align: center;
   cursor: pointer;
@@ -1158,6 +1158,31 @@
   #news-detail {
     background-image: none;
   }
+}
+#news-detail .wrap-related-news .header-related-news {
+  font-family: VLALLROUNDGOTHIC-BOOK;
+  color: #609930;
+  text-align: center;
+  font-size: 22px;
+  border-bottom: 2px solid #609930;
+  padding: 10px 0px;
+}
+#news-detail .wrap-related-news .wrap-related-item {
+  margin: 10px 0px;
+}
+#news-detail .wrap-related-news .wrap-related-item .news-item .wrap-text-content .title {
+  padding-bottom: 10px;
+}
+#news-detail .wrap-related-news .wrap-related-item .news-item .wrap-text-content .title a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #609930;
+}
+#news-detail .wrap-related-news .wrap-related-item .news-item .wrap-text-content .title a:hover {
+  color: #547A2F;
+}
+#news-detail .wrap-related-news .wrap-related-item .news-item .wrap-text-content .description {
+  font-size: 16px;
 }
 @media only screen and (max-width: 768px) {
   .news-detail {

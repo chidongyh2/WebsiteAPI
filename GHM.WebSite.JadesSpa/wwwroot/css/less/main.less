@@ -29,7 +29,7 @@
 
     .item {
         overflow: hidden;
-
+      
         .wrap-item {
             /*width: 258px !important;
             height: 290px;*/
@@ -47,7 +47,7 @@
             img {
                 /*width: 258px !important;
                 height: 290px;*/
-                padding: 2px 2px 0px 2px;
+                padding: 8px 2px 0px 2px;
                 border: 1px solid transparent;
                 margin: 0 auto;
             }
@@ -335,7 +335,7 @@
 
         .item-hot {
             .item {
-                background-image: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);
+                background-image: linear-gradient(to right,#B78114 0%,#FDED98 70%,#B78114 100%);
                 font-size: 18px;
                 font-family: VLALLROUNDGOTHIC-BOOK;
                 color: @main-color;
@@ -354,7 +354,7 @@
                     color: @main-color;
                     width: 100%;
                     max-height: 75px;
-                    background: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);
+                    background: linear-gradient(to right,#B78114 0%,#FDED98 70%,#B78114 100%);
                     overflow: hidden;
                     text-align: center;
                     cursor: pointer;
@@ -1317,6 +1317,43 @@
     background-size: 100% auto;*/
     @media @mobile {
         background-image: none;
+    }
+
+    .wrap-related-news {
+        .header-related-news {
+            font-family: VLALLROUNDGOTHIC-BOOK;
+            color: @main-color;
+            text-align: center;
+            font-size: 22px;
+            border-bottom: 2px solid @main-color;
+            padding: 10px 0px;
+        }
+
+        .wrap-related-item {
+            margin: 10px 0px;
+
+            .news-item {
+                .wrap-text-content {
+                    .title {
+                        a {
+                            font-size: 18px;
+                            text-decoration: none;
+                            color: @main-color;
+
+                            &:hover {
+                                color: @main-color-hover;
+                            }
+                        }
+
+                        padding-bottom: 10px;
+                    }
+
+                    .description {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
     }
 }
 

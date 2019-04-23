@@ -1,8 +1,8 @@
 ﻿@model NewsDetailViewModel
 @{
     ViewBag.Title = Model?.MetaTitle != null ? Model?.MetaTitle : Model?.Title;
-    //var listNewsRelated = ViewBag.listNewRelated as List<NewsSearchViewModel>;
-    ViewBag.ImageBanner = Model.BannerImage != null ? Model.BannerImage : "uploads/images/bannerNews.png";
+    var listNewsRelated = ViewBag.NewsRelated as List<NewsSearchViewModel>;
+    ViewBag.ImageBanner = Model.BannerImage != null ? Model.BannerImage : $"{ViewBag.Url}uploads/images/bannerNews.png";
     ViewBag.MetaTitle = Model?.MetaTitle;
     ViewBag.Description = Model?.MetaDescription;
     ViewBag.Keyword = Model?.MetaKeyword;
@@ -92,6 +92,39 @@
                 <div class="col-sm-12">
                     <div class="fb-comments" data-href="@absoluteUri1"
                          data-width="1000" data-numposts="5"></div>
+                </div>
+            </div>
+            <div class="row wrap-related-news">
+                <div class="col-sm-12">
+                    <h6 class="header-related-news">
+                        @Resource.NewsRelated
+                    </h6>
+                </div>
+                <div class="col-sm-12 wrap-related-item">
+                    @foreach (var newsRelated in listNewsRelated)
+                    {
+
+                        <div class="news-item col-sm-3">
+                            <div class="image-content">
+                                <a href="@($"/{newsRelated.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsRelated.MetaTitle) ? newsRelated.Title : newsRelated.MetaTitle)">
+                                    <img class="news-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsRelated.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{newsRelated.FeatureImage}")}&width=480&height=360")"
+                                         onerror="this.src='/images/no-image.png'"
+                                         alt="@(string.IsNullOrEmpty(newsRelated.AltImage) ? newsRelated.Title : newsRelated.AltImage)" />
+                                    <span class="img-overlay"></span>
+                                </a>
+                            </div>
+                            <div class="wrap-text-content">
+                                <div class="title">
+                                    <a href="@($"/{newsRelated.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsRelated.MetaTitle) ? newsRelated.Title : newsRelated.MetaTitle)">
+                                        @(!string.IsNullOrEmpty(newsRelated.Title) ? Common.SubString(newsRelated.Title, 70) : newsRelated.Title)
+                                    </a>
+                                </div>
+                                <div class="description">
+                                    <span>@Common.SubString(newsRelated.Description, 150)</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         }

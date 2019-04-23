@@ -939,7 +939,7 @@ namespace GHM.Website.Infrastructure.Services
 
         public async Task<List<MenuItemSearchViewModel>> GetAllActivatedMenuItem(string tenantId, string languageId, string menuId)
         {
-            return await _menuItemRepository.GetAllActivatedMenuItem(tenantId, menuId, languageId);
+            return await _menuItemRepository.GetAllActivatedMenuItemForClient(tenantId, menuId, languageId);
         }
 
         public async Task<List<MenuItemSearchViewModel>> GetAllActivatedMenuItemByPosition(string tenantId, string languageId, Position position)
@@ -948,7 +948,7 @@ namespace GHM.Website.Infrastructure.Services
             if (menuInfo == null)
                 return null;
 
-            return await _menuItemRepository.GetAllActivatedMenuItem(tenantId, menuInfo.Id, languageId);
+            return await _menuItemRepository.GetAllActivatedMenuItemForClient(tenantId, menuInfo.Id, languageId);
         }
         #endregion MenuItems
 

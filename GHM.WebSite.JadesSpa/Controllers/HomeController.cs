@@ -72,7 +72,6 @@ namespace GHM.Website.JadesSpa.Controllers
 
             ViewBag.MainBanner = listBannerInHome?.Data;
             //}
-
             return View();
         }
         public async Task<ActionResult> Coordinator(string segment, int page = 1, int pageSize = 12)
@@ -104,7 +103,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
                     if (newInfo != null)
                     {
-                        var newsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{newInfo.Id}/{CultureInfo.CurrentCulture.Name}/1/3");
+                        var newsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{newInfo.Id}/{CultureInfo.CurrentCulture.Name}/1/4");
                         ViewBag.NewsRelated = newsRelated;
                         return View("../News/Detail", newInfo);
                     }
@@ -130,7 +129,13 @@ namespace GHM.Website.JadesSpa.Controllers
                 }
                 else if (menuInfo.SubjectType == SubjectType.News)
                 {
-                    var newsDetail = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/detail/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+                    var newsDetail = await httpClientService.GetAsync<ActionResultResponse<NewsDetailViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/detail/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+                    if (newsDetail == null)
+                    {
+                        return View("../NotFound/Index");
+                    }
+                    var newsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{newsDetail.Data.Id}/{CultureInfo.CurrentCulture.Name}/1/4");
+                    ViewBag.NewsRelated = newsRelated;
                     ViewBag.NewsDetail = newsDetail;
                     //var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{menuInfo.SubjectId}/{CultureInfo.CurrentCulture.Name}/20");
                     //ViewBag.ListNewsRelated = listNewsRelated;
