@@ -23,11 +23,6 @@
   border-bottom: none;
   transition: background-color 2s ease-out;
 }
-@media only screen and (max-width: 768px) {
-  .navbar-fixed-top {
-    *padding-top: 10px 0px;
-  }
-}
 /*.scroll-fixed-navbar {
     background-color: @main-color;
     border-bottom: 1px solid #222;
@@ -75,6 +70,7 @@
 @media only screen and (max-width: 768px) {
   .header-bottom .navbar-inverse .wrap {
     display: block;
+    padding-top: 5px;
   }
 }
 .header-bottom .navbar-inverse .wrap .navbar-brand {

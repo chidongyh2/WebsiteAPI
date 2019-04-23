@@ -820,6 +820,11 @@
   border-radius: 12px;
   width: 100%;
 }
+@media only screen and (max-width: 768px) {
+  .block-news .row .list-news .news-item .image-content .img-overlay {
+    width: auto;
+  }
+}
 .block-news .row .list-news .news-item .image-content .img-overlay:hover {
   opacity: 1;
 }
@@ -1169,6 +1174,9 @@
 }
 #news-detail .wrap-related-news .wrap-related-item {
   margin: 10px 0px;
+}
+#news-detail .wrap-related-news .wrap-related-item .news-item .image-content a img {
+  max-height: 185px;
 }
 #news-detail .wrap-related-news .wrap-related-item .news-item .wrap-text-content .title {
   padding-bottom: 10px;

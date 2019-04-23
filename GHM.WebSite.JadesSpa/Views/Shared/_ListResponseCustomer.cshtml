@@ -28,7 +28,7 @@
 
                         <div class="media-body">
                             <a class="mt-0 name" data-bind="text: Title + ':', attr: {href: ''+ SeoLink +'.html'}"> </a>
-                            <span data-bind="text: Description"></span>
+                            <span data-bind="text: $parent.handdleSubstring($data, Description)"></span>
                         </div>
                     </div>
                 </div>

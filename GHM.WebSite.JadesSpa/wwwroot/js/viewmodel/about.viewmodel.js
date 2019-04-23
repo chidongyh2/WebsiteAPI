@@ -99,6 +99,14 @@
         }
     };
 
+    self.handdleSubstring = function (data, text) {
+        if (text.length > 155) {
+            return '' + text.substr(0, 155) + '...';
+        } else {
+            return text;
+        }
+    };
+
     $(document).ready(function () {
         self.listVideo(listVideo);
         self.listResponseCustomer(listResponseCustomer);
