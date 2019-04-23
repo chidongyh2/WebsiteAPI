@@ -22,7 +22,6 @@ $(document).ready(function () {
     });
     $(window).scroll(function () {
         var b = $(window).scrollTop();
-        console.log(b);
         if (b > 150 || $(window).innerWidth() < 768) {
             $(".navbar").addClass("navbar-fixed-top");
             $("#backToTop").css("display", "block");
