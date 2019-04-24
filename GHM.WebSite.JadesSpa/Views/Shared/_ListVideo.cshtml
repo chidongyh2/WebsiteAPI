@@ -5,8 +5,8 @@
 
 @if (listVideo != null && listVideo.Any())
 {
-<div id="video" class="col-sm-12">
-    <div id="wrap-next" class="col-sm-12 center">
+<div id="video" class="col-lg-12">
+    <div id="wrap-next" class="col-lg-12 center">
         <div class="pull-left">
             <h3 class="titlebar">@Resource.SpaceSpa</h3>
         </div>
@@ -17,7 +17,7 @@
         </div>
         <!--/ko-->
     </div>
-    @*<div class="col-sm-12">
+    @*<div class="col-lg-12">
             <div class="video-container">
                 <div class="img-responsive video-default">
                     <iframe src="@(string.Format("https://www.youtube.com/embed/{0}?rel=0", videoFirst?.VideoLinkId))" allow="autoplay; encrypted-media" allowfullscreen frameborder="0" width="100%" height="480"></iframe>
@@ -44,7 +44,7 @@
                 }
             </div>
         </div>*@
-    <div id="wrap-content-video" class="col-sm-12">
+    <div id="wrap-content-video" class="col-lg-12">
         <div class="video-container">
             <div class="img-responsive video-default">
                 <iframe data-bind="attr: {src: 'https://www.youtube.com/embed/' + videoLinkId() + '?enablejsapi=1&amp;amp;autoplay=0&amp;amp;rel=0&controls=1', alt: videoTitle() }" allow="autoplay; encrypted-media" frameborder="0" width="100%" height="480"></iframe>

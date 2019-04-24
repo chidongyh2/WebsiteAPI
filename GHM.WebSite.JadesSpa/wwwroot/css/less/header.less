@@ -4,13 +4,58 @@
 .navbar-fixed-top {
     background-color: @main-color;
     border-bottom: none;
-    transition: background-color 2s ease-out;
+    /*transition: background-color 2s ease-out;*/
 }
 
 /*.scroll-fixed-navbar {
     background-color: @main-color;
     border-bottom: 1px solid #222;
 }*/
+@media @mobile {
+    .navbar-header {
+        float: none;
+    }
+
+    .navbar-left, .navbar-right {
+        float: none !important;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        /*box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);*/
+    }
+
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+    .navbar-nav {
+        float: none !important;
+        margin-top: 7.5px;
+    }
+
+    .navbar-nav > li {
+        float: none;
+    }
+
+    .navbar-nav > li > a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .collapse.in {
+        display: block !important;
+    }
+}
 
 .header-top {
     height: 45px;
@@ -34,6 +79,7 @@
 }
 
 .header-bottom {
+
     .navbar-inverse {
         background-image: url('../../images/BGR-web/Background-Image/Nen-PC_02.jpg');
         background-repeat: no-repeat;
@@ -46,12 +92,17 @@
         @media @not_mobile {
             height: 110px;
         }
+        @media @mobile {
+            max-height: 736px;
+            overflow: hidden;
+        }
 
         .wrap {
             display: flex;
             align-items: center;
             width: 100%;
             margin-left: 20%;
+
             @media @mobile {
                 display: block;
                 padding-top: 5px;
@@ -63,7 +114,9 @@
                 align-items: center;
                 flex: 1 0 0;
                 max-width: 5%;
+
                 @media @mobile {
+                    padding-left: 5%;
                     max-width: 100%;
                     display: block;
                 }
@@ -282,7 +335,7 @@
                                 top: 100%;
                                 background-color: @main-color !important;
                                 padding-top: 0px !important;
-                               
+
                                 li {
                                     margin: 0px;
 
@@ -333,8 +386,12 @@
                         }
 
                         @media @mobile {
+                            border: none !important;
+                            box-shadow: none !important;
                             position: static;
-                            background-color: none;
+                            background-color: transparent;
+                            height: auto;
+                            overflow: scroll;
                         }
 
                         li {
@@ -350,7 +407,7 @@
                                 border: none !important;
                                 border-radius: unset;
                                 font-family: VLALLROUNDGOTHIC-BOOK;
-                                cursor:pointer;
+                                cursor: pointer;
                             }
                             /*&:hover {
                                 color: @color-white;

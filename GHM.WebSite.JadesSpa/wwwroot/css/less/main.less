@@ -28,9 +28,10 @@
     }
 
     .item {
-        overflow: hidden;
-      
+
         .wrap-item {
+            overflow: hidden;
+            border: 1px solid transparent;
             /*width: 258px !important;
             height: 290px;*/
             /*position: relative;*/
@@ -47,8 +48,7 @@
             img {
                 /*width: 258px !important;
                 height: 290px;*/
-                padding: 8px 2px 0px 2px;
-                border: 1px solid transparent;
+                padding: 1px 2px 0px 2px;
                 margin: 0 auto;
             }
 
@@ -129,6 +129,15 @@
 }
 
 #myCarousel {
+    .owl-stage-outer {
+        /*@media @mobile {
+            max-height: 250px;
+        }
+        @media @tablet {
+            max-height: 400px;
+        }*/
+    }
+
     .active {
         .item {
             a {
@@ -137,7 +146,7 @@
                 width: 40px;
 
                 img {
-                    max-height: 600px;
+                    /*max-height: 600px;*/
                     margin-left: auto;
                     margin-right: auto;
                     height: auto;
@@ -285,6 +294,7 @@
 
     @media @mobile {
         padding-bottom: 20px;
+        padding-top: 0px;
     }
 
     .container {
@@ -306,16 +316,41 @@
                     font-size: 22px;
                 }
 
-                @media @not_mobile {
-                    &:before, &:after {
-                        width: 10%;
+                &:before, &:after {
+                    width: 5%;
+                    height: 2px;
+                    background: @color-text-white;
+                    content: '';
+                    display: inline-block;
+                    color: white;
+                    top: -10px;
+                    position: relative;
+                    margin: 0px 15px;
+                }
+
+                @media @mobile {
+                    &:before {
+                        width: 8%;
                         height: 2px;
                         background: @color-text-white;
                         content: '';
                         display: inline-block;
                         color: white;
-                        top: -10px;
+                        top: -5px;
                         position: relative;
+                        margin: 0px 5px 0px 0px;
+                    }
+
+                    &:after {
+                        width: 8%;
+                        height: 2px;
+                        background: @color-text-white;
+                        content: '';
+                        display: inline-block;
+                        color: white;
+                        top: -5px;
+                        position: relative;
+                        margin: 0px 0px 0px 5px;
                     }
                 }
             }
@@ -345,7 +380,7 @@
                     border: 1px solid transparent;
 
                     @media @mobile {
-                        height: 132px;
+                        //height: 132px;
                         min-width: 100%;
                     }
                 }
@@ -362,6 +397,7 @@
                     @media @mobile {
                         display: inline-grid;
                         height: 50px;
+                        line-height: 50px;
                     }
                 }
             }
@@ -373,15 +409,13 @@
     background-image: url('../../images/bgr-web/background-image/nen-pc_06.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    
-    padding-top:40px;
+    padding-top: 40px;
     padding-bottom: 60px;
 
     @media @not_mobile {
         /*height: 610px;*/
     }
 
-    margin: 0px 5px;
     margin-bottom: 10px;
     color: @main-color;
     text-align: center;
@@ -392,17 +426,41 @@
         text-transform: uppercase;
         font-family: VLALLROUNDGOTHIC-BOOK;
 
-        @media @not_mobile {
+        &:before, &:after {
+            width: 5%;
+            height: 2px;
+            background: @main-color;
+            content: '';
+            display: inline-block;
+            color: white;
+            top: -10px;
+            position: relative;
+            margin: 0px 15px;
+        }
 
-            &:before, &:after {
-                width: 10%;
+        @media @mobile {
+            &:before {
+                width: 8%;
                 height: 2px;
                 background: @main-color;
                 content: '';
                 display: inline-block;
                 color: white;
-                top: -10px;
+                top: -5px;
                 position: relative;
+                margin: 0px 5px 0px 0px;
+            }
+
+            &:after {
+                width: 8%;
+                height: 2px;
+                background: @main-color;
+                content: '';
+                display: inline-block;
+                color: white;
+                top: -5px;
+                position: relative;
+                margin: 0px 0px 0px 5px;
             }
         }
     }
@@ -486,11 +544,11 @@
 
             .wrap-image {
                 background: @main-color;
-                border-radius: 30px 20px;
+                border-radius: 23px 15px;
 
                 @media @mobile {
                     border-radius: 20px 10px !important;
-                    padding: 0px 1px 2px 5px
+                    padding: 0px 1px 2px 5px;
                 }
 
                 @media @not_mobile {
@@ -600,7 +658,7 @@
                     }
 
                     .titlebar {
-                        font-size: 22px !important;
+                        font-size: 22px;
                         padding: 5px 10px;
                         color: @main-color;
                         text-transform: uppercase;
@@ -722,13 +780,19 @@
                         }
 
                         .media-body {
+                            padding-top: 15px;
                             font-family: Roboto-Regular;
-
+                            @media @mobile {
+                                padding-top: 0px;
+                            }
                             a {
                                 font-weight: bold;
-                                font-size: 14px;
+                                font-size: 16px;
                                 display: block;
                                 color: @main-color;
+                                @media @mobile {
+                                    font-size: 14px;
+                                }
                             }
                         }
                     }
@@ -753,16 +817,41 @@
                 text-transform: uppercase;
                 font-family: VLALLROUNDGOTHIC-BOOK;
 
-                @media @not_mobile {
-                    &:before, &:after {
-                        width: 10%;
+                &:before, &:after {
+                    width: 5%;
+                    height: 2px;
+                    background: @main-color;
+                    content: '';
+                    display: inline-block;
+                    color: white;
+                    top: -10px;
+                    position: relative;
+                    margin: 0px 15px;
+                }
+
+                @media @mobile {
+                    &:before {
+                        width: 8%;
                         height: 2px;
                         background: @main-color;
                         content: '';
                         display: inline-block;
                         color: white;
-                        top: -10px;
+                        top: -5px;
                         position: relative;
+                        margin: 0px 5px 0px 0px;
+                    }
+
+                    &:after {
+                        width: 8%;
+                        height: 2px;
+                        background: @main-color;
+                        content: '';
+                        display: inline-block;
+                        color: white;
+                        top: -5px;
+                        position: relative;
+                        margin: 0px 0px 0px 5px;
                     }
                 }
             }
@@ -796,6 +885,10 @@
         margin-bottom: 100px;
     }
 
+    @media @mobile {
+        margin-top: 10px;
+    }
+
     .row {
         .news-default {
             @media @not_mobile {
@@ -812,7 +905,7 @@
                 overflow: hidden;
                 overflow-y: hidden;
                 display: block;
-                border: 2px solid @main-color;
+                border: 1.5px solid @main-color;
                 border-radius: 12px;
             }
 
@@ -834,6 +927,11 @@
                 }
 
                 .summary {
+                    @media @mobile {
+                        max-height: 45px;
+                        overflow: hidden;
+                    }
+
                     color: #848484;
                     font-size: 16px;
                 }
@@ -850,7 +948,7 @@
                 font-size: 18px;
 
                 @media @mobile {
-                    height: 168px;
+                    /*height: 168px;*/
                     overflow: hidden;
                     margin-bottom: 20px;
                     font-size: 16px;
@@ -859,7 +957,7 @@
                 @media @not_mobile {
                     margin-bottom: 30px;
                     width: 250px;
-                    max-height: 205px;
+                    max-height: 220px;
                     overflow: hidden;
                     margin-left: 15px;
                     padding: 0px;
@@ -867,6 +965,10 @@
 
                 .title {
                     padding-top: 5px;
+                    @media @mobile {
+                        max-height: 45px;
+                        overflow: hidden;
+                    }
                 }
 
                 a {
@@ -874,12 +976,14 @@
                     color: #848484;
                 }
 
-                .news-image {
-                    border: 2px solid @main-color;
+                .image-content {
+                    border: 1.5px solid @main-color;
                     border-radius: 12px;
+                    overflow: hidden;
+                    width: 100%;
 
                     @media @mobile {
-                        height: 94px;
+                        /*height: 94px;*/
                         width: 100%;
                     }
                 }
@@ -888,16 +992,15 @@
                     .img-overlay {
                         background: rgba(0,0,0,.25);
                         display: inline-block;
-                        height: 145px;
                         left: 0;
                         opacity: 0;
                         position: absolute;
                         top: 0;
                         border-radius: 12px;
-                        width: 100%;
                         @media @mobile {
                             width: auto;
                         }
+
                         &:hover {
                             opacity: 1;
                         }
@@ -1207,10 +1310,10 @@
         margin-top: 30px;
 
         .image-content {
-            img {
-                min-height: 250px;
-                max-height: 270px;
-            }
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid @main-color;
+            border-radius: 12px;
         }
 
         .wrap-text-content {
@@ -1335,12 +1438,12 @@
             margin: 10px 0px;
 
             .news-item {
+
                 .image-content {
-                    a {
-                        img {
-                            max-height: 185px;
-                        }
-                    }
+                    overflow: hidden;
+                    width: 100%;
+                    border: 1px solid @main-color;
+                    border-radius: 10px;
                 }
 
                 .wrap-text-content {
@@ -1717,7 +1820,7 @@
     font-size: 32px;
 
     @media @mobile {
-        font-size: 22px !important;
+        font-size: 20px !important;
     }
 }
 

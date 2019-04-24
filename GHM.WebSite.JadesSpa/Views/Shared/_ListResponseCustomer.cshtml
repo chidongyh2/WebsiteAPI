@@ -5,7 +5,7 @@
 @if (listResponseCustomer != null && listResponseCustomer.Any())
 {
     <div id="response-customer">
-        <div class="col-sm-12 wrap-next">
+        <div class="col-lg-12 wrap-next">
             <div class="pull-left">
                 <h3 class="titlebar">@Resource.ResponseCustomer</h3>
             </div>
@@ -15,7 +15,7 @@
             </div>
         </div>
         <span class="clearfix"></span>
-        <div class="wrap-item col-sm-12">
+        <div class="wrap-item col-lg-12">
             @if (listResponseCustomer != null && listResponseCustomer.Any())
             {
                 <div id="wrap-response" data-bind="foreach: $root.listCommentCustomer()">

@@ -18,7 +18,7 @@
         @if (Model != null)
         {
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-md-12">
                     <div class="news-detail">
                         <h1 class="title">
                             @Model.Title
@@ -83,31 +83,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-md-3">
                     @*<partial name="_SideBarEvent" />*@
                     @*<partial name="_SideBarNewsRelated" model="listNewsRelated" />*@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-md-12">
                     <div class="fb-comments" data-href="@absoluteUri1"
                          data-width="1000" data-numposts="5"></div>
                 </div>
             </div>
             <div class="row wrap-related-news">
-                <div class="col-sm-12">
+                <div class="col-md-12">
                     <h6 class="header-related-news">
                         @Resource.NewsRelated
                     </h6>
                 </div>
-                <div class="col-sm-12 wrap-related-item">
+                <div class="col-md-12 wrap-related-item">
                     @foreach (var newsRelated in listNewsRelated)
                     {
 
-                        <div class="news-item col-sm-3">
+                        <div class="news-item col-md-3">
                             <div class="image-content">
                                 <a href="@($"/{newsRelated.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsRelated.MetaTitle) ? newsRelated.Title : newsRelated.MetaTitle)">
-                                    <img class="news-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsRelated.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{newsRelated.FeatureImage}")}&width=480&height=360")"
+                                    <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsRelated.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{newsRelated.FeatureImage}")}&width=600&height=400")"
                                          onerror="this.src='/images/no-image.png'"
                                          alt="@(string.IsNullOrEmpty(newsRelated.AltImage) ? newsRelated.Title : newsRelated.AltImage)" />
                                     <span class="img-overlay"></span>
@@ -131,7 +131,7 @@
         else
         {
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-md-12">
                     <div class="alert alert-warning">Bài viết không tìm thấy</div>
                 </div>
             </div>

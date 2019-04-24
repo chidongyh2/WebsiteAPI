@@ -21,12 +21,49 @@
 .navbar-fixed-top {
   background-color: #609930;
   border-bottom: none;
-  transition: background-color 2s ease-out;
+  /*transition: background-color 2s ease-out;*/
 }
 /*.scroll-fixed-navbar {
     background-color: @main-color;
     border-bottom: 1px solid #222;
 }*/
+@media only screen and (max-width: 1200px) {
+  .navbar-header {
+    float: none;
+  }
+  .navbar-left,
+  .navbar-right {
+    float: none !important;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar-collapse {
+    border-top: 1px solid transparent;
+    /*box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);*/
+  }
+  .navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+  }
+  .navbar-collapse.collapse {
+    display: none !important;
+  }
+  .navbar-nav {
+    float: none !important;
+    margin-top: 7.5px;
+  }
+  .navbar-nav > li {
+    float: none;
+  }
+  .navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .collapse.in {
+    display: block !important;
+  }
+}
 .header-top {
   height: 45px;
 }
@@ -56,9 +93,15 @@
   box-shadow: 0 8px 6px -6px #888;
   border: none;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1200px) {
   .header-bottom .navbar-inverse {
     height: 110px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .header-bottom .navbar-inverse {
+    max-height: 736px;
+    overflow: hidden;
   }
 }
 .header-bottom .navbar-inverse .wrap {
@@ -67,7 +110,7 @@
   width: 100%;
   margin-left: 20%;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .wrap {
     display: block;
     padding-top: 5px;
@@ -80,13 +123,14 @@
   flex: 1 0 0;
   max-width: 5%;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .wrap .navbar-brand {
+    padding-left: 5%;
     max-width: 100%;
     display: block;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .container {
     margin: 0px !important;
   }
@@ -102,7 +146,7 @@
     height: 5px;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse {
     min-height: 90px;
     background-image: url('../../images/BGR-web/Background-Image/Nen Mobile.jpg');
@@ -118,7 +162,7 @@
 .header-bottom .navbar-inverse .navbar-toggle:hover {
   background: none;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .navbar-collapse {
     width: 100%;
     margin: 0px;
@@ -136,7 +180,7 @@
   /*text-align: center;*/
   z-index: 1030;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header-bottom nav {
     flex-direction: column;
     display: block;
@@ -149,7 +193,7 @@
   display: flex;
   align-items: center;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-nav {
     display: block;
     margin: 0px !important;
@@ -160,7 +204,7 @@
   padding-right: 0px;
   border-color: #609930 !important;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse {
     border: none !important;
     max-height: 120%;
@@ -172,7 +216,7 @@
     margin-top: 20px !important;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse ul {
     width: 100%;
   }
@@ -180,7 +224,7 @@
 .header-bottom nav .navbar-collapse ul li {
   font-size: 20px;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li {
     margin-left: 20px;
   }
@@ -198,7 +242,7 @@
     -moz-border-radius: 24px;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li a {
     width: 90%;
     margin-left: 5%;
@@ -245,7 +289,7 @@
   background-color: rgba(0, 0, 0, 0) !important;
   border-bottom: 1px solid #FFFFFF;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li.open a {
     border: 1px solid #FFFFFF !important;
     border-radius: 24px;
@@ -253,7 +297,7 @@
     background-color: rgba(0, 0, 0, 0) !important;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li.open a .fa-angle-down {
     display: none !important;
   }
@@ -261,14 +305,14 @@
     display: block !important;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li .active {
     border: 1px solid #FFFFFF !important;
     border-radius: 24px;
     -moz-border-radius: 24px;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu {
     display: block;
     position: absolute;
@@ -316,15 +360,19 @@
   margin-top: 1px;
   padding-bottom: 10px;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li .dropdown-menu {
     background: #609930 !important;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li .dropdown-menu {
+    border: none !important;
+    box-shadow: none !important;
     position: static;
-    background-color: none;
+    background-color: transparent;
+    height: auto;
+    overflow: scroll;
   }
 }
 .header-bottom nav .navbar-collapse ul li .dropdown-menu li {
@@ -339,7 +387,7 @@
                                 }
                             }*/
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li .dropdown-menu li {
     padding: 3px 0px !important;
   }

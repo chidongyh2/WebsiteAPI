@@ -9,15 +9,14 @@
     var path = $"{Context.Request.Path}";
     var url = ViewBag.Url;
 }
-
 <header id="header">
-    <div class="header-top hidden-xs">
+    <div class="header-top hidden-sm hidden-xs hidden-md">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <span> @Resource.TitleHeader</span>
+            <div class="col-lg-12">
+                <div class="col-lg-6">
+                    <span> @websiteSetting.Brand</span>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-lg-6">
                     <span class="pull-right">
                         @if (websiteSetting.Hotline != null && websiteSetting.Hotline.Any())
                         {
@@ -47,7 +46,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="navbar-collapse collapse" id="abcMainNav">
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right mr-auto">
                         @if (listMenuItem != null && listMenuItem.Any())
                         {
                             var menuObject = new MenuObject
@@ -57,7 +56,7 @@
                             };
                             <partial name="_MenuItem" model="menuObject" />
                         }
-                        <li class="visible-xs">
+                        <li class="visible-sm visible-xs visible-md">
                             <div class="list-social-network">
                                 @foreach (var socialNetWork in listSocialNetWork)
                                 {
@@ -78,7 +77,7 @@
             </div>
             @if (listLanguage != null && listLanguage.Any() && listLanguage.Count > 1)
             {
-                <div class="header-tool hidden-xs">
+                <div class="header-tool hidden-sm hidden-xs hidden-md">
                     <div class="btn-group">
                         @if (ViewBag.CurrentLanguage == "vi-VN")
                         {

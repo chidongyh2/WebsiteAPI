@@ -51,7 +51,7 @@ nav .navbar-collapse {
   border-color: none;
   /*margin-right: 440px;*/
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   nav #registerMainNav .navbar-nav {
     border-top: 1px solid #444;
     background-color: #262626;
@@ -67,7 +67,7 @@ nav #registerMainNav ul li {
 nav #registerMainNav ul li:last-child {
   border: none;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   nav #registerMainNav ul li {
     padding: 7px;
   }
@@ -127,7 +127,7 @@ nav #registerMainNav li:hover > ul {
   padding-bottom: 140px;
   text-align: center;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #intro #intro_content {
     padding-top: 140px;
     padding-bottom: 50px;
@@ -140,7 +140,7 @@ nav #registerMainNav li:hover > ul {
   font-weight: 900;
   font-family: Roboto-Bold;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #intro #intro_content h1 {
     font-size: 30px;
     margin-top: 0px;
@@ -157,7 +157,7 @@ nav #registerMainNav li:hover > ul {
   border-bottom: 1px solid;
   padding: 0px 25px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #intro #intro_content h2 {
     font-size: 22px;
   }
@@ -173,7 +173,7 @@ nav #registerMainNav li:hover > ul {
   padding-bottom: 10px;
   border-bottom: 1px solid #FFFFFF;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #intro #intro_content h3 {
     font-size: 16px;
   }
@@ -185,7 +185,7 @@ nav #registerMainNav li:hover > ul {
   text-align: center;
   margin-top: 30px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #intro #intro_content #clockdiv {
     margin-top: 10px;
   }
@@ -198,7 +198,7 @@ nav #registerMainNav li:hover > ul {
   opacity: 0.7;
   display: inline-block;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #intro #intro_content #clockdiv > div {
     margin: 5px;
     padding: 0px 12px;
@@ -210,7 +210,7 @@ nav #registerMainNav li:hover > ul {
   display: inline-block;
   font-size: 35px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #intro #intro_content #clockdiv div > span {
     font-size: 18px;
   }
@@ -221,7 +221,7 @@ nav #registerMainNav li:hover > ul {
   padding-bottom: 8px;
   margin-top: -10px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #intro #intro_content .smalltext {
     margin-top: 0px;
   }
@@ -230,7 +230,7 @@ nav #registerMainNav li:hover > ul {
   font-size: 28px;
   font-family: Robotocondensed-Light;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #intro #intro_content h4 {
     font-size: 16px;
   }
@@ -265,7 +265,7 @@ nav #registerMainNav li:hover > ul {
   background-position: initial;
   background-repeat: no-repeat;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #content {
     padding: 20px 0px;
   }
@@ -275,7 +275,7 @@ nav #registerMainNav li:hover > ul {
   line-height: 25px;
   color: #2f3c45;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #content .content {
     font-size: 14px;
   }
@@ -284,7 +284,7 @@ nav #registerMainNav li:hover > ul {
   text-transform: uppercase;
   font-size: 20px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #content .content strong {
     font-size: 16px;
   }
@@ -301,7 +301,7 @@ nav #registerMainNav li:hover > ul {
 #content .images .col-xs-4 {
   padding-right: 0px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #content .images .col-xs-4:last-child {
     padding-right: 15px;
   }
@@ -315,7 +315,7 @@ nav #registerMainNav li:hover > ul {
   background-repeat: no-repeat;
   color: #FFFFFF;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #professional {
     padding: 20px 0px;
   }
@@ -333,7 +333,7 @@ nav #registerMainNav li:hover > ul {
   position: relative;
   z-index: 1000;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #professional .professional-image img {
     width: 50%;
   }
@@ -344,7 +344,7 @@ nav #registerMainNav li:hover > ul {
   padding-bottom: 20px;
   font-size: 16px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #professional .professional-profile {
     padding-top: 110px;
   }
@@ -354,7 +354,7 @@ nav #registerMainNav li:hover > ul {
   font-family: OpenSans-Italic;
   margin-top: 0px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #professional .professional-profile .professional-name {
     font-size: 24px;
   }
@@ -365,7 +365,7 @@ nav #registerMainNav li:hover > ul {
   font-size: 18px;
   line-height: 25px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #professional .professional-profile p {
     font-size: 14px;
   }
@@ -374,7 +374,7 @@ nav #registerMainNav li:hover > ul {
   padding: 80px;
   padding-top: 40px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #professional .professional-profile .description {
     padding: 15px;
   }
@@ -389,7 +389,7 @@ nav #registerMainNav li:hover > ul {
   margin-top: -180px;
   margin-bottom: 100px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #professional #professional-profile {
     padding: 15px;
     margin-top: -110px;
@@ -434,7 +434,7 @@ nav #registerMainNav li:hover > ul {
   text-align: center;
   padding-bottom: 42px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #professional .event-day {
     padding-bottom: 21px;
   }
@@ -455,7 +455,7 @@ nav #registerMainNav li:hover > ul {
   padding: 10px;
   margin: 20px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #professional .event-day .content {
     margin: unset;
   }
@@ -466,7 +466,7 @@ nav #registerMainNav li:hover > ul {
   font-size: 18px;
   padding: 30px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #professional .event-day .content .item {
     flex-basis: 46%;
     padding: 10px;
@@ -545,7 +545,7 @@ nav #registerMainNav li:hover > ul {
   background-repeat: no-repeat;
   color: #FFFFFF;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #video {
     padding: 20px 0px;
   }
@@ -562,7 +562,7 @@ nav #registerMainNav li:hover > ul {
   padding: 15px;
   background-color: #FFFFFF;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #video .video-container {
     width: 100%;
   }
@@ -570,7 +570,7 @@ nav #registerMainNav li:hover > ul {
 #video .video-container .video-default {
   position: relative;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #video .video-container .video-default iframe {
     height: 240px !important;
   }
@@ -587,7 +587,7 @@ nav #registerMainNav li:hover > ul {
   padding: 30px;
   color: #FFFFFF;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #video .video-container .video-default .content .title {
     font-size: 14px;
     padding: 10px;
@@ -623,7 +623,7 @@ nav #registerMainNav li:hover > ul {
   opacity: 0.8;
   vertical-align: middle;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #video .video-container #video-silder .pause-video {
     height: 21px;
     width: 28px;
@@ -637,7 +637,7 @@ nav #registerMainNav li:hover > ul {
   color: #609930;
   font-size: 25px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #video .video-container #video-silder {
     padding-top: 20px;
   }
@@ -658,7 +658,7 @@ nav #registerMainNav li:hover > ul {
   margin-top: -4px;
   top: 40%;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #video .video-container .lSAction a {
     width: 18px;
     height: 27px;
@@ -671,7 +671,7 @@ nav #registerMainNav li:hover > ul {
   vertical-align: middle;
   color: #FFFFFF;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #video .video-container .lSAction a i {
     padding-top: 5px;
   }
@@ -685,7 +685,7 @@ nav #registerMainNav li:hover > ul {
   background-repeat: no-repeat;
   color: #FFFFFF;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #register {
     padding: 20px 0px;
   }
@@ -708,12 +708,12 @@ nav #registerMainNav li:hover > ul {
 #register #register_form textarea {
   height: 150px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #register #register_form textarea {
     height: 100px;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #register #register_form .col-sm-4 {
     padding: 5px 15px !important;
   }
@@ -722,7 +722,7 @@ nav #registerMainNav li:hover > ul {
   display: flex;
   align-items: center;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #register #register_form .list-event-day {
     flex-direction: column;
     align-items: flex-start;
@@ -731,7 +731,7 @@ nav #registerMainNav li:hover > ul {
 #register #register_form .list-event-day ul {
   margin-bottom: 0px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #register #register_form .list-event-day ul {
     display: flex;
     flex-direction: column;
@@ -743,7 +743,7 @@ nav #registerMainNav li:hover > ul {
                                 padding-left: 5px;
                             }*/
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #register #register_form .list-event-day ul li {
     padding-left: 5px;
   }
@@ -751,7 +751,7 @@ nav #registerMainNav li:hover > ul {
 #register #register_form .list-event-day ul li i {
   font-size: 20px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #register #register_form .list-event-day ul li i {
     font-size: 16px;
   }
@@ -761,7 +761,7 @@ nav #registerMainNav li:hover > ul {
   font-size: 18px;
   font-family: OpenSans-Light;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #register #register_form .list-event-day a {
     font-size: 14px;
   }
@@ -801,7 +801,7 @@ nav #registerMainNav li:hover > ul {
   font-family: OpenSans-Light;
   font-size: 18px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #register .address {
     font-size: 14px;
   }
@@ -835,7 +835,7 @@ nav #registerMainNav li:hover > ul {
   font-size: 30px;
   font-weight: 500;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .titlebar {
     font-size: 18px;
   }
@@ -846,7 +846,7 @@ nav #registerMainNav li:hover > ul {
   color: #FFFFFF;
   font-size: 18px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #footer {
     font-size: 14px;
   }
