@@ -13,7 +13,7 @@
                     <div class="image-content">
                         <a href="@($"/{ newsDefault.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsDefault.MetaTitle) ? newsDefault.Title : newsDefault.MetaTitle)">
                             <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsDefault.FeatureImage) ? "/images/no-image.png" : $"{url}{newsDefault.FeatureImage}")}&width=600&height=400")"
-                                 onerror="this.src='/images/no-image.png'"
+                                 onerror="this.src='~/images/no-image.png'"
                                  alt="@(string.IsNullOrEmpty(newsDefault.AltImage) ? newsDefault.Title : newsDefault.AltImage)" />
                             <span class="img-overlay"></span>
                         </a>
@@ -38,7 +38,7 @@
                             <div class="image-content">
                                 <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
                                     <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}&width=600&height=400")"
-                                         onerror="this.src='/images/no-image.png'"
+                                         onerror="this.src='~/images/no-image.png'"
                                          alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
                                     <span class="img-overlay"></span>
                                 </a>

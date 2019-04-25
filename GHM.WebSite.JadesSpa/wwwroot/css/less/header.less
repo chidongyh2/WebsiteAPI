@@ -87,14 +87,15 @@
         font-size: 20px;
         margin-top: 0px !important;
         font-family: VLALLROUNDGOTHIC-BOOK;
-        box-shadow: 0 8px 6px -6px #888;
+        box-shadow: 0 8px 6px -7px @main-color;
 
         @media @not_mobile {
             height: 110px;
         }
+
         @media @mobile {
             max-height: 736px;
-            overflow: hidden;
+            overflow: scroll;
         }
 
         .wrap {

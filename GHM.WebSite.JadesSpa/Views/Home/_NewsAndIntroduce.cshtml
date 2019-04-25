@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <div id="wrap-item" class="row wrap-item visible-xs visible-sm visible-md">
+    <div id="wrap-item" class="wrap-item visible-xs visible-sm visible-md">
         <div class="container">
                 @if (categoryWidthNews.ListNews != null && categoryWidthNews.ListNews.Any())
                 {
@@ -45,7 +45,7 @@
                             <div class="item">
                                 <div class="wrap-image">
                                     <a href="@($"{item.SeoLink}.html")">
-                                        <img class="news-image zoom img-responsive lazy"
+                                        <img class="news-image zoom img-responsive lazy" onerror="this.src='~/images/no-image.png'"
                                              data-src="@($"/image?url={(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")}")" alt="" />
                                     </a>
                                 </div>

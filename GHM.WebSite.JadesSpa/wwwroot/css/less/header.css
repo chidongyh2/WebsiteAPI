@@ -90,7 +90,7 @@
   font-size: 20px;
   margin-top: 0px !important;
   font-family: VLALLROUNDGOTHIC-BOOK;
-  box-shadow: 0 8px 6px -6px #888;
+  box-shadow: 0 8px 6px -7px #609930;
   border: none;
 }
 @media only screen and (min-width: 1200px) {
@@ -101,7 +101,7 @@
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse {
     max-height: 736px;
-    overflow: hidden;
+    overflow: scroll;
   }
 }
 .header-bottom .navbar-inverse .wrap {
