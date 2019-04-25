@@ -79,7 +79,7 @@ IsCurrent = true,
                                             <div class="image-content">
                                                 <a data-bind="attr : {href: seoLink, title: metaTitle}">
                                                     <img class="news-image zoom img-responsive lazy"
-                                                         data-bind="attr : {src: '/image?url=@ViewBag.Url'+ featureImage + '&width=600&height=400', alt: altImage ? title : altImage}"
+                                                         data-bind="attr : {data-src: '/image?url=@ViewBag.Url'+ featureImage + '&width=600&height=400', alt: altImage ? title : altImage}"
                                                          onerror="this.src='/images/no-image.png'" />
                                                     <span class="img-overlay"></span>
                                                 </a>

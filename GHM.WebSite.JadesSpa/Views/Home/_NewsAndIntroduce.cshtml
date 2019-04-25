@@ -22,7 +22,7 @@
                                 <div class="wrap-image zoom">
                                     <a href="@($"{item.SeoLink}.html")">
                                         <img class="news-image img-responsive lazy"
-                                             src="@($"/image?url={(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")}&width=270&height=270")" alt="" />
+                                             data-src="@($"/image?url={(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")}&width=270&height=270")" alt="" />
                                     </a>
                                 </div>
                                 <div class="wrap-text">

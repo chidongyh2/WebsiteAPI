@@ -11,7 +11,7 @@
         <div class="item">
             <div class="wrap-item">
                 <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                    <img class="news-image zoom img-responsive lazy" src="@(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")"
+                    <img class="news-image zoom img-responsive lazy" data-src="@(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")"
                          onerror="this.src='~/images/no-image.png'"
                          alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
 

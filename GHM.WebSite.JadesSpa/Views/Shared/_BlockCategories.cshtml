@@ -10,7 +10,7 @@
         <div class="item">
             <div class="wrap-item">
                 <a href="@($"/{ news.SeoLink}.html")">
-                    <img class="news-image zoom img-responsive lazy" src="/image?url=@(string.IsNullOrEmpty(news.BannerImage) ? "/images/no-image.png" : $"{url}{news.BannerImage}&width=273&height=229")"
+                    <img class="news-image zoom img-responsive lazy" data-src="/image?url=@(string.IsNullOrEmpty(news.BannerImage) ? "/images/no-image.png" : $"{url}{news.BannerImage}&width=273&height=229")"
                          onerror="this.src='/images/no-image.png'"/>
                 </a>
                 <div class="title">
