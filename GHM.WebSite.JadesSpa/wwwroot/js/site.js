@@ -5,8 +5,8 @@ $(document).ready(function () {
     });
 
     $('.lazy').lazy({
-        placeholder: "data:image/gif;base64,R0lGODlhEALAPQAPzl5uLr9Nrl8e7...",
-        effect: 'slideDown'
+        effect: 'fadeIn',
+        delay: 2000
     });
 
     $('.navbar-toggle').click(function () {
