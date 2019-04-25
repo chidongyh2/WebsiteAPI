@@ -5,8 +5,7 @@ $(document).ready(function () {
     });
 
     $('.lazy').lazy({
-        effect: 'fadeIn',
-        delay: 2000
+        effect: "slideDown"
     });
 
     $('.navbar-toggle').click(function () {
