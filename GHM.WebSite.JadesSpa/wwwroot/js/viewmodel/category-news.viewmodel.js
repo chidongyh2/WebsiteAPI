@@ -18,6 +18,7 @@ ko.components.register('view-more', {
                 page: self.currentPage(),
                 pageSize: self.currentPageSize()
             }, function (result) {
+                console.log(result);
                 self.listNews.push.apply(self.listNews, result);
                 self.isLoadding(false);
             });

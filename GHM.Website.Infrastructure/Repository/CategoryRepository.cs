@@ -191,7 +191,7 @@ namespace GHM.Website.Infrastructure.Repository
 
         public Task<List<CategorySearchForSelectViewModel>> SearchForSelect(string tenantId, string languageId, string keyword, int page, int pageSize, out int totalRows)
         {
-            Expression<Func<Category, bool>> spec = x => x.IsActive && !x.IsDelete && x.TenantId == tenantId && x.IsActive;
+            Expression<Func<Category, bool>> spec = x => x.IsActive && !x.IsDelete && x.TenantId == tenantId;
             Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId;
 
             if (!string.IsNullOrEmpty(keyword))
