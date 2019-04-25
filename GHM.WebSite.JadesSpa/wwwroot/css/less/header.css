@@ -113,7 +113,7 @@
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .wrap {
     display: block;
-    padding-top: 5px;
+    padding-top: 0px;
   }
 }
 .header-bottom .navbar-inverse .wrap .navbar-brand {
@@ -135,20 +135,20 @@
     margin: 0px !important;
   }
   .header-bottom .navbar-inverse .container a img {
-    margin: 10px 0px 0px 5px !important;
-    width: 60px;
+    margin: 5px 0px 0px 5px !important;
+    width: 45px;
   }
   .header-bottom .navbar-inverse .container button {
-    margin-top: 20px;
+    margin-top: 15px;
   }
   .header-bottom .navbar-inverse .container button .icon-bar {
-    width: 30px;
-    height: 5px;
+    width: 25px;
+    height: 3px;
   }
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse {
-    min-height: 90px;
+    min-height: 65px;
     background-image: url('../../images/BGR-web/Background-Image/Nen Mobile.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -227,16 +227,19 @@
 @media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li {
     margin-left: 20px;
+    border: 1px solid none;
   }
   .header-bottom nav .navbar-collapse ul li a {
     text-transform: uppercase;
     color: #eef0f1;
     line-height: 30px;
     padding: 0px 10px;
+    border: 1px solid transparent !important;
   }
   .header-bottom nav .navbar-collapse ul li a:hover,
   .header-bottom nav .navbar-collapse ul li a :focus,
   .header-bottom nav .navbar-collapse ul li a :active {
+    -webkit-transition: all 300ms linear;
     border: 1px solid #FFFFFF !important;
     border-radius: 24px;
     -moz-border-radius: 24px;
@@ -330,10 +333,11 @@
     background-color: rgba(0, 0, 0, 0) !important;
     border-radius: unset;
     font-size: 18px !important;
+    border-bottom: 1px solid transparent !important;
   }
-  .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu li:hover {
+  .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu li a:hover {
     color: #FFFFFF;
-    /*-webkit-transition: all 300ms linear;*/
+    -webkit-transition: all 300ms linear;
     border-bottom: 1px solid #FFFFFF !important;
     padding-bottom: 2px;
   }
