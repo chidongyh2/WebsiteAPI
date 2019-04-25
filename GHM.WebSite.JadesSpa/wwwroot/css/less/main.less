@@ -923,8 +923,6 @@
     @media @mobile {
         margin-top: 10px;
     }
-
-    .row {
         .news-default {
             @media @not_mobile {
                 width: 580px !important;
@@ -1049,7 +1047,6 @@
                 }
             }
         }
-    }
 }
 
 .contact {
@@ -1892,6 +1889,30 @@
         &:hover, &:active {
             border: none !important;
             background-color: @main-color;
+        }
+    }
+
+    .block-news {
+        .news-item {
+            height: 200px;
+            overflow: hidden;
+
+            .image-content {
+                overflow: hidden;
+                overflow-y: hidden;
+                display: block;
+                border: 1.5px solid @main-color;
+                border-radius: 12px;
+            }
+
+            .title {
+                padding-top: 5px;
+                font-size: 14px;
+                a,p {
+                    text-decoration: none;
+                    color: @color-text-grey;
+                }
+            }
         }
     }
 }

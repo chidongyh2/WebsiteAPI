@@ -27,7 +27,7 @@ namespace GHM.Website.JadesSpa.Controllers
         [Route("view-more-news"), AcceptVerbs("POST")]
         public async Task<IActionResult> GetNewsByCategory(string categoryId, int page = 1, int pageSize = 6)
         {
-            if(page == 3)
+            if(page == 1)
             {
                 pageSize = 5;
             }

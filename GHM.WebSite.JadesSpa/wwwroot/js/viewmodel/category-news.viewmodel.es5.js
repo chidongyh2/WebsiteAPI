@@ -3,10 +3,11 @@
 ko.components.register('view-more', {
     viewModel: function viewModel(params) {
         var self = this;
-        self.currentPage = ko.observable(3);
+        self.currentPage = ko.observable(0);
         self.currentPageSize = ko.observable(6);
         self.listNews = ko.observableArray([]);
         self.categoryId = ko.observable(params.categoryId);
+        self.totalPage = ko.observable(params.totalPage);
         self.isLoadding = ko.observable(false);
         //$(document).ready(function () {
         //    self.categoryId(categoryId);

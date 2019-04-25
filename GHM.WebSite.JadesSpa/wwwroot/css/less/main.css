@@ -865,16 +865,16 @@
   }
 }
 @media only screen and (min-width: 1200px) {
-  .block-news .row .news-default {
+  .block-news .news-default {
     width: 580px !important;
   }
 }
 @media only screen and (max-width: 1200px) {
-  .block-news .row .news-default {
+  .block-news .news-default {
     margin-bottom: 20px;
   }
 }
-.block-news .row .news-default .image-content {
+.block-news .news-default .image-content {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -883,39 +883,39 @@
   border: 1.5px solid #609930;
   border-radius: 12px;
 }
-.block-news .row .news-default .news-content {
+.block-news .news-default .news-content {
   font-family: Roboto-Regular;
 }
-.block-news .row .news-default .news-content .title {
+.block-news .news-default .news-content .title {
   padding-top: 5px;
   font-weight: bold;
   font-size: 20px;
 }
-.block-news .row .news-default .news-content .title a {
+.block-news .news-default .news-content .title a {
   text-decoration: none;
   color: #556b20;
 }
-.block-news .row .news-default .news-content .summary {
+.block-news .news-default .news-content .summary {
   color: #848484;
   font-size: 16px;
 }
 @media only screen and (max-width: 1200px) {
-  .block-news .row .news-default .news-content .summary {
+  .block-news .news-default .news-content .summary {
     max-height: 45px;
     overflow: hidden;
   }
 }
 @media only screen and (min-width: 1200px) {
-  .block-news .row .list-news {
+  .block-news .list-news {
     margin-left: 10px;
   }
 }
-.block-news .row .list-news .news-item {
+.block-news .list-news .news-item {
   font-family: Roboto-Regular;
   font-size: 18px;
 }
 @media only screen and (max-width: 1200px) {
-  .block-news .row .list-news .news-item {
+  .block-news .list-news .news-item {
     /*height: 168px;*/
     overflow: hidden;
     margin-bottom: 20px;
@@ -923,7 +923,7 @@
   }
 }
 @media only screen and (min-width: 1200px) {
-  .block-news .row .list-news .news-item {
+  .block-news .list-news .news-item {
     margin-bottom: 30px;
     width: 250px;
     max-height: 220px;
@@ -932,32 +932,32 @@
     padding: 0px;
   }
 }
-.block-news .row .list-news .news-item .title {
+.block-news .list-news .news-item .title {
   padding-top: 5px;
 }
 @media only screen and (max-width: 1200px) {
-  .block-news .row .list-news .news-item .title {
+  .block-news .list-news .news-item .title {
     max-height: 45px;
     overflow: hidden;
   }
 }
-.block-news .row .list-news .news-item a {
+.block-news .list-news .news-item a {
   text-decoration: none;
   color: #848484;
 }
-.block-news .row .list-news .news-item .image-content {
+.block-news .list-news .news-item .image-content {
   border: 1.5px solid #609930;
   border-radius: 12px;
   overflow: hidden;
   width: 100%;
 }
 @media only screen and (max-width: 1200px) {
-  .block-news .row .list-news .news-item .image-content {
+  .block-news .list-news .news-item .image-content {
     /*height: 94px;*/
     width: 100%;
   }
 }
-.block-news .row .list-news .news-item .image-content .img-overlay {
+.block-news .list-news .news-item .image-content .img-overlay {
   background: rgba(0, 0, 0, 0.25);
   display: inline-block;
   left: 0;
@@ -967,14 +967,14 @@
   border-radius: 12px;
 }
 @media only screen and (max-width: 1200px) {
-  .block-news .row .list-news .news-item .image-content .img-overlay {
+  .block-news .list-news .news-item .image-content .img-overlay {
     width: auto;
   }
 }
-.block-news .row .list-news .news-item .image-content .img-overlay:hover {
+.block-news .list-news .news-item .image-content .img-overlay:hover {
   opacity: 1;
 }
-.block-news .row .list-news .news-item:hover a {
+.block-news .list-news .news-item:hover a {
   color: #556b20;
 }
 .contact {
@@ -1660,6 +1660,26 @@
 .category-mobile .btn-main-color:active {
   border: none !important;
   background-color: #609930;
+}
+.category-mobile .block-news .news-item {
+  height: 200px;
+  overflow: hidden;
+}
+.category-mobile .block-news .news-item .image-content {
+  overflow: hidden;
+  overflow-y: hidden;
+  display: block;
+  border: 1.5px solid #609930;
+  border-radius: 12px;
+}
+.category-mobile .block-news .news-item .title {
+  padding-top: 5px;
+  font-size: 14px;
+}
+.category-mobile .block-news .news-item .title a,
+.category-mobile .block-news .news-item .title p {
+  text-decoration: none;
+  color: #848484;
 }
 .header {
   /*min-height: 650px;*/
