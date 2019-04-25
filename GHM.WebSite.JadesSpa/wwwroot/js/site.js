@@ -4,7 +4,11 @@ $(document).ready(function () {
         $("html, body").animate({ scrollTop: 0 }, 500);
     });
 
-    $('.lazy').Lazy();
+    $('.lazy').lazy({
+        placeholder: "data:image/gif;base64,R0lGODlhEALAPQAPzl5uLr9Nrl8e7...",
+        effect: 'slideDown',
+        delay: 5000
+    });
 
     $('.navbar-toggle').click(function () {
         isShowToggle = !isShowToggle;
