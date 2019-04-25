@@ -24,10 +24,11 @@ $(document).ready(function () {
     });
     $(window).scroll(function () {
         var b = $(window).scrollTop();
-        if (b > 150 || $(window).innerWidth() < 768) {
+        if (b > 65 || $(window).innerWidth() < 768) {
             $(".navbar").addClass("navbar-fixed-top");
             $("#backToTop").css("display", "block");
             $(".header-top").css("display", "none");
+            $("#myCarousel").css("margin-top", "65px");
 
             var windowWidth = window.innerWidth;
             //if (windowWidth < 768) {
