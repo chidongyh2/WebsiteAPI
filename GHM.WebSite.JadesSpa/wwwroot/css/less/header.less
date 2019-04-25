@@ -4,13 +4,58 @@
 .navbar-fixed-top {
     background-color: @main-color;
     border-bottom: none;
-    transition: background-color 2s ease-out;
+    /*transition: background-color 2s ease-out;*/
 }
 
 /*.scroll-fixed-navbar {
     background-color: @main-color;
     border-bottom: 1px solid #222;
 }*/
+@media @mobile {
+    .navbar-header {
+        float: none;
+    }
+
+    .navbar-left, .navbar-right {
+        float: none !important;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        /*box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);*/
+    }
+
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+    .navbar-nav {
+        float: none !important;
+        margin-top: 7.5px;
+    }
+
+    .navbar-nav > li {
+        float: none;
+    }
+
+    .navbar-nav > li > a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .collapse.in {
+        display: block !important;
+    }
+}
 
 .header-top {
     height: 45px;
@@ -34,6 +79,7 @@
 }
 
 .header-bottom {
+
     .navbar-inverse {
         background-image: url('../../images/BGR-web/Background-Image/Nen-PC_02.jpg');
         background-repeat: no-repeat;
@@ -41,10 +87,15 @@
         font-size: 20px;
         margin-top: 0px !important;
         font-family: VLALLROUNDGOTHIC-BOOK;
-        box-shadow: 0 8px 6px -6px #888;
+        box-shadow: 0 8px 6px -7px @main-color;
 
         @media @not_mobile {
             height: 110px;
+        }
+
+        @media @mobile {
+            max-height: 736px;
+            overflow: scroll;
         }
 
         .wrap {
@@ -52,9 +103,10 @@
             align-items: center;
             width: 100%;
             margin-left: 20%;
+
             @media @mobile {
                 display: block;
-                padding-top: 5px;
+                padding-top: 0px;
             }
 
             .navbar-brand {
@@ -63,7 +115,9 @@
                 align-items: center;
                 flex: 1 0 0;
                 max-width: 5%;
+
                 @media @mobile {
+                    padding-left: 5%;
                     max-width: 100%;
                     display: block;
                 }
@@ -76,17 +130,17 @@
 
                 a {
                     img {
-                        margin: 10px 0px 0px 5px !important;
-                        width: 60px;
+                        margin: 5px 0px 0px 5px !important;
+                        width: 45px;
                     }
                 }
 
                 button {
-                    margin-top: 20px;
+                    margin-top: 15px;
 
                     .icon-bar {
-                        width: 30px;
-                        height: 5px;
+                        width: 25px;
+                        height: 3px;
                     }
                 }
             }
@@ -95,7 +149,7 @@
         border: none;
 
         @media @mobile {
-            min-height: 90px;
+            min-height: 65px;
             background-image: url('../../images/BGR-web/Background-Image/Nen Mobile.jpg');
             background-repeat: no-repeat;
             background-size: cover;
@@ -170,16 +224,21 @@
                 li {
                     font-size: 20px;
 
+
+
                     @media @not_mobile {
                         margin-left: 20px;
+                        border: 1px solid none;
 
                         a {
                             text-transform: uppercase;
                             color: @color-text-white;
                             line-height: 30px;
                             padding: 0px 10px;
+                            border: 1px solid transparent !important;
 
                             &:hover, :focus, :active {
+                                -webkit-transition: all 300ms linear;
                                 border: 1px solid @color-white !important;
                                 border-radius: 24px;
                                 -moz-border-radius: 24px;
@@ -282,9 +341,10 @@
                                 top: 100%;
                                 background-color: @main-color !important;
                                 padding-top: 0px !important;
-                               
+
                                 li {
                                     margin: 0px;
+
 
                                     a {
                                         padding: 5px 5px !important;
@@ -292,13 +352,14 @@
                                         background-color: rgba(0,0,0,0) !important;
                                         border-radius: unset;
                                         font-size: 18px !important;
-                                    }
+                                        border-bottom: 1px solid transparent !important;
 
-                                    &:hover {
-                                        color: @color-white;
-                                        /*-webkit-transition: all 300ms linear;*/
-                                        border-bottom: 1px solid @color-white !important;
-                                        padding-bottom: 2px;
+                                        &:hover {
+                                            color: @color-white;
+                                            -webkit-transition: all 300ms linear;
+                                            border-bottom: 1px solid @color-white !important;
+                                            padding-bottom: 2px;
+                                        }
                                     }
                                 }
                             }
@@ -333,8 +394,12 @@
                         }
 
                         @media @mobile {
+                            border: none !important;
+                            box-shadow: none !important;
                             position: static;
-                            background-color: none;
+                            background-color: transparent;
+                            height: auto;
+                            overflow: scroll;
                         }
 
                         li {
@@ -350,7 +415,7 @@
                                 border: none !important;
                                 border-radius: unset;
                                 font-family: VLALLROUNDGOTHIC-BOOK;
-                                cursor:pointer;
+                                cursor: pointer;
                             }
                             /*&:hover {
                                 color: @color-white;

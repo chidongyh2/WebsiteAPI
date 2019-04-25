@@ -16,7 +16,7 @@
                         <div class="media">
                             <div class="media-left">
                                 <a href="@($"/{news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                                    <img class="img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}&width=108&height=72")"
+                                    <img class="img-responsive zoom lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}&width=600&height=400")"
                                          onerror="this.src='/images/no-image.png'"
                                          alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
                                 </a>

@@ -245,7 +245,7 @@ namespace GHM.Website.Infrastructure.Repository
 
         public async Task<List<CategorySearchForSelectViewModel>> SearchForHomePage(string tenantId, string languageId)
         {
-            Expression<Func<Category, bool>> spec = x => x.TenantId == tenantId && x.IsHomePage == true;
+            Expression<Func<Category, bool>> spec = x => x.TenantId == tenantId && x.IsHomePage == true && !x.IsDelete;
             Expression<Func<CategoryTranslation, bool>> specTranslate = x => x.TenantId == tenantId && x.LanguageId == languageId;
 
             var query = Context.Set<Category>().Where(spec)

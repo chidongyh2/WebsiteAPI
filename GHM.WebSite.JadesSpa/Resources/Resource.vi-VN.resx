@@ -175,10 +175,10 @@
     <value>Buổi</value>
   </data>
   <data name="DescriptionHot" xml:space="preserve">
-    <value>"Chúng tôi chọn lọc những sản phẩm tốt nhất để chăm sóc cho bạn"</value>
+    <value>"Chúng tôi chọn lọc những sản phẩm tốt nhất để chăm sóc bạn"</value>
   </data>
   <data name="DescriptionIntroduce" xml:space="preserve">
-    <value>"Chúng tôi chọn lọc những sản phẩm tốt nhất để chăm sóc cho bạn"</value>
+    <value>"Chúng tôi chọn lọc những sản phẩm tốt nhất để chăm sóc bạn"</value>
   </data>
   <data name="DescriptionVideo" xml:space="preserve">
     <value>Bộ sưu tập video từ nhiều nguồn khác nhau</value>
@@ -310,7 +310,7 @@
     <value>Thời gian diễn ra sự kiện</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Phong cách Châu Âu - Tiêu chuẩn Hoa Kỳ</value>
+    <value>Welcome  to Jade Spa</value>
   </data>
   <data name="TitleHot" xml:space="preserve">
     <value>Dịch vụ nổi bật</value>
@@ -353,5 +353,8 @@
   </data>
   <data name="NewsHot" xml:space="preserve">
     <value>Tin hót</value>
+  </data>
+  <data name="TitleDescription" xml:space="preserve">
+    <value>"Số 1 về Massage Bầu &amp; Chăm Sóc Sau Sinh"</value>
   </data>
 </root>

@@ -23,18 +23,18 @@ IsCurrent = true,
 <partial name="_Breadcumb">
     <div id="category-news">
         <div class="container">
-            <div class="row hidden-xs">
-                <div class="col-sm-9">
+            <div class="row hidden-sm hidden-xs hidden-md">
+                <div class="col-lg-9">
                     <div class="row">
                         @foreach (var news in Model.ListNews)
                         {
-                            <div class="col-sm-6">
+                            <div class="col-lg-6">
                                 <partial name="_NewsItem" model="news" />
                             </div>
                         }
                     </div>
                     <div class="row">
-                        <div class="col-sm-12 center">
+                        <div class="col-lg-12 center">
                             <ul class="pagination">
                                 @if (totalPage > 1)
                                 {
@@ -57,7 +57,7 @@ IsCurrent = true,
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-lg-3">
                     <partial name="_ListNewsHot" model="listNewHot" />
                 </div>
             </div>
@@ -65,21 +65,21 @@ IsCurrent = true,
     </div>
     <div class="category-mobile">
         <div class="container">
-            <div class="col-sm-12 visible-xs">
+            <div class="col-lg-12 visible-sm visible-xs visible-md">
                 <partial name="_BlockNewsSuggestion" model="CategoryWidthNews.ListNews" />
                 <view-more params="categoryId: @($"{ViewBag.CategoryId}")">
                 </view-more>
                 <template id="btn-viewmore">
                     <div class="block-news portfolio-item">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-lg-6">
                                 <div class="row list-news">
                                     <div data-bind="foreach: listNews">
-                                        <div class="col-xs-6 news-item">
+                                        <div class="col-sm-6 col-xs-6 col-md-6 news-item">
                                             <div class="image-content">
                                                 <a data-bind="attr : {href: seoLink, title: metaTitle}">
                                                     <img class="news-image zoom img-responsive lazy"
-                                                         data-bind="attr : {src: '/image?url=@ViewBag.Url'+ featureImage + '&width=250&height=145', alt: altImage ? title : altImage}"
+                                                         data-bind="attr : {src: '/image?url=@ViewBag.Url'+ featureImage + '&width=600&height=400', alt: altImage ? title : altImage}"
                                                          onerror="this.src='/images/no-image.png'" />
                                                     <span class="img-overlay"></span>
                                                 </a>

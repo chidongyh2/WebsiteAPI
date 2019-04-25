@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutABC" xml:space="preserve">
-    <value>About</value>
-  </data>
   <data name="AboutUs" xml:space="preserve">
     <value>About Us</value>
   </data>
@@ -129,20 +126,8 @@
   <data name="AllCourses" xml:space="preserve">
     <value>All Coursers</value>
   </data>
-  <data name="AmieaFamous" xml:space="preserve">
-    <value>AMIEA THƯƠNG HIỆU NỔI TIẾNG TOÀN CẦU</value>
-  </data>
-  <data name="AngencySystem" xml:space="preserve">
-    <value>Angency System</value>
-  </data>
-  <data name="BenefitsofHyperthermiainCancerTreatment" xml:space="preserve">
-    <value>Benefits of Hyperthermia in Cancer Treatment</value>
-  </data>
   <data name="Blog" xml:space="preserve">
     <value>Blog</value>
-  </data>
-  <data name="BlogDescription" xml:space="preserve">
-    <value>News and Opinions About Our Industry</value>
   </data>
   <data name="Brand" xml:space="preserve">
     <value>Brand</value>
@@ -231,9 +216,6 @@
   <data name="Hour" xml:space="preserve">
     <value>Hours</value>
   </data>
-  <data name="HyperthermiaBlog" xml:space="preserve">
-    <value>Hyperthermia Blog</value>
-  </data>
   <data name="InfrastructureIntroduce" xml:space="preserve">
     <value>Infrastructure</value>
   </data>
@@ -273,9 +255,6 @@
   <data name="ProgressAmiea" xml:space="preserve">
     <value>Định hướng phát triển</value>
   </data>
-  <data name="ProgressAmieaDescription" xml:space="preserve">
-    <value>ĐỊNH HƯỚNG PHÁT TRIỂN CỦA SẢN PHẨM MANG LẠI SỰ SÁNG TẠO CHO NGƯỜI SỬ DỤNG</value>
-  </data>
   <data name="RecentBlogs" xml:space="preserve">
     <value>Recent Blogs</value>
   </data>
@@ -302,9 +281,6 @@
   </data>
   <data name="Sponsors" xml:space="preserve">
     <value>Sponsors</value>
-  </data>
-  <data name="TechnologyAmiea" xml:space="preserve">
-    <value>CÔNG NGHỆ EMIEA SẢN XUẤT TẠI ĐỨC</value>
   </data>
   <data name="TimeEvent" xml:space="preserve">
     <value>Thời gian diễn ra sự kiện</value>
@@ -353,5 +329,11 @@
   </data>
   <data name="NewsHot" xml:space="preserve">
     <value>News Hot</value>
+  </data>
+  <data name="AngencySystem" xml:space="preserve">
+    <value>Jade Spa systems</value>
+  </data>
+  <data name="TitleDescription" xml:space="preserve">
+    <value>"Number One about Massage Pregnant &amp; Take care of Nascency"</value>
   </data>
 </root>

@@ -61,15 +61,6 @@ namespace GHM.Website.JadesSpa.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
-        /// </summary>
-        public static string AboutABC {
-            get {
-                return ResourceManager.GetString("AboutABC", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to About Us.
         /// </summary>
         public static string AboutUs {
@@ -97,29 +88,11 @@ namespace GHM.Website.JadesSpa.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AMIEA THƯƠNG HIỆU NỔI TIẾNG TOÀN CẦU.
-        /// </summary>
-        public static string AmieaFamous {
-            get {
-                return ResourceManager.GetString("AmieaFamous", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Angency System.
+        ///   Looks up a localized string similar to Jade Spa systems.
         /// </summary>
         public static string AngencySystem {
             get {
                 return ResourceManager.GetString("AngencySystem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Benefits of Hyperthermia in Cancer Treatment.
-        /// </summary>
-        public static string BenefitsofHyperthermiainCancerTreatment {
-            get {
-                return ResourceManager.GetString("BenefitsofHyperthermiainCancerTreatment", resourceCulture);
             }
         }
         
@@ -129,15 +102,6 @@ namespace GHM.Website.JadesSpa.Resources {
         public static string Blog {
             get {
                 return ResourceManager.GetString("Blog", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to News and Opinions About Our Industry.
-        /// </summary>
-        public static string BlogDescription {
-            get {
-                return ResourceManager.GetString("BlogDescription", resourceCulture);
             }
         }
         
@@ -412,15 +376,6 @@ namespace GHM.Website.JadesSpa.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hyperthermia Blog.
-        /// </summary>
-        public static string HyperthermiaBlog {
-            get {
-                return ResourceManager.GetString("HyperthermiaBlog", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Infrastructure.
         /// </summary>
         public static string InfrastructureIntroduce {
@@ -547,15 +502,6 @@ namespace GHM.Website.JadesSpa.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ĐỊNH HƯỚNG PHÁT TRIỂN CỦA SẢN PHẨM MANG LẠI SỰ SÁNG TẠO CHO NGƯỜI SỬ DỤNG.
-        /// </summary>
-        public static string ProgressAmieaDescription {
-            get {
-                return ResourceManager.GetString("ProgressAmieaDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Recent Blogs.
         /// </summary>
         public static string RecentBlogs {
@@ -655,20 +601,20 @@ namespace GHM.Website.JadesSpa.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CÔNG NGHỆ EMIEA SẢN XUẤT TẠI ĐỨC.
-        /// </summary>
-        public static string TechnologyAmiea {
-            get {
-                return ResourceManager.GetString("TechnologyAmiea", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Thời gian diễn ra sự kiện.
         /// </summary>
         public static string TimeEvent {
             get {
                 return ResourceManager.GetString("TimeEvent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Number One about Massage Pregnant &amp; Take care of Nascency&quot;.
+        /// </summary>
+        public static string TitleDescription {
+            get {
+                return ResourceManager.GetString("TitleDescription", resourceCulture);
             }
         }
         

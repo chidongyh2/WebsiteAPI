@@ -7,6 +7,7 @@ function AngencyViewModel() {
     self.isMobile = ko.observable(false);
 
     self.selectBranch = function (mapId, name, value) {
+        console.log(mapId);
         self.mapId(mapId);
         self.name(name);
         if (self.isMobile()) {

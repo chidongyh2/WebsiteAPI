@@ -77,7 +77,7 @@
                 self.currentPageComment(self.currentPageComment() - 1);
             }
         } else {
-            if (ko.utils.unwrapObservable(self.currentPageComment()) === ko.utils.unwrapObservable(self.totalPage())) {
+            if (ko.utils.unwrapObservable(self.currentPageComment()) === ko.utils.unwrapObservable(self.totalPage()) - 1) {
                 self.currentPageComment(1);
             } else {
                 self.currentPageComment(self.currentPageComment() + 1);
@@ -100,8 +100,8 @@
     };
 
     self.handdleSubstring = function (data, text) {
-        if (text.length > 155) {
-            return '' + text.substr(0, 155) + '...';
+        if (text.length > 120) {
+            return '' + text.substr(0, 120) + '...';
         } else {
             return text;
         }

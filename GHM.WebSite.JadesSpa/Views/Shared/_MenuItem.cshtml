@@ -13,23 +13,23 @@
         var childCount = Model.ListMenuItem.Count(x => x.ParentId == item.Id);
 <li class="@(childCount > 0 ? "dropdown" : "items")">
     <a role="button" href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" +item.Url)}")"
-       class="@((item.NamePath != null && path.Contains(item.NamePath) || item.Url == absoluteUri) ? "transition active data-toggle hidden-xs" : "transition data-toggle hidden-xs")"
+       class="@((item.NamePath != null && path.Contains(item.NamePath) || item.Url == absoluteUri) ? "transition active data-toggle hidden-sm hidden-xs hidden-md" : "transition data-toggle hidden-sm hidden-xs hidden-md")"
        title="@item.Name">
         @item.Name
         @if (childCount > 0)
         {
-            <i class="fa fa-angle-down pull-right visible-xs"></i>
-            <i class="fa fa-angle-up pull-right visible-xs hidden-xs"></i>
+            <i class="fa fa-angle-down pull-right visible-sm visible-xs visible-md"></i>
+            <i class="fa fa-angle-up pull-right visible-sm visible-xs visible-md hidden-sm hidden-xs hidden-md"></i>
         }
     </a>
-    <a role="button"  href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" +item.Url)}")"
-       class="@((item.NamePath != null && path.Contains(item.NamePath) || item.Url == absoluteUri) ? "transition active data-toggle visible-xs" : "transition active data-toggle visible-xs")"
+    <a role="button" href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" +item.Url)}")"
+       class="@((item.NamePath != null && path.Contains(item.NamePath) || item.Url == absoluteUri) ? "transition active data-toggle visible-sm visible-xs visible-md" : "transition active data-toggle visible-sm visible-xs visible-md")"
        title="@item.Name" data-toggle="@(childCount > 0 ? "dropdown" : "")">
         @item.Name
         @if (childCount > 0)
         {
-            <i class="fa fa-angle-down pull-right visible-xs"></i>
-            <i class="fa fa-angle-up pull-right visible-xs hidden-xs"></i>
+            <i class="fa fa-angle-down pull-right visible-sm visible-xs visible-md"></i>
+            <i class="fa fa-angle-up pull-right visible-sm visible-xs visible-md hidden-sm hidden-xs hidden-md"></i>
         }
     </a>
 

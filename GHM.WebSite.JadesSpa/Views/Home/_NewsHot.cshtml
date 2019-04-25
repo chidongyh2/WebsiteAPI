@@ -5,7 +5,7 @@
 <div id="news-hot">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-lg-12">
                 <h2 class="center titlebar">
                     @Resource.TitleHot
                 </h2>
@@ -14,18 +14,18 @@
         </div>
         @if (listCategoryWidthNew != null && listCategoryWidthNew.Any())
         {
-            <div id="news-slider" class="hidden-xs">
+            <div id="news-slider" class="hidden-xs hidden-sm hidden-md">
                 <partial name="_BlockCategories" model="listCategoryWidthNew" />
             </div>
-            <div class="list-items item-hot row visible-xs">
+            <div class="list-items item-hot row visible-xs visible-sm visible-md">
                 @foreach (var item in listCategoryWidthNew)
                 {
-                    <div class="col-sm-6 col-xs-6">
+                    <div class="col-lg-6 col-sm-6 col-xs-6">
                         <div class="item">
                             <div style="overflow: hidden">
                                 <a href="@($"/{ item.SeoLink}.html")">
                                     <img class="news-image zoom img-responsive lazy" data-src="/image?url=@(string.IsNullOrEmpty(item.BannerImage) ? "/images/no-image.png" : $"{url}{item.BannerImage}&width=255&height=213")"
-                                         onerror="this.src='/images/no-image.png'" />
+                                         onerror="this.src='~/images/no-image.png'" />
                                 </a>
                             </div>
                             <a href="@($"/{ item.SeoLink}.html")" class="text-description">@(string.IsNullOrEmpty(item.Name) ? "No Title" : item.Name)</a>

@@ -28,13 +28,15 @@
     }
 
     .item {
-        overflow: hidden;
-      
+
         .wrap-item {
+            overflow: hidden;
+            border: 1px solid transparent;
             /*width: 258px !important;
             height: 290px;*/
             /*position: relative;*/
-            background: linear-gradient(to right,#B78114 0%,#FDED98 70%,#B78114 100%);
+            /*background: linear-gradient(to right,#B78114 0%,#FDED98 70%,#B78114 100%);*/
+            background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%);
             /*&:hover {
                     img {
                         visibility: hidden;
@@ -47,15 +49,14 @@
             img {
                 /*width: 258px !important;
                 height: 290px;*/
-                padding: 8px 2px 0px 2px;
-                border: 1px solid transparent;
+                padding: 1px 2px 0px 2px;
                 margin: 0 auto;
             }
 
             .title {
                 text-align: center;
-                height: 75px;
-                line-height: 75px;
+                height: 60px;
+                line-height: 60px;
 
                 .slide-description {
                     text-decoration: none;
@@ -129,6 +130,19 @@
 }
 
 #myCarousel {
+    @media @mobile {
+        margin-top: 65px;
+    }
+
+    .owl-stage-outer {
+        /*@media @mobile {
+            max-height: 250px;
+        }
+        @media @tablet {
+            max-height: 400px;
+        }*/
+    }
+
     .active {
         .item {
             a {
@@ -137,7 +151,7 @@
                 width: 40px;
 
                 img {
-                    max-height: 600px;
+                    /*max-height: 600px;*/
                     margin-left: auto;
                     margin-right: auto;
                     height: auto;
@@ -178,7 +192,11 @@
 
     .owl-dots {
         text-align: center;
+        /*margin-top: 10px;*/
         margin-top: 10px;
+        position: absolute;
+        top: 90%;
+        left: 47%;
 
         .owl-dot {
             padding: 0 2px !important;
@@ -226,10 +244,10 @@
     background-image: url('../../images/bgr-web/background-image/nen-pc_04.jpg');
     background-repeat: repeat;
     background-size: cover;
-    height: 260px;
+    /*height: 260px;*/
 
     @media @mobile {
-        max-height: 160px;
+        /*max-height: 160px;*/
     }
 
     .container {
@@ -260,12 +278,8 @@
                     font-size: 32px;
                 }
 
-                p {
-                    span {
-                        @media @mobile {
-                            font-size: 18px !important;
-                        }
-                    }
+                @media @mobile {
+                    font-size:16px;
                 }
             }
         }
@@ -285,6 +299,7 @@
 
     @media @mobile {
         padding-bottom: 20px;
+        padding-top: 0px;
     }
 
     .container {
@@ -306,16 +321,41 @@
                     font-size: 22px;
                 }
 
-                @media @not_mobile {
-                    &:before, &:after {
-                        width: 10%;
+                &:before, &:after {
+                    width: 5%;
+                    height: 2px;
+                    background: @color-text-white;
+                    content: '';
+                    display: inline-block;
+                    color: white;
+                    top: -10px;
+                    position: relative;
+                    margin: 0px 15px;
+                }
+
+                @media @mobile {
+                    &:before {
+                        width: 8%;
                         height: 2px;
                         background: @color-text-white;
                         content: '';
                         display: inline-block;
                         color: white;
-                        top: -10px;
+                        top: -5px;
                         position: relative;
+                        margin: 0px 5px 0px 0px;
+                    }
+
+                    &:after {
+                        width: 8%;
+                        height: 2px;
+                        background: @color-text-white;
+                        content: '';
+                        display: inline-block;
+                        color: white;
+                        top: -5px;
+                        position: relative;
+                        margin: 0px 0px 0px 5px;
                     }
                 }
             }
@@ -324,7 +364,10 @@
                 font-family: vlauthenticaregular;
 
                 @media @mobile {
-                    font-size: 18px !important;
+                    font-size: 16px !important;
+                    margin-top: 5px;
+                    font-weight: 100 !important;
+                    word-spacing: 1.5px;
                 }
             }
 
@@ -335,7 +378,7 @@
 
         .item-hot {
             .item {
-                background-image: linear-gradient(to right,#B78114 0%,#FDED98 70%,#B78114 100%);
+                background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%);
                 font-size: 18px;
                 font-family: VLALLROUNDGOTHIC-BOOK;
                 color: @main-color;
@@ -345,7 +388,7 @@
                     border: 1px solid transparent;
 
                     @media @mobile {
-                        height: 132px;
+                        //height: 132px;
                         min-width: 100%;
                     }
                 }
@@ -354,7 +397,7 @@
                     color: @main-color;
                     width: 100%;
                     max-height: 75px;
-                    background: linear-gradient(to right,#B78114 0%,#FDED98 70%,#B78114 100%);
+                    background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%);
                     overflow: hidden;
                     text-align: center;
                     cursor: pointer;
@@ -362,6 +405,7 @@
                     @media @mobile {
                         display: inline-grid;
                         height: 50px;
+                        line-height: 50px;
                     }
                 }
             }
@@ -373,15 +417,13 @@
     background-image: url('../../images/bgr-web/background-image/nen-pc_06.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    
-    padding-top:40px;
+    padding-top: 40px;
     padding-bottom: 60px;
 
     @media @not_mobile {
         /*height: 610px;*/
     }
 
-    margin: 0px 5px;
     margin-bottom: 10px;
     color: @main-color;
     text-align: center;
@@ -392,17 +434,41 @@
         text-transform: uppercase;
         font-family: VLALLROUNDGOTHIC-BOOK;
 
-        @media @not_mobile {
+        &:before, &:after {
+            width: 5%;
+            height: 2px;
+            background: @main-color;
+            content: '';
+            display: inline-block;
+            color: white;
+            top: -10px;
+            position: relative;
+            margin: 0px 15px;
+        }
 
-            &:before, &:after {
-                width: 10%;
+        @media @mobile {
+            &:before {
+                width: 8%;
                 height: 2px;
                 background: @main-color;
                 content: '';
                 display: inline-block;
                 color: white;
-                top: -10px;
+                top: -5px;
                 position: relative;
+                margin: 0px 5px 0px 0px;
+            }
+
+            &:after {
+                width: 8%;
+                height: 2px;
+                background: @main-color;
+                content: '';
+                display: inline-block;
+                color: white;
+                top: -5px;
+                position: relative;
+                margin: 0px 0px 0px 5px;
             }
         }
     }
@@ -483,14 +549,13 @@
             text-align: center;
             margin-top: 10px;
             min-height: 300px;
-
             .wrap-image {
                 background: @main-color;
-                border-radius: 30px 20px;
+                border-radius: 23px 15px;
 
                 @media @mobile {
                     border-radius: 20px 10px !important;
-                    padding: 0px 1px 2px 5px
+                    padding: 0px 0.5px 0.5px 5px;
                 }
 
                 @media @not_mobile {
@@ -498,7 +563,7 @@
                     height: 280px;*/
                 }
 
-                padding: 0px 1px 2px 10px;
+                padding: 0px 0.5px 0.5px 10px;
 
                 img {
                     border: 1px solid @main-color;
@@ -600,11 +665,11 @@
                     }
 
                     .titlebar {
-                        font-size: 22px !important;
+                        font-size: 22px;
                         padding: 5px 10px;
                         color: @main-color;
                         text-transform: uppercase;
-                        background: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%) !important;
+                        background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%) !important;
                         font-family: VLALLROUNDGOTHIC-BOOK;
                         border-radius: 10px;
                         box-shadow: 3px 3px 5px 3px lightgrey;
@@ -663,7 +728,7 @@
                         padding: 5px 10px;
                         color: @main-color;
                         text-transform: uppercase;
-                        background: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%) !important;
+                        background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%) !important;
                         font-family: VLALLROUNDGOTHIC-BOOK;
                         border-radius: 10px;
                         box-shadow: 3px 3px 5px 3px lightgrey;
@@ -722,13 +787,22 @@
                         }
 
                         .media-body {
+                            padding-top: 15px;
                             font-family: Roboto-Regular;
+
+                            @media @mobile {
+                                padding-top: 0px;
+                            }
 
                             a {
                                 font-weight: bold;
-                                font-size: 14px;
+                                font-size: 16px;
                                 display: block;
                                 color: @main-color;
+
+                                @media @mobile {
+                                    font-size: 14px;
+                                }
                             }
                         }
                     }
@@ -753,16 +827,41 @@
                 text-transform: uppercase;
                 font-family: VLALLROUNDGOTHIC-BOOK;
 
-                @media @not_mobile {
-                    &:before, &:after {
-                        width: 10%;
+                &:before, &:after {
+                    width: 5%;
+                    height: 2px;
+                    background: @main-color;
+                    content: '';
+                    display: inline-block;
+                    color: white;
+                    top: -10px;
+                    position: relative;
+                    margin: 0px 15px;
+                }
+
+                @media @mobile {
+                    &:before {
+                        width: 8%;
                         height: 2px;
                         background: @main-color;
                         content: '';
                         display: inline-block;
                         color: white;
-                        top: -10px;
+                        top: -5px;
                         position: relative;
+                        margin: 0px 5px 0px 0px;
+                    }
+
+                    &:after {
+                        width: 8%;
+                        height: 2px;
+                        background: @main-color;
+                        content: '';
+                        display: inline-block;
+                        color: white;
+                        top: -5px;
+                        position: relative;
+                        margin: 0px 0px 0px 5px;
                     }
                 }
             }
@@ -796,6 +895,10 @@
         margin-bottom: 100px;
     }
 
+    @media @mobile {
+        margin-top: 10px;
+    }
+
     .row {
         .news-default {
             @media @not_mobile {
@@ -812,7 +915,7 @@
                 overflow: hidden;
                 overflow-y: hidden;
                 display: block;
-                border: 2px solid @main-color;
+                border: 1.5px solid @main-color;
                 border-radius: 12px;
             }
 
@@ -834,6 +937,11 @@
                 }
 
                 .summary {
+                    @media @mobile {
+                        max-height: 45px;
+                        overflow: hidden;
+                    }
+
                     color: #848484;
                     font-size: 16px;
                 }
@@ -850,7 +958,7 @@
                 font-size: 18px;
 
                 @media @mobile {
-                    height: 168px;
+                    /*height: 168px;*/
                     overflow: hidden;
                     margin-bottom: 20px;
                     font-size: 16px;
@@ -859,7 +967,7 @@
                 @media @not_mobile {
                     margin-bottom: 30px;
                     width: 250px;
-                    max-height: 205px;
+                    max-height: 220px;
                     overflow: hidden;
                     margin-left: 15px;
                     padding: 0px;
@@ -867,6 +975,10 @@
 
                 .title {
                     padding-top: 5px;
+                    @media @mobile {
+                        max-height: 45px;
+                        overflow: hidden;
+                    }
                 }
 
                 a {
@@ -874,12 +986,14 @@
                     color: #848484;
                 }
 
-                .news-image {
-                    border: 2px solid @main-color;
+                .image-content {
+                    border: 1.5px solid @main-color;
                     border-radius: 12px;
+                    overflow: hidden;
+                    width: 100%;
 
                     @media @mobile {
-                        height: 94px;
+                        /*height: 94px;*/
                         width: 100%;
                     }
                 }
@@ -888,16 +1002,15 @@
                     .img-overlay {
                         background: rgba(0,0,0,.25);
                         display: inline-block;
-                        height: 145px;
                         left: 0;
                         opacity: 0;
                         position: absolute;
                         top: 0;
                         border-radius: 12px;
-                        width: 100%;
                         @media @mobile {
                             width: auto;
                         }
+
                         &:hover {
                             opacity: 1;
                         }
@@ -1090,7 +1203,7 @@
                 li {
                     a {
                         &:hover {
-                            color: #af0838;
+                            color: @color-text-grey;
                         }
                     }
 
@@ -1195,7 +1308,7 @@
     }
 
     .titlebar {
-        color: @color-text;
+        color: @color-text-grey;
     }
 
     hr {
@@ -1207,10 +1320,10 @@
         margin-top: 30px;
 
         .image-content {
-            img {
-                min-height: 250px;
-                max-height: 270px;
-            }
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid @main-color;
+            border-radius: 12px;
         }
 
         .wrap-text-content {
@@ -1224,7 +1337,7 @@
                 min-height: 50px;
 
                 a {
-                    color: @main-color;
+                    color: @color-text-grey;
 
                     @media @mobile {
                         font-size: 20px;
@@ -1232,7 +1345,7 @@
 
                     &:hover {
                         text-decoration: none;
-                        color: #af0838;
+                        color: @main-color;
                     }
                 }
 
@@ -1289,7 +1402,8 @@
                         }
 
                         &:hover {
-                            color: #af0838;
+                            text-decoration: none;
+                            color: @main-color;
                         }
                     }
                 }
@@ -1335,23 +1449,25 @@
             margin: 10px 0px;
 
             .news-item {
+
                 .image-content {
-                    a {
-                        img {
-                            max-height: 185px;
-                        }
-                    }
+                    overflow: hidden;
+                    width: 100%;
+                    border: 1px solid @main-color;
+                    border-radius: 10px;
                 }
 
                 .wrap-text-content {
                     .title {
+                        height: 50px;
+                        overflow: hidden;
                         a {
                             font-size: 18px;
                             text-decoration: none;
-                            color: @main-color;
+                            color: @color-text-grey;
 
                             &:hover {
-                                color: @main-color-hover;
+                                color: @main-color;
                             }
                         }
 
@@ -1433,6 +1549,7 @@
         text-align: center;
         margin-bottom: 10px;
         background-color: @main-color;
+        border-radius: 5px;
 
         h2 {
             color: @color-white;
@@ -1461,12 +1578,13 @@
 
                 .media-body {
                     a {
-                        color: @color-text;
+                        font-size: 16px;
+                        color: @color-text-grey;
                         transition: 0.3s ease;
 
                         &:hover {
-                            text-decoration: none;
                             color: @main-color;
+                            text-decoration: none;
                         }
                     }
 
@@ -1594,6 +1712,7 @@
 
     &:hover {
         a {
+            text-decoration: none;
             color: @main-color;
         }
     }
@@ -1674,6 +1793,7 @@
 
             a {
                 &:hover, &:focus, &:active {
+                    text-decoration: none;
                     background-color: none;
                     background: none;
                 }
@@ -1717,7 +1837,7 @@
     font-size: 32px;
 
     @media @mobile {
-        font-size: 22px !important;
+        font-size: 16px !important;
     }
 }
 

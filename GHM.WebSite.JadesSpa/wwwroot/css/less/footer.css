@@ -27,12 +27,12 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #footer .container .col-sm-4 {
     text-align: center;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #footer {
     background-size: auto 100%;
   }
@@ -40,7 +40,7 @@
 #footer .logo {
   margin: 10px 0px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #footer .logo {
     display: flex;
     align-items: center;
@@ -50,7 +50,7 @@
 #footer .logo img {
   width: 160px;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1200px) {
   #footer #wrap-content-branch {
     border-right: 1px solid white;
     border-left: 1px solid white;
@@ -62,7 +62,7 @@
   padding-left: 0px;
   font-family: Roboto-Regular;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1200px) {
   #footer #wrap-content-branch .contact-info {
     padding: 0px 15px;
   }
@@ -71,7 +71,7 @@
   list-style-type: none;
   padding-left: 0px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
 }
 #footer #wrap-content-branch .contact-info ul .branch {
   background-image: linear-gradient(to right, #ffffff, rgba(255, 0, 0, 0));
@@ -104,12 +104,12 @@
 #footer .social-info {
   font-family: Roboto-Regular;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1200px) {
   #footer .social-info {
     padding-left: 25px;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   #footer .social-info {
     text-align: center;
   }
@@ -149,8 +149,13 @@
   width: 175px;
   height: 45px;
   border-radius: 15px;
-  margin-left: 25px;
+  margin-left: 5%;
   border: none;
+}
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  #footer .btn-send-message {
+    margin-left: 35%;
+  }
 }
 #footer .btn-send-message:hover {
   color: grey;
@@ -191,7 +196,7 @@
   justify-content: center;
   align-items: center;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .footer-bottom .brand .list-items {
     padding: 0px 5px;
     flex-basis: 25%;
