@@ -100,6 +100,7 @@
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse {
+    font-size: 16px !important;
     max-height: 736px;
     overflow: scroll;
   }
@@ -164,6 +165,7 @@
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .navbar-collapse {
+    font-size: 16px !important;
     width: 100%;
     margin: 0px;
   }
@@ -246,6 +248,9 @@
   }
 }
 @media only screen and (max-width: 1200px) {
+  .header-bottom nav .navbar-collapse ul li {
+    font-size: 16px !important;
+  }
   .header-bottom nav .navbar-collapse ul li a {
     width: 90%;
     margin-left: 5%;
@@ -362,7 +367,6 @@
   z-index: 1030;
   top: 100%;
   margin-top: 1px;
-  padding-bottom: 10px;
 }
 @media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li .dropdown-menu {

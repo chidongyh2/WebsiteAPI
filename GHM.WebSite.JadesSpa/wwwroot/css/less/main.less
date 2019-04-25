@@ -130,9 +130,9 @@
 }
 
 #myCarousel {
-    @media @mobile {
+    /*@media @mobile {
         margin-top: 65px;
-    }
+    }*/
 
     .owl-stage-outer {
         /*@media @mobile {
@@ -197,6 +197,9 @@
         position: absolute;
         top: 90%;
         left: 47%;
+        @media @mobile {
+            top: 75%;
+        }
 
         .owl-dot {
             padding: 0 2px !important;
@@ -254,7 +257,7 @@
         padding-top: 65px;
 
         @media @mobile {
-            padding-top: 20px;
+            padding-top: 20px 0px;
         }
 
         .row {
@@ -265,7 +268,7 @@
                 text-transform: uppercase;
 
                 @media @mobile {
-                    font-size: 22px;
+                    font-size: 16px;
                 }
 
                 font-family: VLALLROUNDGOTHIC-BOOK;
@@ -298,7 +301,7 @@
     }
 
     @media @mobile {
-        padding-bottom: 20px;
+        padding-bottom: 30px;
         padding-top: 0px;
     }
 
@@ -383,6 +386,13 @@
                 font-family: VLALLROUNDGOTHIC-BOOK;
                 color: @main-color;
                 margin-top: 15px;
+                font-weight: 1000;
+                text-transform: uppercase;
+
+                @media @mobile {
+                    font-size: 15px;
+                    font-weight: 1000;
+                }
 
                 img {
                     border: 1px solid transparent;
@@ -404,8 +414,8 @@
 
                     @media @mobile {
                         display: inline-grid;
-                        height: 50px;
-                        line-height: 50px;
+                        height: 40px;
+                        line-height: 40px;
                     }
                 }
             }
@@ -420,8 +430,8 @@
     padding-top: 40px;
     padding-bottom: 60px;
 
-    @media @not_mobile {
-        /*height: 610px;*/
+    @media @mobile {
+        padding: 30px 0px;
     }
 
     margin-bottom: 10px;
@@ -475,6 +485,11 @@
 
     .descriptionbar {
         font-family: vlauthenticaregular;
+
+        @media @mobile {
+            font-size: 16px;
+            padding-bottom: 20px;
+        }
     }
 
     .wrap-hr {
@@ -500,7 +515,7 @@
 
                 @media @mobile {
                     border-radius: 20px 10px !important;
-                    padding: 0px 1px 2px 5px;
+                    padding: 0px 0px 0px 5px;
                 }
 
                 @media @not_mobile {
@@ -530,10 +545,14 @@
                     font-family: VLALLROUNDGOTHIC-BOOK;
                     font-size: 18px;
                     text-transform: uppercase;
+
+                    @media @mobile {
+                        font-size: 14px;
+                    }
                 }
 
                 @media @mobile {
-                    height: 50px;
+                    height: 40px;
                     overflow: hidden;
                     margin-top: 5px !important;
                 }
@@ -549,6 +568,7 @@
             text-align: center;
             margin-top: 10px;
             min-height: 300px;
+
             .wrap-image {
                 background: @main-color;
                 border-radius: 23px 15px;
@@ -615,6 +635,10 @@
             height: 580px;
         }
 
+        @media @mobile {
+            padding-bottom: 25px;
+        }
+
         .wrap-content {
             @media @not_mobile {
                 margin: 0 15%;
@@ -671,11 +695,12 @@
                         text-transform: uppercase;
                         background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%) !important;
                         font-family: VLALLROUNDGOTHIC-BOOK;
-                        border-radius: 10px;
+                        border-radius: 6px;
                         box-shadow: 3px 3px 5px 3px lightgrey;
 
                         @media @mobile {
-                            font-size: 18px !important;
+                            margin: 20px 0px;
+                            font-size: 16px !important;
                         }
                     }
 
@@ -734,7 +759,7 @@
                         box-shadow: 3px 3px 5px 3px lightgrey;
 
                         @media @mobile {
-                            font-size: 18px;
+                            font-size: 16px;
                         }
                     }
 
@@ -758,7 +783,7 @@
 
                 .wrap-item {
                     @media @mobile {
-                        margin: 0px;
+                        margin-top: 10px;
                         padding: 0px;
                     }
 
@@ -873,7 +898,7 @@
                 padding-bottom: 40px;
 
                 @media @mobile {
-                    padding-bottom: 50px
+                    padding-bottom: 20px;
                 }
             }
 

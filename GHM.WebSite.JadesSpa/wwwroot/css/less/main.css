@@ -127,10 +127,10 @@
   text-align: center;
   line-height: 45px;
 }
-@media only screen and (max-width: 1200px) {
-  #myCarousel {
-    margin-top: 65px;
-  }
+#myCarousel {
+  /*@media @mobile {
+        margin-top: 65px;
+    }*/
 }
 #myCarousel .owl-stage-outer {
   /*@media @mobile {
@@ -188,6 +188,11 @@
   top: 90%;
   left: 47%;
 }
+@media only screen and (max-width: 1200px) {
+  #myCarousel .owl-dots {
+    top: 75%;
+  }
+}
 #myCarousel .owl-dots .owl-dot {
   padding: 0 2px !important;
 }
@@ -238,7 +243,7 @@
 }
 @media only screen and (max-width: 1200px) {
   #about .container {
-    padding-top: 20px;
+    padding-top: 20px 0px;
   }
 }
 #about .container .row {
@@ -251,7 +256,7 @@
 }
 @media only screen and (max-width: 1200px) {
   #about .container .row .titlebar {
-    font-size: 22px;
+    font-size: 16px;
   }
 }
 #about .container .row .content {
@@ -281,7 +286,7 @@
 }
 @media only screen and (max-width: 1200px) {
   #news-hot {
-    padding-bottom: 20px;
+    padding-bottom: 30px;
     padding-top: 0px;
   }
 }
@@ -361,6 +366,14 @@
   font-family: VLALLROUNDGOTHIC-BOOK;
   color: #609930;
   margin-top: 15px;
+  font-weight: 1000;
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 1200px) {
+  #news-hot .container .item-hot .item {
+    font-size: 15px;
+    font-weight: 1000;
+  }
 }
 #news-hot .container .item-hot .item img {
   border: 1px solid transparent;
@@ -382,8 +395,8 @@
 @media only screen and (max-width: 1200px) {
   #news-hot .container .item-hot .item .text-description {
     display: inline-grid;
-    height: 50px;
-    line-height: 50px;
+    height: 40px;
+    line-height: 40px;
   }
 }
 #news-introduce {
@@ -396,9 +409,9 @@
   color: #609930;
   text-align: center;
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (max-width: 1200px) {
   #news-introduce {
-    /*height: 610px;*/
+    padding: 30px 0px;
   }
 }
 #news-introduce .titlebar {
@@ -446,6 +459,12 @@
 #news-introduce .descriptionbar {
   font-family: vlauthenticaregular;
 }
+@media only screen and (max-width: 1200px) {
+  #news-introduce .descriptionbar {
+    font-size: 16px;
+    padding-bottom: 20px;
+  }
+}
 #news-introduce .wrap-hr {
   padding-top: 15px;
 }
@@ -469,7 +488,7 @@
 @media only screen and (max-width: 1200px) {
   #news-introduce .wrap-item .item .wrap-image {
     border-radius: 20px 10px !important;
-    padding: 0px 1px 2px 5px;
+    padding: 0px 0px 0px 5px;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -500,8 +519,13 @@
   text-transform: uppercase;
 }
 @media only screen and (max-width: 1200px) {
+  #news-introduce .wrap-item .item .wrap-text a {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 1200px) {
   #news-introduce .wrap-item .item .wrap-text {
-    height: 50px;
+    height: 40px;
     overflow: hidden;
     margin-top: 5px !important;
   }
@@ -578,6 +602,11 @@
     height: 580px;
   }
 }
+@media only screen and (max-width: 1200px) {
+  .news-angency #wrap-subintroduce {
+    padding-bottom: 25px;
+  }
+}
 @media only screen and (min-width: 1200px) {
   .news-angency #wrap-subintroduce .wrap-content {
     margin: 0 15%;
@@ -631,12 +660,13 @@
   text-transform: uppercase;
   background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%) !important;
   font-family: VLALLROUNDGOTHIC-BOOK;
-  border-radius: 10px;
+  border-radius: 6px;
   box-shadow: 3px 3px 5px 3px lightgrey;
 }
 @media only screen and (max-width: 1200px) {
   .news-angency #wrap-subintroduce .wrap-content #video #wrap-next .titlebar {
-    font-size: 18px !important;
+    margin: 20px 0px;
+    font-size: 16px !important;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -691,7 +721,7 @@
 }
 @media only screen and (max-width: 1200px) {
   .news-angency #wrap-subintroduce .wrap-content #response-customer .wrap-next .titlebar {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -710,7 +740,7 @@
 }
 @media only screen and (max-width: 1200px) {
   .news-angency #wrap-subintroduce .wrap-content #response-customer .wrap-item {
-    margin: 0px;
+    margin-top: 10px;
     padding: 0px;
   }
 }
@@ -813,7 +843,7 @@
 }
 @media only screen and (max-width: 1200px) {
   #newsAndBranch .container .row .descriptionbar {
-    padding-bottom: 50px;
+    padding-bottom: 20px;
   }
 }
 #newsAndBranch .container .row .wrap-hr {

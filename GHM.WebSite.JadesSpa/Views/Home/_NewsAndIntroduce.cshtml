@@ -5,10 +5,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="center titlebar">
+                <div class="center titlebar">
                     @categoryWidthNews.CategoryName
-                </h2>
-                <h2 class="descriptionbar">"@($"{categoryWidthNews.Description}")"</h2>
+                </div>
+                <div class="descriptionbar">"@($"{categoryWidthNews.Description}")"</div>
             </div>
         </div>
         <div class="row">
@@ -37,6 +37,7 @@
     </div>
     <div id="wrap-item" class="wrap-item visible-xs visible-sm visible-md">
         <div class="container">
+            <div class="row">
                 @if (categoryWidthNews.ListNews != null && categoryWidthNews.ListNews.Any())
                 {
                     @foreach (var item in categoryWidthNews.ListNews)
@@ -56,6 +57,7 @@
                         </div>
                     }
                 }
+                </div>
         </div>
     </div>
 
