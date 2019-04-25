@@ -24,8 +24,9 @@
                         <div class="item">
                             <div style="overflow: hidden">
                                 <a href="@($"/{ item.SeoLink}.html")">
-                                    <img class="news-image zoom img-responsive lazy" data-src="/image?url=@(string.IsNullOrEmpty(item.BannerImage) ? "/images/no-image.png" : $"{url}{item.BannerImage}&width=255&height=213")"
-                                         onerror="this.src='~/images/no-image.png'" />
+                                    <img class="news-image zoom img-responsive lazy" 
+                                         data-src="/image?url=@(string.IsNullOrEmpty(item.BannerImage) ? "/images/no-image.png" : $"{url}{item.BannerImage}&width=255&height=213")"
+                                         onerror="this.src='/images/no-image.png'" />
                                 </a>
                             </div>
                             <a href="@($"/{ item.SeoLink}.html")" class="text-description">@(string.IsNullOrEmpty(item.Name) ? "No Title" : item.Name)</a>
