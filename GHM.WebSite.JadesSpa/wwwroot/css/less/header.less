@@ -59,6 +59,7 @@
 
 .header-top {
     height: 45px;
+
     span {
         padding-top: 11px;
         padding-left: 0px;
@@ -79,7 +80,6 @@
 }
 
 .header-bottom {
-
     .navbar-inverse {
         background-image: url('../../images/BGR-web/Background-Image/Nen-PC_02.jpg');
         background-repeat: no-repeat;
@@ -94,7 +94,7 @@
         }
 
         @media @mobile {
-            font-size: 16px !important; 
+            font-size: 16px !important;
             max-height: 736px;
             overflow: scroll;
         }
@@ -206,7 +206,8 @@
             padding-left: 0px;
             padding-right: 0px;
             border-color: @main-color !important;
-
+            overflow:scroll;
+            
             @media @mobile {
                 border: none !important;
                 max-height: 120%;
@@ -251,6 +252,7 @@
 
                     @media @mobile {
                         font-size: 16px !important;
+
                         a {
                             width: 90%;
                             margin-left: 5%;
@@ -261,14 +263,13 @@
 
                     .list-social-network {
                         margin-top: 15px;
-                        margin-left: 20%;
-                        margin-right: 20%;
                         display: flex;
                         align-items: center;
-                        justify-content: space-between;
+                        justify-content: center;
                         margin-bottom: 15px;
 
                         .list-items {
+                            margin: 5px;
                             a {
                                 border: none !important;
 

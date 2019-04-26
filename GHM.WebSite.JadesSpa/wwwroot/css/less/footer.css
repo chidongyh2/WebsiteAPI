@@ -151,11 +151,9 @@
   border-radius: 15px;
   margin-left: 5%;
   border: none;
-}
-@media only screen and (min-width: 768px) and (max-width: 992px) {
-  #footer .btn-send-message {
-    margin-left: 35%;
-  }
+  /*@media @tablet {
+            margin-left: 35%;
+        }*/
 }
 #footer .btn-send-message:hover {
   color: grey;
@@ -163,6 +161,12 @@
   transform: inherit;
 }
 @media only screen and (max-width: 1200px) {
+  #footer .btn-message {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 992px) {
   #footer .btn-message {
     width: 100%;
     text-align: center;

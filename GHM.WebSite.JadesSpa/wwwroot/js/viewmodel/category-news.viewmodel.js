@@ -19,16 +19,12 @@ ko.components.register('view-more', {
                 page: self.currentPage(),
                 pageSize: self.currentPageSize()
             }, function (result) {
-                console.log(result);
                 self.listNews.push.apply(self.listNews, result);
                 self.isLoadding(false);
             });
         }; 
 
-        self.handleString = function (data, title, length) {
-            console.log(data);
-            console.log(length);
-            consolo.log(title);
+        self.handleString = function (data, title, length) {    
             return title.substr(0, 30) + '...';
         };
     },

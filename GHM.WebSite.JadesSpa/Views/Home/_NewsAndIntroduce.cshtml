@@ -6,15 +6,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="center titlebar">
-                    @categoryWidthNews.CategoryName
+                    @categoryWidthNews?.CategoryName
                 </div>
-                <div class="descriptionbar">"@($"{categoryWidthNews.Description}")"</div>
+                <div class="descriptionbar">"@($"{categoryWidthNews?.Description}")"</div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div id="middle-menu-slide" class="hidden-xs hidden-sm hidden-md">
-                    @if (categoryWidthNews.ListNews != null && categoryWidthNews.ListNews.Any())
+                    @if (categoryWidthNews?.ListNews != null && categoryWidthNews.ListNews.Any())
                     {
                         @foreach (var item in categoryWidthNews.ListNews)
                         {
@@ -39,7 +39,7 @@
     <div id="wrap-item" class="wrap-item visible-xs visible-sm visible-md">
         <div class="container">
             <div class="row">
-                @if (categoryWidthNews.ListNews != null && categoryWidthNews.ListNews.Any())
+                @if (categoryWidthNews?.ListNews != null && categoryWidthNews.ListNews.Any())
                 {
                     @foreach (var item in categoryWidthNews.ListNews)
                     {

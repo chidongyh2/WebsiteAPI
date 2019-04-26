@@ -8,31 +8,62 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using GHM.Website.JadesSpa.Constants;
 using GHM.Website.JadesSpa.Utils;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GHM.Website.JadesSpa.Controllers
 {
     public class ImageController : Controller
     {
+        private readonly IHostingEnvironment _hostingEnvironment;
+
+        public ImageController(IHostingEnvironment hostingEnvironment)
+        {
+            _hostingEnvironment = hostingEnvironment;
+        }
+
         [Route("image")]
         public async Task<IActionResult> Index(string url, int? width, int? height, ImageType? type)
         {
-            using (Image sourceImage = await this.LoadImageFromUrl(url))
+            if (!string.IsNullOrEmpty(url))
             {
-                if (sourceImage != null)
+                using (Image sourceImage = await this.LoadImageFromUrl(url))
                 {
-                    using (Image destinationImage = Common.CropImage(sourceImage, width ?? sourceImage.Width, height ?? sourceImage.Height, type))
+                    if (sourceImage != null)
                     {
-                        Stream outputStream = new MemoryStream();
+                        using (Image destinationImage = Common.CropImage(sourceImage, width ?? sourceImage.Width, height ?? sourceImage.Height, type))
+                        {
+                            Stream outputStream = new MemoryStream();
 
-                        destinationImage.Save(outputStream, ImageFormat.Png);
-                        outputStream.Seek(0, SeekOrigin.Begin);
-                        return File(outputStream, "image/jpeg");
+                            destinationImage.Save(outputStream, ImageFormat.Png);
+                            outputStream.Seek(0, SeekOrigin.Begin);
+                            return File(outputStream, "image/jpeg");
+                        }
                     }
                 }
             }
 
-            return NotFound();
+            if (string.IsNullOrWhiteSpace(_hostingEnvironment.WebRootPath))
+            {
+                _hostingEnvironment.WebRootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+            }
+
+            string webRootPath = _hostingEnvironment.WebRootPath;
+            string newPath = Path.Combine(webRootPath, "images/no_image_new.gif");
+
+            using (var fileStream = new FileStream(newPath, FileMode.Open, FileAccess.Read))
+            {
+                Image orginImage = Image.FromStream(fileStream);
+                using (Image destinationImage = Common.CropImage(orginImage, width ?? orginImage.Width, height ?? orginImage.Height, type))
+                {
+                    Stream outputStream = new MemoryStream();
+
+                    destinationImage.Save(outputStream, ImageFormat.Png);
+                    outputStream.Seek(0, SeekOrigin.Begin);
+                    return File(outputStream, "image/jpeg");
+                }
+            }
         }
 
         private async Task<Image> LoadImageFromUrl(string url)

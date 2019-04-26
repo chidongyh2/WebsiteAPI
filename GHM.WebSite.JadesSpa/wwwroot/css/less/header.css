@@ -205,6 +205,7 @@
   padding-left: 0px;
   padding-right: 0px;
   border-color: #609930 !important;
+  overflow: scroll;
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse {
@@ -260,12 +261,13 @@
 }
 .header-bottom nav .navbar-collapse ul li .list-social-network {
   margin-top: 15px;
-  margin-left: 20%;
-  margin-right: 20%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 15px;
+}
+.header-bottom nav .navbar-collapse ul li .list-social-network .list-items {
+  margin: 5px;
 }
 .header-bottom nav .navbar-collapse ul li .list-social-network .list-items a {
   border: none !important;

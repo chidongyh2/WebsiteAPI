@@ -40,11 +40,10 @@ namespace GHM.Website.JadesSpa.Controllers
             ViewBag.FooterMenuNav = GetFooterMenu();
             var path = $"{Request.Path}";
             var absoluteUri = $"{Request.Host}{Request.Path}";
-            var menuInfo = listManinMenu != null ? listManinMenu.Where(x => x.NamePath != null && path == "/" +x.NamePath || x.Url == absoluteUri).FirstOrDefault() : null;
+            var menuInfo = listManinMenu?.Where(x => x.NamePath != null && path == "/" +x.NamePath || x.Url == absoluteUri).FirstOrDefault();
             var image = menuInfo == null || string.IsNullOrEmpty(menuInfo.Image) ? "https://websitefile.ghmsoft.vn/uploads/57da7815-c388-4744-a625-53cc73563cfb/2018/11/26/f01ecf64-6570-46d3-8cb7-1a1c74abbaa6.jpg" : menuInfo.Image;
             ViewBag.ImageBanner = image;
-            //ViewBag.Url = "http://localhost:50005/";
-            ViewBag.Url = "https://websitefile.ghmsoft.vn/";
+            ViewBag.Url = _configuration.GetApiUrl()?.FileUrl;
             ViewBag.ListLanguage = GetLanguage();
             ViewBag.CurrentLanguage = CultureInfo.CurrentCulture.Name;
         }

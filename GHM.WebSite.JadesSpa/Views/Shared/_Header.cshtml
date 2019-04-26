@@ -4,7 +4,7 @@
     var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
     var listLanguage = ViewBag.ListLanguage as List<TenantLanguageViewModel>;
     var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
-    var branchOffice = listBranch.FirstOrDefault(x => x.IsOffice.HasValue && x.IsOffice.Value);
+    var branchOffice = listBranch != null ? listBranch.FirstOrDefault(x => x.IsOffice.HasValue && x.IsOffice.Value) : null;
     var officeContact = branchOffice != null ? branchOffice.BranchContactDetails.FirstOrDefault(x => x.ContactType == ContactType.Email) : null;
     var path = $"{Context.Request.Path}";
     var url = ViewBag.Url;
@@ -14,17 +14,17 @@
         <div class="container">
             <div class="col-lg-12">
                 <div class="col-lg-6">
-                    <span> @websiteSetting.Brand</span>
+                    <span> @websiteSetting?.Brand</span>
                 </div>
                 <div class="col-lg-6">
                     <span class="pull-right">
-                        @if (websiteSetting.Hotline != null && websiteSetting.Hotline.Any())
+                        @if (websiteSetting?.Hotline != null && websiteSetting.Hotline.Any())
                         {
-                        <i class="fa fa-mobile"> @websiteSetting.Hotline |</i>
+                            <i class="fa fa-mobile"> @websiteSetting?.Hotline |</i>
                         }
-                        @if (websiteSetting.Brand != null && websiteSetting.Brand.Any())
+                        @if (websiteSetting?.Brand != null && websiteSetting.Brand.Any())
                         {
-                        <i class="fa fa-envelope-o"> @officeContact?.ContactValue</i>
+                            <i class="fa fa-envelope-o"> @officeContact?.ContactValue</i>
                         }
                     </span>
                 </div>
@@ -56,22 +56,24 @@
                             };
                             <partial name="_MenuItem" model="menuObject" />
                         }
-                        <li class="visible-sm visible-xs visible-md">
-                            <div class="list-social-network">
-                                @foreach (var socialNetWork in listSocialNetWork)
-                                {
-                                    <div class="list-items">
-                                        <a href="@socialNetWork.Url" class="btn-scoical" title="@websiteSetting?.Brand">
-                                            @if (!string.IsNullOrEmpty(socialNetWork.Icon))
-                                            {
-                                                <i class="fa @socialNetWork.Icon"></i>
-                                            }
-                                        </a>
-                                    </div>
-                                }
-                            </div>
-                        </li>
-
+                        @if (listSocialNetWork != null && listSocialNetWork.Any())
+                        {
+                            <li class="visible-sm visible-xs visible-md">
+                                <div class="list-social-network">
+                                    @foreach (var socialNetWork in listSocialNetWork)
+                                    {
+                                        <div class="list-items">
+                                            <a href="@socialNetWork.Url" class="btn-scoical" title="@websiteSetting?.Brand">
+                                                @if (!string.IsNullOrEmpty(socialNetWork.Icon))
+                                                {
+                                                    <i class="fa @socialNetWork.Icon"></i>
+                                                }
+                                            </a>
+                                        </div>
+                                    }
+                                </div>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

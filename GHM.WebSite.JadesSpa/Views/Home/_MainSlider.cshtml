@@ -4,16 +4,16 @@
 }
 @if (Model != null && Model.BannerItems != null && Model.BannerItems.Any())
 {
-    <div id="myCarousel" class="owl-carousel">
-        @foreach (var bannerItem in Model.BannerItems)
-        {
-            <div class="item">
-                <a href="@bannerItem.Url"  title="@bannerItem.Name">
-                    <img class="img-responsive lazy" src="@(string.IsNullOrEmpty(bannerItem.Image) ? "/images/no-image.png" : $"{url}{bannerItem.Image}")"
-                         onerror="this.src='/images/no-image.png'"
-                         alt="@bannerItem.Alt" />
-                </a>
-            </div>
-        }
-    </div>
+<div id="myCarousel" class="owl-carousel">
+    @foreach (var bannerItem in Model.BannerItems)
+    {
+        <div class="item">
+            <a href="@bannerItem.Url" title="@bannerItem.Name">
+                <img class="img-responsive lazy" data-src="@(string.IsNullOrEmpty(bannerItem.Image) ? "/images/no-image.png" : $"{url}{bannerItem.Image}")"
+                     onerror="this.src='/images/no-image.png'"
+                     alt="@bannerItem.Alt" />
+            </a>
+        </div>
+    }
+</div>
 }
