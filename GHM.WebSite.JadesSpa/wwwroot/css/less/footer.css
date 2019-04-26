@@ -162,6 +162,12 @@
   opacity: 0.6;
   transform: inherit;
 }
+@media only screen and (max-width: 1200px) {
+  #footer .btn-message {
+    width: 100%;
+    text-align: center;
+  }
+}
 #myModal {
   color: black !important;
   font-family: Roboto-Regular;

@@ -160,16 +160,26 @@
         border-radius: 15px;
         margin-left: 5%;
         border: none;
+
         @media @tablet {
             margin-left: 35%;
         }
+
         &:hover {
             color: grey;
             opacity: 0.6;
             transform: inherit;
         }
     }
+
+    @media @mobile {
+        .btn-message {
+            width: 100%;
+            text-align: center;
+        }
+    }
 }
+
 #myModal {
     color: black !important;
     font-family: Roboto-Regular;
@@ -192,6 +202,7 @@
         }
     }
 }
+
 .footer-bottom {
     background-color: @main-color;
 
