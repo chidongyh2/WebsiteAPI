@@ -640,7 +640,13 @@ namespace GHM.Website.Infrastructure.Repository
                              Description = newsTranslation.Description
                          };
             totalRows = result.Count();
-            return result.OrderByDescending(x => x.LastUpdate).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+            if(page == 3 && pageSize == 6)
+            {
+                return result.OrderByDescending(x => x.LastUpdate).Skip((page - 1) * pageSize - 1).Take(pageSize).ToListAsync();
+            } else
+            {
+                return result.OrderByDescending(x => x.LastUpdate).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+            }
         }
 
         public async Task<NewsDetailForClientViewModel> GetDetailForClient(string teantId, string newsId, string languageId)

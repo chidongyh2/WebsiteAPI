@@ -6,6 +6,8 @@
     ViewBag.ImageBanner = CategoryWidthNews.BannerImage;
     var totalRows = CategoryWidthNews.TotalNews ?? 0;
     var pageSize = 12;
+    var pageSizeMobile = 6;
+    var totalPageMobile = Math.Ceiling((double)totalRows / pageSizeMobile);
     var page = ViewBag.Page;
     var totalPage = Math.Ceiling((double)totalRows / pageSize);
     var seoLink = CategoryWidthNews.SeoLink;
@@ -89,7 +91,9 @@ IsCurrent = true,
                                 </div>
                             </div>
                         </div>
-
+                        @{
+                            Model.ListNews.RemoveAt(Model.ListNews.Count - 1);
+                        }
                         @foreach (var news in Model.ListNews.Where(x => x.Id != newsDefault.Id))
                         {
                             <div class="col-sm-6 col-xs-6 col-md-6 news-item">
@@ -108,7 +112,7 @@ IsCurrent = true,
                                 </div>
                             </div>
                         }
-                        <view-more params="categoryId: @($"{ViewBag.CategoryId}"), totalPage: @totalPage">
+                        <view-more params="categoryId: @($"{ViewBag.CategoryId}"), totalPage: @totalPageMobile">
                         </view-more>
                         <template id="btn-viewmore">
                             <div data-bind="foreach: listNews">
@@ -123,16 +127,16 @@ IsCurrent = true,
                                     </div>
                                     <div class="title">
                                         <a data-bind="attr: {href:'/' + seoLink + '.html', title: metaTitle ? title : metaTitle }"></a>
-                                        <p data-bind="text : $parent.handleString($data,title, 70)">
+                                        <div data-bind="text : $parent.handleString($data,title)">
 
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-12 col-xs-12">
-                                <!--ko if: totalPage() > 3-->
-                                    <button data-bind="click: function(){viewMore()}" type="button" class="btn btn-primary btn-main-color"><i data-bind="attr : {class: isLoadding() === true ? 'fa fa-pulse fa-spinner' : ''}"></i>@Resource.ViewMore</button>
-                                <!-- /ko -->
+                               
+                                    <button data-bind="if:(totalPage() > 3 && currentPage() < totalPage()), click: function(){viewMore()}" type="button" class="btn btn-primary btn-main-color"><i data-bind="attr : {class: isLoadding() === true ? 'fa fa-pulse fa-spinner' : ''}"></i>@Resource.ViewMore</button>
+                                
                             </div>
                         </template>
                     </div>

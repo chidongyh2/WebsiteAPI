@@ -25,12 +25,8 @@ namespace GHM.Website.JadesSpa.Controllers
             _cache = cache;
         }
         [Route("view-more-news"), AcceptVerbs("POST")]
-        public async Task<IActionResult> GetNewsByCategory(string categoryId, int page = 1, int pageSize = 6)
+        public async Task<IActionResult> GetNewsByCategory(string categoryId, int page = 3, int pageSize = 6)
         {
-            if(page == 1)
-            {
-                pageSize = 5;
-            }
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
             var httpService = new HttpClientService();

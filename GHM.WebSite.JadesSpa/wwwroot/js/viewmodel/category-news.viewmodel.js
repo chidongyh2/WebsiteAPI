@@ -2,7 +2,7 @@
 ko.components.register('view-more', {
     viewModel: function (params) {
         var self = this;
-        self.currentPage = ko.observable(0);
+        self.currentPage = ko.observable(2);
         self.currentPageSize = ko.observable(6);
         self.listNews = ko.observableArray([]);
         self.categoryId = ko.observable(params.categoryId);
@@ -26,7 +26,10 @@ ko.components.register('view-more', {
         }; 
 
         self.handleString = function (data, title, length) {
-            return title.substr(0, 70);
+            console.log(data);
+            console.log(length);
+            consolo.log(title);
+            return title.substr(0, 30) + '...';
         };
     },
     template: { element: 'btn-viewmore'}
