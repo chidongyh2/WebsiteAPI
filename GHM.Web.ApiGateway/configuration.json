@@ -7,7 +7,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50000
+          "Port": 20000
         }
       ],
       "UpstreamPathTemplate": "/auth/{everything}",
@@ -21,7 +21,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50003
+          "Port": 20003
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/events/{everything}",
@@ -40,7 +40,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50001
+          "Port": 20001
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/core/{everything}",
@@ -58,7 +58,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50002
+          "Port": 20002
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
@@ -76,7 +76,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50011
+          "Port": 20011
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/products/{everything}",
@@ -94,7 +94,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50004
+          "Port": 20004
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/notifications/{everything}",
@@ -112,7 +112,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50004
+          "Port": 20004
         }
       ],
       "UpstreamPathTemplate": "/notifications/{everything}",
@@ -125,7 +125,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50004
+          "Port": 20004
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/notifications",
