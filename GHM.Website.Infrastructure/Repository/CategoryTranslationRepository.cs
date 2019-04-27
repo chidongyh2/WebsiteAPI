@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.SqlServer;
 using GHM.Website.Domain.IRepository;
 using GHM.Website.Domain.Models;
+using GHM.Website.Domain.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace GHM.Website.Infrastructure.Repository
 {
@@ -103,6 +107,21 @@ namespace GHM.Website.Infrastructure.Repository
         public async Task<bool> CheckExistsBySeoLink(string tenantId, string seoLink, string languageId)
         {
             return await _categoryTranslationRepository.ExistAsync(x => x.TenantId == tenantId && x.SeoLink == seoLink && x.LanguageId == languageId);
+        }
+
+        public async Task<MenuItemSelectedViewModel> GetCategoryDetailForMenu(string tenantId, string subjectId, string languageId, bool v)
+        {
+            Expression<Func<Category, bool>> specC = x => x.TenantId == tenantId && x.Id == int.Parse(subjectId) && x.IsActive && !x.IsDelete;
+            Expression<Func<CategoryTranslation, bool>> specCT = x => x.TenantId == tenantId && x.CategoryId == int.Parse(subjectId);
+
+            var query = Context.Set<Category>().Where(specC)
+                .Join(Context.Set<CategoryTranslation>().Where(specCT), c => c.Id, ct => ct.CategoryId, (c, ct) => new MenuItemSelectedViewModel
+                {
+                    Id = c.Id.ToString(),
+                    Image = c.BannerImage,
+                    Name = ct.Name
+                });
+            return await query.FirstOrDefaultAsync();
         }
     }
 }

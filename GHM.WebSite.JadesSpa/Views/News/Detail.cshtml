@@ -100,32 +100,36 @@
                         @Resource.NewsRelated
                     </h6>
                 </div>
-                <div class="col-md-12 wrap-related-item">
-                    @foreach (var newsRelated in listNewsRelated)
-                    {
+                @if (listNewsRelated != null)
+                {
+                    <div class="col-md-12 wrap-related-item">
+                        @foreach (var newsRelated in listNewsRelated)
+                        {
 
-                        <div class="news-item col-md-3">
-                            <div class="image-content">
-                                <a href="@($"/{newsRelated.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsRelated.MetaTitle) ? newsRelated.Title : newsRelated.MetaTitle)">
-                                    <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsRelated.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{newsRelated.FeatureImage}")}&width=600&height=400")"
-                                         onerror="this.src='/images/no-image.png'"
-                                         alt="@(string.IsNullOrEmpty(newsRelated.AltImage) ? newsRelated.Title : newsRelated.AltImage)" />
-                                    <span class="img-overlay"></span>
-                                </a>
-                            </div>
-                            <div class="wrap-text-content">
-                                <div class="title">
+                            <div class="news-item col-md-3">
+                                <div class="image-content">
                                     <a href="@($"/{newsRelated.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsRelated.MetaTitle) ? newsRelated.Title : newsRelated.MetaTitle)">
-                                        @(!string.IsNullOrEmpty(newsRelated.Title) ? Common.SubString(newsRelated.Title, 70) : newsRelated.Title)
+                                        <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsRelated.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{newsRelated.FeatureImage}")}&width=600&height=400")"
+                                             onerror="this.src='/images/no-image.png'"
+                                             alt="@(string.IsNullOrEmpty(newsRelated.AltImage) ? newsRelated.Title : newsRelated.AltImage)" />
+                                        <span class="img-overlay"></span>
                                     </a>
                                 </div>
-                                <div class="description">
-                                    <span>@Common.SubString(newsRelated.Description, 150)</span>
+                                <div class="wrap-text-content">
+                                    <div class="title">
+                                        <a href="@($"/{newsRelated.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsRelated.MetaTitle) ? newsRelated.Title : newsRelated.MetaTitle)">
+                                            @(!string.IsNullOrEmpty(newsRelated.Title) ? Common.SubString(newsRelated.Title, 70) : newsRelated.Title)
+                                        </a>
+                                    </div>
+                                    <div class="description">
+                                        <span>@Common.SubString(newsRelated.Description, 150)</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    }
-                </div>
+                        }
+                    </div>
+                }
+
             </div>
         }
         else

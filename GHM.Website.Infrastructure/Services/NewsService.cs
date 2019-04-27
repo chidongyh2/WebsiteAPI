@@ -394,11 +394,11 @@ namespace GHM.Website.Infrastructure.Services
 
                         if (!string.IsNullOrEmpty(newsTranslation.SeoLink))
                         {
-                            newsTranslationInfo.SeoLink = newsTranslation.SeoLink.ToUrlString();
+                            newsTranslationInfo.SeoLink = newsTranslation.SeoLink.ToPlainText();
                         }
                         else
                         {
-                            newsTranslationInfo.SeoLink = newsTranslation.Title.ToUrlString();
+                            newsTranslationInfo.SeoLink = newsTranslation.Title.ToPlainText();
                         }
 
                         // Check Seolink exists.

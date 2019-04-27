@@ -32,5 +32,7 @@ namespace GHM.Website.Domain.IRepository
         Task<string> GetNewsIdBySeoLink(string tenantId, string languageId, string seoLink);
 
         Task<bool> CheckExistBySeoLink(string tenantId, string seoLink, string languageId);
+
+        Task<MenuItemSelectedViewModel> GetNewsDetailForMenu(string tenantId, string subjectId, string languageId, bool v);
     }
 }
