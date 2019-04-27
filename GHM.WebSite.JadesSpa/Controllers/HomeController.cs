@@ -140,7 +140,7 @@ namespace GHM.Website.JadesSpa.Controllers
             }
 
 
-        }
+            }
         public async Task<IActionResult> About()
         {
             var requestUrl = _configuration.GetApiUrl();

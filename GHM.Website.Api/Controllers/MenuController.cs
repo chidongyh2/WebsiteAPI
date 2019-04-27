@@ -11,7 +11,6 @@ using GHM.Website.Domain.ModelMetas;
 using GHM.Website.Domain.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
 namespace GHM.Website.Api.Controllers
 {
     [Authorize]
@@ -152,6 +151,15 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
+        [Route("{subjectId}/getMenuItemSelected"), AcceptVerbs("POST")]
+        [AllowPermission(PageId.WebsiteConfigMenu, Permission.View)]
+        [CheckPermission]
+        public async Task<IActionResult> GetMenuItemSelectedDetail(string subjectId, int subjectType, string languageId)
+        {
+            var result = await _menuService.GetItemDetailSeleted(CurrentUser.TenantId, subjectType, subjectId, languageId);
+            return Ok(result);
+        }
+
         [Route("{id}/items/Order"), AcceptVerbs("POST"), ValidateModel]
         [AllowPermission(PageId.WebsiteConfigMenu, Permission.Update)]
         [CheckPermission]
@@ -163,6 +171,7 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
+      
         #region  client
         [Route("{id}/items/menu/{tenantId}/{languageId?}"), AcceptVerbs("GET")]
         public async Task<IActionResult> GetAllActivatedMenuItem(string tenantId, string id, string languageId)

@@ -28,10 +28,16 @@ namespace GHM.Core.Api.Controllers
         [AcceptVerbs("GET")]
         public async Task<IActionResult> InitApp()
         {
-            var appSettings = await _appService.GetAppSettings(CurrentUser.Id, CurrentUser.TenantId,
-                CultureInfo.CurrentCulture.Name);
-            appSettings.CurrentUser = CurrentUser;
-            return Ok(appSettings);
+            try
+            {
+                var appSettings = await _appService.GetAppSettings(CurrentUser.Id, CurrentUser.TenantId,
+                    CultureInfo.CurrentCulture.Name);
+                appSettings.CurrentUser = CurrentUser;
+                return Ok(appSettings);
+            }catch(Exception e)
+            {
+                return Ok();
+            }
         }
 
         [Route("languages"), AcceptVerbs("GET")]

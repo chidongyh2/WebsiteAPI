@@ -174,6 +174,7 @@ namespace GHM.Website.Infrastructure.Services
                 Position = info.Position,
                 ConcurrencyStamp = info.ConcurrencyStamp,
             };
+
             return new ActionResultResponse<MenuDetailViewModel>
             {
                 Code = 1,
@@ -868,7 +869,6 @@ namespace GHM.Website.Infrastructure.Services
                 ChildCount = menuItemInfo.ChildCount,
                 MenuItemTranslations = await _menuItemTranslationRepository.GetsByMenuItemId(menuItemInfo.Id)
             };
-
             return new ActionResultResponse<MenuItemDetailViewModel>
             {
                 Code = 1,
@@ -989,6 +989,41 @@ namespace GHM.Website.Infrastructure.Services
                 IsActive = menuInfo.IsActive,
                 MenuItems = listMenuItems
             };
+        }
+
+        public async Task<ActionResultResponse<MenuItemSelectedViewModel>> GetItemDetailSeleted(string tenantId, int subjectType, string subjectId, string languageId)
+        {
+            if ((SubjectType)subjectType == SubjectType.News)
+            {
+                var item = await _newsTranslationRepository.GetNewsDetailForMenu(tenantId, subjectId, languageId, true);
+                if (item == null)
+                    return new ActionResultResponse<MenuItemSelectedViewModel>(-1, _websiteResourceService.GetString("News does not exist"));
+                return new ActionResultResponse<MenuItemSelectedViewModel>
+                {
+                    Code = 1,
+                    Data = item
+                };
+            }
+            else if ((SubjectType)subjectType == SubjectType.NewsCategory)
+            {
+                var item = await _categoryTranslationRepositoryRepository.GetCategoryDetailForMenu(tenantId, subjectId, languageId, true);
+                if (item == null)
+                    return new ActionResultResponse<MenuItemSelectedViewModel>(-1, _websiteResourceService.GetString("Category does not exist"));
+
+                return new ActionResultResponse<MenuItemSelectedViewModel>
+                {
+                    Code = 1,
+                    Data = item
+                };
+            }
+            else
+            {
+                return new ActionResultResponse<MenuItemSelectedViewModel>
+                {
+                    Code = -1,
+                    Message = _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong)
+                };
+            }
         }
         #endregion
 

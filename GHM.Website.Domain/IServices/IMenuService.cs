@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.Models;
 using GHM.Infrastructure.ViewModels;
 using GHM.Website.Domain.Constants;
@@ -47,5 +48,7 @@ namespace GHM.Website.Domain.IServices
         Task<MenuItemViewModel> GetDetailBySeoLink(string tenantId, string seoLink, string v);
 
         Task<MenuDetailViewModel> GetAllActivatedMenuByPosition(string tenantId, string languageId, Position position);
+
+        Task<ActionResultResponse<MenuItemSelectedViewModel>> GetItemDetailSeleted(string tenantId, int subjectType, string subjectId, string languageId);
     }
 }

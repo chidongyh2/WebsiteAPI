@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using GHM.Infrastructure.Constants;
+using GHM.Infrastructure.Models;
 using GHM.Website.Domain.Models;
+using GHM.Website.Domain.ViewModels;
 
 namespace GHM.Website.Domain.IRepository
 {
@@ -31,5 +34,7 @@ namespace GHM.Website.Domain.IRepository
         Task<CategoryTranslation> GetActiveBySeoLink(string tenantId, string languageId, string seoLink);
 
         Task<bool> CheckExistsBySeoLink(string tenantId, string seoLink, string languageId);
+
+        Task<MenuItemSelectedViewModel> GetCategoryDetailForMenu(string tenantId, string subjectId, string languageId, bool v);
     }
 }
