@@ -68,66 +68,64 @@ IsCurrent = true,
     </div>
     <div class="category-mobile">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-xs-12 visible-sm visible-xs visible-md">
-                    <div class="block-news portfolio-item">
-                        <div class="news-default">
-                            <div class="image-content">
+            <div class="row  visible-sm visible-xs visible-md">
+                <div class="block-news portfolio-item">
+                    <div class="news-default col-sm-12 col-xs-12">
+                        <div class="image-content">
+                            <a href="@($"/{ newsDefault.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsDefault.MetaTitle) ? newsDefault.Title : newsDefault.MetaTitle)">
+                                <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsDefault.FeatureImage) ? "/images/no-image.png" : $"{url}{newsDefault.FeatureImage}")}&width=750&height=500")"
+                                     alt="@(string.IsNullOrEmpty(newsDefault.AltImage) ? newsDefault.Title : newsDefault.AltImage)" />
+                                <span class="img-overlay"></span>
+                            </a>
+                        </div>
+                        <div class="news-content">
+                            <div class="title">
                                 <a href="@($"/{ newsDefault.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsDefault.MetaTitle) ? newsDefault.Title : newsDefault.MetaTitle)">
-                                    <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsDefault.FeatureImage) ? "/images/no-image.png" : $"{url}{newsDefault.FeatureImage}")}&width=580&height=380")"
-                                         onerror="this.src='/images/no-image.png'"
-                                         alt="@(string.IsNullOrEmpty(newsDefault.AltImage) ? newsDefault.Title : newsDefault.AltImage)" />
+                                    @(!string.IsNullOrEmpty(newsDefault.Title) ? Common.SubString(newsDefault.Title, 70) : newsDefault.Title)
+                                </a>
+                            </div>
+                            <div class="summary">
+                                @(!string.IsNullOrEmpty(newsDefault.Description) ? Common.SubString(newsDefault.Description, 140) : newsDefault.Description)
+                            </div>
+                        </div>
+                    </div>
+                    @{
+                        Model.ListNews.RemoveAt(Model.ListNews.Count - 1);
+                    }
+                    @foreach (var news in Model.ListNews.Where(x => x.Id != newsDefault.Id))
+                    {
+                        <div class="col-sm-6 col-xs-6 col-md-6 news-item">
+                            <div class="image-content">
+                                <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                                    <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}&width=600&height=400")"
+                                         onerror="this.src='~/images/no-image.png'"
+                                         alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
                                     <span class="img-overlay"></span>
                                 </a>
                             </div>
-                            <div class="news-content">
-                                <div class="title">
-                                    <a href="@($"/{ newsDefault.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsDefault.MetaTitle) ? newsDefault.Title : newsDefault.MetaTitle)">
-                                        @(!string.IsNullOrEmpty(newsDefault.Title) ? Common.SubString(newsDefault.Title, 70) : newsDefault.Title)
-                                    </a>
-                                </div>
-                                <div class="summary">
-                                    @(!string.IsNullOrEmpty(newsDefault.Description) ? Common.SubString(newsDefault.Description, 140) : newsDefault.Description)
-                                </div>
+                            <div class="title">
+                                <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                                    @(!string.IsNullOrEmpty(news.Title) ? Common.SubString(news.Title, 70) : news.Title)
+                                </a>
                             </div>
                         </div>
-                        @{
-                            Model.ListNews.RemoveAt(Model.ListNews.Count - 1);
-                        }
-                        @foreach (var news in Model.ListNews.Where(x => x.Id != newsDefault.Id))
-                        {
+                    }
+                    <view-more params="categoryId: @($"{ViewBag.CategoryId}"), totalPage: @totalPageMobile">
+                    </view-more>
+                    <template id="btn-viewmore">
+                        <div data-bind="foreach: listNews">
                             <div class="col-sm-6 col-xs-6 col-md-6 news-item">
                                 <div class="image-content">
-                                    <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                                        <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}&width=600&height=400")"
-                                             onerror="this.src='~/images/no-image.png'"
-                                             alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
+                                    <a data-bind="attr : {href: seoLink, title: metaTitle}">
+                                        <img class="news-image zoom img-responsive lazy"
+                                             data-bind="attr : {src: '/image?url=@ViewBag.Url' + featureImage + '&width=600&height=400', alt: altImage !== '' && altImage !== undefined ? altImage : metaTilte}"
+                                             onerror="this.src='/image?url=&width=600&height=400'"/>
                                         <span class="img-overlay"></span>
                                     </a>
                                 </div>
                                 <div class="title">
-                                    <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                                        @(!string.IsNullOrEmpty(news.Title) ? Common.SubString(news.Title, 70) : news.Title)
-                                    </a>
-                                </div>
-                            </div>
-                        }
-                        <view-more params="categoryId: @($"{ViewBag.CategoryId}"), totalPage: @totalPageMobile">
-                        </view-more>
-                        <template id="btn-viewmore">
-                            <div data-bind="foreach: listNews">
-                                <div class="col-sm-6 col-xs-6 col-md-6 news-item">
-                                    <div class="image-content">
-                                        <a data-bind="attr : {href: seoLink, title: metaTitle}">
-                                            <img class="news-image zoom img-responsive lazy"
-                                                 data-bind="attr : {src: '/image?url=@ViewBag.Url' + featureImage + '&width=600&height=400', alt: altImage !== '' && altImage !== undefined ? altImage : metaTilte}"
-                                                 onerror="this.src='/images/no-image.png'" />
-                                            <span class="img-overlay"></span>
-                                        </a>
-                                    </div>
-                                    <div class="title">
-                                        <a data-bind="attr: {href:'/' + seoLink + '.html', title: metaTitle ? title : metaTitle }"></a>
-                                        <div data-bind="text : $parent.handleString($data,title)">
+                                    <a data-bind="attr: {href:'/' + seoLink + '.html', title: metaTitle ? title : metaTitle }"></a>
+                                    <div data-bind="text : $parent.handleString($data,title, 70)">
 
                                         </div>
                                     </div>

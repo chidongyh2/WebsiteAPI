@@ -20,14 +20,13 @@ ko.components.register('view-more', {
                 page: self.currentPage(),
                 pageSize: self.currentPageSize()
             }, function (result) {
-                console.log(result);
                 self.listNews.push.apply(self.listNews, result);
                 self.isLoadding(false);
             });
         };
 
         self.handleString = function (data, title, length) {
-            return title.substr(0, 70);
+            return title.substr(0, 30) + '...';
         };
     },
     template: { element: 'btn-viewmore' }
