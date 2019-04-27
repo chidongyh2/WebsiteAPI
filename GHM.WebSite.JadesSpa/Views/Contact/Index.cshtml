@@ -6,7 +6,7 @@
     var officeHeadquarters = listBranch.Where(x => x.IsOffice.Value).FirstOrDefault();
 }
 <partial name="_Breadcumb" />
-    <div class="contact contact-detail">
+    <div class="contact contact-detail lazy" data-src="/images/bgr-web/bgr lien he-19.jpg">
         <div class="container cm-pdt-20 cm-mgb-20 ">
             <div class="row ">
                 @if (officeHeadquarters != null)

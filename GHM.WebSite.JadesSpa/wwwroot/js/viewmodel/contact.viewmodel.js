@@ -105,4 +105,4 @@ function ContactViewModel() {
 }
 
 var viewModel = new ContactViewModel();
-ko.applyBindings(viewModel, document.getElementsByClassName("message")[0]);
+ko.applyBindings(viewModel, document.getElementsByClassName("modal-send-message")[0]);
