@@ -48,6 +48,15 @@
 </head>
 <body>
     <div id="fb-root"></div>
+    <div class="btn-hotline hidden-md hidden-sm hidden-xs">
+        @{
+        <a href="tel: @websiteSetting.Hotline">
+            <span id="phone-contact">
+                @(websiteSetting.Hotline != null ? websiteSetting.Hotline : "0916015199")
+            </span>
+        </a>
+        }
+    </div>
     @Html.AntiForgeryToken()
     <partial name="_Header" />
     <div class="body-content">
@@ -79,7 +88,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'UA-130493156-3');
     </script>
 

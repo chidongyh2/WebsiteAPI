@@ -115,6 +115,25 @@
     line-height: 45px;
 }
 
+.btn-hotline {
+    bottom: 50%;
+    position: fixed;
+    z-index: 1000;
+    right: 0px;
+    text-align: center;   
+    background-color: #5C8E2B;
+    padding: 7px 15px;
+    border-radius: 4px;
+    color: @color-text-white;
+
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        font-family:Roboto-Bold;
+    }
+}
+
 #myCarousel {
     /*@media @mobile {
         margin-top: 65px;
@@ -711,7 +730,7 @@
                     .pull-right {
                         @media @not_mobile {
                             margin-right: 20px;
-                        }                       
+                        }
 
                         i {
                             border: 1px solid @main-color;
@@ -765,7 +784,7 @@
 
                         @media @mobile {
                             font-size: 16px;
-                            margin-top:20px;
+                            margin-top: 20px;
                         }
                     }
 
@@ -1932,6 +1951,14 @@
             min-height: 185px;
             overflow: hidden;
             padding-bottom: 10px;
+
+            &:nth-child(2n + 1) {
+                padding-left: 7px;
+            }
+
+            &:nth-child(2n) {
+                padding-right: 7px;
+            }
 
             @media @tablet {
                 min-height: 290px;

@@ -113,6 +113,23 @@
   text-align: center;
   line-height: 45px;
 }
+.btn-hotline {
+  bottom: 50%;
+  position: fixed;
+  z-index: 1000;
+  right: 0px;
+  text-align: center;
+  background-color: #5C8E2B;
+  padding: 7px 15px;
+  border-radius: 4px;
+  color: #eef0f1;
+}
+.btn-hotline a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-family: Roboto-Bold;
+}
 #myCarousel {
   /*@media @mobile {
         margin-top: 65px;
@@ -1704,6 +1721,12 @@
   min-height: 185px;
   overflow: hidden;
   padding-bottom: 10px;
+}
+.category-mobile .block-news .news-item:nth-child(2n + 1) {
+  padding-left: 7px;
+}
+.category-mobile .block-news .news-item:nth-child(2n) {
+  padding-right: 7px;
 }
 @media only screen and (min-width: 768px) and (max-width: 992px) {
   .category-mobile .block-news .news-item {
