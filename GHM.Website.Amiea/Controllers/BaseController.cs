@@ -32,16 +32,15 @@ namespace GHM.Website.Amiea.Controllers
             ViewBag.WebsiteSetting = GetSetting();
             ViewBag.BranchContacts = GetBranch();
             ViewBag.SocialNetwork = GetSocialNetwork();
-            //ViewBag.Url = "http://localhost:50005/";
-            ViewBag.Url = "https://websitefile.ghmsoft.vn/";
+            ViewBag.Url = _configuration.GetApiUrl()?.FileUrl;
         }
 
         private List<MenuItemViewModel> GetMainMenu()
         {
-            //if (_cache.TryGetValue(CacheParam.MainNav, out List<MenuItemViewModel> menus))
-            //{
-            //    return menus;
-            //}
+            if (_cache.TryGetValue(CacheParam.MainNav, out List<MenuItemViewModel> menus))
+            {
+                return menus;
+            }
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -49,7 +48,7 @@ namespace GHM.Website.Amiea.Controllers
             var result = new HttpClientService()
                 .GetAsync<List<MenuItemViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/position/{(int)Position.Top}/items/menu/{apiService.TenantId}");
 
-            // _cache.Set(CacheParam.MainNav, result?.Result, TimeSpan.FromHours(2));
+            _cache.Set(CacheParam.MainNav, result?.Result, TimeSpan.FromHours(1));
 
             return result?.Result;
         }

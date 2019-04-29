@@ -23,7 +23,17 @@
         }
     });
 
-    $('.lazy').Lazy();
+    $('.lazy').lazy({
+        effect: "fadeIn",
+        effectTime: 1000,
+        visibleOnly: true,
+        beforeLoad: function (element) {
+            //$(element).attr("src", "/images/no-image.png");
+        },
+        onError: function (element) {
+            $(element).attr("src", "/images/no-image.png");
+        }
+    });
 
     $("#backToTop").click(() => {
         $("html, body").animate({ scrollTop: 0 }, 500);

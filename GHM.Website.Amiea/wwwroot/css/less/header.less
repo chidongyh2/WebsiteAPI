@@ -16,18 +16,36 @@
 
 nav {
     min-height: 70px !important;
+
     .navbar-header {
         margin-top: 10px;
         padding-left: 0px;
 
         .navbar-brand {
             padding: 0px 20px;
+
+            @media @tablet {
+                padding: 0px 10px;
+                margin-top: 10px !important;
+            }
+
+            @media @desktop{
+                margin-top: 10px;
+            }
         }
 
         img {
             margin-top: 10px;
             width: 160px;
             height: auto;
+
+            @media @tablet {
+                width: 80px;
+            }
+
+            @media @desktop {
+                width: 120px;
+            }
         }
     }
 
@@ -70,6 +88,10 @@ nav {
     #ameiaMainNav {
         padding-left: 30px;
 
+        @media @tablet {
+            padding-left: 10px;
+        }
+
         .navbar-nav {
             @media @mobile {
                 border-top: 1px solid @color-white;
@@ -102,6 +124,11 @@ nav {
 
                     @media @mobile {
                         line-height: 40px;
+                        font-size: 12px;
+                    }
+
+                    @media @tablet {
+                        font-size: 12px;
                     }
                 }
 
