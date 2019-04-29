@@ -3,7 +3,7 @@
     var url = ViewBag.Url;
 }
 
-<div id="about" class="about-us">
+<div id="about" class="about-us lazy" data-src="/images/bgr web/trang chu/image-08.jpg">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 center">
@@ -24,7 +24,7 @@
             </div>
             <div class="col-sm-6 hidden-xs">
                 <div class="strategy-content">
-                    <img class="img-responsive" src="~/images/BGR web/Trang chu/anh sep-02.png" alt="@websiteSetting.Brand" />
+                    <img class="img-responsive lazy" src="~/images/BGR web/Trang chu/anh sep-02.png" alt="@websiteSetting.Brand" />
                     <div class="content hidden-xs" data-bind="text:description(), css: {active: $root.isSelect}">
                     </div>
                 </div>

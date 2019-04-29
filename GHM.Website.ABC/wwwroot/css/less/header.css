@@ -55,7 +55,7 @@
   border-bottom: none;
   transition: background-color 2s ease-out;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .navbar-fixed-top {
     /*top: 15px;*/
   }
@@ -65,7 +65,7 @@
     border-bottom: 1px solid #222;
 }*/
 .header-top {
-  background-image: url('../../images/bgr web/trang chu/image-09.jpg');
+  /*background-image: url('../../images/bgr web/trang chu/image-09.jpg');*/
   background-position: center;
   background-size: cover;
   height: 140px;
@@ -87,7 +87,7 @@
   /*width: 130px;*/
   height: auto;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-top .nav-header img {
     height: 100%;
   }
@@ -96,7 +96,7 @@
   background-color: #931C1F !important;
   border-color: #931C1F;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom .navbar-inverse {
     background-color: transparent !important;
     border: none !important;
@@ -113,7 +113,7 @@
   /*text-align: center;*/
   z-index: 1030;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav {
     flex-direction: column;
     display: block;
@@ -125,7 +125,7 @@
   padding-right: 0px;
   border-color: #931C1F !important;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav .navbar-collapse {
     border: none !important;
     max-height: 120%;
@@ -138,7 +138,7 @@
 .header-bottom nav .navbar-collapse ul li a {
   line-height: 30px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav .navbar-header {
     background-color: #931C1F;
   }
@@ -159,7 +159,7 @@
   padding: 0px;
   /*padding-left: 100px;*/
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav .navbar-header .navbar-brand {
     display: flex;
     justify-content: center;
@@ -174,7 +174,7 @@
   flex-direction: row;
   float: unset !important;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav #abcMainNav .navbar-nav {
     margin: 0px !important;
     display: block;
@@ -183,7 +183,7 @@
 .header-bottom nav #abcMainNav .navbar-nav a {
   background-color: transparent !important;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav #abcMainNav ul {
     background-color: #931C1F;
   }
@@ -207,7 +207,7 @@
                         -o-transition: all 100ms ease-in-out;
                         transition: all 100ms ease-in-out;*/
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav #abcMainNav ul li a {
     line-height: 40px;
     font-size: 16px;
@@ -242,12 +242,12 @@
   color: #FFFFFF;
   border-bottom: 1px solid #FFFFFF;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav #abcMainNav ul li .active {
     /*border-bottom: unset;*/
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav #abcMainNav ul li {
     padding: 0px 10px;
     text-align: right;
@@ -281,7 +281,7 @@
   margin-top: 1px;
   padding-bottom: 10px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav #abcMainNav ul li ul {
     width: unset;
     background-color: #7d1120;
@@ -293,15 +293,18 @@
 .header-bottom nav #abcMainNav ul li ul li {
   padding: 0px 10px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav #abcMainNav ul li ul li {
     padding: 0px 20px;
   }
 }
+.header-bottom nav #abcMainNav ul li ul li a {
+  border-bottom: 1px solid transparent;
+}
 .header-bottom nav #abcMainNav ul li ul li a i {
   float: right;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav #abcMainNav ul li ul li a {
     padding-right: 30px;
   }
@@ -320,7 +323,7 @@
   left: 100%;
   top: 0 !important;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav #abcMainNav ul li ul li:last-child a {
     border-bottom: 1px solid #FFFFFF;
   }
@@ -340,7 +343,7 @@
   border-radius: unset;
   border: 1px solid #931C1F;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header-bottom nav #abcMainNav .dropdown-menu {
     position: static;
   }
