@@ -875,8 +875,8 @@
 }
 @media only screen and (min-width: 1200px) {
   .block-news {
-    max-height: 770px;
-    margin-bottom: 100px;
+    /*max-height: 770px;*/
+    margin-bottom: 60px;
   }
 }
 @media only screen and (max-width: 1200px) {
@@ -1718,7 +1718,7 @@
   background-color: #5b7222;
 }
 .category-mobile .block-news .news-item {
-  min-height: 190px;
+  min-height: 195px;
   overflow: hidden;
   padding-bottom: 10px;
 }
@@ -1730,7 +1730,7 @@
 }
 @media only screen and (min-width: 768px) and (max-width: 992px) {
   .category-mobile .block-news .news-item {
-    min-height: 290px;
+    min-height: 310px;
   }
 }
 .category-mobile .block-news .news-item .image-content {
