@@ -57,7 +57,7 @@ namespace GHM.Website.Domain.IServices
 
         Task<SearchResult<string>> GetAllNewsSeoLinkForSiteMap(string tenantId, string languageId);
 
-        Task<SearchResult<CategoryWidthNewsViewModel>> GetCategoryWidthNews(string tenantId, string languageId, string seoLink, int selectTop, bool isHomePage, bool isParent);
+        Task<SearchResult<CategoryWidthNewsViewModel>> GetListCategoryWidthNews(string tenantId, string languageId, string seoLink, int selectTop, bool isHomePage, bool isParent);
 
         Task<ActionResultResponse<CategoryWidthNewsViewModel>> GetCategoryWithNews(string tenantId, string languageId, string seoLink, int selectTop, bool isHomePage, bool isParent);
 

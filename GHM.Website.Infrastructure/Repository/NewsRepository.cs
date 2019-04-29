@@ -539,7 +539,7 @@ namespace GHM.Website.Infrastructure.Repository
             return query.AsNoTracking().ToList();
         }
 
-        public Task<List<CategoryWidthNewsViewModel>> GetCategoryWidthNews(string tenantId, string languageId, int categoryId, int selectTop, bool isHomePage)
+        public Task<List<CategoryWidthNewsViewModel>> GetListCategoryWidthNews(string tenantId, string languageId, int categoryId, int selectTop, bool isHomePage)
         {
             Expression<Func<News, bool>> spec = x => x.TenantId == tenantId && !x.IsDelete && x.IsActive && x.Status == ApproverStatus.Approved;
             Expression<Func<NewsTranslation, bool>> specTranslation = x => x.TenantId == tenantId && x.LanguageId == languageId && !x.IsDelete;
@@ -786,7 +786,7 @@ namespace GHM.Website.Infrastructure.Repository
         {
             Expression<Func<CategoriesNews, bool>> specCN = x => x.NewsId == newsId;
             Expression<Func<Category, bool>> specC = x => x.IsActive && !x.IsDelete && x.TenantId == tenantId;
-            Expression<Func<News, bool>> specN = x => x.IsActive && !x.IsDelete && x.TenantId == tenantId;
+            Expression<Func<News, bool>> specN = x => x.IsActive && !x.IsDelete && x.TenantId == tenantId && x.Id != newsId;
             Expression<Func<NewsTranslation, bool>> specNT = x => !x.IsDelete && x.LanguageId == languageId;
 
             var category = Context.Set<CategoriesNews>().Where(specCN).FirstOrDefault();

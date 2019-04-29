@@ -297,10 +297,34 @@ namespace GHM.Website.Api.Controllers
         [CheckPermission]
         public async Task<IActionResult> GetListNewsHomePage(string tenantId, string languageId, int selectTop = 5)
         {
-            var result = await _newsService.GetCategoryWidthNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, string.Empty, selectTop, true, false);
+            var result = await _newsService.GetListCategoryWidthNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, string.Empty, selectTop, true, false);
             return Ok(result);
         }
-        
+
+        /// <summary>
+        /// Lấy nhiều nhóm bài viết và danh sách bài viết theo nhóm
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="languageId"></param>
+        /// <param name="seoLink"></param>
+        /// <param name="selectTop"></param>
+        /// <returns></returns>
+        [Route("get-list-category-width-news/{tenantId}/{seoLink}/{selectTop}/{languageId?}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetListCategoryWidthNews(string tenantId, string languageId, string seoLink, int selectTop = 5)
+        {
+            var result = await _newsService.GetListCategoryWidthNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, selectTop, false, true);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Lấy một nhóm bài viết và danh sách bài viết
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="languageId"></param>
+        /// <param name="seoLink"></param>
+        /// <param name="selectTop"></param>
+        /// <returns></returns>
         [Route("get-news-width-parent-category/{tenantId}/{seoLink}/{selectTop}/{languageId?}"), AcceptVerbs("GET")]
         [CheckPermission]
         public async Task<IActionResult> GetNewsWidthParentCategory(string tenantId, string languageId, string seoLink, int selectTop = 5)
@@ -308,6 +332,14 @@ namespace GHM.Website.Api.Controllers
             var result = await _newsService.GetCategoryWithNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, selectTop, false, true);
             return Ok(result);
         }
+        
+        /// <summary>
+        ///  Lấy chi  tiết bài viết theo Id
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="subjectId"></param>
+        /// <param name="languageId"></param>
+        /// <returns></returns>
         [Route("detail/{tenantId}/{subjectId}/{languageId}"), AcceptVerbs("GET")]
         [CheckPermission]
         public async Task<IActionResult> GetNewsDetail(string tenantId, string subjectId, string languageId)
@@ -315,6 +347,7 @@ namespace GHM.Website.Api.Controllers
             var result = await _newsService.GetDetailForClient(tenantId, subjectId, languageId ?? CultureInfo.CurrentCulture.Name);
             return Ok(result);
         }
+
         //get for Jadespa
         [Route("get-detail-frombody"), AcceptVerbs("POST")]
         [CheckPermission]
@@ -323,6 +356,14 @@ namespace GHM.Website.Api.Controllers
             var result = await _newsService.GetClient(newsClientMeta.TenantId, newsClientMeta.LanguageId ?? CultureInfo.CurrentCulture.Name, newsClientMeta.SeoLink);
             return Ok(result);
         }
+
+        /// <summary>
+        ///  Kiểm tra bài viết có tồn taị
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="seoLink"></param>
+        /// <param name="languageId"></param>
+        /// <returns></returns>
         [Route("check-exist"), AcceptVerbs("POST")]
         [CheckPermission]
         public async Task<IActionResult> CheckNewsExistBySeoLink(string tenantId, string seoLink, string languageId)

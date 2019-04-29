@@ -57,7 +57,7 @@ namespace GHM.Website.ABC.Controllers
 
             if (categoryInfo?.ChildCount > 0)
             {
-                var listCategoryWidthNews = await httpClientService.GetAsync<SearchResult<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/get-news-width-parent-category/{apiService.TenantId}/{seoLink}/5/{CultureInfo.CurrentCulture.Name}");
+                var listCategoryWidthNews = await httpClientService.GetAsync<SearchResult<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/get-list-category-width-news/{apiService.TenantId}/{seoLink}/5/{CultureInfo.CurrentCulture.Name}");
                 ViewBag.ListCategoryWidthNews = listCategoryWidthNews?.Items;
             }
             else
