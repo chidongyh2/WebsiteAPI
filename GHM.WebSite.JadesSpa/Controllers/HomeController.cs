@@ -19,6 +19,7 @@ using GHM.Website.JadesSpa.Utils;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
 using GHM.Infrastructure.Constants;
+using DeviceDetectorNET;
 
 namespace GHM.Website.JadesSpa.Controllers
 {
@@ -53,17 +54,19 @@ namespace GHM.Website.JadesSpa.Controllers
 
             var categoryMiddle = await httpClientService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/get-news-width-parent-category/{apiService.TenantId}/tai-sao-lua-chon-jade-spa/5/{CultureInfo.CurrentCulture.Name}");
             ViewBag.CategoryMiddle = categoryMiddle?.Data;
-            //if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
-            //{
-            //    ViewBag.MainBanner = banners;
-            //}
-            //else
-            //{
-            var listBannerInHome = await httpClientService.GetAsync<ActionResultResponse<BannerViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/banners/{apiService.TenantId}/position/{(int)Position.Top}");
-            _cache.Set(CacheParam.Banner, listBannerInHome?.Data, TimeSpan.FromHours(1));
 
-            ViewBag.MainBanner = listBannerInHome?.Data;
-            //}
+            if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
+            {
+                ViewBag.MainBanner = banners;
+            }
+            else
+            {
+                var listBannerInHome = await httpClientService.GetAsync<ActionResultResponse<BannerViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/banners/{apiService.TenantId}/position/{(int)Position.Top}");
+                _cache.Set(CacheParam.Banner, listBannerInHome?.Data, TimeSpan.FromHours(1));
+
+                ViewBag.MainBanner = listBannerInHome?.Data;
+            }
+
             return View();
         }
         public async Task<ActionResult> Coordinator(string segment, int page = 1, int pageSize = 12)
@@ -103,7 +106,8 @@ namespace GHM.Website.JadesSpa.Controllers
                     {
                         return View("../NotFound/Index");
                     }
-                } else
+                }
+                else
                 {
                     return View("../NotFound/Index");
                 }
@@ -140,7 +144,7 @@ namespace GHM.Website.JadesSpa.Controllers
             }
 
 
-            }
+        }
         public async Task<IActionResult> About()
         {
             var requestUrl = _configuration.GetApiUrl();

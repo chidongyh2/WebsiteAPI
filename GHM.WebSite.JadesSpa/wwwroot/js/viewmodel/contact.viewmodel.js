@@ -24,6 +24,15 @@ function ContactViewModel() {
             return;
         }
 
+       
+       
+        if (!self.contactPhoneNumber() || self.contactPhoneNumber() === "") {
+            toastr.error("Vui lòng nhập số điện thoại của bạn");
+            self.isPhoneNumberError(true);
+            self.isPhoneNumberFocus(true);
+            return;
+        }
+
         if (!self.contactEmail() || self.contactEmail() === "") {
             toastr.error("Vui lòng nhập email của bạn.");
             self.isEmailError(true);
@@ -38,13 +47,6 @@ function ContactViewModel() {
                 self.isEmailFocus(true);
                 return;
             }
-        }
-
-        if (!self.contactPhoneNumber() || self.contactPhoneNumber() === "") {
-            toastr.error("Vui lòng nhập số điện thoại của bạn");
-            self.isPhoneNumberError(true);
-            self.isPhoneNumberFocus(true);
-            return;
         }
 
         if (!self.contactContent() || self.contactContent() === "") {
