@@ -12,15 +12,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 center cm-mgt-10 cm-mgb-10">
-                    <img class="logo" src="~/images/BGR web/Gaya/Gaya_03.jpg" />
+                    <img class="logo lazy" data-src="/images/BGR web/Gaya/Gaya_03.jpg" />
                 </div>
                 <div class="col-sm-12">
                     <div class="instruction">
                         <div class="left-content">
-                            <img src="~/images/BGR web/Gaya/Gaya_10.jpg" />
+                            <img data-src="/images/BGR web/Gaya/Gaya_10.jpg" class="lazy" />
                         </div>
                         <div class="right-content">
-                            <img class="img-responsive" src="~/images/BGR web/Gaya/Gaya_07.jpg" />
+                            <img class="img-responsive lazy" data-src="/images/BGR web/Gaya/Gaya_07.jpg" />
                         </div>
                     </div>
                 </div>
@@ -53,22 +53,22 @@
                     <div class="row images" id="product-image-gaya">
                         <div class="col-sm-12 image-content">
                             <div class="col-xs-6 product-image">
-                                <img src="~/images/BGR web/Gaya/Gaya_15.jpg" />
+                                <img src="/images/BGR web/Gaya/Gaya_15.jpg" class="lazy" />
                             </div>
                             <div class=" col-xs-6 product-image">
-                                <img src="~/images/BGR web/Gaya/Gaya_17.jpg" />
+                                <img src="/images/BGR web/Gaya/Gaya_17.jpg" class="lazy" />
                             </div>
                             <div class="col-xs-6 product-image">
-                                <img src="~/images/BGR web/Gaya/Gaya_20.jpg" />
+                                <img src="/images/BGR web/Gaya/Gaya_20.jpg" class="lazy"/>
                             </div>
                             <div class="product-image col-xs-6">
-                                <img src="~/images/BGR web/Gaya/Gaya_21.jpg" />
+                                <img src="/images/BGR web/Gaya/Gaya_21.jpg" class="lazy"/>
                             </div>
                             <div class="col-xs-6 product-image">
-                                <img src="~/images/BGR web/Gaya/Gaya_24.jpg" />
+                                <img src="/images/BGR web/Gaya/Gaya_24.jpg" class="lazy"/>
                             </div>
                             <div class="col-xs-6 product-image">
-                                <img src="~/images/BGR web/Gaya/Gaya_25.jpg" />
+                                <img src="/images/BGR web/Gaya/Gaya_25.jpg" class="lazy"/>
                             </div>
                         </div>
                     </div>
@@ -135,13 +135,12 @@
             <div class="row">
                 <div class="method-item">
                     <div class="col-sm-6 image-active">
-                        <img class="img-responsive w100pc" src="~/images/BGR web/Gaya/Gaya_29.jpg" />
+                        <img class="img-responsive w100pc lazy" data-src="/images/BGR web/Gaya/Gaya_29.jpg" />
                     </div>
                     <div class="col-sm-6 description">
                         <div class="item">
                             <hr />
                             Giúp các mẹ sau sinh hoặc người bị béo phì giảm béo và săn chắc cơ thể: Muối thảo dược sinh nhiệt và giữ nhiệt lâu, góp phần làm tan mỡ, thon gọn và săn chắc cơ thể. Đặc biệt ngăn ngừa và làm giảm tình trạng da bụng chảy sệ sau sinh.
-
                         </div>
                     </div>
                 </div>
@@ -155,7 +154,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 image-active">
-                        <img class="img-responsive w100pc" src="~/images/BGR web/Gaya/Gaya_33.jpg" />
+                        <img class="img-responsive w100pc lazy" data-src="/images/BGR web/Gaya/Gaya_33.jpg" />
                     </div>
                     <div class="col-sm-6 description visible-xs">
                         <div class="item">
@@ -168,7 +167,7 @@
             <div class="row">
                 <div class="method-item">
                     <div class="col-sm-6 image-active">
-                        <img class="img-responsive w100pc" src="~/images/BGR web/Gaya/Gaya_36.jpg" />
+                        <img class="img-responsive w100pc lazy" data-src="/images/BGR web/Gaya/Gaya_36.jpg" />
                     </div>
                     <div class="col-sm-6 description">
                         <div class="item">
@@ -241,7 +240,7 @@
                     $('.method-gaya').css('margin-top', -(product_image_gaya / 2 + product_description_gaya) + 'px');
                     $('.method-gaya').css('padding-top', product_image_gaya / 2 + product_description_gaya + 'px');
                 }
-            }, 200)
+            })
 
             $("#bannerGayaSlider").lightSlider({
                 item: 4,

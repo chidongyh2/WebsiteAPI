@@ -4,10 +4,10 @@
     color: @color-white;
     padding-bottom: 30px;
     padding-top: 30px;
-    background-image: url('../../images/bgr web/trang chu/image-04.jpg');
+    /*background-image: url('../../images/bgr web/trang chu/image-04.jpg');*/
     background-position: initial;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: cover;
 
     @media @mobile {
         background-size: auto 100%;
@@ -185,6 +185,10 @@
             @media @mobile {
                 padding: 0px 5px;
                 flex-basis: 25%;
+            }
+
+            @media @tablet{
+                flex-basis: 12%;
             }
         }
     }

@@ -11,7 +11,17 @@ $(document).ready(function () {
         }
     });
 
-    $('.lazy').Lazy();
+    $('.lazy').lazy({
+        effect: "fadeIn",
+        effectTime: 1000,
+        visibleOnly: true,
+        beforeLoad: function (element) {
+            $(element).attr("src", "/image?url=&width=640&height=360");
+        },
+        onError: function (element) {
+            $(element).attr("src", "/image?url=&width=640&height=360");
+        }
+    });
 
     $("#backToTop").click(() => {
         $("html, body").animate({ scrollTop: 0 }, 500);

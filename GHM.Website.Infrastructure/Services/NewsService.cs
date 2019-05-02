@@ -20,9 +20,6 @@ using GHM.Website.Domain.Constants;
 using Microsoft.Extensions.Configuration;
 using GHM.Events;
 using GHM.Infrastructure.Helpers;
-using System.Net.Http;
-using Newtonsoft.Json;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 
 namespace GHM.Website.Infrastructure.Services
 {
@@ -791,7 +788,7 @@ namespace GHM.Website.Infrastructure.Services
             };
         }
 
-        public async Task<SearchResult<CategoryWidthNewsViewModel>> GetCategoryWidthNews(string tenantId, string languageId, string seoLink, int selectTop,
+        public async Task<SearchResult<CategoryWidthNewsViewModel>> GetListCategoryWidthNews(string tenantId, string languageId, string seoLink, int selectTop,
             bool isHomePage, bool isParent)
         {
             if (isParent)
@@ -805,13 +802,13 @@ namespace GHM.Website.Infrastructure.Services
 
                 return new SearchResult<CategoryWidthNewsViewModel>
                 {
-                    Items = await _newsRepository.GetCategoryWidthNews(tenantId, languageId, categoryInfo.CategoryId, selectTop, isHomePage),
+                    Items = await _newsRepository.GetListCategoryWidthNews(tenantId, languageId, categoryInfo.CategoryId, selectTop, isHomePage),
                 };
             }
 
             return new SearchResult<CategoryWidthNewsViewModel>
             {
-                Items = await _newsRepository.GetCategoryWidthNews(tenantId, languageId, -1, selectTop, isHomePage),
+                Items = await _newsRepository.GetListCategoryWidthNews(tenantId, languageId, -1, selectTop, isHomePage),
             };
         }
 

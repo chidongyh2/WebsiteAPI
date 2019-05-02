@@ -5,7 +5,7 @@
     var url = ViewBag.Url;
 }
 <link href="~/lib/lightslider/css/lightslider.css" rel="stylesheet" />
-<div class="news-angency">
+<div class="news-angency lazy" data-src="/images/bgr web/trang chu/image-05.jpg">
     @if (listCategoryWidthNew != null && listCategoryWidthNew.Any())
     {
         var listCategory = listCategoryWidthNew.Select(x => new

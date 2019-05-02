@@ -149,25 +149,11 @@ body {
                     }
                 }
             }
-            /*font-size: 14px;
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 10px;
 
-            a {
-                color: @color-white;
-                text-decoration: none;
+            @media @tablet {
+                min-height: 150px;
             }
 
-            &:before, &:after {
-                width: 12%;
-                height: 1px;
-                background: #A1A1A1;
-                content: '';
-                display: inline-block;
-                top: -4px;
-                position: relative;
-            }*/
             @media @mobile {
                 display: none;
             }
@@ -498,25 +484,15 @@ body {
             display: inline-block;
             top: -4px;
             position: relative;
-        }
-        /*background-color: @color-white;
-        padding: 5px 0px;
 
-        h2 {
-            text-transform: uppercase;
-            text-align: center;
-            font-size: 16px;
-            margin: 10px 0px;
-
-            a {
-                color: @main-color;
-
-                &:hover {
-                    color: @color-hover;
-                    text-decoration: none;
-                }
+            @media @tablet {
+                width: 13%;
             }
-        }*/
+
+            @media @desktop {
+                width: 18%;
+            }
+        }
     }
 }
 
@@ -697,6 +673,14 @@ body {
                 min-height: unset;
             }
 
+            @media @tablet {
+                min-height: 120px;
+            }
+
+            @media @desktop{
+                min-height: 100px;
+            }
+
             a {
                 color: @main-color;
                 transition: ease-in-out 500ms;
@@ -726,6 +710,10 @@ body {
 
             @media @mobile {
                 min-height: unset;
+            }
+
+            @media @tablet {
+                min-height: 90px;
             }
 
             .title-mobile {

@@ -56,6 +56,11 @@
   margin-bottom: 10px;
   margin-top: 10px;
 }
+@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 992px) and (max-width: 1200px) {
+  #footer .contact-info .media {
+    min-height: 60px;
+  }
+}
 #footer .contact-info .media i {
   border: 1px solid #FFFFFF;
   width: 32px;
@@ -139,7 +144,7 @@
   align-items: center;
   justify-content: center;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #footer .message,
   #footer .social-network,
   #footer .hotline {

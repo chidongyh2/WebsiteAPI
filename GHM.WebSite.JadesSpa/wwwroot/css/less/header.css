@@ -19,7 +19,7 @@
   src: url('../../lib/font-roboto/VLAUTHENTICAREGULAR.OTF') format('truetype');
 }
 .navbar-fixed-top {
-  background-color: #609930;
+  background-color: #5b7222;
   border-bottom: none;
   /*transition: background-color 2s ease-out;*/
 }
@@ -90,7 +90,7 @@
   font-size: 20px;
   margin-top: 0px !important;
   font-family: VLALLROUNDGOTHIC-BOOK;
-  box-shadow: 0 8px 6px -7px #609930;
+  box-shadow: 0 8px 6px -7px #5b7222;
   border: none;
 }
 @media only screen and (min-width: 1200px) {
@@ -122,7 +122,7 @@
   display: flex;
   align-items: center;
   flex: 1 0 0;
-  max-width: 5%;
+  max-width: 60px;
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .wrap .navbar-brand {
@@ -137,7 +137,7 @@
   }
   .header-bottom .navbar-inverse .container a img {
     margin: 5px 0px 0px 5px !important;
-    width: 45px;
+    width: 40px;
   }
   .header-bottom .navbar-inverse .container button {
     margin-top: 15px;
@@ -204,7 +204,7 @@
 .header-bottom nav .navbar-collapse {
   padding-left: 0px;
   padding-right: 0px;
-  border-color: #609930 !important;
+  border-color: #5b7222 !important;
   overflow: scroll;
 }
 @media only screen and (max-width: 1200px) {
@@ -260,11 +260,10 @@
   }
 }
 .header-bottom nav .navbar-collapse ul li .list-social-network {
-  margin-top: 15px;
+  margin-top: 10px 0px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
 }
 .header-bottom nav .navbar-collapse ul li .list-social-network .list-items {
   margin: 5px;
@@ -274,11 +273,18 @@
 }
 .header-bottom nav .navbar-collapse ul li .list-social-network .list-items a i {
   display: inline-block;
-  border-radius: 60px;
+  border-radius: 40px;
   box-shadow: 0px 0px 2px #888;
   padding: 0.5em 0.6em;
   background-color: #eef0f1;
-  color: #609930;
+  color: #5b7222;
+  height: 40px;
+  width: 40px;
+  font-size: 22px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .header-bottom nav .navbar-collapse ul li .list-social-network .list-items a i.fa-facebook {
   padding: 10px 15px;
@@ -328,7 +334,7 @@
     position: absolute;
     opacity: 1;
     top: 100%;
-    background-color: #609930 !important;
+    background-color: #6B9E37 !important;
     padding-top: 0px !important;
   }
   .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu li {
@@ -372,7 +378,7 @@
 }
 @media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li .dropdown-menu {
-    background: #609930 !important;
+    background: #6B9E37 !important;
   }
 }
 @media only screen and (max-width: 1200px) {
@@ -417,7 +423,7 @@
 }
 .header-bottom nav .header-tool .btn-group a {
   font-size: 16px;
-  color: #609930;
+  color: #5b7222;
 }
 .header-bottom nav .header-tool .btn-group a:hover,
 .header-bottom nav .header-tool .btn-group a :focus,

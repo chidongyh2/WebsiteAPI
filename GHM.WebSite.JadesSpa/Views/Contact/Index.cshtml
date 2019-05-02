@@ -6,176 +6,177 @@
     var officeHeadquarters = listBranch.Where(x => x.IsOffice.Value).FirstOrDefault();
 }
 <partial name="_Breadcumb" />
-    <div class="contact contact-detail">
-        <div class="container cm-pdt-20 cm-mgb-20 ">
-            <div class="row ">
-                @if (officeHeadquarters != null)
-                {
-                    <div class="col-lg-12 center">
-                        <h2 class="titlebar">@Resource.Contact</h2>
-                        <hr />
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="item-contact">
-                            <div class="icon">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                            </div>
-                            <div class="content">
-                                <h2 class="title">@Resource.Address</h2>
-                                <div class="value">
-                                    @officeHeadquarters.Address
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="item-contact">
-                            <div class="icon">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                            </div>
-                            <div class="content">
-                                @foreach (var branchItem in officeHeadquarters.BranchContactDetails)
-                                {
-                                    switch (branchItem.ContactType)
-                                    {
-                                        case ContactType.MobilePhone:
-                                            <h2 class="title">
-                                                @Resource.PhoneNumber
-                                            </h2>
-                                            <div class="value">
-                                                @branchItem.ContactValue
-                                            </div>
-                                            break;
-                                        case ContactType.Fax:
-                                            <h2 class="title">
-                                                Fax
-                                            </h2>
-                                            <div class="value">
-                                                @branchItem.ContactValue
-                                            </div>
-                                            break;
-                                        case ContactType.Email:
-                                            <h2 class="title">
-                                                Email
-                                            </h2>
-                                            <div class="value">
-                                                <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a> 
-                                            </div>
-                                            break;
-                                        case ContactType.HomePhone:
-                                            <h2 class="title">
-                                                @Resource.PhoneNumber
-                                            </h2>
-                                            <div class="value">
-                                                @branchItem.ContactValue
-                                            </div>
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                }
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="item-contact">
-                            <div class="icon">
-                                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                            </div>
-                            <div class="content">
-                                <h2 class="title">@Resource.WorkTime</h2>
-                                <div class="value">
-                                    @officeHeadquarters.WorkTime
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
+@*data-src="/images/bgr-web/bgr lien he-19.jpg"*@
+<div class="contact contact-detail lazy">
+    <div class="container cm-pdt-20 cm-mgb-20 ">
+        <div class="row ">
+            @if (officeHeadquarters != null)
+            {
                 <div class="col-lg-12 center">
-                    <h2 class="titlebar">@Resource.AngencySystem</h2>
+                    <h2 class="titlebar">@Resource.Contact</h2>
                     <hr />
                 </div>
                 <div class="col-lg-4">
-                    <div class="angency-system">
-                        <div class="header">
+                    <div class="item-contact">
+                        <div class="icon">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
                         </div>
-                        <ul id="list-angency-system">
-                            @foreach (var branchs in listBranch)
-                            {
-                                var link = branchs.Link;
-
-                                <li data-bind="click: $root.selectBranch.bind($data, '@link', '@branchs.Name'), css:{select: $root.name() === '@branchs.Name'}">
-                                    <h3 class="title">
-                                        @branchs.Name
-                                    </h3>
-                                    <div class="content">
-                                        @if (!string.IsNullOrEmpty(branchs?.Address))
-                                        {
-                                            <p class="">
-                                                @Resource.Address:
-                                                @branchs?.Address
-                                            </p>
-                                        }
-                                        @if (branchs.BranchContactDetails != null && branchs.BranchContactDetails.Any())
-                                        {
-                                            @foreach (var branchItem in branchs.BranchContactDetails)
-                                            {
-                                                switch (branchItem.ContactType)
-                                                {
-                                                    case ContactType.MobilePhone:
-                                                        <p class="">
-                                                            @Resource.PhoneNumber:
-                                                            @branchItem.ContactValue
-                                                        </p>
-                                                        break;
-                                                    case ContactType.Fax:
-                                                        <p class="">
-                                                            Fax:
-                                                            @branchItem.ContactValue
-                                                        </p>
-                                                        break;
-                                                    case ContactType.Email:
-                                                        <p class="">
-                                                            Email:
-                                                            <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a> 
-                                                        </p>
-                                                        break;
-                                                    case ContactType.HomePhone:
-                                                        <p class="">
-                                                            @Resource.PhoneNumber:
-                                                            @branchItem.ContactValue
-                                                        </p>
-                                                        break;
-                                                    default:
-                                                        break;
-                                                }
-                                            }
-                                        }
-                                    </div>
-                                </li>
-                            }
-                        </ul>
+                        <div class="content">
+                            <h2 class="title">@Resource.Address</h2>
+                            <div class="value">
+                                @officeHeadquarters.Address
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
-                    @*<div id="map">
-                            <iframe src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.GoogleMap) ? websiteSetting.GoogleMap : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.521597783849!2d105.81547915024359!3d21.01180568593895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab7d497c610d%3A0xf47ff80f0a500d9e!2sJade+Spa+%26+Clinic!5e0!3m2!1sen!2s!4v1481097450349")" width="100%" height="360" frameborder="0" style="border:0" allowfullscreen></iframe>
-                        </div>*@
-                    <div id="map">
-                        <iframe data-bind="attr: {src: $root.mapId()}" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <div class="col-lg-4">
+                    <div class="item-contact">
+                        <div class="icon">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </div>
+                        <div class="content">
+                            @foreach (var branchItem in officeHeadquarters.BranchContactDetails)
+                            {
+                                switch (branchItem.ContactType)
+                                {
+                                    case ContactType.MobilePhone:
+                                        <h2 class="title">
+                                            @Resource.PhoneNumber
+                                        </h2>
+                                        <div class="value">
+                                            @branchItem.ContactValue
+                                        </div>
+                                        break;
+                                    case ContactType.Fax:
+                                        <h2 class="title">
+                                            Fax
+                                        </h2>
+                                        <div class="value">
+                                            @branchItem.ContactValue
+                                        </div>
+                                        break;
+                                    case ContactType.Email:
+                                        <h2 class="title">
+                                            Email
+                                        </h2>
+                                        <div class="value">
+                                            <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a>
+                                        </div>
+                                        break;
+                                    case ContactType.HomePhone:
+                                        <h2 class="title">
+                                            @Resource.PhoneNumber
+                                        </h2>
+                                        <div class="value">
+                                            @branchItem.ContactValue
+                                        </div>
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        </div>
                     </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="item-contact">
+                        <div class="icon">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="content">
+                            <h2 class="title">@Resource.WorkTime</h2>
+                            <div class="value">
+                                @officeHeadquarters.WorkTime
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-lg-12 center">
+                <h2 class="titlebar">@Resource.AngencySystem</h2>
+                <hr />
+            </div>
+            <div class="col-lg-4">
+                <div class="angency-system">
+                    <div class="header">
+                    </div>
+                    <ul id="list-angency-system">
+                        @foreach (var branchs in listBranch)
+                        {
+                            var link = branchs.Link;
+
+                            <li data-bind="click: $root.selectBranch.bind($data, '@link', '@branchs.Name'), css:{select: $root.name() === '@branchs.Name'}">
+                                <h3 class="title">
+                                    @branchs.Name
+                                </h3>
+                                <div class="content">
+                                    @if (!string.IsNullOrEmpty(branchs?.Address))
+                                    {
+                                        <p class="">
+                                            @Resource.Address:
+                                            @branchs?.Address
+                                        </p>
+                                    }
+                                    @if (branchs.BranchContactDetails != null && branchs.BranchContactDetails.Any())
+                                    {
+                                        @foreach (var branchItem in branchs.BranchContactDetails)
+                                        {
+                                            switch (branchItem.ContactType)
+                                            {
+                                                case ContactType.MobilePhone:
+                                                    <p class="">
+                                                        @Resource.PhoneNumber:
+                                                        @branchItem.ContactValue
+                                                    </p>
+                                                    break;
+                                                case ContactType.Fax:
+                                                    <p class="">
+                                                        Fax:
+                                                        @branchItem.ContactValue
+                                                    </p>
+                                                    break;
+                                                case ContactType.Email:
+                                                    <p class="">
+                                                        Email:
+                                                        <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a>
+                                                    </p>
+                                                    break;
+                                                case ContactType.HomePhone:
+                                                    <p class="">
+                                                        @Resource.PhoneNumber:
+                                                        @branchItem.ContactValue
+                                                    </p>
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                @*<div id="map">
+                        <iframe src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.GoogleMap) ? websiteSetting.GoogleMap : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.521597783849!2d105.81547915024359!3d21.01180568593895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab7d497c610d%3A0xf47ff80f0a500d9e!2sJade+Spa+%26+Clinic!5e0!3m2!1sen!2s!4v1481097450349")" width="100%" height="360" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>*@
+                <div id="map">
+                    <iframe data-bind="attr: {src: $root.mapId()}" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    @section scripts{
-        <script type="text/javascript">
+@section scripts{
+    <script type="text/javascript">
             var websiteSetting = @Html.Raw(JsonConvert.SerializeObject(ViewBag.WebsiteSetting));
             var branchIsOffice = @Html.Raw(JsonConvert.SerializeObject(officeHeadquarters));
 
             console.log(branchIsOffice);
-        </script>
-        <script src="~/js/viewmodel/angency-system.viewmodel.min.js"></script>
-    }
+    </script>
+    <script src="~/js/viewmodel/angency-system.viewmodel.min.js"></script>
+}
 

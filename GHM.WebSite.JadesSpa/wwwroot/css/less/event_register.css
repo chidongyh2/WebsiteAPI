@@ -634,7 +634,7 @@ nav #registerMainNav li:hover > ul {
   }
 }
 #video .video-container #video-silder .carousel-caption p {
-  color: #609930;
+  color: #5b7222;
   font-size: 25px;
 }
 @media only screen and (max-width: 1200px) {
@@ -790,7 +790,7 @@ nav #registerMainNav li:hover > ul {
   margin-top: 20px;
 }
 #register #register_form .submit .btn-send-message:hover {
-  background-color: #609930;
+  background-color: #5b7222;
 }
 #register .social-network ul {
   text-align: center;

@@ -6,7 +6,7 @@
 }
 
 <div class="header">
-    <img src="@($"/image?url={url}{ViewBag.ImageBanner}")" class="img-responsive" onerror="this.src='/images/no-image.png'"/>
+    <img src="@($"/image?url={url}{ViewBag.ImageBanner}")" class="img-responsive lazy" onerror="this.src='/images/no-image.png'"/>
     <div class="breadcrumb">
         <div class="container">
             <div class="row">

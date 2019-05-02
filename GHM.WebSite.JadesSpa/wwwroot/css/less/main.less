@@ -1,11 +1,11 @@
 ﻿@import "config.less";
 
 #backToTop {
-    bottom: 20px;
+    bottom: 15px;
     position: fixed;
-    right: 25px;
+    right: 12px;
     z-index: 1000;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0,0,0,.4);
     border-radius: 4px;
     height: 40px;
     width: 40px;
@@ -28,27 +28,15 @@
     }
 
     .item {
-
         .wrap-item {
-            overflow: hidden;
-            border: 1px solid transparent;
-            /*width: 258px !important;
-            height: 290px;*/
-            /*position: relative;*/
-            /*background: linear-gradient(to right,#B78114 0%,#FDED98 70%,#B78114 100%);*/
-            background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%);
-            /*&:hover {
-                    img {
-                        visibility: hidden;
-                    }
-                    width: 100%;
-                    background-color: #931c1f;
-                    opacity: 0.9;
-                    text-decoration: none; 
-            }*/
+            /*overflow: hidden;*/
+            border: 2px solid transparent;
+            background: linear-gradient(to right, #b57e10 0%, #fff3a6 75%, #b57e10 100%);
+            border-radius: 9px !important;
+            margin-bottom: 10px;
+            box-shadow: 4px 4px 4px 4px #ddd;
+
             img {
-                /*width: 258px !important;
-                height: 290px;*/
                 padding: 1px 2px 0px 2px;
                 margin: 0 auto;
             }
@@ -62,16 +50,14 @@
                     text-decoration: none;
                     cursor: pointer;
                     width: 100%;
-                    /*height: 75px;*/
                     text-transform: uppercase;
-                    font-family: VLALLROUNDGOTHIC-BOOK;
-                    font-size: 20px;
+                    font-family: Roboto-Bold;
+                    font-size: 22px;
                     color: @main-color;
-                    /*position: absolute;*/
                     z-index: 9999;
                     bottom: 0px;
                     text-align: center;
-                    /*background-image: linear-gradient(to right, #f8a102 0%, #f9e0b2 50%, #f8a102 100%);*/
+                    white-space: normal;
                 }
             }
         }
@@ -127,6 +113,25 @@
     width: 40px;
     text-align: center;
     line-height: 45px;
+}
+
+.btn-hotline {
+    bottom: 50%;
+    position: fixed;
+    z-index: 1000;
+    right: 0px;
+    text-align: center;   
+    background-color: #5C8E2B;
+    padding: 7px 15px;
+    border-radius: 4px;
+    color: @color-text-white;
+
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        font-family:Roboto-Bold;
+    }
 }
 
 #myCarousel {
@@ -244,27 +249,23 @@
 }
 
 #about {
-    background-image: url('../../images/bgr-web/background-image/nen-pc_04.jpg');
+    /*background-image: url('../../images/bgr-web/background-image/nen-pc_04.jpg');*/
     background-repeat: repeat;
     background-size: cover;
+    padding: 30px 0px;
     /*height: 260px;*/
     @media @mobile {
-        /*max-height: 160px;*/
+        padding: 20px 0px;
     }
 
     .container {
-        padding: 30px 0px;
-
-        @media @mobile {
-            padding: 20px 0px;
-        }
-
         .row {
             text-align: center;
             color: @main-color;
 
             .titlebar {
                 text-transform: uppercase;
+                color: @main-color;
 
                 @media @mobile {
                     font-size: 16px;
@@ -275,6 +276,7 @@
 
             .content {
                 font-family: vlauthenticaregular !important;
+                color: @color-text-grey;
 
                 @media @not_mobile {
                     font-size: 32px;
@@ -289,7 +291,7 @@
 }
 
 #news-hot {
-    background-image: url('../../images/bgr-web/background-image/nen-pc_05.jpg');
+    /*background-image: url('../../images/bgr-web/background-image/nen-pc_05.jpg');*/
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 40px;
@@ -314,7 +316,7 @@
             text-align: center;
 
             .titlebar {
-                color: @color-text-white;
+                color: @main-color;
                 text-align: center;
                 text-transform: uppercase;
                 font-family: VLALLROUNDGOTHIC-BOOK;
@@ -326,7 +328,7 @@
                 &:before, &:after {
                     width: 5%;
                     height: 2px;
-                    background: @color-text-white;
+                    background: @main-color;
                     content: '';
                     display: inline-block;
                     color: white;
@@ -339,7 +341,7 @@
                     &:before {
                         width: 8%;
                         height: 2px;
-                        background: @color-text-white;
+                        background: @main-color;
                         content: '';
                         display: inline-block;
                         color: white;
@@ -351,7 +353,7 @@
                     &:after {
                         width: 8%;
                         height: 2px;
-                        background: @color-text-white;
+                        background: @main-color;
                         content: '';
                         display: inline-block;
                         color: white;
@@ -364,6 +366,7 @@
 
             .descriptionbar {
                 font-family: vlauthenticaregular;
+                color: @color-text-grey;
 
                 @media @mobile {
                     font-size: 16px !important;
@@ -379,18 +382,25 @@
         }
 
         .item-hot {
+            .even {
+                padding-left: 7px;
+            }
+
+            .odd {
+                padding-right: 7px;
+            }
+
             .item {
                 background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%);
                 font-size: 18px;
-                font-family: VLALLROUNDGOTHIC-BOOK;
+                font-family: Roboto-Bold;
                 color: @main-color;
                 margin-top: 15px;
-                font-weight: 1000;
+                font-weight: 800;
                 text-transform: uppercase;
 
                 @media @mobile {
                     font-size: 15px;
-                    font-weight: 1000;
                 }
 
                 img {
@@ -423,10 +433,10 @@
 }
 
 #news-introduce {
-    background-image: url('../../images/bgr-web/background-image/nen-pc_06.jpg');
+    /*background-image: url('../../images/bgr-web/background-image/nen-pc_06.jpg');*/
     background-repeat: no-repeat;
     background-size: cover;
-    padding-top: 40px;
+    padding-top: 60px;
     padding-bottom: 60px;
 
     @media @mobile {
@@ -484,6 +494,7 @@
 
     .descriptionbar {
         font-family: vlauthenticaregular;
+        color: @color-text-grey;
 
         @media @mobile {
             font-size: 16px;
@@ -505,8 +516,20 @@
             /*margin: 0 15%;*/
         }
 
+        @media @mobile {
+            .even {
+                padding-left: 7px;
+            }
+
+            .odd {
+                padding-right: 7px;
+            }
+        }
+
         .item {
             text-align: center;
+
+
 
             .wrap-image {
                 background: @main-color;
@@ -541,8 +564,8 @@
                 a {
                     text-decoration: none;
                     color: @main-color;
-                    font-family: VLALLROUNDGOTHIC-BOOK;
-                    font-size: 18px;
+                    font-family: Roboto-Bold;
+                    font-size: 22px;
                     text-transform: uppercase;
 
                     @media @mobile {
@@ -604,8 +627,8 @@
                 a {
                     text-decoration: none;
                     color: @main-color;
-                    font-family: VLALLROUNDGOTHIC-BOOK;
-                    font-size: 18px;
+                    font-family: Roboto-Bold;
+                    font-size: 22px;
                     text-transform: uppercase;
                 }
 
@@ -689,13 +712,14 @@
 
                     .titlebar {
                         font-size: 22px;
-                        padding: 5px 10px;
+                        padding: 6px 12px;
                         color: @main-color;
                         text-transform: uppercase;
                         background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%) !important;
-                        font-family: VLALLROUNDGOTHIC-BOOK;
+                        font-family: Roboto-Bold;
                         border-radius: 6px;
                         box-shadow: 3px 3px 5px 3px lightgrey;
+                        margin-top: 0px;
 
                         @media @mobile {
                             margin: 20px 0px;
@@ -708,18 +732,17 @@
                             margin-right: 20px;
                         }
 
-                        @media @mobile {
-                            margin-top: 5px;
-                        }
-
                         i {
-                            margin-top: 20px;
                             border: 1px solid @main-color;
                             padding: 3px 10px;
                             border-radius: 5px;
 
                             &:hover {
                                 cursor: pointer;
+                            }
+
+                            @media @mobile {
+                                margin-top: 20px;
                             }
                         }
                     }
@@ -745,20 +768,23 @@
                     @media @mobile {
                         margin: 0px !important;
                         padding: 0px !important;
+                        font-size: 16px;
                     }
 
                     .titlebar {
-                        font-size: 20px !important;
-                        padding: 5px 10px;
+                        font-size: 20px;
+                        padding: 6px 12px;
                         color: @main-color;
                         text-transform: uppercase;
                         background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%) !important;
-                        font-family: VLALLROUNDGOTHIC-BOOK;
-                        border-radius: 10px;
+                        font-family: Roboto-Bold;
+                        border-radius: 4px;
                         box-shadow: 3px 3px 5px 3px lightgrey;
+                        margin-top: 0px;
 
                         @media @mobile {
                             font-size: 16px;
+                            margin-top: 20px;
                         }
                     }
 
@@ -768,10 +794,13 @@
                         }
 
                         i {
-                            margin-top: 20px;
                             border: 1px solid @main-color;
                             padding: 3px 10px;
                             border-radius: 5px;
+
+                            @media @mobile {
+                                margin-top: 20px;
+                            }
 
                             &:hover {
                                 cursor: pointer;
@@ -891,7 +920,7 @@
             }
 
             .descriptionbar {
-                color: @main-color;
+                color: @color-text-grey;
                 text-align: center;
                 font-family: vlauthenticaregular;
                 padding-bottom: 40px;
@@ -915,8 +944,8 @@
 
 .block-news {
     @media @not_mobile {
-        max-height: 770px;
-        margin-bottom: 100px;
+        /*max-height: 770px;*/
+        margin-bottom: 60px;
     }
 
     @media @mobile {
@@ -983,7 +1012,7 @@
 
     .list-news {
         @media @not_mobile {
-            margin-left: 10px;
+            /*margin-left: 10px;*/
         }
 
         .news-item {
@@ -995,6 +1024,14 @@
                 overflow: hidden;
                 margin-bottom: 20px;
                 font-size: 14px;
+
+                &:nth-child(2n + 1) {
+                    padding-right: 7px;
+                }
+
+                &:nth-child(2n) {
+                    padding-left: 7px;
+                }
             }
 
             @media @not_mobile {
@@ -1064,7 +1101,7 @@
 .contact {
     padding-top: 55px;
     padding-bottom: 60px;
-    background-image: url('../../images/bgr web/bgr lien he-19.jpg');
+    /*background-image: url('../../images/bgr-web/bgr lien he-19.jpg');*/
     background-position: initial;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -1251,8 +1288,7 @@
         }
     }
 }
-
-#abums {
+/*#abums {
     padding-top: 0px;
     padding-bottom: 20px;
     background-image: url('../../images/bgr-web/bgr tin tuc-sk va ld.jpg');
@@ -1306,8 +1342,7 @@
             color: @color-white;
         }
     }
-}
-
+}*/
 #news {
     /*background-image: url('../../images/bgr web/bgr tin tuc_sk va ld.jpg');
     background-position: center;
@@ -1496,6 +1531,7 @@
 
                 .wrap-text-content {
                     color: #848484;
+
                     .title {
                         padding-top: 10px;
                         min-height: 50px;
@@ -1882,7 +1918,7 @@
 }
 
 .descriptionbar {
-    font-size: 32px;
+    font-size: 30px;
 
     @media @mobile {
         font-size: 20px;
@@ -1912,12 +1948,20 @@
 
     .block-news {
         .news-item {
-            min-height: 185px;
+            min-height: 195px;
             overflow: hidden;
             padding-bottom: 10px;
 
-            @media @tablet{
-                min-height: 290px;
+            &:nth-child(2n + 1) {
+                padding-left: 7px;
+            }
+
+            &:nth-child(2n) {
+                padding-right: 7px;
+            }
+
+            @media @tablet {
+                min-height: 310px;
             }
 
             .image-content {
@@ -1931,9 +1975,11 @@
             .title {
                 padding-top: 5px;
                 font-size: 14px;
-                @media @tablet{
-                    font-size:16px;
+
+                @media @tablet {
+                    font-size: 16px;
                 }
+
                 a, p {
                     text-decoration: none;
                     color: @color-text-grey;

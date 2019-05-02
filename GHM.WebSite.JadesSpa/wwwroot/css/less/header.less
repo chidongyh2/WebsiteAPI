@@ -115,7 +115,7 @@
                 display: flex;
                 align-items: center;
                 flex: 1 0 0;
-                max-width: 5%;
+                max-width: 60px;
 
                 @media @mobile {
                     padding-left: 5%;
@@ -132,7 +132,7 @@
                 a {
                     img {
                         margin: 5px 0px 0px 5px !important;
-                        width: 45px;
+                        width: 40px;
                     }
                 }
 
@@ -206,8 +206,8 @@
             padding-left: 0px;
             padding-right: 0px;
             border-color: @main-color !important;
-            overflow:scroll;
-            
+            overflow: scroll;
+
             @media @mobile {
                 border: none !important;
                 max-height: 120%;
@@ -226,9 +226,6 @@
 
                 li {
                     font-size: 20px;
-
-
-
 
                     @media @not_mobile {
                         margin-left: 20px;
@@ -262,24 +259,31 @@
                     }
 
                     .list-social-network {
-                        margin-top: 15px;
+                        margin-top: 10px 0px;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        margin-bottom: 15px;
 
                         .list-items {
                             margin: 5px;
+
                             a {
                                 border: none !important;
 
                                 i {
                                     display: inline-block;
-                                    border-radius: 60px;
+                                    border-radius: 40px;
                                     box-shadow: 0px 0px 2px #888;
                                     padding: 0.5em 0.6em;
                                     background-color: @color-text-white;
                                     color: @main-color;
+                                    height: 40px;
+                                    width: 40px;
+                                    font-size: 22px;
+                                    text-align: center;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
 
                                     &.fa-facebook {
                                         padding: 10px 15px;
@@ -344,7 +348,7 @@
                                 position: absolute;
                                 opacity: 1;
                                 top: 100%;
-                                background-color: @main-color !important;
+                                background-color: #6B9E37 !important;
                                 padding-top: 0px !important;
 
                                 li {
@@ -394,7 +398,7 @@
                         margin-top: 1px;
 
                         @media @not_mobile {
-                            background: @main-color !important;
+                            background: #6B9E37 !important;
                         }
 
                         @media @mobile {

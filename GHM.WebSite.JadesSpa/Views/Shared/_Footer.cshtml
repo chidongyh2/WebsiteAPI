@@ -5,26 +5,23 @@
     var listMenuItem = ViewBag.FooterMenuNav as List<MenuItemViewModel>;
     var listBrand = ViewBag.ListBrands as List<BrandSearchViewModel>;
 }
-<a href="javascript://" id="backToTop" class="hidden-sm hidden-xs hidden-md">
+<a href="javascript://" id="backToTop">
     <i class="fa fa-angle-up fa-2x"></i>
 </a>
 <a href="tel:@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Hotline) ? websiteSetting.Hotline : "(091) 601 5199")" id="hotline" class="visible-sm visible-xs visible-md">
-    <img src="~/images/BGR-web/mb.jpg" />
+    <img class="lazy" data-src="/images/BGR-web/mb.jpg" />
 </a>
 <a href="#footer" id="message" data-toggle="modal" data-target="#myModal" class="visible-sm visible-xs visible-md">
-    <img src="~/images/BGR-web/box.jpg" />
+    <img class="lazy" data-src="/images/BGR-web/box.jpg" />
 </a>
-<footer id="footer">
+<footer id="footer" class="lazy" data-src="/images/bgr-web/background-image/nen-pc_08.jpg">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
-                <div class="logo">
-                    <a href="/" title="@websiteSetting?.Brand">
-                        <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? $"{ViewBag.Url}{websiteSetting.Logo}" : "/images/Trang chu/Logo ABC tren-duoi.png" )"
-                             alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) ? websiteSetting?.Brand : ViewBag.Title)"
-                             onerror="this.src='/images/no-image.png'" />
-                    </a>
-                </div>
+            <div class="col-lg-3 logo">
+                <a href="/" title="@websiteSetting?.Brand">
+                    <img class="img-responsive lazy" data-src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? $"{ViewBag.Url}{websiteSetting.Logo}" : "/images/Trang chu/Logo ABC tren-duoi.png" )"
+                         alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) ? websiteSetting?.Brand : ViewBag.Title)" />
+                </a>
             </div>
             <div id="wrap-content-branch" class="col-lg-5">
                 <div class="contact-info">
@@ -101,56 +98,54 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <form class="form-horizontal" id="contact_form" data-bind="submit: sendFeedback">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">@Resource.SendMessage</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="message">
-                                    <div class="form-group" data-bind="attr: {class: isContactNameError() ? 'form-group has-error' : 'form-group'}">
-                                        <div class="col-lg-12">
-                                            <input id="contact_full_name" type="text" class="form-control" placeholder="@Resource.FullNamePlaceHolder" value="" data-bind="value: contactName, hasFocus: isContactNameFocus" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group" data-bind="attr: {class: isPhoneNumberError() ? 'form-group has-error' : 'form-group'}">
-                                        <div class="col-lg-12">
-                                            <input type="text" class="form-control" placeholder="@Resource.PhoneNumberPlaceHolder" value="" data-bind="value: contactPhoneNumber, hasFocus: isPhoneNumberFocus" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group" data-bind="attr: {class: isEmailError() ? 'form-group has-error' : 'form-group'}">
-                                        <div class="col-lg-12">
-                                            <input type="text" class="form-control" placeholder="@Resource.EmailPlaceHolder" value="" data-bind="value: contactEmail, hasFocus: isEmailFocus" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group" data-bind="attr: {class: isContentError() ? 'form-group has-error' : 'form-group'}">
-                                        <div class="col-lg-12">
-                                            <textarea type="text" class="form-control" placeholder="@Resource.ContentPlaceHolder" rows="4" data-bind="value: contactContent, hasFocus: isContentFocus"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12 submit">
-                                            <button type="submit" class="btn btn-send-message" data-bind="enable: !isSendingContact()">
-                                                <i class="fa fa-envelope-o" data-bind="visible: !isSendingContact()"></i>
-                                                <i class="fa fa-spinner fa-pulse" data-bind="visible: isSendingContact()" style="display: none"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+    </div>
+</footer>
+<div class="copy-right center lazy" data-src="/images/BGR-web/Background-Image/image_background-footer.png">
+    Copyright 2018 - @DateTime.Now.Year  Jadespa All rights reserved
+</div>
+
+<div id="myModal" class="modal fade modal-send-message" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <form class="form-horizontal" id="contact_form" data-bind="submit: $root.sendFeedback">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">@Resource.SendMessage</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="message">
+                        <div class="form-group" data-bind="attr: {class: isContactNameError() ? 'form-group has-error' : 'form-group'}">
+                            <div class="col-lg-12">
+                                <input id="contact_full_name" type="text" class="form-control" placeholder="@Resource.FullNamePlaceHolder" value="" data-bind="value: contactName, hasFocus: isContactNameFocus" />
                             </div>
                         </div>
-                    </form>
+                        <div class="form-group" data-bind="attr: {class: isPhoneNumberError() ? 'form-group has-error' : 'form-group'}">
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" placeholder="@Resource.PhoneNumberPlaceHolder" value="" data-bind="value: contactPhoneNumber, hasFocus: isPhoneNumberFocus" />
+                            </div>
+                        </div>
+                        <div class="form-group" data-bind="attr: {class: isEmailError() ? 'form-group has-error' : 'form-group'}">
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" placeholder="@Resource.EmailPlaceHolder" value="" data-bind="value: contactEmail, hasFocus: isEmailFocus" />
+                            </div>
+                        </div>
+                        <div class="form-group" data-bind="attr: {class: isContentError() ? 'form-group has-error' : 'form-group'}">
+                            <div class="col-lg-12">
+                                <textarea type="text" class="form-control" placeholder="@Resource.ContentPlaceHolder" rows="4" data-bind="value: contactContent, hasFocus: isContentFocus"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 submit">
+                                <button type="submit" class="btn btn-send-message" data-bind="enable: !isSendingContact()">
+                                    <i class="fa fa-envelope-o" data-bind="visible: !isSendingContact()"></i>
+                                    <i class="fa fa-spinner fa-pulse" data-bind="visible: isSendingContact()" style="display: none"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-
-</footer>
-<div class="copy-right center">
-    Copyright 2018 - @DateTime.Now.Year - @websiteSetting?.Brand - All rights reserved
 </div>

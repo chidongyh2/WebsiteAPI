@@ -7,7 +7,7 @@
     .founder {
         padding: 40px 0px;
 
-        @media @mobile {
+        @media @mobile, @tablet {
             padding-top: 20px;
             padding-bottom: 0px;
         }
@@ -19,13 +19,13 @@
         .introduction {
             display: inline-flex;
 
-            @media @mobile {
+            @media @mobile, @tablet {
                 display: block;
             }
 
             .img-founder {
                 /*margin-right: -10px;*/
-                @media @mobile {
+                @media @mobile, @tablet {
                     margin-right: unset;
                 }
 
@@ -33,7 +33,7 @@
                     width: 100%;
                 }
 
-                @media @mobile {
+                @media @mobile, @tablet {
                     padding-bottom: 0px;
                 }
             }
@@ -51,7 +51,7 @@
                 align-items: center;
                 justify-content: center;
 
-                @media @mobile {
+                @media @mobile, @tablet {
                     display: block;
                     margin: 0px 15px;
                     padding: 15px;
@@ -65,8 +65,8 @@
     .why-organic {
         background-position: inherit;
         background-repeat: no-repeat;
-        background-size: 100% auto;
-        background-image: url('../../images/bgr web/anh nền/1-03.jpg');
+        background-size: cover;
+        /*background-image: url('../..');*/
         padding-bottom: 80px;
         padding-top: 60px;
         background-attachment: fixed;
@@ -131,6 +131,14 @@
                     font-size: 14px;
                     margin-top: -140px;
                     padding-top: 160px;
+                }
+
+                @media @tablet {
+                    margin-top: -35px;
+                }
+
+                @media @desktop {
+                    margin-top: -45px;
                 }
             }
         }
@@ -324,7 +332,11 @@
                     flex-direction: column;
                     margin-left: -35%;
                     margin-right: -10%;
-                    font-family: OpenSans-Italic
+                    font-family: OpenSans-Italic;
+
+                    @media @tablet, @desktop {
+                        margin-right: -22%;
+                    }
                 }
             }
         }
@@ -374,9 +386,9 @@
 
     .method {
         .diadermic-method {
-            background-image: url('../../images/bgr web/nelly/nelly-02.png');
+            /*background-image: url('../../images/bgr web/nelly/nelly-02.png');*/
             background-position: center;
-            background-size: 100% auto;
+            background-size: cover;
             background-repeat: no-repeat;
 
             @media @mobile {
@@ -423,8 +435,7 @@
     .hollywood {
         .blog {
             margin: 60px;
-
-            @media @mobile {
+            @media @mobile, @tablet {
                 margin: 0px;
                 margin-left: -15px;
                 margin-right: -15px;
@@ -437,7 +448,7 @@
                 /*img {
                     box-shadow: 0px 0px 1px 1px #3d383f;
                 }*/
-                @media @mobile {
+                @media @mobile, @tablet {
                     width: unset;
                     margin: 20px;
 
@@ -457,13 +468,18 @@
                 padding-top: 280px;
                 margin-right: 0px;
 
-                @media @mobile {
+                @media @mobile, @tablet {
                     margin-top: 10px;
                     padding-top: 10px;
                     margin: 0px;
                     padding: 30px;
                     margin-top: -100px;
                     padding-top: 100px;
+                }              
+
+                @media  @desktop {
+                    margin-top: -160px;
+                    padding-top: 180px;
                 }
 
                 .title {
@@ -473,7 +489,7 @@
                     color: @color-white;
                     font-family: OpenSans-Bold;
 
-                    @media @mobile {
+                    @media @mobile, @tablet {
                         font-size: 18px;
                     }
                 }
@@ -484,7 +500,7 @@
     .why-select {
         background-image: url('../../images/bgr web/anh nền/4-04.jpg');
         background-position: center;
-        background-size: 100% auto;
+        background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
         padding-bottom: 40px;
@@ -594,6 +610,7 @@
 
             .item {
                 text-align: center;
+
                 .thumbnail-image {
                     border: 1px solid @color-border;
                     padding: 5px;
@@ -990,7 +1007,7 @@
         hr {
             margin-bottom: 30px;
 
-            @media @mobile {
+            @media @mobile, @tablet {
                 margin-bottom: 10px;
             }
         }
@@ -999,7 +1016,7 @@
     .technology-amiea {
         margin-top: 75px;
 
-        @media @mobile {
+        @media @mobile, @tablet {
             margin-top: 20px;
         }
 
@@ -1011,27 +1028,30 @@
         hr {
             margin-bottom: 30px;
 
-            @media @mobile {
+            @media @mobile, @tablet {
                 margin-bottom: 10px;
             }
         }
 
         .factory {
             display: inline-flex;
+            /*align-items: center;*/
+            justify-content: center;
 
-            @media @mobile {
+            @media @mobile, @tablet {
                 display: block;
             }
 
             .image-factory {
                 margin-right: -15px;
 
-                @media @mobile {
+                @media @mobile, @tablet {
                     margin-right: 0px;
                 }
 
                 img {
                     width: 100%;
+                    height: 100%;
                 }
             }
 
@@ -1041,20 +1061,24 @@
                 color: #696969;
                 font-size: 16px;
                 line-height: 25px;
-                margin-left: -15px;
+                /*margin-left: -15px;*/
                 display: flex;
                 align-items: center;
                 justify-content: center;
 
-                @media @mobile {
+                @media @mobile, @tablet {
                     margin-left: 0px;
                     padding: 0px;
                     margin: 0px 15px;
                 }
+
+                @media @desktop {
+                    padding: 15px;
+                }
             }
 
             .description {
-                @media @mobile {
+                @media @mobile, @tablet {
                     margin-left: 0px;
                     padding: 10px;
                     line-height: 25px;
@@ -1072,11 +1096,11 @@
         margin-top: 40px;
         padding-bottom: 50px;
         padding-top: 50px;
-        background-image: url('../../images/bgr web/anh nền/2-04.jpg');
+        /*background-image: url('../../images/bgr web/anh nền/2-04.jpg');*/
         background-position: center;
         background-attachment: fixed;
         background-repeat: no-repeat;
-        background-size: 100% auto;
+        background-size: cover;
 
         @media @mobile {
             background-size: auto 100%;

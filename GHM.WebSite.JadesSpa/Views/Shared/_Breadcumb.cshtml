@@ -4,7 +4,7 @@
 }
 
 <div class="header">
-    <img src="@($"/image?url={ViewBag.Url}{ViewBag.ImageBanner}")" class="img-responsive" onerror="this.src='/images/bannerNews.jpg'"/>
+    <img class="lazy img-responsive" data-src="@(ViewBag.ImageBanner != null ?  $"/image?url={ViewBag.Url}{ViewBag.ImageBanner}" : "/images/bannerNews.jpg")"/>
     <div class="breadcrumb">
         <div class="container">
             <div class="row">

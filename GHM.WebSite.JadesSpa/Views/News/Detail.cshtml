@@ -6,13 +6,16 @@
     ViewBag.MetaTitle = Model?.MetaTitle;
     ViewBag.Description = Model?.MetaDescription;
     ViewBag.Keyword = Model?.MetaKeyword;
-    var breadcrumbs = new List<Breadcrumb> { new Breadcrumb() { Name = Resource.News, IsCurrent = true} };
+    var breadcrumbs = new List<Breadcrumb> { new Breadcrumb() { Name = Resource.News, IsCurrent = true } };
     ViewBag.Breadcrumb = breadcrumbs;
     ViewBag.Image = Model?.FeatureImage;
     var absoluteUri = $"{Context.Request.Host}{Context.Request.Path}";
     var absoluteUri1 = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
 }
-<partial name="_Breadcumb" />
+@if (Model.BannerImage != null)
+{
+    <partial name="_Breadcumb" />
+}
 <div id="news-detail">
     <div class="container">
         @if (Model != null)
@@ -94,14 +97,14 @@
                          data-width="1000" data-numposts="5"></div>
                 </div>
             </div>
-            <div class="row wrap-related-news">
-                <div class="col-md-12">
-                    <h6 class="header-related-news">
-                        @Resource.NewsRelated
-                    </h6>
-                </div>
-                @if (listNewsRelated != null)
-                {
+            @if (!Context.Request.Path.Value.Contains("gioi-thieu/gioi-thieu-chung") && listNewsRelated != null && listNewsRelated.Any())
+            {
+                <div class="row wrap-related-news">
+                    <div class="col-md-12">
+                        <h6 class="header-related-news">
+                            @Resource.NewsRelated
+                        </h6>
+                    </div>
                     <div class="col-md-12 wrap-related-item">
                         @foreach (var newsRelated in listNewsRelated)
                         {
@@ -118,19 +121,18 @@
                                 <div class="wrap-text-content">
                                     <div class="title">
                                         <a href="@($"/{newsRelated.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsRelated.MetaTitle) ? newsRelated.Title : newsRelated.MetaTitle)">
-                                            @(!string.IsNullOrEmpty(newsRelated.Title) ? Common.SubString(newsRelated.Title, 70) : newsRelated.Title)
+                                            @(!string.IsNullOrEmpty(newsRelated.Title) ? Common.SubString(newsRelated.Title, 50) : newsRelated.Title)
                                         </a>
                                     </div>
                                     <div class="description">
-                                        <span>@Common.SubString(newsRelated.Description, 150)</span>
+                                        <span>@Common.SubString(newsRelated.Description, 70)</span>
                                     </div>
                                 </div>
                             </div>
                         }
                     </div>
-                }
-
-            </div>
+                </div>
+            }
         }
         else
         {
@@ -144,16 +146,24 @@
 </div>
 
 @section scripts{
-    <script type="text/javascript">
-        $(window).scroll(function () {
-            var b = $(window).scrollTop();
-            var heightStart = $('.navbar').innerHeight() + $('.header').innerHeight();
-            if (b + 80 > heightStart && $(window).innerWidth() >= 1280 && b + 80 < $('#news-detail').innerHeight() + heightStart) {
-                $('.sidebar-event').addClass('sidebar-event-fixtop');
-            } else {
-                $('.sidebar-event').removeClass('sidebar-event-fixtop');
-            }
-        });
-    </script>
+    @*<script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>*@
+    @*<script type="text/javascript">
+            $(window).scroll(function () {
+                var b = $(window).scrollTop();
+                var heightStart = $('.navbar').innerHeight() + $('.header').innerHeight();
+                if (b + 80 > heightStart && $(window).innerWidth() >= 1280 && b + 80 < $('#news-detail').innerHeight() + heightStart) {
+                    $('.sidebar-event').addClass('sidebar-event-fixtop');
+                } else {
+                    $('.sidebar-event').removeClass('sidebar-event-fixtop');
+                }
+            });
+        </script>*@
 }
 

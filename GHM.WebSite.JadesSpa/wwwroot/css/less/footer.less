@@ -4,10 +4,18 @@
     color: @color-white;
     padding-bottom: 30px;
     padding-top: 30px;
-    background-image: url('../../images/bgr-web/background-image/nen-pc_08.jpg');
+    /*background-image: url('../../images/bgr-web/background-image/nen-pc_08.jpg');*/
     background-position: initial;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+
+    @media @not_mobile {
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
 
     .container {
         .col-sm-4 {
@@ -22,12 +30,12 @@
     }
 
     .logo {
-        margin: 10px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         @media @mobile {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding-bottom:20px;
         }
 
         img {
@@ -160,11 +168,10 @@
         border-radius: 15px;
         margin-left: 5%;
         border: none;
-
+        margin-top: 20px;
         /*@media @tablet {
             margin-left: 35%;
         }*/
-
         &:hover {
             color: grey;
             opacity: 0.6;
@@ -205,7 +212,8 @@
         }
 
         .form-group {
-            margin-top: 10px;
+            /*margin-top: 10px;*/
+            margin-bottom:10px !important;
         }
     }
 }

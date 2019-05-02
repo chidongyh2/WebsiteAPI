@@ -14,7 +14,8 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using System.Globalization;
 using System.Linq;
-
+using DeviceDetectorNET;
+using DeviceDetectorNET.Parser;
 
 namespace GHM.Website.JadesSpa.Controllers
 {
@@ -22,6 +23,9 @@ namespace GHM.Website.JadesSpa.Controllers
     {
         private readonly IConfiguration _configuration;
         private IMemoryCache _cache;
+
+        public object DeviceDeectorNET { get; private set; }
+
         public BaseController(IConfiguration configuration, IMemoryCache cache)
         {
             _configuration = configuration;
@@ -41,11 +45,15 @@ namespace GHM.Website.JadesSpa.Controllers
             var path = $"{Request.Path}";
             var absoluteUri = $"{Request.Host}{Request.Path}";
             var menuInfo = listManinMenu?.Where(x => x.NamePath != null && path == "/" +x.NamePath || x.Url == absoluteUri).FirstOrDefault();
-            var image = menuInfo == null || string.IsNullOrEmpty(menuInfo.Image) ? "https://websitefile.ghmsoft.vn/uploads/57da7815-c388-4744-a625-53cc73563cfb/2018/11/26/f01ecf64-6570-46d3-8cb7-1a1c74abbaa6.jpg" : menuInfo.Image;
+            var image = menuInfo == null || string.IsNullOrEmpty(menuInfo.Image) ? "/images/bannerNews.jpg" : menuInfo.Image;
             ViewBag.ImageBanner = image;
             ViewBag.Url = _configuration.GetApiUrl()?.FileUrl;
             ViewBag.ListLanguage = GetLanguage();
             ViewBag.CurrentLanguage = CultureInfo.CurrentCulture.Name;
+
+            DeviceDetector.SetVersionTruncation(VersionTruncation.VERSION_TRUNCATION_NONE);
+            var userAgent = Request.Headers["User-Agent"];
+            ViewBag.DeviceType = DeviceDetector.GetInfoFromUserAgent(userAgent)?.Match?.DeviceType;
         }
 
         private List<MenuItemViewModel> GetMainMenu()

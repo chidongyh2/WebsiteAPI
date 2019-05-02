@@ -54,12 +54,12 @@
   color: #FFFFFF;
   padding-bottom: 30px;
   padding-top: 30px;
-  background-image: url('../../images/bgr web/trang chu/image-04.jpg');
+  /*background-image: url('../../images/bgr web/trang chu/image-04.jpg');*/
   background-position: initial;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #footer {
     background-size: auto 100%;
   }
@@ -67,7 +67,7 @@
 #footer .logo {
   margin: 10px 0px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #footer .logo {
     display: flex;
     align-items: center;
@@ -86,7 +86,7 @@
   list-style-type: none;
   padding-left: 0px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #footer .contact-info ul {
     text-align: center;
   }
@@ -131,7 +131,7 @@
   color: #931C1F;
   font-family: OpenSans-Bold;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #footer .message .title-message {
     padding-top: 20px;
     text-align: center;
@@ -163,7 +163,7 @@
 #footer .message .submit {
   padding-top: 10px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #footer .message .submit {
     text-align: center;
   }
@@ -203,10 +203,15 @@
   justify-content: center;
   align-items: center;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .footer-bottom .brand .list-items {
     padding: 0px 5px;
     flex-basis: 25%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .footer-bottom .brand .list-items {
+    flex-basis: 12%;
   }
 }
 .copy-right {

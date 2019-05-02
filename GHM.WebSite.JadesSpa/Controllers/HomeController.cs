@@ -19,6 +19,7 @@ using GHM.Website.JadesSpa.Utils;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
 using GHM.Infrastructure.Constants;
+using DeviceDetectorNET;
 
 namespace GHM.Website.JadesSpa.Controllers
 {
@@ -35,10 +36,6 @@ namespace GHM.Website.JadesSpa.Controllers
         public async Task<ActionResult> Index()
         {
             var absoluteUri = $"{Request.Host}{Request.Path}";
-            //if (absoluteUri.Contains("pmuasia.amiea.vn"))
-            //{
-            //    return Redirect("/dang-ky-su-kien");
-            //}
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -48,30 +45,28 @@ namespace GHM.Website.JadesSpa.Controllers
             var listNews = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/home-page/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListNews = listNews;
 
-            //var listMenuContact = await httpClientService.GetAsync<List<MenuItemViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/position/{(int)Position.Middle}/items/menu/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
-            //ViewBag.MenuContact = listMenuContact;
-
             var listResponseCustomer = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/y-kien-khach-hang/1/20/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListResponseCustomer = listResponseCustomer?.Items;
 
-            var listServices = await httpClientService.GetAsync<SearchResult<CategorySearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/category-home-page/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
-            ViewBag.ListServices = listServices?.Items;
+            var menuMiddle = await httpClientService.GetAsync<MenuDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/get-all-menu-position/{(int)Position.Middle}/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
+            //var listServices = await httpClientService.GetAsync<SearchResult<CategorySearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/category-home-page/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
+            ViewBag.MenuMiddle = menuMiddle;
 
-            //var middleMenu = await httpClientService.GetAsync<MenuDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/get-all-menu-position/{(int)Position.Middle}/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
-            //ViewBag.MiddleMenu = middleMenu;
             var categoryMiddle = await httpClientService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/get-news-width-parent-category/{apiService.TenantId}/tai-sao-lua-chon-jade-spa/5/{CultureInfo.CurrentCulture.Name}");
             ViewBag.CategoryMiddle = categoryMiddle?.Data;
-            //if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
-            //{
-            //    ViewBag.MainBanner = banners;
-            //}
-            //else
-            //{
-            var listBannerInHome = await httpClientService.GetAsync<ActionResultResponse<BannerViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/banners/{apiService.TenantId}/position/{(int)Position.Top}");
-            _cache.Set(CacheParam.Banner, listBannerInHome?.Data, TimeSpan.FromHours(1));
 
-            ViewBag.MainBanner = listBannerInHome?.Data;
-            //}
+            if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
+            {
+                ViewBag.MainBanner = banners;
+            }
+            else
+            {
+                var listBannerInHome = await httpClientService.GetAsync<ActionResultResponse<BannerViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/banners/{apiService.TenantId}/position/{(int)Position.Top}");
+                _cache.Set(CacheParam.Banner, listBannerInHome?.Data, TimeSpan.FromHours(1));
+
+                ViewBag.MainBanner = listBannerInHome?.Data;
+            }
+
             return View();
         }
         public async Task<ActionResult> Coordinator(string segment, int page = 1, int pageSize = 12)
@@ -111,7 +106,8 @@ namespace GHM.Website.JadesSpa.Controllers
                     {
                         return View("../NotFound/Index");
                     }
-                } else
+                }
+                else
                 {
                     return View("../NotFound/Index");
                 }
@@ -148,7 +144,7 @@ namespace GHM.Website.JadesSpa.Controllers
             }
 
 
-            }
+        }
         public async Task<IActionResult> About()
         {
             var requestUrl = _configuration.GetApiUrl();

@@ -1,11 +1,9 @@
 ﻿
 using GHM.Website.JadesSpa.Constants;
 using GHM.Website.JadesSpa.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -115,8 +113,7 @@ namespace GHM.Website.JadesSpa.Utils
         {
             string scheme = url.ActionContext.HttpContext.Request.Scheme;
             return url.Action(actionName, controllerName, routeValues, scheme);
-        } 
-
+        }       
     }
 }
 
