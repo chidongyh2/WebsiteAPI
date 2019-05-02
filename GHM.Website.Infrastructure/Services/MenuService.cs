@@ -991,7 +991,7 @@ namespace GHM.Website.Infrastructure.Services
             };
         }
 
-        public async Task<ActionResultResponse<MenuItemSelectedViewModel>> GetItemDetailSeleted(string tenantId, int subjectType, string subjectId, string languageId)
+        public async Task<ActionResultResponse<MenuItemSelectedViewModel>> ItemSelected(string tenantId, int subjectType, string subjectId, string languageId)
         {
             if ((SubjectType)subjectType == SubjectType.News)
             {

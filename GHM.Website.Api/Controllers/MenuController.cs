@@ -151,12 +151,12 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
-        [Route("{subjectId}/getMenuItemSelected"), AcceptVerbs("POST")]
+        [Route("{subjectId}/getMenuItemSelected"), AcceptVerbs("GET")]
         [AllowPermission(PageId.WebsiteConfigMenu, Permission.View)]
         [CheckPermission]
         public async Task<IActionResult> GetMenuItemSelectedDetail(string subjectId, int subjectType, string languageId)
         {
-            var result = await _menuService.GetItemDetailSeleted(CurrentUser.TenantId, subjectType, subjectId, languageId);
+            var result = await _menuService.ItemSelected(CurrentUser.TenantId, subjectType, subjectId, languageId);
             return Ok(result);
         }
 
