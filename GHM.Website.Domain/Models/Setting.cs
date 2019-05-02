@@ -15,6 +15,7 @@ namespace GHM.Website.Domain.Models
         public string DisplayName { get; set; }
 
         public string Value { get; set; }
+
         public DateTime LastUpdate { get; set; }
 
         public string LastUpdateUserId { get; set; }

@@ -47,7 +47,7 @@ namespace GHM.Website.JadesSpa.Controllers
             var menuInfo = listManinMenu?.Where(x => x.NamePath != null && path == "/" +x.NamePath || x.Url == absoluteUri).FirstOrDefault();
             var image = menuInfo == null || string.IsNullOrEmpty(menuInfo.Image) ? "/images/bannerNews.jpg" : menuInfo.Image;
             ViewBag.ImageBanner = image;
-            ViewBag.Url = _configuration.GetApiUrl()?.FileUrl;
+            ViewBag.Url = "http://testwebsitefile.ghmsoft.vn/";
             ViewBag.ListLanguage = GetLanguage();
             ViewBag.CurrentLanguage = CultureInfo.CurrentCulture.Name;
 
@@ -106,6 +106,7 @@ namespace GHM.Website.JadesSpa.Controllers
             websiteSetting.GoogleMap = Common.GetSettingValue(settings, string.Format("{0}.GoogleMap", convention));
             websiteSetting.Hotline = Common.GetSettingValue(settings, string.Format("{0}.Hotline", convention));
             websiteSetting.LogoMobile = Common.GetSettingValue(settings, string.Format("{0}.LogoMobile", convention));
+            websiteSetting.ZaloId = Common.GetSettingValue(settings, string.Format("{0}.ZaloId", convention));
 
             _cache.Set(CacheParam.Setting, websiteSetting, TimeSpan.FromHours(2));
 

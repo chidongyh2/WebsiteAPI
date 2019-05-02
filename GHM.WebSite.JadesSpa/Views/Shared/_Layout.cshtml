@@ -47,14 +47,20 @@
     <link rel="stylesheet" href="~/css/site.min.css" />
 </head>
 <body>
-    <div id="fb-root"></div>
+    
     <div class="btn-hotline hidden-md hidden-sm hidden-xs">
         @{
-        <a href="tel: @websiteSetting.Hotline">
-            <span id="phone-contact">
-                @(websiteSetting.Hotline != null ? websiteSetting.Hotline : "0916015199")
-            </span>
-        </a>
+            <a href="tel: @websiteSetting.Hotline">
+                <span id="phone-contact">
+                    @(websiteSetting.Hotline != null ? websiteSetting.Hotline : "0916015199")
+                </span>
+            </a>
+
+            @if (websiteSetting.Hotline != null)
+            {
+
+
+            }
         }
     </div>
     @Html.AntiForgeryToken()

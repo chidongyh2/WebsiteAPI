@@ -103,16 +103,6 @@
 .lSAction .lSNext:hover {
   color: #FFFFFF;
 }
-#hotline {
-  bottom: 150px;
-  position: fixed;
-  right: 25px;
-  z-index: 1000;
-  height: 40px;
-  width: 40px;
-  text-align: center;
-  line-height: 45px;
-}
 .btn-hotline {
   bottom: 50%;
   position: fixed;
@@ -219,16 +209,6 @@
 }
 #myCarousel .owl-dots .active span {
   background-color: #5b7222;
-}
-#message {
-  bottom: 80px;
-  position: fixed;
-  right: 25px;
-  z-index: 1000;
-  border-radius: 4px;
-  height: 40px;
-  width: 40px;
-  line-height: 45px;
 }
 #about {
   /*background-image: url('../../images/bgr-web/background-image/nen-pc_04.jpg');*/

@@ -14,5 +14,6 @@
         public string GoogleMap { get; set; }
         public string Hotline { get; set; }
         public string LogoMobile { get; set; }
+        public string ZaloId { get; set; }
     }
 }

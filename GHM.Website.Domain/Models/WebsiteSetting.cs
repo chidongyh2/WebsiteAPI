@@ -10,6 +10,9 @@ namespace GHM.Website.Domain.Models
         [DisplayName("Favicon")]
         public string Favicon { get; set; }
 
+        [DisplayName("ZaloId")]
+        public string ZaloId { get; set; }
+
         [DisplayName("Brand")]
         public string Brand { get; set; }
 
@@ -39,5 +42,7 @@ namespace GHM.Website.Domain.Models
 
         [DisplayName("LogoMobile")]
         public string LogoMobile { get; set; }
+
+
     }
 }

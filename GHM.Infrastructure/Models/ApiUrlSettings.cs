@@ -4,6 +4,7 @@
     {
         public string CoreApiUrl { get; set; }
         public string HrApiUrl { get; set; }
+        public string FileUrl { get; set; }
         public string TaskApiUrl { get; set; }
         public string TimekeepingApiUrl { get; set; }
         public string Authority { get; set; }
@@ -15,6 +16,6 @@
         public string InteractiveApiUrl { get; set; }
         public string ApiGatewayUrl { get; set; }
         public string WarehouseApiUrl { get; set; }
-        public string FileUrl { get; set; }
+        
     }
 }

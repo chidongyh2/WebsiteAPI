@@ -87,7 +87,7 @@ namespace GHM.Warehouse.Api.Controllers
         [Route("updateApprove/{id}/{status}"), AcceptVerbs("POST")]
         [AllowPermission(PageId.Product, Permission.Approve)]
         [CheckPermission]
-        public async Task<IActionResult> updateAprrove(string id, ApproverStatus status)
+        public async Task<IActionResult> UpdateAprrove(string id, ApproverStatus status)
         {
             var result = await _productService.UpdateAprrove(CurrentUser.TenantId, id, status);
             if (result.Code < 0)
