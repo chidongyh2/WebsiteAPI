@@ -11,25 +11,23 @@
 }
 <header id="header">
     <div class="header-top hidden-sm hidden-xs hidden-md">
-        <div class="container">
-            <div class="col-lg-12">
-                <div class="col-lg-6">
-                    <span> @websiteSetting?.Brand</span>
-                </div>
-                <div class="col-lg-6">
-                    <span class="pull-right">
-                        @if (websiteSetting?.Hotline != null && websiteSetting.Hotline.Any())
-                        {
-                            <i class="fa fa-mobile"> @websiteSetting?.Hotline |</i>
-                        }
-                        @if (websiteSetting?.Brand != null && websiteSetting.Brand.Any())
-                        {
-                            <i class="fa fa-envelope-o"> @officeContact?.ContactValue</i>
-                        }
-                    </span>
-                </div>
+            <div class="row">
+                    <div class="col-lg-6">
+                        <span> @websiteSetting?.Brand</span>
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="pull-right">
+                            @if (websiteSetting?.Hotline != null && websiteSetting.Hotline.Any())
+                            {
+                                <i class="fa fa-mobile"> @websiteSetting?.Hotline |</i>
+                            }
+                            @if (websiteSetting?.Brand != null && websiteSetting.Brand.Any())
+                            {
+                                <i class="fa fa-envelope-o"> @officeContact?.ContactValue</i>
+                            }
+                        </span>
+                    </div>
             </div>
-        </div>
     </div>
     <div class="header-bottom">
         <nav class="navbar navbar-inverse navbar-expand-lg">

@@ -193,6 +193,14 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
+        [Route("getNewsRelatedByParentCategoryId/{tenantId}/{id}/{languageId?}/{page}/{pageSize}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetNewsRelatedByParentCategoryId(string tenantId, int id, string languageId, int page = 1 , int pageSize = 5)
+        {
+            var result = await _newsService.GetNewsRelatedByParentCategoryId(tenantId, id, languageId ?? CultureInfo.CurrentCulture.Name, page, pageSize);
+            return Ok(result);
+        }
+
         /// <summary>
         /// Lấy ra số tin túc liên quan
         /// </summary>

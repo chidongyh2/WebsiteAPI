@@ -111,7 +111,7 @@
     position: fixed;
     z-index: 1000;
     right: 0px;
-    text-align: center;   
+    text-align: center;
     background-color: #5C8E2B;
     padding: 7px 15px;
     border-radius: 4px;
@@ -121,7 +121,7 @@
         text-decoration: none;
         color: white;
         font-size: 18px;
-        font-family:Roboto-Bold;
+        font-family: Roboto-Bold;
     }
 }
 
@@ -234,7 +234,7 @@
     /*background-image: url('../../images/bgr-web/background-image/nen-pc_04.jpg');*/
     background-repeat: repeat;
     background-size: cover;
-    padding: 30px 0px;
+    padding: 95px 0px;
     /*height: 260px;*/
     @media @mobile {
         padding: 20px 0px;
@@ -418,10 +418,13 @@
     /*background-image: url('../../images/bgr-web/background-image/nen-pc_06.jpg');*/
     background-repeat: no-repeat;
     background-size: cover;
-    padding-top: 60px;
+    background-attachment: fixed;
+    padding-top: 100px;
     padding-bottom: 60px;
+    height: 680px;
 
     @media @mobile {
+        height: auto !important;
         padding: 30px 0px;
     }
 
@@ -511,11 +514,10 @@
         .item {
             text-align: center;
 
-
-
             .wrap-image {
                 background: @main-color;
                 border-radius: 30px 20px;
+                margin: 5px 8px !important;
 
                 @media @mobile {
                     border-radius: 20px 10px !important;
@@ -576,7 +578,7 @@
             .wrap-image {
                 background: @main-color;
                 border-radius: 23px 15px;
-
+                margin: 5px;
                 @media @mobile {
                     border-radius: 20px 10px !important;
                     padding: 0px 0.5px 0.5px 5px;
@@ -1094,6 +1096,22 @@
     }
 
     .titlebar {
+        margin-bottom: 50px;
+        font-size: 23px !important;
+
+        &:before, &:after {
+            width: 5%;
+            height: 2px !important;
+            background: @main-color;
+            content: '';
+            display: inline-block;
+            color: white;
+            top: -8px;
+            position: relative;
+            margin: 0px 15px;
+        }
+
+        font-family: Roboto-Regular !important;
         text-align: center;
         color: @color-text;
         padding-bottom: 5px !important;
@@ -1105,20 +1123,13 @@
         }
     }
 
-    hr {
-        margin-bottom: 80px;
-        border: 1px solid @color-text;
-
-        @media @mobile {
-            margin-bottom: 50px;
-        }
-    }
 
     .item-contact {
         background-color: #F5F5F5;
         position: relative;
         text-align: center;
         display: flex;
+        font-family: Roboto-Regular !important;
         /*align-items: center;*/
         justify-content: center;
         margin-bottom: 40px;
@@ -1154,23 +1165,24 @@
         }
 
         .content {
-            padding-top: 60px;
-
+            padding: 60px 23px 0px 23px;
             .title {
                 color: @main-color;
                 text-transform: uppercase;
                 font-size: 20px;
                 font-weight: 600;
                 padding-bottom: 10px;
+                font-family: Roboto-Regular !important;
                 text-align: center;
                 text-transform: uppercase;
             }
 
             .value {
-                color: @color-text;
+                color: #333;
                 font-size: 18px;
 
                 a {
+                    font-family: Roboto-Regular !important;
                     color: @color-text;
                     font-size: 18px;
                     text-decoration: none;
@@ -1181,6 +1193,33 @@
                 }
             }
         }
+
+        .value {
+            a {
+                color: #333 !important;
+            }
+        }
+    }
+
+    .titlebar-angency {
+        font-size: 23px !important;
+        font-family: Roboto-Regular !important;
+        color: @main-color;
+        text-align: center;
+        text-transform: uppercase;
+        width: 100%;
+        margin-bottom: 30px;
+        &:before, &:after {
+            width: 5%;
+            height: 2px !important;
+            background: @main-color;
+            content: '';
+            display: inline-block;
+            color: white;
+            top: -8px;
+            position: relative;
+            margin: 0px 15px;
+        }
     }
 
     .angency-system {
@@ -1188,6 +1227,7 @@
         margin-bottom: 20px;
         margin-right: -20px;
         overflow-y: scroll;
+        font-family: Roboto-Regular !important;
 
         @media @mobile {
             margin-right: unset;
@@ -1209,6 +1249,7 @@
                 padding: 10px 15px;
                 border-bottom: 1px solid @border-color;
                 cursor: pointer;
+                font-family: Roboto-Regular !important;
 
                 .title {
                     margin-top: 10px;
@@ -1224,6 +1265,10 @@
                         font-size: 16px;
                         padding: 3px 0px;
                         margin-bottom: 0px;
+                    }
+
+                    .value {
+                        color: #333;
                     }
                 }
 
@@ -1360,6 +1405,7 @@
 
     .titlebar {
         color: @color-text-grey;
+        font-family: Roboto-Regular !important;
     }
 
     hr {
@@ -1887,12 +1933,13 @@
 
 .sidebar-news-detail {
     .title {
-        font-family: VLALLROUNDGOTHIC-BOOK;
+        font-family: Roboto-Regular !important;
     }
 }
 
 .titlebar {
     font-size: 32px;
+    font-family: Roboto-Regular !important;
 
     @media @mobile {
         font-size: 16px !important;

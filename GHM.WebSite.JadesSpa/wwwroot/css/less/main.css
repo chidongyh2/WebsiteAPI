@@ -214,7 +214,7 @@
   /*background-image: url('../../images/bgr-web/background-image/nen-pc_04.jpg');*/
   background-repeat: repeat;
   background-size: cover;
-  padding: 30px 0px;
+  padding: 95px 0px;
   /*height: 260px;*/
 }
 @media only screen and (max-width: 1200px) {
@@ -387,14 +387,17 @@
   /*background-image: url('../../images/bgr-web/background-image/nen-pc_06.jpg');*/
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 60px;
+  background-attachment: fixed;
+  padding-top: 100px;
   padding-bottom: 60px;
+  height: 680px;
   margin-bottom: 10px;
   color: #5b7222;
   text-align: center;
 }
 @media only screen and (max-width: 1200px) {
   #news-introduce {
+    height: auto !important;
     padding: 30px 0px;
   }
 }
@@ -476,6 +479,7 @@
 #news-introduce .wrap-item .item .wrap-image {
   background: #5b7222;
   border-radius: 30px 20px;
+  margin: 5px 8px !important;
   /*padding: 0px 1px 2px 10px;*/
 }
 @media only screen and (max-width: 1200px) {
@@ -535,6 +539,7 @@
 #news-introduce #middle-menu-slide .item .wrap-image {
   background: #5b7222;
   border-radius: 23px 15px;
+  margin: 5px;
   padding: 0px 0.5px 0.5px 10px;
 }
 @media only screen and (max-width: 1200px) {
@@ -1008,24 +1013,30 @@
   }
 }
 .contact .titlebar {
+  margin-bottom: 50px;
+  font-size: 23px !important;
+  font-family: Roboto-Regular !important;
   text-align: center;
   color: #7aa127;
   padding-bottom: 5px !important;
   margin-top: 0px;
   text-transform: uppercase;
 }
+.contact .titlebar:before,
+.contact .titlebar:after {
+  width: 5%;
+  height: 2px !important;
+  background: #5b7222;
+  content: '';
+  display: inline-block;
+  color: white;
+  top: -8px;
+  position: relative;
+  margin: 0px 15px;
+}
 @media only screen and (max-width: 1200px) {
   .contact .titlebar {
     padding-top: 0px;
-  }
-}
-.contact hr {
-  margin-bottom: 80px;
-  border: 1px solid #7aa127;
-}
-@media only screen and (max-width: 1200px) {
-  .contact hr {
-    margin-bottom: 50px;
   }
 }
 .contact .item-contact {
@@ -1033,6 +1044,7 @@
   position: relative;
   text-align: center;
   display: flex;
+  font-family: Roboto-Regular !important;
   /*align-items: center;*/
   justify-content: center;
   margin-bottom: 40px;
@@ -1068,21 +1080,23 @@
   line-height: 80px;
 }
 .contact .item-contact .content {
-  padding-top: 60px;
+  padding: 60px 23px 0px 23px;
 }
 .contact .item-contact .content .title {
   color: #5b7222;
   font-size: 20px;
   font-weight: 600;
   padding-bottom: 10px;
+  font-family: Roboto-Regular !important;
   text-align: center;
   text-transform: uppercase;
 }
 .contact .item-contact .content .value {
-  color: #7aa127;
+  color: #333;
   font-size: 18px;
 }
 .contact .item-contact .content .value a {
+  font-family: Roboto-Regular !important;
   color: #7aa127;
   font-size: 18px;
   text-decoration: none;
@@ -1090,11 +1104,36 @@
 .contact .item-contact .content .value a:hover {
   text-decoration: none;
 }
+.contact .item-contact .value a {
+  color: #333 !important;
+}
+.contact .titlebar-angency {
+  font-size: 23px !important;
+  font-family: Roboto-Regular !important;
+  color: #5b7222;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.contact .titlebar-angency:before,
+.contact .titlebar-angency:after {
+  width: 5%;
+  height: 2px !important;
+  background: #5b7222;
+  content: '';
+  display: inline-block;
+  color: white;
+  top: -8px;
+  position: relative;
+  margin: 0px 15px;
+}
 .contact .angency-system {
   background-color: #F5F5F5;
   margin-bottom: 20px;
   margin-right: -20px;
   overflow-y: scroll;
+  font-family: Roboto-Regular !important;
 }
 @media only screen and (max-width: 1200px) {
   .contact .angency-system {
@@ -1116,6 +1155,7 @@
   padding: 10px 15px;
   border-bottom: 1px solid #EDEEE9;
   cursor: pointer;
+  font-family: Roboto-Regular !important;
 }
 .contact .angency-system ul li .title {
   margin-top: 10px;
@@ -1129,6 +1169,9 @@
   font-size: 16px;
   padding: 3px 0px;
   margin-bottom: 0px;
+}
+.contact .angency-system ul li .content .value {
+  color: #333;
 }
 .contact .angency-system ul li:last-child {
   border-bottom: none;
@@ -1236,6 +1279,7 @@
 }
 #category-news .titlebar {
   color: #606060;
+  font-family: Roboto-Regular !important;
 }
 #category-news hr {
   margin-bottom: 25px;
@@ -1662,10 +1706,11 @@
   }
 }
 .sidebar-news-detail .title {
-  font-family: VLALLROUNDGOTHIC-BOOK;
+  font-family: Roboto-Regular !important;
 }
 .titlebar {
   font-size: 32px;
+  font-family: Roboto-Regular !important;
 }
 @media only screen and (max-width: 1200px) {
   .titlebar {

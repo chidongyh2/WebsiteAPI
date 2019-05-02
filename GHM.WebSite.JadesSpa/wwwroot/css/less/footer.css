@@ -26,6 +26,7 @@
   background-position: initial;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  margin-top: -10px;
 }
 @media only screen and (min-width: 1200px) {
   #footer .row {
@@ -84,8 +85,9 @@
   background-image: linear-gradient(to right, #ffffff, rgba(255, 0, 0, 0));
 }
 #footer #wrap-content-branch .contact-info ul .branch h6 {
+  font-weight: bold;
   font-size: 22px !important;
-  color: green !important;
+  color: #5b7222 !important;
   font-family: Roboto-Regular;
 }
 #footer #wrap-content-branch .contact-info ul li {
@@ -109,7 +111,7 @@
   text-decoration: none;
 }
 #footer .social-info {
-  font-family: Roboto-Regular;
+  font-family: Roboto-Regular !important;
 }
 @media only screen and (min-width: 1200px) {
   #footer .social-info {
@@ -122,10 +124,14 @@
   }
 }
 #footer .social-info .hotline {
+  font-weight: bold;
   font-size: 21px !important;
+  font-family: Roboto-Regular !important;
 }
 #footer .social-info .hotline-value {
+  font-weight: bold;
   font-size: 37px !important;
+  font-family: Roboto-Regular !important;
 }
 #footer .social-info .btn-scocial i {
   color: #686868;
@@ -152,10 +158,10 @@
   text-align: center;
   background-color: #7aa127;
   font-family: Roboto-Regular;
-  font-size: 20px;
+  font-size: 20px !important;
   width: 175px;
   height: 45px;
-  border-radius: 15px;
+  border-radius: 10px;
   margin-left: 5%;
   border: none;
   margin-top: 20px;
@@ -345,6 +351,8 @@
   line-height: 40px;
   color: #eef0f1;
   background-color: #5b7222;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #hotline {
   bottom: 105px;
@@ -373,7 +381,8 @@
   width: 100%;
 }
 #zalo-root .zalo-chat-widget {
-  right: 5px !important;
+  z-index: 0 !important;
+  right: 0px !important;
   bottom: 105px !important;
 }
 @media only screen and (max-width: 1200px) {

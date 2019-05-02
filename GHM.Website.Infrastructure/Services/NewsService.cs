@@ -918,5 +918,15 @@ namespace GHM.Website.Infrastructure.Services
                 Data = await _newsRepository.GetCategoryWithNews(tenantId, languageId, -1, selectTop, isHomePage),
             };
         }
+
+        public async Task<List<NewsSearchClientViewModel>> GetNewsRelatedByParentCategoryId(string tenantId, int id, string languageId, int page, int pageSize)
+        {
+            var info = await _categoryRepository.GetActiveInfo(tenantId, id);
+
+            if (info.ParentId == null)
+                return null;
+
+            return await _newsRepository.GetListNewsRelatedForClientByParentCategoryId(tenantId, languageId, id, (int)info.ParentId, page, pageSize);
+        }
     }
 }
