@@ -55,7 +55,7 @@
                             {
                                 <div class="item">
                                     <div class="thumbnail-event">
-                                        <img class="img-responsive w100pc lazy" src="@($"/image?url=https://testfilemanager.ghmsoft.vn/{(string.IsNullOrEmpty(Model.EventInfo.Thumbnail) ? "~/images/BGR web/Amiea/Ve-chung-toi-2_Amiea_07.gif" : $"{ViewBag.Url}{Model.EventInfo.Thumbnail}" )}&width=480&height=270")" />
+                                        <img class="img-responsive w100pc lazy" src="@($"/image?url={(string.IsNullOrEmpty(Model.EventInfo.Thumbnail) ? "~/images/BGR web/Amiea/Ve-chung-toi-2_Amiea_07.gif" : $"{ViewBag.Url}{Model.EventInfo.Thumbnail}" )}&width=480&height=270")" />
                                         <span class="img-overlay"></span>
                                         <div class="content">
                                             <h3 class="title">@Resource.Day @count: @eventDay.Name</h3>
