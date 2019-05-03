@@ -31,9 +31,16 @@
                                     <div class="thumbnail-video">
                                         <a data-bind="attr: { href: url, title: title }"
                                            data-fancybox>
+                                            <!--ko if: $root.checkUrlVideo(thumbnail) -->
                                             <img class="img-responsive zoom lazy"
                                                  data-bind="attr: {src: '/image?url=@ViewBag.Url' + thumbnail + '&width=640&height=360', title: title }"
                                                  onerror="this.src='/images/no-image.png'" />
+                                            <!--/ko-->
+                                            <!--ko ifnot: $root.checkUrlVideo(thumbnail) -->
+                                            <img class="img-responsive zoom lazy"
+                                                 data-bind="attr: {src: '/image?url=' + thumbnail + '&width=640&height=360', title: title }"
+                                                 onerror="this.src='/images/no-image.png'" />
+                                            <!--/ko-->
                                             <span class="duration_video"><i class="fa fa-play"></i></span>
                                         </a>
                                     </div>
