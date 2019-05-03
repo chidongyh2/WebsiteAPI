@@ -121,6 +121,7 @@
   font-family: Roboto-Bold;
 }
 #myCarousel {
+  z-index: 0;
   /*@media @mobile {
         margin-top: 65px;
     }*/
@@ -227,9 +228,9 @@
   color: #5b7222;
 }
 #about .container .row .titlebar {
+  font-family: VLALLROUNDGOTHIC-BOOK !important;
   text-transform: uppercase;
   color: #5b7222;
-  font-family: VLALLROUNDGOTHIC-BOOK;
 }
 @media only screen and (max-width: 1200px) {
   #about .container .row .titlebar {
@@ -281,7 +282,7 @@
   color: #5b7222;
   text-align: center;
   text-transform: uppercase;
-  font-family: VLALLROUNDGOTHIC-BOOK;
+  font-family: VLALLROUNDGOTHIC-BOOK !important;
 }
 @media only screen and (max-width: 1200px) {
   #news-hot .container .row .titlebar {
@@ -405,7 +406,7 @@
   color: #5b7222;
   text-align: center;
   text-transform: uppercase;
-  font-family: VLALLROUNDGOTHIC-BOOK;
+  font-family: VLALLROUNDGOTHIC-BOOK !important;
 }
 #news-introduce .titlebar:before,
 #news-introduce .titlebar:after {
@@ -802,7 +803,7 @@
   color: #5b7222;
   text-align: center;
   text-transform: uppercase;
-  font-family: VLALLROUNDGOTHIC-BOOK;
+  font-family: VLALLROUNDGOTHIC-BOOK !important;
 }
 #newsAndBranch .container .row .titlebar:before,
 #newsAndBranch .container .row .titlebar:after {

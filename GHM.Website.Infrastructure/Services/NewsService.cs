@@ -924,7 +924,7 @@ namespace GHM.Website.Infrastructure.Services
             var info = await _categoryRepository.GetActiveInfo(tenantId, id);
 
             if (info.ParentId == null)
-                return null;
+                return await _newsRepository.GetListNewsRelatedForClientByParentCategoryId(tenantId, info.Id, languageId, page, pageSize);
 
             return await _newsRepository.GetListNewsRelatedForClientByParentCategoryId(tenantId, languageId, id, (int)info.ParentId, page, pageSize);
         }
