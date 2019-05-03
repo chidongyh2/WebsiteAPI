@@ -228,12 +228,15 @@
   }
 }
 #fb-root .fb_dialog {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
   bottom: 120px !important;
-  right: 10px !important;
+  right: 5px !important;
 }
 @media only screen and (max-width: 1200px) {
   #fb-root .fb_dialog {
-    bottom: 200px !important;
+    bottom: 160px !important;
     right: 6px !important;
   }
 }
@@ -248,7 +251,7 @@
   background-size: cover;
 }
 #hotline {
-  bottom: 105px;
+  bottom: 65px;
   position: fixed;
   right: 13px;
   z-index: 1000;
@@ -280,7 +283,7 @@
 }
 @media only screen and (max-width: 1200px) {
   #zalo-root .zalo-chat-widget {
-    bottom: 125px  !important;
+    bottom: 90px !important;
   }
 }
 #wrap-root ul li {
