@@ -47,9 +47,9 @@ namespace GHM.Website.JadesSpa.Controllers
             var menuInfo = listManinMenu?.Where(x => x.NamePath != null && path == "/" +x.NamePath || x.Url == absoluteUri).FirstOrDefault();
             var image = menuInfo == null || string.IsNullOrEmpty(menuInfo.Image) ? "/images/bannerNews.jpg" : menuInfo.Image;
             ViewBag.ImageBanner = image;
-            //var requestUrl = _configuration.GetApiUrl();
-            //ViewBag.Url = requestUrl.FileUrl != null ? requestUrl.FileUrl : "http://testwebsitefile.ghmsoft.vn/";
-            ViewBag.Url = "https://websitefile.ghmsoft.vn/";
+
+            ViewBag.Url = _configuration.GetApiUrl()?.FileUrl;
+
             ViewBag.ListLanguage = GetLanguage();
             ViewBag.CurrentLanguage = CultureInfo.CurrentCulture.Name;
 
