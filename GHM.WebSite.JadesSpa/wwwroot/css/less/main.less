@@ -126,6 +126,7 @@
 }
 
 #myCarousel {
+    z-index: 0;
     /*@media @mobile {
         margin-top: 65px;
     }*/
@@ -246,14 +247,13 @@
             color: @main-color;
 
             .titlebar {
+                font-family: VLALLROUNDGOTHIC-BOOK !important;
                 text-transform: uppercase;
                 color: @main-color;
 
                 @media @mobile {
                     font-size: 16px;
                 }
-
-                font-family: VLALLROUNDGOTHIC-BOOK;
             }
 
             .content {
@@ -301,7 +301,7 @@
                 color: @main-color;
                 text-align: center;
                 text-transform: uppercase;
-                font-family: VLALLROUNDGOTHIC-BOOK;
+                font-family: VLALLROUNDGOTHIC-BOOK !important;
 
                 @media @mobile {
                     font-size: 22px;
@@ -436,7 +436,7 @@
         color: @main-color;
         text-align: center;
         text-transform: uppercase;
-        font-family: VLALLROUNDGOTHIC-BOOK;
+        font-family: VLALLROUNDGOTHIC-BOOK !important;
 
         &:before, &:after {
             width: 5%;
@@ -863,7 +863,7 @@
                 color: @main-color;
                 text-align: center;
                 text-transform: uppercase;
-                font-family: VLALLROUNDGOTHIC-BOOK;
+                font-family: VLALLROUNDGOTHIC-BOOK !important;
 
                 &:before, &:after {
                     width: 5%;
@@ -1653,7 +1653,7 @@
         padding: 10px;
         text-align: center;
         margin-bottom: 10px;
-        background-color: @main-color;
+        background-color: #5C8E2B;
         border-radius: 5px;
 
         h2 {
@@ -1672,7 +1672,7 @@
             padding-left: 0px;
 
             li {
-                margin: 15px 0;
+                margin: 20px 0;
 
                 .media-left {
                     min-width: 72px;

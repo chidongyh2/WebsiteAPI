@@ -6,7 +6,7 @@
 {
     <div class="sidebar-news-detail">
         <div class="title">
-            <h2>@Resource.NewsHot</h2>
+            <h2>@Resource.NewsRelated</h2>
         </div>
         <div class="content">
             <ul class="list-style-none">
@@ -22,11 +22,11 @@
                                 </a>
                             </div>
                             <div class="media-body">
-                                <a href="@($"/{news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">@news.Title</a>
+                                <a href="@($"/{news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">@Common.SubString(news.Title, 40)</a>
                             </div>
                         </div>
                         <div class="news-description">
-                            <span>@Common.SubString(news.Description, 150)</span>
+                            <span>@Common.SubString(news.Description, 100)</span>
                         </div>
                     </li>
                 }

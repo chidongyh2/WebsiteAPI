@@ -69,5 +69,7 @@ namespace GHM.Website.Domain.IRepository
         Task<List<NewsSearchClientViewModel>> GetListNewsRelatedForClient(string tenantId, string languageId, string newsId, int pageSize);
 
         Task<List<NewsSearchClientViewModel>> GetListNewsRelatedForClientByParentCategoryId(string tenantId, string languageId, int id, int parentId, int page, int pageSize);
+
+        Task<List<NewsSearchClientViewModel>> GetListNewsRelatedForClientByParentCategoryId(string tenantId, int id, string languageId, int page, int pageSize);
     }
 }

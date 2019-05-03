@@ -816,6 +816,7 @@ namespace GHM.Website.Infrastructure.Repository
 
         public async Task<List<NewsSearchClientViewModel>> GetListNewsRelatedForClientByParentCategoryId(string tenantId, string languageId, int id, int parentId, int page, int pageSize)
         {
+            var r = new Random();
             Expression<Func<News, bool>> spec = x => x.TenantId == tenantId && !x.IsDelete && x.IsActive && x.Status == ApproverStatus.Approved;
             Expression<Func<NewsTranslation, bool>> specTranslation = x => x.TenantId == tenantId && x.LanguageId == languageId && !x.IsDelete;
             Expression<Func<Category, bool>> specC = x => x.TenantId == tenantId  && x.IsActive && !x.IsDelete && (x.Id == parentId || x.ParentId == parentId);
@@ -840,6 +841,34 @@ namespace GHM.Website.Infrastructure.Repository
             return await query
                 .OrderByDescending(x => x.LastUpdate)
                 .ThenByDescending(x => x.CreateTime)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+
+        public async Task<List<NewsSearchClientViewModel>> GetListNewsRelatedForClientByParentCategoryId(string tenantId, int id, string languageId, int page, int pageSize)
+        {
+            var r = new Random();
+            Expression<Func<News, bool>> spec = x => x.TenantId == tenantId && !x.IsDelete && x.IsActive && x.Status == ApproverStatus.Approved;
+            Expression<Func<NewsTranslation, bool>> specTranslation = x => x.TenantId == tenantId && x.LanguageId == languageId && !x.IsDelete;
+            var query =
+                    from cn in Context.Set<CategoriesNews>().Where(x => x.CategoryId == id)
+                    join n in Context.Set<News>().Where(spec) on cn.NewsId equals n.Id
+                    join nt in Context.Set<NewsTranslation>().Where(specTranslation) on n.Id equals nt.NewsId
+                    select new NewsSearchClientViewModel
+                    {
+                        Id = n.Id,
+                        FeatureImage = n.FeatureImage,
+                        AltImage = n.AltImage,
+                        Source = n.Source,
+                        Title = nt.Title,
+                        MetaTitle = nt.MetaTitle,
+                        Description = nt.Description,
+                        SeoLink = nt.SeoLink,
+                        LastUpdate = n.LastUpdate,
+                        CreateTime = n.CreateTime
+                    };
+            return await query
+                .Skip(r.Next(query.Count()))
                 .Take(pageSize)
                 .ToListAsync();
         }
