@@ -483,10 +483,11 @@
   margin: 5px 8px !important;
   /*padding: 0px 1px 2px 10px;*/
 }
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1200px), only screen and (min-width: 768px) and (max-width: 992px) {
   #news-introduce .wrap-item .item .wrap-image {
     border-radius: 20px 10px !important;
     padding: 0px 0px 0px 5px;
+    margin: unset !important;
   }
 }
 @media only screen and (min-width: 1200px) {
