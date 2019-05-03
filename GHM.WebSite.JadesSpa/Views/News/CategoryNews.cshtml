@@ -95,7 +95,10 @@ IsCurrent = true,
                         </div>
                         @if (Model.ListNews != null && Model.ListNews.Any() && Model.ListNews.Count > 0)
                         {
-                            Model.ListNews.RemoveAt(Model.ListNews.Count - 1);
+                            if(totalPage > 1)
+                            {
+                                Model.ListNews.RemoveAt(Model.ListNews.Count - 1);
+                            }
                             @foreach (var news in Model.ListNews.Where(x => x.Id != newsDefault.Id))
                             {
                                 <div class="col-sm-6 col-xs-6 col-md-6 news-item">
