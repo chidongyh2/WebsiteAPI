@@ -344,6 +344,16 @@
   text-align: center;
   font-size: 13px;
 }
+#fb-root .fb_dialog {
+  bottom: 85px !important;
+  right: 5px !important;
+}
+@media only screen and (max-width: 1200px) {
+  #fb-root .fb_dialog {
+    bottom: 145px !important;
+    right: 7px;
+  }
+}
 .copy-right {
   text-align: center;
   min-height: 45px;
@@ -383,11 +393,11 @@
 #zalo-root .zalo-chat-widget {
   z-index: 0 !important;
   right: 0px !important;
-  bottom: 105px !important;
+  bottom: 45px !important;
 }
 @media only screen and (max-width: 1200px) {
   #zalo-root .zalo-chat-widget {
-    bottom: 175px  !important;
+    bottom: 130px !important;
   }
 }
 #wrap-root ul li {
