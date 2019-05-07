@@ -44,7 +44,7 @@ namespace GHM.Website.ThaiThinhMedical.Controllers
             var httpClientService = new HttpClientService();
             ViewBag.ListVideoHomePage = await httpClientService.GetAsync<List<VideoViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/videos/home-page/{apiService.TenantId}/20/{CultureInfo.CurrentCulture.Name}");
 
-            var listNews = await httpClientService.GetAsync<SearchResult<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category-with-news-in-home/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
+            var listNews = await httpClientService.GetAsync<SearchResult<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category-with-news-in-home/{apiService.TenantId}/4/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListNews = listNews?.Items;
 
             var listMenuContact = await httpClientService.GetAsync<List<MenuItemViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/position/{(int)Position.Middle}/items/menu/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");

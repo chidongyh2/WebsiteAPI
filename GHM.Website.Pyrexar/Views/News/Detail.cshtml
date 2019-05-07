@@ -24,7 +24,7 @@
                             @Model.Title
                         </h1>*@
                     <div class="content">
-                        @Html.Raw(Model.Content.Replace("uploads/", $"{ViewBag.Url}uploads/"))
+                        @Html.Raw(Model.Content.Replace('"' + "uploads/", '"' + $"{ViewBag.Url}uploads/"))
                     </div>
                     <div id="social-network" class="center">
                         <ul class="list-inline">

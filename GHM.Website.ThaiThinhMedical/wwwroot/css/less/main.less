@@ -429,7 +429,7 @@ div.line {
     }
 }
 
-.video {
+/*.video {
     .section-video {
         h1 {
             font-size: 20px;
@@ -506,7 +506,7 @@ div.line {
             }
         }
     }
-}
+}*/
 
 /*News*/
 .block-host-news {
@@ -2706,7 +2706,6 @@ form.callus .btn-submit {
 
             .ultrasound {
                 background-image: url('../../images/utils/dvtien ich-02_videosa.png');
-        
             }
 
             .medical-records {
@@ -3731,6 +3730,457 @@ a.link-popup {
             font-size: 15px;
             font-weight: 600;
             text-decoration: none;
+        }
+    }
+}
+
+.hot-news {
+    /*background-image: url('../../images/bgr web/trang chu/image-05.jpg');*/
+    background-position: initial;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media @mobile {
+        background-image: none !important;
+    }
+}
+
+#newsAndBranch {
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    @media @mobile {
+        background-color: #F5F5F5;
+        padding-top: 0px;
+    }
+
+    .titlebar {
+        color: @color-text;
+        padding-top: 20px;
+    }
+
+    hr {
+        margin-bottom: 0px;
+    }
+}
+
+.block-news {
+    /*display: flex;*/
+    .news-default {
+        .image-content {
+            overflow: hidden;
+            border: 1px solid @main-color;
+            position: relative;
+        }
+
+        .news-content {
+            padding: 10px;
+            padding-bottom: 0px;
+
+            .title {
+                font-size: 24px;
+                font-family: OpenSans-Light;
+
+                @media @mobile {
+                    font-size: 18px;
+                }
+
+                a {
+                    color: @main-color;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            .summary {
+                color: @color-text-opacity;
+                font-size: 16px;
+
+                @media @mobile {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .list-news {
+        @media @mobile {
+            padding-top: 20px;
+        }
+    }
+
+    .btn-view-more {
+        background-color: @color-white;
+        border-radius: unset;
+        color: @main-color;
+        border: 1px solid @main-color;
+        transition: 0.5s ease-in-out;
+        font-size: 18px;
+
+        &:hover {
+            background-color: @main-color;
+            border-radius: unset;
+            color: @color-white;
+        }
+
+        @media @mobile {
+            font-size: 16px;
+        }
+    }
+}
+
+.news-item {
+    padding: 10px;
+    padding-top: 0px;
+    /*border-bottom: 1px solid @color-border;
+    margin: 10px 0px;*/
+    @media @mobile {
+        padding-left: 15px;
+        padding-right: 15px;
+
+        &:nth-child(2n + 1) {
+            padding-right: 7px;
+        }
+
+        &:nth-child(2n) {
+            padding-left: 7px;
+        }
+    }
+
+    .image-content {
+        position: relative;
+        border: 1px solid @main-color;
+        overflow: hidden;
+    }
+
+    .title {
+        padding: 5px 0px;
+        font-size: 18px;
+        min-height: 70px;
+
+        @media @mobile {
+            min-height: 80px;
+            font-size: 14px;
+        }
+
+        @media @tablet {
+            min-height: 120px;
+        }
+
+        a {
+            color: @color-text;
+
+            &:hover, &:focus {
+                text-decoration: none;
+            }
+        }
+    }
+
+    &:hover {
+        a {
+            color: @main-color;
+        }
+    }
+}
+.btn-toolbar {
+    padding: 25px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .btn-group {
+        border: 1px solid @color-white;
+        box-shadow: 0px 0px 2px 2px @color-text-white;
+        background-color: @color-white;
+        border-radius: 3px;
+
+        .btn {
+            padding: 4px 8px;
+            border-radius: 3px;
+        }
+
+        .filter {
+            text-transform: uppercase;
+            color: @color-text;
+            font-size: 18px;
+            border-radius: 3px;
+            border-right: 1px solid @color-text;
+            padding-top: 5px;
+            font-family: OpenSans-Light;
+
+            @media @mobile {
+                font-size: 14px;
+            }
+
+            @media @mobile {
+                font-size: 12px;
+            }
+
+            &:last-child {
+                border-right: none !important;
+            }
+        }
+
+        .active {
+            background-color: @main-color-hover;
+            color: @color-white;
+        }
+    }
+}
+#video {
+    padding-top: 60px;
+    padding-bottom: 80px;
+    /*background-image: url('../../images/bgr web/trang chu/image-06.jpg');*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    @media @mobile {
+        background-size: auto 100%;
+        padding: 20px 0px;
+    }
+
+    @media @mobile {
+        background-size: auto 100%;
+    }
+
+    .titlebar {
+        padding-bottom: 5px;
+        color: @color-white;
+        margin-top: 0px;
+    }
+
+    hr {
+        margin-bottom: 30px;
+        background-color: @color-white;
+    }
+
+    .video-container {
+        margin: auto;
+        width: 70%;
+        padding: 15px;
+        background-color: @color-white;
+
+        @media @mobile {
+            width: 100%;
+        }
+
+        .video-default {
+            position: relative;
+
+            @media @mobile {
+                iframe {
+                    height: 240px !important;
+                }
+            }
+
+            .content {
+                width: 100%;
+                background-color: none;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+
+                .title {
+                    font-size: 24px;
+                    padding: 30px;
+                    color: @color-white;
+
+                    @media @mobile {
+                        font-size: 14px;
+                        padding: 10px;
+                    }
+                }
+            }
+        }
+
+        #video-silder {
+            padding-top: 10px;
+
+            .thumbnail {
+                position: relative;
+                border: none;
+                padding: 0px;
+                margin-bottom: 0px;
+            }
+
+            .item {
+                .selected {
+                    /*border: 1px solid @main-color;*/
+                    .pause-video {
+                        background-color: rgba(255,0,0,.8);
+                    }
+                }
+            }
+
+            .pause-video {
+                position: absolute;
+                left: 40%;
+                bottom: 33%;
+                font-size: 15px;
+                color: @color-white;
+                height: 30px;
+                width: 40px;
+                line-height: 30px;
+                background-color: #333;
+                border-radius: 7px;
+                text-align: center;
+                opacity: .8;
+                vertical-align: middle;
+
+                @media @mobile {
+                    height: 21px;
+                    width: 28px;
+                    line-height: 21px;
+                    border-radius: 4px;
+                    font-size: 10px;
+                    bottom: 33%;
+                }
+            }
+
+            .carousel-caption {
+                p {
+                    color: @main-color;
+                    font-size: 25px;
+                }
+            }
+
+            @media @mobile {
+                padding-top: 20px;
+            }
+        }
+
+        .lSAction {
+            .lSPrev {
+                left: 0px;
+            }
+
+            .lSNext {
+                right: 0px;
+            }
+
+            a {
+                background-color: #79757a;
+                color: @color-white;
+                width: 24px;
+                height: 32px;
+                text-align: center;
+                vertical-align: middle;
+                margin-top: -4px;
+                top: 40%;
+
+                @media @mobile {
+                    width: 18px;
+                    height: 27px;
+                    top: 50%;
+                }
+
+                i {
+                    font-size: 12px;
+                    padding-top: 10px;
+                    vertical-align: middle;
+                    color: @color-white;
+
+                    @media @mobile {
+                        padding-top: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+#mainSlider {
+    .active {
+        .item {
+            a {
+                font-size: 40px;
+                height: 40px;
+                width: 40px;
+
+                img {
+                    max-height: 600px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    height: auto;
+                    display: block;
+                    /*-webkit-animation: zoomin 18s ease-in infinite;
+                    animation: zoomin 18s ease-in infinite;
+                    transition: all 1s ease-in-out;*/
+                    overflow: hidden;
+
+                    @media @mobile {
+                        max-height: unset;
+                    }
+                }
+            }
+        }
+    }
+
+    img {
+        max-height: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        display: block;
+
+        @media @mobile {
+            max-height: unset;
+        }
+    }
+
+    .fa-angle-left {
+        left: 50%;
+    }
+
+    .fa-angle-right {
+        right: 50%;
+    }
+
+    .owl-dots {
+        /*text-align: center;
+        margin-top: 10px;*/
+        position: absolute;
+        top: 90%;
+        left: 45%;
+
+        @media @mobile {
+            top: 85%;
+        }
+
+        @media @mobile {
+            top: 80%;
+        }
+
+        .owl-dot {
+            padding: 0 2px !important;
+
+            span {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                margin: 1px;
+                text-indent: -999px;
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0);
+                border: 1px solid @main-color;
+                border-radius: 12px;
+                font-size: 12px;
+
+                &:focus {
+                    border: none !important;
+                }
+            }
+        }
+
+        .active {
+            border: none;
+
+            span {
+                background-color: @main-color;
+            }
         }
     }
 }

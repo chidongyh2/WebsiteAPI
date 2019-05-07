@@ -7,10 +7,10 @@
     <partial name="_MainSlider" model="@mainBanner" />
 }
 <partial name="_Util" />
-<section class="padding video cm-mgt-20 bg-white cm-pd-10">
+<div class="padding video cm-mgt-20 bg-white cm-pd-10">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 col-lg-8 col-sm-8">
                 <partial name="_Video" />
             </div>
             <div class="col-md-4 banner" id="banner-video">
@@ -18,79 +18,30 @@
                     <li>
                         <a href="/dat-hen">
                             @*<img class="img-responsive lazy" data-src="@Url.Action("Index", "ImageHandler", new {url = "/assets/images/02_ngoai.jpg", width = 360, height = 360, type = 1 })"/>*@
-                            <img class="img-responsive lazy" src="/assets/images/4_Nhi khoa CLC 900x900-02.jpg" title="Đặt hẹn" />
+                            <img class="img-responsive lazy" src="/images/4_Nhi khoa CLC 900x900-02.jpg" title="Đặt hẹn" />
                         </a>
                     </li>
                     <li>
                         <a href="/dang-ky-tien-san">
                             @*<img class="img-responsive lazy" data-src="@Url.Action("Index", "ImageHandler", new {url = "/assets/images/03_san.jpg", width = 360, height = 360, type = 1 })"/>*@
-                            <img class="img-responsive lazy" src="/assets/images/900x900-01.jpg" title="Đăng ký tiền sản" />
+                            <img class="img-responsive lazy" src="/images/900x900-01.jpg" title="Đăng ký tiền sản" />
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-</section>
-<!------- End: Util ------------->
-<!------- BEGIN: Hot news ------------->
-@*@{Html.RenderPartial("_HotNews");}*@
-<section class="padding block-host-news">
+</div>
+<div class="padding block-host-news">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
                 <partial name="_HotNews" />
-            </div>
-            @*<div class="col-md-4 banner">
-                    <ul>
-                        <li>
-                            <a href="javascript://">
-
-                                <img class="img-responsive lazy" src="/assets/images/02_ngoai.jpg" />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript//">
-                                <img class="img-responsive lazy" src="/assets/images/03_san.jpg" />
-                            </a>
-                        </li>
-                    </ul>
-                </div>*@
+            </div>       
         </div>
     </div>
-</section>
-<!------- End: Util ------------->
-<!------- BEGIN: Hot news ------------->
-@*@{Html.RenderPartial("_Area1");}*@
-<!------- End: Util ------------->
-<!------- BEGIN: Specialize ------------->
-@*@{Html.RenderPartial("_Area2");}*@
-<!------- End: Util ------------->
-<!-- testinomial -->
-<section id="testinomial" class="padding">
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="testinomial-slider" class="owl-carousel text-center">
-                    <div class="item">
-                        <h3>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram.</h3>
-                        <p>Rodney Stratton, <span>Heart Patient</span></p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>-->
-</section>
-
-
+</div>
 @section scripts {
-    <script src="~/lib/owl.carousel/owl-carousel/owl.carousel.min.js"></script>
-    <script src="~/lib/owl.carousel/assets/js/application.js"></script>
-    <script src="~/lib/owl.carousel/assets/js/bootstrap-collapse.js"></script>
-    <script src="~/lib/lightslider/js/lightslider.es5.js"></script>
-    <script src="~/lib/owl.carousel/assets/js/bootstrap-tab.js"></script>
-    <script src="~/lib/owl.carousel/assets/js/bootstrap-transition.js"></script>
     <script type="text/javascript" src="~/js/home.min.js"></script>
     <script type="text/javascript" src="~/js/viewmodel/about.viewmodel.min.js"></script>
 }

@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TypeScriptToolsVersion>3.3</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\home.ts" />
     <Content Remove="wwwroot\js\viewmodel\about.viewmodel.es5.js" />
   </ItemGroup>
 
@@ -59,6 +61,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\lib\lightslider\img\" />
+    <Folder Include="wwwroot\ts\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -88,6 +91,10 @@
     <None Include="wwwroot\lib\jquery.lazy-master\plugins\README.md" />
     <None Include="wwwroot\lib\jquery.lazy-master\README.md" />
     <None Include="wwwroot\lib\Open_Sans\Open_Sans.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\js\home.ts" />
   </ItemGroup>
 
 </Project>
