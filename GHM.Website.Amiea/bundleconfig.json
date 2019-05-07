@@ -20,5 +20,11 @@
     "inputFiles": [
       "wwwroot/js/viewmodel/contact.viewmodel.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/help-finder.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/help-finder.viewmodel.js"
+    ]
   }
 ]

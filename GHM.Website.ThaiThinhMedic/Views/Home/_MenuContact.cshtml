@@ -1,0 +1,36 @@
+﻿@{
+    var listMenuContact = ViewBag.MenuContact as List<MenuItemViewModel>;
+}
+
+@if (listMenuContact != null && listMenuContact.Any())
+{
+    <div id="menu-contact">
+        <div class="container">
+            <div class="row">
+                <div class="list-menu">
+                    @foreach (var item in listMenuContact)
+                    {
+                        <div class="menu-item-content">
+                            <div class="menu-item">
+                                <div class="logo">
+                                    <a href="@( $"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : item.Url)}")" title="@item.Name">
+                                        <img class="img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{item.Image}")}&width=48&height=27")" />
+                                    </a>
+                                </div>
+                                <div class="menu-name">
+                                    <a href="@( $"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : item.Url)}")"
+                                       class="transition" title="@item.Name">
+                                        @item.Name
+                                    </a>
+                                    <div class="description">
+                                       @item.Description
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

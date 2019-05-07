@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = Resource.Events;
+    var listEvent = ViewBag.Events as List<EventViewModel>;
+    var url = ViewBag.Url;
+}
+
+<link href="~/css/less/event.min.css" rel="stylesheet" />
+<partial name="_Breadcumb" />
+<div class="events" id="events">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 center">
+                <h2 class="titlebar">@Resource.Events</h2>
+                <hr />
+            </div>
+        </div>
+        @if (listEvent != null && listEvent.Any())
+        {
+            <div class="row" data-bind="foreach: $root.listEvent">
+                <div data-bind="css: $index() === 0 ? 'col-sm-8' : 'col-sm-4 col-xs-6'">
+                    <div class="event-item">
+                        <div class="thumbnail-event">
+                            <a data-bind="attr: {href: '/su-kien/' + SeoLink + '.html', title: Name }">
+                                <img class="img-responsive lazy"
+                                     data-bind="attr: {src: '/image?url=@url' + Thumbnail + '&width=640&height=360', title: Name}"
+                                     onerror="this.src='/images/no-image.png'" />
+                                <span class="img-overlay"></span>
+                            </a>
+                        </div>
+                        <!--ko if: $index() > 0 -->
+                        <h3 class="title-event">
+                            <a data-bind="attr: {href: '/su-kien/' + SeoLink + '.html', title: Name },  text: Name.substr(0, 50)">
+                            </a>
+                        </h3>
+                        <!--/ko-->
+                        <!--ko if: $index() === 0 -->
+                        <h2 class="title-event-default">
+                            <a data-bind="attr: {href: '/su-kien/' + SeoLink + '.html', title: Name },  text: Name">
+                            </a>
+                        </h2>
+                        <div class="description" data-bind="text: Description.substr(0, 200)">
+                        </div>
+                        <!--/ko-->
+                    </div>
+                </div>
+            </div>
+            <!--ko if: $root.totalPage() > 1-->
+            <div class="row">
+                <div class="col-sm-12 center">
+                    <ul class="pagination" data-bind="foreach: listPage">
+                        <!--ko if:page === 1-->
+                        <li>
+                            <a data-bind="css: $root.currentPage() === 1 ? 'disabled' :  '', click: $root.firstPage" href="#events">
+                                <i class="fa fa-angle-double-left"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-bind="css: $root.currentPage() === 1 ? 'disabled bg-none' :  'bg-none', click: $root.prevPage" href="#events">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        </li>
+                        <!--/ko-->
+                        <li><a data-bind="css: $root.currentPage() === page ? 'active' : '', text: page, click: $root.search" href="#events"></a></li>
+                        <!--ko if: page === $root.totalPage()-->
+                        <li>
+                            <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled bg-none' : 'bg-none', click: $root.nextPage" href="#events">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled' : '', click: $root.lastPage" href="#events">
+                                <i class="fa fa-angle-double-right"></i>
+                            </a>
+                        </li>
+                        <!--/ko-->
+                    </ul>
+                </div>
+            </div>
+            <!--/ko-->
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        var listEvent =  @(ViewBag.Events != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.Events)) : "[]");
+    </script>
+    <script src="~/js/viewmodel/event.viewmodel.min.js"></script>
+}
+

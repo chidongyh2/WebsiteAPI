@@ -1,0 +1,156 @@
+﻿@import "config.less";
+@color-text-header: #F4E8E9;
+/* Cubic Bezier Transition */
+
+
+nav {
+    .navbar-header {
+        width: 100%;
+        margin-bottom: 10px;
+
+        .navbar-brand {
+            padding: 0 15px !important;
+        }
+
+        ul {
+            padding-top: 15px;
+
+            li {
+                color: #007455;
+
+                a i {
+                    font-size: 28px;
+                    font-weight: 700;
+                    color: #007455;
+                }
+
+                span {
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .navbar-collapse {
+        padding-left: 0px;
+        padding-right: 0px;
+        border-color: none;
+
+        .menu {
+            background-color: #007455;
+        }
+    }
+    /* Main Nav */
+    #clinicMainNav {
+        .user-menu {
+            left: auto;
+            right: 0;
+
+            li a {
+                padding-left: 35px;
+
+                i {
+                    left: 15px;
+                    top: 10px;
+                }
+            }
+        }
+    }
+
+    text-align: center;
+    z-index: 1030;
+
+    ul {
+        padding: 0px 0px;
+        list-style: none;
+        position: relative;
+        display: inline-table;
+
+        ul {
+            display: none;
+            position: absolute;
+            z-index: 1030;
+            top: 100%;
+            left: 0;
+            border: 1px solid #ddd;
+            background-color: #FFF;
+
+            &:after {
+                clear: both;
+                display: block;
+            }
+
+            li {
+                float: left;
+                width: 250px;
+                padding: 0px;
+                margin: 0px;
+                text-align: left;
+                /*text-transform: uppercase;*/
+                border-bottom: 1px solid #ddd;
+
+                &:last-child {
+                    border: none;
+                }
+
+                a {
+                    padding: 10px 15px;
+                    color: @main-color;
+                    display: block;
+                    width: 100%;
+                    position: relative;
+
+                    i {
+                        position: absolute;
+                        top: 10px;
+                        right: 15px;
+                    }
+                }
+
+                &:hover {
+                    background: @main-color;
+
+                    > a {
+                        color: #fff;
+                        text-decoration: none;
+                    }
+
+                    nav ul li a {
+                        display: block;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            ul {
+                position: absolute;
+                left: 100%;
+                top: 0;
+            }
+        }
+
+        li:hover > ul {
+            display: block;
+            position: absolute;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    nav {
+        .navbar-header {
+            .navbar-brand {
+                padding: 0 15px !important;
+            }
+
+            img {
+                width: 69%;
+            }
+        }
+    }
+}

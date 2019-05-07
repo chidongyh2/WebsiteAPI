@@ -228,6 +228,7 @@
   }
 }
 #fb-root .fb_dialog {
+  z-index: 988 !important;
   background: none !important;
   border: none !important;
   box-shadow: none !important;
@@ -277,7 +278,7 @@
   width: 100%;
 }
 #zalo-root .zalo-chat-widget {
-  z-index: 0 !important;
+  z-index: 988 !important;
   right: 0px !important;
   bottom: 45px !important;
 }

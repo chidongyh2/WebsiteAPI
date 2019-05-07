@@ -1,0 +1,95 @@
+﻿
+@model NewsDetailViewModel
+@{
+    ViewBag.Title = Model?.MetaTitle != null ? Model?.MetaTitle : Model?.Title;
+    var listNewsRelated = ViewBag.listNewRelated as List<NewsSearchViewModel>;
+    ViewBag.MetaTitle = Model?.MetaTitle;
+    ViewBag.Description = Model?.MetaDescription;
+    ViewBag.Keyword = Model?.MetaKeyword;
+    ViewBag.Image = Model?.FeatureImage;
+    var absoluteUri = $"{Context.Request.Host}{Context.Request.Path}";
+    var url = ViewBag.Url;
+}
+<partial name="_Breadcumb" />
+<div id="news-detail">
+    <div class="container">
+        @if (Model != null)
+        {
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="news-detail">
+                        <h1 class="title">
+                            @Model.Title
+                        </h1>
+                        <div id="social-network">
+                            <ul class="list-inline">
+                                <li class="list-items cm-pdr-15">
+                                    <a class="time">
+                                        <i class="fa fa-calendar"> @Model.LastUpdate?.ToString("dd/MM/yyyy")</i>
+                                    </a>
+                                </li>
+                                <li class="list-items">
+                                    <div class="fb-share-button" data-href="@absoluteUri" data-layout="button" data-size="small" data-mobile-iframe="true">
+                                        <a target="_blank"
+                                           href="@($"https://www.facebook.com/sharer/sharer.php?u={absoluteUri}")&amp;src=sdkpreparse"
+                                           onclick="window.open(this.href,this.title,'width=500,height=500,top=200px,left=300px');  return false;"
+                                           class="btn-scoical btn-facebook fb-xfbml-parse-ignore">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-items">
+                                    <a href="@string.Format("{0}{1}&url={2}", "https://twitter.com/intent/tweet?text=", ViewBag.Title, absoluteUri)"
+                                       class="btn-scoical btn-twitter"
+                                       onclick="window.open(this.href,this.title,'width=500,height=500,top=200px,left=300px');  return false;"
+                                       target="_blank">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="list-items">
+                                    <a href="@string.Format("http://www.linkedin.com/shareArticle?mini=true&url={0}",absoluteUri)" class="btn-scoical btn-linkedin"
+                                       target="_blank"
+                                       onclick="window.open(this.href,this.title,'width=500,height=500,top=200px,left=300px');  return false;">
+                                        <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="list-items">
+                                    @{
+                                        <a href="@string.Format("http://pinterest.com/pin/create/button/?url={0}&media={1}&description{2}",absoluteUri,ViewBag.Image, ViewBag.Description)"
+                                           class="btn-social btn-pinterest" count-layout="horizontal"
+                                           onclick="window.open(this.href,this.title,'width=500,height=500,top=200px,left=300px');  return false;"
+                                           target="_blank">
+                                            <i class="fa fa-pinterest" aria-hidden="true"></i>
+                                        </a>
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="content">
+                            @Html.Raw(Model.Content.Replace("uploads/", $"{ViewBag.Url}uploads/"))
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <partial name="_SideBarEvent" />
+                    <partial name="_SideBarNewsRelated" model="listNewsRelated" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(window).scroll(function () {
+            var b = $(window).scrollTop();
+            var heightStart = $('.navbar').innerHeight() + $('.header').innerHeight();
+            if (b + 80 > heightStart && $(window).innerWidth() >= 1280 && b + 80 < $('#news-detail').innerHeight() + heightStart) {
+                $('.sidebar-event').addClass('sidebar-event-fixtop');
+            } else {
+                $('.sidebar-event').removeClass('sidebar-event-fixtop');
+            }
+        });
+    </script>
+}
+

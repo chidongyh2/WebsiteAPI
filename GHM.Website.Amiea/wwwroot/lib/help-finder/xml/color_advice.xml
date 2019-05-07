@@ -1,0 +1,2966 @@
+<color_advice>
+	<configuration_images>
+		<image_skin_type name="northern european">
+			<image_hair_color natural="true" name="red">northern_european_red.jpg</image_hair_color>
+			<image_hair_color name="blonde">northern_european_blonde.jpg</image_hair_color>
+			<image_hair_color name="light_brown">northern_european_light_brown.jpg</image_hair_color>
+			<image_hair_color name="dark_brown"></image_hair_color>
+			<image_hair_color name="black"></image_hair_color>
+		</image_skin_type>
+		<image_skin_type name="nordic">
+			<image_hair_color name="red">nordic_red.jpg</image_hair_color>
+			<image_hair_color natural="true" name="blonde">nordic_blonde.jpg</image_hair_color>
+			<image_hair_color name="light_brown">nordic_light_brown.jpg</image_hair_color>
+			<image_hair_color name="dark_brown"></image_hair_color>
+			<image_hair_color name="black"></image_hair_color>
+		</image_skin_type>
+		<image_skin_type name="european">
+			<image_hair_color name="red">european_red.jpg</image_hair_color>
+			<image_hair_color name="blonde">european_blonde.jpg</image_hair_color>
+			<image_hair_color natural="true" name="light_brown">european_light_brown.jpg</image_hair_color>
+			<image_hair_color name="dark_brown">european_dark_brown.jpg</image_hair_color>
+			<image_hair_color name="black">european_black.jpg</image_hair_color>
+		</image_skin_type>
+		<image_skin_type name="mediterranean">
+			<image_hair_color name="red"></image_hair_color>
+			<image_hair_color name="blonde">mediterranean_blonde.jpg</image_hair_color>
+			<image_hair_color name="light_brown">mediterranean_light_brown.jpg</image_hair_color>
+			<image_hair_color natural="true" name="dark_brown">mediterranean_dark_brown.jpg</image_hair_color>
+			<image_hair_color name="black">mediterranean_black.jpg</image_hair_color>
+		</image_skin_type>
+		<image_skin_type name="asian">
+			<image_hair_color name="red"></image_hair_color>
+			<image_hair_color name="blonde"></image_hair_color>
+			<image_hair_color name="light_brown">asian_light_brown.jpg</image_hair_color>
+			<image_hair_color name="dark_brown">asian_dark_brown.jpg</image_hair_color>
+			<image_hair_color natural="true" name="black">asian_black.jpg</image_hair_color>
+		</image_skin_type>
+		<image_skin_type name="indian">
+			<image_hair_color name="red"></image_hair_color>
+			<image_hair_color name="blonde"></image_hair_color>
+			<image_hair_color name="light_brown">indian_light_brown.jpg</image_hair_color>
+			<image_hair_color name="dark_brown">indian_dark_brown.jpg</image_hair_color>
+			<image_hair_color natural="true" name="black">indian_black.jpg</image_hair_color>
+		</image_skin_type>
+		<image_skin_type name="african">
+			<image_hair_color name="red"></image_hair_color>
+			<image_hair_color name="blonde"></image_hair_color>
+			<image_hair_color name="light_brown"></image_hair_color>
+			<image_hair_color natural="true" name="dark_brown">african_dark_brown.jpg</image_hair_color>
+			<image_hair_color name="black">african_black.jpg</image_hair_color>
+		</image_skin_type>
+	</configuration_images>
+
+
+
+
+    <configurations>
+        <line name="1" nice_name="evolution line">
+            <skin_type name="northern european">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                        <product_color name="sand"></product_color>
+                        <product_color name="ocher"></product_color>
+                        <product_color name="clay"></product_color>
+                        <product_color name="peat"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="sand"></product_color>
+                        <product_color name="clay"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="sand"></product_color>
+                        <product_color name="sahara"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        <product_color name="clay"></product_color>
+                        <product_color name="ocher"></product_color>
+                        <product_color name="peat"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="sahara"></product_color>
+                        <product_color name="sand"></product_color>
+                        <product_color name="clay"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="sand"></product_color>
+                        <product_color name="sahara"></product_color>
+                        <product_color name="clay"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                        <product_color name="sahara"></product_color>
+                        <product_color name="sand"></product_color>
+                        <product_color name="clay"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="sahara"></product_color>
+                        <product_color name="sand"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="sahara"></product_color>
+                        <product_color name="clay"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            <skin_type name="nordic">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                        <product_color name="clay"></product_color>
+                        <product_color name="desert"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="desert"></product_color>
+                        <product_color name="clay"></product_color>
+                        <product_color name="sahara"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="ocher"></product_color>
+                        <product_color name="clay"></product_color>
+                        <product_color name="peat"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        <product_color name="desert"></product_color>
+                        <product_color name="sand"></product_color>
+                        <product_color name="sahara"></product_color>
+                        <product_color name="clay"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="desert"></product_color>
+                        <product_color name="clay"></product_color>
+                        <product_color name="sahara"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="peat"></product_color>
+                        <product_color name="sepia"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                        <product_color name="sand"></product_color>
+                        <product_color name="clay"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="sahara"></product_color>
+                        <product_color name="sand"></product_color>
+                        <product_color name="clay"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="peat"></product_color>
+                        <product_color name="sepia"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            
+            <skin_type name="european">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                        <product_color name="clay"></product_color>
+                        <product_color name="ocher"></product_color>
+                        <product_color name="peat"></product_color>
+                        <product_color name="siena"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="desert"></product_color>
+                        <product_color name="clay"></product_color>
+                        <product_color name="sahara"></product_color>
+                        <product_color name="sand"></product_color>
+                        <product_color name="ocher"></product_color>                    
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="ocher"></product_color>
+                        <product_color name="clay"></product_color>
+                        <product_color name="peat"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="siena"></product_color>
+                        <product_color name="peat"></product_color>
+                        <product_color name="sepia"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="sepia"></product_color>
+                        <product_color name="lava"></product_color>
+                        <product_color name="umbra"></product_color>
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        <product_color name="sahara"></product_color>
+                        <product_color name="sand"></product_color>
+                        <product_color name="clay"></product_color>
+                        <product_color name="peat"></product_color>
+                        <product_color name="ocher"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="desert"></product_color>
+                        <product_color name="sand"></product_color>
+                        <product_color name="sahara"></product_color>
+                        <product_color name="clay"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="sepia"></product_color>
+                        <product_color name="peat"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="sepia"></product_color>
+                        <product_color name="umbra"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="lava"></product_color>
+                        <product_color name="soil"></product_color>
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                        <product_color name="sahara"></product_color>
+                        <product_color name="sand"></product_color>                        
+                        <product_color name="peat"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="sahara"></product_color>
+                        <product_color name="sand"></product_color>
+                        <product_color name="clay"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="umbra"></product_color>
+                        <product_color name="mud"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="lava"></product_color>
+                        <product_color name="umbra"></product_color>
+                        <product_color name="mud"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="lava"></product_color>
+                        <product_color name="soil"></product_color>
+                        <product_color name="umbra"></product_color>	
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            <skin_type name="mediterranean">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="ocher"></product_color>
+                        <product_color name="clay"></product_color>
+                        <product_color name="sand"></product_color>
+                        <product_color name="peat"></product_color>                    
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="peat"></product_color>                        
+                        <product_color name="mud"></product_color>
+                        <product_color name="sepia"></product_color>
+                        <product_color name="siena"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="siena"></product_color>
+                        <product_color name="sepia"></product_color>
+                        <product_color name="umbra"></product_color>                        
+                        <product_color name="mud"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="siena"></product_color>
+                        <product_color name="lava"></product_color>
+                        <product_color name="soil"></product_color>
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="sand"></product_color>
+                        <product_color name="ocher"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="sepia"></product_color>
+                        <product_color name="peat"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="sepia"></product_color>
+                        <product_color name="umbra"></product_color>                        
+                        <product_color name="mud"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="siena"></product_color>
+                        <product_color name="lava"></product_color>
+                        <product_color name="soil"></product_color>
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="sahara"></product_color>
+                        <product_color name="sand"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="umbra"></product_color>
+                        <product_color name="mud"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="umbra"></product_color>
+                        <product_color name="mud"></product_color>
+                        <product_color name="lava"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="mud"></product_color>
+                        <product_color name="lava"></product_color>
+                        <product_color name="soil"></product_color>	
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            
+            <skin_type name="asian">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="peat"></product_color>                        
+                        <product_color name="sepia"></product_color>
+                        <product_color name="siena"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="siena"></product_color>
+                        <product_color name="sepia"></product_color>
+                        <product_color name="umbra"></product_color>                        
+                        <product_color name="mud"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="siena"></product_color>
+                        <product_color name="lava"></product_color>
+                        <product_color name="soil"></product_color>
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="peat"></product_color>
+                        <product_color name="sepia"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="sepia"></product_color>
+                        <product_color name="umbra"></product_color>                        
+                        <product_color name="mud"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="siena"></product_color>
+                        <product_color name="lava"></product_color>
+                        <product_color name="soil"></product_color>
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="sepia"></product_color>
+                        <product_color name="peat"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="lava"></product_color>
+                        <product_color name="umbra"></product_color>
+                        <product_color name="mud"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="mud"></product_color>
+                        <product_color name="umbra"></product_color>
+                        <product_color name="lava"></product_color>                        
+                        <product_color name="soil"></product_color>	
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            
+            <skin_type name="indian">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="umbra"></product_color>                        
+                        <product_color name="sepia"></product_color>
+                        <product_color name="siena"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="sepia"></product_color>
+                        <product_color name="umbra"></product_color>                        
+                        <product_color name="mud"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="sepia"></product_color>
+                        <product_color name="lava"></product_color>
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="siena"></product_color>
+                        <product_color name="umbra"></product_color>                        
+                        <product_color name="mud"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="sepia"></product_color>
+                        <product_color name="lava"></product_color>
+                        <product_color name="soil"></product_color>
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="lava"></product_color>
+                        <product_color name="umbra"></product_color>
+                        <product_color name="mud"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="siena"></product_color>
+                        <product_color name="lava"></product_color>                        
+                        <product_color name="soil"></product_color>	
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            <skin_type name="african">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="umbra"></product_color>                        
+                        <product_color name="lava"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="umbra"></product_color>
+                        <product_color name="lava"></product_color>
+                        <product_color name="soil"></product_color>
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="lava"></product_color>
+                        <product_color name="umbra"></product_color>                        
+                        <product_color name="mud"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="umbra"></product_color>
+                        <product_color name="lava"></product_color>
+                        <product_color name="soil"></product_color>
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="lava"></product_color>
+                        <product_color name="umbra"></product_color>
+                        <product_color name="mud"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="mud"></product_color>                        
+                        <product_color name="umbra"></product_color>
+                        <product_color name="lava"></product_color>                        
+                        <product_color name="soil"></product_color>	
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+		
+        </line>
+		
+        <line name="2" nice_name="organic line (hairstrokes)">
+            <skin_type name="northern european">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="coconut"></product_color>
+                        <product_color name="chestnut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="coconut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="coconut"></product_color>
+						<product_color name="wood treasure"></product_color>
+					</hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        <product_color name="ice coffee"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="ice coffee"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="wood treasure"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="ice coffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="ice coffee"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="wood treasure"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            <skin_type name="nordic">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="coconut"></product_color>
+			<product_color name="chestnut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="coconut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="chestnut"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="ice coffee"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                        <product_color name="ice coffee"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                        <product_color name="ice coffee"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="ice coffee"></product_color>
+                        <product_color name="hazelnut"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="ice coffee"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="wood treasure"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            
+            <skin_type name="european">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="coconut"></product_color>
+                        <product_color name="chestnut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="coconut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="chestnut"></product_color>
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="coconut"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="velvet brown"></product_color>                        
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="wood treasure"></product_color>
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="persian horse"></product_color>                        
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="toffee"></product_color>
+                        <product_color name="marsala"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown"> 
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="toffee"></product_color>                        
+                        <product_color name="marsala"></product_color>
+                        <product_color name="chestnut"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="chestnut"></product_color>
+                        <product_color name="wood treasure"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	                        
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="amazon"></product_color>                        
+                        <product_color name="dark chocolate"></product_color>                        
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                         <product_color name="ice coffee"></product_color>
+                         <product_color name="hazelnut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="ice coffee"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="olive tree"></product_color>
+                        <product_color name="ice coffee"></product_color>                        
+                        <product_color name="noisette"></product_color>
+
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="olive tree"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="wood treasure"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="olive tree"></product_color>
+                        <product_color name="dark chocolate"></product_color>                        
+                        <product_color name="velvet brown"></product_color>                        
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            <skin_type name="mediterranean">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="coconut"></product_color>
+                        <product_color name="chestnut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="chestnut"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="velvet brown"></product_color>                        
+                        <product_color name="mahagony"></product_color>                        
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="wood treasure"></product_color>
+                        <product_color name="amazon"></product_color>
+                        <product_color name="persian horse"></product_color>
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">                        
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="chestnut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="marsala"></product_color>
+                        <product_color name="chestnut"></product_color>
+                        <product_color name="wood treasure"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="persian horse"></product_color>
+                        <product_color name="amazon"></product_color>
+                        <product_color name="dark chocolate"></product_color>                        
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="amazon"></product_color>
+                        <product_color name="espresso"></product_color>
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="ice coffee"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="wood treasure"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="olive tree"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="wood treasure"></product_color>
+                        <product_color name="velvet brown"></product_color>
+
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="espresso"></product_color>
+                        <product_color name="dark chocolate"></product_color>                        
+                        <product_color name="olive tree"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="espresso"></product_color>
+                        <product_color name="dark chocolate"></product_color>                        
+                        <product_color name="geisha"></product_color>                        
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            
+            <skin_type name="asian">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="chestnut"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="velvet brown"></product_color>
+                        <product_color name="mahagony"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="wood treasure"></product_color>
+                        <product_color name="amazon"></product_color>
+                        <product_color name="persian horse"></product_color>
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="marsala"></product_color>
+                        <product_color name="chestnut"></product_color>
+                        <product_color name="wood treasure"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="persian horse"></product_color>
+                        <product_color name="amazon"></product_color>
+                        <product_color name="dark chocolate"></product_color>                        
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="amazon"></product_color>
+                        <product_color name="espresso"></product_color>
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="olive tree"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="wood treasure"></product_color>
+                        <product_color name="velvet brown"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="espresso"></product_color>
+                        <product_color name="dark chocolate"></product_color>                        
+                        <product_color name="olive tree"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="espresso"></product_color>
+                        <product_color name="dark chocolate"></product_color>                        
+                        <product_color name="geisha"></product_color>                        
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            
+            <skin_type name="indian">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="mahagony"></product_color>
+                        <product_color name="wood treasure"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="wood treasure"></product_color>
+                        <product_color name="persian horse"></product_color>
+                        <product_color name="amazon"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="wood treasure"></product_color>
+                        <product_color name="persian horse"></product_color>
+                        <product_color name="amazon"></product_color>
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="wood treasure"></product_color>
+                        <product_color name="mahagony"></product_color>
+                        <product_color name="dark chocolate"></product_color>                        
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="amazon"></product_color>
+                        <product_color name="persian horse"></product_color>
+                        <product_color name="dark chocolate"></product_color>                        
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="amazon"></product_color>
+                        <product_color name="persian horse"></product_color>
+                        <product_color name="geisha"></product_color>                        
+                        <product_color name="espresso"></product_color>
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="espresso"></product_color>
+                        <product_color name="dark chocolate"></product_color>                        
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="espresso"></product_color>
+                        <product_color name="dark chocolate"></product_color>                        
+                        <product_color name="geisha"></product_color>                        
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="espresso"></product_color>
+                        <product_color name="geisha"></product_color>                        
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            <skin_type name="african">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="amazon"></product_color>
+                        <product_color name="persian horse"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="amazon"></product_color>
+                        <product_color name="persian horse"></product_color>                        
+                        <product_color name="geisha"></product_color>                        
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="amazon"></product_color>
+                        <product_color name="espresso"></product_color>
+                        <product_color name="persian horse"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="amazon"></product_color>
+                        <product_color name="persian horse"></product_color>                         
+                        <product_color name="espresso"></product_color>
+                        <product_color name="geisha"></product_color>                        
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="dark chocolate"></product_color>                           
+                        <product_color name="espresso"></product_color>
+                        <product_color name="geisha"></product_color>                        
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="espresso"></product_color>
+                        <product_color name="geisha"></product_color>                        
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+		
+        </line>
+        
+        <line name="3" nice_name="organic line (powdery)">
+            <skin_type name="northern european">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="coconut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="coconut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="coconut"></product_color>
+		    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        <product_color name="ice coffee"></product_color>                        
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="ice coffee"></product_color>                        
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="ice coffee"></product_color>                        
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                         <product_color name="ice coffee"></product_color>                        
+                         <product_color name="hazelnut"></product_color>
+                         <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="ice coffee"></product_color>                        
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="ice coffee"></product_color>                        
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            <skin_type name="nordic">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="coconut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="coconut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="chestnut"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="coconut"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                        <product_color name="coconut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                        <product_color name="coconut"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                         <product_color name="ice coffee"></product_color>
+                         <product_color name="hazelnut"></product_color>
+                         <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="ice coffee"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="ice coffee"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            
+            <skin_type name="european">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="coconut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="coconut"></product_color>
+                        <product_color name="toffee"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="chestnut"></product_color>                        
+                        <product_color name="hazelnut"></product_color>
+                        <product_color name="marsala"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="chestnut"></product_color>
+                        <product_color name="velvet brown"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="wood treasure"></product_color>                        
+                        <product_color name="mahagony"></product_color>
+                        <product_color name="hazelnut"></product_color>           
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="toffee"></product_color>
+                        <product_color name="noisette"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="toffee"></product_color>
+                        <product_color name="noisette"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown"> 
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="toffee"></product_color>
+                        <product_color name="marsala"></product_color>
+                        <product_color name="chestnut"></product_color>
+                        <product_color name="noisette"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="hazelnut"></product_color>                        
+                        <product_color name="chestnut"></product_color>
+                        <product_color name="wood treasure"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="black">	                        
+                        <product_color name="wood treasure"></product_color>
+                        <product_color name="amazon"></product_color>
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                         <product_color name="ice coffee"></product_color>                        
+                         <product_color name="hazelnut"></product_color>                        
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="ice coffee"></product_color>                        
+                        <product_color name="hazelnut"></product_color>     
+                        <product_color name="noisette"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="olive tree"></product_color>
+                        <product_color name="ice coffee"></product_color>                        
+                        <product_color name="hazelnut"></product_color>     
+
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="olive tree"></product_color>
+                        <product_color name="hazelnut"></product_color>     
+                        <product_color name="wood treasure"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="olive tree"></product_color>
+                        <product_color name="dark chocolate"></product_color>
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            <skin_type name="mediterranean">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="hazelnut"></product_color>     
+                        <product_color name="coconut"></product_color>     
+                    </hair_color>
+				
+                    <hair_color name="light brown">                        
+                        <product_color name="chestnut"></product_color>     
+                        <product_color name="hazelnut"></product_color>                             
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="hazelnut"></product_color>                             
+                        <product_color name="velvet brown"></product_color>                             
+                        <product_color name="mahagony"></product_color>                             
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="wood treasure"></product_color>
+                        <product_color name="mahagony"></product_color>                             
+                        <product_color name="hazelnut"></product_color>                             
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">                        
+                        <product_color name="hazelnut"></product_color>                             
+                        <product_color name="coconut"></product_color>     
+                        <product_color name="ice coffee"></product_color>                        
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="hazelnut"></product_color>                             
+                        <product_color name="wood treasure"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="hazelnut"></product_color>                             
+                        <product_color name="amazon"></product_color>                             
+                        <product_color name="persian horse"></product_color>                             
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="amazon"></product_color>                             
+                        <product_color name="persian horse"></product_color>                             
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="ice coffee"></product_color>                        
+                        <product_color name="hazelnut"></product_color>                             
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="olive tree"></product_color>
+                        <product_color name="hazelnut"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="espresso"></product_color>
+                        <product_color name="dark chocolate"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="espresso"></product_color>
+                        <product_color name="dark chocolate"></product_color>     
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            
+            <skin_type name="asian">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="chestnut"></product_color>    
+                        <product_color name="hazelnut"></product_color>                             
+
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="hazelnut"></product_color>    
+                        <product_color name="velvet brown"></product_color>                                                      
+                        <product_color name="mahagony"></product_color>                             
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="wood treasure"></product_color>                             
+                        <product_color name="mahagony"></product_color>                             
+                        <product_color name="hazelnut"></product_color>    
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="hazelnut"></product_color>                             
+                        <product_color name="wood treasure"></product_color>                             
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="hazelnut"></product_color>                             
+                        <product_color name="amazon"></product_color>                             
+                        <product_color name="persian horse"></product_color>                             
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="amazon"></product_color>                             
+                        <product_color name="persian horse"></product_color> 
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">                          
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="olive tree"></product_color>
+                        <product_color name="hazelnut"></product_color>                             
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="espresso"></product_color>                             
+                        <product_color name="dark chocolate"></product_color>                             
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="espresso"></product_color>                             
+                        <product_color name="dark chocolate"></product_color> 
+                        <product_color name="geisha"></product_color>                             
+              
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            
+            <skin_type name="indian">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="mahagony"></product_color>                        
+                        <product_color name="wood treasure"></product_color>                             
+                     </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="wood treasure"></product_color>                             
+                        <product_color name="persian horse"></product_color> 
+                        <product_color name="amazon"></product_color>                             
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="amazon"></product_color>                             
+                        <product_color name="persian horse"></product_color> 
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="mahagony"></product_color>                        
+                        <product_color name="wood treasure"></product_color>                             
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="amazon"></product_color>                             
+                        <product_color name="persian horse"></product_color> 
+                        <product_color name="espresso"></product_color>                             
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="amazon"></product_color>                             
+                        <product_color name="persian horse"></product_color> 
+                        <product_color name="espresso"></product_color>  
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="velvet brown"></product_color>                             
+                        <product_color name="dark chocolate"></product_color> 
+                        <product_color name="espresso"></product_color>  
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="espresso"></product_color>  
+                        <product_color name="dark chocolate"></product_color> 
+                        <product_color name="geisha"></product_color>                             
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="espresso"></product_color>  
+                        <product_color name="geisha"></product_color>                             
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            <skin_type name="african">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="amazon"></product_color>                             
+                        <product_color name="persian horse"></product_color> 
+                        <product_color name="espresso"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="amazon"></product_color>                             
+                        <product_color name="persian horse"></product_color> 
+                        <product_color name="espresso"></product_color>
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="amazon"></product_color>                             
+                        <product_color name="persian horse"></product_color> 
+                        <product_color name="espresso"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="amazon"></product_color>                             
+                        <product_color name="persian horse"></product_color> 
+                        <product_color name="espresso"></product_color>
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="espresso"></product_color>
+                        <product_color name="geisha"></product_color>                             
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="espresso"></product_color>
+                        <product_color name="geisha"></product_color>
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+		
+        </line>
+        
+        <line name="4" nice_name="organic line (lips)">
+            <skin_type name="northern european">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                        <product_color name="papaya"></product_color>
+                        <product_color name="nougat"></product_color>
+                        <product_color name="tasty nude"></product_color>
+                        <product_color name="le rouge"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="papaya"></product_color>
+                        <product_color name="nougat"></product_color>
+                        <product_color name="tasty nude"></product_color>
+                        <product_color name="le rouge"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="papaya"></product_color>
+                        <product_color name="nougat"></product_color>
+                        <product_color name="tasty nude"></product_color>
+                        <product_color name="le rouge"></product_color>
+		    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="tasty nude"></product_color>
+                        <product_color name="cherry blossom"></product_color>
+                        <product_color name="nougat"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="tasty nude"></product_color>
+                        <product_color name="cherry blossom"></product_color>
+                        <product_color name="nougat"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="tasty nude"></product_color>
+                        <product_color name="cherry blossom"></product_color>
+                        <product_color name="nougat"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                         <product_color name="antic rose"></product_color>                        
+                         <product_color name="tasty nude"></product_color>
+                         <product_color name="cranberry"></product_color>
+                         <product_color name="romantique"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="antic rose"></product_color>                        
+                         <product_color name="tasty nude"></product_color>
+                         <product_color name="cranberry"></product_color>
+                         <product_color name="romantique"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="antic rose"></product_color>                        
+                         <product_color name="tasty nude"></product_color>
+                         <product_color name="cranberry"></product_color>
+                         <product_color name="romantique"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            <skin_type name="nordic">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>
+                        <product_color name="tasty nude"></product_color>
+                        <product_color name="le rouge"></product_color>                        
+                        <product_color name="antic rose"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>
+                        <product_color name="tasty nude"></product_color>
+                        <product_color name="le rouge"></product_color>                        
+                        <product_color name="antic rose"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>
+                        <product_color name="tasty nude"></product_color>
+                        <product_color name="le rouge"></product_color>                        
+                        <product_color name="antic rose"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="tasty nude"></product_color>
+                        <product_color name="cherry blossom"></product_color>                        
+                        <product_color name="nougat"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="tasty nude"></product_color>
+                        <product_color name="cherry blossom"></product_color>                        
+                        <product_color name="nougat"></product_color>
+                      
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="tasty nude"></product_color>
+                        <product_color name="cherry blossom"></product_color>                        
+                        <product_color name="nougat"></product_color>
+                    
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                        <product_color name="pomegranate"></product_color>                        
+                        <product_color name="romantique"></product_color>
+                        <product_color name="cherry blossom"></product_color>                        
+                        <product_color name="berry kiss"></product_color>
+                        <product_color name="fuchsia"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="pomegranate"></product_color>                        
+                        <product_color name="romantique"></product_color>
+                        <product_color name="cherry blossom"></product_color>                        
+                        <product_color name="berry kiss"></product_color>
+                        <product_color name="fuchsia"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="pomegranate"></product_color>                        
+                        <product_color name="romantique"></product_color>
+                        <product_color name="cherry blossom"></product_color>                        
+                        <product_color name="berry kiss"></product_color>
+                        <product_color name="fuchsia"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            
+            <skin_type name="european">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">                        
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>
+                        <product_color name="tasty nude"></product_color>                        
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cherry blossom"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>
+                        <product_color name="tasty nude"></product_color>                        
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cherry blossom"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>
+                        <product_color name="tasty nude"></product_color>                        
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cherry blossom"></product_color>
+    
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>
+                        <product_color name="tasty nude"></product_color>                        
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cherry blossom"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>
+                        <product_color name="tasty nude"></product_color>                        
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cherry blossom"></product_color>
+         
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="tasty nude"></product_color>   
+                        <product_color name="cherry blossom"></product_color>
+                        <product_color name="nougat"></product_color>
+                        <product_color name="cranberry"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="tasty nude"></product_color>   
+                        <product_color name="cherry blossom"></product_color>
+                        <product_color name="nougat"></product_color>
+                        <product_color name="cranberry"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="light brown"> 
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="tasty nude"></product_color>   
+                        <product_color name="cherry blossom"></product_color>
+                        <product_color name="nougat"></product_color>
+                        <product_color name="cranberry"></product_color>
+
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="tasty nude"></product_color>   
+                        <product_color name="cherry blossom"></product_color>
+                        <product_color name="nougat"></product_color>
+                        <product_color name="cranberry"></product_color>
+
+
+                    </hair_color>
+				
+                    <hair_color name="black">	    
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="tasty nude"></product_color>   
+                        <product_color name="cherry blossom"></product_color>
+                        <product_color name="nougat"></product_color>
+                        <product_color name="cranberry"></product_color>                    
+
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                         <product_color name="pomegranate"></product_color>                        
+                         <product_color name="antic rose"></product_color>   
+                         <product_color name="berry kiss"></product_color>
+                         <product_color name="dragon fruit"></product_color>
+                         <product_color name="flamingo"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="pomegranate"></product_color>                        
+                         <product_color name="antic rose"></product_color>   
+                         <product_color name="berry kiss"></product_color>
+                         <product_color name="dragon fruit"></product_color>
+                         <product_color name="flamingo"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="pomegranate"></product_color>                        
+                         <product_color name="antic rose"></product_color>   
+                         <product_color name="berry kiss"></product_color>
+                         <product_color name="dragon fruit"></product_color>
+                         <product_color name="flamingo"></product_color>
+      
+
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="pomegranate"></product_color>                        
+                         <product_color name="antic rose"></product_color>   
+                         <product_color name="berry kiss"></product_color>
+                         <product_color name="dragon fruit"></product_color>
+                         <product_color name="flamingo"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="pomegranate"></product_color>                        
+                         <product_color name="antic rose"></product_color>   
+                         <product_color name="berry kiss"></product_color>
+                         <product_color name="dragon fruit"></product_color>
+                         <product_color name="flamingo"></product_color>
+
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            <skin_type name="mediterranean">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                        
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>                        
+                        <product_color name="tasty nude"></product_color>   
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="antic rose"></product_color>
+    
+                    </hair_color>
+				
+                    <hair_color name="light brown"> 
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>                        
+                        <product_color name="tasty nude"></product_color>   
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="antic rose"></product_color>                                                  
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>                        
+                        <product_color name="tasty nude"></product_color>   
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="antic rose"></product_color>
+                           
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>                        
+                        <product_color name="tasty nude"></product_color>   
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="antic rose"></product_color>
+                          
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="peach"></product_color>                           
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cranberry"></product_color>                        
+                        <product_color name="brick red"></product_color>                        
+                      
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="peach"></product_color>                           
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cranberry"></product_color>                        
+                        <product_color name="brick red"></product_color>
+
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="peach"></product_color>                           
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cranberry"></product_color>                        
+                        <product_color name="brick red"></product_color>
+                            
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="peach"></product_color>                           
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cranberry"></product_color>                        
+                        <product_color name="brick red"></product_color>
+                            
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                         
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                        <product_color name="cherry blossom"></product_color>
+                         <product_color name="berry kiss"></product_color>
+                         <product_color name="merlot"></product_color>
+                         <product_color name="cranberry"></product_color>
+                         <product_color name="sweet plum"></product_color>
+                         <product_color name="fuchsia"></product_color>
+                         <product_color name="dragon fruit"></product_color>
+                         <product_color name="flamingo"></product_color>
+                         <product_color name="pomegranate"></product_color>
+                        
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="cherry blossom"></product_color>
+                         <product_color name="berry kiss"></product_color>
+                         <product_color name="merlot"></product_color>
+                         <product_color name="cranberry"></product_color>
+                         <product_color name="sweet plum"></product_color>
+                         <product_color name="fuchsia"></product_color>
+                         <product_color name="dragon fruit"></product_color>
+                         <product_color name="flamingo"></product_color>
+                         <product_color name="pomegranate"></product_color>
+
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="cherry blossom"></product_color>
+                         <product_color name="berry kiss"></product_color>
+                         <product_color name="merlot"></product_color>
+                         <product_color name="cranberry"></product_color>
+                         <product_color name="sweet plum"></product_color>
+                         <product_color name="fuchsia"></product_color>
+                         <product_color name="dragon fruit"></product_color>
+                         <product_color name="flamingo"></product_color>
+                         <product_color name="pomegranate"></product_color>
+
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="cherry blossom"></product_color>
+                         <product_color name="berry kiss"></product_color>
+                         <product_color name="merlot"></product_color>
+                         <product_color name="cranberry"></product_color>
+                         <product_color name="sweet plum"></product_color>
+                         <product_color name="fuchsia"></product_color>
+                         <product_color name="dragon fruit"></product_color>
+                         <product_color name="flamingo"></product_color>
+                         <product_color name="pomegranate"></product_color>
+   
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            
+            <skin_type name="asian">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">
+                        
+
+                    </hair_color>
+				
+                    <hair_color name="blond">
+   
+
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>                        
+                        <product_color name="tasty nude"></product_color>   
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cherry blossom"></product_color>
+
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>                        
+                        <product_color name="tasty nude"></product_color>   
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cherry blossom"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="nougat"></product_color>                        
+                        <product_color name="tasty nude"></product_color>   
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cherry blossom"></product_color>
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                        
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="peach"></product_color>                           
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cranberry"></product_color>                        
+                        <product_color name="brick red"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="peach"></product_color>                           
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cranberry"></product_color>                        
+                        <product_color name="brick red"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="peach"></product_color>                           
+                        <product_color name="le rouge"></product_color>
+                        <product_color name="cranberry"></product_color>                        
+                        <product_color name="brick red"></product_color>
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                         
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                          
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="cherry blossom"></product_color>
+                        <product_color name="berry kiss"></product_color>
+                        <product_color name="merlot"></product_color>
+                        <product_color name="cranberry"></product_color>
+                        <product_color name="sweet plum"></product_color>
+                        <product_color name="fuchsia"></product_color>
+                        <product_color name="dragon fruit"></product_color>
+                        <product_color name="flamingo"></product_color>
+                        <product_color name="pomegranate"></product_color>
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="cherry blossom"></product_color>
+                        <product_color name="berry kiss"></product_color>
+                        <product_color name="merlot"></product_color>
+                        <product_color name="cranberry"></product_color>
+                        <product_color name="sweet plum"></product_color>
+                        <product_color name="fuchsia"></product_color>
+                        <product_color name="dragon fruit"></product_color>
+                        <product_color name="flamingo"></product_color>
+                        <product_color name="pomegranate"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="cherry blossom"></product_color>
+                        <product_color name="berry kiss"></product_color>
+                        <product_color name="merlot"></product_color>
+                        <product_color name="cranberry"></product_color>
+                        <product_color name="sweet plum"></product_color>
+                        <product_color name="fuchsia"></product_color>
+                        <product_color name="dragon fruit"></product_color>
+                        <product_color name="flamingo"></product_color>
+                        <product_color name="pomegranate"></product_color>
+              
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            
+            <skin_type name="indian">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">                        
+                                              
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="pomegranate"></product_color>                        
+                        <product_color name="le rouge"></product_color>  
+                     </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="pomegranate"></product_color>                        
+                        <product_color name="le rouge"></product_color>  
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="pomegranate"></product_color>                        
+                        <product_color name="le rouge"></product_color>  
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red">
+                         
+   
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="cranberry"></product_color>                        
+                        <product_color name="cherry blossom"></product_color>  
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="cranberry"></product_color>                        
+                        <product_color name="cherry blossom"></product_color>  
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="peach"></product_color>                        
+                        <product_color name="papaya"></product_color>                        
+                        <product_color name="cranberry"></product_color>                        
+                        <product_color name="cherry blossom"></product_color>  
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                          
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                        <product_color name="cherry blossom"></product_color>   
+                        <product_color name="fuchsia"></product_color>   
+                        <product_color name="dragon fruit"></product_color>                           
+                        <product_color name="merlot"></product_color>   
+                        <product_color name="flamingo"></product_color>  
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="cherry blossom"></product_color>   
+                        <product_color name="fuchsia"></product_color>   
+                        <product_color name="dragon fruit"></product_color>                           
+                        <product_color name="merlot"></product_color>   
+                        <product_color name="flamingo"></product_color>  
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="cherry blossom"></product_color>   
+                        <product_color name="fuchsia"></product_color>   
+                        <product_color name="dragon fruit"></product_color>                           
+                        <product_color name="merlot"></product_color>   
+                        <product_color name="flamingo"></product_color>  
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+            
+            <skin_type name="african">
+                <skin_tone name="cold">
+			
+                    <hair_color name="red">                        
+                           
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="papaya"></product_color>                         
+                        <product_color name="pomegranate"></product_color>   
+                        <product_color name="le rouge"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="papaya"></product_color>                         
+                        <product_color name="pomegranate"></product_color>   
+                        <product_color name="le rouge"></product_color>
+                    </hair_color>
+				
+                </skin_tone>
+			
+                <skin_tone name="neutral">
+                    
+                    <hair_color name="red"> 
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="peach"></product_color>                         
+                        <product_color name="papaya"></product_color>   
+                        <product_color name="cranberry"></product_color>                         
+                        <product_color name="cherry blossom"></product_color>
+                    </hair_color>
+				
+                    <hair_color name="black">	
+                        <product_color name="peach"></product_color>                         
+                        <product_color name="papaya"></product_color>   
+                        <product_color name="cranberry"></product_color>                         
+                        <product_color name="cherry blossom"></product_color>
+                    </hair_color>
+				
+			
+                </skin_tone>
+			
+                <skin_tone name="warm">
+                    
+                     <hair_color name="red">
+                         
+
+                    </hair_color>
+				
+                    <hair_color name="blond">
+                    </hair_color>
+				
+                    <hair_color name="light brown">
+                    </hair_color>	
+                    		
+                    <hair_color name="dark brown">
+                        <product_color name="cherry blossom"></product_color>                         
+                        <product_color name="fuchsia"></product_color>   
+                        <product_color name="dragon fruit"></product_color>                         
+                        <product_color name="flamingo"></product_color> 
+                        <product_color name="le rouge"></product_color>         
+                    </hair_color>
+				
+                    <hair_color name="black">
+                        <product_color name="cherry blossom"></product_color>                         
+                        <product_color name="fuchsia"></product_color>   
+                        <product_color name="dragon fruit"></product_color>                         
+                        <product_color name="flamingo"></product_color> 
+                        <product_color name="le rouge"></product_color> 
+                    </hair_color>
+			
+                </skin_tone>
+            </skin_type>
+		
+        </line>
+	
+	
+    </configurations>
+
+
+    <descriptions>
+		<line_descriptions name="evolution_line">
+			<color_description name="desert" nice_name="Desert" sn="F-B710" color_class="fb710" temperature="warm">
+				<cd_en>Light beige. Optimal to mix dark eyebrow colors lighter. Set highlights or lighten up too dark eyebrow pigmentations.</cd_en>
+			</color_description>
+			
+			<color_description name="sand" nice_name="Sand" sn="F-B715" color_class="fb715" temperature="warm">
+				<cd_en>Bright blond. For light to medium blonde hair. To lighten up dark eyebrows and to set highlights.</cd_en>
+			</color_description>
+			
+			<color_description name="sahara" nice_name="Sahara" sn="F-B720" color_class="fb720" temperature="cold">
+				<cd_en>Cool dark blonde. For medium to dark blond hair.</cd_en>
+			</color_description>
+			
+			<color_description name="ocher" nice_name="Ocher" sn="F-B730" color_class="fb730" temperature="warm">
+				<cd_en>Warm light brown. To make slightly cool eyebrow pigmentation warmer.</cd_en>
+			</color_description>
+			
+			<color_description name="clay" nice_name="Clay" sn="F-B740" color_class="fb740" temperature="neutral">
+				<cd_en>Neutral dark blonde. For dark blond to light brown hair.</cd_en>
+			</color_description>
+
+			<color_description name="peat" nice_name="Peat" sn="F-B750" color_class="fb750" temperature="neutral">
+				<cd_en>Neutral light brown. For light to medium brown hair.</cd_en>
+			</color_description>
+
+			<color_description name="siena" nice_name="Siena" sn="F-B760" color_class="fb760" temperature="warm">
+				<cd_en>Warm medium brown. For auburn hair.</cd_en>
+			</color_description>
+
+			<color_description name="sepia" nice_name="Sepia" sn="F-B770" color_class="fb770" temperature="neutral">
+				<cd_en>Dark brown. For medium to dark brown hair.</cd_en>
+			</color_description>
+
+			<color_description name="mud" nice_name="Mud" sn="F-B780" color_class="fb780" temperature="cold">
+				<cd_en>Dark brown. For medium brown to black hair.</cd_en>
+			</color_description>
+
+			<color_description name="umbra" nice_name="Umbra" sn="F-B785" color_class="fb785" temperature="neutral">
+				<cd_en>Neutral dark brown. For dark brown to black hair.</cd_en>
+			</color_description>
+
+			<color_description name="lava" nice_name="Lava" sn="F-B790" color_class="fb790" temperature="cold">
+				<cd_en>Very dark brown. Also suitable as eyeliner for lighter skin types</cd_en>
+			</color_description>
+
+			<color_description name="soil" nice_name="Soil" sn="F-B795" color_class="fb795" temperature="cold">
+				<cd_en>Brown black. Also suitable as eyeliner</cd_en>
+			</color_description>
+
+			<color_description name="orange" nice_name="Orange" sn="F-OR700" color_class="for700" temperature="warm">
+				<cd_en>Brown orange. To correct gray eyebrow pigmentation</cd_en>
+			</color_description>
+
+			<color_description name="khaki" nice_name="Khaki" sn="F-KH700" color_class="fkh700" temperature="cold">
+				<cd_en>Muted light green. For correcting pink to red eyebrow pigmentation. For light to dark blond hair</cd_en>
+			</color_description>
+
+			<color_description name="olive" nice_name="Olive" sn="F-OL700" color_class="fol700" temperature="cold">
+				<cd_en>Muted dark green. For correcting red eyebrow pigmentation. For brown to dark brown hair</cd_en>
+			</color_description>
+
+			<color_description name="yellow" nice_name="Yellow" sn="F-YE700" color_class="fye700" temperature="warm">
+				<cd_en>Mustard yellow. For correction of purple eyebrow pigmentation</cd_en>
+			</color_description>
+		</line_descriptions>
+		
+		<line_descriptions name="organic_line">
+                    
+                    <color_description name="black beauty" nice_name="Black Beauty" sn="FXBL022" color_class="fxbl022" temperature="cold">
+                        <cd_en>Blueish black. Not suitable for eyebrows or lips!</cd_en>
+                    </color_description>
+                    
+                    <color_description name="deep black" nice_name="Deep Black" sn="F-BL020" color_class="fbl020" temperature="cold">
+                        <cd_en>Deep black. Not suitable for eyebrows or lips!</cd_en>
+                    </color_description>
+                    
+                    <color_description name="sapphire" nice_name="Sapphire" sn="F-BU560" color_class="fbu560" temperature="cold">
+                        <cd_en>Intense blue. To set eyeliner accents.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="graphite" nice_name="Graphite" sn="FXGY510" color_class="fxgy510" temperature="cold">
+                        <cd_en>Medium gray. Ideal for eye shading.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="golden desert" nice_name="Golden Desert" sn="F-B510" color_class="fb510" temperature="warm">
+                        <cd_en>Light beige. Optimal to mix dark eyebrow colors lighter. Set highlights or lighten up too dark eyebrow pigmentations.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="peanut butter" nice_name="Peanut Butter" sn="F-B515" color_class="fb515" temperature="warm">
+                        <cd_en>Warm beige. Optimal to mix dark eyebrow colors lighter. Set highlights or lighten up too dark eyebrow pigmentations.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="toffee" nice_name="Toffee" sn="F-B520" color_class="fb520" temperature="neutral">
+                        <cd_en>Pale ashy blond. For shading, mixing or to set highlight hairs on dark pigmentations.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="ice coffee" nice_name="Ice Coffee" sn="F-B524" color_class="fb524" temperature="cold">
+                        <cd_en>Medium dark ash brown. For shading and correction of pink to reddish faded eyebrow pigmentation.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="coconut" nice_name="Coconut" sn="F-B535" color_class="fb535" temperature="warm">
+                        <cd_en>Pale reddish brown. For shading. Very suitable for red-blond types.</cd_en>
+                    </color_description>
+                    
+                      <color_description name="hazelnut" nice_name="Hazelnut" sn="F-B540" color_class="fb540" temperature="neutral">
+                        <cd_en>Medium dark brown. For shading and hairstrokes.</cd_en>
+                    </color_description>
+                    
+                      <color_description name="velvet brown" nice_name="Velvet Brown" sn="F-B545" color_class="fb545" temperature="neutral">
+                        <cd_en>Medium dark reddish brown. For shading and hairstrokes. Very suitable for maroon eyebrows.</cd_en>
+                    </color_description>
+                    
+                      <color_description name="mahagony" nice_name="Mahagony" sn="F-B550" color_class="fb550" temperature="warm">
+                        <cd_en>Warm dark brown. For shading and hairstrokes. Very suitable for auburn eyebrows.</cd_en>
+                    </color_description>
+                    
+                      <color_description name="dark chocolate" nice_name="Dark Chocolate" sn="F-B560" color_class="fb560" temperature="neutral">
+                        <cd_en>Cool dark brown. For shading and hairstrokes.</cd_en>
+                    </color_description>
+                    
+                      <color_description name="olive tree" nice_name="Olive Tree" sn="F-B566" color_class="fb566" temperature="cold">
+                        <cd_en>Cool dark brown. For shading and hairstrokes. Can also be used as eyeliner.</cd_en>
+                    </color_description>
+                    
+                      <color_description name="espresso" nice_name="Espresso" sn="F-B580" color_class="fb580" temperature="cold">
+                        <cd_en>Black Brown. Only suitable for hairstrokes on dark skin types! For light skin types also suitable as eyeliner.</cd_en>
+                    </color_description>
+                    
+                      <color_description name="wood treasure" nice_name="Wood Treasure" sn="FXA600" color_class="fxa600" temperature="warm">
+                        <cd_en>Medium gray. Ideal for eye shading.</cd_en>
+                    </color_description>
+                    
+                      <color_description name="noisette" nice_name="Noisette" sn="FXB614" color_class="fxb614" temperature="warm"> 
+                        <cd_en>Warm dark blond. For shading</cd_en>
+                    </color_description>
+                    
+                      <color_description name="chestnut" nice_name="Chestnut" sn="FXB660" color_class="fxb660" temperature="warm">
+                        <cd_en>Warm medium brown. For shading and hairstrokes. </cd_en>
+                    </color_description>
+                    
+                    <color_description name="persian horse" nice_name="Persian Horse" sn="FXB670" color_class="fxb670" temperature="warm">
+                        <cd_en>Neutral dark brown. For shading and hairstrokes. </cd_en>
+                    </color_description>
+                    
+                    <color_description name="amazon" nice_name="Amazon" sn="FXB680" color_class="fxb680" temperature="neutral">
+                        <cd_en>Very dark brown. For shading and hairstrokes. </cd_en>
+                    </color_description>
+                    
+                    <color_description name="marsala" nice_name="Marsala" sn="FXB683" color_class="fxb683" temperature="warm">
+                        <cd_en>Warm light brown. For shading</cd_en>
+                    </color_description>
+                    
+                    <color_description name="geisha" nice_name="Geisha" sn="FXB690" color_class="fxb690" temperature="cold">
+                        <cd_en>Black brown. For shading and hairstrokes.  Only suitable for dark skin types. Also suitable as eyeliner (even with fair skin types)</cd_en>
+                    </color_description>
+                    
+                    <color_description name="papaya" nice_name="Papaya" sn="F-R501" color_class="fr501" temperature="warm">
+                        <cd_en>Bright orange. To mix colors lighter and warmer. For correction and lightening of dark lips and lip pigmentation (purple to blue).</cd_en>
+                    </color_description>
+                    
+                    <color_description name="pomegranate" nice_name="Pomegranate" sn="F-R505" color_class="fr505" temperature="cold">
+                        <cd_en>Coral Nudeton. For lightening dark lips and lip pigmentation and to mix colors lighter.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="nougat" nice_name="Nougat" sn="F-R510" color_class="fr510" temperature="warm">
+                        <cd_en>Nude beige. To make bright colors softer and natural.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="peach" nice_name="Peach" sn="F-R512" color_class="fr512" temperature="neutral">
+                        <cd_en>Bright rosewood. For lightening dark lips and lip pigmentation and  to mix colors lighter.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="tasty nude" nice_name="Tasty Nude" sn="F-R515" color_class="fr515" temperature="warm">
+                        <cd_en>Dark rosewood.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="antic rose" nice_name="Antic Rose" sn="F-R525" color_class="fr525" temperature="neutral">
+                        <cd_en>Rosé. To lighten dark lips (Arabic to Asian).</cd_en>
+                    </color_description>
+                    
+                    <color_description name="cherry blossom" nice_name="Cherry Blossom" sn="F-R530" color_class="fr530" temperature="neutral">
+                        <cd_en>Natural pink lip color. For "invisible" contours and faded lips.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="le rouge" nice_name="Le Rouge" sn="F-R550" color_class="fr550" temperature="warm">
+                        <cd_en>Bright brilliant red. For fresh lips and for mixing.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="cranberry" nice_name="Cranberry" sn="F-R555" color_class="fr555" temperature="neutral">
+                        <cd_en>Intense red. For refreshing tired lip colors and pigmentations. All time Classic!</cd_en>
+                    </color_description>
+                    
+                    <color_description name="merlot" nice_name="Merlot" sn="F-R570" color_class="fr570" temperature="cold">
+                        <cd_en>Darkest red. For expressive lips. Pay attention to not too intensive color input (tendency to purple)!</cd_en>
+                    </color_description>
+                    
+                    <color_description name="sweet plum" nice_name="Sweet Plum" sn="F-R572" color_class="fr572" temperature="cold">
+                        <cd_en>Dark red. For expressive lips. Pay attention to not too intensive color input (tendency to purple)!</cd_en>
+                    </color_description>
+                    
+                    <color_description name="fuchsia" nice_name="Fuchsia" sn="F-R576" color_class="fr576" temperature="cold">
+                        <cd_en>Muted dark pink. To give lips with strong lip red more expression.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="dragon fruit" nice_name="Dragon Fruit" sn="F-R580" color_class="fr580" temperature="cold">
+                        <cd_en>Intense pink. Gives a fresh look.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="flamingo" nice_name="Flamingo" sn="F-R582" color_class="fr582" temperature="cold">
+                        <cd_en>Brilliant pink. Gives a fresh look.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="romantique" nice_name="Romantique" sn="F-R585" color_class="fr858" temperature="neutral">
+                        <cd_en>Light Pink. Gives a fresh look.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="brick red" nice_name="Brick Red" sn="F-R590" color_class="fr590" temperature="neutral">
+                        <cd_en>Muted red-brown. For expressional lip contours.</cd_en>
+                    </color_description>
+                    
+                    <color_description name="berry kiss" nice_name="Berry Kiss" sn="FXR544" color_class="fxr544" temperature="cold">
+                        <cd_en>Muted rosé. To intensify natural lip red. Versatile.</cd_en>
+                    </color_description>
+                    
+                    
+		</line_descriptions>
+		
+    
+    </descriptions>
+	
+	
+</color_advice>

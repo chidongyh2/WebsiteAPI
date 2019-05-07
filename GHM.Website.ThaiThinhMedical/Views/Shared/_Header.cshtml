@@ -1,0 +1,93 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listMenuItem = ViewBag.MainNav as List<MenuItemViewModel>;
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+    var listLanguage = ViewBag.ListLanguage as List<TenantLanguageViewModel>;
+    var path = $"{Context.Request.Path}";
+    var url = ViewBag.Url;
+}
+
+<nav class="navbar navbar-default navbar-fixed-top header_bottom">
+    <div class="navbar-header">
+        <div class="container">
+            <div class="row">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#clinicMainNav" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand clinic-logo" href="/">
+                    <img src="~/assets/images/logo-full.png" alt="công ty cổ phần bệnh viện thái thịnh" />
+                </a>
+                <ul class="list-inline list-unstyled pull-right visible-lg">
+                    <li><a href="https://www.facebook.com/phongkhamdakhoa125thaithinh/" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                    <li><a href="https://www.youtube.com/channel/UC0g0vTVjxywyglj64SBU2AQ" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+                    <li><a href="/" target="_blank"><i class="fa fa-phone-square"></i></a></li>
+                    <li><span>0243 853 5522 / 0972 88 11 25</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="collapse navbar-collapse" id="clinicMainNav">
+        <div class="col-sm-12 menu">
+            <div class="container">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="/" class="transition">Trang chủ <span class="sr-only">(current)</span></a></li>
+                    @if (listMenuItem.Any() && listMenuItem != null && listMenuItem.Count > 0)
+                    {
+                        var menuObject = new MenuObject
+                        {
+                            ListMenuItem = listMenuItem,
+                            ParentId = null,
+                        };
+                        <partial name="_MenuItem" model="menuObject" />
+                    }
+                    @*@if (CurrentPatient != null)
+                    {
+                        <li class="dropdown">
+                            <a href="javascript://" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Tài khoản <span class="caret"></span></a>
+                            <ul class="user-menu">
+                                <li>
+                                    <a href="/thong-tin-ca-nhan">
+                                        <i class="fa fa-user cm-mgr-10"></i>
+                                        @Resource.Display_MyInfo
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/lich-su-kham-benh">
+                                        <i class="fa fa-history cm-mgr-10"></i>
+                                        @Resource.Display_Medical_History
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/xem-video">
+                                        <i class="fa fa-video-camera cm-mgr-10"></i>
+                                        @Resource.Display_Ultrasound_Video
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/xem-anh">
+                                        <i class="fa fa-file-picture-o cm-mgr-10"></i>
+                                        @Resource.Display_Ultrasound_Photos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/dang-xuat">
+                                        <i class="fa fa-sign-out cm-mgr-10"></i>
+                                        @Resource.Display_Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a href="/dang-nhap">Xem Video</a></li>
+                    }*@
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

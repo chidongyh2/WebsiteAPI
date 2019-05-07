@@ -128,7 +128,7 @@ IsCurrent = true,
                             <div data-bind="foreach: listNews">
                                 <div class="col-sm-6 col-xs-6 col-md-6 news-item">
                                     <div class="image-content">
-                                        <a data-bind="attr : {href: seoLink, title: metaTitle}">
+                                        <a data-bind="attr : {href:'/'+ seoLink + '.html', title: metaTitle}">
                                             <img class="news-image zoom img-responsive lazy"
                                                  data-bind="attr : {src: '/image?url=@ViewBag.Url' + featureImage + '&width=600&height=400', alt: altImage !== '' && altImage !== undefined ? altImage : metaTilte}"
                                                  onerror="this.src='/image?url=&width=600&height=400'" />

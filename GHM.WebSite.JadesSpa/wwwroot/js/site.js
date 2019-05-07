@@ -1,5 +1,6 @@
 ﻿var isShowToggle = true;
 $(document).ready(function () {
+    $(".wrap-show-icon").css("display", "none");
     $("#backToTop").click(() => {
         $("html, body").animate({ scrollTop: 0 }, 500);
     });
@@ -18,7 +19,10 @@ $(document).ready(function () {
 
     $('.navbar-toggle').click(function () {
         isShowToggle = !isShowToggle;
+        console.log(isShowToggle);
         if (!isShowToggle) {
+            $(".wrap-none-show-icon").css("display", "none");
+            $(".wrap-show-icon").css("display", "block");
             $(".navbar-header").removeClass("visible-xs");
             $(".navbar-header").addClass("hidden-xs");
             $(".navbar").addClass("navbar-fixed-top");
@@ -27,6 +31,9 @@ $(document).ready(function () {
             $('#abcMainNav').css('max-height', window.innerHeight - 80 + 'px');
             $('.navbar-collapse').css("display", "flex");
             $('.body-content').attr('style', 'margin-top: 0px !important');
+        } else {
+            $(".wrap-none-show-icon").css("display", "block");
+            $(".wrap-show-icon").css("display", "none");
         }
     });
 
