@@ -233,6 +233,7 @@
   box-shadow: none !important;
   bottom: 120px !important;
   right: 5px !important;
+  z-index: 996 !important;
 }
 @media only screen and (max-width: 1200px) {
   #fb-root .fb_dialog {
@@ -277,7 +278,7 @@
   width: 100%;
 }
 #zalo-root .zalo-chat-widget {
-  z-index: 0 !important;
+  z-index: 998 !important;
   right: 0px !important;
   bottom: 45px !important;
 }

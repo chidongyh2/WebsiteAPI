@@ -54,7 +54,7 @@ function VideoViewModel() {
         } else {
             return false;
         }
-    } 
+    }; 
 
     self.search = function (value) {
         self.currentPage(value.page);

@@ -37,6 +37,15 @@
         }
     };
 
+    self.checkUrlVideo = function (text) {
+        console.log(text);
+        if (text.indexOf('uploads/') > -1) {
+            return true;
+        } else {
+            return false;
+        }
+    }; 
+
     $(document).ready(function () {
         self.listValue(listValue);
         self.listVideo(listVideo);

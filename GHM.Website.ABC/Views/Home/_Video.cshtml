@@ -31,8 +31,14 @@
                         <div id="video-silder" data-bind="foreach: $root.listVideo()">
                             <div class="item">
                                 <a href="javascript://" data-bind="attr: { title: Title }, css: {selected : $root.id() === Id}, click: $root.selectVideo" class="thumbnail">
+                                    <!--ko if: $root.checkUrlVideo(Thumbnail)-->
                                     <img class="img-responsive" data-bind="attr: { src: '/image?url=' + '@ViewBag.Url' + Thumbnail + '&width=320&height=180', alt: Title }"
                                          onerror="this.src='/images/no-image.png'" />
+                                    <!--/ko-->
+                                    <!--ko ifnot: $root.checkUrlVideo(Thumbnail)-->
+                                    <img class="img-responsive" data-bind="attr: { src: '/image?url=' + Thumbnail + '&width=320&height=180', alt: Title }"
+                                         onerror="this.src='/images/no-image.png'" />
+                                    <!--/ko-->
                                     <span class="pause-video">
                                         <i class="fa fa-play"></i>
                                     </span>
