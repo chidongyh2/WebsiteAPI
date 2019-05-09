@@ -1,0 +1,19 @@
+﻿@{
+    var NewsAtive = ViewBag.NewsAtive as List<NewsDetailViewModel>;
+    var url = "https://websitefile.ghmsoft.vn/";
+}
+<section id="intro">
+    <div class="container">
+        <div id="intro_content" class="row">
+            <div class="col-md-6">
+                <div class="intro_text">
+                    <h2>@ViewBag.NewsAtive.Title</h2>
+                    @Html.Raw(ViewBag.NewsAtive.Content)
+                </div>
+            </div>
+            <div id="intro_image" class="col-md-6 text-center">
+                <img class="img-responsive" src="@($"{url}{ViewBag.NewsAtive.FeatureImage}")" alt="intro-image">
+            </div>
+        </div>
+    </div>
+</section>

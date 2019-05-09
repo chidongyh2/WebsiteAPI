@@ -1,0 +1,176 @@
+﻿@import "config.less";
+
+#footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #262626;
+
+    #newsletter {
+        margin-bottom: 10px;
+
+        .text-center {
+            text-align: center;
+        }
+
+        h3 {
+            color: #ddd;
+            font-size: 22px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        p {
+            color: #ddd;
+            line-height: 26px;
+            font-weight: 300;
+            margin-bottom: 0;
+        }
+
+        #newsletter_form {
+            margin: 15px auto;
+            width: 50%;
+
+            @media @tablet {
+                width: 75%;
+            }
+
+            @media @mobile {
+                width: 100%;
+            }
+
+            input[type="email"] {
+                background-color: #fff;
+                border: 1px solid #ccc;
+                width: 75%;
+                color: #414141;
+                font-size: 16px;
+                font-weight: 300;
+                padding: 10px 15px;
+                -webkit-border-radius: 6px 0 0 6px;
+                -moz-border-radius: 6px 0 0 6px;
+                -o-border-radius: 6px 0 0 6px;
+                border-radius: 6px 0 0 6px;
+
+                @media @mobile {
+                    width: 65%;
+                }
+            }
+
+            .btn-subscrice {
+                /*width: 35%;*/
+                background-color: @main-color;
+                border: 1px solid #8cc052;
+                color: #fff;
+                font-size: 13px;
+                font-weight: 900;
+                text-transform: uppercase;
+                padding: 12px 15px;
+                -webkit-border-radius: 0 6px 6px 0;
+                -moz-border-radius: 0 6px 6px 0;
+                border-radius: 0 6px 6px 0;
+                -webkit-transition: all 350ms ease-in-out;
+                -moz-transition: all 350ms ease-in-out;
+                -o-transition: all 350ms ease-in-out;
+                transition: all 350ms ease-in-out;
+
+                @media @mobile {
+                    width: 33%;
+                }
+
+                &:hover {
+                    background-color: @main-color-hover;
+                }
+            }
+        }
+    }
+
+    #footer_copyright {
+        p {
+            color: #ddd;
+            line-height: 40px;
+        }
+
+        span {
+            color: @main-color;
+            font-size: 15px;
+            font-weight: 800;
+        }
+    }
+
+    #footer_socials {
+        #contact_icons {
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .contact-socials {
+                display: inline-block;
+                padding-left: 0;
+
+                li {
+                    float: left;
+                    width: auto !important;
+                    display: inline-block !important;
+                    vertical-align: top;
+                    clear: none !important;
+                    padding: 0;
+
+                    a {
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+
+                    .foo_social {
+                        text-align: center;
+                        color: #999;
+                        width: 40px;
+                        height: 40px;
+                        font-size: 18px;
+                        line-height: 40px;
+                        margin: 0 5px;
+                        display: block;
+                        text-decoration: none;
+                        -webkit-border-radius: 50%;
+                        -moz-border-radius: 50%;
+                        border-radius: 50%;
+                        -webkit-transition: all 250ms ease-in-out;
+                        -moz-transition: all 250ms ease-in-out;
+                        -o-transition: all 250ms ease-in-out;
+                        -ms-transition: all 250ms ease-in-out;
+                        transition: all 250ms ease-in-out;
+                    }
+
+                    .ico-facebook:hover {
+                        background-color: #3b5998;
+                        color: #fff;
+                    }
+
+                    .ico-twitter:hover {
+                        background-color: #00a9ed;
+                        color: #fff;
+                    }
+
+                    .ico-google-plus:hover {
+                        background-color: #cd1111;
+                        color: #fff;
+                    }
+
+                    .ico-behance:hover {
+                        background-color: #00a8e7;
+                        color: #fff;
+                    }
+                }
+            }
+            /*.clearfix ::before {
+                display: table;
+                content: " ";
+            }*/
+        }
+    }
+}

@@ -1,0 +1,28 @@
+﻿@{
+    var listvalue = ViewBag.Listvalue as List<ValueViewModel>;
+}
+
+<div id="statistic_banner" style="background-position: 50% 59px;">
+    <div class="container">
+        @if (listvalue != null && listvalue.Any()){
+        <div id="statistic-holder" class="row">
+            @foreach (var list in listvalue)
+            {
+            <div class="col-sm-4 col-md-4 statistic-block animated bounceIn visible" data-animation="bounceIn">
+                <div class="statistic-number">@list.Description</div>
+                <div class="statistic-text">@list.Title</div>
+            </div>
+            @*<div class="col-sm-4 col-md-4 statistic-block animated bounceIn visible" data-animation="bounceIn" data-animation-delay="400">
+                <div class="statistic-number">100</div>
+                <div class="statistic-text">Khách hàng</div>
+            </div>
+
+            <div class="col-sm-4 col-md-4 statistic-block animated bounceIn visible" data-animation="bounceIn" data-animation-delay="600">
+                <div class="statistic-number">1000</div>
+                <div class="statistic-text">Người theo dõi</div>
+            </div>*@
+            }
+        </div>
+        }
+    </div>
+</div>

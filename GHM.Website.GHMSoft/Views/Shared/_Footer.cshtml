@@ -1,0 +1,37 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+}
+<footer id="footer">
+    <div class="container">       
+        <!-- FOOTER COPYRIGHT -->
+        <div class="row">
+            <div id="footer_copyright" class="col-sm-12 text-center">
+                <p>Copyright 2017 - @DateTime.Now.Year <span>GhmSoft</span>. All Rights Reserved.</p>
+            </div>
+        </div>
+        <!-- FOOTER SOCIALS -->
+        <div class="row">
+            <div id="footer_socials" class="col-sm-12 text-center">
+                <div id="contact_icons">
+                    @if (listSocialNetWork != null && listSocialNetWork.Any())
+                    {
+                        <ul class="contact-socials clearfix">
+                            @foreach (var socialNetWork in listSocialNetWork)
+                            {
+                                <li>
+                                    <a href="@socialNetWork.Url" class="foo_social @socialNetWork.Name">
+                                        @if (!string.IsNullOrEmpty(socialNetWork.Icon))
+                                        {
+                                            <i class="fa @socialNetWork.Icon"></i>
+                                        }
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>	<!-- END FOOTER SOCIALS -->
+    </div>
+</footer>

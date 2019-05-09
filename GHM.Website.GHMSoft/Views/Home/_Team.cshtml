@@ -1,0 +1,52 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+    var newsFounder = ViewBag.NewsFounder as List<NewsDetailViewModel>;
+    var url = "https://websitefile.ghmsoft.vn/";
+}
+<section id="team">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 titlebar">
+                    <h2>@ViewBag.NewsFounder.Title</h2>
+                </div>
+            </div>
+            <div class="row team_members_wrapper">
+                <div class="col-sm-6 col-md-3 animated fadeInRight visible" data-animation="fadeInRight" data-animation-delay="500">
+                    <div class="team-member text-center">
+                        <div class="img-block">
+                            <img class="img-responsive" src="@($"{url}{ViewBag.NewsFounder.FeatureImage}")" alt="team_foto">
+                        </div>
+                        <div class="team-img-meta">
+                            <h5>DANG TRAN DUNG</h5>
+                            <h6>CO-FOUNDER</h6>
+                        </div>
+                        <div class="team-socials">
+                            @if (listSocialNetWork != null && listSocialNetWork.Any())
+                            {
+                                <ul class="team-member-socials clearfix">
+                                    @foreach (var socialNetWork in listSocialNetWork)
+                                    {
+                                        <li>
+                                            <a href="@socialNetWork.Url" class="page_social @socialNetWork.Name">
+                                                @if (!string.IsNullOrEmpty(socialNetWork.Icon))
+                                                {
+                                                    <i class="fa @socialNetWork.Icon"></i>
+                                                }
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-9 animated fadeInRight visible" data-animation="fadeInRight" data-animation-delay="500">
+                    <div class="team-member">
+                       @Html.Raw(ViewBag.NewsFounder.Content)
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</section>
