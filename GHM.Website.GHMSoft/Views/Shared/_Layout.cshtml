@@ -1,6 +1,7 @@
 ﻿@{
     var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
     var absoluteUri = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
+    var url = "https://websitefile.ghmsoft.vn/";
 }
 <!DOCTYPE html>
 <html>
@@ -8,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   @* <link rel="icon" href="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Favicon) ? websiteSetting.Favicon : "/images/logo.ico")" type="image/x-icon">*@
+    <link rel="icon" href="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Favicon) ? $"{url}{websiteSetting.Favicon}" : "/images/logo.ico")" type="image/x-icon">
     <link rel="alternate" href="@absoluteUri" hreflang="vi-VN" />
     <link rel="canonical" href="@absoluteUri" />
     <meta name="author" content="ghmsoft ghmsoft.vn">
@@ -39,16 +40,16 @@
     <meta name="twitter:image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)">
     <meta property="image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)" />
     <title>@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) && string.IsNullOrEmpty(ViewBag.Title) ? websiteSetting?.Brand : ViewBag.Title)</title>
-    <link rel="icon" type="image/png" size="48x48" href="/images/logo.ico">
+    @*<link rel="icon" type="image/png" size="48x48" href="/images/logo.ico">*@
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="/lib/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" rel="stylesheet" />
     <link href="/lib/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/lib/font-awesome-4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="~/css/site.min.css" />
-    <link rel="stylesheet" href="/css/less/header.min.css" />
-    <link rel="stylesheet" href="/css/less/footer.min.css" />
-    <link rel="stylesheet" href="/css/less/common.min.css" />
-    <link rel="stylesheet" href="/css/less/main.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="/css/less/header.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/less/footer.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/less/common.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/less/main.css" asp-append-version="true" />
 </head>
 <body>
  

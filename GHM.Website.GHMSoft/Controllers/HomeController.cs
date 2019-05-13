@@ -35,34 +35,31 @@ namespace GHM.Website.GHMSoft.Controllers
         {
             var requestUrl = _configuration.GetApiUrl();
             var tenantId = _configuration.GetSection("TenantId").Value;
-            //var fileUrl = _configuration.GetSection("FileUrl").Value;
             var apiService = _configuration.GetApiServiceInfo();
             var httpClientService = new HttpClientService();
-            //ViewBag.ListVideoHomePage = await httpClientService.GetAsync<List<VideoViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/videos/home-page/{apiService.TenantId}/6");
 
-            //var listPhoto = await httpClientService.GetAsync<SearchResult<AlbumItemViewModel>>
-            //($"{requestUrl.ApiGatewayUrl}/api/v1/website/albums/search/{apiService.TenantId}/thiet-bi-pmu-amiea/1/6");
-            //ViewBag.ListPhoto = listPhoto?.Items;
 
             var listVaue = await httpClientService.GetAsync<List<ValueViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/core-values/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListValue = listVaue;
-            //ViewBag.fileUrl = fileUrl;
+
             var resultListPhoto = await httpClientService.GetAsync<SearchResult<AlbumWithItemViewModel>>
                 ($"{requestUrl.ApiGatewayUrl}/api/v1/website/albums/{apiService.TenantId}/{AlbumType.Photo}");
             ViewBag.AlbumViewModel = resultListPhoto?.Items;
 
             var listPhoto = new List<AlbumItemViewModel>();
-            foreach (var albums in resultListPhoto?.Items)
+            if (resultListPhoto?.Items != null)
             {
-                if (albums != null && albums.AlbumItems != null && albums.AlbumItems.Count > 0)
+                foreach (var albums in resultListPhoto?.Items)
                 {
-                    foreach (var photo in albums.AlbumItems)
+                    if (albums != null && albums.AlbumItems != null && albums.AlbumItems.Count > 0)
                     {
-                        listPhoto.Add(photo);
+                        foreach (var photo in albums.AlbumItems)
+                        {
+                            listPhoto.Add(photo);
+                        }
                     }
                 }
             }
-
             ViewBag.ListPhoto = listPhoto;
 
             var listAlbum = await httpClientService.GetAsync<SearchResult<AlbumViewModel>>

@@ -315,10 +315,10 @@
   color: #00a8e7;
 }
 #portfolio {
-  padding-top: 60px;
+  /*padding-top: 0px;*/
 }
 #portfolio #gallery-filter {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   text-align: center !important;
 }
 #portfolio #gallery-filter .btn-group {

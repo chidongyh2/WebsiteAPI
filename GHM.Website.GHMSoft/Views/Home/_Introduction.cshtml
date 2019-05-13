@@ -7,12 +7,14 @@
         <div id="intro_content" class="row">
             <div class="col-md-6">
                 <div class="intro_text">
-                    <h2>@ViewBag.NewsAtive.Title</h2>
-                    @Html.Raw(ViewBag.NewsAtive.Content)
+                    <h2>@(!string.IsNullOrEmpty(ViewBag.NewsAtive?.Title) ? ViewBag.NewsAtive?.Title : "GIẢI PHÁP QUẢN LÝ TỔNG THỂ CHO DOANH NGHIỆP")</h2>
+                   @(!string.IsNullOrEmpty(ViewBag.NewsAtive?.Content) ? Html.Raw(ViewBag.NewsAtive?.Content) : "error")
                 </div>
             </div>
-            <div id="intro_image" class="col-md-6 text-center">
-                <img class="img-responsive" src="@($"{url}{ViewBag.NewsAtive.FeatureImage}")" alt="intro-image">
+            <div id="intro_image" class="col-md-6 text-center">              
+                <img class="img-responsive" src="@(ViewBag.NewsAtive != null && !string.IsNullOrEmpty(ViewBag.NewsAtive.FeatureImage) ? $"{url}{ViewBag.NewsAtive.FeatureImage}" : "")"
+                     alt="@(!string.IsNullOrEmpty(ViewBag.NewsAtive?.AltImage) ? ViewBag.NewsAtive?.AltImage :"intro-image")"
+                     onerror="this.src='/images/no-image.png'" />
             </div>
         </div>
     </div>

@@ -1,5 +1,13 @@
 ﻿[
   {
+    "outputFile": "wwwroot/lib/fancybox-master/dist/jquery.fancybox.min.es5.js",
+    "inputFile": "wwwroot/lib/fancybox-master/dist/jquery.fancybox.min.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/jquery.lazy-master/jquery.lazy.es5.js",
+    "inputFile": "wwwroot/lib/jquery.lazy-master/jquery.lazy.js"
+  },
+  {
     "outputFile": "wwwroot/css/less/tess.css",
     "inputFile": "wwwroot/css/less/tess.less"
   },
