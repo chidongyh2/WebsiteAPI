@@ -57,7 +57,41 @@
     }
 }
 
+.header-search {
+    position: absolute;
+    top: 0px;
+    right: 30px;
+
+    #search-string {
+        border: none !important;
+        right: 0px;
+        position: absolute;
+        border-bottom: 1px solid @main-color !important;
+        width: 230px;
+        &:focus {
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+        }
+    }
+
+    .btn-submit {
+        position: absolute;
+        top: 3px;
+        right: 0;
+        color: @main-color;
+        font-size: 19px;
+        border: none;
+        background: none;
+    }
+}
 .header-top {
+    position: relative;
+}
+.wrap-header-top {
     height: 45px;
     margin: 0 21% 0 20%;
     font-family: Roboto-Regular;

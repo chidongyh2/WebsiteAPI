@@ -47,20 +47,15 @@
     <link rel="stylesheet" href="~/css/site.min.css" />
 </head>
 <body>
-    
+
     <div class="btn-hotline hidden-md hidden-sm hidden-xs">
         @{
+            <h4><b>HOT LINE</b></h4>
             <a href="tel: @websiteSetting.Hotline">
                 <span id="phone-contact">
                     @(websiteSetting.Hotline != null ? websiteSetting.Hotline : "0916015199")
                 </span>
             </a>
-
-            @if (websiteSetting.Hotline != null)
-            {
-
-
-            }
         }
     </div>
     @Html.AntiForgeryToken()
@@ -69,6 +64,7 @@
         @RenderBody()
     </div>
     <partial name="_Footer" />
+
     <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -96,7 +92,6 @@
         gtag('js', new Date());
         gtag('config', 'UA-130493156-3');
     </script>
-
 
     @RenderSection("Scripts", required: false)
     @RenderSection("KnockOut", required: false)

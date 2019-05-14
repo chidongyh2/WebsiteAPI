@@ -69,6 +69,8 @@ namespace GHM.Website.Domain.IServices
 
         Task<List<NewsSearchClientViewModel>> GetNewsRelatedByParentCategoryId(string tenantId, int id, string languageId, int page, int pageSize);
 
+        Task<int> UpdateViewNews(string tenantId, string newId, string languageId);
+
         //Task GetListNewsRelated(string tenantId, string v, string seoLink, int selectTop);
 
         // Task<List<NewsSearchClientViewModel>> GetListTopNewsRelatedByCategoryId(string tenantId, string v, object categoryId, int selectTop);

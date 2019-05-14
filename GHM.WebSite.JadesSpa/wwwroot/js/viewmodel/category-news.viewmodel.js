@@ -1,5 +1,4 @@
-﻿
-ko.components.register('view-more', {
+﻿ko.components.register('view-more', {
     viewModel: function (params) {
         var self = this;
         self.currentPage = ko.observable(2);
@@ -28,6 +27,7 @@ ko.components.register('view-more', {
             console.log(data);
             return title.substr(0, 30) + '...';
         };
+
     },
     template: { element: 'btn-viewmore'}
 });

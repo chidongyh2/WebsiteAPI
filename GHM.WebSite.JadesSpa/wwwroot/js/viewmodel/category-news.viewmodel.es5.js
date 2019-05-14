@@ -26,8 +26,13 @@ ko.components.register('view-more', {
         };
 
         self.handleString = function (data, title, length) {
+            console.log(data);
             return title.substr(0, 30) + '...';
         };
+        $(document).ready(function () {
+            var height = window.innerHeight;
+            console.log(height);
+        });
     },
     template: { element: 'btn-viewmore' }
 });

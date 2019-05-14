@@ -222,3 +222,32 @@ nav #ameiaMainNav li:hover > ul {
     /*width: 69%;*/
   }
 }
+#color-finder-link {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 400px;
+  z-index: 9999;
+  right: 0;
+  opacity: 0.7;
+  cursor: pointer;
+  -webkit-box-shadow: -3px 3px 2px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: -3px 3px 2px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: -3px 3px 2px 1px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  padding: 5px 8px;
+  border-radius: 8px;
+  color: white;
+}
+#color-finder-link:hover span {
+  color: lightblue;
+}
+#color-finder-link img {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+#color-finder-link span {
+  color: white;
+  font-size: 16px;
+}

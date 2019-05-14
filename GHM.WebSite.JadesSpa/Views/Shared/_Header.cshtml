@@ -11,24 +11,38 @@
 }
 <header id="header">
     <div class="header-top hidden-sm hidden-xs hidden-md">
+        <div class="wrap-header-top">
             <div class="row">
-                    <div class="col-lg-6">
-                        <span> @websiteSetting?.Brand</span>
-                    </div>
-                    <div class="col-lg-6">
-                        <span class="pull-right">
-                            @if (websiteSetting?.Hotline != null && websiteSetting.Hotline.Any())
-                            {
-                                <i class="fa fa-mobile"> @websiteSetting?.Hotline |</i>
-                            }
-                            @if (websiteSetting?.Brand != null && websiteSetting.Brand.Any())
-                            {
-                                <i class="fa fa-envelope-o"> @officeContact?.ContactValue</i>
-                            }
-                        </span>
-                    </div>
+                <div class="col-lg-6">
+                    <span> @websiteSetting?.Brand</span>
+                </div>
+                <div class="col-lg-6">
+                    <span class="pull-right">
+                        @if (websiteSetting?.Hotline != null && websiteSetting.Hotline.Any())
+                        {
+                            <i class="fa fa-mobile"> @websiteSetting?.Hotline |</i>
+                        }
+                        @if (websiteSetting?.Brand != null && websiteSetting.Brand.Any())
+                        {
+                            <i class="fa fa-envelope-o"> @officeContact?.ContactValue</i>
+                        }
+                    </span>
+                </div>
             </div>
+        </div>
+        <div class="header-search">
+            <form action="https://cse.google.com/cse?=" class="form-inline" method="get" target="_blank">
+                <div class="form-group">
+                    <input type="hidden" name="cx" value="005353708078860206782:2g3l8-wwm2i" />
+                    <input type="hidden" name="ie" value="UTF-8" />   
+                    <input type="text" name="q" class="search-input" placeholder="Nhập từ khóa tìm kiếm" id="search-string" autocomplete="off" />
+                    <span id="search-shadow"></span>
+                    <button type="submit" class="btn-submit"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
     </div>
+  
     <div class="header-bottom">
         <nav class="navbar navbar-inverse navbar-expand-lg">
             <div class="container wrap">

@@ -379,6 +379,14 @@ namespace GHM.Website.Api.Controllers
             var result = await _newsService.CheckNewsExistBySeoLink(tenantId, seoLink, languageId);
             return Ok(result);
         }
+
+        [Route("updateViewNews/{tenantId}/{newId}/{languageId}"), AcceptVerbs("GET")]
+        public async Task<IActionResult> UpdateViewNews(string tenantId, string newId, string languageId)
+        {
+            var result = await _newsService.UpdateViewNews(tenantId, newId, languageId ?? CultureInfo.CurrentCulture.Name);
+
+            return Ok(result);
+        }
         #endregion
     }
 }

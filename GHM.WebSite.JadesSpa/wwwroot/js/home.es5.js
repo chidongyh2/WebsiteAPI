@@ -16,10 +16,11 @@ $(document).ready(function () {
         nextHtml: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
         pager: false
     });
+
     $("#middle-menu-slide").lightSlider({
         item: 4,
-        auto: true,
-        loop: true,
+        auto: false,
+        loop: false,
         slideMove: 1,
         speed: 1500,
         pause: 3000,

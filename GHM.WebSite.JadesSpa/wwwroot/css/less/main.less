@@ -104,7 +104,82 @@
     }
 }
 
+.btn-register {
+    bottom: 70%;
+    position: fixed;
+    z-index: 1000;
+    cursor: pointer;
+    right: 5px;
+    color:white;
+    padding: 7px 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    i {
+        padding-right: 5px;
+    }
+    a {
+        color: white;
+        text-decoration: none;
+    }
+    animation: colorchange 2 ease infinite; /* animation-name followed by duration in seconds*/
+    /* you could also use milliseconds (ms) or something like 2.5s */
+    -webkit-animation: colorchange 2s ease infinite; /* Chrome and Safari */
+    @keyframes colorchange {
+        0% {
+            background: #33cc33;
+            padding: 9px 17px;
+        }
 
+        25% {
+            background: #00cc00;
+            padding: 7px 15px;
+        }
+
+        50% {
+            background: #88ff4d;
+            padding: 9px 17px;
+        }
+
+        75% {
+            background: #009900;
+            padding: 7px 15px;
+        }
+
+        100% {
+            background: #3bb300;
+            padding: 9px 17px;
+        }
+    }
+
+    @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+    {
+        0% {
+            background: #33cc33;
+            padding: 9px 17px;
+        }
+
+        25% {
+            background: #00cc00;
+            padding: 7px 15px;
+        }
+
+        50% {
+            background: #88ff4d;
+            padding: 9px 17px;
+        }
+
+        75% {
+            background: #009900;
+            padding: 7px 15px;
+        }
+
+        100% {
+            background: #3bb300;
+            padding: 9px 17px;
+        }
+    }
+}
 
 .btn-hotline {
     bottom: 50%;
@@ -116,6 +191,56 @@
     padding: 7px 15px;
     border-radius: 4px;
     color: @color-text-white;
+    animation: hotline 30s ease infinite; /* animation-name followed by duration in seconds*/
+    /* you could also use milliseconds (ms) or something like 2.5s */
+    -webkit-animation: hotline 30s ease infinite; /* Chrome and Safari */
+    @-webkit-keyframes hotline {
+        0% {
+            right: 0px;
+        }
+
+        25% {
+            right: 0px;
+        }
+
+        50% {
+            right: -2000px;
+        }
+
+        75% {
+            right: 0px;
+        }
+
+        100% {
+            right: 0px;
+        }
+    }
+    /* Standard syntax */
+    @keyframes hotline {
+        0% {
+            right: 0px;
+        }
+
+        25% {
+            right: 0px;
+        }
+
+        50% {
+            right: -2000px;
+        }
+
+        75% {
+            right: 0px;
+        }
+
+        100% {
+            right: 0px;
+        }
+    }
+
+    h4 {
+        color: @color-text-white;
+    }
 
     a {
         text-decoration: none;
@@ -513,6 +638,7 @@
 
         .item {
             text-align: center;
+
             .wrap-image {
                 background: @main-color;
                 border-radius: 30px 20px;
@@ -1164,6 +1290,7 @@
 
         .content {
             padding: 60px 23px 0px 23px;
+
             .title {
                 color: @main-color;
                 text-transform: uppercase;
@@ -1207,6 +1334,7 @@
         text-transform: uppercase;
         width: 100%;
         margin-bottom: 30px;
+
         &:before, &:after {
             width: 5%;
             height: 2px !important;
@@ -1919,7 +2047,7 @@
 
 .header {
     img {
-        height: 300px !important;
+        max-height: 500px;
         object-fit: cover;
         width: 100% !important;
 
@@ -1927,6 +2055,12 @@
             height: auto !important;
         }
     }
+}
+
+.category-fixed {
+    position: fixed !important;
+    top: 110px !important;
+    width: 14% !important;
 }
 
 .sidebar-news-detail {
@@ -2003,6 +2137,7 @@
                 padding-top: 5px;
                 font-size: 14px;
                 height: 60px;
+
                 @media @tablet {
                     font-size: 16px;
                 }

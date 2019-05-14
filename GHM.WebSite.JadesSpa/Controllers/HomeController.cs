@@ -101,6 +101,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
                     if (newInfo != null)
                     {
+                        await httpClientService.GetAsync<int>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/updateViewNews/{apiService.TenantId}/{newInfo.Id}/{CultureInfo.CurrentCulture.Name}");
                         var newsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{newInfo.Id}/{CultureInfo.CurrentCulture.Name}/1/4");
                         ViewBag.NewsRelated = newsRelated;
                         return View("../News/Detail", newInfo);
@@ -137,6 +138,8 @@ namespace GHM.Website.JadesSpa.Controllers
                     {
                         return View("../NotFound/Index");
                     }
+                    await httpClientService.GetAsync<int>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/updateViewNews/{apiService.TenantId}/{newsDetail.Id}/{CultureInfo.CurrentCulture.Name}");
+
                     var newsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{newsDetail.Id}/{CultureInfo.CurrentCulture.Name}/1/4");
                     ViewBag.NewsRelated = newsRelated;
                     ViewBag.NewsDetail = newsDetail;

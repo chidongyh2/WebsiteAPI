@@ -8,6 +8,7 @@ function AngencyViewModel() {
 
     self.selectBranch = function (mapId, name, value) {
         console.log(mapId);
+        console.log(value);
         self.mapId(mapId);
         self.name(name);
         if (self.isMobile()) {
@@ -18,8 +19,8 @@ function AngencyViewModel() {
     $(document).ready(function () {
         var height = $('#map').innerHeight();
         $('#list-angency-system').css('height', height - 35 + 'px');
-        if (websiteSetting) {
-            self.mapId(websiteSetting.GoogleMap);
+        if (branchIsOffice) {
+            self.mapId(branchIsOffice.Link);
             self.name(branchIsOffice.Name);
         }
 
