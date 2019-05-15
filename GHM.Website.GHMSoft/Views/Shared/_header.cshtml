@@ -1,0 +1,35 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var url = "https://websitefile.ghmsoft.vn/";
+}
+<header id="header">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*<a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
+            <img style="width:250px" class="img-responsive" src="~/images/Logo GHM-04.png" alt="công ty cổ phần phần mềm ghmsoft" />
+        </a>*@
+            <a href="/" class="navbar-brand">
+                    <img style="width:250px" class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ?  $"{url}{websiteSetting.Logo}": "/images/Logo GHM-04.png" )"
+                         alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "công ty cổ phần phần mềm ghmsoft")"
+                         onerror="this.src='/images/no-image.png'" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse navbar-right" id="ghmMainNav">
+                <ul class="nav navbar-nav">
+                    <li><a id="GoToHome" href="#intro" class="selected-nav">TRANG CHỦ</a></li>
+                    <li><a id="GoToAbout" href="#about">GIỚI THIỆU</a></li>
+                    <li><a id="GoToTeam" href="#team">TEAM</a></li>
+                    <li><a id="GoToWorks" href="#portfolio">ẢNH</a></li>
+                    <li><a id="GoToContacts" href="#contact">LIÊN HỆ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
