@@ -19,7 +19,7 @@ namespace GHM.Website.Infrastructure.Repository
             _feedbackRepository = Context.GetRepository<Feedback>();
         }
 
-        public Task<List<Feedback>> Search(string tenantId, string keyword, DateTime? startDate, DateTime? endDate, int page, int pageSize,
+        public Task<List<Feedback>> Search(string tenantId, string keyword, DateTime? startDate, DateTime? endDate, bool? isResove, int page, int pageSize,
             out int totalRows)
         {
             Expression<Func<Feedback, bool>> spec = x => x.TenantId == tenantId;
@@ -40,6 +40,11 @@ namespace GHM.Website.Infrastructure.Repository
                 spec = spec.And(x => x.CreateTime <= endDate.Value.Date.AddDays(1).AddMinutes(-1));
             }
 
+            if(isResove.HasValue)
+            {
+                spec = spec.And(x => x.IsView == true);
+            }
+
             var query = Context.Set<Feedback>().Where(spec)
                 .Select(x => new Feedback
                 {
@@ -49,7 +54,8 @@ namespace GHM.Website.Infrastructure.Repository
                     FullName = x.FullName,
                     Title = x.Title,
                     Content = x.Content,
-                    CreateTime = x.CreateTime
+                    CreateTime = x.CreateTime,
+                    IsView = x.IsView
                 }).AsNoTracking();
 
             totalRows = query.Count();
