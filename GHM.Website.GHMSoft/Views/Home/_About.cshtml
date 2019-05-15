@@ -1,0 +1,58 @@
+﻿@{
+    var NewsAboutUS = ViewBag.NewsAboutUS as List<NewsDetailViewModel>;
+    //var NewsAtive = ViewBag.NewsAtive as List<NewsDetailViewModel>;
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var url = "https://websitefile.ghmsoft.vn/";
+}
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 titlebar">
+                <h2>@(!string.IsNullOrEmpty(ViewBag.NewsAboutUS?.Title) ? ViewBag.NewsAboutUS?.Title : "VỀ CHÚNG TÔI")</h2>
+            </div>
+        </div>
+        <div id="tabs-holder" class="row">
+            <div class="col-md-6">
+                <div class="tab-content">
+                    <div id="tab_1" class="tab-pane active">
+                        <p>@(!string.IsNullOrEmpty(ViewBag.NewsAboutUS?.Content) ? Html.Raw(ViewBag.NewsAboutUS?.Content) : "error")</p>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6 text-center animated fadeInRight visible cm-mgt-35" data-animation="fadeInRight" data-animation-delay="600">
+                <img class="img-responsive" src="@(ViewBag.NewsAboutUS != null && !string.IsNullOrEmpty(ViewBag.NewsAboutUS.FeatureImage) ? $"{url}{ViewBag.NewsAboutUS.FeatureImage}" : "")"
+                     alt="@(!string.IsNullOrEmpty(ViewBag.NewsAboutUS?.AltImage) ? ViewBag.NewsAboutUS?.AltImage :"about-image")"
+                     onerror="this.src='/images/no-image.png'" />
+            </div>
+        </div>
+    </div>
+</section>
+<section id="opertationStatement">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="titlebar">
+                    <h2>@Resource.ACTIVITIES</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="accordion-holder" class="row">
+            <div class="col-md-6 text-center animated fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="600">
+                <img class="img-responsive" src="/images/tuyenngon.png" alt="our-philosophy-image">
+            </div>
+            <div class="col-md-6">
+                <div class="panel-group" id="accordion">
+                    @if (websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Instruction))
+                    {
+                        @Html.Raw(websiteSetting.Instruction)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
