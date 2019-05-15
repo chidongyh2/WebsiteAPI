@@ -1,195 +1,83 @@
-﻿@{
-    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
-    var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
-    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
-    var listMenuItem = ViewBag.FooterMenuNav as List<MenuItemViewModel>;
-    var listBrand = ViewBag.ListBrands as List<BrandSearchViewModel>;
-}
-<footer id="footer" class="lazy" data-src="/images/bgr web/trang chu/image-04.jpg">
+﻿<div class="wrapper-footer">
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <div class="logo">
-                    <a href="/" title="@websiteSetting?.Brand">
-                        <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? $"{ViewBag.Url}{websiteSetting.Logo}" : "/images/Trang chu/Logo ABC tren-duoi.png" )"
-                             alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) ? websiteSetting?.Brand : ViewBag.Title)"
-                             onerror="this.src='/images/no-image.png'" />
+                <h4 class="title">
+                    <i class="fa fa-home"></i>
+                    Phòng khám đa khoa 125 Thái Thịnh
+                </h4>
+                <ul>
+                    <li>
+                        <i class="fa fa-map-marker"></i>
+                        Địa chỉ: 125 - 127 Thái Thịnh - Đống Đa - Hà Nội
+                    </li>
+                    <li>
+                        <i class="fa fa-clock-o"></i>
+                        Giờ làm việc: Từ 7:30 - 20:00
+                    </li>
+                    <li>
+                        <i class="fa fa-volume-control-phone"></i>
+                        Hotline: 0972 88 11 25
+                    </li>
+                    <li>
+                        <i class="fa fa-envelope-o"></i>
+                        Email: info@pkdktt.com
+                    </li>
+                </ul>
+
+                <h4 class="title cm-mgb-20">
+                    <i class="fa fa-phone-square"></i>
+                    Tổng đài chăm sóc khách hàng:
+                    <br />
+                    <b style="font-size: 30px; margin-top:15px; display: block; padding-left: 20px;">0243.853.5522</b>
+                    <b style="font-size: 30px; margin-top:15px; display: block; padding-left: 20px;">0247.309.6888</b>
+                </h4>
+
+                <div class="cm-pdl-20">
+                    <a href="/lien-he" class="btn btn-success btn-lg">
+                        Gửi tin nhắn
                     </a>
                 </div>
-                <div class="contact-info">
-                    <ul>
-                        @if (listBranch != null && listBranch.Any())
-                        {
-                            foreach (var branchs in listBranch.Where(x => x.IsOffice.Value))
-                            {
-                                <li class="branch">
-                                    <h1> @branchs?.Name</h1>
-                                </li>
-                                @if (!string.IsNullOrEmpty(branchs?.Address))
-                                {
-                                    <li class="">
-                                        <i class="fa fa-map-marker"></i>
-                                        @branchs?.Address
-                                    </li>
-                                }
-                                @if (branchs.BranchContactDetails != null && branchs.BranchContactDetails.Any())
-                                {
-                                    @foreach (var branchItem in branchs.BranchContactDetails)
-                                    {
-                                        switch (branchItem.ContactType)
-                                        {
-                                            case ContactType.MobilePhone:
-                                                <li class="">
-                                                    <i class="fa fa-phone"></i>
-                                                    @branchItem.ContactValue
-                                                </li>
-                                                break;
-                                            case ContactType.Fax:
-                                                <li class="">
-                                                    @branchItem.ContactValue
-                                                </li>
-                                                break;
-                                            case ContactType.Email:
-                                                <li class="">
-                                                    <i class="fa fa-envelope"></i>
-                                                    <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a> 
-                                                </li>
-                                                break;
-                                            case ContactType.HomePhone:
-                                                <li class="">
-                                                    <i class="fa fa-phone"></i>
-                                                    @branchItem.ContactValue
-                                                </li>
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    }
-                                }
-                                @if (!string.IsNullOrEmpty(branchs?.WorkTime))
-                                {
-                                    <li class="">
-                                        <i class="fa fa-clock-o"></i>
-                                        @branchs?.WorkTime
-                                    </li>
-                                }
-                                @if (!string.IsNullOrEmpty(branchs?.Website))
-                                {
-                                    <li class="">
-                                        <i class="fa fa-globe" aria-hidden="true"></i>
-                                        <a href="@branchs?.Website">@branchs?.Website</a>
-                                    </li>
-                                }
-                            }
-                        }
-                        @if (listSocialNetWork != null && listSocialNetWork.Any())
-                        {
-                            <li class="social-network">
-                                <ul class="list-inline">
-                                    @foreach (var socialNetWork in listSocialNetWork)
-                                    {
-                                        <li class="list-items">
-                                            <a href="@socialNetWork.Url" class="btn-scoical">
-                                                @if (!string.IsNullOrEmpty(socialNetWork.Icon))
-                                                {
-                                                    <i class="fa @socialNetWork.Icon"></i>
-                                                }
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
-                            </li>
-                        }
-                    </ul>
-
+            </div>
+            <div class="col-sm-3">
+                <div class="fb-page" data-href="https://www.facebook.com/phongkhamdakhoa125thaithinh/" data-tabs="timeline" data-height="350" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/phongkhamdakhoa125thaithinh/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/phongkhamdakhoa125thaithinh/">Phòng khám 125 Thái Thịnh</a></blockquote>
                 </div>
             </div>
-            <div class="col-sm-2 link hidden-xs">
-                <ul>
-                    @if (listBrand != null && listBrand.Any())
-                    {
-                        foreach (var item in listBrand)
-                        {
-                            <li>
-                                <a href="@item.Website" class="transition" title="@item.Name">
-                                    @item.Name
-                                </a>
-                            </li>
-                        }
-                    }
-                </ul>
-            </div>
-            <div class="col-sm-2 link hidden-xs">
-                <ul>
-                    @if (listMenuItem != null && listMenuItem.Any())
-                    {
-                        @*<li><a href="/" class="@("" == "/" ? "active" : "")">@Resource.Home</a></li>*@
-                        foreach (var item in listMenuItem.Where(x => x.ParentId == null))
-                        {
-                            <li>
-                                <a href="@( $"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : item.Url)}")" class="transition">
-                                    @item.Name
-                                </a>
-                            </li>
-                        }
-                    }
-                </ul>
-            </div>
-            <div class="col-sm-4 message">
-                <h3 class="title-message">
-                    @Resource.SendMessage
-                </h3>
-                <form class="form-horizontal" id="contact_form" data-bind="submit: sendFeedback">
-                    <div class="form-group">
-                        <div data-bind="attr: {class: isContactNameError() ? 'col-xs-6 cm-pdr-0 has-error' : 'col-xs-6 cm-pdr-0'}">
-                            <input id="contact_full_name" type="text" class="form-control w100pc" placeholder="@Resource.FullNamePlaceHolder" value="" data-bind="value: contactName, hasFocus: isContactNameFocus" />
-                        </div>
-                        <div data-bind="attr: {class: isPhoneNumberError() ? 'col-xs-6 cm-pdl-5 has-error' : 'col-xs-6 cm-pdl-5'}">
-                            <input type="text" class="form-control w100pc" placeholder="@Resource.PhoneNumberPlaceHolder" value="" data-bind="value: contactPhoneNumber, hasFocus: isPhoneNumberFocus" />
-                        </div>
-                    </div>
-                    <div class="form-group" data-bind="attr: {class: isEmailError() ? 'form-group has-error' : 'form-group'}">
-                        <div class="col-xs-12">
-                            <input type="text" class="form-control w100pc" placeholder="@Resource.EmailPlaceHolder" value="" data-bind="value: contactEmail, hasFocus: isEmailFocus" />
-                        </div>
-                    </div>
-                    <div class="form-group" data-bind="attr: {class: isContentError() ? 'form-group has-error' : 'form-group'}">
-                        <div class="col-xs-12">
-                            <textarea type="text" class="form-control w100pc" placeholder="@Resource.ContentPlaceHolder" rows="4" data-bind="value: contactContent, hasFocus: isContentFocus"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-12 submit">
-                            <button type="submit" class="btn btn-send-message" data-bind="enable: !isSendingContact()">
-                                <i class="fa fa-envelope-o" data-bind="visible: !isSendingContact()"></i>
-                                <i class="fa fa-spinner fa-pulse" data-bind="visible: isSendingContact()" style="display: none"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+            <div class="col-sm-5">
+                <iframe frameborder="0" width="100%" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=125%20thai%20thinh&key=AIzaSyAWPEgy1UOyTEXbUsU_9GE2O3yhBj4w7es" allowfullscreen></iframe>
             </div>
         </div>
-    </div>
-</footer>
-<div class="footer-bottom">
-    <div class="container">
-        <div class="brand">
-            @if (listBrand != null && listBrand.Any())
-            {
-                foreach (var item in listBrand)
-                {
-                    <div class="list-items">
-                        <a href="@item.Website" title="@item.Name">
-                            <img data-src="@($"/image?url={(string.IsNullOrEmpty(item.Logo) ? "/images/no-image.png" :ViewBag.Url + item.Logo)}&width=80&height=80&type=1")"
-                                 alt="@item.Name"
-                                 class="lazy" />
-                        </a>
-                    </div>
-                }
-            }
+        <hr />
+        <div class="row">
+            <div class="col-sm-12">
+                @*<h4 class="title">
+                        <i class="fa fa-user-md"></i>
+                        Chuyên khoa của chúng tôi
+                    </h4>*@
+                <ul class="list-specialist cm-mgb-0 center">
+                    <li><a href="/chuyen-khoa/khoa-da-lieu.html" title="Khoa Da Liễu" data-toggle="tooltip" data-placement="top"><img class="lazy" data-src="/assets/images/13-Chuyen-Khoa/dalieu.png" alt="Khoa Da Liễu" /></a></li>
+                    <li><a href="/chuyen-khoa/khoa-dien-nao--luu-huyet-nao.html" title="Khoa Điện não" data-toggle="tooltip" data-placement="top"><img class="lazy" data-src="/assets/images/13-Chuyen-Khoa/diennao.png" alt="Khoa Điện Não" /></a></li>
+                    <li><a href="/chuyen-khoa/khoa-mat.html" title="Khoa Mắt" data-toggle="tooltip" data-placement="top"><img class="lazy" data-src="/assets/images/13-Chuyen-Khoa/mat.png" alt="Khoa Mắt" /></a></li>
+                    <li><a href="/chuyen-khoa/khoa-ngoai.html" title="Khoa Ngoại" data-toggle="tooltip" data-placement="top"><img class="lazy" data-src="/assets/images/13-Chuyen-Khoa/ngoai.png" alt="Khoa Ngoại" /></a></li>
+                    <li><a href="/chuyen-khoa/nhi-khoa.html" title="Khoa Nhi" data-toggle="tooltip" data-placement="top"><img class="lazy" data-src="/assets/images/13-Chuyen-Khoa/nhi.png" alt="Khoa Nhi" /></a></li>
+                    <li><a href="/chuyen-khoa/noi-tong-quat.html" title="Khoa Nội" data-toggle="tooltip" data-placement="top"><img class="lazy" data-src="/assets/images/13-Chuyen-Khoa/noi.png" alt="Khoa Nội" /></a></li>
+                    <li><a href="/chuyen-khoa/noi-soi-tieu-hoa.html" title="Khoa Nội soi" data-toggle="tooltip" data-placement="top"><img class="lazy" data-src="/assets/images/13-Chuyen-Khoa/noisoi.png" alt="Khoa Nội soi" /></a></li>
+                    <li><a href="/chuyen-khoa/khoa-rang--ham--mat.html" title="Khoa Răng Hàm Mặt" data-toggle="tooltip" data-placement="top"><img class="lazy" data-src="/assets/images/13-Chuyen-Khoa/rhm.png" alt="Khoa Răng Hàm Mặt" /></a></li>
+                    <li><a href="/chuyen-khoa/san-phu-khoa.html" title="Khoa Sản" data-toggle="tooltip" data-placement="top"><img class="lazy" data-src="/assets/images/13-Chuyen-Khoa/san.png" alt="Khoa Sản" /></a></li>
+                    <li><a href="/chuyen-khoa/trung-tam-sieu-am.html" title="Khoa Siêu âm" data-toggle="tooltip" data-placement="top"><img class="lazy" data-src="/assets/images/13-Chuyen-Khoa/sieuam.png" alt="Khoa Siêu âm" /></a></li>
+                    <li><a href="/chuyen-khoa/khoa-tai--mui--hong.html" title="Khoa Tai Mũi Họng" data-toggle="tooltip" data-placement="top"><img class="lazy" data-src="/assets/images/13-Chuyen-Khoa/tmh.png" alt="Khoa Tai Mũi Họng" /></a></li>
+                    <li><a href="/chuyen-khoa/trung-tam-xet-nghiem.html" title="Khoa Xét Nghiệm" data-toggle="tooltip" data-placement="top"><img class="lazy" data-src="/assets/images/13-Chuyen-Khoa/xnghiem.png" alt="Khoa Xét Nghiệm" /></a></li>
+                    <li><a href="/chuyen-khoa/phong-x-quang.html" title="Khoa X-Quang" data-toggle="tooltip" data-placement="top"><img class="lazy" data-src="/assets/images/13-Chuyen-Khoa/xray.png" alt="Khoa X-Quang" /></a></li>
+                </ul>
+            </div>
+        </div>
+        <hr />
+        <div class="copy-right">
+            Bản quyền thuộc về © 2017 Công ty cổ phần Bệnh viện Thái Thịnh.
         </div>
     </div>
-</div>
-<div class="copy-right center">
-    Copyright 2018 - @DateTime.Now.Year - @websiteSetting?.Brand - All rights reserved
-</div>
+</div><!-- end wrapper-footer -->
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+    $('.lazy').Lazy();
+</script>

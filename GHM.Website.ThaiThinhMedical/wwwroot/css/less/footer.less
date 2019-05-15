@@ -1,0 +1,52 @@
+﻿@import "config.less";
+
+.wrapper-footer {
+    background: #191919;
+    color: #fff;
+    padding-top: 50px;
+
+    h4.title {
+        text-transform: uppercase;
+        font-size: 18px;
+    }
+
+    ul {
+        padding-left: 25px;
+        margin-bottom: 20px;
+
+        li {
+            list-style: none;
+            padding: 10px 0;
+            position: relative;
+            padding-left: 25px;
+
+            i {
+                position: absolute;
+                top: 8px;
+                left: 0;
+            }
+        }
+
+        &.list-specialist {
+            padding-left: 25px;
+
+            li {
+                display: inline-block;
+                padding-left: 0;
+                padding-right: 20px;
+
+                &:first-child {
+                    padding-left: 0;
+                }
+
+                img {
+                    width: 40px;
+                }
+            }
+        }
+
+        &.call-center {
+            font-size: 25px;
+        }
+    }
+}

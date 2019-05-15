@@ -48,6 +48,9 @@ namespace GHM.Website.JadesSpa.Controllers
             var listResponseCustomer = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/y-kien-khach-hang/1/20/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListResponseCustomer = listResponseCustomer?.Items;
 
+            var listNewsHot = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/newest/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
+            ViewBag.ListNewsHot = listNewsHot;
+
             var menuMiddle = await httpClientService.GetAsync<MenuDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/get-all-menu-position/{(int)Position.Middle}/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
             //var listServices = await httpClientService.GetAsync<SearchResult<CategorySearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/category-home-page/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
             ViewBag.MenuMiddle = menuMiddle;

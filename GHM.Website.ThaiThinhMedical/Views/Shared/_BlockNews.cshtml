@@ -1,0 +1,48 @@
+﻿@model CategoryWidthNewsViewModel;
+@{
+    var url = ViewBag.Url;
+    var newsDefault = Model != null && Model.ListNews.Any() ? Model.ListNews.FirstOrDefault() : null;
+}
+
+@if (Model != null && Model.ListNews.Any())
+{
+    <div class="block-news portfolio-item @Model.CategoryId">
+        <div class="row">
+            <div class="row list-news">
+                @foreach (var news in Model.ListNews.Where(x => x.Id != newsDefault.Id))
+                {
+                    <div class="col-xs-6 news-item">
+                        <div class="image-content">
+                            <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                                <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}&width=480&height=270")"
+                                     onerror="this.src='/images/no-image.png'"
+                                     alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title :  news.AltImage)" />
+                                <span class="img-overlay"></span>
+                            </a>
+                        </div>
+                        <div class="title">
+                            <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                                @(!string.IsNullOrEmpty(news.Title) ? Common.SubString(news.Title, 70) : news.Title)
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="pull-right hidden-xs">
+                <a class="btn btn-view-more" href="@(string.Format("/{0}", Model.SeoLink))">
+                    @Resource.ViewMore
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="center visible-xs">
+                <a class="btn btn-view-more" href="@(string.Format("/{0}", Model.SeoLink))">
+                    @Resource.ViewMore
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+}
+

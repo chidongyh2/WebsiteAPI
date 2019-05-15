@@ -79,9 +79,8 @@
                                 }
                                 else
                                 {
-                                    var content = Model.Content.Replace("uploads/", $"{ViewBag.Url}uploads/");
-                                    @Html.Raw(content)
-                                }
+                                    @Html.Raw(Model.Content.Replace('"' + "uploads/", '"' + $"{ViewBag.Url}uploads/"))
+                            }
                             }
                         </div>
                     </div>

@@ -7,6 +7,8 @@ using GHM.Website.Domain.ViewModels;
 using GHM.Infrastructure.SqlServer;
 using System.Linq.Expressions;
 using System;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace GHM.Website.Infrastructure.Repository
 {
@@ -54,8 +56,16 @@ namespace GHM.Website.Infrastructure.Repository
         public async Task<bool> CheckExistsByName(string menuId, int menuItemId, string tenantId, string languageId, string name)
         {
             name = name.Trim();
-            return await _menuItemTranslation.ExistAsync(x => x.MenuItem.MenuId == menuId &&
-                x.MenuItemId != menuItemId && x.TenantId == tenantId && x.LanguageId == languageId && x.Name == name);
+            var query =await Context.Set<MenuItemTranslation>().Where(x => x.MenuItem.MenuId == menuId &&
+                x.MenuItemId != menuItemId && x.TenantId == tenantId && x.LanguageId == languageId && x.Name == name)
+                .Join(Context.Set<MenuItem>().Where(x => x.IsActive), mnit => mnit.MenuItemId, mni => mni.Id, (mnit, mni) =>
+                 new {
+                    mni
+                }).FirstOrDefaultAsync();
+            if (query == null)
+                return false;
+
+            return true;
         }
 
         public async Task<bool> CheckExistsByNamePath(string menuId, int menuItemId, string tenantId, string languageId, string namePath)

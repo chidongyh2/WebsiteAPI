@@ -1,0 +1,29 @@
+﻿@{
+    var youtube = ViewBag.Video as AlbumItemViewModel;
+    var eventInfo = ViewBag.EventInfo as EventShowClientViewModel;
+}
+
+@if (youtube != null)
+{
+    <div class="event-video">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 center">
+                    <h2 class="titlebar">
+                        @eventInfo?.EventInfo?.Name
+                    </h2>
+                </div>
+                <div class="col-sm-12">
+                    <div class="thumbnail-youtube" id="content">
+                        <div class="img-responsive">
+                            <iframe src="@(string.Format("https://www.youtube.com/embed/{0}?enablejsapi=1&amp;amp;autoplay=0&amp;amp;rel=0&controls=1", youtube?.VideoLinkId))" frameborder="0" width="100%" height="480"></iframe>
+                        </div>
+                    </div>
+                    <div class="center">
+                        <a class="btn btn-register" href="#register-form"> @Resource.RegisterNows</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
