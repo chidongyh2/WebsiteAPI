@@ -1,0 +1,168 @@
+﻿@model NewsDetailViewModel
+@{
+    ViewBag.Title = Model?.MetaTitle != null ? Model?.MetaTitle : Model?.Title;
+    var listNewsRelated = ViewBag.NewsRelated as List<NewsSearchViewModel>;
+    ViewBag.ImageBanner = Model.BannerImage != null ? Model.BannerImage : $"{ViewBag.Url}uploads/images/bannerNews.png";
+    ViewBag.MetaTitle = Model?.MetaTitle;
+    ViewBag.Description = Model?.MetaDescription;
+    ViewBag.Keyword = Model?.MetaKeyword;
+    var breadcrumbs = new List<Breadcrumb> { new Breadcrumb() { Name = Resource.News, IsCurrent = true } };
+    ViewBag.Breadcrumb = breadcrumbs;
+    ViewBag.Image = Model?.FeatureImage;
+    var absoluteUri = $"{Context.Request.Host}{Context.Request.Path}";
+    var absoluteUri1 = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
+}
+@if (Model.BannerImage != null)
+{
+    <partial name="_Breadcumb" />
+}
+<div id="news-detail">
+    <div class="container">
+        @if (Model != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="news-detail">
+                        <h1 class="title">
+                            @Model.Title
+                        </h1>
+                        <div id="social-network">
+                            <ul class="list-inline">
+                                <li class="list-items cm-pdr-15">
+                                    <a class="time">
+                                        <i class="fa fa-calendar"> @Model.LastUpdate?.ToString("dd/MM/yyyy")</i>
+                                    </a>
+                                </li>
+                                <li class="list-items">
+                                    <div class="fb-share-button" data-href="@absoluteUri" data-layout="button" data-size="small" data-mobile-iframe="true">
+                                        <a target="_blank"
+                                           href="@($"https://www.facebook.com/sharer/sharer.php?u={absoluteUri}")&amp;src=sdkpreparse"
+                                           onclick="window.open(this.href,this.title,'width=500,height=500,top=200px,left=300px');  return false;"
+                                           class="btn-scoical btn-facebook fb-xfbml-parse-ignore">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-items">
+                                    <a href="@string.Format("{0}{1}&url={2}", "https://twitter.com/intent/tweet?text=", ViewBag.Title, absoluteUri)"
+                                       class="btn-scoical btn-twitter"
+                                       onclick="window.open(this.href,this.title,'width=500,height=500,top=200px,left=300px');  return false;"
+                                       target="_blank">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="list-items">
+                                    <a href="@string.Format("http://www.linkedin.com/shareArticle?mini=true&url={0}",absoluteUri)" class="btn-scoical btn-linkedin"
+                                       target="_blank"
+                                       onclick="window.open(this.href,this.title,'width=500,height=500,top=200px,left=300px');  return false;">
+                                        <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="list-items">
+                                    @{
+                                        <a href="@string.Format("http://pinterest.com/pin/create/button/?url={0}&media={1}&description{2}",absoluteUri,ViewBag.Image, ViewBag.Description)"
+                                           class="btn-social btn-pinterest" count-layout="horizontal"
+                                           onclick="window.open(this.href,this.title,'width=500,height=500,top=200px,left=300px');  return false;"
+                                           target="_blank">
+                                            <i class="fa fa-pinterest" aria-hidden="true"></i>
+                                        </a>
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="content">
+                            @{
+                                if (Model.Content.Contains("image-content.ashx?name=/"))
+                                {
+                                    var content = Model.Content.Replace("image-content.ashx?name=/", ViewBag.Url);
+                                    @Html.Raw(content)
+                                }
+                                else
+                                {
+                                    @Html.Raw(Model.Content.Replace('"' + "uploads/", '"' + $"{ViewBag.Url}uploads/"))
+                            }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    @*<partial name="_SideBarEvent" />*@
+                    @*<partial name="_SideBarNewsRelated" model="listNewsRelated" />*@
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="fb-comments" data-href="@absoluteUri1"
+                         data-width="1000" data-numposts="5"></div>
+                </div>
+            </div>
+            @if (!Context.Request.Path.Value.Contains("gioi-thieu/gioi-thieu-chung") && listNewsRelated != null && listNewsRelated.Any())
+            {
+                <div class="row wrap-related-news">
+                    <div class="col-md-12">
+                        <h6 class="header-related-news">
+                            @Resource.NewsRelated
+                        </h6>
+                    </div>
+                    <div class="col-md-12 wrap-related-item">
+                        @foreach (var newsRelated in listNewsRelated)
+                        {
+
+                            <div class="news-item col-md-3">
+                                <div class="image-content">
+                                    <a href="@($"/{newsRelated.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsRelated.MetaTitle) ? newsRelated.Title : newsRelated.MetaTitle)">
+                                        <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsRelated.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{newsRelated.FeatureImage}")}&width=600&height=400")"
+                                             onerror="this.src='/images/no-image.png'"
+                                             alt="@(string.IsNullOrEmpty(newsRelated.AltImage) ? newsRelated.Title : newsRelated.AltImage)" />
+                                        <span class="img-overlay"></span>
+                                    </a>
+                                </div>
+                                <div class="wrap-text-content">
+                                    <div class="title">
+                                        <a href="@($"/{newsRelated.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsRelated.MetaTitle) ? newsRelated.Title : newsRelated.MetaTitle)">
+                                            @(!string.IsNullOrEmpty(newsRelated.Title) ? Common.SubString(newsRelated.Title, 50) : newsRelated.Title)
+                                        </a>
+                                    </div>
+                                    <div class="description">
+                                        <span>@Common.SubString(newsRelated.Description, 70)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-warning">Bài viết không tìm thấy</div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    @*<script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>*@
+    @*<script type="text/javascript">
+            $(window).scroll(function () {
+                var b = $(window).scrollTop();
+                var heightStart = $('.navbar').innerHeight() + $('.header').innerHeight();
+                if (b + 80 > heightStart && $(window).innerWidth() >= 1280 && b + 80 < $('#news-detail').innerHeight() + heightStart) {
+                    $('.sidebar-event').addClass('sidebar-event-fixtop');
+                } else {
+                    $('.sidebar-event').removeClass('sidebar-event-fixtop');
+                }
+            });
+        </script>*@
+}
+

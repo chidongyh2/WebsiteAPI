@@ -1,0 +1,20 @@
+﻿@font-face {
+  font-family: 'Regular';
+  src: url('../../lib/Font-Roboto/fa-regular-400.tff') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('../../lib/font-roboto/roboto-bold_1.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('../../lib/font-roboto/roboto-regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'VLALLROUNDGOTHIC-BOOK';
+  src: url('../../lib/Font-Roboto/VLALLROUNDGOTHIC-BOOK.OTF') format('truetype');
+}
+@font-face {
+  font-family: 'vlauthenticaregular';
+  src: url('../../lib/font-roboto/VLAUTHENTICAREGULAR.OTF') format('truetype');
+}
