@@ -58,16 +58,18 @@
 }
 
 .header-search {
-    position: absolute;
+    position: relative;
     top: 0px;
-    right: 30px;
-
+    right: 30%;
+    font-size: 14px;
     #search-string {
         border: none !important;
         right: 0px;
         position: absolute;
-        border-bottom: 1px solid @main-color !important;
+        border-bottom: 1px solid @color-text !important;
         width: 230px;
+        font-size: 14px;
+
         &:focus {
             color: inherit;
             border: none;
@@ -82,20 +84,20 @@
         position: absolute;
         top: 3px;
         right: 0;
-        color: @main-color;
-        font-size: 19px;
+        color: @color-text;
+        font-size: 14px;
         border: none;
         background: none;
     }
 }
+
 .header-top {
     position: relative;
 }
-.wrap-header-top {
-    height: 45px;
-    margin: 0 21% 0 20%;
-    font-family: Roboto-Regular;
 
+.wrap-header-top {
+    font-family: Roboto-Regular;
+    background-color: @background-color;
     span {
         padding-top: 11px;
         padding-left: 0px;
@@ -105,7 +107,7 @@
         float: unset;
         text-align: center;
         transition: 0.5s ease;
-        font-size: 18px;
+        font-size: 14px;
         color: @color-text;
         font-family: Roboto-Regular;
 
@@ -113,27 +115,38 @@
             margin-right: 5px;
         }
     }
+    .item-left {
+        margin-left: 45%;
+    }
+
+    .wrap-banner-header {
+        border-top: 1px solid grey;
+        margin-top: 10px;
+        padding: 30px 0px;
+
+        .image-banner {
+            display: block;
+            margin: 10px auto;
+        }
+    }
 }
 
 .header-bottom {
     .navbar-inverse {
-        background-image: url('../../images/BGR-web/Background-Image/Nen-PC_02.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        font-size: 20px;
+        background-color: @background-color;
+        font-size: 14px;
         margin-top: 0px !important;
+        border: none;
         font-family: Roboto-Regular;
         width: 100%;
         box-shadow: 1px 5px 5px 0px rgba(0,0,0,0.3);
 
-        @media @not_mobile {
-            height: 110px;
-        }
-
         @media @mobile {
-            font-size: 16px !important;
-            max-height: 736px;
-            overflow: scroll;
+            font-size: 12px !important;
+            min-height: 65px;
+            background-color: @background-color;
+            border: none !important;
+            text-transform: uppercase;
         }
 
         .wrap {
@@ -162,7 +175,7 @@
             }
 
             .wrap-show-icon {
-                color: white;
+                color: @main-color;
                 width: 25px;
                 height: 20px;
                 font-size: 20px;
@@ -187,24 +200,14 @@
                     .icon-bar {
                         width: 25px;
                         height: 3px;
+                        background: @main-color;
                     }
                 }
             }
         }
 
-        border: none;
-
-        @media @mobile {
-            min-height: 65px;
-            background-image: url('../../images/BGR-web/Background-Image/Nen Mobile.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            border: none !important;
-            text-transform: uppercase;
-        }
-
         .navbar-toggle {
-            border: 1px solid white;
+            border: 1px solid @main-color;
 
             &:hover {
                 background: none;
@@ -248,7 +251,6 @@
         }
 
         .navbar-collapse {
-            width: 87%;
             padding-left: 0px;
             padding-right: 0px;
             border-color: @main-color !important;
@@ -277,7 +279,7 @@
                 }
 
                 li {
-                    font-size: 20px;
+                    font-size: 14px;
 
                     @media @not_mobile {
                         border: 1px solid none;
@@ -287,29 +289,31 @@
                         }
 
                         a {
+                            position: relative;
+                            top: 10px;
                             text-transform: uppercase;
-                            color: @color-text-white;
-                            line-height: 30px;
+                            color: @main-color;
                             padding: 0px 10px;
+                            padding-bottom: 20px;
                             border: 1px solid transparent !important;
 
                             &:hover, :focus, :active {
-                                -webkit-transition: all 300ms linear;
-                                border: 1px solid @color-white !important;
-                                border-radius: 24px;
-                                -moz-border-radius: 24px;
+                                color: @main-color-hover !important;
+                            }
+
+                            @media @mobile {
                             }
                         }
                     }
 
                     @media @mobile {
-                        font-size: 16px !important;
+                        font-size: 12px !important;
 
                         a {
                             width: 90%;
                             margin-left: 5%;
-                            border-bottom: 1px solid @color-white;
-                            color: @color-text-white;
+                            border-bottom: 1px solid @main-color;
+                            color: @main-color;
                         }
                     }
 
@@ -367,7 +371,8 @@
                     &.open {
                         a {
                             background-color: rgba(0,0,0,0) !important;
-                            border-bottom: 1px solid @color-white;
+                            border-bottom: 1px solid @main-color-hover;
+                            color: @main-color-hover !important;
 
                             @media @not_mobile {
                                 border: 1px solid @color-white !important;
@@ -378,10 +383,12 @@
 
                             @media @mobile {
                                 .fa-angle-down {
+                                    color: @main-color !important;
                                     display: none !important;
                                 }
 
                                 .fa-angle-up {
+                                    color: @main-color !important;
                                     display: block !important;
                                 }
                             }
@@ -390,9 +397,7 @@
 
                     .active {
                         @media @not_mobile {
-                            border: 1px solid @color-white !important;
-                            border-radius: 24px;
-                            -moz-border-radius: 24px;
+                            color: @main-color-hover !important;
                         }
                     }
 
@@ -402,28 +407,24 @@
                                 display: block;
                                 position: absolute;
                                 opacity: 1;
-                                top: 100%;
-                                background-color: #6B9E37 !important;
+                                background-color: @background-color !important;
                                 padding-top: 0px !important;
 
                                 li {
                                     margin: 0px;
 
+                                    &:hover {
+                                        background-color: #f5f5f5 !important;
+                                    }
 
                                     a {
+                                        margin-left: 5px;
                                         padding: 5px 5px !important;
                                         border: none !important;
                                         background-color: rgba(0,0,0,0) !important;
                                         border-radius: unset;
-                                        font-size: 18px !important;
+                                        font-size: 14px !important;
                                         border-bottom: 1px solid transparent !important;
-
-                                        &:hover {
-                                            color: @color-white;
-                                            -webkit-transition: all 300ms linear;
-                                            border-bottom: 1px solid @color-white !important;
-                                            padding-bottom: 2px;
-                                        }
                                     }
                                 }
                             }
@@ -433,14 +434,15 @@
                     .dropdown-menu {
                         position: absolute;
                         opacity: 1;
-                        top: 100%;
                         padding-top: 0px;
                         list-style: none;
                         /*display: none;*/
                         width: 100%;
                         position: absolute;
-                        top: 36px !important;
+                        top: 48px !important;
+                        border-top: 1px solid @main-color-hover;
                         left: 0;
+                        padding-bottom: 0px !important;
                         text-align: left;
                         min-width: 300px;
                         padding-left: 0;
@@ -451,29 +453,30 @@
                         z-index: 1030;
                         margin-top: 1px;
 
-                        @media @not_mobile {
-                            background: #6B9E37 !important;
-                        }
-
                         @media @mobile {
                             border: none !important;
                             box-shadow: none !important;
                             position: static;
-                            background-color: transparent;
                             height: auto;
                             overflow: scroll;
                         }
 
                         li {
                             margin: 0px;
-                            padding: 0px 10px;
+                            padding-bottom: 10px !important;
+                            border: none !important;
+                            background-color: #fafafa !important;
+                            border-radius: unset;
+                            font-size: 14px !important;
+                            border-bottom: 1px solid #efefef !important;
 
                             @media @mobile {
                                 padding: 3px 0px !important;
                             }
 
                             a {
-                                color: @color-white !important;
+                                font-size: 14px;
+                                color: @main-color !important;
                                 border: none !important;
                                 border-radius: unset;
                                 font-family: Roboto-Regular;

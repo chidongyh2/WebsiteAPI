@@ -34,7 +34,7 @@
   position: relative;
 }
 .events .event-item .thumbnail-event img {
-  border: 1px solid #5b7222;
+  border: 1px solid #444;
   width: 100%;
 }
 .events .event-item .title-event-default {
@@ -46,7 +46,7 @@
 .events .event-item .title-event-default a {
   text-decoration: none;
   font-size: 22px;
-  color: #5b7222;
+  color: #444;
 }
 @media only screen and (max-width: 1200px) {
   .events .event-item .title-event-default a {
@@ -66,7 +66,7 @@
 }
 .events .event-item .title-event a {
   text-decoration: none;
-  color: #7aa127;
+  color: #808080;
 }
 .events .event-item .description {
   padding: 10px;
@@ -76,7 +76,7 @@
   /*min-height:80px;*/
 }
 .events .event-item:hover a {
-  color: #5b7222;
+  color: #444;
 }
 #event-detail .event-video {
   background-image: url('../../images/bgr web/event/bgr-03.jpg');
@@ -153,7 +153,7 @@
   color: #FFFFFF;
   font-size: 18px;
   margin-top: 20px;
-  background-color: #5b7222;
+  background-color: #444;
   border-radius: 20px;
   padding: 6px 20px;
   font-family: OpenSans;
@@ -164,7 +164,7 @@
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: 100% auto;
-  background-color: #5b7222;
+  background-color: #444;
 }
 @media only screen and (max-width: 1200px) {
   #event-detail .event-content {
@@ -203,7 +203,7 @@
 }
 #event-detail .event-day #professionalsSlider .item .full-name {
   padding-top: 10px;
-  color: #5b7222;
+  color: #444;
   font-size: 20px;
 }
 #event-detail .event-day #professionalsSlider .item .description {
@@ -218,7 +218,7 @@
 }
 #event-detail .event-day .lSAction a {
   /*background-color: #c0c0c0;*/
-  color: #7aa127;
+  color: #808080;
   width: 24px;
   height: 32px;
   text-align: center;
@@ -359,13 +359,13 @@
   padding: 0px;
 }
 #event-detail .image-library #image-library-silder .item .selected a {
-  border: 4px solid #5b7222 !important;
+  border: 4px solid #444 !important;
   /*z-index: 2000;*/
 }
 #event-detail .image-library #image-library-silder .item .selected a::after {
   font-family: FontAwesome;
   content: "\f0d7";
-  color: #5b7222;
+  color: #444;
   position: absolute;
   left: 45%;
   bottom: -30px;
@@ -381,7 +381,7 @@
   right: 0px;
 }
 #event-detail .image-library .lSAction a {
-  background-color: #7aa127;
+  background-color: #808080;
   color: #FFFFFF;
   width: 24px;
   height: 32px;
@@ -485,7 +485,7 @@
   text-align: center;
 }
 #event-detail .register-form .content #contact_form .submit .btn-send-message {
-  background-color: #5b7222;
+  background-color: #444;
   color: #FFFFFF;
   border-radius: 20px;
   text-transform: uppercase;
@@ -495,7 +495,7 @@
   margin-top: 20px;
 }
 #event-detail .register-form .content #contact_form .submit .btn-send-message:hover {
-  background-color: #5b7222;
+  background-color: #444;
 }
 #event-detail .register-form .content .title {
   margin-top: 0px;
@@ -521,7 +521,7 @@
 #event-detail .register-form .content .times ul li {
   padding: 15px;
   font-size: 20px;
-  color: #5b7222;
+  color: #444;
   background-color: #FFFFFF;
   margin: 5px;
   border-radius: 3px;

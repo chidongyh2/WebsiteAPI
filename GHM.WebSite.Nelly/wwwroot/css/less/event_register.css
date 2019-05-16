@@ -87,10 +87,10 @@ nav #registerMainNav ul li a {
   border: 2px solid #FFFFFF;
 }
 nav #registerMainNav ul li .selected {
-  background-color: #7aa127;
+  background-color: #808080;
 }
 nav #registerMainNav ul li:hover a {
-  background-color: #7aa127;
+  background-color: #808080;
   text-decoration: none;
 }
 nav #registerMainNav ul li:hover nav ul li a {
@@ -247,7 +247,7 @@ nav #registerMainNav li:hover > ul {
   transition: 300s ease-in-out;
 }
 #intro #intro_content a:hover {
-  background-color: #7aa127 !important;
+  background-color: #808080 !important;
 }
 #intro .intro_buttons .btn-theme {
   background-color: #333;
@@ -634,7 +634,7 @@ nav #registerMainNav li:hover > ul {
   }
 }
 #video .video-container #video-silder .carousel-caption p {
-  color: #5b7222;
+  color: #444;
   font-size: 25px;
 }
 @media only screen and (max-width: 1200px) {
@@ -790,7 +790,7 @@ nav #registerMainNav li:hover > ul {
   margin-top: 20px;
 }
 #register #register_form .submit .btn-send-message:hover {
-  background-color: #5b7222;
+  background-color: #444;
 }
 #register .social-network ul {
   text-align: center;

@@ -19,7 +19,7 @@
   src: url('../../lib/font-roboto/VLAUTHENTICAREGULAR.OTF') format('truetype');
 }
 .navbar-fixed-top {
-  background-color: #5b7222;
+  background-color: #444;
   border-bottom: none;
   /*transition: background-color 2s ease-out;*/
 }
@@ -65,16 +65,18 @@
   }
 }
 .header-search {
-  position: absolute;
+  position: relative;
   top: 0px;
-  right: 30px;
+  right: 30%;
+  font-size: 14px;
 }
 .header-search #search-string {
   border: none !important;
   right: 0px;
   position: absolute;
-  border-bottom: 1px solid #5b7222 !important;
+  border-bottom: 1px solid #808080 !important;
   width: 230px;
+  font-size: 14px;
 }
 .header-search #search-string:focus {
   color: inherit;
@@ -88,8 +90,8 @@
   position: absolute;
   top: 3px;
   right: 0;
-  color: #5b7222;
-  font-size: 19px;
+  color: #808080;
+  font-size: 14px;
   border: none;
   background: none;
 }
@@ -97,9 +99,8 @@
   position: relative;
 }
 .wrap-header-top {
-  height: 45px;
-  margin: 0 21% 0 20%;
   font-family: Roboto-Regular;
+  background-color: #fafafa;
 }
 .wrap-header-top span {
   padding-top: 11px;
@@ -110,34 +111,41 @@
   float: unset;
   text-align: center;
   transition: 0.5s ease;
-  font-size: 18px;
-  color: #7aa127;
+  font-size: 14px;
+  color: #808080;
   font-family: Roboto-Regular;
 }
 .wrap-header-top span i {
   margin-right: 5px;
 }
+.wrap-header-top .item-left {
+  margin-left: 45%;
+}
+.wrap-header-top .wrap-banner-header {
+  border-top: 1px solid grey;
+  margin-top: 10px;
+  padding: 30px 0px;
+}
+.wrap-header-top .wrap-banner-header .image-banner {
+  display: block;
+  margin: 10px auto;
+}
 .header-bottom .navbar-inverse {
-  background-image: url('../../images/BGR-web/Background-Image/Nen-PC_02.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-size: 20px;
+  background-color: #fafafa;
+  font-size: 14px;
   margin-top: 0px !important;
+  border: none;
   font-family: Roboto-Regular;
   width: 100%;
   box-shadow: 1px 5px 5px 0px rgba(0, 0, 0, 0.3);
-  border: none;
-}
-@media only screen and (min-width: 1200px) {
-  .header-bottom .navbar-inverse {
-    height: 110px;
-  }
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse {
-    font-size: 16px !important;
-    max-height: 736px;
-    overflow: scroll;
+    font-size: 12px !important;
+    min-height: 65px;
+    background-color: #fafafa;
+    border: none !important;
+    text-transform: uppercase;
   }
 }
 .header-bottom .navbar-inverse .wrap {
@@ -167,7 +175,7 @@
   }
 }
 .header-bottom .navbar-inverse .wrap .wrap-show-icon {
-  color: white;
+  color: #444;
   width: 25px;
   height: 20px;
   font-size: 20px;
@@ -187,20 +195,11 @@
   .header-bottom .navbar-inverse .container button .icon-bar {
     width: 25px;
     height: 3px;
-  }
-}
-@media only screen and (max-width: 1200px) {
-  .header-bottom .navbar-inverse {
-    min-height: 65px;
-    background-image: url('../../images/BGR-web/Background-Image/Nen Mobile.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: none !important;
-    text-transform: uppercase;
+    background: #444;
   }
 }
 .header-bottom .navbar-inverse .navbar-toggle {
-  border: 1px solid white;
+  border: 1px solid #444;
 }
 .header-bottom .navbar-inverse .navbar-toggle:hover {
   background: none;
@@ -244,10 +243,9 @@
   }
 }
 .header-bottom nav .navbar-collapse {
-  width: 87%;
   padding-left: 0px;
   padding-right: 0px;
-  border-color: #5b7222 !important;
+  border-color: #444 !important;
   overflow: scroll;
 }
 @media only screen and (max-width: 1200px) {
@@ -275,7 +273,7 @@
   }
 }
 .header-bottom nav .navbar-collapse ul li {
-  font-size: 20px;
+  font-size: 14px;
 }
 @media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li {
@@ -285,30 +283,29 @@
     padding: 3px !important;
   }
   .header-bottom nav .navbar-collapse ul li a {
+    position: relative;
+    top: 10px;
     text-transform: uppercase;
-    color: #eef0f1;
-    line-height: 30px;
+    color: #444;
     padding: 0px 10px;
+    padding-bottom: 20px;
     border: 1px solid transparent !important;
   }
   .header-bottom nav .navbar-collapse ul li a:hover,
   .header-bottom nav .navbar-collapse ul li a :focus,
   .header-bottom nav .navbar-collapse ul li a :active {
-    -webkit-transition: all 300ms linear;
-    border: 1px solid #FFFFFF !important;
-    border-radius: 24px;
-    -moz-border-radius: 24px;
+    color: #931C1F !important;
   }
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li {
-    font-size: 16px !important;
+    font-size: 12px !important;
   }
   .header-bottom nav .navbar-collapse ul li a {
     width: 90%;
     margin-left: 5%;
-    border-bottom: 1px solid #FFFFFF;
-    color: #eef0f1;
+    border-bottom: 1px solid #444;
+    color: #444;
   }
 }
 .header-bottom nav .navbar-collapse ul li .list-social-network {
@@ -329,7 +326,7 @@
   box-shadow: 0px 0px 2px #888;
   padding: 0.5em 0.6em;
   background-color: #eef0f1;
-  color: #5b7222;
+  color: #444;
   height: 40px;
   width: 40px;
   font-size: 22px;
@@ -355,7 +352,8 @@
 }
 .header-bottom nav .navbar-collapse ul li.open a {
   background-color: rgba(0, 0, 0, 0) !important;
-  border-bottom: 1px solid #FFFFFF;
+  border-bottom: 1px solid #931C1F;
+  color: #931C1F !important;
 }
 @media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li.open a {
@@ -367,17 +365,17 @@
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li.open a .fa-angle-down {
+    color: #444 !important;
     display: none !important;
   }
   .header-bottom nav .navbar-collapse ul li.open a .fa-angle-up {
+    color: #444 !important;
     display: block !important;
   }
 }
 @media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li .active {
-    border: 1px solid #FFFFFF !important;
-    border-radius: 24px;
-    -moz-border-radius: 24px;
+    color: #931C1F !important;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -385,38 +383,36 @@
     display: block;
     position: absolute;
     opacity: 1;
-    top: 100%;
-    background-color: #6B9E37 !important;
+    background-color: #fafafa !important;
     padding-top: 0px !important;
   }
   .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu li {
     margin: 0px;
   }
+  .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu li:hover {
+    background-color: #f5f5f5 !important;
+  }
   .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu li a {
+    margin-left: 5px;
     padding: 5px 5px !important;
     border: none !important;
     background-color: rgba(0, 0, 0, 0) !important;
     border-radius: unset;
-    font-size: 18px !important;
+    font-size: 14px !important;
     border-bottom: 1px solid transparent !important;
-  }
-  .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu li a:hover {
-    color: #FFFFFF;
-    -webkit-transition: all 300ms linear;
-    border-bottom: 1px solid #FFFFFF !important;
-    padding-bottom: 2px;
   }
 }
 .header-bottom nav .navbar-collapse ul li .dropdown-menu {
   opacity: 1;
-  top: 100%;
   padding-top: 0px;
   list-style: none;
   /*display: none;*/
   width: 100%;
   position: absolute;
-  top: 36px !important;
+  top: 48px !important;
+  border-top: 1px solid #931C1F;
   left: 0;
+  padding-bottom: 0px !important;
   text-align: left;
   min-width: 300px;
   padding-left: 0;
@@ -427,24 +423,23 @@
   z-index: 1030;
   margin-top: 1px;
 }
-@media only screen and (min-width: 1200px) {
-  .header-bottom nav .navbar-collapse ul li .dropdown-menu {
-    background: #6B9E37 !important;
-  }
-}
 @media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li .dropdown-menu {
     border: none !important;
     box-shadow: none !important;
     position: static;
-    background-color: transparent;
     height: auto;
     overflow: scroll;
   }
 }
 .header-bottom nav .navbar-collapse ul li .dropdown-menu li {
   margin: 0px;
-  padding: 0px 10px;
+  padding-bottom: 10px !important;
+  border: none !important;
+  background-color: #fafafa !important;
+  border-radius: unset;
+  font-size: 14px !important;
+  border-bottom: 1px solid #efefef !important;
   /*&:hover {
                                 color: @color-white;
 
@@ -460,7 +455,8 @@
   }
 }
 .header-bottom nav .navbar-collapse ul li .dropdown-menu li a {
-  color: #FFFFFF !important;
+  font-size: 14px;
+  color: #444 !important;
   border: none !important;
   border-radius: unset;
   font-family: Roboto-Regular;
@@ -474,7 +470,7 @@
 }
 .header-bottom nav .header-tool .btn-group a {
   font-size: 16px;
-  color: #5b7222;
+  color: #444;
 }
 .header-bottom nav .header-tool .btn-group a:hover,
 .header-bottom nav .header-tool .btn-group a :focus,

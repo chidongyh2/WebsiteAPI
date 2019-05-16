@@ -41,6 +41,8 @@ $(document).ready(function () {
         var b = $(window).scrollTop();
         if (b > 65 || window.innerWidth < 768) {
             $(".navbar").addClass("navbar-fixed-top");
+            $(".navbar-brand").removeClass("hidden-lg");
+            $(".navbar-brand").addClass("visible-lg");
             $("#backToTop").css("display", "block");
             $(".header-top").css("display", "none");
             $("#myCarousel").css("margin-top", "65px");
@@ -54,6 +56,8 @@ $(document).ready(function () {
             }
         } else {
             $("#myCarousel").css("margin-top", "0px");
+            $(".navbar-brand").addClass("hidden-lg");
+            $(".navbar-brand").removeClass("visible-lg");
             $(".navbar").removeClass("navbar-fixed-top");
             $("#backToTop").css("display", "none");
             $(".header-top").css("display", "block");
