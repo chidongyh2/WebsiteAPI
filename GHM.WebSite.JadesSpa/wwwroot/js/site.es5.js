@@ -2,7 +2,7 @@
 
 var isShowToggle = true;
 $(document).ready(function () {
-    ".wrap-show-icon".css("display", "none");
+    $(".wrap-show-icon").css("display", "none");
     $("#backToTop").click(function () {
         $("html, body").animate({ scrollTop: 0 }, 500);
     });
@@ -21,6 +21,7 @@ $(document).ready(function () {
 
     $('.navbar-toggle').click(function () {
         isShowToggle = !isShowToggle;
+        console.log(isShowToggle);
         if (!isShowToggle) {
             $(".wrap-none-show-icon").css("display", "none");
             $(".wrap-show-icon").css("display", "block");

@@ -928,5 +928,16 @@ namespace GHM.Website.Infrastructure.Services
 
             return await _newsRepository.GetListNewsRelatedForClientByParentCategoryId(tenantId, languageId, id, (int)info.ParentId, page, pageSize);
         }
+
+        public async Task<int> UpdateViewNews(string tenantId, string newId, string languageId)
+        {
+            var info = await _newsRepository.GetInfo(newId);
+            if (info == null)
+                return -1;
+
+            info.ViewCount = info.ViewCount + 1;
+
+            return await _newsRepository.Update(info);
+        }
     }
 }

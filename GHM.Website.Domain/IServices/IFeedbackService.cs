@@ -9,10 +9,12 @@ namespace GHM.Website.Domain.IServices
     public interface IFeedbackService
     {
         Task<SearchResult<Feedback>> Search(string tenantId, string keyword,
-            DateTime? startDate, DateTime? endDate, int page, int pageSize);
+            DateTime? startDate, DateTime? endDate,bool? isResolve, int page, int pageSize);
 
         Task<ActionResultResponse<string>> Insert(string tenantId, FeedbackMeta feedbackMeta);
 
         Task<ActionResultResponse<Feedback>> GetDetail(string tenantId, string feedbackId);
+
+        Task<ActionResultResponse<string>> Update(string tenantId, string id, FeedbackMeta feedbackMeta);
     }
 }

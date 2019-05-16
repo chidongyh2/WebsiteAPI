@@ -117,7 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TitleHelpFinder" xml:space="preserve">
-    <value>Bang Mau Cua Ban</value>
+  <data name="ColorLine" xml:space="preserve">
+    <value>Color Line</value>
+  </data>
+  <data name="DescriptionColorFinder" xml:space="preserve">
+    <value>Simply fill in the details to get the right shade for any skin type in seconds.</value>
+  </data>
+  <data name="EvolutionLine" xml:space="preserve">
+    <value>Evolutionline hairstrokes &amp; powdery</value>
+  </data>
+  <data name="Organicline" xml:space="preserve">
+    <value>Organicline powdery</value>
+  </data>
+  <data name="TitleColorFinder" xml:space="preserve">
+    <value>YOUR ONLINE COLOR FINDER</value>
   </data>
 </root>

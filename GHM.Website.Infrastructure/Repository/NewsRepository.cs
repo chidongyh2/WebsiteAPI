@@ -637,7 +637,10 @@ namespace GHM.Website.Infrastructure.Repository
                              SeoLink = newsTranslation.SeoLink,
                              Title = newsTranslation.Title,
                              MetaTitle = newsTranslation.MetaTitle,
-                             Description = newsTranslation.Description
+                             Description = newsTranslation.Description,
+                             LikeCount = news.LikeCount,
+                             CommentCount = news.CommentCount,
+                             ViewCount = news.ViewCount
                          };
             totalRows = result.Count();
             if(page == 3 && pageSize == 6)

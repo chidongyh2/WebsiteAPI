@@ -28,7 +28,7 @@ namespace GHM.Website.Amiea.Controllers
         {
             var currentDiriectory = Environment.CurrentDirectory;
             XmlDocument doc = new XmlDocument();
-            doc.Load(currentDiriectory+ "/wwwroot/lib/help-finder/xml/color_advice.xml");
+            doc.Load(currentDiriectory+ "/wwwroot/lib/help-finder/xml/color_advice_vn.xml");
             return Ok(doc.InnerXml);
         }
     }

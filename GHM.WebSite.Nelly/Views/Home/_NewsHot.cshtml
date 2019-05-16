@@ -1,0 +1,50 @@
+﻿@{
+    var menuMiddle = ViewBag.MenuMiddle as MenuDetailViewModel;
+    var url = ViewBag.Url;
+    var device = ViewBag.Device;
+}
+<div id="news-hot">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="center titlebar">
+                    @Resource.TitleHot
+                </h2>
+                <h2 class="descriptionbar">@Resource.DescriptionHot</h2>
+            </div>
+        </div>
+        @if (menuMiddle != null && menuMiddle.MenuItems != null && menuMiddle.MenuItems.Any())
+        {
+            @if (ViewBag.DeviceType == "desktop")
+            {
+                <div id="news-slider">
+                    <partial name="_MenuMiddle" model="menuMiddle.MenuItems" />
+                </div>
+            }
+            else
+            {
+                <div class="list-items item-hot row">
+                    @{
+                        var i = 1;
+                        @foreach (var item in menuMiddle.MenuItems)
+                        {
+                            <div class="@(i %2 == 0 ? "col-lg-6 col-sm-6 col-xs-6 even":"col-lg-6 col-sm-6 col-xs-6 odd")">
+                                <div class="item">
+                                    <div style="overflow: hidden">
+                                        <a href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" + item.Url)}")">
+                                            <img class="news-image zoom img-responsive lazy"
+                                            data-src="/image?url=@(string.IsNullOrEmpty(item.Name) ? "/images/no-image.png" : $"{url}{item.Image}&width=255&height=213")"
+                                            onerror="this.src='/images/no-image.png'" />
+                                        </a>
+                                    </div>
+                                    <a href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" + item.Url)}")" class="text-description">@(string.IsNullOrEmpty(item.Name) ? "No Title" : item.Name)</a>
+                                </div>
+                            </div>
+                            i++;
+                        }
+                    }
+                </div>
+            }
+        }
+    </div>
+</div>

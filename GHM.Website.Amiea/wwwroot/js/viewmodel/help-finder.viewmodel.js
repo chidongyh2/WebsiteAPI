@@ -481,7 +481,7 @@ function cafUpdateImage(emptyornot, index1, index2) {
         emptyornot = true;
     }
 
-    var placeholder_image = 'config_image_placeholder.jpg';
+    var placeholder_image = 'config_img.jpg';
 
     if (emptyornot == true) {
 
