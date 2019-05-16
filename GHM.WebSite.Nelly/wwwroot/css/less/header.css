@@ -151,8 +151,6 @@
 }
 .header-bottom .navbar-inverse .wrap {
   align-items: center;
-  width: 100%;
-  margin-left: 20%;
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .wrap {
@@ -165,7 +163,7 @@
   display: flex;
   align-items: center;
   flex: 1 0 0;
-  max-width: 60px;
+  max-width: 85px;
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .wrap .navbar-brand {
