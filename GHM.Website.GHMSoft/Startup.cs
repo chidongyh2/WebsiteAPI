@@ -11,6 +11,7 @@ using GHM.Infrastructure.ModelBinders;
 using Microsoft.AspNetCore.Localization;
 using WebMarkupMin.AspNetCore2;
 using System;
+using System.Collections.Generic;
 
 namespace GHM.Website.GHMSoft
 {
@@ -63,6 +64,10 @@ namespace GHM.Website.GHMSoft
                 })
             .AddHttpCompression();
 
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new RequestCulture(new CultureInfo("vi-VN"));
+            });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
@@ -84,17 +89,22 @@ namespace GHM.Website.GHMSoft
             var supportedCultures = new[]
             {
                 new CultureInfo("vi-VN"),
-                new CultureInfo("en"),
                 new CultureInfo("en-US"),
             };
 
-            app.UseRequestLocalization(new RequestLocalizationOptions
+            var defaultCulture = new CultureInfo("vi-VN");
+            app.UseRequestLocalization(new RequestLocalizationOptions()
             {
-                DefaultRequestCulture = new RequestCulture("vi-VN"),
-                // Formatting numbers, dates, etc.
                 SupportedCultures = supportedCultures,
-                // UI strings that we have localized.
-                SupportedUICultures = supportedCultures
+                SupportedUICultures = supportedCultures,
+                DefaultRequestCulture = new RequestCulture(defaultCulture),
+                FallBackToParentCultures = false,
+                FallBackToParentUICultures = false,
+                RequestCultureProviders = new List<IRequestCultureProvider>
+                {
+                    new QueryStringRequestCultureProvider(),
+                    new CookieRequestCultureProvider()
+                },
             });
 
             #endregion

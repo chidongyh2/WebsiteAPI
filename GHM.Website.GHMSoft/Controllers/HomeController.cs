@@ -38,7 +38,6 @@ namespace GHM.Website.GHMSoft.Controllers
             var apiService = _configuration.GetApiServiceInfo();
             var httpClientService = new HttpClientService();
 
-
             var listVaue = await httpClientService.GetAsync<List<ValueViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/core-values/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListValue = listVaue;
 
