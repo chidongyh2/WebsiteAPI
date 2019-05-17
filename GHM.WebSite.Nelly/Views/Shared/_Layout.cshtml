@@ -48,7 +48,7 @@
 </head>
 <body>
 
-    <div class="btn-hotline hidden-md hidden-sm hidden-xs">
+    @*<div class="btn-hotline hidden-md hidden-sm hidden-xs">
         @{
             <h4><b>HOT LINE</b></h4>
             <a href="tel: @websiteSetting.Hotline">
@@ -57,7 +57,7 @@
                 </span>
             </a>
         }
-    </div>
+    </div>*@
     @Html.AntiForgeryToken()
     <partial name="_Header" />
     <div class="body-content">
@@ -92,7 +92,21 @@
         gtag('js', new Date());
         gtag('config', 'UA-130493156-3');
     </script>
-
+    @if (ViewBag.DeviceType != "desktop")
+    {
+        <script>
+            (function ($) {
+                $(document).ready(function () {
+                    $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        $(this).parent().siblings().removeClass('open');
+                        $(this).parent().toggleClass('open');
+                    });
+                });
+            })(jQuery);
+        </script>
+    }
     @RenderSection("Scripts", required: false)
     @RenderSection("KnockOut", required: false)
 

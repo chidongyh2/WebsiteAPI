@@ -21,6 +21,7 @@
 .navbar-fixed-top {
   background-color: #444;
   border-bottom: none;
+  min-height: 100px;
   /*transition: background-color 2s ease-out;*/
 }
 /*.scroll-fixed-navbar {
@@ -141,18 +142,15 @@
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse {
-    font-size: 12px !important;
-    min-height: 65px;
+    font-size: 14px !important;
+    min-height: 70px;
     background-color: #fafafa;
     border: none !important;
     text-transform: uppercase;
   }
 }
 .header-bottom .navbar-inverse .wrap {
-  display: flex;
   align-items: center;
-  width: 100%;
-  margin-left: 20%;
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .wrap {
@@ -161,11 +159,11 @@
   }
 }
 .header-bottom .navbar-inverse .wrap .navbar-brand {
-  padding: 0px !important;
+  padding: 10px !important;
   display: flex;
   align-items: center;
   flex: 1 0 0;
-  max-width: 60px;
+  max-width: 85px;
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .wrap .navbar-brand {
@@ -234,7 +232,6 @@
 }
 .header-bottom nav .navbar-nav {
   display: flex;
-  align-items: center;
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-nav {
@@ -247,6 +244,8 @@
   padding-right: 0px;
   border-color: #444 !important;
   overflow: scroll;
+  margin-left: 15%;
+  margin-right: 20%;
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse {
@@ -256,6 +255,7 @@
     width: 100%;
     /*width: 80%;*/
     float: right;
+    margin: 0px;
     background-color: transparent;
     margin-top: 20px !important;
   }
@@ -279,14 +279,12 @@
   .header-bottom nav .navbar-collapse ul li {
     border: 1px solid none;
   }
-  .header-bottom nav .navbar-collapse ul li.dropdown {
-    padding: 3px !important;
-  }
   .header-bottom nav .navbar-collapse ul li a {
     position: relative;
     top: 10px;
     text-transform: uppercase;
-    color: #444;
+    color: #444 !important;
+    background: none !important;
     padding: 0px 10px;
     padding-bottom: 20px;
     border: 1px solid transparent !important;
@@ -299,13 +297,53 @@
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li {
-    font-size: 12px !important;
+    font-size: 14px !important;
+    border-bottom: 1px solid #444 !important;
   }
   .header-bottom nav .navbar-collapse ul li a {
     width: 90%;
-    margin-left: 5%;
-    border-bottom: 1px solid #444;
-    color: #444;
+    margin-left: 10px;
+    color: #444 !important;
+    background-color: #fafafa !important;
+  }
+  .header-bottom nav .navbar-collapse ul li a:active,
+  .header-bottom nav .navbar-collapse ul li a :hover,
+  .header-bottom nav .navbar-collapse ul li a :focus {
+    color: #931C1F !important;
+  }
+  .header-bottom nav .navbar-collapse ul li.open {
+    border-bottom: none !important;
+  }
+  .header-bottom nav .navbar-collapse ul li.open .dropdown-menu {
+    font-size: 14px !important;
+    border-top: 1px solid #931C1F !important;
+  }
+  .header-bottom nav .navbar-collapse ul li.open > a {
+    color: #931C1F !important;
+    font-size: 14px !important;
+  }
+  .header-bottom nav .navbar-collapse ul li.open > a .fa-angle-down {
+    display: none !important;
+  }
+  .header-bottom nav .navbar-collapse ul li.open > a .fa-angle-up {
+    display: block !important;
+  }
+  .header-bottom nav .navbar-collapse ul li .dropdown-submenu.open {
+    border-bottom: none !important;
+  }
+  .header-bottom nav .navbar-collapse ul li .dropdown-submenu.open > ul {
+    margin-left: 10px !important;
+    border-top: 1px solid #931C1F !important;
+  }
+  .header-bottom nav .navbar-collapse ul li .dropdown-submenu.open > a {
+    font-size: 14px !important;
+    color: #931C1F !important;
+  }
+  .header-bottom nav .navbar-collapse ul li .dropdown-submenu.open > a .fa-angle-down {
+    display: none !important;
+  }
+  .header-bottom nav .navbar-collapse ul li .dropdown-submenu.open > a .fa-angle-up {
+    display: block !important;
   }
 }
 .header-bottom nav .navbar-collapse ul li .list-social-network {
@@ -350,51 +388,36 @@
 .header-bottom nav .navbar-collapse ul li .list-social-network .list-items a i.fa-youtube {
   padding: 10px 13px;
 }
-.header-bottom nav .navbar-collapse ul li.open a {
-  background-color: rgba(0, 0, 0, 0) !important;
-  border-bottom: 1px solid #931C1F;
-  color: #931C1F !important;
-}
-@media only screen and (min-width: 1200px) {
-  .header-bottom nav .navbar-collapse ul li.open a {
-    border: 1px solid #FFFFFF !important;
-    border-radius: 24px;
-    -moz-border-radius: 24px;
-    background-color: rgba(0, 0, 0, 0) !important;
-  }
-}
-@media only screen and (max-width: 1200px) {
-  .header-bottom nav .navbar-collapse ul li.open a .fa-angle-down {
-    color: #444 !important;
-    display: none !important;
-  }
-  .header-bottom nav .navbar-collapse ul li.open a .fa-angle-up {
-    color: #444 !important;
-    display: block !important;
-  }
-}
 @media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li .active {
     color: #931C1F !important;
   }
 }
 @media only screen and (min-width: 1200px) {
-  .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu {
+  .header-bottom nav .navbar-collapse ul li:hover.dropdown-submenu > ul.dropdown-menu {
+    top: -1px !important;
+    left: 93%;
+  }
+  .header-bottom nav .navbar-collapse ul li:hover > ul.dropdown-menu {
     display: block;
     position: absolute;
     opacity: 1;
     background-color: #fafafa !important;
     padding-top: 0px !important;
   }
-  .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu li {
+  .header-bottom nav .navbar-collapse ul li:hover > ul.dropdown-menu li {
     margin: 0px;
   }
-  .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu li:hover {
+  .header-bottom nav .navbar-collapse ul li:hover > ul.dropdown-menu li:hover {
     background-color: #f5f5f5 !important;
   }
-  .header-bottom nav .navbar-collapse ul li:hover .dropdown-menu li a {
+  .header-bottom nav .navbar-collapse ul li:hover > ul.dropdown-menu li:hover > a {
+    color: #931C1F !important;
+  }
+  .header-bottom nav .navbar-collapse ul li:hover > ul.dropdown-menu li a {
+    color: #444 !important;
     margin-left: 5px;
-    padding: 5px 5px !important;
+    padding-bottom: 5px !important;
     border: none !important;
     background-color: rgba(0, 0, 0, 0) !important;
     border-radius: unset;
@@ -409,7 +432,7 @@
   /*display: none;*/
   width: 100%;
   position: absolute;
-  top: 48px !important;
+  top: 46px !important;
   border-top: 1px solid #931C1F;
   left: 0;
   padding-bottom: 0px !important;

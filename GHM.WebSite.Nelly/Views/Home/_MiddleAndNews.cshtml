@@ -1,7 +1,7 @@
 ﻿@{
     var categoryWidthNews = ViewBag.CategoryMiddle as CategoryWidthNewsViewModel;
 }
-<div id="news-introduce" class="lazy" data-src="/images/bgr-web/background-image/nen-pc_06.jpg">
+<div id="news-introduce">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -21,16 +21,16 @@
                             @foreach (var item in categoryWidthNews.ListNews)
                             {
                                 <div class="item">
-                                    <div class="wrap-image zoom">
                                         <a href="@($"{item.SeoLink}.html")">
                                             <img class="news-image img-responsive lazy"
-                                                 data-src="@($"/image?url={(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")}&width=270&height=270")" alt="" \
+                                                 data-src="@($"/image?url={(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")}&width=450&height=300")" alt="" \
                                                  onerror="this.src='/images/no-image.png'" />
                                         </a>
-                                    </div>
-                                    <div class="wrap-text">
-                                        <a href="@($"{item.SeoLink}.html")">@item.Title</a>
-                                    </div>
+                                        <div class="wrap-text">
+                                            <h5>@item.Title</h5>
+                                            <h6>@item.Description</h6>
+                                            <a class="read-more" href="@($"{item.SeoLink}.html")">READ MORE</a>
+                                        </div>
                                 </div>
                             }
                         }

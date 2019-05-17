@@ -39,7 +39,7 @@ namespace GHM.Website.Nelly.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GHM.Website.Nelly.Resources.Resource", typeof(Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GHM.WebSite.Nelly.Resources.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -642,6 +642,15 @@ namespace GHM.Website.Nelly.Resources {
         public static string TitleIntroduce {
             get {
                 return ResourceManager.GetString("TitleIntroduce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đối với những người chưa biết về Gluten thì đây là một loại protein được tìm thấy ở lúa mì, lúa mạch và các loại ngũ cốc. Tuy nhiên không phải ai cũng có thể hấp thụ loại protein này, trên thực tế có những người bị Celiac (bệnh không dung nạp Gluten) và một số khác thì nhạy cảm nhẹ với nó..
+        /// </summary>
+        public static string TitleSecondDescription {
+            get {
+                return ResourceManager.GetString("TitleSecondDescription", resourceCulture);
             }
         }
         
