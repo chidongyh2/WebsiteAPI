@@ -83,9 +83,7 @@ namespace GHM.Website.GHMSoft
 
             var supportedCultures = new[]
             {
-                new CultureInfo("vi-VN"),
-                new CultureInfo("en"),
-                new CultureInfo("en-US"),
+                new CultureInfo("vi-VN")
             };
 
             app.UseRequestLocalization(new RequestLocalizationOptions
