@@ -251,19 +251,6 @@
 }
 
 #myCarousel {
-    z-index: 0;
-    /*@media @mobile {
-        margin-top: 65px;
-    }*/
-    .owl-stage-outer {
-        /*@media @mobile {
-            max-height: 250px;
-        }
-        @media @tablet {
-            max-height: 400px;
-        }*/
-    }
-
     .active {
         .item {
             a {
@@ -272,15 +259,13 @@
                 width: 40px;
 
                 img {
-                    /*max-height: 600px;*/
                     margin-left: auto;
                     margin-right: auto;
                     height: auto;
-                    object-fit: cover;
                     display: block;
-                    /*-webkit-animation: zoomin 18s ease-in infinite;
+                    -webkit-animation: zoomin 18s ease-in infinite;
                     animation: zoomin 18s ease-in infinite;
-                    transition: all 1s ease-in-out;*/
+                    transition: all 1s ease-in-out;
                     overflow: hidden;
 
                     @media @mobile {
@@ -292,7 +277,6 @@
     }
 
     img {
-        max-height: 600px;
         margin-left: auto;
         margin-right: auto;
         height: auto;
@@ -311,32 +295,80 @@
         right: 50%;
     }
 
-    .owl-dots {
-        text-align: center;
-        /*margin-top: 10px;*/
-        margin-top: 10px;
-        position: absolute;
-        top: 90%;
-        left: 47%;
+    .owl-nav {
+        display: none;
 
-        @media @mobile {
-            top: 75%;
+
+        .owl-prev {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            margin-top: -20px;
+            transition: all 0.2s;
+            background: lightgray;
+            color: @color-text-white;
+            font-size: 16px;
+            border-radius: 50%;
+            height: 40px;
+            line-height: 40px;
+            width: 40px;
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08);
+
+            &:hover, :active, :focus {
+                background-color: @background-black;
+                color: @color-white;
+                border: none !important;
+            }
         }
+
+        .owl-next {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            margin-top: -20px;
+            transition: all 0.2s;
+            background: lightgray;
+            color: @color-text-white;
+            font-size: 16px;
+            border-radius: 50%;
+            height: 40px;
+            line-height: 40px;
+            width: 40px;
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08);
+
+            &:hover, &:active, &:focus {
+                background-color: @background-black;
+                color: @color-white;
+                border: none !important;
+            }
+        }
+    }
+
+    &:hover {
+        .owl-nav {
+            display: block;
+        }
+    }
+
+    .owl-dots {
+        display: none;
+        text-align: center;
+        margin-top: 10px;
 
         .owl-dot {
             padding: 0 2px !important;
 
             span {
                 display: inline-block;
-                width: 12px;
-                height: 12px;
+                width: 15px;
+                height: 15px;
                 margin: 1px;
                 text-indent: -999px;
                 cursor: pointer;
                 background-color: rgba(0, 0, 0, 0);
-                border: 1px solid @main-color;
-                border-radius: 12px;
-                font-size: 12px;
+                border: 2px solid @main-color;
+                border-radius: 15px;
+                font-size: 15px;
 
                 &:focus {
                     border: none !important;
@@ -380,17 +412,24 @@
                     font-size: 16px;
                 }
             }
-
+            hr {
+                width: 10%;
+                border-top: 2px solid @main-color;
+                margin-top: 10px 0px !important;
+            }
             .content {
-                font-family: vlauthenticaregular !important;
-                color: @color-text-grey;
-
-                @media @not_mobile {
-                    font-size: 32px;
-                }
-
+                border: 2px dashed @main-color;
+                border-radius: 20px;
+                padding: 15px 10px;
+                font-family: Roboto-Regular !important;
+                color: @main-color;
+                font-size: 16px;
+                text-align: left;
+                margin-left: 20%;
+                margin-top: 30px;
                 @media @mobile {
-                    font-size: 16px;
+                    margin-left: 0 !important;
+                    font-size: 12px;
                 }
             }
         }
@@ -695,52 +734,44 @@
     #middle-menu-slide {
         /*margin-left: 15%;*/
         margin-top: 50px;
+        min-height: 400px;
 
         .item {
             text-align: center;
             margin-top: 10px;
             min-height: 300px;
 
-            .wrap-image {
-                background: @main-color;
-                border-radius: 23px 15px;
-                margin: 5px;
-
-                @media @mobile {
-                    border-radius: 20px 10px !important;
-                    padding: 0px 0.5px 0.5px 5px;
-                }
-
-                @media @not_mobile {
-                    /*width: 280px;
-                    height: 280px;*/
-                }
-
-                padding: 0px 0.5px 0.5px 10px;
-
-                img {
-                    border: 1px solid @main-color;
-
-                    @media @not_mobile {
-                        /*width: 270px;
-                        height: 270px;*/
-                    }
-
-                    border-radius: 10px;
-                }
-            }
-
             .wrap-text {
                 width: 100%;
                 margin-top: 5px;
                 overflow: hidden;
 
-                a {
-                    text-decoration: none;
+                h5 {
                     color: @main-color;
-                    font-family: Roboto-Bold;
-                    font-size: 22px;
+                    font-family: Roboto-Regular;
+                    font-size: 24px !important;
+                    font-weight: 300;
+                }
+
+                h6 {
+                    font-size: 12px;
+                    font-weight: 300;
+                    margin-bottom: 20px;
+                }
+
+                .read-more {
+                    display: inline-block;
+                    padding: 1px 12px 0;
+                    border: none;
+                    background: @main-color-hover;
+                    color: #fff;
+                    text-align: center;
+                    text-decoration: none;
                     text-transform: uppercase;
+                    white-space: nowrap;
+                    font-size: 12px;
+                    line-height: 28px;
+                    cursor: pointer;
                 }
 
                 @media @mobile {

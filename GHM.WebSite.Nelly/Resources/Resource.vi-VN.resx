@@ -310,7 +310,7 @@
     <value>Thời gian diễn ra sự kiện</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Welcome  to Jade Spa</value>
+    <value>Phương pháp Oraganic</value>
   </data>
   <data name="TitleHot" xml:space="preserve">
     <value>Dịch vụ nổi bật</value>
@@ -355,6 +355,9 @@
     <value>Tin hót</value>
   </data>
   <data name="TitleDescription" xml:space="preserve">
-    <value>"Số 1 về Massage Bầu &amp; Chăm Sóc Sau Sinh"</value>
+    <value>Miley Cyrus đã từng tuyên bố cô tuân theo chế độ ăn không chứa Gluten và Lactose. Thậm chí cô còn nói với người hâm mộ rằng: “Mọi người nên thử không ăn những thực phẩm chứa Gluten trong một tuần. Sự thay đổi về cân nặng, làn da, sức khoẻ thể chất và tinh thần sẽ khiến bạn phải kinh ngạc và không muốn quay về chế độ ăn ban đầu nữa”.</value>
+  </data>
+  <data name="TitleSecondDescription" xml:space="preserve">
+    <value>Đối với những người chưa biết về Gluten thì đây là một loại protein được tìm thấy ở lúa mì, lúa mạch và các loại ngũ cốc. Tuy nhiên không phải ai cũng có thể hấp thụ loại protein này, trên thực tế có những người bị Celiac (bệnh không dung nạp Gluten) và một số khác thì nhạy cảm nhẹ với nó.</value>
   </data>
 </root>
