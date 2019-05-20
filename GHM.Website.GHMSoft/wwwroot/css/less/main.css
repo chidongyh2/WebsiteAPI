@@ -819,13 +819,28 @@
 #opertationStatement ul li {
   font-size: 15px;
 }
-#intro {
+/*#intro {
   width: 100%;
   background-image: url('../../images/pattern.png');
   background-repeat: repeat;
   background-position: 0 0;
   background-color: #3498DB;
   color: #fff;
+}*/
+#intro {
+    width: 100%;
+    background-image: url('');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-color: #3498DB;
+    color: #fff;
+}
+
+canvas.intro-canvas-el {
+    position: absolute;
+    top: 0;
+    z-index: -1
 }
 #intro #intro_content {
   padding-top: 160px;
