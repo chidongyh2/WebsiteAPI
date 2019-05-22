@@ -54,7 +54,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
       "UseServiceDiscovery": false
     },
     // BEGIN: Product

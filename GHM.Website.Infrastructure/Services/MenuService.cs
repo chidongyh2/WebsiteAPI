@@ -265,7 +265,7 @@ namespace GHM.Website.Infrastructure.Services
                     var menuItem = new MenuItem
                     {
                         MenuId = menuId,
-                        SubjectId = menuItemMeta.SubjectId,
+                        SubjectId = menuItemSelect.Id,
                         SubjectType = menuItemMeta.SubjectType,
                         Icon = menuItemSelect.Icon,
                         Image = menuItemSelect.Image,

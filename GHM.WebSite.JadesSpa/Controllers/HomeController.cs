@@ -124,7 +124,7 @@ namespace GHM.Website.JadesSpa.Controllers
                     var categoryWithNews = await httpClientService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
                     // var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/related-by-category/{apiService.TenantId}/{categoryWithNews.Data.SeoLink}/5/{CultureInfo.CurrentCulture.Name}");
                     var listNewsHot = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/newest/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
-                    ViewBag.ListNewsHot = listNewsHot;
+                    ViewBag.ListNewsHot = listNewsHot == null ? null : listNewsHot;
                     ViewBag.CategoryId = categoryWithNews.Data.CategoryId;
                     return View("../News/CategoryNews", categoryWithNews.Data);
                 }

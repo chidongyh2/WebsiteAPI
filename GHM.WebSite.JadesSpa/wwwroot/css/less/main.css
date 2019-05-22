@@ -65,6 +65,7 @@
                 height: 290px;*/
   padding: 2px 2px 0px 2px;
   border: 1px solid transparent;
+  margin: 0 auto;
 }
 #news-slider .item .wrap-item .title {
   text-align: center;

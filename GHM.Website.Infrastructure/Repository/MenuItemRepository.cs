@@ -104,7 +104,7 @@ namespace GHM.Website.Infrastructure.Repository
 
         public async Task<List<MenuItemSearchViewModel>> GetAllActivatedMenuItem(string tenantId, string menuId, string languageId)
         {
-            var query = Context.Set<MenuItem>().Where(x => x.IsActive && x.TenantId == tenantId && x.MenuId == menuId)
+            var query = Context.Set<MenuItem>().Where(x => x.TenantId == tenantId && x.MenuId == menuId)
                 .Join(Context.Set<MenuItemTranslation>().Where(x => x.LanguageId == languageId), x => x.Id,
                     xt => xt.MenuItemId, (x, xt) => new MenuItemSearchViewModel
                     {

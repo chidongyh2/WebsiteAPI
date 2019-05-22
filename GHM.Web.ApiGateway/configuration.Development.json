@@ -62,7 +62,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UseServiceDiscovery": false,
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
