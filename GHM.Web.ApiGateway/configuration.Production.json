@@ -26,10 +26,14 @@
       ],
       "UpstreamPathTemplate": "/api/v{version}/events/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UseServiceDiscovery": false
+      "UseServiceDiscovery": false,
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "GHM_Event_Api" ]
+      }
     },
     // END: Events.
-    // BEGIN: Core
+    // BEGIN: Pages
     {
       "DownstreamPathTemplate": "/api/v{version}/{everything}",
       "DownstreamScheme": "http",
@@ -41,7 +45,11 @@
       ],
       "UpstreamPathTemplate": "/api/v{version}/core/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
-      "UseServiceDiscovery": false
+      "UseServiceDiscovery": false,
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "GHM_Core_Api" ]
+      }
     },
     // BEGIN: Website
     {
@@ -54,30 +62,17 @@
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UseServiceDiscovery": false
-    },
-    // BEGIN: Product
-    {
-      "DownstreamPathTemplate": "/api/v{version}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 50011
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v{version}/products/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
       "UseServiceDiscovery": false,
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "GHM_Product_Api" ]
+        "AllowedScopes": [ "GHM_Core_Api" ]
       }
     },
+
     // BEGIN: Notifications
     {
-      "DownstreamPathTemplate": "/notifications",
+      "DownstreamPathTemplate": "/api/v{version}/notifications/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -85,7 +80,51 @@
           "Port": 50004
         }
       ],
-      "UpstreamPathTemplate": "/notifications",
+      "UpstreamPathTemplate": "/api/v{version}/notifications/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UseServiceDiscovery": false,
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "GHM_Core_Api" ]
+      }
+    },
+    // BEGIN: Notifications
+    {
+      "DownstreamPathTemplate": "/notifications?{everything}",
+      "DownstreamScheme": "ws",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50004
+        }
+      ],
+      "UpstreamPathTemplate": "/notifications?{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UseServiceDiscovery": false
+    },
+    {
+      "DownstreamPathTemplate": "/notifications/{everything}",
+      "DownstreamScheme": "ws",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50004
+        }
+      ],
+      "UpstreamPathTemplate": "/notifications/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UseServiceDiscovery": false
+    },
+    {
+      "DownstreamPathTemplate": "/api/v{version}/notifications",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50004
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v{version}/notifications",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "UseServiceDiscovery": false
     },

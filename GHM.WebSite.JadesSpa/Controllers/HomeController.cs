@@ -122,7 +122,7 @@ namespace GHM.Website.JadesSpa.Controllers
                 if (menuInfo.SubjectType == SubjectType.NewsCategory)
                 {
                     var categoryWithNews = await httpClientService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
-                    // var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/related-by-category/{apiService.TenantId}/{categoryWithNews.Data.SeoLink}/5/{CultureInfo.CurrentCulture.Name}");
+                    var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/related-by-category/{apiService.TenantId}/{categoryWithNews.Data.SeoLink}/5/{CultureInfo.CurrentCulture.Name}");
                     var listNewsHot = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/newest/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
                     ViewBag.ListNewsHot = listNewsHot == null ? null : listNewsHot;
                     ViewBag.CategoryId = categoryWithNews.Data.CategoryId;
@@ -133,6 +133,7 @@ namespace GHM.Website.JadesSpa.Controllers
                     var newsDetail = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/detail/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
                     ViewBag.NewsDetail = newsDetail;
                     //var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{menuInfo.SubjectId}/{CultureInfo.CurrentCulture.Name}/20");
+                    //ViewBag.ListNewsRelated = listNewsRelated;
                     return View("../News/Detail", newsDetail);
                 }
                 else
