@@ -58,7 +58,7 @@
       "UseServiceDiscovery": false
     },
     // BEGIN: Product
-    {Delete
+    {
       "DownstreamPathTemplate": "/api/v{version}/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
