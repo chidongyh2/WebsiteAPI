@@ -161,6 +161,11 @@ namespace GHM.WebSite.JadesSpa
                 if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he"))
                 {
                     var permalink = values[parameterName].ToString();
+                    if(permalink.Contains("?fbclid"))
+                    {
+                        var source = permalink.Split("?fbclid");
+                        permalink = source[0];
+                    }
                     string[] link = permalink.Split('.');
                     var requestUrl = _configuration.GetApiUrl();
                     var apiService = _configuration.GetApiServiceInfo();

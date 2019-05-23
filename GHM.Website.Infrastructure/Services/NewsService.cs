@@ -60,6 +60,9 @@ namespace GHM.Website.Infrastructure.Services
         public async Task<SearchResult<NewsViewModel>> Search(string tenantId, string languageId, string keyword, int? categoryId,
             string creatorId, string currentUserId, ApproverStatus? status, int page, int pageSize, bool isApprove)
         {
+            var request = _configuration.GetApiThrowServiceInfo();
+            var httpClient = new HttpThrowClientService();
+            var result = await httpClient.GetAsync<SearchResult<ProductSearchViewModel>>($"{request.ApiGatewayUrl}/api/v1/warehouse/products");
             var items = await _newsRepository.Search(tenantId, languageId, keyword, categoryId, creatorId, currentUserId, status, page, pageSize, isApprove,
                 out var totalRows);
             return new SearchResult<NewsViewModel>

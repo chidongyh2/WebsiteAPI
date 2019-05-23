@@ -42,23 +42,24 @@ namespace GHM.Infrastructure.Services
             #region Local Function.
             async Task<HttpClient> GetClient()
             {
-                if (string.IsNullOrEmpty(_apiThrowServiceInfo.ApiGatewayUrl))
-                    return null;
 
-                var disco = await DiscoveryClient.GetAsync(_apiThrowServiceInfo.ApiGatewayUrl + "auth");
-                if (disco.IsError)
-                    return null;
-                if (string.IsNullOrEmpty(_apiThrowServiceInfo.ClientId) || string.IsNullOrEmpty(_apiThrowServiceInfo.ClientSecret) || string.IsNullOrEmpty(_apiThrowServiceInfo.Scopes))
-                    return null;
+                    if (string.IsNullOrEmpty(_apiThrowServiceInfo.ApiGatewayUrl))
+                        return null;
 
-                var tokenClient = new TokenClient(disco.TokenEndpoint, _apiThrowServiceInfo.ClientId, _apiThrowServiceInfo.ClientSecret);
-                var tokenResponse = await tokenClient.RequestClientCredentialsAsync(_apiThrowServiceInfo.Scopes);
-                if (tokenResponse.IsError)
-                    return null;
+                    var disco = await DiscoveryClient.GetAsync($"{_apiThrowServiceInfo.AuthenticationUrl}");
+                    if (disco.IsError)
+                        return null;
+                    if (string.IsNullOrEmpty(_apiThrowServiceInfo.ClientId) || string.IsNullOrEmpty(_apiThrowServiceInfo.Scopes))
+                        return null;
 
-                var client = new HttpClient();
-                client.SetBearerToken(tokenResponse.AccessToken);
-                return client;
+                    var tokenClient = new TokenClient(disco.TokenEndpoint, _apiThrowServiceInfo.ClientId, _apiThrowServiceInfo.ClientSecret);
+                    var tokenResponse = await tokenClient.RequestClientCredentialsAsync(_apiThrowServiceInfo.Scopes);
+                    if (tokenResponse.IsError)
+                        return null;
+                    var client = new HttpClient();
+                    client.SetBearerToken(tokenResponse.AccessToken);
+                    return client;
+              
             }
             #endregion
         }

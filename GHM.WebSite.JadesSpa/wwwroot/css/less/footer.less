@@ -278,19 +278,142 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-#hotline {
-    bottom: 65px;
+
+.wrap-suggest-mobile {
     position: fixed;
-    right: 13px;
-    z-index: 1000;
-    height: 40px;
-    width: 40px;
-    text-align: center;
-    line-height: 45px;
-    img {
+    z-index: 9999;
+     li {
+         text-decoration: none;
+     }
+    @media @mobile {
         width: 100%;
+        bottom: 10px;
+        justify-content: center;
+        display: flex;
+        left: -20px;
+        list-style: none;
+
+        li {
+            margin: 0px 5px;
+            background: #458b00;
+            text-align: center;
+            border-radius: 4px;
+
+            a {
+                width: 100%;
+                font-weight: bold;
+                text-decoration: none;
+                font-size: 12px !important;
+                background: none !important;
+            }
+
+            .btn-register {
+                display: block;
+                padding-top: 7px;
+            }
+        }
     }
 }
+#hotline {
+    border-radius: 4px;
+    color: white;
+    padding: 7px 10px;
+    background: #458b00;
+    font-weight: bold;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.btn-register {
+    bottom: 70%;
+    z-index: 1000;
+    cursor: pointer;
+    margin-right: 20px;
+    color: white;
+    padding: 7px 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    background: #458B00;
+    color: white;
+    text-decoration: none;
+
+    @media @not_mobile {
+        right: -20px;
+        position: fixed;
+    }
+
+    i {
+        padding-right: 5px;
+    }
+
+    animation: colorchange 2 ease infinite; /* animation-name followed by duration in seconds*/
+    /* you could also use milliseconds (ms) or something like 2.5s */
+    -webkit-animation: colorchange 2s ease infinite; /* Chrome and Safari */
+    @media @mobile {
+        animation: none;
+        -webkit-animation: none;
+        padding: 7px 10px;
+        right: auto;
+        font-size: 12px;
+    }
+
+    @keyframes colorchange {
+        0% {
+            background: #33cc33;
+            padding: 9px 17px;
+        }
+
+        25% {
+            background: #00cc00;
+            padding: 7px 15px;
+        }
+
+        50% {
+            background: #88ff4d;
+            padding: 9px 17px;
+        }
+
+        75% {
+            background: #009900;
+            padding: 7px 15px;
+        }
+
+        100% {
+            background: #3bb300;
+            padding: 9px 17px;
+        }
+    }
+
+    @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+    {
+        0% {
+            background: #33cc33;
+            padding: 9px 17px;
+        }
+
+        25% {
+            background: #00cc00;
+            padding: 7px 15px;
+        }
+
+        50% {
+            background: #88ff4d;
+            padding: 9px 17px;
+        }
+
+        75% {
+            background: #009900;
+            padding: 7px 15px;
+        }
+
+        100% {
+            background: #3bb300;
+            padding: 9px 17px;
+        }
+    }
+}
+
 #message {
     bottom: 63px;
     position: fixed;
@@ -310,9 +433,7 @@
         z-index: 1005 !important;
         right: 0px !important;
         bottom: 45px !important;
-        @media @mobile {
-            bottom: 90px !important;
-        }
+
     }
 }
 #wrap-root {
@@ -349,7 +470,10 @@
     box-shadow: 0 1px 6px rgba(0, 0, 0, .06), 0 2px 32px rgba(0, 0, 0, .16);
     -webkit-transition: box-shadow .2s ease;
     background-size: 80%;
-    transition: all .2s ease-in-out
+    transition: all .2s ease-in-out;
+    @media @mobile {
+        bottom: 115px !important;
+    }
 }
 
 .ctrlq.fb-button:focus, .ctrlq.fb-button:hover {
@@ -432,17 +556,4 @@
     top: -2px;
     left: -5px;
     border-radius: 50%;
-}
-
-.bubble-msg {
-    width: 120px;
-    left: -140px;
-    top: 5px;
-    position: relative;
-    background: rgba(59, 89, 152, .8);
-    color: #fff;
-    padding: 5px 8px;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 13px;
 }
