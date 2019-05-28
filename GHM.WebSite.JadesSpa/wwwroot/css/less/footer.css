@@ -92,7 +92,7 @@
 }
 #footer #wrap-content-branch .contact-info ul li {
   padding: 3px 2px;
-  color: #eef0f1;
+  color: white;
   font-size: 16px !important;
   font-family: Roboto-Regular;
   font-size: 14px;
@@ -104,7 +104,7 @@
   padding-left: 2px;
 }
 #footer #wrap-content-branch .contact-info ul li a {
-  color: #eef0f1;
+  color: white;
   font-size: 16px !important;
 }
 #footer #wrap-content-branch .contact-info ul li a:hover {
@@ -249,7 +249,7 @@
   min-height: 45px;
   font-size: 15px;
   line-height: 40px;
-  color: #eef0f1;
+  color: white;
   background-color: #5b7222;
   background-repeat: no-repeat;
   background-size: cover;
