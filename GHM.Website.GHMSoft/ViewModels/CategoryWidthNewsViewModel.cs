@@ -1,7 +1,7 @@
-﻿using GHM.Website.GHMSoft.ViewModels;
+﻿using GHM.Website.TTMedic.ViewModels;
 using System.Collections.Generic;
 
-namespace GHM.Website.GHMSoft.ViewModels
+namespace GHM.Website.TTMedic.ViewModels
 {
     public class CategoryWidthNewsViewModel
     {

@@ -1,7 +1,7 @@
-﻿using GHM.Website.GHMSoft.Constants;
+﻿using GHM.Website.TTMedic.Constants;
 using System.Collections.Generic;
 
-namespace GHM.Website.GHMSoft.ViewModels
+namespace GHM.Website.TTMedic.ViewModels
 {
     public class BranchContactSearchViewModel
     {

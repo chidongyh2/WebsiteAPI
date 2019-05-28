@@ -1,4 +1,4 @@
-﻿namespace GHM.Website.GHMSoft.ViewModels
+﻿namespace GHM.Website.TTMedic.ViewModels
 {
     public class AlbumViewModel
     {
