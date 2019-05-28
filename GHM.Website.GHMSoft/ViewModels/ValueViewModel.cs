@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GHM.Website.TTMedic.ViewModels
+namespace GHM.Website.GHMSoft.ViewModels
 {
     public class ValueViewModel
     {

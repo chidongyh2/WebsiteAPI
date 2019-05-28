@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GHM.Website.TTMedic.Constants;
+using GHM.Website.GHMSoft.Constants;
 
-namespace GHM.Website.TTMedic.ViewModels
+namespace GHM.Website.GHMSoft.ViewModels
 {
     public class AlbumWithItemViewModel
     {
