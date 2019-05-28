@@ -173,7 +173,7 @@
   }
 }
 #event-detail .event-content .content {
-  color: #eef0f1;
+  color: white;
 }
 #event-detail .event-day {
   padding: 40px 0px;
@@ -264,7 +264,7 @@
   left: 0;
   right: 0;
   bottom: 10px;
-  color: #eef0f1;
+  color: white;
   padding: 10px;
   line-height: 23px;
   padding-bottom: 0px;
@@ -272,7 +272,7 @@
 #event-detail .event-day .days .item .thumbnail-event .content .title {
   white-space: normal;
   margin-bottom: 0px;
-  color: #eef0f1;
+  color: white;
   font-size: 20px;
 }
 @media only screen and (max-width: 1200px) {
@@ -281,7 +281,7 @@
   }
 }
 #event-detail .event-day .days .item .thumbnail-event .content hr {
-  background-color: #eef0f1;
+  background-color: white;
   margin-bottom: 10px;
 }
 #event-detail .event-day .days .item .thumbnail-event .content .description {
@@ -405,7 +405,7 @@
   background-position: initial;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  color: #eef0f1;
+  color: white;
   padding: 40px 0px;
 }
 @media only screen and (max-width: 1200px) {
@@ -437,7 +437,7 @@
 #event-detail .register-form .content #contact_form textarea {
   background-color: transparent;
   border-radius: unset;
-  color: #eef0f1 !important;
+  color: white !important;
 }
 #event-detail .register-form .content #contact_form .list-event-day {
   display: flex;
@@ -471,7 +471,7 @@
   }
 }
 #event-detail .register-form .content #contact_form .list-event-day a {
-  color: #eef0f1;
+  color: white;
   font-size: 18px;
   font-family: OpenSans-Light;
 }

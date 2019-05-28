@@ -757,7 +757,7 @@ nav #registerMainNav li:hover > ul {
   }
 }
 #register #register_form .list-event-day a {
-  color: #eef0f1;
+  color: white;
   font-size: 18px;
   font-family: OpenSans-Light;
 }

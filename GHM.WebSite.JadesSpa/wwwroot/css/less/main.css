@@ -112,7 +112,7 @@
   background-color: #5C8E2B;
   padding: 7px 15px;
   border-radius: 4px;
-  color: #eef0f1;
+  color: white;
   animation: hotline 30s ease infinite;
   /* animation-name followed by duration in seconds*/
   /* you could also use milliseconds (ms) or something like 2.5s */
@@ -155,7 +155,7 @@
   }
 }
 .btn-hotline h4 {
-  color: #eef0f1;
+  color: white;
 }
 .btn-hotline a {
   text-decoration: none;
@@ -318,7 +318,7 @@
   }
 }
 #news-hot .container .row {
-  color: #eef0f1;
+  color: white;
   text-align: center;
 }
 #news-hot .container .row .titlebar {

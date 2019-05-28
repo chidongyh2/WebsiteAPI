@@ -156,18 +156,18 @@
         // Brand
         Brand = 20000,
 
-        //Product = 30000
-        //Product = 30001,
-        //ProductAttribute = 30002,
+        Product = 30000,
+        Products = 30001,
+        ProductCategory = 30002,
         //ProductCategory = 30003,
         //Unit = 30007,
         //ProductCategoriesAttribute = 100008,
 
-         //------ Warehouse: 100000 -------
+       // ------ Warehouse: 100000 -------
         Warehouse = 100000,
-        Product = 100001,
+       // Product = 100001,
         ProductAttribute = 100002,
-        ProductCategory = 100003,
+       // ProductCategory = 100003,
         Supplier = 100004,
         Contact = 100005,
         Brands = 100006,

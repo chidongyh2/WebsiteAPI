@@ -85,7 +85,7 @@ namespace GHM.Authentication
                 .AddResourceStore<ResourceRepository>()
                 .AddClientStore<ClientRepository>()
                 .AddProfileService<ProfileRepository>()
-                .AddInMemoryIdentityResources(IdentityConfig.GetIdentityResources())
+                //.AddInMemoryIdentityResources(IdentityConfig.GetIdentityResources())
                 //.AddInMemoryApiResources(IdentityConfig.GetApiResources())
                 //.AddInMemoryClients(IdentityConfig.GetClients())
                 //.AddTestUsers(IdentityConfig.GetUsers())
@@ -135,32 +135,7 @@ namespace GHM.Authentication
             app.UseAuthentication();
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                      "Slug",
-                      "{*segment}",
-                      new { controller = "Account", action = "Login" },
-                      new { segment = new CustomUrlConstraint(Configuration) }
-                  );
-            });
+            app.UseMvcWithDefaultRoute();
         }
     }
-        public class CustomUrlConstraint : IRouteConstraint
-        {
-            private readonly IConfiguration _configuration;
-            public CustomUrlConstraint(IConfiguration configuration)
-            {
-                _configuration = configuration;
-            }
-            public bool Match(HttpContext httpContext, IRouter route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
-            {
-
-                if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he"))
-                {
-                    return false;
-                }
-                return true;
-            }
-        }
 }
