@@ -1,0 +1,20 @@
+﻿@model AlbumItemViewModel;
+@{
+        var listPhoto = ViewBag.ListPhoto as List<AlbumItemViewModel>;
+        var url = "https://websitefile.TTMedic.vn/";
+}
+
+@if (Model != null)
+{       
+    <a href="@(string.IsNullOrEmpty(Model.Thumbnail)? "/images/no-image.png" :$"{url}{Model.Thumbnail}")" title="@Model.Title" data-fancybox="gallery">
+        <img class="img-responsive" src="@(string.IsNullOrEmpty(Model.Thumbnail) ? "/images/no-image.png" : $"{url}{Model.Thumbnail}")"
+                onerror="this.src='/images/no-image.png'"
+                alt="@Model.Title" />
+        <div class="item-overlay">
+            <div class="overlay-content">
+                <h5>@Model.Title</h5>
+            </div>
+        </div>
+    </a>
+}
+
