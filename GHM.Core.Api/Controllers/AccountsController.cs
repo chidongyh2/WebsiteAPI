@@ -22,6 +22,7 @@ namespace GHM.Core.Api.Controllers
     [Authorize]
     [Route("api/v1/[controller]")]
     [Produces("application/json")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class AccountsController : GhmControllerBase
     {
         private readonly IUserAccountRepository _userAccountRepository;

@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -60,7 +62,7 @@ namespace GHM.Authentication
             services.AddTransient<IClientStore, ClientRepository>();
             services.AddTransient<IResourceStore, ResourceRepository>();
 
-            services.AddMvc();
+            services.AddMvcCore();
             services.AddDbContext<CoreDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("CoreConnectionString"));
@@ -83,13 +85,15 @@ namespace GHM.Authentication
                 .AddResourceStore<ResourceRepository>()
                 .AddClientStore<ClientRepository>()
                 .AddProfileService<ProfileRepository>()
-                //.AddInMemoryIdentityResources(IdentityConfig.GetIdentityResources())
+                .AddInMemoryIdentityResources(IdentityConfig.GetIdentityResources())
                 //.AddInMemoryApiResources(IdentityConfig.GetApiResources())
                 //.AddInMemoryClients(IdentityConfig.GetClients())
+                //.AddTestUsers(IdentityConfig.GetUsers())
                 //.AddProfileService<ProfileRepository>()
                 .AddAspNetIdentity<UserAccount>()
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();
             #endregion
+
 
             #region Autofac Config.
             // Config Autofac.
@@ -125,12 +129,38 @@ namespace GHM.Authentication
                 builder.AllowCredentials();
             });
             #endregion
-            
+
             app.UseHttpsRedirection();
             app.UseIdentityServer();
             app.UseAuthentication();
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                      "Slug",
+                      "{*segment}",
+                      new { controller = "Account", action = "Login" },
+                      new { segment = new CustomUrlConstraint(Configuration) }
+                  );
+            });
         }
     }
+        public class CustomUrlConstraint : IRouteConstraint
+        {
+            private readonly IConfiguration _configuration;
+            public CustomUrlConstraint(IConfiguration configuration)
+            {
+                _configuration = configuration;
+            }
+            public bool Match(HttpContext httpContext, IRouter route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
+            {
+
+                if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he"))
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
 }

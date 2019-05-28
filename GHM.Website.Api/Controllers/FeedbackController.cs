@@ -28,13 +28,8 @@ namespace GHM.Website.Api.Controllers
         [CheckPermission]
         public async Task<IActionResult> Search(string keyword, DateTime? startDate, DateTime? endDate, bool? isResolve, int page = 1, int pageSize = 20)
         {
-            try { 
             var result = await _feedbackService.Search(CurrentUser.TenantId, keyword, startDate, endDate, isResolve, page, pageSize);
             return Ok(result);
-            }catch(Exception e)
-            {
-                return Ok();
-            }
         }
 
         [AcceptVerbs("POST"), ValidateModel]

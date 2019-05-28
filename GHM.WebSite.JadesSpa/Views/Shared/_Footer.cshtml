@@ -9,41 +9,41 @@
     <ul>
         @if (websiteSetting.Fanpage != null)
         {
-        <li>
-            @if (ViewBag.DeviceType == "desktop")
-            {
-                <div id="fb-root"></div>
-                <script>
-                    window.fbAsyncInit = function () {
-                        FB.init({
-                            xfbml: true,
-                            autoLogAppEvents: true,
-                            version: 'v3.3'
-                        });
-                    };
+            <li>
+                @if (ViewBag.DeviceType == "desktop")
+                {
+                    <div id="fb-root"></div>
+                    <script>
+                        window.fbAsyncInit = function () {
+                            FB.init({
+                                xfbml: true,
+                                autoLogAppEvents: true,
+                                version: 'v3.3'
+                            });
+                        };
 
-                    (function (d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        if (d.getElementById(id)) return;
-                        js = d.createElement(s); js.id = id;
-                        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-                        fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));</script>
-                <div class="fb-customerchat"
-                     attribution=setup_tool
-                     page_id="507135679317606"
-                     logged_in_greeting="Chào mừng bạn đến với Jade Spa"
-                     logged_out_greeting="Chào mừng bạn đến với Jade Spa">
-                </div>
-            }
-            else
-            {
-                <div class="fb-livechat"> <div class="ctrlq fb-overlay"></div><div class="fb-widget"> <div class="ctrlq fb-close"></div><div class="fb-page" data-href="https://www.facebook.com/jadespa.vn" data-tabs="messages" data-width="360" data-height="400" data-small-header="true" data-hide-cover="true" data-show-facepile="false"> </div><div id="fb-root"></div></div><a href="https://m.me/jadespa.vn" title="Gửi tin nhắn cho chúng tôi qua Facebook" class="ctrlq fb-button"> <div class="bubble">1</div><div class="bubble-msg">LIÊN HỆ VỚI CHÚNG TÔI QUA FACEBOOK.</div></a></div>
-                <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"></script>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-                <script>$(document).ready(function () { function detectmob() { if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) { return true; } else { return false; } } var t = { delay: 125, overlay: $(".fb-overlay"), widget: $(".fb-widget"), button: $(".fb-button") }; setTimeout(function () { $("div.fb-livechat").fadeIn() }, 8 * t.delay); if (!detectmob()) { $(".ctrlq").on("click", function (e) { e.preventDefault(), t.overlay.is(":visible") ? (t.overlay.fadeOut(t.delay), t.widget.stop().animate({ bottom: 0, opacity: 0 }, 2 * t.delay, function () { $(this).hide("slow"), t.button.show() })) : t.button.fadeOut("medium", function () { t.widget.stop().show().animate({ bottom: "30px", opacity: 1 }, 2 * t.delay), t.overlay.fadeIn(t.delay) }) }) } });</script>
-            }
-        </li>
+                        (function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                    <div class="fb-customerchat"
+                         attribution=setup_tool
+                         page_id="507135679317606"
+                         logged_in_greeting="Chào mừng bạn đến với Jade Spa"
+                         logged_out_greeting="Chào mừng bạn đến với Jade Spa">
+                    </div>
+                }
+                else
+                {
+                    <div class="fb-livechat"> <div class="ctrlq fb-overlay"></div><div class="fb-widget"> <div class="ctrlq fb-close"></div><div class="fb-page" data-href="https://www.facebook.com/jadespa.vn" data-tabs="messages" data-width="360" data-height="400" data-small-header="true" data-hide-cover="true" data-show-facepile="false"> </div><div id="fb-root"></div></div><a href="https://m.me/jadespa.vn" class="ctrlq fb-button"> <div class="bubble">1</div><div class="bubble-msg"></div></a></div>
+                    <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                    <script>$(document).ready(function () { function detectmob() { if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) { return true; } else { return false; } } var t = { delay: 125, overlay: $(".fb-overlay"), widget: $(".fb-widget"), button: $(".fb-button") }; setTimeout(function () { $("div.fb-livechat").fadeIn() }, 8 * t.delay); if (!detectmob()) { $(".ctrlq").on("click", function (e) { e.preventDefault(), t.overlay.is(":visible") ? (t.overlay.fadeOut(t.delay), t.widget.stop().animate({ bottom: 0, opacity: 0 }, 2 * t.delay, function () { $(this).hide("slow"), t.button.show() })) : t.button.fadeOut("medium", function () { t.widget.stop().show().animate({ bottom: "30px", opacity: 1 }, 2 * t.delay), t.overlay.fadeIn(t.delay) }) }) } });</script>
+                }
+            </li>
         }
         @if (websiteSetting.ZaloId != null)
         {
@@ -60,198 +60,206 @@
                 <i class="fa fa-angle-up fa-2x"></i>
             </a>
         </li>
-        <li>
-            <a href="tel:@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Hotline) ? websiteSetting.Hotline : "(091) 601 5199")" id="hotline" class="visible-sm visible-xs visible-md">
-                <img class="lazy" data-src="/images/BGR-web/mb.jpg" />
-            </a>
-        </li>
+        @*<li>
+                <a href="tel:@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Hotline) ? websiteSetting.Hotline : "(091) 601 5199")" id="hotline" class="visible-sm visible-xs visible-md">
+                    <img class="lazy" data-src="/images/BGR-web/mb.jpg" />
+                </a>
+            </li>*@
         @*<li>
                 <a href="#footer" id="message" data-toggle="modal" data-target="#myModal" class="visible-sm visible-xs visible-md">
                     <img class="lazy" data-src="/images/BGR-web/box.jpg" />
                 </a>
             </li>*@
 
-        </ul>
-        </div>
-        <footer id="footer" class="lazy" data-src="/images/bgr-web/background-image/nen-pc_08.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 logo">
-                        <a href="/" title="@websiteSetting?.Brand">
-                            <img class="img-responsive lazy" data-src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? $"{ViewBag.Url}{websiteSetting.Logo}" : "/images/Trang chu/Logo ABC tren-duoi.png" )"
-                                 alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) ? websiteSetting?.Brand : ViewBag.Title)" />
-                        </a>
-                    </div>
-                    <div id="wrap-content-branch" class="col-lg-5">
-                        <div class="contact-info">
-                            <ul>
-                                @if (listBranch != null && listBranch.Any())
+    </ul>
+</div>
+<footer id="footer" class="lazy" data-src="/images/bgr-web/background-image/nen-pc_08.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 logo">
+                <a href="/" title="@websiteSetting?.Brand">
+                    <img class="img-responsive lazy" data-src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? $"{ViewBag.Url}{websiteSetting.Logo}" : "/images/Trang chu/Logo ABC tren-duoi.png" )"
+                         alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) ? websiteSetting?.Brand : ViewBag.Title)" />
+                </a>
+            </div>
+            <div id="wrap-content-branch" class="col-lg-5">
+                <div class="contact-info">
+                    <ul>
+                        @if (listBranch != null && listBranch.Any())
+                        {
+                            foreach (var branchs in listBranch)
+                            {
+                                <li class="branch"><h6>@branchs?.Name</h6></li>
+                                <li class="address"><i class="fa fa-map-marker"> @branchs?.Address</i></li>
+                                <li class="work-time"><i class="fa fa-clock-o"> @branchs?.WorkTime</i></li>
+                                @if (branchs.BranchContactDetails != null && branchs.BranchContactDetails.Any())
                                 {
-                                    foreach (var branchs in listBranch)
+                                    @foreach (var branchItem in branchs.BranchContactDetails)
                                     {
-                                        <li class="branch"><h6>@branchs?.Name</h6></li>
-                                        <li class="address"><i class="fa fa-map-marker"> @branchs?.Address</i></li>
-                                        <li class="work-time"><i class="fa fa-clock-o"> @branchs?.WorkTime</i></li>
-                                        @if (branchs.BranchContactDetails != null && branchs.BranchContactDetails.Any())
+                                        switch (branchItem.ContactType)
                                         {
-                                            @foreach (var branchItem in branchs.BranchContactDetails)
-                                            {
-                                                switch (branchItem.ContactType)
-                                                {
-                                                    case ContactType.MobilePhone:
-                                                        <li class="">
-                                                            <i class="fa fa-phone"></i>
-                                                            @branchItem.ContactValue
-                                                        </li>
-                                                        break;
-                                                    case ContactType.Fax:
-                                                        <li class="">
-                                                            @branchItem.ContactValue
-                                                        </li>
-                                                        break;
-                                                    case ContactType.Email:
-                                                        <li class="">
-                                                            <i class="fa fa-envelope"></i>
-                                                            <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a>
-                                                        </li>
-                                                        break;
-                                                    case ContactType.HomePhone:
-                                                        <li class="">
-                                                            <i class="fa fa-phone"></i>
-                                                            @branchItem.ContactValue
-                                                        </li>
-                                                        break;
-                                                    default:
-                                                        break;
-                                                }
-                                            }
+                                            case ContactType.MobilePhone:
+                                                <li class="">
+                                                    <i class="fa fa-phone"></i>
+                                                    @branchItem.ContactValue
+                                                </li>
+                                                break;
+                                            case ContactType.Fax:
+                                                <li class="">
+                                                    @branchItem.ContactValue
+                                                </li>
+                                                break;
+                                            case ContactType.Email:
+                                                <li class="">
+                                                    <i class="fa fa-envelope"></i>
+                                                    <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a>
+                                                </li>
+                                                break;
+                                            case ContactType.HomePhone:
+                                                <li class="">
+                                                    <i class="fa fa-phone"></i>
+                                                    @branchItem.ContactValue
+                                                </li>
+                                                break;
+                                            default:
+                                                break;
                                         }
                                     }
                                 }
-                            </ul>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="social-info">
+                    <h4 class="hotline">@Resource.HotLine</h4>
+                    <h4 class="hotline-value">@websiteSetting?.Hotline</h4>
+                    <ul class="list-inline">
+                        @if (listSocialNetWork != null && listSocialNetWork.Any())
+                        {
+                            @foreach (var socialNetwork in listSocialNetWork)
+                            {
+                                <li class="list-items">
+                                    <a href="@socialNetwork.Url" class="btn-scocial">
+                                        @if (!string.IsNullOrEmpty(socialNetwork.Icon))
+                                        {
+                                            <i class="fa @(socialNetwork.Icon)"></i>
+                                        }
+                                    </a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="btn-message">
+                    <button class="btn-send-message" data-toggle="modal" data-target="#myModal" type="button">GỬI TIN NHẮN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="copy-right center lazy" data-src="/images/BGR-web/Background-Image/image_background-footer.png">
+    Copyright 2018 - @DateTime.Now.Year  Jadespa All rights reserved
+</div>
+<ul class="wrap-suggest-mobile" >
+    <li>
+        <a class="btn-register" data-toggle="modal" data-target="#registerModal"><i class="fa fa-hand-o-right"></i>Đặt Lịch</a>
+    </li>
+    <li>
+        <a href="tel:@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Hotline) ? websiteSetting.Hotline : "(091) 601 5199")"
+           id="hotline" class="visible-sm visible-xs visible-md">
+            <i class="fa fa-phone"></i> @(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Hotline) ? websiteSetting.Hotline : "(091) 601 5199")
+        </a>
+    </li>
+</ul>
+<div id="myModal" class="modal fade modal-send-message" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <form class="form-horizontal" id="contact_form" data-bind="submit: $root.sendFeedback">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">@Resource.SendMessage</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="message">
+                        <div class="form-group" data-bind="attr: {class: isContactNameError() ? 'form-group has-error' : 'form-group'}">
+                            <div class="col-lg-12">
+                                <input id="contact_full_name" type="text" class="form-control" placeholder="@Resource.FullNamePlaceHolder" value="" data-bind="value: contactName, hasFocus: isContactNameFocus" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="social-info">
-                            <h4 class="hotline">@Resource.HotLine</h4>
-                            <h4 class="hotline-value">@websiteSetting?.Hotline</h4>
-                            <ul class="list-inline">
-                                @if (listSocialNetWork != null && listSocialNetWork.Any())
-                                {
-                                    @foreach (var socialNetwork in listSocialNetWork)
-                                    {
-                                        <li class="list-items">
-                                            <a href="@socialNetwork.Url" class="btn-scocial">
-                                                @if (!string.IsNullOrEmpty(socialNetwork.Icon))
-                                                {
-                                                    <i class="fa @(socialNetwork.Icon)"></i>
-                                                }
-                                            </a>
-                                        </li>
-                                    }
-                                }
-                            </ul>
+                        <div class="form-group" data-bind="attr: {class: isPhoneNumberError() ? 'form-group has-error' : 'form-group'}">
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" placeholder="@Resource.PhoneNumberPlaceHolder" value="" data-bind="value: contactPhoneNumber, hasFocus: isPhoneNumberFocus" />
+                            </div>
                         </div>
-                        <div class="btn-message">
-                            <button class="btn-send-message" data-toggle="modal" data-target="#myModal" type="button">GỬI TIN NHẮN</button>
+                        <div class="form-group" data-bind="attr: {class: isEmailError() ? 'form-group has-error' : 'form-group'}">
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" placeholder="@Resource.EmailPlaceHolder" value="" data-bind="value: contactEmail, hasFocus: isEmailFocus" />
+                            </div>
+                        </div>
+                        <div class="form-group" data-bind="attr: {class: isContentError() ? 'form-group has-error' : 'form-group'}">
+                            <div class="col-lg-12">
+                                <textarea type="text" class="form-control" placeholder="@Resource.ContentPlaceHolder" rows="4" data-bind="value: contactContent, hasFocus: isContentFocus"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 submit">
+                                <button type="submit" class="btn btn-send-message" data-bind="enable: !isSendingContact()">
+                                    <i class="fa fa-envelope-o" data-bind="visible: !isSendingContact()"></i>
+                                    <i class="fa fa-spinner fa-pulse" data-bind="visible: isSendingContact()" style="display: none"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-        <div class="copy-right center lazy" data-src="/images/BGR-web/Background-Image/image_background-footer.png">
-            Copyright 2018 - @DateTime.Now.Year  Jadespa All rights reserved
-        </div>
-        <div class="btn-register" data-toggle="modal"  data-target="#registerModal">
-            <a ><i class="fa fa-hand-o-right"></i><b>Đặt Lịch</b></a>
-        </div>
-        <div id="myModal" class="modal fade modal-send-message" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <form class="form-horizontal" id="contact_form" data-bind="submit: $root.sendFeedback">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">@Resource.SendMessage</h4>
+        </form>
+    </div>
+</div>
+<div id="registerModal" class="modal fade modal-register" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <form class="form-horizontal" id="contact_form" data-bind="submit: $root.sendFeedback">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">@Resource.SendMessage</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="message">
+                        <div class="form-group" data-bind="attr: {class: isContactNameError() ? 'form-group has-error' : 'form-group'}">
+                            <div class="col-lg-12">
+                                <input id="contact_full_name" type="text" class="form-control" placeholder="@Resource.FullNamePlaceHolder" value="" data-bind="value: contactName, hasFocus: isContactNameFocus" />
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <div class="message">
-                                <div class="form-group" data-bind="attr: {class: isContactNameError() ? 'form-group has-error' : 'form-group'}">
-                                    <div class="col-lg-12">
-                                        <input id="contact_full_name" type="text" class="form-control" placeholder="@Resource.FullNamePlaceHolder" value="" data-bind="value: contactName, hasFocus: isContactNameFocus" />
-                                    </div>
-                                </div>
-                                <div class="form-group" data-bind="attr: {class: isPhoneNumberError() ? 'form-group has-error' : 'form-group'}">
-                                    <div class="col-lg-12">
-                                        <input type="text" class="form-control" placeholder="@Resource.PhoneNumberPlaceHolder" value="" data-bind="value: contactPhoneNumber, hasFocus: isPhoneNumberFocus" />
-                                    </div>
-                                </div>
-                                <div class="form-group" data-bind="attr: {class: isEmailError() ? 'form-group has-error' : 'form-group'}">
-                                    <div class="col-lg-12">
-                                        <input type="text" class="form-control" placeholder="@Resource.EmailPlaceHolder" value="" data-bind="value: contactEmail, hasFocus: isEmailFocus" />
-                                    </div>
-                                </div>
-                                <div class="form-group" data-bind="attr: {class: isContentError() ? 'form-group has-error' : 'form-group'}">
-                                    <div class="col-lg-12">
-                                        <textarea type="text" class="form-control" placeholder="@Resource.ContentPlaceHolder" rows="4" data-bind="value: contactContent, hasFocus: isContentFocus"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12 submit">
-                                        <button type="submit" class="btn btn-send-message" data-bind="enable: !isSendingContact()">
-                                            <i class="fa fa-envelope-o" data-bind="visible: !isSendingContact()"></i>
-                                            <i class="fa fa-spinner fa-pulse" data-bind="visible: isSendingContact()" style="display: none"></i>
-                                        </button>
-                                    </div>
-                                </div>
+                        <div class="form-group" data-bind="attr: {class: isPhoneNumberError() ? 'form-group has-error' : 'form-group'}">
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" placeholder="@Resource.PhoneNumberPlaceHolder" value="" data-bind="value: contactPhoneNumber, hasFocus: isPhoneNumberFocus" />
+                            </div>
+                        </div>
+                        <div class="form-group" data-bind="attr: {class: isEmailError() ? 'form-group has-error' : 'form-group'}">
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" placeholder="@Resource.EmailPlaceHolder" value="" data-bind="value: contactEmail, hasFocus: isEmailFocus" />
+                            </div>
+                        </div>
+                        <div class="form-group" data-bind="attr: {class: isContentError() ? 'form-group has-error' : 'form-group'}">
+                            <div class="col-lg-12">
+                                <textarea type="text" class="form-control" placeholder="@Resource.ContentPlaceHolder" rows="4" data-bind="value: contactContent, hasFocus: isContentFocus"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 submit">
+                                <button type="submit" class="btn btn-send-message" data-bind="enable: !isSendingContact()">
+                                    <i class="fa fa-envelope-o" data-bind="visible: !isSendingContact()"></i>
+                                    <i class="fa fa-spinner fa-pulse" data-bind="visible: isSendingContact()" style="display: none"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
-        <div id="registerModal" class="modal fade modal-register" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <form class="form-horizontal" id="contact_form" data-bind="submit: $root.sendFeedback">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">@Resource.SendMessage</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="message">
-                                <div class="form-group" data-bind="attr: {class: isContactNameError() ? 'form-group has-error' : 'form-group'}">
-                                    <div class="col-lg-12">
-                                        <input id="contact_full_name" type="text" class="form-control" placeholder="@Resource.FullNamePlaceHolder" value="" data-bind="value: contactName, hasFocus: isContactNameFocus" />
-                                    </div>
-                                </div>
-                                <div class="form-group" data-bind="attr: {class: isPhoneNumberError() ? 'form-group has-error' : 'form-group'}">
-                                    <div class="col-lg-12">
-                                        <input type="text" class="form-control" placeholder="@Resource.PhoneNumberPlaceHolder" value="" data-bind="value: contactPhoneNumber, hasFocus: isPhoneNumberFocus" />
-                                    </div>
-                                </div>
-                                <div class="form-group" data-bind="attr: {class: isEmailError() ? 'form-group has-error' : 'form-group'}">
-                                    <div class="col-lg-12">
-                                        <input type="text" class="form-control" placeholder="@Resource.EmailPlaceHolder" value="" data-bind="value: contactEmail, hasFocus: isEmailFocus" />
-                                    </div>
-                                </div>
-                                <div class="form-group" data-bind="attr: {class: isContentError() ? 'form-group has-error' : 'form-group'}">
-                                    <div class="col-lg-12">
-                                        <textarea type="text" class="form-control" placeholder="@Resource.ContentPlaceHolder" rows="4" data-bind="value: contactContent, hasFocus: isContentFocus"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12 submit">
-                                        <button type="submit" class="btn btn-send-message" data-bind="enable: !isSendingContact()">
-                                            <i class="fa fa-envelope-o" data-bind="visible: !isSendingContact()"></i>
-                                            <i class="fa fa-spinner fa-pulse" data-bind="visible: isSendingContact()" style="display: none"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+        </form>
+    </div>
+</div>

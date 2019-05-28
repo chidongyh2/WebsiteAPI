@@ -388,5 +388,10 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
         #endregion
+        [Route("test-api"), AcceptVerbs("GET")]
+        public async Task<IActionResult> GetTest()
+        {
+            return Ok("asdasd");
+        }
     }
 }

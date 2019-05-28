@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GHM.Website.ABC.Models
+namespace GHM.Website.GHMSoft.Models
 {
     public class News
     {
