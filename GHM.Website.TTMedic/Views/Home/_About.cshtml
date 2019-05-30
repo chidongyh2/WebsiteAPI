@@ -1,5 +1,6 @@
 ﻿@{
     var NewsAboutUS = ViewBag.NewsAboutUS as List<NewsDetailViewModel>;
+    var Activity = ViewBag.activity as List<NewsDetailViewModel>;
     //var NewsAtive = ViewBag.NewsAtive as List<NewsDetailViewModel>;
     var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
     var url = "https://websitefile.ghmsoft.vn/";
@@ -34,7 +35,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="titlebar">
-                    <h2>@Resource.ACTIVITIES</h2>
+                    <h2>@(!string.IsNullOrEmpty(ViewBag.Activity?.Title) ? ViewBag.Activity?.Title : "TUYÊN NGÔN HOẠT ĐỘNG")</h2>
                 </div>
             </div>
         </div>
@@ -42,14 +43,15 @@
     <div class="container">
         <div id="accordion-holder" class="row">
             <div class="col-md-6 text-center animated fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="600">
-                <img class="img-responsive" src="/images/tuyenngon.png" alt="our-philosophy-image">
+                @*<img class="img-responsive" src="/images/tuyenngon.png" alt="our-philosophy-image">*@
+                <img class="img-responsive" src="@(ViewBag.Activity != null && !string.IsNullOrEmpty(ViewBag.Activity.FeatureImage) ? $"{url}{ViewBag.Activity.FeatureImage}" : "")"
+                     alt="@(!string.IsNullOrEmpty(ViewBag.Activity?.AltImage) ? ViewBag.Activity?.AltImage :"our-philosophy-image")"
+                     onerror="this.src='/images/no-image.png'" />
             </div>
+            
             <div class="col-md-6">
                 <div class="panel-group" id="accordion">
-                    @if (websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Instruction))
-                    {
-                        @Html.Raw(websiteSetting.Instruction)
-                    }
+                    @(!string.IsNullOrEmpty(ViewBag.Activity?.Content) ? Html.Raw(ViewBag.Activity?.Content) : "error")
                 </div>
             </div>
         </div>

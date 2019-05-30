@@ -78,6 +78,9 @@ namespace GHM.Website.TTMedic.Controllers
             var test = await httpClientService.GetAsync<NewsDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/client/{apiService.TenantId}/he-thong-quan-ly/{CultureInfo.CurrentCulture.Name}");
             ViewBag.Test = test;
 
+            var Activity = await httpClientService.GetAsync<NewsDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/client/{apiService.TenantId}/tuyen-ngon-hoat-dong/{CultureInfo.CurrentCulture.Name}");
+            ViewBag.activity = Activity;
+
             return View();
         }
 
