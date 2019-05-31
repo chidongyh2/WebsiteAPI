@@ -2,7 +2,7 @@
     var Test = ViewBag.Test as List<NewsDetailViewModel>;
     var url = "https://websitefile.ghmsoft.vn/";
 }
-<section id="about-1">
+<section id="about">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -12,14 +12,14 @@
             </div>
         </div>
     </div>
-    <div class="container">       
+    <div class="container">
         <div id="accordion-holder" class="row">
-            <div class="col-md-6 text-center animated fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="600">                
+            <div class="col-md-6 text-center animated fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="600">
                 <img class="img-responsive" src="@(ViewBag.Test != null &&!string.IsNullOrEmpty(ViewBag.Test.FeatureImage) ? $"{url}{ViewBag.Test.FeatureImage}" : "")"
-                        alt="@(!string.IsNullOrEmpty(ViewBag.Test?.AltImage) ? ViewBag.Test?.AltImage :"our-philosophy-image")"
-                        onerror="this.src='/images/no-image.png'" />
+                     alt="@(!string.IsNullOrEmpty(ViewBag.Test?.AltImage) ? ViewBag.Test?.AltImage :"our-philosophy-image")"
+                     onerror="this.src='/images/no-image.png'" />
             </div>
             @(!string.IsNullOrEmpty(ViewBag.Test?.Content) ? Html.Raw(ViewBag.Test?.Content) : "error")
-        </div>       
+        </div>
     </div>
 </section>

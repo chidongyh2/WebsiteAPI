@@ -709,16 +709,16 @@
   margin-top: 20px;
   margin-right: 10px;
 }
-#about-1 {
+#about {
   background-color: #f5f5f5;
   border-top: 1px solid #eee;
   padding-top: 40px;
   padding-bottom: 80px;
 }
-#about-1 .panel-group {
+#about .panel-group {
   margin-bottom: 20px;
 }
-#about-1 .panel-group .panel {
+#about .panel-group .panel {
   margin-bottom: 10px;
   background: none;
   border: none;
@@ -728,11 +728,11 @@
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-#about-1 .panel-group .panel .panel-heading {
+#about .panel-group .panel .panel-heading {
   color: #333;
   border-color: #ddd;
 }
-#about-1 .panel-group .panel .panel-heading .panel-title {
+#about .panel-group .panel .panel-heading .panel-title {
   color: #222;
   font-size: 20px;
   font-family: 'Oswald', sans-serif;
@@ -740,22 +740,22 @@
   border-bottom: 1px solid #ccc;
   text-transform: uppercase;
 }
-#about-1 .panel-group .panel .panel-heading .panel-title a {
+#about .panel-group .panel .panel-heading .panel-title a {
   display: block;
   color: #222;
   font-size: 22px;
   padding: 12px 0;
   text-decoration: none;
 }
-#about-1 .panel-group .panel .panel-heading .panel-title a:hover {
+#about .panel-group .panel .panel-heading .panel-title a:hover {
   color: #3498DB;
 }
-#about-1 .panel-group .panel .panel-heading .panel-title i {
+#about .panel-group .panel .panel-heading .panel-title i {
   color: #3498DB;
   font-size: 28px;
   margin-right: 10px;
 }
-#about-1 .panel-group .panel .panel-body {
+#about .panel-group .panel .panel-body {
   border-top: none !important;
   font-size: 16px;
 }
@@ -843,8 +843,8 @@ canvas.intro-canvas-el {
     z-index: -1
 }
 #intro #intro_content {
-  padding-top: 160px;
-  padding-bottom: 140px;
+  padding-top: 110px;
+  padding-bottom: 70px;
 }
 #intro h2 {
   font-size: 30px;

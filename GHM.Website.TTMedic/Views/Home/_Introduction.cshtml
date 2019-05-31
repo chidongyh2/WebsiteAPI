@@ -8,17 +8,25 @@
                 z-index: 0;
             }
         </style>
-        <div class="container">
-            <div id="intro_content" class="row">
+        <div id="intro_content" class="container">
+            <div class="row">
+                <div class="col-sm-12 titlebar">
+                    <h2>@(!string.IsNullOrEmpty(ViewBag.NewsAboutUS?.Title) ? ViewBag.NewsAboutUS?.Title : "VỀ CHÚNG TÔI")</h2>
+                </div>
+            </div>
+            <div id="tabs-holder" class="row">
                 <div class="col-md-6">
-                    <div class="intro_text">
-                        <h2>@(!string.IsNullOrEmpty(ViewBag.NewsAtive?.Title) ? ViewBag.NewsAtive?.Title : "GIẢI PHÁP QUẢN LÝ TỔNG THỂ CHO DOANH NGHIỆP")</h2>
-                        @(!string.IsNullOrEmpty(ViewBag.NewsAtive?.Content) ? Html.Raw(ViewBag.NewsAtive?.Content) : "error")
+                    <div class="tab-content">
+                        <div id="tab_1" class="tab-pane active">
+                            <p>@(!string.IsNullOrEmpty(ViewBag.NewsAboutUS?.Content) ? Html.Raw(ViewBag.NewsAboutUS?.Content) : "error")</p>
+
+                        </div>
+
                     </div>
                 </div>
-                <div id="intro_image" class="col-md-6 text-center">
-                    <img class="img-responsive" src="@(ViewBag.NewsAtive != null && !string.IsNullOrEmpty(ViewBag.NewsAtive.FeatureImage) ? $"{url}{ViewBag.NewsAtive.FeatureImage}" : "")"
-                         alt="@(!string.IsNullOrEmpty(ViewBag.NewsAtive?.AltImage) ? ViewBag.NewsAtive?.AltImage :"intro-image")"
+                <div class="col-md-6 text-center animated fadeInRight visible cm-mgt-35" data-animation="fadeInRight" data-animation-delay="600">
+                    <img class="img-responsive" src="@(ViewBag.NewsAboutUS != null && !string.IsNullOrEmpty(ViewBag.NewsAboutUS.FeatureImage) ? $"{url}{ViewBag.NewsAboutUS.FeatureImage}" : "")"
+                         alt="@(!string.IsNullOrEmpty(ViewBag.NewsAboutUS?.AltImage) ? ViewBag.NewsAboutUS?.AltImage :"about-image")"
                          onerror="this.src='/images/no-image.png'" />
                 </div>
             </div>
