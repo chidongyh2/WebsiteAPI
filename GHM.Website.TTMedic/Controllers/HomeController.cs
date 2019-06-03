@@ -81,6 +81,8 @@ namespace GHM.Website.TTMedic.Controllers
             var Activity = await httpClientService.GetAsync<NewsDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/client/{apiService.TenantId}/tuyen-ngon-hoat-dong/{CultureInfo.CurrentCulture.Name}");
             ViewBag.activity = Activity;
 
+            var listMenuProduct = await httpClientService.GetAsync<List<MenuItemViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/position/{(int)Position.Middle}/items/menu/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
+            ViewBag.MenuProduct = listMenuProduct;
             return View();
         }
 

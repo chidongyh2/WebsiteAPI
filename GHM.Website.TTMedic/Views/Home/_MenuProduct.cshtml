@@ -1,0 +1,25 @@
+﻿
+@model MenuItemViewModel
+@{
+      var url = "https://websitefile.ghmsoft.vn/";
+}
+<div class="product-item">
+    <div class="product-title">
+        <a href="@( $"{(Model.Url == "/" ? "/" : string.IsNullOrEmpty(Model.Url) ? "/" + Model.NamePath : Model.Url)}")" title="@Model.Name">
+            @(!string.IsNullOrEmpty(Model.Name) ? Common.SubString(Model.Name, 14) : "")
+        </a>     
+    </div>
+    <div class="product-thumbnail">
+        <a href="@( $"{(Model.Url == "/" ? "/" : string.IsNullOrEmpty(Model.Url) ? "/" + Model.NamePath : Model.Url)}")" title="@Model.Name">
+            <img style="width:250px;height:250px" class="img-responsive" src="@(!string.IsNullOrEmpty(Model.Image)? $"{url}{Model.Image}" : "")"
+                 onerror="this.src='/images/no-image.png'" />
+        </a>
+    </div>
+    @*<div class="product-title">
+            <h2>
+                <a href="@($"/tin-tuc/{ Model.SeoLink}.html")" title="@(string.IsNullOrEmpty(Model.MetaTitle) ? Model.Title : Model.MetaTitle)">
+                    @Model.Title
+                </a>
+            </h2>
+        </div>*@
+</div>
