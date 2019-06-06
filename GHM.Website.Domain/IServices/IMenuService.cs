@@ -50,5 +50,7 @@ namespace GHM.Website.Domain.IServices
         Task<MenuDetailViewModel> GetAllActivatedMenuByPosition(string tenantId, string languageId, Position position);
 
         Task<ActionResultResponse<MenuItemSelectedViewModel>> ItemSelected(string tenantId, int subjectType, string subjectId, string languageId);
+
+        Task<ActionResultResponse<bool>> CheckExistBySubJectId(string tenantId, string id, SubjectType subjectType);
     }
 }

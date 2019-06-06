@@ -171,6 +171,16 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
+        [Route("check-subject/{tenantId}/{id}/{subjectId}"), AcceptVerbs("GET")]
+        public async Task<IActionResult> CheckExistBySubjectId(string tenantId, string id, SubjectType subjectType)
+        {
+            var result = await _menuService.CheckExistBySubJectId(tenantId, id, subjectType);
+
+            if (result.Code < 0)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
       
         #region  client
         [Route("{id}/items/menu/{tenantId}/{languageId?}"), AcceptVerbs("GET")]
