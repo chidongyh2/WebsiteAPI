@@ -30,7 +30,6 @@
     "IIS": {
       "commandName": "IIS",
       "launchBrowser": true,
-      "launchUrl": "/home",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
