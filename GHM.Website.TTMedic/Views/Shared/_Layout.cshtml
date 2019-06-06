@@ -1,7 +1,7 @@
 ﻿@{
     var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
     var absoluteUri = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
-    var url = "https://websitefile.TTMedic.vn/";
+    var url = "https://websitefile.ghmsoft.vn/";
 }
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Favicon) ? $"{url}{websiteSetting.Favicon}" : "/images/logo.ico")" type="image/x-icon">
+    <link rel="icon" href="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Favicon) ? $"{url}{websiteSetting.Favicon}" : "/images/logo-TTmedic.jpg")" type="image/x-icon">
     <link rel="alternate" href="@absoluteUri" hreflang="vi-VN" />
     <link rel="canonical" href="@absoluteUri" />
     <meta name="author" content="TTMedic ttmedic.vn">

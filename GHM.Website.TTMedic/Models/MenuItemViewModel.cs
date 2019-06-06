@@ -18,9 +18,9 @@ namespace GHM.Website.TTMedic.Models
         public string OrderPath { get; set; }
         public int Level { get; set; }
         public int ChildCount { get; set; }
-        public string ConcurrencyStamp { get; set; }
         public string Name { get; set; }
         public string ParentName { get; set; }
         public string NamePath { get; set; }
+        public string Description { get; set; }
     }
 }
