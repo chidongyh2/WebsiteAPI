@@ -124,12 +124,10 @@ namespace GHM.Website.TTMedic.Controllers
                 Title = title,
                 Content = content,
             };
-
             var result = await new HttpClientService()
-                .PostAsync<ActionResultResponse<string>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/feedbacks/{apiService.TenantId}", feedbackMeta);
+               .PostAsync<ActionResultResponse<string>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/feedbacks/{apiService.TenantId}", feedbackMeta);
 
             return Json(result);
-
         }
         //public async Task<IActionResult> About()
         //{
