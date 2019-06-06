@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GHM.Notifications.Api.Hubs;
@@ -37,14 +38,19 @@ namespace GHM.Notifications.Api.Infrastructure.Services
 
         public async Task<int> DeleteByUserId(string userId)
         {
-            var userConnections = await _userConnectionRepository.GetAllUserConnections(userId);
-            if (userConnections != null && userConnections.Any())
-            {
-                await _notificationHubContext.Clients.Clients(userConnections.Select(x => x.ConnectionId).ToList())
-                    .SendAsync("LoggedOut");
-            }
+            try {
+                var userConnections = await _userConnectionRepository.GetAllUserConnections(userId);
+                if (userConnections != null && userConnections.Any())
+                {
+                    await _notificationHubContext.Clients.Clients(userConnections.Select(x => x.ConnectionId).ToList())
+                        .SendAsync("LoggedOut");
+                }
 
-            return await _userConnectionRepository.Delete(userId);
+                return await _userConnectionRepository.Delete(userId);
+            } catch(Exception e)
+            {
+                return 1;
+            }
         }
     }
 }
