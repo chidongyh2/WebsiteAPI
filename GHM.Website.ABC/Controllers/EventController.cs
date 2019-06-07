@@ -100,6 +100,10 @@ namespace GHM.Website.ABC.Controllers
             }
 
             ViewBag.EventInfo = eventInfo?.Data;
+
+            var listNews = await httpClientService.GetAsync<SearchResult<SocialNetworkViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/social-networks/{apiService.TenantId}/alls");
+            ViewBag.SocialNetwork = listNews?.Items;
+
             return View();
         }
 

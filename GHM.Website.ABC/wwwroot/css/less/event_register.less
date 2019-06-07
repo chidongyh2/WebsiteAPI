@@ -129,7 +129,7 @@ nav {
 // main
 #intro {
     width: 100%;
-    background-image: url('../../images/event-register/image_01.jpg');
+    background-image: url('../../images/event-register/Nen-tron-01_01.jpg');
     background-repeat: no-repeat;
     background-position: center;
     color: #fff;
@@ -456,6 +456,53 @@ nav {
     }
 
     #professional-profile > :first-child:after {
+        bottom: 0;
+        left: 0;
+        border-width: 0 0 3px 3px
+    }
+
+    #professional-profile1 {
+        position: relative;
+        padding: 30px;
+        z-index: 1;
+        margin-top: -180px;
+        margin-bottom: 100px;
+
+        @media @mobile {
+            padding: 15px;
+            margin-top: -110px;
+            margin-bottom: 30px;
+        }
+    }
+
+    #professional-profile1:before, #professional-profile1:after, #professional-profile1 > :first-child:before, #professional-profile1 > :first-child:after {
+        position: absolute;
+        content: ' ';
+        width: 60px;
+        height: 60px;
+        border-color: @color-white; /* or whatever colour */
+        border-style: solid; /* or whatever style */
+    }
+
+    #professional-profile1:before {
+        top: 0;
+        left: 0;
+        border-width: 3px 0 0 3px
+    }
+
+    #professional-profile1:after {
+        top: 0;
+        right: 0;
+        border-width: 3px 3px 0 0
+    }
+
+    #professional-profile1 > :first-child:before {
+        bottom: 0;
+        right: 0;
+        border-width: 0 3px 3px 0
+    }
+
+    #professional-profile1 > :first-child:after {
         bottom: 0;
         left: 0;
         border-width: 0 0 3px 3px
