@@ -1021,10 +1021,13 @@ nav #registerMainNav li:hover > ul {
 
 #intro #intro_content h1 {
     padding-top: 10px;
-    color: #fe0000;
+    color: #ffff00;
     font-size: 80px;
     font-weight: 900;
     font-family: Roboto-Bold;
+    background: linear-gradient(to right, #cc7a00, #FDD564);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @media only screen and (max-width:768px) {
@@ -1040,10 +1043,13 @@ nav #registerMainNav li:hover > ul {
     text-transform: uppercase;
     margin-top: 15px;
     margin-bottom: 15px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     display: inline;
     border-bottom: 1px solid;
-    padding: 0 25px;
+    /*padding: 0 25px;*/
+    background: linear-gradient(to right, #cc7a00, #FDD564);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @media only screen and (max-width:768px) {
@@ -1053,7 +1059,7 @@ nav #registerMainNav li:hover > ul {
 }
 
 #intro #intro_content h3 {
-    font-size: 28px;
+    font-size: 30px;
     font-family: OpenSans;
     line-height: 34px;
     text-transform: uppercase;
@@ -1062,6 +1068,7 @@ nav #registerMainNav li:hover > ul {
     display: inline;
     padding-bottom: 10px;
     border-bottom: 1px solid #fff;
+    letter-spacing: 15px;
 }
 
 @media only screen and (max-width:768px) {
@@ -1451,17 +1458,27 @@ nav #registerMainNav li:hover > ul {
 }
 
 #professional .event-day .content .item {
+    vertical-align: middle;
     display: inline-block;
     flex-basis: 25%;
-    font-size: 18px;
+    font-size: 14px;
     padding: 30px;
 }
-
+@media only screen and (max-width: 1024px) {
+    #professional .event-day .content .item {
+        vertical-align: middle;
+        display: inline-block;
+        flex-basis: 25%;
+        font-size: 12px;
+        padding: 30px;
+    }
+}
 @media only screen and (max-width:768px) {
     #professional .event-day .content .item {
+        vertical-align: middle;
         flex-basis: 46%;
         padding: 10px;
-        font-size: 14px;
+        font-size: 11px;
         margin: 5px;
     }
 }
@@ -1866,6 +1883,7 @@ nav #registerMainNav li:hover > ul {
 .icon {
     text-align: center;
     color: #2f3c45;
+    padding-bottom: 15px;
 }
 
     .icon i {
@@ -1881,13 +1899,22 @@ nav #registerMainNav li:hover > ul {
     font-size: 30px;
     font-weight: 500;
 }
-
+.img {
+    width: 70px;
+    height: 25px;
+    margin: auto;
+    display: block;   
+}
 @media only screen and (max-width:768px) {
     .titlebar {
         font-size: 18px;
     }
 }
-
+.img-responsive1 {
+    display: block;
+    max-width: 25%;
+    height: auto;
+}
 #footer {
     padding: 20px 0;
     background-color: #2e3b44;

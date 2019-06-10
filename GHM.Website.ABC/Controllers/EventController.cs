@@ -87,7 +87,7 @@ namespace GHM.Website.ABC.Controllers
         [Route("dang-ky-su-kien")]
         public async Task<IActionResult> RegisterEvent(string seoLink)
         {
-            seoLink = "hoi-thao-amiea-pmu--su-ket-hop-dot-pha-nganh-phun-xam-tham-my";
+            seoLink = "digital-blading--dot-pha-de-khac-biet";
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
             var httpClientService = new HttpClientService();

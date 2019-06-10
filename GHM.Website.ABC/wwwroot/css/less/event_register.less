@@ -147,10 +147,13 @@ nav {
 
         h1 {
             padding-top: 10px;
-            color: #fe0000;
+            color: #ffff00;
             font-size: 80px;
             font-weight: 900;
             font-family: Roboto-Bold;
+            background: linear-gradient(to right, #cc7a00, #FDD564);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
 
             @media @mobile {
                 font-size: 30px;
@@ -167,7 +170,10 @@ nav {
             letter-spacing: 1px;
             display: inline;
             border-bottom: 1px solid;
-            padding: 0px 25px;
+            padding: 0 25px;
+            background: linear-gradient(to right, #cc7a00, #FDD564);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
 
             @media @mobile {
                 font-size: 22px;
@@ -540,15 +546,16 @@ nav {
             }
 
             .item {
+                vertical-align: middle;
                 display: inline-block;
                 flex-basis: 25%;
-                font-size: 18px;
+                font-size: 14px;
                 padding: 30px;
 
                 @media @mobile {
                     flex-basis: 46%;
                     padding: 10px;
-                    font-size: 14px;
+                    font-size: 11px;
                     margin: 5px;
                 }
 
@@ -941,6 +948,7 @@ nav {
 
 .icon {
     text-align: center;
+    padding-bottom: 15px;
     color: @color-main-register;
 
     i {
@@ -961,7 +969,12 @@ nav {
         font-size: 18px;
     }
 }
-
+.img {
+    width: 70px;
+    height: 25px;
+    margin: auto;
+    display: block;
+}
 // end main
 //footer
 #footer {

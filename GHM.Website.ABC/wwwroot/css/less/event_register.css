@@ -824,11 +824,14 @@ nav #registerMainNav li:hover > ul {
   }
 }
 #intro #intro_content h1 {
-  padding-top: 10px;
-  color: #fe0000;
-  font-size: 80px;
-  font-weight: 900;
-  font-family: Roboto-Bold;
+    padding-top: 10px;
+    color: #ffff00;
+    font-size: 80px;
+    font-weight: 900;
+    font-family: Roboto-Bold;
+    background: linear-gradient(to right, #cc7a00, #FDD564);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 @media only screen and (max-width: 768px) {
   #intro #intro_content h1 {
@@ -837,15 +840,18 @@ nav #registerMainNav li:hover > ul {
   }
 }
 #intro #intro_content h2 {
-  font-size: 45px;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
-  display: inline;
-  border-bottom: 1px solid;
-  padding: 0px 25px;
+    font-size: 45px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    display: inline;
+    border-bottom: 1px solid;
+    padding: 0 25px;
+    background: linear-gradient(to right, #cc7a00, #FDD564);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 @media only screen and (max-width: 768px) {
   #intro #intro_content h2 {
@@ -1204,18 +1210,20 @@ nav #registerMainNav li:hover > ul {
   }
 }
 #professional .event-day .content .item {
+vertical-align: middle;
   display: inline-block;
   flex-basis: 25%;
-  font-size: 18px;
+  font-size: 14px;
   padding: 30px;
 }
 @media only screen and (max-width: 768px) {
-  #professional .event-day .content .item {
-    flex-basis: 46%;
-    padding: 10px;
-    font-size: 14px;
-    margin: 5px;
-  }
+    #professional .event-day .content .item {
+        vertical-align: middle;
+        flex-basis: 46%;
+        padding: 10px;
+        font-size: 11px;
+        margin: 5px;
+    }
 }
 #professional .event-day .content .item h4 {
   min-height: 20px;
@@ -1563,8 +1571,9 @@ nav #registerMainNav li:hover > ul {
   text-align: center;
 }
 .icon {
-  text-align: center;
-  color: #2f3c45;
+    text-align: center;
+    color: #2f3c45;
+    padding-bottom: 15px;
 }
 .icon i {
   font-size: 50px;
