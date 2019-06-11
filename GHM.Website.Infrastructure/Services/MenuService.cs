@@ -1025,6 +1025,18 @@ namespace GHM.Website.Infrastructure.Services
                 };
             }
         }
+
+        public async Task<ActionResultResponse<bool>> CheckExistBySubJectId(string tenantId, string id, SubjectType subjectType)
+        {
+            var isExistsInMenu =
+                await _menuItemRepository.CheckExistsBySubjectId(id.ToString(), subjectType);
+
+            return isExistsInMenu ? new ActionResultResponse<bool>(-5, _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong)) : new ActionResultResponse<bool>
+            {
+                Code = 1,
+                Data = isExistsInMenu
+            };
+        }
         #endregion
 
     }

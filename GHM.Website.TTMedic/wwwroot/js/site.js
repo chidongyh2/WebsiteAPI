@@ -64,7 +64,7 @@
         });
     };
 
-    $('#GoToHome, #GoToAbout, #GoToFeatures, #GoToWorks, #GoToTeam, #GoToPricing, #GoToBlog, #GoToContacts').scrollTo({ speed: 1400 });
+    $('#GoToHome, #GoToAbout, #GoToFeatures, #GoToWorks,#GoToProduct, #GoToTeam, #GoToPricing, #GoToBlog, #GoToContacts').scrollTo({ speed: 1400 });
 
     headerWrapper = parseInt($('#ghmMainNav').height());
     offsetTolerance = 300;

@@ -1,24 +1,24 @@
 ﻿@{
     var listMenuProduct = ViewBag.MenuProduct as List<MenuItemViewModel>;
-   
+
 }
-@if (listMenuProduct != null && listMenuProduct.Any())
-{
-    <div id="product-hot">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h2 class="titlebar">Sản phẩm </h2>
-                </div>
+<section id="product-hot">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="titlebar">Sản phẩm </h2>
             </div>
-            <div class="row">
+        </div>
+        <div class="row">
+            @if (listMenuProduct != null && listMenuProduct.Any())
+            {
                 @foreach (var product in listMenuProduct)
                 {
                     <div class="col-sm-3 cm-mgb-20">
                         <partial name="_MenuProduct" model="product" />
                     </div>
                 }
-            </div>
+            }
         </div>
     </div>
-}
+</section>
