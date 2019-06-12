@@ -18,11 +18,12 @@
             </div>
             <div class="navbar-collapse collapse navbar-right" id="registerMainNav">
                 <ul class="nav navbar-nav">
-                    <li><a id="GoToSeminars" href="#content" data-bind="css: {selected : linkHref() === '#content'}">@Resource.Seminars</a></li>
-                    <li><a id="GoToProfessional" href="#professional" data-bind="css: {selected : linkHref() === '#professional'}">@Resource.Professionals</a></li>
-                    <li><a id="GoTocontent" href="#eventContent" data-bind="css: {selected : linkHref() === '#eventContent'}">@Resource.Content</a></li>
-                    <li><a id="GoTovideo" href="#video" data-bind="css: {selected : linkHref() === '#video'}">@Resource.Events</a></li>
-                    <li><a id="GoToRegister" href="#register" data-bind="css: {selected: linkHref() === '#register'}">@Resource.Register</a></li>
+                    <li><a id="GoToSeminars" href="#content" data-bind="css: {selected : linkHref() === '#content', selected: selectedSeminars}, click: selectedItem(0)">@Resource.Seminars</a></li>
+                    <li><a id="GoToProfessional" href="#professional" data-bind="css: {selected : linkHref() === '#professional',  selected: selectedProfessional}, click: selectedItem(1)">@Resource.Professionals</a></li>
+                    <li><a id="GoToContent" href="#eventContent" data-bind="css: {selected : linkHref() === '#eventContent',  selected: selectedContent}, click: selectedItem(2)">@Resource.Content</a></li>
+                    <li><a id="GoTovideo" href="#video" data-bind="css: {selected : linkHref() === '#video' ,selected: selectedVideo},  click: selectedItem(3)">@Resource.Events</a></li>
+                    <li><a id="GoToRegister" href="#register" data-bind="css: {selected: linkHref() === '#register',selected: selectedRegister}, click: selectedItem(4)">@Resource.Register</a></li>
+                    <li style="display:none"><a href="#" data-bind="click: selectedItem(5)"></a></li>
                 </ul>
             </div>
         </div>
