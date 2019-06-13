@@ -1834,6 +1834,16 @@ nav #registerMainNav li:hover > ul {
     color: #fff;
     padding: 5px 15px;
 }
+#register #register_form .note1 {
+    /*font-family: OpenSans-Italic;*/
+    color: #ff3333 !important;
+    font-size: 14px;
+}
+@media only screen and (max-width:768px) {
+    #register #register_form .note1 {
+        font-size: 12px;
+    }
+}
 
 #register #register_form .submit {
     text-align: center;

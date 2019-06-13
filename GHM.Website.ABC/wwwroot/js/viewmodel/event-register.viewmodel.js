@@ -328,8 +328,8 @@
             });
         };
 
-        $('#GoToSeminars, #GoToProfessional, #GoTocontent, #GoTovideo, #GoToRegister').scrollTo({ speed: 1400 });
-        headerWrapper = parseInt($('#registerMainNav').height());
+        $('#GoToSeminars, #GoToProfessional, #GoTocontent, #GoTovideo, #GoToRegister').scrollTo({ speed: 1400});
+        //headerWrapper = parseInt($('#registerMainNav').height());
         //offsetTolerance = 300;
 
         //$(window).scroll(function () {
