@@ -17,7 +17,7 @@
                                     <a href="@socialNetWork.Url" class="btn-scoical">
                                         @if (!string.IsNullOrEmpty(socialNetWork.Image))
                                         {
-                                            <img data-src="@($"/image?url={(string.IsNullOrEmpty(socialNetWork.Image) ? "/images/no-image.png" : socialNetWork.Image)}&width=15&height=15&type=1")"
+                                            <img src="@($"/image?url={(string.IsNullOrEmpty(socialNetWork.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{socialNetWork.Image}")}&width=15&height=15&type=1")"
                                                  alt="@socialNetWork.Name"
                                                  class="lazy" />
                                         }

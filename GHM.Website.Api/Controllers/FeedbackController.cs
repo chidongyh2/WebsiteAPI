@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using GHM.Infrastructure;
+﻿using GHM.Infrastructure;
 using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.CustomAttributes;
 using GHM.Infrastructure.Filters;
@@ -8,6 +6,8 @@ using GHM.Website.Domain.IServices;
 using GHM.Website.Domain.ModelMetas;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace GHM.Website.Api.Controllers
 {
@@ -47,7 +47,7 @@ namespace GHM.Website.Api.Controllers
         [Route("{id}"), AcceptVerbs("POST"), ValidateModel]
         [AllowPermission(PageId.Feedback, Permission.Insert)]
         [CheckPermission]
-        public async Task<IActionResult> Update(string id,[FromBody]FeedbackMeta feedbackMeta)
+        public async Task<IActionResult> Update(string id, [FromBody]FeedbackMeta feedbackMeta)
         {
             var result = await _feedbackService.Update(CurrentUser.TenantId, id, feedbackMeta);
             if (result.Code <= 0)

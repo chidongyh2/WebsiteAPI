@@ -16,6 +16,11 @@
     self.eventId = ko.observable('');
     self.listEventDay = ko.observableArray([]);
     self.eventDays = ko.observableArray([]);
+    self.selectedSeminars = ko.observable(false);
+    self.selectedProfessional = ko.observable(false);
+    self.selectedContent = ko.observable(false);
+    self.selectedVideo = ko.observable(false);
+    self.selectedRegister = ko.observable(false);
     self.isCheckAllDay = ko.observable(false);
 
     self.listVideo = ko.observableArray([]);
@@ -33,6 +38,27 @@
     self.linkHref = ko.observable('#content');
     self.eventDayJoin = ko.observable('');
 
+    self.selectedItem = function (data) {
+        self.selectedSeminars(false);
+        self.selectedProfessional(false);
+        self.selectedContent(false);
+        self.selectedVideo(false);
+        self.selectedRegister(false);
+
+        switch (data) {
+            case 0: self.selectedSeminars(true)
+                break;
+            case 1: self.selectedProfessional(true)
+                break;
+            case 2: self.selectedContent(true)
+                break;
+            case 3: self.selectedVideo(true)
+                break;
+            case 4: self.selectedRegister(true)
+                break;
+            case 5: self.selectedSeminars(true)
+        }
+    }
     self.selectEventDay = function (data) {
         data.IsSelect(!data.IsSelect());
         if (data.IsSelect()) {
@@ -196,7 +222,8 @@
             $('#register_full_name').focus();
         }, 100);
     };
-
+    $(".loader").delay(100).fadeOut();
+    $(".animationload").delay(100).fadeOut("fast");
     $(document).ready(function () {
         $(window).scroll(function () {
             var b = $(window).scrollTop();
@@ -301,7 +328,28 @@
             });
         };
 
-        $('#GoToSeminars, #GoToProfessional, #GoTocontent, #GoTovideo, #GoToRegister').scrollTo({ speed: 1400 });
+        $('#GoToSeminars, #GoToProfessional, #GoTocontent, #GoTovideo, #GoToRegister').scrollTo({ speed: 1400});
+        //headerWrapper = parseInt($('#registerMainNav').height());
+        //offsetTolerance = 300;
+
+        //$(window).scroll(function () {
+        //    scrollPosition = parseInt($(this).scrollTop());
+        //    $('.navbar-nav > li > a').each(function () {
+        //        thisHref = $(this).attr('href');
+        //        thisTruePosition = parseInt($(thisHref).offset().top);
+        //        thisPosition = thisTruePosition - headerWrapper - offsetTolerance;
+        //        if (scrollPosition >= thisPosition) {
+        //            $('.selected-nav').removeClass('selected-nav');
+        //            $(this).addClass('selected-nav');
+        //        }
+        //    });
+
+        //    bottomPage = parseInt($(document).height()) - parseInt($(window).height());
+        //    if (scrollPosition === bottomPage || scrollPosition >= bottomPage) {
+        //        $('.selected-nav').removeClass('selected-nav');
+        //        $('navbar-nav > li > a:last').addClass('selected-nav');
+        //    }
+        //});    
     });
 }
 

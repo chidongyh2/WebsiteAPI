@@ -87,7 +87,7 @@ namespace GHM.Website.ABC.Controllers
         [Route("dang-ky-su-kien")]
         public async Task<IActionResult> RegisterEvent(string seoLink)
         {
-            seoLink = "hoi-thao-amiea-pmu--su-ket-hop-dot-pha-nganh-phun-xam-tham-my";
+            seoLink = "digital-blading--dot-pha-de-khac-biet";
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
             var httpClientService = new HttpClientService();
@@ -100,6 +100,10 @@ namespace GHM.Website.ABC.Controllers
             }
 
             ViewBag.EventInfo = eventInfo?.Data;
+
+            var listNews = await httpClientService.GetAsync<SearchResult<SocialNetworkViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/social-networks/{apiService.TenantId}/alls");
+            ViewBag.SocialNetwork = listNews?.Items;
+
             return View();
         }
 
