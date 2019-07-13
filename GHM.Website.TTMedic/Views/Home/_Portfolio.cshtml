@@ -127,7 +127,7 @@
                                         <div class="@(string.Format("item {0}", i == 1? "active" : ""))">
                                             <a title="@video.Title"
                                                data-fancybox href="@video.Url">
-                                                <img src="@($"/image?url={(string.IsNullOrEmpty(video.Thumbnail) ? "/images/no-image.png" : $"{url}{video.Thumbnail}")}&width=560&height=420")"
+                                                <img src="@(string.IsNullOrEmpty(video.Thumbnail) ? "/images/no-image.png" : $"{url}{video.Thumbnail}")"
                                                      onerror="this.src='/images/no-image.png'"
                                                      alt="@video.Title" class="img-responsive lazy" />
                                                 <span class="duration_video"><i class="fa fa-play"></i></span>
