@@ -29,7 +29,7 @@
                 <a role="button" href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" +item.Url)}")"
                    class="@((item.NamePath != null && path.Contains(item.NamePath) || item.Url == absoluteUri) ? "transition active data-toggle visible-sm visible-xs visible-md" : "transition active dropdown-toggle visible-sm visible-xs visible-md")"
                    title="@item.Name" data-toggle="@(childCount > 0 ? "dropdown" : "")">
-                    @item.Name
+                   @(Common.SubString(@item.Name, 21))
                     @if (childCount > 0)
                     {
                         <i class="fa fa-angle-down pull-right visible-sm visible-xs visible-md"></i>
