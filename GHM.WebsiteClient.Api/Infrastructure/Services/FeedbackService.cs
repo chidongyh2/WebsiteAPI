@@ -3,6 +3,7 @@ using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.IServices;
 using GHM.Infrastructure.Models;
+using GHM.WebsiteClient.Api.Domain.IServices;
 using GHM.WebsiteClient.Api.Domain.ModelMetas;
 using GHM.WebsiteClient.Api.Domain.Models;
 using GHM.WebsiteClient.Api.Domain.Resources;
@@ -16,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace GHM.WebsiteClient.Api.Infrastructure.Services
 {
-    public class FeedbackService
+    public class FeedbackService: IFeedbackService
     {
         private readonly string _connectionString;
         private readonly ILogger<FeedbackService> _logger;

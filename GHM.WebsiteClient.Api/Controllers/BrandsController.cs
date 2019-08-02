@@ -23,7 +23,7 @@ namespace GHM.WebsiteClient.Api.Controllers
         public async Task<IActionResult> GetAllBrand(string tenantId)
         {
 
-            var result = await _brandService.Search(tenantId);
+            var result = await _brandService.SearchAsync(tenantId);
             return Ok(result);
 
         }

@@ -62,6 +62,7 @@ namespace GHM.WebsiteClient.Api
 
 
             builder.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("DefaultConnection")));
+            builder.RegisterModule(new ValidationModule());
             var autofacServiceProvider = new AutofacServiceProvider(builder.Build());
             return autofacServiceProvider;
         }

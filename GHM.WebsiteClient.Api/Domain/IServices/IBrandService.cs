@@ -8,6 +8,6 @@ namespace GHM.WebsiteClient.Api.Domain.IServices
 {
  public   interface IBrandService
     {
-        Task<List<BrandSearchViewModel>> Search(string tenantId);
+        Task<List<BrandSearchViewModel>> SearchAsync(string tenantId);
     }
 }
