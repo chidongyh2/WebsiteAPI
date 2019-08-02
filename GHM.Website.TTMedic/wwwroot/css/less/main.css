@@ -36,7 +36,7 @@
 #product-hot {
     padding-bottom: 80px;
     padding-top: 60px;
-    background-color: #30373F;
+    background-color: #3498DB;
 }
 
     #product-hot .titlebar {
@@ -391,6 +391,105 @@
 }
 #team .team-socials .team-member-socials li .ico_behance:hover {
   color: #00a8e7;
+}
+#portfolio {
+    background-color: #FFFFFF;
+    padding-top: 60px;
+    padding-bottom: 80px;
+}
+
+    #portfolio .titlebar {
+        color: #222;
+        margin-bottom: 30px;
+    }
+      
+
+@media only screen and (max-width: 767px) {
+    #portfolio .titlebar {
+        display: none;
+    }
+}
+
+#portfolio .video .titlebar {
+    display: none;
+}
+
+@media only screen and (max-width: 767px) {
+    #portfolio .video .titlebar {
+        display: block;
+        text-align: center;
+        color: #333E47;
+        margin-bottom: 25px;
+    }
+}
+
+#portfolio .video #videoCarousel .duration_video {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -40px;
+    margin-top: -40px;
+    background: url(owl.video.play.png) no-repeat;
+    cursor: pointer;
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+    transition: transform 0.1s ease;
+}
+
+    #portfolio .video #videoCarousel .duration_video i {
+        border: 5px solid #993333;
+        padding: 10px;
+        border-radius: 100%;
+        font-size: 40px;
+        text-align: center;
+        vertical-align: middle;
+        height: 70px;
+        width: 70px;
+        color: #993333;
+    }
+
+#portfolio .video #videoCarousel .carousel-caption p {
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+    #portfolio .video {
+        padding-top: 20px;
+    }
+}
+
+#portfolio .image .titlebar {
+    display: none;
+}
+
+@media only screen and (max-width: 767px) {
+    #portfolio .image .titlebar {
+        display: block;
+        text-align: center;
+        color: #333E47;
+        margin-bottom: 25px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #portfolio .image {
+        padding-bottom: 50px;
+        border-bottom: 1px solid #DAD8DA;
+        margin-bottom: 0px;
+    }
+}
+
+#portfolio img {
+    /*width: 100%;*/
+    max-height: 480px;
+        min-height: 420px;
+}
+
+@media only screen and (max-width: 767px) {
+    #portfolio img {
+        min-height: unset;
+    }
 }
 #portfolio {
   /*padding-top: 0px;*/

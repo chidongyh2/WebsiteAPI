@@ -40,7 +40,7 @@ namespace GHM.Website.TTMedic.Controllers
 
             var listVaue = await httpClientService.GetAsync<List<ValueViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/core-values/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListValue = listVaue;
-
+            ViewBag.ListVideoHomePage = await httpClientService.GetAsync<List<VideoViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/videos/home-page/{apiService.TenantId}/6");
             var resultListPhoto = await httpClientService.GetAsync<SearchResult<AlbumWithItemViewModel>>
                 ($"{requestUrl.ApiGatewayUrl}/api/v1/website/albums/{apiService.TenantId}/{AlbumType.Photo}");
             ViewBag.AlbumViewModel = resultListPhoto?.Items;
