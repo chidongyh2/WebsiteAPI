@@ -17,9 +17,11 @@ namespace GHM.Website.JadesSpa.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
-        public ContactController(IConfiguration configuration, IMemoryCache cache): base(configuration, cache)
+        private IHttpClientService _httpClientService;
+        public ContactController(IConfiguration configuration, IMemoryCache cache, IHttpClientService httpClientService): base(configuration, cache, httpClientService)
         {
             _configuration = configuration;
+            _httpClientService = httpClientService;
             _cache = cache;
         }
 
@@ -78,7 +80,7 @@ namespace GHM.Website.JadesSpa.Controllers
                 Content = content,
             };
 
-            var result = await new HttpClientService()
+            var result = await _httpClientService
                 .PostAsync<ActionResultResponse<string>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/feedbacks/{apiService.TenantId}", feedbackMeta);
 
             return Json(result);

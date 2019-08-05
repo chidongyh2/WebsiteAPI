@@ -19,9 +19,12 @@ namespace GHM.Website.JadesSpa.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
-        public NewsController(IConfiguration configuration, IMemoryCache cache) : base(configuration, cache)
+        private IHttpClientService _httpClientService;
+
+        public NewsController(IConfiguration configuration, IMemoryCache cache, IHttpClientService httpClientService) : base(configuration, cache, httpClientService)
         {
             _configuration = configuration;
+            _httpClientService = httpClientService;
             _cache = cache;
         }
         [Route("view-more-news"), AcceptVerbs("POST")]
@@ -29,8 +32,7 @@ namespace GHM.Website.JadesSpa.Controllers
         {
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
-            var httpService = new HttpClientService();
-            var listNews = await httpService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{categoryId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+            var listNews = await _httpClientService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{categoryId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
             var item = listNews?.Data;
 
             return Json(listNews.Data.ListNews);

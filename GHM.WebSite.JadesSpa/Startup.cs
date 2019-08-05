@@ -47,6 +47,7 @@ namespace GHM.WebSite.JadesSpa
 
             services.AddMemoryCache();
             services.AddSingleton<IConfiguration>(Configuration);
+            services.AddScoped<IHttpClientService, HttpClientFactoryService>();
             services.AddSession();
             services.Configure<RequestLocalizationOptions>(options =>
             {
@@ -59,11 +60,14 @@ namespace GHM.WebSite.JadesSpa
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, options =>
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+            .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, options =>
             {
                 options.ResourcesPath = "Resources";
-            }).AddDataAnnotationsLocalization();
-
+            }).AddDataAnnotationsLocalization()
+            .Services
+               .AddHttpClient<IHttpClientService, HttpClientFactoryService>();
+            
             services.AddWebMarkupMin(
             options =>
             {
@@ -151,6 +155,7 @@ namespace GHM.WebSite.JadesSpa
         public class CustomUrlConstraint : IRouteConstraint
         {
             private readonly IConfiguration _configuration;
+            private readonly IHttpClientService _httpClientService;
             public CustomUrlConstraint(IConfiguration configuration)
             {
                 _configuration = configuration;

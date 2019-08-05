@@ -23,11 +23,13 @@ namespace GHM.Website.JadesSpa.Controllers
         // GET: /<controller>/
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
+        private IHttpClientService _httpClienService;
 
-        public EventController(IConfiguration configuration, IMemoryCache cache) : base(configuration, cache)
+        public EventController(IConfiguration configuration, IMemoryCache cache, IHttpClientService httpClientService) : base(configuration, cache, httpClientService)
         {
             _configuration = configuration;
             _cache = cache;
+            _httpClienService = httpClientService;
         }
 
         [Route("su-kien")]

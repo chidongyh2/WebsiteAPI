@@ -23,12 +23,14 @@ namespace GHM.Website.JadesSpa.Controllers
     {
         private readonly IConfiguration _configuration;
         private IMemoryCache _cache;
+        private IHttpClientService _httpClientService;
 
         public object DeviceDeectorNET { get; private set; }
 
-        public BaseController(IConfiguration configuration, IMemoryCache cache)
+        public BaseController(IConfiguration configuration, IMemoryCache cache, IHttpClientService httpClientService)
         {
             _configuration = configuration;
+            _httpClientService = httpClientService;
             _cache = cache;
         }
 
@@ -68,8 +70,8 @@ namespace GHM.Website.JadesSpa.Controllers
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
 
-            var result = new HttpClientService()
-                .GetAsync<List<MenuItemViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/position/{(int)Position.Top}/items/menu/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
+            var result = _httpClientService
+                .GetAsync<List<MenuItemViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/websites/position/{(int)Position.Top}/items/menu/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
 
             _cache.Set(CacheParam.MainNav, result?.Result, TimeSpan.FromHours(2));
             return result?.Result;
@@ -86,7 +88,7 @@ namespace GHM.Website.JadesSpa.Controllers
             var apiService = _configuration.GetApiServiceInfo();
             string convention = typeof(WebsiteSetting).Namespace;
 
-            var listSettings = new HttpClientService()
+            var listSettings = _httpClientService
                 .GetAsync<SearchResult<Setting>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/settings/get-setting/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
 
             var settings = listSettings.Result?.Items;
@@ -125,7 +127,7 @@ namespace GHM.Website.JadesSpa.Controllers
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
 
-            var result = new HttpClientService()
+            var result = _httpClientService
                 .GetAsync<SearchResult<BranchContactSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/branchs/alls/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
 
             _cache.Set(CacheParam.Branch, result?.Result?.Items, TimeSpan.FromHours(2));
@@ -142,7 +144,7 @@ namespace GHM.Website.JadesSpa.Controllers
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
 
-            var result = new HttpClientService()
+            var result = _httpClientService
                 .GetAsync<SearchResult<SocialNetworkViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/social-networks/{apiService.TenantId}/alls");
 
             _cache.Set(CacheParam.SocialNetwork, result?.Result?.Items, TimeSpan.FromHours(2));
@@ -160,7 +162,7 @@ namespace GHM.Website.JadesSpa.Controllers
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
 
-            var result = new HttpClientService()
+            var result = _httpClientService
                 .GetAsync<SearchResult<BrandSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/brands/{apiService.TenantId}/alls");
             _cache.Set(CacheParam.Brand, result?.Result?.Items, TimeSpan.FromHours(2));
 
@@ -177,7 +179,7 @@ namespace GHM.Website.JadesSpa.Controllers
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
 
-            var result = new HttpClientService()
+            var result = _httpClientService
                 .GetAsync<List<MenuItemViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/position/{(int)Position.Bottom}/items/menu/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
 
             _cache.Set(CacheParam.FooterNav, result?.Result, TimeSpan.FromHours(2));
@@ -195,7 +197,7 @@ namespace GHM.Website.JadesSpa.Controllers
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
 
-            var result = new HttpClientService()
+            var result = _httpClientService
                .GetAsync<SearchResult<TenantLanguageViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/core/languages/support/{apiService.TenantId}");
 
             _cache.Set(CacheParam.Language, result?.Result?.Items, TimeSpan.FromHours(2));
