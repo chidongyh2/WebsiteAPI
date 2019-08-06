@@ -11,16 +11,17 @@ using System.Threading.Tasks;
 
 namespace GHM.WebsiteClient.Api.Infrastructure.Services
 {
-    public class BrandService : IBrandService
+    public class CoreValueService : ICoreValueService
     {
         private readonly string _connectionString;
-        private readonly ILogger<BrandService> _logger;
-        public BrandService(string connectionString, ILogger<BrandService> logger)
+        private readonly ILogger<CoreValueService> _logger;
+        public CoreValueService(string connectionString, ILogger<CoreValueService> logger)
         {
             _connectionString = connectionString;
             _logger = logger;
         }
-        public async Task<List<BrandSearchViewModel>> SearchAsync(string tenantId)
+
+        public async Task<List<ValueViewModel>> GetAllActivatedCoreValueAsync(string tenantId, string languageId)
         {
             try
             {
@@ -31,16 +32,16 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
 
                     DynamicParameters param = new DynamicParameters();
                     param.Add("@tenantId", tenantId);
-                    var results = await con.QueryAsync<BrandSearchViewModel>("[dbo].[spBrand_SelectAll]", param, commandType: CommandType.StoredProcedure);
+                    param.Add("@languageId", languageId);
+                    var results = await con.QueryAsync<ValueViewModel>("[dbo].[spCoreValue_SelectAll]", param, commandType: CommandType.StoredProcedure);
                     return results.ToList();
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "[dbo].[spBrand_SelectAll] BrandService Error.");
-                return new List<BrandSearchViewModel>();
+                _logger.LogError(ex, "spCoreValue_SelectAll CoreValueService Error.");
+                return new List<ValueViewModel>();
             }
-
         }
     }
 }
