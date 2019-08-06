@@ -17,6 +17,8 @@ namespace GHM.WebsiteClient.Api.Controllers
         {
             _socialNetworkService = socialNetworkService;
         }
+
+        [Route("{tenantId}/alls"), AcceptVerbs("GET")]
         public async Task<IActionResult> ClientSearch(string tenantId)
         {
             var result = await _socialNetworkService.SearchAsync(tenantId);
