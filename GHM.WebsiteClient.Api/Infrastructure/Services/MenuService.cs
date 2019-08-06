@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
-using Dapper;
+﻿using Dapper;
 using GHM.Infrastructure.IServices;
 using GHM.WebsiteClient.Api.Domain.Constants;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using GHM.WebsiteClient.Api.Domain.Resources;
 using GHM.WebsiteClient.Api.Domain.ViewModels;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace GHM.WebsiteClient.Api.Infrastructure.Services
 {
@@ -40,12 +40,18 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     param.Add("@tenantId", tenantId);
                     param.Add("@languageId", languageId);
                     param.Add("@position", position);
-                    return await con.QuerySingleOrDefaultAsync<MenuDetailViewModel>("[dbo].[spMenu_GetAllActivatedMenuByPosition]", param, commandType: CommandType.StoredProcedure);
+
+                    using (var multi = await con.QueryMultipleAsync("[dbo].[spMenu_GetAllActivatedMenuByPosition]", param, commandType: CommandType.StoredProcedure))
+                    {
+                        var menus = (await multi.ReadFirstOrDefaultAsync<MenuDetailViewModel>());
+                        menus.MenuItems = (await multi.ReadAsync<MenuItemSearchViewModel>()).ToList();
+                        return menus;
+                    }
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "[dbo].[spMenu_GetAllActivatedMenuByPosition] GetInfoAsync PageRepository Error.");
+                _logger.LogError(ex, "spMenu_GetAllActivatedMenuByPosition MenuService Error.");
                 return null;
             }
         }
