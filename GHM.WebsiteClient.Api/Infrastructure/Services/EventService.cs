@@ -212,8 +212,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                                 var accompanyUserCount = eventDayRegister.AccompanyPersons.Count;
                                 if (accompanyUserCount > limitedAccompanyUsers)
                                 {
-                                    return new ActionResultResponse<string>(-6,
-                                        _websiteResourceService.GetString("Accompany persons when overload. Please contact with administrator."));
+                                    return new ActionResultResponse<string>(-6, _websiteResourceService.GetString("Accompany persons when overload. Please contact with administrator."));
                                 }
                             }
 
