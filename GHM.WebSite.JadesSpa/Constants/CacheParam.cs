@@ -17,6 +17,12 @@
         public const string Brand = "ABC.Brand";
 
         public const string Language = "ABC.Language";
+
+        public const string CategoriesMiddle = "ABC.CategoriesMiddle";
+
+        public const string MenuMiddle = "ABC.MenuMiddle";
+
+        public const string ResponseCustomer = "ABC.ResponseCustomer";
     }
 }
 
