@@ -9,6 +9,7 @@ using GHM.Infrastructure.Services;
 using GHM.Infrastructure.ViewModels;
 using GHM.Website.JadesSpa.Models;
 using GHM.Website.JadesSpa.ViewModels;
+using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
@@ -19,7 +20,9 @@ namespace GHM.Website.JadesSpa.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
-        public NewsController(IConfiguration configuration, IMemoryCache cache) : base(configuration, cache)
+        public NewsController(IConfiguration configuration, IMemoryCache cache,
+            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService)
+            : base(configuration, cache, menuService, settingService, socialNetworkService)
         {
             _configuration = configuration;
             _cache = cache;

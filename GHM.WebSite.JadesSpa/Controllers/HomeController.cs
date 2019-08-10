@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
 using GHM.Infrastructure.Constants;
 using DeviceDetectorNET;
+using GHM.WebsiteClient.Api.Domain.IServices;
 
 namespace GHM.Website.JadesSpa.Controllers
 {
@@ -27,7 +28,9 @@ namespace GHM.Website.JadesSpa.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
-        public HomeController(IConfiguration configuration, IMemoryCache cache) : base(configuration, cache)
+        public HomeController(IConfiguration configuration, IMemoryCache cache,
+            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService)
+            : base(configuration, cache, menuService, settingService, socialNetworkService)
         {
             _configuration = configuration;
             _cache = cache;

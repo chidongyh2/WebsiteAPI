@@ -16,6 +16,10 @@ using System.Globalization;
 using System.Linq;
 using DeviceDetectorNET;
 using DeviceDetectorNET.Parser;
+using GHM.WebsiteClient.Api.Domain.IServices;
+using System.Threading.Tasks;
+using Position = GHM.WebsiteClient.Api.Domain.Constants.Position;
+using GHM.Infrastructure.Constants;
 
 namespace GHM.Website.JadesSpa.Controllers
 {
@@ -23,25 +27,30 @@ namespace GHM.Website.JadesSpa.Controllers
     {
         private readonly IConfiguration _configuration;
         private IMemoryCache _cache;
-
+        private readonly IMenuService _menuService;
+        private readonly ISettingService _settingService;
+        private readonly ISocialNetworkService _socialNetworkService;
         public object DeviceDeectorNET { get; private set; }
 
-        public BaseController(IConfiguration configuration, IMemoryCache cache)
+        public BaseController(IConfiguration configuration, IMemoryCache cache, 
+            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService)
         {
             _configuration = configuration;
             _cache = cache;
+            _settingService = settingService;
+            _socialNetworkService = socialNetworkService;
+            _menuService = menuService;
         }
 
-        public override void OnActionExecuting(ActionExecutingContext context)
+
+        public async override void OnActionExecuting(ActionExecutingContext context)
         {
             base.OnActionExecuting(context);
-            var listManinMenu = GetMainMenu();
+            var listManinMenu = Task.Run(() => GetMainMenu()).Result;
             ViewBag.MainNav = listManinMenu;
-            ViewBag.WebsiteSetting = GetSetting();
-            ViewBag.BranchContacts = GetBranch();
-            ViewBag.SocialNetwork = GetSocialNetwork();
-            ViewBag.ListBrands = GetAllBrand();
-            ViewBag.FooterMenuNav = GetFooterMenu();
+            ViewBag.WebsiteSetting = Task.Run(() => GetSetting()).Result;
+            ViewBag.SocialNetwork = Task.Run(() => GetSocialNetwork()).Result;
+            ViewBag.FooterMenuNav = await GetFooterMenu();
             var path = $"{Request.Path}";
             var absoluteUri = $"{Request.Host}{Request.Path}";
             var menuInfo = listManinMenu?.Where(x => x.NamePath != null && path == "/" +x.NamePath || x.Url == absoluteUri).FirstOrDefault();
@@ -58,38 +67,68 @@ namespace GHM.Website.JadesSpa.Controllers
             ViewBag.DeviceType = DeviceDetector.GetInfoFromUserAgent(userAgent)?.Match?.DeviceType;
         }
 
-        private List<MenuItemViewModel> GetMainMenu()
+        private async Task<List<MenuItemViewModel>> GetMainMenu()
         {
             if (_cache.TryGetValue($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
             {
-                return menus;
+                return Task.Run(() => menus).Result;
             }
-
-            var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
+            //var result = new HttpClientService()
+            //    .GetAsync<List<MenuItemViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/position/{(int)Position.Top}/items/menu/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
 
-            var result = new HttpClientService()
-                .GetAsync<List<MenuItemViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/position/{(int)Position.Top}/items/menu/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
+            var result = await _menuService.GetAllActivatedMenuItemByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, Position.Top);
 
-            _cache.Set(CacheParam.MainNav, result?.Result, TimeSpan.FromHours(2));
-            return result?.Result;
+            var data = result.Select(x => new MenuItemViewModel
+            {
+                Id = x.Id,
+                ChildCount = x.ChildCount,
+                Description = x.Description,
+                Icon = x.Icon,
+                IdPath = x.IdPath,
+                Image = x.Image,
+                IsActive = x.IsActive,
+                Level = x.Level,
+                MenuId = x.MenuId,
+                Name = x.Name,
+                NamePath = x.NamePath,
+                Order = x.Order,
+                OrderPath = x.OrderPath,
+                ParentId = x.ParentId,
+                ParentName = x.ParentName,
+                SubjectId = x.SubjectId,
+                SubjectType = (SubjectType)x.SubjectType,
+                Url = x.Url
+            }).ToList();
+            _cache.Set(CacheParam.MainNav, data, TimeSpan.FromHours(2));
+
+            return data;
         }
 
-        private WebsiteSetting GetSetting()
+        private async Task<WebsiteSetting> GetSetting()
         {
             if (_cache.TryGetValue($"{CacheParam.Setting}{CultureInfo.CurrentCulture.Name}", out WebsiteSetting setting))
             {
-                return setting;
+                return Task.Run(() => setting).Result;
             }
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
-            string convention = typeof(WebsiteSetting).Namespace;
+            string convention = "GHM.Website.Domain.Models.WebsiteSetting";
 
-            var listSettings = new HttpClientService()
-                .GetAsync<SearchResult<Setting>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/settings/get-setting/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
+            //var listSettings = new HttpClientService()
+            //    .GetAsync<SearchResult<Setting>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/settings/get-setting/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
 
-            var settings = listSettings.Result?.Items;
+            var listSettings = await _settingService.GetWebsiteSettingsAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
+
+            var settings = listSettings.Items.Select( x => new Setting {
+                Key = x.Key,
+                ConcurrencyStamp = x.ConcurrencyStamp,
+                DisplayName = x.DisplayName,
+                GroupId = x.GroupId,
+                LanguageId = x.LanguageId,
+                Value = x.Value
+            }).ToList();
 
             var websiteSetting = new WebsiteSetting();
 
@@ -133,21 +172,33 @@ namespace GHM.Website.JadesSpa.Controllers
             return result?.Result?.Items;
         }
 
-        private List<SocialNetworkViewModel> GetSocialNetwork()
+        private async Task<List<SocialNetworkViewModel>> GetSocialNetwork()
         {
             if (_cache.TryGetValue($"{CacheParam.SocialNetwork}{CultureInfo.CurrentCulture.Name}", out List<SocialNetworkViewModel> socialNetwork))
             {
-                return socialNetwork;
+                return Task.Run(() => socialNetwork).Result;
             }
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
 
-            var result = new HttpClientService()
-                .GetAsync<SearchResult<SocialNetworkViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/social-networks/{apiService.TenantId}/alls");
+            //var result = new HttpClientService()
+            //    .GetAsync<SearchResult<SocialNetworkViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/social-networks/{apiService.TenantId}/alls");
 
-            _cache.Set(CacheParam.SocialNetwork, result?.Result?.Items, TimeSpan.FromHours(2));
+            var result = await _socialNetworkService.SearchAsync(apiService.TenantId);
 
-            return result?.Result?.Items;
+            var data = result.Select(x => new SocialNetworkViewModel
+            {
+                Icon = x.Icon,
+                Id = x.Id,
+                Image = x.Image,
+                Name = x.Name,
+                Order = x.Order,
+                Url = x.Url
+            }).ToList();
+
+            _cache.Set(CacheParam.SocialNetwork, data, TimeSpan.FromHours(2));
+
+            return data;
         }
 
         private List<BrandSearchViewModel> GetAllBrand()
@@ -167,22 +218,45 @@ namespace GHM.Website.JadesSpa.Controllers
             return result?.Result?.Items;
         }
 
-        private List<MenuItemViewModel> GetFooterMenu()
+        private async Task<List<MenuItemViewModel>> GetFooterMenu()
         {
             if (_cache.TryGetValue($"{CacheParam.FooterNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
             {
-                return menus;
+                return Task.Run(() => menus).Result;
             }
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
 
-            var result = new HttpClientService()
-                .GetAsync<List<MenuItemViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/position/{(int)Position.Bottom}/items/menu/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
+            //var result = new HttpClientService()
+            //    .GetAsync<List<MenuItemViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/position/{(int)Position.Bottom}/items/menu/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
 
-            _cache.Set(CacheParam.FooterNav, result?.Result, TimeSpan.FromHours(2));
+            var result = await _menuService.GetAllActivatedMenuItemByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, Position.Bottom);
 
-            return result?.Result;
+            var data = result.Select(x => new MenuItemViewModel
+            {
+                Id = x.Id,
+                ChildCount = x.ChildCount,
+                Description = x.Description,
+                Icon = x.Icon,
+                IdPath = x.IdPath,
+                Image = x.Image,
+                IsActive = x.IsActive,
+                Level = x.Level,
+                MenuId = x.MenuId,
+                Name = x.Name,
+                NamePath = x.NamePath,
+                Order = x.Order,
+                OrderPath = x.OrderPath,
+                ParentId = x.ParentId,
+                ParentName = x.ParentName,
+                SubjectId = x.SubjectId,
+                SubjectType = (SubjectType)x.SubjectType,
+                Url = x.Url
+            }).ToList();
+            _cache.Set(CacheParam.FooterNav, data, TimeSpan.FromHours(2));
+
+            return data;
         }
 
         private List<TenantLanguageViewModel> GetLanguage()

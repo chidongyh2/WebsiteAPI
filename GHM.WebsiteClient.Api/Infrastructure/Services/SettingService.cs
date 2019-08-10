@@ -31,7 +31,9 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
 
         public async Task<SearchResult<SettingViewModel>> GetWebsiteSettingsAsync(string tenantId, string languageId)
         {
-            var websiteSettingGroupId = ClassHelper.GetPropertyNameAsKey<WebsiteSetting>("WebsiteSetting");
+            //var websiteSettingGroupId = ClassHelper.GetPropertyNameAsKey<WebsiteSetting>();
+            //var websiteSettingGroupId = typeof(GHM.WebsiteClient.Api.Domain.Models.WebsiteSetting).Namespace + ".WebsiteSetting";
+            var websiteSettingGroupId = "GHM.Website.Domain.Models.WebsiteSetting.WebsiteSetting";
             var settings = await GetsByGroupId(tenantId, languageId, websiteSettingGroupId);
             var properties = ClassHelper.GetPropertiesName<WebsiteSetting>();
             if (properties == null || !properties.Any())
