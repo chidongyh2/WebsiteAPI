@@ -21,6 +21,7 @@ using Microsoft.AspNetCore.Http;
 using GHM.Infrastructure.Constants;
 using DeviceDetectorNET;
 using GHM.WebsiteClient.Api.Domain.IServices;
+using Newtonsoft.Json;
 
 namespace GHM.Website.JadesSpa.Controllers
 {
@@ -28,38 +29,53 @@ namespace GHM.Website.JadesSpa.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
-        public HomeController(IConfiguration configuration, IMemoryCache cache,
+        private readonly INewsService _newsService;
+        private readonly IBannerService _bannerService;
+        private readonly IVideoService _videoService;
+        private readonly ICategoryService _categoryService;
+        private readonly IMenuService _menuService;
+        public HomeController(IConfiguration configuration, IMemoryCache cache, ICategoryService categoryService,
+            INewsService newsService, IVideoService videoService, IBannerService bannerService, IBranchContactService branchContactService,
             IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService)
-            : base(configuration, cache, menuService, settingService, socialNetworkService)
+            : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService)
         {
             _configuration = configuration;
+            _newsService = newsService;
             _cache = cache;
+            _videoService = videoService;
+            _menuService = menuService;
+            _bannerService = bannerService;
+            _categoryService = categoryService;
         }
 
         public async Task<ActionResult> Index()
         {
             var absoluteUri = $"{Request.Host}{Request.Path}";
-
-            var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
-            var httpClientService = new HttpClientService();
-            ViewBag.ListVideoHomePage = await httpClientService.GetAsync<List<VideoViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/videos/home-page/{apiService.TenantId}/20/{CultureInfo.CurrentCulture.Name}");
 
-            var listNews = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/home-page/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
-            ViewBag.ListNews = listNews;
+            var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
+            var listVideoHomePageData = JsonConvert.DeserializeObject<List<VideoViewModel>>(JsonConvert.SerializeObject(listVideoHomePage));
+            ViewBag.ListVideoHomePage = listVideoHomePageData;
 
-            var listResponseCustomer = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/y-kien-khach-hang/1/20/{CultureInfo.CurrentCulture.Name}");
-            ViewBag.ListResponseCustomer = listResponseCustomer?.Items;
+            var listNews = await _newsService.GetListTopNewsHomePageAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 5);
+            var listNewsData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(listNews));
+            ViewBag.ListNews = listNewsData;
 
-            var listNewsHot = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/newest/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
-            ViewBag.ListNewsHot = listNewsHot;
+            var listResponseCustomer = await _newsService.GetNewsByCategorySeoLinkAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, "y-kien-khach-hang", 1, 20);
+            var listResponseCustomerData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(listResponseCustomer.Items));
+            ViewBag.ListResponseCustomer = listResponseCustomerData;
 
-            var menuMiddle = await httpClientService.GetAsync<MenuDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/get-all-menu-position/{(int)Position.Middle}/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
-            //var listServices = await httpClientService.GetAsync<SearchResult<CategorySearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/category-home-page/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
-            ViewBag.MenuMiddle = menuMiddle;
+            var listNewsHot = await _newsService.GetListTopNewsNewestAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 5);
+            var listNewsHotData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(listResponseCustomer.Items));
+            ViewBag.ListNewsHot = listNewsHotData;
 
-            var categoryMiddle = await httpClientService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/get-news-width-parent-category/{apiService.TenantId}/tai-sao-lua-chon-jade-spa/5/{CultureInfo.CurrentCulture.Name}");
-            ViewBag.CategoryMiddle = categoryMiddle?.Data;
+            var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
+            var menuMiddleData = JsonConvert.DeserializeObject<MenuDetailViewModel>(JsonConvert.SerializeObject(menuMiddle));
+            ViewBag.MenuMiddle = menuMiddleData;
+
+            var categoryMiddle = await _newsService.GetCategoryWithNewsAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, "tai-sao-lua-chon-jade-spa", 5, false);
+            var categoryMiddleData = JsonConvert.DeserializeObject<CategoryWidthNewsViewModel>(JsonConvert.SerializeObject(categoryMiddle.Data));
+            ViewBag.CategoryMiddle = categoryMiddleData;
 
             if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
             {
@@ -67,10 +83,11 @@ namespace GHM.Website.JadesSpa.Controllers
             }
             else
             {
-                var listBannerInHome = await httpClientService.GetAsync<ActionResultResponse<BannerViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/banners/{apiService.TenantId}/position/{(int)Position.Top}");
-                _cache.Set(CacheParam.Banner, listBannerInHome?.Data, TimeSpan.FromHours(1));
+                var listBannerInHomeData = await _bannerService.GetBannerItemByPositionAsync(apiService.TenantId, (int)Position.Top);
+                var listBannerInHome = JsonConvert.DeserializeObject<BannerViewModel>(JsonConvert.SerializeObject(listBannerInHomeData.Data));
+                _cache.Set(CacheParam.Banner, listBannerInHome, TimeSpan.FromHours(1));
 
-                ViewBag.MainBanner = listBannerInHome?.Data;
+                ViewBag.MainBanner = listBannerInHome;
             }
 
             return View();
@@ -79,15 +96,10 @@ namespace GHM.Website.JadesSpa.Controllers
         {
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
-            var httpClientService = new HttpClientService();
             ViewBag.Page = page;
             ViewBag.PageSize = pageSize;
-            var menuInfo = await httpClientService.PostAsync<MenuItemViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/menus/get-by-seoLink",
-                new Dictionary<string, string> {
-                    {"TenantId", apiService.TenantId },
-                    {"seoLink", segment },
-                    {"languageId", CultureInfo.CurrentCulture.Name }
-                });
+            var menuInfo = await _menuService.GetDetailBySeoLinkAsync(apiService.TenantId, segment, CultureInfo.CurrentCulture.Name);
+
             if (menuInfo == null)
             {
                 string[] segmentArray = segment.Split('.');
@@ -95,19 +107,18 @@ namespace GHM.Website.JadesSpa.Controllers
                 bool isProduct = segmentArray[1].ToLower().Equals("htm");
                 if (isNews)
                 {
-                    var newInfo = await httpClientService.PostAsync<NewsDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/get-detail-frombody",
-                  new Dictionary<string, string> {
-                        {"TenantId", apiService.TenantId },
-                        {"seoLink", segmentArray[0] },
-                        {"languageId", CultureInfo.CurrentCulture.Name }
-                  });
+                    var newInfo = await _newsService.GetClientAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, segmentArray[0]);
 
                     if (newInfo != null)
                     {
-                        await httpClientService.GetAsync<int>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/updateViewNews/{apiService.TenantId}/{newInfo.Id}/{CultureInfo.CurrentCulture.Name}");
-                        var newsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{newInfo.Id}/{CultureInfo.CurrentCulture.Name}/1/4");
-                        ViewBag.NewsRelated = newsRelated;
-                        return View("../News/Detail", newInfo);
+                        await _newsService.UpdateViewNewsAsync(apiService.TenantId, newInfo.Id, CultureInfo.CurrentCulture.Name);
+
+                        var newsRelated = await _newsService.GetNewsRelatedByIdAsync(apiService.TenantId, newInfo.Id, CultureInfo.CurrentCulture.Name, 1, 4);
+                        var newsRelatedData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(newsRelated));
+                        //var newsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{newInfo.Id}/{CultureInfo.CurrentCulture.Name}/1/4");
+                        ViewBag.NewsRelated = newsRelatedData;
+                        var newData = JsonConvert.DeserializeObject<NewsDetailViewModel>(JsonConvert.SerializeObject(newInfo));
+                        return View("../News/Detail", newData);
                     }
                     else
                     {
@@ -121,34 +132,40 @@ namespace GHM.Website.JadesSpa.Controllers
             }
             else
             {
-                if (menuInfo.SubjectType == SubjectType.NewsCategory)
+                if (menuInfo.SubjectType == (GHM.WebsiteClient.Api.Domain.Constants.SubjectType)SubjectType.NewsCategory)
                 {
-                    var categoryWithNews = await httpClientService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
-                    var listNewsHot = new List<NewsSearchViewModel>();
+                    var categoryWithNews = await _newsService.GetNewsByCategoryIdAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, int.Parse(menuInfo.SubjectId), page, pageSize);
+                    //var categoryWithNews = await httpClientService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{menuInfo.SubjectId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+                    var categoryWithNewsData = JsonConvert.DeserializeObject<CategoryWidthNewsViewModel>(JsonConvert.SerializeObject(categoryWithNews.Data));
 
-                        //listNewsHot = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/newest/{apiService.TenantId}/5/{CultureInfo.CurrentCulture.Name}");
-
-                        listNewsHot = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedByParentCategoryId/{apiService.TenantId}/{menuInfo.SubjectId}/{CultureInfo.CurrentCulture.Name}/1/5");
+                    var listNewsHot =  await _newsService.GetNewsRelatedByParentCategoryIdAsync(apiService.TenantId, int.Parse(menuInfo.SubjectId), CultureInfo.CurrentCulture.Name, 1, 5);
+                    //var listNewsHot = new List<NewsSearchViewModel>();
+                    //    listNewsHot = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedByParentCategoryId/{apiService.TenantId}/{menuInfo.SubjectId}/{CultureInfo.CurrentCulture.Name}/1/5");
                     
-                    ViewBag.ListNewsHot = listNewsHot == null ? null : listNewsHot;
+                    var listNewsHotData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(listNewsHot));
+                    ViewBag.ListNewsHot = listNewsHotData == null ? null : listNewsHotData;
                     ViewBag.CategoryId = categoryWithNews.Data.CategoryId;
-                    return View("../News/CategoryNews", categoryWithNews.Data);
+                    return View("../News/CategoryNews", categoryWithNewsData);
                 }
-                else if (menuInfo.SubjectType == SubjectType.News)
+                else if (menuInfo.SubjectType == (GHM.WebsiteClient.Api.Domain.Constants.SubjectType)SubjectType.News)
                 {
-                    var newsDetail = await httpClientService.GetAsync<NewsDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/detail/{apiService.TenantId}/{menuInfo.SubjectId}/{CultureInfo.CurrentCulture.Name}");
+                    var newsDetail = await _newsService.GetDetailForClientAsync(apiService.TenantId, menuInfo.SubjectId, CultureInfo.CurrentCulture.Name);
+                    //var newsDetail = await httpClientService.GetAsync<NewsDetailViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/detail/{apiService.TenantId}/{menuInfo.SubjectId}/{CultureInfo.CurrentCulture.Name}");
                     if (newsDetail == null)
                     {
                         return View("../NotFound/Index");
                     }
-                    await httpClientService.GetAsync<int>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/updateViewNews/{apiService.TenantId}/{newsDetail.Id}/{CultureInfo.CurrentCulture.Name}");
+                    await _newsService.UpdateViewNewsAsync(apiService.TenantId, newsDetail.Id, CultureInfo.CurrentCulture.Name);
 
-                    var newsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{newsDetail.Id}/{CultureInfo.CurrentCulture.Name}/1/4");
-                    ViewBag.NewsRelated = newsRelated;
-                    ViewBag.NewsDetail = newsDetail;
+                    var newsRelated = await _newsService.GetNewsRelatedByIdAsync(apiService.TenantId, newsDetail.Id, CultureInfo.CurrentCulture.Name, 1, 4);
+                    //var newsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{newsDetail.Id}/{CultureInfo.CurrentCulture.Name}/1/4");
+                    var newData = JsonConvert.DeserializeObject<NewsDetailViewModel>(JsonConvert.SerializeObject(newsDetail));
+                    var newsRelatedData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(newsRelated));
+                    ViewBag.NewsRelated = newsRelatedData;
+                    ViewBag.NewsDetail = newData;
                     //var listNewsRelated = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsRelatedById/{apiService.TenantId}/{menuInfo.SubjectId}/{CultureInfo.CurrentCulture.Name}/20");
                     //ViewBag.ListNewsRelated = listNewsRelated;
-                    return View("../News/Detail", newsDetail);
+                    return View("../News/Detail", newData);
                 }
                 else
                 {
@@ -163,8 +180,9 @@ namespace GHM.Website.JadesSpa.Controllers
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
             ViewData["Message"] = "Your application description page.";
-            var result = await new HttpClientService()
-                .GetAsync<List<News>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/home-page/{apiService.TenantId}/10");
+            var result = await _newsService.GetListTopNewsHomePageAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 10);
+            //var result = await new HttpClientService()
+            //    .GetAsync<List<News>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/home-page/{apiService.TenantId}/10");
             return View();
         }
 
@@ -227,8 +245,9 @@ namespace GHM.Website.JadesSpa.Controllers
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
 
-            var listNews = await new HttpClientService()
-              .GetAsync<SearchResult<string>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/sitemap/{apiService.TenantId}");
+            var listNews = await _newsService.GetAllNewsSeoLinkForSiteMapAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
+            //var listNews = await new HttpClientService()
+            //  .GetAsync<SearchResult<string>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/sitemap/{apiService.TenantId}");
 
             var listNewsSeoLink = listNews?.Items;
             if (listNewsSeoLink != null && listNewsSeoLink.Any())
@@ -239,8 +258,9 @@ namespace GHM.Website.JadesSpa.Controllers
                 }
             }
 
-            var listCategory = await new HttpClientService()
-             .GetAsync<SearchResult<string>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/sitemap/{apiService.TenantId}");
+            var listCategory = await _categoryService.GetAllSeoLinkForSitemapAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
+            //var listCategory = await new HttpClientService()
+            // .GetAsync<SearchResult<string>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/sitemap/{apiService.TenantId}");
 
             var listCategorySeoLink = listCategory?.Items;
             if (listCategorySeoLink != null && listCategorySeoLink.Any())

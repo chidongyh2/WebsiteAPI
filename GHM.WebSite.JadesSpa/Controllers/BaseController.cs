@@ -20,6 +20,7 @@ using GHM.WebsiteClient.Api.Domain.IServices;
 using System.Threading.Tasks;
 using Position = GHM.WebsiteClient.Api.Domain.Constants.Position;
 using GHM.Infrastructure.Constants;
+using Newtonsoft.Json;
 
 namespace GHM.Website.JadesSpa.Controllers
 {
@@ -30,9 +31,10 @@ namespace GHM.Website.JadesSpa.Controllers
         private readonly IMenuService _menuService;
         private readonly ISettingService _settingService;
         private readonly ISocialNetworkService _socialNetworkService;
+        private readonly IBranchContactService _branchContactService;
         public object DeviceDeectorNET { get; private set; }
 
-        public BaseController(IConfiguration configuration, IMemoryCache cache, 
+        public BaseController(IConfiguration configuration, IMemoryCache cache, IBranchContactService branchContactService,
             IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService)
         {
             _configuration = configuration;
@@ -40,6 +42,7 @@ namespace GHM.Website.JadesSpa.Controllers
             _settingService = settingService;
             _socialNetworkService = socialNetworkService;
             _menuService = menuService;
+            _branchContactService = branchContactService;
         }
 
 
@@ -50,7 +53,8 @@ namespace GHM.Website.JadesSpa.Controllers
             ViewBag.MainNav = listManinMenu;
             ViewBag.WebsiteSetting = Task.Run(() => GetSetting()).Result;
             ViewBag.SocialNetwork = Task.Run(() => GetSocialNetwork()).Result;
-            ViewBag.FooterMenuNav = await GetFooterMenu();
+            ViewBag.FooterMenuNav = Task.Run(() => GetFooterMenu()).Result;
+            ViewBag.BranchContacts = Task.Run(() => GetBranchAsync()).Result;
             var path = $"{Request.Path}";
             var absoluteUri = $"{Request.Host}{Request.Path}";
             var menuInfo = listManinMenu?.Where(x => x.NamePath != null && path == "/" +x.NamePath || x.Url == absoluteUri).FirstOrDefault();
@@ -100,7 +104,7 @@ namespace GHM.Website.JadesSpa.Controllers
                 SubjectType = (SubjectType)x.SubjectType,
                 Url = x.Url
             }).ToList();
-            _cache.Set(CacheParam.MainNav, data, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
 
             return data;
         }
@@ -149,12 +153,12 @@ namespace GHM.Website.JadesSpa.Controllers
             websiteSetting.LogoMobile = Common.GetSettingValue(settings, string.Format("{0}.LogoMobile", convention));
             websiteSetting.ZaloId = Common.GetSettingValue(settings, string.Format("{0}.ZaloId", convention));
 
-            _cache.Set(CacheParam.Setting, websiteSetting, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.Setting}{CultureInfo.CurrentCulture.Name}", websiteSetting, TimeSpan.FromHours(2));
 
             return websiteSetting;
         }
 
-        private List<BranchContactSearchViewModel> GetBranch()
+        private async Task<List<BranchContactSearchViewModel>> GetBranchAsync()
         {
             if (_cache.TryGetValue($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", out List<BranchContactSearchViewModel> branchs))
             {
@@ -164,12 +168,16 @@ namespace GHM.Website.JadesSpa.Controllers
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
 
-            var result = new HttpClientService()
-                .GetAsync<SearchResult<BranchContactSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/branchs/alls/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
+            //var result = new HttpClientService()
+            //    .GetAsync<SearchResult<BranchContactSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/branchs/alls/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
 
-            _cache.Set(CacheParam.Branch, result?.Result?.Items, TimeSpan.FromHours(2));
+            var result = await _branchContactService.SearchForClientAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
 
-            return result?.Result?.Items;
+            var data = JsonConvert.DeserializeObject<List<BranchContactSearchViewModel>>(JsonConvert.SerializeObject(result.Items));
+
+            _cache.Set($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+
+            return data;
         }
 
         private async Task<List<SocialNetworkViewModel>> GetSocialNetwork()
@@ -196,7 +204,7 @@ namespace GHM.Website.JadesSpa.Controllers
                 Url = x.Url
             }).ToList();
 
-            _cache.Set(CacheParam.SocialNetwork, data, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.SocialNetwork}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
 
             return data;
         }
@@ -213,7 +221,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
             var result = new HttpClientService()
                 .GetAsync<SearchResult<BrandSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/brands/{apiService.TenantId}/alls");
-            _cache.Set(CacheParam.Brand, result?.Result?.Items, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", result?.Result?.Items, TimeSpan.FromHours(2));
 
             return result?.Result?.Items;
         }
@@ -254,7 +262,7 @@ namespace GHM.Website.JadesSpa.Controllers
                 SubjectType = (SubjectType)x.SubjectType,
                 Url = x.Url
             }).ToList();
-            _cache.Set(CacheParam.FooterNav, data, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.FooterNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
 
             return data;
         }
@@ -272,7 +280,7 @@ namespace GHM.Website.JadesSpa.Controllers
             var result = new HttpClientService()
                .GetAsync<SearchResult<TenantLanguageViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/core/languages/support/{apiService.TenantId}");
 
-            _cache.Set(CacheParam.Language, result?.Result?.Items, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", result?.Result?.Items, TimeSpan.FromHours(2));
 
             return result?.Result?.Items;
         }

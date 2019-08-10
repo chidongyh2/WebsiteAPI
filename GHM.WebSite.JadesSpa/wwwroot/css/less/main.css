@@ -514,11 +514,12 @@
     padding-left: 7px;
   }
   #news-introduce .wrap-item .odd {
-    padding-right: 7px;
+    padding-right: 10px;
   }
 }
 #news-introduce .wrap-item .item {
   text-align: center;
+  padding-top: 10px;
 }
 #news-introduce .wrap-item .item .wrap-image {
   background: #5b7222;

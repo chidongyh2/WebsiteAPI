@@ -18,9 +18,9 @@ namespace GHM.Website.JadesSpa.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
-        public ContactController(IConfiguration configuration, IMemoryCache cache,
+        public ContactController(IConfiguration configuration, IMemoryCache cache, IBranchContactService branchContactService,
             IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService)
-            : base(configuration, cache, menuService, settingService, socialNetworkService)
+            : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService)
         {
             _configuration = configuration;
             _cache = cache;

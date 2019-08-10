@@ -162,7 +162,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     param.Add("@languageId", languageId);
                     param.Add("@seoLink", seoLink);
                     param.Add("@page", page);
-                    param.Add("@pageSizes", pageSizes);
+                    param.Add("@pageSize", pageSizes);
 
                     using (var multi = await con.QueryMultipleAsync("[dbo].[spNew_GetNewsByCategorySeoLink]", param, commandType: CommandType.StoredProcedure))
                     {
