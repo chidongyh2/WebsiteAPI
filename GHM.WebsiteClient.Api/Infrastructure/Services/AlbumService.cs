@@ -49,6 +49,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
 
                     using (var multi = await con.QueryMultipleAsync("[dbo].[spAlbum_SearchAlbumWithItem]", param, commandType: CommandType.StoredProcedure))
                     {
+                        var totalRows = (await multi.ReadAsync<int>()).SingleOrDefault();
                         albums = (await multi.ReadAsync<AlbumWithItemViewModel>()).ToList();
                         if (!albums.Any())
                             return new SearchResult<AlbumWithItemViewModel>();
@@ -60,7 +61,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
 
                         return new SearchResult<AlbumWithItemViewModel>
                         {
-                            TotalRows = (await multi.ReadAsync<int>()).SingleOrDefault(),
+                            TotalRows = totalRows,
                             Items = albums
                         };
                     }
@@ -175,7 +176,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
 
         }
 
-        private async Task<List<AlbumItemViewModel>> GetAlbumItems(string tenantId, string languageId, string albumId, AlbumType type, int page, int pageSize)
+        public async Task<List<AlbumItemViewModel>> GetAlbumItems(string tenantId, string languageId, string albumId, AlbumType type, int page, int pageSize)
         {
             switch (type)
             {

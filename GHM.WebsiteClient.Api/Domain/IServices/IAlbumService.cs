@@ -12,5 +12,6 @@ namespace GHM.WebsiteClient.Api.Domain.IServices
         Task<SearchResult<AlbumWithItemViewModel>> SearchAlbumWithItemByListAlbumId(string tenantId, string languageId, List<string> albumIds);
         Task<SearchResult<AlbumItemViewModel>> SearchAlbumItemAsync(string tenantId, string languageId, string albumSeoLink, int page, int pageSize);
         Task<SearchResult<AlbumViewModel>> SearchClientAsync(string tenantId, string languageId, AlbumType type, int page, int pageSize);
+        Task<List<AlbumItemViewModel>> GetAlbumItems(string tenantId, string languageId, string albumId, AlbumType type, int page, int pageSize);
     }
 }
