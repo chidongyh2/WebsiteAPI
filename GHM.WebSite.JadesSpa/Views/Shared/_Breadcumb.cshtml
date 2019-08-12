@@ -3,37 +3,41 @@
     var breadcrumbs = ViewBag.Breadcrumb as List<Breadcrumb>;
 }
 
-<div class="header wrap-breadcrumb" id="header-breadcrumb">
+    <div class="header wrap-breadcrumb" id="header-breadcrumb">
 
-    <img class="lazy img-responsive" data-src="@(ViewBag.ImageBanner != null ?  $"/image?url={ViewBag.Url}{ViewBag.ImageBanner}" : "/images/default-banner.jpg")" />
-    <div class="breadcrumb">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="list-inline">
-                        <li class="list-items">
-                            <a href="/">@Resource.Home</a>
-                        </li>
-                        @if (breadcrumbs != null && breadcrumbs.Any())
-                        {
-                            foreach (var item in breadcrumbs)
+        @*<img class="lazy img-responsive" data-src="@(ViewBag.ImageBanner != null ?  $"/image?url={ViewBag.Url}{ViewBag.ImageBanner}" : "/images/default-banner.jpg")" />*@
+
+        <img class="img-responsive" src="@(string.IsNullOrEmpty(ViewBag.ImageBanner) ? "/images/default-banner.jpg" : $"{ViewBag.Url}{ViewBag.ImageBanner}")"
+             onerror="this.src='/images/no-image.png'"  />
+
+        <div class="breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="list-inline">
+                            <li class="list-items">
+                                <a href="/">@Resource.Home</a>
+                            </li>
+                            @if (breadcrumbs != null && breadcrumbs.Any())
                             {
-                                <li class="list-items">
-                                    @if (item.IsCurrent)
-                                    {
-                                        <span>@item.Name</span>
-                                    }
-                                    else
-                                    {
-                                        <a href="/@string.Format("{0}", string.IsNullOrEmpty(item.Url) ? item.NamePath : item.Url)">@item.Name</a>
-                                    }
-                                </li>
+                                foreach (var item in breadcrumbs)
+                                {
+                                    <li class="list-items">
+                                        @if (item.IsCurrent)
+                                        {
+                                            <span>@item.Name</span>
+                                        }
+                                        else
+                                        {
+                                            <a href="/@string.Format("{0}", string.IsNullOrEmpty(item.Url) ? item.NamePath : item.Url)">@item.Name</a>
+                                        }
+                                    </li>
+                                }
                             }
-                        }
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 

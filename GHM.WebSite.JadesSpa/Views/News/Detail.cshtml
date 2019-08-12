@@ -111,9 +111,12 @@
                             <div class="news-item col-md-3">
                                 <div class="image-content">
                                     <a href="@($"/{newsRelated.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsRelated.MetaTitle) ? newsRelated.Title : newsRelated.MetaTitle)">
-                                        <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsRelated.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{newsRelated.FeatureImage}")}&width=600&height=400")"
+                                        @*<img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsRelated.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{newsRelated.FeatureImage}")}&width=600&height=400")"
                                              onerror="this.src='/images/no-image.png'"
-                                             alt="@(string.IsNullOrEmpty(newsRelated.AltImage) ? newsRelated.Title : newsRelated.AltImage)" />
+                                             alt="@(string.IsNullOrEmpty(newsRelated.AltImage) ? newsRelated.Title : newsRelated.AltImage)" />*@
+
+                                        <img class="news-image zoom img-responsive" src="@(string.IsNullOrEmpty(newsRelated.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{newsRelated.FeatureImage}")"
+                                             onerror="this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(newsRelated.AltImage) ? newsRelated.Title : newsRelated.AltImage)" />
                                         <span class="img-overlay"></span>
                                     </a>
                                 </div>

@@ -44,7 +44,7 @@
                                          onerror="this.src='/images/no-avartar.jpg'"
                                          alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />*@
 
-                                    <img class="news-image zoom img-responsive" style="width:247px;height:164px;" src="@(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")"
+                                    <img class="news-image zoom img-responsive" style="height:164px;" src="@(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")"
                                          onerror="this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
                                     <span class="img-overlay"></span>
                                 </a>
