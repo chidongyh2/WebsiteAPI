@@ -6,8 +6,7 @@
   "main": [
     "jquery.bxslider.js",
     "jquery.bxslider.css",
-    "images/bx_loader.gif",
-    "images/controls.png"
+    "images/bx_loader.gif"
   ],
   "keywords": [
     "bxslider",

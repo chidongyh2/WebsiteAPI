@@ -32,9 +32,12 @@
                                 <div class="item">
                                     <div style="overflow: hidden">
                                         <a href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" + item.Url)}")">
-                                            <img class="news-image zoom img-responsive lazy"
-                                            data-src="/image?url=@(string.IsNullOrEmpty(item.Name) ? "/images/no-image.png" : $"{url}{item.Image}&width=255&height=213")"
-                                            onerror="this.src='/images/no-image.png'" />
+                                            @*<img class="news-image zoom img-responsive lazy"
+                                                 data-src="/image?url=@(string.IsNullOrEmpty(item.Name) ? "/images/no-image.png" : $"{url}{item.Image}&width=255&height=213")"
+                                                 onerror="this.src='/images/no-image.png'" />*@
+
+                                            <img class="news-image zoom img-responsive" src="@(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{url}{item.Image}")"
+                                                 onerror="this.src='/images/no-image.png'" alt="" />
                                         </a>
                                     </div>
                                     <a href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" + item.Url)}")" class="text-description">@(string.IsNullOrEmpty(item.Name) ? "No Title" : item.Name)</a>

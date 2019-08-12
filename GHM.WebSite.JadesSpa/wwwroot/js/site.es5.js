@@ -12,10 +12,12 @@ $(document).ready(function () {
         effectTime: 1000,
         visibleOnly: true,
         beforeLoad: function beforeLoad(element) {
-            $(element).attr("src", "/image?url=&width=600&height=400");
+            //$(element).attr("src", "/image?url=&width=600&height=400");
+            $(element).attr("src", "url");
         },
         onError: function onError(element) {
-            $(element).attr("src", "/image?url=&width=600&height=400");
+            //$(element).attr("src", "/image?url=&width=600&height=400");
+            $(element).attr("src", "url");
         }
     });
 

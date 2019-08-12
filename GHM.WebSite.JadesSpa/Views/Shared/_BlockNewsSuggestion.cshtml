@@ -12,8 +12,12 @@
                 <div class="news-default">
                     <div class="image-content">
                         <a href="@($"/{ newsDefault.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsDefault.MetaTitle) ? newsDefault.Title : newsDefault.MetaTitle)">
-                            <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsDefault.FeatureImage) ? "/images/no-image.png" : $"{url}{newsDefault.FeatureImage}")}&width=750&height=500")"
-                                 alt="@(string.IsNullOrEmpty(newsDefault.AltImage) ? newsDefault.Title : newsDefault.AltImage)" />
+
+                            @*<img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsDefault.FeatureImage) ? "/images/no-image.png" : $"{url}{newsDefault.FeatureImage}")}&width=750&height=500")"
+                                 alt="@(string.IsNullOrEmpty(newsDefault.AltImage) ? newsDefault.Title : newsDefault.AltImage)" />*@
+
+                            <img class="news-image zoom img-responsive" src="@(string.IsNullOrEmpty(newsDefault.FeatureImage) ? "/images/no-image.png" : $"{url}{newsDefault.FeatureImage}")"
+                                 onerror="this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(newsDefault.AltImage) ? newsDefault.Title : newsDefault.AltImage)" />
                             <span class="img-overlay"></span>
                         </a>
                     </div>
@@ -36,9 +40,12 @@
                         <div class="col-sm-6 col-xs-6 col-md-6 news-item">
                             <div class="image-content">
                                 <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                                    <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}&width=450&height=300")"
-                                          onerror="this.src='/images/no-avartar.jpg'" 
-                                         alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
+                                    @*<img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}&width=450&height=300")"
+                                         onerror="this.src='/images/no-avartar.jpg'"
+                                         alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />*@
+
+                                    <img class="news-image zoom img-responsive" style="width:247px;height:164px;" src="@(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")"
+                                         onerror="this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
                                     <span class="img-overlay"></span>
                                 </a>
                             </div>

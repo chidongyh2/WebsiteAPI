@@ -23,9 +23,12 @@
                                 <div class="item">
                                     <div class="wrap-image zoom">
                                         <a href="@($"{item.SeoLink}.html")">
-                                            <img class="news-image img-responsive lazy"
+                                            @*<img class="news-image img-responsive lazy"
                                                  data-src="@($"/image?url={(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")}&width=270&height=270")" alt="" \
-                                                 onerror="this.src='/images/no-image.png'" />
+                                                 onerror="this.src='/images/no-image.png'" />*@
+
+                                            <img class="news-image img-responsive" src="@(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")"
+                                                 onerror="this.src='/images/no-image.png'" alt="" />
                                         </a>
                                     </div>
                                     <div class="wrap-text">
@@ -53,8 +56,11 @@
                                 <div class="item">
                                     <div class="wrap-image">
                                         <a href="@($"{item.SeoLink}.html")">
-                                            <img class="news-image zoom img-responsive lazy" onerror="this.src='/images/no-image.png'"
-                                                 data-src="@($"/image?url={(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")}")" alt="" />
+                                            @*<img class="news-image zoom img-responsive lazy" onerror="this.src='/images/no-image.png'"
+                                                 data-src="@($"/image?url={(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")}")" alt="" />*@
+
+                                            <img class="news-image zoom img-responsive" src="@(string.IsNullOrEmpty(item.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{item.FeatureImage}")"
+                                                 onerror="this.src='/images/no-image.png'" alt="" />
                                         </a>
                                     </div>
                                     <div class="wrap-text">

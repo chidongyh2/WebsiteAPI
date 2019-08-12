@@ -21,8 +21,10 @@
                 <div id="wrap-response" data-bind="foreach: $root.listCommentCustomer()">
                     <div class="media">
                         <div class="media-left">
-                            <img class="mr-3 lazy" data-bind="attr: {src: '/image?url=@(url)'+ FeatureImage + '&width=600&height=400'}"
-                                onerror="this.src='/images/no-avartar.jpg'" />                            
+                            @*<img class="mr-3 lazy" data-bind="attr: {src: '/image?url=@(url)'+ FeatureImage + '&width=600&height=400'}"
+                                 onerror="this.src='/images/no-avartar.jpg'" />*@
+                            <img class="mr-3 lazy" data-bind="attr: {src: '@(url)'+ FeatureImage}"
+                                 onerror="this.src='/images/no-avartar.jpg'" />
                         </div>
                         <div class="media-body">
                             <a class="mt-0 name" data-bind="text: Title + ':', attr: {href: ''+ SeoLink +'.html'}"> </a>
