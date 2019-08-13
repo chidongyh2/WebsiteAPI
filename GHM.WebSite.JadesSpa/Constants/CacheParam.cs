@@ -2,27 +2,33 @@
 {
     public static class CacheParam
     {
-        public const string Branch = "ABC.Branch";
+        public const string Branch = "JADESPA.Branch";
 
-        public const string MainNav = "ABC.MainNav";
+        public const string MainNav = "JADESPA.MainNav";
 
-        public const string Setting = "ABC.Setting";
+        public const string Setting = "JADESPA.Setting";
 
-        public const string SocialNetwork = "ABC.SocialNetwork";
+        public const string SocialNetwork = "JADESPA.SocialNetwork";
 
-        public const string Banner = "ABC.Banner";
+        public const string Banner = "JADESPA.Banner";
 
-        public const string FooterNav = "ABC.FooterNav";
+        public const string FooterNav = "JADESPA.FooterNav";
 
-        public const string Brand = "ABC.Brand";
+        public const string Brand = "JADESPA.Brand";
 
-        public const string Language = "ABC.Language";
+        public const string Language = "JADESPA.Language";
 
-        public const string CategoriesMiddle = "ABC.CategoriesMiddle";
+        public const string CategoriesMiddle = "JADESPA.CategoriesMiddle";
 
-        public const string MenuMiddle = "ABC.MenuMiddle";
+        public const string MenuMiddle = "JADESPA.MenuMiddle";
 
-        public const string ResponseCustomer = "ABC.ResponseCustomer";
+        public const string ResponseCustomer = "JADESPA.ResponseCustomer";
+
+        public const string video = "JADESPA.Video";
+
+        public const string ListNew = "JADESPA.ListNew";
+
+        public const string ListNewHot = "JADESPA.ListNewHot";
     }
 }
 

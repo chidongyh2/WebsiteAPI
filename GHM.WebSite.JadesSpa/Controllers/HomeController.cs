@@ -36,8 +36,8 @@ namespace GHM.Website.JadesSpa.Controllers
         private readonly IMenuService _menuService;
         public HomeController(IConfiguration configuration, IMemoryCache cache, ICategoryService categoryService,
             INewsService newsService, IVideoService videoService, IBannerService bannerService, IBranchContactService branchContactService,
-            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService)
-            : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService)
+            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
+            : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService,languageService)
         {
             _configuration = configuration;
             _newsService = newsService;
@@ -53,21 +53,48 @@ namespace GHM.Website.JadesSpa.Controllers
             var absoluteUri = $"{Request.Host}{Request.Path}";
             var apiService = _configuration.GetApiServiceInfo();
 
-            var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
-            var listVideoHomePageData = JsonConvert.DeserializeObject<List<VideoViewModel>>(JsonConvert.SerializeObject(listVideoHomePage));
-            ViewBag.ListVideoHomePage = listVideoHomePageData;
+            if (_cache.TryGetValue($"{CacheParam.video}{CultureInfo.CurrentCulture.Name}", out List<VideoViewModel> videoCache))
+            {
+                ViewBag.ListVideoHomePage = videoCache;
+            }
+            else
+            {
 
-            var listNews = await _newsService.GetListTopNewsHomePageAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 5);
-            var listNewsData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(listNews));
-            ViewBag.ListNews = listNewsData;
+                var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
+                var listVideoHomePageData = JsonConvert.DeserializeObject<List<VideoViewModel>>(JsonConvert.SerializeObject(listVideoHomePage));
+                _cache.Set($"{CacheParam.video}{CultureInfo.CurrentCulture.Name}", listVideoHomePageData, TimeSpan.FromHours(1));
+                ViewBag.ListVideoHomePage = listVideoHomePageData;
+            }
 
-           
-            var listNewsHot = await _newsService.GetListTopNewsNewestAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 5);
-            var listNewsHotData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(listNewsHot));
-            ViewBag.ListNewsHot = listNewsHotData;
+            if (_cache.TryGetValue($"{CacheParam.ListNew}{CultureInfo.CurrentCulture.Name}", out List<NewsSearchViewModel> listNewsCache))
+            {
+                ViewBag.ListNews = listNewsCache;
+            }
+            else
+            {
+
+                var listNews = await _newsService.GetListTopNewsHomePageAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 5);
+                var listNewsData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(listNews));
+                _cache.Set($"{CacheParam.ListNew}{CultureInfo.CurrentCulture.Name}", listNewsData, TimeSpan.FromHours(1));
+                ViewBag.ListNews = listNewsData;
+            }
 
 
-        
+
+            if (_cache.TryGetValue($"{CacheParam.ListNewHot}{CultureInfo.CurrentCulture.Name}", out List<NewsSearchViewModel> listNewsHotCache))
+            {
+                ViewBag.ListNewsHot = listNewsHotCache;
+            }
+            else
+            {
+
+                var listNewsHot = await _newsService.GetListTopNewsNewestAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 5);
+                var listNewsHotData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(listNewsHot));
+                _cache.Set($"{CacheParam.ListNewHot}{CultureInfo.CurrentCulture.Name}", listNewsHotData, TimeSpan.FromHours(1));
+                ViewBag.ListNewsHot = listNewsHotData;
+            }
+
+
             if (_cache.TryGetValue($"{CacheParam.ResponseCustomer}{CultureInfo.CurrentCulture.Name}", out List<NewsSearchViewModel> ResponseCustomerCache))
             {
                 ViewBag.ListResponseCustomer = ResponseCustomerCache;

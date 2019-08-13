@@ -13,6 +13,7 @@ using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 namespace GHM.Website.JadesSpa.Controllers
 {
@@ -20,23 +21,25 @@ namespace GHM.Website.JadesSpa.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
-        public NewsController(IConfiguration configuration, IMemoryCache cache, IBranchContactService branchContactService,
-            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService)
-            : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService)
+        private readonly INewsService _newsService;
+        public NewsController(IConfiguration configuration, IMemoryCache cache, INewsService newsService, IBranchContactService branchContactService,
+            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
+            : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService,languageService)
         {
+            _newsService = newsService;
             _configuration = configuration;
             _cache = cache;
         }
         [Route("view-more-news"), AcceptVerbs("POST")]
-        public async Task<IActionResult> GetNewsByCategory(string categoryId, int page = 3, int pageSize = 6)
+        public async Task<IActionResult> GetNewsByCategory(int categoryId, int page = 3, int pageSize = 6)
         {
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
-            var httpService = new HttpClientService();
-            var listNews = await httpService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{categoryId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
-            var item = listNews?.Data;
-
-            return Json(listNews.Data.ListNews);
+            //var httpService = new HttpClientService();
+            //var listNews = await httpService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{categoryId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+            var listNews = await _newsService.GetNewsByCategoryIdAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name,categoryId, page, pageSize);
+            var listNewsData = JsonConvert.DeserializeObject<CategoryWidthNewsViewModel>(JsonConvert.SerializeObject(listNews.Data));
+            return Json(listNewsData.ListNews);
         }
 
         //[Route("tin-tuc")]

@@ -20,8 +20,8 @@ namespace GHM.Website.JadesSpa.Controllers
         private readonly IMemoryCache _cache;
 
         public AlbumController(IConfiguration configuration, IMemoryCache cache, IBranchContactService branchContactService,
-            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService)
-            : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService)
+            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
+            : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService, languageService)
         {
             _configuration = configuration;
             _cache = cache;

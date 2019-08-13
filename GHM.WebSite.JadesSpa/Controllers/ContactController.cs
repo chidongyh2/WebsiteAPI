@@ -11,6 +11,7 @@ using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 namespace GHM.Website.JadesSpa.Controllers
 {
@@ -18,12 +19,14 @@ namespace GHM.Website.JadesSpa.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
-        public ContactController(IConfiguration configuration, IMemoryCache cache, IBranchContactService branchContactService,
-            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService)
-            : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService)
+        private readonly IFeedbackService _feedbackService;
+        public ContactController(IConfiguration configuration, IMemoryCache cache, IFeedbackService feedbackService, IBranchContactService branchContactService,
+            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService,ILanguageService languageService)
+            : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService,languageService)
         {
             _configuration = configuration;
             _cache = cache;
+            _feedbackService = feedbackService;
         }
 
         [Route("lien-he")]
@@ -81,8 +84,11 @@ namespace GHM.Website.JadesSpa.Controllers
                 Content = content,
             };
 
-            var result = await new HttpClientService()
-                .PostAsync<ActionResultResponse<string>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/feedbacks/{apiService.TenantId}", feedbackMeta);
+            var feedbackMetaData = JsonConvert.DeserializeObject<GHM.WebsiteClient.Api.Domain.ModelMetas.FeedbackMeta>(JsonConvert.SerializeObject(feedbackMeta));
+
+            //var result = await new HttpClientService()
+            //    .PostAsync<ActionResultResponse<string>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/feedbacks/{apiService.TenantId}", feedbackMeta);
+            var result = _feedbackService.Insert(apiService.TenantId, feedbackMetaData);
 
             return Json(result);
         }

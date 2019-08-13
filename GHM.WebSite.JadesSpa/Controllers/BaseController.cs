@@ -32,10 +32,11 @@ namespace GHM.Website.JadesSpa.Controllers
         private readonly ISettingService _settingService;
         private readonly ISocialNetworkService _socialNetworkService;
         private readonly IBranchContactService _branchContactService;
+        private readonly ILanguageService _languageService;
         public object DeviceDeectorNET { get; private set; }
 
         public BaseController(IConfiguration configuration, IMemoryCache cache, IBranchContactService branchContactService,
-            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService)
+            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
         {
             _configuration = configuration;
             _cache = cache;
@@ -43,6 +44,7 @@ namespace GHM.Website.JadesSpa.Controllers
             _socialNetworkService = socialNetworkService;
             _menuService = menuService;
             _branchContactService = branchContactService;
+            _languageService = languageService;
         }
 
 
@@ -63,7 +65,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
             ViewBag.Url = _configuration.GetApiUrl()?.FileUrl;
 
-            ViewBag.ListLanguage = GetLanguage();
+            ViewBag.ListLanguage = Task.Run(() => GetLanguage()).Result;
             ViewBag.CurrentLanguage = CultureInfo.CurrentCulture.Name;
 
             DeviceDetector.SetVersionTruncation(VersionTruncation.VERSION_TRUNCATION_NONE);
@@ -209,22 +211,6 @@ namespace GHM.Website.JadesSpa.Controllers
             return data;
         }
 
-        private List<BrandSearchViewModel> GetAllBrand()
-        {
-            if (_cache.TryGetValue($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", out List<BrandSearchViewModel> brands))
-            {
-                return brands;
-            }
-
-            var requestUrl = _configuration.GetApiUrl();
-            var apiService = _configuration.GetApiServiceInfo();
-
-            var result = new HttpClientService()
-                .GetAsync<SearchResult<BrandSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/brands/{apiService.TenantId}/alls");
-            _cache.Set($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", result?.Result?.Items, TimeSpan.FromHours(2));
-
-            return result?.Result?.Items;
-        }
 
         private async Task<List<MenuItemViewModel>> GetFooterMenu()
         {
@@ -267,22 +253,24 @@ namespace GHM.Website.JadesSpa.Controllers
             return data;
         }
 
-        private List<TenantLanguageViewModel> GetLanguage()
+        private async Task<List<TenantLanguageViewModel>> GetLanguage()
         {
             if (_cache.TryGetValue($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", out List<TenantLanguageViewModel> languages))
             {
-                return languages;
+                return Task.Run(() => languages).Result;
             }
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
 
-            var result = new HttpClientService()
-               .GetAsync<SearchResult<TenantLanguageViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/core/languages/support/{apiService.TenantId}");
+            //var result = new HttpClientService()
+            //   .GetAsync<SearchResult<TenantLanguageViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/core/languages/support/{apiService.TenantId}");
+            var result = await _languageService.GetLanguageSupportAsync(apiService.TenantId);
+            var data = JsonConvert.DeserializeObject<List<TenantLanguageViewModel>>(JsonConvert.SerializeObject(result.Items));
 
-            _cache.Set($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", result?.Result?.Items, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
 
-            return result?.Result?.Items;
+            return data;
         }
     }
 }
