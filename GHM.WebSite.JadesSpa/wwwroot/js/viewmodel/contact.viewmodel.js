@@ -82,6 +82,7 @@ function ContactViewModel() {
                 }
 
                 if (result.code > 0) {
+                    console.log(result);
                     toastr.success("Cảm ơn bạn đã gửi tin nhắn. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.");
                     self.contactName("");
                     self.contactEmail("");

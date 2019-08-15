@@ -32,29 +32,29 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
-        [AcceptVerbs("POST"), ValidateModel]
-        [AllowPermission(PageId.Feedback, Permission.Insert)]
-        [CheckPermission]
-        public async Task<IActionResult> Insert([FromBody]FeedbackMeta feedbackMeta)
-        {
-            var result = await _feedbackService.Insert(CurrentUser.TenantId, feedbackMeta);
-            if (result.Code <= 0)
-                return BadRequest(result);
+        //[AcceptVerbs("POST"), ValidateModel]
+        //[AllowPermission(PageId.Feedback, Permission.Insert)]
+        //[CheckPermission]
+        //public async Task<IActionResult> Insert([FromBody]FeedbackMeta feedbackMeta)
+        //{
+        //    var result = await _feedbackService.Insert(CurrentUser.TenantId, feedbackMeta);
+        //    if (result.Code <= 0)
+        //        return BadRequest(result);
 
-            return Ok(result);
-        }
+        //    return Ok(result);
+        //}
 
-        [Route("{id}"), AcceptVerbs("POST"), ValidateModel]
-        [AllowPermission(PageId.Feedback, Permission.Insert)]
-        [CheckPermission]
-        public async Task<IActionResult> Update(string id, [FromBody]FeedbackMeta feedbackMeta)
-        {
-            var result = await _feedbackService.Update(CurrentUser.TenantId, id, feedbackMeta);
-            if (result.Code <= 0)
-                return BadRequest(result);
+        //[Route("{id}"), AcceptVerbs("POST"), ValidateModel]
+        //[AllowPermission(PageId.Feedback, Permission.Insert)]
+        //[CheckPermission]
+        //public async Task<IActionResult> Update(string id, [FromBody]FeedbackMeta feedbackMeta)
+        //{
+        //    var result = await _feedbackService.Update(CurrentUser.TenantId, id, feedbackMeta);
+        //    if (result.Code <= 0)
+        //        return BadRequest(result);
 
-            return Ok(result);
-        }
+        //    return Ok(result);
+        //}
 
         [Route("{id}"), AcceptVerbs("GET")]
         [AllowPermission(PageId.Feedback, Permission.View)]
@@ -68,7 +68,7 @@ namespace GHM.Website.Api.Controllers
         }
 
         #region Client
-        [Route("{tenantId}"), AcceptVerbs("POST"), ValidateModel]
+        [Route("{tenantId}"), AcceptVerbs("POST")]
         public async Task<IActionResult> Insert(string tenantId, [FromBody]FeedbackMeta feedbackMeta)
         {
             var result = await _feedbackService.Insert(tenantId, feedbackMeta);

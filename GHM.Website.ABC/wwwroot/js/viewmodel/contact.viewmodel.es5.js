@@ -93,6 +93,14 @@ function ContactViewModel() {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     };
+    $(document).ready(function () {
+        $('#message').click(function () {
+            $("html, body").animate({ scrollTop: $('#footer').offset().top - 100 }, 1000);
+            setTimeout(() => {
+                $('#contact_full_name').focus();
+            }, 100);
+        });
+    });
 }
 
 var viewModel = new ContactViewModel();

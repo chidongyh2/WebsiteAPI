@@ -88,7 +88,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
             //var result = await new HttpClientService()
             //    .PostAsync<ActionResultResponse<string>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/feedbacks/{apiService.TenantId}", feedbackMeta);
-            var result = _feedbackService.Insert(apiService.TenantId, feedbackMetaData);
+            var result = await _feedbackService.Insert(apiService.TenantId, feedbackMetaData);
 
             return Json(result);
         }
