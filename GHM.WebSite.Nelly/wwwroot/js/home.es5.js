@@ -18,7 +18,7 @@ $(document).ready(function () {
     });
 
     $("#middle-menu-slide").lightSlider({
-        item: 4,
+        item: 3,
         auto: false,
         loop: false,
         slideMove: 1,
@@ -28,8 +28,8 @@ $(document).ready(function () {
         slideMargin: 20,
         pauseOnHover: false,
         controls: true,
-        prevHtml: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
-        nextHtml: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
+        //prevHtml: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+        //nextHtml: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
         pager: false
     });
     $("#myCarousel").owlCarousel({
@@ -43,6 +43,7 @@ $(document).ready(function () {
         dotsEach: true,
         navigation: true,
         animateIn: true,
+        animateOut: 'fadeOut',
         autoplayTimeout: 5000
     });
 });
