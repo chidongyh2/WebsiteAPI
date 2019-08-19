@@ -22,5 +22,4 @@
     <ProjectReference Include="..\GHM.FileManagement.Domain\GHM.FileManagement.Domain.csproj" />
     <ProjectReference Include="..\GHM.FileManagement.Infrastructure\GHM.FileManagement.Infrastructure.csproj" />
   </ItemGroup>
-
 </Project>

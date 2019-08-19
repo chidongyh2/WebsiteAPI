@@ -8,7 +8,7 @@
   <ItemGroup>
     <Compile Remove="wwwroot\uploads\**" />
     <Content Remove="wwwroot\uploads\**" />
-    <EmbeddedResource Remove="wwwroot\uploads\**" />
+    <EmbeddedResource Remove="wwwroot\uploads\**"/>
     <None Remove="wwwroot\uploads\**" />
   </ItemGroup>
 
@@ -17,7 +17,6 @@
     <Content Remove="compilerconfig.json" />
     <Content Remove="wwwroot\js\viewmodel\about.viewmodel.es5.js" />
   </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.3.1" />
