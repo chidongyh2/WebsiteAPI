@@ -87,7 +87,7 @@
 #footer #wrap-content-branch .contact-info ul .branch h6 {
   font-weight: bold;
   font-size: 22px !important;
-  color: #444 !important;
+  color: #F9A4A7 !important;
   font-family: Roboto-Regular;
 }
 #footer #wrap-content-branch .contact-info ul li {
@@ -195,7 +195,7 @@
   text-align: center;
   text-transform: uppercase;
   font-size: 22px;
-  color: #444;
+  color: #F9A4A7;
 }
 .modal .message .submit {
   text-align: center;
@@ -208,7 +208,7 @@
   margin-bottom: 10px !important;
 }
 .footer-bottom {
-  background-color: #444;
+  background-color: #F9A4A7;
 }
 .footer-bottom .brand {
   display: flex;
@@ -250,7 +250,7 @@
   font-size: 15px;
   line-height: 40px;
   color: #eef0f1;
-  background-color: #444;
+  background-color: #F9A4A7;
   background-repeat: no-repeat;
   background-size: cover;
 }

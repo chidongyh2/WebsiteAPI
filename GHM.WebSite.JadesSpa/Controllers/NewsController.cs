@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Threading.Tasks;
-using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.Extensions;
-using GHM.Infrastructure.Models;
-using GHM.Infrastructure.Services;
-using GHM.Infrastructure.ViewModels;
-using GHM.Website.JadesSpa.Models;
 using GHM.Website.JadesSpa.ViewModels;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;

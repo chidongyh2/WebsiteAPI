@@ -80,7 +80,6 @@ namespace GHM.Website.JadesSpa.Controllers
             }
 
 
-
             if (_cache.TryGetValue($"{CacheParam.ListNewHot}{CultureInfo.CurrentCulture.Name}", out List<NewsSearchViewModel> listNewsHotCache))
             {
                 ViewBag.ListNewsHot = listNewsHotCache;
@@ -231,8 +230,6 @@ namespace GHM.Website.JadesSpa.Controllers
                     return View("../NotFound/Index");
                 }
             }
-
-
         }
         public async Task<IActionResult> About()
         {
@@ -254,7 +251,6 @@ namespace GHM.Website.JadesSpa.Controllers
                 new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
             );
 
-            var test = Response.Cookies.ToString();
             return Redirect(url);
         }
 

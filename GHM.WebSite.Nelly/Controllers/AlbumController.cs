@@ -4,6 +4,7 @@ using GHM.Infrastructure.ViewModels;
 using GHM.Website.Nelly.Constants;
 using GHM.Website.Nelly.Models;
 using GHM.Website.Nelly.ViewModels;
+using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
@@ -18,7 +19,9 @@ namespace GHM.Website.Nelly.Controllers
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
 
-        public AlbumController(IConfiguration configuration, IMemoryCache cache) : base(configuration, cache)
+        public AlbumController(IConfiguration configuration, IMemoryCache cache, IBranchContactService branchContactService,
+           IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
+           : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService, languageService)
         {
             _configuration = configuration;
             _cache = cache;
