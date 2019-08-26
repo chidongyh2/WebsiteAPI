@@ -1,27 +1,4 @@
-﻿@font-face {
-  font-family: 'Regular';
-  src: url('../../lib/Font-Roboto/fa-regular-400.tff') format('truetype');
-}
-@font-face {
-  font-family: 'Roboto-Bold';
-  src: url('../../lib/font-roboto/roboto-bold_1.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'Roboto-Regular';
-  src: url('../../lib/font-roboto/roboto-regular.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'VLALLROUNDGOTHIC-BOOK';
-  src: url('../../lib/Font-Roboto/VLALLROUNDGOTHIC-BOOK.OTF') format('truetype');
-}
-@font-face {
-  font-family: 'vlauthenticaregular';
-  src: url('../../lib/font-roboto/VLAUTHENTICAREGULAR.OTF') format('truetype');
-}
-.label-color {
-  color: #EDEEE9 !important;
-}
-.w100pc {
+﻿.w100pc {
   width: 100% !important;
 }
 .w30 {
@@ -107,6 +84,9 @@
 }
 .cm-pd-i-2 {
   padding: 2px !important;
+}
+.cm-pdl-30 {
+  padding-left: 30px !important;
 }
 .cm-pdl-5 {
   padding-left: 5px !important;
@@ -218,4 +198,19 @@
 }
 .cm-mgr-20 {
   margin-right: 20px !important;
+}
+.size24 {
+  font-size: 24px;
+}
+.size18 {
+  font-size: 18px;
+}
+.size16 {
+  font-size: 16px;
+}
+.size14 {
+  font-size: 14px;
+}
+.size20 {
+  font-size: 20px;
 }

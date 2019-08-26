@@ -75,10 +75,10 @@ namespace GHM.Website.Nelly.Controllers
 
         private async Task<List<MenuItemViewModel>> GetMainMenu()
         {
-            if (_cache.TryGetValue($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
-            {
-                return menus;
-            }
+            //if (_cache.TryGetValue($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
+            //{
+            //    return menus;
+            //}
 
             var apiService = _configuration.GetApiServiceInfo();
 
@@ -112,8 +112,8 @@ namespace GHM.Website.Nelly.Controllers
 
         private async Task<WebsiteSetting> GetSetting()
         {
-            if (_cache.TryGetValue($"{CacheParam.Setting}{CultureInfo.CurrentCulture.Name}", out WebsiteSetting setting))
-                return setting;
+            //if (_cache.TryGetValue($"{CacheParam.Setting}{CultureInfo.CurrentCulture.Name}", out WebsiteSetting setting))
+            //    return setting;
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -157,10 +157,10 @@ namespace GHM.Website.Nelly.Controllers
 
         private async Task<List<BranchContactSearchViewModel>> GetBranchAsync()
         {
-            if (_cache.TryGetValue($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", out List<BranchContactSearchViewModel> branchs))
-            {
-                return branchs;
-            }
+            //if (_cache.TryGetValue($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", out List<BranchContactSearchViewModel> branchs))
+            //{
+            //    return branchs;
+            //}
 
             var apiService = _configuration.GetApiServiceInfo();        
             var result = await _branchContactService.SearchForClientAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
@@ -174,10 +174,10 @@ namespace GHM.Website.Nelly.Controllers
 
         private async Task<List<SocialNetworkViewModel>> GetSocialNetwork()
         {
-            if (_cache.TryGetValue($"{CacheParam.SocialNetwork}{CultureInfo.CurrentCulture.Name}", out List<SocialNetworkViewModel> socialNetwork))
-            {
-                return Task.Run(() => socialNetwork).Result;
-            }
+            //if (_cache.TryGetValue($"{CacheParam.SocialNetwork}{CultureInfo.CurrentCulture.Name}", out List<SocialNetworkViewModel> socialNetwork))
+            //{
+            //    return Task.Run(() => socialNetwork).Result;
+            //}
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -201,10 +201,10 @@ namespace GHM.Website.Nelly.Controllers
 
         private List<BrandSearchViewModel> GetAllBrand()
         {
-            if (_cache.TryGetValue($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", out List<BrandSearchViewModel> brands))
-            {
-                return brands;
-            }
+            //if (_cache.TryGetValue($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", out List<BrandSearchViewModel> brands))
+            //{
+            //    return brands;
+            //}
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -218,10 +218,10 @@ namespace GHM.Website.Nelly.Controllers
 
         private async Task<List<MenuItemViewModel>> GetFooterMenu()
         {
-            if (_cache.TryGetValue($"{CacheParam.FooterNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
-            {
-                return Task.Run(() => menus).Result;
-            }
+            //if (_cache.TryGetValue($"{CacheParam.FooterNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
+            //{
+            //    return Task.Run(() => menus).Result;
+            //}
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -256,10 +256,10 @@ namespace GHM.Website.Nelly.Controllers
 
         private async Task<List<TenantLanguageViewModel>> GetLanguage()
         {
-            if (_cache.TryGetValue($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", out List<TenantLanguageViewModel> languages))
-            {
-                return Task.Run(() => languages).Result;
-            }
+            //if (_cache.TryGetValue($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", out List<TenantLanguageViewModel> languages))
+            //{
+            //    return Task.Run(() => languages).Result;
+            //}
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();

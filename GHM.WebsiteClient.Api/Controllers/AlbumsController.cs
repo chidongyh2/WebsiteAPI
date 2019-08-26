@@ -25,7 +25,6 @@ namespace GHM.WebsiteClient.Api.Controllers
             _videoService = videoService;
         }
 
-
         #region Photos
         [Route("{tenantId}/{type}/{page?}/{pageSize?}"), AcceptVerbs("GET")]
         public async Task<IActionResult> GetAlbumPhotos(string tenantId, AlbumType type, int page = 1, int pageSize = 20)

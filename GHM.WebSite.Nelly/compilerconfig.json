@@ -12,10 +12,6 @@
     "inputFile": "wwwroot/css/less/config.less"
   },
   {
-    "outputFile": "wwwroot/css/less/event_register.css",
-    "inputFile": "wwwroot/css/less/event_register.less"
-  },
-  {
     "outputFile": "wwwroot/css/less/event.css",
     "inputFile": "wwwroot/css/less/event.less"
   },
@@ -48,14 +44,6 @@
     "inputFile": "wwwroot/js/viewmodel/event.viewmodel.js"
   },
   {
-    "outputFile": "wwwroot/js/viewmodel/event-detail.viewmodel.es5.js",
-    "inputFile": "wwwroot/js/viewmodel/event-detail.viewmodel.js"
-  },
-  {
-    "outputFile": "wwwroot/js/viewmodel/event-register.viewmodel.es5.js",
-    "inputFile": "wwwroot/js/viewmodel/event-register.viewmodel.js"
-  },
-  {
     "outputFile": "wwwroot/js/viewmodel/video.viewmodel.es5.js",
     "inputFile": "wwwroot/js/viewmodel/video.viewmodel.js"
   },
@@ -70,10 +58,6 @@
   {
     "outputFile": "wwwroot/js/site.es5.js",
     "inputFile": "wwwroot/js/site.js"
-  },
-  {
-    "outputFile": "wwwroot/js/site1.es5.js",
-    "inputFile": "wwwroot/js/site1.js"
   },
   {
     "outputFile": "wwwroot/lib/LayerSlider/static/js/greensock.es5.js",

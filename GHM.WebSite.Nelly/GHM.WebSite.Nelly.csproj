@@ -37,6 +37,11 @@
   <ItemGroup>
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\fonts\ionicons.svg" />
+    <None Include="wwwroot\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="wwwroot\fonts\Material-Design-Iconic-Font.woff2" />
     <None Include="wwwroot\js\viewmodel\about.viewmodel.es5.js" />
   </ItemGroup>
 
@@ -144,5 +149,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
+
+
+  <ProjectExtensions><VisualStudio><UserProperties bundleconfig_1json__JsonSchema="http://json.schemastore.org/bungee-plugin" /></VisualStudio></ProjectExtensions>
 
 </Project>

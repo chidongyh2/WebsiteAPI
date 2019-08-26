@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
 using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.ModelBinders;
 using GHM.Infrastructure.Services;
+using GHM.WebsiteClient.Api.Infrastructure.AutofacModules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -29,7 +32,7 @@ namespace GHM.Website.Nelly
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddLocalization(options => options.ResourcesPath = "Resources");
             services.AddCors();
@@ -77,6 +80,15 @@ namespace GHM.Website.Nelly
                     options.MinificationSettings.RemoveHttpProtocolFromAttributes = false;
                 })
             .AddHttpCompression();
+
+            //Config Autofac.
+            var builder = new ContainerBuilder();
+            builder.Populate(services);
+
+            builder.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("WebsiteConnectionString")));
+            builder.RegisterModule(new ValidationModule());
+            var autofacServiceProvider = new AutofacServiceProvider(builder.Build());
+            return autofacServiceProvider;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

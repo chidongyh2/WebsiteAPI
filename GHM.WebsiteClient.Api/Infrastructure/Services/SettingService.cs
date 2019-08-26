@@ -31,8 +31,6 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
 
         public async Task<SearchResult<SettingViewModel>> GetWebsiteSettingsAsync(string tenantId, string languageId)
         {
-            //var websiteSettingGroupId = ClassHelper.GetPropertyNameAsKey<WebsiteSetting>();
-            //var websiteSettingGroupId = typeof(GHM.WebsiteClient.Api.Domain.Models.WebsiteSetting).Namespace + ".WebsiteSetting";
             var websiteSettingGroupId = "GHM.Website.Domain.Models.WebsiteSetting.WebsiteSetting";
             var settings = await GetsByGroupId(tenantId, languageId, websiteSettingGroupId);
             var properties = ClassHelper.GetPropertiesName<WebsiteSetting>();
@@ -85,7 +83,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
 
                     DynamicParameters param = new DynamicParameters();
                     param.Add("@tenantId", tenantId);
-                    param.Add("@languageId", languageId);
+                    param.Add("@LanguageId", languageId);
                     param.Add("@groupId", groupId);
                     var results = await con.QueryAsync<SettingViewModel>("[dbo].[spSetting_SelectAll]", param, commandType: CommandType.StoredProcedure);
                     return results.ToList();
