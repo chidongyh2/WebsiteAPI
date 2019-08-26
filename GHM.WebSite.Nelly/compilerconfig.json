@@ -12,10 +12,6 @@
     "inputFile": "wwwroot/css/less/config.less"
   },
   {
-    "outputFile": "wwwroot/css/less/event.css",
-    "inputFile": "wwwroot/css/less/event.less"
-  },
-  {
     "outputFile": "wwwroot/css/less/footer.css",
     "inputFile": "wwwroot/css/less/footer.less"
   },

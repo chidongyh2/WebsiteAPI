@@ -85,14 +85,14 @@ function AboutViewModel() {
         self.pushListComment();
     };
     self.pushListComment = function () {
-
+        console.log(ko.utils.unwrapObservable(self.currentPageComment));
         self.listCommentCustomer([]);
         if (ko.utils.unwrapObservable(self.currentPageComment()) == ko.utils.unwrapObservable(self.totalPage())) {
             for (i = 0; i < 3; i++) {
                 self.listCommentCustomer.push(self.listResponseCustomer()[i]);
             }
         } else {
-            for (i = ko.utils.unwrapObservable(self.currentPageComment() - 1) * 3; i < ko.utils.unwrapObservable(self.currentPageComment()) * 3 + 3; i++) {
+            for (i = ko.utils.unwrapObservable(self.currentPageComment - 1) * 3; i < ko.utils.unwrapObservable(self.currentPageComment()) * 3 + 3; i++) {
                 self.listCommentCustomer.push(self.listResponseCustomer()[i]);
             }
         }

@@ -1,7 +1,6 @@
 ﻿"use strict";
 
 $(document).ready(function () {
-    console.log(window.innerHeight);
     $("#myCarousel").owlCarousel({
         items: 1,
         loop: true,

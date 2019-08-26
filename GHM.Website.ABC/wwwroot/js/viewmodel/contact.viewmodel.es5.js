@@ -19,14 +19,21 @@ function ContactViewModel() {
 
     self.sendFeedback = function () {
         if (!self.contactName() || self.contactName() === "") {
-            toastr.error("Please enter your full name.");
+            toastr.error("Vui lòng nhập họ tên của bạn");
             self.isContactNameError(true);
             self.isContactNameFocus(true);
             return;
         }
 
+        if (!self.contactPhoneNumber() || self.contactPhoneNumber() === "") {
+            toastr.error("Vui lòng nhập số điện thoại của bạn");
+            self.isPhoneNumberError(true);
+            self.isPhoneNumberFocus(true);
+            return;
+        }
+
         if (!self.contactEmail() || self.contactEmail() === "") {
-            toastr.error("Please enter your email.");
+            toastr.error("Vui lòng nhập email của bạn.");
             self.isEmailError(true);
             self.isEmailFocus(true);
             return;
@@ -34,22 +41,15 @@ function ContactViewModel() {
 
         if (self.contactEmail() && self.contactEmail() !== "") {
             if (!self.validateEmail(self.contactEmail())) {
-                toastr.error("Invalid format email");
+                toastr.error("Định dạng email không đúng");
                 self.isEmailError(true);
                 self.isEmailFocus(true);
                 return;
             }
         }
 
-        if (!self.contactPhoneNumber() || self.contactPhoneNumber() === "") {
-            toastr.error("Please enter your phoneNumber");
-            self.isPhoneNumberError(true);
-            self.isPhoneNumberFocus(true);
-            return;
-        }
-
         if (!self.contactContent() || self.contactContent() === "") {
-            toastr.error("Please enter your mesage");
+            toastr.error("Vui lòng nhập nội dung tin nhắn");
             self.isContentError(true);
             self.isContentFocus(true);
             return;
@@ -66,21 +66,21 @@ function ContactViewModel() {
 
             self.isSendingContact(false);
             if (result.code === -1) {
-                toastr.error("Please enter your full name.");
+                toastr.error("Vui lòng nhập họ tên của bạn");
                 self.isContactNameError(true);
                 self.isContactNameFocus(true);
                 return;
             }
 
             if (result.code === -3) {
-                toastr.error("Please enter your mesage");
+                toastr.error("Vui lòng nhập nội dung tin nhắn");
                 self.isContentError(true);
                 self.isContentFocus(true);
                 return;
             }
 
             if (result.code > 0) {
-                toastr.success("Thank you for the message. We will contact you as soon as possible.");
+                toastr.success("Cảm ơn bạn đã gửi tin nhắn. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.");
                 self.contactName("");
                 self.contactEmail("");
                 self.contactPhoneNumber("");
@@ -93,10 +93,11 @@ function ContactViewModel() {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     };
+
     $(document).ready(function () {
         $('#message').click(function () {
             $("html, body").animate({ scrollTop: $('#footer').offset().top - 100 }, 1000);
-            setTimeout(() => {
+            setTimeout(function () {
                 $('#contact_full_name').focus();
             }, 100);
         });
