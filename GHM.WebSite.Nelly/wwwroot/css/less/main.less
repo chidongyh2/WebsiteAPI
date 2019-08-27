@@ -296,26 +296,25 @@
     }
 
     .owl-nav {
-        display: none;
-
-
+        // display: none;
         .owl-prev {
             position: absolute;
             top: 50%;
             left: 20px;
             margin-top: -20px;
             transition: all 0.2s;
-            background: lightgray;
-            color: @color-text-white;
-            font-size: 16px;
+            background: @color-white;
+            color: @color-text;
+            font-size: 17px;
             border-radius: 50%;
-            height: 40px;
-            line-height: 40px;
-            width: 40px;
-            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08);
+            height: 30px;
+            line-height: 30px;
+            width: 30px;
+            /*box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08);*/
+            border: 1px solid @color-text-grey;
 
             &:hover, :active, :focus {
-                background-color: @background-black;
+                background-color: @main-color;
                 color: @color-white;
                 border: none !important;
             }
@@ -328,16 +327,18 @@
             margin-top: -20px;
             transition: all 0.2s;
             background: lightgray;
-            color: @color-text-white;
-            font-size: 16px;
+            background: @color-white;
+            color: @color-text;
+            font-size: 17px;
             border-radius: 50%;
-            height: 40px;
-            line-height: 40px;
-            width: 40px;
-            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08);
+            height: 30px;
+            line-height: 30px;
+            width: 30px;
+            /*box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08);*/
+            border: 1px solid @color-text-grey;
 
             &:hover, &:active, &:focus {
-                background-color: @background-black;
+                background-color: @main-color;
                 color: @color-white;
                 border: none !important;
             }
@@ -351,7 +352,6 @@
     }
 
     .owl-dots {
-        display: none;
         text-align: center;
         margin-top: 10px;
 
@@ -360,15 +360,15 @@
 
             span {
                 display: inline-block;
-                width: 15px;
-                height: 15px;
+                width: 12px;
+                height: 12px;
                 margin: 1px;
                 text-indent: -999px;
                 cursor: pointer;
-                background-color: rgba(0, 0, 0, 0);
-                border: 2px solid @main-color;
-                border-radius: 15px;
-                font-size: 15px;
+                background-color: @color-text-grey;
+                border: none !important;
+                border-radius: 12px;
+                font-size: 12px;
 
                 &:focus {
                     border: none !important;
@@ -377,7 +377,7 @@
         }
 
         .active {
-            border: none;
+            border: none !important;
 
             span {
                 background-color: @main-color;
@@ -386,55 +386,6 @@
     }
 }
 
-
-
-#about {
-    /*background-image: url('../../images/bgr-web/background-image/nen-pc_04.jpg');*/
-    background-repeat: repeat;
-    background-size: cover;
-    padding: 95px 0px;
-    /*height: 260px;*/
-    @media @mobile {
-        padding: 20px 0px;
-    }
-
-    .container {
-        .row {
-            text-align: center;
-            color: @main-color;
-
-            .titlebar {
-                font-family: VLALLROUNDGOTHIC-BOOK !important;
-                text-transform: uppercase;
-                color: @main-color;
-
-                @media @mobile {
-                    font-size: 16px;
-                }
-            }
-            hr {
-                width: 10%;
-                border-top: 2px solid @main-color;
-                margin-top: 10px 0px !important;
-            }
-            .content {
-                border: 2px dashed @main-color;
-                border-radius: 20px;
-                padding: 15px 10px;
-                font-family: Roboto-Regular !important;
-                color: @main-color;
-                font-size: 16px;
-                text-align: left;
-                margin-left: 20%;
-                margin-top: 30px;
-                @media @mobile {
-                    margin-left: 0 !important;
-                    font-size: 12px;
-                }
-            }
-        }
-    }
-}
 
 #news-hot {
     /*background-image: url('../../images/bgr-web/background-image/nen-pc_05.jpg');*/

@@ -39,25 +39,26 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
         var b = $(window).scrollTop();
+        console.log(b);
         if (b > 65 || window.innerWidth < 768) {
             $(".navbar").addClass("navbar-fixed-top");
-            $(".navbar-brand").removeClass("hidden-lg");
-            $(".navbar-brand").addClass("visible-lg");
+            //$(".navbar-brand").removeClass("hidden-lg");
+            //$(".navbar-brand").addClass("visible-lg");
             $("#backToTop").css("display", "block");
             $(".header-top").css("display", "none");
             $("#myCarousel").css("margin-top", "65px");
             var windowWidth = window.innerWidth;
             if (windowWidth < 768) {
                 //isShowToggle = true;
-                //$(".navbar-header").addClass("visible-xs");
-                //$(".navbar-header").removeClass("hidden-xs");
-                //$('.navbar-collapse').css("display", "none");
-                //$('.navbar-collapse').removeClass("in");
+                $(".navbar-header").addClass("visible-xs");
+                $(".navbar-header").removeClass("hidden-xs");
+                $('.navbar-collapse').css("display", "none");
+                $('.navbar-collapse').removeClass("in");
             }
         } else {
             $("#myCarousel").css("margin-top", "0px");
-            $(".navbar-brand").addClass("hidden-lg");
-            $(".navbar-brand").removeClass("visible-lg");
+            //$(".navbar-brand").addClass("hidden-lg");
+            //$(".navbar-brand").removeClass("visible-lg");
             $(".navbar").removeClass("navbar-fixed-top");
             $("#backToTop").css("display", "none");
             $(".header-top").css("display", "block");

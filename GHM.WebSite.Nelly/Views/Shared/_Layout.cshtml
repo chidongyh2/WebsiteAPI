@@ -39,12 +39,12 @@
     <meta name="twitter:image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)">
     <meta property="image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)" />
     <title>@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) && string.IsNullOrEmpty(ViewBag.Title) ? websiteSetting?.Brand : ViewBag.Title)</title>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    @**<link href="/lib/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="/lib/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" rel="stylesheet" />*@
+    @*<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />*@
+    @*<link href="/lib/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" rel="stylesheet" />*@
+    @*<link href="/lib/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" rel="stylesheet" />*@
     @*<link rel="stylesheet" href="/lib/font-awesome-4.7.0/css/font-awesome.min.css" />*@
-    <link href="~/css/plugins.css" rel="stylesheet" />
-    <link href="~/lib/lightslider/css/lightslider.min.css" rel="stylesheet" />
+    <link href="~/css/plugins.min.css" rel="stylesheet" />
+    @*<link href="~/lib/lightslider/css/lightslider.min.css" rel="stylesheet" />*@
     <link rel="stylesheet" href="~/css/site.min.css" />
 </head>
 <body>    
@@ -59,9 +59,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/lib/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
-    @*<script src="~/lib/lightslider/js/lightslider.es5.min.js"></script>*@
     <script src="~/lib/knockout/knockout-3.4.2.js"></script>
-    @*<script src="~/lib/toastr/toastr.es5.min.js"></script>*@
     <script src="~/lib/lightslider/js/lightslider.es5.min.js"></script>
     <script src="~/lib/jquery.lazy-master/jquery.lazy.es5.min.js"></script>
     <script src="~/js/site.min.js"></script>

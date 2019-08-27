@@ -78,8 +78,8 @@
   align-items: center;
 }
 .wrap-header-top .hotline {
-  display: flex;
-  align-items: center;
+  /*display: flex;
+        align-items: center;*/
 }
 .wrap-header-top .hotline span {
   padding-left: 0px;
@@ -129,7 +129,7 @@
   border: none;
   font-family: Roboto-Regular;
   width: 100%;
-  box-shadow: 1px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 50px -6px rgba(84, 84, 120, 0.26);
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse {
@@ -155,7 +155,7 @@
   align-items: center;
   flex: 1 0 0;
   max-width: 70px;
-  height: 65px;
+  height: 70px;
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .wrap .navbar-brand {
@@ -235,6 +235,7 @@
   padding-right: 0px;
   border-color: #F9A4A7 !important;
   overflow: scroll;
+  padding-top: 20px;
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse {
@@ -250,7 +251,7 @@
   }
 }
 .header-bottom nav .navbar-collapse ul {
-  width: 100%;
+  /*width: 100%;*/
   align-items: center;
   justify-content: flex-end;
 }
@@ -262,6 +263,7 @@
 }
 .header-bottom nav .navbar-collapse ul li {
   font-size: 14px;
+  margin: 0px 5px;
 }
 @media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li {

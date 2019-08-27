@@ -72,8 +72,8 @@
     align-items: center;
 
     .hotline {
-        display: flex;
-        align-items: center;
+        /*display: flex;
+        align-items: center;*/
 
         span {
             padding-left: 0px;
@@ -134,7 +134,7 @@
         border: none;
         font-family: Roboto-Regular;
         width: 100%;
-        box-shadow: 1px 5px 5px 0px rgba(0,0,0,0.3);
+        box-shadow: 0 8px 50px -6px rgba(84,84,120,.26);
 
         @media @mobile {
             font-size: 14px !important;
@@ -158,7 +158,7 @@
                 align-items: center;
                 flex: 1 0 0;
                 max-width: 70px;
-                height: 65px;
+                height: 70px;
 
                 @media @mobile {
                     padding-left: 5%;
@@ -247,6 +247,7 @@
             padding-right: 0px;
             border-color: @main-color !important;
             overflow: scroll;
+            padding-top: 20px;
 
             @media @mobile {
                 border: none !important;
@@ -261,7 +262,7 @@
             }
 
             ul {
-                width: 100%;
+                /*width: 100%;*/
                 align-items: center;
                 justify-content: flex-end;
                 //margin-left: 20px;
@@ -272,6 +273,7 @@
 
                 li {
                     font-size: 14px;
+                    margin: 0px 5px;
 
                     @media @not_mobile {
                         border: 1px solid none;
@@ -415,7 +417,6 @@
                             background-color: @main-color;
                         }
                     }
-
 
                     @media @not_mobile {
                         &:hover {

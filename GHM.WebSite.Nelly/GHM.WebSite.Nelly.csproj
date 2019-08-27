@@ -68,10 +68,10 @@
     <Content Update="Views\Home\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Home\_About.cshtml">
+    <Content Update="Views\Home\_MainSlider.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Home\_MainSlider.cshtml">
+    <Content Update="Views\Home\_MenuContact.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Home\_NewsAndBranch.cshtml">

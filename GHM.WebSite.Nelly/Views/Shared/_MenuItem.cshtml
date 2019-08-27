@@ -15,15 +15,19 @@
         <li class="@(childCount > 0 ? "dropdown" : "items") @(Model.ParentId > 0 ? "dropdown-submenu" : "")">
             @if (ViewBag.DeviceType == "desktop")
             {
-                <a role="button" href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" + item.Url)}")" data-toggle="@(childCount > 0 ? "dropdown" : "")"
-                   class="@((item.NamePath != null && path.Contains(item.NamePath) || item.Url == absoluteUri) ? "transition active hidden-sm hidden-xs hidden-md " + dropTotal : "transition hidden-sm hidden-xs hidden-md " + dropTotal)"
-                   title="@item.Name">
-                    @item.Name
-                    @if (childCount > 0 && Model.ParentId > 0)
-                    {
-                        <i class="fa fa-angle-right pull-right visible-lg"></i>
-                    }
-                </a>
+            <a role="button" href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" + item.Url)}")" data-toggle="@(childCount > 0 ? "dropdown" : "")"
+               class="@((item.NamePath != null && path.Contains(item.NamePath) || item.Url == absoluteUri) ? "transition active hidden-sm hidden-xs hidden-md " + dropTotal : "transition hidden-sm hidden-xs hidden-md " + dropTotal)"
+               title="@item.Name">
+                @item.Name
+                @if (childCount > 0 && Model.ParentId > 0)
+                {
+                    <i class="fa fa-angle-right pull-right visible-lg"></i>
+                }
+                @if (childCount > 0 && Model.ParentId == null)
+                {
+                    <i class="fa fa-angle-down pull-right visible-lg"></i>
+                }
+            </a>
             }
             else
             {
