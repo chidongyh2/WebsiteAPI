@@ -1,5 +1,9 @@
 ﻿@import "config.less";
 
+body {
+    font-family: Roboto-Regular;
+}
+
 #backToTop {
     bottom: 15px;
     position: fixed;
@@ -110,18 +114,21 @@
     z-index: 1000;
     cursor: pointer;
     right: 5px;
-    color:white;
+    color: white;
     padding: 7px 15px;
     font-size: 18px;
     text-transform: uppercase;
     border-radius: 4px;
+
     i {
         padding-right: 5px;
     }
+
     a {
         color: white;
         text-decoration: none;
     }
+
     animation: colorchange 2 ease infinite; /* animation-name followed by duration in seconds*/
     /* you could also use milliseconds (ms) or something like 2.5s */
     -webkit-animation: colorchange 2s ease infinite; /* Chrome and Safari */
@@ -411,71 +418,6 @@
         .row {
             color: @color-text-white;
             text-align: center;
-
-            .titlebar {
-                color: @main-color;
-                text-align: center;
-                text-transform: uppercase;
-                font-family: VLALLROUNDGOTHIC-BOOK !important;
-
-                @media @mobile {
-                    font-size: 22px;
-                }
-
-                &:before, &:after {
-                    width: 5%;
-                    height: 2px;
-                    background: @main-color;
-                    content: '';
-                    display: inline-block;
-                    color: white;
-                    top: -10px;
-                    position: relative;
-                    margin: 0px 15px;
-                }
-
-                @media @mobile {
-                    &:before {
-                        width: 8%;
-                        height: 2px;
-                        background: @main-color;
-                        content: '';
-                        display: inline-block;
-                        color: white;
-                        top: -5px;
-                        position: relative;
-                        margin: 0px 5px 0px 0px;
-                    }
-
-                    &:after {
-                        width: 8%;
-                        height: 2px;
-                        background: @main-color;
-                        content: '';
-                        display: inline-block;
-                        color: white;
-                        top: -5px;
-                        position: relative;
-                        margin: 0px 0px 0px 5px;
-                    }
-                }
-            }
-
-            .descriptionbar {
-                font-family: vlauthenticaregular;
-                color: @color-text-grey;
-
-                @media @mobile {
-                    font-size: 16px !important;
-                    margin-top: 5px;
-                    font-weight: 100 !important;
-                    word-spacing: 1.5px;
-                }
-            }
-
-            .wrap-hr {
-                padding-top: 15px;
-            }
         }
 
         .item-hot {
@@ -529,11 +471,7 @@
     }
 }
 
-#news-introduce {
-    /*background-image: url('../../images/bgr-web/background-image/nen-pc_06.jpg');*/
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+#news-introduce {   
     padding-top: 100px;
     padding-bottom: 60px;
     height: 680px;
@@ -546,61 +484,6 @@
     margin-bottom: 10px;
     color: @main-color;
     text-align: center;
-
-    .titlebar {
-        color: @main-color;
-        text-align: center;
-        text-transform: uppercase;
-        font-family: VLALLROUNDGOTHIC-BOOK !important;
-
-        &:before, &:after {
-            width: 5%;
-            height: 2px;
-            background: @main-color;
-            content: '';
-            display: inline-block;
-            color: white;
-            top: -10px;
-            position: relative;
-            margin: 0px 15px;
-        }
-
-        @media @mobile {
-            &:before {
-                width: 8%;
-                height: 2px;
-                background: @main-color;
-                content: '';
-                display: inline-block;
-                color: white;
-                top: -5px;
-                position: relative;
-                margin: 0px 5px 0px 0px;
-            }
-
-            &:after {
-                width: 8%;
-                height: 2px;
-                background: @main-color;
-                content: '';
-                display: inline-block;
-                color: white;
-                top: -5px;
-                position: relative;
-                margin: 0px 0px 0px 5px;
-            }
-        }
-    }
-
-    .descriptionbar {
-        font-family: vlauthenticaregular;
-        color: @color-text-grey;
-
-        @media @mobile {
-            font-size: 16px;
-            padding-bottom: 20px;
-        }
-    }
 
     .wrap-hr {
         padding-top: 15px;
@@ -640,11 +523,6 @@
                     margin: unset !important;
                 }
 
-                @media @not_mobile {
-                    /*width: 280px;
-                    height: 280px;*/
-                }
-                /*padding: 0px 1px 2px 10px;*/
                 img {
                     border: 1px solid @main-color;
                     width: 100%;
@@ -733,7 +611,7 @@
     }
 }
 
-.news-angency {   
+.news-angency {
     @media @mobile {
         background-image: none;
     }
@@ -795,23 +673,6 @@
                         padding: 0px !important;
                     }
 
-                    .titlebar {
-                        font-size: 20px;
-                        padding: 6px 12px;
-                        color: @main-color;
-                        text-transform: uppercase;
-                        background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%) !important;
-                        font-family: Roboto-Bold;
-                        border-radius: 6px;
-                        box-shadow: 3px 3px 5px 3px lightgrey;
-                        margin-top: 0px;
-
-                        @media @mobile {
-                            margin: 20px 0px;
-                            font-size: 16px !important;
-                        }
-                    }
-
                     .pull-right {
                         @media @not_mobile {
                             margin-right: 20px;
@@ -854,23 +715,6 @@
                         margin: 0px !important;
                         padding: 0px !important;
                         font-size: 16px;
-                    }
-
-                    .titlebar {
-                        font-size: 20px;
-                        padding: 6px 12px;
-                        color: @main-color;
-                        text-transform: uppercase;
-                        background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%) !important;
-                        font-family: Roboto-Bold;
-                        border-radius: 4px;
-                        box-shadow: 3px 3px 5px 3px lightgrey;
-                        margin-top: 0px;
-
-                        @media @mobile {
-                            font-size: 16px;
-                            margin-top: 20px;
-                        }
                     }
 
                     .pull-right {
@@ -956,73 +800,6 @@
 
         @media @mobile {
             padding-top: 20px;
-        }
-
-        .row {
-            .titlebar {
-                color: @main-color;
-                text-align: center;
-                text-transform: uppercase;
-                font-family: VLALLROUNDGOTHIC-BOOK !important;
-
-                &:before, &:after {
-                    width: 5%;
-                    height: 2px;
-                    background: @main-color;
-                    content: '';
-                    display: inline-block;
-                    color: white;
-                    top: -10px;
-                    position: relative;
-                    margin: 0px 15px;
-                }
-
-                @media @mobile {
-                    &:before {
-                        width: 8%;
-                        height: 2px;
-                        background: @main-color;
-                        content: '';
-                        display: inline-block;
-                        color: white;
-                        top: -5px;
-                        position: relative;
-                        margin: 0px 5px 0px 0px;
-                    }
-
-                    &:after {
-                        width: 8%;
-                        height: 2px;
-                        background: @main-color;
-                        content: '';
-                        display: inline-block;
-                        color: white;
-                        top: -5px;
-                        position: relative;
-                        margin: 0px 0px 0px 5px;
-                    }
-                }
-            }
-
-            .descriptionbar {
-                color: @color-text-grey;
-                text-align: center;
-                font-family: vlauthenticaregular;
-                padding-bottom: 40px;
-
-                @media @mobile {
-                    padding-bottom: 20px;
-                }
-            }
-
-            .wrap-hr {
-                padding-top: 15px;
-
-                hr {
-                    background-color: @main-color;
-                    height: 2px;
-                }
-            }
         }
     }
 }
@@ -1196,35 +973,6 @@
         padding: 20px 0px;
     }
 
-    .titlebar {
-        margin-bottom: 50px;
-        font-size: 23px !important;
-
-        &:before, &:after {
-            width: 5%;
-            height: 2px !important;
-            background: @main-color;
-            content: '';
-            display: inline-block;
-            color: white;
-            top: -8px;
-            position: relative;
-            margin: 0px 15px;
-        }
-
-        font-family: Roboto-Regular !important;
-        text-align: center;
-        color: @color-text;
-        padding-bottom: 5px !important;
-        margin-top: 0px;
-        text-transform: uppercase;
-
-        @media @mobile {
-            padding-top: 0px;
-        }
-    }
-
-
     .item-contact {
         background-color: #F5F5F5;
         position: relative;
@@ -1300,28 +1048,6 @@
             a {
                 color: #333 !important;
             }
-        }
-    }
-
-    .titlebar-angency {
-        font-size: 23px !important;
-        font-family: Roboto-Regular !important;
-        color: @main-color;
-        text-align: center;
-        text-transform: uppercase;
-        width: 100%;
-        margin-bottom: 30px;
-
-        &:before, &:after {
-            width: 5%;
-            height: 2px !important;
-            background: @main-color;
-            content: '';
-            display: inline-block;
-            color: white;
-            top: -8px;
-            position: relative;
-            margin: 0px 15px;
         }
     }
 
@@ -1418,78 +1144,14 @@
         }
     }
 }
-/*#abums {
-    padding-top: 0px;
-    padding-bottom: 20px;
-    background-image: url('../../images/bgr-web/bgr tin tuc-sk va ld.jpg');
-    background-size: 100% auto;
-    background-position: initial;
-    background-repeat: no-repeat;
-    background-size: 100% auto;
 
-    @media @mobile {
-        background-image: none;
-    }
-
-    .titlebar {
-        color: @color-text;
-        padding-bottom: 5px !important;
-        padding-top: 20px;
-
-        @media @mobile {
-            padding-top: 0px;
-        }
-    }
-
-    hr {
-        margin-bottom: 0px;
-    }
-
-    .btn-toolbar {
-        padding: 25px 0px;
-    }
-
-    .content {
-        .abum-photo {
-            .title-border {
-                padding-bottom: 10px;
-            }
-
-            &:first-child {
-                padding-bottom: 10px;
-            }
-
-            &:last-child {
-                border-bottom: none;
-            }
-        }
-    }
-
-    #social-network {
-        background-color: @main-color;
-
-        .btn-scoical {
-            color: @color-white;
-        }
-    }
-}*/
 #news {
-    /*background-image: url('../../images/bgr web/bgr tin tuc_sk va ld.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;*/
     .even {
         background-color: @color-white;
     }
 
     .odd {
         background-color: #f5f5f5;
-    }
-
-    .titlebar {
-        color: @color-text;
-        padding-bottom: 5px !important;
-        padding-top: 20px;
     }
 
     hr {
@@ -1504,11 +1166,6 @@
 #category-news {
     @media @mobile {
         background-image: none;
-    }
-
-    .titlebar {
-        color: @color-text-grey;
-        font-family: Roboto-Regular !important;
     }
 
     hr {
@@ -1631,10 +1288,6 @@
 }
 
 #news-detail {
-    /*background-image: url('../../images/bgr-web/bgr trang tin tuc_tin tuc chi tiet.jpg');
-    background-position: inherit;
-    background-repeat: no-repeat;
-    background-size: 100% auto;*/
     @media @mobile {
         background-image: none;
     }
@@ -2046,20 +1699,47 @@
     }
 }
 
+
 .titlebar {
-    font-size: 32px;
     font-family: Roboto-Regular !important;
-
-    @media @mobile {
-        font-size: 16px !important;
+    color: @main-color;
+    text-align: center;
+    /*font-family: VLALLROUNDGOTHIC-BOOK !important;*/
+    h3 {
+        margin-bottom: 0px !important;
+        font-size: 32px;
     }
-}
-
-.descriptionbar {
-    font-size: 30px;
 
     @media @mobile {
-        font-size: 20px;
+        font-size: 22px;
+    }
+
+    .image {
+        &:before, &:after {
+            width: 100px;
+            height: 1px;
+            background: #f9a4a7;
+            content: '';
+            display: inline-block;
+            color: #fff;
+            top: -7px;
+            position: relative;
+            margin: 0 10px;
+        }
+
+        @media @mobile {
+            &:before, &:after {
+                width: 50px;
+                height: 1px;
+                background: @main-color;
+                content: '';
+                display: inline-block;
+                color: white;
+                top: -5px;
+                position: relative;
+                margin: 0px 5px 0px 0px;
+            }
+        }
     }
 }
 
@@ -2168,6 +1848,7 @@
             }
         }
     }
+
     /*min-height: 650px;*/
     @media @mobile {
         height: unset;

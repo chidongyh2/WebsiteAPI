@@ -19,7 +19,6 @@ $(document).ready(function () {
 
     $('.navbar-toggle').click(function () {
         isShowToggle = !isShowToggle;
-        console.log(isShowToggle);
         if (!isShowToggle) {
             $(".wrap-none-show-icon").css("display", "none");
             $(".wrap-show-icon").css("display", "block");

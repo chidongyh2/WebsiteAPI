@@ -1,38 +1,19 @@
 ﻿@import "config.less";
 
 #footer {
-    color: @color-white;
-    padding-bottom: 30px;
-    padding-top: 30px;
-    /*background-image: url('../../images/bgr-web/background-image/nen-pc_08.jpg');*/
-    background-position: initial;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    margin-top: -10px;
+    background-color: @background-color-footer;
     @media @not_mobile {
         .row {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
         }
-    }
-
-    .container {
-        .col-sm-4 {
-            @media @mobile {
-                text-align: center;
-            }
-        }
-    }
-
-    @media @mobile {
-        background-size: auto 100%;
     }
 
     .logo {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
 
         @media @mobile {
             padding-bottom: 20px;
@@ -53,6 +34,7 @@
             @media @not_mobile {
                 padding: 0px 15px;
             }
+
             list-style-type: none;
             color: @color-text;
             padding-left: 0px;
@@ -163,27 +145,6 @@
         }
     }
 
-    .btn-send-message {
-        text-align: center;
-        background-color: #7aa127;
-        font-family: Roboto-Regular;
-        font-size: 20px !important;
-        width: 175px;
-        height: 45px;
-        border-radius: 10px;
-        margin-left: 5%;
-        border: none;
-        margin-top: 20px;
-        /*@media @tablet {
-            margin-left: 35%;
-        }*/
-        &:hover {
-            color: grey;
-            opacity: 0.6;
-            transform: inherit;
-        }
-    }
-
     @media @mobile {
         .btn-message {
             width: 100%;
@@ -199,65 +160,12 @@
     }
 }
 
-.modal {
-    color: black !important;
-    font-family: Roboto-Regular;
-    font-size: 20px;
-
-    .modal-title {
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 22px;
-        color: @main-color;
-    }
-
-    .message {
-        .submit {
-         
-            text-align: center;
-            button {
-                padding: 6px 25px !important;
-            }
-        }
-
-        .form-group {
-            /*margin-top: 10px;*/
-            margin-bottom: 10px !important;
-        }
-    }
-}
-
-.footer-bottom {
-    background-color: @main-color;
-
-    .brand {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-
-        .list-items {
-            padding: 0px 20px;
-            flex-basis: 10%;
-            overflow: hidden;
-            white-space: nowrap;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            @media @mobile {
-                padding: 0px 5px;
-                flex-basis: 25%;
-            }
-        }
-    }
-}
-
 #fb-root {
     .fb_dialog {
         z-index: 988 !important;
         background: none !important;
         border: none !important;
-        box-shadow:none !important;
+        box-shadow: none !important;
         bottom: 120px !important;
         right: 5px !important;
 
@@ -270,14 +178,13 @@
 
 .copy-right {
     text-align: center;
-    min-height: 45px;
-    font-size: 15px;
+    min-height: 40px;
+    font-size: 13px;
     line-height: 40px;
-    color: @color-text-white;
-    background-color: @main-color;
-    background-repeat: no-repeat;
-    background-size: cover;
+    color: @color-white;
+    background-color: @color-text;
 }
+
 #hotline {
     bottom: 65px;
     position: fixed;
@@ -287,10 +194,12 @@
     width: 40px;
     text-align: center;
     line-height: 45px;
+
     img {
         width: 100%;
     }
 }
+
 #message {
     bottom: 63px;
     position: fixed;
@@ -300,6 +209,7 @@
     height: 40px;
     width: 40px;
     line-height: 45px;
+
     img {
         width: 100%;
     }
@@ -310,11 +220,13 @@
         z-index: 1005 !important;
         right: 0px !important;
         bottom: 45px !important;
+
         @media @mobile {
             bottom: 90px !important;
         }
     }
 }
+
 #wrap-root {
     ul {
         li {
@@ -322,6 +234,7 @@
         }
     }
 }
+
 .fb-livechat, .fb-widget {
     display: none
 }
@@ -418,31 +331,4 @@
 .ctrlq.fb-close::after {
     content: "X";
     font-family: sans-serif
-}
-
-.bubble {
-    width: 20px;
-    height: 20px;
-    background: #c00;
-    color: #fff;
-    position: absolute;
-    z-index: 999999999;
-    text-align: center;
-    vertical-align: middle;
-    top: -2px;
-    left: -5px;
-    border-radius: 50%;
-}
-
-.bubble-msg {
-    width: 120px;
-    left: -140px;
-    top: 5px;
-    position: relative;
-    background: rgba(59, 89, 152, .8);
-    color: #fff;
-    padding: 5px 8px;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 13px;
 }

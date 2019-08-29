@@ -19,36 +19,19 @@
   src: url('../../lib/font-roboto/VLAUTHENTICAREGULAR.OTF') format('truetype');
 }
 #footer {
-  color: #FFFFFF;
-  padding-bottom: 30px;
-  padding-top: 30px;
-  /*background-image: url('../../images/bgr-web/background-image/nen-pc_08.jpg');*/
-  background-position: initial;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  margin-top: -10px;
+  background-color: #FEEFEC;
 }
 @media only screen and (min-width: 1200px) {
   #footer .row {
     display: flex;
     align-items: center;
-    justify-content: center;
-  }
-}
-@media only screen and (max-width: 1200px) {
-  #footer .container .col-sm-4 {
-    text-align: center;
-  }
-}
-@media only screen and (max-width: 1200px) {
-  #footer {
-    background-size: auto 100%;
+    justify-content: flex-start;
   }
 }
 #footer .logo {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 @media only screen and (max-width: 1200px) {
   #footer .logo {
@@ -66,7 +49,7 @@
 }
 #footer #wrap-content-branch .contact-info {
   list-style-type: none;
-  color: #404040;
+  color: #3F3F3F;
   padding-left: 0px;
   font-family: Roboto-Regular;
 }
@@ -154,26 +137,6 @@
 #footer .social-info .btn-scocial .fa-youtube {
   padding: 5px 8px;
 }
-#footer .btn-send-message {
-  text-align: center;
-  background-color: #7aa127;
-  font-family: Roboto-Regular;
-  font-size: 20px !important;
-  width: 175px;
-  height: 45px;
-  border-radius: 10px;
-  margin-left: 5%;
-  border: none;
-  margin-top: 20px;
-  /*@media @tablet {
-            margin-left: 35%;
-        }*/
-}
-#footer .btn-send-message:hover {
-  color: grey;
-  opacity: 0.6;
-  transform: inherit;
-}
 @media only screen and (max-width: 1200px) {
   #footer .btn-message {
     width: 100%;
@@ -184,50 +147,6 @@
   #footer .btn-message {
     width: 100%;
     text-align: center;
-  }
-}
-.modal {
-  color: black !important;
-  font-family: Roboto-Regular;
-  font-size: 20px;
-}
-.modal .modal-title {
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 22px;
-  color: #F9A4A7;
-}
-.modal .message .submit {
-  text-align: center;
-}
-.modal .message .submit button {
-  padding: 6px 25px !important;
-}
-.modal .message .form-group {
-  /*margin-top: 10px;*/
-  margin-bottom: 10px !important;
-}
-.footer-bottom {
-  background-color: #F9A4A7;
-}
-.footer-bottom .brand {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.footer-bottom .brand .list-items {
-  padding: 0px 20px;
-  flex-basis: 10%;
-  overflow: hidden;
-  white-space: nowrap;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-@media only screen and (max-width: 1200px) {
-  .footer-bottom .brand .list-items {
-    padding: 0px 5px;
-    flex-basis: 25%;
   }
 }
 #fb-root .fb_dialog {
@@ -246,13 +165,11 @@
 }
 .copy-right {
   text-align: center;
-  min-height: 45px;
-  font-size: 15px;
+  min-height: 40px;
+  font-size: 13px;
   line-height: 40px;
-  color: #eef0f1;
-  background-color: #F9A4A7;
-  background-repeat: no-repeat;
-  background-size: cover;
+  color: #FFFFFF;
+  background-color: #3F3F3F;
 }
 #hotline {
   bottom: 65px;
@@ -383,29 +300,4 @@
 .ctrlq.fb-close::after {
   content: "X";
   font-family: sans-serif;
-}
-.bubble {
-  width: 20px;
-  height: 20px;
-  background: #c00;
-  color: #fff;
-  position: absolute;
-  z-index: 999999999;
-  text-align: center;
-  vertical-align: middle;
-  top: -2px;
-  left: -5px;
-  border-radius: 50%;
-}
-.bubble-msg {
-  width: 120px;
-  left: -140px;
-  top: 5px;
-  position: relative;
-  background: rgba(59, 89, 152, 0.8);
-  color: #fff;
-  padding: 5px 8px;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 13px;
 }

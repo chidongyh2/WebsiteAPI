@@ -18,6 +18,9 @@
   font-family: 'vlauthenticaregular';
   src: url('../../lib/font-roboto/VLAUTHENTICAREGULAR.OTF') format('truetype');
 }
+body {
+  font-family: Roboto-Regular;
+}
 #backToTop {
   bottom: 15px;
   position: fixed;
@@ -276,7 +279,7 @@
   margin-top: -20px;
   transition: all 0.2s;
   background: #FFFFFF;
-  color: #404040;
+  color: #3F3F3F;
   font-size: 17px;
   border-radius: 50%;
   height: 30px;
@@ -300,7 +303,7 @@
   transition: all 0.2s;
   background: lightgray;
   background: #FFFFFF;
-  color: #404040;
+  color: #3F3F3F;
   font-size: 17px;
   border-radius: 50%;
   height: 30px;
@@ -374,68 +377,6 @@
   color: #eef0f1;
   text-align: center;
 }
-#news-hot .container .row .titlebar {
-  color: #F9A4A7;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: VLALLROUNDGOTHIC-BOOK !important;
-}
-@media only screen and (max-width: 1200px) {
-  #news-hot .container .row .titlebar {
-    font-size: 22px;
-  }
-}
-#news-hot .container .row .titlebar:before,
-#news-hot .container .row .titlebar:after {
-  width: 5%;
-  height: 2px;
-  background: #F9A4A7;
-  content: '';
-  display: inline-block;
-  color: white;
-  top: -10px;
-  position: relative;
-  margin: 0px 15px;
-}
-@media only screen and (max-width: 1200px) {
-  #news-hot .container .row .titlebar:before {
-    width: 8%;
-    height: 2px;
-    background: #F9A4A7;
-    content: '';
-    display: inline-block;
-    color: white;
-    top: -5px;
-    position: relative;
-    margin: 0px 5px 0px 0px;
-  }
-  #news-hot .container .row .titlebar:after {
-    width: 8%;
-    height: 2px;
-    background: #F9A4A7;
-    content: '';
-    display: inline-block;
-    color: white;
-    top: -5px;
-    position: relative;
-    margin: 0px 0px 0px 5px;
-  }
-}
-#news-hot .container .row .descriptionbar {
-  font-family: vlauthenticaregular;
-  color: #C6C6C6;
-}
-@media only screen and (max-width: 1200px) {
-  #news-hot .container .row .descriptionbar {
-    font-size: 16px !important;
-    margin-top: 5px;
-    font-weight: 100 !important;
-    word-spacing: 1.5px;
-  }
-}
-#news-hot .container .row .wrap-hr {
-  padding-top: 15px;
-}
 #news-hot .container .item-hot .even {
   padding-left: 7px;
 }
@@ -481,10 +422,6 @@
   }
 }
 #news-introduce {
-  /*background-image: url('../../images/bgr-web/background-image/nen-pc_06.jpg');*/
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
   padding-top: 100px;
   padding-bottom: 60px;
   height: 680px;
@@ -496,58 +433,6 @@
   #news-introduce {
     height: auto !important;
     padding: 30px 0px;
-  }
-}
-#news-introduce .titlebar {
-  color: #F9A4A7;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: VLALLROUNDGOTHIC-BOOK !important;
-}
-#news-introduce .titlebar:before,
-#news-introduce .titlebar:after {
-  width: 5%;
-  height: 2px;
-  background: #F9A4A7;
-  content: '';
-  display: inline-block;
-  color: white;
-  top: -10px;
-  position: relative;
-  margin: 0px 15px;
-}
-@media only screen and (max-width: 1200px) {
-  #news-introduce .titlebar:before {
-    width: 8%;
-    height: 2px;
-    background: #F9A4A7;
-    content: '';
-    display: inline-block;
-    color: white;
-    top: -5px;
-    position: relative;
-    margin: 0px 5px 0px 0px;
-  }
-  #news-introduce .titlebar:after {
-    width: 8%;
-    height: 2px;
-    background: #F9A4A7;
-    content: '';
-    display: inline-block;
-    color: white;
-    top: -5px;
-    position: relative;
-    margin: 0px 0px 0px 5px;
-  }
-}
-#news-introduce .descriptionbar {
-  font-family: vlauthenticaregular;
-  color: #C6C6C6;
-}
-@media only screen and (max-width: 1200px) {
-  #news-introduce .descriptionbar {
-    font-size: 16px;
-    padding-bottom: 20px;
   }
 }
 #news-introduce .wrap-hr {
@@ -577,19 +462,12 @@
   background: #F9A4A7;
   border-radius: 30px 20px;
   margin: 5px 8px !important;
-  /*padding: 0px 1px 2px 10px;*/
 }
 @media only screen and (max-width: 1200px), only screen and (min-width: 768px) and (max-width: 992px) {
   #news-introduce .wrap-item .item .wrap-image {
     border-radius: 20px 10px !important;
     padding: 0px 0px 0px 5px;
     margin: unset !important;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  #news-introduce .wrap-item .item .wrap-image {
-    /*width: 280px;
-                    height: 280px;*/
   }
 }
 #news-introduce .wrap-item .item .wrap-image img {
@@ -729,23 +607,6 @@
     padding: 0px !important;
   }
 }
-.news-angency #wrap-subintroduce .wrap-content #video #wrap-next .titlebar {
-  font-size: 20px;
-  padding: 6px 12px;
-  color: #F9A4A7;
-  text-transform: uppercase;
-  background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%) !important;
-  font-family: Roboto-Bold;
-  border-radius: 6px;
-  box-shadow: 3px 3px 5px 3px lightgrey;
-  margin-top: 0px;
-}
-@media only screen and (max-width: 1200px) {
-  .news-angency #wrap-subintroduce .wrap-content #video #wrap-next .titlebar {
-    margin: 20px 0px;
-    font-size: 16px !important;
-  }
-}
 @media only screen and (min-width: 1200px) {
   .news-angency #wrap-subintroduce .wrap-content #video #wrap-next .pull-right {
     margin-right: 20px;
@@ -784,23 +645,6 @@
     margin: 0px !important;
     padding: 0px !important;
     font-size: 16px;
-  }
-}
-.news-angency #wrap-subintroduce .wrap-content #response-customer .wrap-next .titlebar {
-  font-size: 20px;
-  padding: 6px 12px;
-  color: #F9A4A7;
-  text-transform: uppercase;
-  background: linear-gradient(to right, #b57e10 0%, #fff3a6 50%, #b57e10 100%) !important;
-  font-family: Roboto-Bold;
-  border-radius: 4px;
-  box-shadow: 3px 3px 5px 3px lightgrey;
-  margin-top: 0px;
-}
-@media only screen and (max-width: 1200px) {
-  .news-angency #wrap-subintroduce .wrap-content #response-customer .wrap-next .titlebar {
-    font-size: 16px;
-    margin-top: 20px;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -875,66 +719,6 @@
   #newsAndBranch .container {
     padding-top: 20px;
   }
-}
-#newsAndBranch .container .row .titlebar {
-  color: #F9A4A7;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: VLALLROUNDGOTHIC-BOOK !important;
-}
-#newsAndBranch .container .row .titlebar:before,
-#newsAndBranch .container .row .titlebar:after {
-  width: 5%;
-  height: 2px;
-  background: #F9A4A7;
-  content: '';
-  display: inline-block;
-  color: white;
-  top: -10px;
-  position: relative;
-  margin: 0px 15px;
-}
-@media only screen and (max-width: 1200px) {
-  #newsAndBranch .container .row .titlebar:before {
-    width: 8%;
-    height: 2px;
-    background: #F9A4A7;
-    content: '';
-    display: inline-block;
-    color: white;
-    top: -5px;
-    position: relative;
-    margin: 0px 5px 0px 0px;
-  }
-  #newsAndBranch .container .row .titlebar:after {
-    width: 8%;
-    height: 2px;
-    background: #F9A4A7;
-    content: '';
-    display: inline-block;
-    color: white;
-    top: -5px;
-    position: relative;
-    margin: 0px 0px 0px 5px;
-  }
-}
-#newsAndBranch .container .row .descriptionbar {
-  color: #C6C6C6;
-  text-align: center;
-  font-family: vlauthenticaregular;
-  padding-bottom: 40px;
-}
-@media only screen and (max-width: 1200px) {
-  #newsAndBranch .container .row .descriptionbar {
-    padding-bottom: 20px;
-  }
-}
-#newsAndBranch .container .row .wrap-hr {
-  padding-top: 15px;
-}
-#newsAndBranch .container .row .wrap-hr hr {
-  background-color: #F9A4A7;
-  height: 2px;
 }
 @media only screen and (min-width: 1200px) {
   .block-news {
@@ -1090,33 +874,6 @@
     padding: 20px 0px;
   }
 }
-.contact .titlebar {
-  margin-bottom: 50px;
-  font-size: 23px !important;
-  font-family: Roboto-Regular !important;
-  text-align: center;
-  color: #404040;
-  padding-bottom: 5px !important;
-  margin-top: 0px;
-  text-transform: uppercase;
-}
-.contact .titlebar:before,
-.contact .titlebar:after {
-  width: 5%;
-  height: 2px !important;
-  background: #F9A4A7;
-  content: '';
-  display: inline-block;
-  color: white;
-  top: -8px;
-  position: relative;
-  margin: 0px 15px;
-}
-@media only screen and (max-width: 1200px) {
-  .contact .titlebar {
-    padding-top: 0px;
-  }
-}
 .contact .item-contact {
   background-color: #F5F5F5;
   position: relative;
@@ -1175,7 +932,7 @@
 }
 .contact .item-contact .content .value a {
   font-family: Roboto-Regular !important;
-  color: #404040;
+  color: #3F3F3F;
   font-size: 18px;
   text-decoration: none;
 }
@@ -1184,27 +941,6 @@
 }
 .contact .item-contact .value a {
   color: #333 !important;
-}
-.contact .titlebar-angency {
-  font-size: 23px !important;
-  font-family: Roboto-Regular !important;
-  color: #F9A4A7;
-  text-align: center;
-  text-transform: uppercase;
-  width: 100%;
-  margin-bottom: 30px;
-}
-.contact .titlebar-angency:before,
-.contact .titlebar-angency:after {
-  width: 5%;
-  height: 2px !important;
-  background: #F9A4A7;
-  content: '';
-  display: inline-block;
-  color: white;
-  top: -8px;
-  position: relative;
-  margin: 0px 15px;
 }
 .contact .angency-system {
   background-color: #F5F5F5;
@@ -1229,7 +965,7 @@
 }
 .contact .angency-system ul li {
   font-size: 16px;
-  color: #404040;
+  color: #3F3F3F;
   padding: 10px 15px;
   border-bottom: 1px solid #EDEEE9;
   cursor: pointer;
@@ -1272,77 +1008,11 @@
 .breadcrumb .container .row .list-inline li span {
   color: #F9A4A7;
 }
-/*#abums {
-    padding-top: 0px;
-    padding-bottom: 20px;
-    background-image: url('../../images/bgr-web/bgr tin tuc-sk va ld.jpg');
-    background-size: 100% auto;
-    background-position: initial;
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-
-    @media @mobile {
-        background-image: none;
-    }
-
-    .titlebar {
-        color: @color-text;
-        padding-bottom: 5px !important;
-        padding-top: 20px;
-
-        @media @mobile {
-            padding-top: 0px;
-        }
-    }
-
-    hr {
-        margin-bottom: 0px;
-    }
-
-    .btn-toolbar {
-        padding: 25px 0px;
-    }
-
-    .content {
-        .abum-photo {
-            .title-border {
-                padding-bottom: 10px;
-            }
-
-            &:first-child {
-                padding-bottom: 10px;
-            }
-
-            &:last-child {
-                border-bottom: none;
-            }
-        }
-    }
-
-    #social-network {
-        background-color: @main-color;
-
-        .btn-scoical {
-            color: @color-white;
-        }
-    }
-}*/
-#news {
-  /*background-image: url('../../images/bgr web/bgr tin tuc_sk va ld.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;*/
-}
 #news .even {
   background-color: #FFFFFF;
 }
 #news .odd {
   background-color: #f5f5f5;
-}
-#news .titlebar {
-  color: #404040;
-  padding-bottom: 5px !important;
-  padding-top: 20px;
 }
 #news hr {
   margin-bottom: 20px;
@@ -1354,10 +1024,6 @@
   #category-news {
     background-image: none;
   }
-}
-#category-news .titlebar {
-  color: #C6C6C6;
-  font-family: Roboto-Regular !important;
 }
 #category-news hr {
   margin-bottom: 25px;
@@ -1455,12 +1121,6 @@
   .content .list-style-none li {
     margin: 20px 0px;
   }
-}
-#news-detail {
-  /*background-image: url('../../images/bgr-web/bgr trang tin tuc_tin tuc chi tiet.jpg');
-    background-position: inherit;
-    background-repeat: no-repeat;
-    background-size: 100% auto;*/
 }
 @media only screen and (max-width: 1200px) {
   #news-detail {
@@ -1618,7 +1278,7 @@
 .sidebar-event .content ul li a {
   text-transform: uppercase;
   font-size: 18px;
-  color: #404040;
+  color: #3F3F3F;
   font-family: OpenSans;
   transition: 0.3s ease;
 }
@@ -1675,7 +1335,7 @@
 }
 .video-item .title-video a {
   text-decoration: none;
-  color: #404040;
+  color: #3F3F3F;
 }
 .video-item .description {
   padding: 10px;
@@ -1792,20 +1452,44 @@
   font-family: Roboto-Regular !important;
 }
 .titlebar {
-  font-size: 32px;
   font-family: Roboto-Regular !important;
+  color: #F9A4A7;
+  text-align: center;
+  /*font-family: VLALLROUNDGOTHIC-BOOK !important;*/
+}
+.titlebar h3 {
+  margin-bottom: 0px !important;
+  font-size: 32px;
 }
 @media only screen and (max-width: 1200px) {
   .titlebar {
-    font-size: 16px !important;
+    font-size: 22px;
   }
 }
-.descriptionbar {
-  font-size: 30px;
+.titlebar .image:before,
+.titlebar .image:after {
+  width: 100px;
+  height: 1px;
+  background: #f9a4a7;
+  content: '';
+  display: inline-block;
+  color: #fff;
+  top: -7px;
+  position: relative;
+  margin: 0 10px;
 }
 @media only screen and (max-width: 1200px) {
-  .descriptionbar {
-    font-size: 20px;
+  .titlebar .image:before,
+  .titlebar .image:after {
+    width: 50px;
+    height: 1px;
+    background: #F9A4A7;
+    content: '';
+    display: inline-block;
+    color: white;
+    top: -5px;
+    position: relative;
+    margin: 0px 5px 0px 0px;
   }
 }
 .zoom:hover {
@@ -1893,7 +1577,7 @@
 }
 .header .breadcrumb ul li:last-child {
   border-right: none;
-  color: #404040;
+  color: #3F3F3F;
 }
 .header .breadcrumb ul li:first-child {
   padding-left: 0px;

@@ -15,7 +15,6 @@
   <ItemGroup>
     <Content Remove="bundleconfig.json" />
     <Content Remove="compilerconfig.json" />
-    <Content Remove="wwwroot\js\viewmodel\about.viewmodel.es5.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,7 +41,6 @@
     <None Include="wwwroot\fonts\ionicons.svg" />
     <None Include="wwwroot\fonts\Material-Design-Iconic-Font.svg" />
     <None Include="wwwroot\fonts\Material-Design-Iconic-Font.woff2" />
-    <None Include="wwwroot\js\viewmodel\about.viewmodel.es5.js" />
   </ItemGroup>
 
 
@@ -72,9 +70,6 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Home\_MenuContact.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Views\Home\_NewsAndBranch.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\News\CategoryNews.cshtml">
@@ -135,9 +130,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Update="wwwroot\css\less\header.min.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\images\BGR-web\BGR lien he-19.jpg">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>

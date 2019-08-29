@@ -90,7 +90,7 @@ namespace GHM.Website.Nelly.Controllers
 
             if (_cache.TryGetValue($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", out MenuDetailViewModel CategoryMiddleCache))
             {
-                ViewBag.MenuMiddle = CategoryMiddleCache;
+                ViewBag.MenuContact = CategoryMiddleCache;
             }
             else
             {
