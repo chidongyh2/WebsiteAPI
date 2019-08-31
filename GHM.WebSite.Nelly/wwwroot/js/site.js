@@ -38,7 +38,6 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
         var b = $(window).scrollTop();
-        console.log(b);
         if (b > 65 || window.innerWidth < 768) {
             $(".navbar").addClass("navbar-fixed-top");
             //$(".navbar-brand").removeClass("hidden-lg");

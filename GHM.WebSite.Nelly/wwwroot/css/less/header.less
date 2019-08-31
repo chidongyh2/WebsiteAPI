@@ -63,7 +63,7 @@
 }
 
 .wrap-header-top {
-    font-family: Roboto-Regular;
+    font-family: Opensans;
     background-color: @main-color;
     color: @color-white;
     padding: 5px 0px;
@@ -129,16 +129,16 @@
 .header-bottom {
     .navbar-inverse {
         background-color: @background-color;
-        font-size: 14px;
+        font-size: 15px;
         margin-top: 0px !important;
         border: none;
-        font-family: Roboto-Regular;
+        font-family: Opensans;
         width: 100%;
         box-shadow: 0 8px 50px -6px rgba(84,84,120,.26);
 
         @media @mobile {
-            font-size: 14px !important;
-            min-height: 70px;
+            font-size: 15px !important;
+            min-height: 75px;
             background-color: @background-color;
             border: none !important;
             text-transform: uppercase;
@@ -157,8 +157,8 @@
                 display: flex;
                 align-items: center;
                 flex: 1 0 0;
-                max-width: 70px;
-                height: 70px;
+                max-width: 75px;
+                height: 75px;
 
                 @media @mobile {
                     padding-left: 5%;
@@ -272,11 +272,12 @@
                 }
 
                 li {
-                    font-size: 14px;
-                    margin: 0px 5px;
+                    font-size: 15px;
 
                     @media @not_mobile {
                         border: 1px solid none;
+                        border-radius: 20px !important;
+                        margin: 0px 5px;
 
                         a {
                             position: relative;
@@ -284,13 +285,14 @@
                             text-transform: uppercase;
                             color: @color-text !important;
                             background: none !important;
-                            padding: 5px 20px;
+                            padding: 5px 15px;
                             /*padding-bottom: 20px;*/
                             border: 1px solid transparent !important;
                         }
 
                         &:hover, :focus, :active {
                             background-color: @main-color;
+                            border-radius: 10px;
 
                             a {
                                 color: @color-white !important;
@@ -299,7 +301,7 @@
                     }
 
                     @media @mobile {
-                        font-size: 14px !important;
+                        font-size: 15px !important;
                         border-bottom: 1px solid @main-color !important;
 
                         a {
@@ -317,13 +319,13 @@
                             border-bottom: none !important;
 
                             .dropdown-menu {
-                                font-size: 14px !important;
+                                font-size: 15px !important;
                                 border-top: 1px solid @main-color-hover !important;
                             }
 
                             > a {
                                 color: @main-color-hover !important;
-                                font-size: 14px !important;
+                                font-size: 15px !important;
 
                                 .fa-angle-down {
                                     display: none !important;
@@ -345,7 +347,7 @@
                                 border-bottom: none !important;
 
                                 > a {
-                                    font-size: 14px !important;
+                                    font-size: 15px !important;
                                     color: @main-color-hover !important;
 
                                     .fa-angle-down {
@@ -452,7 +454,7 @@
                                         border: none !important;
                                         background-color: rgba(0,0,0,0) !important;
                                         border-radius: unset;
-                                        font-size: 14px !important;
+                                        font-size: 15px !important;
                                         border-bottom: 1px solid transparent !important;
                                     }
                                 }
@@ -494,14 +496,14 @@
                             border: none !important;
                             background-color: #fafafa !important;
                             border-radius: unset;
-                            font-size: 14px !important;
+                            font-size: 15px !important;
 
                             @media @mobile {
                                 padding: 3px 0px !important;
                             }
 
                             a {
-                                font-size: 14px;
+                                font-size: 15px;
                                 color: @color-text !important;
                                 border: none !important;
                                 border-radius: unset;

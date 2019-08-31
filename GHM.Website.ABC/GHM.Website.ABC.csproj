@@ -7,7 +7,6 @@
   <ItemGroup>
     <Content Remove="wwwroot\js\viewmodel\about.viewmodel.es5.js" />
   </ItemGroup>
-
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\js\viewmodel\about.viewmodel.es5.js" />
   </ItemGroup>

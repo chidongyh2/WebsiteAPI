@@ -1,6 +1,6 @@
 ﻿@font-face {
-  font-family: 'Regular';
-  src: url('../../lib/Font-Roboto/fa-regular-400.tff') format('truetype');
+  font-family: 'Opensans';
+  src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Roboto-Bold';
@@ -11,27 +11,29 @@
   src: url('../../lib/font-roboto/roboto-regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'VLALLROUNDGOTHIC-BOOK';
-  src: url('../../lib/Font-Roboto/VLALLROUNDGOTHIC-BOOK.OTF') format('truetype');
+  font-family: 'PlayfairDisplay-Regular';
+  src: url('../../lib/playfair-display/playfairdisplay-regular.otf') format('opentype');
 }
 @font-face {
-  font-family: 'vlauthenticaregular';
-  src: url('../../lib/font-roboto/VLAUTHENTICAREGULAR.OTF') format('truetype');
+  font-family: 'PlayfairDisplay-Bold';
+  src: url('../../lib/playfair-display/playfairdisplay-bold.otf') format('opentype');
 }
 #footer {
   background-color: #FEEFEC;
+  padding: 30px 0px;
 }
 @media only screen and (min-width: 1200px) {
   #footer .row {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
   }
 }
 #footer .logo {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  flex-direction: column;
 }
 @media only screen and (max-width: 1200px) {
   #footer .logo {
@@ -39,115 +41,40 @@
   }
 }
 #footer .logo img {
-  width: 160px;
+  width: 120px;
 }
-@media only screen and (min-width: 1200px) {
-  #footer #wrap-content-branch {
-    border-right: 1px solid white;
-    border-left: 1px solid white;
-  }
+#footer .logo ul {
+  margin-left: 0px !important;
+  margin-top: 10px;
 }
-#footer #wrap-content-branch .contact-info {
-  list-style-type: none;
+#footer .logo ul li a {
   color: #3F3F3F;
+}
+#footer .short-link .title {
+  margin-top: 0px;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-family: PlayfairDisplay-Bold;
+  color: #3F3F3F;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #3F3F3F;
+}
+#footer .short-link ul {
+  list-style: none;
   padding-left: 0px;
-  font-family: Roboto-Regular;
 }
-@media only screen and (min-width: 1200px) {
-  #footer #wrap-content-branch .contact-info {
-    padding: 0px 15px;
-  }
+#footer .short-link ul li {
+  padding: 3px 0px;
+  color: #3F3F3F !important;
+  font-size: 15px;
+  font-family: Opensans;
 }
-#footer #wrap-content-branch .contact-info ul {
-  list-style-type: none;
-  padding-left: 0px;
-}
-@media only screen and (max-width: 1200px) {
-}
-#footer #wrap-content-branch .contact-info ul .branch {
-  background-image: linear-gradient(to right, #ffffff, rgba(255, 0, 0, 0));
-}
-#footer #wrap-content-branch .contact-info ul .branch h6 {
-  font-weight: bold;
-  font-size: 22px !important;
-  color: #F9A4A7 !important;
-  font-family: Roboto-Regular;
-}
-#footer #wrap-content-branch .contact-info ul li {
-  padding: 3px 2px;
-  color: #eef0f1;
-  font-size: 16px !important;
-  font-family: Roboto-Regular;
-  font-size: 14px;
-}
-#footer #wrap-content-branch .contact-info ul li i {
+#footer .short-link ul li i {
   padding-right: 5px;
 }
-#footer #wrap-content-branch .contact-info ul li i:before {
-  padding-left: 2px;
-}
-#footer #wrap-content-branch .contact-info ul li a {
-  color: #eef0f1;
-  font-size: 16px !important;
-}
-#footer #wrap-content-branch .contact-info ul li a:hover {
+#footer .short-link ul li a {
+  color: #3F3F3F !important;
   text-decoration: none;
-}
-#footer .social-info {
-  font-family: Roboto-Regular !important;
-}
-@media only screen and (min-width: 1200px) {
-  #footer .social-info {
-    padding-left: 25px;
-  }
-}
-@media only screen and (max-width: 1200px) {
-  #footer .social-info {
-    text-align: center;
-  }
-}
-#footer .social-info .hotline {
-  font-weight: bold;
-  font-size: 21px !important;
-  font-family: Roboto-Regular !important;
-}
-#footer .social-info .hotline-value {
-  font-weight: bold;
-  font-size: 37px !important;
-  font-family: Roboto-Regular !important;
-}
-#footer .social-info .btn-scocial i {
-  color: #686868;
-  border-radius: 50%;
-  background: white;
-  font-size: 32px;
-}
-#footer .social-info .btn-scocial .fa-facebook {
-  padding: 6px 13px;
-}
-#footer .social-info .btn-scocial .fa-linkedin {
-  padding: 6px 9px;
-}
-#footer .social-info .btn-scocial .fa-twitter {
-  padding: 6px 8px;
-}
-#footer .social-info .btn-scocial .fa-google-plus {
-  padding: 6px 3px;
-}
-#footer .social-info .btn-scocial .fa-youtube {
-  padding: 5px 8px;
-}
-@media only screen and (max-width: 1200px) {
-  #footer .btn-message {
-    width: 100%;
-    text-align: center;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 992px) {
-  #footer .btn-message {
-    width: 100%;
-    text-align: center;
-  }
 }
 #fb-root .fb_dialog {
   z-index: 988 !important;

@@ -72,6 +72,12 @@
     <Content Update="Views\Home\_MenuContact.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Home\_Branch.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_Video.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\News\CategoryNews.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

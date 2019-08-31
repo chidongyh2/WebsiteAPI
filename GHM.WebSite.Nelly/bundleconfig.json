@@ -12,7 +12,8 @@
   {
     "outputFileName": "wwwroot/js/home.min.js",
     "inputFiles": [
-      "wwwroot/js/home.js"
+      "wwwroot/js/home.js",
+      "wwwroot/js/viewmodel/about.viewmodel.js"
     ]
   },
   {

@@ -74,189 +74,6 @@ body {
     }
 }
 
-.lSAction {
-    .lSPrev {
-        position: absolute;
-        top: 50%;
-        left: -60px;
-        margin-top: -20px;
-        color: @main-color;
-        font-size: 40px !important;
-        height: 40px;
-        line-height: 40px;
-        width: 40px;
-
-        &:hover {
-            color: @color-white;
-        }
-    }
-
-    .lSNext {
-        position: absolute;
-        top: 50%;
-        right: -60px;
-        margin-top: -20px;
-        color: @main-color;
-        font-size: 40px !important;
-        height: 40px;
-        line-height: 40px;
-        width: 40px;
-
-        &:hover {
-            color: @color-white;
-        }
-    }
-}
-
-.btn-register {
-    bottom: 70%;
-    position: fixed;
-    z-index: 1000;
-    cursor: pointer;
-    right: 5px;
-    color: white;
-    padding: 7px 15px;
-    font-size: 18px;
-    text-transform: uppercase;
-    border-radius: 4px;
-
-    i {
-        padding-right: 5px;
-    }
-
-    a {
-        color: white;
-        text-decoration: none;
-    }
-
-    animation: colorchange 2 ease infinite; /* animation-name followed by duration in seconds*/
-    /* you could also use milliseconds (ms) or something like 2.5s */
-    -webkit-animation: colorchange 2s ease infinite; /* Chrome and Safari */
-    @keyframes colorchange {
-        0% {
-            background: #33cc33;
-            padding: 9px 17px;
-        }
-
-        25% {
-            background: #00cc00;
-            padding: 7px 15px;
-        }
-
-        50% {
-            background: #88ff4d;
-            padding: 9px 17px;
-        }
-
-        75% {
-            background: #009900;
-            padding: 7px 15px;
-        }
-
-        100% {
-            background: #3bb300;
-            padding: 9px 17px;
-        }
-    }
-
-    @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
-    {
-        0% {
-            background: #33cc33;
-            padding: 9px 17px;
-        }
-
-        25% {
-            background: #00cc00;
-            padding: 7px 15px;
-        }
-
-        50% {
-            background: #88ff4d;
-            padding: 9px 17px;
-        }
-
-        75% {
-            background: #009900;
-            padding: 7px 15px;
-        }
-
-        100% {
-            background: #3bb300;
-            padding: 9px 17px;
-        }
-    }
-}
-
-.btn-hotline {
-    bottom: 50%;
-    position: fixed;
-    z-index: 1000;
-    right: 0px;
-    text-align: center;
-    background-color: #5C8E2B;
-    padding: 7px 15px;
-    border-radius: 4px;
-    color: @color-text-white;
-    animation: hotline 30s ease infinite; /* animation-name followed by duration in seconds*/
-    /* you could also use milliseconds (ms) or something like 2.5s */
-    -webkit-animation: hotline 30s ease infinite; /* Chrome and Safari */
-    @-webkit-keyframes hotline {
-        0% {
-            right: 0px;
-        }
-
-        25% {
-            right: 0px;
-        }
-
-        50% {
-            right: -2000px;
-        }
-
-        75% {
-            right: 0px;
-        }
-
-        100% {
-            right: 0px;
-        }
-    }
-    /* Standard syntax */
-    @keyframes hotline {
-        0% {
-            right: 0px;
-        }
-
-        25% {
-            right: 0px;
-        }
-
-        50% {
-            right: -2000px;
-        }
-
-        75% {
-            right: 0px;
-        }
-
-        100% {
-            right: 0px;
-        }
-    }
-
-    h4 {
-        color: @color-text-white;
-    }
-
-    a {
-        text-decoration: none;
-        color: white;
-        font-size: 18px;
-        font-family: Roboto-Bold;
-    }
-}
-
 #myCarousel {
     .active {
         .item {
@@ -350,6 +167,14 @@ body {
                 border: none !important;
             }
         }
+
+        button {
+            span {
+                position: absolute;
+                top: -1px;
+                right: 13px;
+            }
+        }
     }
 
     &:hover {
@@ -392,7 +217,6 @@ body {
         }
     }
 }
-
 
 #news-hot {
     /*background-image: url('../../images/bgr-web/background-image/nen-pc_05.jpg');*/
@@ -471,7 +295,7 @@ body {
     }
 }
 
-#news-introduce {   
+#news-introduce {
     padding-top: 100px;
     padding-bottom: 60px;
     height: 680px;
@@ -611,182 +435,165 @@ body {
     }
 }
 
-.news-angency {
+#video {
+    padding-top: 60px;
+    padding-bottom: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
     @media @mobile {
-        background-image: none;
+        background-size: auto 100%;
+        padding: 20px 0px;
     }
 
-    #wrap-subintroduce {
-        background-color: #ededed;
+    @media @mobile {
+        background-size: auto 100%;
+    }
 
-        @media @not_mobile {
-            height: 580px;
+    .titlebar {
+        h3 {
+            color: @color-white;
         }
+
+        margin-bottom: 20px;
+
+        .image {
+            &:before, &:after {
+                background-color: @color-white
+            }
+        }
+    }
+
+    .video-container {
+        margin: auto;
+        width: 70%;
+        padding: 15px;
+        background-color: @color-white;
 
         @media @mobile {
-            padding-bottom: 25px;
+            width: 100%;
         }
 
-        .wrap-content {
+        .video-default {
+            position: relative;
 
-            #video {
-                @media @not_mobile {
-                    border-right: 1px solid @main-color;
-                    /*padding-left: 50px;*/
-                    margin-top: 80px;
-                    padding-bottom: 30px;
-                }
-
-                @media @mobile {
-                    margin: 0px !important;
-                    padding: 0px !important;
-                }
-
-                #wrap-content-video {
-                    @media @mobile {
-                        margin: 0px !important;
-                        padding: 0px !important;
-                    }
-
-                    .video-container {
-                        @media @mobile {
-                            margin: 0px !important;
-                            padding: 0px !important;
-                        }
-
-                        .video-default {
-                            iframe {
-                                width: 100% !important;
-                                height: 305px !important;
-                            }
-                        }
-                    }
-                }
-
-                #wrap-next {
-                    font-size: 20px;
-                    color: @main-color;
-                    margin-bottom: 20px;
-
-                    @media @mobile {
-                        margin: 0px !important;
-                        padding: 0px !important;
-                    }
-
-                    .pull-right {
-                        @media @not_mobile {
-                            margin-right: 20px;
-                        }
-
-                        i {
-                            border: 1px solid @main-color;
-                            padding: 3px 10px;
-                            border-radius: 5px;
-
-                            &:hover {
-                                cursor: pointer;
-                            }
-
-                            @media @mobile {
-                                margin-top: 20px;
-                            }
-                        }
-                    }
-                }
-
+            @media @mobile {
                 iframe {
-                    width: 515px !important;
-                    height: 305px !important;
+                    height: 240px !important;
                 }
             }
 
-            #response-customer {
-                @media @not_mobile {
-                    margin-top: 80px;
-                    padding-bottom: 30px;
-                }
+            .content {
+                width: 100%;
+                background-color: none;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
 
-                .wrap-next {
-                    font-size: 20px;
+                .title {
+                    font-size: 24px;
+                    padding: 30px;
+                    color: @color-white;
+
+                    @media @mobile {
+                        font-size: 14px;
+                        padding: 10px;
+                    }
+                }
+            }
+        }
+
+        #video-silder {
+            padding-top: 10px;
+
+            .thumbnail {
+                position: relative;
+                border: none;
+                padding: 0px;
+                margin-bottom: 0px;
+            }
+
+            .item {
+                .selected {
+                    .pause-video {
+                        background-color: rgba(255,0,0,.8);
+                    }
+                }
+            }
+
+            .pause-video {
+                position: absolute;
+                left: 40%;
+                bottom: 33%;
+                font-size: 10px;
+                color: #fff;
+                height: 20px;
+                width: 25px;
+                line-height: 22px;
+                background-color: @color-text;
+                border-radius: 4px;
+                text-align: center;
+                opacity: .8;
+                vertical-align: middle;
+
+                &:hover {
+                    background-color: rgba(255,0,0,.8);
+                }
+            }
+
+            .carousel-caption {
+                p {
                     color: @main-color;
-                    margin-bottom: 20px;
+                    font-size: 25px;
+                }
+            }
 
-                    @media @mobile {
-                        margin: 0px !important;
-                        padding: 0px !important;
-                        font-size: 16px;
-                    }
+            @media @mobile {
+                padding-top: 20px;
+            }
+        }
 
-                    .pull-right {
-                        @media @not_mobile {
-                            margin-right: 20px;
-                        }
+        .lSAction {
+            .lSPrev {
+                left: 0px;
+            }
 
-                        i {
-                            border: 1px solid @main-color;
-                            padding: 3px 10px;
-                            border-radius: 5px;
+            .lSNext {
+                right: 0px;
+            }
 
-                            @media @mobile {
-                                margin-top: 20px;
-                            }
+            a {
+                background-color: @color-white;
+                color: white;
+                width: 25px;
+                height: 25px;
+                text-align: center;
+                vertical-align: middle;
+                margin-top: -4px;
+                top: 50%;
+                border-radius: 50%;
+                opacity: 0.7;
+                border: 2px solid #EEEDEB;
 
-                            &:hover {
-                                cursor: pointer;
-                            }
-                        }
-                    }
+                @media @mobile {
+                    width: 18px;
+                    height: 27px;
+                    top: 50%;
                 }
 
-                .wrap-item {
+                i {
+                    font-size: 11px;
+                    vertical-align: middle;
+                    color: #BDBCC1;
+                    vertical-align: middle;
+                    position: absolute;
+                    top: 7px;
+                    right: 7px;
+
                     @media @mobile {
-                        margin-top: 10px;
-                        padding: 0px;
-                    }
-
-                    .media {
-                        @media @not_mobile {
-                            margin-right: 85px;
-                            max-height: 95px;
-                            overflow: hidden;
-                        }
-
-                        .media-left {
-                            img {
-                                width: 82px;
-                                height: 82px;
-
-                                @media @mobile {
-                                    width: 60px;
-                                    height: 60px;
-                                }
-
-                                border: 1px solid green;
-                                border-radius: 50%;
-                                /* padding-top: 20px; */
-                                margin-top: 10px;
-                            }
-                        }
-
-                        .media-body {
-                            padding-top: 15px;
-                            font-family: Roboto-Regular;
-
-                            @media @mobile {
-                                padding-top: 0px;
-                            }
-
-                            a {
-                                font-weight: bold;
-                                font-size: 16px;
-                                display: block;
-                                color: @main-color;
-
-                                @media @mobile {
-                                    font-size: 14px;
-                                }
-                            }
-                        }
+                        padding-top: 5px;
                     }
                 }
             }
@@ -794,12 +601,20 @@ body {
     }
 }
 
-#newsAndBranch {
-    .container {
-        padding-top: 40px;
+#agency {
+    padding-bottom: 20px;
+    padding-top: 10px;
 
-        @media @mobile {
-            padding-top: 20px;
+    #agencySlider {
+        padding-top: 10px;
+        .item {
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            min-height:90px;
+            img {
+                width:100%;
+            }
         }
     }
 }
@@ -1699,15 +1514,14 @@ body {
     }
 }
 
-
 .titlebar {
-    font-family: Roboto-Regular !important;
-    color: @main-color;
+    font-family: PlayfairDisplay-Regular !important;
     text-align: center;
-    /*font-family: VLALLROUNDGOTHIC-BOOK !important;*/
+
     h3 {
-        margin-bottom: 0px !important;
-        font-size: 32px;
+        margin-bottom: 10px !important;
+        font-size: 50px;
+        color: @color-text;
     }
 
     @media @mobile {
@@ -1718,11 +1532,11 @@ body {
         &:before, &:after {
             width: 100px;
             height: 1px;
-            background: #f9a4a7;
+            background: @main-color;
             content: '';
             display: inline-block;
             color: #fff;
-            top: -7px;
+            top: 0px;
             position: relative;
             margin: 0 10px;
         }
@@ -1848,7 +1662,6 @@ body {
             }
         }
     }
-
     /*min-height: 650px;*/
     @media @mobile {
         height: unset;

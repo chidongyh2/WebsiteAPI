@@ -14,7 +14,7 @@
         <div class="wrap-header-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 hotline" >
+                    @*<div class="col-lg-6 hotline" >
                         <span>
                             @if (websiteSetting?.Hotline != null && websiteSetting.Hotline.Any())
                             {
@@ -25,8 +25,8 @@
                                 <span class="cm-pdl-10"> Email: @officeContact?.ContactValue</span>
                             }
                         </span>
-                    </div>
-                    <div class="col-lg-6">
+                    </div>*@
+                    <div class="col-sm-12">
                         <ul class="list-inline pull-right">
                             <li class="">
                                 <a href="javascript://">
@@ -55,7 +55,8 @@
         <nav class="navbar navbar-inverse navbar-expand-lg">
             <div class="container wrap">
                 <a href="/" class="navbar-brand">
-                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ?  $"{url}{websiteSetting.Logo}": "/images/logo-cu.png" )"
+                    @*{url}{websiteSetting.Logo}*@
+                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ?  $"/images/facion/logo.png": "/images/logo-cu.png" )"
                          alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "Phun xăm thẩm mỹ amiea")"
                          onerror="this.src='/images/no-image.png'" />
                 </a>

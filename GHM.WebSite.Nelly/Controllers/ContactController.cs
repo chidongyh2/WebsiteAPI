@@ -35,11 +35,11 @@ namespace GHM.Website.Nelly.Controllers
         {
             var breadcrumbs = new List<Breadcrumb>
             {
-                new Breadcrumb()
-                {
-                    Name = Resources.Resource.Contact,
-                    IsCurrent = true,
-                }
+                //new Breadcrumb()
+                //{
+                //    Name = Res .Contact,
+                //    IsCurrent = true,
+                //}
             };
 
             ViewBag.Breadcrumb = breadcrumbs;
