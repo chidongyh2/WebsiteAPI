@@ -55,8 +55,7 @@
         <nav class="navbar navbar-inverse navbar-expand-lg">
             <div class="container wrap">
                 <a href="/" class="navbar-brand">
-                    @*{url}{websiteSetting.Logo}*@
-                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ?  $"/images/facion/logo.png": "/images/logo-cu.png" )"
+                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ?  $"{url}{websiteSetting.Logo}": "/images/logo-cu.png" )"
                          alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "Phun xăm thẩm mỹ amiea")"
                          onerror="this.src='/images/no-image.png'" />
                 </a>

@@ -18,18 +18,13 @@
                 <a href="@($"/{Model.SeoLink}.html")" title="@(string.IsNullOrEmpty(Model.MetaTitle) ? Model.Title : Model.MetaTitle)">
                     @(!string.IsNullOrEmpty(Model.Title) ? Common.SubString(Model.Title, 70) : Model.Title)
                 </a>
-            </div>
-            <div class="wrap-interact">
-                <span class="item"><i class="fa fa-eye"> @Model.ViewCount </i> Lượt xem</span>
-                <span class="item"><i class="fa fa-hear-o"> @Model.LikeCount </i> Lượt thích</span>
-                <span class="item"><i class="fa fa-comment-o"> @Model.CommentCount </i> Bình luận</span>
-            </div>
+            </div>            
             <div class="description">
                 <span>@Common.SubString(Model.Description, 150)</span>
             </div>
             <div class="read-more">
                 <a href="@($"/{Model.SeoLink}.html")" title="@(string.IsNullOrEmpty(Model.MetaTitle) ? Model.Title : Model.MetaTitle)"
-                   class="btn btn-main">@Resource.ViewMore <i class="fa fa-angle-double-right"></i></a>
+                   class="btn btn-main"><i class="la la-arrow-right"></i> @Resource.ViewMore </a>
             </div>
         </div>
     </div>

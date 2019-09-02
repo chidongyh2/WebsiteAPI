@@ -4,10 +4,16 @@
 
 <partial name="_MainSlider" model="@mainBanner" />
 <partial name="_MenuContact" />
-<partial name="_MiddleAndNews" />
+@if (ViewBag.NewsHostHomePage != null)
+{
+    <partial name="_NewsHotHomePage" model="ViewBag.NewsHostHomePage"/>
+}
+@if (ViewBag.NewHomePage != null)
+{
+    <partial name="_NewsHomePage.cshtml" model="ViewBag.NewHomePage"/>
+}
 <partial name="_Video" />
 <partial name="_Branch" />
-
 @section scripts {
     <script type="text/javascript" src="~/js/home.min.js"></script>
 }

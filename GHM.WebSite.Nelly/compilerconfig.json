@@ -22,5 +22,9 @@
   {
     "outputFile": "wwwroot/css/less/main.css",
     "inputFile": "wwwroot/css/less/main.less"
+  },
+  {
+    "outputFile": "wwwroot/lib/slick-1.8.1/slick/slick.es5.js",
+    "inputFile": "wwwroot/lib/slick-1.8.1/slick/slick.js"
   }
 ]

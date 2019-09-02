@@ -41,6 +41,22 @@
     <None Include="wwwroot\fonts\ionicons.svg" />
     <None Include="wwwroot\fonts\Material-Design-Iconic-Font.svg" />
     <None Include="wwwroot\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="wwwroot\lib\line-awesome\fonts\line-awesome.svg" />
+    <None Include="wwwroot\lib\line-awesome\fonts\line-awesome.woff2" />
+    <None Include="wwwroot\lib\slick-1.8.1\.gitignore" />
+    <None Include="wwwroot\lib\slick-1.8.1\CONTRIBUTING.markdown" />
+    <None Include="wwwroot\lib\slick-1.8.1\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\lib\slick-1.8.1\LICENSE" />
+    <None Include="wwwroot\lib\slick-1.8.1\Makefile" />
+    <None Include="wwwroot\lib\slick-1.8.1\README.markdown" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\config.rb" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\fonts\slick.svg" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick-theme.less" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick-theme.scss" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.js" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.less" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.min.js" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.scss" />
   </ItemGroup>
 
 

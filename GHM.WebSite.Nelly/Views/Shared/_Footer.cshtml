@@ -49,7 +49,6 @@
             <li>
                 <div id="zalo-root">
                     <div class="zalo-chat-widget" data-oaid="@websiteSetting.ZaloId" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="500" data-height="500"></div>
-
                     <script src="https://sp.zalo.me/plugins/sdk.js"></script>
                 </div>
             </li>
@@ -67,7 +66,7 @@
             <div class="col-sm-3 logo">
                 <a href="/" title="@websiteSetting?.Brand">
                     @*$"{ViewBag.Url}{websiteSetting.Logo}"*@
-                    <img class="img-responsive lazy" data-src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? $"/images/facion/logo.png" : "/images/facion/logo.png" )"
+                    <img class="img-responsive lazy" data-src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? $"{ViewBag.Url}{websiteSetting.Logo}" : "/images/facion/logo.png" )"
                          alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) ? websiteSetting?.Brand : ViewBag.Title)" />
                 </a>
                 <ul class="list-inline">

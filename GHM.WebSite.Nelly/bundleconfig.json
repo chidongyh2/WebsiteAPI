@@ -49,7 +49,23 @@
   {
     "outputFileName": "wwwroot/css/plugins.min.css",
     "inputFiles": [
-      "wwwroot/css/plugins.css"
+      "wwwroot/lib/slick-1.8.1/slick/slick.css",
+      "wwwroot/lib/slick-1.8.1/slick/slick-theme.css",
+      "wwwroot/lib/toastr/toastr.min.css",
+      "wwwroot/css/plugins.css",
+      "wwwroot/lib/line-awesome/css/line-awesome.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/plugins.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery.min.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "wwwroot/lib/OwlCarousel2-2.3.4/dist/owl.carousel.min.js",
+      "wwwroot/lib/knockout/knockout-3.4.2.js",
+      "wwwroot/lib/lightslider/js/lightslider.es5.min.js",
+      "wwwroot/lib/jquery.lazy-master/jquery.lazy.es5.min.js",
+      "wwwroot/lib/slick-1.8.1/slick/slick.js"
     ]
   },
   {

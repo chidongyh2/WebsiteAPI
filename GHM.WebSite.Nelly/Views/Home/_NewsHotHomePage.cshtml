@@ -1,0 +1,43 @@
+﻿@model CategoryWidthNewsViewModel
+@{
+    var menuMiddle = ViewBag.MenuMiddle as MenuDetailViewModel;
+    var url = ViewBag.Url;
+    var device = ViewBag.Device;
+}
+
+@if (Model != null)
+{
+    <div id="news-hot-in-homepage">
+        <div class="container">
+            <div class="row">
+                <partial name="_TitleBar" model="Model.CategoryName" />
+            </div>
+            <div class="row cm-mgt-20">
+                <div id="news-slider">
+                    @foreach (var news in Model.ListNews)
+                    {
+                        <div class="item">
+                            <div class="news-image">
+                                <a href="@($"/{Model.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                                    <img class="news-image img-responsive lazy" data-lazy="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}&width=600&height=400")"
+                                         onerror="this.onerror = null;this.src='/images/no-image.png'"
+                                         alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
+                                </a>
+                            </div>
+                            <div class="news-content">
+                                <div class="title">
+                                    <a href="@($"/{news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                                        @(!string.IsNullOrEmpty(news.Title) ? Common.SubString(news.Title, 70) : news.Title)
+                                    </a>
+                                </div>
+                                <div class="description">
+                                    <span>@Common.SubString(news.Description, 150)</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

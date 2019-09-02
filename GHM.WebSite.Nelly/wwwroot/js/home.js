@@ -1,35 +1,36 @@
-﻿$(document).ready(function () {
-    $("#news-slider").lightSlider({
-        item: 4,
-        auto: true,
-        loop: true,
-        slideMove: 1,
-        speed: 1500,
-        pause: 3000,
-        slideEndAnimation: false,
-        slideMargin: 20,
-        pauseOnHover: false,
-        controls: true,
-        prevHtml: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
-        nextHtml: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
-        pager: false
+﻿$(document).ready(function () {      
+    $('#news-slider').slick({
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        arrows: true,
+        dots: false,
+        centerMode: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        prevArrow: '<button class="slick-prev"> < </button>',
+        nextArrow: '<button class="slick-next"> > </button>',
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '0px',
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '0px',
+                    slidesToShow: 1
+                }
+            }
+        ]
     });
 
-    $("#middle-menu-slide").lightSlider({
-        item: 3,
-        auto: false,
-        loop: false,
-        slideMove: 1,
-        speed: 1500,
-        pause: 3000,
-        slideEndAnimation: false,
-        slideMargin: 20,
-        pauseOnHover: false,
-        controls: true,
-        //prevHtml: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
-        //nextHtml: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
-        pager: false
-    });
     $("#myCarousel").owlCarousel({
         items: 1,
         loop: true,
