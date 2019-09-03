@@ -123,12 +123,15 @@
                 <h3 class="title">
                     @Resource.YouInterested
                 </h3>
-                <ul>
-                    <li><a href="javascript://">Đăng ký đại lý</a></li>
-                    <li><a href="javascript://">Chính sách khách hàng</a></li>
-                    <li><a href="javascript://">Tư vấn khách hàng</a></li>
-                    <li><a href="javascript://">FAQs</a></li>
-                </ul>
+                @if (listMenuItem != null && listMenuItem.Any())
+                {
+                    <ul>
+                        @foreach (var item in listMenuItem)
+                        {
+                            <li><a href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" + item.Url)}")" data-toggle="tooltip" title="@item.Name">@item.Name</a></li>
+                        }
+                    </ul>
+                }
             </div>
             <div class="col-sm-3">
                 @if (websiteSetting.Fanpage != null)

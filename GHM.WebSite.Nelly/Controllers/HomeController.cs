@@ -51,17 +51,17 @@ namespace GHM.Website.Nelly.Controllers
         public async Task<ActionResult> Index()
         {
             var apiService = _configuration.GetApiServiceInfo();
-            //if (_cache.TryGetValue($"{CacheParam.Video}{CultureInfo.CurrentCulture.Name}", out List<VideoViewModel> videoCache))
-            //{
-            //    ViewBag.ListVideoHomePage = videoCache;
-            //}
-            //else
-            //{
-            var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
+            if (_cache.TryGetValue($"{CacheParam.Video}{CultureInfo.CurrentCulture.Name}", out List<VideoViewModel> videoCache))
+            {
+                ViewBag.ListVideoHomePage = videoCache;
+            }
+            else
+            {
+                var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
             var listVideoHomePageData = JsonConvert.DeserializeObject<List<VideoViewModel>>(JsonConvert.SerializeObject(listVideoHomePage));
             _cache.Set($"{CacheParam.Video}{CultureInfo.CurrentCulture.Name}", listVideoHomePageData, TimeSpan.FromHours(1));
             ViewBag.ListVideoHomePage = listVideoHomePageData;
-            //}
+            }
            
             var listCategoryWidthNews = await _newsService.GetListCategoryWidthNewsAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 2, true, 10);
             var listNewsData = JsonConvert.DeserializeObject<List<CategoryWidthNewsViewModel>>(JsonConvert.SerializeObject(listCategoryWidthNews?.Items));

@@ -125,7 +125,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GHM.WebSite.Nelly", "GHM.We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GHM.Website.TTMedic", "GHM.Website.TTMedic\GHM.Website.TTMedic.csproj", "{B6BC60BA-9264-4B68-9057-54709FD8B251}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHM.WebsiteClient.Api", "GHM.WebsiteClient.Api\GHM.WebsiteClient.Api.csproj", "{98366A8F-4A8D-40BA-983F-7465217395A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GHM.WebsiteClient.Api", "GHM.WebsiteClient.Api\GHM.WebsiteClient.Api.csproj", "{98366A8F-4A8D-40BA-983F-7465217395A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

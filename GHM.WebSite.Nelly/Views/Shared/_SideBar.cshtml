@@ -1,0 +1,48 @@
+﻿@{
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+}
+
+<ul class="layout_sidebar">
+    <li class="">
+        <a href="javascript://" data-toggle="tooltip" title="Mạng lưới Nellydevusyst">
+            <i class="la la-street-view"> </i>
+            <span> Mạng lưới Nellydevusyst</span>
+        </a>
+    </li>
+    <li>
+        <a href="javascript://" data-toggle="Giỏ hàng" title="Hooray">
+            <i class="la la-shopping-cart size16"> </i>
+            <span> Giỏ hàng</span>
+        </a>
+    </li>
+    <li>
+        <a href="javascript://" data-toggle="tooltip" title="Trở thành đại lý">
+            <i class="la la-users"> </i>
+            <span> Trở thành đại lý</span>
+        </a>
+    </li>
+    <li>
+        <a href="javascript://" data-toggle="tooltip" title="Liên hệ">
+            <i class="la la-asterisk"> </i>
+            <span> Liên hệ</span>
+        </a>
+        <div>
+            <ul class="list-inline">
+                @if (listSocialNetWork != null && listSocialNetWork.Any())
+                {
+                    @foreach (var socialNetwork in listSocialNetWork)
+                    {
+                        <li class="list-items">
+                            <a href="@socialNetwork.Url" class="btn-scocial">
+                                @if (!string.IsNullOrEmpty(socialNetwork.Icon))
+                                {
+                                    <i class="fa @(socialNetwork.Icon)"></i>
+                                }
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </li>
+</ul>

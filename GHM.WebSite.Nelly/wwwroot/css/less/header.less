@@ -74,7 +74,6 @@
     .hotline {
         /*display: flex;
         align-items: center;*/
-
         span {
             padding-left: 0px;
             float: unset;
@@ -416,7 +415,8 @@
                     .active {
                         @media @not_mobile {
                             color: @color-white !important;
-                            background-color: @main-color;
+                            background-color: @main-color !important;
+                            border-radius: 20px;
                         }
                     }
 
@@ -536,6 +536,77 @@
 
                     color: @main-color;
                 }
+            }
+        }
+    }
+}
+
+.layout_sidebar {
+    position: fixed;
+    list-style: none;
+    right: 0px;
+    top: 30%;
+    z-index: 9999;
+    transition: 1s ease-in-out;
+
+    li {
+        padding: 10px;
+        margin-bottom: 5px;
+        background-color: @main-color;
+        border-bottom-left-radius: 20px;
+        border-top-left-radius: 20px;
+        box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+
+        a {
+            color: @color-white;
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-family: Opensans;
+            display: inline-block;
+
+            i {
+                font-size: 24px;
+            }
+
+            span {
+                transition: 1s ease-in-out;
+                text-transform: uppercase;
+                display: none;
+            }
+        }
+
+        ul {
+            transition: 1s ease-in-out;
+            display: none;
+
+            li {
+                width: 150px;
+                background-color: transparent;
+                border-bottom-left-radius: unset;
+                border-top-left-radius: unset;
+                box-shadow: none;
+                padding: 0px 5px;
+                margin-bottom: 0px;
+                width: unset;
+
+                i {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+    &:hover {
+        li {
+            a {
+                span {
+                    display: inline-block;
+                }
+            }
+
+            ul {
+                display: inline-block;
             }
         }
     }

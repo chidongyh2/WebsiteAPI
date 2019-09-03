@@ -1,9 +1,7 @@
-﻿$(document).ready(function () {      
+﻿$(document).ready(function () {
     $('#news-slider').slick({
         slidesToShow: 5,
         slidesToScroll: 5,
-        arrows: true,
-        dots: false,
         centerMode: true,
         autoplay: true,
         autoplayTimeout: 3000,
@@ -11,9 +9,8 @@
         nextArrow: '<button class="slick-next"> > </button>',
         responsive: [
             {
-                breakpoint: 768,
+                breakpoint: 1024,
                 settings: {
-                    arrows: false,
                     centerMode: true,
                     centerPadding: '0px',
                     slidesToShow: 3
@@ -22,7 +19,6 @@
             {
                 breakpoint: 480,
                 settings: {
-                    arrows: false,
                     centerMode: true,
                     centerPadding: '0px',
                     slidesToShow: 1
@@ -76,7 +72,7 @@
                 }
             }
         ]
-    });   
+    });
 
     $("#agencySlider").lightSlider({
         item: 12,
@@ -109,4 +105,33 @@
             }
         ]
     });
+
+    if(window.innerWidth < 768) {
+        $("#menuMiddlerSlider").slick({
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            prevArrow: '<button class="slick-prev"> < </button>',
+            nextArrow: '<button class="slick-next"> > </button>',
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '0px',
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '0px',
+                        slidesToShow: 2
+                    }
+                }
+            ]
+        });
+    }
+
+    $('[data-toggle="tooltip"]').tooltip(); 
 });

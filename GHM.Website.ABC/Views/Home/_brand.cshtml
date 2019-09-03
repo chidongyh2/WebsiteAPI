@@ -17,7 +17,6 @@
                         {
                             <div class="item">
                                 <div class="thumbnail-image">
-
                                     <img class="img-responsive lazy" src="@($"/image?url={(string.IsNullOrEmpty(brand.Logo) ? "/images/no-image.png" : $"{ViewBag.Url}{brand.Logo}")}&width=120&height=120")"
                                          onerror="this.src='/images/no-image.png'"
                                          alt="@brand.Name" />
