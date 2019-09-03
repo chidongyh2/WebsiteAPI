@@ -135,6 +135,7 @@ namespace GHM.Warehouse.Api.Controllers
             var result = await _productService.GetProductTranslationById(CurrentUser.TenantId, id);
             return Ok(result);
         }
+
         #region ProductAttribute
         //[Route("{id}/values"), AcceptVerbs("POST"), ValidateModel]
         //[AllowPermission(PageId.Product, Permission.Insert)]

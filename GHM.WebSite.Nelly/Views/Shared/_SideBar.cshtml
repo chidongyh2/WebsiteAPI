@@ -1,39 +1,54 @@
 ﻿@{
-    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>
+    ;
 }
 
 <ul class="layout_sidebar">
     <li class="">
-        <a href="javascript://" data-toggle="tooltip" title="Mạng lưới Nellydevusyst">
-            <i class="la la-street-view"> </i>
-            <span> Mạng lưới Nellydevusyst</span>
-        </a>
+        <div class="item-left">
+            <a href="javascript://" data-toggle="tooltip" title="Mạng lưới Nellydevusyst">
+                <i class="la la-street-view"> </i>
+            </a>
+        </div>
+        <div class="item-right">
+            <a href="javascript://" data-toggle="tooltip" title="Mạng lưới Nellydevusyst"><span> Mạng lưới Nellydevusyst</span></a>
+        </div>
     </li>
     <li>
-        <a href="javascript://" data-toggle="Giỏ hàng" title="Hooray">
-            <i class="la la-shopping-cart size16"> </i>
-            <span> Giỏ hàng</span>
-        </a>
+        <div class="item-left">
+            <a href="javascript://" data-toggle="tooltip" title="Giỏ hàng">
+                <i class="la la-shopping-cart"> </i>
+            </a>
+        </div>
+        <div class="item-right">
+            <a href="javascript://" data-toggle="tooltip" title=" Giỏ hàng"><span> Giỏ hàng</span></a>
+        </div>
     </li>
     <li>
-        <a href="javascript://" data-toggle="tooltip" title="Trở thành đại lý">
-            <i class="la la-users"> </i>
-            <span> Trở thành đại lý</span>
-        </a>
+        <div class="item-left">
+            <a href="javascript://" data-toggle="tooltip" title="Trở thành đại lý">
+                <i class="la la-users"> </i>
+            </a>
+        </div>
+        <div class="item-right">
+            <a href="javascript://" data-toggle="tooltip" title="Trở thành đại lý"><span> Trở thành đại lý</span></a>
+        </div>
     </li>
     <li>
-        <a href="javascript://" data-toggle="tooltip" title="Liên hệ">
-            <i class="la la-asterisk"> </i>
-            <span> Liên hệ</span>
-        </a>
-        <div>
+        <div class="item-left">
+            <a href="javascript://" data-toggle="tooltip" title="Liên hệ">
+                <i class="la la-asterisk"> </i>               
+            </a>
+        </div>
+        <div class="item-right">
+            <a href="javascript://" data-toggle="tooltip" title="Liên hệ"><span> Liên hệ</span></a>
             <ul class="list-inline">
                 @if (listSocialNetWork != null && listSocialNetWork.Any())
                 {
                     @foreach (var socialNetwork in listSocialNetWork)
                     {
                         <li class="list-items">
-                            <a href="@socialNetwork.Url" class="btn-scocial">
+                            <a href="@socialNetwork.Url">
                                 @if (!string.IsNullOrEmpty(socialNetwork.Icon))
                                 {
                                     <i class="fa @(socialNetwork.Icon)"></i>

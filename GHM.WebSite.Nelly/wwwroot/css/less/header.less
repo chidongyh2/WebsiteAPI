@@ -4,8 +4,8 @@
 .navbar-fixed-top {
     background-color: @main-color;
     border-bottom: none;
-    min-height: 100px;
-    /*transition: background-color 2s ease-out;*/
+    min-height: 70px;
+    transition: background-color 2s ease-out;
 }
 
 /*.scroll-fixed-navbar {
@@ -550,12 +550,18 @@
     transition: 1s ease-in-out;
 
     li {
-        padding: 10px;
-        margin-bottom: 5px;
+        padding: 5px;
+        margin-bottom: 3px;
         background-color: @main-color;
-        border-bottom-left-radius: 20px;
-        border-top-left-radius: 20px;
-        box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+        border-bottom-left-radius: 30px;
+        border-top-left-radius: 30px;
+        box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        max-width: 150px;
+        padding-left: 12px;
+        min-height: 45px;
 
         a {
             color: @color-white;
@@ -568,20 +574,35 @@
             i {
                 font-size: 24px;
             }
+        }
+
+        .item-left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 5px;
+        }
+
+        .item-right {
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
 
             span {
                 transition: 1s ease-in-out;
                 text-transform: uppercase;
-                display: none;
+                /*display: none;*/
             }
         }
 
         ul {
+            padding-left: 0px;
             transition: 1s ease-in-out;
-            display: none;
+            list-style: none;
 
             li {
-                width: 150px;
+                width: 120px;
                 background-color: transparent;
                 border-bottom-left-radius: unset;
                 border-top-left-radius: unset;
@@ -589,6 +610,7 @@
                 padding: 0px 5px;
                 margin-bottom: 0px;
                 width: unset;
+                display: inline;
 
                 i {
                     font-size: 12px;
@@ -598,16 +620,8 @@
     }
 
     &:hover {
-        li {
-            a {
-                span {
-                    display: inline-block;
-                }
-            }
-
-            ul {
-                display: inline-block;
-            }
+        .item-right {
+            display: flex;
         }
     }
 }

@@ -86,6 +86,7 @@ namespace GHM.Website.Nelly
             builder.Populate(services);
 
             builder.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("WebsiteConnectionString")));
+            //builder.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("WarehouseConnectionString")));
             builder.RegisterModule(new ValidationModule());
             var autofacServiceProvider = new AutofacServiceProvider(builder.Build());
             return autofacServiceProvider;
