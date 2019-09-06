@@ -9,9 +9,11 @@ using GHM.Infrastructure.Services;
 using GHM.Infrastructure.ViewModels;
 using GHM.Website.Nelly.Models;
 using GHM.Website.Nelly.ViewModels;
+using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -19,21 +21,24 @@ namespace GHM.Website.Nelly.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
-        public NewsController(IConfiguration configuration, IMemoryCache cache) : base(configuration, cache)
+        private readonly INewsService _newsService;
+        public NewsController(IConfiguration configuration, IMemoryCache cache, INewsService newsService, IBranchContactService branchContactService,
+            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
+            : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService, languageService)
         {
+            _newsService = newsService;
             _configuration = configuration;
             _cache = cache;
         }
-        [Route("view-more-news"), AcceptVerbs("POST")]
-        public async Task<IActionResult> GetNewsByCategory(string categoryId, int page = 3, int pageSize = 6)
-        {
-            var requestUrl = _configuration.GetApiUrl();
-            var apiService = _configuration.GetApiServiceInfo();
-            var httpService = new HttpClientService();
-            var listNews = await httpService.GetAsync<ActionResultResponse<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategoryById/{apiService.TenantId}/{categoryId}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
-            var item = listNews?.Data;
 
-            return Json(listNews.Data.ListNews);
+        [Route("view-more-news"), AcceptVerbs("POST")]
+        public async Task<IActionResult> GetNewsByCategory(int categoryId, int page = 3, int pageSize = 6)
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+
+            var listNews = await _newsService.GetNewsByCategoryIdAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, categoryId, page, pageSize);
+            var listNewsData = JsonConvert.DeserializeObject<CategoryWidthNewsViewModel>(JsonConvert.SerializeObject(listNews.Data));
+            return Json(listNewsData.ListNews);
         }
 
         //[Route("tin-tuc")]
@@ -78,36 +83,36 @@ namespace GHM.Website.Nelly.Controllers
         //        }
         //    }
 
-            //var categoryInfo = await httpClientService.GetAsync<CategoryTranslationViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/category/{apiService.TenantId}/{seoLink}/{CultureInfo.CurrentCulture.Name}");
-            //ViewBag.CategoryInfo = categoryInfo;
+        //var categoryInfo = await httpClientService.GetAsync<CategoryTranslationViewModel>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/category/{apiService.TenantId}/{seoLink}/{CultureInfo.CurrentCulture.Name}");
+        //ViewBag.CategoryInfo = categoryInfo;
 
-            //if (categoryInfo?.ChildCount > 0)
-            //{
-            //    var listCategoryWidthNews = await httpClientService.GetAsync<SearchResult<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/get-news-width-parent-category/{apiService.TenantId}/{seoLink}/5/{CultureInfo.CurrentCulture.Name}");
-            //    ViewBag.ListCategoryWidthNews = listCategoryWidthNews?.Items;
-            //}
-            //else
-            //{
-            //var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/{seoLink}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
-            //    ViewBag.ListNews = listNews?.Items;
-            //    ViewBag.TotalRows = listNews?.TotalRows;
-            //}
+        //if (categoryInfo?.ChildCount > 0)
+        //{
+        //    var listCategoryWidthNews = await httpClientService.GetAsync<SearchResult<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/get-news-width-parent-category/{apiService.TenantId}/{seoLink}/5/{CultureInfo.CurrentCulture.Name}");
+        //    ViewBag.ListCategoryWidthNews = listCategoryWidthNews?.Items;
+        //}
+        //else
+        //{
+        //var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/{seoLink}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+        //    ViewBag.ListNews = listNews?.Items;
+        //    ViewBag.TotalRows = listNews?.TotalRows;
+        //}
 
-            //ViewBag.SeoLink = seoLink;
-            //ViewBag.Page = page;
+        //ViewBag.SeoLink = seoLink;
+        //ViewBag.Page = page;
 
-            //var breadcrumbs = new List<Breadcrumb>
-            //{
-            //     new Breadcrumb()
-            //    {
-            //        Name = categoryInfo.Name,
-            //        IsCurrent = true,
-            //    },
-            //};
+        //var breadcrumbs = new List<Breadcrumb>
+        //{
+        //     new Breadcrumb()
+        //    {
+        //        Name = categoryInfo.Name,
+        //        IsCurrent = true,
+        //    },
+        //};
 
-            //ViewBag.Breadcrumb = breadcrumbs;
+        //ViewBag.Breadcrumb = breadcrumbs;
 
-            //return View("../Home/Index");
+        //return View("../Home/Index");
         //}
 
         //[Route("{seoLink}.html")]

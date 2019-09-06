@@ -36,6 +36,7 @@ namespace GHM.WebsiteClient.Api.Controllers
             var result = await _categoryService.GetCategoryHomePageAsync(tenantId, languageId ?? CultureInfo.CurrentCulture.Name);
             return Ok(result);
         }
+
         [Route("sitemap/{tenantId}/{languageId?}")]
         public async Task<IActionResult> GetSeoLinlForSiteMap(string tenantId, string languageId)
         {

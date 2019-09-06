@@ -295,7 +295,8 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
             }
         }
 
-        public async Task<SearchResult<CategoryWidthNewsViewModel>> GetListCategoryWidthNewsAsync(string tenantId, string languageId, int selectTop, bool isHomePage)
+        public async Task<SearchResult<CategoryWidthNewsViewModel>> GetListCategoryWidthNewsAsync(string tenantId,
+            string languageId, int selectTop, bool isHomePage, int selectTopNews)
         {
             try
             {
@@ -310,6 +311,8 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     param.Add("@tenantId", tenantId);
                     param.Add("@languageId", languageId);
                     param.Add("@selectTop", selectTop);
+                    param.Add("@isHomePage", isHomePage);
+                    param.Add("@selectTopNews", selectTopNews);
 
                     using (var multi = await con.QueryMultipleAsync("[dbo].[spNew_GetListNewsHomePage]", param, commandType: CommandType.StoredProcedure))
                     {

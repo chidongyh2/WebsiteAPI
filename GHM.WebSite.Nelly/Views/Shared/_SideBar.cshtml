@@ -1,0 +1,63 @@
+﻿@{
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>
+    ;
+}
+
+<ul class="layout_sidebar">
+    <li class="">
+        <div class="item-left">
+            <a href="javascript://" data-toggle="tooltip" title="Mạng lưới Nellydevusyst">
+                <i class="la la-street-view"> </i>
+            </a>
+        </div>
+        <div class="item-right">
+            <a href="javascript://" data-toggle="tooltip" title="Mạng lưới Nellydevusyst"><span> Mạng lưới Nellydevusyst</span></a>
+        </div>
+    </li>
+    <li>
+        <div class="item-left">
+            <a href="javascript://" data-toggle="tooltip" title="Giỏ hàng">
+                <i class="la la-shopping-cart"> </i>
+            </a>
+        </div>
+        <div class="item-right">
+            <a href="javascript://" data-toggle="tooltip" title=" Giỏ hàng"><span> Giỏ hàng</span></a>
+        </div>
+    </li>
+    <li>
+        <div class="item-left">
+            <a href="javascript://" data-toggle="tooltip" title="Trở thành đại lý">
+                <i class="la la-users"> </i>
+            </a>
+        </div>
+        <div class="item-right">
+            <a href="javascript://" data-toggle="tooltip" title="Trở thành đại lý"><span> Trở thành đại lý</span></a>
+        </div>
+    </li>
+    <li>
+        <div class="item-left">
+            <a href="javascript://" data-toggle="tooltip" title="Liên hệ">
+                <i class="la la-asterisk"> </i>               
+            </a>
+        </div>
+        <div class="item-right">
+            <a href="javascript://" data-toggle="tooltip" title="Liên hệ"><span> Liên hệ</span></a>
+            <ul class="list-inline">
+                @if (listSocialNetWork != null && listSocialNetWork.Any())
+                {
+                    @foreach (var socialNetwork in listSocialNetWork)
+                    {
+                        <li class="list-items">
+                            <a href="@socialNetwork.Url">
+                                @if (!string.IsNullOrEmpty(socialNetwork.Icon))
+                                {
+                                    <i class="fa @(socialNetwork.Icon)"></i>
+                                }
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </li>
+</ul>

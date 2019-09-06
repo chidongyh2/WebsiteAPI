@@ -28,17 +28,20 @@ IsCurrent = true,
         <div id="category-news">
             <div class="container">
                 <div class="row hidden-sm hidden-xs hidden-md">
-                    <div class="col-lg-9">
+                    <div class="col-sm-12">
+                        <partial name="_TitleBar" model="CategoryWidthNews.CategoryName"/>
+                    </div>
+                    <div class="col-sm-12 cm-mgt-20">
                         <div class="row">
                             @foreach (var news in Model.ListNews)
                             {
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <partial name="_NewsItem" model="news" />
                                 </div>
                             }
                         </div>
                         <div class="row">
-                            <div class="col-lg-12 center">
+                            <div class="col-lg-12" style="text-align:center">
                                 <ul class="pagination">
                                     @if (totalPage > 1)
                                     {
@@ -60,9 +63,6 @@ IsCurrent = true,
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <partial name="_ListNewsHot" model="listNewHot" />
                     </div>
                 </div>
             </div>

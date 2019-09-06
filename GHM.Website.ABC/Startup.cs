@@ -34,8 +34,7 @@ namespace GHM.Website.ABC
             {
                 options.Conventions.Add(new DefaultFromBodyBindingConvention());
                 options.ModelBinderProviders.Insert(0, new DateTimeModelBinderProvider());
-            })
-                .AddJsonFormatters()
+            }).AddJsonFormatters()
                 .AddJsonOptions(options =>
                 {
                     options.SerializerSettings.DateFormatString = "dd/MM/yyyy";
@@ -56,7 +55,7 @@ namespace GHM.Website.ABC
                     })
                     .AddDataAnnotationsLocalization();
 
-           
+
             services.AddWebMarkupMin(
             options =>
             {

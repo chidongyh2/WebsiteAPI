@@ -1,252 +1,72 @@
 ﻿@import "config.less";
 
 #footer {
-    color: @color-white;
-    padding-bottom: 30px;
-    padding-top: 30px;
-    /*background-image: url('../../images/bgr-web/background-image/nen-pc_08.jpg');*/
-    background-position: initial;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    margin-top: -10px;
+    background-color: @background-color-footer;
+    padding: 30px 0px;
+
     @media @not_mobile {
         .row {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start;
+            justify-content: flex-start;
         }
-    }
-
-    .container {
-        .col-sm-4 {
-            @media @mobile {
-                text-align: center;
-            }
-        }
-    }
-
-    @media @mobile {
-        background-size: auto 100%;
     }
 
     .logo {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
 
         @media @mobile {
             padding-bottom: 20px;
         }
 
         img {
-            width: 160px
+            width: 150px
+        }
+
+        ul {
+            margin-left: 0px !important;
+            margin-top: 10px;
+
+            li {
+                a {
+                    color: @color-text;
+                }
+            }
         }
     }
 
-    #wrap-content-branch {
-        @media @not_mobile {
-            border-right: 1px solid white;
-            border-left: 1px solid white;
-        }
-
-        .contact-info {
-            @media @not_mobile {
-                padding: 0px 15px;
-            }
-            list-style-type: none;
+    .short-link {
+        .title {
+            margin-top: 0px;
+            text-transform: uppercase;
+            font-size: 18px;
+            font-family: PlayfairDisplay-Bold;
             color: @color-text;
+            padding-bottom: 10px;
+            border-bottom: 1px solid @color-text;
+        }
+
+        ul {
+            list-style: none;
             padding-left: 0px;
-            font-family: Roboto-Regular;
 
+            li {
+                padding: 3px 0px;
+                color: @color-text !important;
+                font-size: 15px;
+                font-family: Opensans;
 
-            ul {
-                list-style-type: none;
-                padding-left: 0px;
-
-                @media @mobile {
-                    //text-align: center;
+                i {
+                    padding-right: 5px;
                 }
 
-                .branch {
-                    background-image: linear-gradient(to right,rgba(255, 255, 255, 1),rgba(255,0,0,0));
-
-
-                    h6 {
-                        font-weight: bold;
-                        font-size: 22px !important;
-                        color: @main-color !important;
-                        font-family: Roboto-Regular;
-                    }
+                a {
+                    color: @color-text !important;
+                    text-decoration: none;
                 }
-
-                li {
-                    padding: 3px 2px;
-                    color: @color-text-white;
-                    font-size: 16px !important;
-                    font-family: Roboto-Regular;
-
-                    i {
-                        padding-right: 5px;
-
-                        &:before {
-                            padding-left: 2px;
-                        }
-                    }
-
-                    a {
-                        color: @color-text-white;
-                        font-size: 16px !important;
-
-                        &:hover {
-                            text-decoration: none;
-                        }
-                    }
-
-                    font-size: 14px;
-                }
-            }
-        }
-    }
-
-
-
-    .social-info {
-        font-family: Roboto-Regular !important;
-
-        @media @not_mobile {
-            padding-left: 25px;
-        }
-
-        @media @mobile {
-            text-align: center;
-        }
-
-        .hotline {
-            font-weight: bold;
-            font-size: 21px !important;
-            font-family: Roboto-Regular !important;
-        }
-
-        .hotline-value {
-            font-weight: bold;
-            font-size: 37px !important;
-            font-family: Roboto-Regular !important;
-        }
-
-        .btn-scocial {
-            i {
-                color: #686868;
-                border-radius: 50%;
-                background: white;
-                font-size: 32px;
-            }
-
-            .fa-facebook {
-                padding: 6px 13px;
-            }
-
-            .fa-linkedin {
-                padding: 6px 9px;
-            }
-
-            .fa-twitter {
-                padding: 6px 8px;
-            }
-
-            .fa-google-plus {
-                padding: 6px 3px;
-            }
-
-            .fa-youtube {
-                padding: 5px 8px;
-            }
-        }
-    }
-
-    .btn-send-message {
-        text-align: center;
-        background-color: #7aa127;
-        font-family: Roboto-Regular;
-        font-size: 20px !important;
-        width: 175px;
-        height: 45px;
-        border-radius: 10px;
-        margin-left: 5%;
-        border: none;
-        margin-top: 20px;
-        /*@media @tablet {
-            margin-left: 35%;
-        }*/
-        &:hover {
-            color: grey;
-            opacity: 0.6;
-            transform: inherit;
-        }
-    }
-
-    @media @mobile {
-        .btn-message {
-            width: 100%;
-            text-align: center;
-        }
-    }
-
-    @media @tablet {
-        .btn-message {
-            width: 100%;
-            text-align: center;
-        }
-    }
-}
-
-.modal {
-    color: black !important;
-    font-family: Roboto-Regular;
-    font-size: 20px;
-
-    .modal-title {
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 22px;
-        color: @main-color;
-    }
-
-    .message {
-        .submit {
-         
-            text-align: center;
-            button {
-                padding: 6px 25px !important;
-            }
-        }
-
-        .form-group {
-            /*margin-top: 10px;*/
-            margin-bottom: 10px !important;
-        }
-    }
-}
-
-.footer-bottom {
-    background-color: @main-color;
-
-    .brand {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-
-        .list-items {
-            padding: 0px 20px;
-            flex-basis: 10%;
-            overflow: hidden;
-            white-space: nowrap;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            @media @mobile {
-                padding: 0px 5px;
-                flex-basis: 25%;
             }
         }
     }
@@ -257,7 +77,7 @@
         z-index: 988 !important;
         background: none !important;
         border: none !important;
-        box-shadow:none !important;
+        box-shadow: none !important;
         bottom: 120px !important;
         right: 5px !important;
 
@@ -270,14 +90,13 @@
 
 .copy-right {
     text-align: center;
-    min-height: 45px;
-    font-size: 15px;
+    min-height: 40px;
+    font-size: 13px;
     line-height: 40px;
-    color: @color-text-white;
-    background-color: @main-color;
-    background-repeat: no-repeat;
-    background-size: cover;
+    color: @color-white;
+    background-color: @color-text;
 }
+
 #hotline {
     bottom: 65px;
     position: fixed;
@@ -287,10 +106,12 @@
     width: 40px;
     text-align: center;
     line-height: 45px;
+
     img {
         width: 100%;
     }
 }
+
 #message {
     bottom: 63px;
     position: fixed;
@@ -300,6 +121,7 @@
     height: 40px;
     width: 40px;
     line-height: 45px;
+
     img {
         width: 100%;
     }
@@ -310,11 +132,13 @@
         z-index: 1005 !important;
         right: 0px !important;
         bottom: 45px !important;
+
         @media @mobile {
             bottom: 90px !important;
         }
     }
 }
+
 #wrap-root {
     ul {
         li {
@@ -322,6 +146,7 @@
         }
     }
 }
+
 .fb-livechat, .fb-widget {
     display: none
 }
@@ -418,31 +243,4 @@
 .ctrlq.fb-close::after {
     content: "X";
     font-family: sans-serif
-}
-
-.bubble {
-    width: 20px;
-    height: 20px;
-    background: #c00;
-    color: #fff;
-    position: absolute;
-    z-index: 999999999;
-    text-align: center;
-    vertical-align: middle;
-    top: -2px;
-    left: -5px;
-    border-radius: 50%;
-}
-
-.bubble-msg {
-    width: 120px;
-    left: -140px;
-    top: 5px;
-    position: relative;
-    background: rgba(59, 89, 152, .8);
-    color: #fff;
-    padding: 5px 8px;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 13px;
 }

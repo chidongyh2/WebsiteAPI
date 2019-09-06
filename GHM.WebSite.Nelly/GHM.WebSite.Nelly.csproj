@@ -8,14 +8,13 @@
   <ItemGroup>
     <Compile Remove="wwwroot\uploads\**" />
     <Content Remove="wwwroot\uploads\**" />
-    <EmbeddedResource Remove="wwwroot\uploads\**"/>
+    <EmbeddedResource Remove="wwwroot\uploads\**" />
     <None Remove="wwwroot\uploads\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="bundleconfig.json" />
     <Content Remove="compilerconfig.json" />
-    <Content Remove="wwwroot\js\viewmodel\about.viewmodel.es5.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,12 +36,33 @@
   <ItemGroup>
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
-    <None Include="wwwroot\js\viewmodel\about.viewmodel.es5.js" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\fonts\ionicons.svg" />
+    <None Include="wwwroot\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="wwwroot\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="wwwroot\lib\line-awesome\fonts\line-awesome.svg" />
+    <None Include="wwwroot\lib\line-awesome\fonts\line-awesome.woff2" />
+    <None Include="wwwroot\lib\slick-1.8.1\.gitignore" />
+    <None Include="wwwroot\lib\slick-1.8.1\CONTRIBUTING.markdown" />
+    <None Include="wwwroot\lib\slick-1.8.1\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\lib\slick-1.8.1\LICENSE" />
+    <None Include="wwwroot\lib\slick-1.8.1\Makefile" />
+    <None Include="wwwroot\lib\slick-1.8.1\README.markdown" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\config.rb" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\fonts\slick.svg" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick-theme.less" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick-theme.scss" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.js" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.less" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.min.js" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.scss" />
   </ItemGroup>
 
 
   <ItemGroup>
     <ProjectReference Include="..\GHM.Infrastructure\GHM.Infrastructure.csproj" />
+    <ProjectReference Include="..\GHM.WebsiteClient.Api\GHM.WebsiteClient.Api.csproj" />
   </ItemGroup>
 
 
@@ -62,13 +82,16 @@
     <Content Update="Views\Home\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Home\_About.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
     <Content Update="Views\Home\_MainSlider.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Home\_NewsAndBranch.cshtml">
+    <Content Update="Views\Home\_MenuContact.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_Branch.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_Video.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\News\CategoryNews.cshtml">
@@ -131,9 +154,6 @@
     <Content Update="wwwroot\css\less\header.min.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\images\BGR-web\BGR lien he-19.jpg">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
 
@@ -143,5 +163,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
+
+
+  <ProjectExtensions><VisualStudio><UserProperties bundleconfig_1json__JsonSchema="http://json.schemastore.org/bungee-plugin" /></VisualStudio></ProjectExtensions>
 
 </Project>

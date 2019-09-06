@@ -18,7 +18,7 @@ namespace GHM.WebsiteClient.Api.Domain.IServices
         Task<ActionResultResponse<CategoryWidthNewsViewModel>> GetNewsByCategoryIdAsync(string tenantId, string languageId, int categoryId, int page, int pageSize);
         Task<NewsClientViewModel> GetClientAsync(string tenantId, string languageId, string seoLink);
         Task<SearchResult<string>> GetAllNewsSeoLinkForSiteMapAsync(string tenantId, string languageId);
-        Task<SearchResult<CategoryWidthNewsViewModel>> GetListCategoryWidthNewsAsync(string tenantId, string languageId, int selectTop, bool isHomePage);
+        Task<SearchResult<CategoryWidthNewsViewModel>> GetListCategoryWidthNewsAsync(string tenantId, string languageId, int selectTop, bool isHomePage, int selectTopNews = 6);
         Task<SearchResult<CategoryWidthNewsViewModel>> GetListCategoryWidthNewsAsync(string tenantId, string languageId, string seolink,int selectTop, bool isHomePage);
         Task<ActionResultResponse<CategoryWidthNewsViewModel>> GetCategoryWithNewsAsync(string tenantId, string languageId, string seoLink, int selectTop, bool isHomePage);
         Task<NewsDetailForClientViewModel> GetDetailForClientAsync(string teantId, string newsId, string languageId);

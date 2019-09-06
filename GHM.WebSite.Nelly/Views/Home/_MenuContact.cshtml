@@ -1,0 +1,41 @@
+﻿@{
+    var menuContact = ViewBag.MenuContact as MenuDetailViewModel;
+}
+
+@if (menuContact != null)
+{
+    <div id="menu-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <partial name="_TitleBar" model="menuContact?.Name" />
+                </div>
+            </div>
+            <div class="row cm-mgt-20">
+                <div class="col-sm-12">
+                    <div id="menuMiddlerSlider">
+                        @foreach (var item in menuContact.MenuItems)
+                        {
+                            <div class="menu-item">
+                                <div class="logo">
+                                    <a href="@( $"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : item.Url)}")" title="@item.Name">
+                                        <img class="img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{item.Image}")}")" />
+                                    </a>
+                                </div>
+                                <div class="menu-name">
+                                    <a href="@( $"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : item.Url)}")"
+                                       class="transition" title="@item.Name">
+                                        @item.Name
+                                    </a>
+                                    <div class="description">
+                                        @item.Description
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

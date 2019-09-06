@@ -1,21 +1,33 @@
 ﻿'use strict';
 
-function ContactDetailViewModel() {
+function AngencyViewModel() {
     var self = this;
     self.mapId = ko.observable('');
+    self.name = ko.observable('');
+    self.isMobile = ko.observable(false);
 
-    self.selectBranch = function (data, value) {
-        console.log(value);
+    self.selectBranch = function (mapId, name, value) {
+        self.mapId(mapId);
+        self.name(name);
+        if (self.isMobile()) {
+            $("html, body").animate({ scrollTop: $('#map').offset().top - 70 }, 1000);
+        }
     };
 
     $(document).ready(function () {
         var height = $('#map').innerHeight();
-        $('.angency-system').css('height', height + 'px');
+        $('#list-angency-system').css('height', height - 35 + 'px');
+        if (websiteSetting) {
+            self.mapId(websiteSetting.GoogleMap);
+            self.name(branchIsOffice.Name);
+        }
 
-        console.log(websiteSetting);
+        if (window.innerWidth < 768) {
+            self.isMobile(true);
+        }
     });
 }
 
-var viewModel = new ContactDetailViewModel();
-ko.applyBindings(viewModel, document.getElementsByClassName("angency-system")[0]);
+var viewModel = new AngencyViewModel();
+ko.applyBindings(viewModel, document.getElementsByClassName("contact-detail")[0]);
 

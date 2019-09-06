@@ -12,44 +12,49 @@
 <header id="header">
     <div class="header-top hidden-sm hidden-xs hidden-md">
         <div class="wrap-header-top">
-            <div class="row">
-                <div class="col-lg-6">
-                    <span class="item-left">
-                        @if (websiteSetting?.Hotline != null && websiteSetting.Hotline.Any())
-                        {
-                            <i class="fa fa-mobile"> @websiteSetting?.Hotline |</i>
-                        }
-                        @if (websiteSetting?.Brand != null && websiteSetting.Brand.Any())
-                        {
-                            <i class="fa fa-envelope-o"> @officeContact?.ContactValue</i>
-                        }
-                    </span>
-                </div>
-                <div class="col-lg-6">
-                    <div class="header-search">
-                        <form action="https://cse.google.com/cse?=" class="form-inline" method="get" target="_blank">
-                            <div class="form-group">
-                                <input type="hidden" name="cx" value="005353708078860206782:2g3l8-wwm2i" />
-                                <input type="hidden" name="ie" value="UTF-8" />
-                                <input type="text" name="q" class="search-input" placeholder="Nhập từ khóa tìm kiếm" id="search-string" autocomplete="off" />
-                                <span id="search-shadow"></span>
-                                <button type="submit" class="btn-submit"><i class="fa fa-search"></i></button>
-                            </div>
-                        </form>
+            <div class="container">
+                <div class="row">
+                    @*<div class="col-lg-6 hotline" >
+                        <span>
+                            @if (websiteSetting?.Hotline != null && websiteSetting.Hotline.Any())
+                            {
+                                <span>Hotline: @websiteSetting?.Hotline  |</span>
+                            }
+                            @if (@officeContact?.ContactValue != null)
+                            {
+                                <span class="cm-pdl-10"> Email: @officeContact?.ContactValue</span>
+                            }
+                        </span>
+                    </div>*@
+                    <div class="col-sm-12">
+                        <ul class="list-inline pull-right">
+                            <li class="">
+                                <a href="javascript://">
+                                    <i class="ion-android-search"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript://" class="shopping-cart">
+                                    <i class="ion-bag"></i>
+                                    <span class="number-product">1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript://">
+                                    <i class="fa fa-language"></i>
+                                    <span class="cm-pdl-10 size14"> English</span>
+                                </a>
+                            </li>
+                        </ul>                        
                     </div>
                 </div>
             </div>
-
-            <div class="wrap-banner-header">
-                <a href="#"><img class="img-responsive lazy image-banner" src="/images/NDV-SiteLogoBio.png" /></a>
-            </div>
         </div>
     </div>
-
     <div class="header-bottom">
         <nav class="navbar navbar-inverse navbar-expand-lg">
             <div class="container wrap">
-                <a href="/" class="navbar-brand hidden-lg visible-xs visible-md visible-sm">
+                <a href="/" class="navbar-brand">
                     <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ?  $"{url}{websiteSetting.Logo}": "/images/logo-cu.png" )"
                          alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "Phun xăm thẩm mỹ amiea")"
                          onerror="this.src='/images/no-image.png'" />
@@ -129,7 +134,6 @@
                                         @language.Name
                                     </a>
                                 </li>
-
                             }
                         </ul>
                     </div>

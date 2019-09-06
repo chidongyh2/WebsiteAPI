@@ -2,7 +2,7 @@
   "ReRoutes": [
     // BEGIN: Auth
     {
-      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamPathTemplate": "/connect/token",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
