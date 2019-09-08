@@ -12,6 +12,8 @@ namespace GHM.Warehouse.Domain.ModelMetas
 
         public string Name { get; set; }
 
+        public string SeoLink { get; set; }
+
         public string Description { get; set; }
     }
 }

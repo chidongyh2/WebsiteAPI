@@ -23,6 +23,8 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<bool> CheckExists(string productId, string tenantId, string languageId, string name);
 
+        Task<bool> CheckExistsSeoLink(string productId, string tenantId, string languageId, string seoLink);
+
         Task<List<ProductTranslationViewModel>> GetAllById(string tenantId, string id);
     }
 }

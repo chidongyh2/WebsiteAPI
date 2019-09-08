@@ -294,12 +294,14 @@ body {
   color: #BDBCC1;
   vertical-align: middle;
   position: absolute;
-  top: -2px;
-  right: 3px;
+  top: 7px;
+  right: 7px;
 }
 @media only screen and (max-width: 1200px) {
   #video .video-container .lSAction a i {
     padding-top: 5px;
+    top: -2px;
+    right: 3px;
   }
 }
 #agency {

@@ -10,6 +10,8 @@ namespace GHM.Warehouse.Domain.ViewModels
 
         public string Name { get; set; }
 
+        public string SeoLink { get; set; }
+
         public string ParentName { get; set; }
 
         public string Description { get; set; }

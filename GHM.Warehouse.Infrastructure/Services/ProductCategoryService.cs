@@ -99,6 +99,9 @@ namespace GHM.Warehouse.Infrastructure.Services
             var productCategoryDetail = new ProductCategoryDetailViewModel
             {
                 IsActive = productCategoryInfo.IsActive,
+                IsHomePage = productCategoryInfo.IsHomePage,
+                Image = productCategoryInfo.Image,
+                IsHot = productCategoryInfo.IsHot,
                 ParentId = productCategoryInfo.ParentId,
                 Order = productCategoryInfo.Order,
                 ConcurrencyStamp = productCategoryInfo.ConcurrencyStamp,
@@ -169,8 +172,11 @@ namespace GHM.Warehouse.Infrastructure.Services
             {
                 IdPath = "-1",
                 IsActive = productCategoryMeta.IsActive,
+                IsHot = productCategoryMeta.IsHot,
+                IsHomePage = productCategoryMeta.IsHomePage,
                 Order = productCategoryMeta.Order,
                 TenantId = tenantId,
+                Image = productCategoryMeta.Image,
                 OrderPath = productCategoryMeta.Order.ToString(),
                 CreatorId = creatorId,
                 CreatorFullName = creatorFullName,
@@ -219,9 +225,11 @@ namespace GHM.Warehouse.Infrastructure.Services
                         _productResourceService.GetString("Procuct category name: \"{0}\" already taken by another procuct category. Please try again.",
                         productCategoryTranslationMeta.Name));
                 }
+
                 var productCategoryTranslation = new ProductCategoryTranslation
                 {
                     Name = productCategoryTranslationMeta.Name.Trim(),
+                    SeoLink = !string.IsNullOrEmpty(productCategoryTranslationMeta.SeoLink) ? productCategoryTranslationMeta.SeoLink.ToUrlString() : productCategoryTranslationMeta.Name.ToUrlString(),
                     Description = productCategoryTranslationMeta.Description?.Trim(),
                     UnsignName = productCategoryTranslationMeta.Name.Trim().StripVietnameseChars().ToUpper(),
                     LanguageId = productCategoryTranslationMeta.LanguageId,
@@ -326,12 +334,14 @@ namespace GHM.Warehouse.Infrastructure.Services
             var oldIdPath = productCategoryInfo.IdPath;
 
             productCategoryInfo.IsActive = productCategoryMeta.IsActive;
+            productCategoryInfo.IsHomePage = productCategoryMeta.IsHomePage;
+            productCategoryInfo.Image = productCategoryMeta.Image;
+            productCategoryInfo.IsHot = productCategoryMeta.IsHot;
             productCategoryInfo.Order = productCategoryMeta.Order;
             productCategoryInfo.ConcurrencyStamp = Guid.NewGuid().ToString();
             productCategoryInfo.LastUpdate = DateTime.Now;
             productCategoryInfo.LastUpdateUserId = lastUpdateUserId;
             productCategoryInfo.LastUpdateFullName = lastUpdateFullName;
-
 
             if (productCategoryInfo.ParentId.HasValue && !productCategoryMeta.ParentId.HasValue)
             {
@@ -351,7 +361,6 @@ namespace GHM.Warehouse.Infrastructure.Services
             }
 
             await _productCategoryRepository.Update(productCategoryInfo);
-
             var childs = await _productCategoryRepository.GetAllChild(productCategoryInfo.Id, true);
 
             if (!productCategoryInfo.IsActive)
@@ -430,6 +439,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                         productCategoryTranslationInfo = new ProductCategoryTranslation
                         {
                             Name = productCategoryTranslationMeta.Name.Trim(),
+                            SeoLink = !string.IsNullOrEmpty(productCategoryTranslationMeta.SeoLink) ? productCategoryTranslationMeta.SeoLink.ToUrlString() : productCategoryTranslationMeta.Name.ToUrlString(),
                             Description = productCategoryTranslationMeta.Description?.Trim(),
                             UnsignName = productCategoryTranslationMeta.Name.Trim().StripVietnameseChars().ToUpper(),
                             LanguageId = productCategoryTranslationMeta.LanguageId,
@@ -450,9 +460,11 @@ namespace GHM.Warehouse.Infrastructure.Services
                     }
                     else
                     {
+                        productCategoryTranslationInfo.SeoLink = productCategoryTranslationMeta?.SeoLink.Trim();
                         productCategoryTranslationInfo.Name = productCategoryTranslationMeta.Name.Trim();
                         productCategoryTranslationInfo.Description = productCategoryTranslationMeta.Description?.Trim();
                         productCategoryTranslationInfo.UnsignName = productCategoryTranslationMeta.Name.StripVietnameseChars().ToUpper();
+                        productCategoryTranslationInfo.SeoLink = !string.IsNullOrEmpty(productCategoryTranslationMeta.SeoLink) ? productCategoryTranslationMeta.SeoLink.ToUrlString() : productCategoryTranslationMeta.Name.ToUrlString();
 
                         if (productCategoryMeta.ParentId.HasValue)
                         {

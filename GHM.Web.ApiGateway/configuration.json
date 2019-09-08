@@ -79,7 +79,7 @@
           "Port": 50011
         }
       ],
-      "UpstreamPathTemplate": "/api/v{version}/products/{everything}",
+      "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UseServiceDiscovery": false,
       "AuthenticationOptions": {

@@ -10,7 +10,13 @@ namespace GHM.Warehouse.Domain.ViewModels
 
         public bool IsActive { get; set; }
 
+        public bool? IsHot { get; set; }
+
+        public bool? IsHomePage { get; set; }
+
         public int ChildCount { get; set; }
+
+        public string Image { get; set; }
 
         public string ConcurrencyStamp { get; set; }
 

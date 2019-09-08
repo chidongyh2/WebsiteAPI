@@ -23,6 +23,12 @@ namespace GHM.Warehouse.Domain.Models
 
         public bool IsDelete { get; set; }
 
+        public bool? IsHomePage { get; set; }
+
+        public bool? IsHot { get; set; }
+
+        public string Image { get; set; }
+
         public int Order { get; set; }
 
         public string OrderPath { get; set; }

@@ -76,6 +76,13 @@ namespace GHM.Warehouse.Infrastructure.Repository
                 x.ProductId != productId && x.TenantId == tenantId && x.LanguageId == languageId && x.Name == name && !x.IsDelete);
         }
 
+        public async Task<bool> CheckExistsSeoLink(string productId, string tenantId, string languageId, string seoLink)
+        {
+            seoLink = seoLink?.Trim();
+            return await _productTranslationRepository.ExistAsync(x =>
+                x.ProductId != productId && x.TenantId == tenantId && x.LanguageId == languageId && x.SeoLink == seoLink && !x.IsDelete);
+        }
+
         public Task<List<ProductTranslationViewModel>> GetAllById(string tenantId, string id)
         {
             Expression<Func<ProductTranslation, bool>> spec = x => !x.IsDelete && x.TenantId == tenantId && x.ProductId == id;
