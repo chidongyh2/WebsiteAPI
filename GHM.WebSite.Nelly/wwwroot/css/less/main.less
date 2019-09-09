@@ -1098,6 +1098,8 @@ body {
 
 #menu-middle {
     padding: 30px 0px;
+    position: relative;
+    z-index: 1020;
 
     .titlebar {
         margin-bottom: 40px;
@@ -1111,7 +1113,7 @@ body {
         .menu-item {
             margin: 0px 5px;
             border: 2px solid @background-color-footer;
-            margin-bottom: calc(7%);
+            /*margin-bottom: calc(7%);*/
             display: flex !important;
             align-content: center;
             align-items: center;
@@ -1227,6 +1229,7 @@ body {
             margin-top: 10px;
 
             .btn-main {
+                padding: 6px 24px !important;
                 font-size: 16px;
                 text-transform: uppercase;
                 text-align: center;
@@ -1260,4 +1263,173 @@ body {
             }
         }
     }
+}
+
+#core-value {
+    position: relative;
+    background-color: #FAFAFA;
+    padding: 0px;
+
+    .heading {
+        position: relative;
+        z-index: 1000;
+        background-color: #FAFAFA;
+        padding-bottom: 80px;
+        padding-top: 30px;
+    }
+
+    .center {
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .selector, .selector button {
+        font-family: 'Oswald', sans-serif;
+        font-weight: 300;
+    }
+
+    .selector button {
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        background: @color-white;
+        border-radius: 50%;
+        border: 0;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+        transition: all .1s;
+        z-index: 1000;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .selector button:focus {
+        outline: none;
+    }
+
+    .selector {
+        position: relative;
+        width: 992px;
+        height: 992px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: -280px;
+        margin-bottom: -300px;
+    }
+
+    .selector ul {
+        position: absolute;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        top: -20px;
+        right: -20px;
+        bottom: -20px;
+        left: -20px;
+        background-color: @color-white;
+        border-radius: 50%;
+    }
+
+    .selector li {
+        position: absolute;
+        width: 0;
+        height: 100%;
+        margin: 0 50%;
+        -webkit-transform: rotate(-360deg);
+        transition: all 0.8s ease-in-out;
+    }
+
+    .selector li input {
+        display: none;
+    }
+
+    .selector li input + label {
+        position: absolute;
+        left: 50%;
+        bottom: 90%;
+        width: 0;
+        height: 0;
+        line-height: 1px;
+        margin-left: 0;
+        background: #fff;
+        /*border-radius: 50%;*/
+        text-align: center;
+        font-size: 1px;
+        cursor: pointer;
+        box-shadow: none;
+        transition: all 0.8s ease-in-out, color 0.1s, background 0.1s;
+        border-radius: 20px;
+    }
+
+    .selector li input + label:hover {
+        background: @main-color;
+        color: @color-white;
+
+        span {
+            border: none !important;
+        }
+    }
+
+    .selector li input:checked + label {
+        background: @main-color;
+        color: white;
+
+        span {
+            border: none !important;
+        }
+    }
+
+    .selector li input:checked + label:hover {
+        background: @main-color;
+        color: white;
+
+        span {
+            border: none !important;
+        }
+    }
+
+    .selector.open li input + label {
+        width: 240px;
+        height: 40px;
+        line-height: 40px;
+        margin-left: -80px;
+        /*box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);*/
+        font-size: 16px;
+        font-family: Opensans-Light;
+        text-transform: uppercase;
+
+        span {
+            border: 2px solid @color-border;
+            border-radius: 50%;
+            padding: 8px;
+        }
+    }
+
+    label {
+        display: unset;
+        max-width: unset;
+        margin-bottom: unset;
+        font-weight: 700;
+    }
+
+    .bottom {
+        background-color: #FAFAFA;
+        position: relative;
+        z-index: 999;
+        padding-bottom: 120px;
+    }
+}
+
+#product-category-in-homepage {
+    position: relative;
+}
+
+#product-categoty-hot-in-homepage {
+    position: relative;
 }

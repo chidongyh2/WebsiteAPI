@@ -363,4 +363,13 @@
   <data name="YouInterested" xml:space="preserve">
     <value>Có thể bạn quan tâm</value>
   </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>Nhóm sản phẩm</value>
+  </data>
+  <data name="ProductHot" xml:space="preserve">
+    <value>Sản phẩm nổi  bật</value>
+  </data>
+  <data name="SolutionForTheSkin" xml:space="preserve">
+    <value>Gải pháp cho da</value>
+  </data>
 </root>

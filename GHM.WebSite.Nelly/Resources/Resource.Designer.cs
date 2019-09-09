@@ -484,6 +484,24 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Product Group.
+        /// </summary>
+        public static string ProductGroup {
+            get {
+                return ResourceManager.GetString("ProductGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product Hot.
+        /// </summary>
+        public static string ProductHot {
+            get {
+                return ResourceManager.GetString("ProductHot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Professional.
         /// </summary>
         public static string Professionals {
@@ -579,6 +597,15 @@ namespace GHM.WebSite.Nelly.Resources {
         public static string ServicesIntroduce {
             get {
                 return ResourceManager.GetString("ServicesIntroduce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Solution for the skin.
+        /// </summary>
+        public static string SolutionForTheSkin {
+            get {
+                return ResourceManager.GetString("SolutionForTheSkin", resourceCulture);
             }
         }
         

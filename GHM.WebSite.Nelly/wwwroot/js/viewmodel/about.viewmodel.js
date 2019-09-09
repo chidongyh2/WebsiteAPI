@@ -1,7 +1,6 @@
 ﻿function AboutViewModel() {
+
     var self = this;
-    self.description = ko.observable();
-    self.order = ko.observable();
     self.isMobile = ko.observable(false);
     self.isSelect = ko.observable(false);
     self.listVideo = ko.observableArray([]);
@@ -9,22 +8,15 @@
     self.videoTitle = ko.observable('');
     self.isSelectVideo = ko.observable(false);
     self.id = ko.observable("");
+    self.listValue = ko.observableArray([]);
+    self.valueId = ko.observable(1);
+    self.valueImage = ko.observable();
 
     self.selectValue = function (value) {
         if (value) {
-            self.description(value.Description);
-            self.isSelect(true);
-            self.order(value.Order);
-            if (self.isMobile()) {
-                $("html, body").animate({scrollTop: $('#strategy-content').offset().top - 50 }, 1000);
-            }
+            self.valueId(value.Id);
+            self.valueImage(value.Image);
         }
-    };
-
-    self.exitValue = function () {
-        self.description('');
-        self.isSelect(false);
-        self.order('');
     };
 
     self.selectVideo = function (value) {
@@ -42,7 +34,7 @@
         } else {
             return false;
         }
-    }; 
+    };
 
     $(document).ready(function () {
         self.listVideo(listVideo);
@@ -52,6 +44,8 @@
         if (window.innerWidth < 768) {
             self.isMobile(true);
         }
+
+        self.listValue(listValue);
     });
 }
 

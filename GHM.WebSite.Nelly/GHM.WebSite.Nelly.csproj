@@ -91,6 +91,15 @@
     <Content Update="Views\Home\_Branch.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Home\_ProductCategoryHomePage.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_ProductCategoryHotHomePage.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_CoreValue.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Home\_Video.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

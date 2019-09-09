@@ -1,0 +1,19 @@
+﻿@model List<ProductCategorySearchViewModel>
+@{
+
+}
+
+@if (Model != null)
+{
+    <div id="product-categoty-hot-in-homepage">
+        <div class="heading">
+            <div class="container">
+                <div class="row">
+                    <partial name="_TitleBar" model="@Resource.ProductHot" />
+                </div>
+            </div>
+        </div>
+        <div class="container">
+        </div>
+    </div>
+}

@@ -7,7 +7,6 @@ using GHM.Website.Nelly.Models;
 using Microsoft.Extensions.Configuration;
 using GHM.Website.Nelly.ViewModels;
 using GHM.Infrastructure.ViewModels;
-using GHM.Infrastructure.Models;
 using Microsoft.Extensions.Caching.Memory;
 using GHM.Website.Nelly.Constants;
 using System;
@@ -22,6 +21,7 @@ using GHM.Infrastructure.Constants;
 using DeviceDetectorNET;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Newtonsoft.Json;
+using GHM.WebSite.Nelly.ViewModels;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -32,11 +32,15 @@ namespace GHM.Website.Nelly.Controllers
         private readonly INewsService _newsService;
         private readonly IBannerService _bannerService;
         private readonly IVideoService _videoService;
-        //private readonly ICategoryService _categoryService;
+        private readonly IProductService _productService;
+        private readonly ICoreValueService _coreValueService;
         private readonly IMenuService _menuService;
+
         public HomeController(IConfiguration configuration, IMemoryCache cache,
             INewsService newsService, IVideoService videoService, IBannerService bannerService, IBranchContactService branchContactService,
-            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
+            IMenuService menuService, ISettingService settingService,
+            ISocialNetworkService socialNetworkService, ILanguageService languageService,
+            IProductService productService, ICoreValueService coreValueService)
             : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService, languageService)
         {
             _configuration = configuration;
@@ -45,35 +49,49 @@ namespace GHM.Website.Nelly.Controllers
             _videoService = videoService;
             _menuService = menuService;
             _bannerService = bannerService;
-            //_categoryService = categoryService;
+            _productService = productService;
+            _coreValueService = coreValueService;
         }
 
         public async Task<ActionResult> Index()
         {
             var apiService = _configuration.GetApiServiceInfo();
-            if (_cache.TryGetValue($"{CacheParam.Video}{CultureInfo.CurrentCulture.Name}", out List<VideoViewModel> videoCache))
+
+            var listCoreValue = await _coreValueService.GetAllActivatedCoreValueAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
+            var listCoreValueData = JsonConvert.DeserializeObject<List<ValueViewModel>>(JsonConvert.SerializeObject(listCoreValue));
+            ViewBag.ListCoreValue = listCoreValueData;
+
+            var listProductCategoryHomePage = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, true, 20);
+            var listProductCategoryHomePageData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategoryHomePage));
+            ViewBag.ListProductCategoryHomePage = listProductCategoryHomePageData;
+
+            var listProductCategoryHot = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, 20);
+            var listProductCategoryHotData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategoryHomePage));
+            ViewBag.ListProductCategoryHot = listProductCategoryHotData;
+
+            if(listProductCategoryHot != null)
             {
-                ViewBag.ListVideoHomePage = videoCache;
+                var productCategorySeoLink = listProductCategoryHot.FirstOrDefault()?.SeoLink;
+                var listProductyHot = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, productCategorySeoLink, null, null, 20);
+                var listProductHotData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategoryHomePage));
+                ViewBag.ListProductHot = listProductCategoryHotData;
             }
-            else
-            {
-                var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
+
+            var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
             var listVideoHomePageData = JsonConvert.DeserializeObject<List<VideoViewModel>>(JsonConvert.SerializeObject(listVideoHomePage));
-            _cache.Set($"{CacheParam.Video}{CultureInfo.CurrentCulture.Name}", listVideoHomePageData, TimeSpan.FromHours(1));
             ViewBag.ListVideoHomePage = listVideoHomePageData;
-            }
-           
+
             var listCategoryWidthNews = await _newsService.GetListCategoryWidthNewsAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 2, true, 10);
             var listNewsData = JsonConvert.DeserializeObject<List<CategoryWidthNewsViewModel>>(JsonConvert.SerializeObject(listCategoryWidthNews?.Items));
 
-            if(listNewsData != null && listNewsData.Any())
+            if (listNewsData != null && listNewsData.Any())
             {
                 var newsHostHomePage = listNewsData.FirstOrDefault();
                 ViewBag.NewsHostHomePage = newsHostHomePage;
                 ViewBag.NewHomePage = listNewsData.Where(x => x.CategoryId != newsHostHomePage?.CategoryId).FirstOrDefault();
-            }
-            ViewBag.ListNews = listNewsData;                     
+            }            
 
+            #region cache home
             //if (_cache.TryGetValue($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", out MenuDetailViewModel CategoryMiddleCache))
             //{
             //    ViewBag.MenuContact = CategoryMiddleCache;
@@ -98,7 +116,7 @@ namespace GHM.Website.Nelly.Controllers
 
             ViewBag.MainBanner = listBannerInHome;
             //}
-
+            #endregion
             return View();
         }
 
