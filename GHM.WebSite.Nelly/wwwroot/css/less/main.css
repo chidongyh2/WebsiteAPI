@@ -1111,6 +1111,7 @@ body {
 }
 #core-value .selector button img {
   width: 100%;
+  height: 100%;
 }
 #core-value .selector button:focus {
   outline: none;
@@ -1122,8 +1123,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -280px;
-  margin-bottom: -300px;
+  margin-top: -285px;
+  margin-bottom: -305px;
 }
 #core-value .selector ul {
   position: absolute;
@@ -1144,6 +1145,13 @@ body {
   margin: 0 50%;
   -webkit-transform: rotate(-360deg);
   transition: all 0.8s ease-in-out;
+}
+#core-value .selector .active input + label {
+  background: #F9A4A7;
+  color: #FFFFFF;
+}
+#core-value .selector .active input + label span {
+  border: none !important;
 }
 #core-value .selector li input {
   display: none;

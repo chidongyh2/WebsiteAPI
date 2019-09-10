@@ -1305,6 +1305,7 @@ body {
 
         img {
             width: 100%;
+            height: 100%;
         }
     }
 
@@ -1319,8 +1320,8 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-top: -280px;
-        margin-bottom: -300px;
+        margin-top: -285px;
+        margin-bottom: -305px;
     }
 
     .selector ul {
@@ -1343,6 +1344,19 @@ body {
         margin: 0 50%;
         -webkit-transform: rotate(-360deg);
         transition: all 0.8s ease-in-out;
+    }
+
+    .selector {
+        .active {
+            input + label {
+                background: @main-color;
+                color: @color-white;
+
+                span{
+                    border: none !important;
+                }
+            }
+        }
     }
 
     .selector li input {

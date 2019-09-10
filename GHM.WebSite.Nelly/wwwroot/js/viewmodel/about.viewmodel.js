@@ -46,6 +46,10 @@
         }
 
         self.listValue(listValue);
+        if (listValue && listValue.length > 0) {
+            self.valueId(listValue[0].Id);
+            console.log(self.valueId(), listValue[0].Id);            
+        }
     });
 }
 
