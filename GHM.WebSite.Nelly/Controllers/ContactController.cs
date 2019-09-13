@@ -21,9 +21,10 @@ namespace GHM.Website.Nelly.Controllers
         private readonly IMemoryCache _cache;
         private readonly IFeedbackService _feedbackService;
 
-        public ContactController(IConfiguration configuration, IMemoryCache cache, IFeedbackService feedbackService, IBranchContactService branchContactService,
+        public ContactController(IConfiguration configuration, IMemoryCache cache, IFeedbackService feedbackService,
+            IBrandService brandService, IBranchContactService branchContactService,
              IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
-             : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService, languageService)
+             : base(configuration, cache, brandService, branchContactService, menuService, settingService, socialNetworkService, languageService)
         {
             _configuration = configuration;
             _cache = cache;

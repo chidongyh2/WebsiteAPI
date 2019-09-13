@@ -22,9 +22,10 @@ namespace GHM.Website.Nelly.Controllers
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
         private readonly INewsService _newsService;
-        public NewsController(IConfiguration configuration, IMemoryCache cache, INewsService newsService, IBranchContactService branchContactService,
+        public NewsController(IConfiguration configuration, IMemoryCache cache, INewsService newsService,
+            IBrandService brandService, IBranchContactService branchContactService,
             IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
-            : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService, languageService)
+            : base(configuration, cache, brandService, branchContactService, menuService, settingService, socialNetworkService, languageService)
         {
             _newsService = newsService;
             _configuration = configuration;

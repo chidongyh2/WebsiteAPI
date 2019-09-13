@@ -21,7 +21,6 @@ using GHM.Infrastructure.Constants;
 using DeviceDetectorNET;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Newtonsoft.Json;
-using GHM.WebSite.Nelly.ViewModels;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -37,11 +36,12 @@ namespace GHM.Website.Nelly.Controllers
         private readonly IMenuService _menuService;
 
         public HomeController(IConfiguration configuration, IMemoryCache cache,
-            INewsService newsService, IVideoService videoService, IBannerService bannerService, IBranchContactService branchContactService,
+            INewsService newsService, IVideoService videoService, IBannerService bannerService,
+            IBrandService brandService, IBranchContactService branchContactService,
             IMenuService menuService, ISettingService settingService,
             ISocialNetworkService socialNetworkService, ILanguageService languageService,
             IProductService productService, ICoreValueService coreValueService)
-            : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService, languageService)
+            : base(configuration, cache, brandService, branchContactService, menuService, settingService, socialNetworkService, languageService)
         {
             _configuration = configuration;
             _newsService = newsService;
@@ -71,10 +71,12 @@ namespace GHM.Website.Nelly.Controllers
 
             if(listProductCategoryHot != null)
             {
-                var productCategorySeoLink = listProductCategoryHot.FirstOrDefault()?.SeoLink;
+                var productCategoryHotFirst = listProductCategoryHot.FirstOrDefault();
+                var productCategorySeoLink = productCategoryHotFirst?.SeoLink;
+                ViewBag.productCategoryId = productCategoryHotFirst?.Id;
                 var listProductyHot = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, productCategorySeoLink, null, null, 20);
-                var listProductHotData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategoryHomePage));
-                ViewBag.ListProductHot = listProductCategoryHotData;
+                var listProductHotData = JsonConvert.DeserializeObject<List<ProductSearchViewModel>>(JsonConvert.SerializeObject(listProductyHot));
+                ViewBag.ListProductHot = listProductHotData;
             }
 
             var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);

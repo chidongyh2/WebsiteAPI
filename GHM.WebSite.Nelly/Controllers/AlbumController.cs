@@ -19,9 +19,10 @@ namespace GHM.Website.Nelly.Controllers
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
 
-        public AlbumController(IConfiguration configuration, IMemoryCache cache, IBranchContactService branchContactService,
-           IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
-           : base(configuration, cache, branchContactService, menuService, settingService, socialNetworkService, languageService)
+        public AlbumController(IConfiguration configuration, IMemoryCache cache, IBrandService brandService,
+            IBranchContactService branchContactService,
+        IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
+           : base(configuration, cache, brandService, branchContactService, menuService, settingService, socialNetworkService, languageService)
         {
             _configuration = configuration;
             _cache = cache;

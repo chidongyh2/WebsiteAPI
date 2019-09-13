@@ -74,8 +74,8 @@ namespace GHM.Warehouse.Api.Controllers
         }
 
         [Route("{id}"), AcceptVerbs("GET")]
-        [AllowPermission(PageId.Product, Permission.View)]
-        [CheckPermission]
+        //[AllowPermission(PageId.Product, Permission.View)]
+        //[CheckPermission]
         public async Task<IActionResult> Detail(string id)
         {
             var result = await _productService.GetDetail(CurrentUser.TenantId, id);

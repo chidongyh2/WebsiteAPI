@@ -4,7 +4,8 @@
         slidesToScroll: 5,
         centerMode: true,
         autoplay: true,
-        autoplayTimeout: 3000,
+        slideMargin: 20,
+        autoplayTimeout: 2000,
         prevArrow: '<button class="slick-prev"> < </button>',
         nextArrow: '<button class="slick-next"> > </button>',
         responsive: [
@@ -22,6 +23,38 @@
                     centerMode: true,
                     centerPadding: '0px',
                     slidesToShow: 1
+                }
+            }
+        ]
+    });
+
+    $('#product-hot-slider').lightSlider({
+        item: 4,
+        auto: false,
+        loop: true,
+        slideMove: 1,
+        speed: 1500,
+        pause: 3000,
+        slideEndAnimation: false,
+        slideMargin: 15,
+        pauseOnHover: false,
+        controls: true,
+        prevHtml: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+        nextHtml: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
+        pager: false,
+        responsive: [
+            {
+                breakpoint: 800,
+                settings: {
+                    item: 2,
+                    slideMove: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    item: 2,
+                    slideMove: 1
                 }
             }
         ]
@@ -155,7 +188,7 @@ function rotate(li, d) {
 function toggleOptions(s) {
     $(s).toggleClass('open');
     var li = $(s).find('li');
-    var deg = $(s).hasClass('half') ? 180 / (li.length - 1) : 360 / (li.length * 3);
+    var deg = $(s).hasClass('half') ? 180 / (li.length - 1) : 360 / (30);
     for (var i = 0; i < li.length; i++) {
         var degAbsolute = i <= 4 ? i * deg + 59 : i *deg + 182; 
         var d = $(s).hasClass('half') ? (i * deg) - 90 : degAbsolute;
@@ -164,7 +197,7 @@ function toggleOptions(s) {
 }
 
 $('.selector button').click(function (e) {
-    toggleOptions($(this).parent());
+    //toggleOptions($(this).parent());
 });
 
 setTimeout(function () { toggleOptions('.selector'); }, 100);

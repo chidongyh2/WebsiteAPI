@@ -13,6 +13,7 @@ namespace GHM.WebsiteClient.Api.Domain.ViewModels
         public string DefaultUnit { get; set; }
         public decimal? SalePrice { get; set; }
         public string SeoLink { get; set; }
+        public string Description { get; set; }
         public DateTime? LastUpdateTime { get; set; }
     }
 }

@@ -30,13 +30,15 @@ namespace GHM.Website.Nelly.Controllers
         private readonly IMenuService _menuService;
         private readonly ISettingService _settingService;
         private readonly ISocialNetworkService _socialNetworkService;
+        private readonly IBrandService _brandService;
         private readonly IBranchContactService _branchContactService;
         private readonly ILanguageService _languageService;
         private IMemoryCache _cache;
 
         public object DeviceDeectorNET { get; private set; }
 
-        public BaseController(IConfiguration configuration, IMemoryCache cache, IBranchContactService branchContactService,
+        public BaseController(IConfiguration configuration, IMemoryCache cache, IBrandService brandService,
+            IBranchContactService branchContactService,
            IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
         {
             _configuration = configuration;
@@ -44,8 +46,9 @@ namespace GHM.Website.Nelly.Controllers
             _settingService = settingService;
             _socialNetworkService = socialNetworkService;
             _menuService = menuService;
-            _branchContactService = branchContactService;
+            _brandService = brandService;
             _languageService = languageService;
+            _branchContactService = branchContactService;
         }
 
         public async override void OnActionExecuting(ActionExecutingContext context)
@@ -56,6 +59,7 @@ namespace GHM.Website.Nelly.Controllers
             ViewBag.WebsiteSetting = Task.Run(() => GetSetting()).Result;
             ViewBag.SocialNetwork = Task.Run(() => GetSocialNetwork()).Result;
             ViewBag.FooterMenuNav = Task.Run(() => GetFooterMenu()).Result;
+            ViewBag.Brands = Task.Run(() => GetBrandAsync()).Result;
             ViewBag.BranchContacts = Task.Run(() => GetBranchAsync()).Result;
             var path = $"{Request.Path}";
             var absoluteUri = $"{Request.Host}{Request.Path}";
@@ -155,19 +159,19 @@ namespace GHM.Website.Nelly.Controllers
             return websiteSetting;
         }
 
-        private async Task<List<BranchContactSearchViewModel>> GetBranchAsync()
+        private async Task<List<BrandSearchViewModel>> GetBrandAsync()
         {
-            //if (_cache.TryGetValue($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", out List<BranchContactSearchViewModel> branchs))
+            //if (_cache.TryGetValue($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", out List<BrandSearchViewModel> brands))
             //{
-            //    return branchs;
+            //    return brands;
             //}
 
-            var apiService = _configuration.GetApiServiceInfo();        
-            var result = await _branchContactService.SearchForClientAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
+            var apiService = _configuration.GetApiServiceInfo();
+            var result = await _brandService.SearchAsync(apiService.TenantId);
 
-            var data = JsonConvert.DeserializeObject<List<BranchContactSearchViewModel>>(JsonConvert.SerializeObject(result.Items));
+            var data = JsonConvert.DeserializeObject<List<BrandSearchViewModel>>(JsonConvert.SerializeObject(result));
 
-            _cache.Set($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
 
             return data;
         }
@@ -199,21 +203,26 @@ namespace GHM.Website.Nelly.Controllers
             return data;
         }
 
-        private List<BrandSearchViewModel> GetAllBrand()
+        private async Task<List<BranchContactSearchViewModel>> GetBranchAsync()
         {
-            //if (_cache.TryGetValue($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", out List<BrandSearchViewModel> brands))
+            //if (_cache.TryGetValue($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", out List<BranchContactSearchViewModel> branchs))
             //{
-            //    return brands;
+            //    return branchs;
             //}
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
 
-            var result = new HttpClientService()
-                .GetAsync<SearchResult<BrandSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/brands/{apiService.TenantId}/alls");
-            _cache.Set(CacheParam.Brand, result?.Result?.Items, TimeSpan.FromHours(2));
+            //var result = new HttpClientService()
+            //    .GetAsync<SearchResult<BranchContactSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/branchs/alls/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
 
-            return result?.Result?.Items;
+            var result = await _branchContactService.SearchForClientAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
+
+            var data = JsonConvert.DeserializeObject<List<BranchContactSearchViewModel>>(JsonConvert.SerializeObject(result.Items));
+
+            _cache.Set($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+
+            return data;
         }
 
         private async Task<List<MenuItemViewModel>> GetFooterMenu()

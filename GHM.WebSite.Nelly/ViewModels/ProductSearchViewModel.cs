@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GHM.WebSite.Nelly.ViewModels
+namespace GHM.Website.Nelly.ViewModels
 {
     public class ProductSearchViewModel
     {
@@ -13,6 +13,7 @@ namespace GHM.WebSite.Nelly.ViewModels
         public string DefaultUnit { get; set; }
         public decimal? SalePrice { get; set; }
         public string SeoLink { get; set; }
+        public string Desciption { get; set; }
         public DateTime? LastUpdateTime { get; set; }
     }
 }
