@@ -1028,7 +1028,7 @@ body {
   position: relative;
   z-index: 1000;
   background-color: #FAFAFA;
-  padding-bottom: 80px;
+  padding-bottom: 30px;
   padding-top: 30px;
 }
 #core-value .center {
@@ -1044,7 +1044,7 @@ body {
 #core-value .selector button {
   position: absolute;
   width: 50%;
-  height: 50%;
+  height: 100%;
   background: #FFFFFF;
   border-radius: 50%;
   border: 0;
@@ -1065,12 +1065,12 @@ body {
 #core-value .selector {
   position: relative;
   width: 992px;
-  height: 992px;
+  height: 496px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -285px;
-  margin-bottom: -305px;
+  /*margin-top: -285px;
+        margin-bottom: -305px;*/
 }
 #core-value .selector ul {
   position: absolute;
@@ -1081,8 +1081,11 @@ body {
   right: -20px;
   bottom: -20px;
   left: -20px;
-  background-color: #FFFFFF;
-  border-radius: 50%;
+  /*background-color: @color-white;*/
+  /*border-radius: 50%;*/
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 #core-value .selector li {
   position: absolute;
@@ -1109,7 +1112,7 @@ body {
 #core-value .selector li input + label {
   position: absolute;
   left: 50%;
-  bottom: 90%;
+  bottom: 125%;
   width: 0;
   height: 0;
   line-height: 1px;

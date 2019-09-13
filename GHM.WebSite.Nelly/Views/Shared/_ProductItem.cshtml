@@ -1,6 +1,7 @@
 ﻿@model ProductSearchViewModel;
 @{ 
     var url = ViewBag.Url;
+      var culture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
 }
 @if (Model != null)
 {
@@ -24,7 +25,7 @@
             </div>
             <hr />
             <div class="price">
-                <span>@Model.SalePrice</span>
+                <span>@Model.SalePrice?.ToString("N0", culture)</span>
             </div>
             <div class="star">
                 @for(var i =1; i<= 5; i++)

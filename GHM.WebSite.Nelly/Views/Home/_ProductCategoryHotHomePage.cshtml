@@ -53,7 +53,7 @@
                                         </div>
                                         <hr />
                                         <div class="price">
-                                            <span data-bind="text: salePrice + ' VNĐ'"></span>
+                                            <span data-bind="text: formatNumberic(salePrice,  'N0') + ' VNĐ'"></span>
                                         </div>
                                         <div class="star">
                                             @for (var i = 1; i <= 5; i++)
@@ -77,6 +77,6 @@
 }
 <script type="text/javascript">
         var productCategoryHots = @(ViewBag.ListProductCategoryHot != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProductCategoryHot)) : "[]");
-            var productHots = @(ViewBag.ListProductHot != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProductHot)) : "[]");
-    var productCategoryHotId = "@ViewBag.productCategoryId";
+        var productHots = @(ViewBag.ListProductHot != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProductHot)) : "[]");
+        var productCategoryHotId = "@ViewBag.productCategoryId";
 </script>

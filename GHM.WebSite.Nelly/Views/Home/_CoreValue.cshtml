@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-sm-12 center">
                     <div class="selector">
-                        <ul data-bind="foreach: $root.listValue">
+                        <ul data-bind="foreach: $root.listValue" class="lazy" data-src="/images/facion/back-groundcore value.png">
                             <li data-bind="css:{'active': $root.valueId() === Id}">
                                 <input data-bind="attr: {id: 'c'+($index() + 1)}, click: $root.selectValue.bind($data)" type='checkbox'>
                                 <!--ko if: $index()+1 <= 5-->
@@ -31,7 +31,7 @@
                                 <!--/ko-->
                             </li>
                         </ul>
-                        <button>
+                        <button data-bind="click: selectGroupProduct">
                             <img class="img-responsive img-circle lazy" data-bind="attr: {src: valueImage() ? '@ViewBag.Url' + valueImage() : '@ViewBag.Url' + '@imageFirst'}" />
                         </button>
                     </div>

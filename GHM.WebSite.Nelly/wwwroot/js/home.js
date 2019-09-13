@@ -109,7 +109,7 @@
 
     $("#agencySlider").lightSlider({
         item: 12,
-        auto: true,
+        auto: false,
         loop: true,
         slideMove: 1,
         speed: 1500,
@@ -117,7 +117,7 @@
         slideEndAnimation: false,
         slideMargin: 20,
         pauseOnHover: false,
-        controls: false,
+        controls: true,
         prevHtml: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
         nextHtml: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
         pager: false,
@@ -188,9 +188,9 @@ function rotate(li, d) {
 function toggleOptions(s) {
     $(s).toggleClass('open');
     var li = $(s).find('li');
-    var deg = $(s).hasClass('half') ? 180 / (li.length - 1) : 360 / (30);
+    var deg = $(s).hasClass('half') ? 180 / (li.length - 1) : 360 / 27;
     for (var i = 0; i < li.length; i++) {
-        var degAbsolute = i <= 4 ? i * deg + 59 : i *deg + 182; 
+        var degAbsolute = i <= 4 ? i * deg + 58 : i *deg + 172; 
         var d = $(s).hasClass('half') ? (i * deg) - 90 : degAbsolute;
         $(s).hasClass('open') ? rotate(li[i], d) : rotate(li[i], angleStart);
     }
@@ -200,4 +200,4 @@ $('.selector button').click(function (e) {
     //toggleOptions($(this).parent());
 });
 
-setTimeout(function () { toggleOptions('.selector'); }, 100);
+setTimeout(function () { toggleOptions('.selector'); }, 1000);

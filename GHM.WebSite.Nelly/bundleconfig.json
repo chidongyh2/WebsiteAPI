@@ -66,13 +66,16 @@
       "wwwroot/lib/lightslider/js/lightslider.es5.min.js",
       "wwwroot/lib/jquery.lazy-master/jquery.lazy.es5.min.js",
       "wwwroot/lib/slick-1.8.1/slick/slick.js",
-      "wwwroot/lib/underscore-min.js"
+      "wwwroot/lib/underscore-min.js",
+      "wwwroot/lib/globinfo/globalize.js"
+
     ]
   },
   {
     "outputFileName": "wwwroot/js/site.min.js",
     "inputFiles": [
-      "wwwroot/js/site.js"
+      "wwwroot/js/site.js",
+      "wwwroot/js/Common.js"
     ]
   }
 ]

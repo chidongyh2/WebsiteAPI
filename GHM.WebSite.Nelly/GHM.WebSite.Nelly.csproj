@@ -41,6 +41,9 @@
     <None Include="wwwroot\fonts\ionicons.svg" />
     <None Include="wwwroot\fonts\Material-Design-Iconic-Font.svg" />
     <None Include="wwwroot\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="wwwroot\lib\globinfo\globalize.culture.en-US.js" />
+    <None Include="wwwroot\lib\globinfo\globalize.culture.vi-VN.js" />
+    <None Include="wwwroot\lib\globinfo\globalize.js" />
     <None Include="wwwroot\lib\line-awesome\fonts\line-awesome.svg" />
     <None Include="wwwroot\lib\line-awesome\fonts\line-awesome.woff2" />
     <None Include="wwwroot\lib\slick-1.8.1\.gitignore" />

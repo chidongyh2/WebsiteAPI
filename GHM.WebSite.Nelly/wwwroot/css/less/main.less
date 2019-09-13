@@ -1209,7 +1209,7 @@ body {
         position: relative;
         z-index: 1000;
         background-color: #FAFAFA;
-        padding-bottom: 80px;
+        padding-bottom: 30px;
         padding-top: 30px;
     }
 
@@ -1227,7 +1227,7 @@ body {
     .selector button {
         position: absolute;
         width: 50%;
-        height: 50%;
+        height: 100%;
         background: @color-white;
         border-radius: 50%;
         border: 0;
@@ -1251,12 +1251,12 @@ body {
     .selector {
         position: relative;
         width: 992px;
-        height: 992px;
+        height: 496px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-top: -285px;
-        margin-bottom: -305px;
+        /*margin-top: -285px;
+        margin-bottom: -305px;*/
     }
 
     .selector ul {
@@ -1268,8 +1268,11 @@ body {
         right: -20px;
         bottom: -20px;
         left: -20px;
-        background-color: @color-white;
-        border-radius: 50%;
+        /*background-color: @color-white;*/
+        /*border-radius: 50%;*/
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 
     .selector li {
@@ -1305,7 +1308,7 @@ body {
     .selector li input + label {
         position: absolute;
         left: 50%;
-        bottom: 90%;
+        bottom: 125%;
         width: 0;
         height: 0;
         line-height: 1px;
