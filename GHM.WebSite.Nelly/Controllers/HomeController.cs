@@ -63,22 +63,13 @@ namespace GHM.Website.Nelly.Controllers
 
             var listProductCategoryHomePage = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, true, 20);
             var listProductCategoryHomePageData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategoryHomePage));
+
             ViewBag.ListProductCategoryHomePage = listProductCategoryHomePageData;
 
             var listProductCategoryHot = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, 20);
-            var listProductCategoryHotData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategoryHomePage));
+            var listProductCategoryHotData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategoryHot));
             ViewBag.ListProductCategoryHot = listProductCategoryHotData;
-
-            if(listProductCategoryHot != null)
-            {
-                var productCategoryHotFirst = listProductCategoryHot.FirstOrDefault();
-                var productCategorySeoLink = productCategoryHotFirst?.SeoLink;
-                ViewBag.productCategoryId = productCategoryHotFirst?.Id;
-                var listProductyHot = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, productCategorySeoLink, null, null, 20);
-                var listProductHotData = JsonConvert.DeserializeObject<List<ProductSearchViewModel>>(JsonConvert.SerializeObject(listProductyHot));
-                ViewBag.ListProductHot = listProductHotData;
-            }
-
+            ViewBag.ProductCategoryId = listProductCategoryHot.FirstOrDefault()?.Id;
             var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
             var listVideoHomePageData = JsonConvert.DeserializeObject<List<VideoViewModel>>(JsonConvert.SerializeObject(listVideoHomePage));
             ViewBag.ListVideoHomePage = listVideoHomePageData;
@@ -91,7 +82,7 @@ namespace GHM.Website.Nelly.Controllers
                 var newsHostHomePage = listNewsData.FirstOrDefault();
                 ViewBag.NewsHostHomePage = newsHostHomePage;
                 ViewBag.NewHomePage = listNewsData.Where(x => x.CategoryId != newsHostHomePage?.CategoryId).FirstOrDefault();
-            }            
+            }
 
             #region cache home
             //if (_cache.TryGetValue($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", out MenuDetailViewModel CategoryMiddleCache))

@@ -1,13 +1,13 @@
 ﻿$(document).ready(function () {
     $('#news-slider').slick({
         slidesToShow: 5,
-        slidesToScroll: 5,
+        slidesToScroll: 1,
         centerMode: true,
         autoplay: true,
         slideMargin: 20,
         autoplayTimeout: 2000,
-        prevArrow: '<button class="slick-prev"> < </button>',
-        nextArrow: '<button class="slick-next"> > </button>',
+        prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
+        nextArrow: '<button class="slick-next"> <img src="/images/facion/nex.png" /> </button>',
         responsive: [
             {
                 breakpoint: 1024,
@@ -23,38 +23,6 @@
                     centerMode: true,
                     centerPadding: '0px',
                     slidesToShow: 1
-                }
-            }
-        ]
-    });
-
-    $('#product-hot-slider').lightSlider({
-        item: 4,
-        auto: false,
-        loop: true,
-        slideMove: 1,
-        speed: 1500,
-        pause: 3000,
-        slideEndAnimation: false,
-        slideMargin: 15,
-        pauseOnHover: false,
-        controls: true,
-        prevHtml: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
-        nextHtml: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
-        pager: false,
-        responsive: [
-            {
-                breakpoint: 800,
-                settings: {
-                    item: 2,
-                    slideMove: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    item: 2,
-                    slideMove: 1
                 }
             }
         ]
@@ -86,8 +54,8 @@
         slideMargin: 15,
         pauseOnHover: false,
         controls: true,
-        prevHtml: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
-        nextHtml: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
+        prevHtml: '<img src="/images/facion/pev.png" />',
+        nextHtml: '<img src="/images/facion/nex.png" />',
         pager: false,
         responsive: [
             {
@@ -118,8 +86,8 @@
         slideMargin: 20,
         pauseOnHover: false,
         controls: true,
-        prevHtml: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
-        nextHtml: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
+        prevHtml: '<img src="/images/facion/pev.png" />',
+        nextHtml: '<img src="/images/facion/nex.png" />',
         pager: false,
         responsive: [
             {
@@ -139,32 +107,30 @@
         ]
     });
 
-    if (window.innerWidth < 768) {
-        $("#menuMiddlerSlider").slick({
-            slidesToShow: 4,
-            slidesToScroll: 4,
-            prevArrow: '<button class="slick-prev"> < </button>',
-            nextArrow: '<button class="slick-next"> > </button>',
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        centerMode: true,
-                        centerPadding: '0px',
-                        slidesToShow: 2
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        centerMode: true,
-                        centerPadding: '0px',
-                        slidesToShow: 2
-                    }
+    $("#menuMiddlerSlider").slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
+        nextArrow: '<button class="slick-next"> <img src="/images/facion/nex.png" /> </button>',
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    centerMode: true,
+                    centerPadding: '0px',
+                    slidesToShow: 3
                 }
-            ]
-        });
-    }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    centerMode: true,
+                    centerPadding: '0px',
+                    slidesToShow: 2
+                }
+            }
+        ]
+    });
 
     $('[data-toggle="tooltip"]').tooltip();
 });
@@ -190,7 +156,7 @@ function toggleOptions(s) {
     var li = $(s).find('li');
     var deg = $(s).hasClass('half') ? 180 / (li.length - 1) : 360 / 27;
     for (var i = 0; i < li.length; i++) {
-        var degAbsolute = i <= 4 ? i * deg + 58 : i *deg + 172; 
+        var degAbsolute = i <= 4 ? i * deg + 58 : i * deg + 172;
         var d = $(s).hasClass('half') ? (i * deg) - 90 : degAbsolute;
         $(s).hasClass('open') ? rotate(li[i], d) : rotate(li[i], angleStart);
     }

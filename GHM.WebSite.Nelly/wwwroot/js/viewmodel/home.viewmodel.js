@@ -71,13 +71,47 @@ function HomeViewModel() {
 
     self.selectProductCategory = function (data) {
         self.productCategoryId(data.Id);
-        $.get('/json/GetProductByCategory', { seolink: data.SeoLink }, function (data) {
-            self.listProductHot(data);
-            find('.note-section').removeClass('hide').fadeIn('slow');
-            var slider = $("#product-hot-slider").lightSlider(); // declare var again
-            slider.refresh();
-            //var slider = $("#product-hot-slider").lightSlider(); // declare var again
-            //slider.refresh();
+        $.get('/json/GetProductByCategory', { seolink: data.SeoLink }, function (data) {           
+            self.listProductHot([]);
+            $("div").remove(".lslide");
+            self.listProductHot(data);              
+            setTimeout(() => {
+                self.initProductSlider();
+            }, 100);           
+        });
+    };
+
+    self.initProductSlider = function () {
+        $(`#product-hot-slider-${self.productCategoryId()}`).lightSlider({
+            item: 4,
+            auto: false,
+            loop: false,
+            slideMove: 1,
+            speed: 1500,
+            pause: 3000,
+            slideEndAnimation: false,
+            slideMargin: 10,
+            pauseOnHover: false,
+            controls: true,
+            prevHtml: '<img src="/images/facion/pev.png" />',
+            nextHtml: '<img src="/images/facion/nex.png" />',
+            pager: false,
+            responsive: [
+                {
+                    breakpoint: 800,
+                    settings: {
+                        item: 2,
+                        slideMove: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        item: 2,
+                        slideMove: 1
+                    }
+                }
+            ]
         });
     };
 
@@ -102,25 +136,9 @@ function HomeViewModel() {
         });
 
         if (productCategoryInfo) {
-            self.productCategoryId(productCategoryInfo.Id);
-        }
-
-        if (productHots) {
-            _.each(productHots, function (item) {
-                defaultUnit = item.DefaultUnit;
-                desciption = item.Desciption;
-                id = item.Id;
-                isActive = item.IsActive;
-                isHomePage = item.IsHomePage;
-                isHot = item.IsHot;
-                lastUpdateTime = item.LastUpdateTime;
-                name = item.Name;
-                salePrice = item.SalePrice;
-                seoLink = item.SeoLink;
-                thumbnail = item.Thumbnail;
-            });
-        }
-        self.listProductHot(productHots);
+            self.productCategoryId(productCategoryInfo.Id);   
+            self.selectProductCategory(productCategoryInfo);
+        }        
     });
 }
 
