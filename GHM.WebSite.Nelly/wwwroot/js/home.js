@@ -40,7 +40,9 @@
         navigation: true,
         animateIn: true,
         animateOut: 'fadeOut',
-        autoplayTimeout: 5000
+        autoplayTimeout: 5000,
+        nav: true,
+        navText: ["<img src='/images/facion/pev.png'/>", "<img src='/images/facion/nex.png'/>"]
     });
 
     $("#video-silder").lightSlider({
@@ -50,7 +52,6 @@
         slideMove: 1,
         speed: 1500,
         pause: 3000,
-        slideEndAnimation: false,
         slideMargin: 15,
         pauseOnHover: false,
         controls: true,

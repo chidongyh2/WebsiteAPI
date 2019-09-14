@@ -89,15 +89,14 @@ body {
   left: 20px;
   margin-top: -20px;
   transition: all 0.2s;
-  background: #FFFFFF;
+  /*background: @color-white;*/
   color: #3F3F3F;
   font-size: 17px;
   border-radius: 50%;
   height: 30px;
   line-height: 30px;
   width: 30px;
-  /*box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08);*/
-  border: 1px solid #C6C6C6;
+  /*border: 1px solid @color-text-grey;*/
 }
 #myCarousel .owl-nav .owl-prev:hover,
 #myCarousel .owl-nav .owl-prev :active,
@@ -112,16 +111,14 @@ body {
   right: 20px;
   margin-top: -20px;
   transition: all 0.2s;
-  background: lightgray;
-  background: #FFFFFF;
+  /*background: @color-white;*/
   color: #3F3F3F;
   font-size: 17px;
   border-radius: 50%;
   height: 30px;
   line-height: 30px;
   width: 30px;
-  /*box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08);*/
-  border: 1px solid #C6C6C6;
+  /*border: 1px solid @color-text-grey;*/
 }
 #myCarousel .owl-nav .owl-next:hover,
 #myCarousel .owl-nav .owl-next:active,
@@ -129,6 +126,10 @@ body {
   background-color: #F9A4A7;
   color: #FFFFFF;
   border: none !important;
+}
+#myCarousel .owl-nav button img {
+  width: 30px;
+  height: 30px;
 }
 #myCarousel .owl-nav button span {
   position: absolute;
