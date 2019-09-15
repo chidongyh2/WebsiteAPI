@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Threading.Tasks;
 using GHM.Infrastructure;
 using GHM.Infrastructure.Constants;
@@ -10,20 +8,20 @@ using GHM.Warehouse.Domain.Constants;
 using GHM.Warehouse.Domain.IRepository;
 using GHM.Warehouse.Domain.IServices;
 using GHM.Warehouse.Domain.ModelMetas;
-using GHM.Warehouse.Domain.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GHM.Warehouse.Api.Controllers
 {
+    [Authorize]
     [Produces("application/json")]
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/products")]
+    [Route("api/v{version:apiVersion}/products-management")]
     public class ProductsController : GhmControllerBase
     {
         private readonly IProductService _productService;
 
-        public ProductsController(IProductService productService, ILotRepository lotRepository)
+        public ProductsController(IProductService productService)
         {
             _productService = productService;
         }
@@ -73,9 +71,9 @@ namespace GHM.Warehouse.Api.Controllers
             return Ok(result);
         }
 
-        [Route("{id}"), AcceptVerbs("GET")]
-        //[AllowPermission(PageId.Product, Permission.View)]
-        //[CheckPermission]
+        [AcceptVerbs("GET"), Route("{id}"),]
+        [AllowPermission(PageId.Product, Permission.View)]
+        [CheckPermission]
         public async Task<IActionResult> Detail(string id)
         {
             var result = await _productService.GetDetail(CurrentUser.TenantId, id);
@@ -145,7 +143,6 @@ namespace GHM.Warehouse.Api.Controllers
         //    var result = await _productService.InsertProductValue(CurrentUser.TenantId, id, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, productAttributeMeta);
         //    if (result.Code <= 0)
         //        return BadRequest(result);
-
         //    return Ok(result);
         //}
 
@@ -229,7 +226,7 @@ namespace GHM.Warehouse.Api.Controllers
         //}
 
         [Route("{id}/units/{unitId}"), AcceptVerbs("DELETE")]
-        [AllowPermission(PageId.Product, Permission.Delete)]
+        [AllowPermission(PageId.Unit, Permission.Delete)]
         [CheckPermission]
         public async Task<IActionResult> DeleteUnit(string id, string unitId)
         {

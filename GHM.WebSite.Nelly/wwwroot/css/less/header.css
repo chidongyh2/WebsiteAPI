@@ -169,7 +169,12 @@
   .header-bottom .navbar-inverse .wrap .navbar-brand {
     padding-left: 5%;
     max-width: 100%;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-bottom .navbar-inverse .wrap .navbar-brand img {
+    width: 50px;
   }
 }
 .header-bottom .navbar-inverse .wrap .wrap-show-icon {
