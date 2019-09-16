@@ -131,9 +131,7 @@
                 }
             }
         ]
-    });
-
-    $('[data-toggle="tooltip"]').tooltip();
+    });  
 });
 
 var nbOptions = 10; // number of menus

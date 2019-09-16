@@ -62,4 +62,6 @@ $(document).ready(function () {
             $(".header-top").css("display", "block");
         }
     });
+
+    $('[data-toggle="tooltip"]').tooltip();
 });

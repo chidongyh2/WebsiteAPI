@@ -12,17 +12,17 @@
     var absoluteUri = $"{Context.Request.Host}{Context.Request.Path}";
     var absoluteUri1 = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
 }
-@if (Model.BannerImage != null)
-{
-    <partial name="_Breadcumb" />
-}
+<partial name="_Breadcumb" />
 <div id="news-detail">
     <div class="container">
         @if (Model != null)
         {
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-9">
                     <div class="news-detail">
+                        <div class="image">
+                            <img class="news-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(Model.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{Model.FeatureImage}")}")" onerror="this.onerror = null;this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(Model.AltImage) ? Model.Title : Model.AltImage)" />
+                        </div>
                         <h1 class="title">
                             @Model.Title
                         </h1>
@@ -80,58 +80,16 @@
                                 else
                                 {
                                     @Html.Raw(Model.Content.Replace('"' + "uploads/", '"' + $"{ViewBag.Url}uploads/"))
-                            }
+                                }
                             }
                         </div>
                     </div>
+                    <partial name="_BoxHotline" />
                 </div>
                 <div class="col-md-3">
-                    @*<partial name="_SideBarEvent" />*@
-                    @*<partial name="_SideBarNewsRelated" model="listNewsRelated" />*@
+                    <partial name="_SidebarNewsHot" />                
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="fb-comments" data-href="@absoluteUri1"
-                         data-width="1000" data-numposts="5"></div>
-                </div>
-            </div>
-            @if (!Context.Request.Path.Value.Contains("gioi-thieu/gioi-thieu-chung") && listNewsRelated != null && listNewsRelated.Any())
-            {
-                <div class="row wrap-related-news">
-                    <div class="col-md-12">
-                        <h6 class="header-related-news">
-                            @Resource.NewsRelated
-                        </h6>
-                    </div>
-                    <div class="col-md-12 wrap-related-item">
-                        @foreach (var newsRelated in listNewsRelated)
-                        {
-
-                            <div class="news-item col-md-3">
-                                <div class="image-content">
-                                    <a href="@($"/{newsRelated.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsRelated.MetaTitle) ? newsRelated.Title : newsRelated.MetaTitle)">
-                                        <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsRelated.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{newsRelated.FeatureImage}")}&width=600&height=400")"
-                                             onerror="this.src='/images/no-image.png'"
-                                             alt="@(string.IsNullOrEmpty(newsRelated.AltImage) ? newsRelated.Title : newsRelated.AltImage)" />
-                                        <span class="img-overlay"></span>
-                                    </a>
-                                </div>
-                                <div class="wrap-text-content">
-                                    <div class="title">
-                                        <a href="@($"/{newsRelated.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsRelated.MetaTitle) ? newsRelated.Title : newsRelated.MetaTitle)">
-                                            @(!string.IsNullOrEmpty(newsRelated.Title) ? Common.SubString(newsRelated.Title, 50) : newsRelated.Title)
-                                        </a>
-                                    </div>
-                                    <div class="description">
-                                        <span>@Common.SubString(newsRelated.Description, 70)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            }
         }
         else
         {

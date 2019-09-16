@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
 using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.ModelBinders;
 using GHM.Infrastructure.Services;
+using GHM.WebsiteClient.Api.Domain.IServices;
 using GHM.WebsiteClient.Api.Infrastructure.AutofacModules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -157,10 +159,11 @@ namespace GHM.Website.Nelly
                       "Slug",
                       "{*segment}",
                       new { controller = "Home", action = "Coordinator" },
-                      new { segment = new CustomUrlConstraint(Configuration) }
+                      new { segment = new CustomUrlConstraint(Configuration)}
                   );
             });
         }
+
         public class CustomUrlConstraint : IRouteConstraint
         {
             private readonly IConfiguration _configuration;
@@ -168,40 +171,35 @@ namespace GHM.Website.Nelly
             {
                 _configuration = configuration;
             }
+
             public bool Match(HttpContext httpContext, IRouter route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
             {
-
                 if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he"))
                 {
                     var permalink = values[parameterName].ToString();
                     string[] link = permalink.Split('.');
+                    // var isNewsExist = Task.Run(() => _newsService.CheckNewsExistBySeoLinkAsync(apiService.TenantId, link[0], CultureInfo.CurrentCulture.Name)).Result;
                     var requestUrl = _configuration.GetApiUrl();
                     var apiService = _configuration.GetApiServiceInfo();
                     var httpClientService = new HttpClientService();
-                    var isCategoryExist = httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/check-category-exist",
+                    var isCategoryExist = Task.Run(() => httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/check-category-exist",
                         new Dictionary<string, string>
                         {
                             {"TenantId", apiService.TenantId},
                             {"seoLink", link[0] },
                             {"languageId",  CultureInfo.CurrentCulture.Name}
-                        });
-                    var isNewsExist = httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/check-exist", new Dictionary<string, string>
+                        })).Result;
+
+                    var isNewsExist = Task.Run(() => httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/check-exist", new Dictionary<string, string>
                         {
                             {"TenantId", apiService.TenantId},
                             {"seoLink", link[0] },
                             {"languageId",  CultureInfo.CurrentCulture.Name}
-                        });
-                    return isCategoryExist.Result || isNewsExist.Result;
+                        })).Result;
+
+                    return isCategoryExist || isNewsExist;
                 }
-                //var menuRepository = DependencyResolver.Current.GetService<IMenuRepository>();
-                //var categoryReposiroty = DependencyResolver.Current.GetService<ICategoryRepository>();
-                //if (values[parameterName] != null)
-                //{
-                //    var permalink = values[parameterName].ToString();
-                //    var isMenuExists = menuRepository.CheckNamePathExists(permalink);
-                //    var isCategoryExists = categoryReposiroty.CheckCateogryIsContainBySeoLink(permalink);
-                //    return isMenuExists || isCategoryExists;
-                //}
+                
                 return false;
             }
         }

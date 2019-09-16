@@ -63,9 +63,9 @@ namespace GHM.Website.Nelly.Controllers
             ViewBag.BranchContacts = Task.Run(() => GetBranchAsync()).Result;
             var path = $"{Request.Path}";
             var absoluteUri = $"{Request.Host}{Request.Path}";
-            var menuInfo = listManinMenu?.Where(x => x.NamePath != null && path == "/" + x.NamePath || x.Url == absoluteUri).FirstOrDefault();
-            var image = menuInfo == null || string.IsNullOrEmpty(menuInfo.Image) ? "/images/bannerNews.jpg" : menuInfo.Image;
-            ViewBag.ImageBanner = image;
+            //var menuInfo = listManinMenu?.Where(x => x.NamePath != null && path == "/" + x.NamePath || x.Url == absoluteUri).FirstOrDefault();
+            //var image = menuInfo?.Image;
+            //ViewBag.ImageBanner = image;
 
             ViewBag.Url = _configuration.GetApiUrl()?.FileUrl;
 
