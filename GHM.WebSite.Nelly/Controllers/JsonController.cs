@@ -18,12 +18,14 @@ namespace GHM.WebSite.Nelly.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IProductService _productService;
+        private readonly IVideoService _videoService;
 
-        public JsonController(IConfiguration configuration,
+        public JsonController(IConfiguration configuration, IVideoService videoService,
             IProductService productService)
         {
             _configuration = configuration;
             _productService = productService;
+            _videoService = videoService;
         }
 
         // GET: /<controller>/
@@ -34,6 +36,15 @@ namespace GHM.WebSite.Nelly.Controllers
 
             var listProductData = JsonConvert.DeserializeObject<List<ProductSearchViewModel>>(JsonConvert.SerializeObject(listProduct));
             return Ok(listProductData);
+        }
+
+        [Route("get-video-by-album"), AcceptVerbs("GET")]
+        public async Task<JsonResult> GetVideoByAlbum(string seoLink, int page = 1, int pageSize = 20)
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+
+            var listVideo = await _videoService.ListVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, page, pageSize);
+            return Json(listVideo);
         }
     }
 }

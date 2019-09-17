@@ -19,6 +19,10 @@
   src: url('../../lib/font-roboto/roboto-regular.ttf') format('truetype');
 }
 @font-face {
+  font-family: 'Opensans-Semibold';
+  src: url('../../lib/open_sans/opensans-semibold.ttf') format('truetype');
+}
+@font-face {
   font-family: 'PlayfairDisplay-Regular';
   src: url('../../lib/playfair-display/playfairdisplay-regular.otf') format('opentype');
 }

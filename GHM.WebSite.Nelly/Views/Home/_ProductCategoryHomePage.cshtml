@@ -13,8 +13,74 @@
             </div>
         </div>
         <div class="container">
-            @{
-            }
+            <div class="row">
+                @{
+                    var i = 1;
+                    foreach (var category in Model)
+                    {
+                        if (i % 2 == 1)
+                        {
+                            <div class="col-sm-12 category-item even">
+                                <div class="image">
+                                    <a href="@($"/{category.SeoLink}.htm")" title="@(string.IsNullOrEmpty(category.Name) ? category.Name : category.Name)">
+                                        <img class="news-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(category.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{category.Image}")}&width=600&height=400")"
+                                             onerror="this.onerror = null;this.src='/images/no-image.png'"
+                                             alt="@category.Name" />
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <div class="number">
+                                        @($"0{i}.")
+                                    </div>
+                                    <h3 class="title">
+                                        <a href="@($"/{category.SeoLink}.htm")" title="@(string.IsNullOrEmpty(category.Name) ? category.Name : category.Name)">
+                                            @(!string.IsNullOrEmpty(category.Name) ? Common.SubString(category.Name, 70) : category.Name)
+                                        </a>
+                                    </h3>
+                                    <div class="description">
+                                        <span>@Common.SubString(category.Description, 150)</span>
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="@($"/{category.SeoLink}.htm")" title="@(string.IsNullOrEmpty(category.Name) ? category.Name : category.Name)"
+                                           class="btn btn-main"><i class="la la-arrow-right"></i>Giải pháp</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-sm-12 category-item odd">
+                                <div class="content">
+                                    <div class="number">
+                                        @($"0{i}.")
+                                    </div>
+                                    <h3 class="title">
+                                        <a href="@($"/{category.SeoLink}.htm")" title="@(string.IsNullOrEmpty(category.Name) ? category.Name : category.Name)">
+                                            @(!string.IsNullOrEmpty(category.Name) ? Common.SubString(category.Name, 70) : category.Name)
+                                        </a>
+                                    </h3>
+                                    <div class="description">
+                                        <span>@Common.SubString(category.Description, 150)</span>
+                                    </div>
+                                    <div class="read-more">
+                                        <a href="@($"/{category.SeoLink}.htm")" title="@(string.IsNullOrEmpty(category.Name) ? category.Name : category.Name)"
+                                           class="btn btn-main"><i class="la la-arrow-right"></i>Giải pháp</a>
+                                    </div>
+                                </div>
+                                <div class="image">
+                                    <a href="@($"/{category.SeoLink}.htm")" title="@(string.IsNullOrEmpty(category.Name) ? category.Name : category.Name)">
+                                        <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(category.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{category.Image}")}&width=600&height=400")"
+                                             onerror="this.onerror = null;this.src='/images/no-image.png'"
+                                             alt="@category.Name" />
+                                        <span class="img-overlay"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        i++;
+                    }
+                }
+            </div>
         </div>
     </div>
 }

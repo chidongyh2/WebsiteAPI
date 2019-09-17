@@ -8,7 +8,7 @@ ko.bindingHandlers.trimText = {
             var minLength = 5;
             var maxLength = ko.utils.unwrapObservable(allBindingsAccessor().trimTextLength) || defaultMaxLength;
             if (maxLength < minLength) maxLength = minLength;
-            var text = untrimmedText.length > maxLength ? untrimmedText.substring(0, maxLength - 1) + '...' : untrimmedText;
+            var text = untrimmedText && untrimmedText.length > maxLength ? untrimmedText.substring(0, maxLength - 1) + '...' : untrimmedText;
             return text;
         });
         ko.applyBindingsToNode(element, {

@@ -58,7 +58,7 @@ namespace GHM.Website.Nelly.Controllers
             var apiService = _configuration.GetApiServiceInfo();
 
             var listCoreValue = await _coreValueService.GetAllActivatedCoreValueAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
-            var listCoreValueData = JsonConvert.DeserializeObject<List<ValueViewModel>>(JsonConvert.SerializeObject(listCoreValue));
+            var listCoreValueData = JsonConvert.DeserializeObject<List<ValueViewModel>>(JsonConvert.SerializeObject(listCoreValue?.Take(10)));
             ViewBag.ListCoreValue = listCoreValueData;
 
             var listProductCategoryHomePage = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, true, 20);

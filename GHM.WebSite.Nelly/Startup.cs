@@ -174,7 +174,8 @@ namespace GHM.Website.Nelly
 
             public bool Match(HttpContext httpContext, IRouter route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
             {
-                if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he"))
+                if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he")
+                    && !values[parameterName].ToString().Equals("video"))
                 {
                     var permalink = values[parameterName].ToString();
                     string[] link = permalink.Split('.');

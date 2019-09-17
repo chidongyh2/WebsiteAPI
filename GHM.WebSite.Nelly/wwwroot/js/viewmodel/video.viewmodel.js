@@ -1,91 +1,67 @@
 ﻿
 function VideoViewModel() {
     var self = this;
-    self.listAlbum = ko.observableArray([]);
-    self.id = ko.observable('');
-    self.seoLink = ko.observable('');
+
+    self.videoLinkId = ko.observable('');
+    self.videoTitle = ko.observable('');
+    self.isSelectVideo = ko.observable(false);
+    self.id = ko.observable("");
     self.listVideo = ko.observableArray([]);
-    self.totalRows = ko.observable(0);
-    self.pageSize = ko.observable(9);
-    self.currentPage = ko.observable(1);
-    self.totalPage = ko.observable(1);
-    self.listPage = ko.observableArray([]);
+    self.listVideoSlider = ko.observableArray([]);
+    self.listVideoMain = ko.observableArray([]);
 
-    self.selectAlbum = function (value) {
-        self.seoLink(value.SeoLink);
-        self.id(value.Id);
-        setTimeout(() => {
-            self.currentPage(1);
-            self.getVideo(self.seoLink());
-        }, 200);
+    self.checkUrlVideo = function (text) {
+        if (text.indexOf('uploads/') > -1) {
+            return true;
+        } else {
+            return false;
+        }
     };
 
-    self.getVideo = function (seoLink) {
-        $.get("/get-video-by-album",
-            {
-                seoLink: self.seoLink(),
-                page: self.currentPage(),
-                pageSize: self.pageSize()
-            }, function (result) {
-                if (result) {
-                    self.listVideo(result.items);
-                    self.totalRows(result.totalRows);
-                    self.totalPage(Math.ceil(self.totalRows() / self.pageSize()));
-                    self.listPage([]);
-                    if (self.totalPage() > 1) {
-                        for (var i = 1; i <= self.totalPage(); i++) {
-                            self.listPage.push({
-                                page: i
-                            });
-                        }
-                    }
-                } else {
-                    self.listPage([]);
-                    self.listVideo([]);
-                }
-            });
-    };
-
-    self.search = function (value) {
-        self.currentPage(value.page);
-        self.getVideo(self.seoLink());
-        $("html, body").animate({ scrollTop: $('#abums').offset().top - 50 }, 1000);
-    };
-
-    self.firstPage = function () {
-        self.currentPage(1);
-        self.getVideo(self.seoLink());
-        $("html, body").animate({ scrollTop: $('#abums').offset().top - 50 }, 1000);
-    };
-
-    self.lastPage = function () {
-        self.currentPage(self.totalPage());
-        self.getVideo(self.seoLink());
-        $("html, body").animate({ scrollTop: $('#abums').offset().top - 50 }, 1000);
-    };
-
-    self.prevPage = function () {
-        self.currentPage(self.currentPage() - 1);
-        self.getVideo(self.seoLink());
-    };
-
-    self.nextPage = function () {
-        self.currentPage(self.currentPage() + 1);
-        self.getVideo(self.seoLink());
-        $("html, body").animate({ scrollTop: $('#abums').offset().top - 50 }, 1000);
+    self.selectVideo = function (value) {
+        if (value) {
+            self.videoLinkId(value.VideoLinkId);
+            self.videoTitle(value.Title);
+            self.id(value.Id);
+            self.isSelectVideo(true);
+        }
     };
 
     $(document).ready(function () {
-        self.listAlbum(listAlbum);
-        self.currentPage(1);
-        if (window.innerWidth < 768) {
-            self.pageSize(7);
-        }
-        if (self.listAlbum() && self.listAlbum().length > 0) {
-            self.id(self.listAlbum()[0].Id);
-            self.seoLink(self.listAlbum()[0].SeoLink);
-            self.getVideo(self.seoLink());
-        }
+        self.listVideo(videos);
+        self.listVideoMain(_.first(self.listVideo(), [3]));
+        self.listVideoSlider(_.without(self.listVideo(), self.listVideoMain()));
+
+        $("#video-silder").lightSlider({
+            item: 7,
+            auto: false,
+            loop: true,
+            slideMove: 1,
+            speed: 1500,
+            pause: 3000,
+            slideMargin: 15,
+            pauseOnHover: false,
+            controls: true,
+            prevHtml: '<img src="/images/facion/pev.png" />',
+            nextHtml: '<img src="/images/facion/nex.png" />',
+            pager: false,
+            responsive: [
+                {
+                    breakpoint: 800,
+                    settings: {
+                        item: 4,
+                        slideMove: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        item: 3,
+                        slideMove: 1
+                    }
+                }
+            ]
+        });
     });
 }
 

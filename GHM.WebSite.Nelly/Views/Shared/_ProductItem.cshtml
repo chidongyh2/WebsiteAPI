@@ -17,11 +17,11 @@
         <div class="wrap-text-content">
             <div class="title">
                 <a href="@($"/{Model.SeoLink}.html")" title="@Model.Name">
-                    @(!string.IsNullOrEmpty(@Model.Name) ? Common.SubString(Model.Name, 70) : Model.Name)
+                    @(!string.IsNullOrEmpty(@Model.Name) ? Common.SubString(Model.Name, 50) : Model.Name)
                 </a>
             </div>            
             <div class="description">
-                <span>@Common.SubString(Model.Desciption, 150)</span>
+                <span>@Common.SubString(Model.Desciption, 50)</span>
             </div>
             <hr />
             <div class="price">
