@@ -9,6 +9,7 @@
         public string Image { get; set; }
         public bool IsActive { get; set; }
         public bool? IsHot { get; set; }
+        public bool? IsSolution { get; set; }
         public bool? IsHomePage { get; set; }
         public int? ParentId { get; set; }
         public int ChildCount { get; set; }

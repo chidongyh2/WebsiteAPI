@@ -34,7 +34,8 @@ function HomeViewModel() {
     self.listValue = ko.observableArray([]);
     self.valueId = ko.observable(1);
     self.valueImage = ko.observable();
-    self.valueUrl = ko.observable();
+    self.valueName = ko.observable();
+    self.valueSeoLink = ko.observable();
     self.listProductCategoryHot = ko.observableArray([]);
     self.productCategoryId = ko.observable();
     self.listProductHot = ko.observableArray([]);
@@ -43,13 +44,9 @@ function HomeViewModel() {
         if (value) {
             self.valueId(value.Id);
             self.valueImage(value.Image);
-            self.valueUrl(value.Url);
+            self.valueName(value.Name);
+            self.valueSeoLink(value.SeoLink);
         }
-    };
-
-    self.selectGroupProduct = function () {
-        window.location.href = self.valueUrl();
-        target = "_blank";
     };
 
     self.selectVideo = function (value) {
@@ -127,7 +124,8 @@ function HomeViewModel() {
         self.listValue(listValue);
         if (listValue && listValue.length > 0) {
             self.valueId(listValue[0].Id);
-            self.valueUrl(listValue[0].Url);
+            self.valueName(listValue[0].Name);
+            self.valueSeoLink(listValue[0].SeoLink);
         }
 
         self.listProductCategoryHot(productCategoryHots);

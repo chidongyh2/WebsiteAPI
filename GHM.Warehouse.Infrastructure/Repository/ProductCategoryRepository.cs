@@ -176,6 +176,7 @@ namespace GHM.Warehouse.Infrastructure.Repository
                     Description = ot.Description,
                     IsActive = o.IsActive,
                     IsHot = o.IsHot,
+                    IsSolution = o.IsSolution,
                     IsHomePage = o.IsHomePage,
                     ParentId = o.ParentId,
                     ChildCount = o.ChildCount

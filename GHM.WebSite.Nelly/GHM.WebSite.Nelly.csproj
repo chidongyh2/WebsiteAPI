@@ -100,10 +100,10 @@
     <Content Update="Views\Home\_ProductCategoryHomePage.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Home\_ProductCategoryHotHomePage.cshtml">
+    <Content Update="Views\Home\_ProductCategorySolution.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Home\_CoreValue.cshtml">
+    <Content Update="Views\Home\_ProductCategoryHotHomePage.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Home\_Video.cshtml">

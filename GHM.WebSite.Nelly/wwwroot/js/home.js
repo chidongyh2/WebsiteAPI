@@ -3,7 +3,7 @@
         slidesToShow: 5,
         slidesToScroll: 1,
         centerMode: true,
-        autoplay: true,
+        autoplay: false,
         slideMargin: 20,
         autoplayTimeout: 2000,
         prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',

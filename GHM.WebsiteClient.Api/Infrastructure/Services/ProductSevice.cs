@@ -27,7 +27,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
         }
 
         public async Task<List<ProductCategorySearchViewModel>> ProductCategorySearch(string tenantId,
-            string languageId, string seoLink, bool? isHot, bool? isHomePage, int top = 20)
+            string languageId, string seoLink, bool? isHot, bool? isHomePage, bool? isSolution, int top = 20)
         {
             try
             {
@@ -40,6 +40,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     param.Add("@TenantId", tenantId);
                     param.Add("@LanguageId", languageId);
                     param.Add("@IsHot", isHot);
+                    param.Add("@IsSolution", isSolution);
                     param.Add("@IsHomePage", isHomePage);
                     param.Add("@SeoLink", seoLink);
                     param.Add("@Top", top);

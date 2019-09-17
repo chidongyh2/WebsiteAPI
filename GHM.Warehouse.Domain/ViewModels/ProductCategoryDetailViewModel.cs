@@ -14,6 +14,8 @@ namespace GHM.Warehouse.Domain.ViewModels
 
         public bool? IsHomePage { get; set; }
 
+        public bool? IsSolution { get; set; }
+
         public int ChildCount { get; set; }
 
         public string Image { get; set; }

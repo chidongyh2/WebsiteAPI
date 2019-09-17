@@ -32,7 +32,6 @@ namespace GHM.Website.Nelly.Controllers
         private readonly IBannerService _bannerService;
         private readonly IVideoService _videoService;
         private readonly IProductService _productService;
-        private readonly ICoreValueService _coreValueService;
         private readonly IMenuService _menuService;
 
         public HomeController(IConfiguration configuration, IMemoryCache cache,
@@ -40,7 +39,7 @@ namespace GHM.Website.Nelly.Controllers
             IBrandService brandService, IBranchContactService branchContactService,
             IMenuService menuService, ISettingService settingService,
             ISocialNetworkService socialNetworkService, ILanguageService languageService,
-            IProductService productService, ICoreValueService coreValueService)
+            IProductService productService)
             : base(configuration, cache, brandService, branchContactService, menuService, settingService, socialNetworkService, languageService)
         {
             _configuration = configuration;
@@ -50,26 +49,25 @@ namespace GHM.Website.Nelly.Controllers
             _menuService = menuService;
             _bannerService = bannerService;
             _productService = productService;
-            _coreValueService = coreValueService;
         }
 
         public async Task<ActionResult> Index()
         {
             var apiService = _configuration.GetApiServiceInfo();
 
-            var listCoreValue = await _coreValueService.GetAllActivatedCoreValueAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
-            var listCoreValueData = JsonConvert.DeserializeObject<List<ValueViewModel>>(JsonConvert.SerializeObject(listCoreValue?.Take(10)));
-            ViewBag.ListCoreValue = listCoreValueData;
-
-            var listProductCategoryHomePage = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, true, 20);
+            var listProductCategoryHomePage = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, true, null, 10);
             var listProductCategoryHomePageData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategoryHomePage));
-
             ViewBag.ListProductCategoryHomePage = listProductCategoryHomePageData;
 
-            var listProductCategoryHot = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, 20);
+            var listProductCategoryHot = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, null, 20);
             var listProductCategoryHotData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategoryHot));
             ViewBag.ListProductCategoryHot = listProductCategoryHotData;
             ViewBag.ProductCategoryId = listProductCategoryHot.FirstOrDefault()?.Id;
+
+            var listProductCategorySolution = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, true, 20);
+            var listProductCategorySolutionData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategorySolution));
+            ViewBag.ListProductCategorySolution = listProductCategorySolutionData;
+                       
             var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
             var listVideoHomePageData = JsonConvert.DeserializeObject<List<VideoViewModel>>(JsonConvert.SerializeObject(listVideoHomePage));
             ViewBag.ListVideoHomePage = listVideoHomePageData;

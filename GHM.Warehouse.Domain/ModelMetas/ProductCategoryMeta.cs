@@ -18,6 +18,8 @@ namespace GHM.Warehouse.Domain.ModelMetas
 
         public bool? IsHomePage { get; set; }
 
+        public bool? IsSolution { get; set; }
+
         public string ConcurrencyStamp { get; set; }
 
         public List<ProductCategoryTranslationMeta> Translations { get; set; }

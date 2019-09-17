@@ -27,6 +27,8 @@ namespace GHM.Warehouse.Domain.Models
 
         public bool? IsHot { get; set; }
 
+        public bool? IsSolution { get; set; }
+
         public string Image { get; set; }
 
         public int Order { get; set; }

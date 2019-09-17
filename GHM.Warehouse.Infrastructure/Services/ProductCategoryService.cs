@@ -102,6 +102,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                 IsHomePage = productCategoryInfo.IsHomePage,
                 Image = productCategoryInfo.Image,
                 IsHot = productCategoryInfo.IsHot,
+                IsSolution = productCategoryInfo.IsSolution,
                 ParentId = productCategoryInfo.ParentId,
                 Order = productCategoryInfo.Order,
                 ConcurrencyStamp = productCategoryInfo.ConcurrencyStamp,
@@ -166,7 +167,8 @@ namespace GHM.Warehouse.Infrastructure.Services
             return await _productCategoryRepository.GetAllActivatedProductCategory(tenantId, languageId);
         }
 
-        public async Task<ActionResultResponse<int>> Insert(string tenantId, string creatorId, string creatorFullName, ProductCategoryMeta productCategoryMeta)
+        public async Task<ActionResultResponse<int>> Insert(string tenantId, string creatorId,
+            string creatorFullName, ProductCategoryMeta productCategoryMeta)
         {
             var productCategory = new ProductCategory
             {
@@ -181,6 +183,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                 CreatorId = creatorId,
                 CreatorFullName = creatorFullName,
                 ConcurrencyStamp = Guid.NewGuid().ToString(),
+                IsSolution = productCategoryMeta.IsSolution
             };
 
             if (productCategoryMeta.ParentId.HasValue)
@@ -337,6 +340,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             productCategoryInfo.IsHomePage = productCategoryMeta.IsHomePage;
             productCategoryInfo.Image = productCategoryMeta.Image;
             productCategoryInfo.IsHot = productCategoryMeta.IsHot;
+            productCategoryInfo.IsSolution = productCategoryMeta.IsSolution;
             productCategoryInfo.Order = productCategoryMeta.Order;
             productCategoryInfo.ConcurrencyStamp = Guid.NewGuid().ToString();
             productCategoryInfo.LastUpdate = DateTime.Now;
