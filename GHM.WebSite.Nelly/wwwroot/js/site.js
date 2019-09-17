@@ -1,4 +1,5 @@
-﻿var isShowToggle = true;
+﻿
+var isShowToggle = true;
 $(document).ready(function () {
     $(".wrap-show-icon").css("display", "none");
     $("#backToTop").click(() => {

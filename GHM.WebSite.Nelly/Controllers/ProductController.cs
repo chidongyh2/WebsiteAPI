@@ -36,10 +36,18 @@ namespace GHM.WebSite.Nelly.Controllers
         }
 
         // GET: /<controller>/
-        public IActionResult Index()
+        [Route("san-pham")]
+        public async Task<IActionResult> Index()
         {
+            var apiService = _configuration.GetApiServiceInfo();
+
+            var listProductCategory= await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, false, 20);
+            var listProductCategoryData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategory));
+            ViewBag.ListProductCategory = listProductCategoryData;
+
+            ViewBag.ProductCategoryId = listProductCategory.FirstOrDefault()?.Id;
+
             return View();
         }
-        
     }
 }

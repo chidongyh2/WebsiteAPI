@@ -118,237 +118,180 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutUs" xml:space="preserve">
-    <value>About Us</value>
+    <value>Về Chúng Tôi</value>
   </data>
   <data name="Address" xml:space="preserve">
-    <value>Address</value>
+    <value>Địa chỉ</value>
   </data>
   <data name="AllCourses" xml:space="preserve">
-    <value>All Coursers</value>
+    <value>Tất cả các buổi</value>
+  </data>
+  <data name="AngencySystem" xml:space="preserve">
+    <value>Hệ thống phân phối</value>
   </data>
   <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
+    <value>Tin Tức</value>
+  </data>
+  <data name="BlogDescription" xml:space="preserve">
+    <value>Tin tức và bình luận</value>
   </data>
   <data name="Brand" xml:space="preserve">
-    <value>Brand</value>
+    <value>Thương hiệu</value>
   </data>
   <data name="CertificateSafeAmiea" xml:space="preserve">
-    <value>Chưng nhận về an toàn chất lượng</value>
+    <value>Chứng nhận về an toàn chất lượng</value>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value>Get in Touch</value>
+    <value>Liên Hệ</value>
   </data>
   <data name="ContactInformation" xml:space="preserve">
-    <value>Contact Information</value>
-  </data>
-  <data name="ContactPyrexar" xml:space="preserve">
-    <value>Contact Pyrexar</value>
+    <value>Thông tin liên hệ</value>
   </data>
   <data name="Content" xml:space="preserve">
-    <value>Content</value>
+    <value>Nội dung</value>
   </data>
   <data name="ContentPlaceHolder" xml:space="preserve">
-    <value>Please enter content</value>
+    <value>Để lại nội dung liên hệ của bạn</value>
   </data>
   <data name="Contents" xml:space="preserve">
-    <value>Content</value>
+    <value>Nội dung</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Day</value>
+    <value>Ngày</value>
   </data>
   <data name="Day" xml:space="preserve">
-    <value>Day</value>
-  </data>
-  <data name="DescriptionHot" xml:space="preserve">
-    <value>"We filter best services to serve for you"</value>
-  </data>
-  <data name="DescriptionIntroduce" xml:space="preserve">
-    <value>We filter best services and product to serve you</value>
-  </data>
-  <data name="DescriptionVideo" xml:space="preserve">
-    <value>Collection of Hyperthermia Videos from various sources</value>
+    <value>Buổi</value>
   </data>
   <data name="DistributionAgents" xml:space="preserve">
-    <value>Distribution Agents</value>
+    <value>Đại lý phân phối</value>
   </data>
   <data name="EmailPlaceHolder" xml:space="preserve">
-    <value>Please enter email</value>
+    <value>Email</value>
   </data>
   <data name="EquipmentIntroduce" xml:space="preserve">
-    <value>Equipment</value>
-  </data>
-  <data name="EventDetail" xml:space="preserve">
-    <value>Event Detail</value>
-  </data>
-  <data name="EventImage" xml:space="preserve">
-    <value>Event Image</value>
-  </data>
-  <data name="EventIntroduction" xml:space="preserve">
-    <value>Event Introduction</value>
-  </data>
-  <data name="EventProfessionals" xml:space="preserve">
-    <value>Professionals Join</value>
+    <value>Trang thiết bị</value>
   </data>
   <data name="Events" xml:space="preserve">
-    <value>Event</value>
-  </data>
-  <data name="ExclusiveBrand" xml:space="preserve">
-    <value>Exclusive brand in Vietnam</value>
-  </data>
-  <data name="ExpertTeamIntroductuce" xml:space="preserve">
-    <value>Expert Team</value>
-  </data>
-  <data name="Founder" xml:space="preserve">
-    <value>Founder</value>
+    <value>Sự kiện</value>
   </data>
   <data name="FullName" xml:space="preserve">
-    <value>Full Name</value>
+    <value>Họ và Tên</value>
   </data>
   <data name="FullNamePlaceHolder" xml:space="preserve">
-    <value>Please enter full name</value>
+    <value>Họ và tên</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home</value>
+    <value>Trang Chủ</value>
   </data>
   <data name="HomePhone" xml:space="preserve">
-    <value>Home Phone</value>
+    <value>Điện thoại bàn</value>
+  </data>
+  <data name="HotLine" xml:space="preserve">
+    <value>HOTLINE</value>
   </data>
   <data name="Hour" xml:space="preserve">
-    <value>Hours</value>
-  </data>
-  <data name="InfrastructureIntroduce" xml:space="preserve">
-    <value>Infrastructure</value>
+    <value>Giờ</value>
   </data>
   <data name="LibraryImage" xml:space="preserve">
-    <value>Image Library</value>
+    <value>Thư viện ảnh</value>
   </data>
   <data name="Minute" xml:space="preserve">
-    <value>Minutes</value>
-  </data>
-  <data name="NellyProgress" xml:space="preserve">
-    <value>Nelly De Vuyst for the development of the beauty industry in Vietnam</value>
+    <value>Phút</value>
   </data>
   <data name="News" xml:space="preserve">
-    <value>News</value>
+    <value>Tin Tức</value>
+  </data>
+  <data name="NewsHot" xml:space="preserve">
+    <value>Tin hót</value>
   </data>
   <data name="NewsRelated" xml:space="preserve">
-    <value>News Related</value>
-  </data>
-  <data name="NewSuggestionDesciption" xml:space="preserve">
-    <value>"We are happy when sharing with you about beauty &amp; life story"</value>
+    <value>Dịch vụ liên quan</value>
   </data>
   <data name="NewSuggestionTitle" xml:space="preserve">
-    <value>News &amp; Experience</value>
+    <value>Tin tức &amp; Trải nghiệm</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value>Phone Number</value>
+    <value>Số điện thoại</value>
   </data>
   <data name="PhoneNumberPlaceHolder" xml:space="preserve">
-    <value>Please enter phone number</value>
+    <value>Số điện thoại</value>
   </data>
   <data name="Product" xml:space="preserve">
-    <value>Product</value>
+    <value>Sản phẩm</value>
+  </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>Nhóm sản phẩm</value>
+  </data>
+  <data name="ProductHot" xml:space="preserve">
+    <value>Sản phẩm nổi  bật</value>
   </data>
   <data name="Professionals" xml:space="preserve">
-    <value>Professional</value>
+    <value>Chuyên gia</value>
   </data>
   <data name="ProgressAmiea" xml:space="preserve">
     <value>Định hướng phát triển</value>
   </data>
   <data name="RecentBlogs" xml:space="preserve">
-    <value>Recent Blogs</value>
+    <value>Bài Viết Mới Nhất</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Register</value>
+    <value>Đăng ký</value>
   </data>
   <data name="RegisterNows" xml:space="preserve">
-    <value>Register Now</value>
+    <value>Đăng ký ngay</value>
+  </data>
+  <data name="ResponseCustomer" xml:space="preserve">
+    <value>Cảm Nhận Khách hàng</value>
   </data>
   <data name="Second" xml:space="preserve">
-    <value>Seconds</value>
+    <value>Giây</value>
   </data>
   <data name="Seminars" xml:space="preserve">
-    <value>Seminar</value>
+    <value>Hội thảo</value>
   </data>
   <data name="Send" xml:space="preserve">
-    <value>Send</value>
+    <value>Gửi</value>
   </data>
   <data name="SendMessage" xml:space="preserve">
-    <value>Send Mesage</value>
+    <value>Gửi tin nhắn</value>
   </data>
   <data name="ServicesIntroduce" xml:space="preserve">
-    <value>Services</value>
+    <value>Dịch vụ khách hàng</value>
+  </data>
+  <data name="SolutionForTheSkin" xml:space="preserve">
+    <value>Gải pháp cho da</value>
   </data>
   <data name="Sponsors" xml:space="preserve">
-    <value>Sponsors</value>
+    <value>Đơn vị tài trợ</value>
   </data>
   <data name="TimeEvent" xml:space="preserve">
     <value>Thời gian diễn ra sự kiện</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Welcome to Jade spa</value>
+    <value>Phương pháp Oraganic</value>
   </data>
   <data name="TitleHot" xml:space="preserve">
-    <value>Hot Services</value>
-  </data>
-  <data name="TitleIntroduce" xml:space="preserve">
-    <value>Why shoul you chose Jade Spa</value>
+    <value>Dịch vụ nổi bật</value>
   </data>
   <data name="VideoLibrary" xml:space="preserve">
-    <value>Video Library</value>
+    <value>Thư Viện Video</value>
   </data>
   <data name="ViewDetail" xml:space="preserve">
-    <value>View Detail</value>
+    <value>Tìm hiểu thêm</value>
   </data>
   <data name="ViewMore" xml:space="preserve">
-    <value>View more</value>
+    <value>Xem thêm</value>
   </data>
   <data name="ViewProduct" xml:space="preserve">
-    <value>View Product</value>
-  </data>
-  <data name="WhyIsOrganic" xml:space="preserve">
-    <value>why is organic</value>
-  </data>
-  <data name="WhySelectNellyDeVuyst" xml:space="preserve">
-    <value>Four reasons why hollygood stars are sure to choose nelly's products</value>
+    <value>Xem ngay sản phẩm</value>
   </data>
   <data name="WorkTime" xml:space="preserve">
-    <value>Work Time</value>
-  </data>
-  <data name="YourNeeds" xml:space="preserve">
-    <value>Your Needs</value>
-  </data>
-  <data name="SpaceSpa" xml:space="preserve">
-    <value>Space Spa</value>
-  </data>
-  <data name="ResponseCustomer" xml:space="preserve">
-    <value>Customer's Feeling</value>
-  </data>
-  <data name="HotLine" xml:space="preserve">
-    <value>HOTLINE</value>
-  </data>
-  <data name="NewsHot" xml:space="preserve">
-    <value>News Hot</value>
-  </data>
-  <data name="AngencySystem" xml:space="preserve">
-    <value>Jade Spa systems</value>
-  </data>
-  <data name="TitleDescription" xml:space="preserve">
-    <value>"Number One about Massage Pregnant &amp; Take care of Nascency"</value>
-  </data>
-  <data name="TitleSecondDescription" xml:space="preserve">
-    <value>Đối với những người chưa biết về Gluten thì đây là một loại protein được tìm thấy ở lúa mì, lúa mạch và các loại ngũ cốc. Tuy nhiên không phải ai cũng có thể hấp thụ loại protein này, trên thực tế có những người bị Celiac (bệnh không dung nạp Gluten) và một số khác thì nhạy cảm nhẹ với nó.</value>
+    <value>Thời gian làm việc</value>
   </data>
   <data name="YouInterested" xml:space="preserve">
-    <value>Maybe you are interested</value>
+    <value>Có thể bạn quan tâm</value>
   </data>
-  <data name="ProductGroup" xml:space="preserve">
-    <value>Product Group</value>
-  </data>
-  <data name="ProductHot" xml:space="preserve">
-    <value>Product Hot</value>
-  </data>
-  <data name="SolutionForTheSkin" xml:space="preserve">
-    <value>Solution for the skin</value>
+  <data name="YourNeeds" xml:space="preserve">
+    <value>Đáp ứng mọi nhu cầu của bạn</value>
   </data>
 </root>

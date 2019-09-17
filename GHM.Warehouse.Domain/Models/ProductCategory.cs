@@ -60,6 +60,9 @@ namespace GHM.Warehouse.Domain.Models
             ChildCount = 0;
             Order = 0;
             CreateTime = DateTime.Now;
+            IsHot = false;
+            IsHomePage = false;
+            IsSolution = false;
         }
         public List<ProductCategoryTranslation> ProductCategoryTranslations { get; set; }
     }

@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = Resource.Product;
+}
+
+<partial name="_Breadcumb">
+    <div id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <partial name="_TitleBar" model="@Resource.Product" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="btn-toolbar">
+                        <!--/ko-->
+                        <div class="btn-group" data-bind="foreach: $root.listProductCategory">
+                            <a class="btn filter" href="javascript://" data-bind="css: {active: Id === $root.productCategoryId()}, click: $root.selectProductCategory.bind($data)">
+                                <span data-bind=" text: Name"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4" data-bind="foreach: listProduct">
+                    <div class="item">
+                        <div class="product-item">
+                            <div class="image-content">
+                                <a data-bind="attr: {href: 'san-pham/' + seoLink + '.html', title: name}">
+                                    <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + '@ViewBag.Url' + thumbnail + '&width=600&height=400', alt: name }"
+                                         onerror="this.src='/images/no-image.png'" />
+                                    <span class="img-overlay"></span>
+                                </a>
+                            </div>
+                            <div class="wrap-text-content">
+                                <div class="title">
+                                    <a data-bind="attr: {href: 'san-pham/' + seoLink + '.html', title: name}, trimText: name, trimTextLength: 50">
+                                    </a>
+                                </div>
+                                <div class="description">
+                                    <span data-bind="trimText: desciption, trimTextLength: 50"></span>
+                                </div>
+                                <hr />
+                                <div class="price">
+                                    <span data-bind="text: formatNumberic(salePrice,  'N0') + ' VNĐ'"></span>
+                                </div>
+                                <div class="star">
+                                    @for (var i = 1; i <= 5; i++)
+                                    {
+                                        <i class="la la-star"></i>
+                                    }
+                                </div>
+                                <div class="read-more">
+                                    <a data-bind="attr: {href: 'san-pham/' + seoLink + '.html', title: name}"
+                                       class="btn btn-main"><i class="la la-arrow-right"></i>@Resource.ViewMore</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--ko if: $root.totalPage() > 1-->
+            <div class="row">
+                <div class="col-sm-12 center">
+                    <ul class="pagination" data-bind="foreach: listPage">
+                        <!--ko if:page === 1-->
+                        <li>
+                            <a data-bind="css: $root.currentPage() === 1 ? 'disabled' :  '', click: $root.firstPage" href="#abums">
+                                <i class="fa fa-angle-double-left"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-bind="css: $root.currentPage() === 1 ? 'disabled bg-none' :  'bg-none', click: $root.prevPage" href="#abums">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        </li>
+                        <!--/ko-->
+                        <li><a data-bind="css: $root.currentPage() === page ? 'active' : '', text: page, click: $root.search" href="#abums"></a></li>
+                        <!--ko if: page === $root.totalPage()-->
+                        <li>
+                            <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled bg-none' : 'bg-none', click: $root.nextPage" href="#abums">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled' : '', click: $root.lastPage" href="#abums">
+                                <i class="fa fa-angle-double-right"></i>
+                            </a>
+                        </li>
+                        <!--/ko-->
+                    </ul>
+                </div>
+            </div>
+            <!--/ko-->
+        </div>
+    </div>
+
+@section scripts {
+        <script type="text/javascript">
+             var productCategories = @(ViewBag.ListProductCategory != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProductCategory)) : "[]");
+             var productCategoryId = "@ViewBag.ProductCategoryId";
+        </script>
+        <script src="~/js/viewmodel/ProductViewModel.min.js"></script>
+}

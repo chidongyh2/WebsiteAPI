@@ -61,7 +61,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About Us.
+        ///   Looks up a localized string similar to Về Chúng Tôi.
         /// </summary>
         public static string AboutUs {
             get {
@@ -70,7 +70,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address.
+        ///   Looks up a localized string similar to Địa chỉ.
         /// </summary>
         public static string Address {
             get {
@@ -79,7 +79,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All Coursers.
+        ///   Looks up a localized string similar to Tất cả các buổi.
         /// </summary>
         public static string AllCourses {
             get {
@@ -88,7 +88,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Jade Spa systems.
+        ///   Looks up a localized string similar to Hệ thống phân phối.
         /// </summary>
         public static string AngencySystem {
             get {
@@ -97,7 +97,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Blog.
+        ///   Looks up a localized string similar to Tin Tức.
         /// </summary>
         public static string Blog {
             get {
@@ -106,7 +106,16 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brand.
+        ///   Looks up a localized string similar to Tin tức và bình luận.
+        /// </summary>
+        public static string BlogDescription {
+            get {
+                return ResourceManager.GetString("BlogDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thương hiệu.
         /// </summary>
         public static string Brand {
             get {
@@ -115,7 +124,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chưng nhận về an toàn chất lượng.
+        ///   Looks up a localized string similar to Chứng nhận về an toàn chất lượng.
         /// </summary>
         public static string CertificateSafeAmiea {
             get {
@@ -124,7 +133,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get in Touch.
+        ///   Looks up a localized string similar to Liên Hệ.
         /// </summary>
         public static string Contact {
             get {
@@ -133,7 +142,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contact Information.
+        ///   Looks up a localized string similar to Thông tin liên hệ.
         /// </summary>
         public static string ContactInformation {
             get {
@@ -142,16 +151,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contact Pyrexar.
-        /// </summary>
-        public static string ContactPyrexar {
-            get {
-                return ResourceManager.GetString("ContactPyrexar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Content.
+        ///   Looks up a localized string similar to Nội dung.
         /// </summary>
         public static string Content {
             get {
@@ -160,7 +160,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter content.
+        ///   Looks up a localized string similar to Để lại nội dung liên hệ của bạn.
         /// </summary>
         public static string ContentPlaceHolder {
             get {
@@ -169,7 +169,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Content.
+        ///   Looks up a localized string similar to Nội dung.
         /// </summary>
         public static string Contents {
             get {
@@ -178,7 +178,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Day.
+        ///   Looks up a localized string similar to Ngày.
         /// </summary>
         public static string Date {
             get {
@@ -187,7 +187,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Day.
+        ///   Looks up a localized string similar to Buổi.
         /// </summary>
         public static string Day {
             get {
@@ -196,34 +196,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;We filter best services to serve for you&quot;.
-        /// </summary>
-        public static string DescriptionHot {
-            get {
-                return ResourceManager.GetString("DescriptionHot", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to We filter best services and product to serve you.
-        /// </summary>
-        public static string DescriptionIntroduce {
-            get {
-                return ResourceManager.GetString("DescriptionIntroduce", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Collection of Hyperthermia Videos from various sources.
-        /// </summary>
-        public static string DescriptionVideo {
-            get {
-                return ResourceManager.GetString("DescriptionVideo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Distribution Agents.
+        ///   Looks up a localized string similar to Đại lý phân phối.
         /// </summary>
         public static string DistributionAgents {
             get {
@@ -232,7 +205,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter email.
+        ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string EmailPlaceHolder {
             get {
@@ -241,7 +214,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Equipment.
+        ///   Looks up a localized string similar to Trang thiết bị.
         /// </summary>
         public static string EquipmentIntroduce {
             get {
@@ -250,43 +223,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Event Detail.
-        /// </summary>
-        public static string EventDetail {
-            get {
-                return ResourceManager.GetString("EventDetail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Event Image.
-        /// </summary>
-        public static string EventImage {
-            get {
-                return ResourceManager.GetString("EventImage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Event Introduction.
-        /// </summary>
-        public static string EventIntroduction {
-            get {
-                return ResourceManager.GetString("EventIntroduction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Professionals Join.
-        /// </summary>
-        public static string EventProfessionals {
-            get {
-                return ResourceManager.GetString("EventProfessionals", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Event.
+        ///   Looks up a localized string similar to Sự kiện.
         /// </summary>
         public static string Events {
             get {
@@ -295,34 +232,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exclusive brand in Vietnam.
-        /// </summary>
-        public static string ExclusiveBrand {
-            get {
-                return ResourceManager.GetString("ExclusiveBrand", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Expert Team.
-        /// </summary>
-        public static string ExpertTeamIntroductuce {
-            get {
-                return ResourceManager.GetString("ExpertTeamIntroductuce", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Founder.
-        /// </summary>
-        public static string Founder {
-            get {
-                return ResourceManager.GetString("Founder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Full Name.
+        ///   Looks up a localized string similar to Họ và Tên.
         /// </summary>
         public static string FullName {
             get {
@@ -331,7 +241,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter full name.
+        ///   Looks up a localized string similar to Họ và tên.
         /// </summary>
         public static string FullNamePlaceHolder {
             get {
@@ -340,7 +250,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home.
+        ///   Looks up a localized string similar to Trang Chủ.
         /// </summary>
         public static string Home {
             get {
@@ -349,7 +259,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home Phone.
+        ///   Looks up a localized string similar to Điện thoại bàn.
         /// </summary>
         public static string HomePhone {
             get {
@@ -367,7 +277,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hours.
+        ///   Looks up a localized string similar to Giờ.
         /// </summary>
         public static string Hour {
             get {
@@ -376,16 +286,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Infrastructure.
-        /// </summary>
-        public static string InfrastructureIntroduce {
-            get {
-                return ResourceManager.GetString("InfrastructureIntroduce", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Image Library.
+        ///   Looks up a localized string similar to Thư viện ảnh.
         /// </summary>
         public static string LibraryImage {
             get {
@@ -394,7 +295,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minutes.
+        ///   Looks up a localized string similar to Phút.
         /// </summary>
         public static string Minute {
             get {
@@ -403,16 +304,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nelly De Vuyst for the development of the beauty industry in Vietnam.
-        /// </summary>
-        public static string NellyProgress {
-            get {
-                return ResourceManager.GetString("NellyProgress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to News.
+        ///   Looks up a localized string similar to Tin Tức.
         /// </summary>
         public static string News {
             get {
@@ -421,7 +313,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to News Hot.
+        ///   Looks up a localized string similar to Tin hót.
         /// </summary>
         public static string NewsHot {
             get {
@@ -430,7 +322,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to News Related.
+        ///   Looks up a localized string similar to Dịch vụ liên quan.
         /// </summary>
         public static string NewsRelated {
             get {
@@ -439,16 +331,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;We are happy when sharing with you about beauty &amp; life story&quot;.
-        /// </summary>
-        public static string NewSuggestionDesciption {
-            get {
-                return ResourceManager.GetString("NewSuggestionDesciption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to News &amp; Experience.
+        ///   Looks up a localized string similar to Tin tức &amp; Trải nghiệm.
         /// </summary>
         public static string NewSuggestionTitle {
             get {
@@ -457,7 +340,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Phone Number.
+        ///   Looks up a localized string similar to Số điện thoại.
         /// </summary>
         public static string PhoneNumber {
             get {
@@ -466,7 +349,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter phone number.
+        ///   Looks up a localized string similar to Số điện thoại.
         /// </summary>
         public static string PhoneNumberPlaceHolder {
             get {
@@ -475,7 +358,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Product.
+        ///   Looks up a localized string similar to Sản phẩm.
         /// </summary>
         public static string Product {
             get {
@@ -484,7 +367,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Product Group.
+        ///   Looks up a localized string similar to Nhóm sản phẩm.
         /// </summary>
         public static string ProductGroup {
             get {
@@ -493,7 +376,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Product Hot.
+        ///   Looks up a localized string similar to Sản phẩm nổi  bật.
         /// </summary>
         public static string ProductHot {
             get {
@@ -502,7 +385,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Professional.
+        ///   Looks up a localized string similar to Chuyên gia.
         /// </summary>
         public static string Professionals {
             get {
@@ -520,7 +403,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recent Blogs.
+        ///   Looks up a localized string similar to Bài Viết Mới Nhất.
         /// </summary>
         public static string RecentBlogs {
             get {
@@ -529,7 +412,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Register.
+        ///   Looks up a localized string similar to Đăng ký.
         /// </summary>
         public static string Register {
             get {
@@ -538,7 +421,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Register Now.
+        ///   Looks up a localized string similar to Đăng ký ngay.
         /// </summary>
         public static string RegisterNows {
             get {
@@ -547,7 +430,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customer&apos;s Feeling.
+        ///   Looks up a localized string similar to Cảm Nhận Khách hàng.
         /// </summary>
         public static string ResponseCustomer {
             get {
@@ -556,7 +439,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Seconds.
+        ///   Looks up a localized string similar to Giây.
         /// </summary>
         public static string Second {
             get {
@@ -565,7 +448,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Seminar.
+        ///   Looks up a localized string similar to Hội thảo.
         /// </summary>
         public static string Seminars {
             get {
@@ -574,7 +457,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Send.
+        ///   Looks up a localized string similar to Gửi.
         /// </summary>
         public static string Send {
             get {
@@ -583,7 +466,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Send Mesage.
+        ///   Looks up a localized string similar to Gửi tin nhắn.
         /// </summary>
         public static string SendMessage {
             get {
@@ -592,7 +475,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Services.
+        ///   Looks up a localized string similar to Dịch vụ khách hàng.
         /// </summary>
         public static string ServicesIntroduce {
             get {
@@ -601,7 +484,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Solution for the skin.
+        ///   Looks up a localized string similar to Gải pháp cho da.
         /// </summary>
         public static string SolutionForTheSkin {
             get {
@@ -610,16 +493,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Space Spa.
-        /// </summary>
-        public static string SpaceSpa {
-            get {
-                return ResourceManager.GetString("SpaceSpa", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sponsors.
+        ///   Looks up a localized string similar to Đơn vị tài trợ.
         /// </summary>
         public static string Sponsors {
             get {
@@ -637,16 +511,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;Number One about Massage Pregnant &amp; Take care of Nascency&quot;.
-        /// </summary>
-        public static string TitleDescription {
-            get {
-                return ResourceManager.GetString("TitleDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Welcome to Jade spa.
+        ///   Looks up a localized string similar to Phương pháp Oraganic.
         /// </summary>
         public static string TitleHeader {
             get {
@@ -655,7 +520,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hot Services.
+        ///   Looks up a localized string similar to Dịch vụ nổi bật.
         /// </summary>
         public static string TitleHot {
             get {
@@ -664,25 +529,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Why shoul you chose Jade Spa.
-        /// </summary>
-        public static string TitleIntroduce {
-            get {
-                return ResourceManager.GetString("TitleIntroduce", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Đối với những người chưa biết về Gluten thì đây là một loại protein được tìm thấy ở lúa mì, lúa mạch và các loại ngũ cốc. Tuy nhiên không phải ai cũng có thể hấp thụ loại protein này, trên thực tế có những người bị Celiac (bệnh không dung nạp Gluten) và một số khác thì nhạy cảm nhẹ với nó..
-        /// </summary>
-        public static string TitleSecondDescription {
-            get {
-                return ResourceManager.GetString("TitleSecondDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Video Library.
+        ///   Looks up a localized string similar to Thư Viện Video.
         /// </summary>
         public static string VideoLibrary {
             get {
@@ -691,7 +538,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View Detail.
+        ///   Looks up a localized string similar to Tìm hiểu thêm.
         /// </summary>
         public static string ViewDetail {
             get {
@@ -700,7 +547,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View more.
+        ///   Looks up a localized string similar to Xem thêm.
         /// </summary>
         public static string ViewMore {
             get {
@@ -709,7 +556,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View Product.
+        ///   Looks up a localized string similar to Xem ngay sản phẩm.
         /// </summary>
         public static string ViewProduct {
             get {
@@ -718,25 +565,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to why is organic.
-        /// </summary>
-        public static string WhyIsOrganic {
-            get {
-                return ResourceManager.GetString("WhyIsOrganic", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Four reasons why hollygood stars are sure to choose nelly&apos;s products.
-        /// </summary>
-        public static string WhySelectNellyDeVuyst {
-            get {
-                return ResourceManager.GetString("WhySelectNellyDeVuyst", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Work Time.
+        ///   Looks up a localized string similar to Thời gian làm việc.
         /// </summary>
         public static string WorkTime {
             get {
@@ -745,7 +574,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maybe you are interested.
+        ///   Looks up a localized string similar to Có thể bạn quan tâm.
         /// </summary>
         public static string YouInterested {
             get {
@@ -754,7 +583,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your Needs.
+        ///   Looks up a localized string similar to Đáp ứng mọi nhu cầu của bạn.
         /// </summary>
         public static string YourNeeds {
             get {
