@@ -1,7 +1,6 @@
 ﻿
 
 function HomeViewModel() {
-
     var self = this;
     self.isMobile = ko.observable(false);
     self.isSelect = ko.observable(false);
@@ -47,13 +46,13 @@ function HomeViewModel() {
 
     self.selectProductCategory = function (data) {
         self.productCategoryId(data.Id);
-        $.get('/json/GetProductByCategory', { seolink: data.SeoLink }, function (data) {           
+        $.get('/json/GetProductByCategory', { seolink: data.SeoLink }, function (data) {
             self.listProductHot([]);
             $("div").remove(".lslide");
-            self.listProductHot(data);              
+            self.listProductHot(data.items);
             setTimeout(() => {
                 self.initProductSlider();
-            }, 100);           
+            }, 100);
         });
     };
 
@@ -108,14 +107,14 @@ function HomeViewModel() {
         }
 
         self.listProductCategoryHot(productCategoryHots);
-        var productCategoryInfo = _.find(self.listProductCategoryHot(), function (item) {
-            return item.Id = productCategoryHotId;
-        });
+        self.productCategoryId(productCategoryHotId);
 
-        if (productCategoryInfo) {
-            self.productCategoryId(productCategoryInfo.Id);   
-            self.selectProductCategory(productCategoryInfo);
-        }        
+        self.listProductHot([]);
+        $("div").remove(".lslide");
+        self.listProductHot(products);
+        setTimeout(() => {
+            self.initProductSlider();
+        }, 100);       
     });
 }
 

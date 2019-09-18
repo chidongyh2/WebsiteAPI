@@ -45,8 +45,12 @@ namespace GHM.WebSite.Nelly.Controllers
             var listProductCategoryData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategory));
             ViewBag.ListProductCategory = listProductCategoryData;
 
-            ViewBag.ProductCategoryId = listProductCategory.FirstOrDefault()?.Id;
+            var productCategoryInfo = listProductCategory.FirstOrDefault();
+            ViewBag.ProductCategoryId = productCategoryInfo?.Id;
+            var products = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, productCategoryInfo.SeoLink, null, null, 1, 12);
 
+            ViewBag.ListProduct = products?.Items;
+            ViewBag.TotalProduct = products?.TotalRows;
             return View();
         }
     }

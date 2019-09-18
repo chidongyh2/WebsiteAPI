@@ -29,13 +29,12 @@ namespace GHM.WebSite.Nelly.Controllers
         }
 
         // GET: /<controller>/
-        public async Task<IActionResult> GetProductByCategory(string seoLink)
+        public async Task<IActionResult> GetProductByCategory(string seoLink, int page = 1, int pageSize =20)
         {
             var apiService = _configuration.GetApiServiceInfo();
-            var listProduct = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, 20);
+            var result = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, page, pageSize);
 
-            var listProductData = JsonConvert.DeserializeObject<List<ProductSearchViewModel>>(JsonConvert.SerializeObject(listProduct));
-            return Ok(listProductData);
+            return Ok(result);
         }
 
         [Route("get-video-by-album"), AcceptVerbs("GET")]

@@ -9,6 +9,6 @@ namespace GHM.WebsiteClient.Api.Domain.IServices
     {
         Task<List<ProductCategorySearchViewModel>> ProductCategorySearch(string tenantId, string languageId, string seoLink, bool? isHot, bool? isHomePage, bool? isSolution, int top = 20);
 
-        Task<List<ProductSearchViewModel>> ProductSearch(string tenantId, string languageId, string categorySeoLink, bool? isHot, bool? isHomePage, int top = 20);
+        Task<SearchResult<ProductSearchViewModel>> ProductSearch(string tenantId, string languageId, string categorySeoLink, bool? isHot, bool? isHomePage, int page = 1, int pageSize = 20);
     }
 }

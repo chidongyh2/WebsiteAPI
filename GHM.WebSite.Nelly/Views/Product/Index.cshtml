@@ -1,5 +1,10 @@
-﻿@{
+﻿@using Newtonsoft.Json.Serialization;
+@{
     ViewBag.Title = Resource.Product;
+ var jsonSerializerSettings = new JsonSerializerSettings
+ {
+     ContractResolver = new CamelCasePropertyNamesContractResolver()
+ };
 }
 
 <partial name="_Breadcumb">
@@ -23,11 +28,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4" data-bind="foreach: listProduct">
+                <div class="col-sm-3" data-bind="foreach: listProduct">
                     <div class="item">
                         <div class="product-item">
                             <div class="image-content">
-                                <a data-bind="attr: {href: 'san-pham/' + seoLink + '.html', title: name}">
+                                <a data-bind="attr: {href: 'san-pham/' + seoLink + '.htm', title: name}">
                                     <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + '@ViewBag.Url' + thumbnail + '&width=600&height=400', alt: name }"
                                          onerror="this.src='/images/no-image.png'" />
                                     <span class="img-overlay"></span>
@@ -35,11 +40,11 @@
                             </div>
                             <div class="wrap-text-content">
                                 <div class="title">
-                                    <a data-bind="attr: {href: 'san-pham/' + seoLink + '.html', title: name}, trimText: name, trimTextLength: 50">
+                                    <a data-bind="attr: {href: 'san-pham/' + seoLink + '.htm', title: name}, trimText: name, trimTextLength: 50">
                                     </a>
                                 </div>
                                 <div class="description">
-                                    <span data-bind="trimText: desciption, trimTextLength: 50"></span>
+                                    <span data-bind="trimText: description, trimTextLength: 50"></span>
                                 </div>
                                 <hr />
                                 <div class="price">
@@ -52,7 +57,7 @@
                                     }
                                 </div>
                                 <div class="read-more">
-                                    <a data-bind="attr: {href: 'san-pham/' + seoLink + '.html', title: name}"
+                                    <a data-bind="attr: {href: 'san-pham/' + seoLink + '.htm', title: name}"
                                        class="btn btn-main"><i class="la la-arrow-right"></i>@Resource.ViewMore</a>
                                 </div>
                             </div>
@@ -62,29 +67,29 @@
             </div>
             <!--ko if: $root.totalPage() > 1-->
             <div class="row">
-                <div class="col-sm-12 center">
+                <div class="col-sm-12 center" style="text-align:center">
                     <ul class="pagination" data-bind="foreach: listPage">
                         <!--ko if:page === 1-->
                         <li>
-                            <a data-bind="css: $root.currentPage() === 1 ? 'disabled' :  '', click: $root.firstPage" href="#abums">
+                            <a data-bind="css: $root.currentPage() === 1 ? 'disabled' :  '', click: $root.firstPage" href="#Products">
                                 <i class="fa fa-angle-double-left"></i>
                             </a>
                         </li>
                         <li>
-                            <a data-bind="css: $root.currentPage() === 1 ? 'disabled bg-none' :  'bg-none', click: $root.prevPage" href="#abums">
+                            <a data-bind="css: $root.currentPage() === 1 ? 'disabled bg-none' :  'bg-none', click: $root.prevPage" href="#Products">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         </li>
                         <!--/ko-->
-                        <li><a data-bind="css: $root.currentPage() === page ? 'active' : '', text: page, click: $root.search" href="#abums"></a></li>
+                        <li><a data-bind="css: $root.currentPage() === page ? 'active' : '', text: page, click: $root.searchPageIndex.bind($data)" href="#Products"></a></li>
                         <!--ko if: page === $root.totalPage()-->
                         <li>
-                            <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled bg-none' : 'bg-none', click: $root.nextPage" href="#abums">
+                            <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled bg-none' : 'bg-none', click: $root.nextPage" href="#Products">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
                         <li>
-                            <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled' : '', click: $root.lastPage" href="#abums">
+                            <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled' : '', click: $root.lastPage" href="#Products">
                                 <i class="fa fa-angle-double-right"></i>
                             </a>
                         </li>
@@ -96,10 +101,12 @@
         </div>
     </div>
 
-@section scripts {
+    @section scripts {
         <script type="text/javascript">
              var productCategories = @(ViewBag.ListProductCategory != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProductCategory)) : "[]");
              var productCategoryId = "@ViewBag.ProductCategoryId";
+             var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
+             var totalRows = "@ViewBag.TotalProduct";
         </script>
         <script src="~/js/viewmodel/ProductViewModel.min.js"></script>
-}
+    }

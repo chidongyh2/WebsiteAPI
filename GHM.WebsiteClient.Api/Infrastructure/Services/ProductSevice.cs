@@ -14,7 +14,7 @@ using Microsoft.Extensions.Logging;
 
 namespace GHM.WebsiteClient.Api.Infrastructure.Services
 {
-    public class ProductSevice: IProductService
+    public class ProductSevice : IProductService
     {
         private readonly string _connectionString;
         private readonly ILogger<MenuService> _logger;
@@ -56,7 +56,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
             }
         }
 
-        public async Task<List<ProductSearchViewModel>> ProductSearch(string tenantId, string languageId, string categorySeoLink, bool? isHot, bool? isHomePage, int top = 20)
+        public async Task<SearchResult<ProductSearchViewModel>> ProductSearch(string tenantId, string languageId, string categorySeoLink, bool? isHot, bool? isHomePage, int page = 1, int pageSize = 20)
         {
             try
             {
@@ -71,10 +71,18 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     param.Add("@IsHot", isHot);
                     param.Add("@IsHomePage", isHomePage);
                     param.Add("@CategorySeoLink", categorySeoLink);
-                    param.Add("@Top", top);
+                    param.Add("@Page", page);
+                    param.Add("@PageSize", pageSize);
+                    param.Add("@TotalRows", DbType.Int32, direction: ParameterDirection.Output);
 
-                    var result = await con.QueryAsync<ProductSearchViewModel>("[dbo].[sp_Product_GetByProductCategory]", param, commandType: CommandType.StoredProcedure); 
-                    return result.ToList();
+                    var items = await con.QueryAsync<ProductSearchViewModel>("[dbo].[sp_Product_GetByProductCategory]", param, commandType: CommandType.StoredProcedure);
+                    var result = new SearchResult<ProductSearchViewModel>
+                    {
+                        Items = items.ToList(),
+                        TotalRows = param.Get<int>("TotalRows")
+                    };
+
+                    return result;
                 }
             }
             catch (Exception ex)
