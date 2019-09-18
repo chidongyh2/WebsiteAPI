@@ -6,6 +6,9 @@ function ProductViewModel() {
     self.productCategorySeoLink = ko.observable();
     self.listProduct = ko.observableArray([]);
 
+    self.firstIndex = ko.observable(0);
+    self.lastIndex = ko.observable(4);
+
     //Phân trang
     self.totalRows = ko.observable(0);
     self.pageSize = ko.observable(12);
@@ -73,7 +76,51 @@ function ProductViewModel() {
         $("html, body").animate({ scrollTop: $('#Products').offset().top - 50 }, 1000);
     };
 
+    self.rendProductCategoryActive = function () {
+        _.each(self.listProductCategory(), function (item, index) {
+            item.IsActive(index <= self.lastIndex() && index >= self.firstIndex());
+        });
+    };
+
+    self.nextIndex = function () {
+        if (self.listProductCategory() && self.lastIndex() <= self.listProductCategory().length - 1) {
+            self.firstIndex(self.firstIndex() + 1);
+            self.lastIndex(self.lastIndex() + 1);
+            self.rendProductCategoryActive();
+
+            var indexActive = _.findIndex(self.listProductCategory(), function (item) {
+                return item.Id === self.productCategoryId();
+            });
+
+            if (indexActive < self.firstIndex()) {
+                self.productCategoryId(self.listProductCategory()[self.firstIndex()].Id);
+                self.selectProductCategory(self.listProductCategory()[self.firstIndex()]);
+            }
+        }
+    };
+
+    self.prevIndex = function () {
+        if (self.listProductCategory() && self.firstIndex() > 0) {
+            self.firstIndex(self.firstIndex() - 1);
+            self.lastIndex(self.lastIndex() - 1);
+            self.rendProductCategoryActive();
+
+            var indexActive = _.findIndex(self.listProductCategory(), function (item) {
+                return item.Id === self.productCategoryId();
+            });
+
+            if (indexActive > self.lastIndex()) {
+                self.productCategoryId(self.listProductCategory()[self.lastIndex()].Id);
+                self.selectProductCategory(self.listProductCategory()[self.lastIndex()]);
+            }
+        }
+    };
+
     $(document).ready(function () {
+        _.each(productCategories, function (item) {
+            item.IsActive = ko.observable(false);
+        });
+
         self.listProductCategory(productCategories);
         var productCategoryInfo = _.find(self.listProductCategory(), function (item) {
             return item.Id = productCategoryId;
@@ -81,11 +128,11 @@ function ProductViewModel() {
 
         if (productCategoryInfo) {
             self.productCategoryId(productCategoryInfo.Id);
-            //self.selectProductCategory(productCategoryInfo);
         }
-
+        
         self.listProduct(products);
         self.renderPage(totalRows);
+        self.rendProductCategoryActive();
     });
 }
 

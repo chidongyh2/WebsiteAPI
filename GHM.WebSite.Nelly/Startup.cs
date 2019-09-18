@@ -88,7 +88,6 @@ namespace GHM.Website.Nelly
             builder.Populate(services);
 
             builder.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("WebsiteConnectionString"), Configuration.GetConnectionString("EventConnectionString"), Configuration.GetConnectionString("WarehouseConnectionString")));
-            //builder.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("WarehouseConnectionString")));
             builder.RegisterModule(new ValidationModule());
             var autofacServiceProvider = new AutofacServiceProvider(builder.Build());
             return autofacServiceProvider;
@@ -139,7 +138,7 @@ namespace GHM.Website.Nelly
                     {
                         // Cache static file for 7 day
                         string path = context.Context.Request.Path;
-                        if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg"))
+                        if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".ttf") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg"))
                         {
                             TimeSpan maxAge = new TimeSpan(7, 0, 0, 0); // 1 ngày
                             context.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));

@@ -23,11 +23,18 @@
             {
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="btn-toolbar">
-                            <!--/ko-->
-                            <div class="btn-group" data-bind="foreach: $root.listProductCategoryHot">
-                                <a class="btn filter" href="javascript://" data-bind="css: {active: Id === $root.productCategoryId()}, click: $root.selectProductCategory.bind($data)">
+                        <div class="btn-toolbar">                            
+                            <div class="btn-group">
+                                <a class="btn filter prev" href="javascript://" data-bind="visible: firstIndex() > 0, click: prevIndex" style="display: none">
+                                    <img src="/images/facion/pev.png" />
+                                </a>
+                                <!--ko foreach: $root.listProductCategoryHot-->
+                                <a class="btn filter item" href="javascript://" data-bind="css: {active: Id === $root.productCategoryId()}, click: $root.selectProductCategory.bind($data), visible: IsActive()" style="display:none">
                                     <span data-bind=" text: Name"></span>
+                                </a>
+                                <!--/ko-->
+                                <a class="btn filter nex" href="javascript://" data-bind="visible: $root.listProductCategoryHot()&& lastIndex() < $root.listProductCategoryHot().length - 1, click: nextIndex" style="display: none">
+                                    <img src="/images/facion/nex.png" />
                                 </a>
                             </div>
                         </div>

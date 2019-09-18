@@ -258,12 +258,8 @@ body {
     padding-top: 20px;
   }
 }
-#agency {
-  padding-bottom: 20px;
-  padding-top: 10px;
-}
 #agency #agencySlider {
-  padding-top: 10px;
+  padding-top: 40px;
 }
 #agency #agencySlider .item {
   display: flex;
@@ -867,12 +863,14 @@ body {
   font-family: Opensans;
   font-size: 14px;
 }
-.slick-next,
-.slick-prev {
-  /*color: @color-text;*/
-  /*&:before {
-                color: @color-text;
-            }*/
+.slick-next:before,
+.slick-prev:before {
+  font-size: unset;
+  line-height: 1;
+  opacity: 0.75;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .slick-next img,
 .slick-prev img {
@@ -885,7 +883,7 @@ body {
   z-index: 1020;
 }
 #menu-middle .titlebar {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 #menu-middle #menuMiddlerSlider {
   display: flex;
@@ -1058,10 +1056,10 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
-  top: -20px;
-  right: -20px;
-  bottom: -20px;
-  left: -20px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
   /*background-color: @color-white;*/
   /*border-radius: 50%;*/
   background-position: center;
@@ -1093,7 +1091,7 @@ body {
 #product-category-homepage .selector li input + label {
   position: absolute;
   left: 50%;
-  bottom: 125%;
+  bottom: 123%;
   width: 0;
   height: 0;
   line-height: 1px;
@@ -1161,13 +1159,13 @@ body {
   background-color: #FAFAFA;
 }
 #product-category-solution .category-item {
-  padding-bottom: 10px;
+  /*padding-bottom: 10px;*/
   display: flex;
   align-items: center;
   justify-content: center;
 }
 #product-category-solution .category-item .image {
-  padding: 20px;
+  padding: 15px;
   flex-basis: 50%;
   display: flex;
   align-items: center;
@@ -1314,20 +1312,28 @@ body {
     font-size: 15px;
   }
 }
-.btn-toolbar .btn-group .filter:last-child {
-  border-right: none;
-}
 .btn-toolbar .btn-group .filter:hover {
   background-color: #F9A4A7;
   color: #FFFFFF;
   border-radius: 20px !important;
   border: none !important;
 }
+.btn-toolbar .btn-group .item:last-child {
+  border-right: none;
+}
 .btn-toolbar .btn-group .active {
   background-color: #F9A4A7;
   color: #FFFFFF;
   border-radius: 20px !important;
   border: none !important;
+}
+.btn-toolbar .btn-group .nex:hover,
+.btn-toolbar .btn-group .prev:hover {
+  background-color: unset;
+}
+.btn-toolbar .btn-group img {
+  width: 25px;
+  height: 25px;
 }
 .product-item {
   background-color: #FFFFFF;

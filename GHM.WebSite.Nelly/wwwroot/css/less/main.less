@@ -271,11 +271,8 @@ body {
 }
 
 #agency {
-    padding-bottom: 20px;
-    padding-top: 10px;
-
     #agencySlider {
-        padding-top: 10px;
+        padding-top: 40px;
 
         .item {
             display: flex;
@@ -1020,10 +1017,15 @@ body {
 }
 
 .slick-next, .slick-prev {
-    /*color: @color-text;*/
-    /*&:before {
-                color: @color-text;
-            }*/
+    &:before {
+        font-size: unset;
+        line-height: 1;
+        opacity: .75;
+        color: #fff;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
     img {
         width: 25px;
         height: 25px;
@@ -1036,7 +1038,7 @@ body {
     z-index: 1020;
 
     .titlebar {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 
     #menuMiddlerSlider {
@@ -1236,10 +1238,10 @@ body {
         list-style: none;
         padding: 0;
         margin: 0;
-        top: -20px;
-        right: -20px;
-        bottom: -20px;
-        left: -20px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
         /*background-color: @color-white;*/
         /*border-radius: 50%;*/
         background-position: center;
@@ -1280,7 +1282,7 @@ body {
     .selector li input + label {
         position: absolute;
         left: 50%;
-        bottom: 125%;
+        bottom: 123%;
         width: 0;
         height: 0;
         line-height: 1px;
@@ -1360,13 +1362,13 @@ body {
     background-color: #FAFAFA;
 
     .category-item {
-        padding-bottom: 10px;
+        /*padding-bottom: 10px;*/
         display: flex;
         align-items: center;
         justify-content: center;
 
         .image {
-            padding: 20px;
+            padding: 15px;
             flex-basis: 50%;
             width: 100%;
             display: flex;
@@ -1550,10 +1552,6 @@ body {
                 font-size: 15px;
             }
 
-            &:last-child {
-                border-right: none;
-            }
-
             &:hover {
                 background-color: @main-color;
                 color: @color-white;
@@ -1562,11 +1560,28 @@ body {
             }
         }
 
+        .item {
+            &:last-child {
+                border-right: none;
+            }
+        }
+
         .active {
             background-color: @main-color;
             color: @color-white;
             border-radius: 20px !important;
             border: none !important;
+        }
+
+        .nex, .prev {
+            &:hover {
+                background-color: unset;
+            }
+        }
+
+        img {
+            width: 25px;
+            height: 25px;
         }
     }
 }
