@@ -121,6 +121,9 @@
     <Content Update="Views\Shared\_BoxHotline.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Shared\_SidebarProductRelationship.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Shared\_SidebarNewsHot.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
