@@ -29,11 +29,11 @@
                                     <img src="/images/facion/pev.png" />
                                 </a>
                                 <!--ko foreach: $root.listProductCategoryHot-->
-                                <a class="btn filter item" href="javascript://" data-bind="css: {active: Id === $root.productCategoryId()}, click: $root.selectProductCategory.bind($data), visible: IsActive()" style="display:none">
+                                <a class="btn filter item" href="javascript://" data-bind="css: {active: Id === $root.productCategoryId()}, click: $root.selectProductCategory.bind($data), visible: IsActive(), attr: {class : $index() >= $root.firstIndex() && $index()<= $root.lastIndex() ? 'btn filter item' : 'btn filter'}" style="display:none">
                                     <span data-bind=" text: Name"></span>
                                 </a>
                                 <!--/ko-->
-                                <a class="btn filter nex" href="javascript://" data-bind="visible: $root.listProductCategoryHot()&& lastIndex() < $root.listProductCategoryHot().length - 1, click: nextIndex" style="display: none">
+                                <a class="btn filter nex" href="javascript://" data-bind="visible: $root.listProductCategoryHot() && lastIndex() < $root.listProductCategoryHot().length - 1, click: nextIndex" style="display: none">
                                     <img src="/images/facion/nex.png" />
                                 </a>
                             </div>
@@ -54,6 +54,7 @@
                                         </a>
                                     </div>
                                     <div class="wrap-text-content">
+                                        <h3 class="product-code" data-bind="text: id"></h3>
                                         <div class="title">
                                             <a data-bind="attr: {href: 'san-pham/' + seoLink + '.htm', title: name}, trimText: name, trimTextLength: 50">
                                             </a>

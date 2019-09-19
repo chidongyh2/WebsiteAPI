@@ -176,28 +176,29 @@ namespace GHM.Website.Nelly
                 if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he")
                     && !values[parameterName].ToString().Equals("video") && !values[parameterName].ToString().Equals("san-pham"))
                 {
-                    var permalink = values[parameterName].ToString();
-                    string[] link = permalink.Split('.');
-                    // var isNewsExist = Task.Run(() => _newsService.CheckNewsExistBySeoLinkAsync(apiService.TenantId, link[0], CultureInfo.CurrentCulture.Name)).Result;
-                    var requestUrl = _configuration.GetApiUrl();
-                    var apiService = _configuration.GetApiServiceInfo();
-                    var httpClientService = new HttpClientService();
-                    var isCategoryExist = Task.Run(() => httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/check-category-exist",
-                        new Dictionary<string, string>
-                        {
-                            {"TenantId", apiService.TenantId},
-                            {"seoLink", link[0] },
-                            {"languageId",  CultureInfo.CurrentCulture.Name}
-                        })).Result;
+                    //var permalink = values[parameterName].ToString();
+                    //string[] link = permalink.Split('.');
+                    //// var isNewsExist = Task.Run(() => _newsService.CheckNewsExistBySeoLinkAsync(apiService.TenantId, link[0], CultureInfo.CurrentCulture.Name)).Result;
+                    //var requestUrl = _configuration.GetApiUrl();
+                    //var apiService = _configuration.GetApiServiceInfo();
+                    //var httpClientService = new HttpClientService();
+                    //var isCategoryExist = Task.Run(() => httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/check-category-exist",
+                    //    new Dictionary<string, string>
+                    //    {
+                    //        {"TenantId", apiService.TenantId},
+                    //        {"seoLink", link[0] },
+                    //        {"languageId",  CultureInfo.CurrentCulture.Name}
+                    //    })).Result;
 
-                    var isNewsExist = Task.Run(() => httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/check-exist", new Dictionary<string, string>
-                        {
-                            {"TenantId", apiService.TenantId},
-                            {"seoLink", link[0] },
-                            {"languageId",  CultureInfo.CurrentCulture.Name}
-                        })).Result;
+                    //var isNewsExist = Task.Run(() => httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/check-exist", new Dictionary<string, string>
+                    //    {
+                    //        {"TenantId", apiService.TenantId},
+                    //        {"seoLink", link[0] },
+                    //        {"languageId",  CultureInfo.CurrentCulture.Name}
+                    //    })).Result;
 
-                    return isCategoryExist || isNewsExist;
+                    //return isCategoryExist || isNewsExist;
+                    return true;
                 }
                 
                 return false;

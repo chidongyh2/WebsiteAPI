@@ -162,4 +162,4 @@ $('.selector button').click(function (e) {
     //toggleOptions($(this).parent());
 });
 
-setTimeout(function () { toggleOptions('.selector'); }, 100);
+setTimeout(function () { toggleOptions('.selector'); }, 500);

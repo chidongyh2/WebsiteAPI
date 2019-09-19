@@ -93,12 +93,12 @@ function HomeViewModel() {
 
     self.rendProductCategoryActive = function () {
         _.each(self.listProductCategoryHot(), function (item, index) {
-            item.IsActive(index <= self.lastIndex () && index >= self.firstIndex());
-        });       
+            item.IsActive(index <= self.lastIndex() && index >= self.firstIndex());
+        });
     };
 
     self.nextIndex = function () {
-        if (self.listProductCategoryHot() && self.lastIndex () <= self.listProductCategoryHot().length - 1) {
+        if (self.listProductCategoryHot() && self.lastIndex() <= self.listProductCategoryHot().length - 1) {
             self.firstIndex(self.firstIndex() + 1);
             self.lastIndex(self.lastIndex() + 1);
             self.rendProductCategoryActive();
@@ -117,7 +117,7 @@ function HomeViewModel() {
     self.prevIndex = function () {
         if (self.listProductCategoryHot() && self.firstIndex() > 0) {
             self.firstIndex(self.firstIndex() - 1);
-            self.lastIndex (self.lastIndex () - 1);
+            self.lastIndex(self.lastIndex() - 1);
             self.rendProductCategoryActive();
 
             var indexActive = _.findIndex(self.listProductCategoryHot(), function (item) {
@@ -132,6 +132,10 @@ function HomeViewModel() {
     };
 
     $(document).ready(function () {
+        if (window.innerWidth < 768) {
+            self.lastIndex(1);
+        }
+
         self.listVideo(listVideo);
         self.videoLinkId(videoLinkId);
         self.videoTitle(videoTitle);
@@ -153,13 +157,7 @@ function HomeViewModel() {
 
         self.listProductCategoryHot(productCategoryHots);
 
-        var productCategoryInfo = _.find(self.listProductCategoryHot(), function (item) {
-            return item.Id = productCategoryHotId;
-        });
-
-        if (productCategoryInfo) {
-            self.productCategoryId(productCategoryInfo.Id);
-        }
+        self.productCategoryId(parseInt(productCategoryHotId));
 
         self.rendProductCategoryActive();
 

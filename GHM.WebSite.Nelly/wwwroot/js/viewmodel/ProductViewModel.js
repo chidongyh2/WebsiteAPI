@@ -117,19 +117,17 @@ function ProductViewModel() {
     };
 
     $(document).ready(function () {
+        if (window.innerWidth < 768) {
+            self.lastIndex(1);
+        }
+
         _.each(productCategories, function (item) {
             item.IsActive = ko.observable(false);
         });
 
         self.listProductCategory(productCategories);
-        var productCategoryInfo = _.find(self.listProductCategory(), function (item) {
-            return item.Id = productCategoryId;
-        });
+        self.productCategoryId(parseInt(productCategoryId));
 
-        if (productCategoryInfo) {
-            self.productCategoryId(productCategoryInfo.Id);
-        }
-        
         self.listProduct(products);
         self.renderPage(totalRows);
         self.rendProductCategoryActive();

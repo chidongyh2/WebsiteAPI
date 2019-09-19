@@ -7,7 +7,7 @@ function ProductCategoryViewModel() {
     self.listProduct = ko.observableArray([]);
 
     self.firstIndex = ko.observable(0);
-    self.lastIndex = ko.observable(4);
+    self.lastIndex = ko.observable(3);
 
     //Phân trang
     self.totalRows = ko.observable(0);
@@ -117,17 +117,25 @@ function ProductCategoryViewModel() {
     };
 
     $(document).ready(function () {
+        if (window.innerWidth < 768) {
+            self.lastIndex(1);
+        }
+
         _.each(productCategories, function (item) {
             item.IsActive = ko.observable(false);
         });
 
         self.listProductCategory(productCategories);
-        var productCategoryInfo = _.find(self.listProductCategory(), function (item) {
-            return item.Id = productCategoryId;
+
+        self.productCategoryId(parseInt(productCategoryId));
+        console.log(self.productCategoryId());
+        var indexActive = _.findIndex(self.listProductCategory(), function (item) {
+            return item.Id === self.productCategoryId();
         });
 
-        if (productCategoryInfo) {
-            self.productCategoryId(productCategoryInfo.Id);
+        if (indexActive > self.lastIndex()) {
+            self.firstIndex(self.listProductCategory().length - 1 > indexActive + 4 ? indexActive : self.listProductCategory().length - 5);
+            self.lastIndex(self.listProductCategory().length - 1 > indexActive + 4 ? indexActive + 4 : self.listProductCategory().length - 1);
         }
 
         self.listProduct(products);
