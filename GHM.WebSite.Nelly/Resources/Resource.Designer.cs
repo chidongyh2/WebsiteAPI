@@ -369,6 +369,15 @@ namespace GHM.WebSite.Nelly.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Nhóm sản phẩm.
         /// </summary>
+        public static string ProductCategory {
+            get {
+                return ResourceManager.GetString("ProductCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhóm sản phẩm.
+        /// </summary>
         public static string ProductGroup {
             get {
                 return ResourceManager.GetString("ProductGroup", resourceCulture);

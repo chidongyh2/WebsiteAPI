@@ -1,14 +1,14 @@
 ﻿@using Newtonsoft.Json.Serialization;
 @{
     ViewBag.Title = Resource.Product;
- var jsonSerializerSettings = new JsonSerializerSettings
- {
-     ContractResolver = new CamelCasePropertyNamesContractResolver()
- };
+    var jsonSerializerSettings = new JsonSerializerSettings
+    {
+        ContractResolver = new CamelCasePropertyNamesContractResolver()
+    };
 }
 
 <partial name="_Breadcumb">
-    <div id="products">
+    <div id="products" class="products">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -58,9 +58,9 @@
                             </div>
                             <div class="star">
                                 @for (var i = 1; i <= 5; i++)
-                                    {
-                                <i class="la la-star"></i>
-                                    }
+                                {
+                                    <i class="la la-star"></i>
+                                }
                             </div>
                             <div class="read-more">
                                 <a data-bind="attr: {href: 'san-pham/' + seoLink + '.htm', title: name}"

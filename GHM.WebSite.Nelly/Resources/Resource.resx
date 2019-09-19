@@ -294,4 +294,7 @@
   <data name="YourNeeds" xml:space="preserve">
     <value>Đáp ứng mọi nhu cầu của bạn</value>
   </data>
+  <data name="ProductCategory" xml:space="preserve">
+    <value>Nhóm sản phẩm</value>
+  </data>
 </root>

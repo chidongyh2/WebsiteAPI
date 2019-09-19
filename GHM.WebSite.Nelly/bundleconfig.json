@@ -88,5 +88,11 @@
     "inputFiles": [
       "wwwroot/js/viewmodel/ProductViewModel.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/product-category.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/product-category.viewmodel.js"
+    ]
   }
 ]

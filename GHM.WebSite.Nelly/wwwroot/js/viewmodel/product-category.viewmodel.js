@@ -1,5 +1,5 @@
 ﻿
-function ProductViewModel() {
+function ProductCategoryViewModel() {
     var self = this;
     self.listProductCategory = ko.observableArray([]);
     self.productCategoryId = ko.observable();
@@ -11,7 +11,7 @@ function ProductViewModel() {
 
     //Phân trang
     self.totalRows = ko.observable(0);
-    self.pageSize = ko.observable(12);
+    self.pageSize = ko.observable(6);
     self.currentPage = ko.observable(1);
     self.totalPage = ko.observable(1);
     self.listPage = ko.observableArray([]);
@@ -129,12 +129,12 @@ function ProductViewModel() {
         if (productCategoryInfo) {
             self.productCategoryId(productCategoryInfo.Id);
         }
-        
+
         self.listProduct(products);
         self.renderPage(totalRows);
         self.rendProductCategoryActive();
     });
 }
 
-var viewModel = new ProductViewModel();
-ko.applyBindings(viewModel, document.getElementsByClassName("products")[0]);
+var viewModel = new ProductCategoryViewModel();
+ko.applyBindings(viewModel, document.getElementsByClassName("product-categories")[0]);

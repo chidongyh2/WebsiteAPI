@@ -41,13 +41,51 @@ namespace GHM.WebSite.Nelly.Controllers
         {
             var apiService = _configuration.GetApiServiceInfo();
 
-            var listProductCategory= await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, false, 20);
+            var listProductCategory= await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, false, int.MaxValue);
+            var listProductCategoryData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategory));
+            ViewBag.ListProductCategory = listProductCategoryData;
+
+            var productCategoryInfo = listProductCategory.FirstOrDefault();
+            ViewBag.ProductCategoryId = productCategoryInfo?.Id;
+            var products = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, productCategoryInfo?.SeoLink, null, null, 1, 6);
+
+            ViewBag.ListProduct = products?.Items;
+            ViewBag.TotalProduct = products?.TotalRows;
+            return View();
+        }
+
+        [Route("gia-phap/{seoLink}")]
+        public async Task<IActionResult> Solution(string seoLink)
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+
+            var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, false, 20);
             var listProductCategoryData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategory));
             ViewBag.ListProductCategory = listProductCategoryData;
 
             var productCategoryInfo = listProductCategory.FirstOrDefault();
             ViewBag.ProductCategoryId = productCategoryInfo?.Id;
             var products = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, productCategoryInfo.SeoLink, null, null, 1, 12);
+
+            ViewBag.ListProduct = products?.Items;
+            ViewBag.TotalProduct = products?.TotalRows;
+            return View();
+        }
+
+        [Route("san-pham/{seoLink}")]
+        public async Task<IActionResult> Category(string seoLink)
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+
+            var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, false, 20);
+            var listProductCategoryData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategory));
+            ViewBag.ListProductCategory = listProductCategoryData;
+
+            var productCategoryInfo = listProductCategory.Where(x=> x.SeoLink.Equals(seoLink?.Trim()))?.FirstOrDefault();
+
+            ViewBag.ProductCategoryInfo = JsonConvert.DeserializeObject<ProductCategorySearchViewModel>(JsonConvert.SerializeObject(productCategoryInfo));
+            ViewBag.ProductCategoryId = productCategoryInfo?.Id;
+            var products = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, productCategoryInfo?.SeoLink, null, null, 1, 12);
 
             ViewBag.ListProduct = products?.Items;
             ViewBag.TotalProduct = products?.TotalRows;

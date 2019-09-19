@@ -438,6 +438,9 @@ body {
 #category-news hr {
   margin-bottom: 25px;
 }
+#news-detail {
+  margin-top: 20px;
+}
 #news-detail .news-detail .title {
   color: #3F3F3F;
   font-size: 20px;
@@ -445,6 +448,11 @@ body {
   /*text-transform: uppercase;*/
   font-family: Roboto-Regular;
   padding-bottom: 10px;
+}
+#news-detail .news-detail .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #news-detail .news-detail #social-network ul {
   height: unset;
@@ -470,16 +478,15 @@ body {
 }
 #news-detail .news-detail .content img {
   padding: 0px;
+  width: 100%;
 }
 #news-detail .news-detail .content table tr td p {
   padding: 0px !important;
 }
-.sidebar-news-host {
-  padding-top: 15px;
-}
 .sidebar-news-host .title-sidebar {
   font-size: 16px;
   margin: 10px 0px;
+  margin-top: 0px;
   font-family: Roboto-Bold !important;
   padding-bottom: 10px;
   border-bottom: 2px solid #EEEDEB;
@@ -519,6 +526,9 @@ body {
 }
 .sidebar-news-host .list-banner li {
   padding: 10px 0px;
+}
+.sidebar-news-host .list-banner li img {
+  width: 100%;
 }
 .video-item {
   width: 100%;
@@ -1305,7 +1315,6 @@ body {
   margin: 0px 5px;
   border-top-right-radius: unset !important;
   border-bottom-right-radius: unset !important;
-  border-right: 1px solid #EEEDEB;
 }
 @media only screen and (max-width: 1200px) {
   .btn-toolbar .btn-group .filter {
@@ -1317,6 +1326,9 @@ body {
   color: #FFFFFF;
   border-radius: 20px !important;
   border: none !important;
+}
+.btn-toolbar .btn-group .item {
+  border-right: 1px solid #EEEDEB;
 }
 .btn-toolbar .btn-group .item:last-child {
   border-right: none;
@@ -1473,4 +1485,24 @@ body {
 }
 #abums .video-container {
   width: 90%;
+}
+#product-category {
+  margin-top: 20px;
+}
+#product-category .content .header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#product-category .content .header .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#product-category .content .header .description {
+  margin-top: 10px;
+  text-align: left;
+  font-size: 14px;
+  color: #3F3F3F;
+  font-family: Opensans;
 }
