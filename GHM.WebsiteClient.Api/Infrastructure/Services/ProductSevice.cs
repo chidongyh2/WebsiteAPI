@@ -56,7 +56,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
             }
         }
 
-        public async Task<SearchResult<ProductSearchViewModel>> ProductSearch(string tenantId, string languageId, string categorySeoLink, bool? isHot, bool? isHomePage, int page = 1, int pageSize = 20)
+        public async Task<SearchResult<ProductSearchViewModel>> ProductSearchByCategory(string tenantId, string languageId, string categorySeoLink, bool? isHot, bool? isHomePage, int page = 1, int pageSize = 20)
         {
             try
             {
@@ -76,6 +76,42 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     param.Add("@TotalRows", DbType.Int32, direction: ParameterDirection.Output);
 
                     var items = await con.QueryAsync<ProductSearchViewModel>("[dbo].[sp_Product_GetByProductCategory]", param, commandType: CommandType.StoredProcedure);
+                    var result = new SearchResult<ProductSearchViewModel>
+                    {
+                        Items = items.ToList(),
+                        TotalRows = param.Get<int>("TotalRows")
+                    };
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "sp_Product_GetByProductCategory ProductService Error.");
+                return null;
+            }
+        }
+
+        public async Task<SearchResult<ProductSearchViewModel>> ProductSearch(string tenantId, string languageId, string keyword, bool? isHot, bool? isHomePage, int page = 1, int pageSize = 20)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@TenantId", tenantId);
+                    param.Add("@LanguageId", languageId);
+                    param.Add("@IsHot", isHot);
+                    param.Add("@IsHomePage", isHomePage);
+                    param.Add("@Keyword", keyword);
+                    param.Add("@Page", page);
+                    param.Add("@PageSize", pageSize);
+                    param.Add("@TotalRows", DbType.Int32, direction: ParameterDirection.Output);
+
+                    var items = await con.QueryAsync<ProductSearchViewModel>("[dbo].[sp_Product_Search]", param, commandType: CommandType.StoredProcedure);
                     var result = new SearchResult<ProductSearchViewModel>
                     {
                         Items = items.ToList(),

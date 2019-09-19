@@ -15,11 +15,12 @@
             </a>
         </div>
         <div class="wrap-text-content">
+            <h3 class="product-code" >@Model.Id</h3>
             <div class="title">
                 <a href="@($"/{Model.SeoLink}.html")" title="@Model.Name">
                     @(!string.IsNullOrEmpty(@Model.Name) ? Common.SubString(Model.Name, 50) : Model.Name)
                 </a>
-            </div>            
+            </div>
             <div class="description">
                 <span>@Common.SubString(Model.Desciption, 50)</span>
             </div>
@@ -28,14 +29,14 @@
                 <span>@Model.SalePrice?.ToString("N0", culture)</span>
             </div>
             <div class="star">
-                @for(var i =1; i<= 5; i++)
+                @for (var i = 1; i <= 5; i++)
                 {
                     <i class="la la-star yellow"></i>
                 }
             </div>
             <div class="read-more">
                 <a href="@($"/{Model.SeoLink}.html")" title="@Model.Name"
-                   class="btn btn-main"><i class="la la-arrow-right"></i> @Resource.ViewMore </a>
+                   class="btn btn-main"><i class="la la-arrow-right"></i>@Resource.ViewMore</a>
             </div>
         </div>
     </div>

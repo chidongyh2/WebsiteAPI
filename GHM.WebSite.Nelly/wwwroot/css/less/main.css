@@ -275,7 +275,7 @@ body {
   width: 100%;
 }
 .contact {
-  padding-top: 55px;
+  margin-top: 20px;
   padding-bottom: 60px;
   /*background-image: url('../../images/bgr-web/bgr lien he-19.jpg');*/
   background-position: initial;
@@ -434,6 +434,9 @@ body {
 #news .block-news {
   padding-bottom: 10px;
 }
+#category-news {
+  margin-top: 30px;
+}
 @media only screen and (max-width: 1200px) {
   #category-news {
     background-image: none;
@@ -443,7 +446,7 @@ body {
   margin-bottom: 25px;
 }
 #news-detail {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 #news-detail .news-detail .title {
   color: #3F3F3F;
@@ -457,6 +460,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+#news-detail .news-detail .image img {
+  width: 100%;
 }
 #news-detail .news-detail #social-network ul {
   height: unset;
@@ -487,21 +493,12 @@ body {
 #news-detail .news-detail .content table tr td p {
   padding: 0px !important;
 }
-.sidebar-news-host .title-sidebar {
-  font-size: 16px;
-  margin: 10px 0px;
-  margin-top: 0px;
-  font-family: Roboto-Bold !important;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #EEEDEB;
-  color: #3F3F3F;
-}
 .sidebar-news-host .list-news {
   list-style: none;
   padding-left: 0px;
 }
 .sidebar-news-host .list-news li {
-  padding: 10px 0px;
+  padding: 5px 0px;
   border-bottom: 1px solid #EEEDEB;
 }
 .sidebar-news-host .list-news li .media-left {
@@ -514,15 +511,17 @@ body {
   transition: 0.3s ease;
   font-family: Opensans;
   font-size: 13px;
+  font-family: PlayfairDisplay-Regular;
 }
 .sidebar-news-host .list-news li .media-body a:hover {
   text-decoration: none;
   color: #F9A4A7;
 }
-.sidebar-news-host .list-news li .media-body .calendar {
-  color: #949293;
-  font-size: 12px;
+.sidebar-news-host .list-news li .media-body .price {
+  color: #3F3F3F;
+  font-size: 14px;
   padding-bottom: 0px;
+  font-family: Opensans-Bold;
 }
 .sidebar-news-host .list-banner {
   list-style: none;
@@ -533,6 +532,20 @@ body {
 }
 .sidebar-news-host .list-banner li img {
   width: 100%;
+}
+.title-sidebar {
+  font-size: 16px;
+  margin-top: 0px;
+  font-family: Roboto-Bold !important;
+  color: #3F3F3F;
+}
+.title-sidebar::after {
+  content: " ";
+  border: 1px solid #EEEDEB;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: block;
+  max-width: 50px;
 }
 .video-item {
   width: 100%;
@@ -684,6 +697,7 @@ body {
   text-align: center;
 }
 .titlebar h3 {
+  margin-top: 0px;
   margin-bottom: 10px !important;
   font-size: 50px;
   color: #3F3F3F;
@@ -1421,12 +1435,6 @@ body {
   font-weight: bold;
   font-family: Opensans-Bold;
 }
-.product-item .wrap-text-content .star {
-  margin-top: 10px;
-}
-.product-item .wrap-text-content .star i {
-  color: #EED544 !important;
-}
 .product-item .wrap-text-content hr {
   margin: 10px 0px;
   width: 50px;
@@ -1446,6 +1454,12 @@ body {
 .product-item:hover .wrap-text-content .btn-main {
   background-color: #F9A4A7;
   color: #FFFFFF;
+}
+.star {
+  margin-top: 10px;
+}
+.star i {
+  color: #EED544 !important;
 }
 .read-more {
   text-align: center;
@@ -1510,14 +1524,63 @@ body {
   height: 25px;
 }
 #abums {
+  margin-top: 30px;
   padding-top: 0px;
   padding-bottom: 20px;
 }
 #abums .video-container {
   width: 90%;
 }
-#product-category {
+#products {
+  margin-top: 30px;
+}
+.sidebar-product .form-search .input-group .form-control {
+  border-radius: 0px !important;
+  border-color: #EEEDEB;
+}
+.sidebar-product .form-search .input-group .btn-primary {
+  background-color: #999999;
+  border-radius: 0px;
+  border: none;
+}
+.sidebar-product .product-replationship {
   margin-top: 20px;
+}
+.sidebar-product .product-replationship ul {
+  list-style: none;
+  padding-left: 0px;
+}
+.sidebar-product .product-replationship ul li {
+  padding: 5px 0px;
+  border-bottom: 1px solid #EEEDEB;
+}
+.sidebar-product .product-replationship ul li .media-left {
+  min-width: 90px;
+  overflow: hidden;
+  padding-right: 12px;
+}
+.sidebar-product .product-replationship ul li .media-body a {
+  color: #3F3F3F;
+  transition: 0.3s ease;
+  font-family: Opensans;
+  font-size: 13px;
+}
+.sidebar-product .product-replationship ul li .media-body a:hover {
+  text-decoration: none;
+  color: #F9A4A7;
+}
+.sidebar-product .product-replationship ul li .media-body .calendar {
+  color: #949293;
+  font-size: 12px;
+  padding-bottom: 0px;
+}
+#product-category {
+  margin-top: 30px;
+}
+#product-category .content .titlebar h3 {
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 35px;
 }
 #product-category .content .header {
   display: flex;

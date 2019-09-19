@@ -288,7 +288,7 @@ body {
 }
 
 .contact {
-    padding-top: 55px;
+    margin-top: 20px;
     padding-bottom: 60px;
     /*background-image: url('../../images/bgr-web/bgr lien he-19.jpg');*/
     background-position: initial;
@@ -491,6 +491,8 @@ body {
 }
 
 #category-news {
+    margin-top: 30px;
+
     @media @mobile {
         background-image: none;
     }
@@ -501,7 +503,7 @@ body {
 }
 
 #news-detail {
-    margin-top: 20px;
+    margin-top: 30px;
 
     .news-detail {
         .title {
@@ -517,6 +519,10 @@ body {
             display: flex;
             align-items: center;
             justify-content: center;
+
+            img {
+                width: 100%;
+            }
         }
 
         #social-network {
@@ -566,23 +572,13 @@ body {
 }
 
 .sidebar-news-host {
-    .title-sidebar {
-        font-size: 16px;
-        margin: 10px 0px;
-        margin-top: 0px;
-        font-family: Roboto-Bold !important;
-        padding-bottom: 10px;
-        border-bottom: 2px solid @color-border;
-        color: @color-text;
-    }
-
     .list-news {
         padding-left: 0px;
         list-style: none;
         padding-left: 0px;
 
         li {
-            padding: 10px 0px;
+            padding: 5px 0px;
 
             .media-left {
                 min-width: 90px;
@@ -596,6 +592,7 @@ body {
                     transition: 0.3s ease;
                     font-family: Opensans;
                     font-size: 13px;
+                    font-family: PlayfairDisplay-Regular;
 
                     &:hover {
                         text-decoration: none;
@@ -603,10 +600,11 @@ body {
                     }
                 }
 
-                .calendar {
-                    color: @color-text-opacity;
-                    font-size: 12px;
+                .price {
+                    color: @color-text;
+                    font-size: 14px;
                     padding-bottom: 0px;
+                    font-family: Opensans-Bold;
                 }
             }
 
@@ -625,6 +623,24 @@ body {
                 width: 100%;
             }
         }
+    }
+}
+
+.title-sidebar {
+    font-size: 16px;
+    margin-top: 0px;
+    font-family: Roboto-Bold !important;
+    //padding-bottom: 10px;
+    //border-bottom: 2px solid @color-border;
+    color: @color-text;
+
+    &::after {
+        content: " ";
+        border: 1px solid @color-border;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        display: block;
+        max-width: 50px;
     }
 }
 
@@ -800,6 +816,7 @@ body {
     text-align: center;
 
     h3 {
+        margin-top: 0px;
         margin-bottom: 10px !important;
         font-size: 50px;
         color: @color-text;
@@ -1669,15 +1686,7 @@ body {
             color: @color-text;
             font-weight: bold;
             font-family: Opensans-Bold;
-        }
-
-        .star {
-            margin-top: 10px;
-
-            i {
-                color: #EED544 !important;
-            }
-        }
+        }        
 
         hr {
             margin: 10px 0px;
@@ -1706,6 +1715,14 @@ body {
                 color: @color-white;
             }
         }
+    }
+}
+
+.star {
+    margin-top: 10px;
+
+    i {
+        color: #EED544 !important;
     }
 }
 
@@ -1780,6 +1797,7 @@ body {
 }
 
 #abums {
+    margin-top: 30px;
     padding-top: 0px;
     padding-bottom: 20px;
 
@@ -1788,10 +1806,80 @@ body {
     }
 }
 
+#products {
+    margin-top: 30px;
+}
+
+.sidebar-product {
+    .form-search {
+        .input-group {
+            .form-control {
+                border-radius: 0px !important;
+                border-color: @color-border;
+            }
+
+            .btn-primary {
+                background-color: #999999;
+                border-radius: 0px;
+                border: none;
+            }
+        }
+    }
+
+    .product-replationship {
+        margin-top: 20px;
+
+        ul {
+            list-style: none;
+            padding-left: 0px;
+
+            li {
+                padding: 5px 0px;
+
+                .media-left {
+                    min-width: 90px;
+                    overflow: hidden;
+                    padding-right: 12px;
+                }
+
+                .media-body {
+                    a {
+                        color: @color-text;
+                        transition: 0.3s ease;
+                        font-family: Opensans;
+                        font-size: 13px;
+
+                        &:hover {
+                            text-decoration: none;
+                            color: @main-color;
+                        }
+                    }
+
+                    .calendar {
+                        color: @color-text-opacity;
+                        font-size: 12px;
+                        padding-bottom: 0px;
+                    }
+                }
+
+                border-bottom: 1px solid @color-border;
+            }
+        }
+    }
+}
+
 #product-category {
-    margin-top: 20px;
+    margin-top: 30px;
 
     .content {
+        .titlebar {
+            h3 {
+                text-transform: uppercase;
+                font-weight: normal;
+                font-size: 35px;
+            }
+        }
+
         .header {
             display: flex;
             justify-content: center;

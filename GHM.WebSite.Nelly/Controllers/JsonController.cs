@@ -32,7 +32,7 @@ namespace GHM.WebSite.Nelly.Controllers
         public async Task<IActionResult> GetProductByCategory(string seoLink, int page = 1, int pageSize =20)
         {
             var apiService = _configuration.GetApiServiceInfo();
-            var result = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, page, pageSize);
+            var result = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, page, pageSize);
 
             return Ok(result);
         }
