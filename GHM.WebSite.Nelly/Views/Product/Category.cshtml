@@ -24,8 +24,8 @@
                                     <a class="btn filter prev" href="javascript://" data-bind="visible: firstIndex() > 0, click: prevIndex" style="display: none">
                                         <img src="/images/facion/pev.png" />
                                     </a>
-                                    <!--ko foreach: $root.listProductCategory-->
-                                    <a class="btn filter item" href="javascript://" data-bind="css: {active: Id === $root.productCategoryId()}, click: $root.selectProductCategory.bind($data), visible: IsActive(), attr: {class : $index() >= $root.firstIndex() && $index()<= $root.lastIndex() ? 'btn filter item' : 'btn filter'}" style="display:none">
+                                    <!--ko foreach: $root.listProductCategory-->                                    
+                                    <a class="btn filter item" href="javascript://" data-bind="css: {active: Id === $root.productCategoryId()}, click: $root.selectProductCategory.bind($data), visible: IsActive()" style="display:none">
                                         <span data-bind=" text: Name"></span>
                                     </a>
                                     <!--/ko-->
@@ -39,10 +39,9 @@
                     <div class="row">
                         <div class="col-sm-12 cm-mgb-20 header">
                             <div class="image">
-                                <img class="img-responsive" data-bind="attr: {src: categoryImage() ? '@ViewBag.Url' + categoryImage() : '/images/no-image.png', alt: categoryName}" src="@($"{(string.IsNullOrEmpty(productCategoryInfo?.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{productCategoryInfo?.Image}")}")" onerror="this.onerror = null;this.src='/images/no-image.png'" alt="@productCategoryInfo?.Name" />
+                                <img class="img-responsive" data-bind="attr: {src:categoryImage() ? '@ViewBag.Url' + categoryImage() : '/images/no-image.png', alt: categoryName}" onerror="this.onerror = null;this.src='/images/no-image.png'" />
                             </div>
                             <div class="description" data-bind="html: categoryDescription">
-                                @Html.Raw(productCategoryInfo?.Description)
                             </div>
                         </div>
                     </div>
@@ -134,7 +133,8 @@
              var productCategories = @(ViewBag.ListProductCategory != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProductCategory)) : "[]");
              var productCategoryId = "@ViewBag.ProductCategoryId";
              var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
-             var totalRows = "@ViewBag.TotalProduct";
+            var totalRows = "@ViewBag.TotalProduct";
+            var categoryInfo = @(ViewBag.ProductCategoryInfo != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductCategoryInfo, jsonSerializerSettings)) : "[]");
         </script>
         <script src="~/js/viewmodel/product-category.viewmodel.min.js"></script>
     }

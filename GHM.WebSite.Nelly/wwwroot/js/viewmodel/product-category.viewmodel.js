@@ -134,9 +134,8 @@ function ProductCategoryViewModel() {
         });
 
         self.listProductCategory(productCategories);
-
         self.productCategoryId(parseInt(productCategoryId));
-        console.log(self.productCategoryId());
+
         var indexActive = _.findIndex(self.listProductCategory(), function (item) {
             return item.Id === self.productCategoryId();
         });
@@ -146,9 +145,17 @@ function ProductCategoryViewModel() {
             self.lastIndex(self.listProductCategory().length - 1 > indexActive + 3 ? indexActive + 3 : self.listProductCategory().length - 1);
         }
 
+        if (categoryInfo) {
+            self.categoryImage(categoryInfo.name);
+            self.categoryDescription(categoryInfo.description);
+            self.categoryImage(categoryInfo.image);
+        }
+
         self.listProduct(products);
         self.renderPage(totalRows);
         self.rendProductCategoryActive();
+
+        self.productCategoryId(parseInt(productCategoryId));
     });
 }
 

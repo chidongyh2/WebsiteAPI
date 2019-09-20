@@ -29,7 +29,7 @@
                                     <img src="/images/facion/pev.png" />
                                 </a>
                                 <!--ko foreach: $root.listProductCategoryHot-->
-                                <a class="btn filter item" href="javascript://" data-bind="css: {active: Id === $root.productCategoryId()}, click: $root.selectProductCategory.bind($data), visible: IsActive(), attr: {class : $index() >= $root.firstIndex() && $index()<= $root.lastIndex() ? 'btn filter item' : 'btn filter'}" style="display:none">
+                                <a class="btn filter item" href="javascript://" data-bind="css: {active: Id === $root.productCategoryId()}, click: $root.selectProductCategory.bind($data), visible: IsActive()" style="display:none">
                                     <span data-bind=" text: Name"></span>
                                 </a>
                                 <!--/ko-->
