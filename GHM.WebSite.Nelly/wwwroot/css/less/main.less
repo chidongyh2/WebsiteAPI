@@ -609,6 +609,10 @@ body {
             }
 
             border-bottom: 1px solid @color-border;
+
+            &:last-child {
+                border-bottom: none !important;
+            }
         }
     }
 
@@ -1602,7 +1606,7 @@ body {
         .item {
             border-right: 1px solid @color-border;
 
-            &:first-child {
+            &:last-child {
                 border-right: none !important;
             }
         }
@@ -1686,7 +1690,7 @@ body {
             color: @color-text;
             font-weight: bold;
             font-family: Opensans-Bold;
-        }        
+        }
 
         hr {
             margin: 10px 0px;
@@ -1863,6 +1867,10 @@ body {
                 }
 
                 border-bottom: 1px solid @color-border;
+
+                &:last-child {
+                    border-bottom: none !important;
+                }
             }
         }
     }

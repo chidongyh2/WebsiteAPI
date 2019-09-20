@@ -523,6 +523,9 @@ body {
   padding-bottom: 0px;
   font-family: Opensans-Bold;
 }
+.sidebar-news-host .list-news li:last-child {
+  border-bottom: none !important;
+}
 .sidebar-news-host .list-banner {
   list-style: none;
   padding-left: 0px;
@@ -1361,7 +1364,7 @@ body {
 .btn-toolbar .btn-group .item {
   border-right: 1px solid #EEEDEB;
 }
-.btn-toolbar .btn-group .item:first-child {
+.btn-toolbar .btn-group .item:last-child {
   border-right: none !important;
 }
 .btn-toolbar .btn-group .active {
@@ -1573,6 +1576,9 @@ body {
   color: #949293;
   font-size: 12px;
   padding-bottom: 0px;
+}
+.sidebar-product .product-replationship ul li:last-child {
+  border-bottom: none !important;
 }
 #product-category {
   margin-top: 30px;
