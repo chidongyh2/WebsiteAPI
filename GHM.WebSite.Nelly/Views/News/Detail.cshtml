@@ -21,7 +21,7 @@
                 <div class="col-sm-9">
                     <div class="news-detail">
                         <div class="image">
-                            <img class="news-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(Model.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{Model.FeatureImage}")}")" onerror="this.onerror = null;this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(Model.AltImage) ? Model.Title : Model.AltImage)" />
+                            <img class="news-image img-responsive lazy" data-src="@($"{(string.IsNullOrEmpty(Model.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{Model.FeatureImage}")}")" onerror="this.onerror = null;this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(Model.AltImage) ? Model.Title : Model.AltImage)" />
                         </div>
                         <h1 class="title">
                             @Model.Title

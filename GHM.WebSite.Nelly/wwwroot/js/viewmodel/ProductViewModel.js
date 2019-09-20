@@ -25,7 +25,7 @@ function ProductViewModel() {
     };
 
     self.search = function () {
-        $.get('/json/GetProductByCategory', {
+        $.get('/get-product-by-category', {
             seolink: self.productCategorySeoLink(),
             page: self.currentPage(), pageSize: self.pageSize()
         }, function (data) {

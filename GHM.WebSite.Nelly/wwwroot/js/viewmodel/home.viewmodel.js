@@ -47,7 +47,7 @@ function HomeViewModel() {
 
     self.selectProductCategory = function (data) {
         self.productCategoryId(data.Id);
-        $.get('/json/GetProductByCategory', { seolink: data.SeoLink }, function (data) {
+        $.get('/get-product-by-category', { seolink: data.SeoLink }, function (data) {
             self.listProductHot([]);
             $("div").remove(".lslide");
             self.listProductHot(data.items);

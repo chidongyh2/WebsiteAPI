@@ -15,6 +15,9 @@ function ProductCategoryViewModel() {
     self.currentPage = ko.observable(1);
     self.totalPage = ko.observable(1);
     self.listPage = ko.observableArray([]);
+    self.categoryName = ko.observable();
+    self.categoryDescription = ko.observable();
+    self.categoryImage = ko.observable();
 
     self.selectProductCategory = function (data) {
         self.productCategoryId(data.Id);
@@ -25,12 +28,17 @@ function ProductCategoryViewModel() {
     };
 
     self.search = function () {
-        $.get('/json/GetProductByCategory', {
+        $.get('/get-productcategory-and-list', {
             seolink: self.productCategorySeoLink(),
             page: self.currentPage(), pageSize: self.pageSize()
         }, function (data) {
             self.listProduct(data.items);
             self.renderPage(data.totalRows);
+            if (data.categories) {
+                self.categoryName(data.categories.name);
+                self.categoryDescription(data.categories.description);
+                self.categoryImage(data.categories.image);
+            }
         });
     };
 
@@ -134,8 +142,8 @@ function ProductCategoryViewModel() {
         });
 
         if (indexActive > self.lastIndex()) {
-            self.firstIndex(self.listProductCategory().length - 1 > indexActive + 4 ? indexActive : self.listProductCategory().length - 5);
-            self.lastIndex(self.listProductCategory().length - 1 > indexActive + 4 ? indexActive + 4 : self.listProductCategory().length - 1);
+            self.firstIndex(self.listProductCategory().length - 1 > indexActive + 3 ? indexActive : self.listProductCategory().length - 4);
+            self.lastIndex(self.listProductCategory().length - 1 > indexActive + 3 ? indexActive + 3 : self.listProductCategory().length - 1);
         }
 
         self.listProduct(products);

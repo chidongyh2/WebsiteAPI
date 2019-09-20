@@ -39,9 +39,9 @@
                     <div class="row">
                         <div class="col-sm-12 cm-mgb-20 header">
                             <div class="image">
-                                <img class="img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(productCategoryInfo?.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{productCategoryInfo?.Image}")}")" onerror="this.onerror = null;this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(productCategoryInfo?.Name) ? productCategoryInfo?.Name : productCategoryInfo?.Name)" />
+                                <img class="img-responsive" data-bind="attr: {src:'@ViewBag.Url' + categoryImage(), alt: categoryName}" src="@($"{(string.IsNullOrEmpty(productCategoryInfo?.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{productCategoryInfo?.Image}")}")" onerror="this.onerror = null;this.src='/images/no-image.png'" alt="@productCategoryInfo?.Name" />
                             </div>
-                            <div class="description">
+                            <div class="description" data-bind="html: categoryDescription">
                                 @Html.Raw(productCategoryInfo?.Description)
                             </div>
                         </div>
