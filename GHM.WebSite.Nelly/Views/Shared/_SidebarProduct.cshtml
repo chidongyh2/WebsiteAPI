@@ -1,8 +1,8 @@
 ﻿@{
     var listPoductRelationship = ViewBag.ListProductRelationship as List<ProductSearchViewModel>;
-    var listProductNews = ViewBag.ListProductNews as List<ProductSearchViewModel>;
+    var listProductCategory = ViewBag.ListProductCategory as List<ProductCategorySearchViewModel>;
     var url = ViewBag.Url;
-     var culture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
+    var culture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
 }
 
 <div class="sidebar-product">
@@ -16,6 +16,19 @@
             </span>
         </div>
     </div>
+    @*@if (listProductCategory != null && listProductCategory.Any())
+    {
+        <div class="menu cm-mgt-10">
+            @{
+                var productCategoryMenu= new ProductCategoryMenuObject
+                {
+                    ListMenuItem = listProductCategory,
+                    ParentId = null,
+                };
+                <partial name="_ProductCategoryMenuItem" model="productCategoryMenu" />
+            }
+        </div>
+    }*@
     @if (listPoductRelationship != null)
     {
         <div class="product-replationship">

@@ -1602,3 +1602,27 @@ body {
   color: #3F3F3F;
   font-family: Opensans;
 }
+#productGroups .item {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 4px !important;
+}
+#productGroups .item img {
+  border: 2px solid #EEEDEB;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+#productGroups .item .name {
+  margin-top: 10px;
+  font-size: 16px;
+  font-family: Opensans;
+  transition: 1s ease-in-out;
+}
+#productGroups .item .name a {
+  color: #3F3F3F;
+}
+#productGroups .item:hover .name a {
+  color: #F9A4A7;
+}

@@ -1,0 +1,44 @@
+﻿@model ProductCategoryMenuObject
+
+@{
+    var path = $"{Context.Request.Path}";
+    var absoluteUri = $"{Context.Request.Host}{Context.Request.Path}";
+    var url = ViewBag.Url;
+}
+@if (Model != null)
+{
+    var list = Model.ListMenuItem.Where(x => x.ParentId == Model.ParentId);
+    foreach (var item in list)
+    {
+        var childCount = Model.ListMenuItem.Count(x => x.ParentId == item.Id);       
+        var dropTotal = childCount > 0 && Model.ParentId == null ? "dropdown-toggle" : "";
+        <li class="@(childCount > 0 ? "dropdown" : "items") @(Model.ParentId > 0 ? "dropdown-submenu" : "")">
+            <a role="button" href="@($"/{item.SeoLink}")"
+               class="@("transition active dropdown-toggle visible-sm visible-xs visible-md")"
+               title="@item.Name" data-toggle="@(childCount > 0 ? "dropdown" : "")">
+                @item.Name
+                @if (childCount > 0 && Model.ParentId > 0)
+                {
+                    <i class="fa fa-angle-right pull-right visible-lg"></i>
+                }
+                @if (childCount > 0 && Model.ParentId == null)
+                {
+                    <i class="fa fa-angle-down pull-right visible-lg"></i>
+                }
+            </a>          
+            @if (Model.ListMenuItem.Count(x => x.ParentId == item.Id) > 0)
+            {
+                <ul class="dropdown-menu">
+                    @{
+                        var menuObject = new ProductCategoryMenuObject
+                        {
+                            ListMenuItem = Model.ListMenuItem,
+                            ParentId = item.Id
+                        };
+                        <partial name="_MenuItem" model="menuObject" />
+                    }
+                </ul>
+            }
+        </li>
+    }
+}

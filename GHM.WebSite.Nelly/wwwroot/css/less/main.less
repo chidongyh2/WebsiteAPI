@@ -1905,3 +1905,39 @@ body {
         }
     }
 }
+
+#productGroups {
+    .item {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+        border-radius: 4px !important;
+
+        img {
+            border: 2px solid @color-border;
+            box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .name {
+            margin-top: 10px;
+
+            a {
+                color: @color-text;
+            }
+
+            font-size: 16px;
+            font-family: Opensans;
+            transition: 1s ease-in-out;
+        }
+
+        &:hover {
+            .name {
+                a {
+                    color: @main-color;
+                }
+            }
+        }
+    }
+}
