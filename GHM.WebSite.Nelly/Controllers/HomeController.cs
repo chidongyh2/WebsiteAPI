@@ -184,13 +184,11 @@ namespace GHM.Website.Nelly.Controllers
             }
         }
 
+        [Route("gioi-thieu")]
         public async Task<IActionResult> About()
         {
-            var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
-            ViewData["Message"] = "Your application description page.";
-            var result = await new HttpClientService()
-                .GetAsync<List<News>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/home-page/{apiService.TenantId}/10");
+           
             return View();
         }
 

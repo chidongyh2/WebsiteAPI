@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -55,12 +54,24 @@ namespace GHM.WebSite.Nelly.Controllers
             return View();
         }
 
-        [Route("gia-phap/{seoLink}")]
+        [Route("giai-phap/{seoLink}.html")]
         public async Task<IActionResult> Solution(string seoLink)
         {
             var apiService = _configuration.GetApiServiceInfo();
+            var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, null, 1);
+            var productCategoryInfo = listProductCategory.FirstOrDefault();
 
-            return View();
+            var model = JsonConvert.DeserializeObject<ProductCategorySearchViewModel>(JsonConvert.SerializeObject(productCategoryInfo));
+
+            if (productCategoryInfo != null)
+            {
+                var products = await _productService.ProductSearchByParentCategory(apiService.TenantId,
+                    CultureInfo.CurrentCulture.Name, null, null, productCategoryInfo?.Id ?? 0);
+
+                ViewBag.ListProduct = JsonConvert.DeserializeObject<List<ProductWidthCategoryViewModel>>(JsonConvert.SerializeObject(products?.Items));
+            }
+
+            return View(model);
         }
 
         [Route("san-pham/{seoLink}")]

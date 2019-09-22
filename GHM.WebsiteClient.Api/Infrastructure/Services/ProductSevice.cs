@@ -127,5 +127,38 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                 return null;
             }
         }
+
+        public async Task<SearchResult<ProductWidthCategoryViewModel>> ProductSearchByParentCategory(string tenantId, string languageId,
+            bool? isHot, bool? isHomePage, int productCategoryParentId)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@TenantId", tenantId);
+                    param.Add("@LanguageId", languageId);
+                    param.Add("@IsHot", isHot);
+                    param.Add("@IsHomePage", isHomePage);
+                    param.Add("@ProductCategoryParentId", productCategoryParentId);
+
+                    var items = await con.QueryAsync<ProductWidthCategoryViewModel>("[dbo].[sp_Product_GetByProductCategoryParentId]", param, commandType: CommandType.StoredProcedure);
+                    var result = new SearchResult<ProductWidthCategoryViewModel>
+                    {
+                        Items = items.ToList(),
+                    };
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "sp_Product_GetByProductCategory ProductService Error.");
+                return null;
+            }
+        }
     }
 }
