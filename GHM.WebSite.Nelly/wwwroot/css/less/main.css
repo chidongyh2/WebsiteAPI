@@ -1701,8 +1701,18 @@ body {
 }
 #about {
   padding: 30px 0px;
+  position: relative;
 }
 #about .introduction {
+  position: relative;
+  border-bottom: 2px solid #fafafa;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  padding-bottom: 40px;
+  z-index: 100;
+  background-color: white;
+}
+#about .introduction .description {
   margin-top: 15px;
   font-size: 14px;
   text-align: center;
@@ -1712,13 +1722,17 @@ body {
   line-height: 25px;
 }
 @media only screen and (max-width: 1200px) {
-  #about .introduction {
+  #about .introduction .description {
     width: 100%;
   }
 }
 #about .core-value {
+  position: relative;
+  margin-top: -100px;
   background-color: #fafafa;
   padding: 30px 0px;
+  z-index: 1;
+  padding-top: 100px;
 }
 #about .core-value .odd .content {
   align-items: flex-end;

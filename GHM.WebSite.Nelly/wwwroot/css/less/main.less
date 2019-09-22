@@ -2032,25 +2032,39 @@ body {
 
 #about {
     padding: 30px 0px;
+    position: relative;
 
     .introduction {
-        margin-top: 15px;
-        font-size: 14px;
-        text-align: center;
-        color: @color-text;
-        font-family: Opensans;
-        width: 70%;
-        line-height: 25px;
+        position:relative;
+        border-bottom: 2px solid #fafafa;
+        border-bottom-left-radius: 100%;
+        border-bottom-right-radius: 100%;
+        padding-bottom: 40px;
+        z-index: 100;
+        background-color: white;
 
-        @media @mobile {
-            width: 100%;
+        .description {
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+            color: @color-text;
+            font-family: Opensans;
+            width: 70%;
+            line-height: 25px;
+
+            @media @mobile {
+                width: 100%;
+            }
         }
     }
 
     .core-value {
+        position:relative;
+        margin-top:-100px;        
         background-color: #fafafa;
         padding: 30px 0px;
-
+        z-index:1;
+        padding-top:100px;
         .odd {
             .content {
                 align-items: flex-end;
