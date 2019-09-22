@@ -1996,13 +1996,14 @@ body {
     .category-and-product {
         padding: 10px 0px;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+
         .category-info {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            padding: 60px 30px;
+            padding: 50px 25px;
             box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
 
             .image {
@@ -2023,8 +2024,49 @@ body {
                 font-size: 16px;
                 color: @color-text;
                 margin-bottom: 0px;
-                font-weight:bold;
+                font-weight: bold;
             }
         }
     }
+}
+
+#about {
+    padding: 30px 0px;
+
+    .introduction {
+        margin-top: 15px;
+        font-size: 14px;
+        text-align: center;
+        color: @color-text;
+        font-family: Opensans;
+        width: 70%;
+        line-height: 25px;
+
+        @media @mobile {
+            width: 100%;
+        }
+    }
+
+    .core-value {
+        background-color: #fafafa;
+        padding: 30px 0px;
+
+        .odd {
+            .content {
+                align-items: flex-end;
+            }
+        }
+
+        .even {
+            .content {
+                align-items: flex-start;
+            }
+        }
+    }
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center
 }
