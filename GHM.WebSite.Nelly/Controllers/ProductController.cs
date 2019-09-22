@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GHM.Infrastructure.Extensions;
 using GHM.Website.Nelly.Controllers;
 using GHM.Website.Nelly.ViewModels;
+using GHM.WebSite.Nelly.Models;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -41,7 +42,7 @@ namespace GHM.WebSite.Nelly.Controllers
         {
             var apiService = _configuration.GetApiServiceInfo();
 
-            var listProductCategory= await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, false, int.MaxValue);
+            var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, false, int.MaxValue);
             var listProductCategoryData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategory));
             ViewBag.ListProductCategory = listProductCategoryData;
 
@@ -58,7 +59,7 @@ namespace GHM.WebSite.Nelly.Controllers
         public async Task<IActionResult> Solution(string seoLink)
         {
             var apiService = _configuration.GetApiServiceInfo();
-            
+
             return View();
         }
 
@@ -67,14 +68,19 @@ namespace GHM.WebSite.Nelly.Controllers
         {
             var apiService = _configuration.GetApiServiceInfo();
 
-            var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, 20);
+            var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);
             var listProductCategoryData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategory));
             ViewBag.ListProductCategory = listProductCategoryData;
 
-            var productCategoryInfo = listProductCategory.Where(x=> x.SeoLink.Equals(seoLink?.Trim()))?.FirstOrDefault();
+            if (listProductCategoryData != null && listProductCategoryData.Any())
+            {
+                ViewBag.ProductCategroryTree = RenderTree(listProductCategoryData, null);
+            }
+
+            var productCategoryInfo = listProductCategory?.Where(x => x.SeoLink.Equals(seoLink?.Trim()))?.FirstOrDefault();
             ViewBag.ProductCategoryInfo = JsonConvert.DeserializeObject<ProductCategorySearchViewModel>(JsonConvert.SerializeObject(productCategoryInfo));
             ViewBag.ProductCategoryId = productCategoryInfo?.Id;
-            var products = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, productCategoryInfo?.SeoLink, null, null, 1, 12);
+            var products = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, productCategoryInfo?.SeoLink, null, null, 1, 6);
 
             ViewBag.ListProduct = products?.Items;
             ViewBag.TotalProduct = products?.TotalRows;
@@ -83,6 +89,35 @@ namespace GHM.WebSite.Nelly.Controllers
             ViewBag.ListProductRelationship = JsonConvert.DeserializeObject<List<ProductSearchViewModel>>(JsonConvert.SerializeObject(productRelationships?.Items));
 
             return View();
+        }
+
+        private List<TreeData> RenderTree(List<ProductCategorySearchViewModel> productCategorys, int? parentId)
+        {
+            var tree = new List<TreeData>();
+            var parents = productCategorys.Where(x => x.ParentId == parentId).ToList();
+            if (parents.Any())
+            {
+                parents.ForEach(parent =>
+                {
+                    var treeData = new TreeData
+                    {
+                        Id = parent.Id,
+                        Text = parent.Name,
+                        ParentId = parent.ParentId,
+                        IdPath = parent.IdPath,
+                        Data = parent,
+                        ChildCount = parent.ChildCount,
+                        Icon = string.Empty,
+                        State = new State()
+                        {
+                            Opened = !parentId.HasValue
+                        },
+                        Children = parent.ChildCount > 0 ? RenderTree(productCategorys, parent.Id) : null
+                    };
+                    tree.Add(treeData);
+                });
+            }
+            return tree;
         }
     }
 }

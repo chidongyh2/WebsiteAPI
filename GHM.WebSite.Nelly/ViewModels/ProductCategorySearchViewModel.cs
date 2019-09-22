@@ -17,10 +17,4 @@ namespace GHM.Website.Nelly.ViewModels
         public string IdPath { get; set; }
         public int? ParentId { get; set; }
     }
-
-    public class ProductCategoryMenuObject
-    {
-        public List<ProductCategorySearchViewModel> ListMenuItem { get; set; }
-        public int? ParentId { get; set; }
-    }
 }

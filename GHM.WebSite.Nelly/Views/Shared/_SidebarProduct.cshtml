@@ -16,19 +16,10 @@
             </span>
         </div>
     </div>
-    @*@if (listProductCategory != null && listProductCategory.Any())
+    @if (listProductCategory != null && listProductCategory.Any())
     {
-        <div class="menu cm-mgt-10">
-            @{
-                var productCategoryMenu= new ProductCategoryMenuObject
-                {
-                    ListMenuItem = listProductCategory,
-                    ParentId = null,
-                };
-                <partial name="_ProductCategoryMenuItem" model="productCategoryMenu" />
-            }
-        </div>
-    }*@
+        <partial name="_ProductCategoryMenuItem" />
+    }
     @if (listPoductRelationship != null)
     {
         <div class="product-replationship">

@@ -19,6 +19,8 @@ function ProductCategoryViewModel() {
     self.categoryDescription = ko.observable();
     self.categoryImage = ko.observable();
 
+    self.productCategoryTree = ko.observableArray([]);
+
     self.selectProductCategory = function (data) {
         self.productCategoryId(data.Id);
         self.productCategorySeoLink(data.SeoLink);
@@ -124,6 +126,18 @@ function ProductCategoryViewModel() {
         }
     };
 
+    self.showChildren = function (data, open) {
+    };
+
+    self.rendTree = function (data) {
+        _.each(data, function (item) {
+            item.state.show = ko.observable(item.state.opened);
+            if (item.children && item.children.length > 0) {
+                self.rendTree(item.children);
+            }
+        });
+    };
+
     $(document).ready(function () {
         if (window.innerWidth < 768) {
             self.lastIndex(1);
@@ -154,8 +168,9 @@ function ProductCategoryViewModel() {
         self.listProduct(products);
         self.renderPage(totalRows);
         self.rendProductCategoryActive();
-
-        self.productCategoryId(parseInt(productCategoryId));
+        self.rendTree(treeData);
+        self.productCategoryTree(treeData);
+        console.log(self.productCategoryTree());
     });
 }
 
