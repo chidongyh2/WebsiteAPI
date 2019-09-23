@@ -196,8 +196,6 @@ namespace GHM.Website.Infrastructure
                 .WithMany(fgt => fgt.FaqGroupTranslations)
                 .HasForeignKey(fgt => fgt.FaqGroupId);
 
-
-
             builder.Entity<Faq>()
               .ToTable("Faqs")
               .HasKey(x => x.Id);
@@ -210,6 +208,19 @@ namespace GHM.Website.Infrastructure
                 .HasOne(f => f.Faq)
                 .WithMany(ft => ft.FaqTranslations)
                 .HasForeignKey(ft => ft.FaqId);
+
+            builder.Entity<AgencyInfo>()
+              .ToTable("AgencyInfos")
+              .HasKey(x => x.Id);
+
+            builder.Entity<AgencyInfoTranslation>()
+                .ToTable("AgencyInfoTranslations")
+                .HasKey(x => new { x.TenantId, x.LanguageId, x.AgencyInfoId });
+
+            builder.Entity<AgencyInfoTranslation>()
+                .HasOne(ai => ai.AgencyInfo)
+                .WithMany(ait => ait.AgencyInfoTranslations)
+                .HasForeignKey(ait => ait.AgencyInfoId);
         }
 
         //public Task<int> SaveChangesAsync()

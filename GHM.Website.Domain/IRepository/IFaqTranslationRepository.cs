@@ -20,6 +20,6 @@ namespace GHM.Website.Domain.IRepository
 
         Task<List<FaqTranslation>> GetsFaqId(string faqId, bool isReadOnly = false);
 
-        Task<bool> CheckExists(string faqId, string tenantId, string languageId, string question);
+        Task<bool> CheckExists(string faqId, string tenantId, string languageId, string name);
     }
 }
