@@ -170,7 +170,6 @@ function ProductCategoryViewModel() {
         self.rendProductCategoryActive();
         self.rendTree(treeData);
         self.productCategoryTree(treeData);
-        console.log(self.productCategoryTree());
     });
 }
 

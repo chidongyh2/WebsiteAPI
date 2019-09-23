@@ -96,7 +96,36 @@ namespace GHM.WebSite.Nelly.Controllers
             ViewBag.ListProduct = products?.Items;
             ViewBag.TotalProduct = products?.TotalRows;
 
-            var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, 1, 5);
+            var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
+            ViewBag.ListProductRelationship = JsonConvert.DeserializeObject<List<ProductSearchViewModel>>(JsonConvert.SerializeObject(productRelationships?.Items));
+
+            return View();
+        }
+
+        [Route("san-pham/{seoLink}.html")]
+        public async Task<IActionResult> Detail(string seoLink)
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+
+            var listProduct = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, seoLink, 1, 1);
+            var productInfo = listProduct?.Items?.FirstOrDefault();
+            if(productInfo != null)
+            {
+                ViewBag.ProductInfo = JsonConvert.DeserializeObject<ProductSearchViewModel>(JsonConvert.SerializeObject(productInfo));
+                var productImages = await _productService.ProductImageSearchByProductId(apiService.TenantId, productInfo.Id);
+                ViewBag.ProdutImages = productImages?.Items;
+            }
+
+            var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);
+            var listProductCategoryData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategory));
+            ViewBag.ListProductCategory = listProductCategoryData;
+
+            if (listProductCategoryData != null && listProductCategoryData.Any())
+            {
+                ViewBag.ProductCategroryTree = RenderTree(listProductCategoryData, null);
+            }
+
+            var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
             ViewBag.ListProductRelationship = JsonConvert.DeserializeObject<List<ProductSearchViewModel>>(JsonConvert.SerializeObject(productRelationships?.Items));
 
             return View();
