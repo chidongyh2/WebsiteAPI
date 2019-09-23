@@ -37,9 +37,9 @@ namespace GHM.Website.Infrastructure.Repository
             var info = await _faqTranslationRepository.GetsAsync(false, x => x.FaqId == faqId);
             if (info == null || !info.Any())
                 return -1;
-            foreach (var videoTranslation in info)
+            foreach (var faqTranslation in info)
             {
-                videoTranslation.IsDelete = true;
+                faqTranslation.IsDelete = true;
             }
             return await Context.SaveChangesAsync();
         }

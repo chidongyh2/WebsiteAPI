@@ -16,10 +16,10 @@ namespace GHM.Website.Api.Controllers
     [Produces("application/json")]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class FaqController : GhmControllerBase
+    public class FaqsController : GhmControllerBase
     {
         private readonly IFaqService _faqService;
-        public FaqController(IFaqService faqService)
+        public FaqsController(IFaqService faqService)
         {
             _faqService = faqService;
         }

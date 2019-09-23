@@ -110,7 +110,7 @@ namespace GHM.Website.Infrastructure.Services
                           faqTranslation.Question));
                     }
 
-                    var FaqTranslationInsert = new FaqTranslation
+                    var faqTranslationInsert = new FaqTranslation
                     {
                         TenantId = tenantId,
                         FaqId = faqId,
@@ -119,7 +119,7 @@ namespace GHM.Website.Infrastructure.Services
                         Answer = faqTranslation.Answer?.Trim()
                     };
 
-                    faqTranslations.Add(FaqTranslationInsert);
+                    faqTranslations.Add(faqTranslationInsert);
                 }
 
                 // Insert Faq translations.
@@ -184,13 +184,13 @@ namespace GHM.Website.Infrastructure.Services
                 if (isNameExists)
                     return new ActionResultResponse(-5, _websiteResourceService.GetString("Question: \"{0}\" already exists.", faqTranslation.Question));
 
-                var FaqTranslationInfo =
+                var faqTranslationInfo =
                   await _faqTranslationRepository.GetInfo(tenantId, faqTranslation.LanguageId, faqId);
-                if (FaqTranslationInfo != null)
+                if (faqTranslationInfo != null)
                 {
-                    FaqTranslationInfo.Question = faqTranslation.Question.Trim();
-                    FaqTranslationInfo.Answer = faqTranslation.Answer?.Trim();
-                    await _faqTranslationRepository.Update(FaqTranslationInfo);
+                    faqTranslationInfo.Question = faqTranslation.Question.Trim();
+                    faqTranslationInfo.Answer = faqTranslation.Answer?.Trim();
+                    await _faqTranslationRepository.Update(faqTranslationInfo);
                 }
                 else
                 {
@@ -207,32 +207,32 @@ namespace GHM.Website.Infrastructure.Services
             return new ActionResultResponse(1, _websiteResourceService.GetString("Update faq successful."));
         }
 
-        public async Task<ActionResultResponse> Delete(string tenantId, string FaqId)
+        public async Task<ActionResultResponse> Delete(string tenantId, string faqId)
         {
-            var info = await _faqRepository.GetInfo(FaqId);
+            var info = await _faqRepository.GetInfo(faqId);
             if (info == null)
                 return new ActionResultResponse(-1, _websiteResourceService.GetString("Faq does not exists. Please try again."));
 
             if (info.TenantId != tenantId)
                 return new ActionResultResponse(-2, _sharedResourceService.GetString(ErrorMessage.NotHavePermission));
 
-            var result = await _faqRepository.Delete(FaqId);
-            await _faqTranslationRepository.Delete(FaqId);
+            var result = await _faqRepository.Delete(faqId);
+            await _faqTranslationRepository.Delete(faqId);
             return new ActionResultResponse(result, _websiteResourceService.GetString("Delete Faq successful."));
         }
 
-        public async Task<ActionResultResponse<FaqDetailViewModel>> GetDetail(string tenantId, string FaqId)
+        public async Task<ActionResultResponse<FaqDetailViewModel>> GetDetail(string tenantId, string faqId)
         {
-            var info = await _faqRepository.GetInfo(FaqId);
+            var info = await _faqRepository.GetInfo(faqId);
             if (info == null)
                 return new ActionResultResponse<FaqDetailViewModel>(-1, _websiteResourceService.GetString("Faq does not exists."));
 
             if (info.TenantId != tenantId)
                 return new ActionResultResponse<FaqDetailViewModel>(-2, _sharedResourceService.GetString(ErrorMessage.NotHavePermission));
 
-            var FaqTranslations = await _faqTranslationRepository.GetsFaqId(FaqId);
+            var faqTranslations = await _faqTranslationRepository.GetsFaqId(faqId);
 
-            var FaqDetail = new FaqDetailViewModel
+            var faqDetail = new FaqDetailViewModel
             {
                 Id = info.Id,
                 FaqGroupId = info.FaqGroupId,
@@ -242,7 +242,7 @@ namespace GHM.Website.Infrastructure.Services
                 ConcurrencyStamp = info.ConcurrencyStamp,
                 CreateTime = info.CreateTime,
                 LastUpdate = info.LastUpdate,
-                FaqTranslations = FaqTranslations.Select(x => new FaqTranslationViewModel
+                FaqTranslations = faqTranslations.Select(x => new FaqTranslationViewModel
                 {
                     LanguageId = x.LanguageId,
                     Question = x.Question,
@@ -252,7 +252,7 @@ namespace GHM.Website.Infrastructure.Services
             return new ActionResultResponse<FaqDetailViewModel>
             {
                 Code = 1,
-                Data = FaqDetail
+                Data = faqDetail
             };
         }
     }
