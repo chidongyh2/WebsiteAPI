@@ -59,7 +59,7 @@ namespace GHM.Website.Infrastructure.Services
             var resultInsertFaqGroup = await _faqGroupRepository.Insert(new FaqGroup
             {
                 Id = faqGroupId,
-                ConcurrencyStamp = faqGroupId,
+                ConcurrencyStamp = faqGroupId.Trim(),
                 IsActive = faqGroupMeta.IsActive,
                 TenantId = tenantId,
                 CreatorId = creatorId,
@@ -227,7 +227,7 @@ namespace GHM.Website.Infrastructure.Services
             {
                 Id = info.Id,
                 IsActive = info.IsActive,
-                ConcurrencyStamp = info.ConcurrencyStamp,
+                ConcurrencyStamp = info.ConcurrencyStamp.Trim(),
                 CreateTime = info.CreateTime,
                 LastUpdate = info.LastUpdate,
                 FaqGroupTranslations = FaqGroupTranslations.Select(x => new FaqGroupTranslationViewModel
