@@ -1,4 +1,5 @@
-﻿var isShowToggle = true;
+﻿
+var isShowToggle = true;
 $(document).ready(function () {
     $(".wrap-show-icon").css("display", "none");
     $("#backToTop").click(() => {
@@ -62,4 +63,6 @@ $(document).ready(function () {
             $(".header-top").css("display", "block");
         }
     });
+
+    $('[data-toggle="tooltip"]').tooltip();
 });

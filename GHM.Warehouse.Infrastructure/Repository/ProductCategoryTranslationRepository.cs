@@ -63,6 +63,7 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await _productCategoryTranslation.GetsAsAsync(x => new ProductCategoryTranslationViewModel
             {
                 Name = x.Name,
+                SeoLink = x.SeoLink,                
                 Description = x.Description,
                 LanguageId = x.LanguageId,
                 ParentName = x.ParentName

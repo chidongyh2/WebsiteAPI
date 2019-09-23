@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutABC" xml:space="preserve">
-    <value>Về</value>
-  </data>
   <data name="AboutUs" xml:space="preserve">
     <value>Về Chúng Tôi</value>
   </data>
@@ -129,14 +126,8 @@
   <data name="AllCourses" xml:space="preserve">
     <value>Tất cả các buổi</value>
   </data>
-  <data name="AmieaFamous" xml:space="preserve">
-    <value>AMIEA THƯƠNG HIỆU NỔI TIẾNG TOÀN CẦU</value>
-  </data>
   <data name="AngencySystem" xml:space="preserve">
-    <value>Hệ thống Jade Spa</value>
-  </data>
-  <data name="BenefitsofHyperthermiainCancerTreatment" xml:space="preserve">
-    <value>Lợi ích của tăng thân nhiệt trong điều trị ung thư</value>
+    <value>Hệ thống phân phối</value>
   </data>
   <data name="Blog" xml:space="preserve">
     <value>Tin Tức</value>
@@ -156,9 +147,6 @@
   <data name="ContactInformation" xml:space="preserve">
     <value>Thông tin liên hệ</value>
   </data>
-  <data name="ContactPyrexar" xml:space="preserve">
-    <value>Liên hệ với Pyrexar</value>
-  </data>
   <data name="Content" xml:space="preserve">
     <value>Nội dung</value>
   </data>
@@ -174,15 +162,6 @@
   <data name="Day" xml:space="preserve">
     <value>Buổi</value>
   </data>
-  <data name="DescriptionHot" xml:space="preserve">
-    <value>"Chúng tôi chọn lọc những sản phẩm tốt nhất để chăm sóc bạn"</value>
-  </data>
-  <data name="DescriptionIntroduce" xml:space="preserve">
-    <value>"Chúng tôi chọn lọc những sản phẩm tốt nhất để chăm sóc bạn"</value>
-  </data>
-  <data name="DescriptionVideo" xml:space="preserve">
-    <value>Bộ sưu tập video từ nhiều nguồn khác nhau</value>
-  </data>
   <data name="DistributionAgents" xml:space="preserve">
     <value>Đại lý phân phối</value>
   </data>
@@ -192,29 +171,8 @@
   <data name="EquipmentIntroduce" xml:space="preserve">
     <value>Trang thiết bị</value>
   </data>
-  <data name="EventDetail" xml:space="preserve">
-    <value>Chi tiết sự kiện</value>
-  </data>
-  <data name="EventImage" xml:space="preserve">
-    <value>Hình ảnh sự kiện</value>
-  </data>
-  <data name="EventIntroduction" xml:space="preserve">
-    <value>Giới thiệu sự kiện</value>
-  </data>
-  <data name="EventProfessionals" xml:space="preserve">
-    <value>Chuyên gia tham dự</value>
-  </data>
   <data name="Events" xml:space="preserve">
     <value>Sự kiện</value>
-  </data>
-  <data name="ExclusiveBrand" xml:space="preserve">
-    <value>Thương hiệu độc quyền tại việt nam</value>
-  </data>
-  <data name="ExpertTeamIntroductuce" xml:space="preserve">
-    <value>Đội ngũ chuyên viên</value>
-  </data>
-  <data name="Founder" xml:space="preserve">
-    <value>Nhà sáng lập</value>
   </data>
   <data name="FullName" xml:space="preserve">
     <value>Họ và Tên</value>
@@ -231,29 +189,17 @@
   <data name="Hour" xml:space="preserve">
     <value>Giờ</value>
   </data>
-  <data name="HyperthermiaBlog" xml:space="preserve">
-    <value>Hyperthermia Blog</value>
-  </data>
-  <data name="InfrastructureIntroduce" xml:space="preserve">
-    <value>Cơ sở vật chất</value>
-  </data>
   <data name="LibraryImage" xml:space="preserve">
     <value>Thư viện ảnh</value>
   </data>
   <data name="Minute" xml:space="preserve">
     <value>Phút</value>
   </data>
-  <data name="NellyProgress" xml:space="preserve">
-    <value>Nelly De Vuyst Vì sự phát triển của ngành làm đẹp việt nam</value>
-  </data>
   <data name="News" xml:space="preserve">
     <value>Tin Tức</value>
   </data>
   <data name="NewsRelated" xml:space="preserve">
     <value>Dịch vụ liên quan</value>
-  </data>
-  <data name="NewSuggestionDesciption" xml:space="preserve">
-    <value>"Chúng tôi hạnh phúc khi được chia sẻ cùng bạn câu chuyện làm đẹp &amp; cuộc sống"</value>
   </data>
   <data name="NewSuggestionTitle" xml:space="preserve">
     <value>Tin tức &amp; Trải nghiệm</value>
@@ -272,9 +218,6 @@
   </data>
   <data name="ProgressAmiea" xml:space="preserve">
     <value>Định hướng phát triển</value>
-  </data>
-  <data name="ProgressAmieaDescription" xml:space="preserve">
-    <value>ĐỊNH HƯỚNG PHÁT TRIỂN CỦA SẢN PHẨM MANG LẠI SỰ SÁNG TẠO CHO NGƯỜI SỬ DỤNG</value>
   </data>
   <data name="RecentBlogs" xml:space="preserve">
     <value>Bài Viết Mới Nhất</value>
@@ -303,9 +246,6 @@
   <data name="Sponsors" xml:space="preserve">
     <value>Đơn vị tài trợ</value>
   </data>
-  <data name="TechnologyAmiea" xml:space="preserve">
-    <value>CÔNG NGHỆ AMIEA SẢN XUẤT TẠI ĐỨC</value>
-  </data>
   <data name="TimeEvent" xml:space="preserve">
     <value>Thời gian diễn ra sự kiện</value>
   </data>
@@ -314,9 +254,6 @@
   </data>
   <data name="TitleHot" xml:space="preserve">
     <value>Dịch vụ nổi bật</value>
-  </data>
-  <data name="TitleIntroduce" xml:space="preserve">
-    <value>Tại sao lựa chọn Jade Spa</value>
   </data>
   <data name="VideoLibrary" xml:space="preserve">
     <value>Thư Viện Video</value>
@@ -330,20 +267,11 @@
   <data name="ViewProduct" xml:space="preserve">
     <value>Xem ngay sản phẩm</value>
   </data>
-  <data name="WhyIsOrganic" xml:space="preserve">
-    <value>Tại sao là hữu cơ</value>
-  </data>
-  <data name="WhySelectNellyDeVuyst" xml:space="preserve">
-    <value>4 lý do khiến các sao hollygood yên tâm lựa chọn sản phẩm của nelly</value>
-  </data>
   <data name="WorkTime" xml:space="preserve">
     <value>Thời gian làm việc</value>
   </data>
   <data name="YourNeeds" xml:space="preserve">
     <value>Đáp ứng mọi nhu cầu của bạn</value>
-  </data>
-  <data name="SpaceSpa" xml:space="preserve">
-    <value>Điểm Nhấn Jade Spa</value>
   </data>
   <data name="ResponseCustomer" xml:space="preserve">
     <value>Cảm Nhận Khách hàng</value>
@@ -354,13 +282,19 @@
   <data name="NewsHot" xml:space="preserve">
     <value>Tin hót</value>
   </data>
-  <data name="TitleDescription" xml:space="preserve">
-    <value>Miley Cyrus đã từng tuyên bố cô tuân theo chế độ ăn không chứa Gluten và Lactose. Thậm chí cô còn nói với người hâm mộ rằng: “Mọi người nên thử không ăn những thực phẩm chứa Gluten trong một tuần. Sự thay đổi về cân nặng, làn da, sức khoẻ thể chất và tinh thần sẽ khiến bạn phải kinh ngạc và không muốn quay về chế độ ăn ban đầu nữa”.</value>
-  </data>
-  <data name="TitleSecondDescription" xml:space="preserve">
-    <value>Đối với những người chưa biết về Gluten thì đây là một loại protein được tìm thấy ở lúa mì, lúa mạch và các loại ngũ cốc. Tuy nhiên không phải ai cũng có thể hấp thụ loại protein này, trên thực tế có những người bị Celiac (bệnh không dung nạp Gluten) và một số khác thì nhạy cảm nhẹ với nó.</value>
-  </data>
   <data name="YouInterested" xml:space="preserve">
     <value>Có thể bạn quan tâm</value>
+  </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>Nhóm sản phẩm</value>
+  </data>
+  <data name="ProductHot" xml:space="preserve">
+    <value>Sản phẩm nổi  bật</value>
+  </data>
+  <data name="SolutionForTheSkin" xml:space="preserve">
+    <value>Gải pháp cho da</value>
+  </data>
+  <data name="ProductCategory" xml:space="preserve">
+    <value>Nhóm sản phẩm</value>
   </data>
 </root>

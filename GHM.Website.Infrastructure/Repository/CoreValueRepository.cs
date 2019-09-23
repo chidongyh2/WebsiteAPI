@@ -52,6 +52,7 @@ namespace GHM.Website.Infrastructure.Repository
                         //LanguageId = xt.LanguageId,
                         Name = xt.Name,
                         Description = xt.Description,
+                        Image = x.Image
                         //UnsignName = xt.UnsignName
                     }).AsNoTracking();
 

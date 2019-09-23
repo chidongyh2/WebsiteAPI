@@ -1,9 +1,4 @@
 ﻿@model CategoryWidthNewsViewModel
-@{
-    var menuMiddle = ViewBag.MenuMiddle as MenuDetailViewModel;
-    var url = ViewBag.Url;
-    var device = ViewBag.Device;
-}
 
 @if (Model != null)
 {
@@ -11,7 +6,9 @@
         <div class="heading">
             <div class="container">
                 <div class="row">
-                    <partial name="_TitleBar" model="Model.CategoryName" />
+                    <div class="col-sm-12">
+                        <partial name="_TitleBar" model="Model.CategoryName" />
+                    </div>
                 </div>
             </div>
         </div>

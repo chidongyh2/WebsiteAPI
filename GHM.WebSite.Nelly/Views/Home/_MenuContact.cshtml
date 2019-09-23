@@ -19,7 +19,7 @@
                             <div class="menu-item">
                                 <div class="logo">
                                     <a href="@( $"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : item.Url)}")" title="@item.Name">
-                                        <img class="img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{item.Image}")}")" />
+                                        <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{item.Image}")}")" />
                                     </a>
                                 </div>
                                 <div class="menu-name">

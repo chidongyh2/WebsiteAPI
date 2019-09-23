@@ -99,6 +99,10 @@ namespace GHM.Warehouse.Infrastructure.Services
             var productCategoryDetail = new ProductCategoryDetailViewModel
             {
                 IsActive = productCategoryInfo.IsActive,
+                IsHomePage = productCategoryInfo.IsHomePage,
+                Image = productCategoryInfo.Image,
+                IsHot = productCategoryInfo.IsHot,
+                IsSolution = productCategoryInfo.IsSolution,
                 ParentId = productCategoryInfo.ParentId,
                 Order = productCategoryInfo.Order,
                 ConcurrencyStamp = productCategoryInfo.ConcurrencyStamp,
@@ -140,7 +144,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                             ChildCount = parent.ChildCount,
                             Icon = string.Empty,
                             State = new GHM.Infrastructure.Models.State(),
-                            Children = RenderTree(parents, parent.Id)
+                            Children =  RenderTree(parents, parent.Id)
                         };
                         tree.Add(treeData);
                     });
@@ -163,18 +167,23 @@ namespace GHM.Warehouse.Infrastructure.Services
             return await _productCategoryRepository.GetAllActivatedProductCategory(tenantId, languageId);
         }
 
-        public async Task<ActionResultResponse<int>> Insert(string tenantId, string creatorId, string creatorFullName, ProductCategoryMeta productCategoryMeta)
+        public async Task<ActionResultResponse<int>> Insert(string tenantId, string creatorId,
+            string creatorFullName, ProductCategoryMeta productCategoryMeta)
         {
             var productCategory = new ProductCategory
             {
                 IdPath = "-1",
                 IsActive = productCategoryMeta.IsActive,
+                IsHot = productCategoryMeta.IsHot,
+                IsHomePage = productCategoryMeta.IsHomePage,
                 Order = productCategoryMeta.Order,
                 TenantId = tenantId,
+                Image = productCategoryMeta.Image,
                 OrderPath = productCategoryMeta.Order.ToString(),
                 CreatorId = creatorId,
                 CreatorFullName = creatorFullName,
                 ConcurrencyStamp = Guid.NewGuid().ToString(),
+                IsSolution = productCategoryMeta.IsSolution
             };
 
             if (productCategoryMeta.ParentId.HasValue)
@@ -219,9 +228,11 @@ namespace GHM.Warehouse.Infrastructure.Services
                         _productResourceService.GetString("Procuct category name: \"{0}\" already taken by another procuct category. Please try again.",
                         productCategoryTranslationMeta.Name));
                 }
+
                 var productCategoryTranslation = new ProductCategoryTranslation
                 {
                     Name = productCategoryTranslationMeta.Name.Trim(),
+                    SeoLink = !string.IsNullOrEmpty(productCategoryTranslationMeta.SeoLink) ? productCategoryTranslationMeta.SeoLink.ToUrlString() : productCategoryTranslationMeta.Name.ToUrlString(),
                     Description = productCategoryTranslationMeta.Description?.Trim(),
                     UnsignName = productCategoryTranslationMeta.Name.Trim().StripVietnameseChars().ToUpper(),
                     LanguageId = productCategoryTranslationMeta.LanguageId,
@@ -326,12 +337,15 @@ namespace GHM.Warehouse.Infrastructure.Services
             var oldIdPath = productCategoryInfo.IdPath;
 
             productCategoryInfo.IsActive = productCategoryMeta.IsActive;
+            productCategoryInfo.IsHomePage = productCategoryMeta.IsHomePage;
+            productCategoryInfo.Image = productCategoryMeta.Image;
+            productCategoryInfo.IsHot = productCategoryMeta.IsHot;
+            productCategoryInfo.IsSolution = productCategoryMeta.IsSolution;
             productCategoryInfo.Order = productCategoryMeta.Order;
             productCategoryInfo.ConcurrencyStamp = Guid.NewGuid().ToString();
             productCategoryInfo.LastUpdate = DateTime.Now;
             productCategoryInfo.LastUpdateUserId = lastUpdateUserId;
             productCategoryInfo.LastUpdateFullName = lastUpdateFullName;
-
 
             if (productCategoryInfo.ParentId.HasValue && !productCategoryMeta.ParentId.HasValue)
             {
@@ -351,7 +365,6 @@ namespace GHM.Warehouse.Infrastructure.Services
             }
 
             await _productCategoryRepository.Update(productCategoryInfo);
-
             var childs = await _productCategoryRepository.GetAllChild(productCategoryInfo.Id, true);
 
             if (!productCategoryInfo.IsActive)
@@ -370,20 +383,19 @@ namespace GHM.Warehouse.Infrastructure.Services
             }
 
             // Update parent product category child count.
-            if ((productCategoryInfo.ParentId.HasValue && oldParentId.HasValue && productCategoryInfo.ParentId.Value != oldParentId.Value)
-                || (!productCategoryInfo.ParentId.HasValue && oldParentId.HasValue))
+            if (oldParentId.HasValue)
             {
                 // Update old parent product category child count.
                 var oldChildCount = await _productCategoryRepository.GetChildCount(oldParentId.Value);
                 await _productCategoryRepository.UpdateChildCount(oldParentId.Value, oldChildCount);
+            }
 
-                // Update new parent product category child count.
-                if (productCategoryInfo.ParentId.HasValue)
-                {
-                    var newParentId = productCategoryInfo.ParentId.Value;
-                    var newChildCount = await _productCategoryRepository.GetChildCount(newParentId);
-                    await _productCategoryRepository.UpdateChildCount(newParentId, newChildCount);
-                }
+            // Update new parent product category child count.
+            if (productCategoryInfo.ParentId.HasValue && productCategoryInfo.ParentId != oldParentId)
+            {
+                var newParentId = productCategoryInfo.ParentId.Value;
+                var newChildCount = await _productCategoryRepository.GetChildCount(newParentId);
+                await _productCategoryRepository.UpdateChildCount(newParentId, newChildCount);
             }
 
             //update lai product category child by Id
@@ -397,7 +409,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             // Update product category translation.
             var resultUpdateTranslation = await UpdateTranslation();
 
-            if(productCategoryMeta.ProductCategoryAttributes != null && productCategoryMeta.ProductCategoryAttributes.Any())
+            if (productCategoryMeta.ProductCategoryAttributes != null && productCategoryMeta.ProductCategoryAttributes.Any())
             {
                 await UpdateProductCategoryAttribute();
             }
@@ -430,6 +442,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                         productCategoryTranslationInfo = new ProductCategoryTranslation
                         {
                             Name = productCategoryTranslationMeta.Name.Trim(),
+                            SeoLink = !string.IsNullOrEmpty(productCategoryTranslationMeta.SeoLink) ? productCategoryTranslationMeta.SeoLink.ToUrlString() : productCategoryTranslationMeta.Name.ToUrlString(),
                             Description = productCategoryTranslationMeta.Description?.Trim(),
                             UnsignName = productCategoryTranslationMeta.Name.Trim().StripVietnameseChars().ToUpper(),
                             LanguageId = productCategoryTranslationMeta.LanguageId,
@@ -450,9 +463,11 @@ namespace GHM.Warehouse.Infrastructure.Services
                     }
                     else
                     {
+                        productCategoryTranslationInfo.SeoLink = productCategoryTranslationMeta?.SeoLink.Trim();
                         productCategoryTranslationInfo.Name = productCategoryTranslationMeta.Name.Trim();
                         productCategoryTranslationInfo.Description = productCategoryTranslationMeta.Description?.Trim();
                         productCategoryTranslationInfo.UnsignName = productCategoryTranslationMeta.Name.StripVietnameseChars().ToUpper();
+                        productCategoryTranslationInfo.SeoLink = !string.IsNullOrEmpty(productCategoryTranslationMeta.SeoLink) ? productCategoryTranslationMeta.SeoLink.ToUrlString() : productCategoryTranslationMeta.Name.ToUrlString();
 
                         if (productCategoryMeta.ParentId.HasValue)
                         {
@@ -476,7 +491,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             {
                 var resultDeleteProductCategoryAttribute = await _productCategoriesAttributeRepository.DeleteByCategoryId(tenantId, productCategoryId);
                 if (resultDeleteProductCategoryAttribute < 0)
-                    return new ActionResultResponse<int>(resultDeleteProductCategoryAttribute, 
+                    return new ActionResultResponse<int>(resultDeleteProductCategoryAttribute,
                         _sharedResourceService.GetString("Something went wrong. Please contact with administrator."));
 
                 var listProductCategoriesAttributes = new List<ProductCategoriesAttribute>();

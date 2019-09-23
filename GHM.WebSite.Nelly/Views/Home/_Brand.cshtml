@@ -1,23 +1,23 @@
 ﻿@{   
-    var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
+    var listBrand = ViewBag.Brands as List<BrandSearchViewModel>;
     var url = ViewBag.Url;
 }
 
 <div class="news-angency lazy">    
-    @if (listBranch != null)
+    @if (listBrand != null)
     {
         <div id="agency">
             <div class="container">
                 <div class="row">                    
                     <div class="col-sm-12">
                         <div id="agencySlider">
-                            @foreach (var branch in listBranch)
+                            @foreach (var brand in listBrand)
                             {
                                 <div class="item">
-                                    <a href="@branch.Website" title="@branch.Name">
-                                        <img class=" lazy" src="@($"/image?url={(string.IsNullOrEmpty(branch.Logo) ? "/images/no-image.png" : $"{ViewBag.Url}{branch.Logo}")}")"
+                                    <a href="@brand.Website" title="@brand.Name">
+                                        <img src="@($"/image?url={(string.IsNullOrEmpty(brand.Logo) ? "/images/no-image.png" : $"{ViewBag.Url}{brand.Logo}")}")"
                                         onerror="this.src='/images/no-image.png'"
-                                        alt="@branch.Name" />
+                                        alt="@brand.Name" />
                                     </a>
                                 </div>
                             }

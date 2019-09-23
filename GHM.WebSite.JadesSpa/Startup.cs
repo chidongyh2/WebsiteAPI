@@ -89,8 +89,7 @@ namespace GHM.WebSite.JadesSpa
             var builder = new ContainerBuilder();
             builder.Populate(services);
 
-
-            builder.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("DefaultConnection")));
+            builder.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("DefaultConnection"), Configuration.GetConnectionString("DefaultConnection"), Configuration.GetConnectionString("DefaultConnection")));
             builder.RegisterModule(new ValidationModule());
             var autofacServiceProvider = new AutofacServiceProvider(builder.Build());
             return autofacServiceProvider;
@@ -175,7 +174,6 @@ namespace GHM.WebSite.JadesSpa
             }
             public bool Match(HttpContext httpContext, IRouter route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
             {
-
                 if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he"))
                 {
                     var permalink = values[parameterName].ToString();
@@ -203,15 +201,6 @@ namespace GHM.WebSite.JadesSpa
                         });
                     return isCategoryExist.Result || isNewsExist.Result;
                 }
-                //var menuRepository = DependencyResolver.Current.GetService<IMenuRepository>();
-                //var categoryReposiroty = DependencyResolver.Current.GetService<ICategoryRepository>();
-                //if (values[parameterName] != null)
-                //{
-                //    var permalink = values[parameterName].ToString();
-                //    var isMenuExists = menuRepository.CheckNamePathExists(permalink);
-                //    var isCategoryExists = categoryReposiroty.CheckCateogryIsContainBySeoLink(permalink);
-                //    return isMenuExists || isCategoryExists;
-                //}
                 return false;
             }
         }

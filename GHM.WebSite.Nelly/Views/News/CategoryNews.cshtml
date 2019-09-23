@@ -23,154 +23,66 @@ IsCurrent = true,
     ViewBag.Breadcrumb = breadcrumbs;
 }
 <partial name="_Breadcumb">
-    @if (ViewBag.DeviceType == "desktop")
-    {
-        <div id="category-news">
-            <div class="container">
-                <div class="row hidden-sm hidden-xs hidden-md">
-                    <div class="col-sm-12">
-                        <partial name="_TitleBar" model="CategoryWidthNews.CategoryName"/>
+    <div id="category-news">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <partial name="_TitleBar" model="CategoryWidthNews.CategoryName" />
+                </div>
+                <div class="col-sm-12 cm-mgt-20">
+                    <div class="row">
+                        @foreach (var news in Model.ListNews)
+                        {
+                            <div class="col-lg-4">
+                                <partial name="_NewsItem" model="news" />
+                            </div>
+                        }
                     </div>
-                    <div class="col-sm-12 cm-mgt-20">
-                        <div class="row">
-                            @foreach (var news in Model.ListNews)
-                            {
-                                <div class="col-lg-4">
-                                    <partial name="_NewsItem" model="news" />
-                                </div>
-                            }
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12" style="text-align:center">
-                                <ul class="pagination">
-                                    @if (totalPage > 1)
+                    <div class="row">
+                        <div class="col-lg-12" style="text-align:center">
+                            <ul class="pagination">
+                                @if (totalPage > 1)
+                                {
+                                    <li>
+                                        <a class="@(page == 1 ? "disabled" : "")" href="@(page > 1 ? string.Format("{0}?page={1}&pageSize={2}", seoLink, 1, pageSize) : "javascript://")">
+                                            <i class="fa fa-angle-double-left"></i>
+                                        </a>
+                                    </li>
+                                    @for (var i = 1; i <= totalPage; i++)
                                     {
-                                        <li>
-                                            <a class="@(page == 1 ? "disabled" : "")" href="@(page > 1 ? string.Format("{0}?page={1}&pageSize={2}", seoLink, 1, pageSize) : "javascript://")">
-                                                <i class="fa fa-angle-double-left"></i>
-                                            </a>
-                                        </li>
-                                        @for (var i = 1; i <= totalPage; i++)
-                                        {
-                                            <li><a class="@(page == i ? "active" : "")" href="@(string.Format("{0}?page={1}&pageSize={2}", seoLink, i, pageSize))">@i</a></li>
-                                        }
-                                        <li>
-                                            <a class="@(page == totalPage ? "disabled" : "")" href="@(page < totalPage ? string.Format("{0}?page={1}&pageSize={2}", seoLink, totalPage, pageSize) : "javascript://")">
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
+                                        <li><a class="@(page == i ? "active" : "")" href="@(string.Format("{0}?page={1}&pageSize={2}", seoLink, i, pageSize))">@i</a></li>
                                     }
-                                </ul>
-                            </div>
+                                    <li>
+                                        <a class="@(page == totalPage ? "disabled" : "")" href="@(page < totalPage ? string.Format("{0}?page={1}&pageSize={2}", seoLink, totalPage, pageSize) : "javascript://")">
+                                            <i class="fa fa-angle-double-right"></i>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    }
-    else
-    {
-        <div class="category-mobile">
-            <div class="container">
-                <div class="row  visible-sm visible-xs visible-md">
-                    <div class="block-news portfolio-item">
-                        <div class="news-default col-sm-12 col-xs-12">
-                            <div class="image-content">
-                                <a href="@($"/{ newsDefault?.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsDefault?.MetaTitle) ? newsDefault?.Title : newsDefault?.MetaTitle)">
-                                    <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(newsDefault?.FeatureImage) ? "/images/no-image.png" : $"{url}{newsDefault?.FeatureImage}")}&width=750&height=500")"
-                                         alt="@(string.IsNullOrEmpty(newsDefault?.AltImage) ? newsDefault?.Title : newsDefault?.AltImage)" />
-                                    <span class="img-overlay"></span>
-                                </a>
-                            </div>
-                            <div class="news-content">
-                                <div class="title">
-                                    <a href="@($"/{ newsDefault?.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsDefault?.MetaTitle) ? newsDefault?.Title : newsDefault?.MetaTitle)">
-                                        @(!string.IsNullOrEmpty(newsDefault?.Title) ? Common.SubString(newsDefault?.Title, 70) : newsDefault?.Title)
-                                    </a>
-                                </div>
-                                <div class="summary">
-                                    @(!string.IsNullOrEmpty(newsDefault?.Description) ? Common.SubString(newsDefault?.Description, 140) : newsDefault?.Description)
-                                </div>
-                            </div>
-                        </div>
-                        @if (Model.ListNews != null && Model.ListNews.Any() && Model.ListNews.Count > 0)
-                        {
-                            if(totalPage > 1)
-                            {
-                                Model.ListNews.RemoveAt(Model.ListNews.Count - 1);
-                            }
-                            @foreach (var news in Model.ListNews.Where(x => x.Id != newsDefault.Id))
-                            {
-                                <div class="col-sm-6 col-xs-6 col-md-6 news-item">
-                                    <div class="image-content">
-                                        <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                                            <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}&width=600&height=400")"
-                                                 onerror="this.src='~/images/no-image.png'"
-                                                 alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
-                                            <span class="img-overlay"></span>
-                                        </a>
-                                    </div>
-                                    <div class="title">
-                                        <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                                            @(!string.IsNullOrEmpty(news.Title) ? Common.SubString(news.Title, 60) : news.Title)
-                                        </a>
-                                    </div>
-                                </div>
-                            }
-                        }
-
-                        @if (listNewHot != null && totalPage > 1)
-                        {
-                            <view-more params="categoryId: @($"{ViewBag.CategoryId}"), totalPage: @totalPageMobile">
-                            </view-more>
-                        }
-                        <template id="btn-viewmore">
-                            <div data-bind="foreach: listNews">
-                                <div class="col-sm-6 col-xs-6 col-md-6 news-item">
-                                    <div class="image-content">
-                                        <a data-bind="attr : {href:'/'+ seoLink + '.html', title: metaTitle}">
-                                            <img class="news-image zoom img-responsive lazy"
-                                                 data-bind="attr : {src: '/image?url=@ViewBag.Url' + featureImage + '&width=600&height=400', alt: altImage !== '' && altImage !== undefined ? altImage : metaTilte}"
-                                                 onerror="this.src='/image?url=&width=600&height=400'" />
-                                            <span class="img-overlay"></span>
-                                        </a>
-                                    </div>
-                                    <div class="title">
-                                        <a data-bind="attr: {href:'/' + seoLink + '.html', title: metaTitle ? title : metaTitle }"></a>
-                                        <div data-bind="text : $parent.handleString($data,title, 70)">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-12 col-xs-12 text-center">
-                                <button data-bind="if:(totalPage() > 3 && currentPage() < totalPage()), click: function(){viewMore()}" type="button" class="btn btn-primary btn-main-color">
-                                    <i data-bind="attr : {class: isLoadding() === true ? 'fa fa-pulse fa-spinner' : ''}"></i>@Resource.ViewMore
-                                </button>
-                            </div>
-                        </template>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
+    </div>
     @section scripts {
         <script type="text/javascript">
             var categoryId = @ViewBag.CategoryId;
         </script>
         <script src="~/js/viewmodel/category-news.viewmodel.es5.min.js"></script>
         <script>
-            $(document).ready(function () {               
+            $(document).ready(function () {
                 console.log($(".breadcrumb").height());
                 $(window).scroll(function () {
                     var b = $("#header-breadcrumb").height() + $("#header").height();
                     if ($(window).scrollTop() > b - 80 && $(window).scrollTop() < $("#category-news").height() - 220) {
-                        
+
                         $(".sidebar-news-detail").addClass("category-fixed");
                     } else {
                         $(".sidebar-news-detail").removeClass("category-fixed");
                     }
                 });
-                ko.applyBindings();            
+                ko.applyBindings();
             });
         </script>
     }

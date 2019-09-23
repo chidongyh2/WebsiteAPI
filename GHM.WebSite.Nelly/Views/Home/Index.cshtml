@@ -4,16 +4,28 @@
 
 <partial name="_MainSlider" model="@mainBanner" />
 <partial name="_MenuContact" />
+@if (ViewBag.ListProductCategoryHomePage != null)
+{
+    <partial name="_ProductCategoryHomePage" model="ViewBag.ListProductCategoryHomePage" />
+}
+@if (ViewBag.ListProductCategoryHot != null)
+{
+    <partial name="_ProductCategoryHotHomePage" model="ViewBag.ListProductCategoryHot" />
+}
+@if (ViewBag.ListProductCategorySolution != null)
+{
+    <partial name="_ProductCategorySolution" model="ViewBag.ListProductCategorySolution" />
+}
 @if (ViewBag.NewsHostHomePage != null)
 {
-    <partial name="_NewsHotHomePage" model="ViewBag.NewsHostHomePage"/>
+    <partial name="_NewsHotHomePage" model="ViewBag.NewsHostHomePage" />
 }
 @if (ViewBag.NewHomePage != null)
 {
-    <partial name="_NewsHomePage.cshtml" model="ViewBag.NewHomePage"/>
+    <partial name="_NewsHomePage.cshtml" model="ViewBag.NewHomePage" />
 }
 <partial name="_Video" />
-<partial name="_Branch" />
+<partial name="_Brand" />
 @section scripts {
     <script type="text/javascript" src="~/js/home.min.js"></script>
 }

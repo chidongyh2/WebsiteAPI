@@ -172,8 +172,12 @@ namespace GHM.Warehouse.Infrastructure.Repository
                     Id = o.Id,
                     IdPath = o.IdPath,
                     Name = ot.Name,
+                    Image = o.Image,
                     Description = ot.Description,
                     IsActive = o.IsActive,
+                    IsHot = o.IsHot,
+                    IsSolution = o.IsSolution,
+                    IsHomePage = o.IsHomePage,
                     ParentId = o.ParentId,
                     ChildCount = o.ChildCount
                 });

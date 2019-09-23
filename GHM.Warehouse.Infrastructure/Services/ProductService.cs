@@ -196,11 +196,22 @@ namespace GHM.Warehouse.Infrastructure.Services
                     //  Check name exists.
                     var isNameExists = await _productTranslationRepository.CheckExists(product.Id, tenantId,
                         productTranslation.LanguageId, productTranslation.Name);
+
+                    var isSeoLinkExits = await _productTranslationRepository.CheckExistsSeoLink(product.Id, tenantId,
+                        productTranslation.LanguageId, productTranslation.SeoLink);
+
                     if (isNameExists)
                     {
                         await RollbackInsert();
                         return new ActionResultResponse<string>(-1,
                             _resourceService.GetString($"Product name: {productTranslation.Name} already exists."));
+                    }
+
+                    if (isSeoLinkExits)
+                    {
+                        await RollbackInsert();
+                        return new ActionResultResponse<string>(-1,
+                            _resourceService.GetString($"Product seolink: {productTranslation.SeoLink} already exists."));
                     }
 
                     var productTranslationInsert = new ProductTranslation
@@ -211,9 +222,9 @@ namespace GHM.Warehouse.Infrastructure.Services
                         Name = productTranslation.Name.Trim(),
                         Description = productTranslation.Description?.Trim(),
                         MetaDescription = productTranslation.MetaDescription?.Trim(),
-                        MetaKeyword = productTranslation.MetaKeyword.Trim(),
-                        SeoLink = productTranslation.SeoLink.Trim(),
+                        MetaKeyword = productTranslation.MetaKeyword?.Trim(),
                         Content = productTranslation.Content,
+                        SeoLink = !string.IsNullOrEmpty(productTranslation.SeoLink) ? productTranslation.SeoLink.ToUrlString() : productTranslation.Name.ToUrlString(),
                         UnsignName = productTranslation.Name?.StripVietnameseChars().ToUpper()
                     };
                     productTranslations.Add(productTranslationInsert);
@@ -429,7 +440,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             {
                 await _productAttributeRepository.ForceDelete(product.Id, tenantId);
             }
-                #endregion Local functions
+            #endregion Local functions
         }
 
         public async Task<ActionResultResponse<string>> Update(string tenantId, string lastUpdateUserId,
@@ -498,6 +509,8 @@ namespace GHM.Warehouse.Infrastructure.Services
             #endregion
 
             info.IsActive = productMeta.IsActive;
+            info.IsHot = productMeta.IsHot;
+            info.IsHomePage = productMeta.IsHomePage;
             info.IsManagementByLot = productMeta.IsManagementByLot;
             info.Thumbnail = productMeta.Thumbnail;
             info.ConcurrencyStamp = Guid.NewGuid().ToString();
@@ -515,7 +528,12 @@ namespace GHM.Warehouse.Infrastructure.Services
                     var isNameExists = await _productTranslationRepository.CheckExists(info.Id, tenantId,
                         productTranslation.LanguageId, productTranslation.Name);
                     if (isNameExists)
-                        return new ActionResultResponse<string>(-4, _resourceService.GetString("Product name: \"{0}\" already exists."));
+                        return new ActionResultResponse<string>(-4, _resourceService.GetString("Product name: \"{0}\" already exists.", productTranslation.Name));
+
+                    var isSeoLinkExists = await _productTranslationRepository.CheckExistsSeoLink(info.Id, tenantId,
+                       productTranslation.LanguageId, productTranslation.SeoLink);
+                    if (isSeoLinkExists)
+                        return new ActionResultResponse<string>(-4, _resourceService.GetString("Product seolink: \"{0}\" already exists.", productTranslation.SeoLink));
 
                     var productTranslationInfo =
                         await _productTranslationRepository.GetInfo(info.Id, productTranslation.LanguageId, tenantId);
@@ -524,6 +542,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                         productTranslationInfo.Name = productTranslation.Name.Trim();
                         productTranslationInfo.Description = productTranslation.Description?.Trim();
                         productTranslationInfo.UnsignName = productTranslation.Name?.StripVietnameseChars().ToUpper();
+                        productTranslationInfo.SeoLink = !string.IsNullOrEmpty(productTranslation.SeoLink) ? productTranslation.SeoLink.ToUrlString() : productTranslation.Name.ToUrlString();
 
                         await _productTranslationRepository.Update(productTranslationInfo);
                     }
@@ -535,6 +554,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                             TenantId = tenantId,
                             LanguageId = productTranslation.LanguageId.Trim(),
                             Name = productTranslation.Name.Trim(),
+                            SeoLink = !string.IsNullOrEmpty(productTranslation.SeoLink) ? productTranslation.SeoLink.ToUrlString() : productTranslation.Name.ToUrlString(),
                             Description = productTranslation.Description?.Trim(),
                             UnsignName = productTranslation.Name.StripVietnameseChars().ToUpper()
                         };
@@ -1003,7 +1023,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                 ApproverUserId = info.ApproverUserId,
                 IsHomePage = info.IsHomePage,
                 IsHot = info.IsHot,
-                LastUpdateHomePage =info.LastUpdateHomePage,
+                LastUpdateHomePage = info.LastUpdateHomePage,
                 LastUpdateHot = info.LastUpdateHomePage,
                 SentTime = info.SentTime,
                 Source = info.Source,

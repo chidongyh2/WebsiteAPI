@@ -13,7 +13,7 @@
     "outputFileName": "wwwroot/js/home.min.js",
     "inputFiles": [
       "wwwroot/js/home.js",
-      "wwwroot/js/viewmodel/about.viewmodel.js"
+      "wwwroot/js/viewmodel/home.viewmodel.js"
     ]
   },
   {
@@ -65,13 +65,46 @@
       "wwwroot/lib/knockout/knockout-3.4.2.js",
       "wwwroot/lib/lightslider/js/lightslider.es5.min.js",
       "wwwroot/lib/jquery.lazy-master/jquery.lazy.es5.min.js",
-      "wwwroot/lib/slick-1.8.1/slick/slick.js"
+      "wwwroot/lib/slick-1.8.1/slick/slick.js",
+      "wwwroot/lib/underscore-min.js",
+      "wwwroot/lib/globinfo/globalize.js"
     ]
   },
   {
     "outputFileName": "wwwroot/js/site.min.js",
     "inputFiles": [
-      "wwwroot/js/site.js"
+      "wwwroot/js/site.js",
+      "wwwroot/js/Common.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/video.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/video.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/ProductViewModel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/ProductViewModel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/product-category.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/product-category.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/product-category-solution.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/product-category-solution.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/product-detail.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/product-detail.viewmodel.js"
     ]
   }
 ]

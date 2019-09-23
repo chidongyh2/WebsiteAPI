@@ -1,0 +1,71 @@
+﻿@model ProductCategorySearchViewModel
+@{
+    var jsonSerializerSettings = new JsonSerializerSettings
+    {
+        ContractResolver = new CamelCasePropertyNamesContractResolver()
+    };
+}
+
+<partial name="_Breadcumb">
+    @if (Model != null)
+    {
+        <div class="solution">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <partial name="_TitleBar" model="@Resource.SolutionForTheSkin" />
+                    </div>
+                    <div class="col-sm-12 category-item even">
+                        <div class="image">
+                            <a href="javascript://" title="@Model.Name">
+                                <img class="news-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(Model.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{Model.Image}")}&width=600&height=600")"
+                                     onerror="this.onerror = null;this.src='/images/no-image.png'"
+                                     alt="@Model.Name" />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <div class="number">
+                                01.
+                            </div>
+                            <h3 class="title">
+                                <a href="javascript://" title="@Model.Name">
+                                    @(!string.IsNullOrEmpty(Model.Name) ? Common.SubString(Model.Name, 70) : Model.Name)
+                                </a>
+                            </h3>
+                            <div class="description">
+                                <span>@Common.SubString(Model.Description, 300)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--ko foreach: listProductCategory -->
+                <div class="row category-and-product">
+                    <div class="col-sm-3">
+                        <div class="category-info">
+                            <div class="image">
+                                <img class="img-circle img-responsive lazy" data-bind="attr: {src: '@ViewBag.Url' + productCategoryImage}" />
+                            </div>
+                            <span class="number" data-bind="text: $index() <10 ? '0'+ ($index() + 1) : $index()"></span>
+                            <h3 class="name" data-bind="text: productCategoryName"></h3>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div data-bind="attr:{id: 'product-slider-' + productCategoryId},">
+                            <!-- ko foreach: products-->
+                            <div class="item">
+                                <partial name="_ProductItem" />
+                            </div>
+                            <!--/ko-->
+                        </div>
+                    </div>
+                </div>
+                <!--/ko-->
+            </div>
+        </div>
+    }
+    @section scripts {
+        <script type="text/javascript">
+             var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
+        </script>
+        <script src="~/js/viewmodel/product-category-solution.viewmodel.min.js"></script>
+    }

@@ -43,7 +43,6 @@ function VideoViewModel() {
                     self.listPage([]);
                     self.listVideo([]);
                 }
-                console.log(self.listVideo());
             });        
     };
 

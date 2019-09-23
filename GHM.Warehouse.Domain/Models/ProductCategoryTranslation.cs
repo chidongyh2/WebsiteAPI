@@ -18,6 +18,8 @@ namespace GHM.Warehouse.Domain.Models
 
         public string Name { get; set; }
 
+        public string SeoLink { get; set; }
+
         public string Description { get; set; }
 
         public string UnsignName { get; set; }

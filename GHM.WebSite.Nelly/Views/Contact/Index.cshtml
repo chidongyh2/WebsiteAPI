@@ -12,8 +12,8 @@
         <div class="row ">
             @if (officeHeadquarters != null)
             {
-                <div class="col-lg-12 center">
-                    <h2 class="titlebar">@Resource.Contact</h2>
+                <div class="col-lg-12 center " style="margin-bottom:50px">
+                    <partial name="_TitleBar" model="@Resource.Contact" />
                 </div>
                 <div class="col-lg-4">
                     <div class="item-contact">
@@ -91,8 +91,8 @@
                     </div>
                 </div>
             }
-            <div class="col-lg-12 center">
-                <h2 class="titlebar-angency">@Resource.AngencySystem</h2>
+            <div class="col-lg-12 center cm-mgb-20">
+                <partial name="_TitleBar" model="@Resource.AngencySystem" />
             </div>
             <div class="col-lg-4">
                 <div class="angency-system">

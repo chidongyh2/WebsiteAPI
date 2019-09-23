@@ -162,7 +162,13 @@
                 @media @mobile {
                     padding-left: 5%;
                     max-width: 100%;
-                    display: block;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        width: 50px;
+                    }
                 }
             }
 
@@ -546,12 +552,12 @@
     list-style: none;
     right: 0px;
     top: 30%;
-    z-index: 9999;
+    z-index: 999999;
     transition: 1s ease-in-out;
 
     li {
         padding: 5px;
-        margin-bottom: 3px;
+        margin-bottom: 5px;
         background-color: @main-color;
         border-bottom-left-radius: 30px;
         border-top-left-radius: 30px;

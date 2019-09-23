@@ -41,6 +41,9 @@
     <None Include="wwwroot\fonts\ionicons.svg" />
     <None Include="wwwroot\fonts\Material-Design-Iconic-Font.svg" />
     <None Include="wwwroot\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="wwwroot\lib\globinfo\globalize.culture.en-US.js" />
+    <None Include="wwwroot\lib\globinfo\globalize.culture.vi-VN.js" />
+    <None Include="wwwroot\lib\globinfo\globalize.js" />
     <None Include="wwwroot\lib\line-awesome\fonts\line-awesome.svg" />
     <None Include="wwwroot\lib\line-awesome\fonts\line-awesome.woff2" />
     <None Include="wwwroot\lib\slick-1.8.1\.gitignore" />
@@ -76,10 +79,16 @@
 
 
   <ItemGroup>
+    <Content Update="Views\Album\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Contact\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Home\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\About.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Home\_MainSlider.cshtml">
@@ -88,7 +97,16 @@
     <Content Update="Views\Home\_MenuContact.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Home\_Branch.cshtml">
+    <Content Update="Views\Home\_Brand.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_ProductCategoryHomePage.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_ProductCategorySolution.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_ProductCategoryHotHomePage.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Home\_Video.cshtml">
@@ -101,6 +119,21 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\News\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_BoxHotline.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_ProductCategoryMenuItem.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_SidebarProduct.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_SidebarNewsHot.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_ProductItem.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Shared\_NewsItem.cshtml">

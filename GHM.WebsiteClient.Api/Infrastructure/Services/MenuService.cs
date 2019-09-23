@@ -26,7 +26,6 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
             _websiteResourceService = websiteResourceService;
         }
 
-
         public async Task<MenuDetailViewModel> GetAllActivatedMenuByPositionAsync(string tenantId, string languageId, Position position)
         {
             try

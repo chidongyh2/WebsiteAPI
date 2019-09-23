@@ -12,6 +12,14 @@ namespace GHM.Warehouse.Domain.ModelMetas
 
         public bool IsActive { get; set; }
 
+        public bool? IsHot { get; set; }
+
+        public string Image { get; set; }
+
+        public bool? IsHomePage { get; set; }
+
+        public bool? IsSolution { get; set; }
+
         public string ConcurrencyStamp { get; set; }
 
         public List<ProductCategoryTranslationMeta> Translations { get; set; }

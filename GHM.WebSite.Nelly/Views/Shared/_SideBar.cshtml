@@ -7,7 +7,8 @@
     <li class="">
         <div class="item-left">
             <a href="javascript://" data-toggle="tooltip" title="Mạng lưới Nellydevusyst">
-                <i class="la la-street-view"> </i>
+                <img src="~/images/facion/address.png" class="lazy"/>
+                @*<i class="la la-street-view"> </i>*@
             </a>
         </div>
         <div class="item-right">
@@ -17,7 +18,8 @@
     <li>
         <div class="item-left">
             <a href="javascript://" data-toggle="tooltip" title="Giỏ hàng">
-                <i class="la la-shopping-cart"> </i>
+                <img src="~/images/facion/giohang.png" class="lazy"/>
+                @*<i class="la la-shopping-cart"> </i>*@
             </a>
         </div>
         <div class="item-right">
@@ -27,7 +29,8 @@
     <li>
         <div class="item-left">
             <a href="javascript://" data-toggle="tooltip" title="Trở thành đại lý">
-                <i class="la la-users"> </i>
+                @*<i class="la la-users"> </i>*@
+                <img src="~/images/facion/branch.png" class="lazy"/>
             </a>
         </div>
         <div class="item-right">
@@ -36,12 +39,13 @@
     </li>
     <li>
         <div class="item-left">
-            <a href="javascript://" data-toggle="tooltip" title="Liên hệ">
-                <i class="la la-asterisk"> </i>               
+            <a href="/lien-he" data-toggle="tooltip" title="Liên hệ">
+                <img src="~/images/facion/contact.png" class="lazy"/>
+                @*<i class="la la-asterisk"> </i>*@               
             </a>
         </div>
         <div class="item-right">
-            <a href="javascript://" data-toggle="tooltip" title="Liên hệ"><span> Liên hệ</span></a>
+            <a href="/lien-he" data-toggle="tooltip" title="Liên hệ"><span> Liên hệ</span></a>
             <ul class="list-inline">
                 @if (listSocialNetWork != null && listSocialNetWork.Any())
                 {

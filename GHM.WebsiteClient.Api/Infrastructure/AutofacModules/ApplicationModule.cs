@@ -11,11 +11,17 @@ namespace GHM.WebsiteClient.Api.Infrastructure.AutofacModules
 {
     public class ApplicationModule : Module
     {
-        public string ConnectionString { get; }
-        public ApplicationModule(string connectionString)
+        public string WebsiteConnectionString { get; }
+        public string EventConnectionString { get; }
+        public string WarehouseConnectionString { get; }
+
+        public ApplicationModule(string websiteConnectionString, string eventConnectionString, string warehouseConnectionString)
         {
-            ConnectionString = connectionString;
+            WebsiteConnectionString = websiteConnectionString;
+            EventConnectionString = eventConnectionString;
+            WarehouseConnectionString = warehouseConnectionString;
         }
+
         protected override void Load(ContainerBuilder builder)
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -30,13 +36,18 @@ namespace GHM.WebsiteClient.Api.Infrastructure.AutofacModules
             builder.RegisterAssemblyTypes(assembly)
                .Where(t => t.Name.EndsWith("Service"))
               .AsImplementedInterfaces()
-              .WithParameter(new TypedParameter(typeof(string), ConnectionString));
+              .WithParameter(new TypedParameter(typeof(string), WebsiteConnectionString));
             #endregion
 
             builder.RegisterType<EventService>()
              .As<IEventService>()
              .InstancePerLifetimeScope()
-              .WithParameter(new TypedParameter(typeof(string), "Data Source=172.16.200.8;Initial Catalog=GHM_Website_Event;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=@pk125tt@"));
+              .WithParameter(new TypedParameter(typeof(string), EventConnectionString));
+
+            builder.RegisterType<ProductSevice>()
+            .As<IProductService>()
+            .InstancePerLifetimeScope()
+             .WithParameter(new TypedParameter(typeof(string), WarehouseConnectionString));
         }
     }
 }
