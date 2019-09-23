@@ -20,5 +20,7 @@ namespace GHM.Warehouse.Domain.ViewModels
         public decimal? SalePrice { get; set; }
         public List<string> CategoryNames { get; set; }
 
+        public DateTime? LastUpdateTime { get; set; }
+
     }
 }

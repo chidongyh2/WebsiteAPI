@@ -88,7 +88,6 @@ namespace GHM.Website.Nelly
             builder.Populate(services);
 
             builder.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("WebsiteConnectionString"), Configuration.GetConnectionString("EventConnectionString"), Configuration.GetConnectionString("WarehouseConnectionString")));
-            //builder.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("WarehouseConnectionString")));
             builder.RegisterModule(new ValidationModule());
             var autofacServiceProvider = new AutofacServiceProvider(builder.Build());
             return autofacServiceProvider;
@@ -139,7 +138,7 @@ namespace GHM.Website.Nelly
                     {
                         // Cache static file for 7 day
                         string path = context.Context.Request.Path;
-                        if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg"))
+                        if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".ttf") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg"))
                         {
                             TimeSpan maxAge = new TimeSpan(7, 0, 0, 0); // 1 ngày
                             context.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
@@ -175,30 +174,32 @@ namespace GHM.Website.Nelly
             public bool Match(HttpContext httpContext, IRouter route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
             {
                 if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he")
+                    && !values[parameterName].ToString().Contains("giai-phap/")
                     && !values[parameterName].ToString().Equals("video") && !values[parameterName].ToString().Equals("san-pham"))
                 {
-                    var permalink = values[parameterName].ToString();
-                    string[] link = permalink.Split('.');
-                    // var isNewsExist = Task.Run(() => _newsService.CheckNewsExistBySeoLinkAsync(apiService.TenantId, link[0], CultureInfo.CurrentCulture.Name)).Result;
-                    var requestUrl = _configuration.GetApiUrl();
-                    var apiService = _configuration.GetApiServiceInfo();
-                    var httpClientService = new HttpClientService();
-                    var isCategoryExist = Task.Run(() => httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/check-category-exist",
-                        new Dictionary<string, string>
-                        {
-                            {"TenantId", apiService.TenantId},
-                            {"seoLink", link[0] },
-                            {"languageId",  CultureInfo.CurrentCulture.Name}
-                        })).Result;
+                    //var permalink = values[parameterName].ToString();
+                    //string[] link = permalink.Split('.');
+                    //// var isNewsExist = Task.Run(() => _newsService.CheckNewsExistBySeoLinkAsync(apiService.TenantId, link[0], CultureInfo.CurrentCulture.Name)).Result;
+                    //var requestUrl = _configuration.GetApiUrl();
+                    //var apiService = _configuration.GetApiServiceInfo();
+                    //var httpClientService = new HttpClientService();
+                    //var isCategoryExist = Task.Run(() => httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/check-category-exist",
+                    //    new Dictionary<string, string>
+                    //    {
+                    //        {"TenantId", apiService.TenantId},
+                    //        {"seoLink", link[0] },
+                    //        {"languageId",  CultureInfo.CurrentCulture.Name}
+                    //    })).Result;
 
-                    var isNewsExist = Task.Run(() => httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/check-exist", new Dictionary<string, string>
-                        {
-                            {"TenantId", apiService.TenantId},
-                            {"seoLink", link[0] },
-                            {"languageId",  CultureInfo.CurrentCulture.Name}
-                        })).Result;
+                    //var isNewsExist = Task.Run(() => httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/check-exist", new Dictionary<string, string>
+                    //    {
+                    //        {"TenantId", apiService.TenantId},
+                    //        {"seoLink", link[0] },
+                    //        {"languageId",  CultureInfo.CurrentCulture.Name}
+                    //    })).Result;
 
-                    return isCategoryExist || isNewsExist;
+                    //return isCategoryExist || isNewsExist;
+                    return true;
                 }
                 
                 return false;

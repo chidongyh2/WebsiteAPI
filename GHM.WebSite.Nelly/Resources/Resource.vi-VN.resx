@@ -294,4 +294,7 @@
   <data name="SolutionForTheSkin" xml:space="preserve">
     <value>Gải pháp cho da</value>
   </data>
+  <data name="ProductCategory" xml:space="preserve">
+    <value>Nhóm sản phẩm</value>
+  </data>
 </root>

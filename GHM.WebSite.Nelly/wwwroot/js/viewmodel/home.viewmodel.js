@@ -1,5 +1,4 @@
 ﻿
-
 function HomeViewModel() {
     var self = this;
     self.isMobile = ko.observable(false);
@@ -17,6 +16,8 @@ function HomeViewModel() {
     self.listProductCategoryHot = ko.observableArray([]);
     self.productCategoryId = ko.observable();
     self.listProductHot = ko.observableArray([]);
+    self.firstIndex = ko.observable(0);
+    self.lastIndex = ko.observable(4);
 
     self.selectValue = function (value) {
         if (value) {
@@ -46,7 +47,7 @@ function HomeViewModel() {
 
     self.selectProductCategory = function (data) {
         self.productCategoryId(data.Id);
-        $.get('/json/GetProductByCategory', { seolink: data.SeoLink }, function (data) {
+        $.get('/get-product-by-category', { seolink: data.SeoLink }, function (data) {
             self.listProductHot([]);
             $("div").remove(".lslide");
             self.listProductHot(data.items);
@@ -90,7 +91,51 @@ function HomeViewModel() {
         });
     };
 
+    self.rendProductCategoryActive = function () {
+        _.each(self.listProductCategoryHot(), function (item, index) {
+            item.IsActive(index <= self.lastIndex() && index >= self.firstIndex());
+        });
+    };
+
+    self.nextIndex = function () {
+        if (self.listProductCategoryHot() && self.lastIndex() <= self.listProductCategoryHot().length - 1) {
+            self.firstIndex(self.firstIndex() + 1);
+            self.lastIndex(self.lastIndex() + 1);
+            self.rendProductCategoryActive();
+
+            var indexActive = _.findIndex(self.listProductCategoryHot(), function (item) {
+                return item.Id === self.productCategoryId();
+            });
+
+            if (indexActive < self.firstIndex()) {
+                self.productCategoryId(self.listProductCategoryHot()[self.firstIndex()].Id);
+                self.selectProductCategory(self.listProductCategoryHot()[self.firstIndex()]);
+            }
+        }
+    };
+
+    self.prevIndex = function () {
+        if (self.listProductCategoryHot() && self.firstIndex() > 0) {
+            self.firstIndex(self.firstIndex() - 1);
+            self.lastIndex(self.lastIndex() - 1);
+            self.rendProductCategoryActive();
+
+            var indexActive = _.findIndex(self.listProductCategoryHot(), function (item) {
+                return item.Id === self.productCategoryId();
+            });
+
+            if (indexActive > self.lastIndex()) {
+                self.productCategoryId(self.listProductCategoryHot()[self.lastIndex()].Id);
+                self.selectProductCategory(self.listProductCategoryHot()[self.lastIndex()]);
+            }
+        }
+    };
+
     $(document).ready(function () {
+        if (window.innerWidth < 768) {
+            self.lastIndex(1);
+        }
+
         self.listVideo(listVideo);
         self.videoLinkId(videoLinkId);
         self.videoTitle(videoTitle);
@@ -106,15 +151,22 @@ function HomeViewModel() {
             self.valueSeoLink(listValue[0].SeoLink);
         }
 
+        _.each(productCategoryHots, function (item) {
+            item.IsActive = ko.observable(false);
+        });
+
         self.listProductCategoryHot(productCategoryHots);
-        self.productCategoryId(productCategoryHotId);
+
+        self.productCategoryId(parseInt(productCategoryHotId));
+
+        self.rendProductCategoryActive();
 
         self.listProductHot([]);
         $("div").remove(".lslide");
         self.listProductHot(products);
         setTimeout(() => {
             self.initProductSlider();
-        }, 100);       
+        }, 100);
     });
 }
 

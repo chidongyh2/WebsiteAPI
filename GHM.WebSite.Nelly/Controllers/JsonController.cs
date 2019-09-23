@@ -29,10 +29,11 @@ namespace GHM.WebSite.Nelly.Controllers
         }
 
         // GET: /<controller>/
+        [Route("get-product-by-category"), AcceptVerbs("GET")]
         public async Task<IActionResult> GetProductByCategory(string seoLink, int page = 1, int pageSize =20)
         {
             var apiService = _configuration.GetApiServiceInfo();
-            var result = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, page, pageSize);
+            var result = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, page, pageSize);
 
             return Ok(result);
         }
@@ -44,6 +45,18 @@ namespace GHM.WebSite.Nelly.Controllers
 
             var listVideo = await _videoService.ListVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, page, pageSize);
             return Json(listVideo);
+        }
+
+        [Route("get-productcategory-and-list"), AcceptVerbs("GET")]
+        public async Task<IActionResult> GetProductByCategoryAndList(string seoLink, int page = 1, int pageSize = 20)
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+            var products = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, page, pageSize);
+
+            var productCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, null, 1);
+
+            var categories = productCategory.FirstOrDefault();
+            return Ok(new { products.Items, products.TotalRows, categories });
         }
     }
 }

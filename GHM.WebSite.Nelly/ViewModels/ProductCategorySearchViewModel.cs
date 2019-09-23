@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace GHM.Website.Nelly.ViewModels
 {
     public class ProductCategorySearchViewModel
@@ -12,5 +13,8 @@ namespace GHM.Website.Nelly.ViewModels
         public bool? IsHomePage { get; set; }
         public int ChildCount { get; set; }
         public string SeoLink { get; set; }
+
+        public string IdPath { get; set; }
+        public int? ParentId { get; set; }
     }
 }

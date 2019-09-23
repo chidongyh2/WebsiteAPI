@@ -33,13 +33,14 @@ namespace GHM.Website.Nelly.Controllers
         private readonly IVideoService _videoService;
         private readonly IProductService _productService;
         private readonly IMenuService _menuService;
+        private readonly ICoreValueService _coreService;
 
         public HomeController(IConfiguration configuration, IMemoryCache cache,
             INewsService newsService, IVideoService videoService, IBannerService bannerService,
             IBrandService brandService, IBranchContactService branchContactService,
             IMenuService menuService, ISettingService settingService,
             ISocialNetworkService socialNetworkService, ILanguageService languageService,
-            IProductService productService)
+            IProductService productService, ICoreValueService coreValueService)
             : base(configuration, cache, brandService, branchContactService, menuService, settingService, socialNetworkService, languageService)
         {
             _configuration = configuration;
@@ -49,6 +50,7 @@ namespace GHM.Website.Nelly.Controllers
             _menuService = menuService;
             _bannerService = bannerService;
             _productService = productService;
+            _coreService = coreValueService;
         }
 
         public async Task<ActionResult> Index()
@@ -59,12 +61,12 @@ namespace GHM.Website.Nelly.Controllers
             var listProductCategoryHomePageData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategoryHomePage));
             ViewBag.ListProductCategoryHomePage = listProductCategoryHomePageData;
 
-            var listProductCategoryHot = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, null, 20);
+            var listProductCategoryHot = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, null, int.MaxValue);
             var listProductCategoryHotData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategoryHot));
             ViewBag.ListProductCategoryHot = listProductCategoryHotData;
             ViewBag.ProductCategoryId = listProductCategoryHot.FirstOrDefault()?.Id;
 
-            var products = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, listProductCategoryHot.FirstOrDefault().SeoLink, null, null, 1, 20);
+            var products = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, listProductCategoryHot.FirstOrDefault().SeoLink, null, null, 1, 20);
             ViewBag.ListProduct = products?.Items;
 
             var listProductCategorySolution = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, true, 20);
@@ -157,10 +159,6 @@ namespace GHM.Website.Nelly.Controllers
                     var categoryWithNews = await _newsService.GetNewsByCategoryIdAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, int.Parse(menuInfo.SubjectId), page, pageSize);
                     var categoryWithNewsData = JsonConvert.DeserializeObject<CategoryWidthNewsViewModel>(JsonConvert.SerializeObject(categoryWithNews.Data));
 
-                    var listNewsHot = await _newsService.GetNewsRelatedByParentCategoryIdAsync(apiService.TenantId, int.Parse(menuInfo.SubjectId), CultureInfo.CurrentCulture.Name, 1, 5);
-
-                    var listNewsHotData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(listNewsHot));
-                    ViewBag.ListNewsHot = listNewsHotData == null ? null : listNewsHotData;
                     ViewBag.CategoryId = categoryWithNews.Data.CategoryId;
                     return View("../News/CategoryNews", categoryWithNewsData);
                 }
@@ -187,13 +185,29 @@ namespace GHM.Website.Nelly.Controllers
                 }
             }
         }
+
+        [Route("gioi-thieu")]
         public async Task<IActionResult> About()
         {
-            var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
-            ViewData["Message"] = "Your application description page.";
-            var result = await new HttpClientService()
-                .GetAsync<List<News>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/home-page/{apiService.TenantId}/10");
+            var listCoreValue = await _coreService.GetAllActivatedCoreValueAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
+            if(listCoreValue != null)
+            {
+                ViewBag.ListCoreValue = JsonConvert.DeserializeObject<List<ValueViewModel>>(JsonConvert.SerializeObject(listCoreValue));
+            }
+         
+            //if (_cache.TryGetValue($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", out MenuDetailViewModel CategoryMiddleCache))
+            //{
+            //    ViewBag.MenuContact = CategoryMiddleCache;
+            //}
+            //else
+            //{
+            var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
+            var menuMiddleData = JsonConvert.DeserializeObject<MenuDetailViewModel>(JsonConvert.SerializeObject(menuMiddle));
+            _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
+            ViewBag.MenuContact = menuMiddleData;
+            //}
+
             return View();
         }
 
