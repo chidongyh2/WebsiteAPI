@@ -41,7 +41,7 @@ namespace GHM.WebSite.Nelly.Controllers
         {
             var apiService = _configuration.GetApiServiceInfo();
 
-            var listProductCategory= await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, false, 20);
+            var listProductCategory= await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, false, 20);
             var listProductCategoryData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategory));
             ViewBag.ListProductCategory = listProductCategoryData;
 
