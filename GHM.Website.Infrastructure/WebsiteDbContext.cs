@@ -195,6 +195,21 @@ namespace GHM.Website.Infrastructure
                 .HasOne(fg => fg.FaqGroup)
                 .WithMany(fgt => fgt.FaqGroupTranslations)
                 .HasForeignKey(fgt => fgt.FaqGroupId);
+
+
+
+            builder.Entity<Faq>()
+              .ToTable("Faqs")
+              .HasKey(x => x.Id);
+
+            builder.Entity<FaqTranslation>()
+                .ToTable("FaqTranslations")
+                .HasKey(x => new { x.TenantId, x.LanguageId, x.FaqId });
+
+            builder.Entity<FaqTranslation>()
+                .HasOne(f => f.Faq)
+                .WithMany(ft => ft.FaqTranslations)
+                .HasForeignKey(ft => ft.FaqId);
         }
 
         //public Task<int> SaveChangesAsync()
