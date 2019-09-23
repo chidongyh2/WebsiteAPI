@@ -70,6 +70,7 @@
         VideoGroup = 219,
         CoreValue = 229,
         FaqGroup = 230,
+        Faq = 231,
 
         // ------ Hr: 300 ------
         Hr = 300,
