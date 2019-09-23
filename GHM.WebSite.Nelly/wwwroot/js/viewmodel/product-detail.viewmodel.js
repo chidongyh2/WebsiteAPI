@@ -2,13 +2,15 @@
 function ProductDetailViewModel() {
     var self = this;
 
-    self.productCategoryTree = ko.observableArray([]);      
+    self.productCategoryTree = ko.observableArray([]);
+    self.listProductImage = ko.observableArray([]);
+    self.productThumbnail = ko.observable();
 
     self.rendProductCategoryActive = function () {
         _.each(self.listProductCategory(), function (item, index) {
             item.IsActive(index <= self.lastIndex() && index >= self.firstIndex());
         });
-    };   
+    };
 
     self.showChildren = function (data, open) {
     };
@@ -22,10 +24,58 @@ function ProductDetailViewModel() {
         });
     };
 
+    self.selectThumbnail = function (item) {
+        if (item) {
+            self.productThumbnail(item.url);
+            $('#thumbnail').attr('data-zoom-image', url + item.url);
+        }
+    };
+
     $(document).ready(function () {
-               
         self.rendTree(treeData);
         self.productCategoryTree(treeData);
+        self.listProductImage(productImages);
+        if (productInfo) {
+            self.productThumbnail(productInfo.thumbnail);
+        }
+
+        $("#product-image-silder").lightSlider({
+            item: 4,
+            auto: false,
+            loop: true,
+            slideMove: 1,
+            speed: 1500,
+            pause: 3000,
+            slideMargin: 10,
+            pauseOnHover: false,
+            controls: true,
+            prevHtml: '<img src="/images/facion/pev.png" />',
+            nextHtml: '<img src="/images/facion/nex.png" />',
+            pager: false,
+            responsive: [
+                {
+                    breakpoint: 800,
+                    settings: {
+                        item: 4,
+                        slideMove: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        item: 3,
+                        slideMove: 1
+                    }
+                }
+            ]
+        });
+
+        $("#thumbnail").ezPlus({
+            zoomWindowFadeIn: 500,
+            zoomWindowFadeOut: 500,
+            lensFadeIn: 500,
+            lensFadeOut: 500
+        });
     });
 }
 
