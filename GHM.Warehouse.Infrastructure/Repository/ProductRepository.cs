@@ -67,7 +67,8 @@ namespace GHM.Warehouse.Infrastructure.Repository
                                    DefaultUnit = unitTransaction.Name,
                                    productUnit.SalePrice,
                                    productCategoty.CategoryId,
-                                   CategoryNames = productCategoryTransatcion.Name
+                                   CategoryNames = productCategoryTransatcion.Name,
+                                   product.LastUpdateTime
                                };
 
             var queryProductCategory = queryProduct.GroupBy(x =>
@@ -82,7 +83,8 @@ namespace GHM.Warehouse.Infrastructure.Repository
                 x.IsHomePage,
                 x.Status,
                 x.DefaultUnit,
-                x.SalePrice
+                x.SalePrice,
+                x.LastUpdateTime
             }, (key, g) => new ProductSearchViewModel
             {
                 Id = key.Id,
@@ -95,11 +97,12 @@ namespace GHM.Warehouse.Infrastructure.Repository
                 Status =  key.Status,
                 DefaultUnit = key.DefaultUnit,
                 SalePrice = key.SalePrice,
+                LastUpdateTime = key.LastUpdateTime,
                 CategoryNames = g.Select(x => x.CategoryNames).ToList()
             });
 
             totalRows = queryProductCategory.Count();
-            queryProductCategory = queryProductCategory.OrderByDescending(x => x.Name)
+            queryProductCategory = queryProductCategory.OrderByDescending(x => x.LastUpdateTime)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize);
 

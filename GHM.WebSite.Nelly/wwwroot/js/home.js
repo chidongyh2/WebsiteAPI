@@ -13,7 +13,7 @@
                 breakpoint: 1024,
                 settings: {
                     centerMode: true,
-                    centerPadding: '0px',
+                    centerPadding: '10px',
                     slidesToShow: 3
                 }
             },
@@ -21,7 +21,7 @@
                 breakpoint: 480,
                 settings: {
                     centerMode: true,
-                    centerPadding: '0px',
+                    centerPadding: '10px',
                     slidesToShow: 1
                 }
             }
@@ -91,7 +91,7 @@
                 settings: {
                     centerMode: true,
                     centerPadding: '0px',
-                    slidesToShow: 3
+                    slidesToShow: 7
                 }
             },
             {
@@ -99,7 +99,7 @@
                 settings: {
                     centerMode: true,
                     centerPadding: '0px',
-                    slidesToShow: 1
+                    slidesToShow: 5
                 }
             }
         ]
@@ -129,6 +129,34 @@
             }
         ]
     });  
+
+    if (window.innerWidth < 768) {
+        $("#productGroups").slick({
+            slidesToShow: 3,
+            centerMode: true,
+            slidesToScroll: 1,
+            prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
+            nextArrow: '<button class="slick-next"> <img src="/images/facion/nex.png" /> </button>',
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '10px',
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '10px',
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });  
+    }
 });
 
 var nbOptions = 10; // number of menus

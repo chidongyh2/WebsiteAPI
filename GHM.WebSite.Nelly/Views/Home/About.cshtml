@@ -1,0 +1,92 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var title = "Về chúng tôi";
+    ViewBag.Title = title;
+    var listCoreValue = ViewBag.ListCoreValue as List<ValueViewModel>;
+}
+
+<partial name="_Breadcumb">
+    <div id="about">
+        <div class="introduction">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <partial name="_TitleBar" model="title" />
+                    </div>
+                    <div class="col-sm-12 center">
+                        <div class="description">
+                            @Html.Raw(websiteSetting.Instruction)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (listCoreValue != null && listCoreValue.Any())
+        {
+            <div class="core-value">
+                <div class="container">
+                    <div class="row">
+                        @{
+                            var i = 1;
+                            foreach (var core in listCoreValue)
+                            {
+                                if (i % 2 == 1)
+                                {
+                                    <div class="col-sm-12 category-item even">
+                                        <div class="image">
+                                            <a href="@(core.Url)" title="@core.Title">
+                                                <img class="news-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(core.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{core.Image}")}&width=600&height=600")"
+                                                     onerror="this.onerror = null;this.src='/images/no-image.png'"
+                                                     alt="@core.Title" />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <div class="number">
+                                                @($"0{i}.")
+                                            </div>
+                                            <h3 class="title">
+                                                <a href="@(@core.Url)" title="@(string.IsNullOrEmpty(core.Title) ? core.Title : core.Title)">
+                                                    @(!string.IsNullOrEmpty(core.Title) ? Common.SubString(core.Title, 70) : core.Title)
+                                                </a>
+                                            </h3>
+                                            <div class="description">
+                                                <span>@Common.SubString(core.Description, 300)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-sm-12 category-item odd">
+                                        <div class="content">
+                                            <div class="number">
+                                                @($"0{i}.")
+                                            </div>
+                                            <h3 class="title">
+                                                <a href="@(@core.Url)" title="@(string.IsNullOrEmpty(core.Title) ? core.Title : core.Title)">
+                                                    @(!string.IsNullOrEmpty(core.Title) ? Common.SubString(core.Title, 70) : core.Title)
+                                                </a>
+                                            </h3>
+                                            <div class="description">
+                                                <span>@Common.SubString(core.Description, 300)</span>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <a href="@(@core.Url)" title="@(string.IsNullOrEmpty(core.Title) ? core.Title : core.Title)">
+                                                <img class="news-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(core.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{core.Image}")}&width=600&height=600")"
+                                                     onerror="this.onerror = null;this.src='/images/no-image.png'"
+                                                     alt="@core.Title" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                                i++;
+                            }
+                        }
+                    </div>
+                </div>
+
+            </div>}
+    </div>
+    <partial name="_MenuContact" />
+

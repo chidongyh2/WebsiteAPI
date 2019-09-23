@@ -1,0 +1,58 @@
+﻿
+@{
+    var productInfo = ViewBag.ProductInfo as ProductSearchViewModel;
+    ViewBag.Title = productInfo?.Name;
+    ViewBag.Description = productInfo?.Desciption;
+
+    var jsonSerializerSettings = new JsonSerializerSettings
+    {
+        ContractResolver = new CamelCasePropertyNamesContractResolver()
+    };
+}
+
+<partial name="_Breadcumb">
+    <div id="product-detail" class="product-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 content">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <img class="img-responsive lazy" src="@($"{ViewBag.Url}{productInfo.Thumbnail}")"/>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="content">
+                                <div class="title-sidebar">@productInfo.Name</div>
+                                <div class="star">
+                                    @for (var i = 1; i <= 5; i++)
+                                    {
+                                        <i class="la la-star"></i>
+                                    }
+                                </div>
+                                <div class="price">
+                                    <span>@productInfo.SalePrice?.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</span>
+                                </div>
+                                <div class="description">
+                                    @Html.Raw(productInfo.Desciption)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <partial name="_BoxHotline" />
+                </div>
+                <div class="col-sm-3">
+                    <partial name="_SidebarProduct" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section scripts {
+        <script type="text/javascript">
+            var productImages = @(ViewBag.ProdutImages != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProdutImages, jsonSerializerSettings)) : "[]");
+            var productInfo = @(ViewBag.ProductInfo != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductInfo, jsonSerializerSettings)) : "[]");
+
+            console.log(productImages, productInfo);
+        </script>
+        <script src="~/js/viewmodel/product-detail.viewmodel.min.js"></script>
+    }
+

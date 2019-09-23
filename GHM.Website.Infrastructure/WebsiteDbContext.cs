@@ -182,6 +182,19 @@ namespace GHM.Website.Infrastructure
             builder.Entity<CoreValueTranslation>()
                 .ToTable("CoreValueTranslations")
                 .HasKey(x => new { x.TenantId, x.LanguageId, x.CoreValueId });
+
+            builder.Entity<FaqGroup>()
+              .ToTable("FaqGroups")
+              .HasKey(x => x.Id);
+
+            builder.Entity<FaqGroupTranslation>()
+                .ToTable("FaqGroupTranslations")
+                .HasKey(x => new { x.TenantId, x.LanguageId, x.FaqGroupId });
+
+            builder.Entity<FaqGroupTranslation>()
+                .HasOne(fg => fg.FaqGroup)
+                .WithMany(fgt => fgt.FaqGroupTranslations)
+                .HasForeignKey(fgt => fgt.FaqGroupId);
         }
 
         //public Task<int> SaveChangesAsync()

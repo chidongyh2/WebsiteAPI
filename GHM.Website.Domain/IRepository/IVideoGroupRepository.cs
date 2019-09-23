@@ -1,14 +1,12 @@
-﻿using System;
+﻿using GHM.Website.Domain.Models;
+using GHM.Website.Domain.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GHM.Website.Domain.Constants;
-using GHM.Website.Domain.Models;
-using GHM.Website.Domain.ViewModels;
 namespace GHM.Website.Domain.IRepository
 {
-   public interface IVideoGroupRepository
+    public interface IVideoGroupRepository
     {
-        Task<List<VideoGroupViewModel>> Search(string tenantId, string languageId, string keyword, 
+        Task<List<VideoGroupViewModel>> Search(string tenantId, string languageId, string keyword,
             bool? isActive, int page, int pageSize, out int totalRows);
 
         Task<int> Insert(VideoGroup videoGroup);

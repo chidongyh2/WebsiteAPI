@@ -45,39 +45,7 @@
                         <div data-bind="attr:{id: 'product-hot-slider-' + productCategoryId()},">
                             <!-- ko foreach: listProductHot-->
                             <div class="item">
-                                <div class="product-item">
-                                    <div class="image-content">
-                                        <a data-bind="attr: {href: 'san-pham/' + seoLink + '.htm', title: name}">
-                                            <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + '@ViewBag.Url' + thumbnail + '&width=600&height=400', alt: name }"
-                                                 onerror="this.src='/images/no-image.png'" />
-                                            <span class="img-overlay"></span>
-                                        </a>
-                                    </div>
-                                    <div class="wrap-text-content">
-                                        <h3 class="product-code" data-bind="text: id"></h3>
-                                        <div class="title">
-                                            <a data-bind="attr: {href: 'san-pham/' + seoLink + '.htm', title: name}, trimText: name, trimTextLength: 50">
-                                            </a>
-                                        </div>
-                                        <div class="description">
-                                            <span data-bind="trimText: description, trimTextLength: 50"></span>
-                                        </div>
-                                        <hr />
-                                        <div class="price">
-                                            <span data-bind="text: formatNumberic(salePrice,  'N0') + ' VNĐ'"></span>
-                                        </div>
-                                        <div class="star">
-                                            @for (var i = 1; i <= 5; i++)
-                                            {
-                                                <i class="la la-star"></i>
-                                            }
-                                        </div>
-                                        <div class="read-more">
-                                            <a data-bind="attr: {href: 'san-pham/' + seoLink + '.htm', title: name}"
-                                               class="btn btn-main"><i class="la la-arrow-right"></i>@Resource.ViewMore</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <partial name="_ProductItem" />
                             </div>
                             <!--/ko-->
                         </div>

@@ -144,7 +144,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                             ChildCount = parent.ChildCount,
                             Icon = string.Empty,
                             State = new GHM.Infrastructure.Models.State(),
-                            Children = RenderTree(parents, parent.Id)
+                            Children =  RenderTree(parents, parent.Id)
                         };
                         tree.Add(treeData);
                     });
@@ -383,20 +383,19 @@ namespace GHM.Warehouse.Infrastructure.Services
             }
 
             // Update parent product category child count.
-            if ((productCategoryInfo.ParentId.HasValue && oldParentId.HasValue && productCategoryInfo.ParentId.Value != oldParentId.Value)
-                || (!productCategoryInfo.ParentId.HasValue && oldParentId.HasValue))
+            if (oldParentId.HasValue)
             {
                 // Update old parent product category child count.
                 var oldChildCount = await _productCategoryRepository.GetChildCount(oldParentId.Value);
                 await _productCategoryRepository.UpdateChildCount(oldParentId.Value, oldChildCount);
+            }
 
-                // Update new parent product category child count.
-                if (productCategoryInfo.ParentId.HasValue)
-                {
-                    var newParentId = productCategoryInfo.ParentId.Value;
-                    var newChildCount = await _productCategoryRepository.GetChildCount(newParentId);
-                    await _productCategoryRepository.UpdateChildCount(newParentId, newChildCount);
-                }
+            // Update new parent product category child count.
+            if (productCategoryInfo.ParentId.HasValue && productCategoryInfo.ParentId != oldParentId)
+            {
+                var newParentId = productCategoryInfo.ParentId.Value;
+                var newChildCount = await _productCategoryRepository.GetChildCount(newParentId);
+                await _productCategoryRepository.UpdateChildCount(newParentId, newChildCount);
             }
 
             //update lai product category child by Id
@@ -410,7 +409,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             // Update product category translation.
             var resultUpdateTranslation = await UpdateTranslation();
 
-            if(productCategoryMeta.ProductCategoryAttributes != null && productCategoryMeta.ProductCategoryAttributes.Any())
+            if (productCategoryMeta.ProductCategoryAttributes != null && productCategoryMeta.ProductCategoryAttributes.Any())
             {
                 await UpdateProductCategoryAttribute();
             }
@@ -492,7 +491,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             {
                 var resultDeleteProductCategoryAttribute = await _productCategoriesAttributeRepository.DeleteByCategoryId(tenantId, productCategoryId);
                 if (resultDeleteProductCategoryAttribute < 0)
-                    return new ActionResultResponse<int>(resultDeleteProductCategoryAttribute, 
+                    return new ActionResultResponse<int>(resultDeleteProductCategoryAttribute,
                         _sharedResourceService.GetString("Something went wrong. Please contact with administrator."));
 
                 var listProductCategoriesAttributes = new List<ProductCategoriesAttribute>();

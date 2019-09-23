@@ -92,7 +92,8 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
             }
         }
 
-        public async Task<SearchResult<ProductSearchViewModel>> ProductSearch(string tenantId, string languageId, string keyword, bool? isHot, bool? isHomePage, int page = 1, int pageSize = 20)
+        public async Task<SearchResult<ProductSearchViewModel>> ProductSearch(string tenantId, string languageId,
+            string keyword, bool? isHot, bool? isHomePage, string seoLink, int page = 1, int pageSize = 20)
         {
             try
             {
@@ -107,6 +108,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     param.Add("@IsHot", isHot);
                     param.Add("@IsHomePage", isHomePage);
                     param.Add("@Keyword", keyword);
+                    param.Add("@SeoLink", seoLink);
                     param.Add("@Page", page);
                     param.Add("@PageSize", pageSize);
                     param.Add("@TotalRows", DbType.Int32, direction: ParameterDirection.Output);
@@ -116,6 +118,68 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     {
                         Items = items.ToList(),
                         TotalRows = param.Get<int>("TotalRows")
+                    };
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "sp_Product_GetByProductCategory ProductService Error.");
+                return null;
+            }
+        }
+
+        public async Task<SearchResult<ProductWidthCategoryViewModel>> ProductSearchByParentCategory(string tenantId, string languageId,
+            bool? isHot, bool? isHomePage, int productCategoryParentId)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@TenantId", tenantId);
+                    param.Add("@LanguageId", languageId);
+                    param.Add("@IsHot", isHot);
+                    param.Add("@IsHomePage", isHomePage);
+                    param.Add("@ProductCategoryParentId", productCategoryParentId);
+
+                    var items = await con.QueryAsync<ProductWidthCategoryViewModel>("[dbo].[sp_Product_GetByProductCategoryParentId]", param, commandType: CommandType.StoredProcedure);
+                    var result = new SearchResult<ProductWidthCategoryViewModel>
+                    {
+                        Items = items.ToList(),
+                    };
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "sp_Product_GetByProductCategoryParentId ProductService Error.");
+                return null;
+            }
+        }
+
+        public async Task<SearchResult<ProductImageViewModel>> ProductImageSearchByProductId(string tenantId, string productId)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@TenantId", tenantId);
+                    param.Add("@ProductId", productId);
+
+                    var items = await con.QueryAsync<ProductImageViewModel>("[dbo].[sp_ProductImage_GetByProductId]", param, commandType: CommandType.StoredProcedure);
+                    var result = new SearchResult<ProductImageViewModel>
+                    {
+                        Items = items.ToList()
                     };
 
                     return result;
