@@ -2,7 +2,7 @@
 
 namespace GHM.Website.Domain.ViewModels
 {
-    public class VideoGroupViewModel
+    public class FaqGroupViewModel
     {
         public string Id { get; set; }
         public string TenantId { get; set; }
