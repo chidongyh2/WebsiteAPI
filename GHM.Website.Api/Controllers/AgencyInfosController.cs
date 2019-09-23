@@ -15,62 +15,62 @@ namespace GHM.Website.Api.Controllers
     [Produces("application/json")]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class VideoGroupsController : GhmControllerBase
+    public class AgencyInfosController : GhmControllerBase
     {
-        private readonly IVideoGroupService _videoGroupService;
-        public VideoGroupsController(IVideoGroupService videoGroupService)
+        private readonly IAgencyInfoService _agencyInfoService;
+        public AgencyInfosController(IAgencyInfoService agencyInfoService)
         {
-            _videoGroupService = videoGroupService;
+            _agencyInfoService = agencyInfoService;
         }
 
         [AcceptVerbs("GET")]
-        [AllowPermission(PageId.VideoGroup, Permission.View)]
+        [AllowPermission(PageId.AgencyInfo, Permission.View)]
         [CheckPermission]
         public async Task<IActionResult> Search(string keyword, bool? isActive, int page = 1, int pageSize = 20)
         {
-            var result = await _videoGroupService.Search(CurrentUser.TenantId, CultureInfo.CurrentCulture.Name, keyword, isActive, page, pageSize);
+            var result = await _agencyInfoService.Search(CurrentUser.TenantId, CultureInfo.CurrentCulture.Name, keyword, isActive, page, pageSize);
             return Ok(result);
         }
 
         [AcceptVerbs("POST"), ValidateModel]
-        [AllowPermission(PageId.VideoGroup, Permission.Insert)]
+        [AllowPermission(PageId.AgencyInfo, Permission.Insert)]
         [CheckPermission]
-        public async Task<IActionResult> Insert([FromBody]VideoGroupMeta videoGroupMeta)
+        public async Task<IActionResult> Insert([FromBody]AgencyInfoMeta agencyInfoMeta)
         {
-            var result = await _videoGroupService.Insert(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, videoGroupMeta);
+            var result = await _agencyInfoService.Insert(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, agencyInfoMeta);
             if (result.Code <= 0)
                 return BadRequest(result);
             return Ok(result);
         }
 
         [Route("{id}"), AcceptVerbs("POST"), ValidateModel]
-        [AllowPermission(PageId.VideoGroup, Permission.Update)]
+        [AllowPermission(PageId.AgencyInfo, Permission.Update)]
         [CheckPermission]
-        public async Task<IActionResult> Update(string id, [FromBody]VideoGroupMeta videoGroupMeta)
+        public async Task<IActionResult> Update(string id, [FromBody]AgencyInfoMeta agencyInfoMeta)
         {
-            var result = await _videoGroupService.Update(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, id, videoGroupMeta);
+            var result = await _agencyInfoService.Update(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, id, agencyInfoMeta);
             if (result.Code <= 0)
                 return BadRequest(result);
             return Ok(result);
         }
 
         [Route("{id}"), AcceptVerbs("GET")]
-        [AllowPermission(PageId.VideoGroup, Permission.View)]
+        [AllowPermission(PageId.AgencyInfo, Permission.View)]
         [CheckPermission]
         public async Task<IActionResult> Detail(string id)
         {
-            var result = await _videoGroupService.GetDetail(CurrentUser.TenantId, id);
+            var result = await _agencyInfoService.GetDetail(CurrentUser.TenantId, id);
             if (result.Code < 0)
                 return BadRequest(result);
             return Ok(result);
         }
 
         [Route("{id}"), AcceptVerbs("DELETE")]
-        [AllowPermission(PageId.VideoGroup, Permission.Delete)]
+        [AllowPermission(PageId.AgencyInfo, Permission.Delete)]
         [CheckPermission]
         public async Task<IActionResult> Delete(string id)
         {
-            var result = await _videoGroupService.Delete(CurrentUser.TenantId, id);
+            var result = await _agencyInfoService.Delete(CurrentUser.TenantId, id);
             if (result.Code <= 0)
                 return BadRequest(result);
             return Ok(result);

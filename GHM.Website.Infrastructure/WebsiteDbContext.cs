@@ -182,6 +182,45 @@ namespace GHM.Website.Infrastructure
             builder.Entity<CoreValueTranslation>()
                 .ToTable("CoreValueTranslations")
                 .HasKey(x => new { x.TenantId, x.LanguageId, x.CoreValueId });
+
+            builder.Entity<FaqGroup>()
+              .ToTable("FaqGroups")
+              .HasKey(x => x.Id);
+
+            builder.Entity<FaqGroupTranslation>()
+                .ToTable("FaqGroupTranslations")
+                .HasKey(x => new { x.TenantId, x.LanguageId, x.FaqGroupId });
+
+            builder.Entity<FaqGroupTranslation>()
+                .HasOne(fg => fg.FaqGroup)
+                .WithMany(fgt => fgt.FaqGroupTranslations)
+                .HasForeignKey(fgt => fgt.FaqGroupId);
+
+            builder.Entity<Faq>()
+              .ToTable("Faqs")
+              .HasKey(x => x.Id);
+
+            builder.Entity<FaqTranslation>()
+                .ToTable("FaqTranslations")
+                .HasKey(x => new { x.TenantId, x.LanguageId, x.FaqId });
+
+            builder.Entity<FaqTranslation>()
+                .HasOne(f => f.Faq)
+                .WithMany(ft => ft.FaqTranslations)
+                .HasForeignKey(ft => ft.FaqId);
+
+            builder.Entity<AgencyInfo>()
+              .ToTable("AgencyInfos")
+              .HasKey(x => x.Id);
+
+            builder.Entity<AgencyInfoTranslation>()
+                .ToTable("AgencyInfoTranslations")
+                .HasKey(x => new { x.TenantId, x.LanguageId, x.AgencyInfoId });
+
+            builder.Entity<AgencyInfoTranslation>()
+                .HasOne(ai => ai.AgencyInfo)
+                .WithMany(ait => ait.AgencyInfoTranslations)
+                .HasForeignKey(ait => ait.AgencyInfoId);
         }
 
         //public Task<int> SaveChangesAsync()

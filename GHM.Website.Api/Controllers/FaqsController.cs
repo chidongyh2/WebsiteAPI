@@ -9,68 +9,69 @@ using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using System.Threading.Tasks;
 
+
 namespace GHM.Website.Api.Controllers
 {
     [Authorize]
     [Produces("application/json")]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class VideoGroupsController : GhmControllerBase
+    public class FaqsController : GhmControllerBase
     {
-        private readonly IVideoGroupService _videoGroupService;
-        public VideoGroupsController(IVideoGroupService videoGroupService)
+        private readonly IFaqService _faqService;
+        public FaqsController(IFaqService faqService)
         {
-            _videoGroupService = videoGroupService;
+            _faqService = faqService;
         }
 
         [AcceptVerbs("GET")]
-        [AllowPermission(PageId.VideoGroup, Permission.View)]
+        [AllowPermission(PageId.Faq, Permission.View)]
         [CheckPermission]
         public async Task<IActionResult> Search(string keyword, bool? isActive, int page = 1, int pageSize = 20)
         {
-            var result = await _videoGroupService.Search(CurrentUser.TenantId, CultureInfo.CurrentCulture.Name, keyword, isActive, page, pageSize);
+            var result = await _faqService.Search(CurrentUser.TenantId, CultureInfo.CurrentCulture.Name, keyword, isActive, page, pageSize);
             return Ok(result);
         }
 
         [AcceptVerbs("POST"), ValidateModel]
-        [AllowPermission(PageId.VideoGroup, Permission.Insert)]
+        [AllowPermission(PageId.Faq, Permission.Insert)]
         [CheckPermission]
-        public async Task<IActionResult> Insert([FromBody]VideoGroupMeta videoGroupMeta)
+        public async Task<IActionResult> Insert([FromBody]FaqMeta faqMeta)
         {
-            var result = await _videoGroupService.Insert(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, videoGroupMeta);
+            var result = await _faqService.Insert(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, faqMeta);
             if (result.Code <= 0)
                 return BadRequest(result);
             return Ok(result);
         }
 
         [Route("{id}"), AcceptVerbs("POST"), ValidateModel]
-        [AllowPermission(PageId.VideoGroup, Permission.Update)]
+        [AllowPermission(PageId.Faq, Permission.Update)]
         [CheckPermission]
-        public async Task<IActionResult> Update(string id, [FromBody]VideoGroupMeta videoGroupMeta)
+        public async Task<IActionResult> Update(string id, [FromBody]FaqMeta faqMeta)
         {
-            var result = await _videoGroupService.Update(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, id, videoGroupMeta);
+            var result = await _faqService.Update(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, id, faqMeta);
             if (result.Code <= 0)
                 return BadRequest(result);
             return Ok(result);
         }
 
         [Route("{id}"), AcceptVerbs("GET")]
-        [AllowPermission(PageId.VideoGroup, Permission.View)]
+        [AllowPermission(PageId.Faq, Permission.View)]
         [CheckPermission]
         public async Task<IActionResult> Detail(string id)
         {
-            var result = await _videoGroupService.GetDetail(CurrentUser.TenantId, id);
+            var result = await _faqService.GetDetail(CurrentUser.TenantId, id);
             if (result.Code < 0)
                 return BadRequest(result);
             return Ok(result);
         }
 
         [Route("{id}"), AcceptVerbs("DELETE")]
-        [AllowPermission(PageId.VideoGroup, Permission.Delete)]
+        [AllowPermission(PageId.Faq, Permission.Delete)]
         [CheckPermission]
         public async Task<IActionResult> Delete(string id)
         {
-            var result = await _videoGroupService.Delete(CurrentUser.TenantId, id);
+            var result = await _faqService.Delete(CurrentUser.TenantId, id);
             if (result.Code <= 0)
                 return BadRequest(result);
             return Ok(result);
