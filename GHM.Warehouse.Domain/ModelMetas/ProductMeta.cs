@@ -6,6 +6,7 @@ namespace GHM.Warehouse.Domain.ModelMetas
 {
     public class ProductMeta
     {
+        public string Id { get; set; }
         public bool IsActive { get; set; }
         public string ConcurrencyStamp { get; set; }
         public bool? IsManagementByLot { get; set; }

@@ -42,6 +42,7 @@ namespace GHM.Warehouse.Domain.Models
             ViewCount = 0;
             SentTime = DateTime.Now;
             CreateTime = DateTime.Now;
+            LastUpdateTime = DateTime.Now;
             IsDelete = false;
             IsActive = true;
             ConcurrencyStamp = Guid.NewGuid().ToString();

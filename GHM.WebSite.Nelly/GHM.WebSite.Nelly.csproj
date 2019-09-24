@@ -21,6 +21,7 @@
     <PackageReference Include="bootstrap" Version="4.3.1" />
     <PackageReference Include="DeviceDetector.NET.NetCore" Version="3.9.2.2" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.0.100" />
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="7.14.4" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
@@ -94,7 +95,7 @@
     <Content Update="Views\Home\_MainSlider.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Home\_MenuContact.cshtml">
+    <Content Update="Views\Shared\_MenuContact.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Home\_Brand.cshtml">
@@ -119,6 +120,9 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\News\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\QA\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Shared\_BoxHotline.cshtml">

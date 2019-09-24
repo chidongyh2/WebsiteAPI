@@ -134,9 +134,9 @@ namespace GHM.FileManagement.Infrastructure.Services
             {
                 if (System.IO.File.Exists(uploadPath))
                     return -1;
-
+                
                 using (var stream = new FileStream(uploadPath, FileMode.Create))
-                {                    
+                {                   
                     await file.CopyToAsync(stream);
                 }
                 return 1;

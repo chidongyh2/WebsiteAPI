@@ -10,5 +10,6 @@ namespace GHM.Warehouse.Domain.ModelMetas
         public string Value { get; set; }
         public IEnumerable<Suggestion<string>> AttributeValues { get; set; }
         public bool IsShowClient { get; set; }
+        public bool ? IsSelfContent { get; set; }
     }
 }
