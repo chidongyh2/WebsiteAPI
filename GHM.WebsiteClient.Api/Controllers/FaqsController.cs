@@ -20,7 +20,7 @@ namespace GHM.WebsiteClient.Api.Controllers
         }
 
         [Route("{tenantId}/{languageId?}"), AcceptVerbs("GET")]
-        public async Task<IActionResult> ListFaq(string tenantId, string languageId, int page = 1, int pageSize = 6)
+        public async Task<IActionResult> ListFaq(string tenantId, string languageId, int page = 1, int pageSize = 10)
         {
             var result = await _faqService.SearchClientAsync(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, page, pageSize);
             return Ok(result);

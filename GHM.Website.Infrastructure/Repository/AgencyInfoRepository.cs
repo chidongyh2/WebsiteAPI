@@ -46,6 +46,7 @@ namespace GHM.Website.Infrastructure.Repository
                         TenantId = x.TenantId,
                         Email = x.Email,
                         PhoneNumber = x.PhoneNumber,
+                        Website = x.Website,
                         IdCard = x.IdCard,
                         IdCardDate = x.IdCardDate,
                         NationalId = x.NationalId,

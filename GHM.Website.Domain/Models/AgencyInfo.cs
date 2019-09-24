@@ -9,6 +9,7 @@ namespace GHM.Website.Domain.Models
         public string TenantId { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+        public string Website { get; set; }
         public string IdCard { get; set; }
         public DateTime IdCardDate { get; set; }
         public string NationalId { get; set; }
