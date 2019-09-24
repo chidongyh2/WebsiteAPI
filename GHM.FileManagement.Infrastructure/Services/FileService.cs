@@ -15,7 +15,6 @@ using GHM.Infrastructure.IServices;
 using GHM.Infrastructure.Models;
 using GHM.Infrastructure.Resources;
 using GHM.Infrastructure.ViewModels;
-using ImageMagick;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Http;
@@ -137,19 +136,7 @@ namespace GHM.FileManagement.Infrastructure.Services
                     return -1;
 
                 using (var stream = new FileStream(uploadPath, FileMode.Create))
-                {
-                    //if (isImage)
-                    //{
-                    //    var fileInfo = new FileInfo(uploadPath);
-                    //    ImageOptimizer optimizer = new ImageOptimizer();
-
-                    //    var isSupported = optimizer.IsSupported(fileInfo);
-                    //    if (isSupported)
-                    //    {
-                    //        optimizer.Compress(fileInfo);
-                    //    }
-                    //    fileInfo.Refresh();
-                    //}
+                {                    
                     await file.CopyToAsync(stream);
                 }
                 return 1;
