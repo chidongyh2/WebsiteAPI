@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace GHM.Website.Domain.ViewModels
+namespace GHM.WebsiteClient.Api.Domain.Models
 {
-    public class AgencyInfoDetailViewModel
+    public class AgencyInfo
     {
         public string Id { get; set; }
         public string TenantId { get; set; }
@@ -25,10 +26,22 @@ namespace GHM.Website.Domain.ViewModels
         public int Order { get; set; }
         public string IsShow { get; set; }
         public bool IsActive { get; set; }
+        public bool IsDelete { get; set; }
         public string ConcurrencyStamp { get; set; }
         public DateTime? CreateTime { get; set; }
+        public string CreatorId { get; set; }
+        public string CreatorFullName { get; set; }
         public DateTime? LastUpdate { get; set; }
+        public string LastUpdateUserId { get; set; }
+        public string LastUpdateFullName { get; set; }
 
-        public List<AgencyInfoTranslationViewModel> AgencyInfoTranslationViewModels { get; set; }
+        public AgencyInfo()
+        {
+            IsDelete = false;
+            IsActive = true;
+            CreateTime = DateTime.Now;
+
+        }
+        public List<AgencyInfoTranslation> AgencyInfoTranslations { get; set; }
     }
 }

@@ -59,6 +59,7 @@ namespace GHM.Website.Infrastructure.Services
                 ConcurrencyStamp = agencyInfoId,
                 Email = agencyInfoMeta.Email?.Trim(),
                 PhoneNumber = agencyInfoMeta.PhoneNumber?.Trim(),
+                Website = agencyInfoMeta.Website?.Trim(),
                 IdCard = agencyInfoMeta.IdCard?.Trim(),
                 IdCardDate = agencyInfoMeta.IdCardDate,
                 NationalId = agencyInfoMeta.NationalId?.Trim(),
@@ -175,6 +176,7 @@ namespace GHM.Website.Infrastructure.Services
 
             info.Email = agencyInfoMeta.Email?.Trim();
             info.PhoneNumber = agencyInfoMeta.PhoneNumber?.Trim();
+            info.Website = agencyInfoMeta.Website?.Trim();
             info.IdCard = agencyInfoMeta.IdCard?.Trim();
             info.IdCardDate = agencyInfoMeta.IdCardDate;
             info.NationalId = agencyInfoMeta.NationalId?.Trim();
@@ -268,6 +270,7 @@ namespace GHM.Website.Infrastructure.Services
                 Id = info.Id,
                 Email = info.Email,
                 PhoneNumber = info.PhoneNumber,
+                Website = info.Website,
                 IdCard = info.IdCard,
                 IdCardDate = info.IdCardDate,
                 NationalId = info.NationalId,
