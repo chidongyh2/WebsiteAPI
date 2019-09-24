@@ -1773,3 +1773,6 @@ body {
   top: 0;
   width: 100%;
 }
+.zoomWindowContainer div {
+  border: 2px solid #F9A4A7 !important;
+}

@@ -27,7 +27,8 @@ function ProductDetailViewModel() {
     self.selectThumbnail = function (item) {
         if (item) {
             self.productThumbnail(item.url);
-            $('#thumbnail').attr('data-zoom-image', url + item.url);
+            $("#thumbnail img").data("zoom-image", url + item.url);
+            $("#thumbnail img").attr("data-zoom-image", url + item.url);
         }
     };
 
