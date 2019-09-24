@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net.Http;
@@ -25,7 +26,7 @@ namespace GHM.Website.Nelly.Controllers
             if (!string.IsNullOrEmpty(url))
             {
                 using (Image sourceImage = await this.LoadImageFromUrl(url))
-                {
+                {                    
                     if (sourceImage != null)
                     {
                         using (Image destinationImage = Common.CropImage(sourceImage, width ?? sourceImage.Width, height ?? sourceImage.Height, type))

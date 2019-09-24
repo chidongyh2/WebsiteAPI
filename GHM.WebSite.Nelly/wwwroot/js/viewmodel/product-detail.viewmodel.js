@@ -28,7 +28,12 @@ function ProductDetailViewModel() {
         if (item) {
             self.productThumbnail(item.url);
             $("#thumbnail img").data("zoom-image", url + item.url);
-            $("#thumbnail img").attr("data-zoom-image", url + item.url);
+            $("#thumbnail img").data("zoom-image", url + item.url).ezPlus({
+                zoomWindowFadeIn: 500,
+                zoomWindowFadeOut: 500,
+                lensFadeIn: 500,
+                lensFadeOut: 500
+            });
         }
     };
 
