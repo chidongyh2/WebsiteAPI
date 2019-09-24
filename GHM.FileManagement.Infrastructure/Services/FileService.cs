@@ -15,6 +15,7 @@ using GHM.Infrastructure.IServices;
 using GHM.Infrastructure.Models;
 using GHM.Infrastructure.Resources;
 using GHM.Infrastructure.ViewModels;
+using ImageMagick;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Http;
@@ -68,7 +69,9 @@ namespace GHM.FileManagement.Infrastructure.Services
                 string uploadPath = $"{CreateFolder()}{concurrencyStamp}.{formFile.GetExtensionFile()}";
                 //await _fileRepository.UploadFile(formFile, file.Url);
                 // Upload file to server.
-                var resultCopyFile = await CopyFileToServer(formFile, uploadPath);
+                var type = formFile.GetTypeFile();
+                var isImage = type.Contains("image/");
+                var resultCopyFile = await CopyFileToServer(formFile, uploadPath, isImage);
                 if (resultCopyFile == -1)
                     continue;
 
@@ -128,13 +131,25 @@ namespace GHM.FileManagement.Infrastructure.Services
                 return mapPath;
             }
 
-            async Task<int> CopyFileToServer(IFormFile file, string uploadPath)
+            async Task<int> CopyFileToServer(IFormFile file, string uploadPath, bool isImage = false)
             {
                 if (System.IO.File.Exists(uploadPath))
                     return -1;
 
                 using (var stream = new FileStream(uploadPath, FileMode.Create))
                 {
+                    //if (isImage)
+                    //{
+                    //    var fileInfo = new FileInfo(uploadPath);
+                    //    ImageOptimizer optimizer = new ImageOptimizer();
+
+                    //    var isSupported = optimizer.IsSupported(fileInfo);
+                    //    if (isSupported)
+                    //    {
+                    //        optimizer.Compress(fileInfo);
+                    //    }
+                    //    fileInfo.Refresh();
+                    //}
                     await file.CopyToAsync(stream);
                 }
                 return 1;
