@@ -18,10 +18,11 @@
                     <div class="row cm-mgb-20">
                         <div class="col-sm-4">
                             <div class="product-thumbnail">
-                                <img id="thumbnail" class="img-responsive"                                    
-                                     data-bind="attr: { src: '@ViewBag.Url' + productThumbnail(), dataZoomImage : '@ViewBag.Url' + productThumbnail()}"
-                                     src="@($"{ViewBag.Url}{productInfo.Thumbnail}")" alt="@productInfo.Name" 
-                                     data-zoom-image="@($"{ViewBag.Url}{productInfo.Thumbnail}")"/>
+                                <img id="thumbnail" class="img-responsive"
+                                     data-bind="attr: {src: '@ViewBag.Url' + productThumbnail()}"
+                                     src="@($"{ViewBag.Url}{productInfo.Thumbnail}")" alt="@productInfo.Name"
+                                     data-zoom-image="@($"{ViewBag.Url}{productInfo.Thumbnail}")" 
+                                     onerror="this.onerror = null;this.src='/images/no-image.png'"/>
                             </div>
                             <p class="txt-static">
                                 <img class="lazy" data-src="/images/facion/zoom-in.png" />Rê
