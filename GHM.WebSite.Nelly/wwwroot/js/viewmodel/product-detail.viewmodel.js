@@ -30,10 +30,10 @@ function ProductDetailViewModel() {
             $('.zoomWindowContainer div').stop().css("background-image", "url(" + url + item.url + ")");           
             $("#thumbnail").attr('zoom-image', url + item.url);
             $('#thumbnail').elevateZoom({
-                zoomType: "inner",
-                cursor: "crosshair",
                 zoomWindowFadeIn: 500,
-                zoomWindowFadeOut: 750
+                zoomWindowFadeOut: 500,
+                lensFadeIn: 500,
+                lensFadeOut: 500
             });
         }
     };
