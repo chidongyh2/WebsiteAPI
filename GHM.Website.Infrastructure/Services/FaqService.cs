@@ -54,7 +54,7 @@ namespace GHM.Website.Infrastructure.Services
           FaqMeta faqMeta)
         {
             var faqId = Guid.NewGuid().ToString();
-            var infoGroup = await _faqGroupRepository.GetInfo(faqMeta.FaqGroupId);
+            var infoGroup = await _faqGroupRepository.GetInfo(faqMeta.FaqGroupId.Trim());
             if (infoGroup == null)
                 return new ActionResultResponse<string>(-1, _websiteResourceService.GetString("Faq group does not exists."));
 
@@ -62,9 +62,9 @@ namespace GHM.Website.Infrastructure.Services
             var resultInsertFaq = await _faqRepository.Insert(new Faq
             {
                 Id = faqId,
-                ConcurrencyStamp = faqId,
-                FaqGroupId = faqMeta.FaqGroupId,
-                Photo = faqMeta.Photo,
+                ConcurrencyStamp = faqId.Trim(),
+                FaqGroupId = faqMeta.FaqGroupId.Trim(),
+                Photo = faqMeta.Photo.Trim(),
                 Order = faqMeta.Order,
                 IsActive = faqMeta.IsActive,
                 TenantId = tenantId,
@@ -161,7 +161,7 @@ namespace GHM.Website.Infrastructure.Services
             if (info.ConcurrencyStamp != faqMeta.ConcurrencyStamp)
                 return new ActionResultResponse(-3, _websiteResourceService.GetString("The faq already updated by other people. You can not update this Faq ."));
 
-            var infoGroup = await _faqGroupRepository.GetInfo(faqMeta.FaqGroupId);
+            var infoGroup = await _faqGroupRepository.GetInfo(faqMeta.FaqGroupId.Trim());
             if (infoGroup == null)
                 return new ActionResultResponse<string>(-4, _websiteResourceService.GetString("Faq group does not exists."));
 

@@ -59,7 +59,7 @@ namespace GHM.Website.Infrastructure.Services
             var resultInsertFaqGroup = await _faqGroupRepository.Insert(new FaqGroup
             {
                 Id = faqGroupId,
-                ConcurrencyStamp = faqGroupId,
+                ConcurrencyStamp = faqGroupId.Trim(),
                 IsActive = faqGroupMeta.IsActive,
                 TenantId = tenantId,
                 CreatorId = creatorId,
@@ -81,7 +81,7 @@ namespace GHM.Website.Infrastructure.Services
             #endregion
 
             return new ActionResultResponse<string>(1,
-                _websiteResourceService.GetString("Add new faq group successful."),
+                _websiteResourceService.GetString("Add new Faq group successful."),
                 string.Empty, faqGroupId);
 
 
@@ -154,7 +154,7 @@ namespace GHM.Website.Infrastructure.Services
                 return new ActionResultResponse(-2, _sharedResourceService.GetString(ErrorMessage.NotHavePermission));
 
             if (info.ConcurrencyStamp != faqGroupMeta.ConcurrencyStamp)
-                return new ActionResultResponse(-3, _websiteResourceService.GetString("The faq group already updated by other people. You can not update this Faq group."));
+                return new ActionResultResponse(-3, _websiteResourceService.GetString("The Faq group already updated by other people. You can not update this Faq group."));
 
 
             info.IsActive = faqGroupMeta.IsActive;
@@ -227,7 +227,7 @@ namespace GHM.Website.Infrastructure.Services
             {
                 Id = info.Id,
                 IsActive = info.IsActive,
-                ConcurrencyStamp = info.ConcurrencyStamp,
+                ConcurrencyStamp = info.ConcurrencyStamp.Trim(),
                 CreateTime = info.CreateTime,
                 LastUpdate = info.LastUpdate,
                 FaqGroupTranslations = FaqGroupTranslations.Select(x => new FaqGroupTranslationViewModel

@@ -15,11 +15,31 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-9 content">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img class="img-responsive lazy" src="@($"{ViewBag.Url}{productInfo.Thumbnail}")"/>
+                    <div class="row cm-mgb-20">
+                        <div class="col-sm-4">
+                            <div class="product-thumbnail">
+                                <img id="thumbnail" class="img-responsive"                                    
+                                     data-bind="attr: { src: '@ViewBag.Url' + productThumbnail(), dataZoomImage : '@ViewBag.Url' + productThumbnail()}"
+                                     src="@($"{ViewBag.Url}{productInfo.Thumbnail}")" alt="@productInfo.Name" 
+                                     data-zoom-image="@($"{ViewBag.Url}{productInfo.Thumbnail}")"/>
+                            </div>
+                            <p class="txt-static">
+                                <img class="lazy" data-src="/images/facion/zoom-in.png" />Rê
+                                chuột lên hình để phóng to
+                            </p>
+                            <div id="product-image-silder" data-bind="foreach: $root.listProductImage()">
+                                <div class="item" data-bind="attr: {class: $root.productThumbnail() === url ? 'item active': 'item'}">
+                                    <a href="javascript://" data-bind="click: $root.selectThumbnail.bind($data)">
+                                        <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + '@ViewBag.Url' + url + '&width=320&height=240'}"
+                                             onerror="this.src='/images/no-image.png'" />
+                                        <!--ko if: $root.productThumbnail() === url-->
+                                        <span class="img-overlay"></span>
+                                        <!--/ko-->
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-sm-7">
+                        <div class="col-sm-8">
                             <div class="content">
                                 <div class="title-sidebar">@productInfo.Name</div>
                                 <div class="star">
@@ -29,7 +49,7 @@
                                     }
                                 </div>
                                 <div class="price">
-                                    <span>@productInfo.SalePrice?.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</span>
+                                    <span>@productInfo.SalePrice?.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("en-US")) VNĐ</span>
                                 </div>
                                 <div class="description">
                                     @Html.Raw(productInfo.Desciption)
@@ -50,9 +70,9 @@
         <script type="text/javascript">
             var productImages = @(ViewBag.ProdutImages != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProdutImages, jsonSerializerSettings)) : "[]");
             var productInfo = @(ViewBag.ProductInfo != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductInfo, jsonSerializerSettings)) : "[]");
-
-            console.log(productImages, productInfo);
+    var url = "@ViewBag.Url";
         </script>
+        <script src="~/lib/jquery.ez-plus.js"></script>
         <script src="~/js/viewmodel/product-detail.viewmodel.min.js"></script>
     }
 
