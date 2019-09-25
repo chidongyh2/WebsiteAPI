@@ -61,6 +61,7 @@ namespace GHM.Website.Infrastructure.Services
                 Id = faqGroupId,
                 ConcurrencyStamp = faqGroupId.Trim(),
                 IsActive = faqGroupMeta.IsActive,
+                Order=faqGroupMeta.Order,
                 TenantId = tenantId,
                 CreatorId = creatorId,
                 CreatorFullName = creatorFullName
@@ -158,6 +159,7 @@ namespace GHM.Website.Infrastructure.Services
 
 
             info.IsActive = faqGroupMeta.IsActive;
+            info.Order = faqGroupMeta.Order;
             info.ConcurrencyStamp = Guid.NewGuid().ToString();
             info.LastUpdate = DateTime.Now;
             info.LastUpdateUserId = lastUpdateUserId;
@@ -227,6 +229,7 @@ namespace GHM.Website.Infrastructure.Services
             {
                 Id = info.Id,
                 IsActive = info.IsActive,
+                Order = info.Order,
                 ConcurrencyStamp = info.ConcurrencyStamp.Trim(),
                 CreateTime = info.CreateTime,
                 LastUpdate = info.LastUpdate,

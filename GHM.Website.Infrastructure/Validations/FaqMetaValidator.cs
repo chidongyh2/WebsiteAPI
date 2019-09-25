@@ -35,16 +35,12 @@ namespace GHM.Website.Infrastructure.Validations
             RuleFor(x => x.Question)
                 .NotEmpty()
                 .WithMessage(sharedResourceService.GetString("{0} can not be null.",
-                    websiteResourceService.GetString("Question")))
-                .MaximumLength(256).WithMessage(sharedResourceService.GetString("{0} must not excceed {1} characters.",
-                    websiteResourceService.GetString("Question"), 2000));
+                    websiteResourceService.GetString("Question")));
 
             RuleFor(x => x.Answer)
                 .NotEmpty()
                 .WithMessage(sharedResourceService.GetString("{0} can not be null.",
-                    websiteResourceService.GetString("Answer")))
-                .MaximumLength(256).WithMessage(sharedResourceService.GetString("{0} must not excceed {1} characters.",
-                    websiteResourceService.GetString("Answer"), 3000));
+                    websiteResourceService.GetString("Answer")));
 
             RuleFor(x => x.LanguageId)
                 .NotEmpty()

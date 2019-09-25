@@ -7,6 +7,7 @@ namespace GHM.Website.Domain.ViewModels
     {
         public string Id { get; set; }
         public bool IsActive { get; set; }
+        public int Order { get; set; }
         public string ConcurrencyStamp { get; set; }
         public DateTime? CreateTime { get; set; }
         public DateTime? LastUpdate { get; set; }

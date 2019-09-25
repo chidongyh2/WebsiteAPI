@@ -46,6 +46,7 @@ namespace GHM.Website.Infrastructure.Repository
                         Id = x.Id,
                         TenantId = x.TenantId,
                         IsActive = x.IsActive,
+                        Order=x.Order,
                         ConcurrencyStamp = x.ConcurrencyStamp,
                         CreateTime = x.CreateTime,
                         LastUpdate = x.LastUpdate.Value,

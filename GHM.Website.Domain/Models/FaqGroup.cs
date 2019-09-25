@@ -10,6 +10,7 @@ namespace GHM.Website.Domain.Models
         public string TenantId { get; set; }
 
         public bool IsActive { get; set; }
+        public int Order { get; set; }
 
         public bool IsDelete { get; set; }
 

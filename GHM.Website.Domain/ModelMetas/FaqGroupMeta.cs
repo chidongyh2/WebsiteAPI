@@ -5,6 +5,7 @@ namespace GHM.Website.Domain.ModelMetas
     public class FaqGroupMeta
     {
         public bool IsActive { get; set; }
+        public int Order { get; set; }
         public string ConcurrencyStamp { get; set; }
         public List<FaqGroupTranslationMeta> FaqGroupTranslations { get; set; }
     }
