@@ -92,9 +92,14 @@ namespace GHM.Warehouse.Infrastructure.Services
             string creatorFullName,
             string creatorAvatar, ProductMeta productMeta)
         {
+            var productId = !string.IsNullOrEmpty(productMeta.Id) ? productMeta.Id : await GenerateId(tenantId);
+            var info = await _productRepository.GetInfo(tenantId, productId);
+            if (info != null)
+                return new ActionResultResponse<string>(-1, _resourceService.GetString("Product Id already exists."));
+
             var product = new Product
             {
-                Id = await GenerateId(tenantId),
+                Id = !string.IsNullOrEmpty(productMeta.Id) ? productMeta.Id : await GenerateId(tenantId),
                 IsActive = productMeta.IsActive,
                 IsManagementByLot = productMeta.IsManagementByLot,
                 Thumbnail = productMeta.Thumbnail,
@@ -104,7 +109,8 @@ namespace GHM.Warehouse.Infrastructure.Services
                 Source = productMeta.Source,
                 IsHot = productMeta.IsHot,
                 IsHomePage = productMeta.IsHomePage,
-                CreatorFullName = creatorFullName
+                CreatorFullName = creatorFullName,
+                LastUpdateTime = DateTime.Now
             };
 
             var result = await _productRepository.Insert(product);
@@ -1359,7 +1365,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                 };
                 if (attributeInfo.IsSelfContent)
                 {
-                    if (string.IsNullOrEmpty(productAttribute.Value))
+                    if (string.IsNullOrEmpty(productAttributeMeta.Value))
                         return new ActionResultResponse<string>(-2, _sharedResourceService.GetString(ValidatorMessage.PleaseEnter,
                             _resourceService.GetString("attrubute value")));
 

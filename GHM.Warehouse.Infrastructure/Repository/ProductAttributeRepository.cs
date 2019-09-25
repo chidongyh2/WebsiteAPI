@@ -102,13 +102,14 @@ namespace GHM.Warehouse.Infrastructure.Repository
             var query = from pa in Context.Set<ProductAttribute>()
                         join a in Context.Set<Domain.Models.Attribute>() on pa.AttributeId equals a.Id
                         join at in Context.Set<AttributeTranslation>() on pa.AttributeId equals at.AttributeId
-                        join pav in Context.Set<ProductAttributeValue>() on pa.Id equals pav.ProductAttributeId into gpav
+                        join rpav in Context.Set<ProductAttributeValue>() on pa.Id equals rpav.ProductAttributeId into gpav
                         from rpav in gpav.DefaultIfEmpty()
-                        join avt in Context.Set<AttributeValueTranslation>() on rpav.AttributeValueId equals avt
-                            .AttributeValueId into gavt
+                        join ravt in Context.Set<AttributeValueTranslation>().Where(x => x.TenantId == tenantId && !x.IsDelete
+                        && x.LanguageId == CultureInfo.CurrentCulture.Name) on rpav.AttributeValueId equals ravt.AttributeValueId into gavt
                         from ravt in gavt.DefaultIfEmpty()
-                        where !pa.IsDelete && pa.ProductId == productId && at.LanguageId == CultureInfo.CurrentCulture.Name
-                              && at.TenantId == tenantId && !at.IsDelete && !ravt.IsDelete && ravt.LanguageId == CultureInfo.CurrentCulture.Name
+                        where !pa.IsDelete && pa.ProductId == productId
+                              && at.LanguageId == CultureInfo.CurrentCulture.Name
+                              && at.TenantId == tenantId && !at.IsDelete                            
                               && a.TenantId == tenantId && !a.IsDelete
                         select new ProductValueViewModel
                         {

@@ -1,4 +1,4 @@
-﻿namespace GHM.WebsiteClient.Api.Domain.ViewModels
+﻿namespace GHM.Website.Nelly.ViewModels
 {
     public class FaqViewModel
     {

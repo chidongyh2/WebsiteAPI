@@ -106,5 +106,11 @@
     "inputFiles": [
       "wwwroot/js/viewmodel/product-detail.viewmodel.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/Faq.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/Faq.viewmodel.js"
+    ]
   }
 ]

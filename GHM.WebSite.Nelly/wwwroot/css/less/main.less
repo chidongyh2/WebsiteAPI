@@ -1238,7 +1238,7 @@ body {
         font-size: 20px;
         cursor: pointer;
         box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
-        transition: all .1s;
+        transition: 1s ease-in-out;
         z-index: 1000;
 
         img {
@@ -2103,6 +2103,7 @@ body {
             border: 1px solid @color-border !important;
             border-bottom: 1px solid @color-border !important;
         }
+
         .active {
             .img-overlay {
                 opacity: 1;
@@ -2122,8 +2123,147 @@ body {
     width: 100%;
 }
 
-.zoomWindowContainer{
-    div{
+.zoomWindowContainer {
+    div {
         border: 2px solid @main-color !important;
+    }
+}
+
+#wrap-root {
+    ul {
+        margin-bottom: 0px;
+    }
+}
+
+#faqs {
+    padding: 30px 0px;
+    background-color: #fafafa !important;
+
+    .faq-group {
+        width: 100%;
+        list-style: none;
+        padding-left: 0px;
+
+        li {
+            padding: 5px 15px;
+            border-radius: 30px;
+            border: 2px solid @main-color;
+            margin: 10px 0px;
+            font-size: 16px;
+            font-family: Opensans-Bold;
+            color: @color-text-grey;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+
+            &:first-child {
+                margin-top: 0px;
+            }
+
+            .numer {
+                font-size: 35px;
+                margin-right: 15px;
+                padding-left: 10px;
+            }
+
+            .group-name {
+            }
+
+            &:hover {
+                color: @color-white;
+                background-color: @main-color;
+                border: none;
+            }
+        }
+
+        .active {
+            color: @color-white;
+            background-color: @main-color;
+            border: none;
+        }
+    }
+
+    .faq-content {
+        padding: 15px 30px;
+        background-color: @color-white;
+        box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+
+        .group-name {
+            margin-top: 0px;
+            font-size: 30px;
+            font-weight: bold;
+            color: @color-text;
+            font-family: PlayfairDisplay-Regular;
+        }
+
+        .faq-list {
+            margin-top: 10px;
+
+            .faq-item {
+                padding-bottom: 20px;
+
+                .question {
+                    margin-bottom: 10px;
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                        color: @color-text-grey;
+                        font-size: 18px;
+                        font-family: Opensans-Bold;
+                        font-weight: bold;
+                        text-decoration: none;
+                        transition: 0.5s ease-in-out;
+
+                        &:hover {
+                            color: @main-color;
+                        }
+
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+
+                    .active {
+                        color: @main-color;
+                    }
+                }
+
+                .answer {
+                    padding: 20px 30px;
+                    background-color: #EFEFEF;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    font-family: Opensans;
+                    font-weight: bold;
+                    color: @color-text-grey;
+                    position: relative;
+                    top: 8px;
+
+                    &:before {
+                        top: -11px;
+                        border-left: 11px solid transparent;
+                        border-right: 11px solid transparent;
+                        border-bottom: 11px solid #EFEFEF;
+                    }
+
+                    &:after {
+                        top: -10px;
+                        border-left: 10px solid transparent;
+                        border-right: 10px solid transparent;
+                        border-bottom: 10px solid #fff;
+                    }
+                }
+
+                .answer:after, .answer:before {
+                    content: '';
+                    width: 0;
+                    height: 0;
+                    position: absolute;
+                }
+            }
+        }
     }
 }

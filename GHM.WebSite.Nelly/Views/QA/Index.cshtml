@@ -1,0 +1,63 @@
+﻿@using Newtonsoft.Json.Serialization;
+@{
+    var title = "Trung tâm trợ giúp ";
+    ViewBag.Title = title;
+    var jsonSerializerSettings = new JsonSerializerSettings
+    {
+        ContractResolver = new CamelCasePropertyNamesContractResolver()
+    };
+}
+
+<partial name="_Breadcumb">
+    <div id="faqs" class="question_and_answer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <partial name="_TitleBar" model="title" />
+                </div>
+            </div>
+            <div class="row cm-mgt-20">
+                <div class="col-sm-3">
+                    <ul class="faq-group" data-bind="foreach: listGroup">
+                        <li data-bind="click: $root.selectGroup.bind($data),
+                            attr: {class: isSelected() ? 'active' : ''}">
+                            <span class="numer" data-bind="text: $index() + 1"></span>
+                            <span class="group-name" data-bind="text: name"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-9">
+                    <div class="faq-content">
+                        <h3 class="group-name" data-bind="text: groupName"></h3>
+                        <!--ko if: listFaq() && listFaq().length > 0-->
+                        <div class="faq-list" data-bind="foreach: listFaq">
+                            <div class="faq-item">
+                                <div class="question">
+                                    <a href="javascript://" data-bind="click: $root.showAnswer.bind($data), attr: {class: isShowAnswer() ? 'active'  : ''}">
+                                        <i class="la la-question-circle size24"></i>
+                                        <span data-bind="text: question"></span>
+                                    </a>
+                                </div>
+                                <!--ko if: isShowAnswer()-->
+                                <div class="answer" data-bind="html: answer"></div>
+                                <!--/ko-->
+                            </div>
+                        </div>
+                        <!--/ko-->
+                        <div class="alert alert-danger" data-bind="visible: !listFaq() || listFaq().length === 0" style="display:none">
+                            Rất tiếc chưa có câu hỏi nào trong nhóm này.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <partial name="_MenuContact" />
+
+    @section scripts {
+        <script type="text/javascript">
+             var groups = @(ViewBag.ListFaqGroup != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListFaqGroup, jsonSerializerSettings)) : "[]");
+             var faqs = @(ViewBag.ListFaq != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListFaq, jsonSerializerSettings)) : "[]");
+        </script>
+        <script src="~/js/viewmodel/Faq.viewmodel.min.js"></script>
+    }
