@@ -30,10 +30,6 @@ function ProductDetailViewModel() {
             $('.zoomWindowContainer div').stop().css("background-image", "url(" + url + item.url + ")");           
             $("#thumbnail").attr('zoom-image', url + item.url);
             $('#thumbnail').elevateZoom({
-                zoomWindowFadeIn: 500,
-                zoomWindowFadeOut: 500,
-                lensFadeIn: 500,
-                lensFadeOut: 500
             });
         }
     };
@@ -78,6 +74,9 @@ function ProductDetailViewModel() {
         });
 
         $("#thumbnail").ezPlus({
+            easing: true,
+            tint: true,
+            tintColour: '#F90', tintOpacity: 0.5,
             zoomWindowFadeIn: 500,
             zoomWindowFadeOut: 500,
             lensFadeIn: 500,

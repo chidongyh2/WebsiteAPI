@@ -19,9 +19,11 @@ function FaqViewModel() {
         }));
 
         if (self.listFaq() && self.listFaq().length > 0) {
+            _.each(self.listFaq(), function (item) {
+                item.isShowAnswer(false);
+            });
             self.listFaq()[0].isShowAnswer(true);
         }
-        console.log(self.listFaq());
     };
 
     self.showAnswer = function (data) {
@@ -51,6 +53,31 @@ function FaqViewModel() {
         if (self.listGroup() && self.listGroup().length > 0) {
             self.selectGroup(self.listGroup()[0]);
         }
+
+        $("#menuMiddlerSlider").slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
+            nextArrow: '<button class="slick-next"> <img src="/images/facion/nex.png" /> </button>',
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '0px',
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '0px',
+                        slidesToShow: 2
+                    }
+                }
+            ]
+        });  
     });
 }
 
