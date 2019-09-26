@@ -32,7 +32,7 @@
                         <div class="media">
                             <div class="media-left">
                                 <a href="@($"/san-pham/{product.SeoLink}.html")" title="@product.Name">
-                                    <img class="product-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(product.Thumbnail) ? "/images/no-image.png" : $"{url}{product.Thumbnail}")}&width=160&height=90")" onerror="this.onerror = null;this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(product.Name) ? product.Name : product.Name)" />
+                                    <img class="product-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(product.Thumbnail) ? "/images/no-image.png" : $"{url}{product.Thumbnail}")}&width=160&height=120")" onerror="this.onerror = null;this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(product.Name) ? product.Name : product.Name)" />
                                 </a>
                             </div>
                             <div class="media-body">
