@@ -572,6 +572,10 @@ body {
 }
 
 .sidebar-news-host {
+    @media @mobile {
+        padding-top: 10px;
+    }
+
     .list-news {
         padding-left: 0px;
         list-style: none;
@@ -1813,6 +1817,10 @@ body {
 }
 
 .sidebar-product {
+    @media @mobile {
+        padding-top: 10px;
+    }
+
     .form-search {
         .input-group {
             .form-control {
@@ -2110,6 +2118,87 @@ body {
             }
         }
     }
+
+    .product-detail {
+    }
+
+    .product-info {
+        .content {
+            font-size: 14px;
+            font-family: Opensans;
+            color: @color-text;
+
+            .price {
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .description {
+                padding-bottom: 10px;
+                border-bottom: 1px solid @color-border;
+            }
+
+            .attribute {
+                width: 70%;
+
+                @media @mobile {
+                    width: 100%;
+                }
+
+                ul {
+                    list-style: none;
+                    padding-left: 0px;
+
+                    li {
+                        padding: 3px 0px;
+                        border-bottom: 1px solid @color-border;
+
+                        label {
+                            padding-right: 5px;
+                            font-weight: normal;
+                        }
+
+                        a {
+                            color: @color-text;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+
+            .add-shopping-cart {
+                margin-top: 20px;
+                width: 50%;
+                display: flex;
+                align-items: center;
+
+                label {
+                    width: 120px;
+                    font-weight: normal;
+                }
+
+                .input-group {
+                    .input-group-btn {
+                        .btn-add {
+                            border-radius: 0px;
+                            background-color: #E8E8E8;
+                            color: @color-text-grey;
+                        }
+                    }
+                }
+            }
+
+            .read-more {
+                text-align: left;
+
+                .btn-main {
+                    background-color: @main-color;
+                    color: @color-white;
+                    padding: 6px 36px;
+                }
+            }
+        }
+    }
 }
 
 .img-overlay {
@@ -2266,4 +2355,8 @@ body {
             }
         }
     }
+}
+
+.btn-primary {
+    background-color: @main-color;
 }

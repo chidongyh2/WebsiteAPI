@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using GHM.Infrastructure.Extensions;
-using GHM.Infrastructure.Models;
-using GHM.Infrastructure.Services;
 using GHM.Website.Nelly.Models;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;

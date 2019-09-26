@@ -112,5 +112,11 @@
     "inputFiles": [
       "wwwroot/js/viewmodel/Faq.viewmodel.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/elevatezoom-plus-master/css/jquery.ez-plus.min.css",
+    "inputFiles": [
+      "wwwroot/lib/elevatezoom-plus-master/css/jquery.ez-plus.css"
+    ]
   }
 ]

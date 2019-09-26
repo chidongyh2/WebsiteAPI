@@ -26,5 +26,9 @@
   {
     "outputFile": "wwwroot/lib/slick-1.8.1/slick/slick.es5.js",
     "inputFile": "wwwroot/lib/slick-1.8.1/slick/slick.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/elevatezoom-plus-master/src/jquery.ez-plus.es5.js",
+    "inputFile": "wwwroot/lib/elevatezoom-plus-master/src/jquery.ez-plus.js"
   }
 ]

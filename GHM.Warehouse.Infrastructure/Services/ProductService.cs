@@ -231,7 +231,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                         MetaKeyword = productTranslation.MetaKeyword?.Trim(),
                         Content = productTranslation.Content,
                         SeoLink = !string.IsNullOrEmpty(productTranslation.SeoLink) ? productTranslation.SeoLink.ToUrlString() : productTranslation.Name.ToUrlString(),
-                        UnsignName = productTranslation.Name?.StripVietnameseChars().ToUpper()
+                        UnsignName = $"{product.Id }{productTranslation.Name?.StripVietnameseChars().ToUpper()}"
                     };
                     productTranslations.Add(productTranslationInsert);
                 }
@@ -547,7 +547,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                     {
                         productTranslationInfo.Name = productTranslation.Name.Trim();
                         productTranslationInfo.Description = productTranslation.Description?.Trim();
-                        productTranslationInfo.UnsignName = productTranslation.Name?.StripVietnameseChars().ToUpper();
+                        productTranslationInfo.UnsignName = $"{info.Id }{productTranslation.Name?.StripVietnameseChars().ToUpper()}";
                         productTranslationInfo.SeoLink = !string.IsNullOrEmpty(productTranslation.SeoLink) ? productTranslation.SeoLink.ToUrlString() : productTranslation.Name.ToUrlString();
 
                         await _productTranslationRepository.Update(productTranslationInfo);
@@ -562,7 +562,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                             Name = productTranslation.Name.Trim(),
                             SeoLink = !string.IsNullOrEmpty(productTranslation.SeoLink) ? productTranslation.SeoLink.ToUrlString() : productTranslation.Name.ToUrlString(),
                             Description = productTranslation.Description?.Trim(),
-                            UnsignName = productTranslation.Name.StripVietnameseChars().ToUpper()
+                            UnsignName = $"{info.Id }{productTranslation.Name?.StripVietnameseChars().ToUpper()}"
                         };
 
                         await _productTranslationRepository.Insert(productTranslationInsert);

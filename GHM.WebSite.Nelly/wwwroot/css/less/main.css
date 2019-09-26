@@ -493,6 +493,11 @@ body {
 #news-detail .news-detail .content table tr td p {
   padding: 0px !important;
 }
+@media only screen and (max-width: 1200px) {
+  .sidebar-news-host {
+    padding-top: 10px;
+  }
+}
 .sidebar-news-host .list-news {
   list-style: none;
   padding-left: 0px;
@@ -1539,6 +1544,11 @@ body {
 #products {
   margin-top: 30px;
 }
+@media only screen and (max-width: 1200px) {
+  .sidebar-product {
+    padding-top: 10px;
+  }
+}
 .sidebar-product .form-search .input-group .form-control {
   border-radius: 0px !important;
   border-color: #EEEDEB;
@@ -1763,6 +1773,66 @@ body {
 #product-detail #product-image-silder .active .img-overlay {
   opacity: 1;
 }
+#product-detail .product-info .content {
+  font-size: 14px;
+  font-family: Opensans;
+  color: #3F3F3F;
+}
+#product-detail .product-info .content .price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#product-detail .product-info .content .description {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #EEEDEB;
+}
+#product-detail .product-info .content .attribute {
+  width: 70%;
+}
+@media only screen and (max-width: 1200px) {
+  #product-detail .product-info .content .attribute {
+    width: 100%;
+  }
+}
+#product-detail .product-info .content .attribute ul {
+  list-style: none;
+  padding-left: 0px;
+}
+#product-detail .product-info .content .attribute ul li {
+  padding: 3px 0px;
+  border-bottom: 1px solid #EEEDEB;
+}
+#product-detail .product-info .content .attribute ul li label {
+  padding-right: 5px;
+  font-weight: normal;
+}
+#product-detail .product-info .content .attribute ul li a {
+  color: #3F3F3F;
+  text-decoration: none;
+}
+#product-detail .product-info .content .add-shopping-cart {
+  margin-top: 20px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+#product-detail .product-info .content .add-shopping-cart label {
+  width: 120px;
+  font-weight: normal;
+}
+#product-detail .product-info .content .add-shopping-cart .input-group .input-group-btn .btn-add {
+  border-radius: 0px;
+  background-color: #E8E8E8;
+  color: #949293;
+}
+#product-detail .product-info .content .read-more {
+  text-align: left;
+}
+#product-detail .product-info .content .read-more .btn-main {
+  background-color: #F9A4A7;
+  color: #FFFFFF;
+  padding: 6px 36px;
+}
 .img-overlay {
   background: rgba(0, 0, 0, 0.25);
   display: inline-block;
@@ -1889,4 +1959,7 @@ body {
   width: 0;
   height: 0;
   position: absolute;
+}
+.btn-primary {
+  background-color: #F9A4A7;
 }

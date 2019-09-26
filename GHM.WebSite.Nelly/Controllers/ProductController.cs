@@ -109,11 +109,17 @@ namespace GHM.WebSite.Nelly.Controllers
 
             var listProduct = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, seoLink, 1, 1);
             var productInfo = listProduct?.Items?.FirstOrDefault();
-            if(productInfo != null)
+            if (productInfo != null)
             {
                 ViewBag.ProductInfo = JsonConvert.DeserializeObject<ProductSearchViewModel>(JsonConvert.SerializeObject(productInfo));
                 var productImages = await _productService.ProductImageSearchByProductId(apiService.TenantId, productInfo.Id);
                 ViewBag.ProdutImages = productImages?.Items;
+
+                var productAttributes = await _productService.ProductAttributeValueGetByProductId(apiService.TenantId, CultureInfo.CurrentCulture.Name, productInfo?.Id);
+                ViewBag.ProudctAttributes = productAttributes?.Items;
+
+                var productCategories = await _productService.ProductCategoryGetByProductId(apiService.TenantId, CultureInfo.CurrentCulture.Name, productInfo?.Id);
+                ViewBag.ProductCategory = productCategories?.Items;
             }
 
             var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);

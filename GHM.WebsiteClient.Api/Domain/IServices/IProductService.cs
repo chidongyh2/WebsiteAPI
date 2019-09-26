@@ -16,5 +16,9 @@ namespace GHM.WebsiteClient.Api.Domain.IServices
         Task<SearchResult<ProductWidthCategoryViewModel>> ProductSearchByParentCategory(string tenantId, string languageId, bool? isHot, bool? isHomePage, int productCategoryParentId);
 
         Task<SearchResult<ProductImageViewModel>> ProductImageSearchByProductId(string tenantId, string productId);
+
+        Task<SearchResult<ProductValueViewModel>> ProductAttributeValueGetByProductId(string tenantId, string languageId, string productId);
+
+        Task<SearchResult<ProductCategoryViewModel>> ProductCategoryGetByProductId(string tenantId, string languageId, string productId);
     }
 }

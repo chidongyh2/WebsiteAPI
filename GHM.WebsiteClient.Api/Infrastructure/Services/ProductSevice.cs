@@ -191,5 +191,65 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                 return null;
             }
         }
+
+        public async Task<SearchResult<ProductValueViewModel>> ProductAttributeValueGetByProductId(string tenantId, string languageId, string productId)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@TenantId", tenantId);
+                    param.Add("@LanguageId", languageId);
+                    param.Add("@ProductId", productId);
+
+                    var items = await con.QueryAsync<ProductValueViewModel>("[dbo].[sp_ProductAttributeValue_GetByProductId]", param, commandType: CommandType.StoredProcedure);
+                    var result = new SearchResult<ProductValueViewModel>
+                    {
+                        Items = items.ToList()
+                    };
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "sp_Product_GetByProductCategory ProductService Error.");
+                return null;
+            }
+        }
+        
+        public async Task<SearchResult<ProductCategoryViewModel>> ProductCategoryGetByProductId(string tenantId, string languageId, string productId)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@TenantId", tenantId);
+                    param.Add("@LanguageId", languageId);
+                    param.Add("@ProductId", productId);
+
+                    var items = await con.QueryAsync<ProductCategoryViewModel>("[dbo].[sp_ProductCategory_GetByProductId]", param, commandType: CommandType.StoredProcedure);
+                    var result = new SearchResult<ProductCategoryViewModel>
+                    {
+                        Items = items.ToList()
+                    };
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "sp_ProductCategory_GetByProductId ProductService Error.");
+                return null;
+            }
+        }
     }
 }

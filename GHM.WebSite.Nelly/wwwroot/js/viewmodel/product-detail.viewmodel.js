@@ -5,6 +5,10 @@ function ProductDetailViewModel() {
     self.productCategoryTree = ko.observableArray([]);
     self.listProductImage = ko.observableArray([]);
     self.productThumbnail = ko.observable();
+    self.listCategory = ko.observableArray([]);
+    self.listProductAttribute = ko.observableArray([]);
+    self.listAttributeValue = ko.observableArray([]);
+    self.listAttributeContent = ko.observableArray([]);
 
     self.rendProductCategoryActive = function () {
         _.each(self.listProductCategory(), function (item, index) {
@@ -27,17 +31,57 @@ function ProductDetailViewModel() {
     self.selectThumbnail = function (item) {
         if (item) {
             self.productThumbnail(item.url);
-            $('.zoomWindowContainer div').stop().css("background-image", "url(" + url + item.url + ")");           
+            $('.zoomWindowContainer div').stop().css("background-image", "url(" + url + item.url + ")");
             $("#thumbnail").attr('zoom-image', url + item.url);
-            $('#thumbnail').elevateZoom({
+            $('#thumbnail').elevateZoom();
+        }
+    };
+
+    self.renderAttribute = function () {
+        self.listAttributeValue([]);
+        self.listAttributeContent([]);
+        var listAttributeValue = _.filter(self.listProductAttribute(), function (item) {
+            return !item.isSelfContent;
+        });
+
+        if (listAttributeValue && listAttributeValue.length > 0) {
+            var groupByAttributeIds = _.groupBy(listAttributeValue, function (item) {
+                return item.attributeId;
+            });
+
+            _.each(groupByAttributeIds, function (items) {
+                var listValue = [];
+                _.each(items, function (value) {
+                    listValue.push(value.attributeValueName);
+                });
+
+                self.listAttributeValue.push({
+                    attributeName: items[0].attributeName,
+                    values: listValue.join(', ')
+                });
             });
         }
+
+        var listAttributeContent = _.filter(self.listProductAttribute(), function (item) {
+            return item.isSelfContent;
+        });
+
+        if (listAttributeContent && listAttributeContent.length > 0) {
+            _.each(listAttributeContent, function (item, index) {
+                item.isSelected = ko.observable(index === 0);
+            });
+        }
+
+        self.listAttributeContent(listAttributeContent);
     };
 
     $(document).ready(function () {
         self.rendTree(treeData);
         self.productCategoryTree(treeData);
         self.listProductImage(productImages);
+        self.listCategory(productCategories);
+        self.listProductAttribute(productAttributes);
+
         if (productInfo) {
             self.productThumbnail(productInfo.thumbnail);
         }
@@ -74,14 +118,17 @@ function ProductDetailViewModel() {
         });
 
         $("#thumbnail").ezPlus({
-            easing: true,
-            tint: true,
-            tintColour: '#F90', tintOpacity: 0.5,
-            zoomWindowFadeIn: 500,
-            zoomWindowFadeOut: 500,
-            lensFadeIn: 500,
-            lensFadeOut: 500
+            zoomWindowFadeIn: 50,
+            zoomLensFadeIn: 50,
+            imageCrossfade: true,
+            zoomWindowWidth: 500,
+            zoomWindowHeight: 500,
+            scrollZoom: true,
+            cursor: 'pointer'
         });
+
+        self.renderAttribute();
+        console.log(self.listAttributeContent(), self.listAttributeValue());
     });
 }
 
