@@ -538,6 +538,7 @@ namespace GHM.Warehouse.Infrastructure.Services
 
                     var isSeoLinkExists = await _productTranslationRepository.CheckExistsSeoLink(info.Id, tenantId,
                        productTranslation.LanguageId, productTranslation.SeoLink);
+
                     if (isSeoLinkExists)
                         return new ActionResultResponse<string>(-4, _resourceService.GetString("Product seolink: \"{0}\" already exists.", productTranslation.SeoLink));
 
@@ -708,7 +709,7 @@ namespace GHM.Warehouse.Infrastructure.Services
 
                         // Xóa giá trị cũ.
                         var result = await _productAttributeValueRepository.DeleteByProductAttributeId(productAttribute.Id, tenantId);
-                        if (result <= 0)
+                        if (result < 0)
                             return new ActionResultResponse<string>(-4,
                                 _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
 
@@ -801,7 +802,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                     CreatorFullName = creatorFullName
                 };
                 var resutlInsertNewDefaultProductUnit = await _productUnitRepository.Insert(newDefaultUnit);
-                if (resutlInsertNewDefaultProductUnit <= 0)
+                if (resutlInsertNewDefaultProductUnit < 0)
                     return new ActionResultResponse<string>(-4, _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
 
                 defaultUnitId = newDefaultUnit.UnitId;

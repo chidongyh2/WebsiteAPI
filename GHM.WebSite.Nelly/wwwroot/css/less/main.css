@@ -1759,10 +1759,13 @@ body {
   padding: 30px 0px;
 }
 #product-detail .txt-static {
-  margin-top: 5px;
+  margin: 5px 0px;
   font-size: 12px;
   color: #3F3F3F;
   text-align: center;
+}
+#product-detail #product-image-silder {
+  margin-top: 20px;
 }
 #product-detail #product-image-silder .item {
   padding: 5px;
@@ -1772,6 +1775,71 @@ body {
 }
 #product-detail #product-image-silder .active .img-overlay {
   opacity: 1;
+}
+#product-detail .lSAction a {
+  top: 53%;
+  width: 20px;
+  height: 20px;
+}
+#product-detail .lSAction a img {
+  width: 20px;
+  height: 20px;
+}
+#product-detail .product-detail {
+  font-size: 14px;
+  color: #3F3F3F;
+  font-family: Opensans;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+@media only screen and (max-width: 1200px) {
+  #product-detail .product-detail {
+    padding-bottom: 10px;
+  }
+}
+#product-detail .product-detail .line {
+  margin-bottom: -2px;
+  border-bottom: 2px solid #EEEDEB;
+  height: 2px;
+  width: 100%;
+}
+#product-detail .product-detail .title {
+  overflow: hidden;
+  display: inline-block;
+  margin-top: 0px;
+  border-top: 2px solid #999999;
+  padding: 10px 0px;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding-bottom: 0px;
+}
+#product-detail .product-detail .content {
+  margin-top: 10px;
+}
+#product-detail .product-detail .content .nav {
+  /*border-bottom: none;*/
+}
+#product-detail .product-detail .content .nav li {
+  margin-bottom: -1px;
+}
+#product-detail .product-detail .content .nav li a {
+  border: 1px solid #EEEDEB;
+  border-bottom: none;
+  border-radius: 0px;
+  text-transform: uppercase;
+  color: #3F3F3F;
+  font-size: 13px;
+}
+#product-detail .product-detail .content .nav .active a {
+  border-top: 2px solid #F9A4A7;
+}
+#product-detail .product-detail .content .tab-content {
+  margin-top: 0px !important;
+  border: 1px solid #EEEDEB;
+  border-top: none;
+}
+#product-detail .product-info .product-thumbnail {
+  width: 100%;
 }
 #product-detail .product-info .content {
   font-size: 14px;
@@ -1824,6 +1892,10 @@ body {
   border-radius: 0px;
   background-color: #E8E8E8;
   color: #949293;
+}
+#product-detail .product-info .content .add-shopping-cart .input-group input {
+  text-align: right;
+  border-radius: 0px;
 }
 #product-detail .product-info .content .read-more {
   text-align: left;

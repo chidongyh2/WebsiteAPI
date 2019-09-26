@@ -30,7 +30,6 @@
 
 
   <ItemGroup>
-    <Folder Include="wwwroot\lib\elevatezoom-plus-master\css\" />
     <Folder Include="wwwroot\lib\lightslider\img\" />
   </ItemGroup>
 
@@ -43,39 +42,19 @@
     <None Include="wwwroot\fonts\ionicons.svg" />
     <None Include="wwwroot\fonts\Material-Design-Iconic-Font.svg" />
     <None Include="wwwroot\fonts\Material-Design-Iconic-Font.woff2" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\.bowerrc" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\.editorconfig" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\.gitignore" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\.jscsrc" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\.jshintrc" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\.npmignore" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\.travis.yml" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\API.md" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\CHANGELOG.md" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\CONTRIBUTING.md" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\js\prism.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\js\web.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-01.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-03.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-e01.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-e02.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-e03.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-e03f.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-e04.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-e05.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-e07.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-e08.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-e09.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-e10.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-e11.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-e12.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-e13.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\demo\snippets\code-ezp-emw.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\Gruntfile.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\LICENSE" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\README.md" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\src\jquery.ez-plus.js" />
-    <None Include="wwwroot\lib\elevatezoom-plus-master\start-server.bat" />
+    <None Include="wwwroot\lib\EasyZoom-master\.editorconfig" />
+    <None Include="wwwroot\lib\EasyZoom-master\.gitignore" />
+    <None Include="wwwroot\lib\EasyZoom-master\.jshintrc" />
+    <None Include="wwwroot\lib\EasyZoom-master\.npmignore" />
+    <None Include="wwwroot\lib\EasyZoom-master\dist\easyzoom.js" />
+    <None Include="wwwroot\lib\EasyZoom-master\Gruntfile.js" />
+    <None Include="wwwroot\lib\EasyZoom-master\LICENSE" />
+    <None Include="wwwroot\lib\EasyZoom-master\README.md" />
+    <None Include="wwwroot\lib\EasyZoom-master\src\easyzoom.js" />
+    <None Include="wwwroot\lib\EasyZoom-master\test\lib\jquery-3.1.1.min.js" />
+    <None Include="wwwroot\lib\EasyZoom-master\test\lib\qunit-2.1.1.js" />
+    <None Include="wwwroot\lib\EasyZoom-master\test\lib\sinon-1.17.6.js" />
+    <None Include="wwwroot\lib\EasyZoom-master\test\spec\easyzoom.js" />
     <None Include="wwwroot\lib\globinfo\globalize.culture.en-US.js" />
     <None Include="wwwroot\lib\globinfo\globalize.culture.vi-VN.js" />
     <None Include="wwwroot\lib\globinfo\globalize.js" />

@@ -114,9 +114,15 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/lib/elevatezoom-plus-master/css/jquery.ez-plus.min.css",
+    "outputFileName": "wwwroot/lib/EasyZoom-master/dist/easyzoom.min.js",
     "inputFiles": [
-      "wwwroot/lib/elevatezoom-plus-master/css/jquery.ez-plus.css"
+      "wwwroot/lib/EasyZoom-master/dist/easyzoom.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/EasyZoom-master/css/easyzoom.min.css",
+    "inputFiles": [
+      "wwwroot/lib/EasyZoom-master/css/easyzoom.css"
     ]
   }
 ]

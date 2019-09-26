@@ -9,14 +9,12 @@ function ProductDetailViewModel() {
     self.listProductAttribute = ko.observableArray([]);
     self.listAttributeValue = ko.observableArray([]);
     self.listAttributeContent = ko.observableArray([]);
+    self.productNo = ko.observable(0);
 
     self.rendProductCategoryActive = function () {
         _.each(self.listProductCategory(), function (item, index) {
             item.IsActive(index <= self.lastIndex() && index >= self.firstIndex());
         });
-    };
-
-    self.showChildren = function (data, open) {
     };
 
     self.rendTree = function (data) {
@@ -31,9 +29,11 @@ function ProductDetailViewModel() {
     self.selectThumbnail = function (item) {
         if (item) {
             self.productThumbnail(item.url);
-            $('.zoomWindowContainer div').stop().css("background-image", "url(" + url + item.url + ")");
-            $("#thumbnail").attr('zoom-image', url + item.url);
-            $('#thumbnail').elevateZoom();
+            var $easyzoom = $(".easyzoom").easyZoom();
+            var api = $easyzoom.data('easyZoom');
+
+            api.teardown();
+            api._init();
         }
     };
 
@@ -73,6 +73,38 @@ function ProductDetailViewModel() {
         }
 
         self.listAttributeContent(listAttributeContent);
+    };
+
+    self.addShoppingCart = function (isAdd) {
+        if (isAdd) {
+            self.productNo(self.productNo() + 1);
+        }
+        else {
+            if (self.productNo() > 0) {
+                self.productNo(self.productNo() - 1);
+            }
+        }
+    };
+
+    self.selectProductAttribute = function (item) {
+        _.each(self.listAttributeContent(), function (attribute) {
+            attribute.isSelected(false);
+        });
+
+        item.isSelected(true);
+        if (window.innerWidth > 768) {
+            $('#comment').removeClass('active');
+            $('#liComment').removeClass('active');
+        }
+    };
+
+    self.showTabComment = function () {
+        _.each(self.listAttributeContent(), function (attribute) {
+            attribute.isSelected(false);
+        });
+
+        $('#comment').addClass('active');
+        $('#liComment').addClass('active');
     };
 
     $(document).ready(function () {
@@ -117,18 +149,14 @@ function ProductDetailViewModel() {
             ]
         });
 
-        $("#thumbnail").ezPlus({
-            zoomWindowFadeIn: 50,
-            zoomLensFadeIn: 50,
-            imageCrossfade: true,
-            zoomWindowWidth: 500,
-            zoomWindowHeight: 500,
-            scrollZoom: true,
-            cursor: 'pointer'
-        });
+        if (window.innerWidth > 768) {
+            $('.easyzoom').easyZoom({
+                errorNotice: 'Không tìm thấy ảnh',
+                loadingNotice: 'Đang tải ảnh'
+            });
+        }
 
         self.renderAttribute();
-        console.log(self.listAttributeContent(), self.listAttributeValue());
     });
 }
 

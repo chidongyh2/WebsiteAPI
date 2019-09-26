@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     var productInfo = ViewBag.ProductInfo as ProductSearchViewModel;
     ViewBag.Title = productInfo?.Name;
     ViewBag.Description = productInfo?.Desciption;
@@ -9,7 +8,7 @@
         ContractResolver = new CamelCasePropertyNamesContractResolver()
     };
 }
-
+<link href="~/lib/EasyZoom-master/css/easyzoom.min.css" rel="stylesheet" />
 <partial name="_Breadcumb">
     <div id="product-detail" class="product-detail">
         <div class="container">
@@ -17,16 +16,18 @@
                 <div class="col-sm-9 ">
                     <div class="row cm-mgb-20 product-info">
                         <div class="col-sm-5">
-                            <div class="product-thumbnail">
-                                <img id="thumbnail" class="img-responsive"
-                                     data-bind="attr: {src: '@ViewBag.Url' + productThumbnail()}"
-                                     src="@($"{ViewBag.Url}{productInfo.Thumbnail}")" alt="@productInfo.Name" data-zoom-image="@($"{ViewBag.Url}{productInfo.Thumbnail}")"
-                                     onerror="this.onerror = null;this.src='/images/no-image.png'" />
+                            <div class=" easyzoom easyzoom--overlay">
+                                <a data-bind="attr:{href: '@ViewBag.Url' + productThumbnail()}">
+                                    <img id="thumbnail" class="img-responsive"
+                                         data-bind="attr: {src: '@ViewBag.Url' + productThumbnail()}"
+                                         src="@($" {ViewBag.Url}{productInfo.Thumbnail}")" alt="@productInfo.Name"
+                                         onerror="this.onerror = null;this.src='/images/no-image.png'" />
+                                </a>
                             </div>
-                            <p class="txt-static">
-                                <img class="lazy" data-src="/images/facion/zoom-in.png" />Rê
-                                chuột lên hình để phóng to
-                            </p>
+                            <div class="txt-static">
+                                <img class="lazy" data-src="/images/facion/zoom-in.png" />
+                                Rê chuột lên hình để phóng to
+                            </div>
                             <div id="product-image-silder" data-bind="foreach: $root.listProductImage()">
                                 <div class="item" data-bind="attr: {class: $root.productThumbnail() === url ? 'item active': 'item'}">
                                     <a href="javascript://" data-bind="click: $root.selectThumbnail.bind($data)">
@@ -45,7 +46,7 @@
                                 <div class="star">
                                     @for (var i = 1; i <= 5; i++)
                                     {
-                                        <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
                                     }
                                 </div>
                                 <div class="price">
@@ -53,9 +54,9 @@
                                 </div>
                                 @if (!string.IsNullOrEmpty(productInfo.Desciption))
                                 {
-                                    <div class="description">
-                                        @Html.Raw(productInfo.Desciption)
-                                    </div>
+                                <div class="description">
+                                    @Html.Raw(productInfo.Desciption)
+                                </div>
                                 }
                                 <div class="attribute">
                                     <ul class="">
@@ -72,7 +73,7 @@
                                         </li>
                                         <!--ko foreach: listAttributeValue-->
                                         <li>
-                                            <label data-bind="text: attributeName"> :</label>
+                                            <label data-bind="text: attributeName + ':'"> </label>
                                             <span data-bind="text: values"></span>
                                         </li>
                                         <!--/ko-->
@@ -82,13 +83,13 @@
                                     <label> Số lượng:</label>
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-add">
+                                            <button class="btn btn-add" data-bind="click: $root.addShoppingCart.bind($data, false), enable: productNo() > 0">
                                                 <i class="la la-minus"></i>
                                             </button>
                                         </span>
-                                        <input class="form-control" />
+                                        <input class="form-control" data-bind="value:productNo" />
                                         <span class="input-group-btn">
-                                            <button class="btn btn-add">
+                                            <button class="btn btn-add" data-bind="click: $root.addShoppingCart.bind($data, true)">
                                                 <i class="la la-plus"></i>
                                             </button>
                                         </span>
@@ -103,28 +104,33 @@
                     <div class="row cm-mgb-10 product-detail">
                         <div class="col-sm-12">
                             <div class="">
+                                <div class="line"></div>
                                 <h3 class="title">Thông tin</h3>
+
                                 <div class="content">
                                     <ul class="nav nav-tabs">
                                         <!--ko foreach: listAttributeContent-->
-                                        <li data-bind="css: { active: isSelected }">
-                                            <a href="#">
+                                        <li data-bind="css: { active: isSelected}, click: $root.selectProductAttribute">
+                                            <a data-bind="attr: {href: '#' + attributeId}">
                                                 <span data-bind="text: attributeName"></span>
                                             </a>
                                         </li>
                                         <!--/ko-->
-                                        <li>
-                                            <a href="#comment">
+                                        <li id="liComment">
+                                            <a href="#comment" data-bind="click: showTabComment">
                                                 <span>Bình luận</span>
                                             </a>
                                         </li>
                                     </ul>
                                     <div class="tab-content" style="padding: 10px; margin-top: 5px;">
                                         <!--ko foreach: listAttributeContent-->
-                                        <div class="tab-pane" data-bind="css: { active: isSelected }">
+                                        <div class="tab-pane" data-bind="css: { active: isSelected }, attr: {id: attributeId}">
                                             <div data-bind="html: value"></div>
                                         </div>
                                         <!--/ko-->
+                                        <div class="tab-pane" id="comment">
+                                            @*<div data-bind="html: value"></div>*@
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -140,14 +146,14 @@
     </div>
 
     @section scripts {
-        <script type="text/javascript">
+    <script type="text/javascript">
            var productImages = @(ViewBag.ProdutImages != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProdutImages, jsonSerializerSettings)) : "[]");
            var productAttributes = @(ViewBag.ProudctAttributes != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProudctAttributes, jsonSerializerSettings)) : "[]");
            var productCategories = @(ViewBag.ProductCategory != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductCategory, jsonSerializerSettings)) : "[]");
            var productInfo = @(ViewBag.ProductInfo != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductInfo, jsonSerializerSettings)) : "[]");
            var url = "@ViewBag.Url";
-        </script>
-        <script src="~/lib/elevatezoom-plus-master/src/jquery.ez-plus.es5.min.js"></script>
-        <script src="~/js/viewmodel/product-detail.viewmodel.min.js"></script>
+    </script>
+    <script src="~/lib/EasyZoom-master/dist/easyzoom.min.js"></script>
+    <script src="~/js/viewmodel/product-detail.viewmodel.min.js"></script>
     }
 

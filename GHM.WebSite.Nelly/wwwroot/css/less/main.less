@@ -2098,13 +2098,15 @@ body {
     padding: 30px 0px;
 
     .txt-static {
-        margin-top: 5px;
+        margin: 5px 0px;
         font-size: 12px;
         color: @color-text;
         text-align: center;
     }
 
     #product-image-silder {
+        margin-top: 20px;
+
         .item {
             padding: 5px;
             position: relative;
@@ -2119,10 +2121,84 @@ body {
         }
     }
 
+    .lSAction a {
+        top: 53%;
+        width: 20px;
+        height: 20px;
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
     .product-detail {
+        font-size: 14px;
+        color: @color-text;
+        font-family: Opensans;
+        padding-top: 10px;
+        padding-bottom: 20px;
+
+        @media @mobile {
+            padding-bottom: 10px;
+        }
+
+        .line {
+            margin-bottom: -2px;
+            border-bottom: 2px solid @color-border;
+            height: 2px;
+            width: 100%;
+        }
+
+        .title {
+            overflow: hidden;
+            display: inline-block;
+            margin-top: 0px;
+            border-top: 2px solid @background-button;
+            padding: 10px 0px;
+            text-transform: uppercase;
+            font-size: 16px;
+            padding-bottom: 0px;
+        }
+
+        .content {
+            margin-top: 10px;
+
+            .nav {
+                /*border-bottom: none;*/
+                li {
+                    margin-bottom: -1px;
+
+                    a {
+                        border: 1px solid @color-border;
+                        border-bottom: none;
+                        border-radius: 0px;
+                        text-transform: uppercase;
+                        color: @color-text;
+                        font-size: 13px;
+                    }
+                }
+
+                .active {
+                    a {
+                        border-top: 2px solid @main-color;
+                    }
+                }
+            }
+
+            .tab-content {
+                margin-top: 0px !important;
+                border: 1px solid @color-border;
+                border-top: none;
+            }
+        }
     }
 
     .product-info {
+        .product-thumbnail {
+            width: 100%;
+        }
+
         .content {
             font-size: 14px;
             font-family: Opensans;
@@ -2184,6 +2260,11 @@ body {
                             background-color: #E8E8E8;
                             color: @color-text-grey;
                         }
+                    }
+
+                    input {
+                        text-align: right;
+                        border-radius: 0px;
                     }
                 }
             }
