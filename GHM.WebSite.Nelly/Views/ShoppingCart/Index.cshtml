@@ -1,0 +1,29 @@
+﻿@using Newtonsoft.Json.Serialization;
+@{
+    ViewBag.Title = "Giỏ hàng";
+    var jsonSerializerSettings = new JsonSerializerSettings
+    {
+        ContractResolver = new CamelCasePropertyNamesContractResolver()
+    };
+}
+
+<partial name="_Breadcumb">
+    <div id="shopping-cart" class="shopping-cart">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <partial name="_TitleBar" model="ViewBag.Title" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    
+                </div>
+            </div>           
+        </div>
+    </div>
+
+    @section scripts {
+        <script type="text/javascript">
+        </script>
+    }

@@ -15,14 +15,14 @@ using Newtonsoft.Json;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace GHM.WebSite.Nelly.Controllers
-{
+{  
     public class ProductController : BaseController
     {
 
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
         private readonly IProductService _productService;
-
+        
         public ProductController(IConfiguration configuration, IMemoryCache cache, IBrandService brandService,
             IBranchContactService branchContactService,
             IMenuService menuService, ISettingService settingService,
@@ -35,7 +35,7 @@ namespace GHM.WebSite.Nelly.Controllers
             _productService = productService;
         }
 
-        // GET: /<controller>/
+        // GET: /<controller>/   
         [Route("san-pham")]
         public async Task<IActionResult> Index()
         {

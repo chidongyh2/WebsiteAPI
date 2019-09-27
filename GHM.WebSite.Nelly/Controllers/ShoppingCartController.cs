@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace GHM.WebSite.Nelly.Controllers
 {
+    [Route("gio-hang")]
     public class ShoppingCartController : BaseController
     {
         private readonly IConfiguration _configuration;
