@@ -10,6 +10,7 @@ function ProductDetailViewModel() {
     self.listAttributeValue = ko.observableArray([]);
     self.listAttributeContent = ko.observableArray([]);
     self.productNo = ko.observable(0);
+    self.totalMoney = ko.observable(0);
 
     self.rendProductCategoryActive = function () {
         _.each(self.listProductCategory(), function (item, index) {
@@ -74,6 +75,10 @@ function ProductDetailViewModel() {
 
         self.listAttributeContent(listAttributeContent);
     };
+
+    self.totalMoney = ko.computed(function () {
+        return self.productNo() * productInfo.salePrice;
+    });
 
     self.addShoppingCart = function (isAdd) {
         if (isAdd) {

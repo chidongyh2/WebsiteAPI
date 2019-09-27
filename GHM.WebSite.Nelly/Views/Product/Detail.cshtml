@@ -46,7 +46,7 @@
                                 <div class="star">
                                     @for (var i = 1; i <= 5; i++)
                                     {
-                                    <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
                                     }
                                 </div>
                                 <div class="price">
@@ -54,9 +54,9 @@
                                 </div>
                                 @if (!string.IsNullOrEmpty(productInfo.Desciption))
                                 {
-                                <div class="description">
-                                    @Html.Raw(productInfo.Desciption)
-                                </div>
+                                    <div class="description">
+                                        @Html.Raw(productInfo.Desciption)
+                                    </div>
                                 }
                                 <div class="attribute">
                                     <ul class="">
@@ -94,6 +94,10 @@
                                             </button>
                                         </span>
                                     </div>
+                                </div>
+                                <div class="total-money">
+                                    <label> Tổng tiền:</label>
+                                    <span class="pull-right" data-bind="text: formatNumberic(totalMoney(),  'N0') + 'VNĐ'"></span>
                                 </div>
                                 <div class="read-more">
                                     <a href="javascript://" class="btn btn-main"><i class="la la-arrow-right"></i>Thêm vào giỏ</a>

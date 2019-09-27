@@ -1064,7 +1064,7 @@ body {
   font-size: 20px;
   cursor: pointer;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
-  transition: 1s ease-in-out;
+  transition: 0.5s ease-in-out;
   z-index: 1000;
 }
 #product-category-homepage .selector a img {
@@ -1136,7 +1136,7 @@ body {
   font-size: 1px;
   cursor: pointer;
   box-shadow: none;
-  transition: all 0.8s ease-in-out, color 0.1s, background 0.1s;
+  transition: 0.5s ease-in-out;
   border-radius: 20px;
 }
 #product-category-homepage .selector li input + label:hover {
@@ -1266,6 +1266,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 4px;
+  margin-bottom: 20px;
 }
 #box-hotline .header {
   width: 100%;
@@ -1896,6 +1897,24 @@ body {
 #product-detail .product-info .content .add-shopping-cart .input-group input {
   text-align: right;
   border-radius: 0px;
+}
+@media only screen and (max-width: 1200px) {
+  #product-detail .product-info .content .add-shopping-cart {
+    width: 100%;
+  }
+}
+#product-detail .product-info .content .total-money {
+  padding-top: 10px;
+  width: 50%;
+}
+@media only screen and (max-width: 1200px) {
+  #product-detail .product-info .content .total-money {
+    width: 100%;
+  }
+}
+#product-detail .product-info .content .total-money span {
+  text-align: right;
+  font-weight: bold;
 }
 #product-detail .product-info .content .read-more {
   text-align: left;
