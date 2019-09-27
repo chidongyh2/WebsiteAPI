@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using FluentValidation.AspNetCore;
 using GHM.Infrastructure.CustomAttributes;
 using GHM.Infrastructure.ModelBinders;
 using GHM.WebsiteClient.Api.Infrastructure.AutofacModules;
@@ -50,7 +51,7 @@ namespace GHM.WebsiteClient.Api
                 options.Filters.Add(typeof(ModelStateFilter));
                 options.Conventions.Add(new DefaultFromBodyBindingConvention());
                 options.ModelBinderProviders.Insert(0, new DateTimeModelBinderProvider());
-            })
+            }).AddFluentValidation()
                 .AddJsonFormatters()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, options => { options.ResourcesPath = "Resources"; })
                 .AddDataAnnotationsLocalization();
