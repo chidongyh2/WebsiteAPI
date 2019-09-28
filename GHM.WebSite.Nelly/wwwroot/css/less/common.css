@@ -214,3 +214,6 @@
 .size20 {
   font-size: 20px;
 }
+.v-middle {
+  vertical-align: middle !important;
+}

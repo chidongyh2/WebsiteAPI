@@ -136,10 +136,20 @@
             <div class="col-sm-3">
                 @if (websiteSetting.Fanpage != null)
                 {
-                    <div>
-                        <!-- Page plugin's width will be 190px -->
-                        <div class="fb-page" data-href="@websiteSetting.Fanpage" data-width="420"></div>
-                    </div>
+                    @if (ViewBag.DeviceType == "desktop")
+                    {
+                        <div>
+                            <!-- Page plugin's width will be 190px -->
+                            <div class="fb-page" data-href="@websiteSetting.Fanpage" data-width="420"></div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <!-- Page plugin's width will be 190px -->
+                            <div class="fb-page" data-href="@websiteSetting.Fanpage" data-width="360"></div>
+                        </div>
+                    }
                 }
             </div>
         </div>

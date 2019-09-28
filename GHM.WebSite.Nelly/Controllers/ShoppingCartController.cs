@@ -37,6 +37,7 @@ namespace GHM.WebSite.Nelly.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            ViewBag.ListProduct = SessionHelper.GetObjectFromJson<List<ProductSelectedItem>>(HttpContext.Session, SessionParam.ShoppingCart);
 
             return View();
         }
@@ -65,7 +66,7 @@ namespace GHM.WebSite.Nelly.Controllers
 
                 if (index >= 0)
                 {
-                    cart[index].Quantity += quantity ?? 0;
+                    cart[index].Quantity = quantity ?? 0;
                 }
                 else
                 {

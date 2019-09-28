@@ -126,5 +126,11 @@
     "inputFiles": [
       "wwwroot/lib/EasyZoom-master/css/easyzoom.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/shopping-cart.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/shopping-cart.viewmodel.js"
+    ]
   }
 ]

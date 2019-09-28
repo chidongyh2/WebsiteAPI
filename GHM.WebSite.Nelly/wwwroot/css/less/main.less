@@ -823,6 +823,9 @@ body {
         margin-bottom: 10px !important;
         font-size: 50px;
         color: @color-text;
+        @media @mobile{
+            font-size: 30px;
+        }
     }
 
     @media @mobile {
@@ -1437,12 +1440,20 @@ body {
             color: @main-color;
             font-family: Opensans-Bold;
             font-size: 90px;
+
+            @media @mobile {
+                font-size: 40px;
+            }
         }
 
         .title {
             font-family: Opensans-Semibold;
             font-size: 30px;
             text-transform: uppercase;
+
+            @media @mobile {
+                font-size: 20px;
+            }
 
             a {
                 color: @color-text;
@@ -2102,7 +2113,7 @@ body {
         margin: 5px 0px;
         font-size: 12px;
         color: @color-text;
-        text-align: center;
+        text-align: left;        
     }
 
     #product-image-silder {

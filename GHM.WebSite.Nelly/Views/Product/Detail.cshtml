@@ -50,7 +50,7 @@
                                     }
                                 </div>
                                 <div class="price">
-                                    <span>@productInfo?.SalePrice?.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("en-US")) VNĐ</span>
+                                    <span>@productInfo?.SalePrice?.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("en-US")) đ</span>
                                 </div>
                                 @if (!string.IsNullOrEmpty(productInfo?.Desciption))
                                 {
@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="total-money">
                                     <label> Tổng tiền:</label>
-                                    <span class="pull-right" data-bind="text: formatNumberic(totalMoney(),  'N0') + ' VNĐ'"></span>
+                                    <span class="pull-right" data-bind="text: formatNumberic(totalMoney(),  'N0') + ' đ'"></span>
                                 </div>
                                 <div class="read-more">
                                     <a href="javascript://" class="btn btn-main" data-bind="click: buy"><i class="la la-arrow-right"></i>Thêm vào giỏ</a>
