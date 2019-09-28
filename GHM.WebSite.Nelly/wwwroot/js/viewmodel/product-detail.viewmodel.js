@@ -9,8 +9,9 @@ function ProductDetailViewModel() {
     self.listProductAttribute = ko.observableArray([]);
     self.listAttributeValue = ko.observableArray([]);
     self.listAttributeContent = ko.observableArray([]);
-    self.productNo = ko.observable(0);
+    self.quantity = ko.observable(0);
     self.totalMoney = ko.observable(0);
+    self.productId = ko.observable(null);
 
     self.rendProductCategoryActive = function () {
         _.each(self.listProductCategory(), function (item, index) {
@@ -77,18 +78,33 @@ function ProductDetailViewModel() {
     };
 
     self.totalMoney = ko.computed(function () {
-        return self.productNo() * productInfo.salePrice;
+        return self.quantity() * productInfo.salePrice;
     });
 
     self.addShoppingCart = function (isAdd) {
         if (isAdd) {
-            self.productNo(self.productNo() + 1);
+            self.quantity(self.quantity() + 1);
         }
         else {
-            if (self.productNo() > 0) {
-                self.productNo(self.productNo() - 1);
+            if (self.quantity() > 0) {
+                self.quantity(self.quantity() - 1);
             }
         }
+    };
+
+    self.buy = function () {
+        $.post(`/gio-hang/buy/${self.productId()}`, {
+            quantity: self.quantity()
+        }, function (data) {
+            if (data) {
+                toastr.success('Thêm mới sản phẩm vào giỏ hàng thành công.');
+                var quantityProductHeader = document.getElementById("quantity-product");
+                quantityProductHeader.textContent = data.length;
+
+                var quantityProductSidebar = document.getElementById("quantity-product-sidebar");
+                quantityProductSidebar.textContent = data.length;
+            }
+        });
     };
 
     self.selectProductAttribute = function (item) {
@@ -121,6 +137,7 @@ function ProductDetailViewModel() {
 
         if (productInfo) {
             self.productThumbnail(productInfo.thumbnail);
+            self.productId(productInfo.id);
         }
 
         $("#product-image-silder").lightSlider({
@@ -161,7 +178,16 @@ function ProductDetailViewModel() {
             });
         }
 
-        self.renderAttribute();
+        self.renderAttribute();        
+        if (productSelectItems) {          
+            var productSelected = _.find(productSelectItems, function (item) {
+                return item.product.id === productInfo.id;
+            });
+
+            if (productSelected) {
+                self.quantity(productSelected.quantity);
+            }
+        }
     });
 }
 

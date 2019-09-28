@@ -1,10 +1,15 @@
-﻿@using Newtonsoft.Json.Serialization;
+﻿@using GHM.WebSite.Nelly.Helper
+@using GHM.WebSite.Nelly.Models
 @{
     ViewBag.Title = "Giỏ hàng";
     var jsonSerializerSettings = new JsonSerializerSettings
     {
         ContractResolver = new CamelCasePropertyNamesContractResolver()
     };
+
+    var productSelectItemJson = HttpContextAccessor.HttpContext.Session.GetString(SessionParam.ShoppingCart);
+
+    var sessionId = HttpContextAccessor.HttpContext.Session.Id;
 }
 
 <partial name="_Breadcumb">
@@ -34,11 +39,12 @@
                         </thead>
                     </table>
                 </div>
-            </div>           
+            </div>
         </div>
     </div>
 
     @section scripts {
         <script type="text/javascript">
+            console.log(products);
         </script>
     }

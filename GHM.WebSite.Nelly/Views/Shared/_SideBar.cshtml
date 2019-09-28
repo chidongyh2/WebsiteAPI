@@ -1,13 +1,16 @@
-﻿@{
-    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>
-    ;
+﻿@using GHM.WebSite.Nelly.Helper
+@using GHM.WebSite.Nelly.Models
+@{
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+    var productSelectItemJson = HttpContextAccessor.HttpContext.Session.GetString(SessionParam.ShoppingCart);
+    var productsItems = JsonConvertHelper.GetObjectFromJson<List<ProductSelectedItem>>(productSelectItemJson);
 }
 
 <ul class="layout_sidebar">
     <li class="">
         <div class="item-left">
             <a href="javascript://" data-toggle="tooltip" title="Mạng lưới Nellydevusyst">
-                <img src="~/images/facion/address.png" class="lazy"/>
+                <img src="~/images/facion/address.png" class="lazy" />
                 @*<i class="la la-street-view"> </i>*@
             </a>
         </div>
@@ -16,21 +19,22 @@
         </div>
     </li>
     <li>
-        <div class="item-left">
+        <div class="item-left shopping-cart">
             <a href="/gio-hang" data-toggle="tooltip" title="Giỏ hàng">
-                <img src="~/images/facion/giohang.png" class="lazy"/>
+                <img src="~/images/facion/giohang.png" class="lazy" />
+                <span class="quantity-product" id="quantity-product-sidebar">@(productsItems != null ? productsItems.Count : 0)</span>
                 @*<i class="la la-shopping-cart"> </i>*@
             </a>
         </div>
         <div class="item-right">
-            <a href="javascript://" data-toggle="tooltip" title=" Giỏ hàng"><span> Giỏ hàng</span></a>
+            <a href="/gio-hang" data-toggle="tooltip" title=" Giỏ hàng"><span> Giỏ hàng</span></a>
         </div>
     </li>
     <li>
         <div class="item-left">
             <a href="javascript://" data-toggle="tooltip" title="Trở thành đại lý">
                 @*<i class="la la-users"> </i>*@
-                <img src="~/images/facion/branch.png" class="lazy"/>
+                <img src="~/images/facion/branch.png" class="lazy" />
             </a>
         </div>
         <div class="item-right">
@@ -40,8 +44,8 @@
     <li>
         <div class="item-left">
             <a href="/lien-he" data-toggle="tooltip" title="Liên hệ">
-                <img src="~/images/facion/contact.png" class="lazy"/>
-                @*<i class="la la-asterisk"> </i>*@               
+                <img src="~/images/facion/contact.png" class="lazy" />
+                @*<i class="la la-asterisk"> </i>*@
             </a>
         </div>
         <div class="item-right">

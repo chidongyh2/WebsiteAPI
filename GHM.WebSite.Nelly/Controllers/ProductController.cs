@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using GHM.Infrastructure.Extensions;
+using GHM.Website.Nelly.Constants;
 using GHM.Website.Nelly.Controllers;
 using GHM.Website.Nelly.ViewModels;
 using GHM.WebSite.Nelly.Helper;
@@ -19,7 +20,6 @@ namespace GHM.WebSite.Nelly.Controllers
 {  
     public class ProductController : BaseController
     {
-
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
         private readonly IProductService _productService;
@@ -43,7 +43,7 @@ namespace GHM.WebSite.Nelly.Controllers
             var apiService = _configuration.GetApiServiceInfo();
 
             var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, false, int.MaxValue);
-            var listProductCategoryData = JsonHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
+            var listProductCategoryData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
             ViewBag.ListProductCategory = listProductCategoryData;
 
             var productCategoryInfo = listProductCategory.FirstOrDefault();
@@ -62,14 +62,14 @@ namespace GHM.WebSite.Nelly.Controllers
             var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, null, 1);
             var productCategoryInfo = listProductCategory.FirstOrDefault();
 
-            var model = JsonHelper.GetObjectFromObject<ProductCategorySearchViewModel>(productCategoryInfo);
+            var model = JsonConvertHelper.GetObjectFromObject<ProductCategorySearchViewModel>(productCategoryInfo);
 
             if (productCategoryInfo != null)
             {
                 var products = await _productService.ProductSearchByParentCategory(apiService.TenantId,
                     CultureInfo.CurrentCulture.Name, null, null, productCategoryInfo?.Id ?? 0);
 
-                ViewBag.ListProduct = JsonHelper.GetObjectFromObject<List<ProductWidthCategoryViewModel>>(products?.Items);
+                ViewBag.ListProduct = JsonConvertHelper.GetObjectFromObject<List<ProductWidthCategoryViewModel>>(products?.Items);
             }
 
             return View(model);
@@ -81,7 +81,7 @@ namespace GHM.WebSite.Nelly.Controllers
             var apiService = _configuration.GetApiServiceInfo();
 
             var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);
-            var listProductCategoryData = JsonHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
+            var listProductCategoryData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
 
             ViewBag.ListProductCategory = listProductCategoryData;
 
@@ -91,7 +91,7 @@ namespace GHM.WebSite.Nelly.Controllers
             }
 
             var productCategoryInfo = listProductCategory?.Where(x => x.SeoLink.Equals(seoLink?.Trim()))?.FirstOrDefault();
-            ViewBag.ProductCategoryInfo = JsonHelper.GetObjectFromObject<ProductCategorySearchViewModel>(productCategoryInfo);
+            ViewBag.ProductCategoryInfo = JsonConvertHelper.GetObjectFromObject<ProductCategorySearchViewModel>(productCategoryInfo);
             ViewBag.ProductCategoryId = productCategoryInfo?.Id;
             var products = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, productCategoryInfo?.SeoLink, null, null, 1, 6);
 
@@ -99,7 +99,7 @@ namespace GHM.WebSite.Nelly.Controllers
             ViewBag.TotalProduct = products?.TotalRows;
 
             var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
-            ViewBag.ListProductRelationship = JsonHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productRelationships?.Items);
+            ViewBag.ListProductRelationship = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productRelationships?.Items);
 
             return View();
         }
@@ -112,7 +112,7 @@ namespace GHM.WebSite.Nelly.Controllers
             var productInfo = await _productService.ProductGetDetail(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, seoLink);
             if (productInfo != null)
             {
-                ViewBag.ProductInfo = JsonHelper.GetObjectFromObject<ProductSearchViewModel>(productInfo);
+                ViewBag.ProductInfo = JsonConvertHelper.GetObjectFromObject<ProductSearchViewModel>(productInfo);
                 var productImages = await _productService.ProductImageSearchByProductId(apiService.TenantId, productInfo.Id);
                 ViewBag.ProdutImages = productImages?.Items;
 
@@ -128,7 +128,7 @@ namespace GHM.WebSite.Nelly.Controllers
             }
 
             var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);
-            var listProductCategoryData = JsonHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
+            var listProductCategoryData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
             ViewBag.ListProductCategory = listProductCategoryData;
 
             if (listProductCategoryData != null && listProductCategoryData.Any())
@@ -137,8 +137,9 @@ namespace GHM.WebSite.Nelly.Controllers
             }
 
             var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
-            ViewBag.ListProductRelationship = JsonHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productRelationships?.Items);
+            ViewBag.ListProductRelationship = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productRelationships?.Items);
 
+            ViewBag.ProductSelectItems = SessionHelper.GetObjectFromJson<List<ProductSelectedItem>>(HttpContext.Session, SessionParam.ShoppingCart);
             return View();
         }
 

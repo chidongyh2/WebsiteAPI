@@ -59,11 +59,11 @@ namespace GHM.Website.Nelly.Controllers
             var apiService = _configuration.GetApiServiceInfo();
 
             var listProductCategoryHomePage = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, true, null, 10);
-            var listProductCategoryHomePageData = JsonHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategoryHomePage);
+            var listProductCategoryHomePageData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategoryHomePage);
             ViewBag.ListProductCategoryHomePage = listProductCategoryHomePageData;
 
             var listProductCategoryHot = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, null, int.MaxValue);
-            var listProductCategoryHotData = JsonHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategoryHot);
+            var listProductCategoryHotData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategoryHot);
             ViewBag.ListProductCategoryHot = listProductCategoryHotData;
             ViewBag.ProductCategoryId = listProductCategoryHot.FirstOrDefault()?.Id;
 
@@ -71,15 +71,15 @@ namespace GHM.Website.Nelly.Controllers
             ViewBag.ListProduct = products?.Items;
 
             var listProductCategorySolution = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, true, 20);
-            var listProductCategorySolutionData = JsonHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategorySolution);
+            var listProductCategorySolutionData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategorySolution);
             ViewBag.ListProductCategorySolution = listProductCategorySolutionData;
 
             var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
-            var listVideoHomePageData = JsonHelper.GetObjectFromObject<List<VideoViewModel>>(listVideoHomePage);
+            var listVideoHomePageData = JsonConvertHelper.GetObjectFromObject<List<VideoViewModel>>(listVideoHomePage);
             ViewBag.ListVideoHomePage = listVideoHomePageData;
 
             var listCategoryWidthNews = await _newsService.GetListCategoryWidthNewsAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 2, true, 10);
-            var listNewsData = JsonHelper.GetObjectFromObject<List<CategoryWidthNewsViewModel>>(listCategoryWidthNews?.Items);
+            var listNewsData = JsonConvertHelper.GetObjectFromObject<List<CategoryWidthNewsViewModel>>(listCategoryWidthNews?.Items);
 
             if (listNewsData != null && listNewsData.Any())
             {
@@ -96,7 +96,7 @@ namespace GHM.Website.Nelly.Controllers
             //else
             //{
             var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
-            var menuMiddleData = JsonHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
+            var menuMiddleData = JsonConvertHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
             _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
             ViewBag.MenuContact = menuMiddleData;
             //}
@@ -108,7 +108,7 @@ namespace GHM.Website.Nelly.Controllers
             //else
             //{
             var listBannerInHomeData = await _bannerService.GetBannerItemByPositionAsync(apiService.TenantId, (int)Position.Top);
-            var listBannerInHome = JsonHelper.GetObjectFromObject<BannerViewModel>(listBannerInHomeData.Data);
+            var listBannerInHome = JsonConvertHelper.GetObjectFromObject<BannerViewModel>(listBannerInHomeData.Data);
             _cache.Set(CacheParam.Banner, listBannerInHome, TimeSpan.FromHours(1));
 
             ViewBag.MainBanner = listBannerInHome;
@@ -126,9 +126,9 @@ namespace GHM.Website.Nelly.Controllers
 
             if (menuInfo == null)
             {
-                string[] segmentArray = segment.Split('.');
-                bool isNews = segmentArray[1].ToLower().Equals("html");
-                bool isProduct = segmentArray[1].ToLower().Equals("htm");
+                 string[] segmentArray = segment.Split('.');
+                bool isNews = segmentArray.Length  > 1 && segmentArray[1].ToLower().Equals("html");
+                //bool isProduct = segmentArray[1].ToLower().Equals("htm");
                 if (isNews)
                 {
                     var newInfo = await _newsService.GetClientAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, segmentArray[0]);
@@ -138,9 +138,9 @@ namespace GHM.Website.Nelly.Controllers
                         await _newsService.UpdateViewNewsAsync(apiService.TenantId, newInfo.Id, CultureInfo.CurrentCulture.Name);
 
                         var newsHost = await _newsService.GetListTopNewsHotAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 4);
-                        ViewBag.NewsHot = JsonHelper.GetObjectFromObject<List<NewsSearchViewModel>>(newsHost);
+                        ViewBag.NewsHot = JsonConvertHelper.GetObjectFromObject<List<NewsSearchViewModel>>(newsHost);
 
-                        var newData = JsonHelper.GetObjectFromObject<NewsDetailViewModel>(newInfo);
+                        var newData = JsonConvertHelper.GetObjectFromObject<NewsDetailViewModel>(newInfo);
                         return View("../News/Detail", newData);
                     }
                     else
@@ -158,7 +158,7 @@ namespace GHM.Website.Nelly.Controllers
                 if (menuInfo.SubjectType == (GHM.WebsiteClient.Api.Domain.Constants.SubjectType)SubjectType.NewsCategory)
                 {
                     var categoryWithNews = await _newsService.GetNewsByCategoryIdAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, int.Parse(menuInfo.SubjectId), page, pageSize);
-                    var categoryWithNewsData = JsonHelper.GetObjectFromObject<CategoryWidthNewsViewModel>(categoryWithNews.Data);
+                    var categoryWithNewsData = JsonConvertHelper.GetObjectFromObject<CategoryWidthNewsViewModel>(categoryWithNews.Data);
 
                     ViewBag.CategoryId = categoryWithNews.Data.CategoryId;
                     if (categoryWithNewsData != null)
@@ -180,9 +180,9 @@ namespace GHM.Website.Nelly.Controllers
                     await _newsService.UpdateViewNewsAsync(apiService.TenantId, newsDetail.Id, CultureInfo.CurrentCulture.Name);
 
                     var newsHost = await _newsService.GetListTopNewsHotAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 4);
-                    var newData = JsonHelper.GetObjectFromObject<NewsDetailViewModel>(newsDetail);
+                    var newData = JsonConvertHelper.GetObjectFromObject<NewsDetailViewModel>(newsDetail);
 
-                    ViewBag.NewsHot = JsonHelper.GetObjectFromObject<List<NewsSearchViewModel>>(newsHost);
+                    ViewBag.NewsHot = JsonConvertHelper.GetObjectFromObject<List<NewsSearchViewModel>>(newsHost);
                     ViewBag.NewsDetail = newData;
 
                     return View("../News/Detail", newData);
@@ -195,13 +195,14 @@ namespace GHM.Website.Nelly.Controllers
         }
 
         [Route("gioi-thieu")]
+        [Route("gioi-thieu.html")]
         public async Task<IActionResult> About()
         {
             var apiService = _configuration.GetApiServiceInfo();
             var listCoreValue = await _coreService.GetAllActivatedCoreValueAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
             if (listCoreValue != null)
             {
-                ViewBag.ListCoreValue = JsonHelper.GetObjectFromObject<List<ValueViewModel>>(listCoreValue);
+                ViewBag.ListCoreValue = JsonConvertHelper.GetObjectFromObject<List<ValueViewModel>>(listCoreValue);
             }
 
             //if (_cache.TryGetValue($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", out MenuDetailViewModel CategoryMiddleCache))
@@ -211,7 +212,7 @@ namespace GHM.Website.Nelly.Controllers
             //else
             //{
             var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
-            var menuMiddleData = JsonHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
+            var menuMiddleData = JsonConvertHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
             _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
             ViewBag.MenuContact = menuMiddleData;
             //}

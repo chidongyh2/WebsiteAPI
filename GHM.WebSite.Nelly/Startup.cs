@@ -52,9 +52,13 @@ namespace GHM.Website.Nelly
 
             services.AddMemoryCache();
             services.AddSingleton<IConfiguration>(Configuration);
-            services.AddSession(options => {
-                options.IdleTimeout = TimeSpan.FromMinutes(60);//You can set Time   
+            services.AddSession(opts =>
+            {
+                opts.Cookie.IsEssential = true; // make the session cookie Essential
+                opts.IdleTimeout = TimeSpan.FromDays(1);
             });
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 options.DefaultRequestCulture = new RequestCulture(new CultureInfo("vi-VN"));
@@ -62,7 +66,7 @@ namespace GHM.Website.Nelly
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false; 
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 

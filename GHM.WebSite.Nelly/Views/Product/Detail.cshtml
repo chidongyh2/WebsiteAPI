@@ -83,11 +83,11 @@
                                     <label> Số lượng:</label>
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-add" data-bind="click: $root.addShoppingCart.bind($data, false), enable: productNo() > 0">
+                                            <button class="btn btn-add" data-bind="click: $root.addShoppingCart.bind($data, false), enable: quantity() > 0">
                                                 <i class="la la-minus"></i>
                                             </button>
                                         </span>
-                                        <input class="form-control" data-bind="value:productNo" />
+                                        <input class="form-control" data-bind="value:quantity" />
                                         <span class="input-group-btn">
                                             <button class="btn btn-add" data-bind="click: $root.addShoppingCart.bind($data, true)">
                                                 <i class="la la-plus"></i>
@@ -97,10 +97,10 @@
                                 </div>
                                 <div class="total-money">
                                     <label> Tổng tiền:</label>
-                                    <span class="pull-right" data-bind="text: formatNumberic(totalMoney(),  'N0') + 'VNĐ'"></span>
+                                    <span class="pull-right" data-bind="text: formatNumberic(totalMoney(),  'N0') + ' VNĐ'"></span>
                                 </div>
                                 <div class="read-more">
-                                    <a href="javascript://" class="btn btn-main"><i class="la la-arrow-right"></i>Thêm vào giỏ</a>
+                                    <a href="javascript://" class="btn btn-main" data-bind="click: buy"><i class="la la-arrow-right"></i>Thêm vào giỏ</a>
                                 </div>
                             </div>
                         </div>
@@ -150,14 +150,14 @@
     </div>
 
     @section scripts {
-    <script type="text/javascript">
+        <script type="text/javascript">
            var productImages = @(ViewBag.ProdutImages != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProdutImages, jsonSerializerSettings)) : "[]");
            var productAttributes = @(ViewBag.ProudctAttributes != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProudctAttributes, jsonSerializerSettings)) : "[]");
            var productCategories = @(ViewBag.ProductCategory != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductCategory, jsonSerializerSettings)) : "[]");
            var productInfo = @(ViewBag.ProductInfo != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductInfo, jsonSerializerSettings)) : "[]");
-           var url = "@ViewBag.Url";
-    </script>
-    <script src="~/lib/EasyZoom-master/dist/easyzoom.min.js"></script>
-    <script src="~/js/viewmodel/product-detail.viewmodel.min.js"></script>
+            var productSelectItems = @(ViewBag.ProductSelectItems != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductSelectItems, jsonSerializerSettings)) : "[]");
+        </script>
+        <script src="~/lib/EasyZoom-master/dist/easyzoom.min.js"></script>
+        <script src="~/js/viewmodel/product-detail.viewmodel.min.js"></script>
     }
 

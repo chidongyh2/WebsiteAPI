@@ -108,7 +108,7 @@
             .shopping-cart {
                 position: relative;
 
-                .number-product {
+                .quantity-product {
                     position: absolute;
                     top: 6px;
                     right: -3px;
@@ -576,9 +576,29 @@
             text-transform: uppercase;
             font-family: Opensans;
             display: inline-block;
+            transition: 1s ease-in-out;
 
             i {
                 font-size: 24px;
+            }
+        }
+
+        .shopping-cart {
+            a {
+                position: relative;
+
+                .quantity-product {
+                    position: absolute;
+                    top: -9px;
+                    right: -3px;
+                    font-size: 13px;
+                    color: #606060;
+                    border-radius: 50%;
+                    background: #fff;
+                    height: 17px;
+                    width: 17px;
+                    text-align: center;
+                }
             }
         }
 

@@ -28,6 +28,7 @@ namespace GHM.Website.Nelly.Controllers
         }
 
         [Route("lien-he")]
+        [Route("lien-he.html")]
         public IActionResult Index()
         {
             var breadcrumbs = new List<Breadcrumb>

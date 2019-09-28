@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace GHM.WebSite.Nelly.Constants
+﻿namespace GHM.Website.Nelly.Constants
 {
-    public static class SessionConst
+    public static class SessionParam
     {
-        public const string Cart = "Nelly.Cart";
+        public const string ShoppingCart = "Nelly.ShoppingCart";
 
         public const string ProductRecent = "Nelly.ProductRecent";       
     }

@@ -39,7 +39,7 @@ namespace GHM.Website.Nelly.Controllers
             var apiService = _configuration.GetApiServiceInfo();
 
             var listNews = await _newsService.GetNewsByCategoryIdAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, categoryId, page, pageSize);
-            var listNewsData = JsonHelper.GetObjectFromObject<CategoryWidthNewsViewModel>(listNews.Data);
+            var listNewsData = JsonConvertHelper.GetObjectFromObject<CategoryWidthNewsViewModel>(listNews.Data);
             return Json(listNewsData.ListNews);
         }        
     }

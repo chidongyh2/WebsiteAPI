@@ -126,7 +126,7 @@
 .wrap-header-top ul li .shopping-cart {
   position: relative;
 }
-.wrap-header-top ul li .shopping-cart .number-product {
+.wrap-header-top ul li .shopping-cart .quantity-product {
   position: absolute;
   top: 6px;
   right: -3px;
@@ -540,9 +540,25 @@
   text-transform: uppercase;
   font-family: Opensans;
   display: inline-block;
+  transition: 1s ease-in-out;
 }
 .layout_sidebar li a i {
   font-size: 24px;
+}
+.layout_sidebar li .shopping-cart a {
+  position: relative;
+}
+.layout_sidebar li .shopping-cart a .quantity-product {
+  position: absolute;
+  top: -9px;
+  right: -3px;
+  font-size: 13px;
+  color: #606060;
+  border-radius: 50%;
+  background: #fff;
+  height: 17px;
+  width: 17px;
+  text-align: center;
 }
 .layout_sidebar li .item-left {
   display: flex;

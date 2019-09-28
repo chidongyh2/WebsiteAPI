@@ -37,6 +37,7 @@ namespace GHM.WebSite.Nelly.Controllers
         }
 
         [Route("trung-tam-tro-giup")]
+        [Route("trung-tam-tro-giup.html")]
         public async Task<IActionResult> Index()
         {
             var apiService = _configuration.GetApiServiceInfo();
@@ -52,7 +53,7 @@ namespace GHM.WebSite.Nelly.Controllers
             //else
             //{
             var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
-            var menuMiddleData = JsonHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
+            var menuMiddleData = JsonConvertHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
             _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
             ViewBag.MenuContact = menuMiddleData;
             //}

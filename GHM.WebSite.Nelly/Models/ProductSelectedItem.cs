@@ -5,6 +5,6 @@ namespace GHM.WebSite.Nelly.Models
     public class ProductSelectedItem
     {
         public ProductSearchViewModel Product { get; set; }
-        public int Number { get; set; }
+        public int Quantity { get; set; }
     }
 }

@@ -2078,9 +2078,10 @@ body {
   font-family: Opensans;
 }
 .error_form a {
-  color: #999999;
+  color: #F9A4A7;
   font-size: 20px;
   margin-top: 20px;
   text-decoration: none;
   text-transform: uppercase;
+  font-weight: 600;
 }
