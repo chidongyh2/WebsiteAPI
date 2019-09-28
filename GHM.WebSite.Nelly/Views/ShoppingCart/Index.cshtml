@@ -63,7 +63,7 @@
                                                 <i class="la la-minus"></i>
                                             </button>
                                         </span>
-                                        <input class="form-control text-right" data-bind="value: productQuantity()" />
+                                        <input class="form-control text-right" data-bind="value: productQuantity, event: {change: $root.changeQuantity.bind($data)}, valueUpdate: 'afterkeydown'" />
                                         <span class="input-group-btn">
                                             <button class="btn btn-add" data-bind="click: $root.addProductQuantity.bind($data, $data, true)">
                                                 <i class="la la-plus"></i>

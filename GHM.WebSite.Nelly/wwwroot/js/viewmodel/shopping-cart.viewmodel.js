@@ -13,7 +13,7 @@
                 data.productQuantity(data.productQuantity() - 1);
             }
         }
-
+        data.totalPrice(data.productQuantity() * data.salePrice);
         self.renderTotalPrice();
     };
 
@@ -25,13 +25,17 @@
         self.totalMoney(ConverMoneyToString(formatNumberic(self.totalPrice(), 'N0')));
     };
 
+    self.changeQuantity = function (item) {
+        item.productQuantity = ko.observable(item.productQuantity());
+        item.totalPrice(item.productQuantity() * item.salePrice);
+        self.renderTotalPrice();
+    };
+
     $(document).ready(function () {
         if (products) {
             _.each(products, function (item) {
                 item.productQuantity = ko.observable(item.quantity);
-                item.totalPrice = ko.computed(function () {
-                    return item.product.salePrice * item.productQuantity();
-                });
+                item.totalPrice = ko.observable(item.product.salePrice * item.productQuantity());
                 item.id = item.product.id;
                 item.name = item.product.name;
                 item.salePrice = item.product.salePrice;
