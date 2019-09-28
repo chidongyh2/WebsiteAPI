@@ -9,6 +9,7 @@ using GHM.Infrastructure.Services;
 using GHM.Infrastructure.ViewModels;
 using GHM.Website.Nelly.Models;
 using GHM.Website.Nelly.ViewModels;
+using GHM.WebSite.Nelly.Helper;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -38,7 +39,7 @@ namespace GHM.Website.Nelly.Controllers
             var apiService = _configuration.GetApiServiceInfo();
 
             var listNews = await _newsService.GetNewsByCategoryIdAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, categoryId, page, pageSize);
-            var listNewsData = JsonConvert.DeserializeObject<CategoryWidthNewsViewModel>(JsonConvert.SerializeObject(listNews.Data));
+            var listNewsData = JsonHelper.GetObjectFromObject<CategoryWidthNewsViewModel>(listNews.Data);
             return Json(listNewsData.ListNews);
         }        
     }

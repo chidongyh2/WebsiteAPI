@@ -2057,3 +2057,30 @@ body {
 #shopping-cart {
   padding: 30px 0px;
 }
+.error_form {
+  padding: 30px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.error_form h1,
+.error_form h2 {
+  color: #F9A4A7;
+  font-family: Opensans;
+}
+.error_form h2 {
+  color: #3F3F3F;
+}
+.error_form p {
+  font-size: 14px;
+  color: #3F3F3F;
+  font-family: Opensans;
+}
+.error_form a {
+  color: #999999;
+  font-size: 20px;
+  margin-top: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+}

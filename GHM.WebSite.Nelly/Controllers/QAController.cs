@@ -7,6 +7,7 @@ using GHM.Infrastructure.Extensions;
 using GHM.Website.Nelly.Constants;
 using GHM.Website.Nelly.Controllers;
 using GHM.Website.Nelly.ViewModels;
+using GHM.WebSite.Nelly.Helper;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -51,7 +52,7 @@ namespace GHM.WebSite.Nelly.Controllers
             //else
             //{
             var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
-            var menuMiddleData = JsonConvert.DeserializeObject<MenuDetailViewModel>(JsonConvert.SerializeObject(menuMiddle));
+            var menuMiddleData = JsonHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
             _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
             ViewBag.MenuContact = menuMiddleData;
             //}

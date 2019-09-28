@@ -251,5 +251,33 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                 return null;
             }
         }
+
+        public async Task<ProductSearchViewModel> ProductGetDetail(string tenantId, string languageId,
+            string productId, string seoLink)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@TenantId", tenantId);
+                    param.Add("@LanguageId", languageId);
+                    param.Add("@ProductId", productId);
+                    param.Add("@SeoLink", seoLink);
+
+                    var items = await con.QueryAsync<ProductSearchViewModel>("[dbo].[sp_Product_GetDetail]", param, commandType: CommandType.StoredProcedure);                   
+
+                    return items.FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "sp_Product_GetDetail ProductService Error.");
+                return null;
+            }
+        }
     }
 }

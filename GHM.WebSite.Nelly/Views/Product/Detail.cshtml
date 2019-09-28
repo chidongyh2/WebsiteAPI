@@ -20,7 +20,7 @@
                                 <a data-bind="attr:{href: '@ViewBag.Url' + productThumbnail()}">
                                     <img id="thumbnail" class="img-responsive"
                                          data-bind="attr: {src: '@ViewBag.Url' + productThumbnail()}"
-                                         src="@($" {ViewBag.Url}{productInfo.Thumbnail}")" alt="@productInfo.Name"
+                                         src="@($" {ViewBag.Url}{productInfo?.Thumbnail}")" alt="@productInfo?.Name"
                                          onerror="this.onerror = null;this.src='/images/no-image.png'" />
                                 </a>
                             </div>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-sm-7">
                             <div class="content">
-                                <div class="title-sidebar">@productInfo.Name</div>
+                                <div class="title-sidebar">@productInfo?.Name</div>
                                 <div class="star">
                                     @for (var i = 1; i <= 5; i++)
                                     {
@@ -50,17 +50,17 @@
                                     }
                                 </div>
                                 <div class="price">
-                                    <span>@productInfo.SalePrice?.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("en-US")) VNĐ</span>
+                                    <span>@productInfo?.SalePrice?.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("en-US")) VNĐ</span>
                                 </div>
-                                @if (!string.IsNullOrEmpty(productInfo.Desciption))
+                                @if (!string.IsNullOrEmpty(productInfo?.Desciption))
                                 {
                                     <div class="description">
-                                        @Html.Raw(productInfo.Desciption)
+                                        @Html.Raw(productInfo?.Desciption)
                                     </div>
                                 }
                                 <div class="attribute">
                                     <ul class="">
-                                        <li><label>Mã ản phẩm:</label> @productInfo.Id</li>
+                                        <li><label>Mã ản phẩm:</label> @productInfo?.Id</li>
                                         <li>
                                             <label>Thể loại: </label>
                                             <!--ko foreach: listCategory-->

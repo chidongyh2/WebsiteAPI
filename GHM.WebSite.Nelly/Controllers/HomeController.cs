@@ -21,6 +21,7 @@ using GHM.Infrastructure.Constants;
 using DeviceDetectorNET;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Newtonsoft.Json;
+using GHM.WebSite.Nelly.Helper;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -58,11 +59,11 @@ namespace GHM.Website.Nelly.Controllers
             var apiService = _configuration.GetApiServiceInfo();
 
             var listProductCategoryHomePage = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, true, null, 10);
-            var listProductCategoryHomePageData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategoryHomePage));
+            var listProductCategoryHomePageData = JsonHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategoryHomePage);
             ViewBag.ListProductCategoryHomePage = listProductCategoryHomePageData;
 
             var listProductCategoryHot = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, null, int.MaxValue);
-            var listProductCategoryHotData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategoryHot));
+            var listProductCategoryHotData = JsonHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategoryHot);
             ViewBag.ListProductCategoryHot = listProductCategoryHotData;
             ViewBag.ProductCategoryId = listProductCategoryHot.FirstOrDefault()?.Id;
 
@@ -70,15 +71,15 @@ namespace GHM.Website.Nelly.Controllers
             ViewBag.ListProduct = products?.Items;
 
             var listProductCategorySolution = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, true, 20);
-            var listProductCategorySolutionData = JsonConvert.DeserializeObject<List<ProductCategorySearchViewModel>>(JsonConvert.SerializeObject(listProductCategorySolution));
+            var listProductCategorySolutionData = JsonHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategorySolution);
             ViewBag.ListProductCategorySolution = listProductCategorySolutionData;
-                       
+
             var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
-            var listVideoHomePageData = JsonConvert.DeserializeObject<List<VideoViewModel>>(JsonConvert.SerializeObject(listVideoHomePage));
+            var listVideoHomePageData = JsonHelper.GetObjectFromObject<List<VideoViewModel>>(listVideoHomePage);
             ViewBag.ListVideoHomePage = listVideoHomePageData;
 
             var listCategoryWidthNews = await _newsService.GetListCategoryWidthNewsAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 2, true, 10);
-            var listNewsData = JsonConvert.DeserializeObject<List<CategoryWidthNewsViewModel>>(JsonConvert.SerializeObject(listCategoryWidthNews?.Items));
+            var listNewsData = JsonHelper.GetObjectFromObject<List<CategoryWidthNewsViewModel>>(listCategoryWidthNews?.Items);
 
             if (listNewsData != null && listNewsData.Any())
             {
@@ -95,7 +96,7 @@ namespace GHM.Website.Nelly.Controllers
             //else
             //{
             var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
-            var menuMiddleData = JsonConvert.DeserializeObject<MenuDetailViewModel>(JsonConvert.SerializeObject(menuMiddle));
+            var menuMiddleData = JsonHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
             _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
             ViewBag.MenuContact = menuMiddleData;
             //}
@@ -107,7 +108,7 @@ namespace GHM.Website.Nelly.Controllers
             //else
             //{
             var listBannerInHomeData = await _bannerService.GetBannerItemByPositionAsync(apiService.TenantId, (int)Position.Top);
-            var listBannerInHome = JsonConvert.DeserializeObject<BannerViewModel>(JsonConvert.SerializeObject(listBannerInHomeData.Data));
+            var listBannerInHome = JsonHelper.GetObjectFromObject<BannerViewModel>(listBannerInHomeData.Data);
             _cache.Set(CacheParam.Banner, listBannerInHome, TimeSpan.FromHours(1));
 
             ViewBag.MainBanner = listBannerInHome;
@@ -137,9 +138,9 @@ namespace GHM.Website.Nelly.Controllers
                         await _newsService.UpdateViewNewsAsync(apiService.TenantId, newInfo.Id, CultureInfo.CurrentCulture.Name);
 
                         var newsHost = await _newsService.GetListTopNewsHotAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 4);
-                        ViewBag.NewsHot = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(newsHost));
+                        ViewBag.NewsHot = JsonHelper.GetObjectFromObject<List<NewsSearchViewModel>>(newsHost);
 
-                        var newData = JsonConvert.DeserializeObject<NewsDetailViewModel>(JsonConvert.SerializeObject(newInfo));
+                        var newData = JsonHelper.GetObjectFromObject<NewsDetailViewModel>(newInfo);
                         return View("../News/Detail", newData);
                     }
                     else
@@ -157,10 +158,17 @@ namespace GHM.Website.Nelly.Controllers
                 if (menuInfo.SubjectType == (GHM.WebsiteClient.Api.Domain.Constants.SubjectType)SubjectType.NewsCategory)
                 {
                     var categoryWithNews = await _newsService.GetNewsByCategoryIdAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, int.Parse(menuInfo.SubjectId), page, pageSize);
-                    var categoryWithNewsData = JsonConvert.DeserializeObject<CategoryWidthNewsViewModel>(JsonConvert.SerializeObject(categoryWithNews.Data));
+                    var categoryWithNewsData = JsonHelper.GetObjectFromObject<CategoryWidthNewsViewModel>(categoryWithNews.Data);
 
                     ViewBag.CategoryId = categoryWithNews.Data.CategoryId;
-                    return View("../News/CategoryNews", categoryWithNewsData);
+                    if (categoryWithNewsData != null)
+                    {
+                        return View("../News/CategoryNews", categoryWithNewsData);
+                    }
+                    else
+                    {
+                        return View("../NotFound/Index");
+                    }
                 }
                 else if (menuInfo.SubjectType == (GHM.WebsiteClient.Api.Domain.Constants.SubjectType)SubjectType.News)
                 {
@@ -172,9 +180,9 @@ namespace GHM.Website.Nelly.Controllers
                     await _newsService.UpdateViewNewsAsync(apiService.TenantId, newsDetail.Id, CultureInfo.CurrentCulture.Name);
 
                     var newsHost = await _newsService.GetListTopNewsHotAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 4);
-                    var newData = JsonConvert.DeserializeObject<NewsDetailViewModel>(JsonConvert.SerializeObject(newsDetail));
+                    var newData = JsonHelper.GetObjectFromObject<NewsDetailViewModel>(newsDetail);
 
-                    ViewBag.NewsHot = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(newsHost));
+                    ViewBag.NewsHot = JsonHelper.GetObjectFromObject<List<NewsSearchViewModel>>(newsHost);
                     ViewBag.NewsDetail = newData;
 
                     return View("../News/Detail", newData);
@@ -191,11 +199,11 @@ namespace GHM.Website.Nelly.Controllers
         {
             var apiService = _configuration.GetApiServiceInfo();
             var listCoreValue = await _coreService.GetAllActivatedCoreValueAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
-            if(listCoreValue != null)
+            if (listCoreValue != null)
             {
-                ViewBag.ListCoreValue = JsonConvert.DeserializeObject<List<ValueViewModel>>(JsonConvert.SerializeObject(listCoreValue));
+                ViewBag.ListCoreValue = JsonHelper.GetObjectFromObject<List<ValueViewModel>>(listCoreValue);
             }
-         
+
             //if (_cache.TryGetValue($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", out MenuDetailViewModel CategoryMiddleCache))
             //{
             //    ViewBag.MenuContact = CategoryMiddleCache;
@@ -203,7 +211,7 @@ namespace GHM.Website.Nelly.Controllers
             //else
             //{
             var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
-            var menuMiddleData = JsonConvert.DeserializeObject<MenuDetailViewModel>(JsonConvert.SerializeObject(menuMiddle));
+            var menuMiddleData = JsonHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
             _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
             ViewBag.MenuContact = menuMiddleData;
             //}

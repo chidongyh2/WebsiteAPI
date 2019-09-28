@@ -3,6 +3,7 @@ using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace GHM.WebSite.Nelly.Controllers
 {
@@ -25,6 +26,18 @@ namespace GHM.WebSite.Nelly.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [Route("buy/{productId}")]
+        public async Task<IActionResult> Buy(string productId, int? number)
+        {
+            return View("Index");
+        }
+
+        [Route("remove/{productId}")]
+        public async Task<JsonResult> Remove(string productId)
+        {
+            return Json(1);
         }
     }
 }
