@@ -52,7 +52,9 @@ namespace GHM.Website.Nelly
 
             services.AddMemoryCache();
             services.AddSingleton<IConfiguration>(Configuration);
-            services.AddSession();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(60);//You can set Time   
+            });
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 options.DefaultRequestCulture = new RequestCulture(new CultureInfo("vi-VN"));
@@ -131,6 +133,7 @@ namespace GHM.Website.Nelly
             };
             app.UseRequestLocalization(localizationOptions);
             app.UseHttpsRedirection();
+            app.UseSession();
             app.UseStaticFiles(
                 new StaticFileOptions
                 {
