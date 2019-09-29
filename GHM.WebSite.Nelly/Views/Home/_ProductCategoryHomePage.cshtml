@@ -34,7 +34,7 @@
                                 <!--/ko-->
                             </li>
                         </ul>
-                        <a data-bind="attr: {href: '/san-pham/'+ valueSeoLink(), title: valueName()}">
+                        <a data-bind="attr: {href: '/san-pham/'+ valueSeoLink() +'.htm', title: valueName()}">
                             <img class="img-responsive img-circle lazy" data-bind="attr: {src: valueImage() ? '@ViewBag.Url' + valueImage() : '@ViewBag.Url' + '@imageFirst'}" />
                         </a>
                     </div>

@@ -22,6 +22,8 @@ using DeviceDetectorNET;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Newtonsoft.Json;
 using GHM.WebSite.Nelly.Helper;
+using GHM.WebSite.Nelly.Models;
+using State = GHM.WebSite.Nelly.Models.State;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -126,13 +128,12 @@ namespace GHM.Website.Nelly.Controllers
 
             if (menuInfo == null)
             {
-                 string[] segmentArray = segment.Split('.');
-                bool isNews = segmentArray.Length  > 1 && segmentArray[1].ToLower().Equals("html");
-                //bool isProduct = segmentArray[1].ToLower().Equals("htm");
+                string[] segmentArray = segment.Split('.');
+                bool isNews = segmentArray.Length > 1 && segmentArray[1].ToLower().Equals("html");
+                bool isProduct = segmentArray.Length > 1 && segmentArray[1].ToLower().Equals("htm") && segmentArray[0].Contains("san-pham");
                 if (isNews)
                 {
                     var newInfo = await _newsService.GetClientAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, segmentArray[0]);
-
                     if (newInfo != null)
                     {
                         await _newsService.UpdateViewNewsAsync(apiService.TenantId, newInfo.Id, CultureInfo.CurrentCulture.Name);
@@ -145,6 +146,75 @@ namespace GHM.Website.Nelly.Controllers
                     }
                     else
                     {
+                        return View("../NotFound/Index");
+                    }
+                }
+                else if (isProduct)
+                {
+                    var segmentProduct = segmentArray[0].ToString();
+                    var segmentProductArray = segmentProduct.Split('/');
+
+                    if (segmentProductArray.Length < 1)
+                    {
+                        return View("../NotFound/Index");
+                    }
+
+                    var seoLinKProduct = segmentProductArray[1].ToString();
+                    var productInfo = await _productService.ProductGetDetail(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, seoLinKProduct);
+                    if (productInfo != null)
+                    {
+                        ViewBag.ProductInfo = JsonConvertHelper.GetObjectFromObject<ProductSearchViewModel>(productInfo);
+                        var productImages = await _productService.ProductImageSearchByProductId(apiService.TenantId, productInfo.Id);
+                        ViewBag.ProdutImages = productImages?.Items;
+
+                        var productAttributes = await _productService.ProductAttributeValueGetByProductId(apiService.TenantId, CultureInfo.CurrentCulture.Name, productInfo?.Id);
+                        ViewBag.ProudctAttributes = productAttributes?.Items;
+
+                        var productCategories = await _productService.ProductCategoryGetByProductId(apiService.TenantId, CultureInfo.CurrentCulture.Name, productInfo?.Id);
+                        ViewBag.ProductCategory = productCategories?.Items;
+
+                        ViewBag.ProductSelectItems = SessionHelper.GetObjectFromJson<List<ProductSelectedItem>>(HttpContext.Session, SessionParam.ShoppingCart);
+
+                        var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);
+                        var listProductCategoryData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
+                        ViewBag.ListProductCategory = listProductCategoryData;
+
+                        if (listProductCategoryData != null && listProductCategoryData.Any())
+                        {
+                            ViewBag.ProductCategroryTree = RenderTree(listProductCategoryData, null);
+                        }
+
+                        var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
+                        ViewBag.ListProductRelationship = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productRelationships?.Items);
+
+                        return View("../Product/Detail");
+                    }
+                    else
+                    {
+                        var categoryInfo = await _productService.ProductCategoryGetDetail(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLinKProduct, null);
+                        if (categoryInfo != null)
+                        {
+                            var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);
+                            var listProductCategoryData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
+                            ViewBag.ListProductCategory = listProductCategoryData;
+
+                            if (listProductCategoryData != null && listProductCategoryData.Any())
+                            {
+                                ViewBag.ProductCategroryTree = RenderTree(listProductCategoryData, null);
+                            }
+
+                            ViewBag.ProductCategoryInfo = JsonConvertHelper.GetObjectFromObject<ProductCategorySearchViewModel>(categoryInfo);
+                            ViewBag.ProductCategoryId = categoryInfo?.Id;
+                            var products = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, categoryInfo?.SeoLink, null, null, 1, 6);
+
+                            ViewBag.ListProduct = products?.Items;
+                            ViewBag.TotalProduct = products?.TotalRows;
+
+                            var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
+                            ViewBag.ListProductRelationship = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productRelationships?.Items);
+
+                            return View("../Product/Category");
+                        }
                         return View("../NotFound/Index");
                     }
                 }
@@ -334,6 +404,35 @@ namespace GHM.Website.Nelly.Controllers
 
             XDocument document = new XDocument(root);
             return document.ToString();
+        }
+
+        private List<TreeData> RenderTree(List<ProductCategorySearchViewModel> productCategorys, int? parentId)
+        {
+            var tree = new List<TreeData>();
+            var parents = productCategorys.Where(x => x.ParentId == parentId).ToList();
+            if (parents.Any())
+            {
+                parents.ForEach(parent =>
+                {
+                    var treeData = new TreeData
+                    {
+                        Id = parent.Id,
+                        Text = parent.Name,
+                        ParentId = parent.ParentId,
+                        IdPath = parent.IdPath,
+                        Data = parent,
+                        ChildCount = parent.ChildCount,
+                        Icon = string.Empty,
+                        State = new State()
+                        {
+                            Opened = !parentId.HasValue
+                        },
+                        Children = parent.ChildCount > 0 ? RenderTree(productCategorys, parent.Id) : null
+                    };
+                    tree.Add(treeData);
+                });
+            }
+            return tree;
         }
     }
 }

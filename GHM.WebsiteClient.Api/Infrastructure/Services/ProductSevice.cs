@@ -279,5 +279,33 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                 return null;
             }
         }
+
+        public async Task<ProductCategorySearchViewModel> ProductCategoryGetDetail(string tenantId, string languageId,
+           string seoLink, int? categotyId)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@TenantId", tenantId);
+                    param.Add("@LanguageId", languageId);
+                    param.Add("@CategoryId", categotyId);
+                    param.Add("@SeoLink", seoLink);
+
+                    var items = await con.QueryAsync<ProductCategorySearchViewModel>("[dbo].[sp_ProductCategory_GetDetail]", param, commandType: CommandType.StoredProcedure);
+
+                    return items.FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "sp_ProductCategory_GetDetail ProductService Error.");
+                return null;
+            }
+        }
     }
 }

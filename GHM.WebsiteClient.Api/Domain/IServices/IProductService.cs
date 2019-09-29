@@ -23,5 +23,6 @@ namespace GHM.WebsiteClient.Api.Domain.IServices
 
         Task<ProductSearchViewModel> ProductGetDetail(string tenantId, string languageId, string productId, string seoLink);
 
+        Task<ProductCategorySearchViewModel> ProductCategoryGetDetail(string tenantId, string languageId, string seoLink, int? categoryId);
     }
 }

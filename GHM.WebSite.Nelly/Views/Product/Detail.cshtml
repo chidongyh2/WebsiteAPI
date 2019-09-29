@@ -64,7 +64,7 @@
                                         <li>
                                             <label>Thể loại: </label>
                                             <!--ko foreach: listCategory-->
-                                            <a data-bind="text: productCategoryName, attr: {href: '/san-pham/' + seoLink, title: productCategoryName}">
+                                            <a data-bind="text: productCategoryName, attr: {href: '/san-pham/' + seoLink + '.htm', title: productCategoryName}">
                                             </a>
                                             <!--ko if: $index() < $root.listCategory().length - 1-->
                                             <span>,</span>

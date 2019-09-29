@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GHM.Infrastructure.Extensions;
 using GHM.Website.Nelly.ViewModels;
+using GHM.WebSite.Nelly.Helper;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -19,13 +20,15 @@ namespace GHM.WebSite.Nelly.Controllers
         private readonly IConfiguration _configuration;
         private readonly IProductService _productService;
         private readonly IVideoService _videoService;
+        private readonly INewsService _newsService;
 
         public JsonController(IConfiguration configuration, IVideoService videoService,
-            IProductService productService)
+            IProductService productService, INewsService newsService)
         {
             _configuration = configuration;
             _productService = productService;
             _videoService = videoService;
+            _newsService = newsService;
         }
 
         // GET: /<controller>/
@@ -57,6 +60,16 @@ namespace GHM.WebSite.Nelly.Controllers
 
             var categories = productCategory.FirstOrDefault();
             return Ok(new { products.Items, products.TotalRows, categories });
+        }
+
+        [Route("view-more-news"), AcceptVerbs("POST")]
+        public async Task<IActionResult> GetNewsByCategory(int categoryId, int page = 3, int pageSize = 6)
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+
+            var listNews = await _newsService.GetNewsByCategoryIdAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, categoryId, page, pageSize);
+            var listNewsData = JsonConvertHelper.GetObjectFromObject<CategoryWidthNewsViewModel>(listNews.Data);
+            return Json(listNewsData.ListNews);
         }
     }
 }

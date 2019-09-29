@@ -33,6 +33,7 @@ namespace GHM.Website.Nelly.Controllers
         }
 
         [Route("video")]
+        [Route("video.html")]
         public async Task<IActionResult> Index()
         {
             var apiService = _configuration.GetApiServiceInfo();

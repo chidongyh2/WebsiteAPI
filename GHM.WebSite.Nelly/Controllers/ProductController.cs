@@ -12,9 +12,7 @@ using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace GHM.WebSite.Nelly.Controllers
 {  
@@ -38,6 +36,7 @@ namespace GHM.WebSite.Nelly.Controllers
 
         // GET: /<controller>/   
         [Route("san-pham")]
+        [Route("san-pham.html")]
         public async Task<IActionResult> Index()
         {
             var apiService = _configuration.GetApiServiceInfo();
@@ -63,7 +62,6 @@ namespace GHM.WebSite.Nelly.Controllers
             var productCategoryInfo = listProductCategory.FirstOrDefault();
 
             var model = JsonConvertHelper.GetObjectFromObject<ProductCategorySearchViewModel>(productCategoryInfo);
-
             if (productCategoryInfo != null)
             {
                 var products = await _productService.ProductSearchByParentCategory(apiService.TenantId,
@@ -75,73 +73,74 @@ namespace GHM.WebSite.Nelly.Controllers
             return View(model);
         }
 
-        [Route("san-pham/{seoLink}")]
-        public async Task<IActionResult> Category(string seoLink)
-        {
-            var apiService = _configuration.GetApiServiceInfo();
+        //[Route("san-pham/{seoLink}")]
+        //public async Task<IActionResult> Category(string seoLink)
+        //{
+        //    var apiService = _configuration.GetApiServiceInfo();
 
-            var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);
-            var listProductCategoryData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
+        //    var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);
+        //    var listProductCategoryData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
 
-            ViewBag.ListProductCategory = listProductCategoryData;
+        //    ViewBag.ListProductCategory = listProductCategoryData;
 
-            if (listProductCategoryData != null && listProductCategoryData.Any())
-            {
-                ViewBag.ProductCategroryTree = RenderTree(listProductCategoryData, null);
-            }
+        //    if (listProductCategoryData != null && listProductCategoryData.Any())
+        //    {
+        //        ViewBag.ProductCategroryTree = RenderTree(listProductCategoryData, null);
+        //    }
 
-            var productCategoryInfo = listProductCategory?.Where(x => x.SeoLink.Equals(seoLink?.Trim()))?.FirstOrDefault();
-            ViewBag.ProductCategoryInfo = JsonConvertHelper.GetObjectFromObject<ProductCategorySearchViewModel>(productCategoryInfo);
-            ViewBag.ProductCategoryId = productCategoryInfo?.Id;
-            var products = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, productCategoryInfo?.SeoLink, null, null, 1, 6);
+        //    var productCategoryInfo = listProductCategory?.Where(x => x.SeoLink.Equals(seoLink?.Trim()))?.FirstOrDefault();
 
-            ViewBag.ListProduct = products?.Items;
-            ViewBag.TotalProduct = products?.TotalRows;
+        //    ViewBag.ProductCategoryInfo = JsonConvertHelper.GetObjectFromObject<ProductCategorySearchViewModel>(productCategoryInfo);
+        //    ViewBag.ProductCategoryId = productCategoryInfo?.Id;
+        //    var products = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, productCategoryInfo?.SeoLink, null, null, 1, 6);
 
-            var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
-            ViewBag.ListProductRelationship = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productRelationships?.Items);
+        //    ViewBag.ListProduct = products?.Items;
+        //    ViewBag.TotalProduct = products?.TotalRows;
 
-            return View();
-        }
+        //    var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
+        //    ViewBag.ListProductRelationship = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productRelationships?.Items);
 
-        [Route("san-pham/{seoLink}.html")]
-        public async Task<IActionResult> Detail(string seoLink)
-        {
-            var apiService = _configuration.GetApiServiceInfo();
+        //    return View();
+        //}
 
-            var productInfo = await _productService.ProductGetDetail(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, seoLink);
-            if (productInfo != null)
-            {
-                ViewBag.ProductInfo = JsonConvertHelper.GetObjectFromObject<ProductSearchViewModel>(productInfo);
-                var productImages = await _productService.ProductImageSearchByProductId(apiService.TenantId, productInfo.Id);
-                ViewBag.ProdutImages = productImages?.Items;
+        //[Route("san-pham/{seoLink}.html")]
+        //public async Task<IActionResult> Detail(string seoLink)
+        //{
+        //    var apiService = _configuration.GetApiServiceInfo();
 
-                var productAttributes = await _productService.ProductAttributeValueGetByProductId(apiService.TenantId, CultureInfo.CurrentCulture.Name, productInfo?.Id);
-                ViewBag.ProudctAttributes = productAttributes?.Items;
+        //    var productInfo = await _productService.ProductGetDetail(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, seoLink);
+        //    if (productInfo != null)
+        //    {
+        //        ViewBag.ProductInfo = JsonConvertHelper.GetObjectFromObject<ProductSearchViewModel>(productInfo);
+        //        var productImages = await _productService.ProductImageSearchByProductId(apiService.TenantId, productInfo.Id);
+        //        ViewBag.ProdutImages = productImages?.Items;
 
-                var productCategories = await _productService.ProductCategoryGetByProductId(apiService.TenantId, CultureInfo.CurrentCulture.Name, productInfo?.Id);
-                ViewBag.ProductCategory = productCategories?.Items;
-            }
-            else
-            {
-                return View("../NotFound/Index");
-            }
+        //        var productAttributes = await _productService.ProductAttributeValueGetByProductId(apiService.TenantId, CultureInfo.CurrentCulture.Name, productInfo?.Id);
+        //        ViewBag.ProudctAttributes = productAttributes?.Items;
 
-            var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);
-            var listProductCategoryData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
-            ViewBag.ListProductCategory = listProductCategoryData;
+        //        var productCategories = await _productService.ProductCategoryGetByProductId(apiService.TenantId, CultureInfo.CurrentCulture.Name, productInfo?.Id);
+        //        ViewBag.ProductCategory = productCategories?.Items;
+        //    }
+        //    else
+        //    {
+        //        return View("../NotFound/Index");
+        //    }
 
-            if (listProductCategoryData != null && listProductCategoryData.Any())
-            {
-                ViewBag.ProductCategroryTree = RenderTree(listProductCategoryData, null);
-            }
+        //    var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);
+        //    var listProductCategoryData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
+        //    ViewBag.ListProductCategory = listProductCategoryData;
 
-            var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
-            ViewBag.ListProductRelationship = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productRelationships?.Items);
+        //    if (listProductCategoryData != null && listProductCategoryData.Any())
+        //    {
+        //        ViewBag.ProductCategroryTree = RenderTree(listProductCategoryData, null);
+        //    }
 
-            ViewBag.ProductSelectItems = SessionHelper.GetObjectFromJson<List<ProductSelectedItem>>(HttpContext.Session, SessionParam.ShoppingCart);
-            return View();
-        }
+        //    var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
+        //    ViewBag.ListProductRelationship = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productRelationships?.Items);
+
+        //    ViewBag.ProductSelectItems = SessionHelper.GetObjectFromJson<List<ProductSelectedItem>>(HttpContext.Session, SessionParam.ShoppingCart);
+        //    return View();
+        //}
 
         private List<TreeData> RenderTree(List<ProductCategorySearchViewModel> productCategorys, int? parentId)
         {

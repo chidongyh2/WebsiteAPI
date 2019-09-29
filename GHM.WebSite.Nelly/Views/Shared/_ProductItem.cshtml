@@ -1,6 +1,6 @@
 ﻿<div class="product-item">
     <div class="image-content">
-        <a data-bind="attr: {href: '/san-pham/' + seoLink + '.html', title: name}">
+        <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
             <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + '@ViewBag.Url' + thumbnail + '&width=600&height=400', alt: name }"
                  onerror="this.src='/images/no-image.png'" />
             <span class="img-overlay"></span>
@@ -9,7 +9,7 @@
     <div class="wrap-text-content">
         <h3 class="product-code" data-bind="text: id"></h3>
         <div class="title">
-            <a data-bind="attr: {href: '/san-pham/' + seoLink + '.html', title: name}, trimText: name, trimTextLength: 50">
+            <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}, trimText: name, trimTextLength: 50">
             </a>
         </div>
         <div class="description">
@@ -26,7 +26,7 @@
             }
         </div>
         <div class="read-more">
-            <a data-bind="attr: {href: '/san-pham/' + seoLink + '.html', title: name}"
+            <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}"
                class="btn btn-main"><i class="la la-arrow-right"></i>@Resource.ViewMore</a>
         </div>
     </div>

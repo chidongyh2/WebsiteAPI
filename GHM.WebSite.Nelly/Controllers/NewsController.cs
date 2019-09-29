@@ -1,20 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Threading.Tasks;
-using GHM.Infrastructure.Constants;
-using GHM.Infrastructure.Extensions;
-using GHM.Infrastructure.Models;
-using GHM.Infrastructure.Services;
-using GHM.Infrastructure.ViewModels;
-using GHM.Website.Nelly.Models;
-using GHM.Website.Nelly.ViewModels;
-using GHM.WebSite.Nelly.Helper;
-using GHM.WebsiteClient.Api.Domain.IServices;
-using Microsoft.AspNetCore.Mvc;
+﻿using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -31,16 +17,6 @@ namespace GHM.Website.Nelly.Controllers
             _newsService = newsService;
             _configuration = configuration;
             _cache = cache;
-        }
-
-        [Route("view-more-news"), AcceptVerbs("POST")]
-        public async Task<IActionResult> GetNewsByCategory(int categoryId, int page = 3, int pageSize = 6)
-        {
-            var apiService = _configuration.GetApiServiceInfo();
-
-            var listNews = await _newsService.GetNewsByCategoryIdAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, categoryId, page, pageSize);
-            var listNewsData = JsonConvertHelper.GetObjectFromObject<CategoryWidthNewsViewModel>(listNews.Data);
-            return Json(listNewsData.ListNews);
-        }        
+        }       
     }
 }

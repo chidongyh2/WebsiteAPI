@@ -2,7 +2,7 @@
 <script id="formElementNodeTemplate" type="text/html">
     <ul class="root">
         <li>
-            <a href="javascript://" data-bind="text: text, attr:{href: '/san-pham/' + data.seoLink, title: text}"></a>
+            <a href="javascript://" data-bind="text: text, attr:{href: '/san-pham/' + data.seoLink + '.htm', title: text}"></a>
             <a href="javascript://" class="pull-right" data-bind="click: function(data){ data.state.show(!data.state.show());}, visible: childCount > 0">
                 <i class="la la-angle-down" data-bind="visible: state.show()"></i>
                 <i class="la la-angle-up" data-bind="visible: !state.show()" style="display:none"></i>
