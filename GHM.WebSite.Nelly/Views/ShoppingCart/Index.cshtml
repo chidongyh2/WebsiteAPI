@@ -19,17 +19,20 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 cm-mgb-5">
                     <a href="/gio-hang" class="shopping-cart">
                         <i class="ion-bag"></i>
-                        <span class="number-product" data-bind="text: listProduct.length"></span>
-                        Giỏ hàng của bạn
-                        <span data-bind="text: listProduct.length"></span>
-                        sản phẩm
+                        <span class="product-quantity" data-bind="text: listProduct().length"></span>
                     </a>
+                    <span class="total-product">
+                        Giỏ hàng của bạn:
+                        <b data-bind="text: listProduct().length"></b>
+                        sản phẩm
+                    </span>
                 </div>
+                <!--ko if: listProduct().length > 0-->
                 <div class="col-sm-12">
-                    <table class="table table-bordered table-responsive">
+                    <table class="table table-bordered table-responsive table-product">
                         <thead>
                             <tr>
                                 <th class="v-middle">Sản phẩm</th>
@@ -59,13 +62,13 @@
                                 <td class="text-center v-middle w100">
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-add" data-bind="click: $root.addProductQuantity.bind($data, $data, false), enable: productQuantity() > 0">
+                                            <button class="btn btn-add no-border-radius" data-bind="click: $root.addProductQuantity.bind($data, $data, false), enable: productQuantity() > 0">
                                                 <i class="la la-minus"></i>
                                             </button>
                                         </span>
-                                        <input class="form-control text-right" data-bind="value: productQuantity, event: {change: $root.changeQuantity.bind($data)}, valueUpdate: 'afterkeydown'" />
+                                        <input class="form-control text-right" data-bind="value: productQuantity(), attr: {id: 'product-' + id}, event: {change: $root.changeQuantity.bind($data)}" />
                                         <span class="input-group-btn">
-                                            <button class="btn btn-add" data-bind="click: $root.addProductQuantity.bind($data, $data, true)">
+                                            <button class="btn btn-add no-border-radius" data-bind="click: $root.addProductQuantity.bind($data, $data, true)">
                                                 <i class="la la-plus"></i>
                                             </button>
                                         </span>
@@ -94,6 +97,14 @@
                         Quay lại
                     </a>
                 </div>
+                <!--/ko-->
+                <!--ko if: !listProduct() || listProduct().length === 0-->
+                <div class="col-sm-12">
+                    <div class="alert alert-danger">
+                        Giỏ hàng trống. Vui lòng tiếp tục mua hàng.
+                    </div>
+                </div>
+                <!--/ko-->
                 <div class="col-sm-6 pull-right">
                     <div class="read-more">
                         <a class="btn btn-main">Tiếp tục mua hàng</a>

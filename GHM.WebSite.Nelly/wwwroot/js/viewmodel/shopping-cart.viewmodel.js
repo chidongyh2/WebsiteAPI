@@ -6,11 +6,12 @@
 
     self.addProductQuantity = function (data, isAdd) {
         if (isAdd) {
-            data.productQuantity(data.productQuantity() + 1);
+            data.productQuantity(parseInt(data.productQuantity()) + 1);
+            console.log(data.productQuantity());
         }
         else {
             if (data.productQuantity() > 0) {
-                data.productQuantity(data.productQuantity() - 1);
+                data.productQuantity(parseInt(data.productQuantity()) - 1);
             }
         }
         data.totalPrice(data.productQuantity() * data.salePrice);
@@ -26,7 +27,9 @@
     };
 
     self.changeQuantity = function (item) {
-        item.productQuantity = ko.observable(item.productQuantity());
+        item.productQuantity($(`#product-${item.id}`).val());
+        console.log($(`#product-${item.id}`).val());
+        console.log(item.productQuantity());
         item.totalPrice(item.productQuantity() * item.salePrice);
         self.renderTotalPrice();
     };

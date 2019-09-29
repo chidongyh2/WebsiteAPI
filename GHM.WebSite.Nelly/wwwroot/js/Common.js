@@ -53,8 +53,9 @@ function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
+var numberAfterComma = 0;
 function formatNumberic(value, ext) {
-    if (value === null || value === undefined) {
+    if (value == null || value == undefined) {
         return "";
     }
 
@@ -67,7 +68,7 @@ function formatNumberic(value, ext) {
         return "0";
     }
 
-    if (ext === undefined)
+    if (ext == undefined)
         ext = "N" + numberAfterComma;
 
     //if (!isNumber(value)) {
@@ -76,8 +77,8 @@ function formatNumberic(value, ext) {
 
     value = Globalize.format(value, ext).toString();
     var ext1 = parseFloat(value.toString().replace(/\,/g, ""));
-
-    return ext1.toString().indexOf('.') === -1 ? value.split('.')[0] : value.split('.')[0] + "." + ext1.toString().split('.')[1];
+    console.log(value, ext1);
+    return ext1.toString().indexOf('.') == -1 ? value.split('.')[0] : value.split('.')[0] + "." + ext1.toString().split('.')[1];
 }
 
 function ConvertToInt(value) {
@@ -464,6 +465,7 @@ $(document).ready(function () {
     screenSize.with.isMin768 = $(window).width() >= 768;
     screenSize.with.isMin450 = $(window).width() > 450;
     screenSize.with.isMin950 = $(window).width() > 950;
+    Globalize.culture('vi-VN');
 });
 
 function calculateTime(hour, minutes, second) {
