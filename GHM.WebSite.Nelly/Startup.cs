@@ -182,7 +182,9 @@ namespace GHM.Website.Nelly
             {
                 if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he")
                     && !values[parameterName].ToString().Contains("giai-phap/")
-                    && !values[parameterName].ToString().Equals("video") && !values[parameterName].ToString().Equals("san-pham"))
+                     && !values[parameterName].ToString().Contains("san-pham/")
+                    && !values[parameterName].ToString().Equals("video") 
+                    && !values[parameterName].ToString().Equals("san-pham"))
                 {
                     //var permalink = values[parameterName].ToString();
                     //string[] link = permalink.Split('.');

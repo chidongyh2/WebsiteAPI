@@ -82,9 +82,31 @@ namespace GHM.WebSite.Nelly.Controllers
         }
 
         [Route("remove/{productId}")]
-        public async Task<JsonResult> Remove(string productId)
+        public JsonResult Remove(string productId)
         {
-            return Json(1);
+            var cart = SessionHelper.GetObjectFromJson<List<ProductSelectedItem>>(HttpContext.Session, SessionParam.ShoppingCart);
+            int index = IsExists(productId);
+            cart.RemoveAt(index);
+
+            SessionHelper.SetObjectAsJson(HttpContext.Session, SessionParam.ShoppingCart, cart);
+
+            return Json(cart);
+        }
+
+        [Route("updateQuantity/{productId}")]
+        public JsonResult UpdateQuantity(string productId, int? quantity)
+        {
+            var cart = SessionHelper.GetObjectFromJson<List<ProductSelectedItem>>(HttpContext.Session, SessionParam.ShoppingCart);
+            int index = IsExists(productId);
+
+            if (index >= 0)
+            {
+                cart[index].Quantity = quantity ?? 0;
+            }
+
+            SessionHelper.SetObjectAsJson(HttpContext.Session, SessionParam.ShoppingCart, cart);
+
+            return Json(cart);
         }
 
         #region privete
