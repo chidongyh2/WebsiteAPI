@@ -96,6 +96,9 @@
     <Content Update="Views\Album\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Contact\Agency.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Contact\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -106,6 +109,9 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Home\_MainSlider.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\Error.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Shared\_MenuContact.cshtml">

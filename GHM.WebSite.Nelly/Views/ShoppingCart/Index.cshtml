@@ -18,88 +18,114 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 cm-mgb-5">
-                    <a href="/gio-hang" class="shopping-cart">
-                        <i class="ion-bag"></i>
-                        <span class="product-quantity" data-bind="text: listProduct().length"></span>
-                    </a>
-                    <span class="total-product">
-                        Giỏ hàng của bạn:
-                        <b data-bind="text: listProduct().length"></b>
-                        sản phẩm
-                    </span>
-                </div>
-                <!--ko if: listProduct().length > 0-->
-                <div class="col-sm-12">
-                    <table class="table table-bordered table-responsive table-product">
-                        <thead>
-                            <tr>
-                                <th class="v-middle" style="padding-left:20px !important">Sản phẩm</th>
-                                <th class="text-center v-middle w150">Giá</th>
-                                <th class="text-center v-middle w150">Số lượng</th>
-                                <th class="text-center v-middle w150">Tổng tiển</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!--ko foreach: $root.listProduct-->
-                            <tr>
-                                <td class="v-middle" style="padding-left:20px !important">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
-                                                <img class="w70" data-bind="attr: {src: '@ViewBag.Url' + thumbnail, title: name}" onerror="this.onerror = null;this.src='/images/no-image.png'" />
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
-                                                <h3 data-bind="text: name"></h3>
-                                            </a>
-                                            <a href="javascript://" data-toggle="tooltip" title="Xóa sản phẩm">
-                                                <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                                <span>Xóa sản phẩm</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-center v-middle w150" data-bind="text: formatNumberic(salePrice,  'N0') + ' đ'"></td>
-                                <td class="text-center v-middle w100">
-                                    <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-add no-border-radius" data-bind="click: $root.addProductQuantity.bind($data, $data, false), enable: productQuantity() > 0">
-                                                <i class="la la-minus"></i>
-                                            </button>
-                                        </span>
-                                        <input class="form-control text-right" data-bind="value: productQuantity(), attr: {id: 'product-' + id}, event: {change: $root.changeQuantity.bind($data)}" />
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-add no-border-radius" data-bind="click: $root.addProductQuantity.bind($data, $data, true)">
-                                                <i class="la la-plus"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </td>
-                                <td class="text-center v-middle total-price" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></td>
-                            </tr>
-                            <!--/ko-->
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-sm-12">
-                    <div class="pull-right">
-                        <span>Thành tiền:  </span>
-                        <span class="total-price" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></span>
+                <div class="col-sm-3 order">
+                    <h3 class="title">
+                        <i class="la la-truck"></i>
+                        Đặt hàng siêu nhanh
+                    </h3>
+                    <div class="form-group">
+                        <label>Số điện thoại<span>*</span></label>
+                        <input class="form-control" placeholder="Vui lòng nhập số điện thoại của bạn" />
+                    </div>
+                    <div class="form-group">
+                        <label>Họ tên <span>*</span></label>
+                        <input class="form-control" placeholder="Vui lòng nhập họ tên của bạn" />
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ giao hàng <span>*</span></label>
+                        <textarea class="form-control" placeholder="Vui lòng nhập địa chỉ giao hàng" ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Ghi chú</label>
+                        <textarea class="form-control" placeholder="Vui lòng nhập ghi chú" ></textarea>
                     </div>
                 </div>
-                <div class="col-sm-12">
-                    <div class="pull-right">
-                        <span class="bold" data-bind="text: totalMoney() + 'đồng'"></span>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-12 cm-mgb-5">
+                            <a href="/gio-hang" class="shopping-cart">
+                                <i class="ion-bag"></i>
+                                <span class="product-quantity" data-bind="text: listProduct().length"></span>
+                            </a>
+                            <span class="total-product">
+                                Giỏ hàng của bạn:
+                                <b data-bind="text: listProduct().length"></b>
+                                sản phẩm
+                            </span>
+                        </div>
+                        <!--ko if: listProduct().length > 0-->
+                        <div class="col-sm-12">
+                            <table class="table table-bordered table-responsive table-product">
+                                <thead>
+                                    <tr>
+                                        <th class="v-middle" style="padding-left:20px !important">Sản phẩm</th>
+                                        <th class="text-center v-middle w150">Giá</th>
+                                        <th class="text-center v-middle w150">Số lượng</th>
+                                        <th class="text-center v-middle w150">Tổng tiển</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--ko foreach: $root.listProduct-->
+                                    <tr>
+                                        <td class="v-middle" style="padding-left:20px !important">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
+                                                        <img class="w70" data-bind="attr: {src: '@ViewBag.Url' + thumbnail, title: name}" onerror="this.onerror = null;this.src='/images/no-image.png'" />
+                                                    </a>
+                                                </div>
+                                                <div class="media-body">
+                                                    <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
+                                                        <h3 data-bind="text: name"></h3>
+                                                    </a>
+                                                    <a href="javascript://" data-bind="click: $root.removeProduct.bind($data)" data-toggle="tooltip" title="Xóa sản phẩm">
+                                                        <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                                        <span>Xóa sản phẩm</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center v-middle w150" data-bind="text: formatNumberic(salePrice,  'N0') + ' đ'"></td>
+                                        <td class="text-center v-middle w100">
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-add no-border-radius" data-bind="click: $root.addProductQuantity.bind($data, $data, false), enable: productQuantity() > 0">
+                                                        <i class="la la-minus"></i>
+                                                    </button>
+                                                </span>
+                                                <input class="form-control text-right" data-bind="value: productQuantity(), attr: {id: 'product-' + id}, event: {change: $root.changeQuantity.bind($data)}" />
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-add no-border-radius" data-bind="click: $root.addProductQuantity.bind($data, $data, true)">
+                                                        <i class="la la-plus"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="text-center v-middle total-price" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></td>
+                                    </tr>
+                                    <!--/ko-->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="pull-right">
+                                <span>Thành tiền:  </span>
+                                <span class="total-price" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="pull-right">
+                                <span class="bold" data-bind="text: totalMoney() + 'đồng'"></span>
+                            </div>
+                        </div>
+                        <!--/ko-->
+                        <div class="col-sm-12" data-bind="visible: !listProduct() || listProduct().length === 0" style="display:none">
+                            <div class="alert alert-danger">
+                                Giỏ hàng trống. Vui lòng tiếp tục mua hàng.
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!--/ko-->
-                <div class="col-sm-12" data-bind="visible: !listProduct() || listProduct().length === 0" style="display:none">
-                    <div class="alert alert-danger">
-                        Giỏ hàng trống. Vui lòng tiếp tục mua hàng.
-                    </div>
-                </div>                
             </div>
             <div class="row cm-mgt-10">
                 <div class="col-sm-6">
@@ -111,13 +137,12 @@
                 <div class="col-sm-6">
                     <div class="read-more pull-right">
                         <a class="btn btn-main" href="/san-pham" title="Tiếp tục mua hàng">Tiếp tục mua hàng</a>
-                        <a class="btn btn-main" href="javascript://">Tiến hành thanh toán</a>
+                        <a class="btn btn-main" href="javascript://">Đặt hàng</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     @section scripts {
         <script type="text/javascript">
              var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");

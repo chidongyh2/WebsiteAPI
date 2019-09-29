@@ -21,13 +21,14 @@
                             <li data-bind="css:{'active': $root.valueId() === Id}">
                                 <input data-bind="attr: {id: 'c'+($index() + 1)}, click: $root.selectValue.bind($data)" type='checkbox'>
                                 <!--ko if: $index()+1 <= 5-->
-                                <label style="text-align:right" data-bind="attr: {for: 'c'+($index() + 1)}, click: $root.selectValue.bind($data), event: { mouseover: $root.selectValue.bind($data)}">
+                                @*event: { mouseover: $root.selectValue.bind($data)}*@
+                                <label style="text-align:right" data-bind="attr: {for: 'c'+($index() + 1)}, click: $root.selectValue.bind($data)">
                                     <b data-bind="text: Name"></b>
                                     <span data-bind="text: '0'+ ($index()+1), css:{'cm-pdl-15': $root.valueId() === Id}"></span>
                                 </label>
                                 <!--/ko-->
                                 <!--ko if: $index()+1 > 5-->
-                                <label style="text-align: left" data-bind="attr: {for: 'c'+($index() + 1)}, click: $root.selectValue.bind($data), event: { mouseover: $root.selectValue.bind($data)}">
+                                <label style="text-align: left" data-bind="attr: {for: 'c'+($index() + 1)}, click: $root.selectValue.bind($data)">
                                     <span data-bind="text: $index() + 1 < 10 ? '0'+ ($index()+1) : $index()+1, css:{'cm-pdr-15': $root.valueId() === Id}"></span>
                                     <b data-bind="text: Name"></b>
                                 </label>

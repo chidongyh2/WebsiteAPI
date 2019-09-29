@@ -20,7 +20,6 @@ using Microsoft.AspNetCore.Http;
 using GHM.Infrastructure.Constants;
 using DeviceDetectorNET;
 using GHM.WebsiteClient.Api.Domain.IServices;
-using Newtonsoft.Json;
 using GHM.WebSite.Nelly.Helper;
 using GHM.WebSite.Nelly.Models;
 using State = GHM.WebSite.Nelly.Models.State;
@@ -215,7 +214,10 @@ namespace GHM.Website.Nelly.Controllers
 
                             return View("../Product/Category");
                         }
-                        return View("../NotFound/Index");
+                        else
+                        {
+                            return View("../NotFound/Index");
+                        }
                     }
                 }
                 else
@@ -287,6 +289,11 @@ namespace GHM.Website.Nelly.Controllers
             ViewBag.MenuContact = menuMiddleData;
             //}
 
+            return View();
+        }
+
+        public async Task<IActionResult> Error()
+        {
             return View();
         }
 

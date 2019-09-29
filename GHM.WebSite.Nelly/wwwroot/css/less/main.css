@@ -2072,6 +2072,39 @@ body {
 #shopping-cart {
   padding: 30px 0px;
 }
+#shopping-cart .order {
+  padding-right: 0px;
+  color: #3F3F3F;
+}
+@media only screen and (max-width: 1200px) {
+  #shopping-cart .order {
+    padding-right: 15px;
+  }
+}
+#shopping-cart .order .title {
+  margin-top: 0px;
+  font-size: 13px;
+  font-family: Roboto-Bold;
+  color: #3F3F3F;
+  text-transform: uppercase;
+}
+#shopping-cart .order .title i {
+  font-size: 18px;
+}
+#shopping-cart .order .form-group {
+  margin-bottom: 5px;
+}
+#shopping-cart .order .form-group label {
+  text-transform: uppercase;
+  color: #3F3F3F;
+  font-weight: normal;
+  font-size: 13px;
+}
+#shopping-cart .order .form-group input,
+#shopping-cart .order .form-group textarea {
+  border-radius: 0px;
+  border: 1px solid #EEEDEB;
+}
 #shopping-cart .shopping-cart {
   position: relative;
   margin-right: 10px;
@@ -2188,4 +2221,48 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 600;
+}
+.register-agency {
+  padding: 30px 0px;
+}
+.register-agency .form-horizontal {
+  width: 70%;
+  padding: 40px;
+  background-color: #F7F7F7;
+}
+@media only screen and (max-width: 1200px) {
+  .register-agency .form-horizontal {
+    width: 100%;
+  }
+}
+.register-agency .form-horizontal .title {
+  text-align: center;
+  text-transform: uppercase;
+  color: #3F3F3F;
+  font-family: PlayfairDisplay;
+  font-size: 20px;
+  font-weight: bold;
+}
+.register-agency .form-horizontal .form-group {
+  padding: 10px;
+  background: white;
+  margin: 0px;
+}
+.register-agency .form-horizontal .form-group label {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #3F3F3F;
+  font-weight: normal;
+  padding-left: 10px;
+}
+.register-agency .form-horizontal .form-group input,
+.register-agency .form-horizontal .form-group textarea {
+  border: none !important;
+  box-shadow: none;
+}
+.register-agency .form-horizontal .form-group input:focus,
+.register-agency .form-horizontal .form-group textarea:focus,
+.register-agency .form-horizontal .form-group input:hover,
+.register-agency .form-horizontal .form-group textarea:hover {
+  box-shadow: none !important;
 }

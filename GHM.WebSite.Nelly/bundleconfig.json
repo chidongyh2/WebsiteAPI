@@ -29,12 +29,6 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/viewmodel/angency-system.viewmodel.min.js",
-    "inputFiles": [
-      "wwwroot/js/viewmodel/angency-system.viewmodel.js"
-    ]
-  },
-  {
     "outputFileName": "wwwroot/js/viewmodel/category-news.viewmodel.min.js",
     "inputFiles": [
       "wwwroot/js/viewmodel/category-news.viewmodel.js"
@@ -131,6 +125,18 @@
     "outputFileName": "wwwroot/js/viewmodel/shopping-cart.viewmodel.min.js",
     "inputFiles": [
       "wwwroot/js/viewmodel/shopping-cart.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/agency-system.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/agency-system.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/agency-register.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/agency-register.viewmodel.js"
     ]
   }
 ]

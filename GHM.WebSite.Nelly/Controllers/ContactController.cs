@@ -44,6 +44,13 @@ namespace GHM.Website.Nelly.Controllers
             return View();
         }
 
+        [Route("dang-ky-dai-ly")]
+        [Route("dang-ky-dai-ly.html")]
+        public IActionResult Agency()
+        {
+            return View();
+        }
+
         [Route("gui-lien-he"), AcceptVerbs("POST")]
         public async Task<JsonResult> Send(string fullName, string phoneNumber, string email, string title, string content)
         {

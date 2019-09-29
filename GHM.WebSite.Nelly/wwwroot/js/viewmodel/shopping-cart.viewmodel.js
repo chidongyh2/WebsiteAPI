@@ -7,7 +7,6 @@
     self.addProductQuantity = function (data, isAdd) {
         if (isAdd) {
             data.productQuantity(parseInt(data.productQuantity()) + 1);
-            console.log(data.productQuantity());
         }
         else {
             if (data.productQuantity() > 0) {
@@ -28,10 +27,33 @@
 
     self.changeQuantity = function (item) {
         item.productQuantity($(`#product-${item.id}`).val());
-        console.log($(`#product-${item.id}`).val());
-        console.log(item.productQuantity());
         item.totalPrice(item.productQuantity() * item.salePrice);
+
+        $.post(`/gio-hang/updateQuantity/${item.id}`, {
+            quantity: item.productQuantity(),
+        }, function (data) {
+        });
         self.renderTotalPrice();
+    };
+
+    self.removeProduct = function (item) {
+        $.post(`/gio-hang/remove/${item.id}`, {
+        }, function (data) {
+            if (data) {
+                var productInfo = _.find(self.listProduct(), function (product) {
+                    return product.id === item.id;
+                });
+                if (productInfo) {
+                    self.listProduct.remove(productInfo);
+                }
+
+                var quantityProductHeader = document.getElementById("quantity-product");
+                quantityProductHeader.textContent = self.listProduct().length;
+
+                var quantityProductSidebar = document.getElementById("quantity-product-sidebar");
+                quantityProductSidebar.textContent = self.listProduct().length;
+            }
+        });
     };
 
     $(document).ready(function () {
