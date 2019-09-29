@@ -2507,8 +2507,90 @@ body {
     }
 
     .table-product {
-        border: 1px solid @color-border;
+        border: 2px solid @color-border;
+        color: @color-table;
+        font-size: 14px;
+        font-family: Roboto-Regular;
 
+        thead {
+            background-color: #F2F2F2;
+
+            tr {
+                border: 1px solid @color-border;
+
+                th {
+                    border: none;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                border: none;
+
+                td {
+                    border: none;
+                    padding: 8px;
+
+                    .media {
+                        .media-left {
+                        }
+
+                        .media-body {
+                            a {
+                                padding-left: 1px;
+                                color: @color-table;
+                                text-decoration: none;
+
+                                h3 {
+                                    margin-top: 5px;
+                                    margin-bottom: 10px;
+                                    font-size: 14px;
+                                }
+
+                                i {
+                                    color: @main-color;
+                                }
+
+                                span {
+                                    color: @color-text-grey;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .total-price {
+                    color: #51B5DA;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .total-price {
+        margin-left: 10px;
+        color: #F80304;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .btn-prev {
+        color: @color-text-grey;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    .read-more {
+        margin-top: 0px;
+
+        .btn-main {
+            margin-top: 0px;
+            background-color: @main-color;
+            color: @color-white;
+            margin: 0px 5px;
+        }
     }
 }
 

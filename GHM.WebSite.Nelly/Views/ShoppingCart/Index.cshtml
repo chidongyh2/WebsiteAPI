@@ -1,5 +1,4 @@
-﻿@using GHM.WebSite.Nelly.Helper
-@using GHM.WebSite.Nelly.Models
+﻿
 @{
     ViewBag.Title = "Giỏ hàng";
     var jsonSerializerSettings = new JsonSerializerSettings
@@ -35,7 +34,7 @@
                     <table class="table table-bordered table-responsive table-product">
                         <thead>
                             <tr>
-                                <th class="v-middle">Sản phẩm</th>
+                                <th class="v-middle" style="padding-left:20px !important">Sản phẩm</th>
                                 <th class="text-center v-middle w150">Giá</th>
                                 <th class="text-center v-middle w150">Số lượng</th>
                                 <th class="text-center v-middle w150">Tổng tiển</th>
@@ -44,7 +43,7 @@
                         <tbody>
                             <!--ko foreach: $root.listProduct-->
                             <tr>
-                                <td class="v-middle">
+                                <td class="v-middle" style="padding-left:20px !important">
                                     <div class="media">
                                         <div class="media-left">
                                             <a data-bind="attr: {href: '/san-pham/' + seoLink + '.html', title: name}">
@@ -54,6 +53,10 @@
                                         <div class="media-body">
                                             <a data-bind="attr: {href: '.san-pham/' + seoLink + '.html', title: name}">
                                                 <h3 data-bind="text: name"></h3>
+                                            </a>
+                                            <a href="javascript://" data-toggle="tooltip" title="Xóa sản phẩm">
+                                                <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                                <span>Xóa sản phẩm</span>
                                             </a>
                                         </div>
                                     </div>
@@ -74,7 +77,7 @@
                                         </span>
                                     </div>
                                 </td>
-                                <td class="text-center v-middle" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></td>
+                                <td class="text-center v-middle total-price" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></td>
                             </tr>
                             <!--/ko-->
                         </tbody>
@@ -82,33 +85,33 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="pull-right">
-                        <label>Tổng sô tiền:</label>
-                        <span class="" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></span>
+                        <span>Thành tiền:  </span>
+                        <span class="total-price" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></span>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="pull-right">
-                        (<span class="" data-bind="text: totalMoney() + 'đồng'"></span>)
+                        <span class="bold" data-bind="text: totalMoney() + 'đồng'"></span>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <a href="javascript://">
-                        <i class="la la-"></i>
-                        Quay lại
-                    </a>
-                </div>
                 <!--/ko-->
-                <!--ko if: !listProduct() || listProduct().length === 0-->
-                <div class="col-sm-12">
+                <div class="col-sm-12" data-bind="visible: !listProduct() || listProduct().length === 0" style="display:none">
                     <div class="alert alert-danger">
                         Giỏ hàng trống. Vui lòng tiếp tục mua hàng.
                     </div>
+                </div>                
+            </div>
+            <div class="row cm-mgt-10">
+                <div class="col-sm-6">
+                    <a href="javascript://" class="btn-prev" onclick="javascript:history.go(-1)">
+                        <i class="la la-angle-left"></i>
+                        Quay lại
+                    </a>
                 </div>
-                <!--/ko-->
-                <div class="col-sm-6 pull-right">
-                    <div class="read-more">
-                        <a class="btn btn-main">Tiếp tục mua hàng</a>
-                        <a class="btn btn-main">Tiến hành thanh toán</a>
+                <div class="col-sm-6">
+                    <div class="read-more pull-right">
+                        <a class="btn btn-main" href="/san-pham" title="Tiếp tục mua hàng">Tiếp tục mua hàng</a>
+                        <a class="btn btn-main" href="javascript://">Tiến hành thanh toán</a>
                     </div>
                 </div>
             </div>

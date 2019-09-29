@@ -77,7 +77,7 @@ function formatNumberic(value, ext) {
 
     value = Globalize.format(value, ext).toString();
     var ext1 = parseFloat(value.toString().replace(/\,/g, ""));
-    console.log(value, ext1);
+
     return ext1.toString().indexOf('.') == -1 ? value.split('.')[0] : value.split('.')[0] + "." + ext1.toString().split('.')[1];
 }
 
