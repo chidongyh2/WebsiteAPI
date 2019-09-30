@@ -1447,7 +1447,10 @@ body {
     }
 
     .even {
-        flex-direction:column-reverse;
+        @media @mobile {
+            flex-direction: column-reverse;
+        }
+
         .content {
             align-items: flex-start;
         }
@@ -1459,6 +1462,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
 
     @media @mobile {
         flex-direction: column;
@@ -2366,7 +2370,7 @@ body {
                 }
 
                 @media @mobile {
-                    width: 100%;
+                    width: 70%;
                 }
             }
 
@@ -2375,7 +2379,7 @@ body {
                 width: 50%;
 
                 @media @mobile {
-                    width: 100%;
+                    width: 70%;
                 }
 
                 span {

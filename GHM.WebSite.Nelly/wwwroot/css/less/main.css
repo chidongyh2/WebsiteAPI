@@ -1244,8 +1244,10 @@ body {
 #product-category-solution .odd .content {
   align-items: flex-end;
 }
-#product-category-solution .even {
-  flex-direction: column-reverse;
+@media only screen and (max-width: 1200px) {
+  #product-category-solution .even {
+    flex-direction: column-reverse;
+  }
 }
 #product-category-solution .even .content {
   align-items: flex-start;
@@ -1255,6 +1257,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
 }
 @media only screen and (max-width: 1200px) {
   .category-item {
@@ -2011,7 +2014,7 @@ body {
 }
 @media only screen and (max-width: 1200px) {
   #product-detail .product-info .content .add-shopping-cart {
-    width: 100%;
+    width: 70%;
   }
 }
 #product-detail .product-info .content .total-money {
@@ -2020,7 +2023,7 @@ body {
 }
 @media only screen and (max-width: 1200px) {
   #product-detail .product-info .content .total-money {
-    width: 100%;
+    width: 70%;
   }
 }
 #product-detail .product-info .content .total-money span {
