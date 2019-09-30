@@ -51,7 +51,7 @@ function ProductCategorySolutionViewModel() {
                 {
                     breakpoint: 480,
                     settings: {
-                        item: 1,
+                        item: 2,
                         slideMove: 1
                     }
                 }
