@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Giỏ hàng";
     var jsonSerializerSettings = new JsonSerializerSettings
     {
@@ -33,11 +32,11 @@
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ giao hàng <span>*</span></label>
-                        <textarea class="form-control" placeholder="Vui lòng nhập địa chỉ giao hàng" ></textarea>
+                        <textarea class="form-control" placeholder="Vui lòng nhập địa chỉ giao hàng"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Ghi chú</label>
-                        <textarea class="form-control" placeholder="Vui lòng nhập ghi chú" ></textarea>
+                        <textarea class="form-control" placeholder="Vui lòng nhập ghi chú"></textarea>
                     </div>
                 </div>
                 <div class="col-sm-9">
@@ -46,7 +45,7 @@
                             <a href="/gio-hang" class="shopping-cart">
                                 <i class="ion-bag"></i>
                                 <span class="product-quantity" data-bind="text: listProduct().length"></span>
-                            </a>                           
+                            </a>
                         </div>
                         <div class="col-sm-12">
                             <span class="total-product pull-right">
@@ -56,11 +55,11 @@
                             </span>
                         </div>
                         <!--ko if: listProduct().length > 0-->
-                        <div class="col-sm-12">
-                            <table class="table table-bordered table-responsive table-product">
+                        <div class="col-sm-12 table-responsive ">
+                            <table class="table table-bordered table-product">
                                 <thead>
                                     <tr>
-                                        <th class="v-middle" style="padding-left:20px !important">Sản phẩm</th>
+                                        <th class="v-middle">Sản phẩm</th>
                                         <th class="text-center v-middle w150">Giá</th>
                                         <th class="text-center v-middle w150">Số lượng</th>
                                         <th class="text-center v-middle w150">Tổng tiển</th>
@@ -69,13 +68,21 @@
                                 <tbody>
                                     <!--ko foreach: $root.listProduct-->
                                     <tr>
-                                        <td class="v-middle" style="padding-left:20px !important">
+                                        <td class="v-middle">
                                             <div class="media">
                                                 <div class="media-left">
                                                     <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
                                                         <img class="w70" data-bind="attr: {src: '@ViewBag.Url' + thumbnail, title: name}" onerror="this.onerror = null;this.src='/images/no-image.png'" />
                                                     </a>
+                                                    @if (ViewBag.DeviceType != "desktop")
+                                                    {
+                                                    <a class="" href="javascript://" data-bind="click: $root.removeProduct.bind($data)" data-toggle="tooltip" title="Xóa sản phẩm">
+                                                        <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                                    </a>
+                                                    }
                                                 </div>
+                                                @if (ViewBag.DeviceType == "desktop")
+                                                {
                                                 <div class="media-body">
                                                     <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
                                                         <h3 data-bind="text: name"></h3>
@@ -85,10 +92,11 @@
                                                         <span>Xóa sản phẩm</span>
                                                     </a>
                                                 </div>
+                                                }
                                             </div>
                                         </td>
                                         <td class="text-center v-middle w150" data-bind="text: formatNumberic(salePrice,  'N0') + ' đ'"></td>
-                                        <td class="text-center v-middle w100">
+                                        <td class="text-center v-middle w150">
                                             <div class="input-group">
                                                 <span class="input-group-btn">
                                                     <button class="btn btn-add no-border-radius" data-bind="click: $root.addProductQuantity.bind($data, $data, false), enable: productQuantity() > 0">
@@ -110,15 +118,11 @@
                             </table>
                         </div>
                         <div class="col-sm-12">
-                            <div class="pull-right">
-                                <span>Thành tiền:  </span>
-                                <span class="total-price" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></span>
-                            </div>
+                            <span class="total-price pull-right" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></span>
+                            <span class="pull-right">Thành tiền:  </span>
                         </div>
                         <div class="col-sm-12">
-                            <div class="pull-right">
-                                <span class="bold" data-bind="text: totalMoney() + 'đồng'"></span>
-                            </div>
+                            <p class="bold pull-right" data-bind="text: totalMoney() + 'đồng'"></p>
                         </div>
                         <!--/ko-->
                         <div class="col-sm-12" data-bind="visible: !listProduct() || listProduct().length === 0" style="display:none">
@@ -146,8 +150,8 @@
         </div>
     </div>
     @section scripts {
-        <script type="text/javascript">
+    <script type="text/javascript">
              var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
-        </script>
-        <script src="~/js/viewmodel/shopping-cart.viewmodel.min.js"></script>
+    </script>
+    <script src="~/js/viewmodel/shopping-cart.viewmodel.min.js"></script>
     }

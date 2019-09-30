@@ -7,7 +7,7 @@ function ProductViewModel() {
     self.listProduct = ko.observableArray([]);
 
     self.firstIndex = ko.observable(0);
-    self.lastIndex = ko.observable(4);
+    self.lastIndex = ko.observable(window.innerWidth < 768 ? 1 : 4);
 
     //Phân trang
     self.totalRows = ko.observable(0);
@@ -117,10 +117,6 @@ function ProductViewModel() {
     };
 
     $(document).ready(function () {
-        if (window.innerWidth < 768) {
-            self.lastIndex(1);
-        }
-
         _.each(productCategories, function (item) {
             item.IsActive = ko.observable(false);
         });

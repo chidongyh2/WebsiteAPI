@@ -14,6 +14,11 @@
             }
         }
         data.totalPrice(data.productQuantity() * data.salePrice);
+
+        $.post(`/gio-hang/updateQuantity/${data.id}`, {
+            quantity: data.productQuantity()
+        }, function (result) {
+        });
         self.renderTotalPrice();
     };
 

@@ -24,6 +24,8 @@ function FaqViewModel() {
             });
             self.listFaq()[0].isShowAnswer(true);
         }
+
+        $('#register-agency').removeClass('active');
     };
 
     self.showAnswer = function (data) {
@@ -31,7 +33,16 @@ function FaqViewModel() {
             item.isShowAnswer(false);
         });
 
-        data.isShowAnswer(true);
+        data.isShowAnswer(true);      
+    };
+
+    self.registerAgency = function () {
+        _.each(self.listGroup(), function (item) {
+            item.isSelected(false);
+        });
+
+        $('#register-agency').addClass('active');
+        window.location.href = '/dang-ky-dai-ly.html';
     };
 
     $(document).ready(function () {

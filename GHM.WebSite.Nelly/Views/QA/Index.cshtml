@@ -18,11 +18,17 @@
             </div>
             <div class="row cm-mgt-20">
                 <div class="col-sm-3">
-                    <ul class="faq-group" data-bind="foreach: listGroup">
+                    <ul class="faq-group">
+                        <!--ko foreach: listGroup-->
                         <li data-bind="click: $root.selectGroup.bind($data),
                             attr: {class: isSelected() ? 'active' : ''}">
                             <span class="numer" data-bind="text: $index() + 1"></span>
                             <span class="group-name" data-bind="text: name"></span>
+                        </li>
+                        <!--/ko-->
+                        <li data-bind="click: $root.registerAgency" id="register-agency">
+                            <span class="numer" data-bind="text: listGroup().length + 1"></span>
+                            <span class="group-name">Đăng ký đại lý</span>
                         </li>
                     </ul>
                 </div>

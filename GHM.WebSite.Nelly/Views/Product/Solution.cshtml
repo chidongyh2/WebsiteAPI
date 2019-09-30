@@ -40,16 +40,16 @@
                 </div>
                 <!--ko foreach: listProductCategory -->
                 <div class="row category-and-product">
-                    <div class="col-sm-3">
+                    <div class="col-sm-3 col-xs-5">
                         <div class="category-info">
-                            <div class="image">
+                            <div class="image visible-lg">
                                 <img class="img-circle img-responsive lazy" data-bind="attr: {src: '@ViewBag.Url' + productCategoryImage}" />
                             </div>
                             <span class="number" data-bind="text: $index() <10 ? '0'+ ($index() + 1) : $index()"></span>
                             <h3 class="name" data-bind="text: productCategoryName"></h3>
                         </div>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 col-xs-7">
                         <div data-bind="attr:{id: 'product-slider-' + productCategoryId},">
                             <!-- ko foreach: products-->
                             <div class="item">

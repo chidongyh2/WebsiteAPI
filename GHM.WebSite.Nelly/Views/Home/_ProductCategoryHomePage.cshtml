@@ -46,12 +46,12 @@
                         {
                             <div class="item">
                                 <div class="logo">
-                                    <a href="@($"/{item.SeoLink}")" title="@item.Name">
+                                    <a href="@($"/san-pham/{item.SeoLink}.htm")" title="@item.Name">
                                         <img class="img-responsive img-circle" src="@($"/image?url={(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{item.Image}")}")" />
                                     </a>
                                 </div>
                                 <div class="name">
-                                    <a href="@($"/{item.SeoLink}")"
+                                    <a href="@($"/san-pham/{item.SeoLink}.htm")"
                                        class="transition" title="@item.Name">
                                         @item.Name
                                     </a>                                    
