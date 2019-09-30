@@ -25,8 +25,8 @@
                                 </div>
                             </div>
                             <!--ko foreach: listVideoMain-->
+                            <!--ko if: $index() > 0-->
                             <div class="col-sm-4 col-xs-6">
-                                <!--ko if: $index() > 0-->
                                 <div class="video-item">
                                     <div class="thumbnail-video">
                                         <a data-bind="attr: { href: Url, title: Title }, click: $root.selectVideo">
@@ -44,9 +44,11 @@
                                         </a>
                                     </div>
                                 </div>
-                                <!--/ko-->
                             </div>
                             <!--/ko-->
+                            <!--/ko-->                            
+                        </div>
+                        <div class="row">
                             <div class="col-sm-12">
                                 <div id="video-silder" data-bind="foreach: $root.listVideoSlider()">
                                     <div class="item">

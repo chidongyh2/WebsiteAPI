@@ -15,7 +15,7 @@ function AngencyViewModel() {
 
     $(document).ready(function () {
         var height = $('#map').innerHeight();
-        $('#list-angency-system').css('height', height - 35 + 'px');
+        $('#list-angency-system').css('height', height - 175 + 'px');
         if (branchIsOffice) {
             self.mapId(branchIsOffice.Link);
             self.name(branchIsOffice.Name);

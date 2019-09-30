@@ -89,4 +89,33 @@
             </div>}
     </div>
     <partial name="_MenuContact" />
+    @section scripts{
+        <script type="text/javascript">
+            $("#menuMiddlerSlider").slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
+                nextArrow: '<button class="slick-next"> <img src="/images/facion/nex.png" /> </button>',
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            centerMode: true,
+                            centerPadding: '0px',
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            centerMode: true,
+                            centerPadding: '0px',
+                            slidesToShow: 2
+                        }
+                    }
+                ]
+            });
+        </script>
+
+    }
 

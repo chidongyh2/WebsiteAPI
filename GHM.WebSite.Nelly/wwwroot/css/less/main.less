@@ -134,7 +134,7 @@ body {
 
     .owl-dots {
         text-align: center;
-        margin-top: 10px;
+        margin-top: 0px;
 
         .owl-dot {
             padding: 0 2px !important;
@@ -380,24 +380,52 @@ body {
 
     .angency-system {
         background-color: #F5F5F5;
-        margin-bottom: 20px;
-        margin-right: -20px;
-        overflow-y: scroll;
         font-family: Roboto-Regular !important;
 
         @media @mobile {
             margin-right: unset;
         }
 
-        .header {
-            height: 20px;
-            background-color: #EAE9E5;
+        .form-search {
+            background-color: #8E959B;
+            padding: 10px;
+
+            h4 {
+                color: @color-white;
+                margin-top: 0px;
+                text-transform: uppercase;
+                font-size: 13px;
+                font-family: Opensans;
+                padding-bottom: 10px;
+                border-bottom: 1px solid;
+            }
+
+            select {
+                margin-bottom: 10px;
+                border-radius: 20px;
+                background: url('../../images/facion/dropdown-icon-png-22.jpg') no-repeat right #fff;
+                -webkit-appearance: none;
+                background-position-x: 305px;
+                background-size: contain;
+            }
+
+            .btn-search {
+                margin-top: 10px;
+                border-radius: 0px;
+                background-color: @main-color;
+                text-transform: uppercase;
+                font-size: 14px;
+                font-family: Opensans;
+                color: @color-white;
+            }
         }
 
         ul {
             list-style-type: none;
             padding-left: 0px;
             background-color: #F5F5F5;
+            margin-bottom: 20px;
+            overflow-y: scroll;
 
             li {
                 font-size: 16px;
@@ -974,12 +1002,16 @@ body {
 }
 
 #news-in-homepage {
-    padding: 40px 0px;
+    padding: 30px 0px;
+
+    @media @mobile {
+        padding: 15px 0px;
+    }
 
     .heading {
         background-color: @background-color-footer;
         padding-bottom: 150px;
-        padding-top: 20px;
+        padding-top: 30px;
     }
 
     .content {
@@ -989,6 +1021,10 @@ body {
 
 #news-hot-in-homepage {
     padding: 30px 0px;
+
+    @media @mobile {
+        padding: 15px 0px;
+    }
 
     #news-slider {
         .slick-track {
@@ -1073,8 +1109,16 @@ body {
     position: relative;
     z-index: 1020;
 
+    @media @mobile {
+        padding: 15px 0px;
+    }
+
     .titlebar {
         margin-bottom: 20px;
+
+        @media @mobile {
+            margin-bottom: 0px;
+        }
     }
 
     #menuMiddlerSlider {
@@ -1392,6 +1436,10 @@ body {
     padding: 30px 0px;
     background-color: #FAFAFA;
 
+    @media @mobile {
+        padding: 15px 0px;
+    }
+
     .odd {
         .content {
             align-items: flex-end;
@@ -1399,6 +1447,7 @@ body {
     }
 
     .even {
+        flex-direction:column-reverse;
         .content {
             align-items: flex-start;
         }
@@ -1411,6 +1460,10 @@ body {
     align-items: center;
     justify-content: center;
 
+    @media @mobile {
+        flex-direction: column;
+    }
+
     .image {
         padding: 20px;
         flex-basis: 50%;
@@ -1422,6 +1475,7 @@ body {
 
         @media @mobile {
             padding: 10px;
+            flex-basis: 100%;
         }
     }
 
@@ -1487,6 +1541,10 @@ body {
 #product-categoty-hot-in-homepage {
     position: relative;
     padding: 30px 0px;
+
+    @media @mobile {
+        padding: 15px 0px;
+    }
 
     .btn-toolbar {
         padding-bottom: 20px;
@@ -1718,7 +1776,7 @@ body {
 
     &:hover {
         /*box-shadow: 1px 1px 1px 1px @color-border;*/
-        box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+        box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28) !important;
         border: none;
 
         .wrap-text-content {
@@ -1789,7 +1847,7 @@ body {
         @media @mobile {
             width: 18px;
             height: 18px;
-            top: 59%;
+            top: 55%;
         }
 
         i {
@@ -1822,6 +1880,10 @@ body {
 
     .video-container {
         width: 90%;
+
+        @media @mobile {
+            width: 100%;
+        }
     }
 }
 
@@ -1944,7 +2006,7 @@ body {
         }
 
         .name {
-            margin-top: 10px;
+            margin-top: 20px;
 
             a {
                 color: @color-text;
@@ -1953,6 +2015,7 @@ body {
             font-size: 16px;
             font-family: Opensans;
             transition: 1s ease-in-out;
+            font-weight: bold;
         }
 
         &:hover {
@@ -2008,6 +2071,10 @@ body {
 .solution {
     padding: 30px 0px;
 
+    @media @mobile {
+        padding: 15px 0px;
+    }
+
     .category-item {
         .content {
             align-items: flex-start;
@@ -2055,6 +2122,10 @@ body {
     padding: 30px 0px;
     position: relative;
 
+    @media @mobile {
+        padding: 15px 0px;
+    }
+
     .introduction {
         position: relative;
         border-bottom: 2px solid #fafafa;
@@ -2087,6 +2158,11 @@ body {
         z-index: 1;
         padding-top: 100px;
 
+        @media @mobile {
+            padding: 15px 0px;
+            margin-top: -20px;
+        }
+
         .odd {
             .content {
                 align-items: flex-end;
@@ -2094,6 +2170,10 @@ body {
         }
 
         .even {
+            @media @mobile {
+                flex-direction: column-reverse;
+            }
+
             .content {
                 align-items: flex-start;
             }
@@ -2109,6 +2189,10 @@ body {
 
 #product-detail {
     padding: 30px 0px;
+
+    @media @mobile {
+        padding: 15px 0px;
+    }
 
     .txt-static {
         margin: 5px 0px;
@@ -2340,6 +2424,10 @@ body {
     padding: 30px 0px;
     background-color: #fafafa !important;
 
+    @media @mobile {
+        padding: 15px 0px;
+    }
+
     .faq-group {
         width: 100%;
         list-style: none;
@@ -2475,6 +2563,10 @@ body {
 
 #shopping-cart {
     padding: 30px 0px;
+
+    @media @mobile {
+        padding: 15px 0px;
+    }
 
     .order {
         padding-right: 0px;
@@ -2639,6 +2731,10 @@ body {
     justify-content: center;
     flex-direction: column;
 
+    @media @mobile {
+        padding: 15px 0px;
+    }
+
     h1, h2 {
         color: @main-color;
         font-family: Opensans;
@@ -2667,6 +2763,10 @@ body {
 .register-agency {
     padding: 30px 0px;
 
+    @media @mobile {
+        padding: 15px 0px;
+    }
+
     .form-horizontal {
         width: 70%;
 
@@ -2674,8 +2774,12 @@ body {
             width: 100%;
         }
 
-        padding: 40px;
+        padding: 30px;
         background-color: #F7F7F7;
+
+        @media @mobile {
+            padding: 15px;
+        }
 
         .title {
             text-align: center;
@@ -2687,9 +2791,10 @@ body {
         }
 
         .form-group {
-            padding: 10px;
+            padding: 5px;
             background: white;
             margin: 0px;
+            margin-bottom: 10px;
 
             label {
                 text-transform: uppercase;
@@ -2707,6 +2812,16 @@ body {
                     box-shadow: none !important;
                 }
             }
+        }
+
+        .btn-register {
+            background-color: @main-color;
+            border-radius: 0px;
+            font-size: 15px;
+            color: @color-white;
+            text-transform: uppercase;
+            font-family: Opensans-Bold;
+            padding: 10px 0px;
         }
     }
 }
