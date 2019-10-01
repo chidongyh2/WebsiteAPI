@@ -2339,6 +2339,7 @@ body {
 }
 #shopping-cart .read-more {
   margin-top: 0px;
+  text-align: left;
 }
 #shopping-cart .read-more .btn-main {
   margin-top: 0px;

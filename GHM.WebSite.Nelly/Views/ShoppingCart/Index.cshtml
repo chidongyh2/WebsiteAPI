@@ -46,15 +46,15 @@
                                 <i class="ion-bag"></i>
                                 <span class="product-quantity" data-bind="text: listProduct().length"></span>
                             </a>
-                        </div>
-                        <div class="col-sm-12">
-                            <span class="total-product pull-right">
+                            <span class="total-product">
                                 Giỏ hàng của bạn:
                                 <b data-bind="text: listProduct().length"></b>
                                 sản phẩm
                             </span>
                         </div>
-                        <!--ko if: listProduct().length > 0-->
+                    </div>
+                    <!--ko if: listProduct().length > 0-->
+                    <div class="row">
                         <div class="col-sm-12 table-responsive ">
                             <table class="table table-bordered table-product">
                                 <thead>
@@ -76,22 +76,22 @@
                                                     </a>
                                                     @if (ViewBag.DeviceType != "desktop")
                                                     {
-                                                    <a class="" href="javascript://" data-bind="click: $root.removeProduct.bind($data)" data-toggle="tooltip" title="Xóa sản phẩm">
-                                                        <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                                    </a>
+                                                        <a class="" href="javascript://" data-bind="click: $root.removeProduct.bind($data)" data-toggle="tooltip" title="Xóa sản phẩm">
+                                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                                        </a>
                                                     }
                                                 </div>
                                                 @if (ViewBag.DeviceType == "desktop")
                                                 {
-                                                <div class="media-body">
-                                                    <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
-                                                        <h3 data-bind="text: name"></h3>
-                                                    </a>
-                                                    <a href="javascript://" data-bind="click: $root.removeProduct.bind($data)" data-toggle="tooltip" title="Xóa sản phẩm">
-                                                        <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                                        <span>Xóa sản phẩm</span>
-                                                    </a>
-                                                </div>
+                                                    <div class="media-body">
+                                                        <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
+                                                            <h3 data-bind="text: name"></h3>
+                                                        </a>
+                                                        <a href="javascript://" data-bind="click: $root.removeProduct.bind($data)" data-toggle="tooltip" title="Xóa sản phẩm">
+                                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                                            <span>Xóa sản phẩm</span>
+                                                        </a>
+                                                    </div>
                                                 }
                                             </div>
                                         </td>
@@ -120,11 +120,15 @@
                         <div class="col-sm-12">
                             <span class="total-price pull-right" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></span>
                             <span class="pull-right">Thành tiền:  </span>
-                        </div>
+                        </div>                        
+                    </div>
+                    <div class="row">
                         <div class="col-sm-12">
                             <p class="bold pull-right" data-bind="text: totalMoney() + 'đồng'"></p>
                         </div>
-                        <!--/ko-->
+                    </div>
+                    <!--/ko-->
+                    <div class="row">
                         <div class="col-sm-12" data-bind="visible: !listProduct() || listProduct().length === 0" style="display:none">
                             <div class="alert alert-danger">
                                 Giỏ hàng trống. Vui lòng tiếp tục mua hàng.
@@ -134,7 +138,7 @@
                 </div>
             </div>
             <div class="row cm-mgt-10">
-                <div class="col-sm-6">
+                <div class="col-sm-6 cm-mgb-10">
                     <a href="javascript://" class="btn-prev" onclick="javascript:history.go(-1)">
                         <i class="la la-angle-left"></i>
                         Quay lại
@@ -142,16 +146,16 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="read-more pull-right">
-                        <a class="btn btn-main" href="/san-pham" title="Tiếp tục mua hàng">Tiếp tục mua hàng</a>
-                        <a class="btn btn-main" href="javascript://">Đặt hàng</a>
+                        <a class="btn btn-main cm-mgb-10" href="/san-pham" title="Tiếp tục mua hàng">Tiếp tục mua hàng</a>
+                        <a class="btn btn-main cm-mgb-10" href="javascript://">Đặt hàng</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     @section scripts {
-    <script type="text/javascript">
+        <script type="text/javascript">
              var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
-    </script>
-    <script src="~/js/viewmodel/shopping-cart.viewmodel.min.js"></script>
+        </script>
+        <script src="~/js/viewmodel/shopping-cart.viewmodel.min.js"></script>
     }

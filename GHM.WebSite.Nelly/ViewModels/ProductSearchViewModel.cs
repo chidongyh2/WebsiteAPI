@@ -13,7 +13,7 @@ namespace GHM.Website.Nelly.ViewModels
         public string DefaultUnit { get; set; }
         public decimal? SalePrice { get; set; }
         public string SeoLink { get; set; }
-        public string Desciption { get; set; }
+        public string Description { get; set; }
         public DateTime? LastUpdateTime { get; set; }
     }
 }

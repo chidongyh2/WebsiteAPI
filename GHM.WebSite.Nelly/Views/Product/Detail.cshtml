@@ -2,7 +2,7 @@
 @{
     var productInfo = ViewBag.ProductInfo as ProductSearchViewModel;
     ViewBag.Title = productInfo?.Name;
-    ViewBag.Description = productInfo?.Desciption;
+    ViewBag.Description = productInfo?.Description;
 
     var jsonSerializerSettings = new JsonSerializerSettings
     {
@@ -53,10 +53,10 @@
                                 <div class="price">
                                     <span>@productInfo?.SalePrice?.ToString("N0", new CultureInfo("en-US")) đ</span>
                                 </div>
-                                @if (!string.IsNullOrEmpty(productInfo?.Desciption))
+                                @if (!string.IsNullOrEmpty(productInfo?.Description))
                                 {
                                     <div class="description">
-                                        @Html.Raw(productInfo?.Desciption)
+                                        @Html.Raw(productInfo?.Description)
                                     </div>
                                 }
                                 <div class="attribute">

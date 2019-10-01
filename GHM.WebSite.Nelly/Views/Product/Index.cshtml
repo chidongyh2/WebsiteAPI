@@ -24,7 +24,7 @@
                             </a>
                             <!--ko foreach: $root.listProductCategory-->
                             <a class="btn filter item" href="javascript://" data-bind="css: {active: Id === $root.productCategoryId()}, click: $root.selectProductCategory.bind($data), visible: IsActive()" style="display:none">
-                                <h3 data-bind=" text: Name"></h3>
+                                <span data-bind=" text: Name"></span>
                             </a>
                             <!--/ko-->
                             <a class="btn filter nex" href="javascript://" data-bind="visible: $root.listProductCategory()&& lastIndex() < $root.listProductCategory().length - 1, click: nextIndex" style="display: none">
