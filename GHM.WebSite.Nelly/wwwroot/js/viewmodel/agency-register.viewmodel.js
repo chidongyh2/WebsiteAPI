@@ -1,8 +1,7 @@
 ﻿function AngencyRegisterViewModel() {
     var self = this;
    
-    $(document).ready(function () {
-      
+    $(document).ready(function () {      
     });
 }
 
