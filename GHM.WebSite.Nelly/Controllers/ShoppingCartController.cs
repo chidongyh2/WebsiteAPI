@@ -42,6 +42,7 @@ namespace GHM.WebSite.Nelly.Controllers
             return View();
         }
 
+        [AcceptVerbs("POST")]
         [Route("buy/{productId}")]
         public async Task<IActionResult> Buy(string productId, int? quantity)
         {
@@ -81,6 +82,7 @@ namespace GHM.WebSite.Nelly.Controllers
             return Ok(listProduct);
         }
 
+        [AcceptVerbs("POST")]
         [Route("remove/{productId}")]
         public JsonResult Remove(string productId)
         {
@@ -93,6 +95,7 @@ namespace GHM.WebSite.Nelly.Controllers
             return Json(cart);
         }
 
+        [AcceptVerbs("POST")]
         [Route("updateQuantity/{productId}")]
         public JsonResult UpdateQuantity(string productId, int? quantity)
         {
@@ -107,6 +110,19 @@ namespace GHM.WebSite.Nelly.Controllers
             SessionHelper.SetObjectAsJson(HttpContext.Session, SessionParam.ShoppingCart, cart);
 
             return Json(cart);
+        }
+
+        [AcceptVerbs("POST")]
+        [Route("order")]
+        public JsonResult Order(OrderMeta order)
+        {
+            if (!ModelState.IsValid)
+            {
+                var test = GetErrorsInModelState();
+                return Json(GetErrorsInModelState());
+            }
+
+            return Json(1);
         }
 
         #region privete

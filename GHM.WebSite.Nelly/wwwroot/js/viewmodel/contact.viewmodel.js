@@ -23,9 +23,7 @@ function ContactViewModel() {
             self.isContactNameFocus(true);
             return;
         }
-
-       
-       
+              
         if (!self.contactPhoneNumber() || self.contactPhoneNumber() === "") {
             toastr.error("Vui lòng nhập số điện thoại của bạn");
             self.isPhoneNumberError(true);
