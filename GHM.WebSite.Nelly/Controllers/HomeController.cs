@@ -23,6 +23,8 @@ using GHM.WebsiteClient.Api.Domain.IServices;
 using GHM.WebSite.Nelly.Helper;
 using GHM.WebSite.Nelly.Models;
 using State = GHM.WebSite.Nelly.Models.State;
+using Microsoft.AspNetCore.Diagnostics;
+using System.IO;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -66,7 +68,7 @@ namespace GHM.Website.Nelly.Controllers
             var listProductCategoryHot = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, null, int.MaxValue);
             var listProductCategoryHotData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategoryHot);
             ViewBag.ListProductCategoryHot = listProductCategoryHotData;
-            ViewBag.ProductCategoryId = listProductCategoryHot.FirstOrDefault()?.Id;
+            ViewBag.ProductCategoryId = listProductCategoryHot?.FirstOrDefault()?.Id;
 
             var products = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, listProductCategoryHot.FirstOrDefault().SeoLink, null, null, 1, 20);
             ViewBag.ListProduct = products?.Items;
@@ -294,7 +296,9 @@ namespace GHM.Website.Nelly.Controllers
 
         public async Task<IActionResult> Error()
         {
-            return View();
+            var exceptionHandlerPathFeature =  HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            
+            return View(exceptionHandlerPathFeature?.Error?.Message);
         }
 
         [Route("change-language/{languageId}")]

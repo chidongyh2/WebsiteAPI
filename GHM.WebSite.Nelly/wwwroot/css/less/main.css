@@ -992,7 +992,7 @@ body {
 }
 @media only screen and (max-width: 1200px) {
   #menu-middle #menuMiddlerSlider .menu-item {
-    min-height: 215px;
+    min-height: 255px;
   }
 }
 #menu-middle #menuMiddlerSlider .menu-item:hover {
@@ -2443,4 +2443,86 @@ body {
   text-transform: uppercase;
   font-family: Opensans-Bold;
   padding: 10px 0px;
+}
+.modal-dialog {
+  padding: 10px;
+}
+.modal-dialog .modal-content {
+  border: 1px solid #F9A4A7;
+  border-radius: 0px;
+}
+.modal-dialog .modal-content .modal-header {
+  padding: 10px;
+  background-color: #F9A4A7;
+}
+.modal-dialog .modal-content .modal-header .btn-close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  border-radius: 100%;
+  background: white;
+  padding: 0px;
+  font-size: 7px;
+  border: 1px solid #F9A4A7;
+}
+.modal-dialog .modal-content .modal-header .btn-close:hover {
+  background: white;
+}
+.modal-dialog .modal-content .modal-header .btn-close i {
+  font-size: 25px;
+  color: #F9A4A7;
+}
+.modal-dialog .modal-content .modal-body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.modal-dialog .modal-content .modal-body .icon .shopping-cart {
+  color: #F9A4A7;
+  font-size: 70px;
+  text-decoration: none;
+}
+.modal-dialog .modal-content .modal-body .icon .check {
+  position: absolute;
+  top: 70px;
+  color: #F9A4A7;
+  text-decoration: none;
+  right: 40%;
+}
+@media only screen and (max-width: 1200px) {
+  .modal-dialog .modal-content .modal-body .icon .check {
+    right: 33%;
+  }
+}
+.modal-dialog .modal-content .modal-body .icon .check i {
+  font-size: 50px;
+  right: -15px;
+}
+.modal-dialog .modal-content .modal-body h3 {
+  color: #F9A4A7;
+  font-size: 20px;
+  font-family: PlayfairDisplay-Regular;
+  text-transform: uppercase;
+  margin: 20px 0px;
+}
+.modal-dialog .modal-content .modal-body p {
+  color: #949293;
+  font-size: 14px;
+  margin: 0px 0px 5px;
+  text-align: center;
+}
+.modal-dialog .modal-content .modal-footer {
+  border-top: none;
+  padding: 0px 15px;
+  padding-bottom: 15px;
+}
+.modal-dialog .modal-content .modal-footer .read-more .btn-main {
+  background: #F9A4A7;
+  color: #FFFFFF;
+}
+@media only screen and (max-width: 1200px) {
+  .modal-dialog .modal-content .modal-footer .read-more .btn-main {
+    font-size: 11px;
+    padding: 6px 12px !important;
+  }
 }

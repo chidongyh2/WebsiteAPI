@@ -61,6 +61,10 @@
         });
     };
 
+    self.order = function () {
+        $('#ordersuccessfulModal').modal('show');
+    };
+
     $(document).ready(function () {
         if (products) {
             _.each(products, function (item) {

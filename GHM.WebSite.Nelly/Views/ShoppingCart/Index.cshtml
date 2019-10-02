@@ -120,7 +120,7 @@
                         <div class="col-sm-12">
                             <span class="total-price pull-right" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></span>
                             <span class="pull-right">Thành tiền:  </span>
-                        </div>                        
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
@@ -138,7 +138,7 @@
                 </div>
             </div>
             <div class="row cm-mgt-10">
-                <div class="col-sm-6 cm-mgb-10">
+                <div class="col-sm-3 col-sm-offset-3">
                     <a href="javascript://" class="btn-prev" onclick="javascript:history.go(-1)">
                         <i class="la la-angle-left"></i>
                         Quay lại
@@ -147,7 +147,41 @@
                 <div class="col-sm-6">
                     <div class="read-more pull-right">
                         <a class="btn btn-main cm-mgb-10" href="/san-pham" title="Tiếp tục mua hàng">Tiếp tục mua hàng</a>
-                        <a class="btn btn-main cm-mgb-10" href="javascript://">Đặt hàng</a>
+                        <a class="btn btn-main cm-mgb-10" data-bind="click: order" href="javascript://">Đặt hàng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal custom-modal fade" id="ordersuccessfulModal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-md">
+                <div class="modal-header">
+                    <button type="button" class="btn btn-close" data-dismiss="modal">
+                        <i class="la la-times-circle"></i>
+                    </button>
+                </div>
+                <div class="form-horizontal">
+                    <div class="modal-body">
+                        <div class="icon">
+                            <a href="javascript://" class="shopping-cart">
+                                <i class="ion-bag"></i>
+                            </a>
+                            <a class="check">
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <h3>Đặt hàng thành công !</h3>
+                        <p>Cảm ơn bạn đã cho chúng tôi đượ phục vụ</p>
+                        <p>Chúng tôi sẽ liên hệ xác nhận đơn hàng trong thời gian sớm nhất</p>
+                        <p>Xin  chân thành cảm ơn</p>
+                    </div>
+                    <div class="modal-footer p-t-0">
+                        <div class="read-more center">
+                            <a class="btn btn-main cm-mgb-10" data-bind="click: order" href="javascript://">Quay lại trang chủ</a>
+                            <a class="btn btn-main cm-mgb-10" href="/san-pham" title="Tiếp tục mua hàng">Tiếp tục mua hàng</a>
+
+                        </div>
                     </div>
                 </div>
             </div>

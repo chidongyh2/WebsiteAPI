@@ -493,7 +493,7 @@ namespace GHM.WebSite.Nelly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gải pháp cho da.
+        ///   Looks up a localized string similar to Giải pháp cho da.
         /// </summary>
         public static string SolutionForTheSkin {
             get {

@@ -1147,7 +1147,7 @@ body {
             flex-basis: 24%;
 
             @media @mobile {
-                min-height: 215px;
+                min-height: 255px;
             }
 
             &:hover {
@@ -2760,6 +2760,7 @@ body {
     .read-more {
         margin-top: 0px;
         text-align: left;
+
         .btn-main {
             margin-top: 0px;
             background-color: @main-color;
@@ -2807,6 +2808,7 @@ body {
 
 .register-agency {
     padding: 30px 0px;
+
     @media @mobile {
         padding: 15px 0px;
     }
@@ -2866,6 +2868,107 @@ body {
             text-transform: uppercase;
             font-family: Opensans-Bold;
             padding: 10px 0px;
+        }
+    }
+}
+
+#ordersuccessfulModal {
+}
+
+.modal-dialog {
+    padding: 10px;
+
+    .modal-content {
+        border: 1px solid @main-color;
+        border-radius: 0px;
+
+        .modal-header {
+            padding: 10px;
+            background-color: @main-color;
+
+            .btn-close {
+                position: absolute;
+                top: -15px;
+                right: -15px;
+                border-radius: 100%;
+                background: white;
+                padding: 0px;
+                font-size: 7px;
+                border: 1px solid @main-color;
+
+                &:hover {
+                    background: white;
+                }
+
+                i {
+                    font-size: 25px;
+                    color: @main-color;
+                }
+            }
+        }
+
+        .modal-body {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            .icon {
+                .shopping-cart {
+                    color: @main-color;
+                    font-size: 70px;
+                    text-decoration: none;
+                }
+
+                .check {
+                    position: absolute;
+                    top: 70px;
+                    color: @main-color;
+                    text-decoration: none;
+                    right: 40%;
+
+                    @media @mobile {
+                        right: 33%;
+                    }
+
+                    i {
+                        font-size: 50px;
+                        right: -15px;
+                    }
+                }
+            }
+
+            h3 {
+                color: @main-color;
+                font-size: 20px;
+                font-family: PlayfairDisplay-Regular;
+                text-transform: uppercase;
+                margin: 20px 0px;
+            }
+
+            p {
+                color: @color-text-grey;
+                font-size: 14px;
+                margin: 0px 0px 5px;
+                text-align: center;
+            }
+        }
+
+        .modal-footer {
+            border-top: none;
+            padding: 0px 15px;
+            padding-bottom: 15px;
+
+            .read-more {
+                .btn-main {
+                    background: @main-color;
+                    color: @color-white;
+
+                    @media @mobile {
+                        font-size: 11px;
+                        padding: 6px 12px !important;
+                    }
+                }
+            }
         }
     }
 }
