@@ -2498,14 +2498,14 @@ body {
   font-size: 50px;
   right: -15px;
 }
-.modal-dialog .modal-content .modal-body h3 {
+.modal-dialog .modal-content .modal-body .content h3 {
   color: #F9A4A7;
   font-size: 20px;
   font-family: PlayfairDisplay-Regular;
   text-transform: uppercase;
   margin: 20px 0px;
 }
-.modal-dialog .modal-content .modal-body p {
+.modal-dialog .modal-content .modal-body .content p {
   color: #949293;
   font-size: 14px;
   margin: 0px 0px 5px;
