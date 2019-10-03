@@ -221,7 +221,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                 return null;
             }
         }
-        
+
         public async Task<SearchResult<ProductCategoryViewModel>> ProductCategoryGetByProductId(string tenantId, string languageId, string productId)
         {
             try
@@ -268,7 +268,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     param.Add("@ProductId", productId);
                     param.Add("@SeoLink", seoLink);
 
-                    var items = await con.QueryAsync<ProductSearchViewModel>("[dbo].[sp_Product_GetDetail]", param, commandType: CommandType.StoredProcedure);                   
+                    var items = await con.QueryAsync<ProductSearchViewModel>("[dbo].[sp_Product_GetDetail]", param, commandType: CommandType.StoredProcedure);
 
                     return items.FirstOrDefault();
                 }
@@ -305,6 +305,40 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
             {
                 _logger.LogError(ex, "sp_ProductCategory_GetDetail ProductService Error.");
                 return null;
+            }
+        }
+
+        public async Task<int> OrderInsert(string id, string tenantId, string languageId, string fullName,
+            string phoneNumber, string email, string address, string note, string sessionId, string jsonProduct)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@Id", id);
+                    param.Add("@TenantId", tenantId);
+                    param.Add("@languageId", languageId);
+                    param.Add("@FullName", fullName);
+                    param.Add("@PhoneNumber", phoneNumber);
+                    param.Add("@Email", email);
+                    param.Add("@Address", address);
+                    param.Add("@Note", note);
+                    param.Add("@SessionId", sessionId);
+                    param.Add("@JsonProduct", jsonProduct);
+                    
+                    var result = con.Query<int>("[dbo].[sp_Order_Insert]", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "[dbo].[sp_Order_Insert] InsertAsync OrderInsert Error.");
+                return -1;
             }
         }
     }

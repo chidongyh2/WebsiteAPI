@@ -165,37 +165,40 @@
                     address: self.address(),
                     note: self.note(),
                     listProduct: listProduct
-                }, function(result) {
+                }, function (result) {
+                    console.log(result);
+                    self.isSending(false);
+                    if (result === -1) {
+                        self.fullNameError("Vui lòng nhập họ tên của bạn");
+                        self.isFullNameFocus(true);
+                        return;
+                    }
 
-                        self.isSending(false);
-                        if (result.code === -1) {
-                            self.fullNameError("Vui lòng nhập họ tên của bạn");
-                            self.isFullNameFocus(true);
-                            return;
-                        }
+                    if (result === -2) {
+                        self.phoneNumberError("Vui lòng số điện thoại của bạn");
+                        self.isPhoneNumberFocus(true);
+                        return;
+                    }
 
-                        if (result.code === -2) {
-                            self.phoneNumberError("Vui lòng số điện thoại của bạn");
-                            self.isPhoneNumberFocus(true);
-                            return;
-                        }
+                    if (result === -3) {
+                        self.emailError("Vui lòng email của bạn");
+                        self.isEmailFocus(true);
+                        return;
+                    }
 
-                        if (result.code === -3) {
-                            self.emailError("Vui lòng email của bạn");
-                            self.isEmailFocus(true);
-                            return;
-                        }
+                    if (result === -4) {
+                        self.addressError("Vui lòng nhập địa chỉ của bạn");
+                        self.isAddressFocus(true);
+                        return;
+                    }                   
 
-                        if (result.code === -4) {
-                            self.addressError("Vui lòng nhập địa chỉ của bạn");
-                            self.isAddressFocus(true);
-                            return;
-                        }
+                    if (result > 0) {
+                        $('#ordersuccessfulModal').modal('show');
+                        return;
+                    }
 
-                        if (result.code > 0) {
-                            $('#ordersuccessfulModal').modal('show');
-                        }
-                    });
+                    toastr.error(result);
+                });
         }
     };
 

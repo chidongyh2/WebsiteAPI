@@ -34,5 +34,15 @@ namespace GHM.WebSite.Nelly.Models
     {
         public string ProductId { get; set; }
         public int Quantity { get; set; }
+
+        public byte DisCountType { get; set; }
+
+        public double Discount { get; set; }
+
+        public ProductOrder()
+        {
+            DisCountType = 0;
+            Discount = 0;
+        }
     }
 }
