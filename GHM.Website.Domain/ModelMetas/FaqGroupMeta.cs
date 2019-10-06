@@ -7,6 +7,6 @@ namespace GHM.Website.Domain.ModelMetas
         public bool IsActive { get; set; }
         public int Order { get; set; }
         public string ConcurrencyStamp { get; set; }
-        public List<FaqGroupTranslationMeta> FaqGroupTranslations { get; set; }
+        public List<FaqGroupTranslationMeta> Translations { get; set; }
     }
 }

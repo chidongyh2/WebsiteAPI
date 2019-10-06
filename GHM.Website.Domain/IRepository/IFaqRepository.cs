@@ -7,9 +7,6 @@ namespace GHM.Website.Domain.IRepository
 {
     public interface IFaqRepository
     {
-        Task<List<FaqViewModel>> Search(string tenantId, string languageId, string keyword,
-         bool? isActive, int page, int pageSize, out int totalRows);
-
         Task<int> Insert(Faq faq);
 
         Task<int> Update(Faq faq);

@@ -10,8 +10,6 @@ namespace GHM.Website.Domain.IServices
 {
   public  interface IFaqService
     {
-        Task<SearchResult<FaqViewModel>> Search(string tenantId, string languageId, string keyword, bool? isActive, int page, int pageSize);
-
         Task<ActionResultResponse<string>> Insert(string tenantId, string creatorId, string creatorFullName, string creatorAvata, FaqMeta faqMeta);
 
         Task<ActionResultResponse> Update(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string lastUpdateAvata,

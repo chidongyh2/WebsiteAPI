@@ -20,51 +20,7 @@ namespace GHM.Website.Infrastructure.Repository
         public FaqRepository(IDbContext context) : base(context)
         {
             _faqRepository = Context.GetRepository<Faq>();
-        }
-
-        public Task<List<FaqViewModel>> Search(string tenantId, string languageId, string keyword, bool? isActive, int page, int pageSize,
-          out int totalRows)
-        {
-            Expression<Func<Faq, bool>> spec = x => !x.IsDelete && x.TenantId == tenantId;
-            Expression<Func<FaqTranslation, bool>> specTranslation = xt => xt.LanguageId == languageId && !xt.IsDelete;
-
-            if (!string.IsNullOrEmpty(keyword))
-            {
-                specTranslation = specTranslation.And(x => x.Question.Contains(keyword));
-            }
-
-            if (isActive.HasValue)
-            {
-                spec = spec.And(x => x.IsActive == isActive.Value);
-            }
-
-            var query = Context.Set<Faq>().Where(spec)
-                .Join(Context.Set<FaqTranslation>().Where(specTranslation), x => x.Id, xt => xt.FaqId, (x, xt) =>
-                    new FaqViewModel
-                    {
-                        Id = x.Id,
-                        TenantId = x.TenantId,
-                        FaqGroupId = x.FaqGroupId,
-                        Photo = x.Photo,
-                        Order = x.Order,
-                        IsActive = x.IsActive,
-                        ConcurrencyStamp = x.ConcurrencyStamp,
-                        CreateTime = x.CreateTime,
-                        LastUpdate = x.LastUpdate.Value,
-                        LanguageId = xt.LanguageId,
-                        Question = xt.Question,
-                        Answer = xt.Answer
-                    }).AsNoTracking();
-
-            totalRows = query.Count();
-
-            return query
-                .OrderByDescending(x => x.CreateTime)
-                .ThenByDescending(x => x.LastUpdate)
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
-        }
+        }        
 
         public async Task<int> Insert(Faq faq)
         {

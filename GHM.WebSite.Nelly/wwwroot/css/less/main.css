@@ -91,6 +91,9 @@ body {
 #myCarousel .fa-angle-right {
   right: 50%;
 }
+#myCarousel .owl-nav {
+  margin-top: 10px;
+}
 #myCarousel .owl-nav .owl-prev {
   position: absolute;
   top: 50%;
@@ -1541,7 +1544,7 @@ body {
 @media only screen and (max-width: 1200px) {
   .product-item .wrap-text-content .description {
     font-size: 13px;
-    min-height: 50px;
+    min-height: 60px;
   }
 }
 .product-item .wrap-text-content .price {

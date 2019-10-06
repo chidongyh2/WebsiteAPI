@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GHM.Website.Infrastructure.Repository
 {
-  public  class FaqGroupRepository : RepositoryBase, IFaqGroupRepository
+    public class FaqGroupRepository : RepositoryBase, IFaqGroupRepository
     {
         private readonly IRepository<FaqGroup> _faqGroupRepository;
         public FaqGroupRepository(IDbContext context) : base(context)
@@ -22,8 +22,8 @@ namespace GHM.Website.Infrastructure.Repository
             _faqGroupRepository = Context.GetRepository<FaqGroup>();
         }
 
-        public Task<List<FaqGroupViewModel>> Search(string tenantId, string languageId, string keyword, bool? isActive, int page, int pageSize,
-            out int totalRows)
+        public List<FaqGroupViewModel> Search(string tenantId, string languageId,
+            string keyword, bool? isActive, int page, int pageSize, out int totalRows)
         {
             Expression<Func<FaqGroup, bool>> spec = x => !x.IsDelete && x.TenantId == tenantId;
             Expression<Func<FaqGroupTranslation, bool>> specTranslation = xt => xt.LanguageId == languageId && !xt.IsDelete;
@@ -39,31 +39,41 @@ namespace GHM.Website.Infrastructure.Repository
                 spec = spec.And(x => x.IsActive == isActive.Value);
             }
 
-            var query = Context.Set<FaqGroup>().Where(spec)
-                .Join(Context.Set<FaqGroupTranslation>().Where(specTranslation), x => x.Id, xt => xt.FaqGroupId, (x, xt) =>
-                    new FaqGroupViewModel
-                    {
-                        Id = x.Id,
-                        TenantId = x.TenantId,
-                        IsActive = x.IsActive,
-                        Order=x.Order,
-                        ConcurrencyStamp = x.ConcurrencyStamp,
-                        CreateTime = x.CreateTime,
-                        LastUpdate = x.LastUpdate.Value,
-                        LanguageId = xt.LanguageId,
-                        Name = xt.Name,
-                        Description = xt.Description,
-                        UnsignName = xt.UnsignName
-                    }).AsNoTracking();
+            var query = from faqGroup in Context.Set<FaqGroup>().Where(spec)
+                        join faqGroupTranslation in Context.Set<FaqGroupTranslation>().Where(specTranslation) on faqGroup.Id equals faqGroupTranslation.FaqGroupId
+                        join faq in Context.Set<Faq>().Where(x => x.TenantId == tenantId && !x.IsDelete) on faqGroup.Id equals faq.FaqGroupId into gFaq
+                        from faq in gFaq.DefaultIfEmpty()
+                        join faqTranslation in Context.Set<FaqTranslation>().Where(x => x.TenantId == tenantId && !x.IsDelete && x.LanguageId == languageId)
+                        on faq.Id equals faqTranslation.FaqId into gFaqTranslation
+                        from faqTranslation in gFaqTranslation.DefaultIfEmpty()
+
+                        group new { faqGroup, faqGroupTranslation, faq, faqTranslation }
+                        by new { faqGroup.Id, faqGroupTranslation.Name, faqGroup.Order, faqGroup.IsActive } into g
+
+                        select new FaqGroupViewModel
+                        {
+                            Id = g.Key.Id,
+                            Order = g.Key.Order,
+                            Name = g.Key.Name,
+                            IsActive = g.Key.IsActive,
+                            ListFaq = g.Count() > 0 ? g.Select(x => new FaqViewModel
+                            {
+                                Id = x.faq != null ? x.faq.Id : "",
+                                FaqGroupId = x.faq != null ? x.faq.FaqGroupId : "",
+                                Answer = x.faqTranslation != null ? x.faqTranslation.Answer : "",
+                                Question = x.faqTranslation != null ? x.faqTranslation.Question : "",
+                                Order = x.faq != null ? x.faqGroup.Order : 0,
+                                IsActive = x.faq != null ? x.faq.IsActive : false,
+                            }).OrderBy(x => x.Order).ToList() : null
+                        };
 
             totalRows = query.Count();
 
-            return query
-                .OrderByDescending(x => x.CreateTime)
-                .ThenByDescending(x => x.LastUpdate)
+            return query.OrderBy(x => x.Order)
+                .ThenBy(x => x.Name)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .ToListAsync();
+                .ToList();
         }
 
         public async Task<int> Insert(FaqGroup faqGroup)

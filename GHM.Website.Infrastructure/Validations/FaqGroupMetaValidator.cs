@@ -17,13 +17,14 @@ namespace GHM.Website.Infrastructure.Validations
                 .NotNull()
                 .WithMessage(sharedResourceService.GetString("{0} can not be null.", websiteResourceService.GetString("Active status")));
 
-            RuleFor(x => x.FaqGroupTranslations)
+            RuleFor(x => x.Translations)
                 .Must(x => x != null && x.Count > 0)
                 .WithMessage(sharedResourceService.GetString("Please select at least one language."));
 
-            RuleForEach(x => x.FaqGroupTranslations).SetValidator(new FaqGroupTranslationMetaValidator(sharedResourceService, websiteResourceService));
+            RuleForEach(x => x.Translations).SetValidator(new FaqGroupTranslationMetaValidator(sharedResourceService, websiteResourceService));
         }
     }
+
     public class FaqGroupTranslationMetaValidator : AbstractValidator<FaqGroupTranslationMeta>
     {
         public FaqGroupTranslationMetaValidator(IResourceService<SharedResource> sharedResourceService, IResourceService<GhmWebsiteResource> websiteResourceService)
