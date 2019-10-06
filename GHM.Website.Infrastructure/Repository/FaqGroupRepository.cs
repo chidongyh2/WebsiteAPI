@@ -56,7 +56,7 @@ namespace GHM.Website.Infrastructure.Repository
                             Order = g.Key.Order,
                             Name = g.Key.Name,
                             IsActive = g.Key.IsActive,
-                            ListFaq = g.Count() > 0 ? g.Select(x => new FaqViewModel
+                            ListFaq = g.Count(x=> x.faq != null && x.faqTranslation != null) > 0 ? g.Select(x => new FaqViewModel
                             {
                                 Id = x.faq != null ? x.faq.Id : "",
                                 FaqGroupId = x.faq != null ? x.faq.FaqGroupId : "",

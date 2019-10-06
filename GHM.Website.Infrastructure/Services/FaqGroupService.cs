@@ -232,7 +232,7 @@ namespace GHM.Website.Infrastructure.Services
                 ConcurrencyStamp = info.ConcurrencyStamp.Trim(),
                 CreateTime = info.CreateTime,
                 LastUpdate = info.LastUpdate,
-                FaqGroupTranslations = FaqGroupTranslations.Select(x => new FaqGroupTranslationViewModel
+                Translations = FaqGroupTranslations.Select(x => new FaqGroupTranslationViewModel
                 {
                     LanguageId = x.LanguageId,
                     Name = x.Name,

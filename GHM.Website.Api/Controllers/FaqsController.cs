@@ -76,16 +76,8 @@ namespace GHM.Website.Api.Controllers
         [CheckPermission]
         public async Task<IActionResult> Search(string keyword, bool? isActive, int page = 1, int pageSize = 20)
         {
-            try
-            {
                 var result = await _faqGroupService.Search(CurrentUser.TenantId, CultureInfo.CurrentCulture.Name, keyword, isActive, page, pageSize);
                 return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                var test = ex;
-                return Ok(1);
-            }
         }
 
         [Route("group")]

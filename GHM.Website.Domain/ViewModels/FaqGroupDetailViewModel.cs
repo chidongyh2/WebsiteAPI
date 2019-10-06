@@ -11,6 +11,6 @@ namespace GHM.Website.Domain.ViewModels
         public string ConcurrencyStamp { get; set; }
         public DateTime? CreateTime { get; set; }
         public DateTime? LastUpdate { get; set; }
-        public List<FaqGroupTranslationViewModel> FaqGroupTranslations { get; set; }
+        public List<FaqGroupTranslationViewModel> Translations { get; set; }
     }
 }
