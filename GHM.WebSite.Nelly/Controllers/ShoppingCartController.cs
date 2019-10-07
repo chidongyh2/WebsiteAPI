@@ -22,7 +22,7 @@ namespace GHM.WebSite.Nelly.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
-        private readonly IProductService _productService;       
+        private readonly IProductService _productService;
 
         public ShoppingCartController(IConfiguration configuration, IMemoryCache cache,
             IBrandService brandService, IBranchContactService branchContactService, IProductService productService,
@@ -131,6 +131,11 @@ namespace GHM.WebSite.Nelly.Controllers
 
             var result = await _productService.OrderInsert(Guid.NewGuid().ToString(), apiService.TenantId, CultureInfo.CurrentCulture.Name,
                          order.FullName, order.PhoneNumber, order.Email, order.Address, order.Note, order.SessionId, jsonProduct);
+
+            if (result > 0)
+            {
+                SessionHelper.SetObjectAsJson(HttpContext.Session, SessionParam.ShoppingCart, null);
+            }
 
             return Json(result);
         }

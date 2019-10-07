@@ -190,10 +190,17 @@
                         self.addressError("Vui lòng nhập địa chỉ của bạn");
                         self.isAddressFocus(true);
                         return;
-                    }                   
+                    }
 
                     if (result > 0) {
                         $('#ordersuccessfulModal').modal('show');
+
+                        self.listProduct([]);
+                        var quantityProductHeader = document.getElementById("quantity-product");
+                        quantityProductHeader.textContent = self.listProduct().length;
+
+                        var quantityProductSidebar = document.getElementById("quantity-product-sidebar");
+                        quantityProductSidebar.textContent = self.listProduct().length;
                         return;
                     }
 
