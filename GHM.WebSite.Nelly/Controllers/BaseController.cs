@@ -263,6 +263,11 @@ namespace GHM.Website.Nelly.Controllers
             return data;
         }
 
+        protected IEnumerable<string> GetErrorsInModelState()
+        {
+            return ModelState.Keys.SelectMany(k => ModelState[k].Errors).Select(m => m.ErrorMessage);
+        }
+
         private async Task<List<TenantLanguageViewModel>> GetLanguage()
         {
             //if (_cache.TryGetValue($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", out List<TenantLanguageViewModel> languages))

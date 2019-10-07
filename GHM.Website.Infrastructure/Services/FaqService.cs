@@ -39,17 +39,6 @@ namespace GHM.Website.Infrastructure.Services
 
         }
 
-
-        public async Task<SearchResult<FaqViewModel>> Search(string tenantId, string languageId, string keyword, bool? isActive, int page, int pageSize)
-        {
-            var items = await _faqRepository.Search(tenantId, languageId, keyword, isActive, page, pageSize, out var totalRows);
-            return new SearchResult<FaqViewModel>
-            {
-                Items = items,
-                TotalRows = totalRows
-            };
-        }
-
         public async Task<ActionResultResponse<string>> Insert(string tenantId, string creatorId, string creatorFullName, string creatorAvata,
           FaqMeta faqMeta)
         {

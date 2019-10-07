@@ -10,6 +10,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace GHM.WebSite.Nelly.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
-        private readonly IProductService _productService;
+        private readonly IProductService _productService;       
 
         public ShoppingCartController(IConfiguration configuration, IMemoryCache cache,
             IBrandService brandService, IBranchContactService branchContactService, IProductService productService,
@@ -42,6 +43,7 @@ namespace GHM.WebSite.Nelly.Controllers
             return View();
         }
 
+        [AcceptVerbs("POST")]
         [Route("buy/{productId}")]
         public async Task<IActionResult> Buy(string productId, int? quantity)
         {
@@ -81,6 +83,7 @@ namespace GHM.WebSite.Nelly.Controllers
             return Ok(listProduct);
         }
 
+        [AcceptVerbs("POST")]
         [Route("remove/{productId}")]
         public JsonResult Remove(string productId)
         {
@@ -93,6 +96,7 @@ namespace GHM.WebSite.Nelly.Controllers
             return Json(cart);
         }
 
+        [AcceptVerbs("POST")]
         [Route("updateQuantity/{productId}")]
         public JsonResult UpdateQuantity(string productId, int? quantity)
         {
@@ -107,6 +111,28 @@ namespace GHM.WebSite.Nelly.Controllers
             SessionHelper.SetObjectAsJson(HttpContext.Session, SessionParam.ShoppingCart, cart);
 
             return Json(cart);
+        }
+
+        [AcceptVerbs("POST")]
+        [Route("order")]
+        public async Task<JsonResult> Order(OrderMeta order)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(GetErrorsInModelState());
+            }
+
+            if (order.ListProduct == null)
+                return Json(-1);
+
+            var jsonProduct = JsonConvert.SerializeObject(order.ListProduct);
+
+            var apiService = _configuration.GetApiServiceInfo();
+
+            var result = await _productService.OrderInsert(Guid.NewGuid().ToString(), apiService.TenantId, CultureInfo.CurrentCulture.Name,
+                         order.FullName, order.PhoneNumber, order.Email, order.Address, order.Note, order.SessionId, jsonProduct);
+
+            return Json(result);
         }
 
         #region privete

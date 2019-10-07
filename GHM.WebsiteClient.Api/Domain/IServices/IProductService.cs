@@ -24,5 +24,8 @@ namespace GHM.WebsiteClient.Api.Domain.IServices
         Task<ProductSearchViewModel> ProductGetDetail(string tenantId, string languageId, string productId, string seoLink);
 
         Task<ProductCategorySearchViewModel> ProductCategoryGetDetail(string tenantId, string languageId, string seoLink, int? categoryId);
+
+        Task<int> OrderInsert(string id, string tenantId, string languageId, string fullName, string phoneNumber, string email,
+            string address, string note, string sessionId, string jsonProduct);
     }
 }

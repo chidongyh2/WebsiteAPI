@@ -69,6 +69,7 @@ body {
     }
 
     .owl-nav {
+        margin-top:10px;
         // display: none;
         .owl-prev {
             position: absolute;
@@ -1780,10 +1781,11 @@ body {
             font-size: 14px;
             font-family: Opensans-Lightitalic;
             text-align: center;
-            min-height: 40px;
+            min-height: 45px;
 
             @media @mobile {
                 font-size: 13px;
+                min-height: 60px;
             }
         }
 
@@ -2652,6 +2654,10 @@ body {
             input, textarea {
                 border-radius: 0px;
                 border: 1px solid @color-border;
+
+                &:focus, &:hover {
+                    box-shadow: none !important;
+                }
             }
         }
     }
@@ -2714,7 +2720,7 @@ body {
                     padding: 8px;
 
                     input {
-                        min-width: 70px;
+                        min-width: 50px;
                     }
 
                     .media {
@@ -2885,6 +2891,11 @@ body {
     .modal-content {
         border: 1px solid @main-color;
         border-radius: 0px;
+        width: 500px;
+
+        @media @mobile {
+            width: unset;
+        }
 
         .modal-header {
             padding: 10px;
@@ -2941,21 +2952,19 @@ body {
                 }
             }
 
-            .content {
-                h3 {
-                    color: @main-color;
-                    font-size: 20px;
-                    font-family: PlayfairDisplay-Regular;
-                    text-transform: uppercase;
-                    margin: 20px 0px;
-                }
+            h3 {
+                color: @main-color;
+                font-size: 20px;
+                font-family: PlayfairDisplay-Regular;
+                text-transform: uppercase;
+                margin: 20px 0px;
+            }
 
-                p {
-                    color: @color-text-grey;
-                    font-size: 14px;
-                    margin: 0px 0px 5px;
-                    text-align: center;
-                }
+            p {
+                color: @color-text-grey;
+                font-size: 14px;
+                margin: 0px 0px 5px;
+                text-align: center;
             }
         }
 
@@ -2966,8 +2975,12 @@ body {
 
             .read-more {
                 .btn-main {
-                    background: @main-color;
-                    color: @color-white;
+
+                    &:hover {
+                        background: @main-color;
+                        color: @color-white;
+                        transition: 0.5s ease-in-out;
+                    }
 
                     @media @mobile {
                         font-size: 11px;

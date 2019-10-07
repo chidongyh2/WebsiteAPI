@@ -6,7 +6,7 @@ namespace GHM.Website.Domain.IRepository
 {
     public interface IFaqGroupRepository
     {
-        Task<List<FaqGroupViewModel>> Search(string tenantId, string languageId, string keyword,
+        List<FaqGroupViewModel> Search(string tenantId, string languageId, string keyword,
           bool? isActive, int page, int pageSize, out int totalRows);
 
         Task<int> Insert(FaqGroup faqGroup);

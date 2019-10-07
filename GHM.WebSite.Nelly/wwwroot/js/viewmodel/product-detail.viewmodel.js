@@ -171,15 +171,13 @@ function ProductDetailViewModel() {
             ]
         });
 
-        if (window.innerWidth > 768) {
-            $('.easyzoom').easyZoom({
-                errorNotice: 'Không tìm thấy ảnh',
-                loadingNotice: 'Đang tải ảnh'
-            });
-        }
+        $('.easyzoom').easyZoom({
+            errorNotice: 'Không tìm thấy ảnh',
+            loadingNotice: 'Đang tải ảnh'
+        });
 
-        self.renderAttribute();        
-        if (productSelectItems) {          
+        self.renderAttribute();
+        if (productSelectItems) {
             var productSelected = _.find(productSelectItems, function (item) {
                 return item.product.id === productInfo.id;
             });

@@ -91,6 +91,9 @@ body {
 #myCarousel .fa-angle-right {
   right: 50%;
 }
+#myCarousel .owl-nav {
+  margin-top: 10px;
+}
 #myCarousel .owl-nav .owl-prev {
   position: absolute;
   top: 50%;
@@ -1541,11 +1544,12 @@ body {
   font-size: 14px;
   font-family: Opensans-Lightitalic;
   text-align: center;
-  min-height: 40px;
+  min-height: 45px;
 }
 @media only screen and (max-width: 1200px) {
   .product-item .wrap-text-content .description {
     font-size: 13px;
+    min-height: 60px;
   }
 }
 .product-item .wrap-text-content .price {
@@ -2259,6 +2263,12 @@ body {
   border-radius: 0px;
   border: 1px solid #EEEDEB;
 }
+#shopping-cart .order .form-group input:focus,
+#shopping-cart .order .form-group textarea:focus,
+#shopping-cart .order .form-group input:hover,
+#shopping-cart .order .form-group textarea:hover {
+  box-shadow: none !important;
+}
 #shopping-cart .shopping-cart {
   position: relative;
   margin-right: 10px;
@@ -2309,7 +2319,7 @@ body {
   padding: 8px;
 }
 #shopping-cart .table-product tbody tr td input {
-  min-width: 70px;
+  min-width: 50px;
 }
 #shopping-cart .table-product tbody tr td .media a {
   padding-left: 1px;
@@ -2455,6 +2465,12 @@ body {
 .modal-dialog .modal-content {
   border: 1px solid #F9A4A7;
   border-radius: 0px;
+  width: 500px;
+}
+@media only screen and (max-width: 1200px) {
+  .modal-dialog .modal-content {
+    width: unset;
+  }
 }
 .modal-dialog .modal-content .modal-header {
   padding: 10px;
@@ -2503,14 +2519,14 @@ body {
   font-size: 50px;
   right: -15px;
 }
-.modal-dialog .modal-content .modal-body .content h3 {
+.modal-dialog .modal-content .modal-body h3 {
   color: #F9A4A7;
   font-size: 20px;
   font-family: PlayfairDisplay-Regular;
   text-transform: uppercase;
   margin: 20px 0px;
 }
-.modal-dialog .modal-content .modal-body .content p {
+.modal-dialog .modal-content .modal-body p {
   color: #949293;
   font-size: 14px;
   margin: 0px 0px 5px;
@@ -2521,9 +2537,10 @@ body {
   padding: 0px 15px;
   padding-bottom: 15px;
 }
-.modal-dialog .modal-content .modal-footer .read-more .btn-main {
+.modal-dialog .modal-content .modal-footer .read-more .btn-main:hover {
   background: #F9A4A7;
   color: #FFFFFF;
+  transition: 0.5s ease-in-out;
 }
 @media only screen and (max-width: 1200px) {
   .modal-dialog .modal-content .modal-footer .read-more .btn-main {

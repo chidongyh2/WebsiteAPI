@@ -43,7 +43,7 @@ namespace GHM.Website.Infrastructure.Services
 
         public async Task<SearchResult<FaqGroupViewModel>> Search(string tenantId, string languageId, string keyword, bool? isActive, int page, int pageSize)
         {
-            var items = await _faqGroupRepository.Search(tenantId, languageId, keyword, isActive, page, pageSize, out var totalRows);
+            var items =  _faqGroupRepository.Search(tenantId, languageId, keyword, isActive, page, pageSize, out var totalRows);
             return new SearchResult<FaqGroupViewModel>
             {
                 Items = items,
@@ -73,7 +73,7 @@ namespace GHM.Website.Infrastructure.Services
 
             #region insert Faq Group Translation.
 
-            if (faqGroupMeta.FaqGroupTranslations.Count > 0)
+            if (faqGroupMeta.Translations.Count > 0)
             {
                 var resultInsertTranslation = await InsertFaqGroupTranslation();
                 if (resultInsertTranslation.Code <= 0)
@@ -92,7 +92,7 @@ namespace GHM.Website.Infrastructure.Services
             {
 
                 var faqGroupTranslations = new List<FaqGroupTranslation>();
-                foreach (var faqGroupTranslation in faqGroupMeta.FaqGroupTranslations)
+                foreach (var faqGroupTranslation in faqGroupMeta.Translations)
                 {
                     // Check name exists.
                     var isNameExists = await _faqGroupTranslationRepository.CheckExists(faqGroupId, tenantId,
@@ -157,7 +157,6 @@ namespace GHM.Website.Infrastructure.Services
             if (info.ConcurrencyStamp != faqGroupMeta.ConcurrencyStamp)
                 return new ActionResultResponse(-3, _websiteResourceService.GetString("The Faq group already updated by other people. You can not update this Faq group."));
 
-
             info.IsActive = faqGroupMeta.IsActive;
             info.Order = faqGroupMeta.Order;
             info.ConcurrencyStamp = Guid.NewGuid().ToString();
@@ -168,7 +167,7 @@ namespace GHM.Website.Infrastructure.Services
             await _faqGroupRepository.Update(info);
 
             //udpate translate
-            foreach (var faqGroupTranslation in faqGroupMeta.FaqGroupTranslations)
+            foreach (var faqGroupTranslation in faqGroupMeta.Translations)
             {
                 var isNameExists = await _faqGroupTranslationRepository.CheckExists(info.Id, tenantId,
                     faqGroupTranslation.LanguageId, faqGroupTranslation.Name);
@@ -233,7 +232,7 @@ namespace GHM.Website.Infrastructure.Services
                 ConcurrencyStamp = info.ConcurrencyStamp.Trim(),
                 CreateTime = info.CreateTime,
                 LastUpdate = info.LastUpdate,
-                FaqGroupTranslations = FaqGroupTranslations.Select(x => new FaqGroupTranslationViewModel
+                Translations = FaqGroupTranslations.Select(x => new FaqGroupTranslationViewModel
                 {
                     LanguageId = x.LanguageId,
                     Name = x.Name,

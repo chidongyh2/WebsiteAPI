@@ -69,7 +69,6 @@
         CategoryInvolve = 228,
         VideoGroup = 219,
         CoreValue = 229,
-        FaqGroup = 230,
         Faq = 231,
         AgencyInfo = 232,
 

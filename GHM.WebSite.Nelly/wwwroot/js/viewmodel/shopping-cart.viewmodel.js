@@ -4,6 +4,22 @@
     self.totalPrice = ko.observable(0);
     self.totalMoney = ko.observable('');
 
+    //Info Order
+    self.isSending = ko.observable(false);
+    self.fullName = ko.observable("");
+    self.email = ko.observable("");
+    self.address = ko.observable("");
+    self.note = ko.observable("");
+    self.phoneNumber = ko.observable("");
+    self.fullNameError = ko.observable("");
+    self.phoneNumberError = ko.observable("");
+    self.emailError = ko.observable("");
+    self.addressError = ko.observable("");
+    self.isFullNameFocus = ko.observable(false);
+    self.isEmailFocus = ko.observable(false);
+    self.isAddressFocus = ko.observable(false);
+    self.isPhoneNumberFocus = ko.observable(false);
+
     self.addProductQuantity = function (data, isAdd) {
         if (isAdd) {
             data.productQuantity(parseInt(data.productQuantity()) + 1);
@@ -61,8 +77,129 @@
         });
     };
 
+    self.fullName.subscribe(function (value) {
+        if (!value || value === "" || value.trim() === "") {
+            self.fullNameError("Vui lòng nhập họ tên của bạn");
+        } else {
+            self.fullNameError("");
+        }
+    });
+
+    self.email.subscribe(function (value) {
+        if (!value || value === "" || value.trim() === "") {
+            self.emailError("Vui lòng email của bạn");
+        } else {
+            self.emailError("");
+        }
+
+        if (value && value !== "" && !CheckEmailFormat(value)) {
+            self.emailError("Định dạng email không đúng");
+        } else {
+            self.emailError("");
+        }
+    });
+
+    self.phoneNumber.subscribe(function (value) {
+        if (!value || value === "") {
+            self.phoneNumberError("Vui lòng nhập số điện thoại của bạn");
+        } else {
+            self.phoneNumberError("");
+        }
+    });
+
+    self.address.subscribe(function (value) {
+        if (!value || value === "" || value.trim() === "") {
+            self.addressError("Vui lòng nhập địa chỉ của bạn");
+        } else {
+            self.addressError();
+        }
+    });
+
     self.order = function () {
-        $('#ordersuccessfulModal').modal('show');
+        if (!self.fullName() || self.fullName() === "" || self.fullName().trim() === "") {
+            self.fullNameError("Vui lòng nhập họ tên của bạn");
+            self.isFullNameFocus(true);
+            return;
+        }
+
+        if (!self.phoneNumber() || self.phoneNumber() === "") {
+            self.phoneNumberError("Vui lòng nhập số điện thoại của bạn");
+            self.isPhoneNumberFocus(true);
+            return;
+        }
+
+        if (!self.email() || self.email() === "") {
+            self.emailError("Vui lòng email của bạn");
+            self.isEmailFocus(true);
+            return;
+        }
+
+        if (self.email() && self.email() !== "" && !CheckEmailFormat(self.email())) {
+            self.emailError("Định dạng email không đúng");
+            self.isEmailFocus(true);
+            return;
+        }
+
+        if (!self.address() || self.address() === "") {
+            self.addressError("Vui lòng nhập địa chỉ của bạn");
+            self.isAddressFocus(true);
+            return;
+        }
+
+        if (!self.fullNameError() && !self.emailError() && !self.phoneNumberError() && !self.addressError()) {
+            self.isSending(true);
+            var listProduct = _.map(self.listProduct(), function (item) {
+                return { productId: item.id, quantity: item.quantity };
+            });
+
+            if (!listProduct || listProduct.length === 0) {
+                toastr.error('Vui lòng chọn sản phẩm');
+                return;
+            }
+
+            $.post("/gio-hang/order",
+                {
+                    fullName: self.fullName(),
+                    phoneNumber: self.phoneNumber(),
+                    email: self.email(),
+                    address: self.address(),
+                    note: self.note(),
+                    listProduct: listProduct
+                }, function (result) {
+                    console.log(result);
+                    self.isSending(false);
+                    if (result === -1) {
+                        self.fullNameError("Vui lòng nhập họ tên của bạn");
+                        self.isFullNameFocus(true);
+                        return;
+                    }
+
+                    if (result === -2) {
+                        self.phoneNumberError("Vui lòng số điện thoại của bạn");
+                        self.isPhoneNumberFocus(true);
+                        return;
+                    }
+
+                    if (result === -3) {
+                        self.emailError("Vui lòng email của bạn");
+                        self.isEmailFocus(true);
+                        return;
+                    }
+
+                    if (result === -4) {
+                        self.addressError("Vui lòng nhập địa chỉ của bạn");
+                        self.isAddressFocus(true);
+                        return;
+                    }                   
+
+                    if (result > 0) {
+                        $('#ordersuccessfulModal').modal('show');
+                        return;
+                    }
+
+                    toastr.error(result);
+                });
+        }
     };
 
     $(document).ready(function () {
