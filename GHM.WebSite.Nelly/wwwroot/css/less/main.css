@@ -1028,6 +1028,11 @@ body {
   font-family: Opensans;
   font-size: 16px;
 }
+@media only screen and (max-width: 1200px) {
+  #menu-middle #menuMiddlerSlider .menu-item .menu-name .description {
+    font-size: 14px;
+  }
+}
 #menu-middle #menuMiddlerSlider .slick-slide {
   padding: 0px 5px;
   position: relative;
