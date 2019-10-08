@@ -48,7 +48,7 @@ namespace GHM.Website.Infrastructure.Repository
                         from faqTranslation in gFaqTranslation.DefaultIfEmpty()
 
                         group new { faqGroup, faqGroupTranslation, faq, faqTranslation }
-                        by new { faqGroup.Id, faqGroupTranslation.Name, faqGroup.Order, faqGroup.IsActive } into g
+                        by new { faqGroup.Id, faqGroupTranslation.Name, faqGroup.Order, faqGroup.IsActive, faqGroup.ConcurrencyStamp } into g
 
                         select new FaqGroupViewModel
                         {
@@ -56,6 +56,7 @@ namespace GHM.Website.Infrastructure.Repository
                             Order = g.Key.Order,
                             Name = g.Key.Name,
                             IsActive = g.Key.IsActive,
+                            ConcurrencyStamp = g.Key.ConcurrencyStamp,
                             ListFaq = g.Count(x=> x.faq != null && x.faqTranslation != null) > 0 ? g.Select(x => new FaqViewModel
                             {
                                 Id = x.faq != null ? x.faq.Id : "",
@@ -64,6 +65,7 @@ namespace GHM.Website.Infrastructure.Repository
                                 Question = x.faqTranslation != null ? x.faqTranslation.Question : "",
                                 Order = x.faq != null ? x.faqGroup.Order : 0,
                                 IsActive = x.faq != null ? x.faq.IsActive : false,
+                                ConcurrencyStamp = x.faq.ConcurrencyStamp,
                             }).OrderBy(x => x.Order).ToList() : null
                         };
 

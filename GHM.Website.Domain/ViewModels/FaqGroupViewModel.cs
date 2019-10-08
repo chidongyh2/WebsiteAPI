@@ -8,6 +8,7 @@ namespace GHM.Website.Domain.ViewModels
         public int Order { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
+        public string ConcurrencyStamp { get; set; }
         public List<FaqViewModel> ListFaq { get; set; }
     }
 }

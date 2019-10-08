@@ -16,7 +16,7 @@ namespace GHM.Website.Domain.IServices
         Task<ActionResultResponse<string>> Insert(string tenantId, string creatorId, string creatorFullName, string creatorAvata, FaqGroupMeta faqGroupMeta);
 
         Task<ActionResultResponse> Update(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string lastUpdateAvata,
-            string faqGroupId, FaqGroupMeta faqGroupMeta);
+            string faqGroupId, bool isQuickUpdate, FaqGroupMeta faqGroupMeta);
 
         Task<ActionResultResponse> Delete(string tenantId, string faqGroupId);
 

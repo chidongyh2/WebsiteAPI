@@ -8,7 +8,8 @@ namespace GHM.Website.Domain.ModelMetas
         public string Photo { get; set; }
         public int Order { get; set; }
         public bool IsActive { get; set; }
+        public bool IsQuickUpdate { get; set; }
         public string ConcurrencyStamp { get; set; }
-        public List<FaqTranslationMeta> FaqTranslations { get; set; }
+        public List<FaqTranslationMeta> Translations { get; set; }
     }
 }

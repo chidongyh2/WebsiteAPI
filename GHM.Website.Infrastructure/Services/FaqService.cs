@@ -67,7 +67,7 @@ namespace GHM.Website.Infrastructure.Services
 
             #region insert Faq Translation.
 
-            if (faqMeta.FaqTranslations.Count > 0)
+            if (faqMeta.Translations.Count > 0)
             {
                 var resultInsertTranslation = await InsertFaqTranslation();
                 if (resultInsertTranslation.Code <= 0)
@@ -86,7 +86,7 @@ namespace GHM.Website.Infrastructure.Services
             {
 
                 var faqTranslations = new List<FaqTranslation>();
-                foreach (var faqTranslation in faqMeta.FaqTranslations)
+                foreach (var faqTranslation in faqMeta.Translations)
                 {
                     // Check name exists.
                     var isNameExists = await _faqTranslationRepository.CheckExists(faqId, tenantId,
@@ -138,7 +138,7 @@ namespace GHM.Website.Infrastructure.Services
         }
 
         public async Task<ActionResultResponse> Update(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string lastUpdateAvata,
-          string faqId, FaqMeta faqMeta)
+          string faqId, bool isQuickUpdate, FaqMeta faqMeta)
         {
             var info = await _faqRepository.GetInfo(faqId);
             if (info == null)
@@ -166,31 +166,34 @@ namespace GHM.Website.Infrastructure.Services
             await _faqRepository.Update(info);
 
             //udpate translate
-            foreach (var faqTranslation in faqMeta.FaqTranslations)
+            if (!isQuickUpdate)
             {
-                var isNameExists = await _faqTranslationRepository.CheckExists(info.Id, tenantId,
-                  faqTranslation.LanguageId, faqTranslation.Question);
-                if (isNameExists)
-                    return new ActionResultResponse(-5, _websiteResourceService.GetString("Question: \"{0}\" already exists.", faqTranslation.Question));
+                foreach (var faqTranslation in faqMeta.Translations)
+                {
+                    var isNameExists = await _faqTranslationRepository.CheckExists(info.Id, tenantId,
+                      faqTranslation.LanguageId, faqTranslation.Question);
+                    if (isNameExists)
+                        return new ActionResultResponse(-5, _websiteResourceService.GetString("Question: \"{0}\" already exists.", faqTranslation.Question));
 
-                var faqTranslationInfo =
-                  await _faqTranslationRepository.GetInfo(tenantId, faqTranslation.LanguageId, faqId);
-                if (faqTranslationInfo != null)
-                {
-                    faqTranslationInfo.Question = faqTranslation.Question.Trim();
-                    faqTranslationInfo.Answer = faqTranslation.Answer?.Trim();
-                    await _faqTranslationRepository.Update(faqTranslationInfo);
-                }
-                else
-                {
-                    var faqTranslationInsert = new FaqTranslation
+                    var faqTranslationInfo =
+                      await _faqTranslationRepository.GetInfo(tenantId, faqTranslation.LanguageId, faqId);
+                    if (faqTranslationInfo != null)
                     {
-                        FaqId = faqId,
-                        LanguageId = faqTranslation.LanguageId.Trim(),
-                        Question = faqTranslation.Question.Trim(),
-                        Answer = faqTranslation.Answer?.Trim()
-                    };
-                    await _faqTranslationRepository.Insert(faqTranslationInsert);
+                        faqTranslationInfo.Question = faqTranslation.Question.Trim();
+                        faqTranslationInfo.Answer = faqTranslation.Answer?.Trim();
+                        await _faqTranslationRepository.Update(faqTranslationInfo);
+                    }
+                    else
+                    {
+                        var faqTranslationInsert = new FaqTranslation
+                        {
+                            FaqId = faqId,
+                            LanguageId = faqTranslation.LanguageId.Trim(),
+                            Question = faqTranslation.Question.Trim(),
+                            Answer = faqTranslation.Answer?.Trim()
+                        };
+                        await _faqTranslationRepository.Insert(faqTranslationInsert);
+                    }
                 }
             }
             return new ActionResultResponse(1, _websiteResourceService.GetString("Update faq successful."));
@@ -231,7 +234,7 @@ namespace GHM.Website.Infrastructure.Services
                 ConcurrencyStamp = info.ConcurrencyStamp,
                 CreateTime = info.CreateTime,
                 LastUpdate = info.LastUpdate,
-                FaqTranslations = faqTranslations.Select(x => new FaqTranslationViewModel
+                Translations = faqTranslations.Select(x => new FaqTranslationViewModel
                 {
                     LanguageId = x.LanguageId,
                     Question = x.Question,

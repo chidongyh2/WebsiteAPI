@@ -21,7 +21,7 @@ using GHM.Website.Domain.Constants;
 using Microsoft.Extensions.Configuration;
 namespace GHM.Website.Infrastructure.Services
 {
- public  class FaqGroupService : IFaqGroupService
+    public class FaqGroupService : IFaqGroupService
     {
         private readonly IFaqGroupRepository _faqGroupRepository;
         private readonly IFaqGroupTranslationRepository _faqGroupTranslationRepository;
@@ -43,7 +43,7 @@ namespace GHM.Website.Infrastructure.Services
 
         public async Task<SearchResult<FaqGroupViewModel>> Search(string tenantId, string languageId, string keyword, bool? isActive, int page, int pageSize)
         {
-            var items =  _faqGroupRepository.Search(tenantId, languageId, keyword, isActive, page, pageSize, out var totalRows);
+            var items = _faqGroupRepository.Search(tenantId, languageId, keyword, isActive, page, pageSize, out var totalRows);
             return new SearchResult<FaqGroupViewModel>
             {
                 Items = items,
@@ -52,7 +52,7 @@ namespace GHM.Website.Infrastructure.Services
         }
 
         public async Task<ActionResultResponse<string>> Insert(string tenantId, string creatorId, string creatorFullName, string creatorAvata,
-            FaqGroupMeta faqGroupMeta)
+           FaqGroupMeta faqGroupMeta)
         {
             var faqGroupId = Guid.NewGuid().ToString();
             // Insert new Faq.
@@ -61,7 +61,7 @@ namespace GHM.Website.Infrastructure.Services
                 Id = faqGroupId,
                 ConcurrencyStamp = faqGroupId.Trim(),
                 IsActive = faqGroupMeta.IsActive,
-                Order=faqGroupMeta.Order,
+                Order = faqGroupMeta.Order,
                 TenantId = tenantId,
                 CreatorId = creatorId,
                 CreatorFullName = creatorFullName
@@ -145,7 +145,7 @@ namespace GHM.Website.Infrastructure.Services
         }
 
         public async Task<ActionResultResponse> Update(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string lastUpdateAvata,
-            string faqGroupId, FaqGroupMeta faqGroupMeta)
+            string faqGroupId, bool isQuickUpdate, FaqGroupMeta faqGroupMeta)
         {
             var info = await _faqGroupRepository.GetInfo(faqGroupId);
             if (info == null)
@@ -166,36 +166,40 @@ namespace GHM.Website.Infrastructure.Services
 
             await _faqGroupRepository.Update(info);
 
-            //udpate translate
-            foreach (var faqGroupTranslation in faqGroupMeta.Translations)
+            if (!isQuickUpdate)
             {
-                var isNameExists = await _faqGroupTranslationRepository.CheckExists(info.Id, tenantId,
-                    faqGroupTranslation.LanguageId, faqGroupTranslation.Name);
-                if (isNameExists)
-                    return new ActionResultResponse(-4, _websiteResourceService.GetString("Faq group name: \"{0}\" already exists.", faqGroupTranslation.Name));
+                //udpate translate
+                foreach (var faqGroupTranslation in faqGroupMeta.Translations)
+                {
+                    var isNameExists = await _faqGroupTranslationRepository.CheckExists(info.Id, tenantId,
+                        faqGroupTranslation.LanguageId, faqGroupTranslation.Name);
+                    if (isNameExists)
+                        return new ActionResultResponse(-4, _websiteResourceService.GetString("Faq group name: \"{0}\" already exists.", faqGroupTranslation.Name));
 
-                var FaqGroupTranslationInfo =
-                    await _faqGroupTranslationRepository.GetInfo(tenantId, faqGroupTranslation.LanguageId, faqGroupId);
-                if (FaqGroupTranslationInfo != null)
-                {
-                    FaqGroupTranslationInfo.Name = faqGroupTranslation.Name.Trim();
-                    FaqGroupTranslationInfo.Description = faqGroupTranslation.Description?.Trim();
-                    FaqGroupTranslationInfo.UnsignName = faqGroupTranslation.Name.StripVietnameseChars().ToUpper();
-                    await _faqGroupTranslationRepository.Update(FaqGroupTranslationInfo);
-                }
-                else
-                {
-                    var faqGroupTranslationInsert = new FaqGroupTranslation
+                    var FaqGroupTranslationInfo =
+                        await _faqGroupTranslationRepository.GetInfo(tenantId, faqGroupTranslation.LanguageId, faqGroupId);
+                    if (FaqGroupTranslationInfo != null)
                     {
-                        FaqGroupId = faqGroupId,
-                        LanguageId = faqGroupTranslation.LanguageId.Trim(),
-                        Name = faqGroupTranslation.Name.Trim(),
-                        Description = faqGroupTranslation.Description?.Trim(),
-                        UnsignName = faqGroupTranslation.Name.StripVietnameseChars().ToUpper()
-                    };
-                    await _faqGroupTranslationRepository.Insert(faqGroupTranslationInsert);
+                        FaqGroupTranslationInfo.Name = faqGroupTranslation.Name.Trim();
+                        FaqGroupTranslationInfo.Description = faqGroupTranslation.Description?.Trim();
+                        FaqGroupTranslationInfo.UnsignName = faqGroupTranslation.Name.StripVietnameseChars().ToUpper();
+                        await _faqGroupTranslationRepository.Update(FaqGroupTranslationInfo);
+                    }
+                    else
+                    {
+                        var faqGroupTranslationInsert = new FaqGroupTranslation
+                        {
+                            FaqGroupId = faqGroupId,
+                            LanguageId = faqGroupTranslation.LanguageId.Trim(),
+                            Name = faqGroupTranslation.Name.Trim(),
+                            Description = faqGroupTranslation.Description?.Trim(),
+                            UnsignName = faqGroupTranslation.Name.StripVietnameseChars().ToUpper()
+                        };
+                        await _faqGroupTranslationRepository.Insert(faqGroupTranslationInsert);
+                    }
                 }
             }
+
             return new ActionResultResponse(1, _websiteResourceService.GetString("Update faq group successful."));
         }
 

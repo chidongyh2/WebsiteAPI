@@ -42,7 +42,8 @@ namespace GHM.Website.Api.Controllers
         [CheckPermission]
         public async Task<IActionResult> Update(string id, [FromBody]FaqMeta faqMeta)
         {
-            var result = await _faqService.Update(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, id, faqMeta);
+            var result = await _faqService.Update(CurrentUser.TenantId, CurrentUser.Id,
+                CurrentUser.FullName, CurrentUser.Avatar, id, faqMeta.IsQuickUpdate, faqMeta);
             if (result.Code <= 0)
                 return BadRequest(result);
             return Ok(result);
@@ -97,7 +98,7 @@ namespace GHM.Website.Api.Controllers
         [CheckPermission]
         public async Task<IActionResult> FaqGroupUpdate(string id, [FromBody]FaqGroupMeta faqGroupMeta)
         {
-            var result = await _faqGroupService.Update(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, id, faqGroupMeta);
+            var result = await _faqGroupService.Update(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, id, faqGroupMeta.IsQuickUpdate, faqGroupMeta);
             if (result.Code <= 0)
                 return BadRequest(result);
             return Ok(result);

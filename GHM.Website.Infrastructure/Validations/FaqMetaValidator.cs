@@ -21,11 +21,11 @@ namespace GHM.Website.Infrastructure.Validations
                 .NotNull()
                 .WithMessage(sharedResourceService.GetString("{0} can not be null.", websiteResourceService.GetString("Active status")));
 
-            RuleFor(x => x.FaqTranslations)
-                .Must(x => x != null && x.Count > 0)
+            RuleFor(x => x.Translations)
+                .Must(x => x != null && x.Count > 0)                
                 .WithMessage(sharedResourceService.GetString("Please select at least one language."));
 
-            RuleForEach(x => x.FaqTranslations).SetValidator(new FaqTranslationMetaValidator(sharedResourceService, websiteResourceService));
+            RuleForEach(x => x.Translations).SetValidator(new FaqTranslationMetaValidator(sharedResourceService, websiteResourceService));
         }
     }
     public class FaqTranslationMetaValidator : AbstractValidator<FaqTranslationMeta>
