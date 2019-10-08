@@ -53,32 +53,61 @@ function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
+function currentCulture() {
+    return Globalize
+        ? Globalize.culture('vi-VN')
+        : null;
+}
+
 var numberAfterComma = 0;
 function formatNumberic(value, ext) {
     if (value == null || value == undefined) {
         return "";
     }
 
-    value = value.toString().replace(/\,/g, "");
-    if (isNaN(value)) {
-        return "";
+    var culture = currentCulture();
+    if (culture) {
+        var pattern = '\\' + culture.numberFormat[','];
+        var regex = new RegExp(pattern, 'g');
+        value = value.toString().replace(regex, "");
+        if (isNaN(value)) {
+            return '';
+        }
+        if (parseFloat(value) === 0) {
+            return '0';
+        }
+        if (culture.name !== 'vi-VN') {
+            ext = 'N0';
+        }
+        if (!isNumber(value)) {
+            value = Globalize.parseFloat(value);
+        }
+        value = Globalize.format(value, ext).toString();
+        var floatValue = Globalize.parseFloat(value.toString().replace(regex, ""));
+        return Globalize.format(floatValue, ext).toString();
+    } else {
+        value = value.toString().replace(/\,/g, "");
+        if (isNaN(value)) {
+            return "";
+        }
+
+        if (parseFloat(value) === 0) {
+            return "0";
+        }
+
+        if (ext == undefined)
+            ext = "N" + numberAfterComma;
+
+        //if (!isNumber(value)) {
+        value = Globalize.parseFloat(value);
+        //}
+
+        value = Globalize.format(value, ext).toString();
+        var ext1 = parseFloat(value.toString().replace(/\,/g, ""));
+
+        return ext1.toString().indexOf('.') == -1 ? value.split('.')[0] : value.split('.')[0] + "." + ext1.toString().split('.')[1];
     }
 
-    if (parseFloat(value) === 0) {
-        return "0";
-    }
-
-    if (ext == undefined)
-        ext = "N" + numberAfterComma;
-
-    //if (!isNumber(value)) {
-    value = Globalize.parseFloat(value);
-    //}
-
-    value = Globalize.format(value, ext).toString();
-    var ext1 = parseFloat(value.toString().replace(/\,/g, ""));
-
-    return ext1.toString().indexOf('.') == -1 ? value.split('.')[0] : value.split('.')[0] + "." + ext1.toString().split('.')[1];
 }
 
 function ConvertToInt(value) {

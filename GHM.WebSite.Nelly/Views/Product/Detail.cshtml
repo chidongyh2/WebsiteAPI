@@ -47,7 +47,7 @@
                                 <div class="star">
                                     @for (var i = 1; i <= 5; i++)
                                     {
-                                        <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
                                     }
                                 </div>
                                 <div class="price">
@@ -55,9 +55,9 @@
                                 </div>
                                 @if (!string.IsNullOrEmpty(productInfo?.Description))
                                 {
-                                    <div class="description">
-                                        @Html.Raw(productInfo?.Description)
-                                    </div>
+                                <div class="description">
+                                    @Html.Raw(productInfo?.Description)
+                                </div>
                                 }
                                 <div class="attribute">
                                     <ul class="">
@@ -156,7 +156,8 @@
            var productAttributes = @(ViewBag.ProudctAttributes != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProudctAttributes, jsonSerializerSettings)) : "[]");
            var productCategories = @(ViewBag.ProductCategory != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductCategory, jsonSerializerSettings)) : "[]");
            var productInfo = @(ViewBag.ProductInfo != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductInfo, jsonSerializerSettings)) : "[]");
-            var productSelectItems = @(ViewBag.ProductSelectItems != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductSelectItems, jsonSerializerSettings)) : "[]");
+           var productSelectItems = @(ViewBag.ProductSelectItems != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductSelectItems, jsonSerializerSettings)) : "[]");           
+
         </script>
         <script src="~/lib/EasyZoom-master/dist/easyzoom.min.js"></script>
         <script src="~/js/viewmodel/product-detail.viewmodel.min.js"></script>

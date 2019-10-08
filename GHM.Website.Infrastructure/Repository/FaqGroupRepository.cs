@@ -63,7 +63,7 @@ namespace GHM.Website.Infrastructure.Repository
                                 FaqGroupId = x.faq != null ? x.faq.FaqGroupId : "",
                                 Answer = x.faqTranslation != null ? x.faqTranslation.Answer : "",
                                 Question = x.faqTranslation != null ? x.faqTranslation.Question : "",
-                                Order = x.faq != null ? x.faqGroup.Order : 0,
+                                Order = x.faq != null ? x.faq.Order : 0,
                                 IsActive = x.faq != null ? x.faq.IsActive : false,
                                 ConcurrencyStamp = x.faq.ConcurrencyStamp,
                             }).OrderBy(x => x.Order).ToList() : null

@@ -12,17 +12,18 @@ namespace GHM.Website.Infrastructure.Validations
     {
         public FaqMetaValidator(IResourceService<SharedResource> sharedResourceService, IResourceService<GhmWebsiteResource> websiteResourceService)
         {
-            //RuleFor(x => x.FaqGroupId)
-            //    .NotEmpty()
-            //    .WithMessage(sharedResourceService.GetString("{0} can not be null.",
-            //        websiteResourceService.GetString("Faq Group")));
+            RuleFor(x => x.FaqGroupId)
+                .NotEmpty()
+                .WithMessage(sharedResourceService.GetString("{0} can not be null.",
+                    websiteResourceService.GetString("Faq Group")));
 
             RuleFor(x => x.IsActive)
                 .NotNull()
                 .WithMessage(sharedResourceService.GetString("{0} can not be null.", websiteResourceService.GetString("Active status")));
 
             RuleFor(x => x.Translations)
-                .Must(x => x != null && x.Count > 0)                
+                .Must(x => x != null && x.Count > 0)
+                .When(x => !x.IsQuickUpdate)
                 .WithMessage(sharedResourceService.GetString("Please select at least one language."));
 
             RuleForEach(x => x.Translations).SetValidator(new FaqTranslationMetaValidator(sharedResourceService, websiteResourceService));

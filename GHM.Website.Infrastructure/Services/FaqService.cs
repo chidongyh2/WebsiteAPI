@@ -53,7 +53,7 @@ namespace GHM.Website.Infrastructure.Services
                 Id = faqId,
                 ConcurrencyStamp = faqId.Trim(),
                 FaqGroupId = faqMeta.FaqGroupId.Trim(),
-                Photo = faqMeta.Photo.Trim(),
+                Photo = faqMeta.Photo?.Trim(),
                 Order = faqMeta.Order,
                 IsActive = faqMeta.IsActive,
                 TenantId = tenantId,
@@ -79,12 +79,10 @@ namespace GHM.Website.Infrastructure.Services
               _websiteResourceService.GetString("Add new faq successful."),
               string.Empty, faqId);
 
-
             #region Local functions
 
             async Task<ActionResultResponse<string>> InsertFaqTranslation()
             {
-
                 var faqTranslations = new List<FaqTranslation>();
                 foreach (var faqTranslation in faqMeta.Translations)
                 {
@@ -137,18 +135,18 @@ namespace GHM.Website.Infrastructure.Services
             #endregion
         }
 
-        public async Task<ActionResultResponse> Update(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string lastUpdateAvata,
+        public async Task<ActionResultResponse<string>> Update(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string lastUpdateAvata,
           string faqId, bool isQuickUpdate, FaqMeta faqMeta)
         {
             var info = await _faqRepository.GetInfo(faqId);
             if (info == null)
-                return new ActionResultResponse(-1, _websiteResourceService.GetString("Faq does not exists."));
+                return new ActionResultResponse<string>(-1, _websiteResourceService.GetString("Faq does not exists."));
 
             if (info.TenantId != tenantId)
-                return new ActionResultResponse(-2, _sharedResourceService.GetString(ErrorMessage.NotHavePermission));
+                return new ActionResultResponse<string>(-2, _sharedResourceService.GetString(ErrorMessage.NotHavePermission));
 
             if (info.ConcurrencyStamp != faqMeta.ConcurrencyStamp)
-                return new ActionResultResponse(-3, _websiteResourceService.GetString("The faq already updated by other people. You can not update this Faq ."));
+                return new ActionResultResponse<string>(-3, _websiteResourceService.GetString("The faq already updated by other people. You can not update this Faq ."));
 
             var infoGroup = await _faqGroupRepository.GetInfo(faqMeta.FaqGroupId.Trim());
             if (infoGroup == null)
@@ -173,7 +171,7 @@ namespace GHM.Website.Infrastructure.Services
                     var isNameExists = await _faqTranslationRepository.CheckExists(info.Id, tenantId,
                       faqTranslation.LanguageId, faqTranslation.Question);
                     if (isNameExists)
-                        return new ActionResultResponse(-5, _websiteResourceService.GetString("Question: \"{0}\" already exists.", faqTranslation.Question));
+                        return new ActionResultResponse<string>(-5, _websiteResourceService.GetString("Question: \"{0}\" already exists.", faqTranslation.Question));
 
                     var faqTranslationInfo =
                       await _faqTranslationRepository.GetInfo(tenantId, faqTranslation.LanguageId, faqId);
@@ -196,7 +194,7 @@ namespace GHM.Website.Infrastructure.Services
                     }
                 }
             }
-            return new ActionResultResponse(1, _websiteResourceService.GetString("Update faq successful."));
+            return new ActionResultResponse<string>(1, _websiteResourceService.GetString("Update faq successful."), "", info.ConcurrencyStamp);
         }
 
         public async Task<ActionResultResponse> Delete(string tenantId, string faqId)

@@ -17,8 +17,9 @@ namespace GHM.Website.Infrastructure.Validations
                 .NotNull()
                 .WithMessage(sharedResourceService.GetString("{0} can not be null.", websiteResourceService.GetString("Active status")));
 
-            RuleFor(x => x.Translations)
+            RuleFor(x => x.Translations)                
                 .Must(x => x != null && x.Count > 0)
+                .When(x => !x.IsQuickUpdate)
                 .WithMessage(sharedResourceService.GetString("Please select at least one language."));
 
             RuleForEach(x => x.Translations).SetValidator(new FaqGroupTranslationMetaValidator(sharedResourceService, websiteResourceService));

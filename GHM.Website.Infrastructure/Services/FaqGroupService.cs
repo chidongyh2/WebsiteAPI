@@ -85,7 +85,6 @@ namespace GHM.Website.Infrastructure.Services
                 _websiteResourceService.GetString("Add new Faq group successful."),
                 string.Empty, faqGroupId);
 
-
             #region Local functions
 
             async Task<ActionResultResponse<string>> InsertFaqGroupTranslation()
@@ -144,18 +143,18 @@ namespace GHM.Website.Infrastructure.Services
             #endregion
         }
 
-        public async Task<ActionResultResponse> Update(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string lastUpdateAvata,
+        public async Task<ActionResultResponse<string>> Update(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string lastUpdateAvata,
             string faqGroupId, bool isQuickUpdate, FaqGroupMeta faqGroupMeta)
         {
             var info = await _faqGroupRepository.GetInfo(faqGroupId);
             if (info == null)
-                return new ActionResultResponse(-1, _websiteResourceService.GetString("Faq group does not exists."));
+                return new ActionResultResponse<string>(-1, _websiteResourceService.GetString("Faq group does not exists."));
 
             if (info.TenantId != tenantId)
-                return new ActionResultResponse(-2, _sharedResourceService.GetString(ErrorMessage.NotHavePermission));
+                return new ActionResultResponse<string> (-2, _sharedResourceService.GetString(ErrorMessage.NotHavePermission));
 
             if (info.ConcurrencyStamp != faqGroupMeta.ConcurrencyStamp)
-                return new ActionResultResponse(-3, _websiteResourceService.GetString("The Faq group already updated by other people. You can not update this Faq group."));
+                return new ActionResultResponse<string>(-3, _websiteResourceService.GetString("The Faq group already updated by other people. You can not update this Faq group."));
 
             info.IsActive = faqGroupMeta.IsActive;
             info.Order = faqGroupMeta.Order;
@@ -174,7 +173,7 @@ namespace GHM.Website.Infrastructure.Services
                     var isNameExists = await _faqGroupTranslationRepository.CheckExists(info.Id, tenantId,
                         faqGroupTranslation.LanguageId, faqGroupTranslation.Name);
                     if (isNameExists)
-                        return new ActionResultResponse(-4, _websiteResourceService.GetString("Faq group name: \"{0}\" already exists.", faqGroupTranslation.Name));
+                        return new ActionResultResponse<string>(-4, _websiteResourceService.GetString("Faq group name: \"{0}\" already exists.", faqGroupTranslation.Name));
 
                     var FaqGroupTranslationInfo =
                         await _faqGroupTranslationRepository.GetInfo(tenantId, faqGroupTranslation.LanguageId, faqGroupId);
@@ -200,7 +199,7 @@ namespace GHM.Website.Infrastructure.Services
                 }
             }
 
-            return new ActionResultResponse(1, _websiteResourceService.GetString("Update faq group successful."));
+            return new ActionResultResponse<string>(1, _websiteResourceService.GetString("Update faq group successful."), "", info.ConcurrencyStamp);
         }
 
         public async Task<ActionResultResponse> Delete(string tenantId, string FaqGroupId)
