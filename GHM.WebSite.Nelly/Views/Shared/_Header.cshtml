@@ -18,24 +18,27 @@
         <div class="wrap-header-top">
             <div class="container">
                 <div class="row">
-                    @*<div class="col-lg-6 hotline" >
+                    <div class="col-sm-6 hotline">
                         <span>
                             @if (websiteSetting?.Hotline != null && websiteSetting.Hotline.Any())
                             {
-                                <span>Hotline: @websiteSetting?.Hotline  |</span>
+                                <a href="tel:@websiteSetting?.Hotline"><span>@websiteSetting?.Hotline  |</span></a>
                             }
-                            @if (@officeContact?.ContactValue != null)
+                            @if (listBranch != null && listBranch.Any())
                             {
-                                <span class="cm-pdl-10"> Email: @officeContact?.ContactValue</span>
+                                <span class=""> @listBranch.FirstOrDefault(x => x.IsOffice.HasValue && x.IsOffice.Value)?.Address</span>
                             }
                         </span>
-                    </div>*@
-                    <div class="col-sm-12">
+                    </div>
+                    <div class="col-sm-6">
                         <ul class="list-inline pull-right">
                             <li class="">
-                                <a href="javascript://">
-                                    <i class="ion-android-search"></i>
-                                </a>
+                                <div class="searchbox">
+                                    <input class="form-control" placeholder="Tìm kiếm"/>
+                                    <a href="javascript://">
+                                        <i class="ion-android-search"></i>
+                                    </a>
+                                </div>                               
                             </li>
                             <li>
                                 <a href="/gio-hang" class="shopping-cart">
@@ -44,12 +47,12 @@
                                 </a>
                             </li>
                             @*<li>
-                                <a href="javascript://">
-                                    <i class="fa fa-language"></i>
-                                    <span class="cm-pdl-10 size14"> English</span>
-                                </a>
-                            </li>*@
-                        </ul>                        
+                                    <a href="javascript://">
+                                        <i class="fa fa-language"></i>
+                                        <span class="cm-pdl-10 size14"> English</span>
+                                    </a>
+                                </li>*@
+                        </ul>
                     </div>
                 </div>
             </div>

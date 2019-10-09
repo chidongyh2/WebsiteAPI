@@ -93,18 +93,23 @@ function ProductDetailViewModel() {
     };
 
     self.buy = function () {
-        $.post(`/gio-hang/buy/${self.productId()}`, {
-            quantity: self.quantity()
-        }, function (data) {
-            if (data) {
-                toastr.success('Thêm mới sản phẩm vào giỏ hàng thành công.');
-                var quantityProductHeader = document.getElementById("quantity-product");
-                quantityProductHeader.textContent = data.length;
+        if (self.quantity() === 0) {
+            toastr.error('Vui lòng chọn số lượng sản phẩm');
+            return;
+        } else {
+            $.post(`/gio-hang/buy/${self.productId()}`, {
+                quantity: self.quantity()
+            }, function (data) {
+                if (data) {
+                    toastr.success('Thêm mới sản phẩm vào giỏ hàng thành công.');
+                    var quantityProductHeader = document.getElementById("quantity-product");
+                    quantityProductHeader.textContent = data.length;
 
-                var quantityProductSidebar = document.getElementById("quantity-product-sidebar");
-                quantityProductSidebar.textContent = data.length;
-            }
-        });
+                    var quantityProductSidebar = document.getElementById("quantity-product-sidebar");
+                    quantityProductSidebar.textContent = data.length;
+                }
+            });
+        }
     };
 
     self.selectProductAttribute = function (item) {

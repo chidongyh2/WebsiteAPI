@@ -1,5 +1,32 @@
 ﻿
 var isShowToggle = true;
+
+function callToMe() {
+    var phoneNumber = $('#phoneNumberContact').val();
+    $.post("/gui-lien-he",
+        {
+            fullName: phoneNumber,
+            phoneNumber: phoneNumber,
+            email: 'cskh@nellydevuyst.vn',
+            title: 'Hãy gọi cho tôi',
+            content: 'Hãy gọi cho tôi vào số ' + phoneNumber
+        }, function (result) {
+            if (result.code === -1) {
+                toastr.error("Vui lòng nhập họ tên của bạn");
+                return;
+            }
+
+            if (result.code === -3) {
+                toastr.error("Vui lòng nhập nội dung tin nhắn");
+                return;
+            }
+
+            if (result.code > 0) {
+                $('#popupsuccessfulModal').modal('show');
+            }
+        });
+}
+
 $(document).ready(function () {
     $(".wrap-show-icon").css("display", "none");
     $("#backToTop").click(() => {
@@ -65,4 +92,6 @@ $(document).ready(function () {
     });
 
     $('[data-toggle="tooltip"]').tooltip();
+
+
 });

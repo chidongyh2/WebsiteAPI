@@ -19,9 +19,7 @@
             </div>
         </div>
         <div class="container">
-            @if (Model != null && Model.Any())
-            {
-                <div class="row">
+            @*<div class="row">
                     <div class="col-sm-12">
                         <div class="btn-toolbar">
                             <div class="btn-group">
@@ -39,19 +37,18 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div data-bind="attr:{id: 'product-hot-slider-' + productCategoryId()},">
-                            <!-- ko foreach: listProductHot-->
-                            <div class="item">
-                                <partial name="_ProductItem" />
-                            </div>
-                            <!--/ko-->
+                </div>*@
+            <div class="row">
+                <div class="col-sm-12">
+                    <div data-bind="attr:{id: 'product-hot-slider-' + productCategoryId()},">
+                        <!-- ko foreach: listProductHot-->
+                        <div class="item">
+                            <partial name="_ProductItem" />
                         </div>
+                        <!--/ko-->
                     </div>
                 </div>
-            }
+            </div>
         </div>
     </div>
 }

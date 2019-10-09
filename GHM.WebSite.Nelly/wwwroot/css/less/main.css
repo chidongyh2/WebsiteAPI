@@ -35,7 +35,7 @@
   src: url('../../lib/playfair-display/playfairdisplay-bold.otf') format('opentype');
 }
 body {
-  font-family: Roboto-Regular;
+  font-family: Roboto-Regular !important;
 }
 #backToTop {
   bottom: 15px;
@@ -544,7 +544,7 @@ body {
   transition: 0.3s ease;
   font-family: Opensans;
   font-size: 13px;
-  font-family: PlayfairDisplay-Regular;
+  font-family: Roboto-Regular-Regular;
 }
 .sidebar-news-host .list-news li .media-body a:hover {
   text-decoration: none;
@@ -725,7 +725,7 @@ body {
   width: 14% !important;
 }
 .titlebar {
-  font-family: PlayfairDisplay-Regular !important;
+  font-family: Roboto-Regular-Regular !important;
   text-align: center;
 }
 .titlebar h3 {
@@ -924,7 +924,7 @@ body {
 }
 #news-hot-in-homepage #news-slider .slick-center .news-content .title {
   padding: 10px 20px;
-  font-family: PlayfairDisplay-Bold;
+  font-family: Roboto-Regular;
   padding-top: 10px;
   font-size: 24px;
   margin-bottom: 10px;
@@ -992,15 +992,15 @@ body {
   align-items: center;
   flex-direction: column;
   flex-basis: 24%;
+  /*&:hover {
+                box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+                border: none;
+            }*/
 }
 @media only screen and (max-width: 1200px) {
   #menu-middle #menuMiddlerSlider .menu-item {
     min-height: 255px;
   }
-}
-#menu-middle #menuMiddlerSlider .menu-item:hover {
-  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-  border: none;
 }
 #menu-middle #menuMiddlerSlider .menu-item .logo {
   text-align: center;
@@ -1019,7 +1019,7 @@ body {
   flex-direction: column;
 }
 #menu-middle #menuMiddlerSlider .menu-item .menu-name a {
-  font-family: PlayfairDisplay-Bold;
+  font-family: Roboto-Regular;
   font-size: 20px;
   text-align: center;
   color: #3F3F3F;
@@ -1061,7 +1061,7 @@ body {
 }
 .news-item .wrap-text-content .title {
   min-height: 50px;
-  font-family: PlayfairDisplay-Bold;
+  font-family: Roboto-Regular;
   font-size: 15px;
   padding: 5px 0px;
   font-size: 16px;
@@ -1367,7 +1367,10 @@ body {
   padding-bottom: 20px;
 }
 #box-hotline {
-  background-color: #FEEFEC;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /*background-color: @background-color-footer;*/
   color: #3F3F3F;
   display: flex;
   flex-direction: column;
@@ -1377,22 +1380,31 @@ body {
   margin-bottom: 20px;
 }
 #box-hotline .header {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   text-align: center;
-  padding: 30px;
-  border-bottom: 2px solid #FFFFFF;
+  padding-top: 20px;
+  /*border-bottom: 2px solid @color-white;*/
 }
 #box-hotline .header h4 {
   color: #3F3F3F;
-  font-family: PlayfairDisplay;
-  font-size: 20px;
+  font-family: Roboto-Regular;
+  font-size: 16px;
   font-weight: bold;
 }
+@media only screen and (max-width: 1200px) {
+  #box-hotline .header h4 {
+    font-size: 15px;
+  }
+}
 #box-hotline .content {
-  padding: 20px;
+  padding: 70px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: row;
   width: 100%;
 }
@@ -1403,9 +1415,14 @@ body {
 }
 #box-hotline .content .inbox .text-send-mobile {
   text-align: center;
-  font-family: PlayfairDisplay;
-  font-size: 18px;
+  font-family: Roboto-Regular;
+  font-size: 16px;
   color: #3F3F3F;
+}
+@media only screen and (max-width: 1200px) {
+  #box-hotline .content .inbox .text-send-mobile {
+    font-size: 15px;
+  }
 }
 #box-hotline .content .inbox .input-group {
   margin-top: 10px;
@@ -1672,6 +1689,9 @@ body {
 .sidebar-product .form-search .input-group .form-control {
   border-radius: 0px !important;
   border-color: #EEEDEB;
+}
+.sidebar-product .form-search .input-group .form-control:focus {
+  box-shadow: unset;
 }
 .sidebar-product .form-search .input-group .btn-primary {
   background-color: #999999;
@@ -2159,7 +2179,7 @@ body {
   font-size: 30px;
   font-weight: bold;
   color: #3F3F3F;
-  font-family: PlayfairDisplay-Regular;
+  font-family: Roboto-Regular-Regular;
 }
 #faqs .faq-content .faq-list {
   margin-top: 10px;
@@ -2422,7 +2442,7 @@ body {
   text-align: center;
   text-transform: uppercase;
   color: #3F3F3F;
-  font-family: PlayfairDisplay;
+  font-family: Roboto-Regular;
   font-size: 20px;
   font-weight: bold;
 }
@@ -2522,7 +2542,7 @@ body {
 .modal-dialog .modal-content .modal-body h3 {
   color: #F9A4A7;
   font-size: 20px;
-  font-family: PlayfairDisplay-Regular;
+  font-family: Roboto-Regular-Regular;
   text-transform: uppercase;
   margin: 20px 0px;
 }

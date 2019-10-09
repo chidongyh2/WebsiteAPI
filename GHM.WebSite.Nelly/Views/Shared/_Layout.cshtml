@@ -1,6 +1,7 @@
 ﻿@{
     var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
     var absoluteUri = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
+    var message = "Cảm ơn bạn đã quan tâm. Chúng tôi sẽ liên hệ với bạn trong thời gian sơm nhất.";
 }
 <!DOCTYPE html>
 <html>
@@ -51,6 +52,7 @@
     </div>
     <partial name="_SideBar" />
     <partial name="_Footer" />
+    <partial name="_PopupSuccess" model="@message"/>
     <script src="~/js/plugins.min.js"></script>
     <script src="~/js/site.min.js"></script>
     <script>

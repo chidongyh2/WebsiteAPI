@@ -1,27 +1,21 @@
 ﻿@{
     var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
 }
-<div id="box-hotline">
+<div id="box-hotline" class="box-hotline lazy" data-src="/images/facion/box-online.jpg">
     <div class="header">
         <h4>Tổng đài miễn cước 18006652 hoặc Hotline 24/7: @websiteSetting.Hotline để được giải đáp thắc mắc</h4>
     </div>
-    <div class="content">
-        <div class="image-left">
-            <img class="img-responsive lazy" data-src="/images/facion/lá 2.png"/>
-        </div>
+    <div class="content">       
         <div class="inbox">
             <div class="text-send-mobile">
                 Hoặc để lại SĐT tại đây, chúng tôi sẽ nhắn cho bạn
             </div>
             <div class="input-group">
-                <input class="form-control" placeholder="Điền số điện thoại vào đây" />
+                <input class="form-control" id="phoneNumberContact" placeholder="Điền số điện thoại vào đây" />
                 <div class="input-group-btn">
-                    <button class="btn btn-send-phone">Gọi cho tôi</button>
+                    <button class="btn btn-send-phone" onclick="callToMe()">Gọi cho tôi</button>
                 </div>
             </div>
-        </div>
-        <div class="image-right">
-            <img class="img-responsive lazy" data-src="/images/facion/lá.png" />
         </div>
     </div>
 </div>

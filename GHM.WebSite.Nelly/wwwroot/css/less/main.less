@@ -1,7 +1,7 @@
 ﻿@import "config.less";
 
 body {
-    font-family: Roboto-Regular;
+    font-family: Roboto-Regular !important;
 }
 
 #backToTop {
@@ -69,7 +69,7 @@ body {
     }
 
     .owl-nav {
-        margin-top:10px;
+        margin-top: 10px;
         // display: none;
         .owl-prev {
             position: absolute;
@@ -625,7 +625,7 @@ body {
                     transition: 0.3s ease;
                     font-family: Opensans;
                     font-size: 13px;
-                    font-family: PlayfairDisplay-Regular;
+                    font-family: Roboto-Regular-Regular;
 
                     &:hover {
                         text-decoration: none;
@@ -844,7 +844,7 @@ body {
 }
 
 .titlebar {
-    font-family: PlayfairDisplay-Regular !important;
+    font-family: Roboto-Regular-Regular !important;
     text-align: center;
 
     h3 {
@@ -1068,7 +1068,7 @@ body {
 
                 .title {
                     padding: 10px 20px;
-                    font-family: PlayfairDisplay-Bold;
+                    font-family: Roboto-Regular;
                     padding-top: 10px;
                     font-size: 24px;
                     margin-bottom: 10px;
@@ -1150,12 +1150,10 @@ body {
             @media @mobile {
                 min-height: 255px;
             }
-
-            &:hover {
+            /*&:hover {
                 box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
                 border: none;
-            }
-
+            }*/
             .logo {
                 text-align: center;
                 margin-top: calc(-18%);
@@ -1173,7 +1171,7 @@ body {
                 flex-direction: column;
 
                 a {
-                    font-family: PlayfairDisplay-Bold;
+                    font-family: Roboto-Regular;
                     font-size: 20px;
                     text-align: center;
                     color: @color-text;
@@ -1223,7 +1221,7 @@ body {
 
         .title {
             min-height: 50px;
-            font-family: PlayfairDisplay-Bold;
+            font-family: Roboto-Regular;
             font-size: 15px;
 
             @media @tablet {
@@ -1579,7 +1577,10 @@ body {
 }
 
 #box-hotline {
-    background-color: @background-color-footer;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*background-color: @background-color-footer;*/
     color: @color-text;
     display: flex;
     flex-direction: column;
@@ -1589,24 +1590,31 @@ body {
     margin-bottom: 20px;
 
     .header {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
         width: 100%;
         text-align: center;
-        padding: 30px;
-        border-bottom: 2px solid @color-white;
-
+        padding-top: 20px;
+        /*border-bottom: 2px solid @color-white;*/
         h4 {
             color: @color-text;
-            font-family: PlayfairDisplay;
-            font-size: 20px;
+            font-family: Roboto-Regular;
+            font-size: 16px;
             font-weight: bold;
+
+            @media @mobile {
+                font-size: 15px;
+            }
         }
     }
 
     .content {
-        padding: 20px;
+        padding: 70px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         flex-direction: row;
         width: 100%;
 
@@ -1617,9 +1625,13 @@ body {
 
             .text-send-mobile {
                 text-align: center;
-                font-family: PlayfairDisplay;
-                font-size: 18px;
+                font-family: Roboto-Regular;
+                font-size: 16px;
                 color: @color-text;
+
+                @media @mobile {
+                    font-size: 15px;
+                }
             }
 
             .input-group {
@@ -1939,6 +1951,10 @@ body {
             .form-control {
                 border-radius: 0px !important;
                 border-color: @color-border;
+
+                &:focus {
+                    box-shadow: unset;
+                }
             }
 
             .btn-primary {
@@ -2536,7 +2552,7 @@ body {
             font-size: 30px;
             font-weight: bold;
             color: @color-text;
-            font-family: PlayfairDisplay-Regular;
+            font-family: Roboto-Regular-Regular;
         }
 
         .faq-list {
@@ -2841,7 +2857,7 @@ body {
             text-align: center;
             text-transform: uppercase;
             color: @color-text;
-            font-family: PlayfairDisplay;
+            font-family: Roboto-Regular;
             font-size: 20px;
             font-weight: bold;
         }
@@ -2955,7 +2971,7 @@ body {
             h3 {
                 color: @main-color;
                 font-size: 20px;
-                font-family: PlayfairDisplay-Regular;
+                font-family: Roboto-Regular-Regular;
                 text-transform: uppercase;
                 margin: 20px 0px;
             }

@@ -65,12 +65,12 @@ namespace GHM.Website.Nelly.Controllers
             var listProductCategoryHomePageData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategoryHomePage);
             ViewBag.ListProductCategoryHomePage = listProductCategoryHomePageData;
 
-            var listProductCategoryHot = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, null, int.MaxValue);
-            var listProductCategoryHotData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategoryHot);
-            ViewBag.ListProductCategoryHot = listProductCategoryHotData;
-            ViewBag.ProductCategoryId = listProductCategoryHot?.FirstOrDefault()?.Id;
+            //var listProductCategoryHot = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, null, int.MaxValue);
+            //var listProductCategoryHotData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategoryHot);
+            //ViewBag.ListProductCategoryHot = listProductCategoryHotData;
+            //ViewBag.ProductCategoryId = listProductCategoryHot?.FirstOrDefault()?.Id;
 
-            var products = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, listProductCategoryHot.FirstOrDefault().SeoLink, null, null, 1, 20);
+            var products = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, null, true, null, null, 1, 100);
             ViewBag.ListProduct = products?.Items;
 
             var listProductCategorySolution = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, true, 20);
@@ -182,7 +182,8 @@ namespace GHM.Website.Nelly.Controllers
 
                         if (listProductCategoryData != null && listProductCategoryData.Any())
                         {
-                            ViewBag.ProductCategroryTree = RenderTree(listProductCategoryData, null);
+                            var trees = RenderTree(listProductCategoryData, null);
+                            ViewBag.ProductCategroryTree = trees?.Take(5);
                         }
 
                         var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
@@ -201,7 +202,8 @@ namespace GHM.Website.Nelly.Controllers
 
                             if (listProductCategoryData != null && listProductCategoryData.Any())
                             {
-                                ViewBag.ProductCategroryTree = RenderTree(listProductCategoryData, null);
+                                var trees = RenderTree(listProductCategoryData, null);
+                                ViewBag.ProductCategroryTree = trees?.Take(5);
                             }
 
                             ViewBag.ProductCategoryInfo = JsonConvertHelper.GetObjectFromObject<ProductCategorySearchViewModel>(categoryInfo);

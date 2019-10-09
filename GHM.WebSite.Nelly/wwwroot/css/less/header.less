@@ -74,6 +74,10 @@
     .hotline {
         /*display: flex;
         align-items: center;*/
+        a {
+            text-decoration: none;
+        }
+
         span {
             padding-left: 0px;
             float: unset;
@@ -121,6 +125,46 @@
                     text-align: center;
                 }
             }
+        }
+    }
+
+    .searchbox {
+        display: flex;
+        position: relative;
+
+        input {
+            border: 1px solid @background-color-footer;
+            border-radius: 15px;
+            background: transparent;
+            padding: 0 30px 0 15px;
+            width: 150px;
+            height: 25px;
+            color: #fff;
+            font-size: 12px;
+
+            &:focus {
+                box-shadow: unset;
+            }
+        }
+
+        input::-webkit-input-placeholder {
+            color: @color-white;
+        }
+
+        input:-moz-placeholder {
+            color: @color-white;
+        }
+
+        a {
+            position: absolute;
+            top: 49%;
+            right: -13px;
+            transform: translateY(-50%);
+            border: 0;
+            background: transparent;
+            width: 36px;
+            color: #fff;
+            font-size: 12px;
         }
     }
 }
@@ -445,6 +489,7 @@
                                 li {
                                     margin: 0px;
                                     border-radius: unset !important;
+
                                     &:hover {
                                         background-color: @main-color !important;
 
