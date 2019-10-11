@@ -709,7 +709,7 @@ namespace GHM.Warehouse.Infrastructure.Services
 
                         // Xóa giá trị cũ.
                         var result = await _productAttributeValueRepository.DeleteByProductAttributeId(productAttribute.Id, tenantId);
-                        if (result < 0)
+                        if (result < 0 && result != -1)
                             return new ActionResultResponse<string>(-4,
                                 _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
 
