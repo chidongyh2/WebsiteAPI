@@ -1,7 +1,7 @@
 ﻿<div class="product-item">
     <div class="image-content">
-        <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
-            <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + '@ViewBag.Url' + thumbnail + '&width=600&height=600', alt: name }"
+        <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}" style="position:relative">
+            <img class="img-responsive lazy zoom" data-bind="attr: { src: '/image?url=' + '@ViewBag.Url' + thumbnail + '&width=600&height=600', alt: name }"
                  onerror="this.src='/images/no-image.png'" />
             <span class="img-overlay"></span>
         </a>

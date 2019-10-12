@@ -51,9 +51,9 @@ function HomeViewModel() {
             self.listProductHot([]);
             $("div").remove(".lslide");
             self.listProductHot(data.items);
-            setTimeout(() => {
-                self.initProductSlider();
-            }, 100);
+            //setTimeout(() => {
+                //self.initProductSlider();
+            //}, 100);
         });
     };
 
@@ -164,9 +164,7 @@ function HomeViewModel() {
         self.listProductHot([]);
         $("div").remove(".lslide");
         self.listProductHot(products);
-        setTimeout(() => {
-            self.initProductSlider();
-        }, 100);
+        //self.initProductSlider();
     });
 }
 

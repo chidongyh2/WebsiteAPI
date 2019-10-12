@@ -1517,6 +1517,7 @@ body {
 .product-item {
   background-color: #FFFFFF;
   padding: 10px;
+  margin: 5px;
   margin-bottom: 35px;
 }
 .product-item .image-content {
