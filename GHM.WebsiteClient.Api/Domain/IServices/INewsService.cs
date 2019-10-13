@@ -24,5 +24,6 @@ namespace GHM.WebsiteClient.Api.Domain.IServices
         Task<NewsDetailForClientViewModel> GetDetailForClientAsync(string teantId, string newsId, string languageId);
         Task<bool> CheckNewsExistBySeoLinkAsync(string tenantId, string seoLink, string languageId);
         Task<int> UpdateViewNewsAsync(string tenantId, string newId, string languageId);
+        Task<SearchResult<NewsSearchClientViewModel>> Search(string tenantId, string languageId, string keyword, bool? isHot, bool? isHomePage, string seoLink, int page = 1, int pageSize = 20);
     }
 }

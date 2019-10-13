@@ -92,17 +92,17 @@ namespace GHM.Website.Nelly.Controllers
             }
 
             #region cache home
-            //if (_cache.TryGetValue($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", out MenuDetailViewModel CategoryMiddleCache))
-            //{
-            //    ViewBag.MenuContact = CategoryMiddleCache;
-            //}
-            //else
-            //{
-            var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
-            var menuMiddleData = JsonConvertHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
-            _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
-            ViewBag.MenuContact = menuMiddleData;
-            //}
+            if (_cache.TryGetValue($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", out MenuDetailViewModel CategoryMiddleCache))
+            {
+                ViewBag.MenuContact = CategoryMiddleCache;
+            }
+            else
+            {
+                var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
+                var menuMiddleData = JsonConvertHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
+                _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
+                ViewBag.MenuContact = menuMiddleData;
+            }
 
             //if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
             //{
@@ -281,25 +281,47 @@ namespace GHM.Website.Nelly.Controllers
                 ViewBag.ListCoreValue = JsonConvertHelper.GetObjectFromObject<List<ValueViewModel>>(listCoreValue);
             }
 
-            //if (_cache.TryGetValue($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", out MenuDetailViewModel CategoryMiddleCache))
-            //{
-            //    ViewBag.MenuContact = CategoryMiddleCache;
-            //}
-            //else
-            //{
-            var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
-            var menuMiddleData = JsonConvertHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
-            _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
-            ViewBag.MenuContact = menuMiddleData;
-            //}
+            if (_cache.TryGetValue($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", out MenuDetailViewModel CategoryMiddleCache))
+            {
+                ViewBag.MenuContact = CategoryMiddleCache;
+            }
+            else
+            {
+                var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
+                var menuMiddleData = JsonConvertHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
+                _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
+                ViewBag.MenuContact = menuMiddleData;
+            }
 
+            return View();
+        }
+
+        [Route("tim-kiem.html")]
+        public async Task<IActionResult> Search(string keyword)
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+            ViewBag.Keyword = keyword;
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                keyword = keyword.Trim().StripVietnameseChars().ToUpper();
+            }
+
+            var products = await _productService.ProductSearch(apiService.TenantId,
+                CultureInfo.CurrentCulture.Name, keyword, null, null, null, 1, 100);
+
+            ViewBag.ListProduct = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(products?.Items);
+            var news = await _newsService.Search(apiService.TenantId,
+                CultureInfo.CurrentCulture.Name, keyword, null, null, null, 1, 100);
+
+            ViewBag.ListNews = JsonConvertHelper.GetObjectFromObject<List<NewsSearchViewModel>>(news?.Items);
+            
             return View();
         }
 
         public async Task<IActionResult> Error()
         {
-            var exceptionHandlerPathFeature =  HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-            
+            var exceptionHandlerPathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+
             return View(exceptionHandlerPathFeature?.Error?.Message);
         }
 

@@ -1,0 +1,74 @@
+﻿
+@{
+    var products = ViewBag.ListProduct as List<ProductSearchViewModel>;
+    var news = ViewBag.ListNews as List<NewsSearchViewModel>;
+    ViewBag.Title = "Tìm kiếm";
+    var jsonSerializerSettings = new JsonSerializerSettings
+    {
+        ContractResolver = new CamelCasePropertyNamesContractResolver()
+    };
+}
+
+<partial name="_Breadcumb">
+    <div id="search" class="search">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="title">Tìm kiếm</h3>
+                    <form class="form-inline" action="/tim-kiem.html">
+                        <div class="input-group">
+                            <input class="form-control" value="@ViewBag.Keyword" name="keyword" placeholder="Nhập từ khóa tìm kiếm" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary">
+                                    <i class="fa fa-search"></i>
+                                    Tìm kiếm
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                    <dl class="searchresultlist">
+                        @if (products != null && products.Any())
+                        {
+                            @foreach (var product in products)
+                            {
+                                <dd class="searchresult">
+                                    <h3>
+                                        <a href="@($"/san-pham/{product.SeoLink}.htm")" title="@product.Name">
+                                            Sản phẩm >  @product.Name
+                                        </a>
+                                    </h3>
+                                    <div class="searchresultdesc">
+                                        @Html.Raw(product?.Description)
+                                    </div>
+                                    <hr>
+                                </dd>
+                            }
+                        }
+                        @if (news != null && news.Any())
+                        {
+                            @foreach (var newsItem in news)
+                            {
+                                <dd class="searchresult">
+                                    <h3>
+                                        <a href="@($"/{newsItem.SeoLink}.html")" title="@(string.IsNullOrEmpty(newsItem.MetaTitle) ? newsItem.Title : newsItem.MetaTitle)">
+                                            Tin tức > @newsItem.Title
+                                        </a>
+                                    </h3>
+                                    <div class="searchresultdesc">
+                                        @Html.Raw(newsItem?.Description)
+                                    </div>
+                                    <hr>
+                                </dd>
+                            }
+                        }
+                    </dl>
+                    @if ((news == null || !news.Any()) && (products == null || !products.Any()))
+                    {
+                        <div class="alert alert-warning">
+                            Không tìm thấy
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>

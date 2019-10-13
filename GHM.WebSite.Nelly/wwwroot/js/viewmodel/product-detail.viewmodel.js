@@ -68,9 +68,10 @@ function ProductDetailViewModel() {
             return item.isSelfContent;
         });
 
+        //Set IsAtive attribute
         if (listAttributeContent && listAttributeContent.length > 0) {
             _.each(listAttributeContent, function (item, index) {
-                item.isSelected = ko.observable(index === 0);
+                item.isSelected = ko.observable(false);
             });
         }
 
@@ -92,9 +93,22 @@ function ProductDetailViewModel() {
         }
     };
 
+    self.showTabDetail = function () {
+        _.each(self.listAttributeContent(), function (attribute) {
+            attribute.isSelected(false);
+        });
+
+        $('#comment').removeClass('active');
+        $('#liComment').removeClass('active');
+
+        $('#detail').addClass('active');
+        $('#liDetail').addClass('active');
+    };
+
     self.buy = function () {
         if (self.quantity() === 0) {
             toastr.error('Vui lòng chọn số lượng sản phẩm');
+            $('#productQuantity').focus();
             return;
         } else {
             $.post(`/gio-hang/buy/${self.productId()}`, {
@@ -121,6 +135,8 @@ function ProductDetailViewModel() {
         if (window.innerWidth > 768) {
             $('#comment').removeClass('active');
             $('#liComment').removeClass('active');
+            $('#detail').removeClass('active');
+            $('#liDetail').removeClass('active');
         }
     };
 
@@ -131,6 +147,8 @@ function ProductDetailViewModel() {
 
         $('#comment').addClass('active');
         $('#liComment').addClass('active');
+        $('#detail').removeClass('active');
+        $('#liDetail').removeClass('active');
     };
 
     $(document).ready(function () {

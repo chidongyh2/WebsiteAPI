@@ -179,7 +179,8 @@ namespace GHM.Warehouse.Infrastructure.Repository
                     IsSolution = o.IsSolution,
                     IsHomePage = o.IsHomePage,
                     ParentId = o.ParentId,
-                    ChildCount = o.ChildCount
+                    ChildCount = o.ChildCount,
+                    Order = o.Order
                 });
 
             totalRows = query.Count();

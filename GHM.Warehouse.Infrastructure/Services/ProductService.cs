@@ -550,7 +550,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                         productTranslationInfo.Description = productTranslation.Description?.Trim();
                         productTranslationInfo.UnsignName = $"{info.Id }{productTranslation.Name?.StripVietnameseChars().ToUpper()}";
                         productTranslationInfo.SeoLink = !string.IsNullOrEmpty(productTranslation.SeoLink) ? productTranslation.SeoLink.ToUrlString() : productTranslation.Name.ToUrlString();
-
+                        productTranslationInfo.Content = productTranslation.Content;
                         await _productTranslationRepository.Update(productTranslationInfo);
                     }
                     else
@@ -563,7 +563,8 @@ namespace GHM.Warehouse.Infrastructure.Services
                             Name = productTranslation.Name.Trim(),
                             SeoLink = !string.IsNullOrEmpty(productTranslation.SeoLink) ? productTranslation.SeoLink.ToUrlString() : productTranslation.Name.ToUrlString(),
                             Description = productTranslation.Description?.Trim(),
-                            UnsignName = $"{info.Id }{productTranslation.Name?.StripVietnameseChars().ToUpper()}"
+                            UnsignName = $"{info.Id }{productTranslation.Name?.StripVietnameseChars().ToUpper()}",
+                            Content = productTranslation.Content
                         };
 
                         await _productTranslationRepository.Insert(productTranslationInsert);
@@ -695,43 +696,45 @@ namespace GHM.Warehouse.Infrastructure.Services
                                     _resourceService.GetString("attribute value")));
 
                             productAttribute.Value = productAttributeMeta.Value;
+
+                            // Lưu thay đổi.
+                            await _productAttributeRepository.Update(productAttribute);
                         }
-
-                        // Lưu thay đổi.
-                        await _productAttributeRepository.Update(productAttribute);
-
-                        // Nếu là chọn giá và không cho phép chọn nhiều.
-                        if (!attributeInfo.IsMultiple && productAttributeMeta.AttributeValues.Count() > 1)
+                        else
                         {
-                            return new ActionResultResponse<string>(-3,
-                                _resourceService.GetString("Attribute: {0} just accept only one value.", productAttributeMeta.AttributeName));
-                        }
-
-                        // Xóa giá trị cũ.
-                        var result = await _productAttributeValueRepository.DeleteByProductAttributeId(productAttribute.Id, tenantId);
-                        if (result < 0 && result != -1)
-                            return new ActionResultResponse<string>(-4,
-                                _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
-
-                        // Thêm giá trị mới.
-                        var productAttributeValues = new List<ProductAttributeValue>();
-                        foreach (var attributeValue in productAttributeMeta.AttributeValues)
-                        {
-                            var isAttributeValueExists = await _attributeValueRepository.CheckExists(tenantId,
-                                attributeInfo.Id,
-                                attributeValue.Id, true);
-                            if (!isAttributeValueExists)
-                                return new ActionResultResponse<string>(-5, _sharedResourceService.GetString(ErrorMessage.NotExists,
-                                    _resourceService.GetString("attribute value")));
-
-                            productAttributeValues.Add(new ProductAttributeValue
+                            // Nếu là chọn giá và không cho phép chọn nhiều.
+                            if (!attributeInfo.IsMultiple && productAttributeMeta.AttributeValues.Count() > 1)
                             {
-                                ProductAttributeId = productAttribute.Id,
-                                AttributeValueId = attributeValue.Id
-                            });
-                        }
+                                return new ActionResultResponse<string>(-3,
+                                    _resourceService.GetString("Attribute: {0} just accept only one value.", productAttributeMeta.AttributeName));
+                            }
 
-                        await _productAttributeValueRepository.Inserts(productAttributeValues);
+                            // Xóa giá trị cũ.
+                            var result = await _productAttributeValueRepository.DeleteByProductAttributeId(productAttribute.Id, tenantId);
+                            if (result < 0 && result != -1)
+                                return new ActionResultResponse<string>(-4,
+                                    _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
+
+                            // Thêm giá trị mới.
+                            var productAttributeValues = new List<ProductAttributeValue>();
+                            foreach (var attributeValue in productAttributeMeta.AttributeValues)
+                            {
+                                var isAttributeValueExists = await _attributeValueRepository.CheckExists(tenantId,
+                                    attributeInfo.Id,
+                                    attributeValue.Id, true);
+                                if (!isAttributeValueExists)
+                                    return new ActionResultResponse<string>(-5, _sharedResourceService.GetString(ErrorMessage.NotExists,
+                                        _resourceService.GetString("attribute value")));
+
+                                productAttributeValues.Add(new ProductAttributeValue
+                                {
+                                    ProductAttributeId = productAttribute.Id,
+                                    AttributeValueId = attributeValue.Id
+                                });
+                            }
+
+                            await _productAttributeValueRepository.Inserts(productAttributeValues);
+                        }
                     }
                 }
                 #endregion

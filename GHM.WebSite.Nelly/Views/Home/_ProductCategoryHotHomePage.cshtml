@@ -11,7 +11,7 @@
     <div class="heading">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 cm-mgb-10">
                     <partial name="_TitleBar" model="@Resource.ProductHot" />
                 </div>
             </div>
@@ -55,5 +55,4 @@
         var productCategoryHots = @(ViewBag.ListProductCategoryHot != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProductCategoryHot)) : "[]");
         var productCategoryHotId = "@ViewBag.ProductCategoryId";
     var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
-    console.log(products);
 </script>
