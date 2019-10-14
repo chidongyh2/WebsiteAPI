@@ -84,6 +84,7 @@ namespace GHM.Website.GHMSoft
                 app.UseHsts();
             }
 
+            app.UseHttpsRedirection();
             #region Localizations
 
             var supportedCultures = new[]
