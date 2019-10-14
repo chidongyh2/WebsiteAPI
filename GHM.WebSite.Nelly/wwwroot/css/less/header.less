@@ -23,6 +23,7 @@
 
     .navbar-toggle {
         display: block;
+        margin-right: 0px;
     }
 
     .navbar-collapse {
@@ -155,10 +156,12 @@
             color: @color-white;
         }
 
-        a {
+        button {
+            border: none;
+            background-color: transparent;
             position: absolute;
             top: 49%;
-            right: -13px;
+            right: -3px;
             transform: translateY(-50%);
             border: 0;
             background: transparent;
@@ -600,6 +603,10 @@
     z-index: 999999;
     transition: 1s ease-in-out;
 
+    @media @mobile {
+        top: 40%;
+    }
+
     li {
         padding: 5px;
         margin-bottom: 5px;
@@ -628,6 +635,13 @@
             }
         }
 
+        .item-left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 5px;
+        }
+
         .shopping-cart {
             a {
                 position: relative;
@@ -645,13 +659,6 @@
                     text-align: center;
                 }
             }
-        }
-
-        .item-left {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-right: 5px;
         }
 
         .item-right {

@@ -260,6 +260,22 @@ namespace GHM.Warehouse.Infrastructure
                     grnd.TenantId
                 });
 
+            builder.Entity<Order>()
+                .ToTable("Orders")
+                .HasKey(x => x.Id);
+
+            builder.Entity<OrderDetail>()
+               .ToTable("OrderDetails")
+               .HasKey(x => x.Id);
+
+            builder.Entity<Order>()
+               .HasMany(x => x.OrderDetails)
+               .WithOne();
+
+            builder.Entity<OrderDetail>()
+              .HasOne(ord => ord.Order)
+              .WithMany(or => or.OrderDetails)
+              .HasForeignKey(ord => ord.OrderId);
         }
     }
 }

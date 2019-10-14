@@ -66,7 +66,7 @@ namespace GHM.Warehouse.Infrastructure.Repository
 
         public async Task<List<ProductTranslation>> GetsProductId(string productId, string tenantId, bool isReadOnly = false)
         {
-            return await _productTranslationRepository.GetsAsync(true, x => x.ProductId == productId && !x.IsDelete);
+            return await _productTranslationRepository.GetsAsync(true, x => x.ProductId == productId && x.TenantId == tenantId && !x.IsDelete);
         }
 
         public async Task<bool> CheckExists(string productId, string tenantId, string languageId, string name)

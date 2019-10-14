@@ -487,5 +487,42 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
             }
 
         }
+
+        public async Task<SearchResult<NewsSearchClientViewModel>> Search(string tenantId, string languageId, string keyword, bool? isHot, bool? isHomePage, string seoLink, int page = 1, int pageSize = 20)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@TenantId", tenantId);
+                    param.Add("@LanguageId", languageId);
+                    param.Add("@IsHot", isHot);
+                    param.Add("@IsHomePage", isHomePage);
+                    param.Add("@Keyword", keyword);
+                    param.Add("@SeoLink", seoLink);
+                    param.Add("@Page", page);
+                    param.Add("@PageSize", pageSize);
+                    param.Add("@TotalRows", DbType.Int32, direction: ParameterDirection.Output);
+
+                    var items = await con.QueryAsync<NewsSearchClientViewModel>("[dbo].[sp_News_Search]", param, commandType: CommandType.StoredProcedure);
+                    var result = new SearchResult<NewsSearchClientViewModel>
+                    {
+                        Items = items.ToList(),
+                        TotalRows = param.Get<int>("TotalRows")
+                    };
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "sp_News_Search NewsService Error.");
+                return null;
+            }
+        }
     }
 }

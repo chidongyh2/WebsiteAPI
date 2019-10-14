@@ -114,6 +114,9 @@
     <Content Update="Views\Home\Error.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Home\Search.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Shared\_MenuContact.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

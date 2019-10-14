@@ -130,6 +130,38 @@
         ]
     });  
 
+    $('#product-hot-slider').lightSlider({
+        item: 4,
+        auto: false,
+        loop: false,
+        slideMove: 1,
+        speed: 1500,
+        pause: 3000,
+        slideEndAnimation: false,
+        slideMargin: 10,
+        pauseOnHover: false,
+        controls: true,
+        prevHtml: '<img src="/images/facion/pev.png" />',
+        nextHtml: '<img src="/images/facion/nex.png" />',
+        pager: false,
+        responsive: [
+            {
+                breakpoint: 800,
+                settings: {
+                    item: 2,
+                    slideMove: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    item: 2,
+                    slideMove: 1
+                }
+            }
+        ]
+    });
+
     if (window.innerWidth < 768) {
         $("#productGroups").slick({
             slidesToShow: 3,

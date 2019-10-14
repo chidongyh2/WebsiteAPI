@@ -11,7 +11,7 @@
     <div class="heading">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 cm-mgb-10">
                     <partial name="_TitleBar" model="@Resource.ProductHot" />
                 </div>
             </div>
@@ -39,7 +39,7 @@
             </div>*@
         <div class="row">
             <div class="col-sm-12">
-                <div data-bind="attr:{id: 'product-hot-slider-' + productCategoryId()},">
+                <div id="product-hot-slider">
                     <!-- ko foreach: listProductHot-->
                     <div class="item">
                         <partial name="_ProductItem" />
@@ -54,5 +54,5 @@
 <script type="text/javascript">
         var productCategoryHots = @(ViewBag.ListProductCategoryHot != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProductCategoryHot)) : "[]");
         var productCategoryHotId = "@ViewBag.ProductCategoryId";
-        var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
+    var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
 </script>

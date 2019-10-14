@@ -1517,7 +1517,13 @@ body {
 .product-item {
   background-color: #FFFFFF;
   padding: 10px;
+  margin: 5px;
   margin-bottom: 35px;
+}
+@media only screen and (max-width: 1200px) {
+  .product-item {
+    padding: 5px;
+  }
 }
 .product-item .image-content {
   width: 100%;
@@ -2567,4 +2573,54 @@ body {
     font-size: 11px;
     padding: 6px 12px !important;
   }
+}
+#search .title {
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #949293;
+}
+#search .input-group {
+  width: 50%;
+}
+#search .input-group input {
+  border-radius: 0px;
+  border: 1px solid #EEEDEB;
+}
+#search .input-group input:focus {
+  box-shadow: none;
+}
+#search .input-group .btn-primary {
+  background-color: #FC9600;
+  border-radius: 0;
+  border: none;
+}
+#search .searchresultlist {
+  margin-top: 10px;
+}
+#search .searchresultlist .searchresult {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: 400;
+  vertical-align: baseline;
+  background: 0 0;
+}
+#search .searchresultlist .searchresult h3 {
+  margin: 5px 0px;
+}
+#search .searchresultlist .searchresult h3 a {
+  text-decoration: none;
+  color: #FC9600;
+  transition: 0.5s ease-in-out;
+  font-size: 22px;
+  font-family: Roboto-Regular;
+}
+#search .searchresultlist .searchresult h3 a:hover {
+  color: #F9A4A7;
+}
+#search .searchresultlist .searchresult .searchresultdesc {
+  color: #3F3F3F;
+  font-size: 14px;
+  font-family: Roboto-Regular;
 }

@@ -47,7 +47,7 @@
                                 <div class="star">
                                     @for (var i = 1; i <= 5; i++)
                                     {
-                                    <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
                                     }
                                 </div>
                                 <div class="price">
@@ -55,9 +55,9 @@
                                 </div>
                                 @if (!string.IsNullOrEmpty(productInfo?.Description))
                                 {
-                                <div class="description">
-                                    @Html.Raw(productInfo?.Description)
-                                </div>
+                                    <div class="description">
+                                        @Html.Raw(productInfo?.Description)
+                                    </div>
                                 }
                                 <div class="attribute">
                                     <ul class="">
@@ -88,7 +88,7 @@
                                                 <i class="la la-minus"></i>
                                             </button>
                                         </span>
-                                        <input class="form-control" data-bind="value:quantity" />
+                                        <input class="form-control" id="productQuantity" data-bind="value:quantity" />
                                         <span class="input-group-btn">
                                             <button class="btn btn-add" data-bind="click: $root.addShoppingCart.bind($data, true)">
                                                 <i class="la la-plus"></i>
@@ -114,6 +114,11 @@
 
                                 <div class="content">
                                     <ul class="nav nav-tabs">
+                                        <li id="liDetail" class="active">
+                                            <a href="#detail" data-bind="click: showTabDetail">
+                                                <span>Chi tiết</span>
+                                            </a>
+                                        </li>
                                         <!--ko foreach: listAttributeContent-->
                                         <li data-bind="css: { active: isSelected}, click: $root.selectProductAttribute">
                                             <a data-bind="attr: {href: '#' + attributeId}">
@@ -128,6 +133,9 @@
                                         </li>
                                     </ul>
                                     <div class="tab-content" style="padding: 10px; margin-top: 5px;">
+                                        <div class="tab-pane active" id="detail">
+                                            @Html.Raw(productInfo?.Content)
+                                        </div>
                                         <!--ko foreach: listAttributeContent-->
                                         <div class="tab-pane" data-bind="css: { active: isSelected }, attr: {id: attributeId}">
                                             <div data-bind="html: value"></div>
@@ -156,8 +164,7 @@
            var productAttributes = @(ViewBag.ProudctAttributes != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProudctAttributes, jsonSerializerSettings)) : "[]");
            var productCategories = @(ViewBag.ProductCategory != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductCategory, jsonSerializerSettings)) : "[]");
            var productInfo = @(ViewBag.ProductInfo != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductInfo, jsonSerializerSettings)) : "[]");
-           var productSelectItems = @(ViewBag.ProductSelectItems != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductSelectItems, jsonSerializerSettings)) : "[]");           
-
+           var productSelectItems = @(ViewBag.ProductSelectItems != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductSelectItems, jsonSerializerSettings)) : "[]");
         </script>
         <script src="~/lib/EasyZoom-master/dist/easyzoom.min.js"></script>
         <script src="~/js/viewmodel/product-detail.viewmodel.min.js"></script>

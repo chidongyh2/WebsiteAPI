@@ -13,5 +13,6 @@
         public bool? IsHomePage { get; set; }
         public int? ParentId { get; set; }
         public int ChildCount { get; set; }
+        public int? Order { get; set; }
     }
 }

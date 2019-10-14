@@ -191,8 +191,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                 var parentInfo = await _productCategoryRepository.GetInfo(productCategoryMeta.ParentId.Value);
                 if (parentInfo == null)
                     return new ActionResultResponse<int>(-2,
-                        _productResourceService.GetString("Parent product category does not exists. Please try again."));
-
+                        _productResourceService.GetString("Parent product category does not exists. Please try again."));                
                 productCategory.ParentId = parentInfo.Id;
                 productCategory.IdPath = $"{parentInfo.IdPath}.-1";
             }
@@ -419,7 +418,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                 : 1,
                 resultUpdateTranslation.Code <= 0
                 ? resultUpdateTranslation.Message
-                : _productResourceService.GetString("Update survey group successful."));
+                : _productResourceService.GetString("Update product category successful."));
 
             async Task<ActionResultResponse> UpdateTranslation()
             {

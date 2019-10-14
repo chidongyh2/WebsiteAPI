@@ -15,13 +15,13 @@ using Microsoft.Extensions.Configuration;
 
 
 namespace GHM.WebSite.Nelly.Controllers
-{  
+{
     public class ProductController : BaseController
     {
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
         private readonly IProductService _productService;
-        
+
         public ProductController(IConfiguration configuration, IMemoryCache cache, IBrandService brandService,
             IBranchContactService branchContactService,
             IMenuService menuService, ISettingService settingService,
@@ -71,7 +71,7 @@ namespace GHM.WebSite.Nelly.Controllers
             }
 
             return View(model);
-        }
+        }        
 
         //[Route("san-pham/{seoLink}")]
         //public async Task<IActionResult> Category(string seoLink)
