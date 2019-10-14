@@ -20,7 +20,8 @@ namespace GHM.Warehouse.Infrastructure.Repository
             _productRepository = Context.GetRepository<Product>();
         }
 
-        public Task<List<ProductSearchViewModel>> Search(string tenantId, string languageId, string keyword, int? categoryId, bool? isManagementByLot,
+        public Task<List<ProductSearchViewModel>> Search(string tenantId, string languageId, string keyword,
+            int? categoryId, bool? isManagementByLot,
             bool? isActive, int page, int pageSize, out int totalRows)
         {
             Expression<Func<Product, bool>> spec = x => !x.IsDelete && x.TenantId == tenantId;
@@ -35,7 +36,7 @@ namespace GHM.Warehouse.Infrastructure.Repository
 
             if (isManagementByLot.HasValue)
             {
-                spec = spec.And(x => x.IsManagementByLot == isManagementByLot.Value);
+                spec = spec.And(x => x.IsHot == isManagementByLot.Value);
             }
 
             if (isActive.HasValue)
