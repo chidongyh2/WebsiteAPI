@@ -18,9 +18,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
             _orderRepository = Context.GetRepository<Order>();
         }
 
-        public Task<bool> CheckExists(string tenantId, string id)
+        public async Task<bool> CheckExists(string tenantId, string id)
         {
-            throw new NotImplementedException();
+            return await _orderRepository.ExistAsync(x => x.TenantId == tenantId && x.Id == id && !x.IsDelete);            
         }
 
         public Task<int> Count(string tenantId)
@@ -53,8 +53,9 @@ namespace GHM.Warehouse.Infrastructure.Repository
             throw new NotImplementedException();
         }
 
-        public Task<int> Insert(Order order)
+        public async Task<int> Insert(Order order)
         {
+            
             throw new NotImplementedException();
         }
 

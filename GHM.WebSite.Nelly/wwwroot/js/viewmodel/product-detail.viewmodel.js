@@ -9,7 +9,7 @@ function ProductDetailViewModel() {
     self.listProductAttribute = ko.observableArray([]);
     self.listAttributeValue = ko.observableArray([]);
     self.listAttributeContent = ko.observableArray([]);
-    self.quantity = ko.observable(0);
+    self.quantity = ko.observable(1);
     self.totalMoney = ko.observable(0);
     self.productId = ko.observable(null);
 
@@ -54,13 +54,15 @@ function ProductDetailViewModel() {
             _.each(groupByAttributeIds, function (items) {
                 var listValue = [];
                 _.each(items, function (value) {
-                    listValue.push(value.attributeValueName);
+                    listValue.push(value);
                 });
 
                 self.listAttributeValue.push({
                     attributeName: items[0].attributeName,
-                    values: listValue.join(', ')
+                    values: _.map(listValue, 'attributeValueName').join(', '),
+                    listValue: listValue
                 });
+                console.log(listValue);
             });
         }
 
@@ -132,12 +134,11 @@ function ProductDetailViewModel() {
         });
 
         item.isSelected(true);
-        if (window.innerWidth > 768) {
-            $('#comment').removeClass('active');
-            $('#liComment').removeClass('active');
-            $('#detail').removeClass('active');
-            $('#liDetail').removeClass('active');
-        }
+
+        $('#comment').removeClass('active');
+        $('#liComment').removeClass('active');
+        $('#detail').removeClass('active');
+        $('#liDetail').removeClass('active');
     };
 
     self.showTabComment = function () {

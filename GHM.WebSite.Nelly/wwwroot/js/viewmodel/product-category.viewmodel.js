@@ -35,10 +35,14 @@ function ProductCategoryViewModel() {
         }, function (data) {
             self.listProduct(data.items);
             self.renderPage(data.totalRows);
-            if (data.categories) {
-                self.categoryName(data.categories.name);
-                self.categoryDescription(data.categories.description);
-                self.categoryImage(data.categories.image);
+            var categoryInfo = _.find(self.listProductCategory(), function (item) {
+                return item.SeoLink === self.productCategorySeoLink();
+            });
+
+            if (categoryInfo) {
+                self.categoryName(categoryInfo.Name);
+                self.categoryDescription(categoryInfo.Description);
+                self.categoryImage(categoryInfo.Image);
             }
         });
     };

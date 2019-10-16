@@ -341,5 +341,41 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                 return -1;
             }
         }
+
+        public async Task<SearchResult<ProductSearchViewModel>> ProductGetByAttributeValueId(string tenantId, string languageId,
+            string attributeValueName, string attributeName, int page = 1, int pageSize = 20)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@TenantId", tenantId);
+                    param.Add("@LanguageId", languageId);
+                    param.Add("@AttributeValueName", attributeValueName);
+                    param.Add("@AttributeName", attributeName);
+                    param.Add("@Page", page);
+                    param.Add("@PageSize", pageSize);
+                    param.Add("@TotalRows", DbType.Int32, direction: ParameterDirection.Output);
+
+                    var items = await con.QueryAsync<ProductSearchViewModel>("[dbo].[sp_Proudct_GetByAttributeId]", param, commandType: CommandType.StoredProcedure);
+                    var result = new SearchResult<ProductSearchViewModel>
+                    {
+                        Items = items.ToList(),
+                        TotalRows = param.Get<int>("TotalRows")
+                    };
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "sp_Proudct_GetByAttributeId ProductService Error.");
+                return null;
+            }
+        }
     }
 }
