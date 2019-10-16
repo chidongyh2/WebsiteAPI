@@ -152,6 +152,7 @@ function ProductDetailViewModel() {
     };
 
     $(document).ready(function () {
+        Globalize.culture('vi-VN');
         self.rendTree(treeData);
         self.productCategoryTree(treeData);
         self.listProductImage(productImages);
