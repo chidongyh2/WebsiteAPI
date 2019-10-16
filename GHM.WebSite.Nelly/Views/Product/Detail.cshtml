@@ -75,7 +75,14 @@
                                         <!--ko foreach: listAttributeValue-->
                                         <li>
                                             <label data-bind="text: attributeName + ':'"> </label>
-                                            <span data-bind="text: values"></span>
+                                            <!--ko foreach: listValue-->
+                                            <a href="javascript://" data-bind="text: attributeValueName,
+                                               attr: {title: attributeValueName, href: '/san-pham/tim-kiem.html?attributeName='+attributeName+'&attributeValueName='+attributeValueName}"></a>
+                                            <!--ko if: $index() < $parent.listValue.length - 1-->
+                                            <span>,</span>
+                                            <!--/ko-->
+                                            <!--/ko-->
+                                            @*<span data-bind="text: values"></span>*@
                                         </li>
                                         <!--/ko-->
                                     </ul>

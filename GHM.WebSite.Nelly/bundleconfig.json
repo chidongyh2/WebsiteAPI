@@ -138,5 +138,11 @@
     "inputFiles": [
       "wwwroot/js/viewmodel/agency-register.viewmodel.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/product-search.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/product-search.viewmodel.js"
+    ]
   }
 ]

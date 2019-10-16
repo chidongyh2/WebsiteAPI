@@ -27,6 +27,8 @@ namespace GHM.WebsiteClient.Api.Domain.IServices
 
         Task<int> OrderInsert(string id, string tenantId, string languageId, string fullName, string phoneNumber, string email,
             string address, string note, string sessionId, string jsonProduct);
-       
+
+        Task<SearchResult<ProductSearchViewModel>> ProductGetByAttributeValueId(string tenantId, string languageId,
+            string attributeValueName, string attributeName, int page = 1, int pageSize = 20);
     }
 }

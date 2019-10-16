@@ -1975,6 +1975,9 @@ body {
   width: 20px;
   height: 20px;
 }
+#product-detail .lSNext {
+  right: 0px !important;
+}
 #product-detail .product-detail {
   font-size: 14px;
   color: #3F3F3F;
@@ -2011,6 +2014,12 @@ body {
 }
 #product-detail .product-detail .content .nav li {
   margin-bottom: -1px;
+}
+@media only screen and (max-width: 1200px) {
+  #product-detail .product-detail .content .nav li {
+    width: 100%;
+    margin-bottom: 0px;
+  }
 }
 #product-detail .product-detail .content .nav li a {
   border: 1px solid #EEEDEB;
@@ -2623,4 +2632,7 @@ body {
   color: #3F3F3F;
   font-size: 14px;
   font-family: Roboto-Regular;
+}
+#product-search {
+  padding: 30px 0px;
 }

@@ -2302,6 +2302,10 @@ body {
         }
     }
 
+    .lSNext {
+        right: 0px !important;
+    }
+
     .product-detail {
         font-size: 14px;
         color: @color-text;
@@ -2338,6 +2342,11 @@ body {
                 /*border-bottom: none;*/
                 li {
                     margin-bottom: -1px;
+
+                    @media @mobile {
+                        width: 100%;
+                        margin-bottom: 0px;
+                    }
 
                     a {
                         border: 1px solid @color-border;
@@ -3075,4 +3084,8 @@ body {
             }
         }
     }
+}
+
+#product-search {
+    padding: 30px 0px;
 }

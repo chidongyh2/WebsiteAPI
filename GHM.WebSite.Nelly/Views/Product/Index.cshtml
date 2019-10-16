@@ -72,6 +72,9 @@
                 </div>
             </div>
             <!--/ko-->
+            <!--ko if: !listProduct() || listProduct().length === 0-->
+            <partial name="_NotFoundProduct" />
+            <!--/ko-->
         </div>
     </div>
 

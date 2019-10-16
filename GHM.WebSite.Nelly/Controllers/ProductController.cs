@@ -71,7 +71,56 @@ namespace GHM.WebSite.Nelly.Controllers
             }
 
             return View(model);
-        }        
+        }
+
+        [Route("san-pham/tim-kiem.html")]
+        public async Task<IActionResult> Search(string keyword,
+            string attributeName, string attributeValueName, int page = 1, int pageSize = 20 )
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+
+            ViewBag.Keyword = keyword;
+            ViewBag.AttributeName = attributeName;
+            ViewBag.attributeValueName = attributeValueName;
+            var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);
+            var listProductCategoryData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
+
+            ViewBag.ListProductCategory = listProductCategoryData;
+
+            if (listProductCategoryData != null && listProductCategoryData.Any())
+            {
+                ViewBag.ProductCategroryTree = RenderTree(listProductCategoryData, null)?.Take(5);
+            }
+
+            if (!string.IsNullOrEmpty(keyword) && string.IsNullOrEmpty(attributeName)
+                && string.IsNullOrEmpty(attributeValueName))
+            {
+                keyword = keyword?.Trim()?.StripVietnameseChars().ToUpper();
+                var products = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name,
+                    keyword, null, null, null, page, pageSize);
+
+                ViewBag.ListProduct = products?.Items;
+                ViewBag.TotalProduct = products?.TotalRows;
+            }
+
+            if (string.IsNullOrEmpty(keyword) && !string.IsNullOrEmpty(attributeName)
+                && !string.IsNullOrEmpty(attributeValueName))
+            {
+                attributeName = attributeName?.Trim()?.StripVietnameseChars().ToUpper();
+                attributeValueName = attributeValueName?.Trim()?.StripVietnameseChars().ToUpper();
+
+                var products = await _productService.ProductGetByAttributeValueId(apiService.TenantId, CultureInfo.CurrentCulture.Name,
+                    attributeValueName, attributeName, page, pageSize);
+
+                ViewBag.ListProduct = products?.Items;
+                ViewBag.TotalProduct = products?.TotalRows;
+            }          
+
+            var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
+            ViewBag.ListProductRelationship = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productRelationships?.Items);
+
+            return View();
+        }
 
         //[Route("san-pham/{seoLink}")]
         //public async Task<IActionResult> Category(string seoLink)

@@ -56,10 +56,7 @@ namespace GHM.WebSite.Nelly.Controllers
             var apiService = _configuration.GetApiServiceInfo();
             var products = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, page, pageSize);
 
-            var productCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, null, 1);
-
-            var categories = productCategory.FirstOrDefault();
-            return Ok(new { products.Items, products.TotalRows, categories });
+            return Ok(new { products.Items, products.TotalRows });
         }
 
         [Route("view-more-news"), AcceptVerbs("POST")]
@@ -70,6 +67,37 @@ namespace GHM.WebSite.Nelly.Controllers
             var listNews = await _newsService.GetNewsByCategoryIdAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, categoryId, page, pageSize);
             var listNewsData = JsonConvertHelper.GetObjectFromObject<CategoryWidthNewsViewModel>(listNews.Data);
             return Json(listNewsData.ListNews);
+        }
+
+
+        [Route("search-product"), AcceptVerbs("GET")]
+        public async Task<IActionResult> SearchProduct(string keyword, string attributeName, string attributeValueName,
+            int page = 1, int pageSize = 20)
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+            if (!string.IsNullOrEmpty(keyword) && string.IsNullOrEmpty(attributeName)
+               && string.IsNullOrEmpty(attributeValueName))
+            {
+                keyword = keyword?.Trim()?.StripVietnameseChars().ToUpper();
+                var products = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name,
+                    keyword, null, null, null, page, pageSize);
+
+                return Ok(new { products.Items, products.TotalRows });
+            }
+
+            if (string.IsNullOrEmpty(keyword) && !string.IsNullOrEmpty(attributeName)
+                && !string.IsNullOrEmpty(attributeValueName))
+            {
+                attributeName = attributeName?.Trim()?.StripVietnameseChars().ToUpper();
+                attributeValueName = attributeValueName?.Trim()?.StripVietnameseChars().ToUpper();
+
+                var products = await _productService.ProductGetByAttributeValueId(apiService.TenantId, CultureInfo.CurrentCulture.Name,
+                    attributeValueName, attributeName, page, pageSize);
+
+                return Ok(new { products.Items, products.TotalRows });
+            }
+
+            return Ok();
         }
     }
 }
