@@ -361,7 +361,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     param.Add("@PageSize", pageSize);
                     param.Add("@TotalRows", DbType.Int32, direction: ParameterDirection.Output);
 
-                    var items = await con.QueryAsync<ProductSearchViewModel>("[dbo].[sp_Proudct_GetByAttributeId]", param, commandType: CommandType.StoredProcedure);
+                    var items = await con.QueryAsync<ProductSearchViewModel>("[dbo].[sp_Proudct_GetByAttributeValue]", param, commandType: CommandType.StoredProcedure);
                     var result = new SearchResult<ProductSearchViewModel>
                     {
                         Items = items.ToList(),
