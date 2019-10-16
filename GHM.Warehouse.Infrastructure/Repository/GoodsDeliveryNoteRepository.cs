@@ -156,7 +156,7 @@ namespace GHM.Warehouse.Infrastructure.Repository
                         where gdn.TenantId == tenantId && !gdn.IsDelete && wmc.UserId == userId
                               && (string.IsNullOrEmpty(warehouseId) || gdn.WarehouseId == warehouseId)
                               && (!fromDate.HasValue || fromDate.Value >= gdn.DeliveryDate)
-                              && (!toDate.HasValue || toDate.Value <= toDate)
+                              && (!toDate.HasValue || toDate.Value <= gdn.DeliveryDate)
                               && (!type.HasValue || gdn.Type == type)
                         select new GoodsDeliveryNotesViewModel
                         {

@@ -7,6 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using GHM.Infrastructure.Extensions;
 
 namespace GHM.Warehouse.Infrastructure.Repository
 {
@@ -20,63 +23,118 @@ namespace GHM.Warehouse.Infrastructure.Repository
 
         public async Task<bool> CheckExists(string tenantId, string id)
         {
-            return await _orderRepository.ExistAsync(x => x.TenantId == tenantId && x.Id == id && !x.IsDelete);            
+            return await _orderRepository.ExistAsync(x => x.TenantId == tenantId && x.Id == id && !x.IsDelete);
         }
 
-        public Task<int> Count(string tenantId)
+        public async Task<int> Count(string tenantId)
         {
-            throw new NotImplementedException();
+            return await _orderRepository.CountAsync(x => x.TenantId == tenantId);
         }
 
-        public Task<int> Delete(string tenantId, string id)
+        public async Task<int> Delete(string tenantId, string id)
         {
-            throw new NotImplementedException();
+            var orderInfo = await GetInfo(tenantId, id, false);
+            if (orderInfo == null)
+                return -1;
+
+            orderInfo.IsDelete = true;
+            return await Context.SaveChangesAsync();
         }
 
-        public Task<int> ForceDelete(string tenantId, string id)
+        public async Task<int> ForceDelete(string tenantId, string id)
         {
-            throw new NotImplementedException();
+            var orderInfo = await GetInfo(tenantId, id, false);
+            if (orderInfo == null)
+                return -1;
+
+            return await Context.SaveChangesAsync();
         }
 
-        public Task<OrderDetailViewModel> GetDetail(string tenantId, string id)
+        public async Task<Order> GetInfo(string tenantId, string id, bool isReadOnly = false)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Order> GetInfo(string tenantId, string id, bool isReadOnly = false)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Order> GetInfo(string id, bool isReadOnly = false)
-        {
-            throw new NotImplementedException();
+            return await _orderRepository.GetAsync(isReadOnly, x => x.TenantId == tenantId && x.Id == id && !x.IsDelete);
         }
 
         public async Task<int> Insert(Order order)
         {
-            
-            throw new NotImplementedException();
+            _orderRepository.Create(order);
+            return await Context.SaveChangesAsync();
         }
 
-        public Task<List<OrderSearchViewModel>> Search(string tenantId, string userId, string keyword, OrderStatus? status, DateTime? fromDate, DateTime? toDate, int page, int pageSize, out int totalRows)
+        public Task<List<OrderSearchViewModel>> Search(string tenantId, string userId,
+            string keyword, OrderStatus? status, DateTime? fromDate, DateTime? toDate, int page,
+            int pageSize, out int totalRows)
         {
-            throw new NotImplementedException();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                keyword = keyword.Trim().StripVietnameseChars().ToUpper();
+            }
+
+            if (fromDate.HasValue)
+            {
+                fromDate = fromDate.Value.Date;
+            }
+
+            if (toDate.HasValue)
+            {
+                toDate = toDate.Value.Date.AddDays(1).AddMilliseconds(-1);
+            }
+
+            var result = from order in Context.Set<Order>()
+                         where order.TenantId == tenantId && !order.IsDelete
+                               && (string.IsNullOrEmpty(keyword) || order.UnsignName.Contains(keyword))
+                               && (!fromDate.HasValue || fromDate.Value >= order.CreateTime)
+                               && (!toDate.HasValue || toDate.Value <= order.CreateTime)
+                               && (!status.HasValue || order.Status == status)
+                         select new OrderSearchViewModel
+                         {
+                             Code = order.Code,
+                             Id = order.Id,
+                             Name = order.Name,
+                             CustomerName = order.CustomerName,
+                             PhoneNumber = order.PhoneNumber,
+                             TotalPrice = order.TotalPrice,
+                             Discount = order.Discount,
+                             DiscountType = order.DiscountType,
+                             Transport = order.Transport,
+                             Quantity = order.Quantity,
+                             Status = order.Status,
+                             Type = order.Type,
+                             DeliveryDate = order.DeliveryDate,
+                             CreateTime = order.CreateTime,
+                             CreatorFullName = order.CreatorFullName
+                         };
+
+            totalRows = result.Count();
+            return result.OrderByDescending(x => x.DeliveryDate)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
         }
 
-        public Task<int> Update(Order order)
+        public async Task<int> Update(Order order)
         {
-            throw new NotImplementedException();
+            return await Context.SaveChangesAsync();
         }
 
-        public Task<int> UpdateTotalAmount(string tenantId, string id, decimal totalAmount)
+        public async Task<int> UpdateTotalPrice(string tenantId, string id, decimal totalPrice)
         {
-            throw new NotImplementedException();
+            var orderInfo = await GetInfo(tenantId, id, false);
+            if (orderInfo == null)
+                return -1;
+
+            orderInfo.TotalPrice = totalPrice;
+            return await Context.SaveChangesAsync();
         }
 
-        public Task<int> UpdateTotalItems(string tenantId, string id, int totalItems)
+        public async Task<int> UpdateQuantity(string tenantId, string id, decimal quantity)
         {
-            throw new NotImplementedException();
+            var orderInfo = await GetInfo(tenantId, id, false);
+            if (orderInfo == null)
+                return -1;
+
+            orderInfo.Quantity = quantity;
+            return await Context.SaveChangesAsync();
         }
     }
 }

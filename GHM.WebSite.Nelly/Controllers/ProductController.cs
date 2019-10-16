@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GHM.Infrastructure.Extensions;
 using GHM.Website.Nelly.Constants;
 using GHM.Website.Nelly.Controllers;
+using GHM.Website.Nelly.Models;
 using GHM.Website.Nelly.ViewModels;
 using GHM.WebSite.Nelly.Helper;
 using GHM.WebSite.Nelly.Models;
@@ -79,14 +80,25 @@ namespace GHM.WebSite.Nelly.Controllers
         {
             var apiService = _configuration.GetApiServiceInfo();
 
-            ViewBag.Keyword = keyword;
-            ViewBag.AttributeName = attributeName;
-            ViewBag.attributeValueName = attributeValueName;
+            ViewBag.Keyword = keyword?.Trim().StripVietnameseChars()?.ToUpper();
+            ViewBag.AttributeName = attributeName?.Trim().StripVietnameseChars()?.ToUpper();
+            ViewBag.AttributeValueName = attributeValueName?.Trim().StripVietnameseChars()?.ToUpper();
+
+            var breadcrumbs = new List<Breadcrumb>
+            {
+                new Breadcrumb()
+                {
+                    Name = !string.IsNullOrEmpty(keyword) ? $"Tìm kiếm: {keyword}" : $"{attributeName} : {attributeValueName}",
+                    IsCurrent = true,
+                }
+            };
+
+            ViewBag.Breadcrumb = breadcrumbs;
+
             var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);
             var listProductCategoryData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
 
             ViewBag.ListProductCategory = listProductCategoryData;
-
             if (listProductCategoryData != null && listProductCategoryData.Any())
             {
                 ViewBag.ProductCategroryTree = RenderTree(listProductCategoryData, null)?.Take(5);

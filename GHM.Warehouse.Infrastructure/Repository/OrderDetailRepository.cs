@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace GHM.Warehouse.Infrastructure.Repository
 {
@@ -18,49 +19,60 @@ namespace GHM.Warehouse.Infrastructure.Repository
             _orderDetailRepository = Context.GetRepository<OrderDetail>();
         }
 
-        public Task<bool> CheckExists(string id, string tenantId, string orderId, string productId)
+        public async Task<bool> CheckExists(string tenantId, string orderId, string productId)
         {
-            throw new NotImplementedException();
+            return await _orderDetailRepository.ExistAsync(x => x.TenantId == tenantId
+            && x.OrderId == orderId & x.ProductId == productId && !x.IsDelete);
         }
 
-        public Task<int> Delete(string tenantId, string id)
+        public async Task<int> Delete(string tenantId, string id)
         {
-            throw new NotImplementedException();
+            var orderInfo = await GetInfo(tenantId, id, false);
+            if (orderInfo == null)
+                return -1;
+            _orderDetailRepository.Delete(orderInfo);
+
+            return await Context.SaveChangesAsync();
         }
 
-        public Task<OrderDetail> GetInfo(string tenantId, string id, bool isReadOnly = false)
+        public async Task<OrderDetail> GetInfo(string tenantId, string id, bool isReadOnly = false)
         {
-            throw new NotImplementedException();
+            return await _orderDetailRepository.GetAsync(isReadOnly, x => x.TenantId == tenantId && x.Id == id && !x.IsDelete);
+
         }
 
-        public Task<OrderDetail> GetInfo(string tenantId, string orderId, string productId, bool isReadOnly = false)
+        public async Task<OrderDetail> GetInfo(string tenantId, string orderId, string productId, bool isReadOnly = false)
         {
-            throw new NotImplementedException();
+            return await _orderDetailRepository.GetAsync(isReadOnly, x => x.TenantId == tenantId
+             && x.OrderId == orderId & x.ProductId == productId && !x.IsDelete);
+
         }
 
-        public Task<List<OrderDetail>> GetsAll(string tenantId, string orderId, bool isReadOnly = false)
+        public async Task<List<OrderDetail>> GetsAll(string tenantId, string orderId, bool isReadOnly = false)
         {
-            throw new NotImplementedException();
+            return await _orderDetailRepository.GetsAsync(isReadOnly, x => x.TenantId == tenantId && x.OrderId == orderId && !x.IsDelete);
         }
 
-        public Task<int> Insert(OrderDetail orderDetail)
+        public async Task<int> Insert(OrderDetail orderDetail)
         {
-            throw new NotImplementedException();
+            _orderDetailRepository.Create(orderDetail);
+            return await Context.SaveChangesAsync();
         }
 
-        public Task<int> Inserts(List<OrderDetail> orderDetails)
+        public async Task<int> Inserts(List<OrderDetail> orderDetails)
         {
-            throw new NotImplementedException();
+            _orderDetailRepository.Creates(orderDetails);
+            return await Context.SaveChangesAsync();
         }
 
-        public Task<int> Update(OrderDetail orderDetail)
+        public async Task<int> Update(OrderDetail orderDetail)
         {
-            throw new NotImplementedException();
+            return await Context.SaveChangesAsync();
         }
 
-        public Task<int> Updates(List<OrderDetail> orderDetails)
+        public async Task<int> Updates(List<OrderDetail> orderDetails)
         {
-            throw new NotImplementedException();
+            return await Context.SaveChangesAsync();
         }
     }
 }

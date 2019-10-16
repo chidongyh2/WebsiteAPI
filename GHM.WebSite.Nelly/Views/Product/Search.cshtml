@@ -6,6 +6,7 @@
 }
 
 <partial name="_Breadcumb">
+
     <div id="product-search" class="product-search">
         <div class="container">
             <div class="row">
@@ -66,9 +67,12 @@
 
     @section scripts {
         <script type="text/javascript">
-        var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
-        console.log(products);
-        var totalRows = "@ViewBag.TotalProduct";
+             var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
+            var totalRows = "@ViewBag.TotalProduct";
+            var keyword = "@ViewBag.Keyword";
+            var attributeName = "@ViewBag.AttributeName";
+            var attributeValueName = "@ViewBag.AttributeValueName";
+            console.log(attributeName, attributeValueName);
         </script>
         <script src="~/js/viewmodel/product-search.viewmodel.min.js"></script>
     }

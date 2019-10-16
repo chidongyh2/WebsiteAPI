@@ -68,7 +68,22 @@ function ProductSearchViewModel() {
         });
     };
 
-    $(document).ready(function () {         
+    self.search = function () {
+        $.get('/search-product', {
+            keyword: self.keyword(),
+            attributeName: self.attributeName(),
+            attributeValueName: self.attributeValueName(),
+            page: self.currentPage(), pageSize: self.pageSize()
+        }, function (data) {
+            self.listProduct(data.items);
+            self.renderPage(data.totalRows);
+        });
+    };
+
+    $(document).ready(function () {
+        self.keyword(keyword);
+        self.attributeName(attributeName);
+        self.attributeValueName(attributeValueName);
         self.listProduct(products);
         self.renderPage(totalRows);
         self.rendTree(treeData);

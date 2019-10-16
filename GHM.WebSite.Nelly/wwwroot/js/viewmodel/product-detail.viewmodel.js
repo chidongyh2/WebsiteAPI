@@ -62,7 +62,6 @@ function ProductDetailViewModel() {
                     values: _.map(listValue, 'attributeValueName').join(', '),
                     listValue: listValue
                 });
-                console.log(listValue);
             });
         }
 

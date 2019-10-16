@@ -20,15 +20,11 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<Order> GetInfo(string tenantId, string id, bool isReadOnly = false);
 
-        Task<Order> GetInfo(string id, bool isReadOnly = false);
-
-        Task<OrderDetailViewModel> GetDetail(string tenantId, string id);
-
         Task<bool> CheckExists(string tenantId, string id);
 
-        Task<int> UpdateTotalAmount(string tenantId, string id, decimal totalAmount);
+        Task<int> UpdateTotalPrice(string tenantId, string id, decimal totalPrice);
 
-        Task<int> UpdateTotalItems(string tenantId, string id, int totalItems);
+        Task<int> UpdateQuantity(string tenantId, string id, decimal quantity);
 
         Task<List<OrderSearchViewModel>> Search(string tenantId, string userId, string keyword, OrderStatus? status,
             DateTime? fromDate, DateTime? toDate, int page, int pageSize, out int totalRows);
