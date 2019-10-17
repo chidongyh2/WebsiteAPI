@@ -38,9 +38,13 @@ namespace GHM.Warehouse.Domain.Models
 
         public Order()
         {
-            Id = Guid.NewGuid().ToString();
-            Type = 0;
+            var id = Guid.NewGuid().ToString();
+            Id = id;
+            ConcurrencyStamp = id;
+            Type = 1;
             OrderDetails = new List<OrderDetail>();
+            IsDelete = false;
+            CreateTime = DateTime.Now;
         }
     }
 }

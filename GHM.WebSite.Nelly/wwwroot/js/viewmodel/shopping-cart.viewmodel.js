@@ -71,6 +71,9 @@
                 var quantityProductHeader = document.getElementById("quantity-product");
                 quantityProductHeader.textContent = self.listProduct().length;
 
+                var quantityProductHeaderBottom = document.getElementById("quantity-product-bottom");
+                quantityProductHeaderBottom.textContent = data.length;
+
                 var quantityProductSidebar = document.getElementById("quantity-product-sidebar");
                 quantityProductSidebar.textContent = self.listProduct().length;
             }

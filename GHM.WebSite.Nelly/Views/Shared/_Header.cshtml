@@ -68,6 +68,12 @@
                          alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "Phun xăm thẩm mỹ amiea")"
                          onerror="this.src='/images/no-image.png'" />
                 </a>
+                <div class="shopping-cart">
+                    <a href="/gio-hang">
+                        <i class="ion-bag"></i>
+                        <span class="quantity-product" id="quantity-product-bottom">@(productsItems != null ? productsItems.Count : 0)</span>
+                    </a>
+                </div>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" aria-controls="abcMainNav" data-target="#abcMainNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
                     <div class="wrap-none-show-icon">

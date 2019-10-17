@@ -1,5 +1,6 @@
 ﻿using GHM.Infrastructure.Models;
 using GHM.Infrastructure.ViewModels;
+using GHM.Warehouse.Domain.Constants;
 using GHM.Warehouse.Domain.ModelMetas;
 using GHM.Warehouse.Domain.ViewModels;
 using System;
@@ -17,8 +18,8 @@ namespace GHM.Warehouse.Domain.IServices
 
         Task<ActionResultResponse<OrderDetailViewModel>> GetDetail(string tenantId, string id);
 
-        Task<SearchResult<OrderSearchViewModel>> Search(string tenantId, string userId,  DateTime? fromDate, DateTime? toDate,
-            int page, int pageSize);
+        Task<SearchResult<OrderSearchViewModel>> Search(string tenantId, string userId, string keyword, OrderStatus? status,
+            DateTime? fromDate, DateTime? toDate, int page, int pageSize);
 
     }
 }

@@ -6,11 +6,11 @@
     var productsItems = JsonConvertHelper.GetObjectFromJson<List<ProductSelectedItem>>(productSelectItemJson);
 }
 
-<ul class="layout_sidebar">
+<ul class="layout_sidebar hidden-sm hidden-xs">
     <li class="hidden-sm hidden-xs">
         <div class="item-left">
             <a href="/lien-he" data-toggle="tooltip" title="Mạng lưới Nellydevusyst">
-                <img src="~/images/facion/address.png" class="lazy" />
+                <img data-src="/images/facion/address.png" class="lazy" />
                 @*<i class="la la-street-view"> </i>*@
             </a>
         </div>
@@ -19,9 +19,9 @@
         </div>
     </li>
     <li>
-        <div class="item-left shopping-cart">
+        <div class="item-left shopping-cart hidden-sm hidden-xs">
             <a href="/gio-hang" data-toggle="tooltip" title="Giỏ hàng">
-                <img src="~/images/facion/giohang.png" class="lazy" />
+                <img data-src="/images/facion/giohang.png" class="lazy" />
                 <span class="quantity-product" id="quantity-product-sidebar">@(productsItems != null ? productsItems.Count : 0)</span>
             </a>
         </div>
@@ -33,7 +33,7 @@
         <div class="item-left">
             <a href="/dang-ky-dai-ly.html" data-toggle="tooltip" title="Trở thành đại lý">
                 @*<i class="la la-users"> </i>*@
-                <img src="~/images/facion/branch.png" class="lazy" />
+                <img data-src="/images/facion/branch.png" class="lazy" />
             </a>
         </div>
         <div class="item-right">
@@ -43,7 +43,7 @@
     <li class="hidden-sm hidden-xs">
         <div class="item-left">
             <a href="/lien-he" data-toggle="tooltip" title="Liên hệ">
-                <img src="~/images/facion/contact.png" class="lazy" />
+                <img data-src="/images/facion/contact.png" class="lazy" />
                 @*<i class="la la-asterisk"> </i>*@
             </a>
         </div>
