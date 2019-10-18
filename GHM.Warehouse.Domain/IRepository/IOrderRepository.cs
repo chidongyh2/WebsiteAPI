@@ -22,6 +22,8 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<bool> CheckExists(string tenantId, string id);
 
+        Task<bool> CheckExists(string tenantId, string id, string code);
+
         Task<int> UpdateTotalPrice(string tenantId, string id, decimal totalPrice);
 
         Task<int> UpdateQuantity(string tenantId, string id, decimal quantity);

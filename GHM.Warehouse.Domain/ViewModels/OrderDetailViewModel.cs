@@ -23,6 +23,7 @@ namespace GHM.Warehouse.Domain.ViewModels
         public byte? Type { get; set; } // 0: Online, 1: Hệ thống
         public DateTime? DeliveryDate { get; set; }
         public DateTime? CreateTime { get; set; }
+        public string CreatorId { get; set; }
         public string CreatorFullName { get; set; }
         public string ConcurrencyStamp { get; set; }
 

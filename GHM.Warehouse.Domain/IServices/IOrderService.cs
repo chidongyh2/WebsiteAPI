@@ -12,7 +12,8 @@ namespace GHM.Warehouse.Domain.IServices
 {
     public interface IOrderService
     {
-        Task<ActionResultResponse<string>> Insert(string tenantId, OrderMeta orderMeta);
+        Task<ActionResultResponse<string>> Insert(string tenantId, string createUserId, string createUserName,
+            OrderMeta orderMeta);
 
         Task<ActionResultResponse> Update(string tenantId, string id, OrderMeta orderMeta);
 
@@ -21,5 +22,6 @@ namespace GHM.Warehouse.Domain.IServices
         Task<SearchResult<OrderSearchViewModel>> Search(string tenantId, string userId, string keyword, OrderStatus? status,
             DateTime? fromDate, DateTime? toDate, int page, int pageSize);
 
+        Task<ActionResultResponse<string>> UpdateStatus(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string id, OrderStatus status);
     }
 }

@@ -18,7 +18,6 @@ namespace GHM.Warehouse.Domain.ModelMetas
         public byte? DiscountType { get; set; } // Loại giảm giá, 0: tiền, 1 phần trăm
         public decimal? Transport { get; set; } // Phí vận chuyển
         public decimal? Quantity { get; set; } // Tổng số sản phẩm
-        public bool IsDelete { get; set; }
         public OrderStatus? Status { get; set; } // Trạng thái đơn hàng
         public string ConcurrencyStamp { get; set; }
         public DateTime? DeliveryDate { get; set; }

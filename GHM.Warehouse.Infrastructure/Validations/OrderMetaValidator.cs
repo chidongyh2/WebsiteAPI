@@ -39,15 +39,15 @@ namespace GHM.Warehouse.Infrastructure.Validations
             RuleFor(x => x.Discount)
             .Must(x => x >= 0)
             .WithMessage(sharedResourceService.GetString(ValidatorMessage.MustGreaterThan, resourceService.GetString("Discount"), 0))
-            .When(x=> x.DiscountType == 1)
+            .When(x => x.DiscountType == 1)
             .Must(x => x <= 100)
             .WithMessage(sharedResourceService.GetString(ValidatorMessage.MustLessThan, resourceService.GetString("Discount"), 101))
             .MustBeNumber(sharedResourceService.GetString(ValidatorMessage.InValid, resourceService.GetString("Discount")));
 
-           RuleFor(x => x.Transport)
-           .Must(x => x >= 0)
-           .WithMessage(sharedResourceService.GetString(ValidatorMessage.MustGreaterThan, resourceService.GetString("Transport"), 0))           
-           .MustBeNumber(sharedResourceService.GetString(ValidatorMessage.InValid, resourceService.GetString("Transport")));
+            RuleFor(x => x.Transport)
+            .Must(x => x >= 0)
+            .WithMessage(sharedResourceService.GetString(ValidatorMessage.MustGreaterThan, resourceService.GetString("Transport"), 0))
+            .MustBeNumber(sharedResourceService.GetString(ValidatorMessage.InValid, resourceService.GetString("Transport")));
 
             RuleFor(x => x.DiscountType)
            .Must(x => x >= 0)
@@ -66,6 +66,12 @@ namespace GHM.Warehouse.Infrastructure.Validations
                 .MaximumLength(500)
                 .WithMessage(sharedResourceService.GetString(ValidatorMessage.MustLessThan,
                     sharedResourceService.GetString("Note"), 500));
+
+            RuleFor(x => x.Status)
+              .NotNullAndEmpty(sharedResourceService.GetString(ValidatorMessage.PleaseSelect, resourceService.GetString("Status")))
+               .IsInEnum()
+                .WithMessage(sharedResourceService.GetString(ValidatorMessage.InValid,
+                    sharedResourceService.GetString("Stats")));
 
             RuleFor(x => x.OrderDetails)
                 .Must(x => x.Count > 0)

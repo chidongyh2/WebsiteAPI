@@ -136,5 +136,11 @@ namespace GHM.Warehouse.Infrastructure.Repository
             orderInfo.Quantity = quantity;
             return await Context.SaveChangesAsync();
         }
+
+        public async Task<bool> CheckExists(string tenantId, string id, string code)
+        {
+            return await _orderRepository.ExistAsync(x => x.TenantId == tenantId && x.Id != id
+            && x.Code == code && !x.IsDelete);
+        }
     }
 }
