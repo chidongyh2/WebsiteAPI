@@ -61,7 +61,7 @@ namespace GHM.Warehouse.Infrastructure.Repository
             return await Context.SaveChangesAsync();
         }
 
-        public Task<List<OrderSearchViewModel>> Search(string tenantId, string userId,
+        public Task<List<OrderSearchViewModel>> Search(string tenantId, string userId, string productId,
             string keyword, OrderStatus? status, DateTime? fromDate, DateTime? toDate, int page,
             int pageSize, out int totalRows)
         {
@@ -80,11 +80,15 @@ namespace GHM.Warehouse.Infrastructure.Repository
                 toDate = toDate.Value.Date.AddDays(1).AddMilliseconds(-1);
             }
 
-            var result = from order in Context.Set<Order>()
+            var result = (from order in Context.Set<Order>()
+                         join detail in Context.Set<OrderDetail>() on order.Id equals detail.OrderId
                          where order.TenantId == tenantId && !order.IsDelete
+                               && detail.TenantId == tenantId && !detail.IsDelete
+                               && (string.IsNullOrEmpty(productId) || detail.ProductId == productId)
+                               && (string.IsNullOrEmpty(userId) || order.CreatorId == userId)
                                && (string.IsNullOrEmpty(keyword) || order.UnsignName.Contains(keyword))
-                               && (!fromDate.HasValue || fromDate.Value >= order.CreateTime)
-                               && (!toDate.HasValue || toDate.Value <= order.CreateTime)
+                               && (!fromDate.HasValue || fromDate.Value <= order.CreateTime)
+                               && (!toDate.HasValue || toDate.Value >= order.CreateTime)
                                && (!status.HasValue || order.Status == status)
                          select new OrderSearchViewModel
                          {
@@ -103,10 +107,10 @@ namespace GHM.Warehouse.Infrastructure.Repository
                              DeliveryDate = order.DeliveryDate,
                              CreateTime = order.CreateTime,
                              CreatorFullName = order.CreatorFullName
-                         };
+                         }).Distinct();
 
             totalRows = result.Count();
-            return result.OrderByDescending(x => x.DeliveryDate)
+            return result.OrderByDescending(x => x.CreateTime)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();

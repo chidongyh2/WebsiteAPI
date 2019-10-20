@@ -7,7 +7,7 @@ namespace GHM.Warehouse.Domain.ModelMetas
     public class OrderMeta
     {
         public string Code { get; set; } // Mã đơn hàng
-        public string CusomerId { get; set; } // Mã khách hàng
+        public string CustomerId { get; set; } // Mã khách hàng
         public string CustomerName { get; set; }
         public string PhoneNumber { get; set; } // Số điện thoại khách hàng
         public string Email { get; set; }

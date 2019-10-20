@@ -1,4 +1,5 @@
 ﻿using GHM.Infrastructure.Constants;
+using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.IServices;
 using GHM.Infrastructure.Models;
 using GHM.Infrastructure.Resources;
@@ -7,6 +8,7 @@ using GHM.Warehouse.Domain.Constants;
 using GHM.Warehouse.Domain.IRepository;
 using GHM.Warehouse.Domain.IServices;
 using GHM.Warehouse.Domain.ModelMetas;
+using GHM.Warehouse.Domain.Models;
 using GHM.Warehouse.Domain.Resources;
 using GHM.Warehouse.Domain.ViewModels;
 using System;
@@ -33,6 +35,15 @@ namespace GHM.Warehouse.Infrastructure.Services
             _productRepository = productRepository;
             _warehouseResourceService = warehouseResourceService;
             _sharedResourceService = sharedResourceService;
+        }
+
+        public async Task<string> GetCode(string tenantId)
+        {
+            var now = DateTime.Now;
+            var quantity = await _orderRepository.Count(tenantId);
+            var code = $"{now.ToString("DDMMyyyy")}{quantity.ToString("D5")}";
+
+            return code;
         }
 
         public async Task<ActionResultResponse<OrderDetailViewModel>> GetDetail(string tenantId, string id)
@@ -64,7 +75,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                     CreatorId = orderInfo.CreatorId,
                     CreatorFullName = orderInfo.CreatorFullName,
                     ConcurrencyStamp = orderInfo.ConcurrencyStamp,
-                    OrderDetails = orderDetails.Select(x=> new OrderDetailSearchViewModel()
+                    OrderDetails = orderDetails.Select(x => new OrderDetailSearchViewModel()
                     {
                         Id = x.Id,
                         OrderId = x.OrderId,
@@ -82,17 +93,79 @@ namespace GHM.Warehouse.Infrastructure.Services
             };
         }
 
-        public Task<ActionResultResponse<string>> Insert(string tenantId, string createUserId, string createUserName,
-            OrderMeta orderMeta)
+        public async Task<ActionResultResponse<string>> Insert(string tenantId, string createUserId,
+            string createFullName, OrderMeta orderMeta)
         {
+            var now = DateTime.Now;
+            var quantity = await _orderRepository.Count(tenantId);
+            var code = string.IsNullOrEmpty(orderMeta.Code) ? $"{now.ToString("DDMMyyyy")}{quantity.ToString("D5")}" : orderMeta.Code;
 
-            throw new NotImplementedException();
+            var isExists = await _orderRepository.CheckExists(tenantId, null, code);
+            if (isExists)
+                return new ActionResultResponse<string>(-2,
+                        _warehouseResourceService.GetString(ErrorMessage.AlreadyExists, "OrderCode"));
+
+            if (orderMeta.OrderDetails.Count(x => x.Quantity <= 0) > 0)
+                return new ActionResultResponse<string>(-1, _warehouseResourceService.GetString("Product quantity must greater than."));
+
+            var order = new Order()
+            {
+                Code = code,
+                TenantId = tenantId,
+                Name = $"{orderMeta.CustomerName}_{orderMeta.PhoneNumber}",
+                UnsignName = $"{code} {orderMeta.CustomerName} {orderMeta.PhoneNumber}".StripVietnameseChars().ToUpper(),
+                CusomerId = orderMeta.CustomerId,
+                CustomerName = orderMeta.CustomerName?.Trim(),
+                PhoneNumber = orderMeta.PhoneNumber?.Trim(),
+                Email = orderMeta.Email?.Trim(),
+                Address = orderMeta.Address?.Trim(),
+                Note = orderMeta.Note?.Trim(),
+                Discount = orderMeta.Discount,
+                DiscountType = orderMeta.DiscountType,
+                Transport = orderMeta.Transport,
+                Status = orderMeta.Status,
+                DeliveryDate = orderMeta.DeliveryDate,
+                CreatorFullName = createFullName,
+                CreatorId = createUserId
+            };
+
+            foreach (var detail in orderMeta.OrderDetails)
+            {
+                order.OrderDetails.Add(new OrderDetail()
+                {
+                    TenantId = tenantId,
+                    OrderId = order.Id,
+                    ProductId = detail.ProductId,
+                    ProductName = detail.ProductName,
+                    Quantity = detail.Quantity,
+                    UnitId = detail.UnitId,
+                    Price = detail.Price,
+                    Discount = detail.Discount,
+                    DiscountType = detail.DiscountType,
+                    CreatorId = createUserId,
+                    CreatorFullName = createFullName,
+                    Amount = detail.DiscountType == (byte)DiscountType.Money ? (detail.Price * detail.Quantity - detail.Discount ?? 0) : detail.Price * detail.Quantity * (1 - (detail.Discount ?? 0 / 100)),
+                });
+            }
+            order.Quantity = order.OrderDetails.Count();
+            var totalPrice = order.OrderDetails.Sum(x => x.Amount);
+            order.TotalPrice = order.DiscountType == (byte)DiscountType.Money ? totalPrice - orderMeta.Discount ?? 0 : totalPrice * (1 - orderMeta.Discount ?? 0 / 100);
+
+            var result = await _orderRepository.Insert(order);
+            if (result <= 0)
+                return new ActionResultResponse<string>(-3,
+                   _warehouseResourceService.GetString(ErrorMessage.SomethingWentWrong));
+
+
+            return new ActionResultResponse<string>(result,
+                  _warehouseResourceService.GetString(SuccessMessage.AddSuccessful), "", order.Id);
         }
 
-        public async Task<SearchResult<OrderSearchViewModel>> Search(string tenantId, string userId, string keyword, OrderStatus? status,
+        public async Task<SearchResult<OrderSearchViewModel>> Search(string tenantId, string userId, string productId,
+            string keyword, OrderStatus? status,
             DateTime? fromDate, DateTime? toDate, int page, int pageSize)
         {
-            var items = await _orderRepository.Search(tenantId, userId, keyword,
+            var items = await _orderRepository.Search(tenantId, userId, productId, keyword,
                 status, fromDate, toDate, page, pageSize, out var totalRows);
             return new SearchResult<OrderSearchViewModel>
             {
@@ -128,7 +201,7 @@ namespace GHM.Warehouse.Infrastructure.Services
             orderInfo.ConcurrencyStamp = Guid.NewGuid().ToString();
 
             var result = await _orderRepository.Update(orderInfo);
-            if(result <= 0)
+            if (result <= 0)
                 return new ActionResultResponse<string>(-4,
                    _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
 

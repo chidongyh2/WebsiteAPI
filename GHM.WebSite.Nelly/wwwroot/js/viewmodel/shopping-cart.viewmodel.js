@@ -110,11 +110,14 @@
         }
     });
 
-    self.address.subscribe(function (value) {
-        if (!value || value === "" || value.trim() === "") {
+    self.address.subscribe(function (value) {        
+        if (!value || value === "") {
+            console.log(value);
             self.addressError("Vui lòng nhập địa chỉ của bạn");
+            self.isAddressFocus(true);
         } else {
-            self.addressError();
+            self.addressError('');
+            self.isAddressFocus(false);
         }
     });
 
@@ -147,6 +150,9 @@
             self.addressError("Vui lòng nhập địa chỉ của bạn");
             self.isAddressFocus(true);
             return;
+        } else {
+            self.addressError("");
+            self.isAddressFocus(false);
         }
 
         if (!self.fullNameError() && !self.emailError() && !self.phoneNumberError() && !self.addressError()) {

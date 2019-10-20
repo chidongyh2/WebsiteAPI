@@ -4,8 +4,6 @@ using GHM.Warehouse.Domain.Constants;
 using GHM.Warehouse.Domain.ModelMetas;
 using GHM.Warehouse.Domain.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GHM.Warehouse.Domain.IServices
@@ -19,9 +17,11 @@ namespace GHM.Warehouse.Domain.IServices
 
         Task<ActionResultResponse<OrderDetailViewModel>> GetDetail(string tenantId, string id);
 
-        Task<SearchResult<OrderSearchViewModel>> Search(string tenantId, string userId, string keyword, OrderStatus? status,
+        Task<SearchResult<OrderSearchViewModel>> Search(string tenantId, string userId, string productId, string keyword, OrderStatus? status,
             DateTime? fromDate, DateTime? toDate, int page, int pageSize);
 
         Task<ActionResultResponse<string>> UpdateStatus(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string id, OrderStatus status);
+
+        Task<string> GetCode(string tenantId);
     }
 }

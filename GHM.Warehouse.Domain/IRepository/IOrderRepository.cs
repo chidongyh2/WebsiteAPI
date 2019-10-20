@@ -28,7 +28,7 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<int> UpdateQuantity(string tenantId, string id, decimal quantity);
 
-        Task<List<OrderSearchViewModel>> Search(string tenantId, string userId, string keyword, OrderStatus? status,
+        Task<List<OrderSearchViewModel>> Search(string tenantId, string userId, string productId, string keyword, OrderStatus? status,
             DateTime? fromDate, DateTime? toDate, int page, int pageSize, out int totalRows);
 
         Task<int> Count(string tenantId);
