@@ -25,7 +25,7 @@
                                          onerror="this.onerror = null;this.src='/images/no-image.png'" />
                                 </a>
                             </div>
-                            <div class="txt-static">
+                            <div class="txt-static hidden-xs hidden-sm">
                                 <img class="lazy" data-src="/images/facion/zoom-in.png" />
                                 Rê chuột lên hình để phóng to
                             </div>
@@ -116,11 +116,11 @@
                     <div class="row cm-mgb-10 product-detail">
                         <div class="col-sm-12">
                             <div class="">
-                                <div class="line"></div>
-                                <h3 class="title">Thông tin</h3>
-
+                                <div class="line hidden-xs hidden-sm"></div>
+                                <h3 class="title" data-bind="click: showProductInfo">
+                                <i class="la la-bars cm-mgr-5 hidden-lg hidden-md"></i>Thông tin</h3>
                                 <div class="content">
-                                    <ul class="nav nav-tabs">
+                                    <ul class="nav nav-tabs" data-bind="visible: isShowProductInfo()">
                                         <li id="liDetail" class="active">
                                             <a href="#detail" data-bind="click: showTabDetail">
                                                 <span>Chi tiết</span>

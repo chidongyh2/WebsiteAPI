@@ -1437,7 +1437,7 @@ body {
 }
 @media only screen and (max-width: 1200px) {
   #box-hotline .content .inbox .input-group input {
-    width: 200px;
+    width: 150px;
   }
 }
 #box-hotline .content .inbox .input-group .input-group-btn .btn-send-phone {
@@ -2011,8 +2011,24 @@ body {
   font-size: 16px;
   padding-bottom: 0px;
 }
+@media only screen and (max-width: 1200px) {
+  #product-detail .product-detail .title {
+    width: 100%;
+    background-color: #F9A5A7;
+    color: #FFFFFF;
+    padding: 10px;
+    margin-bottom: -5px;
+    border-top: none;
+    cursor: pointer;
+  }
+}
 #product-detail .product-detail .content {
   margin-top: 10px;
+}
+@media only screen and (max-width: 1200px) {
+  #product-detail .product-detail .content {
+    margin-top: 0px;
+  }
 }
 #product-detail .product-detail .content .nav {
   /*border-bottom: none;*/
@@ -2033,9 +2049,15 @@ body {
   text-transform: uppercase;
   color: #3F3F3F;
   font-size: 13px;
+  margin-right: 0px;
 }
 #product-detail .product-detail .content .nav .active a {
   border-top: 2px solid #F9A5A7;
+}
+@media only screen and (max-width: 1200px) {
+  #product-detail .product-detail .content .nav .active a {
+    color: #F9A5A7;
+  }
 }
 #product-detail .product-detail .content .tab-content {
   margin-top: 0px !important;
@@ -2049,6 +2071,11 @@ body {
   font-size: 14px;
   font-family: Opensans;
   color: #3F3F3F;
+}
+@media only screen and (max-width: 1200px) {
+  #product-detail .product-info .content .title-sidebar {
+    margin-top: 10px;
+  }
 }
 #product-detail .product-info .content .price {
   font-weight: bold;
