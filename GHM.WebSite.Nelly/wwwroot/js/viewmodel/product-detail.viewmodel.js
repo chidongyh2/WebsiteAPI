@@ -198,10 +198,12 @@ function ProductDetailViewModel() {
             ]
         });
 
-        $('.easyzoom').easyZoom({
-            errorNotice: 'Không tìm thấy ảnh',
-            loadingNotice: 'Đang tải ảnh'
-        });
+        if (window.innerWidth > 768) {
+            $('.easyzoom').easyZoom({
+                errorNotice: 'Không tìm thấy ảnh',
+                loadingNotice: 'Đang tải ảnh'
+            });
+        }
 
         self.renderAttribute();
         if (productSelectItems) {
