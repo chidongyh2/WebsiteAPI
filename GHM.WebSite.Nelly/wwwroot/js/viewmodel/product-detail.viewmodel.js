@@ -62,7 +62,6 @@ function ProductDetailViewModel() {
                     values: _.map(listValue, 'attributeValueName').join(', '),
                     listValue: listValue
                 });
-                console.log(listValue);
             });
         }
 
@@ -121,6 +120,9 @@ function ProductDetailViewModel() {
                     var quantityProductHeader = document.getElementById("quantity-product");
                     quantityProductHeader.textContent = data.length;
 
+                    var quantityProductHeaderBottom = document.getElementById("quantity-product-bottom");
+                    quantityProductHeaderBottom.textContent = data.length;
+
                     var quantityProductSidebar = document.getElementById("quantity-product-sidebar");
                     quantityProductSidebar.textContent = data.length;
                 }
@@ -153,6 +155,7 @@ function ProductDetailViewModel() {
     };
 
     $(document).ready(function () {
+        Globalize.culture('vi-VN');
         self.rendTree(treeData);
         self.productCategoryTree(treeData);
         self.listProductImage(productImages);

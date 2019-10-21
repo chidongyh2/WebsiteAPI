@@ -175,5 +175,6 @@
         InventoryReport = 100013,
         WarehouseCard = 100014,
         Inventory = 100015,
+        Order = 100016
     }
 }

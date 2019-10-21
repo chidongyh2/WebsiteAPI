@@ -1,5 +1,6 @@
 ﻿@{
     var mainBanner = ViewBag.MainBanner as BannerViewModel;
+    var listNewsHot = ViewBag.NewsHostHomePage as CategoryWidthNewsViewModel;
 }
 
 <partial name="_MainSlider" model="@mainBanner" />
@@ -26,6 +27,9 @@
 <partial name="_Video" />
 <partial name="_Brand" />
 @section scripts {
+    <script type="text/javascript">
+        var countNewsHot = "@listNewsHot?.ListNews?.Count()";
+    </script>
     <script type="text/javascript" src="~/js/home.min.js"></script>
 }
 

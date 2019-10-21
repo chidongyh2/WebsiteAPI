@@ -8,7 +8,7 @@ namespace GHM.Warehouse.Domain.IRepository
 {
     public interface IOrderDetailRepository
     {
-        Task<bool> CheckExists(string id, string tenantId, string orderId, string productId);
+        Task<bool> CheckExists(string tenantId, string orderId, string productId);
 
         Task<int> Insert(OrderDetail orderDetail);
 

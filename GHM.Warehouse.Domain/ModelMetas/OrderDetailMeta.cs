@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GHM.Warehouse.Domain.ViewModels
+namespace GHM.Warehouse.Domain.ModelMetas
 {
-    public class OrderDetailSearchViewModel
+    public class OrderDetailMeta
     {
-        public string Id { get; set; }
         public string OrderId { get; set; }
         public string ProductId { get; set; }
         public string ProductName { get; set; }
@@ -16,6 +15,5 @@ namespace GHM.Warehouse.Domain.ViewModels
         public decimal? Discount { get; set; } // Giá trị giảm giá
         public byte? DiscountType { get; set; } // Loại giảm giá, 0: tiền, 1 phần trăm
         public decimal Amount { get; set; } // Tổng tiền
-        public string ConcurrencyStamp { get; set; }
     }
 }

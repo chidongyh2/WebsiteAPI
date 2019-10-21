@@ -27,7 +27,11 @@ namespace GHM.Warehouse.Domain.Models
 
         public OrderDetail()
         {
-            Id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
+            Id = id;
+            ConcurrencyStamp = id;
+            IsDelete = false;
+            CreateTime = DateTime.Now;
         }
     }
 }

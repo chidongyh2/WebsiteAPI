@@ -55,6 +55,7 @@
   .navbar-toggle {
     display: block;
     margin-right: 0px;
+    border-radius: 0px;
   }
   .navbar-collapse {
     border-top: 1px solid transparent;
@@ -198,6 +199,7 @@
 }
 .header-bottom .navbar-inverse .wrap {
   align-items: center;
+  position: relative;
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .wrap {
@@ -231,6 +233,30 @@
   height: 20px;
   font-size: 20px;
   line-height: 0px !important;
+}
+.header-bottom .navbar-inverse .wrap .shopping-cart {
+  position: absolute;
+  right: 90px;
+  top: 15px;
+}
+.header-bottom .navbar-inverse .wrap .shopping-cart a {
+  position: relative;
+  color: #F9A4A7;
+}
+.header-bottom .navbar-inverse .wrap .shopping-cart a i {
+  font-size: 30px;
+}
+.header-bottom .navbar-inverse .wrap .shopping-cart a .quantity-product {
+  position: absolute;
+  top: -3px;
+  right: -12px;
+  font-size: 16px;
+  color: #606060;
+  border-radius: 50%;
+  background: #fff;
+  height: 22px;
+  width: 22px;
+  text-align: center;
 }
 @media only screen and (max-width: 1200px) {
   .header-bottom .navbar-inverse .container {

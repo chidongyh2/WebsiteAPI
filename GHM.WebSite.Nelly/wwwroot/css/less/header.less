@@ -24,6 +24,7 @@
     .navbar-toggle {
         display: block;
         margin-right: 0px;
+        border-radius: 0px;
     }
 
     .navbar-collapse {
@@ -192,6 +193,7 @@
 
         .wrap {
             align-items: center;
+            position: relative;
 
             @media @mobile {
                 display: block;
@@ -225,6 +227,34 @@
                 height: 20px;
                 font-size: 20px;
                 line-height: 0px !important;
+            }
+
+            .shopping-cart {
+                position: absolute;
+                right: 90px;
+                top: 15px;
+
+                a {
+                    position: relative;
+                    color: @main-color;
+
+                    i {
+                        font-size: 30px;
+                    }
+
+                    .quantity-product {
+                        position: absolute;
+                        top: -3px;
+                        right: -12px;
+                        font-size: 16px;
+                        color: #606060;
+                        border-radius: 50%;
+                        background: #fff;
+                        height: 22px;
+                        width: 22px;
+                        text-align: center;
+                    }
+                }
             }
         }
 

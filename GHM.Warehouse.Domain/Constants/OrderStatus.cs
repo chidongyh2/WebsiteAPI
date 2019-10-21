@@ -35,4 +35,17 @@
         /// </summary>
         Canceled
     }
+
+    public enum DiscountType
+    {
+        /// <summary>
+        /// Tiền
+        /// </summary>
+        Money,
+
+        /// <summary>
+        /// Phần trăm
+        /// </summary>
+        Percent,       
+    }
 }

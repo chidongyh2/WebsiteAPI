@@ -1,8 +1,9 @@
 ﻿$(document).ready(function () {
+    console.log(countNewsHot);
     $('#news-slider').slick({
-        slidesToShow: 5,
+        slidesToShow: countNewsHot <= 5 ? 3 : 5,
         slidesToScroll: 1,
-        centerMode: true,
+        centerMode: countNewsHot >=3,
         autoplay: false,
         slideMargin: 20,
         autoplayTimeout: 2000,

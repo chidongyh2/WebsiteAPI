@@ -19,6 +19,7 @@
     <meta property="title" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.MetaTitle) ? websiteSetting.MetaTitle : ViewBag.MetaTitle)" />
     <meta name="description" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Description) ? websiteSetting.MetaDescription
                                          : Common.SubString(ViewBag.Description, 300))" />
+    <meta property="og:brand" content="@websiteSetting.Brand" />
     <!-- for facebook -->
     <meta property="og:url" content="@absoluteUri" />
     <meta property="og:type" content="article" />
@@ -52,7 +53,17 @@
     </div>
     <partial name="_SideBar" />
     <partial name="_Footer" />
-    <partial name="_PopupSuccess" model="@message"/>
+    <partial name="_PopupSuccess" model="@message" />
+    <div class="hotlinefix">
+        <div class="phone">
+            <p><a href="tel:@websiteSetting.Hotline">@websiteSetting.Hotline</a></p>
+        </div>
+        <div class="circle-hotline">
+            <a href="tel:@websiteSetting.Hotline" style="cursor:pointer">
+                <img class="lazy" data-src="/images/hotline.png">
+            </a>
+        </div>
+    </div>
     <script src="~/js/plugins.min.js"></script>
     <script src="~/js/site.min.js"></script>
     <script>
