@@ -2074,7 +2074,7 @@ body {
 }
 @media only screen and (max-width: 1200px) {
   #product-detail .product-info .content .title-sidebar {
-    margin-top: 10px;
+    margin-top: 15px;
   }
 }
 #product-detail .product-info .content .price {
