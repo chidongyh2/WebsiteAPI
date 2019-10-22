@@ -1646,7 +1646,7 @@ body {
                     width: 250px;
 
                     @media @mobile {
-                        width: 200px;
+                        width: 150px;
                     }
                 }
 
@@ -2337,10 +2337,24 @@ body {
             text-transform: uppercase;
             font-size: 16px;
             padding-bottom: 0px;
+
+            @media @mobile {
+                width: 100%;
+                background-color: @main-color;
+                color: @color-white;
+                padding: 10px;
+                margin-bottom: -5px;
+                border-top: none;
+                cursor: pointer;
+            }
         }
 
         .content {
             margin-top: 10px;
+
+            @media @mobile {
+                margin-top: 0px;
+            }
 
             .nav {
                 /*border-bottom: none;*/
@@ -2359,12 +2373,17 @@ body {
                         text-transform: uppercase;
                         color: @color-text;
                         font-size: 13px;
+                        margin-right: 0px
                     }
                 }
 
                 .active {
                     a {
                         border-top: 2px solid @main-color;
+
+                        @media @mobile {
+                            color: @main-color;
+                        }
                     }
                 }
             }
@@ -2386,6 +2405,12 @@ body {
             font-size: 14px;
             font-family: Opensans;
             color: @color-text;
+
+            .title-sidebar {
+                @media @mobile {
+                    margin-top: 15px;
+                }
+            }
 
             .price {
                 font-weight: bold;
@@ -3030,11 +3055,15 @@ body {
     .title {
         font-size: 20px;
         text-transform: uppercase;
-        color: @color-text-grey;
+        color: @main-color;
     }
 
     .input-group {
         width: 50%;
+
+        @media @mobile {
+            width: 100%;
+        }
 
         input {
             border-radius: 0px;
@@ -3047,7 +3076,7 @@ body {
         }
 
         .btn-primary {
-            background-color: #FC9600;
+            background-color: @main-color;
             border-radius: 0;
             border: none;
         }
@@ -3132,6 +3161,10 @@ body {
     left: 42px;
     z-index: 999999;
 
+    @media @mobile {
+        bottom: 0px;
+    }
+
     .phone {
         font-size: 14px;
         font-weight: bold;
@@ -3144,6 +3177,11 @@ body {
         position: absolute;
         box-shadow: 1px 1px 8px rgba(0,0,0,.4);
         height: 47px;
+
+        @media @mobile {
+            font-size: 12px;
+            padding: 6px 8px 1px 60px;
+        }
 
         p {
             line-height: 8px;
@@ -3178,6 +3216,11 @@ body {
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
     margin-top: 3px;
     margin-left: -3px;
+
+    @media @mobile {
+        height: 40px;
+        width: 40px;
+    }
 
     a {
         margin: 12px;

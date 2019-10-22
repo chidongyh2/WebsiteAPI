@@ -35,7 +35,7 @@
   src: url('../../lib/playfair-display/playfairdisplay-bold.otf') format('opentype');
 }
 .navbar-fixed-top {
-  background-color: #F9A4A7;
+  background-color: #F9A5A7;
   border-bottom: none;
   min-height: 70px;
   transition: background-color 2s ease-out;
@@ -88,7 +88,7 @@
 }
 .wrap-header-top {
   font-family: Opensans;
-  background-color: #F9A4A7;
+  background-color: #F9A5A7;
   color: #FFFFFF;
   padding: 5px 0px;
   display: flex;
@@ -148,7 +148,7 @@
   position: relative;
 }
 .wrap-header-top .searchbox input {
-  border: 1px solid #FEEFEC;
+  border: 1px solid #FEEEEB;
   border-radius: 15px;
   background: transparent;
   padding: 0 30px 0 15px;
@@ -228,7 +228,7 @@
   }
 }
 .header-bottom .navbar-inverse .wrap .wrap-show-icon {
-  color: #F9A4A7;
+  color: #F9A5A7;
   width: 25px;
   height: 20px;
   font-size: 20px;
@@ -241,7 +241,7 @@
 }
 .header-bottom .navbar-inverse .wrap .shopping-cart a {
   position: relative;
-  color: #F9A4A7;
+  color: #F9A5A7;
 }
 .header-bottom .navbar-inverse .wrap .shopping-cart a i {
   font-size: 30px;
@@ -269,13 +269,13 @@
     margin-top: 15px;
   }
   .header-bottom .navbar-inverse .container button .icon-bar {
-    width: 25px;
-    height: 3px;
-    background: #F9A4A7;
+    width: 20px;
+    height: 2px;
+    background: #F9A5A7;
   }
 }
 .header-bottom .navbar-inverse .navbar-toggle {
-  border: 1px solid #F9A4A7;
+  border: 1px solid #F9A5A7;
 }
 .header-bottom .navbar-inverse .navbar-toggle:hover {
   background: none;
@@ -320,7 +320,7 @@
 .header-bottom nav .navbar-collapse {
   padding-left: 0px;
   padding-right: 0px;
-  border-color: #F9A4A7 !important;
+  border-color: #F9A5A7 !important;
   overflow: scroll;
   padding-top: 20px;
 }
@@ -370,7 +370,7 @@
   .header-bottom nav .navbar-collapse ul li:hover,
   .header-bottom nav .navbar-collapse ul li :focus,
   .header-bottom nav .navbar-collapse ul li :active {
-    background-color: #F9A4A7;
+    background-color: #F9A5A7;
     border-radius: 10px;
   }
   .header-bottom nav .navbar-collapse ul li:hover a,
@@ -382,7 +382,7 @@
 @media only screen and (max-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li {
     font-size: 15px !important;
-    border-bottom: 1px solid #F9A4A7 !important;
+    border-bottom: 1px solid #F9A5A7 !important;
   }
   .header-bottom nav .navbar-collapse ul li a {
     width: 90%;
@@ -448,7 +448,7 @@
   box-shadow: 0px 0px 2px #888;
   padding: 0.5em 0.6em;
   background-color: #eef0f1;
-  color: #F9A4A7;
+  color: #F9A5A7;
   height: 40px;
   width: 40px;
   font-size: 22px;
@@ -475,7 +475,7 @@
 @media only screen and (min-width: 1200px) {
   .header-bottom nav .navbar-collapse ul li .active {
     color: #FFFFFF !important;
-    background-color: #F9A4A7 !important;
+    background-color: #F9A5A7 !important;
     border-radius: 20px;
   }
 }
@@ -496,7 +496,7 @@
     border-radius: unset !important;
   }
   .header-bottom nav .navbar-collapse ul li:hover > ul.dropdown-menu li:hover {
-    background-color: #F9A4A7 !important;
+    background-color: #F9A5A7 !important;
   }
   .header-bottom nav .navbar-collapse ul li:hover > ul.dropdown-menu li:hover > a {
     color: #FFFFFF !important;
@@ -571,7 +571,7 @@
 }
 .header-bottom nav .header-tool .btn-group a {
   font-size: 16px;
-  color: #F9A4A7;
+  color: #F9A5A7;
 }
 .header-bottom nav .header-tool .btn-group a:hover,
 .header-bottom nav .header-tool .btn-group a :focus,
@@ -594,7 +594,7 @@
 .layout_sidebar li {
   padding: 5px;
   margin-bottom: 5px;
-  background-color: #F9A4A7;
+  background-color: #F9A5A7;
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
   box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);

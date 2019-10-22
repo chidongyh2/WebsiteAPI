@@ -299,6 +299,10 @@ namespace GHM.Website.Nelly.Controllers
         [Route("tim-kiem.html")]
         public async Task<IActionResult> Search(string keyword)
         {
+            if (string.IsNullOrEmpty(keyword))
+            {
+                return Redirect("/");
+            }
             var apiService = _configuration.GetApiServiceInfo();
             ViewBag.Keyword = keyword;
             if (!string.IsNullOrEmpty(keyword))

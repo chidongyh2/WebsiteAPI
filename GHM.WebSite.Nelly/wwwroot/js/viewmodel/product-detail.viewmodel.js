@@ -12,11 +12,16 @@ function ProductDetailViewModel() {
     self.quantity = ko.observable(1);
     self.totalMoney = ko.observable(0);
     self.productId = ko.observable(null);
+    self.isShowProductInfo = ko.observable(true);
 
     self.rendProductCategoryActive = function () {
         _.each(self.listProductCategory(), function (item, index) {
             item.IsActive(index <= self.lastIndex() && index >= self.firstIndex());
         });
+    };
+
+    self.showProductInfo = function () {
+        self.isShowProductInfo(!self.isShowProductInfo());
     };
 
     self.rendTree = function (data) {
@@ -198,10 +203,12 @@ function ProductDetailViewModel() {
             ]
         });
 
-        $('.easyzoom').easyZoom({
-            errorNotice: 'Không tìm thấy ảnh',
-            loadingNotice: 'Đang tải ảnh'
-        });
+        if (window.innerWidth > 768) {
+            $('.easyzoom').easyZoom({
+                errorNotice: 'Không tìm thấy ảnh',
+                loadingNotice: 'Đang tải ảnh'
+            });
+        }
 
         self.renderAttribute();
         if (productSelectItems) {
