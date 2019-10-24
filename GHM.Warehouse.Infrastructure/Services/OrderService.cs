@@ -70,6 +70,8 @@ namespace GHM.Warehouse.Infrastructure.Services
                     Quantity = orderInfo.Quantity,
                     Status = orderInfo.Status,
                     Type = orderInfo.Type,
+                    Address = orderInfo.Address,
+                    Note = orderInfo.Note,
                     DeliveryDate = orderInfo.DeliveryDate,
                     CreateTime = orderInfo.CreateTime,
                     CreatorId = orderInfo.CreatorId,

@@ -1,7 +1,7 @@
 {
   "iisSettings": {
     "windowsAuthentication": false,
-    "anonymousAuthentication": true,
+    "anonymousAuthentication": false,
     "iis": {
       "applicationUrl": "http://localhost:50000",
       "sslPort": 0
@@ -30,8 +30,7 @@
     },
     "IIS": {
       "commandName": "IIS",
-      "launchBrowser": true,
-      "launchUrl": "http://localhost:50000",
+      "launchUrl": "api/values",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
