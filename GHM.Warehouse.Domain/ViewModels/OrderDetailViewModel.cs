@@ -14,6 +14,8 @@ namespace GHM.Warehouse.Domain.ViewModels
         public string CustomerName { get; set; }
         public string PhoneNumber { get; set; } // Số điện thoại khách hàng
         public string Email { get; set; }
+        public string Address { get; set; }
+        public string Note { get; set; }
         public decimal? TotalPrice { get; set; } // Tổng tiền
         public decimal? Discount { get; set; } // Giá trị giảm giá
         public byte? DiscountType { get; set; } // Loại giảm giá, 0: tiền, 1 phần trăm

@@ -14,6 +14,7 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IIS",
+      "launchBrowser": true,
       "launchUrl": "/api/value",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -30,8 +31,7 @@
     },
     "IIS": {
       "commandName": "IIS",
-      "launchBrowser": true,
-      "launchUrl": "http://localhost:50000",
+      "launchUrl": "api/values",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

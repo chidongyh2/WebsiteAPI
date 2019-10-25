@@ -76,7 +76,7 @@ namespace GHM.WebSite.Nelly.Controllers
 
         [Route("san-pham/tim-kiem.html")]
         public async Task<IActionResult> Search(string keyword,
-            string attributeName, string attributeValueName, int page = 1, int pageSize = 20 )
+            string attributeName, string attributeValueName, int page = 1, int pageSize = 6 )
         {
             var apiService = _configuration.GetApiServiceInfo();
 
