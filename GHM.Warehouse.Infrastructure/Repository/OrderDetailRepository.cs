@@ -48,9 +48,29 @@ namespace GHM.Warehouse.Infrastructure.Repository
 
         }
 
-        public async Task<List<OrderDetail>> GetsAll(string tenantId, string orderId, bool isReadOnly = false)
+        public async Task<List<OrderDetailSearchViewModel>> GetsAll(string tenantId, string languageId, string orderId, bool isReadOnly = false)
         {
-            return await _orderDetailRepository.GetsAsync(isReadOnly, x => x.TenantId == tenantId && x.OrderId == orderId && !x.IsDelete);
+            var result = from orderDetail in Context.Set<OrderDetail>()
+                         join unitTransaction in Context.Set<UnitTranslation>()
+                         .Where(x => !x.IsDelete && x.LanguageId == languageId && x.TenantId == tenantId) on orderDetail.UnitId equals unitTransaction.UnitId
+                         where orderDetail.TenantId == tenantId && orderDetail.OrderId == orderId && !orderDetail.IsDelete
+                         select new OrderDetailSearchViewModel
+                         {
+                             Id = orderDetail.Id,
+                             OrderId = orderDetail.OrderId,
+                             ProductId = orderDetail.ProductId,
+                             ProductName = orderDetail.ProductName,
+                             Price = orderDetail.Price,
+                             Discount = orderDetail.Discount,
+                             DiscountType = orderDetail.DiscountType,
+                             Quantity = orderDetail.Quantity,
+                             Amount = orderDetail.Amount,
+                             UnitId = orderDetail.UnitId,
+                             UnitName = unitTransaction.Name,
+                             ConcurrencyStamp = orderDetail.ConcurrencyStamp
+                         };
+
+            return result.ToList();
         }
 
         public async Task<int> Insert(OrderDetail orderDetail)

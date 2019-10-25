@@ -46,10 +46,10 @@ namespace GHM.Warehouse.Infrastructure.Services
             return code;
         }
 
-        public async Task<ActionResultResponse<OrderDetailViewModel>> GetDetail(string tenantId, string id)
+        public async Task<ActionResultResponse<OrderDetailViewModel>> GetDetail(string tenantId, string languageId, string id)
         {
             var orderInfo = await _orderRepository.GetInfo(tenantId, id, true);
-            var orderDetails = await _orderDetailRepository.GetsAll(tenantId, id, true);
+            var orderDetails = await _orderDetailRepository.GetsAll(tenantId, languageId, id, true);
 
             return new ActionResultResponse<OrderDetailViewModel>
             {
@@ -77,20 +77,7 @@ namespace GHM.Warehouse.Infrastructure.Services
                     CreatorId = orderInfo.CreatorId,
                     CreatorFullName = orderInfo.CreatorFullName,
                     ConcurrencyStamp = orderInfo.ConcurrencyStamp,
-                    OrderDetails = orderDetails.Select(x => new OrderDetailSearchViewModel()
-                    {
-                        Id = x.Id,
-                        OrderId = x.OrderId,
-                        ProductId = x.ProductId,
-                        ProductName = x.ProductName,
-                        Quantity = x.Quantity,
-                        UnitId = x.UnitId,
-                        Price = x.Price,
-                        Discount = x.Discount,
-                        DiscountType = x.DiscountType,
-                        Amount = x.Amount,
-                        ConcurrencyStamp = x.ConcurrencyStamp
-                    })?.ToList()
+                    OrderDetails = orderDetails
                 }
             };
         }

@@ -17,5 +17,6 @@ namespace GHM.Warehouse.Domain.ViewModels
         public byte? DiscountType { get; set; } // Loại giảm giá, 0: tiền, 1 phần trăm
         public decimal Amount { get; set; } // Tổng tiền
         public string ConcurrencyStamp { get; set; }
+        public string UnitName { get; set; }
     }
 }
