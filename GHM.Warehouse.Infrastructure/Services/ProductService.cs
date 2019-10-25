@@ -717,20 +717,22 @@ namespace GHM.Warehouse.Infrastructure.Services
 
                             // Thêm giá trị mới.
                             var productAttributeValues = new List<ProductAttributeValue>();
-                            foreach (var attributeValue in productAttributeMeta.AttributeValues)
+                            foreach (var attributeValue in productAttributeMeta.AttributeValues?.Where(x => !string.IsNullOrEmpty(x.Id)))
                             {
                                 var isAttributeValueExists = await _attributeValueRepository.CheckExists(tenantId,
-                                    attributeInfo.Id,
-                                    attributeValue.Id, true);
-                                if (!isAttributeValueExists)
+                                    attributeInfo.Id, attributeValue.Id, true);
+                                if (!isAttributeValueExists && !string.IsNullOrEmpty(attributeValue.Id))
                                     return new ActionResultResponse<string>(-5, _sharedResourceService.GetString(ErrorMessage.NotExists,
                                         _resourceService.GetString("attribute value")));
 
-                                productAttributeValues.Add(new ProductAttributeValue
+                                if (!string.IsNullOrEmpty(attributeValue.Id))
                                 {
-                                    ProductAttributeId = productAttribute.Id,
-                                    AttributeValueId = attributeValue.Id
-                                });
+                                    productAttributeValues.Add(new ProductAttributeValue
+                                    {
+                                        ProductAttributeId = productAttribute.Id,
+                                        AttributeValueId = attributeValue.Id
+                                    });
+                                }
                             }
 
                             await _productAttributeValueRepository.Inserts(productAttributeValues);
@@ -1393,7 +1395,7 @@ namespace GHM.Warehouse.Infrastructure.Services
 
                     var listProductAttributeValues = new List<ProductAttributeValue>();
                     // Kiểm tra giá trị thuộc tính.
-                    foreach (var attributeValue in productAttributeMeta.AttributeValues)
+                    foreach (var attributeValue in productAttributeMeta.AttributeValues?.Where(x => !string.IsNullOrEmpty(x.Id)))
                     {
                         var isAttributeValueExists = await _attributeValueRepository.CheckExists(tenantId,
                             productAttributeMeta.AttributeId, attributeValue.Id, true);
