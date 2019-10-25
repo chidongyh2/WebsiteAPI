@@ -14,6 +14,8 @@ namespace GHM.Warehouse.Domain.ViewModels
         public string PhoneNumber { get; set; } // Số điện thoại khách hàng
         public string Email { get; set; }
         public decimal? TotalPrice { get; set; } // Tổng tiền
+        public decimal? TotalAmount { get; set; } //Tổng tiền sau chiết khấu
+        public decimal? VAT { get; set; }
         public decimal? Discount { get; set; } // Giá trị giảm giá
         public byte? DiscountType { get; set; } // Loại giảm giá, 0: tiền, 1 phần trăm
         public decimal? Transport { get; set; } // Phí vận chuyển
@@ -22,6 +24,6 @@ namespace GHM.Warehouse.Domain.ViewModels
         public byte? Type { get; set; } // 0: Online, 1: Hệ thống
         public DateTime? DeliveryDate { get; set; }
         public DateTime? CreateTime { get; set; }
-        public string CreatorFullName { get; set; }      
+        public string CreatorFullName { get; set; }
     }
 }

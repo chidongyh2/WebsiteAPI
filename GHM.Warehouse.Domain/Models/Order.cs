@@ -18,7 +18,9 @@ namespace GHM.Warehouse.Domain.Models
         public string Address { get; set; }
         public string Note { get; set; } // Ghi chú
         public decimal? TotalPrice { get; set; } // Tổng tiền
+        public decimal? TotalAmount { get; set; } //Tổng tiền sau chiết khấu
         public decimal? Discount { get; set; } // Giá trị giảm giá
+        public decimal? VAT { get; set; }
         public byte? DiscountType { get; set; } // Loại giảm giá, 0: tiền, 1 phần trăm
         public decimal? Transport { get; set; } // Phí vận chuyển
         public decimal? Quantity { get; set; } // Tổng số sản phẩm

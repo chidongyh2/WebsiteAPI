@@ -149,9 +149,11 @@ namespace GHM.Warehouse.Infrastructure.Services
                     Amount = detail.DiscountType == (byte)DiscountType.Money ? (detail.Price * detail.Quantity - detail.Discount ?? 0) : detail.Price * detail.Quantity * (1 - (detail.Discount ?? 0 / 100)),
                 });
             }
+
             order.Quantity = order.OrderDetails.Count();
             var totalPrice = order.OrderDetails.Sum(x => x.Amount);
-            order.TotalPrice = order.DiscountType == (byte)DiscountType.Money ? totalPrice - orderMeta.Discount ?? 0 : totalPrice * (1 - orderMeta.Discount ?? 0 / 100);
+            order.TotalPrice = totalPrice;
+            order.TotalAmount = order.DiscountType == (byte)DiscountType.Money ? totalPrice - orderMeta.Discount ?? 0 : totalPrice * (1 - orderMeta.Discount ?? 0 / 100);
 
             var result = await _orderRepository.Insert(order);
             if (result <= 0)
