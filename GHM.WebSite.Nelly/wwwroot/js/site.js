@@ -15,7 +15,8 @@ function callToMe() {
             phoneNumber: phoneNumber,
             email: 'cskh@nellydevuyst.vn',
             title: 'Hãy gọi cho tôi',
-            content: 'Hãy gọi cho tôi vào số ' + phoneNumber
+            content: 'Hãy gọi cho tôi vào số ' + phoneNumber,
+            __RequestVerificationToken: token
         }, function (result) {
             if (result.code === -1) {
                 toastr.error("Vui lòng nhập họ tên của bạn");

@@ -81,36 +81,37 @@ namespace GHM.Warehouse.Infrastructure.Repository
             }
 
             var result = (from order in Context.Set<Order>()
-                         join detail in Context.Set<OrderDetail>() on order.Id equals detail.OrderId
-                         where order.TenantId == tenantId && !order.IsDelete
-                               && detail.TenantId == tenantId && !detail.IsDelete
-                               && (string.IsNullOrEmpty(productId) || detail.ProductId == productId)
-                               && (string.IsNullOrEmpty(userId) || order.CreatorId == userId)
-                               && (string.IsNullOrEmpty(keyword) || order.UnsignName.Contains(keyword))
-                               && (!fromDate.HasValue || fromDate.Value <= order.CreateTime)
-                               && (!toDate.HasValue || toDate.Value >= order.CreateTime)
-                               && (!status.HasValue || order.Status == status)
-                         select new OrderSearchViewModel
-                         {
-                             Code = order.Code,
-                             Id = order.Id,
-                             Name = order.Name,
-                             CustomerName = order.CustomerName,
-                             PhoneNumber = order.PhoneNumber,
-                             TotalPrice = order.TotalPrice,
-                             Discount = order.Discount,
-                             DiscountType = order.DiscountType,
-                             Transport = order.Transport,
-                             Quantity = order.Quantity,
-                             Status = order.Status,
-                             TotalAmount = order.TotalAmount,
-                             Email = order.Email,
-                             VAT = order.VAT,
-                             Type = order.Type,
-                             DeliveryDate = order.DeliveryDate,
-                             CreateTime = order.CreateTime,
-                             CreatorFullName = order.CreatorFullName
-                         }).Distinct();
+                          join detail in Context.Set<OrderDetail>() on order.Id equals detail.OrderId
+                          where order.TenantId == tenantId && !order.IsDelete
+                                && detail.TenantId == tenantId && !detail.IsDelete
+                                && (string.IsNullOrEmpty(productId) || detail.ProductId == productId)
+                                && (string.IsNullOrEmpty(userId) || order.CreatorId == userId)
+                                && (string.IsNullOrEmpty(keyword) || order.UnsignName.Contains(keyword))
+                                && (!fromDate.HasValue || fromDate.Value <= order.CreateTime)
+                                && (!toDate.HasValue || toDate.Value >= order.CreateTime)
+                                && (!status.HasValue || order.Status == status)
+                          select new OrderSearchViewModel
+                          {
+                              Code = order.Code,
+                              Id = order.Id,
+                              Name = order.Name,
+                              CustomerName = order.CustomerName,
+                              PhoneNumber = order.PhoneNumber,
+                              TotalPrice = order.TotalPrice,
+                              Discount = order.Discount,
+                              DiscountType = order.DiscountType,
+                              Transport = order.Transport,
+                              Quantity = order.Quantity,
+                              Status = order.Status,
+                              TotalAmount = order.TotalAmount,
+                              Email = order.Email,
+                              VAT = order.VAT,
+                              Type = order.Type,
+                              DeliveryDate = order.DeliveryDate,
+                              CreateTime = order.CreateTime,
+                              CreatorFullName = order.CreatorFullName,
+                              Address = order.Address
+                          }).Distinct();
 
             totalRows = result.Count();
             return result.OrderByDescending(x => x.CreateTime)

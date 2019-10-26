@@ -32,7 +32,8 @@
         data.totalPrice(data.productQuantity() * data.salePrice);
 
         $.post(`/gio-hang/updateQuantity/${data.id}`, {
-            quantity: data.productQuantity()
+            quantity: data.productQuantity(),
+            __RequestVerificationToken: token
         }, function (result) {
         });
         self.renderTotalPrice();
@@ -52,6 +53,7 @@
 
         $.post(`/gio-hang/updateQuantity/${item.id}`, {
             quantity: item.productQuantity(),
+            __RequestVerificationToken: token
         }, function (data) {
         });
         self.renderTotalPrice();
@@ -59,6 +61,7 @@
 
     self.removeProduct = function (item) {
         $.post(`/gio-hang/remove/${item.id}`, {
+            __RequestVerificationToken: token
         }, function (data) {
             if (data) {
                 var productInfo = _.find(self.listProduct(), function (product) {
@@ -173,7 +176,8 @@
                     email: self.email(),
                     address: self.address(),
                     note: self.note(),
-                    listProduct: listProduct
+                    listProduct: listProduct,
+                    __RequestVerificationToken: token
                 }, function (result) {
                     console.log(result);
                     self.isSending(false);

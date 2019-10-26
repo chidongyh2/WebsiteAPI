@@ -43,6 +43,7 @@ namespace GHM.WebSite.Nelly.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [AcceptVerbs("POST")]
         [Route("buy/{productId}")]
         public async Task<IActionResult> Buy(string productId, int? quantity)
@@ -83,6 +84,7 @@ namespace GHM.WebSite.Nelly.Controllers
             return Ok(listProduct);
         }
 
+        [ValidateAntiForgeryToken]
         [AcceptVerbs("POST")]
         [Route("remove/{productId}")]
         public JsonResult Remove(string productId)
@@ -96,6 +98,7 @@ namespace GHM.WebSite.Nelly.Controllers
             return Json(cart);
         }
 
+        [ValidateAntiForgeryToken]
         [AcceptVerbs("POST")]
         [Route("updateQuantity/{productId}")]
         public JsonResult UpdateQuantity(string productId, int? quantity)
@@ -113,6 +116,7 @@ namespace GHM.WebSite.Nelly.Controllers
             return Json(cart);
         }
 
+        [ValidateAntiForgeryToken]
         [AcceptVerbs("POST")]
         [Route("order")]
         public async Task<JsonResult> Order(OrderMeta order)
@@ -140,7 +144,7 @@ namespace GHM.WebSite.Nelly.Controllers
             return Json(result);
         }
 
-        #region privete
+        #region private
         private int IsExists(string id)
         {
             List<ProductSelectedItem> cart = SessionHelper.GetObjectFromJson<List<ProductSelectedItem>>(HttpContext.Session, SessionParam.ShoppingCart);

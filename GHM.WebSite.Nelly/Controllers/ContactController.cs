@@ -33,11 +33,11 @@ namespace GHM.Website.Nelly.Controllers
         {
             var breadcrumbs = new List<Breadcrumb>
             {
-                //new Breadcrumb()
-                //{
-                //    Name = Res .Contact,
-                //    IsCurrent = true,
-                //}
+                new Breadcrumb()
+                {
+                    Name = "Liên hệ",
+                    IsCurrent = true,
+                }
             };
 
             ViewBag.Breadcrumb = breadcrumbs;
@@ -51,46 +51,19 @@ namespace GHM.Website.Nelly.Controllers
             return View();
         }
 
-        [Route("gui-lien-he"), AcceptVerbs("POST")]
-        public async Task<JsonResult> Send(string fullName, string phoneNumber, string email, string title, string content)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("gui-lien-he")]
+        public async Task<JsonResult> Send(FeedbackMeta feedback)
         {
-            if (string.IsNullOrWhiteSpace(fullName))
+            if (!ModelState.IsValid)
             {
-                return Json(-1);
-            }
+                return Json(GetErrorsInModelState());
+            }            
 
-            if (string.IsNullOrWhiteSpace(phoneNumber))
-            {
-                return Json(-2);
-            }
+            var apiService = _configuration.GetApiServiceInfo();            
 
-            var emailPattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
-            if (!string.IsNullOrWhiteSpace(email) && !Regex.IsMatch(email, emailPattern))
-            {
-                return Json(-3);
-            }
-
-            //if (string.IsNullOrWhiteSpace(title))
-            //{
-            //    return Json(-4);
-            //}
-
-            if (string.IsNullOrWhiteSpace(content))
-            {
-                return Json(-5);
-            }
-
-            var apiService = _configuration.GetApiServiceInfo();
-            var feedbackMeta = new FeedbackMeta
-            {
-                FullName = fullName,
-                PhoneNumber = phoneNumber,
-                Email = email,
-                Title = title,
-                Content = content,
-            };
-
-            var feedbackMetaData = JsonConvert.DeserializeObject<GHM.WebsiteClient.Api.Domain.ModelMetas.FeedbackMeta>(JsonConvert.SerializeObject(feedbackMeta));
+            var feedbackMetaData = JsonConvert.DeserializeObject<GHM.WebsiteClient.Api.Domain.ModelMetas.FeedbackMeta>(JsonConvert.SerializeObject(feedback));
            
             var result = await _feedbackService.Insert(apiService.TenantId, feedbackMetaData);
 

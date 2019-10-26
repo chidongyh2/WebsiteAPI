@@ -118,7 +118,8 @@ function ProductDetailViewModel() {
             return;
         } else {
             $.post(`/gio-hang/buy/${self.productId()}`, {
-                quantity: self.quantity()
+                quantity: self.quantity(),
+                __RequestVerificationToken: token
             }, function (data) {
                 if (data) {
                     toastr.success('Thêm mới sản phẩm vào giỏ hàng thành công.');
