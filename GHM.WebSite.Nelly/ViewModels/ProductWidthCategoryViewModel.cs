@@ -18,5 +18,12 @@ namespace GHM.Website.Nelly.ViewModels
         public string ProductCategoryName { get; set; }
         public string ProductCategoryImage { get; set; }
         public int ProductCategoryId { get; set; }
+
+        public bool? IsNew
+        {
+            get { return DateTime.Now.Subtract(LastUpdateTime ?? DateTime.Now).Days <= 7; }
+            set
+            { }
+        }
     }
 }

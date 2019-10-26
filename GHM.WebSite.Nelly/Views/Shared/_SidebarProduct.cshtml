@@ -1,6 +1,6 @@
 ﻿@using System.Globalization
 @{
-    var listPoductRelationship = ViewBag.ListProductRelationship as List<ProductSearchViewModel>;
+    var listPoductHot = ViewBag.ListProductHot as List<ProductSearchViewModel>;
     var listProductCategory = ViewBag.ListProductCategory as List<ProductCategorySearchViewModel>;
     var url = ViewBag.Url;
     var culture = new CultureInfo("en-US");
@@ -24,12 +24,12 @@
         <partial name="_ProductCategoryMenuItem" />
     }
 
-    @if (listPoductRelationship != null)
+    @if (listPoductHot != null)
     {
         <div class="product-replationship">
-            <h3 class="title-sidebar">Sản phẩm liên quan</h3>
+            <h3 class="title-sidebar">Sản phẩm nổi bật</h3>
             <ul class="list-products">
-                @foreach (var product in listPoductRelationship)
+                @foreach (var product in listPoductHot)
                 {
                     <li>
                         <div class="media">

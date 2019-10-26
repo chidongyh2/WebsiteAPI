@@ -16,5 +16,11 @@ namespace GHM.WebsiteClient.Api.Domain.ViewModels
         public string Description { get; set; }
         public string Content { get; set; }
         public DateTime? LastUpdateTime { get; set; }
+        public bool? IsNew
+        {
+            get { return DateTime.Now.Subtract(LastUpdateTime ?? DateTime.Now).Days <= 7; }
+            set
+            {}
+        }
     }
 }

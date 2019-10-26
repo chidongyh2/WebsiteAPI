@@ -68,6 +68,11 @@
                          alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "Phun xăm thẩm mỹ amiea")"
                          onerror="this.src='/images/no-image.png'" />
                 </a>
+                <div class="search-box-mobile visible-sm visible-xs">
+                    <a href="javascript://" onclick="showModalSearchProduct()">
+                        <i class="ion-android-search"></i>
+                    </a>
+                </div>
                 <div class="shopping-cart visible-sm visible-xs">
                     <a href="/gio-hang">
                         <i class="ion-bag"></i>
@@ -82,7 +87,7 @@
                         <span class="icon-bar"></span>
                     </div>
                     <div class="wrap-show-icon">
-                        <span class="fa fa-times"></span>
+                        <span class="ion-android-close"></span>
                     </div>
                 </button>
                 <div class="navbar-collapse collapse" id="abcMainNav">

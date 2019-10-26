@@ -128,8 +128,8 @@ namespace GHM.WebSite.Nelly.Controllers
                 ViewBag.TotalProduct = products?.TotalRows;
             }          
 
-            var productRelationships = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
-            ViewBag.ListProductRelationship = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productRelationships?.Items);
+            var productHots = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
+            ViewBag.ListProductHot = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productHots?.Items);
 
             return View();
         }

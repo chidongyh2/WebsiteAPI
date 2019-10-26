@@ -17,7 +17,7 @@
                 <div class="col-sm-9 ">
                     <div class="row cm-mgb-10 product-info">
                         <div class="col-sm-5">
-                            <div class=" easyzoom easyzoom--overlay">
+                            <div class="easyzoom easyzoom--overlay">
                                 <a data-bind="attr:{href: '@ViewBag.Url' + productThumbnail()}">
                                     <img id="thumbnail" class="img-responsive"
                                          data-bind="attr: {src: '@ViewBag.Url' + productThumbnail()}"
@@ -29,6 +29,14 @@
                                 <img class="lazy" data-src="/images/facion/zoom-in.png" />
                                 Rê chuột lên hình để phóng to
                             </div>
+                            @if (productInfo.IsNew.HasValue && productInfo.IsNew.Value)
+                            {
+                                <div class="badge-container">
+                                    <div class="badge badge-circle">
+                                        <span class="badge-inner">New</span>
+                                    </div>
+                                </div>
+                            }
                             <div id="product-image-silder" data-bind="foreach: $root.listProductImage()">
                                 <div class="item" data-bind="attr: {class: $root.productThumbnail() === url ? 'item active': 'item'}">
                                     <a href="javascript://" data-bind="click: $root.selectThumbnail.bind($data)">
@@ -63,7 +71,7 @@
                                     <ul class="">
                                         <li><label>Mã sản phẩm:</label> @productInfo?.Id</li>
                                         <li>
-                                            <label>Thể loại: </label>
+                                            <label class="control-label">Thể loại: </label>
                                             <!--ko foreach: listCategory-->
                                             <a data-bind="text: productCategoryName, attr: {href: '/san-pham/' + seoLink + '.htm', title: productCategoryName}">
                                             </a>
@@ -74,7 +82,7 @@
                                         </li>
                                         <!--ko foreach: listAttributeValue-->
                                         <li>
-                                            <label data-bind="text: attributeName + ':'"> </label>
+                                            <label class="control-label" data-bind="text: attributeName + ':'"> </label>
                                             <!--ko foreach: listValue-->
                                             <a href="javascript://" data-bind="text: attributeValueName,
                                                attr: {title: attributeValueName, href: '/san-pham/tim-kiem.html?attributeName='+attributeName+'&attributeValueName='+attributeValueName}"></a>
@@ -88,7 +96,7 @@
                                     </ul>
                                 </div>
                                 <div class="add-shopping-cart">
-                                    <label> Số lượng:</label>
+                                    <label class="control-label"> Số lượng:</label>
                                     <div class="input-group">
                                         <span class="input-group-btn">
                                             <button class="btn btn-add" data-bind="click: $root.addShoppingCart.bind($data, false), enable: quantity() > 0">
@@ -104,7 +112,7 @@
                                     </div>
                                 </div>
                                 <div class="total-money">
-                                    <label> Tổng tiền:</label>
+                                    <label class="control-label"> Tổng tiền:</label>
                                     <span class="pull-right" data-bind="text: formatNumberic(totalMoney(),  'N0') + ' đ'"></span>
                                 </div>
                                 <div class="read-more">
@@ -118,7 +126,8 @@
                             <div class="">
                                 <div class="line hidden-xs hidden-sm"></div>
                                 <h3 class="title" data-bind="click: showProductInfo">
-                                <i class="la la-bars cm-mgr-5 hidden-lg hidden-md"></i>Thông tin</h3>
+                                    <i class="la la-bars cm-mgr-5 hidden-lg hidden-md"></i>Thông tin
+                                </h3>
                                 <div class="content">
                                     <ul class="nav nav-tabs" data-bind="visible: isShowProductInfo()">
                                         <li id="liDetail" class="active">

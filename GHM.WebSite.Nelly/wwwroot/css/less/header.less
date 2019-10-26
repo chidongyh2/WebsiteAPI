@@ -194,6 +194,8 @@
         .wrap {
             align-items: center;
             position: relative;
+            padding-right: 0px;
+            padding-left: 0px;
 
             @media @mobile {
                 display: block;
@@ -229,9 +231,9 @@
                 line-height: 0px !important;
             }
 
-            .shopping-cart {
+            .search-box-mobile {
                 position: absolute;
-                right: 90px;
+                right: 120px;
                 top: 15px;
 
                 a {
@@ -239,7 +241,22 @@
                     color: @main-color;
 
                     i {
-                        font-size: 30px;
+                        font-size: 25px;
+                    }
+                }
+            }
+
+            .shopping-cart {
+                position: absolute;
+                right: 80px;
+                top: 15px;
+
+                a {
+                    position: relative;
+                    color: @main-color;
+
+                    i {
+                        font-size: 25px;
                     }
 
                     .quantity-product {
@@ -271,6 +288,7 @@
 
                 button {
                     margin-top: 15px;
+                    right: 10px;
 
                     .icon-bar {
                         width: 20px;
@@ -283,6 +301,7 @@
 
         .navbar-toggle {
             border: 1px solid @main-color;
+            padding: 7px;
 
             &:hover {
                 background: none;
@@ -329,7 +348,7 @@
             padding-right: 0px;
             border-color: @main-color !important;
             overflow: scroll;
-            padding-top: 0px;
+            padding-top: 20px;
 
             @media @mobile {
                 border: none !important;
@@ -341,6 +360,7 @@
                 margin: 0px;
                 background-color: transparent;
                 margin-top: 0px !important;
+                padding-top: 0px;
             }
 
             ul {
@@ -370,6 +390,11 @@
                             padding: 5px 15px;
                             /*padding-bottom: 20px;*/
                             border: 1px solid transparent !important;
+
+                            i {
+                                margin-left: 5px;
+                                font-size: 20px;
+                            }
                         }
 
                         &:hover, :focus, :active {
@@ -384,16 +409,22 @@
 
                     @media @mobile {
                         font-size: 15px !important;
-                        border-bottom: 1px solid @main-color !important;
+                        border-bottom: 1px solid @color-border !important;
 
                         a {
-                            width: 90%;
+                            width: 100%;
                             margin-left: 10px;
                             color: @color-text !important;
                             background-color: @background-color !important;
 
                             &:active, :hover, :focus {
                                 color: @main-color-hover !important;
+                                background-color: @main-color;
+                            }
+
+                            i {
+                                font-size: 20px;
+                                margin-right: 15px;
                             }
                         }
 
@@ -419,11 +450,15 @@
                             }
                         }
 
+                        &:last-child {
+                            border-bottom: none;
+                        }
+
                         .dropdown-submenu {
                             &.open {
                                 > ul {
                                     margin-left: 10px !important;
-                                    border-top: 1px solid @main-color-hover !important;
+                                    border-top: 1px solid @color-border !important;
                                 }
 
                                 border-bottom: none !important;
@@ -730,6 +765,106 @@
     &:hover {
         .item-right {
             display: flex;
+        }
+    }
+}
+
+.fullscreen_search {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10001;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: 0.3s;
+    transition: 0.5s;
+
+    &.active {
+        opacity: 0.9;
+        visibility: visible;
+
+        .search_container {
+            transform: scaley(1);
+        }
+    }
+
+    .search_container {
+        position: fixed;
+        top: 50%;
+        margin-top: -50px;
+        width: 80%;
+        left: 10%;
+        z-index: 10001;
+        -webkit-transition: 0.7s;
+        transition: 0.7s;
+        transform: scaley(0);
+
+        @media @mobile {
+            .search_container {
+                width: 80%;
+                left: 8%;
+            }
+        }
+
+        form {
+            position: relative;
+            background: #333333;
+
+            input {
+                width: 100%;
+                height: 100px;
+                background: inherit;
+                border: 0;
+                color: #fff;
+                opacity: 0.6;
+                font-size: 15px;
+                padding: 0 140px 0 20px;
+
+                @media @mobile {
+                    height: 50px;
+                    padding: 0 60px 0 13px;
+                }
+
+                &:focus {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+            }
+
+            button {
+                position: absolute;
+                top: 0;
+                right: 0;
+                border: 0;
+                height: 100%;
+                width: 140px;
+                background: @main-color;
+                color: @color-white;
+                font-size: 48px;
+                -webkit-transition: 0.3s;
+                transition: 0.3s;
+
+                @media @mobile {
+                    width: 62px;
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+
+    .search_close_btn {
+        position: fixed;
+        top: 14%;
+        right: 10%;
+        cursor: pointer;
+
+        i {
+            color: @main-color;
+            font-size: 26px;
         }
     }
 }
