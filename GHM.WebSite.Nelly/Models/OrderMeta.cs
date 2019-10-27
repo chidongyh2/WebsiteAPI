@@ -11,7 +11,6 @@ namespace GHM.WebSite.Nelly.Models
         public string FullName { get; set; }
 
         [StringLength(50, ErrorMessage = "Email không được nhỏ hơn 5 ký tự và lớn hơn 50 ký tự", MinimumLength = 5)]
-        [Required(ErrorMessage = "Emai không được để trống")]
         [EmailAddress(ErrorMessage = "Đinh dạng email không đúng")]
         [Display(Name = "Email")]
         public string Email { get; set; }

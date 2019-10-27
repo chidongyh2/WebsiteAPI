@@ -2753,7 +2753,7 @@ body {
 }
 @media only screen and (max-width: 1200px) {
   .hotlinefix {
-    bottom: 0px;
+    bottom: -6px;
   }
 }
 .hotlinefix .phone {
@@ -2813,12 +2813,31 @@ body {
 }
 .circle-hotline a {
   margin: 12px;
-  display: inline-block;
+  /*display: inline-block;*/
+  position: relative;
+  z-index: 999;
 }
-.circle-hotline img {
-  width: 50px;
-  max-width: 100%;
-  height: auto;
+.circle-hotline a:before {
+  position: absolute;
+  display: block;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  text-align: center;
+  font-family: "FontAwesome";
+  font-size: 30px;
+  content: '\f095';
+  padding-top: 5px;
+  color: #FFF;
+  line-height: 40px;
+}
+@media only screen and (max-width: 1200px) {
+  .circle-hotline a:before {
+    padding-top: 0px;
+    font-size: 25px;
+    left: -2px;
+  }
 }
 .circle-hotline:before,
 .circle-hotline:after {

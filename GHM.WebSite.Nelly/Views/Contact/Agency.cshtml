@@ -22,16 +22,16 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        @Html.LabelFor(x => x.FullName, new Dictionary<string, object>()
+                        @Html.LabelFor(x => x.Name, new Dictionary<string, object>()
                              {
                                 {"class","pull-left"}
                              })
-                        @Html.TextBoxFor(x => x.FullName, new Dictionary<string, object>() {
+                        @Html.TextBoxFor(x => x.Name, new Dictionary<string, object>() {
                                   {"class", "form-control"},
                                   {"data-bind", "value: fullName"},
                                   {"placeHolder", "Nhập nội dung"}
                              })
-                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-12">
