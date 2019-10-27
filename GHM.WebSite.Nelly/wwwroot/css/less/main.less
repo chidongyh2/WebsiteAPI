@@ -3278,12 +3278,12 @@ body {
     }
 
     a {
-        margin: 12px;
         /*display: inline-block;*/
         position: relative;
         z-index: 999;
-
-        &:before {
+        top: 11px;
+        left: 11px;
+        /*&:before {
             position: absolute;
             display: block;
             top: 0px;
@@ -3302,6 +3302,20 @@ body {
                 padding-top: 0px;
                 font-size: 25px;
                 left: -2px;
+            }
+        }*/
+        @media @mobile {
+            top: 10px;
+            left: 10px;
+        }
+
+        img {
+            width: 25px;
+            max-width: 100%;
+            height: auto;
+
+            @media @mobile {
+                width: 20px;
             }
         }
     }
