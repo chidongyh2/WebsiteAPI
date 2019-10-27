@@ -1,7 +1,14 @@
 ﻿function AngencyRegisterViewModel() {
     var self = this;
-   
-    $(document).ready(function () {      
+    self.fullName = ko.observable();
+
+    self.save = function () {
+        if ($('#formInsertUpdate').valid()) {
+            console.log(self.fullName());
+        }
+    };
+
+    $(document).ready(function () {
     });
 }
 

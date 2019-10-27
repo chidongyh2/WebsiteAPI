@@ -1,4 +1,6 @@
-﻿@{
+﻿@using GHM.WebSite.Nelly.Models
+@model AgencyMeta
+@{
     var title = "Đăng ký mở đại lý";
     ViewBag.Title = title;
 }
@@ -12,7 +14,7 @@
             </div>
         </div>
         <div class="row center">
-            <form class="form-horizontal">
+            <form class="form-horizontal" id="formInsertUpdate" data-bind="submit: save">
                 <div class="col-sm-12">
                     <h3 class="title">
                         Thông tin đơn vị/cá nhân
@@ -20,8 +22,16 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <label>Họ tên <span>*</span></label>
-                        <input class="form-control" placeholder="Nhập nội dung" />
+                        @Html.LabelFor(x => x.FullName, new Dictionary<string, object>()
+                             {
+                                {"class","pull-left"}
+                             })
+                        @Html.TextBoxFor(x => x.FullName, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: fullName"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -110,10 +120,10 @@
             </form>
         </div>
     </div>
-
-    @section scripts{
-        <script type="text/javascript">
-        </script>
-        <script src="~/js/viewmodel/agency-register.viewmodel.min.js"></script>
-    }
+</div>
+@section scripts{
+    <script type="text/javascript">
+    </script>
+    <script src="~/js/viewmodel/agency-register.viewmodel.min.js"></script>
+}
 

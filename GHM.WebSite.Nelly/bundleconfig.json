@@ -63,7 +63,9 @@
       "wwwroot/lib/slick-1.8.1/slick/slick.js",
       "wwwroot/lib/underscore-min.js",
       "wwwroot/lib/globinfo/globalize.js",
-      "wwwroot/lib/toastr/toastr.js"
+      "wwwroot/lib/toastr/toastr.js",
+      "wwwroot/lib/jquery.validate.min.js",
+      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
     ]
   },
   {
