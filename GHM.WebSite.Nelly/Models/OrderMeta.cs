@@ -21,7 +21,7 @@ namespace GHM.WebSite.Nelly.Models
         public string PhoneNumber { get; set; }
 
         [StringLength(1000, ErrorMessage = "Địa chỉ không được nhỏ hơn 10 ký tự và lớn hơn 1000 ký tự", MinimumLength = 10)]
-        [Required(ErrorMessage = "Địc chỉ không được bỏ trống")]
+        [Required(ErrorMessage = "Địa chỉ không được bỏ trống")]
         [Display(Name = "Địa chỉ")]
         public string Address { get; set; }
 

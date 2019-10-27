@@ -89,7 +89,7 @@ namespace GHM.WebSite.JadesSpa
             var builder = new ContainerBuilder();
             builder.Populate(services);
 
-            builder.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("DefaultConnection"), Configuration.GetConnectionString("DefaultConnection"), Configuration.GetConnectionString("DefaultConnection")));
+            builder.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("DefaultConnection"), Configuration.GetConnectionString("DefaultConnection"), Configuration.GetConnectionString("DefaultConnection"), Configuration.GetConnectionString("DefaultConnection")));
             builder.RegisterModule(new ValidationModule());
             var autofacServiceProvider = new AutofacServiceProvider(builder.Build());
             return autofacServiceProvider;

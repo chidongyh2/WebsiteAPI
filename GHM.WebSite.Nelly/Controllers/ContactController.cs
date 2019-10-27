@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using GHM.Infrastructure.Extensions;
 using GHM.Website.Nelly.Models;
+using GHM.WebSite.Nelly.Helper;
+using GHM.WebSite.Nelly.ViewModels;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -16,15 +17,17 @@ namespace GHM.Website.Nelly.Controllers
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
         private readonly IFeedbackService _feedbackService;
+        private readonly ICoreService _coreService;
 
         public ContactController(IConfiguration configuration, IMemoryCache cache, IFeedbackService feedbackService,
-            IBrandService brandService, IBranchContactService branchContactService,
+            IBrandService brandService, IBranchContactService branchContactService, ICoreService coreService,
              IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
              : base(configuration, cache, brandService, branchContactService, menuService, settingService, socialNetworkService, languageService)
         {
             _configuration = configuration;
             _cache = cache;
             _feedbackService = feedbackService;
+            _coreService = coreService;
         }
 
         [Route("lien-he")]
@@ -46,8 +49,11 @@ namespace GHM.Website.Nelly.Controllers
 
         [Route("dang-ky-dai-ly")]
         [Route("dang-ky-dai-ly.html")]
-        public IActionResult Agency()
+        public async Task<IActionResult> Agency()
         {
+            var listProvince = await _coreService.GetProvinceByNationId(1);
+            ViewBag.ListProvice = JsonConvertHelper.GetObjectFromObject<List<ObjectViewModel>>(listProvince);
+
             return View();
         }
 

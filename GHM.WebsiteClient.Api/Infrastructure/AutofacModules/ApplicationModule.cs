@@ -14,12 +14,15 @@ namespace GHM.WebsiteClient.Api.Infrastructure.AutofacModules
         public string WebsiteConnectionString { get; }
         public string EventConnectionString { get; }
         public string WarehouseConnectionString { get; }
+        public string CoreConnectionString { get; }
 
-        public ApplicationModule(string websiteConnectionString, string eventConnectionString, string warehouseConnectionString)
+        public ApplicationModule(string websiteConnectionString, string eventConnectionString,
+            string warehouseConnectionString, string coreConnectionString)
         {
             WebsiteConnectionString = websiteConnectionString;
             EventConnectionString = eventConnectionString;
             WarehouseConnectionString = warehouseConnectionString;
+            CoreConnectionString = coreConnectionString;
         }
 
         protected override void Load(ContainerBuilder builder)
@@ -48,6 +51,11 @@ namespace GHM.WebsiteClient.Api.Infrastructure.AutofacModules
             .As<IProductService>()
             .InstancePerLifetimeScope()
              .WithParameter(new TypedParameter(typeof(string), WarehouseConnectionString));
+
+            builder.RegisterType<CoreService>()
+           .As<ICoreService>()
+           .InstancePerLifetimeScope()
+            .WithParameter(new TypedParameter(typeof(string), CoreConnectionString));
         }
     }
 }

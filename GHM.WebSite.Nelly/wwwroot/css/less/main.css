@@ -2516,6 +2516,9 @@ body {
     padding: 15px 0px;
   }
 }
+.register-agency .text-danger span {
+  padding-left: 10px;
+}
 .register-agency .form-horizontal {
   width: 70%;
   padding: 30px;
