@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    console.log(countNewsHot);
+
     $('#news-slider').slick({
         slidesToShow: countNewsHot <= 5 ? 3 : 5,
         slidesToScroll: 1,
@@ -31,7 +31,7 @@
         ]
     });
 
-    $("#myCarousel").owlCarousel({
+     $("#myCarousel").owlCarousel({
         items: 1,
         loop: true,
         autoplay: true,
@@ -41,11 +41,16 @@
         center: true,
         dotsEach: true,
         navigation: true,
-        animateIn: true,
-        animateOut: 'fadeOut',
-        autoplayTimeout: 5000,
+        animateIn: effectSlider,
+        interval: 1500,
         nav: true,
         navText: ["<img src='/images/facion/pev.png'/>", "<img src='/images/facion/nex.png'/>"]
+    });
+
+    // Gọi function doAnimations cả ở trong sự kiện slide.bs.carousel
+    $('#myCarousel').on('changed.owl.carousel', function (e) {
+        $('h3').removeClass('animated bounceInDown');
+        $('.owl-item').not('.cloned').eq(item).find('h3').addClass('animated bounceInDown');
     });
 
     $("#video-silder").lightSlider({
@@ -229,3 +234,4 @@ $('.selector button').click(function (e) {
 });
 
 setTimeout(function () { toggleOptions('.selector'); }, 500);
+

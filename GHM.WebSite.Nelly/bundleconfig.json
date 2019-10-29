@@ -48,7 +48,8 @@
       "wwwroot/lib/toastr/toastr.min.css",
       "wwwroot/css/plugins.css",
       "wwwroot/lib/line-awesome/css/line-awesome.css",
-      "wwwroot/lib/toastr/toastr.min.css"
+      "wwwroot/lib/toastr/toastr.min.css",
+      "wwwroot/lib/animate.css"
     ]
   },
   {

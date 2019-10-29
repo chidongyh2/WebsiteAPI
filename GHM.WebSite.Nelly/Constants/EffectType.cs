@@ -2,10 +2,16 @@
 {
     public enum EffectType
     {
-        Fade,
-        SlideRight,
-        SlideLeft,
-        SlideDown,
-        SlideUp
+        fadeIn,
+        slideInRight,
+        slideInLeft,
+        slideInDown,
+        slideInUp,
+        bounceIn,
+        slip,
+        lightSpeedIn,
+        rotateIn,
+        zoomIn,
+        rollIn
     }
 }

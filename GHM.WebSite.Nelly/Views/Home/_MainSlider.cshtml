@@ -9,9 +9,15 @@
         {
             <div class="item">
                 <a href="@bannerItem.Url" title="@bannerItem.Name">
-                    <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(bannerItem.Image) ? "/images/no-image.png" : $"{url}{bannerItem.Image}")}&width=1920&height=600")"
-                         onerror="this.src='/images/no-image.png'" alt="@bannerItem.Alt"/>
+                    <img class="img-responsive" src="@(string.IsNullOrEmpty(bannerItem.Image) ? "/images/no-image.png" : $"{url}{bannerItem.Image}")"
+                         onerror="this.src='/images/no-image.png'" alt="@bannerItem.Alt" />
                 </a>
+                @*<div class="carousel-caption d-md-block">
+                    <h3 data-animation="animated bounceInDown">
+                        This is the caption for slide 3
+                    </h3>
+                    <button class="btn btn-primary btn-lg" data-animation="animated zoomInUp">Button</button>
+                </div>*@
             </div>
         }
     </div>
