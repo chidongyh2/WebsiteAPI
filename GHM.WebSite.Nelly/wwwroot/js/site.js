@@ -3,13 +3,20 @@ var isShowToggle = true;
 
 function callToMe() {
     var phoneNumber = $('#phoneNumberContact').val();
+    if (phoneNumber === '' && phoneNumber === undefined) {
+        toastr.error('Vui lòng nhập số điện thoại');
+        $('#phoneNumberContact').focus();
+        return;
+    }
+
     $.post("/gui-lien-he",
         {
             fullName: phoneNumber,
             phoneNumber: phoneNumber,
             email: 'cskh@nellydevuyst.vn',
             title: 'Hãy gọi cho tôi',
-            content: 'Hãy gọi cho tôi vào số ' + phoneNumber
+            content: 'Hãy gọi cho tôi vào số ' + phoneNumber,
+            __RequestVerificationToken: token
         }, function (result) {
             if (result.code === -1) {
                 toastr.error("Vui lòng nhập họ tên của bạn");
@@ -27,10 +34,19 @@ function callToMe() {
         });
 }
 
+function showModalSearchProduct() {
+    $(".search_container form input").focus();
+    $('.fullscreen_search').addClass('active');
+}
+
 $(document).ready(function () {
     $(".wrap-show-icon").css("display", "none");
     $("#backToTop").click(() => {
         $("html, body").animate({ scrollTop: 0 }, 500);
+    });
+
+    $('.search_close_btn').on('click', function () {
+        $('.fullscreen_search').removeClass('active');
     });
 
     $('.lazy').lazy({
@@ -68,14 +84,10 @@ $(document).ready(function () {
         var b = $(window).scrollTop();
         if (b > 65 || window.innerWidth < 768) {
             $(".navbar").addClass("navbar-fixed-top");
-            //$(".navbar-brand").removeClass("hidden-lg");
-            //$(".navbar-brand").addClass("visible-lg");
             $("#backToTop").css("display", "block");
             $(".header-top").css("display", "none");
-            $("#myCarousel").css("margin-top", "65px");
             var windowWidth = window.innerWidth;
             if (windowWidth < 768) {
-                //isShowToggle = true;
                 $(".navbar-header").addClass("visible-xs");
                 $(".navbar-header").removeClass("hidden-xs");
                 $('.navbar-collapse').css("display", "none");
@@ -83,15 +95,15 @@ $(document).ready(function () {
             }
         } else {
             $("#myCarousel").css("margin-top", "0px");
-            //$(".navbar-brand").addClass("hidden-lg");
-            //$(".navbar-brand").removeClass("visible-lg");
             $(".navbar").removeClass("navbar-fixed-top");
             $("#backToTop").css("display", "none");
             $(".header-top").css("display", "block");
         }
+
+        if (b < 65 && window.innerWidth < 768) {
+            $(".body-content").css("padding-top", "70px");
+        }
     });
 
     $('[data-toggle="tooltip"]').tooltip();
-
-
 });

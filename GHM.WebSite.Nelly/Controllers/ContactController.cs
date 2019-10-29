@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using GHM.Infrastructure.Extensions;
 using GHM.Website.Nelly.Models;
+using GHM.WebSite.Nelly.Helper;
+using GHM.WebSite.Nelly.ViewModels;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -16,15 +17,17 @@ namespace GHM.Website.Nelly.Controllers
         private readonly IConfiguration _configuration;
         private readonly IMemoryCache _cache;
         private readonly IFeedbackService _feedbackService;
+        private readonly ICoreService _coreService;
 
         public ContactController(IConfiguration configuration, IMemoryCache cache, IFeedbackService feedbackService,
-            IBrandService brandService, IBranchContactService branchContactService,
+            IBrandService brandService, IBranchContactService branchContactService, ICoreService coreService,
              IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
              : base(configuration, cache, brandService, branchContactService, menuService, settingService, socialNetworkService, languageService)
         {
             _configuration = configuration;
             _cache = cache;
             _feedbackService = feedbackService;
+            _coreService = coreService;
         }
 
         [Route("lien-he")]
@@ -33,11 +36,11 @@ namespace GHM.Website.Nelly.Controllers
         {
             var breadcrumbs = new List<Breadcrumb>
             {
-                //new Breadcrumb()
-                //{
-                //    Name = Res .Contact,
-                //    IsCurrent = true,
-                //}
+                new Breadcrumb()
+                {
+                    Name = "Liên hệ",
+                    IsCurrent = true,
+                }
             };
 
             ViewBag.Breadcrumb = breadcrumbs;
@@ -46,51 +49,27 @@ namespace GHM.Website.Nelly.Controllers
 
         [Route("dang-ky-dai-ly")]
         [Route("dang-ky-dai-ly.html")]
-        public IActionResult Agency()
+        public async Task<IActionResult> Agency()
         {
+            var listProvince = await _coreService.GetProvinceByNationId(1);
+            ViewBag.ListProvice = JsonConvertHelper.GetObjectFromObject<List<ObjectViewModel>>(listProvince);
+
             return View();
         }
 
-        [Route("gui-lien-he"), AcceptVerbs("POST")]
-        public async Task<JsonResult> Send(string fullName, string phoneNumber, string email, string title, string content)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("gui-lien-he")]
+        public async Task<JsonResult> Send(FeedbackMeta feedback)
         {
-            if (string.IsNullOrWhiteSpace(fullName))
+            if (!ModelState.IsValid)
             {
-                return Json(-1);
-            }
+                return Json(GetErrorsInModelState());
+            }            
 
-            if (string.IsNullOrWhiteSpace(phoneNumber))
-            {
-                return Json(-2);
-            }
+            var apiService = _configuration.GetApiServiceInfo();            
 
-            var emailPattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
-            if (!string.IsNullOrWhiteSpace(email) && !Regex.IsMatch(email, emailPattern))
-            {
-                return Json(-3);
-            }
-
-            //if (string.IsNullOrWhiteSpace(title))
-            //{
-            //    return Json(-4);
-            //}
-
-            if (string.IsNullOrWhiteSpace(content))
-            {
-                return Json(-5);
-            }
-
-            var apiService = _configuration.GetApiServiceInfo();
-            var feedbackMeta = new FeedbackMeta
-            {
-                FullName = fullName,
-                PhoneNumber = phoneNumber,
-                Email = email,
-                Title = title,
-                Content = content,
-            };
-
-            var feedbackMetaData = JsonConvert.DeserializeObject<GHM.WebsiteClient.Api.Domain.ModelMetas.FeedbackMeta>(JsonConvert.SerializeObject(feedbackMeta));
+            var feedbackMetaData = JsonConvert.DeserializeObject<GHM.WebsiteClient.Api.Domain.ModelMetas.FeedbackMeta>(JsonConvert.SerializeObject(feedback));
            
             var result = await _feedbackService.Insert(apiService.TenantId, feedbackMetaData);
 

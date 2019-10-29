@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -68,7 +69,7 @@ namespace GHM.Warehouse.Api.Controllers
         [CheckPermission]
         public async Task<IActionResult> Detail(string id)
         {
-            var result = await _orderService.GetDetail(CurrentUser.TenantId, id);
+            var result = await _orderService.GetDetail(CurrentUser.TenantId, CultureInfo.CurrentCulture.Name, id);
             if (result.Code < 0)
                 return BadRequest(result);
             return Ok(result);

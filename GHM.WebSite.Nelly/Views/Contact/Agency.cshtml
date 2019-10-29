@@ -1,4 +1,6 @@
-﻿@{
+﻿@using GHM.WebSite.Nelly.Models
+@model AgencyMeta
+@{
     var title = "Đăng ký mở đại lý";
     ViewBag.Title = title;
 }
@@ -12,7 +14,7 @@
             </div>
         </div>
         <div class="row center">
-            <form class="form-horizontal">
+            <form class="form-horizontal" id="formInsertUpdate" data-bind="submit: save">
                 <div class="col-sm-12">
                     <h3 class="title">
                         Thông tin đơn vị/cá nhân
@@ -20,47 +22,105 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <label>Họ tên <span>*</span></label>
-                        <input class="form-control" placeholder="Nhập nội dung" />
+                        @Html.LabelFor(x => x.FullName, new Dictionary<string, object>()
+                             {
+                                {"class","pull-left"}
+                             })
+                        <span class="color-red">*</span>
+                        @Html.TextBoxFor(x => x.FullName, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: fullName"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <label>Email <span>*</span></label>
-                        <input class="form-control" placeholder="Nhập nội dung" />
+                        @Html.LabelFor(x => x.PhoneNumber, new Dictionary<string, object>()
+                            {
+                               {"class","pull-left"}
+                            })
+                        <span class="color-red">*</span>
+                        @Html.TextBoxFor(x => x.PhoneNumber, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: phoneNumber"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <label>Điện thoại<span>*</span></label>
-                        <input class="form-control" placeholder="Nhập nội dung" />
+                        @Html.LabelFor(x => x.Address, new Dictionary<string, object>()
+                            {
+                               {"class","pull-left"}
+                            })
+                        <span class="color-red">*</span>
+                        @Html.TextAreaFor(x => x.Address, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: address"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <label>Địa chỉ<span>*</span></label>
-                        <textarea class="form-control" placeholder="Nhập nội dung"></textarea>
+                        @Html.LabelFor(x => x.Email, new Dictionary<string, object>()
+                           {
+                              {"class","pull-left"}
+                           })
+                        @Html.TextBoxFor(x => x.Email, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: email"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label>Số CMND<span>*</span></label>
-                        <input class="form-control" placeholder="Nhập nội dung" />
+                        @Html.LabelFor(x => x.IdCard, new Dictionary<string, object>()
+                          {
+                             {"class","pull-left"}
+                          })
+                        @Html.TextBoxFor(x => x.IdCard, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: idCard"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.IdCard, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label>Ngày cấp<span>*</span></label>
-                        <input class="form-control" placeholder="Nhập nội dung" />
+                        @Html.LabelFor(x => x.IdCardDate, new Dictionary<string, object>()
+                         {
+                            {"class","pull-left"}
+                         })
+                        @Html.TextBoxFor(x => x.IdCardDate, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: idCardDate"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.IdCardDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label>Nơi cấp<span>*</span></label>
-                        <input class="form-control" placeholder="Nhập nội dung" />
+                        @Html.LabelFor(x => x.IdCardAddress, new Dictionary<string, object>()
+                          {
+                             {"class","pull-left"}
+                          })
+                        @Html.TextBoxFor(x => x.IdCardAddress, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: idCardAddress"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.IdCardAddress, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
                 <div class="col-sm-12">
                     <h3 class="title">
                         Thông tin đại lý
@@ -68,38 +128,128 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <label>Địa chỉ đăng ký đại lý <span>*</span></label>
+                        @Html.LabelFor(x => x.AgencyName, new Dictionary<string, object>()
+                               {
+                                  {"class","pull-left"}
+                               })
+                        <span class="color-red">*</span>
+                        @Html.TextBoxFor(x => x.AgencyName, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: agencyName"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.AgencyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Tỉnh/TP <span class="color-red">*</span></label>
+                        <input class="form-control" placeholder="Nhập nội dung" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Quận/Huyện <span class="color-red">*</span></label>
                         <input class="form-control" placeholder="Nhập nội dung" />
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <label>Tổng diện tích (m2) <span>*</span></label>
-                        <input class="form-control" placeholder="Nhập nội dung" />
+                        @Html.LabelFor(x => x.AddressRegistered, new Dictionary<string, object>()
+                         {
+                            {"class","pull-left"}
+                         })
+                        <span class="color-red">*</span>
+                        @Html.TextAreaFor(x => x.AddressRegistered, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: addressRegistered"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.AddressRegistered, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label>Chiều dài<span>*</span></label>
-                        <input class="form-control" placeholder="Nhập nội dung" />
+                        @Html.LabelFor(x => x.Length, new Dictionary<string, object>()
+                         {
+                            {"class","pull-left"}
+                         })
+                        @Html.TextBoxFor(x => x.Length, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: length"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.Length, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label>Chiều rộng<span>*</span></label>
-                        <input class="form-control" placeholder="Nhập nội dung" />
+                        @Html.LabelFor(x => x.Width, new Dictionary<string, object>()
+                        {
+                           {"class","pull-left"}
+                        })
+                        @Html.TextBoxFor(x => x.Width, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: width"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.Width, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label>Chiều cao<span>*</span></label>
-                        <input class="form-control" placeholder="Nhập nội dung" />
+                        @Html.LabelFor(x => x.Height, new Dictionary<string, object>()
+                       {
+                          {"class","pull-left"}
+                       })
+                        @Html.TextBoxFor(x => x.Height, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: height"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label>Thời gian bắt đầu <span>*</span></label>
-                        <input class="form-control" placeholder="Nhập nội dung" />
+                        @Html.LabelFor(x => x.TotalArea, new Dictionary<string, object>()
+                      {
+                         {"class","pull-left"}
+                      })
+                        @Html.TextBoxFor(x => x.TotalArea, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: totalArea"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.TotalArea, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.StartTime, new Dictionary<string, object>()
+                      {
+                         {"class","pull-left"}
+                      })
+                        @Html.TextBoxFor(x => x.StartTime, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: startTime"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Website, new Dictionary<string, object>()
+                      {
+                         {"class","pull-left"}
+                      })
+                        @Html.TextBoxFor(x => x.Website, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: website"},
+                                  {"placeHolder", "Nhập nội dung"}
+                             })
+                        @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -110,10 +260,10 @@
             </form>
         </div>
     </div>
-
-    @section scripts{
-        <script type="text/javascript">
-        </script>
-        <script src="~/js/viewmodel/agency-register.viewmodel.min.js"></script>
-    }
+</div>
+@section scripts{
+    <script type="text/javascript">
+    </script>
+    <script src="~/js/viewmodel/agency-register.viewmodel.min.js"></script>
+}
 

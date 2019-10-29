@@ -18,12 +18,10 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
     {
         private readonly string _connectionString;
         private readonly ILogger<MenuService> _logger;
-        private readonly IResourceService<GhmWebsiteResource> _websiteResourceService;
-        public ProductSevice(string connectionString, ILogger<MenuService> logger, IResourceService<GhmWebsiteResource> websiteResourceService)
+        public ProductSevice(string connectionString, ILogger<MenuService> logger)
         {
             _connectionString = connectionString;
             _logger = logger;
-            _websiteResourceService = websiteResourceService;
         }
 
         public async Task<List<ProductCategorySearchViewModel>> ProductCategorySearch(string tenantId,

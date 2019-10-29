@@ -15,7 +15,7 @@ namespace GHM.Warehouse.Domain.IServices
 
         Task<ActionResultResponse> Update(string tenantId, string id, OrderMeta orderMeta);
 
-        Task<ActionResultResponse<OrderDetailViewModel>> GetDetail(string tenantId, string id);
+        Task<ActionResultResponse<OrderDetailViewModel>> GetDetail(string tenantId, string languageId, string id);
 
         Task<SearchResult<OrderSearchViewModel>> Search(string tenantId, string userId, string productId, string keyword, OrderStatus? status,
             DateTime? fromDate, DateTime? toDate, int page, int pageSize);

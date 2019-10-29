@@ -1,4 +1,6 @@
-﻿@{
+﻿@using GHM.WebSite.Nelly.Models
+@model OrderMeta
+@{
     ViewBag.Title = "Giỏ hàng";
     var jsonSerializerSettings = new JsonSerializerSettings
     {
@@ -16,149 +18,178 @@
                     <partial name="_TitleBar" model="ViewBag.Title" />
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-3 order">
-                    <h3 class="title">
-                        <i class="la la-truck"></i>
-                        Đặt hàng siêu nhanh
-                    </h3>
-                    <div class="form-group">
-                        <label>Họ tên <span class="color-red">*</span></label>
-                        <input class="form-control" data-bind="value:fullName, hasFocus: isFullNameFocus()" placeholder="Vui lòng nhập họ tên của bạn" />
-                        <span class="color-red" data-bind="text: fullNameError"></span>
-                    </div>
-                    <div class="form-group">
-                        <label> Số điện thoại <span class="color-red">*</span></label>
-                        <input class="form-control" data-bind="value: phoneNumber, hasFocus: isPhoneNumberFocus()" placeholder="Vui lòng số điện thoại của bạn" />
-                        <span class="color-red" data-bind="text: phoneNumberError"></span>
-                    </div>
-                    <div class="form-group">
-                        <label> Email <span class="color-red">*</span></label>
-                        <input class="form-control" data-bind="value: email, hasFocus: isEmailFocus()" placeholder="Vui lòng nhập email của bạn" />
-                        <span class="color-red" data-bind="text: emailError"></span>
-                    </div>
-                    <div class="form-group">
-                        <label>Địa chỉ giao hàng <span class="color-red">*</span></label>
-                        <textarea class="form-control" rows="3" data-bind="value: address, hasFocus: isAddressFocus()" placeholder="Vui lòng nhập địa chỉ giao hàng"></textarea>
-                        <span class="color-red" data-bind="text: addressError"></span>
-                    </div>
-                    <div class="form-group">
-                        <label>Ghi chú</label>
-                        <textarea class="form-control" data-bind="value: note" placeholder="Vui lòng nhập ghi chú"></textarea>
-                    </div>
-                </div>
-                <div class="col-sm-9">
-                    <div class="row">
-                        <div class="col-sm-12 cm-mgb-5">
-                            <a href="/gio-hang" class="shopping-cart">
-                                <i class="ion-bag"></i>
-                                <span class="product-quantity" data-bind="text: listProduct().length"></span>
-                            </a>
-                            <span class="total-product">
-                                Giỏ hàng của bạn:
-                                <b data-bind="text: listProduct().length"></b>
-                                sản phẩm
-                            </span>
+            <form id="formInsertUpdate" data-bind="submit: order">
+                <div class="row">
+                    <div class="col-sm-3 order">
+                        <h3 class="title">
+                            <i class="la la-truck"></i>
+                            Đặt hàng siêu nhanh
+                        </h3>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.FullName, new Dictionary<string, object>()
+                             {
+                                {"class","pull-left"}
+                             })
+                            <span class="color-red">*</span>
+                            @Html.TextBoxFor(x => x.FullName, new Dictionary<string, object>() {
+                                      {"class", "form-control"},
+                                      {"data-bind", "value: fullName"},
+                                      {"placeHolder", "Vui lòng nhập họ tên của bạn"}
+                                 })
+                            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "color-red" })
+                        </div>
+                        <div class="form-group">
+                            <label> Số điện thoại <span class="color-red">*</span></label>
+                            @Html.TextBoxFor(x => x.PhoneNumber, new Dictionary<string, object>() {
+                                  {"class", "form-control"},
+                                  {"data-bind", "value: phoneNumber"},
+                                  {"placeHolder", "Nhập số điện thoại"}
+                             })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "color-red" })
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ giao hàng <span class="color-red">*</span></label>
+                            @Html.TextAreaFor(x => x.Address, new Dictionary<string, object>() {
+                                {"class", "form-control"},
+                                  {"rows", 3},
+                                {"data-bind", "value: address"},
+                                {"placeHolder", "Vui lòng nhập địa chỉ giao hàng"}
+                            })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "color-red" })
+                        </div>
+                        <div class="form-group">
+                            <label> Email <span class="color-red"></span></label>
+                            @Html.TextBoxFor(x => x.Email, new Dictionary<string, object>() {
+                                 {"class", "form-control"},
+                                 {"data-bind", "value: email"},
+                                 {"placeHolder", "Vui lòng nhập email của bạn"}
+                            })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "color-red" })
+                        </div>
+                        <div class="form-group">
+                            <label>Ghi chú</label>
+                            @Html.TextAreaFor(x => x.Note, new Dictionary<string, object>() {
+                                {"class", "form-control"},
+                                {"rows", 4},
+                                {"data-bind", "value: note"},
+                                {"placeHolder", "Vui lòng nhập ghi chú"}
+                            })
+                            @Html.ValidationMessageFor(model => model.Note, "", new { @class = "color-red" })
                         </div>
                     </div>
-                    <!--ko if: listProduct().length > 0-->
-                    <div class="row">
-                        <div class="col-sm-12 table-responsive ">
-                            <table class="table table-bordered table-product">
-                                <thead>
-                                    <tr>
-                                        <th class="v-middle">Sản phẩm</th>
-                                        <th class="text-center v-middle w150">Giá</th>
-                                        <th class="text-center v-middle w150">Số lượng</th>
-                                        <th class="text-center v-middle w150">Tổng tiển</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!--ko foreach: $root.listProduct-->
-                                    <tr>
-                                        <td class="v-middle">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
-                                                        <img class="w70" data-bind="attr: {src: '@ViewBag.Url' + thumbnail, title: name}" onerror="this.onerror = null;this.src='/images/no-image.png'" />
-                                                    </a>
-                                                    @if (ViewBag.DeviceType != "desktop")
-                                                    {
-                                                        <a class="" href="javascript://" data-bind="click: $root.removeProduct.bind($data)" data-toggle="tooltip" title="Xóa sản phẩm">
-                                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-12 cm-mgb-5">
+                                <a href="/gio-hang" class="shopping-cart">
+                                    <i class="ion-bag"></i>
+                                    <span class="product-quantity" data-bind="text: listProduct().length"></span>
+                                </a>
+                                <span class="total-product">
+                                    Giỏ hàng của bạn:
+                                    <b data-bind="text: listProduct().length"></b>
+                                    sản phẩm
+                                </span>
+                            </div>
+                        </div>
+                        <!--ko if: listProduct().length > 0-->
+                        <div class="row">
+                            <div class="col-sm-12 table-responsive ">
+                                <table class="table table-bordered table-product">
+                                    <thead>
+                                        <tr>
+                                            <th class="v-middle">Sản phẩm</th>
+                                            <th class="text-center v-middle w150">Giá</th>
+                                            <th class="text-center v-middle w150">Số lượng</th>
+                                            <th class="text-center v-middle w150">Tổng tiển</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!--ko foreach: $root.listProduct-->
+                                        <tr>
+                                            <td class="v-middle">
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
+                                                            <img class="w70" data-bind="attr: {src: '@ViewBag.Url' + thumbnail, title: name}" onerror="this.onerror = null;this.src='/images/no-image.png'" />
                                                         </a>
+                                                        @if (ViewBag.DeviceType != "desktop")
+                                                        {
+                                                            <a class="" href="javascript://" data-bind="click: $root.removeProduct.bind($data)" data-toggle="tooltip" title="Xóa sản phẩm">
+                                                                <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                                            </a>
+                                                        }
+                                                    </div>
+                                                    @if (ViewBag.DeviceType == "desktop")
+                                                    {
+                                                        <div class="media-body">
+                                                            <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
+                                                                <h3 data-bind="text: name"></h3>
+                                                            </a>
+                                                            <a href="javascript://" data-bind="click: $root.removeProduct.bind($data)" data-toggle="tooltip" title="Xóa sản phẩm">
+                                                                <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                                                <span>Xóa sản phẩm</span>
+                                                            </a>
+                                                        </div>
                                                     }
                                                 </div>
-                                                @if (ViewBag.DeviceType == "desktop")
-                                                {
-                                                    <div class="media-body">
-                                                        <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}">
-                                                            <h3 data-bind="text: name"></h3>
-                                                        </a>
-                                                        <a href="javascript://" data-bind="click: $root.removeProduct.bind($data)" data-toggle="tooltip" title="Xóa sản phẩm">
-                                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                                            <span>Xóa sản phẩm</span>
-                                                        </a>
-                                                    </div>
-                                                }
-                                            </div>
-                                        </td>
-                                        <td class="text-center v-middle w150" data-bind="text: formatNumberic(salePrice,  'N0') + ' đ'"></td>
-                                        <td class="text-center v-middle w150">
-                                            <div class="input-group">
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-add no-border-radius" data-bind="click: $root.addProductQuantity.bind($data, $data, false), enable: productQuantity() > 0">
-                                                        <i class="la la-minus"></i>
-                                                    </button>
-                                                </span>
-                                                <input class="form-control text-right" data-bind="value: productQuantity(), attr: {id: 'product-' + id}, event: {change: $root.changeQuantity.bind($data)}" />
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-add no-border-radius" data-bind="click: $root.addProductQuantity.bind($data, $data, true)">
-                                                        <i class="la la-plus"></i>
-                                                    </button>
-                                                </span>
-                                            </div>
-                                        </td>
-                                        <td class="text-center v-middle total-price" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></td>
-                                    </tr>
-                                    <!--/ko-->
-                                </tbody>
-                            </table>
+                                            </td>
+                                            <td class="text-center v-middle w150" data-bind="text: formatNumberic(salePrice,  'N0') + ' đ'"></td>
+                                            <td class="text-center v-middle w150">
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-add no-border-radius" data-bind="click: $root.addProductQuantity.bind($data, $data, false), enable: productQuantity() > 0">
+                                                            <i class="la la-minus"></i>
+                                                        </button>
+                                                    </span>
+                                                    <input class="form-control text-right" data-bind="value: productQuantity(), attr: {id: 'product-' + id}, event: {change: $root.changeQuantity.bind($data)}" />
+                                                    <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-add no-border-radius" data-bind="click: $root.addProductQuantity.bind($data, $data, true)">
+                                                            <i class="la la-plus"></i>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td class="text-center v-middle total-price" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></td>
+                                        </tr>
+                                        <!--/ko-->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-sm-12">
+                                <span class="total-price pull-right" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></span>
+                                <span class="pull-right">Thành tiền:  </span>
+                            </div>
                         </div>
-                        <div class="col-sm-12">
-                            <span class="total-price pull-right" data-bind="text: formatNumberic(totalPrice(),  'N0') + ' đ'"></span>
-                            <span class="pull-right">Thành tiền:  </span>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="bold pull-right" data-bind="text: totalMoney() + 'đồng'"></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p class="bold pull-right" data-bind="text: totalMoney() + 'đồng'"></p>
-                        </div>
-                    </div>
-                    <!--/ko-->
-                    <div class="row">
-                        <div class="col-sm-12" data-bind="visible: !listProduct() || listProduct().length === 0" style="display:none">
-                            <div class="alert alert-danger">
-                                Giỏ hàng trống. Vui lòng tiếp tục mua hàng.
+                        <!--/ko-->
+                        <div class="row">
+                            <div class="col-sm-12" data-bind="visible: !listProduct() || listProduct().length === 0" style="display:none">
+                                <div class="alert alert-danger">
+                                    Giỏ hàng trống. Vui lòng tiếp tục mua hàng.
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row cm-mgt-10">
-                <div class="col-sm-3 col-sm-offset-3 cm-mgb-10">
-                    <a href="javascript://" class="btn-prev" onclick="javascript:history.go(-1)">
-                        <i class="la la-angle-left"></i>
-                        Quay lại
-                    </a>
-                </div>
-                <div class="col-sm-6">
-                    <div class="read-more pull-right">
-                        <a class="btn btn-main cm-mgb-10" href="/san-pham" title="Tiếp tục mua hàng">Tiếp tục mua hàng</a>
-                        <a class="btn btn-main cm-mgb-10" data-bind="click: order," href="javascript://">Đặt hàng</a>
+                <div class="row cm-mgt-10">
+                    <div class="col-sm-3 col-sm-offset-3 cm-mgb-10">
+                        <a href="javascript://" class="btn-prev" onclick="javascript:history.go(-1)">
+                            <i class="la la-angle-left"></i>
+                            Quay lại
+                        </a>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="read-more pull-right">
+                            <button type="button" class="btn btn-main cm-mgb-10" href="/san-pham" title="Tiếp tục mua hàng">Tiếp tục mua hàng</button>
+                            <button class="btn btn-main cm-mgb-10" data-bind="click: order," href="javascript://">Đặt hàng</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <div class="modal custom-modal fade" id="ordersuccessfulModal" role="dialog" aria-hidden="true">

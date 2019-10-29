@@ -61,7 +61,8 @@ function ContactViewModel() {
                 phoneNumber: self.contactPhoneNumber(),
                 email: self.contactEmail(),
                 title: 'namtest',
-                content: self.contactContent()
+                content: self.contactContent(),
+                __RequestVerificationToken: token
             }, function (result) {
 
                 self.isSendingContact(false);

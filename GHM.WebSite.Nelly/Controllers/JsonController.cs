@@ -21,14 +21,16 @@ namespace GHM.WebSite.Nelly.Controllers
         private readonly IProductService _productService;
         private readonly IVideoService _videoService;
         private readonly INewsService _newsService;
+        private readonly ICoreService _coreService;
 
         public JsonController(IConfiguration configuration, IVideoService videoService,
-            IProductService productService, INewsService newsService)
+            IProductService productService, INewsService newsService, ICoreService coreService)
         {
             _configuration = configuration;
             _productService = productService;
             _videoService = videoService;
             _newsService = newsService;
+            _coreService = coreService;
         }
 
         // GET: /<controller>/
@@ -98,6 +100,12 @@ namespace GHM.WebSite.Nelly.Controllers
             }
 
             return Ok();
+        }
+
+        [Route("get-distinct"), AcceptVerbs("GET")]
+        public async Task<IActionResult> GetDistinct(int provinceId)
+        {            
+            return Ok(await _coreService.GetDistinctByProvinceId(provinceId));
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GHM.Warehouse.Domain.Models;
+using GHM.Warehouse.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,7 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<int> Inserts(List<OrderDetail> orderDetails);
 
-        Task<List<OrderDetail>> GetsAll(string tenantId, string orderId, bool isReadOnly = false);
+        Task<List<OrderDetailSearchViewModel>> GetsAll(string tenantId, string languageId, string orderId, bool isReadOnly = false);
 
         Task<int> Updates(List<OrderDetail> orderDetails);
 
