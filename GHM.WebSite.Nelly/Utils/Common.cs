@@ -84,7 +84,7 @@ namespace GHM.Website.Nelly.Utils
                 grPhoto.Clear(ColorTranslator.FromHtml("#ffffff"));
             }
 
-            grPhoto.DrawImage(sourceImage,
+            grPhoto.DrawImage(sourceImage,7
                  new Rectangle(destX - 1, destY - 1, destWidth + 1, destHeight + 1),
                  new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight),
                  GraphicsUnit.Pixel);

@@ -3,10 +3,12 @@
     $('#news-slider').slick({
         slidesToShow: countNewsHot <= 5 ? 3 : 5,
         slidesToScroll: 1,
-        centerMode: countNewsHot >=3,
+        centerMode: countNewsHot >= 3,
         autoplay: false,
         slideMargin: 20,
         autoplayTimeout: 2000,
+        focusOnSelect: true,
+        lazyLoad: 'ondemand',
         prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
         nextArrow: '<button class="slick-next"> <img src="/images/facion/nex.png" /> </button>',
         responsive: [
@@ -84,6 +86,7 @@
         autoplay: false,
         slideMargin: 20,
         autoplayTimeout: 2000,
+        lazyLoad: 'ondemand',
         prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
         nextArrow: '<button class="slick-next"> <img src="/images/facion/nex.png" /> </button>',
         responsive: [
@@ -109,6 +112,7 @@
     $("#menuMiddlerSlider").slick({
         slidesToShow: 4,
         slidesToScroll: 1,
+        lazyLoad: 'ondemand',
         prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
         nextArrow: '<button class="slick-next"> <img src="/images/facion/nex.png" /> </button>',
         responsive: [
@@ -129,7 +133,7 @@
                 }
             }
         ]
-    });  
+    });
 
     $('#product-hot-slider').lightSlider({
         item: 4,
@@ -168,6 +172,7 @@
             slidesToShow: 3,
             centerMode: true,
             slidesToScroll: 1,
+            lazyLoad: 'ondemand',
             prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
             nextArrow: '<button class="slick-next"> <img src="/images/facion/nex.png" /> </button>',
             responsive: [
@@ -188,7 +193,7 @@
                     }
                 }
             ]
-        });  
+        });
     }
 });
 

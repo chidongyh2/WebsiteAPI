@@ -9,7 +9,7 @@
         {
             <div class="item">
                 <a href="@bannerItem.Url" title="@bannerItem.Name">
-                    <img class="img-responsive" src="@(string.IsNullOrEmpty(bannerItem.Image) ? "/images/no-image.png" : $"{url}{bannerItem.Image}")"
+                    <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(bannerItem.Image) ? "/images/no-image.png" : $"{url}{bannerItem.Image}")}&width=1920&height=600")"
                          onerror="this.src='/images/no-image.png'" alt="@bannerItem.Alt"/>
                 </a>
             </div>
