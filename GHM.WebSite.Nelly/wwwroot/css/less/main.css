@@ -85,6 +85,10 @@ body {
     max-height: unset;
   }
 }
+#myCarousel h3 {
+  -webkit-animation: 2s 0.3s fadeInUp both;
+  animation: 2s 0.3s fadeInUp both;
+}
 #myCarousel .fa-angle-left {
   left: 50%;
 }
