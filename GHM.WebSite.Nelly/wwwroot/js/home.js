@@ -46,11 +46,10 @@
         nav: true,
         navText: ["<img src='/images/facion/pev.png'/>", "<img src='/images/facion/nex.png'/>"]
     });
-
-    // Gọi function doAnimations cả ở trong sự kiện slide.bs.carousel
-    $('#myCarousel').on('changed.owl.carousel', function (e) {
-        $('h3').removeClass('animated bounceInDown');
-        $('.owl-item').not('.cloned').eq(item).find('h3').addClass('animated bounceInDown');
+    $("#myCarousel").on('changed.owl.carousel', function (event) {
+        var item = event.item.index - 2;     // Position of the current item
+        $('h3').removeClass('animated bounce');
+        $('.owl-item').not('.cloned').eq(item).find('h3').addClass('animated bounce');
     });
 
     $("#video-silder").lightSlider({

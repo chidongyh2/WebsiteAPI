@@ -85,9 +85,15 @@ body {
     max-height: unset;
   }
 }
-#myCarousel h3 {
-  -webkit-animation: 2s 0.3s fadeInUp both;
-  animation: 2s 0.3s fadeInUp both;
+#myCarousel .animated {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+#myCarousel .owl-item.active .slide-caption h3 {
+  -webkit-animation-name: bounceInRight;
+  animation-name: bounceInRight;
 }
 #myCarousel .fa-angle-left {
   left: 50%;
