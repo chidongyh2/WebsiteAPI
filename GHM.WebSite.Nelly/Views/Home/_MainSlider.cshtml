@@ -8,7 +8,7 @@
         @foreach (var bannerItem in Model.BannerItems)
         {
             <div class="item">
-                <a href="@bannerItem.Url" title="@bannerItem.Name">
+                <a href="javascript://" title="@bannerItem.Name">
                     <img class="img-responsive" src="@(string.IsNullOrEmpty(bannerItem.Image) ? "/images/no-image.png" : $"{url}{bannerItem.Image}")"
                          onerror="this.src='/images/no-image.png'" alt="@bannerItem.Alt" />
                 </a>
@@ -17,7 +17,10 @@
                     <h3 data-animation="animated ">
                         @bannerItem.Description
                     </h3>
-                    <button class="btn btn-primary btn-lg" data-animation="animated zoomInUp">Xem thêm</button>
+                    <button onclick="window.location.href='@bannerItem.Url'"  class="btn btn-main" data-animation="animated zoomInUp">
+                        Xem ngay
+                        <i class="la la-angle-right"></i>
+                    </button>
                 </div>
             </div>
         }

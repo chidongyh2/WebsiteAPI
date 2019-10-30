@@ -55,9 +55,9 @@ body {
   background-color: #F9A5A7;
 }
 #myCarousel .active .item a {
-  font-size: 40px;
-  height: 40px;
-  width: 40px;
+  /*font-size: 40px;
+                height: 40px;
+                width: 40px;*/
 }
 #myCarousel .active .item a img {
   margin-left: auto;
@@ -85,18 +85,40 @@ body {
     max-height: unset;
   }
 }
-#myCarousel h2 {
-  color: #F9A5A7;
+#myCarousel .carousel-caption {
+  left: 20%;
+  top: 15%;
+  text-align: left;
+  width: 400px;
 }
-#myCarousel button {
-  border-radius: 20px;
-  border-color: #EEEDEB;
-  background-color: #FFFFFF;
-  color: #3F3F3F;
+#myCarousel .carousel-caption h2 {
+  color: #FFFFFF;
+  font-family: Roboto-Bold;
+  font-size: 40px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+#myCarousel .carousel-caption h3 {
+  color: #FFFFFF;
+  font-size: 18px;
+  font-family: Opensans;
+  line-height: 22px;
+  font-weight: 500;
+}
+#myCarousel .carousel-caption .btn-main {
+  padding: 7px 20px !important;
+  font-size: 14px;
+  border: #EDEEE9;
+}
+#myCarousel .carousel-caption .btn-main:hover {
+  background-color: #F9A5A7;
+  border: #F9A5A7;
+  color: #FFFFFF;
+  transition: 0.3s ease-in-out;
 }
 #myCarousel .animated {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
@@ -1647,7 +1669,7 @@ body {
   text-align: center;
   margin-top: 10px;
 }
-.read-more .btn-main {
+.btn-main {
   padding: 6px 24px !important;
   font-size: 16px;
   text-transform: uppercase;
@@ -1660,6 +1682,13 @@ body {
   border-radius: 20px;
   transition: background-color 0.3s linear;
   font-family: Opensans-Regular;
+}
+@media only screen and (max-width: 1200px) {
+  .btn-main {
+    padding: 5px 20px !important;
+    font-size: 15px;
+    margin-top: 8px;
+  }
 }
 .lSAction .lSPrev {
   left: 0px;
@@ -2575,14 +2604,17 @@ body {
   padding-left: 10px;
 }
 .register-agency .form-horizontal .form-group input,
-.register-agency .form-horizontal .form-group textarea {
+.register-agency .form-horizontal .form-group textarea,
+.register-agency .form-horizontal .form-group select {
   border: none !important;
   box-shadow: none;
 }
 .register-agency .form-horizontal .form-group input:focus,
 .register-agency .form-horizontal .form-group textarea:focus,
+.register-agency .form-horizontal .form-group select:focus,
 .register-agency .form-horizontal .form-group input:hover,
-.register-agency .form-horizontal .form-group textarea:hover {
+.register-agency .form-horizontal .form-group textarea:hover,
+.register-agency .form-horizontal .form-group select:hover {
   box-shadow: none !important;
 }
 .register-agency .form-horizontal .btn-register {

@@ -147,5 +147,11 @@
     "inputFiles": [
       "wwwroot/js/viewmodel/product-search.viewmodel.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"
+    ]
   }
 ]

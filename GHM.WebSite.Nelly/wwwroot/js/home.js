@@ -31,7 +31,7 @@
         ]
     });
 
-     $("#myCarousel").owlCarousel({
+    $("#myCarousel").owlCarousel({
         items: 1,
         loop: true,
         autoplay: true,
@@ -42,10 +42,11 @@
         dotsEach: true,
         navigation: true,
         animateIn: effectSlider,
-        interval: 1500,
+        interval: 3000,
         nav: true,
         navText: ["<img src='/images/facion/pev.png'/>", "<img src='/images/facion/nex.png'/>"]
     });
+
     $("#myCarousel").on('changed.owl.carousel', function (event) {
         var item = event.item.index - 2;     // Position of the current item
 
@@ -55,8 +56,8 @@
         $('h3').removeClass('animated rollIn');
         $('.owl-item').not('.cloned').eq(item).find('h3').addClass('animated rollIn');
 
-        $('button').removeClass('animated zoomIn');
-        $('.owl-item').not('.cloned').eq(item).find('button').addClass('animated zoomIn');
+        $('button').removeClass('animated bounceInLeft');
+        $('.owl-item').not('.cloned').eq(item).find('button').addClass('animated bounceInLeft');
     });
 
     $("#video-silder").lightSlider({
@@ -240,4 +241,5 @@ $('.selector button').click(function (e) {
 });
 
 setTimeout(function () { toggleOptions('.selector'); }, 500);
+
 
