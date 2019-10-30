@@ -48,8 +48,15 @@
     });
     $("#myCarousel").on('changed.owl.carousel', function (event) {
         var item = event.item.index - 2;     // Position of the current item
-        $('h3').removeClass('animated bounce');
-        $('.owl-item').not('.cloned').eq(item).find('h3').addClass('animated bounce');
+
+        $('h2').removeClass('animated jackInTheBox');
+        $('.owl-item').not('.cloned').eq(item).find('h2').addClass('animated jackInTheBox');
+
+        $('h3').removeClass('animated rollIn');
+        $('.owl-item').not('.cloned').eq(item).find('h3').addClass('animated rollIn');
+
+        $('button').removeClass('animated zoomIn');
+        $('.owl-item').not('.cloned').eq(item).find('button').addClass('animated zoomIn');
     });
 
     $("#video-silder").lightSlider({

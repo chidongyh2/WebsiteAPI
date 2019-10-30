@@ -31,5 +31,6 @@ namespace GHM.Website.Nelly.ViewModels
         public bool IsPopUp { get; set; }
         public string BannerId { get; set; }
         public string BannerName { get; set; }
+        public string Description { get; set; }
     }
 }

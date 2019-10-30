@@ -85,6 +85,15 @@ body {
     max-height: unset;
   }
 }
+#myCarousel h2 {
+  color: #F9A5A7;
+}
+#myCarousel button {
+  border-radius: 20px;
+  border-color: #EEEDEB;
+  background-color: #FFFFFF;
+  color: #3F3F3F;
+}
 #myCarousel .animated {
   -webkit-animation-duration: 2s;
   animation-duration: 2s;
