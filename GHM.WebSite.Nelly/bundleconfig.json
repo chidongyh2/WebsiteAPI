@@ -48,7 +48,8 @@
       "wwwroot/lib/toastr/toastr.min.css",
       "wwwroot/css/plugins.css",
       "wwwroot/lib/line-awesome/css/line-awesome.css",
-      "wwwroot/lib/toastr/toastr.min.css"
+      "wwwroot/lib/toastr/toastr.min.css",
+      "wwwroot/lib/animate.css"
     ]
   },
   {
@@ -145,6 +146,12 @@
     "outputFileName": "wwwroot/js/viewmodel/product-search.viewmodel.min.js",
     "inputFiles": [
       "wwwroot/js/viewmodel/product-search.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"
     ]
   }
 ]

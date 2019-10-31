@@ -27,10 +27,9 @@ body {
     .active {
         .item {
             a {
-                font-size: 40px;
+                /*font-size: 40px;
                 height: 40px;
-                width: 40px;
-
+                width: 40px;*/
                 img {
                     margin-left: auto;
                     margin-right: auto;
@@ -58,6 +57,54 @@ body {
         @media @mobile {
             max-height: unset;
         }
+    }
+
+    .carousel-caption {
+        left: 20%;
+        top: 15%;
+        text-align: left;
+        width: 400px;
+
+        h2 {
+            color: @color-white;
+            font-family: Roboto-Bold;
+            font-size: 40px;          
+            margin-bottom: 20px;
+            margin-top: 0px;
+        }
+
+        h3 {
+            color: @color-white;
+            font-size: 18px;
+            font-family: Opensans;
+            line-height: 22px;
+            font-weight: 500;
+        }
+
+        .btn-main {
+            padding: 7px 20px !important;
+            font-size: 14px;
+            border: @border-color;
+
+            &:hover {
+                background-color: @main-color;
+                border: @main-color;
+                color: @color-white;
+                transition: 0.3s ease-in-out;
+            }
+        }
+    }
+
+    .animated {
+        -webkit-animation-duration: 3s;
+        animation-duration: 3s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+    .owl-item.active .slide-caption h3 {
+        -webkit-animation-name: bounceInRight;
+        animation-name: bounceInRight;
     }
 
     .fa-angle-left {
@@ -1879,20 +1926,26 @@ body {
 .read-more {
     text-align: center;
     margin-top: 10px;
+}
 
-    .btn-main {
-        padding: 6px 24px !important;
-        font-size: 16px;
-        text-transform: uppercase;
-        text-align: center;
-        margin-top: 10px;
-        background-color: @color-white;
-        border: @main-color;
-        color: @color-text;
-        border: 1px solid @main-color;
-        border-radius: 20px;
-        transition: background-color .3s linear;
-        font-family: Opensans-Regular;
+.btn-main {
+    padding: 6px 24px !important;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 10px;
+    background-color: @color-white;
+    border: @main-color;
+    color: @color-text;
+    border: 1px solid @main-color;
+    border-radius: 20px;
+    transition: background-color .3s linear;
+    font-family: Opensans-Regular;
+
+    @media @mobile {
+        padding: 5px 20px !important;
+        font-size: 15px;
+        margin-top: 8px;
     }
 }
 
@@ -2979,7 +3032,7 @@ body {
                 padding-left: 10px;
             }
 
-            input, textarea {
+            input, textarea, select {
                 border: none !important;
                 box-shadow: none;
 

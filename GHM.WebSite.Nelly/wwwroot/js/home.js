@@ -1,12 +1,14 @@
 ﻿$(document).ready(function () {
-    console.log(countNewsHot);
+
     $('#news-slider').slick({
         slidesToShow: countNewsHot <= 5 ? 3 : 5,
         slidesToScroll: 1,
-        centerMode: countNewsHot >=3,
+        centerMode: countNewsHot >= 3,
         autoplay: false,
         slideMargin: 20,
         autoplayTimeout: 2000,
+        focusOnSelect: true,
+        lazyLoad: 'ondemand',
         prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
         nextArrow: '<button class="slick-next"> <img src="/images/facion/nex.png" /> </button>',
         responsive: [
@@ -39,11 +41,23 @@
         center: true,
         dotsEach: true,
         navigation: true,
-        animateIn: true,
-        animateOut: 'fadeOut',
-        autoplayTimeout: 5000,
+        animateIn: effectSlider,
+        interval: 3000,
         nav: true,
         navText: ["<img src='/images/facion/pev.png'/>", "<img src='/images/facion/nex.png'/>"]
+    });
+
+    $("#myCarousel").on('changed.owl.carousel', function (event) {
+        var item = event.item.index - 2;     // Position of the current item
+
+        $('h2').removeClass('animated jackInTheBox');
+        $('.owl-item').not('.cloned').eq(item).find('h2').addClass('animated jackInTheBox');
+
+        $('h3').removeClass('animated rollIn');
+        $('.owl-item').not('.cloned').eq(item).find('h3').addClass('animated rollIn');
+
+        $('button').removeClass('animated bounceInLeft');
+        $('.owl-item').not('.cloned').eq(item).find('button').addClass('animated bounceInLeft');
     });
 
     $("#video-silder").lightSlider({
@@ -84,6 +98,7 @@
         autoplay: false,
         slideMargin: 20,
         autoplayTimeout: 2000,
+        lazyLoad: 'ondemand',
         prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
         nextArrow: '<button class="slick-next"> <img src="/images/facion/nex.png" /> </button>',
         responsive: [
@@ -109,6 +124,7 @@
     $("#menuMiddlerSlider").slick({
         slidesToShow: 4,
         slidesToScroll: 1,
+        lazyLoad: 'ondemand',
         prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
         nextArrow: '<button class="slick-next"> <img src="/images/facion/nex.png" /> </button>',
         responsive: [
@@ -129,7 +145,7 @@
                 }
             }
         ]
-    });  
+    });
 
     $('#product-hot-slider').lightSlider({
         item: 4,
@@ -168,6 +184,7 @@
             slidesToShow: 3,
             centerMode: true,
             slidesToScroll: 1,
+            lazyLoad: 'ondemand',
             prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
             nextArrow: '<button class="slick-next"> <img src="/images/facion/nex.png" /> </button>',
             responsive: [
@@ -188,7 +205,7 @@
                     }
                 }
             ]
-        });  
+        });
     }
 });
 
@@ -224,3 +241,5 @@ $('.selector button').click(function (e) {
 });
 
 setTimeout(function () { toggleOptions('.selector'); }, 500);
+
+

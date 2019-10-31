@@ -34,5 +34,21 @@
   {
     "outputFile": "wwwroot/lib/EasyZoom-master/src/easyzoom.es5.js",
     "inputFile": "wwwroot/lib/EasyZoom-master/src/easyzoom.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-daterangepicker-master/daterangepicker.css",
+    "inputFile": "wwwroot/lib/bootstrap-daterangepicker-master/daterangepicker.scss"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-daterangepicker-master/daterangepicker.es5.js",
+    "inputFile": "wwwroot/lib/bootstrap-daterangepicker-master/daterangepicker.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-daterangepicker-master/moment.es5.js",
+    "inputFile": "wwwroot/lib/bootstrap-daterangepicker-master/moment.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.es5.js",
+    "inputFile": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"
   }
 ]

@@ -72,7 +72,6 @@ IsCurrent = true,
         <script src="~/js/viewmodel/category-news.viewmodel.es5.min.js"></script>
         <script>
             $(document).ready(function () {
-                console.log($(".breadcrumb").height());
                 $(window).scroll(function () {
                     var b = $("#header-breadcrumb").height() + $("#header").height();
                     if ($(window).scrollTop() > b - 80 && $(window).scrollTop() < $("#category-news").height() - 220) {

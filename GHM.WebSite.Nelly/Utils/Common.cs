@@ -69,15 +69,16 @@ namespace GHM.Website.Nelly.Utils
             int destWidth = (int)(sourceWidth * nPercent);
             int destHeight = (int)(sourceHeight * nPercent);
 
-            Bitmap bmPhoto = new Bitmap(newWidth, newHeight);
+            Bitmap bmPhoto = new Bitmap(newWidth, newHeight);           
+
             bmPhoto.SetResolution(sourceImage.HorizontalResolution,
                      sourceImage.VerticalResolution);
 
             Graphics grPhoto = Graphics.FromImage(bmPhoto);
 
-            grPhoto.InterpolationMode = InterpolationMode.Low;
-            grPhoto.PixelOffsetMode = PixelOffsetMode.None;
             grPhoto.CompositingQuality = CompositingQuality.HighSpeed;
+            grPhoto.InterpolationMode = InterpolationMode.Low;
+            grPhoto.CompositingMode = CompositingMode.SourceCopy;
 
             if (type == ImageType.Jpg)
             {

@@ -14,9 +14,46 @@
     self.width = ko.observable(0);
     self.height = ko.observable(0);
     self.startTime = ko.observable();
+    self.listProvince = ko.observableArray([]);
+    self.listDistrict = ko.observableArray([]);
+    self.provinceId = ko.observable();
+    self.provinceName = ko.observable();
+    self.districtId = ko.observable();
+    self.districtName = ko.observable();
 
     self.totalArea = ko.computed(function () {
         return self.length() * self.width();
+    });
+
+    self.provinceId.subscribe(function(value) {
+        debugger;
+        if (value) {
+            self.provinceId(value);
+            var provinceInfo = _.find(self.listProvince(), function (item) {
+                return item.id === value;
+            });
+
+            if (provinceInfo) {
+                self.provinceName(provinceInfo.name);
+                $.get('/get-distinct', { provinceId: value }, function (data) {
+                    self.listDistrict(data);
+                });
+            }
+        } else {
+            self.listDistrict([]);
+            self.districtId();
+            self.districtName();
+        }
+    });
+
+    self.districtId.subscribe(function (value) {
+        var districtInfo = _.find(self.listProvince(), function (item) {
+            return item.id === value;
+        });
+
+        if (districtInfo) {
+            self.districtName(districtInfo.name);
+        }
     });
 
     self.save = function () {
@@ -26,6 +63,18 @@
     };
 
     $(document).ready(function () {
+        self.listProvince(listProvince);
+
+        $('#startTimePicker').datetimepicker({
+        }).inputmask('dd/mm/yyyy').on('dp.change', function (event) {
+            self.startTime($('#startTimePicker').val());
+        });
+
+        $('#idCardDateTimePicker').datetimepicker({
+        }).inputmask('dd/mm/yyyy').on('dp.change', function (event) {
+            debugger;
+            self.idCardDate($('#idCardDateTimePicker').val());
+        });
     });
 }
 
