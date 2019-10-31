@@ -110,7 +110,8 @@ namespace GHM.Warehouse.Infrastructure.Repository
                               DeliveryDate = order.DeliveryDate,
                               CreateTime = order.CreateTime,
                               CreatorFullName = order.CreatorFullName,
-                              Address = order.Address
+                              Address = order.Address,
+                              Note = order.Note
                           }).Distinct();
 
             totalRows = result.Count();

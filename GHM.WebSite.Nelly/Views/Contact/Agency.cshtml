@@ -7,6 +7,15 @@
     {
         ContractResolver = new CamelCasePropertyNamesContractResolver()
     };
+    var breadcrumbs = new List<Breadcrumb>
+    {
+        new Breadcrumb()
+        {Name = title,
+        IsCurrent = true,
+        }
+    };
+    var url = ViewBag.Url;
+    ViewBag.Breadcrumb = breadcrumbs;
 }
 <link href="~/lib/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 <partial name="_Breadcumb" />

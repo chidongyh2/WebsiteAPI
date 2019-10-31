@@ -58,7 +58,6 @@
 
     self.save = function () {
         if ($('#formInsertUpdate').valid()) {
-            console.log(self.fullName());
         }
     };
 
@@ -72,7 +71,6 @@
 
         $('#idCardDateTimePicker').datetimepicker({
         }).inputmask('dd/mm/yyyy').on('dp.change', function (event) {
-            debugger;
             self.idCardDate($('#idCardDateTimePicker').val());
         });
     });

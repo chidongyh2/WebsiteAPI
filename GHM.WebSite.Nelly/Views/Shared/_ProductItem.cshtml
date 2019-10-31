@@ -26,12 +26,12 @@
         <div class="price">
             <span data-bind="text: formatNumberic(salePrice,  'N0') + ' đ'"></span>
         </div>
-        <div class="star">
+        @*<div class="star">
             @for (var i = 1; i <= 5; i++)
             {
                 <i class="la la-star"></i>
             }
-        </div>
+        </div>*@
         <div class="read-more">
             <a data-bind="attr: {href: '/san-pham/' + seoLink + '.htm', title: name}"
                class="btn btn-main"><i class="la la-arrow-right"></i>@Resource.ViewMore</a>

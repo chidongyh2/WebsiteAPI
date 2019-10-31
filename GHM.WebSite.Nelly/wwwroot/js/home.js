@@ -107,7 +107,7 @@
                 settings: {
                     centerMode: true,
                     centerPadding: '0px',
-                    slidesToShow: 7
+                    slidesToShow: 6
                 }
             },
             {
@@ -115,7 +115,7 @@
                 settings: {
                     centerMode: true,
                     centerPadding: '0px',
-                    slidesToShow: 5
+                    slidesToShow: 3
                 }
             }
         ]

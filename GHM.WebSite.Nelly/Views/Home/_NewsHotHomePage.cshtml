@@ -17,7 +17,7 @@
                             <div class="item">
                                 <div class="news-image">
                                     <a href="@($"/{news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                                        <img class="news-image img-responsive lazy" data-lazy="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{news.FeatureImage}")}&width=600&height=600")"
+                                        <img class="news-image img-responsive lazy" data-lazy="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{news.FeatureImage}")}&width=360&height=270")"
                                              onerror="this.onerror = null;this.src='/images/no-image.png'"
                                              alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
                                     </a>
@@ -25,7 +25,7 @@
                                 <div class="news-content">
                                     <div class="title">
                                         <a href="@($"/{news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                                            @(!string.IsNullOrEmpty(news.Title) ? Common.SubString(news.Title, 20) : news.Title)
+                                            @(!string.IsNullOrEmpty(news.Title) ? Common.SubString(news.Title, 50) : news.Title)
                                         </a>
                                     </div>
                                     <div class="description">
