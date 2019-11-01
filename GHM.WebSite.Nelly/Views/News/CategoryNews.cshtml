@@ -33,13 +33,13 @@ IsCurrent = true,
                     <div class="row">
                         @foreach (var news in Model.ListNews)
                         {
-                            <div class="col-lg-4">
+                            <div class="col-sm-4">
                                 <partial name="_NewsItem" model="news" />
                             </div>
                         }
                     </div>
                     <div class="row">
-                        <div class="col-lg-12" style="text-align:center">
+                        <div class="col-sm-12" style="text-align:center">
                             <ul class="pagination">
                                 @if (totalPage > 1)
                                 {

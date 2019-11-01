@@ -3,6 +3,15 @@
     var title = "Về chúng tôi";
     ViewBag.Title = title;
     var listCoreValue = ViewBag.ListCoreValue as List<ValueViewModel>;
+    var breadcrumbs = new List<Breadcrumb>
+    {
+        new Breadcrumb()
+        {Name = title,
+        IsCurrent = true,
+        }
+    };
+    var url = ViewBag.Url;
+    ViewBag.Breadcrumb = breadcrumbs;
 }
 
 <partial name="_Breadcumb">

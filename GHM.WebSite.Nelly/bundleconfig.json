@@ -149,9 +149,9 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js",
+    "outputFileName": "wwwroot/lib/bootstrap-datepicker/css/bootstrap-datepicker3.min.css",
     "inputFiles": [
-      "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"
+      "wwwroot/lib/bootstrap-datepicker/css/bootstrap-datepicker3.css"
     ]
   }
 ]

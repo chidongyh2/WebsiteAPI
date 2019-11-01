@@ -6,12 +6,28 @@
     ViewBag.MetaTitle = Model?.MetaTitle;
     ViewBag.Description = Model?.MetaDescription;
     ViewBag.Keyword = Model?.MetaKeyword;
-    var breadcrumbs = new List<Breadcrumb> { new Breadcrumb() { Name = Resource.News, IsCurrent = true } };
-    ViewBag.Breadcrumb = breadcrumbs;
+
     ViewBag.Image = Model?.FeatureImage;
     var absoluteUri = $"{Context.Request.Host}{Context.Request.Path}";
     var absoluteUri1 = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
+
+    var breadcrumbs = new List<Breadcrumb>
+   {
+        new Breadcrumb()
+        {Name = "Tin tức",
+        IsCurrent = false,
+        Url = "tin-tuc"
+        },
+        new Breadcrumb()
+        {Name = Model.Title,
+        IsCurrent = true,
+        },
+
+    };
+    var url = ViewBag.Url;
+    ViewBag.Breadcrumb = breadcrumbs;
 }
+
 <partial name="_Breadcumb" />
 <div id="news-detail">
     <div class="container">
@@ -87,7 +103,7 @@
                     <partial name="_BoxHotline" />
                 </div>
                 <div class="col-md-3">
-                    <partial name="_SidebarNewsHot" />                
+                    <partial name="_SidebarNewsHot" />
                 </div>
             </div>
         }

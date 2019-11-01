@@ -8,6 +8,23 @@
     {
         ContractResolver = new CamelCasePropertyNamesContractResolver()
     };
+
+    var breadcrumbs = new List<Breadcrumb>
+    {
+         new Breadcrumb()
+        {
+              Name = "Sản phẩm",
+              IsCurrent = false,
+              Url = "san-pham"
+        },
+        new Breadcrumb()
+        {
+            Name = productInfo?.Name,
+            IsCurrent = true,
+        }
+    };
+    var url = ViewBag.Url;
+    ViewBag.Breadcrumb = breadcrumbs;
 }
 <link href="~/lib/EasyZoom-master/css/easyzoom.min.css" rel="stylesheet" />
 <partial name="_Breadcumb">
@@ -52,12 +69,12 @@
                         <div class="col-sm-7">
                             <div class="content">
                                 <div class="title-sidebar">@productInfo?.Name</div>
-                                <div class="star">
+                                @*<div class="star">
                                     @for (var i = 1; i <= 5; i++)
                                     {
                                         <i class="la la-star"></i>
                                     }
-                                </div>
+                                </div>*@
                                 <div class="price">
                                     <span>@productInfo?.SalePrice?.ToString("N0", new CultureInfo("en-US")) đ</span>
                                 </div>

@@ -26,5 +26,6 @@ namespace GHM.Warehouse.Domain.ViewModels
         public DateTime? CreateTime { get; set; }
         public string CreatorFullName { get; set; }
         public string Address { get; set; }
+        public string Note { get; set; }
     }
 }

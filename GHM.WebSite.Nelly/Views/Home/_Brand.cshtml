@@ -14,8 +14,8 @@
                             @foreach (var brand in listBrand)
                             {
                                 <div class="item">
-                                    <a href="@brand.Website" title="@brand.Name">
-                                        <img src="@($"/image?url={(string.IsNullOrEmpty(brand.Logo) ? "/images/no-image.png" : $"{ViewBag.Url}{brand.Logo}")}")"
+                                    <a title="@brand.Name">
+                                        <img src="@($"/image?url={(string.IsNullOrEmpty(brand.Logo) ? "/images/no-image.png" : $"{ViewBag.Url}{brand.Logo}")}&width=200&height=200")"
                                         onerror="this.src='/images/no-image.png'"
                                         alt="@brand.Name" />
                                     </a>

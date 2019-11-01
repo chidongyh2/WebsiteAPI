@@ -5,6 +5,16 @@
     {
         ContractResolver = new CamelCasePropertyNamesContractResolver()
     };
+
+    var breadcrumbs = new List<Breadcrumb>
+    {
+        new Breadcrumb()
+        {Name = "Sản phẩm",
+        IsCurrent = true,
+        }
+    };
+    var url = ViewBag.Url;
+    ViewBag.Breadcrumb = breadcrumbs;
 }
 
 <partial name="_Breadcumb">

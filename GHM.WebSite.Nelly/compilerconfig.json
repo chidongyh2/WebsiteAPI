@@ -50,5 +50,9 @@
   {
     "outputFile": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.es5.js",
     "inputFile": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-datepicker/js/bootstrap-datepicker.vi.min.es5.js",
+    "inputFile": "wwwroot/lib/bootstrap-datepicker/js/bootstrap-datepicker.vi.min.js"
   }
 ]

@@ -18,12 +18,12 @@
                         {
                             <div class="menu-item">
                                 <div class="logo">
-                                    <a href="javascript://" title="@item.Name">
+                                    <a title="@item.Name">
                                         <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{item.Image}")}")" />
                                     </a>
                                 </div>
                                 <div class="menu-name">
-                                    <a href="javascript://"
+                                    <a
                                        class="transition" title="@item.Name">
                                         @item.Name
                                     </a>
