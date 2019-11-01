@@ -63,11 +63,14 @@
     $(document).ready(function () {
         self.listProvince(listProvince);
 
-        $('#startTimePicker').datetimepicker().inputmask('dd/mm/yyyy').on('dp.change', function (event) {
-            self.startTime($('#startTimePicker').val());
+        $('#startTimePicker').datetimepicker({  
+            format: 'YYYY-MM-DD'
+        }).on("changeDate", function (e) {
+            console.log("Date changed: ", e.date);
         });
 
-        $('#idCardDateTimePicker').datetimepicker().inputmask('dd/mm/yyyy').on('dp.change', function (event) {
+        $('#idCardDateTimePicker').datetimepicker({
+        }).on('dp.change', function (event) {
             self.idCardDate($('#idCardDateTimePicker').val());
         });
     });

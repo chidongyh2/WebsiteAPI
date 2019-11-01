@@ -43,7 +43,6 @@
         navigation: true,
         animateIn: effectSlider,
         interval: 5000,
-        autoplayTimeout: 5000,
         nav: true,
         navText: ["<img src='/images/facion/pev.png'/>", "<img src='/images/facion/nex.png'/>"]
     });
@@ -208,12 +207,6 @@
             ]
         });
     }
-
-    var imgs = document.querySelectorAll('[data-src]');
-    imgs.forEach(function (item) {
-        var dataSrc = item.getAttribute('data-src');
-        item.setAttribute('src', dataSrc);
-    });
 });
 
 var nbOptions = 10; // number of menus
