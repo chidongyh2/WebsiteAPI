@@ -21,16 +21,18 @@ namespace GHM.Website.Infrastructure.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoriesNewsRepository _categoriesNewsRepository;
         private readonly ICategoryTranslationRepository _categoryTranslationRepository;
         private readonly IMenuItemRepository _menuItemRepository;
         private readonly IResourceService<SharedResource> _sharedResourceService;
         private readonly IResourceService<GhmWebsiteResource> _resourceService;
 
-        public CategoryService(ICategoryRepository categoryRepository, ICategoryTranslationRepository categoryTranslationRepository,
+        public CategoryService(ICategoryRepository categoryRepository, ICategoriesNewsRepository categoriesNewsRepository, ICategoryTranslationRepository categoryTranslationRepository,
             IResourceService<SharedResource> sharedResourceService, IResourceService<GhmWebsiteResource> resourceService,
             IMenuItemRepository menuItemRepository)
         {
             _categoryRepository = categoryRepository;
+            _categoriesNewsRepository = categoriesNewsRepository;
             _categoryTranslationRepository = categoryTranslationRepository;
             _sharedResourceService = sharedResourceService;
             _resourceService = resourceService;
@@ -247,12 +249,14 @@ namespace GHM.Website.Infrastructure.Services
         public async Task<ActionResultResponse> Delete(string tenantId, int id)
         {
             // Check exists in news.
+            var isExistsInnews = await _categoriesNewsRepository.CheckExistsByCategoryId(id);
+            if (isExistsInnews)
+                return new ActionResultResponse(-1, _resourceService.GetString("Category are being used by news. You can not delete this category."));
 
             // Check exists in menu.
-            var isExistsInMenu =
-                await _menuItemRepository.CheckExistsBySubjectId(id.ToString(), SubjectType.NewsCategory);
+            var isExistsInMenu =await _menuItemRepository.CheckExistsBySubjectId(id.ToString(), SubjectType.NewsCategory);
             if (isExistsInMenu)
-                return new ActionResultResponse(-1, _resourceService.GetString("Category are being used by news. You can not delete this category."));
+                return new ActionResultResponse(-1, _resourceService.GetString("Category are being used by menus. You can not delete this category."));
 
             var result = await _categoryRepository.Delete(tenantId, id);
             if (result <= 0)

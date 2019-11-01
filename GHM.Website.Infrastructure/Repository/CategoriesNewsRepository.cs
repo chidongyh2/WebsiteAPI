@@ -83,5 +83,10 @@ namespace GHM.Website.Infrastructure.Repository
 
             return query;
         }
+
+        public async Task<bool> CheckExistsByCategoryId(int categoryId)
+        {
+            return await _categoriesNewsRepository.ExistAsync(x => x.CategoryId == categoryId);
+        }
     }
 }
