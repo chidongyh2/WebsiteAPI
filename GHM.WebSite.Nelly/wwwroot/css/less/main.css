@@ -180,8 +180,14 @@ body {
   border: none !important;
 }
 #myCarousel .owl-nav button img {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
+}
+@media only screen and (max-width: 1200px) {
+  #myCarousel .owl-nav button img {
+    width: 30px;
+    height: 30px;
+  }
 }
 #myCarousel .owl-nav button span {
   position: absolute;
@@ -306,6 +312,17 @@ body {
     padding-top: 20px;
   }
 }
+@media only screen and (max-width: 1200px) {
+  .video-container .lSAction .lSPrev,
+  .video-container .lSAction .lSNext {
+    top: 50%;
+  }
+  .video-container .lSAction .lSPrev img,
+  .video-container .lSAction .lSNext img {
+    width: 25px;
+    height: 25px;
+  }
+}
 #agency #agencySlider {
   padding-top: 40px;
 }
@@ -317,6 +334,17 @@ body {
 }
 #agency #agencySlider .item img {
   width: 100%;
+}
+@media only screen and (max-width: 1200px) {
+  #agency #agencySlider .slick-next,
+  #agency #agencySlider .slick-prev {
+    top: 60%;
+  }
+  #agency #agencySlider .slick-next img,
+  #agency #agencySlider .slick-prev img {
+    width: 25px;
+    height: 25px;
+  }
 }
 .contact {
   margin-top: 20px;
@@ -429,6 +457,7 @@ body {
   -webkit-appearance: none;
   background-position-x: 305px;
   background-size: contain;
+  background-size: 25px;
 }
 .contact .angency-system .form-search .btn-search {
   margin-top: 10px;
@@ -998,6 +1027,11 @@ body {
   font-family: Opensans;
   font-size: 14px;
 }
+.slick-next,
+.slick-prev {
+  width: unset;
+  height: unset;
+}
 .slick-next:before,
 .slick-prev:before {
   font-size: unset;
@@ -1013,7 +1047,7 @@ body {
   height: 35px;
 }
 .slick-next {
-  right: 5px;
+  right: -10px;
   z-index: 999;
 }
 .slick-prev {
@@ -1583,8 +1617,14 @@ body {
   background-color: unset;
 }
 .btn-toolbar .btn-group img {
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
+}
+@media only screen and (max-width: 1200px) {
+  .btn-toolbar .btn-group img {
+    width: 30px;
+    height: 30px;
+  }
 }
 .product-item {
   background-color: #FFFFFF;
@@ -1725,50 +1765,31 @@ body {
   left: 0px;
 }
 .lSAction .lSNext {
-  right: 0px;
+  right: 1px;
 }
 @media only screen and (max-width: 1200px) {
   .lSAction .lSNext {
-    right: 5px;
+    right: 1px;
   }
 }
 .lSAction a {
-  background-color: #FFFFFF;
-  color: white;
-  width: 25px;
-  height: 25px;
-  text-align: center;
   vertical-align: middle;
-  margin-top: -4px;
-  top: 50%;
+  top: 48%;
   border-radius: 50%;
-  opacity: 0.7;
+  opacity: 1;
+  background-image: none !important;
+  width: unset !important;
+  border-radius: unset;
+  margin-top: unset;
 }
 @media only screen and (max-width: 1200px) {
   .lSAction a {
-    width: 18px;
-    height: 18px;
-    top: 55%;
-  }
-}
-.lSAction a i {
-  font-size: 11px;
-  color: #BDBCC1;
-  vertical-align: middle;
-  position: absolute;
-  top: 7px;
-  right: 7px;
-}
-@media only screen and (max-width: 1200px) {
-  .lSAction a i {
-    padding-top: 5px;
-    top: -2px;
-    right: 3px;
+    top: 43%;
   }
 }
 .lSAction a img {
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
 }
 #abums {
   margin-top: 30px;
@@ -1781,6 +1802,10 @@ body {
 @media only screen and (max-width: 1200px) {
   #abums .video-container {
     width: 100%;
+  }
+  #abums .video-container .lSAction a img {
+    width: 25px;
+    height: 25px;
   }
 }
 #products {
@@ -2048,13 +2073,11 @@ body {
   }
 }
 #product-detail .lSAction a {
-  top: 53%;
-  width: 20px;
-  height: 20px;
+  top: 47%;
 }
 #product-detail .lSAction a img {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 #product-detail .lSNext {
   right: 0px !important;
@@ -2788,7 +2811,7 @@ body {
 }
 #search .searchresultlist .searchresult h3 a {
   text-decoration: none;
-  color: #FC9600;
+  color: #3F3F3F;
   transition: 0.5s ease-in-out;
   font-size: 22px;
   font-family: Roboto-Regular;

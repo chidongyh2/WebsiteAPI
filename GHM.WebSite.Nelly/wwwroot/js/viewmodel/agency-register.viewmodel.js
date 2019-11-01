@@ -25,8 +25,7 @@
         return self.length() * self.width();
     });
 
-    self.provinceId.subscribe(function(value) {
-        debugger;
+    self.provinceId.subscribe(function (value) {
         if (value) {
             self.provinceId(value);
             var provinceInfo = _.find(self.listProvince(), function (item) {
@@ -64,13 +63,11 @@
     $(document).ready(function () {
         self.listProvince(listProvince);
 
-        $('#startTimePicker').datetimepicker({
-        }).inputmask('dd/mm/yyyy').on('dp.change', function (event) {
+        $('#startTimePicker').datetimepicker().inputmask('dd/mm/yyyy').on('dp.change', function (event) {
             self.startTime($('#startTimePicker').val());
         });
 
-        $('#idCardDateTimePicker').datetimepicker({
-        }).inputmask('dd/mm/yyyy').on('dp.change', function (event) {
+        $('#idCardDateTimePicker').datetimepicker().inputmask('dd/mm/yyyy').on('dp.change', function (event) {
             self.idCardDate($('#idCardDateTimePicker').val());
         });
     });

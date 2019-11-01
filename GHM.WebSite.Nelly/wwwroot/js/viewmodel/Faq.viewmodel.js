@@ -33,7 +33,7 @@ function FaqViewModel() {
             item.isShowAnswer(false);
         });
 
-        data.isShowAnswer(true);      
+        data.isShowAnswer(true);
     };
 
     self.registerAgency = function () {
@@ -62,7 +62,16 @@ function FaqViewModel() {
         self.listFaqRoot(faqs.items);
 
         if (self.listGroup() && self.listGroup().length > 0) {
-            self.selectGroup(self.listGroup()[0]);
+            var groupDefault = _.find(self.listGroup(), function (item) {
+                return item.name === groupName;
+            });
+
+            if (groupDefault) {
+                self.selectGroup(groupDefault);
+            } else {
+                self.selectGroup(self.listGroup()[0]);
+            }
+
         }
 
         $("#menuMiddlerSlider").slick({
@@ -88,7 +97,7 @@ function FaqViewModel() {
                     }
                 }
             ]
-        });  
+        });
     });
 }
 

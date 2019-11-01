@@ -5,6 +5,43 @@ function AngencyViewModel() {
     self.name = ko.observable('');
     self.isMobile = ko.observable(false);
 
+    self.listProvince = ko.observableArray([]);
+    self.listDistrict = ko.observableArray([]);
+    self.provinceId = ko.observable();
+    self.provinceName = ko.observable();
+    self.districtId = ko.observable();
+    self.districtName = ko.observable();
+
+    self.provinceId.subscribe(function (value) {
+        if (value) {
+            self.provinceId(value);
+            var provinceInfo = _.find(self.listProvince(), function (item) {
+                return item.id === value;
+            });
+
+            if (provinceInfo) {
+                self.provinceName(provinceInfo.name);
+                $.get('/get-distinct', { provinceId: value }, function (data) {
+                    self.listDistrict(data);
+                });
+            }
+        } else {
+            self.listDistrict([]);
+            self.districtId();
+            self.districtName();
+        }
+    });
+
+    self.districtId.subscribe(function (value) {
+        var districtInfo = _.find(self.listProvince(), function (item) {
+            return item.id === value;
+        });
+
+        if (districtInfo) {
+            self.districtName(districtInfo.name);
+        }
+    });
+
     self.selectBranch = function (mapId, name, value) {
         self.mapId(mapId);
         self.name(name);
@@ -14,6 +51,7 @@ function AngencyViewModel() {
     };
 
     $(document).ready(function () {
+        self.listProvince(listProvince);
         var height = $('#map').innerHeight();
         $('#list-angency-system').css('height', height - 175 + 'px');
         if (branchIsOffice) {

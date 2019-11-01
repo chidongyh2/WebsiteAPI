@@ -32,8 +32,10 @@ namespace GHM.Website.Nelly.Controllers
 
         [Route("lien-he")]
         [Route("lien-he.html")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var listProvince = await _coreService.GetProvinceByNationId(1);
+            ViewBag.ListProvice = JsonConvertHelper.GetObjectFromObject<List<ObjectViewModel>>(listProvince);
             var breadcrumbs = new List<Breadcrumb>
             {
                 new Breadcrumb()
