@@ -10,5 +10,6 @@ namespace GHM.Website.Domain.ViewModels
         public string Title { get; set; }
         public string SeoLink { get; set; }
         public DateTime? LastUpdate { get; set; }
+        public DateTime? CreateTime { get; set; }
     }
 }

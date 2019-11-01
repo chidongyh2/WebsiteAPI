@@ -62,7 +62,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
                 var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
                 var listVideoHomePageData = JsonConvert.DeserializeObject<List<VideoViewModel>>(JsonConvert.SerializeObject(listVideoHomePage));
-                _cache.Set($"{CacheParam.video}{CultureInfo.CurrentCulture.Name}", listVideoHomePageData, TimeSpan.FromHours(1));
+                _cache.Set($"{CacheParam.video}{CultureInfo.CurrentCulture.Name}", listVideoHomePageData, TimeSpan.FromMinutes(5));
                 ViewBag.ListVideoHomePage = listVideoHomePageData;
             }
 
@@ -75,7 +75,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
                 var listNews = await _newsService.GetListTopNewsHomePageAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 5);
                 var listNewsData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(listNews));
-                _cache.Set($"{CacheParam.ListNew}{CultureInfo.CurrentCulture.Name}", listNewsData, TimeSpan.FromHours(1));
+                _cache.Set($"{CacheParam.ListNew}{CultureInfo.CurrentCulture.Name}", listNewsData, TimeSpan.FromMinutes(5));
                 ViewBag.ListNews = listNewsData;
             }
 
@@ -89,7 +89,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
                 var listNewsHot = await _newsService.GetListTopNewsNewestAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 5);
                 var listNewsHotData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(listNewsHot));
-                _cache.Set($"{CacheParam.ListNewHot}{CultureInfo.CurrentCulture.Name}", listNewsHotData, TimeSpan.FromHours(1));
+                _cache.Set($"{CacheParam.ListNewHot}{CultureInfo.CurrentCulture.Name}", listNewsHotData, TimeSpan.FromMinutes(5));
                 ViewBag.ListNewsHot = listNewsHotData;
             }
 
@@ -103,7 +103,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
                 var listResponseCustomer = await _newsService.GetNewsByCategorySeoLinkAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, "y-kien-khach-hang", 1, 20);
                 var listResponseCustomerData = JsonConvert.DeserializeObject<List<NewsSearchViewModel>>(JsonConvert.SerializeObject(listResponseCustomer.Items));      
-                _cache.Set($"{CacheParam.ResponseCustomer}{CultureInfo.CurrentCulture.Name}", listResponseCustomerData, TimeSpan.FromHours(1));
+                _cache.Set($"{CacheParam.ResponseCustomer}{CultureInfo.CurrentCulture.Name}", listResponseCustomerData, TimeSpan.FromMinutes(5));
                 ViewBag.ListResponseCustomer = listResponseCustomerData;
             }
 
@@ -117,7 +117,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
                 var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
                 var menuMiddleData = JsonConvert.DeserializeObject<MenuDetailViewModel>(JsonConvert.SerializeObject(menuMiddle));
-                _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
+                _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromMinutes(5));
                 ViewBag.MenuMiddle = menuMiddleData;
             }
 
@@ -130,7 +130,7 @@ namespace GHM.Website.JadesSpa.Controllers
             {
                 var categoryMiddle = await _newsService.GetCategoryWithNewsAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, "tai-sao-lua-chon-jade-spa", 5, false);
                 var categoryMiddleData = JsonConvert.DeserializeObject<CategoryWidthNewsViewModel>(JsonConvert.SerializeObject(categoryMiddle.Data));
-                _cache.Set($"{CacheParam.CategoriesMiddle}{CultureInfo.CurrentCulture.Name}", categoryMiddleData, TimeSpan.FromHours(1));
+                _cache.Set($"{CacheParam.CategoriesMiddle}{CultureInfo.CurrentCulture.Name}", categoryMiddleData, TimeSpan.FromMinutes(5));
                 ViewBag.CategoryMiddle = categoryMiddleData;
             }
 
@@ -143,7 +143,7 @@ namespace GHM.Website.JadesSpa.Controllers
             {
                 var listBannerInHomeData = await _bannerService.GetBannerItemByPositionAsync(apiService.TenantId, (int)Position.Top);
                 var listBannerInHome = JsonConvert.DeserializeObject<BannerViewModel>(JsonConvert.SerializeObject(listBannerInHomeData.Data));
-                _cache.Set(CacheParam.Banner, listBannerInHome, TimeSpan.FromHours(1));
+                _cache.Set(CacheParam.Banner, listBannerInHome, TimeSpan.FromMinutes(5));
 
                 ViewBag.MainBanner = listBannerInHome;
             }

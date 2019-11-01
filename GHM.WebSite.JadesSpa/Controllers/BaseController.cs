@@ -106,7 +106,7 @@ namespace GHM.Website.JadesSpa.Controllers
                 SubjectType = (SubjectType)x.SubjectType,
                 Url = x.Url
             }).ToList();
-            _cache.Set($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromMinutes(5));
 
             return data;
         }
@@ -155,7 +155,7 @@ namespace GHM.Website.JadesSpa.Controllers
             websiteSetting.LogoMobile = Common.GetSettingValue(settings, string.Format("{0}.LogoMobile", convention));
             websiteSetting.ZaloId = Common.GetSettingValue(settings, string.Format("{0}.ZaloId", convention));
 
-            _cache.Set($"{CacheParam.Setting}{CultureInfo.CurrentCulture.Name}", websiteSetting, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.Setting}{CultureInfo.CurrentCulture.Name}", websiteSetting, TimeSpan.FromMinutes(5));
 
             return websiteSetting;
         }
@@ -177,7 +177,7 @@ namespace GHM.Website.JadesSpa.Controllers
 
             var data = JsonConvert.DeserializeObject<List<BranchContactSearchViewModel>>(JsonConvert.SerializeObject(result.Items));
 
-            _cache.Set($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromMinutes(5));
 
             return data;
         }
@@ -206,7 +206,7 @@ namespace GHM.Website.JadesSpa.Controllers
                 Url = x.Url
             }).ToList();
 
-            _cache.Set($"{CacheParam.SocialNetwork}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.SocialNetwork}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromMinutes(5));
 
             return data;
         }
@@ -248,7 +248,7 @@ namespace GHM.Website.JadesSpa.Controllers
                 SubjectType = (SubjectType)x.SubjectType,
                 Url = x.Url
             }).ToList();
-            _cache.Set($"{CacheParam.FooterNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.FooterNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromMinutes(5));
 
             return data;
         }
@@ -268,7 +268,7 @@ namespace GHM.Website.JadesSpa.Controllers
             var result = await _languageService.GetLanguageSupportAsync(apiService.TenantId);
             var data = JsonConvert.DeserializeObject<List<TenantLanguageViewModel>>(JsonConvert.SerializeObject(result.Items));
 
-            _cache.Set($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromMinutes(5));
 
             return data;
         }

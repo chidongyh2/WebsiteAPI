@@ -121,7 +121,7 @@ namespace GHM.Website.Infrastructure.Repository
 
             totalRows = result.Count();
 
-            return result.OrderByDescending(x => x.LastUpdate)
+            return result.OrderByDescending(x => x.CreateTime)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
@@ -145,7 +145,8 @@ namespace GHM.Website.Infrastructure.Repository
                 {
                     news.Id,
                     news.LastUpdate,
-                    news.FeatureImage
+                    news.FeatureImage,
+                    news.CreateTime,
                 })
                 .Join(Context.Set<NewsTranslation>().Where(specTranslation),
                     newsCategory => newsCategory.Id,
@@ -158,12 +159,13 @@ namespace GHM.Website.Infrastructure.Repository
                         Title = newsTranslation.Title,
                         FeatureImage = newsCategory.FeatureImage,
                         SeoLink = newsTranslation.SeoLink,
+                        CreateTime = newsCategory.CreateTime
                     }).AsNoTracking();
 
                 totalRows = queryNews.Count();
 
                 return queryNews
-                    .OrderByDescending(x => x.LastUpdate)
+                    .OrderByDescending(x => x.CreateTime)
                     .Skip((page - 1) * pageSize)
                     .Take(pageSize)
                     .ToListAsync();
@@ -181,12 +183,13 @@ namespace GHM.Website.Infrastructure.Repository
                         Title = newsTranslation.Title,
                         FeatureImage = newsCategory.FeatureImage,
                         SeoLink = newsTranslation.SeoLink,
+                        CreateTime = newsCategory.CreateTime
                     }).AsNoTracking();
 
             totalRows = query.Count();
 
             return query
-                .OrderByDescending(x => x.LastUpdate)
+                .OrderByDescending(x => x.CreateTime)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
@@ -356,7 +359,7 @@ namespace GHM.Website.Infrastructure.Repository
                          });
 
             return await query
-                .OrderByDescending(x => x.LastUpdate)
+                .OrderByDescending(x => x.CreateTime)
                 .Take(selectTop)
                 .ToListAsync();
         }
@@ -384,7 +387,7 @@ namespace GHM.Website.Infrastructure.Repository
                         });
 
             return await query
-                .OrderByDescending(x => x.LastUpdate)
+                .OrderByDescending(x => x.CreateTime)
                 .Take(selectTop)
                 .ToListAsync();
         }
@@ -414,7 +417,7 @@ namespace GHM.Website.Infrastructure.Repository
                         });
 
             return await query
-                .OrderByDescending(x => x.LastUpdate)
+                .OrderByDescending(x => x.CreateTime)
                 .Take(selectTop)
                 .ToListAsync();
         }
@@ -454,8 +457,8 @@ namespace GHM.Website.Infrastructure.Repository
             totalRows = query.Count();
 
             return query
-                .OrderByDescending(x => x.LastUpdate)
-                .ThenByDescending(x => x.CreateTime)
+                .OrderByDescending(x => x.CreateTime)
+                //.ThenByDescending(x => x.CreateTime)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
@@ -484,8 +487,8 @@ namespace GHM.Website.Infrastructure.Repository
                         });
 
             return await query
-                .OrderByDescending(x => x.LastUpdate)
-                .ThenByDescending(x => x.CreateTime)
+                .OrderByDescending(x => x.CreateTime)
+                //.ThenByDescending(x => x.CreateTime)
                 .Take(selectTop)
                 .ToListAsync();
         }
@@ -729,8 +732,8 @@ namespace GHM.Website.Infrastructure.Repository
                             CreateTime = n.CreateTime
                         };
             return await query
-                .OrderByDescending(x => x.LastUpdate)
-                .ThenByDescending(x => x.CreateTime)
+                .OrderByDescending(x => x.CreateTime)
+                //.ThenByDescending(x => x.CreateTime)
                 .Take(pageSize)
                 .ToListAsync();
         }
@@ -779,7 +782,7 @@ namespace GHM.Website.Infrastructure.Repository
                                  Title = x.newsTranslation.Title,
                                  MetaTitle = x.newsTranslation.MetaTitle,
                                  Description = x.newsTranslation.Description,
-                             }).OrderByDescending(x => x.LastUpdate).Take(selectTop).ToList()
+                             }).OrderByDescending(x => x.CreateTime).Take(selectTop).ToList()
                          };
 
             return result.OrderBy(x => x.Order).AsNoTracking().FirstOrDefaultAsync();
@@ -842,8 +845,8 @@ namespace GHM.Website.Infrastructure.Repository
                         CreateTime = n.CreateTime
                     };
             return await query
-                .OrderByDescending(x => x.LastUpdate)
-                .ThenByDescending(x => x.CreateTime)
+                .OrderByDescending(x => x.CreateTime)
+                //.ThenByDescending(x => x.CreateTime)
                 .Take(pageSize)
                 .ToListAsync();
         }

@@ -142,7 +142,7 @@ namespace GHM.WebSite.JadesSpa
                         string path = context.Context.Request.Path;
                         if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg"))
                         {
-                            TimeSpan maxAge = new TimeSpan(7, 0, 0, 0); // 1 ngày
+                            TimeSpan maxAge = new TimeSpan(1, 0, 0, 0); // 1 ngày
                             context.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
                         }
                     }
