@@ -312,16 +312,14 @@ body {
     padding-top: 20px;
   }
 }
-@media only screen and (max-width: 1200px) {
-  .video-container .lSAction .lSPrev,
-  .video-container .lSAction .lSNext {
-    top: 50%;
-  }
-  .video-container .lSAction .lSPrev img,
-  .video-container .lSAction .lSNext img {
-    width: 25px;
-    height: 25px;
-  }
+.video-container .lSAction .lSPrev,
+.video-container .lSAction .lSNext {
+  top: 42%;
+}
+.video-container .lSAction .lSPrev img,
+.video-container .lSAction .lSNext img {
+  width: 25px;
+  height: 25px;
 }
 #agency #agencySlider {
   padding-top: 40px;
@@ -2076,8 +2074,8 @@ body {
   top: 47%;
 }
 #product-detail .lSAction a img {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 #product-detail .lSNext {
   right: 0px !important;
