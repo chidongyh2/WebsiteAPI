@@ -103,7 +103,7 @@ namespace GHM.Website.Infrastructure.Repository
             out int totalRows)
         {
             Expression<Func<Category, bool>> spec = x => !x.IsDelete && x.TenantId == tenantId;
-            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId;
+            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId && !x.IsDelete;
 
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -136,7 +136,7 @@ namespace GHM.Website.Infrastructure.Repository
         public async Task<List<CategoryViewModel>> SearchAll(string tenantId, string languageId, string keyword, bool? isActive)
         {
             Expression<Func<Category, bool>> spec = x => !x.IsDelete && x.TenantId == tenantId;
-            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId;
+            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId && !x.IsDelete;
 
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -165,7 +165,7 @@ namespace GHM.Website.Infrastructure.Repository
         public Task<List<Suggestion<int>>> Suggestions(string tenantId, string languageId, string keyword, int page, int pageSize, out int totalRows)
         {
             Expression<Func<Category, bool>> spec = x => x.IsActive && !x.IsDelete && x.TenantId == tenantId;
-            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId;
+            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId && !x.IsDelete;
 
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -192,7 +192,7 @@ namespace GHM.Website.Infrastructure.Repository
         public Task<List<CategorySearchForSelectViewModel>> SearchForSelect(string tenantId, string languageId, string keyword, int page, int pageSize, out int totalRows)
         {
             Expression<Func<Category, bool>> spec = x => x.IsActive && !x.IsDelete && x.TenantId == tenantId;
-            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId;
+            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId && !x.IsDelete;
 
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -264,7 +264,7 @@ namespace GHM.Website.Infrastructure.Repository
         public async Task<CategoryWidthNewsViewModel> GetCategoryForWithNews(string tenantId, string categoryId, string languageId)
         {
             Expression<Func<Category, bool>> spec = x => x.TenantId == tenantId && x.Id == int.Parse(categoryId) && !x.IsDelete && x.IsActive;
-            Expression<Func<CategoryTranslation, bool>> specT = x => x.TenantId == tenantId && x.CategoryId == int.Parse(categoryId) && x.LanguageId == languageId;
+            Expression<Func<CategoryTranslation, bool>> specT = x => x.TenantId == tenantId && x.CategoryId == int.Parse(categoryId) && x.LanguageId == languageId && !x.IsDelete; 
             var query = Context.Set<Category>().Where(spec)
                 .Join(Context.Set<CategoryTranslation>().Where(specT), c => c.Id, ct => ct.CategoryId, (c, ct) => new CategoryWidthNewsViewModel
                 {
