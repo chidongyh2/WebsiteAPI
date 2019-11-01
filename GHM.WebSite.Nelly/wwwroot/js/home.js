@@ -23,9 +23,9 @@
             {
                 breakpoint: 480,
                 settings: {
-                    centerMode: true,
                     centerPadding: '10px',
-                    slidesToShow: 1
+                    slidesToShow: 1,
+                    centerMode: false
                 }
             }
         ]

@@ -1087,6 +1087,27 @@ body {
 
             .news-content {
                 display: none;
+                text-align:center;
+                @media @mobile {
+                    display: block;
+
+                    .title {
+                        font-family: Roboto-Regular;
+
+                        a {
+                            color: @color-text;
+                            font-family: Roboto-Regular;
+                        }
+
+                        padding: 5px 0px;
+                        font-size: 18px;
+                    }
+
+                    .description {
+                        font-size: 14px;
+                        font-family: Roboto-Regular;
+                    }
+                }
             }
         }
 
@@ -1147,13 +1168,13 @@ body {
     }
 
     img {
-        width: 32px;
-        height: 32px;
+        width: 35px;
+        height: 35px;
     }
 }
 
 .slick-next {
-    right: 0px;
+    right: 5px;
     z-index: 999;
 }
 
