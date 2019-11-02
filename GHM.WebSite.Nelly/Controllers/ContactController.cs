@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using GHM.Infrastructure.Extensions;
 using GHM.Website.Nelly.Models;
 using GHM.WebSite.Nelly.Helper;
+using GHM.WebSite.Nelly.Models;
 using GHM.WebSite.Nelly.ViewModels;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
@@ -18,8 +19,10 @@ namespace GHM.Website.Nelly.Controllers
         private readonly IMemoryCache _cache;
         private readonly IFeedbackService _feedbackService;
         private readonly ICoreService _coreService;
+        private readonly IAgencyInfoService _agencyInfoService;
 
-        public ContactController(IConfiguration configuration, IMemoryCache cache, IFeedbackService feedbackService,
+        public ContactController(IConfiguration configuration, IMemoryCache cache,
+            IFeedbackService feedbackService, IAgencyInfoService agency,
             IBrandService brandService, IBranchContactService branchContactService, ICoreService coreService,
              IMenuService menuService, ISettingService settingService, ISocialNetworkService socialNetworkService, ILanguageService languageService)
              : base(configuration, cache, brandService, branchContactService, menuService, settingService, socialNetworkService, languageService)
@@ -28,6 +31,7 @@ namespace GHM.Website.Nelly.Controllers
             _cache = cache;
             _feedbackService = feedbackService;
             _coreService = coreService;
+            _agencyInfoService = agency;
         }
 
         [Route("lien-he")]
@@ -74,6 +78,25 @@ namespace GHM.Website.Nelly.Controllers
             var feedbackMetaData = JsonConvert.DeserializeObject<GHM.WebsiteClient.Api.Domain.ModelMetas.FeedbackMeta>(JsonConvert.SerializeObject(feedback));
            
             var result = await _feedbackService.Insert(apiService.TenantId, feedbackMetaData);
+
+            return Json(result);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("dang-ky-dai-ly")]
+        public async Task<JsonResult> AgencyRegister(AgencyMeta agencyMeta)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(GetErrorsInModelState());
+            }
+
+            var apiService = _configuration.GetApiServiceInfo();
+
+            var agencyMetaData = JsonConvert.DeserializeObject<GHM.WebsiteClient.Api.Domain.ModelMetas.AgencyInfoMeta>(JsonConvert.SerializeObject(agencyMeta));
+            agencyMetaData.TenantId = apiService.TenantId;
+            var result = await _agencyInfoService.Insert(agencyMetaData);
 
             return Json(result);
         }

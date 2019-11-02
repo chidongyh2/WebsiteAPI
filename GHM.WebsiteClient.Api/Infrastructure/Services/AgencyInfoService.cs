@@ -55,116 +55,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
             }
         }
 
-        public async Task<ActionResultResponse<string>> Insert(string tenantId, AgencyInfoMeta agencyInfoMeta)
-        {
-            var agencyInfoId = Guid.NewGuid().ToString();
-
-            // Insert new AgencyInfo.
-            var resultInsertAgencyInfo = await InsertAgencyInfoAsync(new AgencyInfo
-            {
-                Id = agencyInfoId,
-                ConcurrencyStamp = agencyInfoId,
-                Email = agencyInfoMeta.Email?.Trim(),
-                PhoneNumber = agencyInfoMeta.PhoneNumber?.Trim(),
-                Website = agencyInfoMeta.Website?.Trim(),
-                IdCard = agencyInfoMeta.IdCard?.Trim(),
-                IdCardDate = agencyInfoMeta.IdCardDate,
-                NationalId = agencyInfoMeta.NationalId?.Trim(),
-                ProvinceId = agencyInfoMeta.ProvinceId?.Trim(),
-                DistrictId = agencyInfoMeta.DistrictId?.Trim(),
-                Length = agencyInfoMeta.Length,
-                Width = agencyInfoMeta.Width,
-                Height = agencyInfoMeta.Height,
-                TotalArea = agencyInfoMeta.TotalArea,
-                StartTime = agencyInfoMeta.StartTime,
-                GoogleMap = agencyInfoMeta.GoogleMap?.Trim(),
-                IsShow = agencyInfoMeta.IsShow,
-                Order = agencyInfoMeta.Order,
-                IsActive = agencyInfoMeta.IsActive,
-                TenantId = tenantId,
-                CreatorId = string.Empty,
-                CreatorFullName = string.Empty
-            });
-
-
-            if (resultInsertAgencyInfo <= 0)
-                return new ActionResultResponse<string>(resultInsertAgencyInfo,_websiteResourceService.GetString(ErrorMessage.SomethingWentWrong));
-
-
-
-            if (agencyInfoMeta.AgencyInfoTranslationMetas.Count > 0)
-            {
-                var resultInsertTranslation = await InsertAgencyInfoTranslation();
-                if (resultInsertTranslation.Code <= 0)
-                    return resultInsertTranslation;
-            }
-
-
-            return new ActionResultResponse<string>(1,_websiteResourceService.GetString("Add new agency info successful."),string.Empty, agencyInfoId);
-
-            async Task<ActionResultResponse<string>> InsertAgencyInfoTranslation()
-            {
-                foreach (var agencyInfoTranslation in agencyInfoMeta.AgencyInfoTranslationMetas)
-                {
-
-                    var agencyInfoTranslationInsert = new AgencyInfoTranslation
-                    {
-                        TenantId = tenantId,
-                        AgencyInfoId = agencyInfoId,
-                        LanguageId = agencyInfoTranslation.LanguageId.Trim(),
-                        Name = agencyInfoTranslation.Name.Trim(),
-                        IdCardAddress = agencyInfoTranslation.IdCardAddress?.Trim(),
-                        Address = agencyInfoTranslation.Address?.Trim(),
-                        AddressRegistered = agencyInfoTranslation.AddressRegistered?.Trim(),
-                        NationalName = agencyInfoTranslation.NationalName?.Trim(),
-                        ProvinceName = agencyInfoTranslation.ProvinceName?.Trim(),
-                        DistrictName = agencyInfoTranslation.DistrictName?.Trim()
-                    };
-
-                    await InsertAgencyInfoTranslationAsync(agencyInfoTranslationInsert);
-                }
-
-                return new ActionResultResponse<string>(1, _websiteResourceService.GetString("Add new agency info translation successful."),string.Empty, agencyInfoId);
-            }
-        }
-
-
-        
-
-        private async Task<int> InsertAgencyInfoTranslationAsync(AgencyInfoTranslation agencyInfoTranslation)
-        {
-            try
-            {
-                int rowAffected = 0;
-                using (SqlConnection con = new SqlConnection(_connectionString))
-                {
-                    if (con.State == ConnectionState.Closed)
-                        await con.OpenAsync();
-
-                    DynamicParameters param = new DynamicParameters();
-                    param.Add("@TenantId", agencyInfoTranslation.TenantId);
-                    param.Add("@LanguageId", agencyInfoTranslation.LanguageId);
-                    param.Add("@AgencyInfoId", agencyInfoTranslation.AgencyInfoId);
-                    param.Add("@Name", agencyInfoTranslation.Name);
-                    param.Add("@IdCardAddress", agencyInfoTranslation.IdCardAddress);
-                    param.Add("@Address", agencyInfoTranslation.Address);
-                    param.Add("@AddressRegistered", agencyInfoTranslation.AddressRegistered);
-                    param.Add("@NationalName", agencyInfoTranslation.NationalName);
-                    param.Add("@ProvinceName", agencyInfoTranslation.ProvinceName);
-                    param.Add("@DistrictName", agencyInfoTranslation.DistrictName);
-                    param.Add("@IsDelete", agencyInfoTranslation.IsDelete);
-                    rowAffected = await con.ExecuteAsync("[dbo].[spAgencyInfoTranslation_Insert]", param, commandType: CommandType.StoredProcedure);
-                }
-                return rowAffected;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "[dbo].[spAgencyInfoTranslation_Insert] InsertAsync AgencyInfoTranslationRepository Error.");
-                return -1;
-            }
-        }
-
-        private async Task<int> InsertAgencyInfoAsync(AgencyInfo agencyInfo)
+        public async Task<int> Insert(AgencyInfoMeta agencyInfo)
         {
             try
             {
@@ -185,7 +76,6 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     {
                         param.Add("@IdCardDate", agencyInfo.IdCardDate);
                     }
-                    param.Add("@NationalId", agencyInfo.NationalId);
                     param.Add("@ProvinceId", agencyInfo.ProvinceId);
                     param.Add("@DistrictId", agencyInfo.DistrictId);
                     param.Add("@Length", agencyInfo.Length);
@@ -196,35 +86,25 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     {
                         param.Add("@StartTime", agencyInfo.StartTime);
                     }
-                    param.Add("@GoogleMap", agencyInfo.GoogleMap);
-                    param.Add("@Order", agencyInfo.Order);
-                    param.Add("@IsShow", agencyInfo.IsShow);
-                    param.Add("@IsActive", agencyInfo.IsActive);
-                    param.Add("@IsDelete", agencyInfo.IsDelete);
                     param.Add("@ConcurrencyStamp", agencyInfo.ConcurrencyStamp);
-                    if (agencyInfo.CreateTime != null && agencyInfo.CreateTime != DateTime.MinValue)
-                    {
-                        param.Add("@CreateTime", agencyInfo.CreateTime);
-                    }
-                    param.Add("@CreatorId", agencyInfo.CreatorId);
-                    param.Add("@CreatorFullName", agencyInfo.CreatorFullName);
-                    if (agencyInfo.LastUpdate != null && agencyInfo.LastUpdate != DateTime.MinValue)
-                    {
-                        param.Add("@LastUpdate", agencyInfo.LastUpdate);
-                    }
-                    param.Add("@LastUpdateUserId", agencyInfo.LastUpdateUserId);
-                    param.Add("@LastUpdateFullName", agencyInfo.LastUpdateFullName);
-                    rowAffected = await con.ExecuteAsync("[dbo].[spAgencyInfo_Insert]", param, commandType: CommandType.StoredProcedure);
+                    param.Add("@GoogleMap", agencyInfo.GoogleMap);
+                    param.Add("@FullName", agencyInfo.FullName);
+                    param.Add("@AgencyName", agencyInfo.AgencyName);
+                    param.Add("@ProvinceName", agencyInfo.ProvinceName);
+                    param.Add("@DistinctName", agencyInfo.DistrictName);
+                    param.Add("@Address", agencyInfo.Address);
+                    param.Add("@AddressRegistered", agencyInfo.AddressRegistered);
+                    param.Add("@IdCardAddress", agencyInfo.IdCardAddress);
+
+                    rowAffected = await con.ExecuteAsync("[dbo].[sp_AgencyInfos_Insert_FromClient", param, commandType: CommandType.StoredProcedure);
                 }
                 return rowAffected;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "[dbo].[spAgencyInfo_Insert] InsertAsync AgencyInfoRepository Error.");
+                _logger.LogError(ex, "[dbo].[sp_AgencyInfos_Insert_FromClient] InsertAsync AgencyInfoRepository Error.");
                 return -1;
             }
         }
-
-
     }
 }

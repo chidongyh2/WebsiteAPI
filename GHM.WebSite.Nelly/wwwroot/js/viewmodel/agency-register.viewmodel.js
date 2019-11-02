@@ -63,10 +63,13 @@
     $(document).ready(function () {
         self.listProvince(listProvince);
 
-        $('#startTimePicker').datetimepicker({  
-            format: 'YYYY-MM-DD'
-        }).on("changeDate", function (e) {
+        $("#startTimePicker").datetimepicker().on("dp.change", function (e) {
+            console.log(e.date);
+        });
+
+        $('#startTimePicker').change(function (e) {
             console.log("Date changed: ", e.date);
+            //Change code!
         });
 
         $('#idCardDateTimePicker').datetimepicker({
