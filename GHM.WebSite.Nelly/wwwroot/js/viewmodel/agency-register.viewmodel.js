@@ -57,6 +57,25 @@
 
     self.save = function () {
         if ($('#formInsertUpdate').valid()) {
+            self.isSending(true);
+
+            //$.post("/dang-ky-dai-ly",
+            //    {
+            //        fullName: self.fullName(),
+            //        phoneNumber: self.phoneNumber(),
+            //        email: self.email(),
+            //        address: self.address(),
+            //        note: self.note(),
+            //        listProduct: listProduct,
+            //        __RequestVerificationToken: token
+            //    }, function (result) {
+            //        self.isSending(false);
+            //        if (result > 0) {
+            //            $('#ordersuccessfulModal').modal('show');
+            //        }
+
+            //        toastr.error(result);
+            //    });
         }
     };
 
@@ -64,17 +83,12 @@
         self.listProvince(listProvince);
 
         $("#startTimePicker").datetimepicker().on("dp.change", function (e) {
-            console.log(e.date);
-        });
-
-        $('#startTimePicker').change(function (e) {
-            console.log("Date changed: ", e.date);
-            //Change code!
+            self.startTime(moment($("#startTimePicker").val()).format('DD/MM/YYYY'));
         });
 
         $('#idCardDateTimePicker').datetimepicker({
         }).on('dp.change', function (event) {
-            self.idCardDate($('#idCardDateTimePicker').val());
+            self.idCardDate(moment($("#idCardDateTimePicker").val()).format('DD/MM/YYYY'));
         });
     });
 }
