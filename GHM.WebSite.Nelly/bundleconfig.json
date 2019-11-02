@@ -153,5 +153,11 @@
     "inputFiles": [
       "wwwroot/lib/bootstrap-datepicker/css/bootstrap-datepicker3.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.min.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css"
+    ]
   }
 ]

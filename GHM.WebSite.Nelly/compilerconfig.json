@@ -54,5 +54,21 @@
   {
     "outputFile": "wwwroot/lib/bootstrap-datepicker/js/bootstrap-datepicker.vi.min.es5.js",
     "inputFile": "wwwroot/lib/bootstrap-datepicker/js/bootstrap-datepicker.vi.min.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/moment.es5.js",
+    "inputFile": "wwwroot/lib/moment.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-datetimepicker-master/less/_bootstrap-datetimepicker.css",
+    "inputFile": "wwwroot/lib/bootstrap-datetimepicker-master/less/_bootstrap-datetimepicker.less"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-datetimepicker-master/less/bootstrap-datetimepicker-build.css",
+    "inputFile": "wwwroot/lib/bootstrap-datetimepicker-master/less/bootstrap-datetimepicker-build.less"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.es5.js",
+    "inputFile": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"
   }
 ]

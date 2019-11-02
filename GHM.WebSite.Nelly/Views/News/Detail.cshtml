@@ -14,12 +14,12 @@
     var breadcrumbs = new List<Breadcrumb>
    {
         new Breadcrumb()
-        {Name = "Tin tức",
+        {Name = "Cẩm nang làm đẹp",
         IsCurrent = false,
         Url = "tin-tuc"
         },
         new Breadcrumb()
-        {Name = Model.Title,
+        {Name = Common.SubString(Model.Title, 20),
         IsCurrent = true,
         },
 

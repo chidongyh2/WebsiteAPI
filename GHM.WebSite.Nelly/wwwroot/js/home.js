@@ -6,7 +6,7 @@
         centerMode: countNewsHot >= 3,
         autoplay: false,
         slideMargin: 20,
-        autoplayTimeout: 2000,
+        autoplayTimeout: 3000,
         focusOnSelect: true,
         lazyLoad: 'ondemand',
         prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',
@@ -42,7 +42,7 @@
         dotsEach: true,
         navigation: true,
         animateIn: effectSlider,
-        interval: 3000,
+        interval: 5000,
         nav: true,
         navText: ["<img src='/images/facion/pev.png'/>", "<img src='/images/facion/nex.png'/>"]
     });

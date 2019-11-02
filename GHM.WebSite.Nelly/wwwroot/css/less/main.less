@@ -162,8 +162,13 @@ body {
 
         button {
             img {
-                width: 30px;
-                height: 30px;
+                width: 35px;
+                height: 35px;
+
+                @media @mobile {
+                    width: 30px;
+                    height: 30px;
+                }
             }
 
             span {
@@ -316,6 +321,17 @@ body {
             padding-top: 20px;
         }
     }
+
+    .lSAction {
+        .lSPrev, .lSNext {
+            top: 42%;
+
+            img {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
 }
 
 #agency {
@@ -330,6 +346,17 @@ body {
 
             img {
                 width: 100%;
+            }
+        }
+
+        @media @mobile {
+            .slick-next, .slick-prev {
+                top: 60%;
+
+                img {
+                    width: 25px;
+                    height: 25px;
+                }
             }
         }
     }
@@ -455,6 +482,7 @@ body {
                 -webkit-appearance: none;
                 background-position-x: 305px;
                 background-size: contain;
+                background-size: 25px;
             }
 
             .btn-search {
@@ -1087,7 +1115,8 @@ body {
 
             .news-content {
                 display: none;
-                text-align:center;
+                text-align: center;
+
                 @media @mobile {
                     display: block;
 
@@ -1158,6 +1187,9 @@ body {
 }
 
 .slick-next, .slick-prev {
+    width: unset;
+    height: unset;
+
     &:before {
         font-size: unset;
         line-height: 1;
@@ -1174,7 +1206,7 @@ body {
 }
 
 .slick-next {
-    right: 5px;
+    right: -10px;
     z-index: 999;
 }
 
@@ -1815,8 +1847,13 @@ body {
         }
 
         img {
-            width: 25px;
-            height: 25px;
+            width: 35px;
+            height: 35px;
+
+            @media @mobile {
+                width: 30px;
+                height: 30px;
+            }
         }
     }
 }
@@ -1986,50 +2023,30 @@ body {
     }
 
     .lSNext {
-        right: 0px;
+        right: 1px;
 
         @media @mobile {
-            right: 5px;
+            right: 1px;
         }
     }
 
     a {
-        background-color: @color-white;
-        color: white;
-        width: 25px;
-        height: 25px;
-        text-align: center;
         vertical-align: middle;
-        margin-top: -4px;
-        top: 50%;
+        top: 48%;
         border-radius: 50%;
-        opacity: 0.7;
+        opacity: 1;
+        background-image: none !important;
+        width: unset !important;
+        border-radius: unset;
+        margin-top: unset;
         //border: 2px solid @color-border;
         @media @mobile {
-            width: 18px;
-            height: 18px;
-            top: 55%;
-        }
-
-        i {
-            font-size: 11px;
-            vertical-align: middle;
-            color: #BDBCC1;
-            vertical-align: middle;
-            position: absolute;
-            top: 7px;
-            right: 7px;
-
-            @media @mobile {
-                padding-top: 5px;
-                top: -2px;
-                right: 3px;
-            }
+            top: 43%;
         }
 
         img {
-            width: 25px;
-            height: 25px;
+            width: 35px;
+            height: 35px;
         }
     }
 }
@@ -2044,6 +2061,15 @@ body {
 
         @media @mobile {
             width: 100%;
+
+            .lSAction {
+                a {
+                    img {
+                        width: 25px;
+                        height: 25px;
+                    }
+                }
+            }
         }
     }
 }
@@ -2374,13 +2400,11 @@ body {
     }
 
     .lSAction a {
-        top: 53%;
-        width: 20px;
-        height: 20px;
+        top: 47%;
 
         img {
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
         }
     }
 
@@ -3244,7 +3268,7 @@ body {
 
                 a {
                     text-decoration: none;
-                    color: #FC9600;
+                    color: @color-text;
                     transition: 0.5s ease-in-out;
                     font-size: 22px;
                     font-family: Roboto-Regular;

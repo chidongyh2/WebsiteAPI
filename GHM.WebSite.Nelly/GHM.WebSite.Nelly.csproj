@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="bootstrap" Version="4.3.1" />
     <PackageReference Include="DataAnnotationsExtensions" Version="5.0.1.27" />
     <PackageReference Include="DeviceDetector.NET.NetCore" Version="3.9.2.2" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.0.100" />
@@ -42,9 +41,6 @@
     <None Include="wwwroot\fonts\ionicons.svg" />
     <None Include="wwwroot\fonts\Material-Design-Iconic-Font.svg" />
     <None Include="wwwroot\fonts\Material-Design-Iconic-Font.woff2" />
-    <None Include="wwwroot\lib\bootstrap-datepicker\js\bootstrap-datepicker.js" />
-    <None Include="wwwroot\lib\bootstrap-datepicker\js\bootstrap-datepicker.vi-VN.js" />
-    <None Include="wwwroot\lib\bootstrap-datepicker\js\bootstrap-datepicker.vi.min.js" />
     <None Include="wwwroot\lib\EasyZoom-master\.editorconfig" />
     <None Include="wwwroot\lib\EasyZoom-master\.gitignore" />
     <None Include="wwwroot\lib\EasyZoom-master\.jshintrc" />

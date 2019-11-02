@@ -17,7 +17,8 @@
     var url = ViewBag.Url;
     ViewBag.Breadcrumb = breadcrumbs;
 }
-<link href="~/lib/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 <partial name="_Breadcumb" />
 <div class="register-agency">
     <div class="container cm-pdt-20 cm-mgb-20 ">
@@ -255,7 +256,7 @@
                                   {"class", "form-control"},
                                   {"data-bind", "value: startTime"},
                                   {"id", "startTimePicker"},
-                                   {"valueUpdate","afterkeydown" },
+                                  {"valueUpdate","afterkeydown" },
                                   {"placeHolder", "Nhập nội dung"}
                              })
                         @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
@@ -289,7 +290,8 @@
         var listProvince = @(ViewBag.ListProvice != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProvice, jsonSerializerSettings)) : "[]");
     </script>
     <script src="~/lib/jquery.inputmask.js"></script>
-    <script src="~/lib/bootstrap-datepicker/js/bootstrap-datepicker.vi.min.es5.min.js"></script>
+    <script src="~/lib/moment.js"></script>
+    <script src="~/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"></script>
     <script src="~/js/viewmodel/agency-register.viewmodel.min.js"></script>
 }
 

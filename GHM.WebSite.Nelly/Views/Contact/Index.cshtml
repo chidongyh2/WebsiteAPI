@@ -4,6 +4,10 @@
     var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
     var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
     var officeHeadquarters = listBranch.Where(x => x.IsOffice.Value).FirstOrDefault();
+    var jsonSerializerSettings = new JsonSerializerSettings
+    {
+        ContractResolver = new CamelCasePropertyNamesContractResolver()
+    };
 }
 <partial name="_Breadcumb" />
 @*data-src="/images/bgr-web/bgr lien he-19.jpg"*@
@@ -98,17 +102,14 @@
                 <div class="angency-system">
                     <div class="form-search">
                         <h4>Tìm cửa hàng</h4>
-                        <select class="form-control">
-                            <option value="volvo">Chọn tỉnh/Thành phố</option>
-                            <option value="volvo">Hà Nội</option>
-                            <option value="saab">Tp HCM</option>
-                        </select>
-                        <select class="form-control">
-                            <option value="volvo">Chọn quận/Huyện</option>
-                            <option value="volvo">Thanh Oai</option>
-                            <option value="saab">Đống Đa</option>
-                            <option value="mercedes">Từ Liêm</option>
-                        </select>
+                        <select id="selectCampaignStatus" class="form-control"
+                                data-live-search="true" data-bind="options: listProvince,
+                                                        optionsValue: 'id', optionsText: 'name', value: provinceId,
+                                                        optionsCaption: '-- Tỉnh/TP --'" title="-- Tỉnh/TP --"></select>
+                        <select id="selectCampaignStatus" class="form-control"
+                                data-live-search="true" data-bind="options: listDistrict,
+                                                        optionsValue: 'id', optionsText: 'name', value: districtId,
+                                                        optionsCaption: '-- Quận/Huyện --'" title="-- Quận/Huyện --"></select>
                         <button class="btn btn-block btn-search">Tìm kiếm</button>
                     </div>
                     <ul id="list-angency-system">
@@ -180,6 +181,7 @@
 
 @section scripts{
     <script type="text/javascript">
+                var listProvince = @(ViewBag.ListProvice != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProvice, jsonSerializerSettings)) : "[]");
             var websiteSetting = @Html.Raw(JsonConvert.SerializeObject(ViewBag.WebsiteSetting));
             var branchIsOffice = @Html.Raw(JsonConvert.SerializeObject(officeHeadquarters));
     </script>

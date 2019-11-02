@@ -38,14 +38,14 @@ namespace GHM.WebSite.Nelly.Controllers
 
         [Route("trung-tam-tro-giup")]
         [Route("trung-tam-tro-giup.html")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string group)
         {
             var apiService = _configuration.GetApiServiceInfo();
             ViewBag.ListFaqGroup = await _faqService.FaqGroupSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, 1, int.MaxValue);
 
             ViewBag.ListFaq = await _faqService.FaqSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name,
                 null, string.Empty, 1, int.MaxValue);
-
+            ViewBag.GroupName = group;
             if (_cache.TryGetValue($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", out MenuDetailViewModel CategoryMiddleCache))
             {
                 ViewBag.MenuContact = CategoryMiddleCache;
