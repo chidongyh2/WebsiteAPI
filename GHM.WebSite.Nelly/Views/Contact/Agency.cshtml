@@ -17,7 +17,6 @@
     var url = ViewBag.Url;
     ViewBag.Breadcrumb = breadcrumbs;
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 <link href="~/lib/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 <partial name="_Breadcumb" />
 <div class="register-agency">
@@ -278,6 +277,8 @@
                 </div>
                 <div class="col-sm-12">
                     <button class="btn btn-block btn-register">
+                        <i class="fa fa-spin fa-spinner" data-bind="visible:isSending()"
+                           style="display:none"></i>
                         Đăng ký
                     </button>
                 </div>
@@ -285,6 +286,7 @@
         </div>
     </div>
 </div>
+
 @section scripts{
     <script type="text/javascript">
         var listProvince = @(ViewBag.ListProvice != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProvice, jsonSerializerSettings)) : "[]");

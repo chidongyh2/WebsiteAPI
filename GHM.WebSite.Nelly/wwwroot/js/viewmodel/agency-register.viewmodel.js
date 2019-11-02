@@ -20,6 +20,7 @@
     self.provinceName = ko.observable();
     self.districtId = ko.observable();
     self.districtName = ko.observable();
+    self.isSending = ko.observable(false);
 
     self.totalArea = ko.computed(function () {
         return self.length() * self.width();
@@ -46,7 +47,7 @@
     });
 
     self.districtId.subscribe(function (value) {
-        var districtInfo = _.find(self.listProvince(), function (item) {
+        var districtInfo = _.find(self.listDistrict(), function (item) {
             return item.id === value;
         });
 
@@ -59,34 +60,69 @@
         if ($('#formInsertUpdate').valid()) {
             self.isSending(true);
 
-            //$.post("/dang-ky-dai-ly",
-            //    {
-            //        fullName: self.fullName(),
-            //        phoneNumber: self.phoneNumber(),
-            //        email: self.email(),
-            //        address: self.address(),
-            //        note: self.note(),
-            //        listProduct: listProduct,
-            //        __RequestVerificationToken: token
-            //    }, function (result) {
-            //        self.isSending(false);
-            //        if (result > 0) {
-            //            $('#ordersuccessfulModal').modal('show');
-            //        }
+            $.post("/dang-ky-dai-ly",
+                {
+                    fullName: self.fullName(),
+                    phoneNumber: self.phoneNumber(),
+                    email: self.email(),
+                    address: self.address(),
+                    idCard: self.idCard(),
+                    idCardDate: self.idCardDate(),
+                    idCardAddress: self.idCardAddress(),
+                    agencyName: self.agencyName(),
+                    provinceId: self.provinceId(),
+                    provinceName: self.provinceName(),
+                    districtId: self.districtId(),
+                    districtName: self.districtName(),
+                    addressRegistered: self.addressRegistered(),
+                    length: self.length(),
+                    width: self.width(),
+                    height: self.height(),
+                    totalArea: self.totalArea(),
+                    startTime: self.startTime(),
+                    website: self.website(),
+                    __RequestVerificationToken: token
+                }, function (result) {
+                    self.isSending(false);
+                    if (result === -1) {
+                        toastr.error("Số điện thoại đã được đăng ký");
+                        return;
+                    }
 
-            //        toastr.error(result);
-            //    });
+                    if (result > 0) {
+                        $('#popupsuccessfulModal').modal('show');
+                        return;
+                    }
+
+                    toastr.error(result);
+                });
         }
     };
 
     $(document).ready(function () {
         self.listProvince(listProvince);
 
-        $("#startTimePicker").datetimepicker().on("dp.change", function (e) {
+        $("#startTimePicker").datetimepicker({
+            icons: {
+                time: 'fa fa-calendar',
+                date: 'fa fa-calendar',
+                up: "fa fa-chevron-circle-up",
+                down: "fa fa-chevron-circle-down",
+                next: 'fa fa-chevron-circle-right',
+                previous: 'fa fa-chevron-circle-left'
+            }}).on("dp.change", function (e) {
             self.startTime(moment($("#startTimePicker").val()).format('DD/MM/YYYY'));
         });
 
         $('#idCardDateTimePicker').datetimepicker({
+            icons: {
+                time: 'fa fa-calendar',
+                date: 'fa fa-calendar',
+                    up: "fa fa-chevron-circle-up",
+                    down: "fa fa-chevron-circle-down",
+                    next: 'fa fa-chevron-circle-right',
+                    previous: 'fa fa-chevron-circle-left'
+                }
         }).on('dp.change', function (event) {
             self.idCardDate(moment($("#idCardDateTimePicker").val()).format('DD/MM/YYYY'));
         });

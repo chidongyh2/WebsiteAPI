@@ -10,6 +10,6 @@ namespace GHM.WebsiteClient.Api.Domain.IServices
     {
         Task<List<AgencyInfoViewModel>> AgencyInfoGetClient(string tenantId, string languageId, string provinceId , string districtId);
 
-        Task<int> Insert(AgencyInfoMeta agencyInfoMeta);
+        Task<int> Insert(string languageId, AgencyInfoMeta agencyInfoMeta);
     }
 }

@@ -55,11 +55,11 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
             }
         }
 
-        public async Task<int> Insert(AgencyInfoMeta agencyInfo)
+        public async Task<int> Insert(string languageId, AgencyInfoMeta agencyInfo)
         {
             try
             {
-                int rowAffected = 0;
+
                 using (SqlConnection con = new SqlConnection(_connectionString))
                 {
                     if (con.State == ConnectionState.Closed)
@@ -68,24 +68,19 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     DynamicParameters param = new DynamicParameters();
                     param.Add("@Id", agencyInfo.Id);
                     param.Add("@TenantId", agencyInfo.TenantId);
+                    param.Add("@LanguageId", languageId);
                     param.Add("@Email", agencyInfo.Email);
                     param.Add("@PhoneNumber", agencyInfo.PhoneNumber);
                     param.Add("@Website", agencyInfo.Website);
                     param.Add("@IdCard", agencyInfo.IdCard);
-                    if (agencyInfo.IdCardDate != null && agencyInfo.IdCardDate != DateTime.MinValue)
-                    {
-                        param.Add("@IdCardDate", agencyInfo.IdCardDate);
-                    }
+                    param.Add("@IdCardDate", agencyInfo.IdCardDate);
                     param.Add("@ProvinceId", agencyInfo.ProvinceId);
                     param.Add("@DistrictId", agencyInfo.DistrictId);
                     param.Add("@Length", agencyInfo.Length);
                     param.Add("@Width", agencyInfo.Width);
                     param.Add("@Height", agencyInfo.Height);
                     param.Add("@TotalArea", agencyInfo.TotalArea);
-                    if (agencyInfo.StartTime != null && agencyInfo.StartTime != DateTime.MinValue)
-                    {
-                        param.Add("@StartTime", agencyInfo.StartTime);
-                    }
+                    param.Add("@StartTime", agencyInfo.StartTime);
                     param.Add("@ConcurrencyStamp", agencyInfo.ConcurrencyStamp);
                     param.Add("@GoogleMap", agencyInfo.GoogleMap);
                     param.Add("@FullName", agencyInfo.FullName);
@@ -96,13 +91,13 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     param.Add("@AddressRegistered", agencyInfo.AddressRegistered);
                     param.Add("@IdCardAddress", agencyInfo.IdCardAddress);
 
-                    rowAffected = await con.ExecuteAsync("[dbo].[sp_AgencyInfos_Insert_FromClient", param, commandType: CommandType.StoredProcedure);
-                }
-                return rowAffected;
+                    var result =  con.Query<int>("[dbo].[spAgencyInfos_Insert]", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    return result;
+                }               
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "[dbo].[sp_AgencyInfos_Insert_FromClient] InsertAsync AgencyInfoRepository Error.");
+                _logger.LogError(ex, "[dbo].[spAgencyInfos_Insert] InsertAsync AgencyInfoRepository Error.");
                 return -1;
             }
         }

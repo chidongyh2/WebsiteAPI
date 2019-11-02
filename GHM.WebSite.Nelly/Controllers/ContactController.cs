@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -59,7 +60,7 @@ namespace GHM.Website.Nelly.Controllers
         {
             var listProvince = await _coreService.GetProvinceByNationId(1);
             ViewBag.ListProvice = JsonConvertHelper.GetObjectFromObject<List<ObjectViewModel>>(listProvince);
-
+            ViewBag.Message = "Chúc mừng bạn đã đăng ký đại lý thành công. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất để xác nhận.";
             return View();
         }
 
@@ -96,7 +97,7 @@ namespace GHM.Website.Nelly.Controllers
 
             var agencyMetaData = JsonConvert.DeserializeObject<GHM.WebsiteClient.Api.Domain.ModelMetas.AgencyInfoMeta>(JsonConvert.SerializeObject(agencyMeta));
             agencyMetaData.TenantId = apiService.TenantId;
-            var result = await _agencyInfoService.Insert(agencyMetaData);
+            var result = await _agencyInfoService.Insert(CultureInfo.CurrentCulture.Name, agencyMetaData);
 
             return Json(result);
         }
