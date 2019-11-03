@@ -1,4 +1,5 @@
 ﻿using GHM.Infrastructure.Constants;
+using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.IServices;
 using GHM.Infrastructure.Models;
 using GHM.Infrastructure.Resources;
@@ -108,13 +109,13 @@ namespace GHM.Website.Infrastructure.Services
                 {
                     // Check name exists.
                     var isNameExists = await _agencyInfoTranslationRepository.CheckExists(agencyInfoId, tenantId,
-                      agencyInfoTranslation.LanguageId, agencyInfoTranslation.Name);
+                      agencyInfoTranslation.LanguageId, agencyInfoTranslation.AgencyName);
                     if (isNameExists)
                     {
                         await RollbackInsertAgencyInfo();
                         return new ActionResultResponse<string>(-2, _websiteResourceService.GetString(
                           "Name: \"{0}\" already exists.",
-                          agencyInfoTranslation.Name));
+                          agencyInfoTranslation.AgencyName));
                     }
 
                     var agencyInfoTranslationInsert = new AgencyInfoTranslation
@@ -122,13 +123,14 @@ namespace GHM.Website.Infrastructure.Services
                         TenantId = tenantId,
                         AgencyInfoId = agencyInfoId,
                         LanguageId = agencyInfoTranslation.LanguageId.Trim(),
-                        Name = agencyInfoTranslation.Name.Trim(),
+                        AgencyName = agencyInfoTranslation.AgencyName?.Trim(),
+                        FullName = agencyInfoTranslation.FullName?.Trim(),
+                        UnsingName = $"{agencyInfoTranslation.AgencyName.Trim()} {agencyInfoTranslation.FullName} ".StripVietnameseChars().ToLower(),
                         IdCardAddress = agencyInfoTranslation.IdCardAddress?.Trim(),
                         Address = agencyInfoTranslation.Address?.Trim(),
                         AddressRegistered = agencyInfoTranslation.AddressRegistered?.Trim(),
-                        NationalName = agencyInfoTranslation.NationalName?.Trim(),
-                        ProvinceName = agencyInfoTranslation.ProvinceName?.Trim(),
-                        DistrictName = agencyInfoTranslation.DistrictName?.Trim()
+                        ProvinceName = agencyInfoMeta.ProvinceName?.Trim(),
+                        DistrictName = agencyInfoMeta.DistrictName?.Trim()
                     };
 
                     agencyInfoTranslations.Add(agencyInfoTranslationInsert);
@@ -202,21 +204,22 @@ namespace GHM.Website.Infrastructure.Services
             foreach (var agencyInfoTranslation in agencyInfoMeta.AgencyInfoTranslationMetas)
             {
                 var isNameExists = await _agencyInfoTranslationRepository.CheckExists(info.Id, tenantId,
-                  agencyInfoTranslation.LanguageId, agencyInfoTranslation.Name);
+                  agencyInfoTranslation.LanguageId, agencyInfoTranslation.AgencyName);
                 if (isNameExists)
-                    return new ActionResultResponse(-5, _websiteResourceService.GetString("Name: \"{0}\" already exists.", agencyInfoTranslation.Name));
+                    return new ActionResultResponse(-5, _websiteResourceService.GetString("Name: \"{0}\" already exists.", agencyInfoTranslation.AgencyName));
 
                 var agencyInfoTranslationInfo =
                   await _agencyInfoTranslationRepository.GetInfo(tenantId, agencyInfoTranslation.LanguageId, agencyInfoId);
                 if (agencyInfoTranslationInfo != null)
                 {
-                    agencyInfoTranslationInfo.Name = agencyInfoTranslation.Name.Trim();
+                    agencyInfoTranslationInfo.AgencyName = agencyInfoTranslation.AgencyName.Trim();
+                    agencyInfoTranslationInfo.UnsingName = $"{agencyInfoTranslation.AgencyName.Trim()} {agencyInfoTranslation.FullName} ".StripVietnameseChars().ToLower();
+                    agencyInfoTranslationInfo.FullName = agencyInfoTranslation.FullName.Trim();
                     agencyInfoTranslationInfo.IdCardAddress = agencyInfoTranslation.IdCardAddress?.Trim();
                     agencyInfoTranslationInfo.Address = agencyInfoTranslation.Address?.Trim();
                     agencyInfoTranslationInfo.AddressRegistered = agencyInfoTranslation.AddressRegistered?.Trim();
-                    agencyInfoTranslationInfo.NationalName = agencyInfoTranslation.NationalName?.Trim();
-                    agencyInfoTranslationInfo.ProvinceName = agencyInfoTranslation.ProvinceName?.Trim();
-                    agencyInfoTranslationInfo.DistrictName = agencyInfoTranslation.DistrictName?.Trim();
+                    agencyInfoTranslationInfo.ProvinceName = agencyInfoMeta.ProvinceName?.Trim();
+                    agencyInfoTranslationInfo.DistrictName = agencyInfoMeta.DistrictName?.Trim();
                     await _agencyInfoTranslationRepository.Update(agencyInfoTranslationInfo);
                 }
                 else
@@ -226,13 +229,14 @@ namespace GHM.Website.Infrastructure.Services
                         TenantId = tenantId,
                         AgencyInfoId = agencyInfoId,
                         LanguageId = agencyInfoTranslation.LanguageId.Trim(),
-                        Name = agencyInfoTranslation.Name.Trim(),
+                        UnsingName = $"{agencyInfoTranslation.AgencyName.Trim()} {agencyInfoTranslation.FullName} ".StripVietnameseChars().ToLower(),
+                        AgencyName = agencyInfoTranslation.AgencyName.Trim(),
+                        FullName = agencyInfoTranslation.FullName.Trim(),
                         IdCardAddress = agencyInfoTranslation.IdCardAddress?.Trim(),
                         Address = agencyInfoTranslation.Address?.Trim(),
                         AddressRegistered = agencyInfoTranslation.AddressRegistered?.Trim(),
-                        NationalName = agencyInfoTranslation.NationalName?.Trim(),
-                        ProvinceName = agencyInfoTranslation.ProvinceName?.Trim(),
-                        DistrictName = agencyInfoTranslation.DistrictName?.Trim()
+                        ProvinceName = agencyInfoMeta.ProvinceName?.Trim(),
+                        DistrictName = agencyInfoMeta.DistrictName?.Trim()
                     };
                     await _agencyInfoTranslationRepository.Insert(agencyInfoTranslationInsert);
                 }
@@ -291,7 +295,8 @@ namespace GHM.Website.Infrastructure.Services
                 AgencyInfoTranslationViewModels = agencyInfoTranslations.Select(x => new AgencyInfoTranslationViewModel
                 {
                     LanguageId = x.LanguageId,
-                    Name = x.Name,
+                    AgencyName = x.AgencyName,
+                    FullName = x.FullName,
                     Address = x.Address,
                     AddressRegistered = x.AddressRegistered,
                     IdCardAddress = x.IdCardAddress,

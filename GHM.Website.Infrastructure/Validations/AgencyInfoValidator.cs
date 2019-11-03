@@ -78,15 +78,22 @@ namespace GHM.Website.Infrastructure.Validations
         public AgencyInfoTranslationValidator(IResourceService<SharedResource> sharedResourceService,
             IResourceService<GhmWebsiteResource> websiteResourceService)
         {
-            RuleFor(x => x.Name)
+            RuleFor(x => x.FullName)
                 .NotNull()
                 .WithMessage(websiteResourceService.GetString("Please enter {0}.", websiteResourceService.GetString("Name")))
                 .MaximumLength(256)
                 .WithMessage(sharedResourceService.GetString("{0} must not exceed {1} characters.",
-                websiteResourceService.GetString("Album title"), 256));
+                websiteResourceService.GetString("Full Name"), 256));
+
+            RuleFor(x => x.AgencyName)
+                .NotNull()
+                .WithMessage(websiteResourceService.GetString("Please enter {0}.", websiteResourceService.GetString("Name")))
+                .MaximumLength(256)
+                .WithMessage(sharedResourceService.GetString("{0} must not exceed {1} characters.",
+                websiteResourceService.GetString("Agency Name"), 256));
 
             RuleFor(x => x.IdCardAddress)
-                .MaximumLength(256)
+                .MaximumLength(500)
                 .WithMessage(sharedResourceService.GetString("{0} must not exceed {1} characters.", websiteResourceService.GetString("IdCardAddress"), 256));
 
             RuleFor(x => x.Address)

@@ -23,6 +23,8 @@ namespace GHM.Website.Domain.ModelMetas
         public string IsShow { get; set; }
         public bool IsActive { get; set; }
         public string ConcurrencyStamp { get; set; }
+        public string ProvinceName { get; set; }
+        public string DistrictName { get; set; }
         public List<AgencyInfoTranslationMeta> AgencyInfoTranslationMetas { get; set; }
     }
 }

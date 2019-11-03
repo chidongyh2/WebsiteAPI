@@ -14,7 +14,7 @@ namespace GHM.Website.Api.Controllers
     [Authorize]
     [Produces("application/json")]
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/agency-infos")]
     public class AgencyInfosController : GhmControllerBase
     {
         private readonly IAgencyInfoService _agencyInfoService;

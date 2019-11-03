@@ -91,6 +91,26 @@
 
                     if (result > 0) {
                         $('#popupsuccessfulModal').modal('show');
+                        self.fullName();
+                        self.phoneNumber();
+                        self.address();
+                        self.email();
+                        self.idCard();
+                        self.idCardDate();
+                        self.idCardAddress();
+                        self.agencyName();
+                        self.addressRegistered();
+                        self.website();
+                        self.length(0);
+                        self.width(0);
+                        self.height(0);
+                        self.startTime();
+                        self.listProvince([]);
+                        self.listDistrict([]);
+                        self.provinceId();
+                        self.provinceName();
+                        self.districtId();
+                        self.districtName();
                         return;
                     }
 

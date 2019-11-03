@@ -76,7 +76,7 @@ namespace GHM.WebSite.Nelly.Controllers
 
         [Route("san-pham/tim-kiem.html")]
         public async Task<IActionResult> Search(string keyword,
-            string attributeName, string attributeValueName, int page = 1, int pageSize = 6 )
+            string attributeName, string attributeValueName, int page = 1, int pageSize = 6)
         {
             var apiService = _configuration.GetApiServiceInfo();
 
@@ -86,6 +86,12 @@ namespace GHM.WebSite.Nelly.Controllers
 
             var breadcrumbs = new List<Breadcrumb>
             {
+                new Breadcrumb()
+                {
+                    Name = "Sản phẩm",
+                    IsCurrent = false,
+                    Url = "san-pham"
+                },
                 new Breadcrumb()
                 {
                     Name = !string.IsNullOrEmpty(keyword) ? $"Tìm kiếm: {keyword}" : $"{attributeName} : {attributeValueName}",
@@ -126,7 +132,7 @@ namespace GHM.WebSite.Nelly.Controllers
 
                 ViewBag.ListProduct = products?.Items;
                 ViewBag.TotalProduct = products?.TotalRows;
-            }          
+            }
 
             var productHots = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
             ViewBag.ListProductHot = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productHots?.Items);
