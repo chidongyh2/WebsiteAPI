@@ -18,5 +18,8 @@ namespace GHM.Website.Domain.IServices
         Task<ActionResultResponse> Delete(string tenantId, string agencyInfoId);
 
         Task<ActionResultResponse<AgencyInfoDetailViewModel>> GetDetail(string tenantId, string agencyInfoId);
+
+        Task<ActionResultResponse> UpdateStatus(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string lastUpdateAvata,
+            string agencyInfoId, bool status);
     }
 }

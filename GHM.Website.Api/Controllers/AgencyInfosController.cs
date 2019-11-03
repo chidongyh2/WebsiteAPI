@@ -76,5 +76,16 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
+        [Route("{id}/status/{status}"), AcceptVerbs("POST")]
+        [AllowPermission(PageId.AgencyInfo, Permission.Delete)]
+        [CheckPermission]
+        public async Task<IActionResult> UpdateStatus(string id, bool status)
+        {
+            var result = await _agencyInfoService.UpdateStatus(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, id, status);
+            if (result.Code <= 0)
+                return BadRequest(result);
+            return Ok(result);
+        }
+
     }
 }

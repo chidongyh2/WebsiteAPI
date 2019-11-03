@@ -63,7 +63,6 @@ namespace GHM.Website.Infrastructure.Services
                 Website = agencyInfoMeta.Website?.Trim(),
                 IdCard = agencyInfoMeta.IdCard?.Trim(),
                 IdCardDate = agencyInfoMeta.IdCardDate,
-                NationalId = agencyInfoMeta.NationalId?.Trim(),
                 ProvinceId = agencyInfoMeta.ProvinceId?.Trim(),
                 DistrictId = agencyInfoMeta.DistrictId?.Trim(),
                 Length = agencyInfoMeta.Length,
@@ -181,7 +180,6 @@ namespace GHM.Website.Infrastructure.Services
             info.Website = agencyInfoMeta.Website?.Trim();
             info.IdCard = agencyInfoMeta.IdCard?.Trim();
             info.IdCardDate = agencyInfoMeta.IdCardDate;
-            info.NationalId = agencyInfoMeta.NationalId?.Trim();
             info.ProvinceId = agencyInfoMeta.ProvinceId?.Trim();
             info.DistrictId = agencyInfoMeta.DistrictId?.Trim();
             info.Length = agencyInfoMeta.Length;
@@ -277,7 +275,6 @@ namespace GHM.Website.Infrastructure.Services
                 Website = info.Website,
                 IdCard = info.IdCard,
                 IdCardDate = info.IdCardDate,
-                NationalId = info.NationalId,
                 ProvinceId = info.ProvinceId,
                 DistrictId = info.DistrictId,
                 Length = info.Length,
@@ -300,9 +297,8 @@ namespace GHM.Website.Infrastructure.Services
                     Address = x.Address,
                     AddressRegistered = x.AddressRegistered,
                     IdCardAddress = x.IdCardAddress,
-                    NationalName = x.NationalName,
                     ProvinceName = x.ProvinceName,
-                    DistrictName = x.DistrictName
+                    DistrictName = x.DistrictName,                    
                 }).ToList()
             };
             return new ActionResultResponse<AgencyInfoDetailViewModel>
@@ -312,6 +308,28 @@ namespace GHM.Website.Infrastructure.Services
             };
         }
 
+        public async Task<ActionResultResponse> UpdateStatus(string tenantId, string lastUpdateUserId,
+            string lastUpdateFullName, string lastUpdateAvata, string agencyInfoId, bool isActive)
+        {
+            var info = await _agencyInfoRepository.GetInfo(agencyInfoId);
+            if (info == null)
+                return new ActionResultResponse(-1, _websiteResourceService.GetString("Agency info does not exists."));
 
+            if (info.TenantId != tenantId)
+                return new ActionResultResponse(-2, _sharedResourceService.GetString(ErrorMessage.NotHavePermission));
+
+            info.IsActive = isActive;
+            info.ConcurrencyStamp = Guid.NewGuid().ToString();
+            info.LastUpdate = DateTime.Now;
+            info.LastUpdateUserId = lastUpdateUserId;
+            info.LastUpdateFullName = lastUpdateFullName;
+
+            var result = await _agencyInfoRepository.Update(info);
+
+            if (result < 0)
+                return new ActionResultResponse(result, _websiteResourceService.GetString(ErrorMessage.SomethingWentWrong));
+
+            return new ActionResultResponse(result, _websiteResourceService.GetString("Update agency info isActive successful."));
+        }
     }
 }

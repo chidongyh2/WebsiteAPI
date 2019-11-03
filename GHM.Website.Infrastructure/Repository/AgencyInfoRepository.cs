@@ -43,7 +43,6 @@ namespace GHM.Website.Infrastructure.Repository
                     new AgencyInfoViewModel
                     {
                         Id = x.Id,
-                        TenantId = x.TenantId,
                         Email = x.Email,
                         PhoneNumber = x.PhoneNumber,
                         Website = x.Website,
@@ -54,7 +53,6 @@ namespace GHM.Website.Infrastructure.Repository
                         Height = x.Height,
                         TotalArea = x.TotalArea,
                         StartTime = x.StartTime,
-                        GoogleMap = x.GoogleMap,
                         Order = x.Order,
                         IsShow = x.IsShow,
                         IsActive = x.IsActive,
@@ -63,14 +61,14 @@ namespace GHM.Website.Infrastructure.Repository
                         FullName = xt.FullName,
                         AgencyName = xt.AgencyName,
                         ProvinceName = xt.ProvinceName,
-                        DistrictName = xt.DistrictName
+                        DistrictName = xt.DistrictName,
+                        AddressRegistered = xt.AddressRegistered
                     }).AsNoTracking();
 
             totalRows = query.Count();
 
             return query
-                .OrderByDescending(x => x.CreateTime)
-                .ThenByDescending(x => x.LastUpdate)
+                .OrderByDescending(x => x.LastUpdate)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
