@@ -13,5 +13,6 @@
         public string SeoLink { get; set; }
         public string IdPath { get; set; }
         public int? ParentId { get; set; }
+        public int? Order { get; set; }
     }
 }

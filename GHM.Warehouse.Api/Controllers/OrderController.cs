@@ -75,7 +75,7 @@ namespace GHM.Warehouse.Api.Controllers
             return Ok(result);
         }
 
-        [Route("{id}/status"), AcceptVerbs("POST")]
+        [Route("{id}/status/{status}"), AcceptVerbs("POST")]
         [AllowPermission(PageId.Order, Permission.Update)]
         [CheckPermission]
         public async Task<IActionResult> UpdateStatus(string id, OrderStatus status)

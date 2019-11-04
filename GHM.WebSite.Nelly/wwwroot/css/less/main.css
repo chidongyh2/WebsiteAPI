@@ -1852,6 +1852,9 @@ body {
   text-decoration: none;
   color: #F9A5A7;
 }
+.sidebar-product .product-replationship ul li .media-body .price {
+  padding-top: 10px;
+}
 .sidebar-product .product-replationship ul li .media-body .calendar {
   color: #949293;
   font-size: 12px;
