@@ -63,8 +63,8 @@ namespace GHM.Website.Infrastructure.Services
                 Website = agencyInfoMeta.Website?.Trim(),
                 IdCard = agencyInfoMeta.IdCard?.Trim(),
                 IdCardDate = agencyInfoMeta.IdCardDate,
-                ProvinceId = agencyInfoMeta.ProvinceId?.Trim(),
-                DistrictId = agencyInfoMeta.DistrictId?.Trim(),
+                ProvinceId = agencyInfoMeta.ProvinceId,
+                DistrictId = agencyInfoMeta.DistrictId,
                 Length = agencyInfoMeta.Length,
                 Width = agencyInfoMeta.Width,
                 Height = agencyInfoMeta.Height,
@@ -180,8 +180,8 @@ namespace GHM.Website.Infrastructure.Services
             info.Website = agencyInfoMeta.Website?.Trim();
             info.IdCard = agencyInfoMeta.IdCard?.Trim();
             info.IdCardDate = agencyInfoMeta.IdCardDate;
-            info.ProvinceId = agencyInfoMeta.ProvinceId?.Trim();
-            info.DistrictId = agencyInfoMeta.DistrictId?.Trim();
+            info.ProvinceId = agencyInfoMeta.ProvinceId;
+            info.DistrictId = agencyInfoMeta.DistrictId;
             info.Length = agencyInfoMeta.Length;
             info.Width = agencyInfoMeta.Width;
             info.Height = agencyInfoMeta.Height;

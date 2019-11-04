@@ -10,8 +10,8 @@ namespace GHM.Website.Domain.ModelMetas
         public string Website { get; set; }
         public string IdCard { get; set; }
         public DateTime? IdCardDate { get; set; }
-        public string ProvinceId { get; set; }
-        public string DistrictId { get; set; }
+        public int ProvinceId { get; set; }
+        public int DistrictId { get; set; }
         public double? Length { get; set; }
         public double? Width { get; set; }
         public double? Height { get; set; }
