@@ -24,6 +24,6 @@ namespace GHM.Website.Domain.ModelMetas
         public string ConcurrencyStamp { get; set; }
         public string ProvinceName { get; set; }
         public string DistrictName { get; set; }
-        public List<AgencyInfoTranslationMeta> AgencyInfoTranslationMetas { get; set; }
+        public List<AgencyInfoTranslationMeta> Translations { get; set; }
     }
 }

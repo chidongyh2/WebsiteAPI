@@ -2,6 +2,7 @@
 var isShowToggle = true;
 
 function callToMe() {
+    console.log(this);
     var phoneNumber = $('#phoneNumberContact').val();
     if (phoneNumber === '' && phoneNumber === undefined) {
         toastr.error('Vui lòng nhập số điện thoại');
@@ -11,7 +12,7 @@ function callToMe() {
 
     $.post("/gui-lien-he",
         {
-            fullName: phoneNumber,
+            fullName: 'Liên hệ qua số điện thoại ',
             phoneNumber: phoneNumber,
             email: 'cskh@nellydevuyst.vn',
             title: 'Hãy gọi cho tôi',

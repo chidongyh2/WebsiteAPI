@@ -85,7 +85,7 @@ namespace GHM.Website.Infrastructure.Services
 
             #region insert AgencyInfo Translation.
 
-            if (agencyInfoMeta.AgencyInfoTranslationMetas.Count > 0)
+            if (agencyInfoMeta.Translations.Count > 0)
             {
                 var resultInsertTranslation = await InsertAgencyInfoTranslation();
                 if (resultInsertTranslation.Code <= 0)
@@ -104,7 +104,7 @@ namespace GHM.Website.Infrastructure.Services
             {
 
                 var agencyInfoTranslations = new List<AgencyInfoTranslation>();
-                foreach (var agencyInfoTranslation in agencyInfoMeta.AgencyInfoTranslationMetas)
+                foreach (var agencyInfoTranslation in agencyInfoMeta.Translations)
                 {
                     // Check name exists.
                     var isNameExists = await _agencyInfoTranslationRepository.CheckExists(agencyInfoId, tenantId,
@@ -199,7 +199,7 @@ namespace GHM.Website.Infrastructure.Services
             await _agencyInfoRepository.Update(info);
 
             //udpate translate
-            foreach (var agencyInfoTranslation in agencyInfoMeta.AgencyInfoTranslationMetas)
+            foreach (var agencyInfoTranslation in agencyInfoMeta.Translations)
             {
                 var isNameExists = await _agencyInfoTranslationRepository.CheckExists(info.Id, tenantId,
                   agencyInfoTranslation.LanguageId, agencyInfoTranslation.AgencyName);
@@ -289,7 +289,7 @@ namespace GHM.Website.Infrastructure.Services
                 ConcurrencyStamp = info.ConcurrencyStamp,
                 CreateTime = info.CreateTime,
                 LastUpdate = info.LastUpdate,
-                AgencyInfoTranslationViewModels = agencyInfoTranslations.Select(x => new AgencyInfoTranslationViewModel
+                Translations = agencyInfoTranslations.Select(x => new AgencyInfoTranslationViewModel
                 {
                     LanguageId = x.LanguageId,
                     AgencyName = x.AgencyName,

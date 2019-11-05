@@ -61,16 +61,14 @@ namespace GHM.Website.Infrastructure.Validations
                 .NotNull()
                 .WithMessage(sharedResourceService.GetString("{0} can not be null.", websiteResourceService.GetString("IdCard")));
 
-            RuleFor(x => x.IdCardDate)
-                .NotNull()
-                .WithMessage(sharedResourceService.GetString("{0} can not be null.", websiteResourceService.GetString("IdCardDate")))
+            RuleFor(x => x.IdCardDate)              
                 .MustBeValidDate(sharedResourceService.GetString(ValidatorMessage.InValid, websiteResourceService.GetString("IdCard Date")));
 
-            RuleFor(x => x.AgencyInfoTranslationMetas)
+            RuleFor(x => x.Translations)
                     .Must(x => x != null && x.Count > 0)
                     .WithMessage(sharedResourceService.GetString("Please select at least one language."));
 
-                RuleForEach(x => x.AgencyInfoTranslationMetas).SetValidator(new AgencyInfoTranslationValidator(sharedResourceService, websiteResourceService));
+                RuleForEach(x => x.Translations).SetValidator(new AgencyInfoTranslationValidator(sharedResourceService, websiteResourceService));
             }
         }
     public class AgencyInfoTranslationValidator : AbstractValidator<AgencyInfoTranslationMeta>

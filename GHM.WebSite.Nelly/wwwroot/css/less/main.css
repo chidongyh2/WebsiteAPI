@@ -578,8 +578,8 @@ body {
   border-right: 1px solid #949293;
 }
 #news-detail .news-detail .content {
-  padding-bottom: 30px;
-  padding-top: 0px;
+  margin-bottom: 30px;
+  margin-top: 0px;
   font-family: Opensans;
 }
 #news-detail .news-detail .content img {
@@ -1469,7 +1469,7 @@ body {
 #product-categoty-hot-in-homepage .btn-toolbar {
   padding-bottom: 20px;
 }
-#box-hotline {
+.box-hotline {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1482,7 +1482,7 @@ body {
   border-radius: 4px;
   margin-bottom: 20px;
 }
-#box-hotline .header {
+.box-hotline .header {
   display: flex;
   align-content: center;
   align-items: center;
@@ -1492,18 +1492,18 @@ body {
   padding-top: 20px;
   /*border-bottom: 2px solid @color-white;*/
 }
-#box-hotline .header h4 {
+.box-hotline .header h4 {
   color: #3F3F3F;
   font-family: Roboto-Regular;
   font-size: 16px;
   font-weight: bold;
 }
 @media only screen and (max-width: 1200px) {
-  #box-hotline .header h4 {
+  .box-hotline .header h4 {
     font-size: 15px;
   }
 }
-#box-hotline .content {
+.box-hotline .content {
   padding: 70px;
   display: flex;
   align-items: center;
@@ -1511,26 +1511,26 @@ body {
   flex-direction: row;
   width: 100%;
 }
-#box-hotline .content .inbox {
+.box-hotline .content .inbox {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#box-hotline .content .inbox .text-send-mobile {
+.box-hotline .content .inbox .text-send-mobile {
   text-align: center;
   font-family: Roboto-Regular;
   font-size: 16px;
   color: #3F3F3F;
 }
 @media only screen and (max-width: 1200px) {
-  #box-hotline .content .inbox .text-send-mobile {
+  .box-hotline .content .inbox .text-send-mobile {
     font-size: 15px;
   }
 }
-#box-hotline .content .inbox .input-group {
+.box-hotline .content .inbox .input-group {
   margin-top: 10px;
 }
-#box-hotline .content .inbox .input-group input {
+.box-hotline .content .inbox .input-group input {
   border-bottom-left-radius: 2px solid #EEEDEB;
   border-top-left-radius: 2px solid #EEEDEB;
   border-radius: 4px;
@@ -1539,22 +1539,22 @@ body {
   width: 250px;
 }
 @media only screen and (max-width: 1200px) {
-  #box-hotline .content .inbox .input-group input {
+  .box-hotline .content .inbox .input-group input {
     width: 150px;
   }
 }
-#box-hotline .content .inbox .input-group .input-group-btn .btn-send-phone {
+.box-hotline .content .inbox .input-group .input-group-btn .btn-send-phone {
   padding: 6px 20px;
   background-color: #F9A5A7;
   color: #FFFFFF;
   text-transform: uppercase;
   font-size: 14px;
 }
-#box-hotline .content .image-right img {
+.box-hotline .content .image-right img {
   margin-top: -80px;
 }
 @media only screen and (max-width: 1200px) {
-  #box-hotline .content .image-right img {
+  .box-hotline .content .image-right img {
     display: none;
   }
 }
