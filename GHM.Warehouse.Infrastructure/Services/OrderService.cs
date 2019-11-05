@@ -173,7 +173,7 @@ namespace GHM.Warehouse.Infrastructure.Services
         public async Task<ActionResultResponse<string>> UpdateStatus(string tenantId,
             string lastUpdateUserId, string lastUpdateFullName, string id, OrderStatus status)
         {
-            var orderInfo = await _orderRepository.GetInfo(tenantId, id, true);
+            var orderInfo = await _orderRepository.GetInfo(tenantId, id, false);
             if (orderInfo == null)
                 return new ActionResultResponse<string>(-1, _warehouseResourceService.GetString("Order does not exists."));
 
@@ -193,10 +193,10 @@ namespace GHM.Warehouse.Infrastructure.Services
 
             var result = await _orderRepository.Update(orderInfo);
             if (result <= 0)
-                return new ActionResultResponse<string>(-4,
+                return new ActionResultResponse<string>(result,
                    _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
 
-            return new ActionResultResponse<string>(result,
+            return new ActionResultResponse<string>(1,
                   _sharedResourceService.GetString(SuccessMessage.UpdateSuccessful), "", orderInfo.ConcurrencyStamp);
         }
     }

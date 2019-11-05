@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="content">
                                     <div class="number">
-                                        @($"0{i}.")
+                                        @($"0{category.Order??0}.")
                                     </div>
                                     <h3 class="title">
                                         <a href="@($"/giai-phap/{category.SeoLink}.html")" title="@(string.IsNullOrEmpty(category.Name) ? category.Name : category.Name)">
@@ -52,7 +52,7 @@
                             <div class="col-sm-12 category-item odd">
                                 <div class="content">
                                     <div class="number">
-                                        @($"0{i}.")
+                                        @($"0{category.Order??0}.")
                                     </div>
                                     <h3 class="title">
                                         <a href="@($"/giai-phap/{category.SeoLink}.html")" title="@(string.IsNullOrEmpty(category.Name) ? category.Name : category.Name)">

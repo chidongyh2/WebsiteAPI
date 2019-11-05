@@ -9,12 +9,11 @@ using GHM.Website.Domain.ViewModels;
 using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.Helpers;
 using GHM.Infrastructure.SqlServer;
-using GHM.Website.Domain.Constants;
 using Microsoft.EntityFrameworkCore;
 
 namespace GHM.Website.Infrastructure.Repository
 {
-  public  class AgencyInfoRepository : RepositoryBase, IAgencyInfoRepository
+    public  class AgencyInfoRepository : RepositoryBase, IAgencyInfoRepository
     {
         private readonly IRepository<AgencyInfo> _agencyInfoRepository;
         public AgencyInfoRepository(IDbContext context) : base(context)
@@ -30,7 +29,8 @@ namespace GHM.Website.Infrastructure.Repository
 
             if (!string.IsNullOrEmpty(keyword))
             {
-                specTranslation = specTranslation.And(x => x.Name.Contains(keyword));
+                keyword = keyword?.Trim().StripVietnameseChars().ToUpper();
+                specTranslation = specTranslation.And(x => x.UnsingName.Contains(keyword));
             }
 
             if (isActive.HasValue)
@@ -43,42 +43,32 @@ namespace GHM.Website.Infrastructure.Repository
                     new AgencyInfoViewModel
                     {
                         Id = x.Id,
-                        TenantId = x.TenantId,
                         Email = x.Email,
                         PhoneNumber = x.PhoneNumber,
                         Website = x.Website,
                         IdCard = x.IdCard,
                         IdCardDate = x.IdCardDate,
-                        NationalId = x.NationalId,
-                        ProvinceId = x.ProvinceId,
-                        DistrictId = x.DistrictId,
                         Length = x.Length,
                         Width = x.Width,
                         Height = x.Height,
                         TotalArea = x.TotalArea,
                         StartTime = x.StartTime,
-                        GoogleMap = x.GoogleMap,
                         Order = x.Order,
                         IsShow = x.IsShow,
                         IsActive = x.IsActive,
-                        ConcurrencyStamp = x.ConcurrencyStamp,
                         CreateTime = x.CreateTime,
                         LastUpdate = x.LastUpdate.Value,
-                        LanguageId = xt.LanguageId,
-                        Name = xt.Name,
-                        IdCardAddress = xt.IdCardAddress,
-                        Address = xt.Address,
-                        AddressRegistered = xt.AddressRegistered,
-                        NationalName = xt.NationalName,
+                        FullName = xt.FullName,
+                        AgencyName = xt.AgencyName,
                         ProvinceName = xt.ProvinceName,
-                        DistrictName = xt.DistrictName
+                        DistrictName = xt.DistrictName,
+                        AddressRegistered = xt.AddressRegistered
                     }).AsNoTracking();
 
             totalRows = query.Count();
 
             return query
-                .OrderByDescending(x => x.CreateTime)
-                .ThenByDescending(x => x.LastUpdate)
+                .OrderByDescending(x => x.LastUpdate)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();

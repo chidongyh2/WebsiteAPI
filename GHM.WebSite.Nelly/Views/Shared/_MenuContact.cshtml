@@ -23,12 +23,11 @@
                                     </a>
                                 </div>
                                 <div class="menu-name">
-                                    <a
-                                       class="transition" title="@item.Name">
+                                    <a class="transition" title="@item.Name">
                                         @item.Name
                                     </a>
-                                    <div class="description">
-                                        @Common.SubString(item.Description, 70) 
+                                    <div class="description ">
+                                        @Common.SubString(item.Description, ViewBag.DeviceType == "desktop" ? 70 : 50)
                                     </div>
                                 </div>
                             </div>

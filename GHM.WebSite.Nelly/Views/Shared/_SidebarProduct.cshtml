@@ -40,12 +40,12 @@
                             </div>
                             <div class="media-body">
                                 <a class="Name" href="@($"/san-pham/{product.SeoLink}.htm")" title="@product.Name">@Common.SubString(product.Name, 40)</a>
-                                <div class="star">
+                                @*<div class="star">
                                     @for (var i = 1; i <= 5; i++)
                                     {
                                         <i class="la la-star yellow"></i>
                                     }
-                                </div>
+                                </div>*@
                                 <div class="price">@product.SalePrice?.ToString("N0", culture) <span>đ</span></div>
                             </div>
                         </div>

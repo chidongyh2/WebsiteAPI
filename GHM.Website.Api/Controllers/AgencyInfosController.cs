@@ -14,7 +14,7 @@ namespace GHM.Website.Api.Controllers
     [Authorize]
     [Produces("application/json")]
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/agency-infos")]
     public class AgencyInfosController : GhmControllerBase
     {
         private readonly IAgencyInfoService _agencyInfoService;
@@ -71,6 +71,17 @@ namespace GHM.Website.Api.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             var result = await _agencyInfoService.Delete(CurrentUser.TenantId, id);
+            if (result.Code <= 0)
+                return BadRequest(result);
+            return Ok(result);
+        }
+
+        [Route("{id}/status/{status}"), AcceptVerbs("POST")]
+        [AllowPermission(PageId.AgencyInfo, Permission.Delete)]
+        [CheckPermission]
+        public async Task<IActionResult> UpdateStatus(string id, bool status)
+        {
+            var result = await _agencyInfoService.UpdateStatus(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, CurrentUser.Avatar, id, status);
             if (result.Code <= 0)
                 return BadRequest(result);
             return Ok(result);

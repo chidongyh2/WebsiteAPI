@@ -42,7 +42,9 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Validations
                 .MaximumLength(20)
                 .WithMessage(websiteResourceService.GetString(
                     "{0} must not exceed {1} characters.",
-                    websiteResourceService.GetString("Phone"), 20));
+                    websiteResourceService.GetString("Phone"), 20))
+                 .Matches(@"^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$")
+                .WithMessage("Invalid phone number."); ;
         }
     }
 }

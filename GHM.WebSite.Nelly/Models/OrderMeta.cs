@@ -17,6 +17,7 @@ namespace GHM.WebSite.Nelly.Models
 
         [StringLength(50, ErrorMessage = "Số điện thoại không được nhỏ hơn 5 ký tự và lớn hơn 50 ký tự", MinimumLength = 5)]
         [Required(ErrorMessage = "Số điện thoại không được bỏ trống")]
+        [RegularExpression(@"^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$", ErrorMessage = "Số điện thoại không đúng định dạng")]
         [Display(Name = "Số điện thoại")]
         public string PhoneNumber { get; set; }
 

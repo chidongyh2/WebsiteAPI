@@ -56,6 +56,11 @@ namespace GHM.WebsiteClient.Api.Infrastructure.AutofacModules
            .As<ICoreService>()
            .InstancePerLifetimeScope()
             .WithParameter(new TypedParameter(typeof(string), CoreConnectionString));
+
+            builder.RegisterType<AgencyInfoService>()
+        .As<IAgencyInfoService>()
+        .InstancePerLifetimeScope()
+         .WithParameter(new TypedParameter(typeof(string), WebsiteConnectionString));
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GHM.Infrastructure.Constants;
+using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.IServices;
 using GHM.Infrastructure.Models;
 using GHM.Infrastructure.Resources;
@@ -62,9 +63,8 @@ namespace GHM.Website.Infrastructure.Services
                 Website = agencyInfoMeta.Website?.Trim(),
                 IdCard = agencyInfoMeta.IdCard?.Trim(),
                 IdCardDate = agencyInfoMeta.IdCardDate,
-                NationalId = agencyInfoMeta.NationalId?.Trim(),
-                ProvinceId = agencyInfoMeta.ProvinceId?.Trim(),
-                DistrictId = agencyInfoMeta.DistrictId?.Trim(),
+                ProvinceId = agencyInfoMeta.ProvinceId,
+                DistrictId = agencyInfoMeta.DistrictId,
                 Length = agencyInfoMeta.Length,
                 Width = agencyInfoMeta.Width,
                 Height = agencyInfoMeta.Height,
@@ -108,13 +108,13 @@ namespace GHM.Website.Infrastructure.Services
                 {
                     // Check name exists.
                     var isNameExists = await _agencyInfoTranslationRepository.CheckExists(agencyInfoId, tenantId,
-                      agencyInfoTranslation.LanguageId, agencyInfoTranslation.Name);
+                      agencyInfoTranslation.LanguageId, agencyInfoTranslation.AgencyName);
                     if (isNameExists)
                     {
                         await RollbackInsertAgencyInfo();
                         return new ActionResultResponse<string>(-2, _websiteResourceService.GetString(
                           "Name: \"{0}\" already exists.",
-                          agencyInfoTranslation.Name));
+                          agencyInfoTranslation.AgencyName));
                     }
 
                     var agencyInfoTranslationInsert = new AgencyInfoTranslation
@@ -122,13 +122,14 @@ namespace GHM.Website.Infrastructure.Services
                         TenantId = tenantId,
                         AgencyInfoId = agencyInfoId,
                         LanguageId = agencyInfoTranslation.LanguageId.Trim(),
-                        Name = agencyInfoTranslation.Name.Trim(),
+                        AgencyName = agencyInfoTranslation.AgencyName?.Trim(),
+                        FullName = agencyInfoTranslation.FullName?.Trim(),
+                        UnsingName = $"{agencyInfoTranslation.AgencyName.Trim()} {agencyInfoTranslation.FullName} ".StripVietnameseChars().ToLower(),
                         IdCardAddress = agencyInfoTranslation.IdCardAddress?.Trim(),
                         Address = agencyInfoTranslation.Address?.Trim(),
                         AddressRegistered = agencyInfoTranslation.AddressRegistered?.Trim(),
-                        NationalName = agencyInfoTranslation.NationalName?.Trim(),
-                        ProvinceName = agencyInfoTranslation.ProvinceName?.Trim(),
-                        DistrictName = agencyInfoTranslation.DistrictName?.Trim()
+                        ProvinceName = agencyInfoMeta.ProvinceName?.Trim(),
+                        DistrictName = agencyInfoMeta.DistrictName?.Trim()
                     };
 
                     agencyInfoTranslations.Add(agencyInfoTranslationInsert);
@@ -179,9 +180,8 @@ namespace GHM.Website.Infrastructure.Services
             info.Website = agencyInfoMeta.Website?.Trim();
             info.IdCard = agencyInfoMeta.IdCard?.Trim();
             info.IdCardDate = agencyInfoMeta.IdCardDate;
-            info.NationalId = agencyInfoMeta.NationalId?.Trim();
-            info.ProvinceId = agencyInfoMeta.ProvinceId?.Trim();
-            info.DistrictId = agencyInfoMeta.DistrictId?.Trim();
+            info.ProvinceId = agencyInfoMeta.ProvinceId;
+            info.DistrictId = agencyInfoMeta.DistrictId;
             info.Length = agencyInfoMeta.Length;
             info.Width = agencyInfoMeta.Width;
             info.Height = agencyInfoMeta.Height;
@@ -202,21 +202,22 @@ namespace GHM.Website.Infrastructure.Services
             foreach (var agencyInfoTranslation in agencyInfoMeta.AgencyInfoTranslationMetas)
             {
                 var isNameExists = await _agencyInfoTranslationRepository.CheckExists(info.Id, tenantId,
-                  agencyInfoTranslation.LanguageId, agencyInfoTranslation.Name);
+                  agencyInfoTranslation.LanguageId, agencyInfoTranslation.AgencyName);
                 if (isNameExists)
-                    return new ActionResultResponse(-5, _websiteResourceService.GetString("Name: \"{0}\" already exists.", agencyInfoTranslation.Name));
+                    return new ActionResultResponse(-5, _websiteResourceService.GetString("Name: \"{0}\" already exists.", agencyInfoTranslation.AgencyName));
 
                 var agencyInfoTranslationInfo =
                   await _agencyInfoTranslationRepository.GetInfo(tenantId, agencyInfoTranslation.LanguageId, agencyInfoId);
                 if (agencyInfoTranslationInfo != null)
                 {
-                    agencyInfoTranslationInfo.Name = agencyInfoTranslation.Name.Trim();
+                    agencyInfoTranslationInfo.AgencyName = agencyInfoTranslation.AgencyName.Trim();
+                    agencyInfoTranslationInfo.UnsingName = $"{agencyInfoTranslation.AgencyName.Trim()} {agencyInfoTranslation.FullName} ".StripVietnameseChars().ToLower();
+                    agencyInfoTranslationInfo.FullName = agencyInfoTranslation.FullName.Trim();
                     agencyInfoTranslationInfo.IdCardAddress = agencyInfoTranslation.IdCardAddress?.Trim();
                     agencyInfoTranslationInfo.Address = agencyInfoTranslation.Address?.Trim();
                     agencyInfoTranslationInfo.AddressRegistered = agencyInfoTranslation.AddressRegistered?.Trim();
-                    agencyInfoTranslationInfo.NationalName = agencyInfoTranslation.NationalName?.Trim();
-                    agencyInfoTranslationInfo.ProvinceName = agencyInfoTranslation.ProvinceName?.Trim();
-                    agencyInfoTranslationInfo.DistrictName = agencyInfoTranslation.DistrictName?.Trim();
+                    agencyInfoTranslationInfo.ProvinceName = agencyInfoMeta.ProvinceName?.Trim();
+                    agencyInfoTranslationInfo.DistrictName = agencyInfoMeta.DistrictName?.Trim();
                     await _agencyInfoTranslationRepository.Update(agencyInfoTranslationInfo);
                 }
                 else
@@ -226,13 +227,14 @@ namespace GHM.Website.Infrastructure.Services
                         TenantId = tenantId,
                         AgencyInfoId = agencyInfoId,
                         LanguageId = agencyInfoTranslation.LanguageId.Trim(),
-                        Name = agencyInfoTranslation.Name.Trim(),
+                        UnsingName = $"{agencyInfoTranslation.AgencyName.Trim()} {agencyInfoTranslation.FullName} ".StripVietnameseChars().ToLower(),
+                        AgencyName = agencyInfoTranslation.AgencyName.Trim(),
+                        FullName = agencyInfoTranslation.FullName.Trim(),
                         IdCardAddress = agencyInfoTranslation.IdCardAddress?.Trim(),
                         Address = agencyInfoTranslation.Address?.Trim(),
                         AddressRegistered = agencyInfoTranslation.AddressRegistered?.Trim(),
-                        NationalName = agencyInfoTranslation.NationalName?.Trim(),
-                        ProvinceName = agencyInfoTranslation.ProvinceName?.Trim(),
-                        DistrictName = agencyInfoTranslation.DistrictName?.Trim()
+                        ProvinceName = agencyInfoMeta.ProvinceName?.Trim(),
+                        DistrictName = agencyInfoMeta.DistrictName?.Trim()
                     };
                     await _agencyInfoTranslationRepository.Insert(agencyInfoTranslationInsert);
                 }
@@ -273,7 +275,6 @@ namespace GHM.Website.Infrastructure.Services
                 Website = info.Website,
                 IdCard = info.IdCard,
                 IdCardDate = info.IdCardDate,
-                NationalId = info.NationalId,
                 ProvinceId = info.ProvinceId,
                 DistrictId = info.DistrictId,
                 Length = info.Length,
@@ -291,13 +292,13 @@ namespace GHM.Website.Infrastructure.Services
                 AgencyInfoTranslationViewModels = agencyInfoTranslations.Select(x => new AgencyInfoTranslationViewModel
                 {
                     LanguageId = x.LanguageId,
-                    Name = x.Name,
+                    AgencyName = x.AgencyName,
+                    FullName = x.FullName,
                     Address = x.Address,
                     AddressRegistered = x.AddressRegistered,
                     IdCardAddress = x.IdCardAddress,
-                    NationalName = x.NationalName,
                     ProvinceName = x.ProvinceName,
-                    DistrictName = x.DistrictName
+                    DistrictName = x.DistrictName,                    
                 }).ToList()
             };
             return new ActionResultResponse<AgencyInfoDetailViewModel>
@@ -307,6 +308,28 @@ namespace GHM.Website.Infrastructure.Services
             };
         }
 
+        public async Task<ActionResultResponse> UpdateStatus(string tenantId, string lastUpdateUserId,
+            string lastUpdateFullName, string lastUpdateAvata, string agencyInfoId, bool isActive)
+        {
+            var info = await _agencyInfoRepository.GetInfo(agencyInfoId);
+            if (info == null)
+                return new ActionResultResponse(-1, _websiteResourceService.GetString("Agency info does not exists."));
 
+            if (info.TenantId != tenantId)
+                return new ActionResultResponse(-2, _sharedResourceService.GetString(ErrorMessage.NotHavePermission));
+
+            info.IsActive = isActive;
+            info.ConcurrencyStamp = Guid.NewGuid().ToString();
+            info.LastUpdate = DateTime.Now;
+            info.LastUpdateUserId = lastUpdateUserId;
+            info.LastUpdateFullName = lastUpdateFullName;
+
+            var result = await _agencyInfoRepository.Update(info);
+
+            if (result < 0)
+                return new ActionResultResponse(result, _websiteResourceService.GetString(ErrorMessage.SomethingWentWrong));
+
+            return new ActionResultResponse(result, _websiteResourceService.GetString("Update agency info isActive successful."));
+        }
     }
 }

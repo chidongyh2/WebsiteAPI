@@ -30,7 +30,10 @@ function callToMe() {
 
             if (result.code > 0) {
                 $('#popupsuccessfulModal').modal('show');
+                return;
             }
+
+            toastr.error(result);
         });
 }
 

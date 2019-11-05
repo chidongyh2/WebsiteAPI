@@ -68,7 +68,7 @@ namespace GHM.Website.Infrastructure.Repository
         {
             name = name.Trim();
             return await _agencyInfoTranslationRepository.ExistAsync(x =>
-                x.AgencyInfoId != agencyInfoId && x.TenantId == tenantId && x.LanguageId == languageId && x.Name  == name && !x.IsDelete);
+                x.AgencyInfoId != agencyInfoId && x.TenantId == tenantId && x.LanguageId == languageId && x.AgencyName  == name && !x.IsDelete);
         }
     }
 }

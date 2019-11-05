@@ -11,10 +11,6 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Validations
     {
         public AgencyInfoValidator(IResourceService<GhmWebsiteResource> websiteResourceService)
         {
-            RuleFor(x => x.IsActive)
-                .NotNull()
-                .WithMessage(websiteResourceService.GetString("{0} can not be null.", websiteResourceService.GetString("Active status")));
-
             RuleFor(x => x.Length)
                     .NotNull()
                     .WithMessage(websiteResourceService.GetString("{0} can not be null.", websiteResourceService.GetString("Length")))
@@ -41,8 +37,6 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Validations
                     .MustBeValidDate(websiteResourceService.GetString("{0} date in valid.", websiteResourceService.GetString("StartTime")));
 
             RuleFor(x => x.Email)
-                   .NotNull()
-                   .WithMessage(websiteResourceService.GetString("{0} can not be null.", websiteResourceService.GetString("Email")))
                    .MustBeEmail(websiteResourceService.GetString("Invalid email address."));
 
             RuleFor(x => x.PhoneNumber)
@@ -59,38 +53,7 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Validations
             RuleFor(x => x.IdCardDate)
                 .NotNull()
                 .WithMessage(websiteResourceService.GetString("{0} can not be null.", websiteResourceService.GetString("IdCardDate")))
-                .MustBeValidDate(websiteResourceService.GetString("{0} date in valid", websiteResourceService.GetString("IdCard Date")));
-
-            RuleFor(x => x.AgencyInfoTranslationMetas)
-                    .Must(x => x != null && x.Count > 0)
-                    .WithMessage(websiteResourceService.GetString("Please select at least one language."));
-
-            RuleForEach(x => x.AgencyInfoTranslationMetas).SetValidator(new AgencyInfoTranslationValidator(websiteResourceService));
-        }
-    }
-    public class AgencyInfoTranslationValidator : AbstractValidator<AgencyInfoTranslationMeta>
-    {
-        public AgencyInfoTranslationValidator(IResourceService<GhmWebsiteResource> websiteResourceService)
-        {
-            RuleFor(x => x.Name)
-                .NotNull()
-                .WithMessage(websiteResourceService.GetString("Please enter {0}.", websiteResourceService.GetString("Name")))
-                .MaximumLength(256)
-                .WithMessage(websiteResourceService.GetString("{0} must not exceed {1} characters.",
-                websiteResourceService.GetString("Album title"), 256));
-
-            RuleFor(x => x.IdCardAddress)
-                .MaximumLength(256)
-                .WithMessage(websiteResourceService.GetString("{0} must not exceed {1} characters.", websiteResourceService.GetString("IdCardAddress"), 256));
-
-            RuleFor(x => x.Address)
-                .MaximumLength(500)
-                .WithMessage(websiteResourceService.GetString("{0} must not exceed {1} characters.", websiteResourceService.GetString("Address"), 500));
-
-            RuleFor(x => x.AddressRegistered)
-                .MaximumLength(500)
-                .WithMessage(websiteResourceService.GetString("{0} must not exceed {1} characters.", websiteResourceService.GetString("AddressRegistered"), 500));
-
+                .MustBeValidDate(websiteResourceService.GetString("{0} date in valid", websiteResourceService.GetString("IdCard Date")));         
         }
     }
 }
