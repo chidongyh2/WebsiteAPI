@@ -28,6 +28,6 @@ namespace GHM.Website.Domain.ViewModels
         public DateTime? CreateTime { get; set; }
         public DateTime? LastUpdate { get; set; }
 
-        public List<AgencyInfoTranslationViewModel> AgencyInfoTranslationViewModels { get; set; }
+        public List<AgencyInfoTranslationViewModel> Translations { get; set; }
     }
 }
