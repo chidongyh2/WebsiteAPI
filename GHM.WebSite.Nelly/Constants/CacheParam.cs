@@ -29,6 +29,8 @@
         public const string ListNew = "Nelly.ListNew";
 
         public const string ListNewHot = "Nelly.ListNewHot";
+
+        public const string BannerRight = "Nelly.BannerRight";
     }
 }
 

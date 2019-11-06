@@ -143,6 +143,19 @@ namespace GHM.Website.Nelly.Controllers
                         ViewBag.NewsHot = JsonConvertHelper.GetObjectFromObject<List<NewsSearchViewModel>>(newsHost);
 
                         var newData = JsonConvertHelper.GetObjectFromObject<NewsDetailViewModel>(newInfo);
+
+                        //if (_cache.TryGetValue(CacheParam.BannerRight, out BannerViewModel banners))
+                        //{
+                        //    ViewBag.MainBanner = banners;
+                        //}
+                        //else
+                        //{
+                        var listBannerRightData = await _bannerService.GetBannerItemByPositionAsync(apiService.TenantId, GHM.WebsiteClient.Api.Domain.Constants.Position.Right);
+                        var listBannerRight = JsonConvertHelper.GetObjectFromObject<BannerViewModel>(listBannerRightData.Data);
+                        _cache.Set(CacheParam.BannerRight, listBannerRight, TimeSpan.FromHours(1));
+
+                        ViewBag.BannerRight = listBannerRight;
+                        //}
                         return View("../News/Detail", newData);
                     }
                     else
@@ -260,6 +273,19 @@ namespace GHM.Website.Nelly.Controllers
 
                     ViewBag.NewsHot = JsonConvertHelper.GetObjectFromObject<List<NewsSearchViewModel>>(newsHost);
                     ViewBag.NewsDetail = newData;
+
+                    //if (_cache.TryGetValue(CacheParam.BannerRight, out BannerViewModel banners))
+                    //{
+                    //    ViewBag.MainBanner = banners;
+                    //}
+                    //else
+                    //{
+                    var listBannerRightData = await _bannerService.GetBannerItemByPositionAsync(apiService.TenantId, GHM.WebsiteClient.Api.Domain.Constants.Position.Right);
+                    var listBannerRight = JsonConvertHelper.GetObjectFromObject<BannerViewModel>(listBannerRightData.Data);
+                    _cache.Set(CacheParam.BannerRight, listBannerRight, TimeSpan.FromHours(1));
+
+                    ViewBag.BannerRight = listBannerRight;
+                    //}
 
                     return View("../News/Detail", newData);
                 }

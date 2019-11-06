@@ -159,5 +159,11 @@
     "inputFiles": [
       "wwwroot/lib/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/component/box-hotline.component.min.js",
+    "inputFiles": [
+      "wwwroot/js/component/box-hotline.component.js"
+    ]
   }
 ]

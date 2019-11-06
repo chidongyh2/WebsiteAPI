@@ -30,7 +30,9 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
             _logger = logger;
             _websiteResourceService = websiteResourceService;
         }
-        public async Task<List<AgencyInfoViewModel>> AgencyInfoGetClient(string tenantId, string languageId, string provinceId, string districtId)
+
+        public async Task<List<AgencyInfoViewModel>> AgencyInfoGetClient(string tenantId, string languageId,
+            int? provinceId, int? districtId)
         {
             try
             {

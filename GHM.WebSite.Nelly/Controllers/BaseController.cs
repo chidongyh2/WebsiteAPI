@@ -79,10 +79,10 @@ namespace GHM.Website.Nelly.Controllers
 
         private async Task<List<MenuItemViewModel>> GetMainMenu()
         {
-            //if (_cache.TryGetValue($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
-            //{
-            //    return menus;
-            //}
+            if (_cache.TryGetValue($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
+            {
+                return menus;
+            }
 
             var apiService = _configuration.GetApiServiceInfo();
 
@@ -109,15 +109,16 @@ namespace GHM.Website.Nelly.Controllers
                 SubjectType = (SubjectType)x.SubjectType,
                 Url = x.Url
             }).ToList();
-            _cache.Set($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+
+            _cache.Set($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
 
             return data;
         }
 
         private async Task<WebsiteSetting> GetSetting()
         {
-            //if (_cache.TryGetValue($"{CacheParam.Setting}{CultureInfo.CurrentCulture.Name}", out WebsiteSetting setting))
-            //    return setting;
+            if (_cache.TryGetValue($"{CacheParam.Setting}{CultureInfo.CurrentCulture.Name}", out WebsiteSetting setting))
+                return setting;
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -154,34 +155,34 @@ namespace GHM.Website.Nelly.Controllers
             websiteSetting.LogoMobile = Common.GetSettingValue(settings, string.Format("{0}.LogoMobile", convention));
             websiteSetting.ZaloId = Common.GetSettingValue(settings, string.Format("{0}.ZaloId", convention));
 
-            _cache.Set(CacheParam.Setting, websiteSetting, TimeSpan.FromHours(2));
+            _cache.Set(CacheParam.Setting, websiteSetting, TimeSpan.FromHours(1));
 
             return websiteSetting;
         }
 
         private async Task<List<BrandSearchViewModel>> GetBrandAsync()
         {
-            //if (_cache.TryGetValue($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", out List<BrandSearchViewModel> brands))
-            //{
-            //    return brands;
-            //}
+            if (_cache.TryGetValue($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", out List<BrandSearchViewModel> brands))
+            {
+                return brands;
+            }
 
             var apiService = _configuration.GetApiServiceInfo();
             var result = await _brandService.SearchAsync(apiService.TenantId);
 
             var data = JsonConvert.DeserializeObject<List<BrandSearchViewModel>>(JsonConvert.SerializeObject(result));
 
-            _cache.Set($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
 
             return data;
         }
 
         private async Task<List<SocialNetworkViewModel>> GetSocialNetwork()
         {
-            //if (_cache.TryGetValue($"{CacheParam.SocialNetwork}{CultureInfo.CurrentCulture.Name}", out List<SocialNetworkViewModel> socialNetwork))
-            //{
-            //    return Task.Run(() => socialNetwork).Result;
-            //}
+            if (_cache.TryGetValue($"{CacheParam.SocialNetwork}{CultureInfo.CurrentCulture.Name}", out List<SocialNetworkViewModel> socialNetwork))
+            {
+                return Task.Run(() => socialNetwork).Result;
+            }
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -198,17 +199,17 @@ namespace GHM.Website.Nelly.Controllers
                 Url = x.Url
             }).ToList();
 
-            _cache.Set($"{CacheParam.SocialNetwork}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.SocialNetwork}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
 
             return data;
         }
 
         private async Task<List<BranchContactSearchViewModel>> GetBranchAsync()
         {
-            //if (_cache.TryGetValue($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", out List<BranchContactSearchViewModel> branchs))
-            //{
-            //    return branchs;
-            //}
+            if (_cache.TryGetValue($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", out List<BranchContactSearchViewModel> branchs))
+            {
+                return branchs;
+            }
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -220,17 +221,17 @@ namespace GHM.Website.Nelly.Controllers
 
             var data = JsonConvert.DeserializeObject<List<BranchContactSearchViewModel>>(JsonConvert.SerializeObject(result.Items));
 
-            _cache.Set($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
 
             return data;
         }
 
         private async Task<List<MenuItemViewModel>> GetFooterMenu()
         {
-            //if (_cache.TryGetValue($"{CacheParam.FooterNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
-            //{
-            //    return Task.Run(() => menus).Result;
-            //}
+            if (_cache.TryGetValue($"{CacheParam.FooterNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
+            {
+                return Task.Run(() => menus).Result;
+            }
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -258,7 +259,8 @@ namespace GHM.Website.Nelly.Controllers
                 SubjectType = (SubjectType)x.SubjectType,
                 Url = x.Url
             }).ToList();
-            _cache.Set($"{CacheParam.FooterNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+
+            _cache.Set($"{CacheParam.FooterNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
 
             return data;
         }
@@ -270,10 +272,10 @@ namespace GHM.Website.Nelly.Controllers
 
         private async Task<List<TenantLanguageViewModel>> GetLanguage()
         {
-            //if (_cache.TryGetValue($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", out List<TenantLanguageViewModel> languages))
-            //{
-            //    return Task.Run(() => languages).Result;
-            //}
+            if (_cache.TryGetValue($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", out List<TenantLanguageViewModel> languages))
+            {
+                return Task.Run(() => languages).Result;
+            }
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -281,7 +283,7 @@ namespace GHM.Website.Nelly.Controllers
             var result = await _languageService.GetLanguageSupportAsync(apiService.TenantId);
             var data = JsonConvert.DeserializeObject<List<TenantLanguageViewModel>>(JsonConvert.SerializeObject(result.Items));
 
-            _cache.Set($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(2));
+            _cache.Set($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
 
             return data;
         }

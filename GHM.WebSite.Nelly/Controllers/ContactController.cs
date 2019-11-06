@@ -39,6 +39,7 @@ namespace GHM.Website.Nelly.Controllers
         [Route("lien-he.html")]
         public async Task<IActionResult> Index()
         {
+            var apiService = _configuration.GetApiServiceInfo();
             var listProvince = await _coreService.GetProvinceByNationId(1);
             ViewBag.ListProvice = JsonConvertHelper.GetObjectFromObject<List<ObjectViewModel>>(listProvince);
             var breadcrumbs = new List<Breadcrumb>
@@ -51,6 +52,8 @@ namespace GHM.Website.Nelly.Controllers
             };
 
             ViewBag.Breadcrumb = breadcrumbs;
+            ViewBag.ListAgency = await _agencyInfoService.AgencyInfoGetClient(apiService.TenantId, CultureInfo.CurrentCulture.Name,
+                null, null);
             return View();
         }
 
@@ -64,6 +67,15 @@ namespace GHM.Website.Nelly.Controllers
             return View();
         }
 
+        [Route("search-agency")]
+        public async Task<JsonResult> GetAgnecy(int? provinceId, int? distinctId)
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+
+            return Json(await _agencyInfoService.AgencyInfoGetClient(apiService.TenantId, CultureInfo.CurrentCulture.Name,
+                provinceId, distinctId));
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("gui-lien-he")]
@@ -72,12 +84,12 @@ namespace GHM.Website.Nelly.Controllers
             if (!ModelState.IsValid)
             {
                 return Json(GetErrorsInModelState());
-            }            
+            }
 
-            var apiService = _configuration.GetApiServiceInfo();            
+            var apiService = _configuration.GetApiServiceInfo();
 
             var feedbackMetaData = JsonConvert.DeserializeObject<GHM.WebsiteClient.Api.Domain.ModelMetas.FeedbackMeta>(JsonConvert.SerializeObject(feedback));
-           
+
             var result = await _feedbackService.Insert(apiService.TenantId, feedbackMetaData);
 
             return Json(result);

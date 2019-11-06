@@ -5,7 +5,7 @@
 @if (Model != null && Model.BannerItems != null && Model.BannerItems.Any())
 {
     <div id="myCarousel" class="owl-carousel">
-        @foreach (var bannerItem in Model.BannerItems)
+        @foreach (var bannerItem in Model.BannerItems?.OrderBy(x => x.Order))
         {
             <div class="item">
                 <a href="javascript://" title="@bannerItem.Name">
