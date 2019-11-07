@@ -1,36 +1,44 @@
 ﻿@{
     var listNewsHost = ViewBag.NewsHot as List<NewsSearchViewModel>;
     var url = ViewBag.Url;
+
+    var bannerRight = ViewBag.BannerRight as BannerViewModel;
 }
 
 @if (listNewsHost != null)
 {
-<div class="sidebar-news-host">
-    <h3 class="title-sidebar">Bài viết nổi bật</h3>
-    <ul class="list-news">
-        @foreach(var news in listNewsHost){
-        <li>
-            <div class="media">
-                <div class="media-left">
-                    <a href="@($"/{news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
-                        <img class="news-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}&width=160&height=90")" onerror="this.onerror = null;this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
-                    </a>
-                </div>
-                <div class="media-body">
-                    <div class="calendar">@news.LastUpdate?.ToString("dd/MM/yyyy")</div>
-                    <a class="title" href="@($"/{news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">@Common.SubString(news.Title, 40)</a>
-                </div>
-            </div>
-        </li>
-        }
-    </ul>
-    <ul class="list-banner">
-        <li>
-            <img class="lazy img-responsive" src="~/images/facion/banner right1.png" />
-        </li>
-        <li>
-            <img class="lazy img-responsive" src="~/images/facion/banner right2.png" />
-        </li>
-    </ul>
-</div>
+    <div class="sidebar-news-host">
+        <h3 class="title-sidebar">Bài viết nổi bật</h3>
+        <ul class="list-news">
+            @foreach (var news in listNewsHost)
+            {
+                <li>
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="@($"/{news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                                <img class="news-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")}&width=160&height=90")" onerror="this.onerror = null;this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <div class="calendar">@news.LastUpdate?.ToString("dd/MM/yyyy")</div>
+                            <a class="title" href="@($"/{news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">@Common.SubString(news.Title, 40)</a>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+        <ul class="list-banner">
+            @if (bannerRight != null && bannerRight.BannerItems != null)
+            {
+                foreach (var banner in bannerRight.BannerItems?.OrderBy(x => x.Order))
+                {
+                    <li>
+                        <a href="@banner.Url" title="@banner.Name">
+                            <img class="lazy img-responsive" data-src="@($"{ViewBag.Url}{banner.Image}")" />
+                        </a>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
 }

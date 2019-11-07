@@ -8,7 +8,7 @@ namespace GHM.WebsiteClient.Api.Domain.IServices
 {
     public interface IAgencyInfoService
     {
-        Task<List<AgencyInfoViewModel>> AgencyInfoGetClient(string tenantId, string languageId, string provinceId , string districtId);
+        Task<List<AgencyInfoViewModel>> AgencyInfoGetClient(string tenantId, string languageId, int? provinceId , int? districtId);
 
         Task<int> Insert(string languageId, AgencyInfoMeta agencyInfoMeta);
     }

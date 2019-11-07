@@ -70,5 +70,9 @@
   {
     "outputFile": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.es5.js",
     "inputFile": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"
+  },
+  {
+    "outputFile": "wwwroot/js/component/box-hotline.component.es5.js",
+    "inputFile": "wwwroot/js/component/box-hotline.component.js"
   }
 ]

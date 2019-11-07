@@ -12,7 +12,7 @@
     var absoluteUri1 = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
 
     var breadcrumbs = new List<Breadcrumb>
-   {
+{
         new Breadcrumb()
         {Name = "Cẩm nang làm đẹp",
         IsCurrent = false,
@@ -91,16 +91,17 @@
                                 if (Model.Content.Contains("image-content.ashx?name=/"))
                                 {
                                     var content = Model.Content.Replace("image-content.ashx?name=/", ViewBag.Url);
-                                    @Html.Raw(content)
+                                    @Html.Raw(content.Replace("#HOTLINE", "<box-hotline-component></box-hotline-component>"));
                                 }
                                 else
                                 {
-                                    @Html.Raw(Model.Content.Replace('"' + "uploads/", '"' + $"{ViewBag.Url}uploads/"))
+                                    @Html.Raw(Model.Content.Replace('"' + "uploads/", '"' + $"{ViewBag.Url}uploads/").Replace("#HOTLINE", "<box-hotline-component></box-hotline-component>"));
                                 }
                             }
                         </div>
                     </div>
-                    <partial name="_BoxHotline" />
+                    @*<box-hotline-component></box-hotline-component>*@
+                    @*<partial name="_BoxHotline" />*@
                 </div>
                 <div class="col-md-3">
                     <partial name="_SidebarNewsHot" />
@@ -117,26 +118,10 @@
         }
     </div>
 </div>
-
-@section scripts{
-    @*<script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>*@
-    @*<script type="text/javascript">
-            $(window).scroll(function () {
-                var b = $(window).scrollTop();
-                var heightStart = $('.navbar').innerHeight() + $('.header').innerHeight();
-                if (b + 80 > heightStart && $(window).innerWidth() >= 1280 && b + 80 < $('#news-detail').innerHeight() + heightStart) {
-                    $('.sidebar-event').addClass('sidebar-event-fixtop');
-                } else {
-                    $('.sidebar-event').removeClass('sidebar-event-fixtop');
-                }
-            });
-        </script>*@
+@section scripts {
+    <script src="~/js/component/box-hotline.component.js"></script>
+    <script type="text/javascript">
+        ko.applyBindings();
+    </script>
 }
 

@@ -110,63 +110,27 @@
                                 data-live-search="true" data-bind="options: listDistrict,
                                                         optionsValue: 'id', optionsText: 'name', value: districtId,
                                                         optionsCaption: '-- Quận/Huyện --'" title="-- Quận/Huyện --"></select>
-                        <button class="btn btn-block btn-search">Tìm kiếm</button>
+                        <button class="btn btn-block btn-search" data-bind="click: searchAgency">Tìm kiếm</button>
                     </div>
                     <ul id="list-angency-system">
-                        @foreach (var branchs in listBranch)
-                        {
-                            var link = branchs.Link;
-
-                            <li data-bind="click: $root.selectBranch.bind($data, '@link', '@branchs.Name'), css:{select: $root.name() === '@branchs.Name'}">
-                                <h3 class="title">
-                                    @branchs.Name
-                                </h3>
-                                <div class="content">
-                                    @if (!string.IsNullOrEmpty(branchs?.Address))
-                                    {
-                                        <p class="">
-                                            @Resource.Address:
-                                            @branchs?.Address
-                                        </p>
-                                    }
-                                    @if (branchs.BranchContactDetails != null && branchs.BranchContactDetails.Any())
-                                    {
-                                        @foreach (var branchItem in branchs.BranchContactDetails)
-                                        {
-                                            switch (branchItem.ContactType)
-                                            {
-                                                case ContactType.MobilePhone:
-                                                    <p class="">
-                                                        @Resource.PhoneNumber:
-                                                        @branchItem.ContactValue
-                                                    </p>
-                                                    break;
-                                                case ContactType.Fax:
-                                                    <p class="">
-                                                        Fax:
-                                                        @branchItem.ContactValue
-                                                    </p>
-                                                    break;
-                                                case ContactType.Email:
-                                                    <p class="">
-                                                        Email:
-                                                        <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a>
-                                                    </p>
-                                                    break;
-                                                case ContactType.HomePhone:
-                                                    <p class="">
-                                                        @Resource.PhoneNumber:
-                                                        @branchItem.ContactValue
-                                                    </p>
-                                                    break;
-                                                default:
-                                                    break;
-                                            }
-                                        }
-                                    }
-                                </div>
-                            </li>
-                        }
+                        <!--ko foreach: $root.listAgency()-->
+                        <li data-bind="click: $root.selectBranch.bind($data, $data), css:{select: $root.name() === agencyName}">
+                            <h3 class="title" data-bind="text:agencyName">
+                            </h3>
+                            <div class="content">
+                                <p class="">
+                                    @Resource.Address:
+                                    <!--ko text: address-->
+                                    <!--/ko-->
+                                </p>
+                                <p class="">
+                                    @Resource.PhoneNumber:
+                                    <!--ko text: phoneNumber-->
+                                    <!--/ko-->
+                                </p>
+                            </div>
+                        </li>
+                        <!--/ko-->
                     </ul>
                 </div>
             </div>
@@ -181,9 +145,10 @@
 
 @section scripts{
     <script type="text/javascript">
-                var listProvince = @(ViewBag.ListProvice != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProvice, jsonSerializerSettings)) : "[]");
-            var websiteSetting = @Html.Raw(JsonConvert.SerializeObject(ViewBag.WebsiteSetting));
-            var branchIsOffice = @Html.Raw(JsonConvert.SerializeObject(officeHeadquarters));
+        var listProvince = @(ViewBag.ListProvice != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProvice, jsonSerializerSettings)) : "[]");
+        var websiteSetting = @Html.Raw(JsonConvert.SerializeObject(ViewBag.WebsiteSetting));
+        var branchIsOffice = @Html.Raw(JsonConvert.SerializeObject(officeHeadquarters));
+        var agencyies = @Html.Raw(ViewBag.ListAgency != null ? JsonConvert.SerializeObject(ViewBag.ListAgency, jsonSerializerSettings) : "[]");
     </script>
     <script src="~/js/viewmodel/agency-system.viewmodel.min.js"></script>
 }

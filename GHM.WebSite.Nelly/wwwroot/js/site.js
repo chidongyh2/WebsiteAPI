@@ -2,7 +2,6 @@
 var isShowToggle = true;
 
 function callToMe() {
-    console.log(this);
     var phoneNumber = $('#phoneNumberContact').val();
     if (phoneNumber === '' && phoneNumber === undefined) {
         toastr.error('Vui lòng nhập số điện thoại');
@@ -58,10 +57,10 @@ $(document).ready(function () {
         effectTime: 1000,
         visibleOnly: true,
         beforeLoad: function (element) {
-            $(element).attr("src", "/image?url=&width=600&height=400");
+            $(element).attr("src", "/images/no_image_new.gif");
         },
         onError: function (element) {
-            $(element).attr("src", "/image?url=&width=600&height=400");
+            $(element).attr("src", "/images/no_image_new.gif");
         }
     });
 

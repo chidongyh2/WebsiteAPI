@@ -12,6 +12,8 @@ function AngencyViewModel() {
     self.districtId = ko.observable();
     self.districtName = ko.observable();
 
+    self.listAgency = ko.observableArray([]);
+
     self.provinceId.subscribe(function (value) {
         if (value) {
             self.provinceId(value);
@@ -42,9 +44,25 @@ function AngencyViewModel() {
         }
     });
 
-    self.selectBranch = function (mapId, name, value) {
-        self.mapId(mapId);
-        self.name(name);
+    self.searchAgency = function () {
+        $.get('/search-agency', {
+            provinceId: self.provinceId(),
+            distinctId: self.districtId()
+        }, function (data) {
+            self.listAgency(data);
+
+            if (self.listAgency() && self.listAgency().length > 0) {
+                self.mapId(self.listAgency()[0].googleMap);
+                self.name(self.listAgency()[0].agencyName);
+            }
+        });
+    };
+
+    self.selectBranch = function (value) {
+        if (value) {
+            self.mapId(value.googleMap);
+            self.name(value.agencyName);
+        }
         if (self.isMobile()) {
             $("html, body").animate({ scrollTop: $('#map').offset().top - 70 }, 1000);
         }
@@ -54,9 +72,11 @@ function AngencyViewModel() {
         self.listProvince(listProvince);
         var height = $('#map').innerHeight();
         $('#list-angency-system').css('height', height - 175 + 'px');
-        if (branchIsOffice) {
-            self.mapId(branchIsOffice.Link);
-            self.name(branchIsOffice.Name);
+
+        self.listAgency(agencyies);
+        if (self.listAgency() && self.listAgency().length > 0) {
+            self.mapId(self.listAgency()[0].googleMap);
+            self.name(self.listAgency()[0].agencyName);
         }
 
         if (window.innerWidth < 768) {
