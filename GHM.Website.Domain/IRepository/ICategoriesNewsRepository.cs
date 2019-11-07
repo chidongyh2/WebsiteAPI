@@ -13,6 +13,7 @@ namespace GHM.Website.Domain.IRepository
         Task<int> Inserts(List<CategoriesNews> categoriesNews);
         Task<int> Deletes(List<CategoriesNews> categoriesNews);
         Task<bool> CheckExistsByNewsIdAndCategoryId(string newsId, int categoryId);
+        Task<bool> CheckExistsByCategoryId(int categoryId);
         Task<List<CategoriesNewsViewModel>> GetListNewsIds(string newsId, bool isReadOnly = false);
     }
 }
