@@ -120,6 +120,25 @@ namespace GHM.WebSite.Nelly.Controllers
             return View();
         }
 
+        [Route("giai-phap/{seoLink}.html")]
+        public async Task<IActionResult> Solution(string seoLink)
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+            var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, null, 1);
+            var productCategoryInfo = listProductCategory.FirstOrDefault();
+
+            var model = JsonConvertHelper.GetObjectFromObject<ProductCategorySearchViewModel>(productCategoryInfo);
+            if (productCategoryInfo != null)
+            {
+                var products = await _productService.ProductSearchByParentCategory(apiService.TenantId,
+                    CultureInfo.CurrentCulture.Name, null, null, productCategoryInfo?.Id ?? 0);
+
+                ViewBag.ListProduct = JsonConvertHelper.GetObjectFromObject<List<ProductWidthCategoryViewModel>>(products?.Items);
+            }
+
+            return View(model);
+        }
+
         private List<TreeData> RenderTree(List<ProductCategorySearchViewModel> productCategorys, int? parentId)
         {
             var tree = new List<TreeData>();
