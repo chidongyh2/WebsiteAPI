@@ -23,14 +23,14 @@
                                 <!--ko if: $index()+1 <= 5-->
                                 @*event: { mouseover: $root.selectValue.bind($data)}*@
                                 <label style="text-align:right" data-bind="attr: {for: 'c'+($index() + 1)}, click: $root.selectValue.bind($data)">
-                                    <b data-bind="text: Name"></b>
+                                    <h2 data-bind="text: Name" class="cm-pdr-10"></h2>
                                     <span data-bind="text: '0'+ ($index()+1), css:{'cm-pdl-15': $root.valueId() === Id}"></span>
                                 </label>
                                 <!--/ko-->
                                 <!--ko if: $index()+1 > 5-->
                                 <label style="text-align: left" data-bind="attr: {for: 'c'+($index() + 1)}, click: $root.selectValue.bind($data)">
                                     <span data-bind="text: $index() + 1 < 10 ? '0'+ ($index()+1) : $index()+1, css:{'cm-pdr-15': $root.valueId() === Id}"></span>
-                                    <b data-bind="text: Name"></b>
+                                    <h2 data-bind="text: Name" class="cm-pdl-10"></h2>
                                 </label>
                                 <!--/ko-->
                             </li>
@@ -51,10 +51,12 @@
                                     </a>
                                 </div>
                                 <div class="name">
-                                    <a href="@($"/san-pham/{item.SeoLink}.htm")"
-                                       class="transition" title="@item.Name">
-                                        @item.Name
-                                    </a>                                    
+                                    <h2>
+                                        <a href="@($"/san-pham/{item.SeoLink}.htm")"
+                                           class="transition" title="@item.Name">
+                                            @item.Name
+                                        </a>
+                                    </h2>
                                 </div>
                             </div>
                         }

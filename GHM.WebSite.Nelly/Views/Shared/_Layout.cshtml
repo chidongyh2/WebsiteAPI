@@ -41,7 +41,7 @@
     <meta name="twitter:image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)">
     <meta property="image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)" />
     <title>@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) && string.IsNullOrEmpty(ViewBag.Title) ? websiteSetting?.Brand : ViewBag.Title)</title>
-
+   
     <link href="~/css/plugins.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.min.css" />
     <link rel="stylesheet"
@@ -79,6 +79,7 @@
             </form>
         </div>
     </div>
+    <h1 style="display: none">@ViewBag.Title</h1>
     <script src="~/js/plugins.min.js"></script>
     <script src="~/js/site.min.js"></script>
     <script>

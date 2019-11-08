@@ -1,6 +1,7 @@
 ﻿@{
     var productCategoryInfo = ViewBag.ProductCategoryInfo as ProductCategorySearchViewModel;
     ViewBag.Title = productCategoryInfo?.Name;
+    ViewBag.Description = productCategoryInfo?.Description;
     var jsonSerializerSettings = new JsonSerializerSettings
     {
         ContractResolver = new CamelCasePropertyNamesContractResolver()

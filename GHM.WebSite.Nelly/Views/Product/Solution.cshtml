@@ -4,6 +4,10 @@
     {
         ContractResolver = new CamelCasePropertyNamesContractResolver()
     };
+
+    ViewBag.Title = Model.Name;
+    ViewBag.Description = Model.Description;
+
     var breadcrumbs = new List<Breadcrumb>
     {
          new Breadcrumb()
@@ -40,7 +44,7 @@
                             </div>
                             <h3 class="title">
                                 <a href="javascript://" title="@Model.Name">
-                                    @(!string.IsNullOrEmpty(Model.Name) ? Common.SubString(Model.Name, 70) : Model.Name)
+                                    @(!string.IsNullOrEmpty(Model.Name) ? Common.SubString(Model.Name, 100) : Model.Name)
                                 </a>
                             </h3>
                             <div class="description">

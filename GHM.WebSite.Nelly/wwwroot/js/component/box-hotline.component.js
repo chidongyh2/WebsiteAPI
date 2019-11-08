@@ -45,12 +45,12 @@
     },
     template: '<div id="box-hotline" class="box-hotline lazy" data-src="/images/facion/box-online.jpg">\
         <div class= "header">\
-            <h4>Tổng đài miễn cước 18006652 hoặc Hotline 24/7 : <span data-bind="text: hotline"></span> để được giải đáp thắc mắc</h4>\
+            <h4>Đặt hàng hoặc tư vấn Xin vui lòng gọi HOTLINE 0916 015 199 - 0962 015 355</h4>\
         </div>\
        <div class="content">\
         <div class="inbox">\
             <div class="text-send-mobile">\
-                Hoặc để lại SĐT tại đây, chúng tôi sẽ nhắn cho bạn\
+                Hoặc để lại Số Điện Thoại dưới đây chúng tôi sẽ liên hệ với bạn\
             </div>\
             <div class="input-group">\
                 <input class="form-control" data-bind="value: phoneNumber" placeholder="Điền số điện thoại vào đây" />\
