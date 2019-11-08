@@ -47,7 +47,7 @@
                             <div class="item">
                                 <div class="logo">
                                     <a href="@($"/san-pham/{item.SeoLink}.htm")" title="@item.Name">
-                                        <img class="img-responsive img-circle" src="@($"/image?url={(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{item.Image}")}")" />
+                                        <img class="img-responsive img-circle" alt="@item.Name" src="@($"/image?url={(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{item.Image}")}")" />
                                     </a>
                                 </div>
                                 <div class="name">
