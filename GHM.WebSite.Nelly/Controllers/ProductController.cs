@@ -135,7 +135,10 @@ namespace GHM.WebSite.Nelly.Controllers
 
                 ViewBag.ListProduct = JsonConvertHelper.GetObjectFromObject<List<ProductWidthCategoryViewModel>>(products?.Items);
             }
-
+            if(model == null)
+            {
+                return View("../NotFound/Index");
+            }
             return View(model);
         }
 
