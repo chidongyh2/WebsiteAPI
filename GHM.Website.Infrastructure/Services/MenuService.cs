@@ -338,7 +338,7 @@ namespace GHM.Website.Infrastructure.Services
                                     {
                                         LanguageId = menuItemTranslation.LanguageId,
                                         Name = menuItemTranslation.Title,
-                                        NamePath = menuItemTranslation.SeoLink,
+                                        NamePath = $"{menuItemTranslation.SeoLink}.html",
                                     });
                                 }
 
@@ -359,7 +359,7 @@ namespace GHM.Website.Infrastructure.Services
                                     {
                                         LanguageId = menuItemTranslation.LanguageId,
                                         Name = menuItemTranslation.Name,
-                                        NamePath = $"{menuItemTranslation.SeoLink}.html",
+                                        NamePath = menuItemTranslation.SeoLink,
                                     });
                                 }
 
