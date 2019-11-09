@@ -1,38 +1,47 @@
 ﻿@font-face {
   font-family: 'Opensans';
   src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
+  font-display: swap;
 }
 @font-face {
   font-family: 'Opensans-Light';
   src: url('../../lib/open_sans/opensans-light.ttf') format('truetype');
+  font-display: swap;
 }
 @font-face {
   font-family: 'Opensans-Bold';
   src: url('../../lib/open_sans/opensans-bold.ttf') format('truetype');
+  font-display: swap;
 }
 @font-face {
   font-family: 'Opensans-Regular';
   src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
+  font-display: swap;
 }
 @font-face {
   font-family: 'Opensans-Lightitalic';
   src: url('../../lib/open_sans/opensans-lightitalic.ttf') format('truetype');
+  font-display: swap;
 }
 @font-face {
   font-family: 'Roboto-Bold';
   src: url('../../lib/font-roboto/roboto-bold_1.ttf') format('truetype');
+  font-display: swap;
 }
 @font-face {
   font-family: 'Roboto-Regular';
   src: url('../../lib/font-roboto/roboto-regular.ttf') format('truetype');
+  font-display: swap;
 }
 @font-face {
   font-family: 'PlayfairDisplay-Regular';
   src: url('../../lib/playfair-display/playfairdisplay-regular.otf') format('opentype');
+  font-display: swap;
 }
 @font-face {
   font-family: 'PlayfairDisplay-Bold';
   src: url('../../lib/playfair-display/playfairdisplay-bold.otf') format('opentype');
+  font-display: swap;
 }
 body {
   font-family: Roboto-Regular !important;
@@ -612,7 +621,7 @@ body {
   transition: 0.3s ease;
   font-family: Opensans;
   font-size: 13px;
-  font-family: Roboto-Regular-Regular;
+  font-family: Roboto-Regular;
 }
 .sidebar-news-host .list-news li .media-body a:hover {
   text-decoration: none;
@@ -793,7 +802,7 @@ body {
   width: 14% !important;
 }
 .titlebar {
-  font-family: Roboto-Regular-Regular !important;
+  font-family: Roboto-Regular !important;
   text-align: center;
 }
 .titlebar h3 {
@@ -2389,7 +2398,7 @@ body {
   font-size: 30px;
   font-weight: bold;
   color: #3F3F3F;
-  font-family: Roboto-Regular-Regular;
+  font-family: Roboto-Regular;
 }
 #faqs .faq-content .faq-list {
   margin-top: 10px;
@@ -2758,7 +2767,7 @@ body {
 .modal-dialog .modal-content .modal-body h3 {
   color: #F9A5A7;
   font-size: 20px;
-  font-family: Roboto-Regular-Regular;
+  font-family: Roboto-Regular;
   text-transform: uppercase;
   margin: 20px 0px;
 }
