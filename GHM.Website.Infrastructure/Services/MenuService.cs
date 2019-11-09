@@ -317,13 +317,13 @@ namespace GHM.Website.Infrastructure.Services
                         var childCount = await _menuItemRepository.GetChildCount(menuItem.ParentId.Value);
                         await _menuItemRepository.UpdateChildCount(menuItem.ParentId.Value, childCount);
                     }
+
                     #endregion
                     var apiUrls = _configuration.GetApiUrl();
                     if (apiUrls == null)
                         return new ActionResultResponse<int>(-1, _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
 
                     var httpClient = new HttpClientService();
-
                     #region insert MenuItem Translation ItemSelect.
                     switch (menuItemMeta.SubjectType)
                     {
@@ -338,7 +338,7 @@ namespace GHM.Website.Infrastructure.Services
                                     {
                                         LanguageId = menuItemTranslation.LanguageId,
                                         Name = menuItemTranslation.Title,
-                                        NamePath = $"{menuItemTranslation.SeoLink}.html",
+                                        NamePath = menuItemTranslation.SeoLink,
                                     });
                                 }
 
@@ -359,7 +359,7 @@ namespace GHM.Website.Infrastructure.Services
                                     {
                                         LanguageId = menuItemTranslation.LanguageId,
                                         Name = menuItemTranslation.Name,
-                                        NamePath = menuItemTranslation.SeoLink,
+                                        NamePath = $"{menuItemTranslation.SeoLink}.html",
                                     });
                                 }
 
@@ -369,7 +369,7 @@ namespace GHM.Website.Infrastructure.Services
                             }
                             break;
                         case SubjectType.Product:
-                            var listProductTranslation = await httpClient.GetAsync<List<ProductTranslationViewModel>>($"{apiUrls.WarehouseApiUrl}/products/translation/{menuItem.Id}");
+                            var listProductTranslation = await httpClient.GetAsync<List<ProductTranslationViewModel>>($"{apiUrls.WarehouseApiUrl}/products-management/translation/{tenantId}/{menuItemSelect.Id}");
                             var listMenuItemTranslationProduct = new List<MenuItemTranslationMeta>();
                             if (listProductTranslation != null && listProductTranslation.Any())
                             {
@@ -379,7 +379,7 @@ namespace GHM.Website.Infrastructure.Services
                                     {
                                         LanguageId = productTranslationItem.LanguageId,
                                         Name = productTranslationItem.Name,
-                                        NamePath = $"{productTranslationItem.SeoLink}.html",
+                                        NamePath = $"san-pham/{productTranslationItem.SeoLink}.htm",
                                     });
                                 }
 
@@ -389,17 +389,17 @@ namespace GHM.Website.Infrastructure.Services
                             }
                             break;
                         case SubjectType.ProductCategory:
-                            var listProductCategoryTranslation = await httpClient.GetAsync<List<ProductTranslationViewModel>>($"{apiUrls.WarehouseApiUrl}/product-categories/{menuItem.Id}, true, 1, 10000"); ;
+                            var productCategoryDetail = await httpClient.GetAsync<ActionResultResponse<ProductCategoryDetailViewModel>>($"{apiUrls.WarehouseApiUrl}/product-categories/{tenantId}/{menuItemSelect.Id}"); ;
                             var listMenuItemProductCategoryTranslationInsert = new List<MenuItemTranslationMeta>();
-                            if (listProductCategoryTranslation != null && listProductCategoryTranslation.Any())
+                            if (productCategoryDetail != null && productCategoryDetail.Data.Translations.Any())
                             {
-                                foreach (var menuItemTranslation in listProductCategoryTranslation)
+                                foreach (var menuItemTranslation in productCategoryDetail.Data.Translations)
                                 {
                                     listMenuItemProductCategoryTranslationInsert.Add(new MenuItemTranslationMeta
                                     {
                                         LanguageId = menuItemTranslation.LanguageId,
                                         Name = menuItemTranslation.Name,
-                                        NamePath = menuItemTranslation.SeoLink,
+                                        NamePath = $"san-pham/{menuItemTranslation.SeoLink}.htm",
                                     });
                                 }
 

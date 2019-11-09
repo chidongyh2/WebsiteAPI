@@ -89,7 +89,7 @@ namespace GHM.Warehouse.Api.Controllers
         }
 
         [Route("{id}"), AcceptVerbs("GET")]
-        [AllowPermission(PageId.SurveyCategory, Permission.View)]
+        [AllowPermission(PageId.ProductCategory, Permission.View)]
         [CheckPermission]
         public async Task<IActionResult> GetDetailProductCategory(int id)
         {
@@ -106,13 +106,23 @@ namespace GHM.Warehouse.Api.Controllers
             return Ok(trees);
         }
 
-        [Route("sugesstions"), AcceptVerbs("GET")]
-        [CheckPermission]
+        [Route("suggestions"), AcceptVerbs("GET")]
         public async Task<IActionResult> GetAllProductCategoryForSelect(string keyword, int page = 1, int pageSize = 20)
         {
             var result = await _productCategoryService
                 .GetProductCategoryForSelect(CurrentUser.TenantId, CultureInfo.CurrentCulture.Name, keyword, page,
                     pageSize);
+            return Ok(result);
+        }
+
+        //Client
+        [Route("{tenantId}/{id}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetDetailProductCategory(string tenantId, int id)
+        {
+            var result = await _productCategoryService.GetDetail(tenantId, CultureInfo.CurrentCulture.Name, id);
+            if (result.Code < 0)
+                return BadRequest(result);
             return Ok(result);
         }
     }

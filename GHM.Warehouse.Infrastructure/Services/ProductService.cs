@@ -1101,6 +1101,17 @@ namespace GHM.Warehouse.Infrastructure.Services
             };
         }
 
+         public async Task<SearchResult<ProductSuggestionViewModel>> SearchForSelect(string tenantId, string languageId,
+             string keyword, int? categoryId, int page, int pageSize)
+        {
+            var items = await _productRepository.SearchForSelect(tenantId, languageId, keyword, categoryId, page, pageSize, out var totalRows);
+            return new SearchResult<ProductSuggestionViewModel>
+            {
+                TotalRows = totalRows,
+                Items = items
+            };
+        }
+
         public async Task<ActionResultResponse> UpdateIsActive(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string lastUpdateAvatar,
             string productId, bool isActive)
         {

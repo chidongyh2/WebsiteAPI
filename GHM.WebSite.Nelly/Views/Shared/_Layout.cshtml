@@ -44,8 +44,8 @@
    
     <link href="~/css/plugins.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.min.css" />
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    @*<link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">*@
 </head>
 <body>
     @Html.AntiForgeryToken()
@@ -97,7 +97,7 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-130493156-3');
-        var hotline = "@websiteSetting.Hotline";        
+        @*var hotline = "@websiteSetting.Hotline";*@        
     </script>
     @if (ViewBag.DeviceType != "desktop")
     {

@@ -158,7 +158,8 @@ namespace GHM.Warehouse.Infrastructure.Services
         {
             return new SearchResult<ProductCategoryForSelectViewModel>
             {
-                Items = await _productCategoryRepository.GetAllProductCategoryForSelect(tenantId, languageId, keyword, page, pageSize, out var totalRows)
+                Items = await _productCategoryRepository.GetAllProductCategoryForSelect(tenantId, languageId, keyword, page, pageSize, out var totalRows),
+                TotalRows = totalRows
             };
         }
 

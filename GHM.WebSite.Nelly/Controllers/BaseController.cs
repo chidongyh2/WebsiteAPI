@@ -79,10 +79,10 @@ namespace GHM.Website.Nelly.Controllers
 
         private async Task<List<MenuItemViewModel>> GetMainMenu()
         {
-            if (_cache.TryGetValue($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
-            {
-                return menus;
-            }
+            //if (_cache.TryGetValue($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", out List<MenuItemViewModel> menus))
+            //{
+            //    return menus;
+            //}
 
             var apiService = _configuration.GetApiServiceInfo();
 
@@ -110,7 +110,7 @@ namespace GHM.Website.Nelly.Controllers
                 Url = x.Url
             }).ToList();
 
-            _cache.Set($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
+            //_cache.Set($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
 
             return data;
         }

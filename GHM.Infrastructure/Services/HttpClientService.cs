@@ -40,6 +40,7 @@ namespace GHM.Infrastructure.Services
             }
 
             Client = Task.Run(GetClient).Result;
+
             ServicePointManager.SecurityProtocol =
                 SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
