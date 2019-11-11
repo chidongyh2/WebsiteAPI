@@ -1692,12 +1692,11 @@ body {
   font-family: Opensans-Regular;
   font-size: 16px;
   text-align: center;
-  min-height: 50px;
+  min-height: 55px;
   padding: 5px 0px;
 }
 @media only screen and (max-width: 1200px) {
   .product-item .wrap-text-content .title {
-    min-height: 50px;
     font-size: 14px;
     min-height: 60px;
   }

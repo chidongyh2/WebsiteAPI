@@ -23,7 +23,7 @@
                             <div class="col-sm-12 category-item even">
                                 <div class="image">
                                     <a href="@($"/san-pham/{category.SeoLink}.htm")" title="@(string.IsNullOrEmpty(category.Name) ? category.Name : category.Name)">
-                                        <img class="news-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(category.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{category.Image}")}&width=600&height=600")"
+                                        <img class="news-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(category.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{category.Image}")}&width=540&height=540")"
                                              onerror="this.onerror = null;this.src='/images/no-image.png'"
                                              alt="@category.Name" />
                                     </a>
