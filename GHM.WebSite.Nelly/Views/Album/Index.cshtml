@@ -32,12 +32,12 @@
                                         <a data-bind="attr: { href: Url, title: Title }, click: $root.selectVideo">
                                             <!--ko if: $root.checkUrlVideo(Thumbnail) -->
                                             <img class="img-responsive zoom lazy"
-                                                 data-bind="attr: {src: '/image?url=@ViewBag.Url' + Thumbnail + '&width=640&height=480', title: Title }"
+                                                 data-bind="attr: {src: '/image?url=@ViewBag.Url' + Thumbnail + '&width=320&height=240', title: Title }"
                                                  onerror="this.src='/images/no-image.png'" />
                                             <!--/ko-->
                                             <!--ko ifnot: $root.checkUrlVideo(Thumbnail) -->
                                             <img class="img-responsive zoom lazy"
-                                                 data-bind="attr: {src: '/image?url=' + Thumbnail + '&width=640&height=480', title: Title }"
+                                                 data-bind="attr: {src: '/image?url=' + Thumbnail + '&width=320&height=240', title: Title }"
                                                  onerror="this.src='/images/no-image.png'" />
                                             <!--/ko-->
                                             <span class="duration_video"><i class="fa fa-play"></i></span>
@@ -54,11 +54,11 @@
                                     <div class="item">
                                         <a href="javascript://" data-bind="attr: { title: Title }, css: {selected : $root.id() === Id}, click: $root.selectVideo" class="thumbnail">
                                             <!--ko if: $root.checkUrlVideo(Thumbnail)-->
-                                            <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + '@ViewBag.Url' + Thumbnail + '&width=320&height=240', alt: Title }"
+                                            <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + '@ViewBag.Url' + Thumbnail + '&width=120&height=90', alt: Title }"
                                                  onerror="this.src='/images/no-image.png'" />
                                             <!--/ko-->
                                             <!--ko ifnot: $root.checkUrlVideo(Thumbnail)-->
-                                            <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + Thumbnail + '&width=320&height=240', alt: Title }"
+                                            <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + Thumbnail + '&width=120&height=90', alt: Title }"
                                                  onerror="this.src='/images/no-image.png'" />
                                             <!--/ko-->
                                             <span class="pause-video">
