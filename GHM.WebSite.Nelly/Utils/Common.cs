@@ -76,7 +76,7 @@ namespace GHM.Website.Nelly.Utils
 
             Graphics grPhoto = Graphics.FromImage(bmPhoto);
 
-            grPhoto.CompositingQuality = CompositingQuality.HighSpeed;
+            grPhoto.CompositingQuality = CompositingQuality.AssumeLinear;
             grPhoto.InterpolationMode = InterpolationMode.Low;
             grPhoto.CompositingMode = CompositingMode.SourceCopy;
 

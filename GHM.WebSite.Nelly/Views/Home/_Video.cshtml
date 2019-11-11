@@ -13,7 +13,7 @@
                     <div class="titlebar">
                         <h3>@title</h3>
                         <div class="image center">
-                            <img class="lazy" width="25" src="~/images/facion/la trang.png" alt="title"/>
+                            <img class="lazy" width="25" data-src="/images/facion/la trang.png" alt="title"/>
                         </div>
                     </div>
                 </div>
@@ -31,11 +31,11 @@
                             <div class="item">
                                 <a href="javascript://" data-bind="attr: { title: Title }, css: {selected : $root.id() === Id}, click: $root.selectVideo" class="thumbnail">
                                     <!--ko if: $root.checkUrlVideo(Thumbnail)-->
-                                    <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + '@ViewBag.Url' + Thumbnail + '&width=320&height=240', alt: Title }"
+                                    <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + '@ViewBag.Url' + Thumbnail + '&width=160&height=120', alt: Title }"
                                          onerror="this.src='/images/no-image.png'" />
                                     <!--/ko-->
                                     <!--ko ifnot: $root.checkUrlVideo(Thumbnail)-->
-                                    <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + Thumbnail + '&width=320&height=240', alt: Title }"
+                                    <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + Thumbnail + '&width=160&height=120', alt: Title }"
                                          onerror="this.src='/images/no-image.png'" />
                                     <!--/ko-->
                                     <span class="pause-video">

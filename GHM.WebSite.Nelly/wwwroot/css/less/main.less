@@ -905,7 +905,11 @@ body {
         max-height: 500px;
         object-fit: cover;
         width: 100% !important;
-
+        transition: 1s ease-in-out;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        animation-name: zoomIn;
+        -webkit-animation-name: zoomIn; /* Safari 4.0 - 8.0 */
         @media @mobile {
             height: auto !important;
         }

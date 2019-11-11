@@ -399,7 +399,7 @@ namespace GHM.Website.Infrastructure.Services
                                     {
                                         LanguageId = menuItemTranslation.LanguageId,
                                         Name = menuItemTranslation.Name,
-                                        NamePath = $"san-pham/{menuItemTranslation.SeoLink}.htm",
+                                        NamePath = $"{menuItemTranslation.SeoLink}.htm",
                                     });
                                 }
 

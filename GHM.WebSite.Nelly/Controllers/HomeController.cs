@@ -131,7 +131,7 @@ namespace GHM.Website.Nelly.Controllers
             {
                 string[] segmentArray = segment.Split('.');
                 bool isNews = segmentArray.Length > 1 && segmentArray[1].ToLower().Equals("html");
-                bool isProduct = segmentArray.Length > 1 && segmentArray[1].ToLower().Equals("htm") && segmentArray[0].Contains("san-pham");
+                bool isProduct = segmentArray.Length > 1 && segmentArray[1].ToLower().Equals("htm");
                 if (isNews)
                 {
                     var newInfo = await _newsService.GetClientAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, segmentArray[0]);
@@ -168,12 +168,12 @@ namespace GHM.Website.Nelly.Controllers
                     var segmentProduct = segmentArray[0].ToString();
                     var segmentProductArray = segmentProduct.Split('/');
 
-                    if (segmentProductArray.Length < 1)
+                    if (segmentProductArray.Length <= 1 && segmentProduct.Contains("san-pham"))
                     {
                         return View("../NotFound/Index");
                     }
 
-                    var seoLinKProduct = segmentProductArray[1].ToString();
+                    var seoLinKProduct = segmentProductArray.Length > 1 ? segmentProductArray[1].ToString() : segmentProduct;
                     var productInfo = await _productService.ProductGetDetail(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, seoLinKProduct);
                     if (productInfo != null)
                     {
@@ -206,7 +206,8 @@ namespace GHM.Website.Nelly.Controllers
                     }
                     else
                     {
-                        var categoryInfo = await _productService.ProductCategoryGetDetail(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLinKProduct, null);
+                        var categoryInfo = await _productService.ProductCategoryGetDetail(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLinKProduct, null);                       
+
                         if (categoryInfo != null)
                         {
                             if (!categoryInfo.IsSolution.HasValue || !categoryInfo.IsSolution.Value)
