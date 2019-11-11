@@ -1,4 +1,4 @@
-﻿ko.components.register('comment-component', {
+﻿ko.components.register('comment-box-component', {
     viewModel: function (params) {
         var self = this;
         self.phoneNumber = ko.observable();
