@@ -700,7 +700,7 @@ body {
                     transition: 0.3s ease;
                     font-family: Opensans;
                     font-size: 13px;
-                    font-family: Roboto-Regular-Regular;
+                    font-family: Roboto-Regular;
 
                     &:hover {
                         text-decoration: none;
@@ -919,7 +919,7 @@ body {
 }
 
 .titlebar {
-    font-family: Roboto-Regular-Regular !important;
+    font-family: Roboto-Regular !important;
     text-align: center;
 
     h3 {
@@ -1423,10 +1423,10 @@ body {
             width: 100%;
             height: 100%;
             transition: 1s ease-in-out;
-            -webkit-animation-duration: 1.5s;
-            animation-duration: 1.5s;
-            animation-name: bounceInRight;
-            -webkit-animation-name: bounceInRight; /* Safari 4.0 - 8.0 */
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            animation-name: zoomIn;
+            -webkit-animation-name: zoomIn; /* Safari 4.0 - 8.0 */
         }
     }
 
@@ -1507,6 +1507,13 @@ body {
         box-shadow: none;
         transition: 0.5s ease-in-out;
         border-radius: 20px;
+
+        h2 {
+            font-size: 16px;
+            margin: 0px;
+            display: inline-block;
+            font-weight: bold;
+        }
     }
 
     .selector li input + label:hover {
@@ -1914,10 +1921,12 @@ body {
             font-family: Opensans-Regular;
             font-size: 16px;
             text-align: center;
+            min-height: 50px;
 
             @media @mobile {
                 min-height: 50px;
                 font-size: 14px;
+                min-height: 60px;
             }
 
             a {
@@ -2202,9 +2211,14 @@ body {
 
         .name {
             margin-top: 20px;
-
+            h2{
+                margin-top:20px;
+                font-size:20px;
+                margin-bottom:0px;
+                font-size:20px !important;
+            }
             a {
-                color: @color-text;
+                color: @main-color;
             }
 
             font-size: 16px;
@@ -2761,7 +2775,7 @@ body {
             font-size: 30px;
             font-weight: bold;
             color: @color-text;
-            font-family: Roboto-Regular-Regular;
+            font-family: Roboto-Regular;
         }
 
         .faq-list {
@@ -3187,7 +3201,7 @@ body {
             h3 {
                 color: @main-color;
                 font-size: 20px;
-                font-family: Roboto-Regular-Regular;
+                font-family: Roboto-Regular;
                 text-transform: uppercase;
                 margin: 20px 0px;
             }

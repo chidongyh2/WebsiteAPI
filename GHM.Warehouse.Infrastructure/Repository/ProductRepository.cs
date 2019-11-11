@@ -95,7 +95,7 @@ namespace GHM.Warehouse.Infrastructure.Repository
                 Thumbnail = key.Thumbnail,
                 IsHot = key.IsHot,
                 IsHomePage = key.IsHomePage,
-                Status =  key.Status,
+                Status = key.Status,
                 DefaultUnit = key.DefaultUnit,
                 SalePrice = key.SalePrice,
                 LastUpdateTime = key.LastUpdateTime,
@@ -233,6 +233,55 @@ namespace GHM.Warehouse.Infrastructure.Repository
                             UnitName = ut.Name
                         };
             return await query.FirstOrDefaultAsync();
+        }
+
+        public Task<List<ProductSuggestionViewModel>> SearchForSelect(string tenantId, string languageId,
+            string keyword, int? categoryId, int page, int pageSize, out int totalRows)
+        {
+            Expression<Func<Product, bool>> spec = x => !x.IsDelete && x.TenantId == tenantId && x.IsActive;
+            Expression<Func<ProductTranslation, bool>> specTranslation = pt => pt.LanguageId == languageId && !pt.IsDelete;
+            Expression<Func<ProductsCategory, bool>> specCategory = x => x.TenantId == tenantId;
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                keyword = keyword.Trim().StripVietnameseChars().ToUpper();
+                specTranslation = specTranslation.And(x => x.UnsignName.Contains(keyword));
+            }
+
+            if (categoryId.HasValue)
+            {
+                specCategory = specCategory.And(x => x.CategoryId == categoryId.Value);
+            }
+
+            var query = from product in Context.Set<Product>().Where(spec)
+                        join productTransaction in Context.Set<ProductTranslation>().Where(specTranslation) on product.Id equals productTransaction.ProductId
+                        join productCategoty in Context.Set<ProductsCategory>().Where(specCategory) on product.Id equals productCategoty.ProductId
+                        select new
+                        {
+                            product.Id,
+                            product.Thumbnail,
+                            productTransaction.Name,
+                            productTransaction.Description
+                        };
+
+            var result = query.GroupBy(x => new
+            {
+                x.Id,
+                x.Name,
+                x.Thumbnail,
+                x.Description
+            }, (key, g) => new ProductSuggestionViewModel
+            {
+                Id = key.Id,
+                Image = key.Thumbnail,
+                Name = key.Name,
+                Description = key.Description,
+            });
+
+            totalRows = result.Count();
+            return result.AsNoTracking()
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
         }
     }
 }

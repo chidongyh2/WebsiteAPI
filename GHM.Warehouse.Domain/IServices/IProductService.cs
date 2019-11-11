@@ -59,5 +59,8 @@ namespace GHM.Warehouse.Domain.IServices
         Task<ActionResultResponse> UpdateAprrove(string tenantId, string id, ApproverStatus status);
 
         Task<List<ProductTranslationViewModel>> GetProductTranslationById(string tenantId, string id);
+
+        Task<SearchResult<ProductSuggestionViewModel>> SearchForSelect(string tenantId, string languageId,
+             string keyword, int? categoryId, int page, int pageSize);
     }
 }

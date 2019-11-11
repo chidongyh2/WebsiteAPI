@@ -25,6 +25,8 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<List<ProductSuggestionViewModel>> Suggestion(string tenantId, string languageId, string keyword, int page, int pageSize, out int totalRows);
 
+        Task<List<ProductSuggestionViewModel>> SearchForSelect(string tenantId, string languageId, string keyword, int?catetoryId, int page, int pageSize, out int totalRows);
+
         Task<bool> CheckExists(string productId, string tenantId);
 
         Task<int> GetTotal(string tenantId);

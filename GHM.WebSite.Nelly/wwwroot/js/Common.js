@@ -20,6 +20,27 @@ ko.bindingHandlers.trimText = {
     }
 };
 
+ko.bindingHandlers.srcChange = {
+    origValue: null,
+    init: function (element, valueAccessor) {
+        origValue = valueAccessor();
+    },
+    update: function (element, valueAccessor) {
+        if (origValue !== valueAccessor()) {
+            var options = ko.toJS(valueAccessor());
+            if (options === null) return;
+           
+            if (options.in) {
+                $(element).hide(300);
+                $(element).hide().fadeIn();
+            } else {
+                $(element).fadeOut(options.time);
+            }
+            $(element).attr('src', options.src);          
+        }
+    }
+};
+
 var imageArrayExtension = [".jpg", ".png", ".gif", ".jpeg"];
 
 var strips = ["áàảãạăắằẳẵặâấầẩẫậ", "ÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬ", "đ", "Đ", "éèẻẽẹêếềểễệ", "ÉÈẺẼẸÊẾỀỂỄỆ", "íìỉĩị", "ÍÌỈĨỊ", "óòỏõọơớờởỡợôốồổỗộ", "ÓÒỎÕỌƠỚỜỞỠỢÔỐỒỔỖỘ",

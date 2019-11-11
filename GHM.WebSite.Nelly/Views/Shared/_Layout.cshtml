@@ -41,25 +41,11 @@
     <meta name="twitter:image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)">
     <meta property="image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)" />
     <title>@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) && string.IsNullOrEmpty(ViewBag.Title) ? websiteSetting?.Brand : ViewBag.Title)</title>
-
+   
     <link href="~/css/plugins.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.min.css" />
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-
-    <meta name="google-site-verification" content="pl3Ae3rJ1xFlqrUu9fB8QJRA_PBaZU00zlO46_KDga4" />
-
-    <!-- Google Tag Manager -->
-    <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-TCBCKBJ');</script>
-    <!-- End Google Tag Manager -->
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -99,6 +85,7 @@
             </form>
         </div>
     </div>
+    <h1 style="display: none">@ViewBag.Title</h1>
     <script src="~/js/plugins.min.js"></script>
     <script src="~/js/site.min.js"></script>
     <script>
@@ -116,7 +103,7 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-130493156-3');
-        var hotline = "@websiteSetting.Hotline";        
+        @*var hotline = "@websiteSetting.Hotline";*@        
     </script>
     @if (ViewBag.DeviceType != "desktop")
     {

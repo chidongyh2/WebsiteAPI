@@ -103,6 +103,16 @@ namespace GHM.Warehouse.Api.Controllers
             return Ok(result);
         }
 
+        [Route("search-for-select"), AcceptVerbs("GET")]
+        [AllowPermission(PageId.Product, Permission.View)]
+        [CheckPermission]
+        public async Task<IActionResult> SearchForSelect(string keyword, int? categoryId, int page = 1, int pageSize = 20)
+        {
+            var result = await _productService.SearchForSelect(CurrentUser.TenantId, CultureInfo.CurrentCulture.Name,
+                keyword, categoryId, page, pageSize);
+            return Ok(result);
+        }
+
         [Route("{id}/actives/{isActive}"), AcceptVerbs("POST")]
         [AllowPermission(PageId.Product, Permission.Update)]
         [CheckPermission]
@@ -256,5 +266,14 @@ namespace GHM.Warehouse.Api.Controllers
             return Ok(result);
         }
         #endregion       
+
+        // client
+        [Route("translation/{tenantId}/{id}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetProductTranslationByTenantAndId(string tenantId, string id)
+        {
+            var result = await _productService.GetProductTranslationById(tenantId, id);
+            return Ok(result);
+        }
     }
 }

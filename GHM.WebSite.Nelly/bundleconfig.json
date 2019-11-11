@@ -165,5 +165,11 @@
     "inputFiles": [
       "wwwroot/js/component/box-hotline.component.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/component/comment-component.min.js",
+    "inputFiles": [
+      "wwwroot/js/component/comment-component.js"
+    ]
   }
 ]

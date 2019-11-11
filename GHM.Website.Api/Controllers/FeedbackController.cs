@@ -44,17 +44,17 @@ namespace GHM.Website.Api.Controllers
         //    return Ok(result);
         //}
 
-        //[Route("{id}"), AcceptVerbs("POST"), ValidateModel]
-        //[AllowPermission(PageId.Feedback, Permission.Insert)]
-        //[CheckPermission]
-        //public async Task<IActionResult> Update(string id, [FromBody]FeedbackMeta feedbackMeta)
-        //{
-        //    var result = await _feedbackService.Update(CurrentUser.TenantId, id, feedbackMeta);
-        //    if (result.Code <= 0)
-        //        return BadRequest(result);
+        [Route("{id}"), AcceptVerbs("POST"), ValidateModel]
+        [AllowPermission(PageId.Feedback, Permission.Insert)]
+        [CheckPermission]
+        public async Task<IActionResult> Update(string id, [FromBody]FeedbackMeta feedbackMeta)
+        {
+            var result = await _feedbackService.Update(CurrentUser.TenantId, id, feedbackMeta);
+            if (result.Code <= 0)
+                return BadRequest(result);
 
-        //    return Ok(result);
-        //}
+            return Ok(result);
+        }
 
         [Route("{id}"), AcceptVerbs("GET")]
         [AllowPermission(PageId.Feedback, Permission.View)]

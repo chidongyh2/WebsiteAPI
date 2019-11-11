@@ -118,6 +118,8 @@ namespace GHM.Warehouse.Infrastructure.Repository
                     {
                         Id = o.Id,
                         Name = ot.Name,
+                        Image = o.Image,
+                        Description = ot.Description
                     });
 
             totalRows = query.Count();

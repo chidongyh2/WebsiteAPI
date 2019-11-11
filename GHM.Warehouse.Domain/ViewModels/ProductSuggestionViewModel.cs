@@ -5,6 +5,7 @@
         public string Id { get; set; }
         public string Image { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public bool? IsManageByLot { get; set; }
         public string LotId { get; set; }
         public decimal ExWarehousePrice { get; set; }
