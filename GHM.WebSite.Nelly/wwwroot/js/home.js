@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-
     $('#news-slider').slick({
         slidesToShow: countNewsHot <= 5 ? 3 : 5,
         slidesToScroll: 1,
@@ -45,8 +44,6 @@
         interval: 5000,
         nav: true,
         navText: ["<img src='/images/facion/pev.png'/>", "<img src='/images/facion/nex.png'/>"]
-    }).on("slide.bs.carousel", function (ev) {
-        $('.lazy').lazy();
     });
 
     $("#myCarousel").on('changed.owl.carousel', function (event) {
@@ -63,6 +60,16 @@
     });
 
     $("#video-silder").lightSlider({
+       onBeforeStart: function (slider) {
+        },
+        onSliderLoad: function (slider) {
+            setTimeout(()=>{
+               slider.find('img').each(function(index, el) {
+                $(el).attr('src', $(el).attr('data-src'));
+                $(el).css('display', 'initial')
+            });
+            },3000)          
+        },        
         item: 6,
         auto: false,
         loop: true,
