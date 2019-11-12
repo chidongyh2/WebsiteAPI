@@ -45,6 +45,8 @@
         interval: 5000,
         nav: true,
         navText: ["<img src='/images/facion/pev.png'/>", "<img src='/images/facion/nex.png'/>"]
+    }).on("slide.bs.carousel", function (ev) {
+        $('.lazy').lazy();
     });
 
     $("#myCarousel").on('changed.owl.carousel', function (event) {
