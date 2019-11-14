@@ -1118,9 +1118,9 @@ body {
             position: relative;
 
             .news-image {
-                a {                   
+                a {
                     pointer-events: none;
-                    cursor: default;
+                    cursor: default !important;
                     opacity: 0.6;
                 }
             }
@@ -1158,6 +1158,10 @@ body {
             .news-image {
                 background-color: @color-white;
                 box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+
+                a {
+                    cursor: pointer;
+                }
 
                 img {
                     transform: scale(1.5);

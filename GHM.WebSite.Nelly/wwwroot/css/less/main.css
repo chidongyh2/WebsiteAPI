@@ -983,7 +983,7 @@ body {
 }
 #news-hot-in-homepage #news-slider .slick-slide .news-image a {
   pointer-events: none;
-  cursor: default;
+  cursor: default !important;
   opacity: 0.6;
 }
 #news-hot-in-homepage #news-slider .slick-slide .news-content {
@@ -1014,6 +1014,9 @@ body {
 #news-hot-in-homepage #news-slider .slick-center .news-image {
   background-color: #FFFFFF;
   box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+}
+#news-hot-in-homepage #news-slider .slick-center .news-image a {
+  cursor: pointer;
 }
 #news-hot-in-homepage #news-slider .slick-center .news-image img {
   transform: scale(1.5);
