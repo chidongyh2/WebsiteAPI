@@ -102,11 +102,11 @@
   text-decoration: none;
 }
 #fb-root .fb_dialog {
-  z-index: 988 !important;
+  z-index: 9999999 !important;
   background: none !important;
   border: none !important;
   box-shadow: none !important;
-  bottom: 120px !important;
+  bottom: 60px !important;
   right: 5px !important;
 }
 @media only screen and (max-width: 1200px) {
