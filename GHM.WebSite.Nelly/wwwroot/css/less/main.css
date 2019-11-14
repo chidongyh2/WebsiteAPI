@@ -983,7 +983,7 @@ body {
 }
 #news-hot-in-homepage #news-slider .slick-slide .news-image a {
   pointer-events: none;
-  cursor: default !important;
+  cursor: default;
   opacity: 0.6;
 }
 #news-hot-in-homepage #news-slider .slick-slide .news-content {
