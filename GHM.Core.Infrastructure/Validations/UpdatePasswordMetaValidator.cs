@@ -28,7 +28,7 @@ namespace GHM.Core.Infrastructure.Validations
                 .MaximumLength(50).WithMessage(sharedResourceService.GetString(
                     "{0} is not allowed over {1} characters.",
                     resourceService.GetString("Confirm password"), 50))
-                .NotEqual(x => x.NewPassword)
+                .When(x=> x.ConfirmNewPassword != x.NewPassword)
                 .WithMessage(resourceService.GetString("Confirm password not match with new password."));
         }
     }
