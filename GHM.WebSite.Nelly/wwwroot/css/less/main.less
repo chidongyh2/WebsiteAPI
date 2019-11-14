@@ -1117,6 +1117,14 @@ body {
             padding: 0px 5px;
             position: relative;
 
+            .news-image {
+                a {                   
+                    pointer-events: none;
+                    cursor: default;
+                    opacity: 0.6;
+                }
+            }
+
             .news-content {
                 display: none;
                 text-align: center;
@@ -1159,8 +1167,8 @@ body {
 
             .news-content {
                 margin-top: 20%;
-                margin-left: -40%;
-                margin-right: -40%;
+                margin-left: -20%;
+                margin-right: -20%;
                 /*transform: scaleX(1.8);*/
                 display: block;
                 color: @color-text;
@@ -2214,12 +2222,14 @@ body {
 
         .name {
             margin-top: 20px;
-            h2{
-                margin-top:20px;
-                font-size:20px;
-                margin-bottom:0px;
-                font-size:20px !important;
+
+            h2 {
+                margin-top: 20px;
+                font-size: 20px;
+                margin-bottom: 0px;
+                font-size: 20px !important;
             }
+
             a {
                 color: @main-color;
             }
@@ -3489,4 +3499,3 @@ body {
     -webkit-animation: none;
     animation: none;
 }
-
