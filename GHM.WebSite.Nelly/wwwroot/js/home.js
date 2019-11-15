@@ -4,7 +4,7 @@
         slidesToScroll: 1,
         centerMode: countNewsHot >= 3,
         autoplay: false,
-        slideMargin: 20,
+        slideMargin: 10,
         autoplayTimeout: 3000,
         focusOnSelect: true,      
         infinite: true,
