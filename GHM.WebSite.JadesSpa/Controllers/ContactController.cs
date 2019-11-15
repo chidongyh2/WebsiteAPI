@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace GHM.Website.JadesSpa.Controllers
 {
@@ -44,15 +45,15 @@ namespace GHM.Website.JadesSpa.Controllers
             ViewBag.Breadcrumb = breadcrumbs;
             return View();
         }
-
-        [Route("gui-lien-he"), AcceptVerbs("POST")]
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        [Route("gui-lien-he")]
         public async Task<JsonResult> Send(string fullName, string phoneNumber, string email, string title, string content)
         {
             if (string.IsNullOrWhiteSpace(fullName))
             {
                 return Json(-1);
             }
-
             if (string.IsNullOrWhiteSpace(phoneNumber))
             {
                 return Json(-2);
