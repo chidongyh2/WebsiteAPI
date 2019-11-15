@@ -40,7 +40,6 @@
                 });
         };
         $(function () {
-            self.hotline(hotline);
         });
     },
     template: '<div id="box-hotline" class="box-hotline lazy" data-src="/images/facion/box-online.jpg">\
