@@ -62,7 +62,7 @@ namespace GHM.WebSite.JadesSpa
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
             .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, options =>
             {

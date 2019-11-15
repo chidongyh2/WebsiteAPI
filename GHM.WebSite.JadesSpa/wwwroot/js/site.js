@@ -1,4 +1,39 @@
 ﻿var isShowToggle = true;
+function callToMe() {
+    var phoneNumber = $('#phoneNumberContact').val();
+    if (phoneNumber === '' && phoneNumber === undefined) {
+        toastr.error('Vui lòng nhập số điện thoại');
+        $('#phoneNumberContact').focus();
+        return;
+    }
+
+    $.post("/gui-lien-he",
+        {
+            fullName: 'Liên hệ qua số điện thoại ',
+            phoneNumber: phoneNumber,
+            email: 'cskh@jadespa.vn',
+            title: 'Hãy gọi cho tôi',
+            content: 'Hãy gọi cho tôi vào số ' + phoneNumber,
+            __RequestVerificationToken: token
+        }, function (result) {
+            if (result.code === -1) {
+                toastr.error("Vui lòng nhập họ tên của bạn");
+                return;
+            }
+
+            if (result.code === -3) {
+                toastr.error("Vui lòng nhập nội dung tin nhắn");
+                return;
+            }
+
+            if (result.code > 0) {
+                $('#popupsuccessfulModal').modal('show');
+                return;
+            }
+
+            toastr.error(result);
+        });
+}
 $(document).ready(function () {
     $(".wrap-show-icon").css("display", "none");
     $("#backToTop").click(() => {

@@ -1,6 +1,7 @@
 ﻿@{
     var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
     var absoluteUri = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
+     var message = string.IsNullOrEmpty(ViewBag.Message) ? "Cảm ơn bạn đã quan tâm. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất." : ViewBag.Message;
 }
 <!DOCTYPE html>
 <html>
@@ -78,6 +79,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         @RenderBody()
     </div>
     <partial name="_Footer" />
+    <partial name="_PopupSuccess" model="@message" />
 
     <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
