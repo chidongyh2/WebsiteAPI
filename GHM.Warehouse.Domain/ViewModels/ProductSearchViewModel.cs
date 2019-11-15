@@ -22,5 +22,7 @@ namespace GHM.Warehouse.Domain.ViewModels
 
         public DateTime? LastUpdateTime { get; set; }
 
+        public DateTime? CreateTime { get; set; }
+
     }
 }
