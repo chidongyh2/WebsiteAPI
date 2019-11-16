@@ -6,7 +6,7 @@
         autoplay: false,
         slideMargin: 10,
         autoplayTimeout: 3000,
-        focusOnSelect: true,      
+        focusOnSelect: true,
         infinite: true,
         cssEase: 'linear',
         touchMove: true,
@@ -63,16 +63,16 @@
     });
 
     $("#video-silder").lightSlider({
-       onBeforeStart: function (slider) {
+        onBeforeStart: function (slider) {
         },
         onSliderLoad: function (slider) {
-            setTimeout(()=>{
-               slider.find('img').each(function(index, el) {
-                $(el).attr('src', $(el).attr('data-src'));
-                $(el).css('display', 'initial')
-            });
-            },3000)          
-        },        
+            setTimeout(() => {
+                slider.find('img').each(function (index, el) {
+                    $(el).attr('src', $(el).attr('data-src'));
+                    $(el).css('display', 'initial');
+                });
+            }, 3000);
+        },
         item: 6,
         auto: false,
         loop: true,
@@ -194,7 +194,6 @@
     if (window.innerWidth < 768) {
         $("#productGroups").slick({
             slidesToShow: 3,
-            centerMode: true,
             slidesToScroll: 1,
             lazyLoad: 'ondemand',
             prevArrow: '<button class="slick-prev"> <img src="/images/facion/pev.png" /> </button>',

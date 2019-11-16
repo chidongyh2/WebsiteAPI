@@ -9,7 +9,7 @@
         {
             <div class="item">
                 <a href="javascript://" title="@bannerItem.Name">
-                    <img class="img-responsive lazy" src="@(string.IsNullOrEmpty(bannerItem.Image) ? "/images/no-image.png" : $"{url}{bannerItem.Image}")"
+                    <img class="img-responsive" data-src="@(string.IsNullOrEmpty(bannerItem.Image) ? "/images/no-image.png" : $"{url}{bannerItem.Image}")"
                          onerror="this.src='/images/no-image.png'" alt="@bannerItem.Alt" />
                 </a>
                 <div class="carousel-caption d-md-block">

@@ -3,7 +3,7 @@
     var url = ViewBag.Url;
 }
 
-<div class="news-angency lazy">    
+<div class="news-angency">    
     @if (listBrand != null && listBrand.Any())
     {
         <div id="agency">
@@ -15,9 +15,9 @@
                             {
                                 <div class="item">
                                     <a title="@brand.Name">
-                                        <img src="@($"/image?url={(string.IsNullOrEmpty(brand.Logo) ? "/images/no-image.png" : $"{ViewBag.Url}{brand.Logo}")}&width=95&height=95")"
+                                        <img data-src="@($"/image?url={(string.IsNullOrEmpty(brand.Logo) ? "/images/no-image.png" : $"{ViewBag.Url}{brand.Logo}")}&width=95&height=95")"
                                         onerror="this.src='/images/no-image.png'"
-                                        alt="@brand.Name" />
+                                        alt="@brand.Name"/>
                                     </a>
                                 </div>
                             }

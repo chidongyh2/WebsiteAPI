@@ -74,5 +74,9 @@
   {
     "outputFile": "wwwroot/js/component/box-hotline.component.es5.js",
     "inputFile": "wwwroot/js/component/box-hotline.component.js"
+  },
+  {
+    "outputFile": "wwwroot/css/less/comment.css",
+    "inputFile": "wwwroot/css/less/comment.less"
   }
 ]
