@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace GHM.WebsiteClient.Api.Infrastructure.Services
 {
-    public class FeedbackService: IFeedbackService
+    public class FeedbackService : IFeedbackService
     {
         private readonly string _connectionString;
         private readonly ILogger<FeedbackService> _logger;
@@ -96,5 +96,38 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
             }
         }
 
+        public async Task<int> InsertComment(CommentMeta commentMeta)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@TenantId", commentMeta.TenantId);
+                    param.Add("@Email", commentMeta.Email);
+                    param.Add("@ObjectId", commentMeta.ObjectId);
+                    param.Add("@ObjectType", commentMeta.ObjectType);
+                    param.Add("@FullName", commentMeta.FullName);
+                    param.Add("@Email", commentMeta.Email);
+                    param.Add("@Avartar", commentMeta.Avatar);
+                    param.Add("@Content", commentMeta.Content);
+                    param.Add("@ParentId", commentMeta.ParentId);
+                    param.Add("@UserId", commentMeta.UserId);
+                    param.Add("@UserType", commentMeta.UserType);
+                    
+                    var result = con.Query<int>("[dbo].[Comment_Insert]", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "[dbo].[spAgencyInfos_Insert] InsertAsync AgencyInfoRepository Error.");
+                return -1;
+            }
+        }
     }
 }

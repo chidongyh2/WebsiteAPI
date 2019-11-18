@@ -43,3 +43,77 @@
   src: url('../../lib/playfair-display/playfairdisplay-bold.otf') format('opentype');
   font-display: swap;
 }
+.comments {
+  margin-bottom: 20px;
+}
+.comments .line {
+  margin-bottom: -2px;
+  border-bottom: 2px solid #EEEDEB;
+  height: 2px;
+  width: 100%;
+}
+.comments .title {
+  overflow: hidden;
+  display: inline-block;
+  margin-top: 0px;
+  border-top: 2px solid #F9A5A7;
+  padding: 10px 0px;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding-bottom: 0px;
+}
+.comments .box-comment .form-horizontal {
+  width: 100%;
+  padding: 20px;
+  background-color: #F7F7F7;
+}
+@media only screen and (max-width: 1200px) {
+  .comments .box-comment .form-horizontal {
+    padding: 15px;
+  }
+}
+.comments .box-comment .form-horizontal .title {
+  text-align: center;
+  text-transform: uppercase;
+  color: #3F3F3F;
+  font-family: Roboto-Regular;
+  font-size: 20px;
+  font-weight: bold;
+}
+.comments .box-comment .form-horizontal .form-group {
+  padding: 5px;
+  background: white;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+.comments .box-comment .form-horizontal .form-group label {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #3F3F3F;
+  font-weight: normal;
+  padding-left: 10px;
+}
+.comments .box-comment .form-horizontal .form-group input,
+.comments .box-comment .form-horizontal .form-group textarea,
+.comments .box-comment .form-horizontal .form-group select {
+  border: none !important;
+  box-shadow: none;
+}
+.comments .box-comment .form-horizontal .form-group input:focus,
+.comments .box-comment .form-horizontal .form-group textarea:focus,
+.comments .box-comment .form-horizontal .form-group select:focus,
+.comments .box-comment .form-horizontal .form-group input:hover,
+.comments .box-comment .form-horizontal .form-group textarea:hover,
+.comments .box-comment .form-horizontal .form-group select:hover {
+  box-shadow: none !important;
+}
+.comments .box-comment .form-horizontal .btn-send {
+  background-color: #F9A5A7;
+  border-radius: 0px;
+  font-size: 15px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-family: Opensans-Bold;
+  padding: 6px 12px;
+  border-radius: 0px !important;
+}

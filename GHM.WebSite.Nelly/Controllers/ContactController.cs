@@ -89,7 +89,6 @@ namespace GHM.Website.Nelly.Controllers
             var apiService = _configuration.GetApiServiceInfo();
 
             var feedbackMetaData = JsonConvert.DeserializeObject<GHM.WebsiteClient.Api.Domain.ModelMetas.FeedbackMeta>(JsonConvert.SerializeObject(feedback));
-
             var result = await _feedbackService.Insert(apiService.TenantId, feedbackMetaData);
 
             return Json(result);
@@ -110,6 +109,25 @@ namespace GHM.Website.Nelly.Controllers
             var agencyMetaData = JsonConvert.DeserializeObject<GHM.WebsiteClient.Api.Domain.ModelMetas.AgencyInfoMeta>(JsonConvert.SerializeObject(agencyMeta));
             agencyMetaData.TenantId = apiService.TenantId;
             var result = await _agencyInfoService.Insert(CultureInfo.CurrentCulture.Name, agencyMetaData);
+
+            return Json(result);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("comment")]
+        public async Task<JsonResult> Comment(CommentMeta commentMeta)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(GetErrorsInModelState());
+            }
+
+            var apiService = _configuration.GetApiServiceInfo();
+
+            var commentMetaData = JsonConvert.DeserializeObject<WebsiteClient.Api.Domain.ModelMetas.CommentMeta>(JsonConvert.SerializeObject(commentMeta));
+            commentMetaData.TenantId = apiService.TenantId;
+            var result = await _feedbackService.InsertComment(commentMetaData);
 
             return Json(result);
         }
