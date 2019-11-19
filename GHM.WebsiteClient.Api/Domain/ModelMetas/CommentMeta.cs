@@ -7,8 +7,9 @@ namespace GHM.WebsiteClient.Api.Domain.ModelMetas
 {
     public class CommentMeta
     {
+        public string Id { get; set; }
         public string TenantId { get; set; }
-        public int ObjectId { get; set; }
+        public string ObjectId { get; set; }
         public int ObjectType { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
@@ -16,6 +17,6 @@ namespace GHM.WebsiteClient.Api.Domain.ModelMetas
         public string Content { get; set; }
         public int? ParentId { get; set; }
         public string UserId { get; set; }
-        public int UserType { get; set; }
+        public int? UserType { get; set; }
     }
 }

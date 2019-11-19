@@ -9,7 +9,7 @@ namespace GHM.WebSite.Nelly.Models
     public class CommentMeta
     {
         public string TenantId { get; set; }
-        public int ObjectId { get; set; }
+        public string ObjectId { get; set; }
         public int ObjectType { get; set; }
 
         [StringLength(255, ErrorMessage = "Họ tên không được nhỏ hơn 5 ký tự và lớn hơn 255 ký tự", MinimumLength = 5)]
@@ -32,6 +32,6 @@ namespace GHM.WebSite.Nelly.Models
 
         public int? ParentId { get; set; }
         public string UserId { get; set; }
-        public int UserType { get; set; }
+        public int? UserType { get; set; }
     }
 }

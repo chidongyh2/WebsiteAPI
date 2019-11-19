@@ -100,7 +100,7 @@
                             }
                         </div>
                     </div>
-                    <comment-component></comment-component>
+                    <comment-component params="objectId: '@Model.Id', objectType: 1"></comment-component>
                 }
                 else
                 {
@@ -122,6 +122,7 @@
     <script src="~/js/component/comment-box-component.js"></script>
     <script src="~/js/component/comment-component.js"></script>
     <script type="text/javascript">
+
         ko.applyBindings();
     </script>
 }
