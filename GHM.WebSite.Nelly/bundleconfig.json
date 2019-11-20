@@ -169,7 +169,9 @@
   {
     "outputFileName": "wwwroot/js/component/comment-component.min.js",
     "inputFiles": [
-      "wwwroot/js/component/comment-component.js"
+      "wwwroot/js/component/comment-component.js",
+      "wwwroot/js/component/comment-box-component.js",
+      "wwwroot/js/component/comment-list-component.js"
     ]
   }
 ]

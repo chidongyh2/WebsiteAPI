@@ -3,10 +3,12 @@ using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.IServices;
 using GHM.Infrastructure.Models;
+using GHM.Infrastructure.ViewModels;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using GHM.WebsiteClient.Api.Domain.ModelMetas;
 using GHM.WebsiteClient.Api.Domain.Models;
 using GHM.WebsiteClient.Api.Domain.Resources;
+using GHM.WebsiteClient.Api.Domain.ViewModels;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -27,6 +29,41 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
             _connectionString = connectionString;
             _logger = logger;
             _websiteResourceService = websiteResourceService;
+        }
+
+        public async Task<SearchResult<CommentViewModel>> GetComment(string tenantId, string objectId, int objectType, int page,
+            int pageSize)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    DynamicParameters param = new DynamicParameters();
+                    param.Add("@TenantId", tenantId);
+                    param.Add("@ObjectId", objectId);
+                    param.Add("@ObjectType", objectType);
+                    param.Add("@Page", page);
+                    param.Add("@PageSize", pageSize);
+                    param.Add("@TotalRows", DbType.Int32, direction: ParameterDirection.Output);
+
+                    var items = await con.QueryAsync<CommentViewModel>("[dbo].[sp_Comment_GetByObjectId]", param, commandType: CommandType.StoredProcedure);
+                    var result = new SearchResult<CommentViewModel>
+                    {
+                        Items = items.ToList(),
+                        TotalRows = param.Get<int>("TotalRows")
+                    };
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "sp_Comment_GetByObjectId FaqService Error.");
+                return new SearchResult<CommentViewModel> { TotalRows = 0, Items = null };
+            }
         }
 
         public async Task<ActionResultResponse<string>> Insert(string tenantId, FeedbackMeta feedbackMeta)

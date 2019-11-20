@@ -26,7 +26,12 @@
                 __RequestVerificationToken: token
             }, function (data) {
                 self.isSending(false);
-                toastr.error(data);
+
+                if (data > 0) {
+                    self.fullName('');
+                    self.email('');
+                    self.content('');
+                }
             });
         };
     },

@@ -131,5 +131,14 @@ namespace GHM.Website.Nelly.Controllers
 
             return Json(result);
         }
+
+        [Route("get-comment")]
+        public async Task<JsonResult> GetComment(string objectId, int objectType, int page = 1, int pageSize = 20)
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+
+            var result = await _feedbackService.GetComment(apiService.TenantId, objectId, objectType, page, pageSize);
+            return Json(result);
+        }
     }
 }
