@@ -17,9 +17,9 @@ namespace GHM.WebSite.Nelly.Models
         [Display(Name = "Họ tên")]
         public string FullName { get; set; }
 
-        [StringLength(255, ErrorMessage = "Họ tên không được nhỏ hơn 5 ký tự và lớn hơn 255 ký tự", MinimumLength = 5)]
-        [Required(ErrorMessage = "Họ tên không được để trống")]
-        [Display(Name = "Họ tên")]
+        [StringLength(50, ErrorMessage = "Email không được nhỏ hơn 5 ký tự và lớn hơn 50 ký tự", MinimumLength = 5)]
+        [EmailAddress(ErrorMessage = "Đinh dạng email không đúng")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [StringLength(500, ErrorMessage = "Avatar không được lớn hơn 500 ký tự")]

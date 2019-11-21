@@ -2,19 +2,29 @@
 ko.components.register('comment-component', {
     viewModel: function (params) {
         var self = this;
-        self.objectId = params.objectId ? ko.observable(params.objectId) : ko.observable(-1);
-        self.objectType = params.objectType ? ko.observable(params.objectType) : ko.observable(-1);
+        self.objectId = params.objectId ? params.objectId : -1;
+        self.objectType = params.objectType ? params.objectType : -1;
         self.listComments = ko.observableArray([]);
+
+        self.rendTree = function (data) {
+            _.each(data, function (item) {
+                item.state.show = ko.observable(false);
+                if (item.children && item.children.length > 0) {
+                    self.rendTree(item.children);
+                }
+            });
+        };
 
         self.getComment = function () {
             $.get('/get-comment', {
-                objectId: self.objectId(),
-                objectType: self.objectType(),
+                objectId: self.objectId,
+                objectType: self.objectType,
                 page: 1,
                 pageSize: 20
             }, function (data) {
+                    self.rendTree(data.items);
                     self.listComments(data.items);
-                    console.log(data.items);
+                    console.log(self.listComments());
             });
         };
 
@@ -26,6 +36,10 @@ ko.components.register('comment-component', {
        <div class="line"></div>
             <h3 class="title">Bình luận</h3>       
             <comment-box-component params="objectId: objectId, objectType: objectType"></comment-box-component>
+            <h2 class="comment-no">
+               <b data-bind="text: listComments().length"></b>
+                Bình luận.           
+            </h2>
            <comment-list-component params="objectId: objectId, objectType: objectType, listComments: listComments"></comment-list-component>
        </div>`
 });

@@ -70,11 +70,17 @@
                 font-size: 15px;
                 color: @color-white;
                 text-transform: uppercase;
-                font-family: Opensans-Bold;
+                font-family: Roboto-Regular;
                 padding: 6px 12px;
                 border-radius: 0px !important;
             }
         }
+    }
+
+    .comment-no {
+        font-size: 20px;
+        font-family: Roboto-Regular;
+        margin-bottom: 5px;
     }
 
     .list-comment {
@@ -82,6 +88,7 @@
         clear: both;
         width: 100%;
         padding: 10px 0;
+        padding-bottom: 0px;
         margin-bottom: 10px;
 
         .comment-item {
@@ -93,18 +100,34 @@
             .avatar {
                 display: inline-block;
                 float: left;
-                width: 60px;
-                height: 60px;
-                border: 1px solid #ccc;
+                width: 50px;
+                height: 50px;
             }
 
             .content {
-                width: 750px;
-                float: right;
+                /*width: 750px;*/
+                margin-left: 15px;
                 clear: none;
                 border-top: none;
                 padding-right: 10px;
+                margin-top: 0px !important;
+
+                .intro {
+                    font-size: 13px;
+                    font-family: Roboto-Regular;
+                    margin-bottom: 5px;
+                }
+
+                .comment-details {
+                    font-size: 13px;
+                    font-family: Roboto-Regular;
+                }
             }
         }
+    }
+
+    .children {
+        background-color: #eeeeee;
+        padding-left: 10px;
     }
 }

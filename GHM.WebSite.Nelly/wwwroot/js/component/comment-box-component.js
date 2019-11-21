@@ -1,9 +1,9 @@
 ﻿ko.components.register('comment-box-component', {
     viewModel: function (params) {
         var self = this;
-        self.objectId = params.objectId ? params.objectId : ko.observable(-1);
-        self.objectType = params.objectType ? params.objectType : ko.observable(-1);
-        self.parentId = params.parentId ? params.parentId : ko.observable(null);
+        self.objectId = params.objectId ? params.objectId :-1;
+        self.objectType = params.objectType ?params.objectType :-1;
+        self.parentId = params.parentId ? ko.observable(params.parentId) : ko.observable(null);
         self.userId = params.userId ? params.userId : ko.observable(null);
         self.userType = params.userType ? params.userType : ko.observable(0);
         self.fullName = ko.observable();
@@ -14,9 +14,10 @@
 
         self.save = function () {
             self.isSending(true);
+            // console.log(self.objectId, self.objectType);
             $.post('/comment', {
-                objectId: self.objectId(),
-                objectType: self.objectType(),
+                objectId: self.objectId,
+                objectType: self.objectType,
                 fullName: self.fullName(),
                 email: self.email(),
                 content: self.content(),
@@ -31,16 +32,23 @@
                     self.fullName('');
                     self.email('');
                     self.content('');
+                    return;
                 }
+
+                toastr.error(data);
             });
         };
+
+        $(document).ready(function () {
+            // console.log(self.objectId, 'box');
+        });
     },
     template: `<div class="box-comment">
        <form id="postComment" class="form-horizontal" data-bind="submit: save">
        <div class="row">
            <div class="col-sm-6">
                <div class="form-group">
-                 <input class="form-control" data-bind="value: fullName" placeholder="Họ tên của bạn">
+                 <input class="form-control" data-bind="value: fullName" placeholder="Họ tên của bạn (bắt buộc)">
                 </div>
             </div>
             <div class="col-sm-6">
@@ -52,7 +60,7 @@
         <div class="row">
             <div class="col-sm-12">
                  <div class="form-group">
-                       <textarea class="form-control" data-bind="value: content" spellcheck="false" placeholder="Mời bạn nhập câu hỏi hoặc đánh giá cho sản phẩm."></textarea> 
+                       <textarea class="form-control" data-bind="value: content" spellcheck="false" placeholder="Mời bạn nhập câu hỏi hoặc đánh giá (bắt buộc)."></textarea> 
                  </div>
             </div>
         </div>  
