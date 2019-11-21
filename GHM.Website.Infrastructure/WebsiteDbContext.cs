@@ -221,6 +221,8 @@ namespace GHM.Website.Infrastructure
                 .HasOne(ai => ai.AgencyInfo)
                 .WithMany(ait => ait.AgencyInfoTranslations)
                 .HasForeignKey(ait => ait.AgencyInfoId);
+
+            builder.Entity<Comment>().ToTable("Comments").HasKey(x => x.Id);
         }
 
         //public Task<int> SaveChangesAsync()

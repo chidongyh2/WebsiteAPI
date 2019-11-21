@@ -4,6 +4,8 @@ ko.components.register('comment-component', {
         var self = this;
         self.objectId = params.objectId ? ko.observable(params.objectId) : ko.observable(-1);
         self.objectType = params.objectType ? ko.observable(params.objectType) : ko.observable(-1);
+        self.isShowTitle = params.isShowTitle !== null ? ko.observable(params.isShowTitle) : ko.observable(true);
+
         self.listComments = ko.observableArray([]);
 
         self.getComment = function () {
@@ -23,9 +25,11 @@ ko.components.register('comment-component', {
         });
     },
     template: `<div class="comments">
-       <div class="line"></div>
-            <h3 class="title">Bình luận</h3>       
-            <comment-box-component params="objectId: objectId, objectType: objectType"></comment-box-component>
+       <div class="line"></div>    
+         <!--ko if: isShowTitle() -->
+            <h3 class="title">Bình luận</h3>
+          <!--/ko-->
+           <comment-box-component params="objectId: objectId, objectType: objectType"></comment-box-component>
            <comment-list-component params="objectId: objectId, objectType: objectType, listComments: listComments"></comment-list-component>
        </div>`
 });

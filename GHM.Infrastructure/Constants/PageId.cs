@@ -71,6 +71,7 @@
         CoreValue = 229,
         Faq = 231,
         AgencyInfo = 232,
+        Comment = 233,
 
         // ------ Hr: 300 ------
         Hr = 300,
