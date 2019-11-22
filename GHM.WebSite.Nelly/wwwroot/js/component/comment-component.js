@@ -4,6 +4,7 @@ ko.components.register('comment-component', {
         var self = this;
         self.objectId = params.objectId ? params.objectId : -1;
         self.objectType = params.objectType ? params.objectType : -1;
+        self.isShowTitle = params.isShowTitle !== null ? ko.observable(params.isShowTitle) : ko.observable(true);
         self.listComments = ko.observableArray([]);
 
         self.rendTree = function (data) {
@@ -34,8 +35,10 @@ ko.components.register('comment-component', {
     },
     template: `<div class="comments">
        <div class="line"></div>
+            <!--ko if: isShowTitle() -->
             <h3 class="title">Bình luận</h3>       
             <comment-box-component params="objectId: objectId, objectType: objectType"></comment-box-component>
+            <!--/ko-->
             <h2 class="comment-no">
                <b data-bind="text: listComments().length"></b>
                 Bình luận.           
