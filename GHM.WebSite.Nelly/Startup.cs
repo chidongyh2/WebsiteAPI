@@ -46,7 +46,7 @@ namespace GHM.Website.Nelly
                 .AddJsonFormatters()
                 .AddJsonOptions(options =>
                 {
-                    options.SerializerSettings.DateFormatString = "dd/MM/yyyy";
+                    options.SerializerSettings.DateFormatString = "dd/MM/yyyy hh:mm";
                 })
                 .AddFluentValidation();
 

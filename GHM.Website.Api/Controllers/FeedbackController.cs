@@ -32,6 +32,15 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
+        [Route("comment"),AcceptVerbs("GET")]
+        [AllowPermission(PageId.Comment, Permission.View)]
+        [CheckPermission]
+        public async Task<IActionResult> SearchComment(bool? isShow, int page = 1, int pageSize = 20)
+        {
+            var result = await _feedbackService.SearchComment(CurrentUser.TenantId, isShow, page, pageSize);
+            return Ok(result);
+        }
+
         //[AcceptVerbs("POST"), ValidateModel]
         //[AllowPermission(PageId.Feedback, Permission.Insert)]
         //[CheckPermission]

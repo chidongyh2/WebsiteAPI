@@ -748,6 +748,9 @@ body {
     font-size: 10px;
   }
 }
+.pagination {
+  margin: 10px 0;
+}
 .pagination li a {
   border: 1px solid #EEEDEB;
   height: 30px;

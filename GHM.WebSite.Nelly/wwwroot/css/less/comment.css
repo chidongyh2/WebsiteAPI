@@ -158,6 +158,11 @@
 .comments .list-comment .comment-item .content .comment-details {
   font-size: 13px;
   font-family: Roboto-Regular;
+  color: #3F3F3F;
+}
+.comments .list-comment .comment-item .content .tools a {
+  color: #3F3F3F;
+  text-decoration: none;
 }
 .comments .children {
   background-color: #eeeeee;

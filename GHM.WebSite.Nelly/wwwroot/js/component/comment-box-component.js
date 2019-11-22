@@ -1,8 +1,8 @@
 ﻿ko.components.register('comment-box-component', {
     viewModel: function (params) {
         var self = this;
-        self.objectId = params.objectId ? params.objectId :-1;
-        self.objectType = params.objectType ?params.objectType :-1;
+        self.objectId = params.objectId ? params.objectId : -1;
+        self.objectType = params.objectType !== null ? params.objectType : -1;
         self.parentId = params.parentId ? ko.observable(params.parentId) : ko.observable(null);
         self.userId = params.userId ? params.userId : ko.observable(null);
         self.userType = params.userType ? params.userType : ko.observable(0);
@@ -14,8 +14,7 @@
 
         self.save = function () {
             self.isSending(true);
-            
-            $.post('/comment', {
+            var object = {
                 objectId: self.objectId,
                 objectType: self.objectType,
                 fullName: self.fullName(),
@@ -25,17 +24,20 @@
                 userId: self.userId(),
                 userType: self.userType(),
                 __RequestVerificationToken: token
-            }, function (data) {
+            };
+            $.post('/comment', object, function (data) {
                 self.isSending(false);
 
                 if (data > 0) {
                     self.fullName('');
                     self.email('');
                     self.content('');
-
-                if (params.postComment instanceof Function) {
-                      params.postComment(data);
-                   }
+                    
+                    if (params.postComment instanceof Function) {
+                        object.id = data;
+                        object.createTime = new Date();
+                        params.postComment(object);
+                    }
                     return;
                 }
 

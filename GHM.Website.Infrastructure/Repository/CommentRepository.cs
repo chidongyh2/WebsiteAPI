@@ -1,4 +1,5 @@
-﻿using GHM.Infrastructure.SqlServer;
+﻿using GHM.Infrastructure.Helpers;
+using GHM.Infrastructure.SqlServer;
 using GHM.Website.Domain.IRepository;
 using GHM.Website.Domain.Models;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,10 @@ namespace GHM.Website.Infrastructure.Repository
         {
             Expression<Func<Comment, bool>> spec = x => x.TenantId == tenantId;
 
+            if (isShow.HasValue)
+            {
+                spec = spec.And(x => x.IsShow == isShow);
+            }
             var query = Context.Set<Comment>().Where(spec).AsNoTracking();
 
             totalRows = query.Count();
