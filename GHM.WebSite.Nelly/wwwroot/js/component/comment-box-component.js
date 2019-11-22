@@ -14,7 +14,7 @@
 
         self.save = function () {
             self.isSending(true);
-            // console.log(self.objectId, self.objectType);
+            
             $.post('/comment', {
                 objectId: self.objectId,
                 objectType: self.objectType,
@@ -32,6 +32,10 @@
                     self.fullName('');
                     self.email('');
                     self.content('');
+
+                if (params.postComment instanceof Function) {
+                      params.postComment(data);
+                   }
                     return;
                 }
 
