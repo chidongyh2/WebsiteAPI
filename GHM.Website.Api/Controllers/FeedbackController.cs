@@ -40,7 +40,6 @@ namespace GHM.Website.Api.Controllers
         //    var result = await _feedbackService.Insert(CurrentUser.TenantId, feedbackMeta);
         //    if (result.Code <= 0)
         //        return BadRequest(result);
-
         //    return Ok(result);
         //}
 
