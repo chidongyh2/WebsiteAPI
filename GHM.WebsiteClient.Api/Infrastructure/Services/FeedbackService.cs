@@ -154,7 +154,8 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
                     param.Add("@ParentId", commentMeta.ParentId);
                     param.Add("@UserId", commentMeta.UserId);
                     param.Add("@UserType", commentMeta.UserType);
-                    
+                    param.Add("@Url", commentMeta.Url);
+
                     var result = con.Query<int>("[dbo].[Comment_Insert]", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
 
                     return result;

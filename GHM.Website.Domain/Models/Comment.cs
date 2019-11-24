@@ -22,6 +22,7 @@ namespace GHM.Website.Domain.Models
         public bool? IsShow { get; set; }
         public bool? IsDelete { get; set; }
         public int? ChildCount { get; set; }
+        public string Url { get; set; }
 
         public Comment()
         {

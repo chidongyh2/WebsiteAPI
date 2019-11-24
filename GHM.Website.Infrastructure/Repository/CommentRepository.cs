@@ -20,6 +20,21 @@ namespace GHM.Website.Infrastructure.Repository
             _commentRepository = Context.GetRepository<Comment>();
         }
 
+        public async Task<int> Delete(string tenantId, int id)
+        {
+            var commentInfo = await GetInfo(tenantId, id);
+            if (commentInfo == null)
+                return -1;
+
+            _commentRepository.Delete(commentInfo);
+            return await Context.SaveChangesAsync();
+        }
+
+        public async Task<Comment> GetInfo(string tenantId, int id, bool isReadOnly = false)
+        {
+            return await _commentRepository.GetAsync(isReadOnly, x => x.TenantId == tenantId && x.Id == id);
+        }
+
         public Task<List<Comment>> Search(string tenantId, bool? isShow, int page, int pageSize, out int totalRows)
         {
             Expression<Func<Comment, bool>> spec = x => x.TenantId == tenantId;
@@ -37,6 +52,11 @@ namespace GHM.Website.Infrastructure.Repository
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
+        }
+
+        public async Task<int> Update(Comment comment)
+        {
+            return await Context.SaveChangesAsync();
         }
     }
 }

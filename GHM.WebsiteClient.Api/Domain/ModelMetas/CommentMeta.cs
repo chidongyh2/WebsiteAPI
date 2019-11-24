@@ -18,5 +18,6 @@ namespace GHM.WebsiteClient.Api.Domain.ModelMetas
         public int? ParentId { get; set; }
         public string UserId { get; set; }
         public int? UserType { get; set; }
+        public string Url { get; set; }
     }
 }

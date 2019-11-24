@@ -18,5 +18,9 @@ namespace GHM.Website.Domain.IServices
         Task<ActionResultResponse<Feedback>> GetDetail(string tenantId, string feedbackId);
 
         Task<ActionResultResponse<string>> Update(string tenantId, string id, FeedbackMeta feedbackMeta);
+
+        Task<ActionResultResponse<int>> UpdateIsShowComment(string tenantId, int id, bool isShow);
+
+        Task<ActionResultResponse<int>> DeleteComment(string tenantId, int id);
     }
 }

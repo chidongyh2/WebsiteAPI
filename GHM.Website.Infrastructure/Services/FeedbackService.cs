@@ -118,5 +118,26 @@ namespace GHM.Website.Infrastructure.Services
                 TotalRows = totalRows
             };
         }
+
+        public async Task<ActionResultResponse<int>> UpdateIsShowComment(string tenantId, int id, bool isShow)
+        {
+            var commentInfo = await _commentRepository.GetInfo(tenantId, id);
+            if (commentInfo == null)
+                return new ActionResultResponse<int>(-1, ErrorMessage.NotFound);
+
+            commentInfo.IsShow = isShow;
+            var result = await _commentRepository.Update(commentInfo);
+
+            return new ActionResultResponse<int>(result, result < 0 ? _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong): 
+                 _websiteResourceService.GetString("Comment update successfully"));
+        }
+
+        public async Task<ActionResultResponse<int>> DeleteComment(string tenantId, int id)
+        {
+            var result = await _commentRepository.Delete(tenantId, id);
+
+            return new ActionResultResponse<int>(result, result < 0 ? _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong) :
+                _websiteResourceService.GetString("Delete comment successfully"));
+        }
     }
 }

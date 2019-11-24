@@ -13,6 +13,7 @@ using System.Globalization;
 using GHM.Infrastructure.ViewModels;
 using System.Linq;
 using State = GHM.WebSite.Nelly.Models.State;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -129,8 +130,9 @@ namespace GHM.Website.Nelly.Controllers
 
             var commentMetaData = JsonConvertHelper.GetObjectFromObject<WebsiteClient.Api.Domain.ModelMetas.CommentMeta>(commentMeta);
             commentMetaData.TenantId = apiService.TenantId;
-            var result = await _feedbackService.InsertComment(commentMetaData);
+            commentMeta.Url = $"{Request.Scheme}://{Request.Host}{Request.Path}{Request.QueryString}";
 
+            var result = await _feedbackService.InsertComment(commentMetaData);
             return Json(result);
         }
 
