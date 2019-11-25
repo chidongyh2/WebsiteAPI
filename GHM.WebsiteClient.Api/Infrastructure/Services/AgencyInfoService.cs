@@ -61,7 +61,6 @@ namespace GHM.WebsiteClient.Api.Infrastructure.Services
         {
             try
             {
-
                 using (SqlConnection con = new SqlConnection(_connectionString))
                 {
                     if (con.State == ConnectionState.Closed)

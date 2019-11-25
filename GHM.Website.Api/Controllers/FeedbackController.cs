@@ -32,17 +32,36 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
-        //[AcceptVerbs("POST"), ValidateModel]
-        //[AllowPermission(PageId.Feedback, Permission.Insert)]
-        //[CheckPermission]
-        //public async Task<IActionResult> Insert([FromBody]FeedbackMeta feedbackMeta)
-        //{
-        //    var result = await _feedbackService.Insert(CurrentUser.TenantId, feedbackMeta);
-        //    if (result.Code <= 0)
-        //        return BadRequest(result);
+        [Route("comment"),AcceptVerbs("GET")]
+        [AllowPermission(PageId.Comment, Permission.View)]
+        [CheckPermission]
+        public async Task<IActionResult> SearchComment(bool? isShow, int page = 1, int pageSize = 20)
+        {
+            var result = await _feedbackService.SearchComment(CurrentUser.TenantId, isShow, page, pageSize);
+            return Ok(result);
+        }
 
-        //    return Ok(result);
-        //}
+        [Route("comment/{id}"), AcceptVerbs("DELETE")]
+        [AllowPermission(PageId.Comment, Permission.Delete)]
+        [CheckPermission]
+        public async Task<IActionResult> DeleteComment(int id)
+        {
+            var result = await _feedbackService.DeleteComment(CurrentUser.TenantId, id);
+            if (result.Code <= 0)
+                return BadRequest(result);
+            return Ok(result);
+        }
+
+        [Route("comment/is-show/{id}"), AcceptVerbs("POST")]
+        [AllowPermission(PageId.Comment, Permission.Delete)]
+        [CheckPermission]
+        public async Task<IActionResult> UpdateIsShowComment(int id, bool isShow)
+        {
+            var result = await _feedbackService.UpdateIsShowComment(CurrentUser.TenantId, id, isShow);
+            if (result.Code <= 0)
+                return BadRequest(result);
+            return Ok(result);
+        }
 
         [Route("{id}"), AcceptVerbs("POST"), ValidateModel]
         [AllowPermission(PageId.Feedback, Permission.Insert)]

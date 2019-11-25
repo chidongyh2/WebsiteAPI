@@ -46,7 +46,7 @@ namespace GHM.Website.Nelly
                 .AddJsonFormatters()
                 .AddJsonOptions(options =>
                 {
-                    options.SerializerSettings.DateFormatString = "dd/MM/yyyy";
+                    options.SerializerSettings.DateFormatString = "dd/MM/yyyy hh:mm";
                 })
                 .AddFluentValidation();
 
@@ -145,9 +145,10 @@ namespace GHM.Website.Nelly
                     {
                         // Cache static file for 7 day
                         string path = context.Context.Request.Path;
-                        if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".ttf") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg"))
+                        if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".ttf") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg")
+                        || path.EndsWith(".otf"))
                         {
-                            TimeSpan maxAge = new TimeSpan(7, 0, 0, 0); // 1 ngày
+                            TimeSpan maxAge = new TimeSpan(30, 0, 0, 0); // 1 ngày
                             context.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
                         }
                     }

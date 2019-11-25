@@ -27,14 +27,14 @@
     var url = ViewBag.Url;
     ViewBag.Breadcrumb = breadcrumbs;
 }
-
+<link href="~/css/less/comment.min.css" rel="stylesheet" />
 <partial name="_Breadcumb" />
 <div id="news-detail">
     <div class="container">
-        @if (Model != null)
-        {
-            <div class="row">
-                <div class="col-sm-9">
+        <div class="row">
+            <div class="col-sm-9">
+                @if (Model != null)
+                {
                     <div class="news-detail">
                         <div class="image">
                             <img class="news-image img-responsive lazy" data-src="@($"{(string.IsNullOrEmpty(Model.FeatureImage) ? "/images/no-image.png" : $"{ViewBag.Url}{Model.FeatureImage}")}")" onerror="this.onerror = null;this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(Model.AltImage) ? Model.Title : Model.AltImage)" />
@@ -100,26 +100,26 @@
                             }
                         </div>
                     </div>
-                    @*<box-hotline-component></box-hotline-component>*@
-                    @*<partial name="_BoxHotline" />*@
-                </div>
-                <div class="col-md-3">
-                    <partial name="_SidebarNewsHot" />
-                </div>
+                    <comment-component params="objectId: '@Model.Id', objectType: 1"></comment-component>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-warning">Bài viết không tìm thấy</div>
+                        </div>
+                    </div>
+                }
             </div>
-        }
-        else
-        {
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="alert alert-warning">Bài viết không tìm thấy</div>
-                </div>
+            <div class="col-md-3">
+                <partial name="_SidebarNewsHot" />
             </div>
-        }
+        </div>
     </div>
 </div>
 @section scripts {
     <script src="~/js/component/box-hotline.component.min.js"></script>
+    <script src="~/js/component/comment-component.min.js"></script>
     <script type="text/javascript">
         ko.applyBindings();
     </script>

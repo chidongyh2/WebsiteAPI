@@ -109,4 +109,14 @@ $(document).ready(function () {
     });
 
     $('[data-toggle="tooltip"]').tooltip();
+
+    setTimeout(() => {
+        _.each($('img[data-src]').not(".lazy"), function (img) {
+            img.setAttribute('src', img.getAttribute('data-src'));           
+            img.onload = function () {
+                img.removeAttribute('data-src');
+                $(img).fadeIn(1500);
+            };    
+        });
+    }, 1000);
 });

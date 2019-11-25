@@ -66,7 +66,8 @@
       "wwwroot/lib/globinfo/globalize.js",
       "wwwroot/lib/toastr/toastr.js",
       "wwwroot/lib/jquery.validate.min.js",
-      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "wwwroot/lib/moment.js"
     ]
   },
   {
@@ -169,7 +170,9 @@
   {
     "outputFileName": "wwwroot/js/component/comment-component.min.js",
     "inputFiles": [
-      "wwwroot/js/component/comment-component.js"
+      "wwwroot/js/component/comment-component.js",
+      "wwwroot/js/component/comment-box-component.js",
+      "wwwroot/js/component/comment-list-component.js"
     ]
   }
 ]

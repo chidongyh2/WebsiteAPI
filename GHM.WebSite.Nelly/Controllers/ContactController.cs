@@ -9,8 +9,11 @@ using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 using System.Globalization;
+using GHM.Infrastructure.ViewModels;
+using System.Linq;
+using State = GHM.WebSite.Nelly.Models.State;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -88,8 +91,7 @@ namespace GHM.Website.Nelly.Controllers
 
             var apiService = _configuration.GetApiServiceInfo();
 
-            var feedbackMetaData = JsonConvert.DeserializeObject<GHM.WebsiteClient.Api.Domain.ModelMetas.FeedbackMeta>(JsonConvert.SerializeObject(feedback));
-
+            var feedbackMetaData = JsonConvertHelper.GetObjectFromObject<GHM.WebsiteClient.Api.Domain.ModelMetas.FeedbackMeta>(feedback);
             var result = await _feedbackService.Insert(apiService.TenantId, feedbackMetaData);
 
             return Json(result);
@@ -107,11 +109,72 @@ namespace GHM.Website.Nelly.Controllers
 
             var apiService = _configuration.GetApiServiceInfo();
 
-            var agencyMetaData = JsonConvert.DeserializeObject<GHM.WebsiteClient.Api.Domain.ModelMetas.AgencyInfoMeta>(JsonConvert.SerializeObject(agencyMeta));
+            var agencyMetaData = JsonConvertHelper.GetObjectFromObject<GHM.WebsiteClient.Api.Domain.ModelMetas.AgencyInfoMeta>(agencyMeta);
             agencyMetaData.TenantId = apiService.TenantId;
             var result = await _agencyInfoService.Insert(CultureInfo.CurrentCulture.Name, agencyMetaData);
 
             return Json(result);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("comment")]
+        public async Task<JsonResult> Comment(CommentMeta commentMeta)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(GetErrorsInModelState());
+            }
+
+            var apiService = _configuration.GetApiServiceInfo();
+
+            var commentMetaData = JsonConvertHelper.GetObjectFromObject<WebsiteClient.Api.Domain.ModelMetas.CommentMeta>(commentMeta);
+            commentMetaData.TenantId = apiService.TenantId;
+            commentMeta.Url = $"{Request.Scheme}://{Request.Host}{Request.Path}{Request.QueryString}";
+
+            var result = await _feedbackService.InsertComment(commentMetaData);
+            return Json(result);
+        }
+
+        [Route("get-comment")]
+        public async Task<JsonResult> GetComment(string objectId, int objectType, int page = 1, int pageSize = 20)
+        {
+            var apiService = _configuration.GetApiServiceInfo();
+            var commentMeta = await _feedbackService.GetComment(apiService.TenantId, objectId, objectType, page, pageSize);
+            var comment = JsonConvertHelper.GetObjectFromObject<SearchResult<CommentViewModel>>(commentMeta);
+
+            var result = RenderTree(comment.Items, null);
+
+            return Json(new {Items = result, comment.TotalRows});
+        }
+
+        private List<TreeData> RenderTree(List<CommentViewModel> comments, int? parentId)
+        {
+            var tree = new List<TreeData>();
+            var parents = comments.Where(x => x.ParentId == parentId).ToList();
+            if (parents.Any())
+            {
+                parents.ForEach(parent =>
+                {
+                    var treeData = new TreeData
+                    {
+                        Id = parent.Id,
+                        Text = parent.FullName,
+                        ParentId = parent.ParentId,
+                        IdPath = parent.IdPath,
+                        Data = parent,
+                        ChildCount = parent.ChildCount,
+                        Icon = string.Empty,
+                        State = new State()
+                        {
+                            Opened = !parentId.HasValue
+                        },
+                        Children = parent.ChildCount > 0 ? RenderTree(comments, parent.Id) : null
+                    };
+                    tree.Add(treeData);
+                });
+            }
+            return tree;
         }
     }
 }

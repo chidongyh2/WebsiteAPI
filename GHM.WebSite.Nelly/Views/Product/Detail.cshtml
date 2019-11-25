@@ -10,7 +10,7 @@
     };
 
     var breadcrumbs = new List<Breadcrumb>
-    {
+{
          new Breadcrumb()
         {
               Name = "Sản phẩm",
@@ -21,6 +21,7 @@
     var url = ViewBag.Url;
     ViewBag.Breadcrumb = breadcrumbs;
 }
+<link href="~/css/less/comment.min.css" rel="stylesheet" />
 <link href="~/lib/EasyZoom-master/css/easyzoom.min.css" rel="stylesheet" />
 <partial name="_Breadcumb">
     <div id="product-detail" class="product-detail">
@@ -65,11 +66,11 @@
                             <div class="content">
                                 <div class="title-sidebar">@productInfo?.Name</div>
                                 @*<div class="star">
-                        @for (var i = 1; i <= 5; i++)
-                        {
-                            <i class="la la-star"></i>
-                        }
-                    </div>*@
+                                        @for (var i = 1; i <= 5; i++)
+                                        {
+                                            <i class="la la-star"></i>
+                                        }
+                                    </div>*@
                                 <div class="price">
                                     <span>@productInfo?.SalePrice?.ToString("N0", new CultureInfo("en-US")) đ</span>
                                 </div>
@@ -170,7 +171,7 @@
                                         </div>
                                         <!--/ko-->
                                         <div class="tab-pane" id="comment">
-                                            @*<div data-bind="html: value"></div>*@
+                                            <comment-component params="objectId: '@productInfo?.Id', objectType: 0, isShowTitle: false"></comment-component>
                                         </div>
                                     </div>
                                 </div>
@@ -194,6 +195,7 @@
            var productInfo = @(ViewBag.ProductInfo != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductInfo, jsonSerializerSettings)) : "[]");
            var productSelectItems = @(ViewBag.ProductSelectItems != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductSelectItems, jsonSerializerSettings)) : "[]");
         </script>
+        <script src="~/js/component/comment-component.min.js"></script>
         <script src="~/lib/EasyZoom-master/dist/easyzoom.min.js"></script>
         <script src="~/js/viewmodel/product-detail.viewmodel.min.js"></script>
     }

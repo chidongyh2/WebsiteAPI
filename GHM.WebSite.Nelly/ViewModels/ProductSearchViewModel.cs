@@ -16,7 +16,6 @@ namespace GHM.Website.Nelly.ViewModels
         public string Content { get; set; }
         public string Description { get; set; }
         public DateTime? LastUpdateTime { get; set; }
-
         public DateTime? CreateTime { get; set; }
         public bool? IsNew
         {
