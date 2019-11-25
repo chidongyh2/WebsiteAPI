@@ -43,6 +43,17 @@ namespace GHM.Website.Domain.Models
         [DisplayName("LogoMobile")]
         public string LogoMobile { get; set; }
 
+        [DisplayName("TrackingHeader")]
+        public string TrackingHeader { get; set; }
+
+        [DisplayName("TrackingBody")]
+        public string TrackingBody { get; set; }
+
+        [DisplayName("GoogleAnalytics")]
+        public string GoogleAnalytics { get; set; }
+
+        [DisplayName("Những từ không được phép bình luận")]
+        public string CommentNotAllow { get; set; }
 
     }
 }

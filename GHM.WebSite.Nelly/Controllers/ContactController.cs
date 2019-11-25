@@ -14,6 +14,8 @@ using GHM.Infrastructure.ViewModels;
 using System.Linq;
 using State = GHM.WebSite.Nelly.Models.State;
 using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
+using GHM.Website.Domain.Models.WebsiteSetting;
+using GHM.Website.Nelly.Utils;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -24,6 +26,7 @@ namespace GHM.Website.Nelly.Controllers
         private readonly IFeedbackService _feedbackService;
         private readonly ICoreService _coreService;
         private readonly IAgencyInfoService _agencyInfoService;
+        private readonly ISettingService _settingService;
 
         public ContactController(IConfiguration configuration, IMemoryCache cache,
             IFeedbackService feedbackService, IAgencyInfoService agency,
@@ -36,6 +39,7 @@ namespace GHM.Website.Nelly.Controllers
             _feedbackService = feedbackService;
             _coreService = coreService;
             _agencyInfoService = agency;
+            _settingService = settingService;
         }
 
         [Route("lien-he")]
@@ -90,7 +94,7 @@ namespace GHM.Website.Nelly.Controllers
             }
 
             var apiService = _configuration.GetApiServiceInfo();
-
+            
             var feedbackMetaData = JsonConvertHelper.GetObjectFromObject<GHM.WebsiteClient.Api.Domain.ModelMetas.FeedbackMeta>(feedback);
             var result = await _feedbackService.Insert(apiService.TenantId, feedbackMetaData);
 
@@ -128,9 +132,39 @@ namespace GHM.Website.Nelly.Controllers
 
             var apiService = _configuration.GetApiServiceInfo();
 
+            var listSettings = await _settingService.GetWebsiteSettingsAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name);
+
+            var settings = listSettings.Items.Select(x => new Setting
+            {
+                Key = x.Key,
+                ConcurrencyStamp = x.ConcurrencyStamp,
+                DisplayName = x.DisplayName,
+                GroupId = x.GroupId,
+                LanguageId = x.LanguageId,
+                Value = x.Value
+            }).ToList();
+
+            var websiteSetting = new WebsiteSetting();
+            string convention = typeof(WebsiteSetting).Namespace;
+
+            var commentNotAllow = Common.GetSettingValue(settings, string.Format("{0}.CommentNotAllow", convention));
+            if (!string.IsNullOrEmpty(commentNotAllow))
+            {
+                var listComment = commentNotAllow.Split(',');
+                if (listComment != null && listComment.Any())
+                {
+                    foreach (var comment in listComment)
+                    {
+                        if (commentMeta.Content.Contains(comment))
+                        {
+                            return Json($"Bạn không được phép bình luận từ {comment}");
+                        }
+                    }
+                }
+            }
+
             var commentMetaData = JsonConvertHelper.GetObjectFromObject<WebsiteClient.Api.Domain.ModelMetas.CommentMeta>(commentMeta);
             commentMetaData.TenantId = apiService.TenantId;
-            commentMeta.Url = $"{Request.Scheme}://{Request.Host}{Request.Path}{Request.QueryString}";
 
             var result = await _feedbackService.InsertComment(commentMetaData);
             return Json(result);
@@ -145,7 +179,7 @@ namespace GHM.Website.Nelly.Controllers
 
             var result = RenderTree(comment.Items, null);
 
-            return Json(new {Items = result, comment.TotalRows});
+            return Json(new { Items = result, comment.TotalRows });
         }
 
         private List<TreeData> RenderTree(List<CommentViewModel> comments, int? parentId)

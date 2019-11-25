@@ -23,6 +23,7 @@
                 parentId: self.parentId(),
                 userId: self.userId(),
                 userType: self.userType(),
+                url: absoluteUri,
                 __RequestVerificationToken: token
             };
             $.post('/comment', object, function (data) {

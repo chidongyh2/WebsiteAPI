@@ -1,28 +1,28 @@
-﻿@font-face {
-  font-family: 'Opensans';
-  src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Opensans-Light';
-  src: url('../../lib/open_sans/opensans-light.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Opensans-Bold';
-  src: url('../../lib/open_sans/opensans-bold.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Opensans-Regular';
-  src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Opensans-Lightitalic';
-  src: url('../../lib/open_sans/opensans-lightitalic.ttf') format('truetype');
-  font-display: swap;
-}
+﻿/*@font-face {
+    font-family: 'Opensans';
+    src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Light';
+    src: url('../../lib/open_sans/opensans-light.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Bold';
+    src: url('../../lib/open_sans/opensans-bold.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Regular';
+    src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Lightitalic';
+    src: url('../../lib/open_sans/opensans-lightitalic.ttf') format('truetype');
+    font-display: swap;
+}*/
 @font-face {
   font-family: 'Roboto-Bold';
   src: url('../../lib/font-roboto/roboto-bold_1.ttf') format('truetype');
@@ -33,16 +33,16 @@
   src: url('../../lib/font-roboto/roboto-regular.ttf') format('truetype');
   font-display: swap;
 }
-@font-face {
-  font-family: 'PlayfairDisplay-Regular';
-  src: url('../../lib/playfair-display/playfairdisplay-regular.otf') format('opentype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'PlayfairDisplay-Bold';
-  src: url('../../lib/playfair-display/playfairdisplay-bold.otf') format('opentype');
-  font-display: swap;
-}
+/*@font-face {
+    font-family: 'PlayfairDisplay-Regular';
+    src: url('../../lib/playfair-display/playfairdisplay-regular.otf') format('opentype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'PlayfairDisplay-Bold';
+    src: url('../../lib/playfair-display/playfairdisplay-bold.otf') format('opentype');
+    font-display: swap;
+}*/
 .navbar-fixed-top {
   background-color: #F9A5A7;
   border-bottom: none;
@@ -96,7 +96,7 @@
   position: relative;
 }
 .wrap-header-top {
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   background-color: #F9A5A7;
   color: #FFFFFF;
   padding: 5px 0px;
@@ -193,7 +193,7 @@
   font-size: 15px;
   margin-top: 0px !important;
   border: none;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   width: 100%;
   box-shadow: 0 8px 50px -6px rgba(84, 84, 120, 0.26);
 }
@@ -648,7 +648,7 @@
   text-decoration: none;
   font-size: 12px;
   text-transform: uppercase;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   display: inline-block;
   transition: 1s ease-in-out;
 }

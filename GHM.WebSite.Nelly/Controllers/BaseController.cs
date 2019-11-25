@@ -154,6 +154,10 @@ namespace GHM.Website.Nelly.Controllers
             websiteSetting.Hotline = Common.GetSettingValue(settings, string.Format("{0}.Hotline", convention));
             websiteSetting.LogoMobile = Common.GetSettingValue(settings, string.Format("{0}.LogoMobile", convention));
             websiteSetting.ZaloId = Common.GetSettingValue(settings, string.Format("{0}.ZaloId", convention));
+            websiteSetting.TrackingBody = Common.GetSettingValue(settings, string.Format("{0}.TrackingBody", convention));
+            websiteSetting.TrackingHeader = Common.GetSettingValue(settings, string.Format("{0}.TrackingHeader", convention));
+            websiteSetting.GoogleAnalytics = Common.GetSettingValue(settings, string.Format("{0}.GoogleAnalytics", convention));
+            websiteSetting.CommentNotAllow = Common.GetSettingValue(settings, string.Format("{0}.CommentNotAllow", convention));
 
             _cache.Set(CacheParam.Setting, websiteSetting, TimeSpan.FromHours(1));
 

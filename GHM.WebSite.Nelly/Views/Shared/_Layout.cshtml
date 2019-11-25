@@ -41,18 +41,20 @@
     <meta name="twitter:image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)">
     <meta property="image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)" />
     <title>@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) && string.IsNullOrEmpty(ViewBag.Title) ? websiteSetting?.Brand : ViewBag.Title)</title>
-   
+
     <link href="~/css/plugins.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.min.css" />
-    @*<link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">*@
+    @if (!string.IsNullOrEmpty(websiteSetting.TrackingHeader))
+    {
+        @Html.Raw(websiteSetting.TrackingHeader)
+    }
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCBCKBJ"
-                height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
+    @if (!string.IsNullOrEmpty(websiteSetting.TrackingBody))
+    {
+        @Html.Raw(websiteSetting.TrackingBody)
+    }
     <!-- End Google Tag Manager (noscript) -->
     @Html.AntiForgeryToken()
     <partial name="_Header" />
@@ -88,23 +90,17 @@
     <h1 style="display: none">@ViewBag.Title</h1>
     <script src="~/js/plugins.min.js"></script>
     <script src="~/js/site.min.js"></script>
-    <script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130493156-3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-130493156-3');
-        @*var hotline = "@websiteSetting.Hotline";*@        
-    </script>
+    @if (!string.IsNullOrEmpty(websiteSetting.GoogleAnalytics))
+    {
+        <script async src="https://www.googletagmanager.com/gtag/js?id=@websiteSetting.GoogleAnalytics"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', @websiteSetting.GoogleAnalytics);
+        </script>
+    }
     @if (ViewBag.DeviceType != "desktop")
     {
         <script>
@@ -120,6 +116,9 @@
             })(jQuery);
         </script>
     }
+    <script type="text/javascript">
+    var absoluteUri = "@absoluteUri";
+    </script>
     @RenderSection("Scripts", required: false)
     @RenderSection("KnockOut", required: false)
 </body>

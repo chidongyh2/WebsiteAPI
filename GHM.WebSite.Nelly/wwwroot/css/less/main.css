@@ -1,28 +1,28 @@
-﻿@font-face {
-  font-family: 'Opensans';
-  src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Opensans-Light';
-  src: url('../../lib/open_sans/opensans-light.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Opensans-Bold';
-  src: url('../../lib/open_sans/opensans-bold.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Opensans-Regular';
-  src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Opensans-Lightitalic';
-  src: url('../../lib/open_sans/opensans-lightitalic.ttf') format('truetype');
-  font-display: swap;
-}
+﻿/*@font-face {
+    font-family: 'Opensans';
+    src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Light';
+    src: url('../../lib/open_sans/opensans-light.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Bold';
+    src: url('../../lib/open_sans/opensans-bold.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Regular';
+    src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Lightitalic';
+    src: url('../../lib/open_sans/opensans-lightitalic.ttf') format('truetype');
+    font-display: swap;
+}*/
 @font-face {
   font-family: 'Roboto-Bold';
   src: url('../../lib/font-roboto/roboto-bold_1.ttf') format('truetype');
@@ -33,16 +33,16 @@
   src: url('../../lib/font-roboto/roboto-regular.ttf') format('truetype');
   font-display: swap;
 }
-@font-face {
-  font-family: 'PlayfairDisplay-Regular';
-  src: url('../../lib/playfair-display/playfairdisplay-regular.otf') format('opentype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'PlayfairDisplay-Bold';
-  src: url('../../lib/playfair-display/playfairdisplay-bold.otf') format('opentype');
-  font-display: swap;
-}
+/*@font-face {
+    font-family: 'PlayfairDisplay-Regular';
+    src: url('../../lib/playfair-display/playfairdisplay-regular.otf') format('opentype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'PlayfairDisplay-Bold';
+    src: url('../../lib/playfair-display/playfairdisplay-bold.otf') format('opentype');
+    font-display: swap;
+}*/
 body {
   font-family: Roboto-Regular !important;
 }
@@ -112,7 +112,7 @@ body {
 #myCarousel .carousel-caption h3 {
   color: #FFFFFF;
   font-size: 18px;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   line-height: 22px;
   font-weight: 500;
   -webkit-animation-duration: 3s;
@@ -453,7 +453,7 @@ body {
   margin-top: 0px;
   text-transform: uppercase;
   font-size: 13px;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   padding-bottom: 10px;
   border-bottom: 1px solid;
 }
@@ -472,7 +472,7 @@ body {
   background-color: #F9A5A7;
   text-transform: uppercase;
   font-size: 14px;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   color: #FFFFFF;
 }
 .contact .angency-system ul {
@@ -495,7 +495,7 @@ body {
   margin-bottom: 5px;
   color: #5E5C5D;
   font-size: 16px;
-  font-family: OpenSans-Bold;
+  font-family: Roboto-Bold;
 }
 .contact .angency-system ul li .content p {
   color: #949293;
@@ -589,7 +589,7 @@ body {
 #news-detail .news-detail .content {
   margin-bottom: 30px;
   margin-top: 0px;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
 }
 #news-detail .news-detail .content img {
   padding: 0px;
@@ -619,7 +619,6 @@ body {
 .sidebar-news-host .list-news li .media-body a {
   color: #3F3F3F;
   transition: 0.3s ease;
-  font-family: Opensans;
   font-size: 13px;
   font-family: Roboto-Regular;
 }
@@ -631,7 +630,7 @@ body {
   color: #3F3F3F;
   font-size: 14px;
   padding-bottom: 0px;
-  font-family: Opensans-Bold;
+  font-family: Roboto-Bold;
 }
 .sidebar-news-host .list-banner {
   list-style: none;
@@ -1048,7 +1047,7 @@ body {
 }
 #news-hot-in-homepage #news-slider .slick-center .news-content .description {
   padding: 0px 20px;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   font-size: 14px;
 }
 .slick-next,
@@ -1146,7 +1145,7 @@ body {
 #menu-middle #menuMiddlerSlider .menu-item .menu-name .description {
   padding-top: 10px;
   text-align: center;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   font-size: 16px;
 }
 @media only screen and (max-width: 1200px) {
@@ -1210,7 +1209,7 @@ body {
 }
 .news-item .wrap-text-content .description {
   font-size: 14px;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
 }
 @media only screen and (max-width: 1200px) {
   .news-item .wrap-text-content .description {
@@ -1348,7 +1347,7 @@ body {
   font-size: 16px;
   margin: 0px;
   display: inline-block;
-  font-weight: bold;
+  font-weight: 500;
 }
 #product-category-homepage .selector li input + label:hover {
   background: #F9A5A7;
@@ -1378,7 +1377,7 @@ body {
   margin-left: -80px;
   /*box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);*/
   font-size: 16px;
-  font-family: Opensans-Light;
+  font-family: Roboto-Regular;
   text-transform: uppercase;
 }
 #product-category-homepage .selector.open li input + label span {
@@ -1454,7 +1453,7 @@ body {
 }
 .category-item .content .number {
   color: #F9A5A7;
-  font-family: Opensans-Bold;
+  font-family: Roboto-Bold;
   font-size: 90px;
 }
 @media only screen and (max-width: 1200px) {
@@ -1463,7 +1462,7 @@ body {
   }
 }
 .category-item .content .title {
-  font-family: Opensans-Semibold;
+  font-family: Roboto-Regular;
   font-size: 30px;
   text-transform: uppercase;
 }
@@ -1477,7 +1476,7 @@ body {
   text-decoration: none;
 }
 .category-item .content .description {
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   color: #3F3F3F;
   font-size: 15px;
 }
@@ -1612,7 +1611,7 @@ body {
   font-size: 18px;
   /*border-right: 1px solid @color-text;*/
   padding-top: 5px;
-  font-family: OpenSans;
+  font-family: Roboto-Regular;
   padding: 4px 8px;
   border-top-right-radius: unset !important;
   border-bottom-right-radius: unset !important;
@@ -1701,12 +1700,12 @@ body {
 .product-item .wrap-text-content .product-code {
   margin-top: 10px;
   margin-bottom: 5px;
-  font-family: Opensans-Bold;
+  font-family: Roboto-Bold;
   color: #3F3F3F;
   font-size: 14px;
 }
 .product-item .wrap-text-content .title {
-  font-family: Opensans-Regular;
+  font-family: Roboto-Regular;
   font-size: 16px;
   text-align: center;
   min-height: 55px;
@@ -1723,7 +1722,8 @@ body {
 }
 .product-item .wrap-text-content .description {
   font-size: 14px;
-  font-family: Opensans-Lightitalic;
+  font-family: Roboto-Regular;
+  font-style: italic;
   text-align: center;
   min-height: 45px;
 }
@@ -1736,7 +1736,7 @@ body {
 .product-item .wrap-text-content .price {
   color: #3F3F3F;
   font-weight: bold;
-  font-family: Opensans-Bold;
+  font-family: Roboto-Bold;
 }
 .product-item .wrap-text-content hr {
   margin: 10px 0px;
@@ -1783,7 +1783,7 @@ body {
   border: 1px solid #F9A5A7;
   border-radius: 20px;
   transition: background-color 0.3s linear;
-  font-family: Opensans-Regular;
+  font-family: Roboto-Regular;
 }
 @media only screen and (max-width: 1200px) {
   .btn-main {
@@ -1878,7 +1878,7 @@ body {
 .sidebar-product .product-replationship ul li .media-body a {
   color: #3F3F3F;
   transition: 0.3s ease;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   font-size: 13px;
 }
 .sidebar-product .product-replationship ul li .media-body a:hover {
@@ -1919,7 +1919,7 @@ body {
   text-align: left;
   font-size: 14px;
   color: #3F3F3F;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
 }
 #productGroups .item {
   display: flex !important;
@@ -1936,7 +1936,7 @@ body {
 #productGroups .item .name {
   margin-top: 20px;
   font-size: 16px;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   transition: 1s ease-in-out;
   font-weight: bold;
 }
@@ -1965,7 +1965,7 @@ body {
 .product-category-menu ul li a {
   font-size: 14px;
   color: #3F3F3F;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   text-decoration: none;
   transition: 1s ease-in-out;
 }
@@ -2024,7 +2024,7 @@ body {
 }
 .solution .category-and-product .category-info .number {
   margin-top: 10px;
-  font-family: Opensans-Bold;
+  font-family: Roboto-Bold;
   font-size: 50px;
   color: #EEEDEB;
 }
@@ -2036,7 +2036,7 @@ body {
 }
 .solution .category-and-product .category-info .name {
   margin-top: 0px;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   font-size: 16px;
   color: #3F3F3F;
   margin-bottom: 0px;
@@ -2065,7 +2065,7 @@ body {
   font-size: 14px;
   text-align: center;
   color: #3F3F3F;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   width: 70%;
   line-height: 25px;
 }
@@ -2125,7 +2125,7 @@ body {
 #product-detail .product-detail {
   font-size: 14px;
   color: #3F3F3F;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   padding-top: 10px;
   padding-bottom: 20px;
 }
@@ -2226,7 +2226,7 @@ body {
 }
 #product-detail .content {
   font-size: 14px;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   color: #3F3F3F;
 }
 @media only screen and (max-width: 1200px) {
@@ -2378,7 +2378,7 @@ body {
   border: 2px solid #F9A5A7;
   margin: 10px 0px;
   font-size: 16px;
-  font-family: Opensans-Bold;
+  font-family: Roboto-Bold;
   color: #949293;
   display: flex;
   align-items: center;
@@ -2430,7 +2430,7 @@ body {
   align-items: center;
   color: #949293;
   font-size: 18px;
-  font-family: Opensans-Bold;
+  font-family: Roboto-Bold;
   font-weight: bold;
   text-decoration: none;
   transition: 0.5s ease-in-out;
@@ -2449,7 +2449,7 @@ body {
   background-color: #EFEFEF;
   border-radius: 5px;
   font-size: 16px;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   font-weight: bold;
   color: #949293;
   position: relative;
@@ -2545,7 +2545,7 @@ body {
   text-align: center;
 }
 #shopping-cart .total-product {
-  font-family: Opensans;
+  font-family: Roboto-Regular;
   color: #3F3F3F;
   text-transform: uppercase;
   font-size: 14px;
@@ -2632,7 +2632,7 @@ body {
 .error_form h1,
 .error_form h2 {
   color: #F9A5A7;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
 }
 .error_form h2 {
   color: #3F3F3F;
@@ -2640,7 +2640,7 @@ body {
 .error_form p {
   font-size: 14px;
   color: #3F3F3F;
-  font-family: Opensans;
+  font-family: Roboto-Regular;
 }
 .error_form a {
   color: #F9A5A7;
@@ -2717,7 +2717,7 @@ body {
   font-size: 15px;
   color: #FFFFFF;
   text-transform: uppercase;
-  font-family: Opensans-Bold;
+  font-family: Roboto-Bold;
   padding: 10px 0px;
 }
 .modal-dialog {

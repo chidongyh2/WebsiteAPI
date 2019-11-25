@@ -15,5 +15,11 @@
         public string Hotline { get; set; }
         public string LogoMobile { get; set; }
         public string ZaloId { get; set; }
+        public string TrackingHeader { get; set; }
+        public string TrackingBody { get; set; }
+
+        public string GoogleAnalytics { get; set; }
+
+        public string CommentNotAllow { get; set; }
     }
 }

@@ -1,28 +1,28 @@
-﻿@font-face {
-  font-family: 'Opensans';
-  src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Opensans-Light';
-  src: url('../../lib/open_sans/opensans-light.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Opensans-Bold';
-  src: url('../../lib/open_sans/opensans-bold.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Opensans-Regular';
-  src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Opensans-Lightitalic';
-  src: url('../../lib/open_sans/opensans-lightitalic.ttf') format('truetype');
-  font-display: swap;
-}
+﻿/*@font-face {
+    font-family: 'Opensans';
+    src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Light';
+    src: url('../../lib/open_sans/opensans-light.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Bold';
+    src: url('../../lib/open_sans/opensans-bold.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Regular';
+    src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Lightitalic';
+    src: url('../../lib/open_sans/opensans-lightitalic.ttf') format('truetype');
+    font-display: swap;
+}*/
 @font-face {
   font-family: 'Roboto-Bold';
   src: url('../../lib/font-roboto/roboto-bold_1.ttf') format('truetype');
@@ -33,13 +33,13 @@
   src: url('../../lib/font-roboto/roboto-regular.ttf') format('truetype');
   font-display: swap;
 }
-@font-face {
-  font-family: 'PlayfairDisplay-Regular';
-  src: url('../../lib/playfair-display/playfairdisplay-regular.otf') format('opentype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'PlayfairDisplay-Bold';
-  src: url('../../lib/playfair-display/playfairdisplay-bold.otf') format('opentype');
-  font-display: swap;
-}
+/*@font-face {
+    font-family: 'PlayfairDisplay-Regular';
+    src: url('../../lib/playfair-display/playfairdisplay-regular.otf') format('opentype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'PlayfairDisplay-Bold';
+    src: url('../../lib/playfair-display/playfairdisplay-bold.otf') format('opentype');
+    font-display: swap;
+}*/
