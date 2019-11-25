@@ -55,5 +55,7 @@ namespace GHM.Website.Domain.Models
         [DisplayName("Những từ không được phép bình luận")]
         public string CommentNotAllow { get; set; }
 
+        [DisplayName("FanPageFacebookId")]
+        public string FanPageFacebookId { get; set; }
     }
 }

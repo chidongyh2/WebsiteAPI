@@ -158,6 +158,7 @@ namespace GHM.Website.Nelly.Controllers
             websiteSetting.TrackingHeader = Common.GetSettingValue(settings, string.Format("{0}.TrackingHeader", convention));
             websiteSetting.GoogleAnalytics = Common.GetSettingValue(settings, string.Format("{0}.GoogleAnalytics", convention));
             websiteSetting.CommentNotAllow = Common.GetSettingValue(settings, string.Format("{0}.CommentNotAllow", convention));
+            websiteSetting.FanPageFacebookId = Common.GetSettingValue(settings, string.Format("{0}.FanPageFacebookId", convention));
 
             _cache.Set(CacheParam.Setting, websiteSetting, TimeSpan.FromHours(1));
 

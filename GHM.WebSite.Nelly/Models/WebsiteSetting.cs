@@ -21,5 +21,7 @@
         public string GoogleAnalytics { get; set; }
 
         public string CommentNotAllow { get; set; }
+
+        public string FanPageFacebookId { get; set; }
     }
 }

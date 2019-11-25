@@ -57,33 +57,6 @@
     }
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Load Facebook SDK for JavaScript -->
-    <div id="fb-root"></div>
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                xfbml: true,
-                version: 'v5.0'
-            });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-
-    <!-- Your customer chat code -->
-    <div class="fb-customerchat"
-         attribution=setup_tool
-         page_id="101989316672582"
-         theme_color="#fa3c4c"
-         logged_in_greeting="Chào mừng bạn đến với Nelly De Vuyst Việt Nam"
-         logged_out_greeting="Chào mừng bạn đến với Nelly De Vuyst Việt Nam">
-    </div>
-
     @Html.AntiForgeryToken()
     <partial name="_Header" />
     <div class="body-content">
@@ -118,6 +91,39 @@
     <h1 style="display: none">@ViewBag.Title</h1>
     <script src="~/js/plugins.min.js"></script>
     <script src="~/js/site.min.js"></script>
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    @if (!string.IsNullOrEmpty(websiteSetting.Fanpage))
+    {
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    xfbml: true,
+                    version: 'v5.0'
+                });
+            };
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+    }
+    <!-- Your customer chat code -->
+
+    @if (!string.IsNullOrEmpty(websiteSetting.FanPageFacebookId))
+    {
+        <div class="fb-customerchat"
+             attribution=setup_tool
+             page_id="@websiteSetting.FanPageFacebookId"
+             theme_color="#fa3c4c"
+             logged_in_greeting="Chào mừng bạn đến với Nelly De Vuyst Việt Nam"
+             logged_out_greeting="Chào mừng bạn đến với Nelly De Vuyst Việt Nam">
+        </div>
+    }
     <!-- Global site tag (gtag.js) - Google Analytics -->
     @if (!string.IsNullOrEmpty(websiteSetting.GoogleAnalytics))
     {
