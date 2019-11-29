@@ -1168,6 +1168,10 @@ body {
                 img {
                     transform: scale(1.5);
                     transition: ease-in-out 500ms;
+                    -webkit-transition: -webkit-transform 0.5s;
+                    -moz-transition: -moz-transform 0.5s;
+                    -webkit-transform: scale(1.5);
+                    -moz-transform: scale(1.5);
                 }
             }
 
@@ -1939,7 +1943,7 @@ body {
             font-family: Roboto-Regular;
             font-size: 16px;
             text-align: center;
-            min-height: 55px;            
+            min-height: 55px;
 
             @media @mobile {
                 font-size: 14px;

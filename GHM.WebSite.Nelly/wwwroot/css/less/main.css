@@ -1023,6 +1023,10 @@ body {
 #news-hot-in-homepage #news-slider .slick-center .news-image img {
   transform: scale(1.5);
   transition: ease-in-out 500ms;
+  -webkit-transition: -webkit-transform 0.5s;
+  -moz-transition: -moz-transform 0.5s;
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
 }
 #news-hot-in-homepage #news-slider .slick-center .news-content {
   margin-top: 20%;
