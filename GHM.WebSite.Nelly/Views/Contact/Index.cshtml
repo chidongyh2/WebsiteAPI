@@ -1,7 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = Resource.Contact;
-    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    ViewBag.Title = Resource.Contact; 
     var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
     var officeHeadquarters = listBranch.Where(x => x.IsOffice.Value).FirstOrDefault();
     var jsonSerializerSettings = new JsonSerializerSettings
@@ -146,7 +145,6 @@
 @section scripts{
     <script type="text/javascript">
         var listProvince = @(ViewBag.ListProvice != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProvice, jsonSerializerSettings)) : "[]");
-        var websiteSetting = @Html.Raw(JsonConvert.SerializeObject(ViewBag.WebsiteSetting));
         var branchIsOffice = @Html.Raw(JsonConvert.SerializeObject(officeHeadquarters));
         var agencyies = @Html.Raw(ViewBag.ListAgency != null ? JsonConvert.SerializeObject(ViewBag.ListAgency, jsonSerializerSettings) : "[]");
     </script>
