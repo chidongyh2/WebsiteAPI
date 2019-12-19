@@ -69,11 +69,23 @@ namespace GHM.FileManagement.Infrastructure.Services
             {
                 var concurrencyStamp = Guid.NewGuid().ToString();
                 string uploadPath = $"{CreateFolder()}{concurrencyStamp}.{formFile.GetExtensionFile()}";
-                string uploadPath1 = $"{CreateFolder()}{concurrencyStamp}1.{formFile.GetExtensionFile()}";
+                string uploadPath1 = $"{CreateFolder()}{concurrencyStamp}1.Jpeg";
 
                 var type = formFile.GetTypeFile();
                 var isImage = type.Contains("image/");
                 var resultCopyFile = await CopyFileToServer(formFile, uploadPath, isImage, uploadPath1);
+
+                if (isImage)
+                {
+                    try
+                    {
+                        System.IO.File.Delete(uploadPath);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
 
                 if (resultCopyFile == -1)
                     continue;
@@ -192,7 +204,7 @@ namespace GHM.FileManagement.Infrastructure.Services
 
                                 Graphics grPhoto = Graphics.FromImage(bmPhoto);
 
-                                grPhoto.CompositingQuality = CompositingQuality.HighSpeed;
+                                grPhoto.CompositingQuality = CompositingQuality.AssumeLinear;
                                 grPhoto.InterpolationMode = InterpolationMode.Low;
                                 grPhoto.CompositingMode = CompositingMode.SourceCopy;
 
@@ -213,6 +225,7 @@ namespace GHM.FileManagement.Infrastructure.Services
                                         byte[] bytes = ms1.ToArray();
                                         fs.Write(bytes, 0, bytes.Length);
 
+                                        // Xóa file cũ                                       
                                         return bytes.Length;
                                     }
                                 }
@@ -226,7 +239,7 @@ namespace GHM.FileManagement.Infrastructure.Services
 
                     return 1;
                 }
-                
+
             }
         }
 

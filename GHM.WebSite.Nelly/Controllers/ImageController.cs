@@ -58,7 +58,7 @@ namespace GHM.Website.Nelly.Controllers
                 {
                     Stream outputStream = new MemoryStream();
 
-                    destinationImage.Save(outputStream, ImageFormat.Jpeg);
+                    destinationImage.Save(outputStream, ImageFormat.Png);
                     outputStream.Seek(0, SeekOrigin.Begin);
                     return File(outputStream, "image/jpeg");
                 }
