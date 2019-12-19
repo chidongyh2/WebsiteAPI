@@ -97,7 +97,7 @@ namespace GHM.FileManagement.Infrastructure.Services
                     Name = formFile.FileName,
                     UnsignName = formFile.FileName.Trim().StripVietnameseChars().ToUpper(),
                     Type = formFile.GetTypeFile(),
-                    Size = resultCopyFile,
+                    Size = isImage ? resultCopyFile : formFile.GetFileSize(),
                     Url = isImage ? uploadPath1 : uploadPath,
                     CreatorId = creatorId,
                     CreatorFullName = creatorFullName,
