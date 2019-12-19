@@ -8,6 +8,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <Optimize>false</Optimize>
   </PropertyGroup>
+  <PropertyGroup>
+    <RuntimeIdentifiers>win-x64/x86</RuntimeIdentifiers>
+  </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\" />

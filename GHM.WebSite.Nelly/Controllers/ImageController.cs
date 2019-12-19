@@ -8,6 +8,7 @@ using GHM.Website.Nelly.Constants;
 using GHM.Website.Nelly.Utils;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -35,6 +36,7 @@ namespace GHM.Website.Nelly.Controllers
 
                             destinationImage.Save(outputStream, ImageFormat.Png);
                             outputStream.Seek(0, SeekOrigin.Begin);
+
                             return File(outputStream, "image/jpeg");
                         }
                     }
@@ -56,7 +58,7 @@ namespace GHM.Website.Nelly.Controllers
                 {
                     Stream outputStream = new MemoryStream();
 
-                    destinationImage.Save(outputStream, ImageFormat.Png);
+                    destinationImage.Save(outputStream, ImageFormat.Jpeg);
                     outputStream.Seek(0, SeekOrigin.Begin);
                     return File(outputStream, "image/jpeg");
                 }

@@ -32,6 +32,7 @@ namespace GHM.FileManagement.Api.Controllers
                 {
                     _hostingEnvironment.WebRootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
                 }
+
                 string webRootPath = _hostingEnvironment.WebRootPath;
                 string newPath = Path.Combine(webRootPath, folderName);
                 if (!Directory.Exists(newPath))
