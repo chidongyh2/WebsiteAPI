@@ -42,28 +42,10 @@ namespace GHM.Website.Nelly.Controllers
                             {
                                 Stream outputStream = new MemoryStream();
 
-                                destinationImage.Save(outputStream, ImageFormat.Png);
+                                destinationImage.Save(outputStream, type == ImageType.Jpg ? ImageFormat.Jpeg : ImageFormat.Png);
                                 outputStream.Seek(0, SeekOrigin.Begin);
 
-                                if (type == ImageType.Jpg)
-                                {
-                                    var file = File(outputStream, "image/jpeg");
-                                    var images = Image.FromStream(file.FileStream);
-
-                                    using (Image dstImage = Common.CropImage(images, destinationImage.Width, destinationImage.Height, ImageType.Jpg))
-                                    {
-                                        Stream outputStream1 = new MemoryStream();
-
-                                        dstImage.Save(outputStream1, ImageFormat.Jpeg);
-                                        outputStream1.Seek(0, SeekOrigin.Begin);
-
-                                        return File(outputStream1, "image/jpeg");
-                                    }
-                                }
-                                else
-                                {
-                                    return File(outputStream, "image/jpeg");
-                                }
+                                return File(outputStream, "image/jpeg");
                             }
                         }
                     }
