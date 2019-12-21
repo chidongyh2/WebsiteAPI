@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-using GHM.Infrastructure.Extensions;
+﻿using GHM.Infrastructure.Extensions;
 using GHM.Website.Nelly.Constants;
 using GHM.Website.Nelly.Controllers;
 using GHM.Website.Nelly.ViewModels;
@@ -12,7 +7,9 @@ using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
+using System;
+using System.Globalization;
+using System.Threading.Tasks;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace GHM.WebSite.Nelly.Controllers

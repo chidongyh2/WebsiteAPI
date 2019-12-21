@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
-using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.ModelBinders;
-using GHM.Infrastructure.Services;
-using GHM.WebsiteClient.Api.Domain.IServices;
 using GHM.WebsiteClient.Api.Infrastructure.AutofacModules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,6 +12,10 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using WebMarkupMin.AspNetCore2;
 
 namespace GHM.Website.Nelly
@@ -66,7 +62,7 @@ namespace GHM.Website.Nelly
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => false; 
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -166,7 +162,7 @@ namespace GHM.Website.Nelly
                       "Slug",
                       "{*segment}",
                       new { controller = "Home", action = "Coordinator" },
-                      new { segment = new CustomUrlConstraint(Configuration)}
+                      new { segment = new CustomUrlConstraint(Configuration) }
                   );
             });
         }
@@ -210,7 +206,7 @@ namespace GHM.Website.Nelly
                     //return isCategoryExist || isNewsExist;
                     return true;
                 }
-                
+
                 return false;
             }
         }

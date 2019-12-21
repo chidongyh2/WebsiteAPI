@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace GHM.Website.Nelly.ViewModels
+﻿namespace GHM.Website.Nelly.ViewModels
 {
     public class ProductCategorySearchViewModel
     {

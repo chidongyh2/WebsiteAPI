@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DeviceDetectorNET;
+using DeviceDetectorNET.Parser;
+using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.Extensions;
-using GHM.Infrastructure.Services;
-using GHM.Infrastructure.ViewModels;
+using GHM.Website.Domain.Models.WebsiteSetting;
 using GHM.Website.Nelly.Constants;
 using GHM.Website.Nelly.Models;
 using GHM.Website.Nelly.Utils;
 using GHM.Website.Nelly.ViewModels;
-using GHM.Website.Domain.Models.WebsiteSetting;
+using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using DeviceDetectorNET;
-using DeviceDetectorNET.Parser;
-using GHM.WebsiteClient.Api.Domain.IServices;
 using System.Threading.Tasks;
 using Position = GHM.WebsiteClient.Api.Domain.Constants.Position;
-using GHM.Infrastructure.Constants;
-using Newtonsoft.Json;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -240,7 +238,7 @@ namespace GHM.Website.Nelly.Controllers
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
-      
+
             var result = await _menuService.GetAllActivatedMenuItemByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, Position.Bottom);
 
             var data = result.Select(x => new MenuItemViewModel

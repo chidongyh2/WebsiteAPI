@@ -4,6 +4,6 @@
     {
         public const string ShoppingCart = "Nelly.ShoppingCart";
 
-        public const string ProductRecent = "Nelly.ProductRecent";       
+        public const string ProductRecent = "Nelly.ProductRecent";
     }
 }

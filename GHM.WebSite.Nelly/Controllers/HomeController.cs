@@ -1,30 +1,29 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using DeviceDetectorNET;
+using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.Services;
-using Microsoft.AspNetCore.Mvc;
-using GHM.Website.Nelly.Models;
-using Microsoft.Extensions.Configuration;
-using GHM.Website.Nelly.ViewModels;
 using GHM.Infrastructure.ViewModels;
-using Microsoft.Extensions.Caching.Memory;
 using GHM.Website.Nelly.Constants;
-using System;
-using System.Xml.Linq;
-using System.Linq;
-using System.Globalization;
-using System.Text;
+using GHM.Website.Nelly.Models;
 using GHM.Website.Nelly.Utils;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Http;
-using GHM.Infrastructure.Constants;
-using DeviceDetectorNET;
-using GHM.WebsiteClient.Api.Domain.IServices;
+using GHM.Website.Nelly.ViewModels;
 using GHM.WebSite.Nelly.Helper;
 using GHM.WebSite.Nelly.Models;
-using State = GHM.WebSite.Nelly.Models.State;
+using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Diagnostics;
-using System.IO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+using State = GHM.WebSite.Nelly.Models.State;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -206,7 +205,7 @@ namespace GHM.Website.Nelly.Controllers
                     }
                     else
                     {
-                        var categoryInfo = await _productService.ProductCategoryGetDetail(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLinKProduct, null);                       
+                        var categoryInfo = await _productService.ProductCategoryGetDetail(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLinKProduct, null);
 
                         if (categoryInfo != null)
                         {
@@ -305,7 +304,7 @@ namespace GHM.Website.Nelly.Controllers
                 }
                 else if (menuInfo.SubjectType == (GHM.WebsiteClient.Api.Domain.Constants.SubjectType)SubjectType.Product)
                 {
-                    var productInfo = await _productService.ProductGetDetail(apiService.TenantId, CultureInfo.CurrentCulture.Name,  menuInfo.SubjectId, string.Empty);
+                    var productInfo = await _productService.ProductGetDetail(apiService.TenantId, CultureInfo.CurrentCulture.Name, menuInfo.SubjectId, string.Empty);
                     if (productInfo != null)
                     {
                         ViewBag.ProductInfo = JsonConvertHelper.GetObjectFromObject<ProductSearchViewModel>(productInfo);

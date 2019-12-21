@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-using GHM.Infrastructure.Extensions;
+﻿using GHM.Infrastructure.Extensions;
 using GHM.Website.Nelly.ViewModels;
 using GHM.WebSite.Nelly.Helper;
 using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
+using System.Globalization;
+using System.Threading.Tasks;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -35,7 +31,7 @@ namespace GHM.WebSite.Nelly.Controllers
 
         // GET: /<controller>/
         [Route("get-product-by-category"), AcceptVerbs("GET")]
-        public async Task<IActionResult> GetProductByCategory(string seoLink, int page = 1, int pageSize =20)
+        public async Task<IActionResult> GetProductByCategory(string seoLink, int page = 1, int pageSize = 20)
         {
             var apiService = _configuration.GetApiServiceInfo();
             var result = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, page, pageSize);
@@ -104,7 +100,7 @@ namespace GHM.WebSite.Nelly.Controllers
 
         [Route("get-distinct"), AcceptVerbs("GET")]
         public async Task<IActionResult> GetDistinct(int provinceId)
-        {            
+        {
             return Ok(await _coreService.GetDistinctByProvinceId(provinceId));
         }
     }

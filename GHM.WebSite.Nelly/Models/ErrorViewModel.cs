@@ -1,5 +1,3 @@
-using System;
-
 namespace GHM.Website.Nelly.Models
 {
     public class ErrorViewModel

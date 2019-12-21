@@ -6,8 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace GHM.Website.Nelly.Utils
 {
@@ -69,20 +69,20 @@ namespace GHM.Website.Nelly.Utils
             int destWidth = (int)(sourceWidth * nPercent);
             int destHeight = (int)(sourceHeight * nPercent);
 
-            Bitmap bmPhoto = new Bitmap(newWidth, newHeight);           
+            Bitmap bmPhoto = new Bitmap(newWidth, newHeight);
 
             bmPhoto.SetResolution(sourceImage.HorizontalResolution,
                      sourceImage.VerticalResolution);
 
             Graphics grPhoto = Graphics.FromImage(bmPhoto);
 
-            grPhoto.CompositingQuality = CompositingQuality.AssumeLinear;
+            grPhoto.CompositingQuality = CompositingQuality.HighSpeed;
             grPhoto.InterpolationMode = InterpolationMode.Low;
             grPhoto.CompositingMode = CompositingMode.SourceCopy;
 
             if (type == ImageType.Jpg)
             {
-                grPhoto.Clear(ColorTranslator.FromHtml("#ffffff"));
+                grPhoto.Clear(Color.White);
             }
 
             grPhoto.DrawImage(sourceImage,
@@ -115,7 +115,7 @@ namespace GHM.Website.Nelly.Utils
         {
             string scheme = url.ActionContext.HttpContext.Request.Scheme;
             return url.Action(actionName, controllerName, routeValues, scheme);
-        }       
+        }
     }
 }
 

@@ -1,11 +1,6 @@
 ﻿using GHM.Infrastructure.Extensions;
-using GHM.Infrastructure.Services;
-using GHM.Infrastructure.ViewModels;
-using GHM.Website.Nelly.Constants;
 using GHM.Website.Nelly.Models;
-using GHM.Website.Nelly.ViewModels;
 using GHM.WebsiteClient.Api.Domain.IServices;
-using GHM.WebsiteClient.Api.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
@@ -51,6 +46,6 @@ namespace GHM.Website.Nelly.Controllers
 
             ViewBag.Breadcrumb = breadcrumbs;
             return View();
-        }        
+        }
     }
 }

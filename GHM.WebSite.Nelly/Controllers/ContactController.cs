@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using GHM.Infrastructure.Extensions;
+﻿using GHM.Infrastructure.Extensions;
+using GHM.Infrastructure.ViewModels;
+using GHM.Website.Domain.Models.WebsiteSetting;
 using GHM.Website.Nelly.Models;
+using GHM.Website.Nelly.Utils;
 using GHM.WebSite.Nelly.Helper;
 using GHM.WebSite.Nelly.Models;
 using GHM.WebSite.Nelly.ViewModels;
@@ -9,13 +10,11 @@ using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using System.Globalization;
-using GHM.Infrastructure.ViewModels;
 using System.Linq;
+using System.Threading.Tasks;
 using State = GHM.WebSite.Nelly.Models.State;
-using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
-using GHM.Website.Domain.Models.WebsiteSetting;
-using GHM.Website.Nelly.Utils;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -94,7 +93,7 @@ namespace GHM.Website.Nelly.Controllers
             }
 
             var apiService = _configuration.GetApiServiceInfo();
-            
+
             var feedbackMetaData = JsonConvertHelper.GetObjectFromObject<GHM.WebsiteClient.Api.Domain.ModelMetas.FeedbackMeta>(feedback);
             var result = await _feedbackService.Insert(apiService.TenantId, feedbackMetaData);
 

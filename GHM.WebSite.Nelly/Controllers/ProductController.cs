@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-using GHM.Infrastructure.Extensions;
+﻿using GHM.Infrastructure.Extensions;
 using GHM.Website.Nelly.Controllers;
 using GHM.Website.Nelly.Models;
 using GHM.Website.Nelly.ViewModels;
@@ -12,6 +8,10 @@ using GHM.WebsiteClient.Api.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
 
 
 namespace GHM.WebSite.Nelly.Controllers
@@ -52,7 +52,7 @@ namespace GHM.WebSite.Nelly.Controllers
             ViewBag.ListProduct = products?.Items;
             ViewBag.TotalProduct = products?.TotalRows;
             return View();
-        }       
+        }
 
         [Route("san-pham/tim-kiem.html")]
         public async Task<IActionResult> Search(string keyword,
@@ -135,7 +135,7 @@ namespace GHM.WebSite.Nelly.Controllers
 
                 ViewBag.ListProduct = JsonConvertHelper.GetObjectFromObject<List<ProductWidthCategoryViewModel>>(products?.Items);
             }
-            if(model == null)
+            if (model == null)
             {
                 return View("../NotFound/Index");
             }

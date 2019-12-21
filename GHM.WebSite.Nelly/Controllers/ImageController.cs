@@ -1,14 +1,12 @@
-﻿using System;
+﻿using GHM.Website.Nelly.Constants;
+using GHM.Website.Nelly.Utils;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using GHM.Website.Nelly.Constants;
-using GHM.Website.Nelly.Utils;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 
 namespace GHM.Website.Nelly.Controllers
 {
@@ -22,22 +20,51 @@ namespace GHM.Website.Nelly.Controllers
         }
 
         [Route("image")]
-        public async Task<IActionResult> Index(string url, int? width, int? height, ImageType? type)
+        public async Task<IActionResult> Index(string url, int? width, int? height, ImageType type = ImageType.Jpg)
         {
             if (!string.IsNullOrEmpty(url))
             {
                 using (Image sourceImage = await this.LoadImageFromUrl(url))
-                {                    
+                {
                     if (sourceImage != null)
                     {
-                        using (Image destinationImage = Common.CropImage(sourceImage, width ?? sourceImage.Width, height ?? sourceImage.Height, type))
+                        if (height == sourceImage.Height && width == sourceImage.Width)
                         {
                             Stream outputStream = new MemoryStream();
 
-                            destinationImage.Save(outputStream, ImageFormat.Png);
+                            sourceImage.Save(outputStream, ImageFormat.Jpeg);
                             outputStream.Seek(0, SeekOrigin.Begin);
-
                             return File(outputStream, "image/jpeg");
+                        }
+                        else
+                        {
+                            using (Image destinationImage = Common.CropImage(sourceImage, width ?? sourceImage.Width, height ?? sourceImage.Height, type))
+                            {
+                                Stream outputStream = new MemoryStream();
+
+                                destinationImage.Save(outputStream, ImageFormat.Png);
+                                outputStream.Seek(0, SeekOrigin.Begin);
+
+                                if (type == ImageType.Jpg)
+                                {
+                                    var file = File(outputStream, "image/jpeg");
+                                    var images = Image.FromStream(file.FileStream);
+
+                                    using (Image dstImage = Common.CropImage(images, destinationImage.Width, destinationImage.Height, ImageType.Jpg))
+                                    {
+                                        Stream outputStream1 = new MemoryStream();
+
+                                        dstImage.Save(outputStream1, ImageFormat.Jpeg);
+                                        outputStream1.Seek(0, SeekOrigin.Begin);
+
+                                        return File(outputStream1, "image/jpeg");
+                                    }
+                                }
+                                else
+                                {
+                                    return File(outputStream, "image/jpeg");
+                                }
+                            }
                         }
                     }
                 }
@@ -54,14 +81,12 @@ namespace GHM.Website.Nelly.Controllers
             using (var fileStream = new FileStream(newPath, FileMode.Open, FileAccess.Read))
             {
                 Image orginImage = Image.FromStream(fileStream);
-                using (Image destinationImage = Common.CropImage(orginImage, width ?? orginImage.Width, height ?? orginImage.Height, type))
-                {
-                    Stream outputStream = new MemoryStream();
 
-                    destinationImage.Save(outputStream, ImageFormat.Png);
-                    outputStream.Seek(0, SeekOrigin.Begin);
-                    return File(outputStream, "image/jpeg");
-                }
+                Stream outputStream = new MemoryStream();
+
+                orginImage.Save(outputStream, type == ImageType.Jpg ? ImageFormat.Jpeg : ImageFormat.Png);
+                outputStream.Seek(0, SeekOrigin.Begin);
+                return File(outputStream, "image/jpeg");
             }
         }
 

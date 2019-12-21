@@ -14,6 +14,7 @@ using GHM.FileManagement.Domain.Models;
 using GHM.FileManagement.Domain.Resources;
 using GHM.FileManagement.Domain.ViewModels;
 using GHM.Infrastructure.Extensions;
+using GHM.Infrastructure.Helpers;
 using GHM.Infrastructure.IServices;
 using GHM.Infrastructure.Models;
 using GHM.Infrastructure.Resources;
@@ -69,22 +70,20 @@ namespace GHM.FileManagement.Infrastructure.Services
             {
                 var concurrencyStamp = Guid.NewGuid().ToString();
                 string uploadPath = $"{CreateFolder()}{concurrencyStamp}.{formFile.GetExtensionFile()}";
-                string uploadPath1 = $"{CreateFolder()}{concurrencyStamp}1.Jpeg";
 
                 var type = formFile.GetTypeFile();
                 var isImage = type.Contains("image/");
-                var resultCopyFile = await CopyFileToServer(formFile, uploadPath, isImage, uploadPath1);
+                var resultCopyFile = await CopyFileToServer(formFile, uploadPath, concurrencyStamp, 0, 0);
 
-                if (isImage)
+                if (isImage && System.IO.File.Exists(uploadPath))
                 {
-                    try
-                    {
-                        System.IO.File.Delete(uploadPath);
-                    }
-                    catch (Exception ex)
-                    {
+                    System.IO.File.Delete(uploadPath);
+                }
 
-                    }
+                string uploadPathJpeg = $"{CreateFolder()}{concurrencyStamp}Png.Png";
+                if (isImage && System.IO.File.Exists(uploadPathJpeg))
+                {
+                    System.IO.File.Delete(uploadPathJpeg);
                 }
 
                 if (resultCopyFile == -1)
@@ -98,7 +97,7 @@ namespace GHM.FileManagement.Infrastructure.Services
                     UnsignName = formFile.FileName.Trim().StripVietnameseChars().ToUpper(),
                     Type = formFile.GetTypeFile(),
                     Size = isImage ? resultCopyFile : formFile.GetFileSize(),
-                    Url = isImage ? uploadPath1 : uploadPath,
+                    Url = isImage ? $"{CreateFolder()}{concurrencyStamp}jpeg.Jpeg" : uploadPath,
                     CreatorId = creatorId,
                     CreatorFullName = creatorFullName,
                     CreatorAvatar = creatorAvatar,
@@ -146,7 +145,7 @@ namespace GHM.FileManagement.Infrastructure.Services
                 return mapPath;
             }
 
-            async Task<long> CopyFileToServer(IFormFile file, string uploadPath, bool isImage = false, string uploadPath1 = "")
+            async Task<long> CopyFileToServer(IFormFile file, string uploadPath, string concurrencyStamp, int width = 0, int height = 0)
             {
                 if (System.IO.File.Exists(uploadPath))
                     return -1;
@@ -156,78 +155,47 @@ namespace GHM.FileManagement.Infrastructure.Services
                     await file.CopyToAsync(stream);
 
                     var extension = file.GetExtensionFile();
-
                     if (extension == "png" || extension == "jpg" || extension == "jpeg" || extension == "gif")
                     {
                         try
                         {
-
                             using (var sourceImage = Image.FromStream(stream))
                             {
-                                int sourceWidth = sourceImage.Width;
-                                int sourceHeight = sourceImage.Height;
-                                int newWidth = sourceImage.Width;
-                                int newHeight = sourceImage.Height;
-
-                                if (sourceWidth < sourceHeight)
+                                var bmPhotoPng = CropImage(sourceImage, width, height);
+                                using (MemoryStream streamPng = new MemoryStream())
                                 {
-                                    int buff = newWidth;
-                                    newWidth = newHeight;
-                                    newHeight = buff;
-                                }
+                                    bmPhotoPng.Save(streamPng, ImageFormat.Png);
+                                    streamPng.Seek(0, SeekOrigin.Begin);
 
-                                int sourceX = 0, sourceY = 0, destX = 0, destY = 0;
-                                float nPercent = 0, nPercentW = 0, nPercentH = 0;
+                                    string uploadPathPng = $"{CreateFolder()}{concurrencyStamp}Png.Png";
 
-                                nPercentW = ((float)newWidth / (float)sourceWidth);
-                                nPercentH = ((float)newHeight / (float)sourceHeight);
-                                if (nPercentH < nPercentW)
-                                {
-                                    nPercent = nPercentH;
-                                    destX = Convert.ToInt16((newWidth -
-                                              (sourceWidth * nPercent)) / 2);
-                                }
-                                else
-                                {
-                                    nPercent = nPercentW;
-                                    destY = Convert.ToInt16((newHeight -
-                                              (sourceHeight * nPercent)) / 2);
-                                }
-
-                                int destWidth = (int)(sourceWidth * nPercent);
-                                int destHeight = (int)(sourceHeight * nPercent);
-
-                                Bitmap bmPhoto = new Bitmap(newWidth, newHeight);
-
-                                bmPhoto.SetResolution(sourceImage.HorizontalResolution,
-                                         sourceImage.VerticalResolution);
-
-                                Graphics grPhoto = Graphics.FromImage(bmPhoto);
-
-                                grPhoto.CompositingQuality = CompositingQuality.AssumeLinear;
-                                grPhoto.InterpolationMode = InterpolationMode.Low;
-                                grPhoto.CompositingMode = CompositingMode.SourceCopy;
-
-                                grPhoto.DrawImage(sourceImage,
-                                     new Rectangle(destX - 1, destY - 1, destWidth + 1, destHeight + 1),
-                                     new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight),
-                                     GraphicsUnit.Pixel);
-
-                                grPhoto.Dispose();
-
-                                using (MemoryStream ms1 = new MemoryStream())
-                                {
-                                    bmPhoto.Save(ms1, ImageFormat.Jpeg);
-                                    ms1.Seek(0, SeekOrigin.Begin);
-
-                                    using (FileStream fs = new FileStream(uploadPath1, FileMode.Create, FileAccess.ReadWrite))
+                                    using (FileStream fsPng = new FileStream(uploadPathPng, FileMode.Create, FileAccess.ReadWrite))
                                     {
-                                        byte[] bytes = ms1.ToArray();
-                                        fs.Write(bytes, 0, bytes.Length);
+                                        byte[] bytes = streamPng.ToArray();
+                                        fsPng.Write(bytes, 0, bytes.Length);
 
-                                        // Xóa file cũ                                       
-                                        return bytes.Length;
+                                        using (var sourceImagePng = Image.FromStream(fsPng))
+                                        {
+                                            var bmPhotoJpeg = CropImage(sourceImagePng, 0, 0);
+
+                                            using (MemoryStream streamJpeg = new MemoryStream())
+                                            {
+                                                bmPhotoJpeg.Save(streamJpeg, ImageFormat.Jpeg);
+                                                streamJpeg.Seek(0, SeekOrigin.Begin);
+
+                                                string uploadPathJpeg = $"{CreateFolder()}{concurrencyStamp}jpeg.Jpeg";
+
+                                                using (FileStream fs = new FileStream(uploadPathJpeg, FileMode.Create, FileAccess.ReadWrite))
+                                                {
+                                                    byte[] bytesJpeg = streamJpeg.ToArray();
+                                                    fs.Write(bytesJpeg, 0, bytesJpeg.Length);
+
+                                                    return bytesJpeg.Length;
+                                                }
+                                            }
+                                        }
                                     }
+
                                 }
                             }
                         }
@@ -270,6 +238,69 @@ namespace GHM.FileManagement.Infrastructure.Services
         {
             return await _fileRepository.GetAll(tenantId, userId, folderId);
         }
+
+        public static Image CropImage(Image sourceImage, int newWidth = 0, int newHeight = 0, ImageType? type = ImageType.Jpg)
+        {
+            int sourceWidth = sourceImage.Width;
+            int sourceHeight = sourceImage.Height;
+
+            newWidth = newWidth > 0 ? newWidth : sourceWidth;
+            newHeight = newHeight > 0 ? newHeight : sourceHeight;
+
+            if (sourceWidth < sourceHeight)
+            {
+                int buff = newWidth;
+                newWidth = newHeight;
+                newHeight = buff;
+            }
+
+            int sourceX = 0, sourceY = 0, destX = 0, destY = 0;
+            float nPercent = 0, nPercentW = 0, nPercentH = 0;
+
+            nPercentW = ((float)newWidth / (float)sourceWidth);
+            nPercentH = ((float)newHeight / (float)sourceHeight);
+            if (nPercentH < nPercentW)
+            {
+                nPercent = nPercentH;
+                destX = Convert.ToInt16((newWidth -
+                          (sourceWidth * nPercent)) / 2);
+            }
+            else
+            {
+                nPercent = nPercentW;
+                destY = Convert.ToInt16((newHeight -
+                          (sourceHeight * nPercent)) / 2);
+            }
+
+            int destWidth = (int)(sourceWidth * nPercent);
+            int destHeight = (int)(sourceHeight * nPercent);
+
+            Bitmap bmPhoto = new Bitmap(newWidth, newHeight);
+
+            bmPhoto.SetResolution(sourceImage.HorizontalResolution,
+                     sourceImage.VerticalResolution);
+
+            Graphics grPhoto = Graphics.FromImage(bmPhoto);
+
+            grPhoto.CompositingQuality = CompositingQuality.AssumeLinear;
+            grPhoto.InterpolationMode = InterpolationMode.Low;
+            grPhoto.CompositingMode = CompositingMode.SourceCopy;
+
+            if (type == ImageType.Jpg)
+            {
+                grPhoto.Clear(Color.White);
+            }
+
+            grPhoto.DrawImage(sourceImage,
+                 new Rectangle(destX - 1, destY - 1, destWidth + 1, destHeight + 1),
+                 new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight),
+                 GraphicsUnit.Pixel);
+
+            grPhoto.Dispose();
+
+            return bmPhoto;
+        }
+
 
     }
 }

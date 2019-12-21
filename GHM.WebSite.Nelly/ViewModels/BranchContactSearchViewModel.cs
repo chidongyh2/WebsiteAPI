@@ -1,5 +1,4 @@
-﻿using GHM.Website.Nelly.Constants;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace GHM.Website.Nelly.ViewModels
 {

@@ -15,8 +15,8 @@ namespace GHM.Website.Nelly.Models
         public bool IsActive { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-      //  public DateTime CreateTime { get; set; }
-     //  public bool IsHomePage { get; set; }
-      //  public DateTime LastUpdateIsHomePage { get; set; }
+        //  public DateTime CreateTime { get; set; }
+        //  public bool IsHomePage { get; set; }
+        //  public DateTime LastUpdateIsHomePage { get; set; }
     }
 }

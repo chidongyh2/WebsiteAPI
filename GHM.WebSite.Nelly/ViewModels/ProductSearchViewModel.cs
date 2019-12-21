@@ -20,7 +20,7 @@ namespace GHM.Website.Nelly.ViewModels
         public bool? IsNew
         {
             get { return DateTime.Now.Subtract(CreateTime ?? DateTime.Now).Days <= 7; }
-            set{ }
+            set { }
         }
     }
 }

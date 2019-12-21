@@ -17,6 +17,6 @@ namespace GHM.Website.Nelly.Controllers
             _newsService = newsService;
             _configuration = configuration;
             _cache = cache;
-        }       
+        }
     }
 }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using GHM.Website.Nelly.Constants;
+using System;
 using System.Collections.Generic;
-using GHM.Website.Nelly.Constants;
 
 namespace GHM.Website.Nelly.ViewModels
 {
@@ -13,5 +13,5 @@ namespace GHM.Website.Nelly.ViewModels
         public DateTime CreateTime { get; set; }
         public AlbumType Type { get; set; }
         public List<AlbumItemViewModel> AlbumItems { get; set; }
-    }    
+    }
 }
