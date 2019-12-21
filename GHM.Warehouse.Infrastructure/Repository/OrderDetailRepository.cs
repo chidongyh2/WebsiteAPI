@@ -1,11 +1,9 @@
 ﻿using GHM.Infrastructure.SqlServer;
-using GHM.Warehouse.Domain.Constants;
 using GHM.Warehouse.Domain.IRepository;
 using GHM.Warehouse.Domain.Models;
 using GHM.Warehouse.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
 
@@ -32,6 +30,16 @@ namespace GHM.Warehouse.Infrastructure.Repository
                 return -1;
             _orderDetailRepository.Delete(orderInfo);
 
+            return await Context.SaveChangesAsync();
+        }
+
+        public async Task<int> Deletes(string tenantId, string orderId)
+        {
+            var orderDetails = await _orderDetailRepository.GetsAsync(false, x => x.TenantId == tenantId && x.OrderId == orderId);
+            if (orderDetails == null)
+                return -1;
+
+            _orderDetailRepository.Deletes(orderDetails);
             return await Context.SaveChangesAsync();
         }
 

@@ -23,5 +23,7 @@ namespace GHM.Warehouse.Domain.IServices
         Task<ActionResultResponse<string>> UpdateStatus(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string id, OrderStatus status);
 
         Task<string> GetCode(string tenantId);
+
+        Task<ActionResultResponse> Delete(string tenantId, string id);
     }
 }

@@ -25,6 +25,8 @@ namespace GHM.Warehouse.Domain.IRepository
 
         Task<OrderDetail> GetInfo(string tenantId, string orderId, string productId, bool isReadOnly = false);
 
-        Task<int> Delete(string tenantId, string id);      
+        Task<int> Delete(string tenantId, string id);
+
+        Task<int> Deletes(string tenantId, string orderId);
     }
 }

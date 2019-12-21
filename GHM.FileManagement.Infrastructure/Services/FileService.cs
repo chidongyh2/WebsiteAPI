@@ -161,7 +161,7 @@ namespace GHM.FileManagement.Infrastructure.Services
                         {
                             using (var sourceImage = Image.FromStream(stream))
                             {
-                                var bmPhotoPng = CropImage(sourceImage, width, height);
+                                var bmPhotoPng = CropImage(sourceImage, width, height, ImageType.Png);
                                 using (MemoryStream streamPng = new MemoryStream())
                                 {
                                     bmPhotoPng.Save(streamPng, ImageFormat.Png);

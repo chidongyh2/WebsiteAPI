@@ -37,6 +37,25 @@ namespace GHM.Warehouse.Infrastructure.Services
             _sharedResourceService = sharedResourceService;
         }
 
+        public async Task<ActionResultResponse> Delete(string tenantId, string id)
+        {
+            var orderInfo = await _orderRepository.GetInfo(tenantId, id);
+            if (orderInfo != null && (orderInfo.Status == OrderStatus.Arrived || orderInfo.Status == OrderStatus.Approved
+                || orderInfo.Status == OrderStatus.Completed))
+                return new ActionResultResponse(-1, _sharedResourceService.GetString(ErrorMessage.NotHavePermission,
+                        _warehouseResourceService.GetString("Đơn hàng")));
+
+            var result = await _orderRepository.Delete(tenantId, id);
+            if (result <= 0)
+                return new ActionResultResponse(-1, _sharedResourceService.GetString(ErrorMessage.NotExists,
+                          _warehouseResourceService.GetString("Đơn hàng")));
+
+            await _orderDetailRepository.Deletes(tenantId, id);
+
+            return new ActionResultResponse(-1, _sharedResourceService.GetString(SuccessMessage.DeleteSuccessful,
+                         _warehouseResourceService.GetString("Đơn hàng")));
+        }
+
         public async Task<string> GetCode(string tenantId)
         {
             var now = DateTime.Now;

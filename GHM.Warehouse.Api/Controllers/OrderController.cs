@@ -97,5 +97,15 @@ namespace GHM.Warehouse.Api.Controllers
 
             return Ok(result);
         }
+
+        [Route("{id}"), AcceptVerbs("DELETE")]
+        [AllowPermission(PageId.Order, Permission.Delete)]
+        [CheckPermission]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var result = await _orderService.Delete(CurrentUser.TenantId, id);
+
+            return Ok(result);
+        }
     }
 }
