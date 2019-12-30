@@ -15,9 +15,8 @@
                             {
                                 <div class="item">
                                     <a title="@brand.Name">
-                                        <img data-src="@($"{(string.IsNullOrEmpty(brand.Logo) ? "/images/no-image.png" : $"{ViewBag.Url}{brand.Logo}")}")"
-                                        onerror="this.src='/images/no-image.png'"
-                                        alt="@brand.Name"/>
+                                        <img data-src="@($"/image?url={(string.IsNullOrEmpty(brand.Logo) ? "/images/no-image.png" : $"{ViewBag.Url}{brand.Logo}")}&width=95&height=95&type=1")" onerror="this.src='/images/no-image.png'"
+                                             alt="@brand.Name" />
                                     </a>
                                 </div>
                             }
