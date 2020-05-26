@@ -1,0 +1,137 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listMenuItem = ViewBag.MainNav as List<MenuItemViewModel>;
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+    var listLanguage = ViewBag.ListLanguage as List<TenantLanguageViewModel>;
+    var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
+    var branchOffice = listBranch != null ? listBranch.FirstOrDefault(x => x.IsOffice.HasValue && x.IsOffice.Value) : null;
+    var officeContact = branchOffice != null ? branchOffice.BranchContactDetails.FirstOrDefault(x => x.ContactType == ContactType.Email) : null;
+    var path = $"{Context.Request.Path}";
+    var url = ViewBag.Url;
+}
+<header id="header">
+    <div class="header-top hidden-sm hidden-xs hidden-md">
+        <div class="wrap-header-top">
+            <div class="row">
+                <div class="col-lg-6">
+                    <span> @websiteSetting?.Brand</span>
+                </div>
+                <div class="col-lg-6">
+                    <span class="pull-right">
+                        @if (websiteSetting?.Hotline != null && websiteSetting.Hotline.Any())
+                        {
+                            <i class="fa fa-mobile"> @websiteSetting?.Hotline |</i>
+                        }
+                        @if (websiteSetting?.Brand != null && websiteSetting.Brand.Any())
+                        {
+                            <i class="fa fa-envelope-o"> @officeContact?.ContactValue</i>
+                        }
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="header-search">
+            <form action="https://cse.google.com/cse?=" class="form-inline" method="get" target="_blank">
+                <div class="form-group">
+                    <input type="hidden" name="cx" value="005353708078860206782:2g3l8-wwm2i" />
+                    <input type="hidden" name="ie" value="UTF-8" />   
+                    <input type="text" name="q" class="search-input" placeholder="Nhập từ khóa tìm kiếm" id="search-string" autocomplete="off" />
+                    <span id="search-shadow"></span>
+                    <button type="submit" class="btn-submit"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+  
+    <div class="header-bottom">
+        <nav class="navbar navbar-inverse navbar-expand-lg">
+            <div class="container wrap">
+                <a href="/" class="navbar-brand">
+                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ?  $"{url}{websiteSetting.Logo}": "/images/logo-cu.png" )"
+                         alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "Phun xăm thẩm mỹ amiea")"
+                         onerror="this.src='/images/no-image.png'" />
+                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" aria-controls="abcMainNav" data-target="#abcMainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <div class="wrap-none-show-icon">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </div>
+                    <div class="wrap-show-icon">
+                        <span class="fa fa-times"></span>
+                    </div>
+                </button>
+                <div class="navbar-collapse collapse" id="abcMainNav">
+                    <ul class="nav navbar-nav navbar-right mr-auto">
+                        @if (listMenuItem != null && listMenuItem.Any())
+                        {
+                            var menuObject = new MenuObject
+                            {
+                                ListMenuItem = listMenuItem,
+                                ParentId = null,
+                            };
+                            <partial name="_MenuItem" model="menuObject" />
+                        }
+                        @if (listSocialNetWork != null && listSocialNetWork.Any())
+                        {
+                            <li class="visible-sm visible-xs visible-md">
+                                <div class="list-social-network">
+                                    @foreach (var socialNetWork in listSocialNetWork)
+                                    {
+                                        <div class="list-items">
+                                            <a href="@socialNetWork.Url" class="btn-scoical" title="@websiteSetting?.Brand">
+                                                @if (!string.IsNullOrEmpty(socialNetWork.Icon))
+                                                {
+                                                    <i class="fa @socialNetWork.Icon"></i>
+                                                }
+                                            </a>
+                                        </div>
+                                    }
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            @if (listLanguage != null && listLanguage.Any() && listLanguage.Count > 1)
+            {
+                <div class="header-tool hidden-sm hidden-xs hidden-md">
+                    <div class="btn-group">
+                        @if (ViewBag.CurrentLanguage == "vi-VN")
+                        {
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <img src="/images/vi.png"> Vietnamese<span class="caret"></span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <img src="~/images/en.png"> English<span class="caret"></span>
+                            </a>
+                        }
+                        <ul class="dropdown-menu pull-right">
+                            @foreach (var language in listLanguage)
+                            {
+                                <li>
+                                    <a href="/change-language/@language.LanguageId?url=@path">
+                                        @if (language.LanguageId == "vi-VN")
+                                        {
+                                            <img src="/images/vi.png">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/images/en.png">
+                                        }
+                                        @language.Name
+                                    </a>
+                                </li>
+
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        </nav>
+    </div>
+</header>

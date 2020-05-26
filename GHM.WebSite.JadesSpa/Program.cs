@@ -20,7 +20,6 @@ namespace GHM.WebSite.JadesSpa
         public static IWebHost CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:1709")
             .Build();
     }
 }

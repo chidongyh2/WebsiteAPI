@@ -52,15 +52,15 @@ namespace GHM.Core.Infrastructure.Repository
 
             // Get identity client object.
             //var listAllowedGrantTypes = await _clientAllowedGrantTypeRepository.GetByClientId(clientId);
-            var listPostLogoutRedirectUris =
-                await _clientPostLogoutRedirectUrisRepository.GetByClientId(clientId);
             var listClientSecrets = await _clientSecretRepository.GetByClientId(clientId);
-            var listRedirectUris = await _clientRedirectUrisRepository.GetByClientId(clientId);
-            var listProperties = await _clientPropertyRepository.GetsByClientId(clientId);
-            var listClaims = await _clientClaimRepository.GetsClaimByClienId(clientId);
-            var listIdentityProviderRestriction =
-                await _clientIdentityProviderRestrictionRepository.GetsByClientId(clientId);
-            var listAllowedCorsOrigins = await _clientAllowedCorsOriginsRepository.GetsByClientId(clientId);
+            //var listPostLogoutRedirectUris =
+            //    await _clientPostLogoutRedirectUrisRepository.GetByClientId(clientId);
+            //var listRedirectUris = await _clientRedirectUrisRepository.GetByClientId(clientId);
+            //var listProperties = await _clientPropertyRepository.GetsByClientId(clientId);
+            //var listClaims = await _clientClaimRepository.GetsClaimByClienId(clientId);
+            //var listIdentityProviderRestriction =
+            //    await _clientIdentityProviderRestrictionRepository.GetsByClientId(clientId);
+            //var listAllowedCorsOrigins = await _clientAllowedCorsOriginsRepository.GetsByClientId(clientId);
             var listAllowedScope = await _clientAllowedScopesRepository.GetsByClientId(clientId);
 
             //return new IdentityServer4.Models.Client
@@ -75,8 +75,10 @@ namespace GHM.Core.Infrastructure.Repository
             //    AllowedScopes = listAllowedScope.Distinct().Select(x => x.Scope).ToList()
             //};
 
-            return MapToIdentityClient(clientInfo, listPostLogoutRedirectUris, listRedirectUris, listClientSecrets,
-                listProperties, listClaims, listIdentityProviderRestriction, listAllowedCorsOrigins, listAllowedScope);
+            //return MapToIdentityClient(clientInfo, listPostLogoutRedirectUris, listRedirectUris, listClientSecrets,
+            //    listProperties, listClaims, listIdentityProviderRestriction, listAllowedCorsOrigins, listAllowedScope);
+            return MapToIdentityClient(clientInfo, new List<ClientPostLogoutRedirectUris>(), new List<ClientRedirectUris>(), listClientSecrets,
+                new List<ClientProperty>(), new List<ClientClaim>(), new List<ClientIdentityProviderRestriction>(), new List<ClientAllowedCorsOrigin>(), listAllowedScope);
         }
 
         public async Task<Client> GetInfo(string clientId, bool isReadOnly = false)
@@ -337,10 +339,13 @@ namespace GHM.Core.Infrastructure.Repository
             List<ClientAllowedScope> listClientAllowedScopes)
         {
             var propertyDictionary = new Dictionary<string, string>();
-            listClientProperty.ForEach(x =>
+            if(listClientProperty.Count > 0)
             {
-                propertyDictionary.Add(x.Key, x.Value);
-            });
+                listClientProperty.ForEach(x =>
+                {
+                    propertyDictionary.Add(x.Key, x.Value);
+                });
+            }
 
             var identityClient = new IdentityServer4.Models.Client
             {
@@ -385,13 +390,13 @@ namespace GHM.Core.Infrastructure.Repository
                     Type = x.Type,
                     Expiration = x.Expiration
                 }).ToList(),
-                PostLogoutRedirectUris = listPostLogoutRedirectUris.Select(x => x.Uri).ToList(),
-                RedirectUris = listClientRedirectUris.Select(x => x.Uri).ToList(),
-                AllowedCorsOrigins = listAllowedCorsOrigins.Select(x => x.Domain).ToList(),
-                AllowedScopes = listClientAllowedScopes.Distinct().Select(x => x.Scope).ToList(),
-                IdentityProviderRestrictions = listIdentityProviderRestrictions.Select(x => x.IdentityProviderRestriction).ToList(),
+                PostLogoutRedirectUris = listPostLogoutRedirectUris.Count > 0 ? listPostLogoutRedirectUris.Select(x => x.Uri).ToList() : new List<string>(),
+                RedirectUris = listClientRedirectUris.Count > 0 ? listClientRedirectUris.Select(x => x.Uri).ToList() : new List<string>(),
+                AllowedCorsOrigins = listAllowedCorsOrigins.Count > 0 ? listAllowedCorsOrigins.Select(x => x.Domain).ToList() : new List<string>(),
+                AllowedScopes = listClientAllowedScopes.Count > 0 ? listClientAllowedScopes.Distinct().Select(x => x.Scope).ToList() : new List<string>(),
+                IdentityProviderRestrictions = listIdentityProviderRestrictions.Count > 0 ? listIdentityProviderRestrictions.Select(x => x.IdentityProviderRestriction).ToList() : new List<string>(),
                 Properties = propertyDictionary,
-                Claims = listClaims.Select(x => new Claim(x.ClaimType, x.ClaimValue)).ToList()
+                Claims = listClaims.Count > 0 ? listClaims.Select(x => new Claim(x.ClaimType, x.ClaimValue)).ToList() : new List<Claim>()
             };
             return identityClient;
         }

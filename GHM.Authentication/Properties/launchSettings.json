@@ -22,12 +22,11 @@
     },
     "GHM.Authentication": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "http://auth.ghmsoft.com",
+      "launchBrowser": false,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://localhost:50000"
     },
     "IIS": {
       "commandName": "IIS",

@@ -63,7 +63,7 @@ namespace GHM.Authentication
             services.AddTransient<IResourceStore, ResourceRepository>();
 
             services.AddMvcCore();
-            services.AddDbContext<CoreDbContext>(options =>
+            services.AddDbContextPool<CoreDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("CoreConnectionString"));
             });
@@ -82,6 +82,10 @@ namespace GHM.Authentication
                 //.AddSigningCredential("id_rsa")
                 .AddDeveloperSigningCredential()
                 .AddInMemoryPersistedGrants()
+                //.AddConfigurationStore(options =>
+                //{
+                //    options.ConfigureDbContext = b => b.UseSqlServer(Configuration.GetConnectionString("CoreConnectionString"));
+                //})
                 .AddResourceStore<ResourceRepository>()
                 .AddClientStore<ClientRepository>()
                 .AddProfileService<ProfileRepository>()

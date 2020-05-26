@@ -22,12 +22,11 @@
     },
     "GHM.Notifications.Api": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchBrowser": false,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:50921/"
+      "applicationUrl": "http://localhost:50004"
     },
     "IIS": {
       "commandName": "IIS",

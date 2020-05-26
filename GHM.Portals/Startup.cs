@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace GHM.Portals
 {
@@ -40,9 +42,23 @@ namespace GHM.Portals
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
+            app.UseStaticFiles(
+              new StaticFileOptions
+              {
+                  OnPrepareResponse = context =>
+                  {
+                      // Cache static file for 7 day
+                      string path = context.Context.Request.Path;
+                      if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".gif") || path.EndsWith(".jpg")
+                      || path.EndsWith(".png") || path.EndsWith(".svg") || path.EndsWith(".ttf"))
+                      {
+                          TimeSpan maxAge = new TimeSpan(7, 0, 0, 0); // 7 ngày
+                          context.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
+                      }
+                  }
+              }
+          );
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

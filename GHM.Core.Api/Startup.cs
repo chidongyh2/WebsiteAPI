@@ -97,6 +97,7 @@ namespace GHM.Core.Api
             else if(env.IsProduction())
             {
                 app.UseHsts();
+                app.UseDeveloperExceptionPage();
                 app.UseHttpsRedirection();
             }
 

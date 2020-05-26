@@ -316,6 +316,7 @@ namespace GHM.Core.Infrastructure.Services
             var listRolePages = await _rolePageRepository.GetsByRoleId(roleId, true);
             if (listRolePages == null || !listRolePages.Any())
             {
+                await DeleteAllRolePageByRoleId(roleId);
                 var result = await AddNewRolePage(roleId, listRolePagePermissions);
                 return new ActionResultResponse(result, result <= 0
                     ? _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong)
@@ -360,6 +361,10 @@ namespace GHM.Core.Infrastructure.Services
             }
         }
 
+        private async Task DeleteAllRolePageByRoleId(string roleId)
+        {
+            await _rolePageRepository.DeleteByRoleId(roleId);
+        }
 
         private async Task<int> AddNewRolePage(string roleId, IEnumerable<RolePagePermissionMeta> listRolePagePermissionMeta)
         {

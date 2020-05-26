@@ -1,0 +1,27 @@
+﻿@model CategoryWidthNewsViewModel;
+@{
+    var newsDefault = Model != null && Model.ListNews.Any() ? Model.ListNews.FirstOrDefault() : null;
+    var url = ViewBag.Url;
+}
+
+@if (Model != null && Model.ListNews.Any())
+{
+    @foreach (var news in Model.ListNews)
+    {
+        <div class="item">
+            <div class="wrap-item">
+                <a href="@($"/{ news.SeoLink}.html")" title="@(string.IsNullOrEmpty(news.MetaTitle) ? news.Title : news.MetaTitle)">
+                    @*<img class="news-image zoom img-responsive lazy" data-src="@(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")"
+                         onerror="this.src='/images/no-image.png'"
+                         alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />*@
+
+                    <img class="news-image zoom img-responsive" src="@(string.IsNullOrEmpty(news.FeatureImage) ? "/images/no-image.png" : $"{url}{news.FeatureImage}")"
+                         onerror="this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)" />
+
+                </a>
+                <span>@(string.IsNullOrEmpty(news.AltImage) ? news.Title : news.AltImage)</span>
+            </div>
+        </div>
+    }
+}
+

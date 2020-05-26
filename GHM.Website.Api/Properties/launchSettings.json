@@ -22,12 +22,11 @@
     },
     "GHM.Website.Api": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchBrowser": false,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5007"
+      "applicationUrl": "http://localhost:50002"
     },
     "IIS": {
       "commandName": "IIS",
