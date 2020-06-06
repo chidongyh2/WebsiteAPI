@@ -1,15 +1,76 @@
-version: '3'
+version: '3.4'
 
 services:
-  ghm.authentication:
-    image: ghm.authentication
+  ghm.web.apigateway:
+    image: ${DOCKER_REGISTRY-}ghmwebapigateway
     build:
       context: .
-      dockerfile: GHM.Authentication\Dockerfile
+      dockerfile: GHM.Web.ApiGateway/Dockerfile
+    ports:
+     - "50008:50008"
+
+  ghm.authentication:
+    image: ${DOCKER_REGISTRY-}ghmauthentication
+    build:
+      context: .
+      dockerfile: GHM.Authentication/Dockerfile
+    ports:
+    - "50000:50000"
+
 
   ghm.core.api:
-    image: ghm.core.api
+    image: ${DOCKER_REGISTRY-}ghmcoreapi
     build:
       context: .
-      dockerfile: GHM.Core.Api\Dockerfile
+      dockerfile: GHM.Core.Api/Dockerfile
+    ports:
+    - "50001:50001"
 
+
+  ghm.filemanagement.api:
+    image: ${DOCKER_REGISTRY-}ghmfilemanagementapi
+    build:
+      context: .
+      dockerfile: GHM.FileManagement.Api/Dockerfile
+    ports:
+    - "50004:50004"
+
+  ghm.notifications.api:
+    image: ${DOCKER_REGISTRY-}ghmnotificationsapi
+    build:
+      context: .
+      dockerfile: GHM.Notifications.Api/Dockerfile
+    ports:
+    - "50003:50003"
+
+  ghm.warehouse.api:
+    image: ${DOCKER_REGISTRY-}ghmwarehouseapi
+    build:
+      context: .
+      dockerfile: GHM.Warehouse.Api/Dockerfile
+    ports:
+    - "50009:50009"
+
+  ghm.website.api:
+    image: ${DOCKER_REGISTRY-}ghmwebsiteapi
+    build:
+      context: .
+      dockerfile: GHM.Website.Api/Dockerfile
+    ports:
+    - "50008:50008"
+
+  ghm.website.event.api:
+    image: ${DOCKER_REGISTRY-}ghmwebsiteeventapi
+    build:
+      context: .
+      dockerfile: GHM.Website.Event.Api/Dockerfile
+    ports:
+    - "50003:50003"
+
+  ghm.website.truck:
+    image: ${DOCKER_REGISTRY-}ghmwebsitetruck
+    build:
+      context: .
+      dockerfile: GHM.WebSite.Truck/Dockerfile
+    ports:
+    - "9000:9000"

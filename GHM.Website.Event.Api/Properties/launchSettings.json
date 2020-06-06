@@ -23,7 +23,6 @@
     },
     "GHM.Website.Event.Api": {
       "commandName": "Project",
-      "launchBrowser": false,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
@@ -37,6 +36,17 @@
         "Key": "Value",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/values",
+      "environmentVariables": {
+        "ASPNETCORE_URLS": "https://+:443;http://+:80",
+        "ASPNETCORE_HTTPS_PORT": "44397"
+      },
+      "httpPort": 50004,
+      "useSSL": true,
+      "sslPort": 44397
     }
   }
 }
