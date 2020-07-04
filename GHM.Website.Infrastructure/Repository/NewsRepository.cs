@@ -24,107 +24,76 @@ namespace GHM.Website.Infrastructure.Repository
         public Task<List<NewsViewModel>> Search(string tenantId, string languageId, string keyword, int? categoryId, string creatorId, string currentUserId,
             ApproverStatus? status, int page, int pageSize, bool isApprove, out int totalRows)
         {
-            Expression<Func<News, bool>> spec = x => x.TenantId == tenantId && !x.IsDelete;
-            Expression<Func<NewsTranslation, bool>> specTranslation = x => x.LanguageId == languageId && !x.IsDelete;
-            Expression<Func<CategoriesNews, bool>> specCategory = x => true;
-
-            if (!string.IsNullOrEmpty(keyword))
+            try
             {
-                keyword = keyword.Trim().StripVietnameseChars().ToUpper();
-                specTranslation = specTranslation.And(x => x.UnsignName.Contains(keyword));
+                Expression<Func<News, bool>> spec = x => x.TenantId == tenantId && !x.IsDelete;
+                Expression<Func<NewsTranslation, bool>> specTranslation = x => x.LanguageId == languageId && !x.IsDelete;
+                Expression<Func<CategoriesNews, bool>> specCategory = x => true;
+
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    keyword = keyword.Trim().StripVietnameseChars().ToUpper();
+                    specTranslation = specTranslation.And(x => x.UnsignName.Contains(keyword));
+                }
+
+                if (isApprove)
+                {
+                    spec = spec.And(x => x.CreatorId == currentUserId || (x.Status != ApproverStatus.Draft && x.CreatorId != currentUserId));
+                }
+                else
+                {
+                    spec = spec.And(x => x.CreatorId == currentUserId || (x.Status == ApproverStatus.Approved && x.CreatorId != currentUserId));
+                }
+
+                if (!string.IsNullOrEmpty(creatorId) && creatorId != currentUserId)
+                {
+                    spec = spec.And(x => x.CreatorId == creatorId && ((isApprove && x.Status != ApproverStatus.Draft) || (!isApprove && x.Status == ApproverStatus.Approved)));
+                }
+
+                if (status.HasValue)
+                {
+                    spec = spec.And(x => x.Status == status.Value);
+                }
+
+                if (categoryId.HasValue)
+                {
+                    specCategory = specCategory.And(x => x.CategoryId == categoryId);
+                }
+
+                var result = from news in Context.Set<News>().Where(spec)
+                             join newsTranslation in Context.Set<NewsTranslation>().Where(specTranslation) on news.Id equals newsTranslation.NewsId
+                             join category in Context.Set<CategoriesNews>().Where(specCategory) on news.Id equals category.NewsId
+                             select new NewsViewModel
+                             {
+                                 Id = news.Id,
+                                 LikeCount = news.LikeCount,
+                                 CommentCount = news.CommentCount,
+                                 ViewCount = news.ViewCount,
+                                 CreateTime = news.CreateTime,
+                                 CreatorId = news.CreatorId,
+                                 CreatorFullName = news.CreatorFullName,
+                                 IsActive = news.IsActive,
+                                 FeatureImage = news.FeatureImage,
+                                 Source = news.Source,
+                                 Status = news.Status,
+                                 LastUpdate = news.LastUpdate,
+                                 IsHot = news.IsHot,
+                                 IsHomePage = news.IsHomePage,
+                                 Title = newsTranslation.Title,
+                                 CategoriesNames = Context.Set<CategoryTranslation>().Where(x => !x.IsDelete && x.LanguageId == languageId && x.TenantId == tenantId && x.CategoryId == category.CategoryId).Select(x => x.Name).ToList()
+                             };
+                totalRows =  result.Count();
+
+                return result.OrderByDescending(x => x.CreateTime)
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .AsNoTracking()
+                    .ToListAsync();
             }
-
-            if (isApprove)
+            catch (Exception e)
             {
-                spec = spec.And(x => x.CreatorId == currentUserId || (x.Status != ApproverStatus.Draft && x.CreatorId != currentUserId));
+                throw e;
             }
-            else
-            {
-                spec = spec.And(x => x.CreatorId == currentUserId || (x.Status == ApproverStatus.Approved && x.CreatorId != currentUserId));
-            }
-
-            if (!string.IsNullOrEmpty(creatorId) && creatorId != currentUserId)
-            {
-                spec = spec.And(x => x.CreatorId == creatorId && ((isApprove && x.Status != ApproverStatus.Draft) || (!isApprove && x.Status == ApproverStatus.Approved)));
-            }
-
-            if (status.HasValue)
-            {
-                spec = spec.And(x => x.Status == status.Value);
-            }
-
-            if (categoryId.HasValue)
-            {
-                specCategory = specCategory.And(x => x.CategoryId == categoryId);
-            }
-
-            var query = from news in Context.Set<News>().Where(spec)
-                        join category in Context.Set<CategoriesNews>().Where(specCategory) on news.Id equals category.NewsId
-                        join categoryTranslation in Context.Set<CategoryTranslation>().Where(x => !x.IsDelete && x.LanguageId == languageId && x.TenantId == tenantId) on category.CategoryId equals categoryTranslation.CategoryId
-                        join newsTranslation in Context.Set<NewsTranslation>().Where(specTranslation) on news.Id equals newsTranslation.NewsId
-                        select (new
-                        {
-                            news.Id,
-                            news.LikeCount,
-                            news.CommentCount,
-                            news.ViewCount,
-                            news.CreateTime,
-                            news.CreatorId,
-                            news.CreatorFullName,
-                            news.IsActive,
-                            news.FeatureImage,
-                            news.Source,
-                            news.Status,
-                            news.LastUpdate,
-                            news.IsHot,
-                            news.IsHomePage,
-                            newsTranslation.Title,
-                            CategoryName = categoryTranslation.Name
-                        });
-
-            var result = query.GroupBy(x => new
-            {
-                x.Id,
-                x.LikeCount,
-                x.CommentCount,
-                x.ViewCount,
-                x.CreateTime,
-                x.CreatorId,
-                x.CreatorFullName,
-                x.IsActive,
-                x.FeatureImage,
-                x.Source,
-                x.Status,
-                x.LastUpdate,
-                x.IsHot,
-                x.IsHomePage,
-                x.Title,
-            }, (key, g) => new NewsViewModel
-            {
-                Id = key.Id,
-                LikeCount = key.LikeCount,
-                CommentCount = key.CommentCount,
-                ViewCount = key.ViewCount,
-                CreateTime = key.CreateTime,
-                CreatorId = key.CreatorId,
-                CreatorFullName = key.CreatorFullName,
-                IsActive = key.IsActive,
-                FeatureImage = key.FeatureImage,
-                Source = key.Source,
-                Status = key.Status,
-                LastUpdate = key.LastUpdate,
-                IsHot = key.IsHot,
-                IsHomePage = key.IsHomePage,
-                Title = key.Title,
-                CategoriesNames = g.Select(x => x.CategoryName).ToList()
-            });
-
-            totalRows = result.Count();
-
-            return result.OrderByDescending(x => x.CreateTime)
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
         }
 
         public Task<List<NewSearchForSelectViewModel>> SearchForSelect(string tenantId, string languageId, string keyword, int? categoryId, int page, int pageSize, out int totalRows)
@@ -646,10 +615,11 @@ namespace GHM.Website.Infrastructure.Repository
                              ViewCount = news.ViewCount
                          };
             totalRows = result.Count();
-            if(page == 3 && pageSize == 6)
+            if (page == 3 && pageSize == 6)
             {
                 return result.OrderByDescending(x => x.LastUpdate).Skip((page - 1) * pageSize - 1).Take(pageSize).ToListAsync();
-            } else
+            }
+            else
             {
                 return result.OrderByDescending(x => x.LastUpdate).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
             }
@@ -825,8 +795,8 @@ namespace GHM.Website.Infrastructure.Repository
             var r = new Random();
             Expression<Func<News, bool>> spec = x => x.TenantId == tenantId && !x.IsDelete && x.IsActive && x.Status == ApproverStatus.Approved;
             Expression<Func<NewsTranslation, bool>> specTranslation = x => x.TenantId == tenantId && x.LanguageId == languageId && !x.IsDelete;
-            Expression<Func<Category, bool>> specC = x => x.TenantId == tenantId  && x.IsActive && !x.IsDelete && (x.Id == parentId || x.ParentId == parentId);
-            var query = 
+            Expression<Func<Category, bool>> specC = x => x.TenantId == tenantId && x.IsActive && !x.IsDelete && (x.Id == parentId || x.ParentId == parentId);
+            var query =
                     from c in Context.Set<Category>().Where(specC)
                     join cn in Context.Set<CategoriesNews>().Where(x => x.CategoryId != id) on c.Id equals cn.CategoryId
                     join n in Context.Set<News>().Where(spec) on cn.NewsId equals n.Id

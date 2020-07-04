@@ -49,7 +49,7 @@ namespace GHM.Infrastructure.SqlServer
                 //    }
                 //}
                 //var fail = new Exception(msg, dbEx);
-                //throw fail;
+                throw dbEx;
             }
         }
 
@@ -225,7 +225,7 @@ namespace GHM.Infrastructure.SqlServer
                 //    }
                 //}
                 //var fail = new Exception(msg, dbEx);
-                //throw fail;
+                throw dbEx;
             }
         }
 
@@ -252,7 +252,7 @@ namespace GHM.Infrastructure.SqlServer
                 //    }
                 //}
                 //var fail = new Exception(msg, dbEx);
-                //throw fail;
+                throw dbEx;
             }
 
         }
@@ -277,7 +277,7 @@ namespace GHM.Infrastructure.SqlServer
                 //    }
                 //}
                 //var fail = new Exception(msg, dbEx);
-                //throw fail;
+                throw dbEx;
             }
         }
 

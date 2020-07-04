@@ -27,7 +27,6 @@ namespace GHM.Authentication
                 //.UseContentRoot(Directory.GetCurrentDirectory())
                 //.UseIISIntegration()
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:50000")
                 .Build();
     }
 }

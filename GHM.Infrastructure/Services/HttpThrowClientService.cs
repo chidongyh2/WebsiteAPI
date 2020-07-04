@@ -12,6 +12,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using static IdentityModel.OidcConstants;
 
 namespace GHM.Infrastructure.Services
 {
@@ -42,24 +43,27 @@ namespace GHM.Infrastructure.Services
             #region Local Function.
             async Task<HttpClient> GetClient()
             {
+                var client = new HttpClient();
+                DiscoveryDocumentResponse discoveryDocument = await client.GetDiscoveryDocumentAsync(_apiThrowServiceInfo.AuthenticationUrl);
+                var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                {
+                    Address = discoveryDocument.TokenEndpoint,
+                    ClientId = _apiThrowServiceInfo.ClientId,
+                    ClientSecret = _apiThrowServiceInfo.ClientSecret,
+                    GrantType = GrantTypes.ClientCredentials,
+                    Scope = _apiThrowServiceInfo.Scopes
+                });
+                //if(_cache.TryGetValue(_cacheKeyToken, out string cachedToken))
+                //{
+                //   client.SetBearerToken(cachedToken);
+                //} else
+                //{
+                //    var tokenResponse = await client.RequestPasswordTokenAsync(passwordTokenRequest);
+                //    client.SetBearerToken(tokenResponse.AccessToken);
+                //}
+                client.SetBearerToken(tokenResponse.AccessToken);
+                return client;
 
-                    if (string.IsNullOrEmpty(_apiThrowServiceInfo.ApiGatewayUrl))
-                        return null;
-
-                    var disco = await DiscoveryClient.GetAsync($"{_apiThrowServiceInfo.AuthenticationUrl}");
-                    if (disco.IsError)
-                        return null;
-                    if (string.IsNullOrEmpty(_apiThrowServiceInfo.ClientId) || string.IsNullOrEmpty(_apiThrowServiceInfo.Scopes))
-                        return null;
-
-                    var tokenClient = new TokenClient(disco.TokenEndpoint, _apiThrowServiceInfo.ClientId, _apiThrowServiceInfo.ClientSecret);
-                    var tokenResponse = await tokenClient.RequestClientCredentialsAsync(_apiThrowServiceInfo.Scopes);
-                    if (tokenResponse.IsError)
-                        return null;
-                    var client = new HttpClient();
-                    client.SetBearerToken(tokenResponse.AccessToken);
-                    return client;
-              
             }
             #endregion
         }

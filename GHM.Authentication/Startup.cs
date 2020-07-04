@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.Json;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using GHM.Authentication.Validators;
@@ -13,6 +14,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
@@ -34,12 +36,16 @@ namespace GHM.Authentication
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            // Config IIS support.
-            services.Configure<IISOptions>(options =>
+            services.AddApiVersioning(options =>
             {
-                options.ForwardClientCertificate = false;
+                options.ReportApiVersions = true;
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new ApiVersion(1, 0);
             });
-
+            services
+                .AddRouting(options => options.LowercaseUrls = true)
+                .AddControllers();
+            services.AddOptions();
             services.AddCors();
 
             //services.AddHsts(options =>
@@ -57,15 +63,19 @@ namespace GHM.Authentication
             //});
 
             // Identity Services.
-            services.AddTransient<IDbContext, CoreDbContext>();
-            services.AddTransient<IUserStore<UserAccount>, UserAccountRepository>();
-            services.AddTransient<IClientStore, ClientRepository>();
-            services.AddTransient<IResourceStore, ResourceRepository>();
+            services.AddScoped<IDbContext, CoreDbContext>();
+            services.AddScoped<IUserStore<UserAccount>, UserAccountRepository>();
+            services.AddScoped<IClientStore, ClientRepository>();
+            services.AddScoped<IResourceStore, ResourceRepository>();
 
-            services.AddMvcCore();
+            services.AddMvc().AddJsonOptions(opts =>
+            {
+                opts.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+                opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            });
             services.AddDbContextPool<CoreDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("CoreConnectionString"));
+                options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("CoreConnectionString"));
             });
 
             #region Identity config
@@ -81,20 +91,13 @@ namespace GHM.Authentication
             services.AddIdentityServer()
                 //.AddSigningCredential("id_rsa")
                 .AddDeveloperSigningCredential()
-                .AddInMemoryPersistedGrants()
-                //.AddConfigurationStore(options =>
-                //{
-                //    options.ConfigureDbContext = b => b.UseSqlServer(Configuration.GetConnectionString("CoreConnectionString"));
-                //})
                 .AddResourceStore<ResourceRepository>()
                 .AddClientStore<ClientRepository>()
                 .AddProfileService<ProfileRepository>()
                 //.AddInMemoryIdentityResources(IdentityConfig.GetIdentityResources())
+                //.AddInMemoryApiScopes(IdentityConfig.GetApiScopes())
                 //.AddInMemoryApiResources(IdentityConfig.GetApiResources())
                 //.AddInMemoryClients(IdentityConfig.GetClients())
-                //.AddTestUsers(IdentityConfig.GetUsers())
-                //.AddProfileService<ProfileRepository>()
-                .AddAspNetIdentity<UserAccount>()
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();
             #endregion
 
@@ -111,35 +114,30 @@ namespace GHM.Authentication
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseHsts();
-            }
 
             #region Allow Origin
             var allowOrigins = Configuration.GetSection("AllowOrigins")
                 .GetChildren().Select(x => x.Value).ToArray();
             app.UseCors(builder =>
             {
-                builder.WithOrigins(allowOrigins);
                 builder.AllowAnyHeader();
                 builder.AllowAnyMethod();
                 builder.AllowCredentials();
+                builder.SetIsOriginAllowed(origin => true);
             });
             #endregion
-
+            app.UseExceptionHandler("/error");
             app.UseHttpsRedirection();
+            app.UseRouting();
             app.UseIdentityServer();
-            app.UseAuthentication();
-            app.UseDefaultFiles();
+            app.UseAuthorization();
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

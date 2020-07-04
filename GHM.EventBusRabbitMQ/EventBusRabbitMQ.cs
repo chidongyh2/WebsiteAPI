@@ -188,7 +188,7 @@ namespace GHM.EventBusRabbitMQ
             consumer.Received += async (model, ea) =>
             {
                 var eventName = ea.RoutingKey;
-                var message = Encoding.UTF8.GetString(ea.Body);
+                var message = Encoding.UTF8.GetString(ea.Body.Span);
 
                 await ProcessEvent(eventName, message);
 

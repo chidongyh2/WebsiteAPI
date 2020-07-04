@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using GHM.Infrastructure.SqlServer;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
+using Microsoft.VisualBasic;
 
 namespace GHM.Core.Infrastructure.Repository
 {
@@ -19,26 +21,102 @@ namespace GHM.Core.Infrastructure.Repository
             _identityResourceRepository = Context.GetRepository<IdentityResource>();
         }
 
-        public async Task<IEnumerable<IdentityResource>> FindIdentityResourcesByScopeAsync(IEnumerable<string> scopeNames)
+        public async Task<IEnumerable<IdentityResource>> FindIdentityResourcesByScopeNameAsync(IEnumerable<string> scopeNames)
         {
             var identityResource = await _identityResourceRepository.GetsAsync(true, x => scopeNames.Contains(x.Name));
-            return identityResource;
+            return identityResource.Select(x => new IdentityServer4.Models.IdentityResource {
+                Description = x.Description,
+                DisplayName = x.DisplayName,
+                Name = x.Name,
+                UserClaims = x.UserClaims,
+                Enabled = x.Enabled,
+                Properties = x.Properties,
+                ShowInDiscoveryDocument = x.ShowInDiscoveryDocument,
+                Emphasize = x.Emphasize,
+                Required = x.Required
+            });
         }
 
-        public async Task<IEnumerable<ApiResource>> FindApiResourcesByScopeAsync(IEnumerable<string> scopeNames)
+        public async Task<IEnumerable<ApiResource>> FindApiResourcesByScopeNameAsync(IEnumerable<string> scopeNames)
         {
             var apiResources = await _apiResourceRepository.GetsAsync(true, x => scopeNames.Contains(x.Name));
             if (apiResources.Any())
             {
                 foreach (var apiResource in apiResources)
                 {
-                    apiResource.Scopes = new List<Scope> { new Scope(apiResource.Name, apiResource.DisplayName) };
+                    //ICollection<string> scope = new Collection<string>();
+                    //scope.Add(apiResource.Name);
+                    //apiResource.Scopes = scope;
+                    apiResource.Scopes.Add(apiResource.Name);
                 }
             }
 
-            return apiResources;
+            return apiResources.Select( x => new IdentityServer4.Models.ApiResource {
+                Description = x.Description,
+                DisplayName = x.DisplayName,
+                Name = x.Name,
+                UserClaims = x.UserClaims,
+                Enabled = x.Enabled,
+                AllowedAccessTokenSigningAlgorithms = x.AllowedAccessTokenSigningAlgorithms,
+                ApiSecrets = x.ApiSecrets,
+                Scopes = x.Scopes,
+                Properties = x.Properties,
+                ShowInDiscoveryDocument = x.ShowInDiscoveryDocument
+            });
         }
 
+        public async Task<IEnumerable<ApiScope>> FindApiScopesByNameAsync(IEnumerable<string> scopeNames)
+        {
+            var apiResources = await _apiResourceRepository.GetsAsync(true, x => scopeNames.Contains(x.Name));
+            if (apiResources.Any())
+            {
+                foreach (var apiResource in apiResources)
+                {
+                    //ICollection<string> scope = new Collection<string>();
+                    //scope.Add(apiResource.Name);
+                    //apiResource.Scopes = scope;
+                    apiResource.Scopes.Add(apiResource.Name);
+                }
+            }
+
+            return apiResources.Select(x => new ApiScope
+            {
+                Description = x.Description,
+                DisplayName = x.DisplayName,
+                Name = x.Name,
+                UserClaims = x.UserClaims,
+                Enabled = x.Enabled
+            }).ToList();
+        }
+        public async Task<IEnumerable<ApiResource>> FindApiResourcesByNameAsync(IEnumerable<string> scopeNames)
+        {
+            var apiResources = await _apiResourceRepository.GetsAsync(true, x => scopeNames.Contains(x.Name));
+            if (apiResources.Any())
+            {
+                foreach (var apiResource in apiResources)
+                {
+                    //ICollection<string> scope = new Collection<string>();
+                    //scope.Add(apiResource.Name);
+                    //apiResource.Scopes = scope;
+
+                    apiResource.Scopes.Add(apiResource.Name);
+                }
+            }
+
+            return apiResources.Select(x => new IdentityServer4.Models.ApiResource
+            {
+                Description = x.Description,
+                DisplayName = x.DisplayName,
+                Name = x.Name,
+                UserClaims = x.UserClaims,
+                Enabled = x.Enabled,
+                AllowedAccessTokenSigningAlgorithms = x.AllowedAccessTokenSigningAlgorithms,
+                ApiSecrets = x.ApiSecrets,
+                Scopes = x.Scopes,
+                Properties = x.Properties,
+                ShowInDiscoveryDocument = x.ShowInDiscoveryDocument
+            });
+        }
         public async Task<ApiResource> FindApiResourceAsync(string name)
         {
             return await _apiResourceRepository.GetAsync(true, x => x.Name.Equals(name));
@@ -48,7 +126,8 @@ namespace GHM.Core.Infrastructure.Repository
         {
             var identityResources = await GetAllIdentityResource();
             var apiResources = await GetAllApiResource();
-            return new Resources(identityResources, apiResources);
+            var apiScope = await GetAllApiScope();
+            return new Resources(identityResources, apiResources, apiScope);
         }
 
         private async Task<List<IdentityResource>> GetAllIdentityResource()
@@ -69,10 +148,34 @@ namespace GHM.Core.Infrastructure.Repository
             {
                 foreach (var apiResource in apiResources)
                 {
-                    apiResource.Scopes = new List<Scope> { new Scope(apiResource.Name, apiResource.DisplayName) };
+                    //ICollection<string> scope = new Collection<string>();
+                    //scope.Add(apiResource.Name);
+                    apiResource.Scopes.Add(apiResource.Name);
                 }
             }
             return apiResources;
+        }
+
+        private async Task<List<ApiScope>> GetAllApiScope()
+        {
+            var apiResources = await _apiResourceRepository.GetsAsync(true, x => !string.IsNullOrEmpty(x.Name));
+            if (apiResources.Any())
+            {
+                foreach (var apiResource in apiResources)
+                {
+                    //ICollection<string> scope = new Collection<string>();
+                    //scope.Add(apiResource.Name);
+                    //apiResource.Scopes = scope;
+                    apiResource.Scopes.Add(apiResource.Name);
+                }
+            }
+            return apiResources.Select(x => new ApiScope { 
+                Description = x.Description,
+                DisplayName = x.DisplayName,
+                Name = x.Name,
+                UserClaims = x.UserClaims,
+                Enabled = x.Enabled
+            }).ToList();
         }
 
     }

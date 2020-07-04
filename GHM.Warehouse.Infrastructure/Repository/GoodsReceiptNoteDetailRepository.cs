@@ -8,7 +8,6 @@ using GHM.Infrastructure.SqlServer;
 using GHM.Warehouse.Domain.IRepository;
 using GHM.Warehouse.Domain.Models;
 using GHM.Warehouse.Domain.ViewModels;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace GHM.Warehouse.Infrastructure.Repository

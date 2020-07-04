@@ -29,18 +29,18 @@ namespace GHM.Web.ApiGateway
 
         public static IWebHost CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseKestrel(o => { o.Limits.MaxRequestBodySize = null; })
                 //.UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
-                //.UseContentRoot(Directory.GetCurrentDirectory())
+                .UseContentRoot(Directory.GetCurrentDirectory())
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     config
                         .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
                         .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
-                        .AddJsonFile($"configuration.{hostingContext.HostingEnvironment.EnvironmentName}.json", false, true)
+                        .AddJsonFile($"configuration.{hostingContext.HostingEnvironment.EnvironmentName}.json", true)
                         .AddEnvironmentVariables();
                 })
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:50008")
             .Build();
     }
 }

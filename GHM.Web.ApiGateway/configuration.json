@@ -1,5 +1,5 @@
 {
-  "ReRoutes": [
+  "Routes": [
     // BEGIN: Pages
     {
       "DownstreamPathTemplate": "/{everything}",
@@ -11,7 +11,7 @@
         }
       ],
       "UpstreamPathTemplate": "/auth/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamHttpMethod": [ "GET", "POST" ],
       "UseServiceDiscovery": false
     },
     // BEGIN: Events
@@ -76,7 +76,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50011
+          "Port": 50009
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",
@@ -84,7 +84,7 @@
       "UseServiceDiscovery": false,
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "GHM_Product_Api" ]
+        "AllowedScopes": [ "GHM_Website_Api" ]
       }
     },
     // BEGIN: Notifications

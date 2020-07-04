@@ -65,7 +65,7 @@ namespace GHM.Infrastructure.MongoDb
             }
             catch (MongoWriteConcernException ex)
             {
-                return -100;
+                throw ex;
             }
         }
 
@@ -152,7 +152,7 @@ namespace GHM.Infrastructure.MongoDb
                 }
                 catch (MongoWriteConcernException ex)
                 {
-
+                    throw ex;
                 }
             }
             return listInserted;

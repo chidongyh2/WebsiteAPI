@@ -58,21 +58,21 @@ namespace GHM.Infrastructure.Services
                 } else
                 {
 
-                    if (string.IsNullOrEmpty(_apiUrls.Authority))
-                        return null;
+                    //if (string.IsNullOrEmpty(_apiUrls.Authority))
+                    //    return null;
 
-                    var disco = await DiscoveryClient.GetAsync(_apiUrls.Authority);
-                    if (disco.IsError)
-                        return null;
-                    if (string.IsNullOrEmpty(_apiServiceInfo.ClientId) || string.IsNullOrEmpty(_apiServiceInfo.ClientSecret) || string.IsNullOrEmpty(_apiServiceInfo.Scopes))
-                        return null;
+                    //var disco = await DiscoveryClient.GetAsync(_apiUrls.Authority);
+                    //if (disco.IsError)
+                    //    return null;
+                    //if (string.IsNullOrEmpty(_apiServiceInfo.ClientId) || string.IsNullOrEmpty(_apiServiceInfo.ClientSecret) || string.IsNullOrEmpty(_apiServiceInfo.Scopes))
+                    //    return null;
 
-                    var tokenClient = new TokenClient(disco.TokenEndpoint, _apiServiceInfo.ClientId, _apiServiceInfo.ClientSecret);
-                    var tokenResponse = await tokenClient.RequestClientCredentialsAsync(_apiServiceInfo.Scopes);
-                    if (tokenResponse.IsError)
-                        return null;
-                    client.SetBearerToken(tokenResponse.AccessToken);
-                    _cache.Set(CacheParamPublic.AccessToken, tokenResponse.AccessToken, TimeSpan.FromDays(1));
+                    //var tokenClient = new TokenClient(disco.TokenEndpoint, _apiServiceInfo.ClientId, _apiServiceInfo.ClientSecret);
+                    //var tokenResponse = await tokenClient.RequestClientCredentialsAsync(_apiServiceInfo.Scopes);
+                    //if (tokenResponse.IsError)
+                    //    return null;
+                    //client.SetBearerToken(tokenResponse.AccessToken);
+                    //_cache.Set(CacheParamPublic.AccessToken, tokenResponse.AccessToken, TimeSpan.FromDays(1));
                     return client;
                 }
             }

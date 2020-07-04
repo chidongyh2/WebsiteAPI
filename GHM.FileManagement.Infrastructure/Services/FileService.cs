@@ -20,7 +20,6 @@ using GHM.Infrastructure.Models;
 using GHM.Infrastructure.Resources;
 using GHM.Infrastructure.ViewModels;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Http;
 using File = GHM.FileManagement.Domain.Models.File;
 
@@ -30,11 +29,11 @@ namespace GHM.FileManagement.Infrastructure.Services
     {
         private readonly IFileRepository _fileRepository;
         private readonly IFolderRepository _folderRepository;
-
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IResourceService<SharedResource> _sharedResourceService;
         private readonly IResourceService<GhmFileManagementResource> _resourceService;
 
-        public FileService(IFileRepository fileRepository,
+        public FileService(IFileRepository fileRepository, IWebHostEnvironment webHostEnvironment,
             IResourceService<SharedResource> sharedResourceService, IResourceService<GhmFileManagementResource> resourceService,
             IFolderRepository folderRepository)
         {
@@ -42,6 +41,7 @@ namespace GHM.FileManagement.Infrastructure.Services
             _sharedResourceService = sharedResourceService;
             _resourceService = resourceService;
             _folderRepository = folderRepository;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<ActionResultResponse> Delete(string tenantId, string userId, string fileId)
@@ -137,8 +137,7 @@ namespace GHM.FileManagement.Infrastructure.Services
 
             string CreateFolder()
             {
-                IHostingEnvironment hostingEnvironment = new HostingEnvironment();
-                var mapPath = hostingEnvironment.WebRootPath + string.Format("uploads/" + tenantId + "/{0:yyyy/MM/dd}/", DateTime.Now);
+                var mapPath = _webHostEnvironment.WebRootPath + string.Format("uploads/" + tenantId + "/{0:yyyy/MM/dd}/", DateTime.Now);
                 if (!Directory.Exists(mapPath))
                     Directory.CreateDirectory(mapPath);
 

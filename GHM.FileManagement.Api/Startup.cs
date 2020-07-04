@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
@@ -44,12 +45,16 @@ namespace GHM.FileManagement.Api
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.DefaultApiVersion = new ApiVersion(1, 0);
             });
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+   
             services.AddMemoryCache();
             services.AddCors();
             services.AddMvcCore()
+                .AddJsonOptions(opts =>
+                {
+                    opts.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+                    opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                })
                 .AddAuthorization()
-                .AddJsonFormatters()
                 .AddFluentValidation();
 
             services.AddAuthentication("Bearer")
@@ -61,7 +66,7 @@ namespace GHM.FileManagement.Api
                     options.ApiName = "GHM_File_Management_Api";
                 });
 
-            services.AddDbContext<FileManagementDbContext>(options =>
+            services.AddDbContextPool<FileManagementDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("FileManagementConnectionString"));
             });
@@ -76,20 +81,9 @@ namespace GHM.FileManagement.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseHsts();
-                app.UseHttpsRedirection();
-            }
-
-            app.UseDeveloperExceptionPage();
-
+            app.UseHttpsRedirection();
             #region Localizations
             var supportedCultures = new[]
             {
@@ -133,9 +127,13 @@ namespace GHM.FileManagement.Api
                 RequestPath = "/uploads",
                 EnableDirectoryBrowsing = true
             });
-
+            app.UseRouting();
             app.UseAuthentication();
-            app.UseMvcWithDefaultRoute();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

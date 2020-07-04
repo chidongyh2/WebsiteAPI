@@ -24,93 +24,65 @@ namespace GHM.Warehouse.Infrastructure.Repository
             int? categoryId, bool? isManagementByLot,
             bool? isActive, int page, int pageSize, out int totalRows)
         {
-            Expression<Func<Product, bool>> spec = x => !x.IsDelete && x.TenantId == tenantId;
-            Expression<Func<ProductTranslation, bool>> specTranslation = pt => pt.LanguageId == languageId && pt.TenantId == tenantId && !pt.IsDelete;
-            Expression<Func<ProductsCategory, bool>> specCategory = x => x.TenantId == tenantId;
-
-            if (!string.IsNullOrEmpty(keyword))
+            try
             {
-                keyword = keyword.Trim().StripVietnameseChars().ToUpper();
-                specTranslation = specTranslation.And(x => x.UnsignName.Contains(keyword));
+                Expression<Func<Product, bool>> spec = x => !x.IsDelete && x.TenantId == tenantId;
+                Expression<Func<ProductTranslation, bool>> specTranslation = pt => pt.LanguageId == languageId && pt.TenantId == tenantId && !pt.IsDelete;
+                Expression<Func<ProductsCategory, bool>> specCategory = x => x.TenantId == tenantId;
+
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    keyword = keyword.Trim().StripVietnameseChars().ToUpper();
+                    specTranslation = specTranslation.And(x => x.UnsignName.Contains(keyword));
+                }
+
+                if (isManagementByLot.HasValue)
+                {
+                    spec = spec.And(x => x.IsHot == isManagementByLot.Value);
+                }
+
+                if (isActive.HasValue)
+                {
+                    spec = spec.And(x => x.IsActive == isActive.Value);
+                }
+
+                if (categoryId.HasValue)
+                {
+                    specCategory = specCategory.And(x => x.CategoryId == categoryId.Value);
+                }
+
+                var queryProduct = from product in Context.Set<Product>().Where(spec)
+                                   join productTransaction in Context.Set<ProductTranslation>().Where(specTranslation) on product.Id equals productTransaction.ProductId
+                                   join productUnit in Context.Set<ProductUnit>().Where(x => x.IsDefault && !x.ToDate.HasValue && x.IsDefault && x.TenantId == tenantId) on product.Id equals productUnit.ProductId
+                                   join unitTransaction in Context.Set<UnitTranslation>().Where(x => !x.IsDelete && x.LanguageId == languageId && x.TenantId == tenantId) on productUnit.UnitId equals unitTransaction.UnitId
+                                   join productCategoty in Context.Set<ProductsCategory>().Where(specCategory) on product.Id equals productCategoty.ProductId
+                                   select new ProductSearchViewModel
+                                   {
+                                       Id = product.Id,
+                                       IsActive = product.IsActive,
+                                       IsManagementByLot = product.IsManagementByLot,
+                                       Name = productTransaction.Name,
+                                       Thumbnail = product.Thumbnail,
+                                       IsHot = product.IsHot,
+                                       IsHomePage = product.IsHomePage,
+                                       Status = product.Status,
+                                       DefaultUnit = unitTransaction.Name,
+                                       SalePrice = productUnit.SalePrice,
+                                       LastUpdateTime = product.LastUpdateTime,
+                                       CreateTime = product.CreateTime,
+                                       CategoryNames = Context.Set<ProductCategoryTranslation>().Where(x => !x.IsDelete && x.TenantId == tenantId && x.ProductCategoryId == productCategoty.CategoryId).Select(x => x.Name).ToList()
+                                   };
+                totalRows = queryProduct.Count();
+                var queryProductCategory = queryProduct.OrderByDescending(x => x.CreateTime)
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize);
+
+                return queryProductCategory.AsNoTracking().ToListAsync();
             }
-
-            if (isManagementByLot.HasValue)
+            catch(Exception e)
             {
-                spec = spec.And(x => x.IsHot == isManagementByLot.Value);
+                throw e;
             }
-
-            if (isActive.HasValue)
-            {
-                spec = spec.And(x => x.IsActive == isActive.Value);
-            }
-
-            if (categoryId.HasValue)
-            {
-                specCategory = specCategory.And(x => x.CategoryId == categoryId.Value);
-            }
-
-            var queryProduct = from product in Context.Set<Product>().Where(spec)
-                               join productTransaction in Context.Set<ProductTranslation>().Where(specTranslation) on product.Id equals productTransaction.ProductId
-                               join productUnit in Context.Set<ProductUnit>().Where(x => x.IsDefault && !x.ToDate.HasValue && x.IsDefault && x.TenantId == tenantId) on product.Id equals productUnit.ProductId
-                               join unitTransaction in Context.Set<UnitTranslation>().Where(x => !x.IsDelete && x.LanguageId == languageId && x.TenantId == tenantId) on productUnit.UnitId equals unitTransaction.UnitId
-                               join productCategoty in Context.Set<ProductsCategory>().Where(specCategory) on product.Id equals productCategoty.ProductId
-                               join productCategoryTransatcion in Context.Set<ProductCategoryTranslation>().Where(x => !x.IsDelete && x.LanguageId == languageId && x.TenantId == tenantId) on productCategoty.CategoryId equals productCategoryTransatcion.ProductCategoryId
-                               select new
-                               {
-                                   product.Id,
-                                   product.IsActive,
-                                   product.IsManagementByLot,
-                                   product.Thumbnail,
-                                   productTransaction.Name,
-                                   product.Status,
-                                   product.IsHot,
-                                   product.IsHomePage,
-                                   DefaultUnit = unitTransaction.Name,
-                                   productUnit.SalePrice,
-                                   productCategoty.CategoryId,
-                                   CategoryNames = productCategoryTransatcion.Name,
-                                   product.LastUpdateTime,
-                                   product.CreateTime
-                               };
-
-            var queryProductCategory = queryProduct.GroupBy(x =>
-            new
-            {
-                x.Id,
-                x.IsActive,
-                x.IsManagementByLot,
-                x.Name,
-                x.Thumbnail,
-                x.IsHot,
-                x.IsHomePage,
-                x.Status,
-                x.DefaultUnit,
-                x.SalePrice,
-                x.LastUpdateTime,
-                x.CreateTime
-            }, (key, g) => new ProductSearchViewModel
-            {
-                Id = key.Id,
-                IsActive = key.IsActive,
-                IsManagementByLot = key.IsManagementByLot,
-                Name = key.Name,
-                Thumbnail = key.Thumbnail,
-                IsHot = key.IsHot,
-                IsHomePage = key.IsHomePage,
-                Status = key.Status,
-                DefaultUnit = key.DefaultUnit,
-                SalePrice = key.SalePrice,
-                LastUpdateTime = key.LastUpdateTime,
-                CreateTime = key.CreateTime,
-                CategoryNames = g.Select(x => x.CategoryNames).ToList()
-            });
-
-            totalRows = queryProductCategory.Count();
-            queryProductCategory = queryProductCategory.OrderByDescending(x => x.CreateTime)
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize);
-
-            return queryProductCategory.ToListAsync();
         }
 
         public async Task<int> Insert(Product product)

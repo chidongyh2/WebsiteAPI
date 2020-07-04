@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using Autofac;
 using GHM.Core.Domain.IRepository;
 using GHM.Core.Domain.Resources;
@@ -9,6 +10,7 @@ using GHM.Infrastructure.Services;
 using GHM.Infrastructure.SqlServer;
 using IdentityServer4.Services;
 using NServiceBus;
+using Assembly = System.Reflection.Assembly;
 using Module = Autofac.Module;
 
 namespace GHM.Core.Infrastructure.AutofacModules

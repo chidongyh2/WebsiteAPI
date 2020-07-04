@@ -20,8 +20,8 @@ namespace GHM.Core.Api
                 var services = scope.ServiceProvider;
                 try
                 {
-                    SeedData.Initialize(services);
-                    PageSeedData.Initialize(services);
+                    //SeedData.Initialize(services);
+                    //PageSeedData.Initialize(services);
                 }
                 catch (Exception ex)
                 {
@@ -41,7 +41,6 @@ namespace GHM.Core.Api
                 //    .UseContentRoot(Directory.GetCurrentDirectory())
                 //    .UseIISIntegration()
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:50001")
                 .Build();
     }
 }

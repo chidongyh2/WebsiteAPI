@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace GHM.Infrastructure.Models
 {
-    public sealed class UserAccount : IdentityUser
+    public class UserAccount : IdentityUser
     {
         public string FullName { get; set; }
 

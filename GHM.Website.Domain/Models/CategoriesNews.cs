@@ -12,5 +12,9 @@ namespace GHM.Website.Domain.Models
         /// Mã chuyên mục.
         /// </summary>
         public int CategoryId { get; set; }
+
+        public News News { get; set; }
+
+        public Category Category { get; set; }
     }
 }

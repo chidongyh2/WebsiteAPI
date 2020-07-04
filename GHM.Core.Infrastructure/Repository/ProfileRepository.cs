@@ -25,29 +25,22 @@ namespace GHM.Core.Infrastructure.Repository
 
         public async Task GetProfileDataAsync(ProfileDataRequestContext context)
         {
-            try
+            var sub = context.Subject.GetSubjectId();
+            var userInfo = await _userAccountRepository.GetInfo(sub, true);
+            var principal = await _claimsFactory.CreateAsync(userInfo);
+            var userInfoString = JsonConvert.SerializeObject(new BriefUser
             {
-                var sub = context.Subject.GetSubjectId();
-                var userInfo = await _userAccountRepository.GetInfo(sub, true);
-                var principal = await _claimsFactory.CreateAsync(userInfo);
-                var userInfoString = JsonConvert.SerializeObject(new BriefUser
-                {
-                    Id = userInfo.Id,
-                    FullName = userInfo.FullName,
-                    TenantId = userInfo.TenantId,
-                    Avatar = userInfo.Avatar,
-                    Email = userInfo.Email,
-                    PhoneNumber = userInfo.PhoneNumber,
-                    UserName = userInfo.UserName
-                });
-                var userInfoEncrypted = EncryptionHelper.Encrypt(userInfoString, userInfo.Id);
-                context.IssuedClaims.AddRange(principal.Claims);
-                context.IssuedClaims.Add(new Claim("ui", userInfoEncrypted));                
-            }
-            catch (Exception ex)
-            {
-
-            }
+                Id = userInfo.Id,
+                FullName = userInfo.FullName,
+                TenantId = userInfo.TenantId,
+                Avatar = userInfo.Avatar,
+                Email = userInfo.Email,
+                PhoneNumber = userInfo.PhoneNumber,
+                UserName = userInfo.UserName
+            });
+            var userInfoEncrypted = EncryptionHelper.Encrypt(userInfoString, userInfo.Id);
+            context.IssuedClaims.AddRange(principal.Claims);
+            context.IssuedClaims.Add(new Claim("ui", userInfoEncrypted));                
         }
 
         public async Task IsActiveAsync(IsActiveContext context)

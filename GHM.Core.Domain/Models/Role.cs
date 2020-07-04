@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace GHM.Core.Domain.Models
 {
-    public sealed class Role : IdentityRole<string>
+    public class Role : IdentityRole<string>
     {
         public string TenantId { get; set; }
         public string Description { get; set; }

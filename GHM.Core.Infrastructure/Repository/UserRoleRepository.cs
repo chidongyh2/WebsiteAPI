@@ -8,7 +8,6 @@ using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.Models;
 using GHM.Infrastructure.SqlServer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace GHM.Core.Infrastructure.Repository

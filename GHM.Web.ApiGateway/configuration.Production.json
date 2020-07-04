@@ -1,5 +1,5 @@
 {
-  "ReRoutes": [
+  "Routes": [
     // BEGIN: Auth
     {
       "DownstreamPathTemplate": "/connect/token",

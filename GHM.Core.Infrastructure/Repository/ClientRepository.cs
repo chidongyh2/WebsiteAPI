@@ -78,7 +78,7 @@ namespace GHM.Core.Infrastructure.Repository
             //return MapToIdentityClient(clientInfo, listPostLogoutRedirectUris, listRedirectUris, listClientSecrets,
             //    listProperties, listClaims, listIdentityProviderRestriction, listAllowedCorsOrigins, listAllowedScope);
             return MapToIdentityClient(clientInfo, new List<ClientPostLogoutRedirectUris>(), new List<ClientRedirectUris>(), listClientSecrets,
-                new List<ClientProperty>(), new List<ClientClaim>(), new List<ClientIdentityProviderRestriction>(), new List<ClientAllowedCorsOrigin>(), listAllowedScope);
+                new List<ClientProperty>(), new List<Domain.Models.ClientClaim>(), new List<ClientIdentityProviderRestriction>(), new List<ClientAllowedCorsOrigin>(), listAllowedScope);
         }
 
         public async Task<Client> GetInfo(string clientId, bool isReadOnly = false)
@@ -333,7 +333,7 @@ namespace GHM.Core.Infrastructure.Repository
             List<ClientPostLogoutRedirectUris> listPostLogoutRedirectUris,
             List<ClientRedirectUris> listClientRedirectUris, List<ClientSecret> listClientSecrets,
             List<ClientProperty> listClientProperty,
-            List<ClientClaim> listClaims,
+            List<Domain.Models.ClientClaim> listClaims,
             List<ClientIdentityProviderRestriction> listIdentityProviderRestrictions,
             List<ClientAllowedCorsOrigin> listAllowedCorsOrigins,
             List<ClientAllowedScope> listClientAllowedScopes)
@@ -396,7 +396,7 @@ namespace GHM.Core.Infrastructure.Repository
                 AllowedScopes = listClientAllowedScopes.Count > 0 ? listClientAllowedScopes.Distinct().Select(x => x.Scope).ToList() : new List<string>(),
                 IdentityProviderRestrictions = listIdentityProviderRestrictions.Count > 0 ? listIdentityProviderRestrictions.Select(x => x.IdentityProviderRestriction).ToList() : new List<string>(),
                 Properties = propertyDictionary,
-                Claims = listClaims.Count > 0 ? listClaims.Select(x => new Claim(x.ClaimType, x.ClaimValue)).ToList() : new List<Claim>()
+                Claims = listClaims.Count > 0 ? listClaims.Select(x => new IdentityServer4.Models.ClientClaim(x.ClaimType, x.ClaimValue)).ToList() : new List<IdentityServer4.Models.ClientClaim>()
             };
             return identityClient;
         }

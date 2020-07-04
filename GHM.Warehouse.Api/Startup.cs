@@ -24,6 +24,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
+using System.Text.Json;
+using System.Reflection;
 
 namespace GHM.Warehouse.Api
 {
@@ -55,7 +57,7 @@ namespace GHM.Warehouse.Api
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.DefaultApiVersion = new ApiVersion(1, 0);
             });
-            services.AddMediatR();
+            services.AddMediatR(typeof(GHM.Warehouse.Infrastructure.CommandHandlers.AssemblyHandler).GetTypeInfo().Assembly);
             services.AddCors();
             services.AddMvcCore(options =>
                 {
@@ -64,11 +66,11 @@ namespace GHM.Warehouse.Api
                     options.Filters.Add(new ModelStateFilter());
                 })
                 .AddAuthorization()
-                .AddJsonFormatters()
-                //.AddJsonOptions(options =>
-                //{
-                //    options.SerializerSettings.DateFormatString = "dd/MM/yyyy hh:mm:ss";
-                //})
+                  .AddJsonOptions(opts =>
+                  {
+                      opts.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+                      opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                  })
                 .AddFluentValidation();
 
             services.AddMemoryCache();
@@ -76,13 +78,12 @@ namespace GHM.Warehouse.Api
             services.AddAuthentication("Bearer")
                 .AddIdentityServerAuthentication(options =>
                 {
-                    var authority = Configuration.GetApiUrl("Authority");
-                    options.Authority = !string.IsNullOrEmpty(authority) ? authority : "http://localhost:50000/";
+                    options.Authority = "http://localhost:50000";
                     options.RequireHttpsMetadata = false;
-                    options.ApiName = "GHM_Warehouse_Api";
+                    // options.ApiName = "GHM_Warehouse_Api";
                 });
 
-            services.AddDbContext<WarehouseDbContext>(options =>
+            services.AddDbContextPool<WarehouseDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("WarehouseConnectionString"));
             });
@@ -103,17 +104,9 @@ namespace GHM.Warehouse.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseHsts();
-                app.UseHttpsRedirection();
-            }
+            app.UseHttpsRedirection();
 
             #region Localizations
 
@@ -140,14 +133,18 @@ namespace GHM.Warehouse.Api
                 .GetChildren().Select(x => x.Value).ToArray();
             app.UseCors(builder =>
             {
-                builder.AllowAnyOrigin();
                 builder.AllowAnyHeader();
                 builder.AllowAnyMethod();
                 builder.AllowCredentials();
             });
             #endregion
+            app.UseRouting();
             app.UseAuthentication();
-            app.UseMvcWithDefaultRoute();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 

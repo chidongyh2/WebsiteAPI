@@ -10,10 +10,10 @@ using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.Models;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
+using static IdentityModel.OidcConstants;
 
 namespace GHM.Infrastructure.Services
 {
@@ -22,7 +22,8 @@ namespace GHM.Infrastructure.Services
         private HttpClient Client { get; }
         private readonly ApiUrlSettings _apiUrls;
         private readonly ApiServiceInfo _apiServiceInfo;
-
+        private readonly IMemoryCache _cache;
+        private const string _cacheKeyToken = "repository_token";
         public HttpClientService()
         {
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
@@ -38,7 +39,6 @@ namespace GHM.Infrastructure.Services
                 _apiUrls = configuration.GetApiUrl();
                 _apiServiceInfo = configuration.GetApiServiceInfo();
             }
-
             Client = Task.Run(GetClient).Result;
 
             ServicePointManager.SecurityProtocol =
@@ -47,21 +47,37 @@ namespace GHM.Infrastructure.Services
             #region Local Function.
             async Task<HttpClient> GetClient()
             {
-                if (string.IsNullOrEmpty(_apiUrls.Authority))
-                    return null;
+                //if (string.IsNullOrEmpty(_apiUrls.Authority))
+                //    return null;
 
-                var disco = await DiscoveryClient.GetAsync(_apiUrls.Authority);
-                if (disco.IsError)
-                    return null;
-                if (string.IsNullOrEmpty(_apiServiceInfo.ClientId) || string.IsNullOrEmpty(_apiServiceInfo.ClientSecret) || string.IsNullOrEmpty(_apiServiceInfo.Scopes))
-                    return null;
+                //var disco = await DiscoveryClient.GetAsync(_apiUrls.Authority);
+                //if (disco.IsError)
+                //    return null;
+                //if (string.IsNullOrEmpty(_apiServiceInfo.ClientId) || string.IsNullOrEmpty(_apiServiceInfo.ClientSecret) || string.IsNullOrEmpty(_apiServiceInfo.Scopes))
+                //    return null;
 
-                var tokenClient = new TokenClient(disco.TokenEndpoint, _apiServiceInfo.ClientId, _apiServiceInfo.ClientSecret);
-                var tokenResponse = await tokenClient.RequestClientCredentialsAsync(_apiServiceInfo.Scopes);
-                if (tokenResponse.IsError)
-                    return null;
-
+                //var tokenClient = new TokenClient(disco.TokenEndpoint, _apiServiceInfo.ClientId, _apiServiceInfo.ClientSecret);
+                //var tokenResponse = await tokenClient.RequestClientCredentialsAsync(_apiServiceInfo.Scopes);
+                //if (tokenResponse.IsError)
+                //    return null;
                 var client = new HttpClient();
+                DiscoveryDocumentResponse discoveryDocument = await client.GetDiscoveryDocumentAsync(_apiUrls.Authority);
+                var tokenResponse = await client.RequestClientCredentialsTokenAsync( new ClientCredentialsTokenRequest
+                {
+                    Address = discoveryDocument.TokenEndpoint,
+                    ClientId = _apiServiceInfo.ClientId,
+                    ClientSecret = _apiServiceInfo.ClientSecret,
+                    GrantType = GrantTypes.ClientCredentials,
+                    Scope = _apiServiceInfo.Scopes
+                });
+                //if(_cache.TryGetValue(_cacheKeyToken, out string cachedToken))
+                //{
+                //   client.SetBearerToken(cachedToken);
+                //} else
+                //{
+                //    var tokenResponse = await client.RequestPasswordTokenAsync(passwordTokenRequest);
+                //    client.SetBearerToken(tokenResponse.AccessToken);
+                //}
                 client.SetBearerToken(tokenResponse.AccessToken);
                 return client;
             }
