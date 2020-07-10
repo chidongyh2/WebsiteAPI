@@ -17,6 +17,7 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 
 namespace GHM.WebsiteClient.Api
 {
@@ -41,7 +42,7 @@ namespace GHM.WebsiteClient.Api
                 options.AutomaticAuthentication = false;
             });
             services.AddLocalization(options => options.ResourcesPath = "Resources");
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             services.AddOptions();
             services.AddMemoryCache();
             services.AddResponseCaching();
@@ -52,7 +53,11 @@ namespace GHM.WebsiteClient.Api
                 options.Conventions.Add(new DefaultFromBodyBindingConvention());
                 options.ModelBinderProviders.Insert(0, new DateTimeModelBinderProvider());
             }).AddFluentValidation()
-                .AddJsonFormatters()
+                .AddJsonOptions(opts =>
+                {
+                    opts.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+                    opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                })
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, options => { options.ResourcesPath = "Resources"; })
                 .AddDataAnnotationsLocalization();
             services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(Directory.GetCurrentDirectory()));
@@ -69,17 +74,11 @@ namespace GHM.WebsiteClient.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+            app.UseDeveloperExceptionPage();
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
             #region Localizations
 
             var supportedCultures = new[]
@@ -103,7 +102,7 @@ namespace GHM.WebsiteClient.Api
             });
 
             #endregion
-
+            app.UseRouting();
             #region Allow Origins
             var allowOrigins = Configuration.GetSection("AllowOrigins")
                 .GetChildren().Select(x => x.Value).ToArray();
@@ -117,7 +116,10 @@ namespace GHM.WebsiteClient.Api
             #endregion
             //app.UseHttpsRedirection();
             app.UseResponseCaching();
-            app.UseMvc();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

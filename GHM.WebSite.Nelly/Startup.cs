@@ -1,10 +1,10 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
+using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.ModelBinders;
 using GHM.WebsiteClient.Api.Infrastructure.AutofacModules;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text.Json;
 using WebMarkupMin.AspNetCore2;
 
 namespace GHM.Website.Nelly
@@ -39,11 +40,12 @@ namespace GHM.Website.Nelly
                 options.Conventions.Add(new DefaultFromBodyBindingConvention());
                 options.ModelBinderProviders.Insert(0, new DateTimeModelBinderProvider());
             })
-                .AddJsonFormatters()
-                .AddJsonOptions(options =>
-                {
-                    options.SerializerSettings.DateFormatString = "dd/MM/yyyy hh:mm";
-                })
+            .AddJsonOptions(opts =>
+            {
+                opts.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+                opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                opts.JsonSerializerOptions.Converters.Add(new CustomDateTimeConverter());
+            })
                 .AddFluentValidation();
 
             services.AddMemoryCache();
@@ -66,7 +68,7 @@ namespace GHM.Website.Nelly
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, options =>
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest).AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, options =>
             {
                 options.ResourcesPath = "Resources";
             }).AddDataAnnotationsLocalization();
@@ -96,18 +98,13 @@ namespace GHM.Website.Nelly
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+            app.UseRouting();
+            app.UseDeveloperExceptionPage();
+            app.UseExceptionHandler("/Home/Error");
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
             #region Localizations
             var supportedCultures = new[]
             {
@@ -153,12 +150,13 @@ namespace GHM.Website.Nelly
             app.UseWebMarkupMin();//Minify content
             app.UseCookiePolicy();
             #endregion
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute(
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
                       "Slug",
                       "{*segment}",
                       new { controller = "Home", action = "Coordinator" },

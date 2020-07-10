@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text.Json;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
@@ -10,14 +11,15 @@ using GHM.Infrastructure.ModelBinders;
 using GHM.Infrastructure.Services;
 using GHM.WebsiteClient.Api.Infrastructure.AutofacModules;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using WebMarkupMin.AspNetCore2;
 
 namespace GHM.WebSite.JadesSpa
@@ -34,6 +36,16 @@ namespace GHM.WebSite.JadesSpa
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.Configure<KestrelServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+
+            // If using IIS:
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
             services.AddLocalization(options => options.ResourcesPath = "Resources");
             services.AddCors();
             services.AddMvcCore(options =>
@@ -41,12 +53,13 @@ namespace GHM.WebSite.JadesSpa
                 options.Conventions.Add(new DefaultFromBodyBindingConvention());
                 options.ModelBinderProviders.Insert(0, new DateTimeModelBinderProvider());
             })
-                .AddJsonFormatters()
-                .AddJsonOptions(options =>
-                {
-                    options.SerializerSettings.DateFormatString = "dd/MM/yyyy";
-                })
-                .AddFluentValidation();
+            .AddJsonOptions(opts =>
+            {
+                opts.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+                opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                opts.JsonSerializerOptions.Converters.Add(new Infrastructure.Extensions.CustomDateTimeConverter());
+            })
+            .AddFluentValidation();
 
             services.AddMemoryCache();
             services.AddSingleton<IConfiguration>(Configuration);
@@ -63,11 +76,16 @@ namespace GHM.WebSite.JadesSpa
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest)
             .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, options =>
             {
                 options.ResourcesPath = "Resources";
             }).AddDataAnnotationsLocalization()
+            .AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+            })
             .Services
                .AddHttpClient<IHttpClientService, HttpClientFactoryService>();
             
@@ -96,18 +114,13 @@ namespace GHM.WebSite.JadesSpa
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+            app.UseRouting();
+            app.UseDeveloperExceptionPage();
+            app.UseExceptionHandler("/Home/Error");
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
             #region Localizations
             var supportedCultures = new[]
             {
@@ -151,26 +164,29 @@ namespace GHM.WebSite.JadesSpa
             app.UseWebMarkupMin();//Minify content
             app.UseCookiePolicy();
             #endregion
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute(
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
                       "Slug",
                       "{*segment}",
                       new { controller = "Home", action = "Coordinator" },
-                      new { segment = new CustomUrlConstraint(Configuration) }
+                      new { segment = new CustomUrlConstraint() }
                   );
             });
         }
         public class CustomUrlConstraint : IRouteConstraint
         {
             private readonly IConfiguration _configuration;
-            private readonly IHttpClientService _httpClientService;
             public CustomUrlConstraint(IConfiguration configuration)
             {
                 _configuration = configuration;
+            }
+            public CustomUrlConstraint()
+            {
             }
             public bool Match(HttpContext httpContext, IRouter route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
             {
@@ -186,14 +202,14 @@ namespace GHM.WebSite.JadesSpa
                     var requestUrl = _configuration.GetApiUrl();
                     var apiService = _configuration.GetApiServiceInfo();
                     var httpClientService = new HttpClientService();
-                    var isCategoryExist = httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/categories/check-category-exist",
+                    var isCategoryExist = httpClientService.PostAsync<bool>($"{requestUrl.WebsiteApiUrl}/api/v1/website/categories/check-category-exist",
                         new Dictionary<string, string>
                         {
                             {"TenantId", apiService.TenantId},
                             {"seoLink", link[0] },
                             {"languageId",  CultureInfo.CurrentCulture.Name}
                         });
-                    var isNewsExist = httpClientService.PostAsync<bool>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/check-exist", new Dictionary<string, string>
+                    var isNewsExist = httpClientService.PostAsync<bool>($"{requestUrl.WebsiteApiUrl}/api/v1/website/news/check-exist", new Dictionary<string, string>
                         {
                             {"TenantId", apiService.TenantId},
                             {"seoLink", link[0] },
@@ -204,5 +220,6 @@ namespace GHM.WebSite.JadesSpa
                 return false;
             }
         }
+        
     }
 }

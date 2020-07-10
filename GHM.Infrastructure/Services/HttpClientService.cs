@@ -47,19 +47,6 @@ namespace GHM.Infrastructure.Services
             #region Local Function.
             async Task<HttpClient> GetClient()
             {
-                //if (string.IsNullOrEmpty(_apiUrls.Authority))
-                //    return null;
-
-                //var disco = await DiscoveryClient.GetAsync(_apiUrls.Authority);
-                //if (disco.IsError)
-                //    return null;
-                //if (string.IsNullOrEmpty(_apiServiceInfo.ClientId) || string.IsNullOrEmpty(_apiServiceInfo.ClientSecret) || string.IsNullOrEmpty(_apiServiceInfo.Scopes))
-                //    return null;
-
-                //var tokenClient = new TokenClient(disco.TokenEndpoint, _apiServiceInfo.ClientId, _apiServiceInfo.ClientSecret);
-                //var tokenResponse = await tokenClient.RequestClientCredentialsAsync(_apiServiceInfo.Scopes);
-                //if (tokenResponse.IsError)
-                //    return null;
                 var client = new HttpClient();
                 DiscoveryDocumentResponse discoveryDocument = await client.GetDiscoveryDocumentAsync(_apiUrls.Authority);
                 var tokenResponse = await client.RequestClientCredentialsTokenAsync( new ClientCredentialsTokenRequest
@@ -70,14 +57,6 @@ namespace GHM.Infrastructure.Services
                     GrantType = GrantTypes.ClientCredentials,
                     Scope = _apiServiceInfo.Scopes
                 });
-                //if(_cache.TryGetValue(_cacheKeyToken, out string cachedToken))
-                //{
-                //   client.SetBearerToken(cachedToken);
-                //} else
-                //{
-                //    var tokenResponse = await client.RequestPasswordTokenAsync(passwordTokenRequest);
-                //    client.SetBearerToken(tokenResponse.AccessToken);
-                //}
                 client.SetBearerToken(tokenResponse.AccessToken);
                 return client;
             }

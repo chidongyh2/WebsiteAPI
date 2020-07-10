@@ -1,5 +1,4 @@
-﻿using DataAnnotationsExtensions;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace GHM.Website.Nelly.Models
 {
@@ -7,7 +6,6 @@ namespace GHM.Website.Nelly.Models
     {
         [StringLength(50, ErrorMessage = "Email không được nhỏ hơn 6 ký tự và lớn hơn 50 ký tự", MinimumLength = 6)]
         [Required(ErrorMessage = "Emai không được để trống")]
-        [Email(ErrorMessage = "Đinh dạng email không đúng")]
         public string Email { get; set; }
 
         [StringLength(255, ErrorMessage = "Họ tên không được nhỏ hơn 6 ký tự và lớn hơn 255 ký tự", MinimumLength = 6)]
