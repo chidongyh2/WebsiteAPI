@@ -190,8 +190,7 @@ namespace GHM.Website.Nelly
 
             public bool Match(HttpContext httpContext, IRouter route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
             {
-                
-                    if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he")
+                if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he")
                     && !values[parameterName].ToString().Contains("giai-phap/")
                     && !values[parameterName].ToString().Equals("video")
                     && !values[parameterName].ToString().Equals("san-pham"))
