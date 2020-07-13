@@ -101,6 +101,7 @@ namespace GHM.Authentication
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();
             #endregion
 
+            services.AddDistributedMemoryCache();
 
             #region Autofac Config.
             // Config Autofac.
@@ -110,6 +111,7 @@ namespace GHM.Authentication
             container.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("CoreConnectionString")));
             var autofacServiceProvider = new AutofacServiceProvider(container.Build());
             return autofacServiceProvider;
+
             #endregion
         }
 

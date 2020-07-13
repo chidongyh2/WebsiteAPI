@@ -1,8 +1,10 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.1-stretch-slim AS base
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
-ENV ASPNETCORE_URLS http://*:50001
-EXPOSE 50001
-FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
+EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["GHM.Core.Api/GHM.Core.Api.csproj", "GHM.Core.Api/"]
 COPY ["GHM.Events/GHM.Events.csproj", "GHM.Events/"]
@@ -12,13 +14,13 @@ COPY ["GHM.Core.Domain/GHM.Core.Domain.csproj", "GHM.Core.Domain/"]
 COPY ["GHM.EventBusRabbitMQ/GHM.EventBusRabbitMQ.csproj", "GHM.EventBusRabbitMQ/"]
 COPY ["GHM.Core.Infrastructure/GHM.Core.Infrastructure.csproj", "GHM.Core.Infrastructure/"]
 COPY ["GHM.Infrastructure.SqlServer/GHM.Infrastructure.SqlServer.csproj", "GHM.Infrastructure.SqlServer/"]
-#RUN dotnet restore "GHM.Core.Api/GHM.Core.Api.csproj"
+RUN dotnet restore "GHM.Core.Api/GHM.Core.Api.csproj"
 COPY . .
-#WORKDIR "/src/GHM.Core.Api"
-#RUN dotnet build "GHM.Core.Api.csproj" -c Release -o /app/build
+WORKDIR "/src/GHM.Core.Api"
+RUN dotnet build "GHM.Core.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "GHM.Core.Api/GHM.Core.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "GHM.Core.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

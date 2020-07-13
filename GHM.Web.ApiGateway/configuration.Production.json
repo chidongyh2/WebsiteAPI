@@ -1,8 +1,8 @@
 {
   "Routes": [
-    // BEGIN: Auth
+    // BEGIN: Pages
     {
-      "DownstreamPathTemplate": "/connect/token",
+      "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -11,16 +11,8 @@
         }
       ],
       "UpstreamPathTemplate": "/auth/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
-      "UseServiceDiscovery": false,
-      "RateLimitOptions": {
-        "ClientWhitelist": [],
-        "EnableRateLimiting": true,
-        "Period": "1s",
-        "PeriodTimespan": 1,
-        "Limit": 1
-      }
-
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "UseServiceDiscovery": false
     },
     // BEGIN: Events
     {
@@ -52,7 +44,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/core/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post" ],
       "UseServiceDiscovery": false,
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
@@ -70,22 +62,31 @@
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UseServiceDiscovery": false,
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "GHM_Core_Api" ]
-      },
-      "RateLimitOptions": {
-        "ClientWhitelist": [],
-        "EnableRateLimiting": true,
-        "Period": "1s",
-        "PeriodTimespan": 1,
-        "Limit": 1
+        "AllowedScopes": [ "GHM_Website_Api" ]
       }
-
     },
-
+    // BEGIN: Product
+    {
+      "DownstreamPathTemplate": "/api/v{version}/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50009
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UseServiceDiscovery": false,
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "GHM_Website_Api" ]
+      }
+    },
     // BEGIN: Notifications
     {
       "DownstreamPathTemplate": "/api/v{version}/notifications/{everything}",
@@ -106,21 +107,8 @@
     },
     // BEGIN: Notifications
     {
-      "DownstreamPathTemplate": "/notifications?{everything}",
-      "DownstreamScheme": "ws",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 50004
-        }
-      ],
-      "UpstreamPathTemplate": "/notifications?{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
-      "UseServiceDiscovery": false
-    },
-    {
       "DownstreamPathTemplate": "/notifications/{everything}",
-      "DownstreamScheme": "ws",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -142,38 +130,6 @@
       ],
       "UpstreamPathTemplate": "/api/v{version}/notifications",
       "UpstreamHttpMethod": [ "Get", "Post" ],
-      "UseServiceDiscovery": false
-    },
-    // BEGIN: File manager
-    {
-      "DownstreamPathTemplate": "/api/v{version}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 50005
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v{version}/files/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
-      "UseServiceDiscovery": false,
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "GHM_Core_Api" ]
-      }
-    },
-    // BEGIN: Warehouse
-    {
-      "DownstreamPathTemplate": "/api/v{version}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 50009
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
       "UseServiceDiscovery": false
     }
   ],

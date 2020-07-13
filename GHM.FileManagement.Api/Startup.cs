@@ -61,7 +61,7 @@ namespace GHM.FileManagement.Api
                 .AddIdentityServerAuthentication(options =>
                 {
                     var authority = Configuration.GetApiUrl("Authority");
-                    options.Authority = !string.IsNullOrEmpty(authority) ? authority : "http://localhost:5000";
+                    options.Authority = !string.IsNullOrEmpty(authority) ? authority : "http://localhost:50000";
                     options.RequireHttpsMetadata = false;
                     options.ApiName = "GHM_File_Management_Api";
                 });

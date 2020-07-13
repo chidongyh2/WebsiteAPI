@@ -10,8 +10,10 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -33,6 +35,16 @@ namespace GHM.Website.Nelly
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.Configure<KestrelServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+
+            // If using IIS:
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
             services.AddLocalization(options => options.ResourcesPath = "Resources");
             services.AddCors();
             services.AddMvcCore(options =>
@@ -71,7 +83,11 @@ namespace GHM.Website.Nelly
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest).AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, options =>
             {
                 options.ResourcesPath = "Resources";
-            }).AddDataAnnotationsLocalization();
+            }).AddDataAnnotationsLocalization().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+            });
 
             services.AddWebMarkupMin(
             options =>
@@ -132,20 +148,19 @@ namespace GHM.Website.Nelly
             app.UseHttpsRedirection();
             app.UseSession();
             app.UseStaticFiles(
-                new StaticFileOptions
-                {
-                    OnPrepareResponse = context =>
-                    {
-                        // Cache static file for 7 day
-                        string path = context.Context.Request.Path;
-                        if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".ttf") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg")
-                        || path.EndsWith(".otf"))
-                        {
-                            TimeSpan maxAge = new TimeSpan(30, 0, 0, 0); // 1 ngày
-                            context.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
-                        }
-                    }
-                }
+                //new StaticFileOptions
+                //{
+                //    OnPrepareResponse = context =>
+                //    {
+                //        // Cache static file for 7 day
+                //        string path = context.Context.Request.Path;
+                //        if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".ttf") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg")
+                //        || path.EndsWith(".otf"))
+                //        {
+                //            TimeSpan maxAge = new TimeSpan(30, 0, 0, 0); // 1 ngày
+                //            context.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
+                //        }
+                //}
             );
             app.UseWebMarkupMin();//Minify content
             app.UseCookiePolicy();
@@ -175,7 +190,8 @@ namespace GHM.Website.Nelly
 
             public bool Match(HttpContext httpContext, IRouter route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
             {
-                if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he")
+                
+                    if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he")
                     && !values[parameterName].ToString().Contains("giai-phap/")
                     && !values[parameterName].ToString().Equals("video")
                     && !values[parameterName].ToString().Equals("san-pham"))

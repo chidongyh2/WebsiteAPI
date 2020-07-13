@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using GHM.Infrastructure.SqlServer;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.VisualBasic;
+using Newtonsoft.Json;
 
 namespace GHM.Core.Infrastructure.Repository
 {
@@ -14,108 +16,147 @@ namespace GHM.Core.Infrastructure.Repository
     {
         private readonly IRepository<Domain.Models.ApiResource> _apiResourceRepository;
         private readonly IRepository<IdentityResource> _identityResourceRepository;
-
-        public ResourceRepository(IDbContext context) : base(context)
+        private readonly IDistributedCache _distributedCache;
+        private string cacheIdentityResouresKey = "cacheIdentityResoures";
+        private string cacheApiResouresKey = "cacheApiResoures";
+        public ResourceRepository(IDbContext context, IDistributedCache distributedCache) : base(context)
         {
             _apiResourceRepository = Context.GetRepository<Domain.Models.ApiResource>();
             _identityResourceRepository = Context.GetRepository<IdentityResource>();
+            _distributedCache = distributedCache;
         }
 
         public async Task<IEnumerable<IdentityResource>> FindIdentityResourcesByScopeNameAsync(IEnumerable<string> scopeNames)
         {
-            var identityResource = await _identityResourceRepository.GetsAsync(true, x => scopeNames.Contains(x.Name));
-            return identityResource.Select(x => new IdentityServer4.Models.IdentityResource {
-                Description = x.Description,
-                DisplayName = x.DisplayName,
-                Name = x.Name,
-                UserClaims = x.UserClaims,
-                Enabled = x.Enabled,
-                Properties = x.Properties,
-                ShowInDiscoveryDocument = x.ShowInDiscoveryDocument,
-                Emphasize = x.Emphasize,
-                Required = x.Required
-            });
+            var dataCache = GetStringCache(cacheIdentityResouresKey);
+            if (dataCache != null)
+            {
+                var dataConvert = JsonConvert.DeserializeObject(dataCache);
+                return (IEnumerable<IdentityResource>)dataConvert;
+            }
+            else
+            {
+                var identityResource = await _identityResourceRepository.GetsAsync(true, x => scopeNames.Contains(x.Name));
+                var data = identityResource.Select(x => new IdentityServer4.Models.IdentityResource
+                {
+                    Description = x.Description,
+                    DisplayName = x.DisplayName,
+                    Name = x.Name,
+                    UserClaims = x.UserClaims,
+                    Enabled = x.Enabled,
+                    Properties = x.Properties,
+                    ShowInDiscoveryDocument = x.ShowInDiscoveryDocument,
+                    Emphasize = x.Emphasize,
+                    Required = x.Required
+                });
+                SetStringCache(cacheIdentityResouresKey, JsonConvert.SerializeObject(data));
+                return data;
+            }
         }
 
         public async Task<IEnumerable<ApiResource>> FindApiResourcesByScopeNameAsync(IEnumerable<string> scopeNames)
         {
-            var apiResources = await _apiResourceRepository.GetsAsync(true, x => scopeNames.Contains(x.Name));
-            if (apiResources.Any())
+            var dataCache = GetStringCache(cacheApiResouresKey);
+            if (dataCache != null)
             {
-                foreach (var apiResource in apiResources)
-                {
-                    //ICollection<string> scope = new Collection<string>();
-                    //scope.Add(apiResource.Name);
-                    //apiResource.Scopes = scope;
-                    apiResource.Scopes.Add(apiResource.Name);
-                }
+                var dataConvert = JsonConvert.DeserializeObject(dataCache);
+                return (IEnumerable<ApiResource>)dataConvert;
             }
+            else
+            {
+                var apiResources = await _apiResourceRepository.GetsAsync(true, x => scopeNames.Contains(x.Name));
+                if (apiResources.Any())
+                {
+                    foreach (var apiResource in apiResources)
+                    {
+                        apiResource.Scopes.Add(apiResource.Name);
+                    }
+                }
 
-            return apiResources.Select( x => new IdentityServer4.Models.ApiResource {
-                Description = x.Description,
-                DisplayName = x.DisplayName,
-                Name = x.Name,
-                UserClaims = x.UserClaims,
-                Enabled = x.Enabled,
-                AllowedAccessTokenSigningAlgorithms = x.AllowedAccessTokenSigningAlgorithms,
-                ApiSecrets = x.ApiSecrets,
-                Scopes = x.Scopes,
-                Properties = x.Properties,
-                ShowInDiscoveryDocument = x.ShowInDiscoveryDocument
-            });
+                var data = apiResources.Select(x => new IdentityServer4.Models.ApiResource
+                {
+                    Description = x.Description,
+                    DisplayName = x.DisplayName,
+                    Name = x.Name,
+                    UserClaims = x.UserClaims,
+                    Enabled = x.Enabled,
+                    AllowedAccessTokenSigningAlgorithms = x.AllowedAccessTokenSigningAlgorithms,
+                    ApiSecrets = x.ApiSecrets,
+                    Scopes = x.Scopes,
+                    Properties = x.Properties,
+                    ShowInDiscoveryDocument = x.ShowInDiscoveryDocument
+                });
+                SetStringCache(cacheApiResouresKey, JsonConvert.SerializeObject(data));
+                return data;
+            }
         }
 
         public async Task<IEnumerable<ApiScope>> FindApiScopesByNameAsync(IEnumerable<string> scopeNames)
         {
-            var apiResources = await _apiResourceRepository.GetsAsync(true, x => scopeNames.Contains(x.Name));
-            if (apiResources.Any())
+            var dataCache = GetStringCache(cacheApiResouresKey);
+            if (dataCache != null)
             {
-                foreach (var apiResource in apiResources)
+                var dataConvert = JsonConvert.DeserializeObject(dataCache);
+                return (IEnumerable<ApiScope>)dataConvert;
+            }
+            else
+            {
+                var apiResources = await _apiResourceRepository.GetsAsync(true, x => scopeNames.Contains(x.Name));
+                if (apiResources.Any())
                 {
-                    //ICollection<string> scope = new Collection<string>();
-                    //scope.Add(apiResource.Name);
-                    //apiResource.Scopes = scope;
-                    apiResource.Scopes.Add(apiResource.Name);
+                    foreach (var apiResource in apiResources)
+                    {
+                        apiResource.Scopes.Add(apiResource.Name);
+                    }
                 }
+
+                var data = apiResources.Select(x => new ApiScope
+                {
+                    Description = x.Description,
+                    DisplayName = x.DisplayName,
+                    Name = x.Name,
+                    UserClaims = x.UserClaims,
+                    Enabled = x.Enabled
+                }).ToList();
+                SetStringCache(cacheApiResouresKey, JsonConvert.SerializeObject(data));
+                return data;
             }
 
-            return apiResources.Select(x => new ApiScope
-            {
-                Description = x.Description,
-                DisplayName = x.DisplayName,
-                Name = x.Name,
-                UserClaims = x.UserClaims,
-                Enabled = x.Enabled
-            }).ToList();
         }
         public async Task<IEnumerable<ApiResource>> FindApiResourcesByNameAsync(IEnumerable<string> scopeNames)
         {
-            var apiResources = await _apiResourceRepository.GetsAsync(true, x => scopeNames.Contains(x.Name));
-            if (apiResources.Any())
+            var dataCache = GetStringCache(cacheApiResouresKey);
+            if (dataCache != null)
             {
-                foreach (var apiResource in apiResources)
+                var dataConvert = JsonConvert.DeserializeObject(dataCache);
+                return (IEnumerable<ApiResource>)dataConvert;
+            }
+            else
+            {
+                var apiResources = await _apiResourceRepository.GetsAsync(true, x => scopeNames.Contains(x.Name));
+                if (apiResources.Any())
                 {
-                    //ICollection<string> scope = new Collection<string>();
-                    //scope.Add(apiResource.Name);
-                    //apiResource.Scopes = scope;
-
-                    apiResource.Scopes.Add(apiResource.Name);
+                    foreach (var apiResource in apiResources)
+                    {
+                        apiResource.Scopes.Add(apiResource.Name);
+                    }
                 }
+
+                return apiResources.Select(x => new IdentityServer4.Models.ApiResource
+                {
+                    Description = x.Description,
+                    DisplayName = x.DisplayName,
+                    Name = x.Name,
+                    UserClaims = x.UserClaims,
+                    Enabled = x.Enabled,
+                    AllowedAccessTokenSigningAlgorithms = x.AllowedAccessTokenSigningAlgorithms,
+                    ApiSecrets = x.ApiSecrets,
+                    Scopes = x.Scopes,
+                    Properties = x.Properties,
+                    ShowInDiscoveryDocument = x.ShowInDiscoveryDocument
+                });
             }
 
-            return apiResources.Select(x => new IdentityServer4.Models.ApiResource
-            {
-                Description = x.Description,
-                DisplayName = x.DisplayName,
-                Name = x.Name,
-                UserClaims = x.UserClaims,
-                Enabled = x.Enabled,
-                AllowedAccessTokenSigningAlgorithms = x.AllowedAccessTokenSigningAlgorithms,
-                ApiSecrets = x.ApiSecrets,
-                Scopes = x.Scopes,
-                Properties = x.Properties,
-                ShowInDiscoveryDocument = x.ShowInDiscoveryDocument
-            });
         }
         public async Task<ApiResource> FindApiResourceAsync(string name)
         {
@@ -132,50 +173,88 @@ namespace GHM.Core.Infrastructure.Repository
 
         private async Task<List<IdentityResource>> GetAllIdentityResource()
         {
-            var identityResrouces =
-                await _identityResourceRepository.GetsAsync(true, x => !string.IsNullOrEmpty(x.Name));
-            foreach (var identityResrouce in identityResrouces)
+            var dataCache = GetStringCache(cacheIdentityResouresKey);
+            if (dataCache != null)
             {
-
+                var dataConvert = JsonConvert.DeserializeObject(dataCache);
+                return (List<IdentityResource>)dataConvert;
             }
-            return identityResrouces;
+            else
+            {
+                var identityResrouces = await _identityResourceRepository.GetsAsync(true, x => !string.IsNullOrEmpty(x.Name));
+                SetStringCache(cacheIdentityResouresKey, JsonConvert.SerializeObject(identityResrouces));
+                return identityResrouces;
+            }
         }
 
         private async Task<List<Domain.Models.ApiResource>> GetAllApiResource()
         {
-            var apiResources = await _apiResourceRepository.GetsAsync(true, x => !string.IsNullOrEmpty(x.Name));
-            if (apiResources.Any())
+            var dataCache = GetStringCache(cacheApiResouresKey);
+            if (dataCache != null)
             {
-                foreach (var apiResource in apiResources)
-                {
-                    //ICollection<string> scope = new Collection<string>();
-                    //scope.Add(apiResource.Name);
-                    apiResource.Scopes.Add(apiResource.Name);
-                }
+                var dataConvert = JsonConvert.DeserializeObject(dataCache);
+                return (List<Domain.Models.ApiResource>)dataConvert;
             }
-            return apiResources;
+            else
+            {
+                var apiResources = await _apiResourceRepository.GetsAsync(true, x => !string.IsNullOrEmpty(x.Name));
+                if (apiResources.Any())
+                {
+                    foreach (var apiResource in apiResources)
+                    {
+                        apiResource.Scopes.Add(apiResource.Name);
+                    }
+                }
+                return apiResources;
+            }
+            
         }
 
         private async Task<List<ApiScope>> GetAllApiScope()
         {
-            var apiResources = await _apiResourceRepository.GetsAsync(true, x => !string.IsNullOrEmpty(x.Name));
-            if (apiResources.Any())
+
+            var dataCache = GetStringCache(cacheApiResouresKey);
+            if (dataCache != null)
             {
-                foreach (var apiResource in apiResources)
-                {
-                    //ICollection<string> scope = new Collection<string>();
-                    //scope.Add(apiResource.Name);
-                    //apiResource.Scopes = scope;
-                    apiResource.Scopes.Add(apiResource.Name);
-                }
+                var dataConvert = JsonConvert.DeserializeObject(dataCache);
+                return (List<ApiScope>)dataConvert;
             }
-            return apiResources.Select(x => new ApiScope { 
-                Description = x.Description,
-                DisplayName = x.DisplayName,
-                Name = x.Name,
-                UserClaims = x.UserClaims,
-                Enabled = x.Enabled
-            }).ToList();
+            else
+            {
+                var apiResources = await _apiResourceRepository.GetsAsync(true, x => !string.IsNullOrEmpty(x.Name));
+                if (apiResources.Any())
+                {
+                    foreach (var apiResource in apiResources)
+                    {
+                        apiResource.Scopes.Add(apiResource.Name);
+                    }
+                }
+                var data = apiResources.Select(x => new ApiScope
+                {
+                    Description = x.Description,
+                    DisplayName = x.DisplayName,
+                    Name = x.Name,
+                    UserClaims = x.UserClaims,
+                    Enabled = x.Enabled
+                }).ToList();
+
+                SetStringCache(cacheApiResouresKey, JsonConvert.SerializeObject(data));
+
+                return data;
+            }
+
+            
+        }
+
+        private string GetStringCache(string cacheKey)
+        {
+            return _distributedCache.GetString(cacheKey);
+        }
+        private void SetStringCache(string cacheKey, Object obj)
+        {
+            DistributedCacheEntryOptions options = new DistributedCacheEntryOptions();
+            _distributedCache.SetString(cacheKey, Newtonsoft.Json.JsonConvert.SerializeObject(obj), options.SetSlidingExpiration(TimeSpan.FromMinutes(15)));
+
         }
 
     }

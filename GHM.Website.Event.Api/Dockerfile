@@ -1,9 +1,8 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.1-stretch-slim AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-stretch-slim AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-stretch AS build
 WORKDIR /src
 COPY ["GHM.Website.Event.Api/GHM.Website.Event.Api.csproj", "GHM.Website.Event.Api/"]
 COPY ["GHM.Website_Event.Domain/GHM.Website.Event.Domain.csproj", "GHM.Website_Event.Domain/"]

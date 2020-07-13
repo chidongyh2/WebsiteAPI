@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using GHM.Infrastructure.Extensions;
-using GHM.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using GHM.Website.JadesSpa.Models;
 using Microsoft.Extensions.Configuration;
 using GHM.Website.JadesSpa.ViewModels;
-using GHM.Infrastructure.ViewModels;
-using GHM.Infrastructure.Models;
 using Microsoft.Extensions.Caching.Memory;
 using GHM.Website.JadesSpa.Constants;
 using System;

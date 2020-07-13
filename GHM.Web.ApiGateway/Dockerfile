@@ -1,17 +1,19 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.1-stretch-slim AS base
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
-ENV ASPNETCORE_URLS http://*:50008
-EXPOSE 50008
-FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
+EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["GHM.Web.ApiGateway/GHM.Web.ApiGateway.csproj", "GHM.Web.ApiGateway/"]
-#RUN dotnet restore "GHM.Web.ApiGateway/GHM.Web.ApiGateway.csproj"
+RUN dotnet restore "GHM.Web.ApiGateway/GHM.Web.ApiGateway.csproj"
 COPY . .
-#WORKDIR "/src/GHM.Web.ApiGateway"
-#RUN dotnet build "GHM.Web.ApiGateway.csproj" -c Release -o /app/build
+WORKDIR "/src/GHM.Web.ApiGateway"
+RUN dotnet build "GHM.Web.ApiGateway.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "GHM.Web.ApiGateway/GHM.Web.ApiGateway.csproj" -c Release -o /app/publish
+RUN dotnet publish "GHM.Web.ApiGateway.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

@@ -1,21 +1,32 @@
 version: '3.4'
 
 services:
+  rabbitmq:
+    image: rabbitmq:3.7.7-management-alpine
+    ports:
+      - 15672:15672
+
+  ghm.filemanagement.api:
+    image: ${DOCKER_REGISTRY-}ghmfilemanagementapi
+    build:
+      context: .
+      dockerfile: GHM.FileManagement.Api/Dockerfile
+
   ghm.web.apigateway:
     image: ${DOCKER_REGISTRY-}ghmwebapigateway
     build:
       context: .
       dockerfile: GHM.Web.ApiGateway/Dockerfile
-    ports:
-     - "50008:50008"
+    depends_on:
+    - rabbitmq
 
   ghm.authentication:
     image: ${DOCKER_REGISTRY-}ghmauthentication
     build:
       context: .
       dockerfile: GHM.Authentication/Dockerfile
-    ports:
-    - "50000:50000"
+    depends_on:
+    - rabbitmq
 
 
   ghm.core.api:
@@ -23,54 +34,28 @@ services:
     build:
       context: .
       dockerfile: GHM.Core.Api/Dockerfile
-    ports:
-    - "50001:50001"
-
-
-  ghm.filemanagement.api:
-    image: ${DOCKER_REGISTRY-}ghmfilemanagementapi
-    build:
-      context: .
-      dockerfile: GHM.FileManagement.Api/Dockerfile
-    ports:
-    - "50004:50004"
-
-  ghm.notifications.api:
-    image: ${DOCKER_REGISTRY-}ghmnotificationsapi
-    build:
-      context: .
-      dockerfile: GHM.Notifications.Api/Dockerfile
-    ports:
-    - "50003:50003"
-
-  ghm.warehouse.api:
-    image: ${DOCKER_REGISTRY-}ghmwarehouseapi
-    build:
-      context: .
-      dockerfile: GHM.Warehouse.Api/Dockerfile
-    ports:
-    - "50009:50009"
+    depends_on:
+    - rabbitmq
 
   ghm.website.api:
     image: ${DOCKER_REGISTRY-}ghmwebsiteapi
     build:
       context: .
       dockerfile: GHM.Website.Api/Dockerfile
-    ports:
-    - "50008:50008"
+    depends_on:
+    - rabbitmq
 
-  ghm.website.event.api:
-    image: ${DOCKER_REGISTRY-}ghmwebsiteeventapi
+  ghm.notifications.api:
+    image: ${DOCKER_REGISTRY-}ghmnotificationsapi
     build:
       context: .
-      dockerfile: GHM.Website.Event.Api/Dockerfile
-    ports:
-    - "50003:50003"
+      dockerfile: GHM.Notifications.Api/Dockerfile
+    depends_on:
+    - rabbitmq
 
-  ghm.website.truck:
-    image: ${DOCKER_REGISTRY-}ghmwebsitetruck
+  ghm.website.nelly:
+    image: ${DOCKER_REGISTRY-}ghmwebsitenelly
     build:
       context: .
-      dockerfile: GHM.WebSite.Truck/Dockerfile
-    ports:
-    - "9000:9000"
+      dockerfile: GHM.WebSite.Nelly/Dockerfile
+

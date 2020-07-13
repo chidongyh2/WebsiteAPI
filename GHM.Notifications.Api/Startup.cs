@@ -96,14 +96,14 @@ namespace GHM.Notifications.Api
             services.AddTransient<INotificationService, NotificationService>();
             #endregion
 
-            RegisterEventBus(services);
+            // RegisterEventBus(services);
 
             services.AddDbContext<NotificationDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("NotificationConnectionString"));
             });
 
-            services.AddRawRabbit();
+            // services.AddRawRabbit();
 
             // Config Autofac.
             var container = new ContainerBuilder();
@@ -165,7 +165,7 @@ namespace GHM.Notifications.Api
                 endpoints.MapControllers();
             });
             //app.UseRabbitMQ(Configuration);
-            ConfigureEventBus(app);
+            // ConfigureEventBus(app);
         }
 
         private void RegisterEventBus(IServiceCollection services)
@@ -175,14 +175,16 @@ namespace GHM.Notifications.Api
                 var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
                 var factory = new ConnectionFactory()
                 {
-                    HostName = Configuration["EventBusConnection"] ?? "localhost"
+                    HostName = "localhost"
                 };
-
+                factory.Port = 15672;
+                factory.UserName = "guest";
                 if (!string.IsNullOrEmpty(Configuration["EventBusUserName"]))
                 {
                     factory.UserName = Configuration["EventBusUserName"];
                 }
 
+                factory.Password = "guest";
                 if (!string.IsNullOrEmpty(Configuration["EventBusPassword"]))
                 {
                     factory.Password = Configuration["EventBusPassword"];
