@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using GHM.Core.Domain.IRepository;
 using GHM.Core.Domain.ModelMetas;

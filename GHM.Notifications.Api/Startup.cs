@@ -175,7 +175,7 @@ namespace GHM.Notifications.Api
                 var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
                 var factory = new ConnectionFactory()
                 {
-                    HostName = "localhost"
+                    HostName = "rabbitmq"
                 };
                 factory.Port = 15672;
                 factory.UserName = "guest";

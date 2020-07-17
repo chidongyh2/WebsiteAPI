@@ -6,56 +6,65 @@ services:
     ports:
       - 15672:15672
 
-  ghm.filemanagement.api:
+  filemanagement-api:
     image: ${DOCKER_REGISTRY-}ghmfilemanagementapi
     build:
       context: .
       dockerfile: GHM.FileManagement.Api/Dockerfile
+    depends_on:
+      - authentication
 
-  ghm.web.apigateway:
+  apigateway:
     image: ${DOCKER_REGISTRY-}ghmwebapigateway
     build:
       context: .
       dockerfile: GHM.Web.ApiGateway/Dockerfile
     depends_on:
-    - rabbitmq
+      - rabbitmq
+      - authentication
+      - core-api
 
-  ghm.authentication:
+  authentication:
     image: ${DOCKER_REGISTRY-}ghmauthentication
     build:
       context: .
       dockerfile: GHM.Authentication/Dockerfile
     depends_on:
-    - rabbitmq
+      - rabbitmq
 
 
-  ghm.core.api:
+  core-api:
     image: ${DOCKER_REGISTRY-}ghmcoreapi
     build:
       context: .
       dockerfile: GHM.Core.Api/Dockerfile
     depends_on:
-    - rabbitmq
+      - rabbitmq
+      - authentication
 
-  ghm.website.api:
+  website-api:
     image: ${DOCKER_REGISTRY-}ghmwebsiteapi
     build:
       context: .
       dockerfile: GHM.Website.Api/Dockerfile
     depends_on:
-    - rabbitmq
+      - rabbitmq
+      - authentication
 
-  ghm.notifications.api:
+  notifications-api:
     image: ${DOCKER_REGISTRY-}ghmnotificationsapi
     build:
       context: .
       dockerfile: GHM.Notifications.Api/Dockerfile
     depends_on:
     - rabbitmq
+    - authentication
 
-  ghm.website.nelly:
+  website-nelly:
     image: ${DOCKER_REGISTRY-}ghmwebsitenelly
     build:
       context: .
       dockerfile: GHM.WebSite.Nelly/Dockerfile
+    depends_on:
+      - authentication
 

@@ -6,8 +6,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50000
+          "Host": "authentication",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/auth/{everything}",
@@ -39,8 +39,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50001
+          "Host": "core-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/core/{everything}",
@@ -57,7 +57,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "website.api",
           "Port": 50002
         }
       ],
@@ -93,7 +93,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "notifications-api",
           "Port": 50004
         }
       ],

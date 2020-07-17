@@ -5,7 +5,7 @@ services:
     ports:
       - "15672:15672"
 
-  ghm.filemanagement.api:
+  filemanagement-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     networks:
@@ -14,7 +14,7 @@ services:
     ports:
       - "50005:80"
 
-  ghm.web.apigateway:
+  apigateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     networks:
@@ -24,7 +24,7 @@ services:
       - "50008:80"
 
 
-  ghm.authentication:
+  authentication:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     networks:
@@ -36,7 +36,7 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
 
-  ghm.core.api:
+  core-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     networks:
@@ -46,7 +46,7 @@ services:
       - "50001:80"
 
 
-  ghm.website.api:
+  website-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     networks:
@@ -56,7 +56,7 @@ services:
       - "50002:80"
 
 
-  ghm.notifications.api:
+  notifications-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     networks:
@@ -65,7 +65,7 @@ services:
     ports:
       - "50004:80"
 
-  ghm.website.nelly:
+  website-nelly:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     networks:
@@ -75,6 +75,8 @@ services:
       - "9200:80"
 
 networks:
+  default:
+    driver: bridge
   website-network:
     external: true
 

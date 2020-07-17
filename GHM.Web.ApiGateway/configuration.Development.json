@@ -6,12 +6,12 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50000
+          "Host": "authentication",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/auth/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamHttpMethod": [ "GET", "POST" ],
       "UseServiceDiscovery": false
     },
     // BEGIN: Events
@@ -20,7 +20,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "127.0.0.1",
           "Port": 50003
         }
       ],
@@ -39,8 +39,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50001
+          "Host": "core-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/core/{everything}",
@@ -57,7 +57,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "127.0.0.1",
           "Port": 50002
         }
       ],
@@ -75,7 +75,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "127.0.0.1",
           "Port": 50009
         }
       ],
@@ -93,8 +93,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50004
+          "Host": "notifications-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/notifications/{everything}",
@@ -111,7 +111,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "127.0.0.1",
           "Port": 50004
         }
       ],
@@ -124,7 +124,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "127.0.0.1",
           "Port": 50004
         }
       ],

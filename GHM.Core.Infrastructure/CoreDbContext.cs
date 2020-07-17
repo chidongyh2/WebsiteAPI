@@ -20,6 +20,7 @@ namespace GHM.Core.Infrastructure
         public CoreDbContext(DbContextOptions<CoreDbContext> options)
             : base(options)
         {
+            this.ChangeTracker.LazyLoadingEnabled = false;
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

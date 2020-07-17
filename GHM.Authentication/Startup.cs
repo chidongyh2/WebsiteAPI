@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace GHM.Authentication
 {
@@ -72,12 +73,17 @@ namespace GHM.Authentication
             {
                 opts.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
                 opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            }).AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
             });
             services.AddDbContextPool<CoreDbContext>(options =>
             {
-                options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("CoreConnectionString"));
+                options.UseSqlServer(Configuration.GetConnectionString("CoreConnectionString"));
             });
 
+            services.AddMemoryCache();
             #region Identity config
             services.AddIdentity<UserAccount, Core.Domain.Models.Role>(options =>
                 {
@@ -91,17 +97,19 @@ namespace GHM.Authentication
             services.AddIdentityServer()
                 //.AddSigningCredential("id_rsa")
                 .AddDeveloperSigningCredential()
-                .AddResourceStore<ResourceRepository>()
-                .AddClientStore<ClientRepository>()
-                .AddProfileService<ProfileRepository>()
+                //.AddResourceStore<ResourceRepository>()
+                //.AddClientStore<ClientRepository>()
+                //.AddProfileService<ProfileRepository>()
                 //.AddInMemoryIdentityResources(IdentityConfig.GetIdentityResources())
                 //.AddInMemoryApiScopes(IdentityConfig.GetApiScopes())
                 //.AddInMemoryApiResources(IdentityConfig.GetApiResources())
                 //.AddInMemoryClients(IdentityConfig.GetClients())
+                .AddInMemoryCaching()
+                .AddClientStoreCache<ClientRepository>()
+                .AddResourceStoreCache<ResourceRepository>()
+                .AddProfileService<ProfileRepository>()
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();
             #endregion
-
-            services.AddDistributedMemoryCache();
 
             #region Autofac Config.
             // Config Autofac.
@@ -131,7 +139,6 @@ namespace GHM.Authentication
             });
             #endregion
             app.UseExceptionHandler("/error");
-            app.UseHttpsRedirection();
             app.UseRouting();
             app.UseIdentityServer();
             app.UseAuthorization();
