@@ -1,9 +1,6 @@
 version: '3.4'
 
 services:
-  rabbitmq:
-    ports:
-      - "15672:15672"
 
   filemanagement-api:
     environment:
@@ -74,10 +71,33 @@ services:
     ports:
       - "9200:80"
 
+  website-event-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+      - website-network
+    ports:
+      - "50003:80"
+
+  warehouse-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+      - website-network
+    ports:
+      - "50009:80"
+    
+  rabbitmq:
+    ports:
+      - "15673:15672"
+      - "5672:5672"
+
 networks:
-  default:
-    driver: bridge
   website-network:
     external: true
+
+
 
 

@@ -1,9 +1,8 @@
-FROM mcr.microsoft.com/dotnet/core/3.1-bionic AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-bionic AS base
 WORKDIR /app
-ENV ASPNETCORE_URLS http://*:50009
-EXPOSE 50009
+EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/core/3.1-bionic AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-bionic AS build
 WORKDIR /src
 COPY ["GHM.Warehouse.Api/GHM.Warehouse.Api.csproj", "GHM.Warehouse.Api/"]
 COPY ["GHM.Infrastructure/GHM.Infrastructure.csproj", "GHM.Infrastructure/"]

@@ -78,9 +78,10 @@ namespace GHM.Warehouse.Api
             services.AddAuthentication("Bearer")
                 .AddIdentityServerAuthentication(options =>
                 {
-                    options.Authority = "http://localhost:50000";
+                    var authority = Configuration.GetApiUrl("Authority");
+                    options.Authority = !string.IsNullOrEmpty(authority) ? authority : "http://localhost:50000";
                     options.RequireHttpsMetadata = false;
-                    // options.ApiName = "GHM_Warehouse_Api";
+                    options.ApiName = "GHM_Website_Api";
                 });
 
             services.AddDbContextPool<WarehouseDbContext>(options =>
@@ -106,8 +107,6 @@ namespace GHM.Warehouse.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
-            app.UseHttpsRedirection();
-
             #region Localizations
 
             var supportedCultures = new[]

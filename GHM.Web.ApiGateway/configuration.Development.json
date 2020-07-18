@@ -20,8 +20,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "127.0.0.1",
-          "Port": 50003
+          "Host": "website-event-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/events/{everything}",
@@ -57,17 +57,13 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "127.0.0.1",
-          "Port": 50002
+          "Host": "website-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UseServiceDiscovery": false,
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "GHM_Website_Api" ]
-      }
+      "UseServiceDiscovery": false
     },
     // BEGIN: Product
     {
@@ -75,8 +71,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "127.0.0.1",
-          "Port": 50009
+          "Host": "warehouse-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",
@@ -111,8 +107,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "127.0.0.1",
-          "Port": 50004
+          "Host": "notifications-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/notifications/{everything}",
@@ -124,8 +120,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "127.0.0.1",
-          "Port": 50004
+          "Host": "notifications-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/notifications",
