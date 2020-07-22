@@ -12,7 +12,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.Key).IsRequired().HasMaxLength(256).IsUnicode(false);
             builder.Property(x => x.Value).IsRequired().HasMaxLength(256);
             builder.Property(x => x.GroupKey).IsRequired().HasMaxLength(256);
-            builder.ToTable("UserSettings").HasKey(x => new { x.UserId, x.Key });
+            builder.ToTable("usersettings").HasKey(x => new { x.UserId, x.Key });
         }
     }
 }

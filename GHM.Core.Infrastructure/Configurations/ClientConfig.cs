@@ -17,7 +17,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Ignore(x => x.UserCodeType);
             builder.Ignore(x => x.UserSsoLifetime);
             builder.Ignore(x => x.Description);
-            builder.ToTable("Client").HasKey(x => x.ClientId);
+            builder.ToTable("client").HasKey(x => x.ClientId);
             builder.Property(x => x.ClientId).HasMaxLength(100).IsRequired();
             builder.Property(x => x.ClientName).HasMaxLength(450).IsRequired();
             builder.Property(x => x.UnsignName).HasMaxLength(450).IsRequired(false).IsUnicode(false);

@@ -11,7 +11,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.TenantId).IsRequired().HasMaxLength(50).IsUnicode(false);
             builder.Property(x => x.PageId).IsRequired();
             builder.Property(x => x.IsDelete).IsRequired();
-            builder.ToTable("TenantsPages").HasKey(x => new { x.TenantId, x.PageId });
+            builder.ToTable("tenantspages").HasKey(x => new { x.TenantId, x.PageId });
         }
     }
 }

@@ -20,7 +20,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.SecurityStamp).IsRequired(false).HasMaxLength(500).IsUnicode(false);
             builder.Property(x => x.FullName).IsRequired().HasMaxLength(50);
             builder.Property(x => x.TenantId).IsRequired().HasMaxLength(50).IsUnicode(false);
-            builder.ToTable("UserAccounts").HasKey(x => x.Id);
+            builder.ToTable("useraccounts").HasKey(x => x.Id);
         }
     }
 }

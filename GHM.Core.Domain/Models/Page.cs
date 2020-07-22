@@ -30,7 +30,7 @@
         /// <summary>
         /// Thứ tự hiển thị của trang.
         /// </summary>
-        public int Order { get; set; }
+        public int OrderItem { get; set; }
 
         /// <summary>
         /// Thứ tự sắp xếp theo thứ tự hiển thị.
@@ -58,7 +58,7 @@
         {
             IsActive = true;
             IsDelete = false;
-            Order = 0;
+            OrderItem = 0;
         }
 
         public Page(int id, bool isActive, string icon, string bgColor, int order, int? parentId, string url)
@@ -67,7 +67,7 @@
             IsActive = isActive;
             Icon = icon;
             BgColor = bgColor;
-            Order = order;
+            OrderItem = order;
             OrderPath = $"{id}.{order}";
             ParentId = parentId;
             Url = url;

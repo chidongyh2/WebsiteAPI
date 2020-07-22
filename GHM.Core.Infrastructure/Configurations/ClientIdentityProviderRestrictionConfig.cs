@@ -11,7 +11,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.ClientId).HasMaxLength(100).IsRequired();
             builder.Property(x => x.IdentityProviderRestriction).HasMaxLength(500).IsRequired();
-            builder.ToTable("ClientIdentityProviderRestriction").HasKey(x => x.Id);
+            builder.ToTable("clientidentityproviderrestriction").HasKey(x => x.Id);
         }
     }
 }

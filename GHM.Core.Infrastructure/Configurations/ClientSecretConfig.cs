@@ -16,7 +16,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.Description).HasMaxLength(4000).IsRequired(false);
             builder.Property(x => x.Expiration).IsRequired(false);
             builder.Property(x => x.Type).HasMaxLength(4000).IsRequired();
-            builder.ToTable("ClientSecret").HasKey(x => x.Id);
+            builder.ToTable("clientsecret").HasKey(x => x.Id);
         }
     }
 }

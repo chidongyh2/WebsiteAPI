@@ -12,7 +12,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.ClientId).HasMaxLength(100).IsRequired();
             builder.Property(x => x.ClaimType).IsRequired(false);
             builder.Property(x => x.ClaimValue).IsRequired(false);
-            builder.ToTable("ClientClaim").HasKey(x => x.Id);
+            builder.ToTable("clientclaim").HasKey(x => x.Id);
         }
     }
 }

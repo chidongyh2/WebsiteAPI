@@ -73,7 +73,8 @@ namespace GHM.Core.Api
                 });
             services.AddDbContextPool<CoreDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("CoreConnectionString"));
+                options.UseNpgsql(Configuration.GetConnectionString("CoreConnectionString"))
+                        .UseLowerCaseNamingConvention();
             });
 
             //services.AddEventBus(Configuration);

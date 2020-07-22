@@ -13,7 +13,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.IsActive).IsRequired();
             builder.Property(x => x.IsDefault).IsRequired().HasDefaultValue(false);
             builder.Property(x => x.Name).IsRequired().HasMaxLength(256);
-            builder.ToTable("TenantLanguages").HasKey(x => new { x.TenantId, x.LanguageId });
+            builder.ToTable("tenantlanguages").HasKey(x => new { x.TenantId, x.LanguageId });
         }
     }
 }

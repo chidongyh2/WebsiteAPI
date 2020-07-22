@@ -13,7 +13,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Ignore(x => x.Properties);
             builder.Ignore(x => x.ShowInDiscoveryDocument);
             builder.Ignore(x => x.AllowedAccessTokenSigningAlgorithms);
-            builder.ToTable("ApiResource").HasKey(x => x.Name);            
+            builder.ToTable("apiresource").HasKey(x => x.Name);            
         }
     }
 }

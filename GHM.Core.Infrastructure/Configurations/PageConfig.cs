@@ -15,10 +15,10 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.IdPath).IsRequired().IsUnicode(false);
             builder.Property(x => x.IsActive).IsRequired();
             builder.Property(x => x.IsDelete).IsRequired();
-            builder.Property(x => x.Order).IsRequired();
+            builder.Property(x => x.OrderItem).IsRequired();
             builder.Property(x => x.ParentId).IsRequired(false);
             builder.Property(x => x.Url).IsRequired(false).IsUnicode(false).HasMaxLength(500);
-            builder.ToTable("Pages").HasKey(x => x.Id);
+            builder.ToTable("pages").HasKey(x => x.Id);
         }
     }
 }

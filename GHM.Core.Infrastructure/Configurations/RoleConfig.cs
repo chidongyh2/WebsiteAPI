@@ -15,7 +15,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.NormalizedName).IsRequired().HasMaxLength(256).IsUnicode(false);
             builder.Property(x => x.TenantId).IsRequired().HasMaxLength(50);
             builder.Property(x => x.Type).IsRequired();
-            builder.ToTable("Roles").HasKey(x => x.Id);
+            builder.ToTable("roles").HasKey(x => x.Id);
         }
     }
 }

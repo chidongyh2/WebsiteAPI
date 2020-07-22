@@ -11,7 +11,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.ClientId).HasMaxLength(100).IsRequired();
             builder.Property(x => x.Uri).HasMaxLength(500).IsRequired();
-            builder.ToTable("ClientRedirectUris").HasKey(x => x.Id);
+            builder.ToTable("clientredirecturis").HasKey(x => x.Id);
         }
     }
 }

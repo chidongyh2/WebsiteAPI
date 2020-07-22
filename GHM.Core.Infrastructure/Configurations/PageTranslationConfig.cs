@@ -14,7 +14,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.Description).IsRequired(false).IsUnicode();
             builder.Property(x => x.LanguageId).IsRequired().IsUnicode(false).HasMaxLength(10);
             builder.Property(x => x.IsDelete).IsRequired().HasDefaultValue(false);
-            builder.ToTable("PageTranslations").HasKey(x => new { x.PageId, x.LanguageId });
+            builder.ToTable("pagetranslations").HasKey(x => new { x.PageId, x.LanguageId });
         }
     }
 }

@@ -10,7 +10,7 @@ namespace GHM.Core.Infrastructure.Configurations
         {
             builder.Property(x => x.ClientId).HasMaxLength(100).IsRequired();
             builder.Property(x => x.Scope).HasMaxLength(500).IsRequired();
-            builder.ToTable("ClientAllowedScope").HasKey(x => new { x.ClientId, x.Scope });
+            builder.ToTable("clientallowedscope").HasKey(x => new { x.ClientId, x.Scope });
         }
     }
 }

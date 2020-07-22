@@ -11,7 +11,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.Id).IsRequired().UseSqlServerIdentityColumn();
             builder.Property(x => x.Name).IsRequired().HasMaxLength(256);
             builder.Property(x => x.LanguageId).IsRequired().HasMaxLength(50);
-            builder.ToTable("Nationals").HasKey(x => x.Id);
+            builder.ToTable("nationals").HasKey(x => x.Id);
         }
     }
 }

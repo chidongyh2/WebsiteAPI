@@ -51,7 +51,7 @@ namespace GHM.Core.Infrastructure.Services
                 Icon = pageMeta.Icon?.Trim(),
                 IsActive = pageMeta.IsActive,
                 ParentId = pageMeta.ParentId,
-                Order = pageMeta.Order,
+                OrderItem = pageMeta.Order,
                 Url = pageMeta.Url?.Trim(),
                 IdPath = "-1"
             };
@@ -127,7 +127,7 @@ namespace GHM.Core.Infrastructure.Services
             pageInfo.BgColor = pageMeta.BgColor;
             pageInfo.Icon = pageMeta.Icon;
             pageInfo.IsActive = pageMeta.IsActive;
-            pageInfo.Order = pageMeta.Order;
+            pageInfo.OrderItem = pageMeta.Order;
             pageInfo.ParentId = pageMeta.ParentId;
             pageInfo.Url = pageMeta.Url;
             var resultUpdatePage = await _pageRepository.Update(pageInfo);
@@ -170,7 +170,7 @@ namespace GHM.Core.Infrastructure.Services
             pageDetailViewModel.ChildCount = pageInfo.ChildCount;
             pageDetailViewModel.Icon = pageInfo.Icon;
             pageDetailViewModel.IsActive = pageInfo.IsActive;
-            pageDetailViewModel.Order = pageInfo.Order;
+            pageDetailViewModel.Order = pageInfo.OrderItem;
             pageDetailViewModel.ParentId = pageInfo.ParentId;
             pageDetailViewModel.Url = pageInfo.Url;
             pageDetailViewModel.PageTranslation = await _pageTranslationRepository.SearchByPageId(id);

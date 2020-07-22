@@ -17,7 +17,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.GroupId).IsRequired();
             builder.Property(x => x.GroupName).IsRequired().HasMaxLength(150);
             builder.Property(x => x.LanguageId).IsRequired().HasMaxLength(50);
-            builder.ToTable("Ethnics").HasKey(x => x.Id);
+            builder.ToTable("ethnics").HasKey(x => x.Id);
         }
     }
 }

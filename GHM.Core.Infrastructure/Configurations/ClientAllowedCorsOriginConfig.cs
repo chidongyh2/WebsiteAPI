@@ -11,7 +11,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.ClientId).HasMaxLength(100).IsRequired();
             builder.Property(x => x.Domain).HasMaxLength(500).IsRequired();
-            builder.ToTable("ClientAllowedCorsOrigin").HasKey(x => x.Id);
+            builder.ToTable("clientallowedcorsorigin").HasKey(x => x.Id);
         }
     }
 }

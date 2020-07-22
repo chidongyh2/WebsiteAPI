@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using GHM.Core.Domain.Models;
@@ -20,13 +21,11 @@ namespace GHM.Core.Infrastructure
         public CoreDbContext(DbContextOptions<CoreDbContext> options)
             : base(options)
         {
-            this.ChangeTracker.LazyLoadingEnabled = false;
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
             #region Configurations
             builder.ApplyConfiguration(new PageConfig());
             builder.ApplyConfiguration(new PageTranslationConfig());
@@ -55,26 +54,26 @@ namespace GHM.Core.Infrastructure
             #endregion
 
             #region Table mapping.            
-            builder.Entity<District>(x => x.ToTable("Districts"));
-            builder.Entity<Province>(x => x.ToTable("Provinces"));
-            builder.Entity<IdentityUserClaim<string>>(x => x.ToTable("UserClaims"));
-            builder.Entity<IdentityUserToken<string>>(x => x.ToTable("UserTokens"));
-            builder.Entity<IdentityUserRole<string>>(x => x.ToTable("UsersRoles"));
-            builder.Entity<IdentityRoleClaim<string>>(x => x.ToTable("RoleClaims"));
-            builder.Entity<IdentityUserLogin<string>>(x => x.ToTable("UserLogins"));
-            builder.Entity<Client>(x => x.ToTable("Client"));
-            builder.Entity<ClientClaim>(x => x.ToTable("ClientClaim"));
-            builder.Entity<ClientIdentityProviderRestriction>(x => x.ToTable("ClientIdentityProviderRestriction"));
+            builder.Entity<District>(x => x.ToTable("districts"));
+            builder.Entity<Province>(x => x.ToTable("provinces"));
+            builder.Entity<IdentityUserClaim<string>>(x => x.ToTable("userclaims"));
+            builder.Entity<IdentityUserToken<string>>(x => x.ToTable("usertokens"));
+            builder.Entity<IdentityUserRole<string>>(x => x.ToTable("usersroles"));
+            builder.Entity<IdentityRoleClaim<string>>(x => x.ToTable("roleclaims"));
+            builder.Entity<IdentityUserLogin<string>>(x => x.ToTable("userlogins"));
+            builder.Entity<Client>(x => x.ToTable("client"));
+            builder.Entity<ClientClaim>(x => x.ToTable("clientclaim"));
+            builder.Entity<ClientIdentityProviderRestriction>(x => x.ToTable("clientidentityproviderrestriction"));
 
 
             // Tag
-            builder.Entity<Tag>().ToTable("Tags").HasKey(x => x.Id);
+            builder.Entity<Tag>().ToTable("tags").HasKey(x => x.Id);
             builder.Entity<SubjectTag>()
-                .ToTable("SubjectTags")
+                .ToTable("subjecttags")
                 .HasKey(x => new { x.SubjectId, x.TagId });
 
-            builder.Entity<ApproverConfig>().ToTable("ApproverConfigs").HasKey(x => new {x.UserId , x.Type});
-
+            builder.Entity<ApproverConfig>().ToTable("approverconfigs").HasKey(x => new {x.UserId , x.Type});
+          
             #endregion
         }
 

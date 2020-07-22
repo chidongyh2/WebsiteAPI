@@ -10,7 +10,7 @@ namespace GHM.Core.Infrastructure.Configurations
         {
             builder.Ignore(x => x.UserClaims);
             builder.Ignore(x => x.Properties);
-            builder.ToTable("IdentityResource").HasKey(x => x.Name);
+            builder.ToTable("identityresource").HasKey(x => x.Name);
         }
     }
 }

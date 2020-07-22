@@ -11,10 +11,10 @@ namespace GHM.Core.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<Religion> builder)
         {
-            builder.Property(x => x.Id).IsRequired().UseSqlServerIdentityColumn();
+            builder.Property(x => x.Id).IsRequired();
             builder.Property(x => x.Name).IsRequired().HasMaxLength(256);
             builder.Property(x => x.LanguageId).IsRequired().HasMaxLength(50);
-            builder.ToTable("Religions").HasKey(x => x.Id);
+            builder.ToTable("religions").HasKey(x => x.Id);
         }
     }
 }

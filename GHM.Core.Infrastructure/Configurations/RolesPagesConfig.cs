@@ -11,7 +11,7 @@ namespace GHM.Core.Infrastructure.Configurations
             builder.Property(x => x.RoleId).IsRequired().HasMaxLength(50);
             builder.Property(x => x.PageId).IsRequired();
             builder.Property(x => x.Permissions).IsRequired();
-            builder.ToTable("RolesPages").HasKey(x => new { x.RoleId, x.PageId });
+            builder.ToTable("rolespages").HasKey(x => new { x.RoleId, x.PageId });
         }
     }
 }
