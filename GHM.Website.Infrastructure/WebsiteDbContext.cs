@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using GHM.Infrastructure.SqlServer;
@@ -16,10 +17,19 @@ namespace GHM.Website.Infrastructure
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseNpgsql("User ID=postgres;Password=123@123a;Host=website-data;Port=5432;Database=Website;Pooling=true;");
+            }
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             // Configurations:
             //  builder.ApplyConfiguration(new CategoryConfig());
 

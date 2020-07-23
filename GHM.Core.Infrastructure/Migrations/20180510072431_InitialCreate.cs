@@ -237,7 +237,7 @@ namespace GHM.Core.Infrastructure.Migrations
                     IdPath = table.Column<string>(unicode: false, nullable: false),
                     IsActive = table.Column<bool>(nullable: false),
                     IsDelete = table.Column<bool>(nullable: false),
-                    Order = table.Column<int>(nullable: false),
+                    OrderItem = table.Column<int>(nullable: false),
                     OrderPath = table.Column<string>(nullable: true),
                     ParentId = table.Column<int>(nullable: true),
                     Url = table.Column<string>(unicode: false, maxLength: 500, nullable: true)

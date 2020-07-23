@@ -18,11 +18,15 @@ using System.Text.Json;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using System.Reflection;
+using System.Data;
+using Npgsql;
 
 namespace GHM.Website.Api
 {
     public class Startup
     {
+        public static readonly string _assemblyName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
         public Startup(IConfiguration configuration)
         {
             CultureInfo.CurrentCulture = new CultureInfo("vi-VN");
@@ -70,11 +74,15 @@ namespace GHM.Website.Api
                     options.ApiName = "GHM_Website_Api";
                 });
 
-            services.AddDbContextPool<WebsiteDbContext>(options =>
+            services.AddDbContext<WebsiteDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("WebsiteConnectionString"))
-                .ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.QueryClientEvaluationWarning));
-
+                var connection = Configuration.GetConnectionString("WebsiteConnectionString");
+                options.UseNpgsql(connection,
+                     b =>
+                     {
+                         b.MigrationsAssembly(_assemblyName);
+                     })
+                    .UseLowerCaseNamingConvention();
             });
 
 
@@ -92,6 +100,7 @@ namespace GHM.Website.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
+            app.UseDeveloperExceptionPage();
             #region Localizations
 
             var supportedCultures = new[]
