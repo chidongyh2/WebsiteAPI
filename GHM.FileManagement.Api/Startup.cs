@@ -10,7 +10,6 @@ using GHM.FileManagement.Infrastructure;
 using GHM.FileManagement.Infrastructure.AutofacModules;
 using GHM.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -68,7 +67,14 @@ namespace GHM.FileManagement.Api
 
             services.AddDbContextPool<FileManagementDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("FileManagementConnectionString"));
+                var connection = Configuration.GetConnectionString("FileManagementConnectionString");
+                options.UseNpgsql(connection,
+                     b =>
+                     {
+                         //b.MigrationsAssembly(_assemblyName);
+                         //b.MigrationsHistoryTable("__EFMigrationsHistory", "public");
+                     })
+                    .UseLowerCaseNamingConvention();
             });
 
             // Config Autofac.

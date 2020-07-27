@@ -21,10 +21,10 @@ namespace GHM.Website.Event.Infrastructure
             //builder.ApplyConfiguration(new SurveyGroupConfig());
 
             // Event.
-            builder.Entity<Domain.Models.Event>().ToTable("Events").HasKey(x => x.Id);
+            builder.Entity<Domain.Models.Event>().ToTable("events").HasKey(x => x.Id);
 
             builder.Entity<EventTranslation>()
-                .ToTable("EventTranslations")
+                .ToTable("eventtranslations")
                 .HasKey(x => new { x.EventId, x.LanguageId });
 
             builder.Entity<EventTranslation>()
@@ -33,10 +33,10 @@ namespace GHM.Website.Event.Infrastructure
                 .HasForeignKey(et => et.EventId);
 
             // Event Day.
-            builder.Entity<EventDay>().ToTable("EventDays").HasKey(x => x.Id);
+            builder.Entity<EventDay>().ToTable("eventdays").HasKey(x => x.Id);
 
             builder.Entity<EventDayTranslation>()
-                .ToTable("EventDayTranslations")
+                .ToTable("eventdaytranslations")
                 .HasKey(x => new { x.EventDayId, x.LanguageId });
 
             builder.Entity<EventDayTranslation>()
@@ -45,15 +45,15 @@ namespace GHM.Website.Event.Infrastructure
                 .HasForeignKey(edt => edt.EventDayId);
 
             // Register.
-            builder.Entity<Register>().ToTable("Registers").HasKey(x => x.Id);
+            builder.Entity<Register>().ToTable("registers").HasKey(x => x.Id);
 
             // Accompany Person.
-            builder.Entity<AccompanyPerson>().ToTable("AccompanyPersons").HasKey(x => x.Id);
+            builder.Entity<AccompanyPerson>().ToTable("accompanypersons").HasKey(x => x.Id);
 
             // EventDay Register.
-            builder.Entity<EventDayRegister>().ToTable("EventDayRegisters").HasKey(x => new { x.EventDayId, x.RegisterId });
+            builder.Entity<EventDayRegister>().ToTable("eventdayregisters").HasKey(x => new { x.EventDayId, x.RegisterId });
 
-            builder.Entity<EventAlbum>().ToTable("EventAlbums").HasKey(x => x.Id);
+            builder.Entity<EventAlbum>().ToTable("eventalbums").HasKey(x => x.Id);
         }
     }
 }

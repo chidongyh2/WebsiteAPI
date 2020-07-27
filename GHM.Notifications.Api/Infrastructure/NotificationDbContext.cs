@@ -17,7 +17,7 @@ namespace GHM.Notifications.Api.Infrastructure
             base.OnModelCreating(builder);
 
             builder.ApplyConfiguration(new NotificationConfig());
-            builder.Entity<UserConnection>().ToTable("UserConnections").HasKey(x => new { x.UserId, x.ConnectionId });
+            builder.Entity<UserConnection>().ToTable("userconnections").HasKey(x => new { x.UserId, x.ConnectionId });
         }
     }
 }

@@ -7,17 +7,14 @@ using GHM.Website.Infrastructure.AutofacModules;
 using GHM.Infrastructure.Extensions;
 using GHM.Infrastructure.ModelBinders;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.Reflection;
 using System.Data;
 using Npgsql;
@@ -74,13 +71,14 @@ namespace GHM.Website.Api
                     options.ApiName = "GHM_Website_Api";
                 });
 
-            services.AddDbContext<WebsiteDbContext>(options =>
+            services.AddDbContextPool<WebsiteDbContext>(options =>
             {
                 var connection = Configuration.GetConnectionString("WebsiteConnectionString");
                 options.UseNpgsql(connection,
                      b =>
                      {
-                         b.MigrationsAssembly(_assemblyName);
+                         //b.MigrationsAssembly("GHM.Website.Infrastructure");
+                         //b.MigrationsHistoryTable("__EFMigrationsHistory", "public");
                      })
                     .UseLowerCaseNamingConvention();
             });
@@ -100,6 +98,7 @@ namespace GHM.Website.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
+            // InitializeDatabase(app);
             app.UseDeveloperExceptionPage();
             #region Localizations
 
@@ -141,6 +140,14 @@ namespace GHM.Website.Api
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void InitializeDatabase(IApplicationBuilder app)
+        {
+            using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                scope.ServiceProvider.GetRequiredService<WebsiteDbContext>().Database.Migrate();
+            }
         }
     }
 }

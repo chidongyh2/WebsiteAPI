@@ -13,6 +13,8 @@ D:\Website\WebsiteAPI\GHM.FileManagement.Api\bin\Debug\netcoreapp3.1\GHM.FileMan
 D:\Website\WebsiteAPI\GHM.FileManagement.Api\bin\Debug\netcoreapp3.1\Autofac.dll
 D:\Website\WebsiteAPI\GHM.FileManagement.Api\bin\Debug\netcoreapp3.1\Autofac.Extensions.DependencyInjection.dll
 D:\Website\WebsiteAPI\GHM.FileManagement.Api\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+D:\Website\WebsiteAPI\GHM.FileManagement.Api\bin\Debug\netcoreapp3.1\Dapper.dll
+D:\Website\WebsiteAPI\GHM.FileManagement.Api\bin\Debug\netcoreapp3.1\EFCore.NamingConventions.dll
 D:\Website\WebsiteAPI\GHM.FileManagement.Api\bin\Debug\netcoreapp3.1\EPPlus.Core.dll
 D:\Website\WebsiteAPI\GHM.FileManagement.Api\bin\Debug\netcoreapp3.1\FluentValidation.dll
 D:\Website\WebsiteAPI\GHM.FileManagement.Api\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll

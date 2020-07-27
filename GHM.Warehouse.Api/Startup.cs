@@ -31,6 +31,7 @@ namespace GHM.Warehouse.Api
 {
     public class Startup
     {
+        public static readonly string _assemblyName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -86,7 +87,14 @@ namespace GHM.Warehouse.Api
 
             services.AddDbContextPool<WarehouseDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("WarehouseConnectionString"));
+                var connection = Configuration.GetConnectionString("WarehouseConnectionString");
+                options.UseNpgsql(connection,
+                     b =>
+                     {
+                         //b.MigrationsAssembly(_assemblyName);
+                         //b.MigrationsHistoryTable("__EFMigrationsHistory", "public");
+                     })
+                    .UseLowerCaseNamingConvention();
             });
 
             // Register Event bus.

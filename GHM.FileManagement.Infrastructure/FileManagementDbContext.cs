@@ -20,11 +20,11 @@ namespace GHM.FileManagement.Infrastructure
             //builder.ApplyConfiguration(new FileConfig());
 
             builder.Entity<Folder>()
-                .ToTable("Folders")
+                .ToTable("folders")
                 .HasKey(t => new { t.Id });
 
             builder.Entity<File>()
-                .ToTable("Files")
+                .ToTable("files")
                 .HasKey(t => new { t.Id });
             
         }

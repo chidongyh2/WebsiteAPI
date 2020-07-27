@@ -26,7 +26,7 @@ namespace GHM.Warehouse.Infrastructure
 
             // ProductAttributeTranslation
             builder.Entity<AttributeTranslation>()
-                .ToTable("AttributeTranslations")
+                .ToTable("attributetranslations")
                 .HasKey(x => new { ProductAttributeId = x.AttributeId, x.LanguageId });
 
             builder.Entity<AttributeTranslation>()
@@ -35,17 +35,17 @@ namespace GHM.Warehouse.Infrastructure
                 .HasForeignKey(xt => xt.AttributeId);
 
             builder.Entity<ProductCategory>()
-               .ToTable("ProductCategories")
+               .ToTable("productcategories")
                .HasKey(x => x.Id);
 
             builder.Entity<ProductCategoryTranslation>()
-             .ToTable("ProductCategoryTranslations")
+             .ToTable("productcategorytranslations")
              .HasKey(x => new { x.TenantId, x.ProductCategoryId, x.LanguageId });
 
             // AttributeValue
-            builder.Entity<AttributeValue>().ToTable("AttributeValues").HasKey(x => new { x.Id });
-            builder.Entity<ProductAttribute>().ToTable("ProductAttributes").HasKey(x => new { x.Id });
-            builder.Entity<ProductAttributeValue>().ToTable("ProductAttributeValues")
+            builder.Entity<AttributeValue>().ToTable("attributevalues").HasKey(x => new { x.Id });
+            builder.Entity<ProductAttribute>().ToTable("productattributes").HasKey(x => new { x.Id });
+            builder.Entity<ProductAttributeValue>().ToTable("productattributevalues")
                 .HasKey(x => new { x.ProductAttributeId, x.AttributeValueId });
 
             builder.Entity<ProductAttributeValue>()
@@ -55,7 +55,7 @@ namespace GHM.Warehouse.Infrastructure
 
             // AttributeValueTranslation
             builder.Entity<AttributeValueTranslation>()
-                .ToTable("AttributeValueTranslations")
+                .ToTable("attributevaluetranslations")
                 .HasKey(x => new { ProductAttributeValueId = x.AttributeValueId, x.LanguageId });
 
             builder.Entity<AttributeValueTranslation>()
@@ -65,41 +65,41 @@ namespace GHM.Warehouse.Infrastructure
 
             // Supplier
             builder.Entity<Supplier>()
-                .ToTable("Suppliers")
+                .ToTable("suppliers")
                 .HasKey(x => x.Id);
 
             // Contact
             builder.Entity<Contact>()
-              .ToTable("Contacts")
+              .ToTable("contacts")
               .HasKey(x => x.Id);
 
             // Brand
             builder.Entity<Brand>()
-                .ToTable("Brands")
+                .ToTable("brands")
                 .HasKey(x => x.Id);
 
             // Unit
             builder.Entity<Unit>()
-                .ToTable("Units")
+                .ToTable("units")
                 .HasKey(x => x.Id);
 
             builder.Entity<UnitTranslation>()
-              .ToTable("UnitTranslations")
+              .ToTable("unittranslations")
               .HasKey(x => new { x.UnitId, x.LanguageId, x.TenantId });
 
             //ProductCategoriesAttribute
             builder.Entity<ProductCategoriesAttribute>()
-                .ToTable("ProductCategoriesAttributes")
+                .ToTable("productcategoriesattributes")
                 .HasKey(x => new { x.AttributeId, x.CategoryId });
 
             // Product
             builder.Entity<Product>()
-                .ToTable("Products")
+                .ToTable("products")
                 .HasKey(x => new { x.Id, x.TenantId });
 
             // ProductTranslation
             builder.Entity<ProductTranslation>()
-                .ToTable("ProductTranslations")
+                .ToTable("producttranslations")
                 .HasKey(x => new { x.ProductId, x.LanguageId, x.TenantId });
 
             builder.Entity<ProductTranslation>()
@@ -109,104 +109,104 @@ namespace GHM.Warehouse.Infrastructure
 
             // ProductsCategory
             builder.Entity<ProductsCategory>()
-                .ToTable("ProductsCategories")
+                .ToTable("productscategories")
                 .HasKey(x => new { x.ProductId, x.CategoryId });
 
             // ProductImage
             builder.Entity<ProductImage>()
-                .ToTable("ProductImages")
+                .ToTable("productimages")
                 .HasKey(x => x.Id);
 
             // ProductUnit
             builder.Entity<ProductUnit>()
-                .ToTable("ProductUnits")
+                .ToTable("productunits")
                 .HasKey(x => x.Id);
 
             // ProductConversionUnit
             builder.Entity<ProductConversionUnit>()
-                .ToTable("ProductConversionUnits")
+                .ToTable("productconversionunits")
                 .HasKey(x => x.Id);
 
             builder.Entity<ProductConversionUnitGroup>()
-                .ToTable("ProductConversionUnitGroups")
+                .ToTable("productconversionunitgroups")
                 .HasKey(x => new { x.Id, x.ProductConversionUnitId });
 
             // ProductAttribute
             builder.Entity<Attribute>()
-                .ToTable("Attributes")
+                .ToTable("attributes")
                 .HasKey(x => x.Id);
 
             // Warehouse
             builder.Entity<Domain.Models.Warehouse>()
-                .ToTable("Warehouses")
+                .ToTable("warehouses")
                 .HasKey(x => x.Id);
 
             // WarehouseManagerConfig
             builder.Entity<WarehouseManagerConfig>()
-                .ToTable("WarehouseManagerConfigs")
+                .ToTable("warehousemanagerconfigs")
                 .HasKey(x => new { x.TenantId, x.UserId, x.WarehouseId });
 
             // WarehouseLimit
             builder.Entity<WarehouseLimit>()
-                .ToTable("WarehouseLimits")
+                .ToTable("warehouselimits")
                 .HasKey(x => new { x.TenantId, x.WarehouseId, x.ProductId, x.UnitId });
 
             builder.Entity<GoodsReceiptNote>()
-                .ToTable("GoodsReceiptNotes")
+                .ToTable("goodsreceiptnotes")
                 .HasKey(x => new { x.Id, x.TenantId });
 
             builder.Entity<GoodsReceiptNoteDetail>()
-                .ToTable("GoodsReceiptNoteDetails")
+                .ToTable("goodsreceiptnotedetails")
                 .HasKey(x => new { x.Id, x.TenantId });
 
             builder.Entity<GoodsDeliver>()
-                .ToTable("GoodsDelivers")
+                .ToTable("goodsdelivers")
                 .HasKey(x => x.Id);
 
             builder.Entity<GoodsDeliveryNoteReceiver>()
-                .ToTable("GoodsDeliveryNoteReceivers")
+                .ToTable("goodsdeliverynotereceivers")
                 .HasKey(x => x.Id);
 
             builder.Entity<Lot>()
-                .ToTable("Lots")
+                .ToTable("lots")
                 .HasKey(x => new { x.Id, x.TenantId });
 
             builder.Entity<GoodsReceiptNoteFollow>()
-                .ToTable("GoodsReceiptNoteFollows")
+                .ToTable("goodsreceiptnotefollows")
                 .HasKey(x => new { x.Id, x.TenantId });
 
             // WarehouseConfig
             builder.Entity<WarehouseConfig>()
-                .ToTable("WarehouseConfigs")
+                .ToTable("warehouseconfigs")
                 .HasKey(x => new { x.TenantId, x.LanguageId, x.Key });
 
             builder.Entity<GoodsDeliveryNote>()
-                .ToTable("GoodsDeliveryNotes")
+                .ToTable("goodsdeliverynotes")
                 .HasKey(x => new { x.Id, x.TenantId });
 
             builder.Entity<GoodsDeliveryNoteDetail>()
-                .ToTable("GoodsDeliveryNoteDetails")
+                .ToTable("goodsdeliverynotedetails")
                 .HasKey(x => new { x.Id, x.TenantId });
 
             builder.Entity<InventoryDailyReport>()
-                .ToTable("InventoryDailyReports")
+                .ToTable("inventorydailyreports")
                 .HasKey(x => x.Id);
 
 
             builder.Entity<InventoryReport>()
-                .ToTable("InventoryReports")
+                .ToTable("inventoryreports")
                 .HasKey(x => x.Id);
 
             builder.Entity<InventoryReportDetail>()
-                .ToTable("InventoryReportDetails")
+                .ToTable("inventoryreportdetails")
                 .HasKey(x => x.Id);
 
             builder.Entity<Inventory>()
-                .ToTable("Inventories")
+                .ToTable("inventories")
                 .HasKey(x => x.Id);
 
             builder.Entity<InventoryDetail>()
-                .ToTable("InventoryDetails")
+                .ToTable("inventorydetails")
                 .HasKey(x => new { x.InventoryId, x.ProductId });
 
             builder.Entity<InventoryDetail>()
@@ -218,7 +218,7 @@ namespace GHM.Warehouse.Infrastructure
                 });
 
             builder.Entity<InventoryMember>()
-                .ToTable("InventoryMembers")
+                .ToTable("inventorymembers")
                 .HasKey(x => x.Id);
 
             builder.Entity<InventoryMember>()
@@ -261,11 +261,11 @@ namespace GHM.Warehouse.Infrastructure
                 });
 
             builder.Entity<Order>()
-                .ToTable("Orders")
+                .ToTable("orders")
                 .HasKey(x => x.Id);
 
             builder.Entity<OrderDetail>()
-               .ToTable("OrderDetails")
+               .ToTable("drderdetails")
                .HasKey(x => x.Id);
 
             builder.Entity<Order>()

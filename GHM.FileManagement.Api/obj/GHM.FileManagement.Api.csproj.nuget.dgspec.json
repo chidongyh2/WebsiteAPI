@@ -52,6 +52,10 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "EFCore.NamingConventions": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[8.6.2, )"
@@ -63,6 +67,20 @@
             "Microsoft.AspNetCore.Mvc.Versioning": {
               "target": "Package",
               "version": "[4.1.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.5, )"
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
@@ -212,13 +230,9 @@
               "target": "Package",
               "version": "[3.1.5, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[3.1.5, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer.Design": {
-              "target": "Package",
-              "version": "[1.1.6, )"
+              "version": "[3.1.4, )"
             },
             "System.Drawing.Common": {
               "target": "Package",
@@ -371,6 +385,10 @@
             "BouncyCastle.NetCore": {
               "target": "Package",
               "version": "[1.8.6, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.35, )"
             },
             "EPPlus.Core": {
               "target": "Package",

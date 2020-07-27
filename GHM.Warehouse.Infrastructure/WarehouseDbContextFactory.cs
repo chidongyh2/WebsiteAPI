@@ -17,7 +17,7 @@ namespace GHM.Warehouse.Infrastructure
             var connectionString = configs.GetConnectionString("WarehouseConnectionString");
 
             var optionsBuilder = new DbContextOptionsBuilder<WarehouseDbContext>();
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseNpgsql(connectionString);
             return new WarehouseDbContext(optionsBuilder.Options);
         }
     }

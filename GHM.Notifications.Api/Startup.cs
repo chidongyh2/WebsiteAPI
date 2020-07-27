@@ -98,11 +98,17 @@ namespace GHM.Notifications.Api
 
             RegisterEventBus(services);
 
-            services.AddDbContext<NotificationDbContext>(options =>
+            services.AddDbContextPool<NotificationDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("NotificationConnectionString"));
+                var connection = Configuration.GetConnectionString("NotificationConnectionString");
+                options.UseNpgsql(connection,
+                     b =>
+                     {
+                         //b.MigrationsAssembly(_assemblyName);
+                         //b.MigrationsHistoryTable("__EFMigrationsHistory", "public");
+                     })
+                    .UseLowerCaseNamingConvention();
             });
-
             services.AddRawRabbit();
 
             // Config Autofac.

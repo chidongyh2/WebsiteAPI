@@ -17,7 +17,7 @@ namespace GHM.Website.Infrastructure
             var connectionString = configs.GetConnectionString("WebsiteConnectionString");
 
             var optionsBuilder = new DbContextOptionsBuilder<WebsiteDbContext>();
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseNpgsql(connectionString);
             return new WebsiteDbContext(optionsBuilder.Options);
         }
     }

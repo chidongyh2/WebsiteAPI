@@ -16,6 +16,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="RabbitMQ.Client" Version="6.1.0" />
+    <PackageReference Include="EFCore.NamingConventions" Version="1.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5" />
   </ItemGroup>
 
   <ItemGroup>
