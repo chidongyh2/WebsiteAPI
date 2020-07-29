@@ -38,5 +38,49 @@
   {
     "outputFile": "wwwroot/lib/jquery.lazy-master/jquery.lazy.es5.js",
     "inputFile": "wwwroot/lib/jquery.lazy-master/jquery.lazy.js"
+  },
+  {
+    "outputFile": "wwwroot/css/less/help-finder.css",
+    "inputFile": "wwwroot/css/less/help-finder.less"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.js",
+    "inputFile": "wwwroot/css/less/help-finder.less"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.js",
+    "inputFile": "wwwroot/css/less/help-finder.less"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.js",
+    "inputFile": "wwwroot/css/less/help-finder.less"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.js",
+    "inputFile": "wwwroot/css/less/help-finder.less"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.min.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.min.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.min.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.min.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/help-finder.viewmodel.es5.es5.js",
+    "inputFile": "wwwroot/lib/help-finder/xml/color_advice.xml"
   }
 ]

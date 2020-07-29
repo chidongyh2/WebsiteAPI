@@ -21,7 +21,7 @@ namespace GHM.Authentication.Validators
 
         public Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
         {
-            var userInfo = Task.Run(() => _userAccountRepository.GetInfoByUserName(context.UserName)).Result;
+            var userInfo = Task.Run(() => _userAccountRepository.GetInfoByUserName(context.UserName, true)).Result;
             if (userInfo == null)
             {
                 context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "account_does_not_exists");
@@ -58,15 +58,15 @@ namespace GHM.Authentication.Validators
                 }
                 return Task.CompletedTask;
             }
-            var isValidPassword = ValidatePassword(userInfo, context.UserName, context.Password, out totalFailCount);
-            if (!isValidPassword)
-            {
-                context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "invalid_username_or_password", new Dictionary<string, object>
-                {
-                    {"failCount", totalFailCount }
-                });
-                return Task.CompletedTask;
-            }
+            //var isValidPassword = ValidatePassword(userInfo, context.UserName, context.Password, out totalFailCount);
+            //if (!isValidPassword)
+            //{
+            //    context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "invalid_username_or_password", new Dictionary<string, object>
+            //    {
+            //        {"failCount", totalFailCount }
+            //    });
+            //    return Task.CompletedTask;
+            //}
 
             context.Result = new GrantValidationResult(userInfo.Id, OidcConstants.AuthenticationMethods.Password);
             return Task.CompletedTask;

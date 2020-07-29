@@ -1,17 +1,17 @@
 {
-  "ReRoutes": [
-    // BEGIN: Auth
+  "Routes": [
+    // BEGIN: Pages
     {
-      "DownstreamPathTemplate": "/connect/token",
+      "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50000
+          "Host": "authentication",
+          "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/auth",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamPathTemplate": "/auth/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
       "UseServiceDiscovery": false
     },
     // BEGIN: Events
@@ -20,8 +20,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50003
+          "Host": "website-event-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/events/{everything}",
@@ -39,12 +39,12 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50001
+          "Host": "core-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/core/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post" ],
       "UseServiceDiscovery": false,
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
@@ -57,16 +57,16 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50002
+          "Host": "website-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UseServiceDiscovery": false,
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "GHM_Core_Api" ]
+        "AllowedScopes": [ "GHM_Website_Api" ]
       }
     },
     // BEGIN: Product
@@ -75,16 +75,16 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50011
+          "Host": "warehouse-api",
+          "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/v{version}/products/{everything}",
+      "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UseServiceDiscovery": false,
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "GHM_Product_Api" ]
+        "AllowedScopes": [ "GHM_Website_Api" ]
       }
     },
     // BEGIN: Notifications
@@ -93,8 +93,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50004
+          "Host": "notifications-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/notifications/{everything}",
@@ -107,25 +107,12 @@
     },
     // BEGIN: Notifications
     {
-      "DownstreamPathTemplate": "/notifications?{everything}",
-      "DownstreamScheme": "ws",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 50004
-        }
-      ],
-      "UpstreamPathTemplate": "/notifications?{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
-      "UseServiceDiscovery": false
-    },
-    {
       "DownstreamPathTemplate": "/notifications/{everything}",
-      "DownstreamScheme": "ws",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50004
+          "Host": "notifications-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/notifications/{everything}",
@@ -137,25 +124,37 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50004
+          "Host": "notifications-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/notifications",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "UseServiceDiscovery": false
     },
-    // BEGIN: File manager
+    {
+      "DownstreamPathTemplate": "/api/v{version}/notifications",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "notifications-api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v{version}/notifications",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UseServiceDiscovery": false
+    },
     {
       "DownstreamPathTemplate": "/api/v{version}/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50005
+          "Host": "filemanagement-api",
+          "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/v{version}/files/{everything}",
+      "UpstreamPathTemplate": "/api/v{version}/file/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "UseServiceDiscovery": false,
       "AuthenticationOptions": {

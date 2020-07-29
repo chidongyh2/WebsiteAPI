@@ -42,7 +42,6 @@ namespace GHM.Website.ABC.Controllers
         //    };
 
         //    ViewBag.Breadcrumb = breadcrumbs;
-
         //    return View();
         //}
 
@@ -58,12 +57,12 @@ namespace GHM.Website.ABC.Controllers
 
             if (categoryInfo?.ChildCount > 0)
             {
-                var listCategoryWidthNews = await httpClientService.GetAsync<SearchResult<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/get-news-width-parent-category/{apiService.TenantId}/{seoLink}/5/{CultureInfo.CurrentCulture.Name}");
+                var listCategoryWidthNews = await httpClientService.GetAsync<SearchResult<CategoryWidthNewsViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/get-list-category-width-news/{apiService.TenantId}/{seoLink}/5/{CultureInfo.CurrentCulture.Name}");
                 ViewBag.ListCategoryWidthNews = listCategoryWidthNews?.Items;
             }
             else
             {
-                var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/{seoLink}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
+                var listNews = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/{seoLink}/{page}/{pageSize}/{CultureInfo.CurrentCulture.Name}");
                 ViewBag.ListNews = listNews?.Items;
                 ViewBag.TotalRows = listNews?.TotalRows;
             }

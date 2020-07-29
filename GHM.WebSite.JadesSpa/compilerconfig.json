@@ -1,0 +1,98 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/less/brand.css",
+    "inputFile": "wwwroot/css/less/brand.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/common.css",
+    "inputFile": "wwwroot/css/less/common.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/config.css",
+    "inputFile": "wwwroot/css/less/config.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/event_register.css",
+    "inputFile": "wwwroot/css/less/event_register.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/event.css",
+    "inputFile": "wwwroot/css/less/event.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/footer.css",
+    "inputFile": "wwwroot/css/less/footer.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/header.css",
+    "inputFile": "wwwroot/css/less/header.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/main.css",
+    "inputFile": "wwwroot/css/less/main.less"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/about.viewmodel.min.js",
+    "inputFile": "wwwroot/js/viewmodel/about.viewmodel.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/angency-system.viewmodel.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/angency-system.viewmodel.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/contact.viewmodel.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/contact.viewmodel.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/event.viewmodel.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/event.viewmodel.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/event-detail.viewmodel.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/event-detail.viewmodel.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/event-register.viewmodel.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/event-register.viewmodel.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/video.viewmodel.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/video.viewmodel.js"
+  },
+  {
+    "outputFile": "wwwroot/js/banner.es5.js",
+    "inputFile": "wwwroot/js/banner.js"
+  },
+  {
+    "outputFile": "wwwroot/js/home.es5.js",
+    "inputFile": "wwwroot/js/home.js"
+  },
+  {
+    "outputFile": "wwwroot/js/site.es5.js",
+    "inputFile": "wwwroot/js/site.js"
+  },
+  {
+    "outputFile": "wwwroot/js/site1.es5.js",
+    "inputFile": "wwwroot/js/site1.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/LayerSlider/static/js/greensock.es5.js",
+    "inputFile": "wwwroot/lib/LayerSlider/static/js/greensock.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/about.viewmodel.es5.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/about.viewmodel.es5.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/category-news.viewmodel.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/category-news.viewmodel.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/category-news.viewmodel.es5.min.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/category-news.viewmodel.es5.min.js"
+  },
+  {
+    "outputFile": "wwwroot/js/viewmodel/category-news.viewmodel.es5.es5.js",
+    "inputFile": "wwwroot/js/viewmodel/category-news.viewmodel.es5.js"
+  }
+]

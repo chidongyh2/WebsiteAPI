@@ -11,7 +11,6 @@ using GHM.Infrastructure.SqlServer;
 using GHM.Website.Domain.IRepository;
 using GHM.Website.Domain.Models;
 using GHM.Website.Domain.ViewModels;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.EntityFrameworkCore;
 
 namespace GHM.Website.Infrastructure.Repository
@@ -103,7 +102,7 @@ namespace GHM.Website.Infrastructure.Repository
             out int totalRows)
         {
             Expression<Func<Category, bool>> spec = x => !x.IsDelete && x.TenantId == tenantId;
-            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId;
+            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId && !x.IsDelete;
 
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -136,7 +135,7 @@ namespace GHM.Website.Infrastructure.Repository
         public async Task<List<CategoryViewModel>> SearchAll(string tenantId, string languageId, string keyword, bool? isActive)
         {
             Expression<Func<Category, bool>> spec = x => !x.IsDelete && x.TenantId == tenantId;
-            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId;
+            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId && !x.IsDelete;
 
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -165,7 +164,7 @@ namespace GHM.Website.Infrastructure.Repository
         public Task<List<Suggestion<int>>> Suggestions(string tenantId, string languageId, string keyword, int page, int pageSize, out int totalRows)
         {
             Expression<Func<Category, bool>> spec = x => x.IsActive && !x.IsDelete && x.TenantId == tenantId;
-            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId;
+            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId && !x.IsDelete;
 
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -191,8 +190,8 @@ namespace GHM.Website.Infrastructure.Repository
 
         public Task<List<CategorySearchForSelectViewModel>> SearchForSelect(string tenantId, string languageId, string keyword, int page, int pageSize, out int totalRows)
         {
-            Expression<Func<Category, bool>> spec = x => x.IsActive && !x.IsDelete && x.TenantId == tenantId && x.IsActive;
-            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId;
+            Expression<Func<Category, bool>> spec = x => x.IsActive && !x.IsDelete && x.TenantId == tenantId;
+            Expression<Func<CategoryTranslation, bool>> specTranslation = x => x.LanguageId == languageId && !x.IsDelete;
 
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -241,6 +240,39 @@ namespace GHM.Website.Infrastructure.Repository
                category => category.Id, categoryTranslation => categoryTranslation.CategoryId, (category, categoryTranslation) =>
                    categoryTranslation.SeoLink
                ).AsNoTracking().ToList();
+        }
+
+        public async Task<List<CategorySearchForSelectViewModel>> SearchForHomePage(string tenantId, string languageId)
+        {
+            Expression<Func<Category, bool>> spec = x => x.TenantId == tenantId && x.IsHomePage == true && !x.IsDelete;
+            Expression<Func<CategoryTranslation, bool>> specTranslate = x => x.TenantId == tenantId && x.LanguageId == languageId;
+
+            var query = Context.Set<Category>().Where(spec)
+                .Join(Context.Set<CategoryTranslation>().Where(specTranslate),
+                category => category.Id, categoryTranslaion => categoryTranslaion.CategoryId,
+                (category, CategoryTranslation) => new CategorySearchForSelectViewModel
+                {
+                    Id = category.Id,
+                    BannerImage = category.BannerImage,
+                    Name = CategoryTranslation.Name,
+                    SeoLink = CategoryTranslation.SeoLink
+                });
+            return await query.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<CategoryWidthNewsViewModel> GetCategoryForWithNews(string tenantId, string categoryId, string languageId)
+        {
+            Expression<Func<Category, bool>> spec = x => x.TenantId == tenantId && x.Id == int.Parse(categoryId) && !x.IsDelete && x.IsActive;
+            Expression<Func<CategoryTranslation, bool>> specT = x => x.TenantId == tenantId && x.CategoryId == int.Parse(categoryId) && x.LanguageId == languageId && !x.IsDelete; 
+            var query = Context.Set<Category>().Where(spec)
+                .Join(Context.Set<CategoryTranslation>().Where(specT), c => c.Id, ct => ct.CategoryId, (c, ct) => new CategoryWidthNewsViewModel
+                {
+                    CategoryId = c.Id,
+                    BannerImage = c.BannerImage,
+                    CategoryName = ct.Name,
+                    SeoLink = ct.SeoLink,
+                });
+            return await query.AsNoTracking().FirstOrDefaultAsync();
         }
     }
 }

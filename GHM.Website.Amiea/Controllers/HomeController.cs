@@ -43,7 +43,7 @@ namespace GHM.Website.Amiea.Controllers
 
             ViewBag.ListNewsHot = await httpClientService.GetAsync<List<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/hot/{apiService.TenantId}/4");
 
-            var listProducts = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/category/{apiService.TenantId}/san-pham/1/4");
+            var listProducts = await httpClientService.GetAsync<SearchResult<NewsSearchViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/news/getNewsByCategory/{apiService.TenantId}/san-pham/1/4");
 
             ViewBag.ListProduct = listProducts?.Items;
 

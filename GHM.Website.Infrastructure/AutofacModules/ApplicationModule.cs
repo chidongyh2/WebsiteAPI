@@ -1,5 +1,5 @@
-﻿using Autofac;
-using System.Reflection;
+﻿using System.Reflection;
+using Autofac;
 using GHM.Infrastructure.IServices;
 using GHM.Infrastructure.Resources;
 using GHM.Infrastructure.Services;

@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
@@ -70,7 +71,7 @@ namespace GHM.Notifications.Api
                     var authority = Configuration.GetApiUrl("Authority");
                     options.Authority = !string.IsNullOrEmpty(authority) ? authority : "http://localhost:50000";
                     options.RequireHttpsMetadata = false;
-                    options.ApiName = "GHM_Notification_Api";
+                    // options.ApiName = "GHM_Notification_Api";
                 });
 
             services.AddSignalR();
@@ -81,7 +82,11 @@ namespace GHM.Notifications.Api
             services.AddCors();
             services.AddMvcCore()
                 .AddAuthorization()
-                .AddJsonFormatters()
+                .AddJsonOptions(opts =>
+                {
+                    opts.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+                    opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                })
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .AddDataAnnotationsLocalization();
 
@@ -91,14 +96,14 @@ namespace GHM.Notifications.Api
             services.AddTransient<INotificationService, NotificationService>();
             #endregion
 
-            RegisterEventBus(services);
+            // RegisterEventBus(services);
 
             services.AddDbContext<NotificationDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("NotificationConnectionString"));
             });
 
-            services.AddRawRabbit();
+            // services.AddRawRabbit();
 
             // Config Autofac.
             var container = new ContainerBuilder();
@@ -114,17 +119,9 @@ namespace GHM.Notifications.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseHsts();
-                app.UseHttpsRedirection();
-            }
+            app.UseHttpsRedirection();
 
 
             #region Localizations
@@ -163,9 +160,12 @@ namespace GHM.Notifications.Api
             {
                 routes.MapHub<NotificationHub>("/notifications");
             });
-            app.UseMvc();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
             //app.UseRabbitMQ(Configuration);
-            ConfigureEventBus(app);
+            // ConfigureEventBus(app);
         }
 
         private void RegisterEventBus(IServiceCollection services)
@@ -175,14 +175,16 @@ namespace GHM.Notifications.Api
                 var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
                 var factory = new ConnectionFactory()
                 {
-                    HostName = Configuration["EventBusConnection"] ?? "localhost"
+                    HostName = "rabbitmq"
                 };
-
+                factory.Port = 5672;
+                factory.UserName = "guest";
                 if (!string.IsNullOrEmpty(Configuration["EventBusUserName"]))
                 {
                     factory.UserName = Configuration["EventBusUserName"];
                 }
 
+                factory.Password = "guest";
                 if (!string.IsNullOrEmpty(Configuration["EventBusPassword"]))
                 {
                     factory.Password = Configuration["EventBusPassword"];

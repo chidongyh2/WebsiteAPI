@@ -1,7 +1,6 @@
 ﻿"use strict";
 
 $(document).ready(function () {
-
     $("#myCarousel").owlCarousel({
         items: 1,
         loop: true,
@@ -16,9 +15,9 @@ $(document).ready(function () {
         autoplayTimeout: 10000
     });
 
-    var videoSlider = $("#video-silder").lightSlider({
+    $("#video-silder").lightSlider({
         item: 4,
-        auto: true,
+        auto: false,
         loop: true,
         slideMove: 1,
         speed: 1500,
@@ -74,7 +73,7 @@ $(document).ready(function () {
         }]
     });
 
-    var angencySlider = $("#agencySlider").lightSlider({
+    $("#agencySlider").lightSlider({
         item: 6,
         auto: true,
         loop: true,

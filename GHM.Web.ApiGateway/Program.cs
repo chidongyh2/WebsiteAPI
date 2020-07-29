@@ -24,22 +24,23 @@ namespace GHM.Web.ApiGateway
             //    .Build()
             //    .Run();
 
-            CreateWebHostBuilder(args).Build().Run();
+            CreateWebHostBuilder(args).Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        public static IWebHost CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel()
-                .UseIISIntegration()
+                .UseKestrel(o => { o.Limits.MaxRequestBodySize = null; })
+                //.UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     config
                         .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
                         .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
-                        .AddJsonFile($"configuration.{hostingContext.HostingEnvironment.EnvironmentName}.json", false, true)
+                        .AddJsonFile($"configuration.{hostingContext.HostingEnvironment.EnvironmentName}.json", true)
                         .AddEnvironmentVariables();
                 })
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+            .Build();
     }
 }

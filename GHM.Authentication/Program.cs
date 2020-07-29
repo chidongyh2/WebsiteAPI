@@ -19,6 +19,13 @@ namespace GHM.Authentication
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                //.UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
+                //.UseKestrel((builderContext, options) =>
+                //{
+                //    options.Configure(builderContext.Configuration.GetSection("Kestrel"));
+                //})
+                //.UseContentRoot(Directory.GetCurrentDirectory())
+                //.UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
     }

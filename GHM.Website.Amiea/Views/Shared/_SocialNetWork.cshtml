@@ -1,5 +1,6 @@
 ﻿@{
     var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+    var url = ViewBag.Url;
 }
 
 @if (listSocialNetWork != null && listSocialNetWork.Any())
@@ -15,7 +16,7 @@
                                 <a href="@socialNetWork.Url" class="btn-scoical">
                                     @if (!string.IsNullOrEmpty(socialNetWork.Image))
                                     {
-                                        <img data-src="@($"/image?url={(string.IsNullOrEmpty(socialNetWork.Image) ? "/images/no-image.png" : socialNetWork.Image)}&width=128&height=128&type=1")" alt="@socialNetWork.Name"
+                                        <img data-src="@($"/image?url={(string.IsNullOrEmpty(socialNetWork.Image) ? "/images/no-image.png" : $"{url}{socialNetWork.Image}")}&width=128&height=128&type=1")" alt="@socialNetWork.Name"
                                                    class="lazy"/>
                                     }
                                 </a>

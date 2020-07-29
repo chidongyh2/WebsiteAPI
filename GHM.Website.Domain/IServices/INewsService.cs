@@ -26,6 +26,8 @@ namespace GHM.Website.Domain.IServices
 
         Task<ActionResultResponse<NewsDetailViewModel>> GetDetail(string tenantId, string userId, string newsId);
 
+        Task<NewsDetailForClientViewModel> GetDetailForClient(string teantId, string newsId, string languageId);
+
         Task<ActionResultResponse> DeleteListNews(List<string> listNewsId);
 
         Task<ActionResultResponse> ChangeNewsStatus(string tenantId, string userId, string fullName, string avatar,
@@ -44,7 +46,7 @@ namespace GHM.Website.Domain.IServices
 
         Task<List<NewsSearchClientViewModel>> GetListTopNewsHot(string tenantId, string languageId, int selectTop);
 
-        Task<SearchResult<NewsSearchClientViewModel>> GetNewsByCategoryId(string tenantId, string languageId, string seoLink,
+        Task<SearchResult<NewsSearchClientViewModel>> GetNewsByCategorySeoLink(string tenantId, string languageId, string seoLink,
             int page, int pageSizes);
 
         Task<List<NewsSearchClientViewModel>> GetListTopNewsRelated(string tenantId, string languageId, string seoLink, int selectTop);
@@ -55,6 +57,22 @@ namespace GHM.Website.Domain.IServices
 
         Task<SearchResult<string>> GetAllNewsSeoLinkForSiteMap(string tenantId, string languageId);
 
-        Task<SearchResult<CategoryWidthNewsViewModel>> GetCategoryWidthNews(string tenantId, string languageId, string seoLink, int selectTop, bool isHomePage, bool isParent); 
+        Task<SearchResult<CategoryWidthNewsViewModel>> GetListCategoryWidthNews(string tenantId, string languageId, string seoLink, int selectTop, bool isHomePage, bool isParent);
+
+        Task<ActionResultResponse<CategoryWidthNewsViewModel>> GetCategoryWithNews(string tenantId, string languageId, string seoLink, int selectTop, bool isHomePage, bool isParent);
+
+        Task<ActionResultResponse<CategoryWidthNewsViewModel>> GetNewsByCategoryIdAsync(string tenantId, string languageId, string categoryId, int page, int pageSize);
+
+        Task<bool> CheckNewsExistBySeoLink(string tenantId, string seoLink, string languageId);
+
+        Task<List<NewsSearchClientViewModel>> GetNewsRelatedById(string tenantId, string newsId, string v, int page, int pageSize);
+
+        Task<List<NewsSearchClientViewModel>> GetNewsRelatedByParentCategoryId(string tenantId, int id, string languageId, int page, int pageSize);
+
+        Task<int> UpdateViewNews(string tenantId, string newId, string languageId);
+
+        //Task GetListNewsRelated(string tenantId, string v, string seoLink, int selectTop);
+
+        // Task<List<NewsSearchClientViewModel>> GetListTopNewsRelatedByCategoryId(string tenantId, string v, object categoryId, int selectTop);
     }
 }

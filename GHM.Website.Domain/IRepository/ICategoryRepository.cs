@@ -41,5 +41,9 @@ namespace GHM.Website.Domain.IRepository
         CategoryTranslationViewModel GetCategoryRelations(string tenantId, string languageId, int categoryId, int? parrentId);
 
         Task<List<string>> GetAllSeoLinkForSitemap(string tenantId, string languageId);
+
+        Task<List<CategorySearchForSelectViewModel>> SearchForHomePage(string tenantId, string languageId);
+
+        Task<CategoryWidthNewsViewModel> GetCategoryForWithNews(string tenantId, string categoryId, string languageId);
     }
 }

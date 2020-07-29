@@ -284,32 +284,48 @@ namespace GHM.Core.Infrastructure.Repository
             return null;
         }
 
-        public async Task<List<PageGetByUserViewModel>> GetPagesByUserId(string userId, string languageId)
+        public async Task<List<PageGetByUserViewModel>> GetPagesByUserId(string tenantId, string userId, string languageId)
         {
-            var query = Context.Set<IdentityUserRole<string>>().Where(x => x.UserId == userId)
-                .Join(Context.Set<RolesPages>(), userRole => userRole.RoleId, rolePage => rolePage.RoleId,
-                    (userRole, rolePage) => rolePage.PageId)
-                .Join(Context.Set<Page>(), pageId => pageId, page => page.Id, (pageId, page) => page)
-                .Join(Context.Set<PageTranslation>().Where(x => x.LanguageId == languageId), page => page.Id,
-                    pageTranslation => pageTranslation.PageId
-                    , (page, pageTranslation) => new { page, pageTranslation })
-                .OrderBy(x => x.page.IdPath)
-                .ThenBy(x => x.page.OrderPath)
-                .Select(x => new PageGetByUserViewModel
-                {
-                    Id = x.page.Id,
-                    Name = x.pageTranslation.Name,
-                    Url = x.page.Url,
-                    ParentId = x.page.ParentId,
-                    IdPath = x.page.IdPath,
-                    Order = x.page.Order,
-                    OrderPath = x.page.OrderPath,
-                    Icon = x.page.Icon,
-                    BgColor = x.page.BgColor,
-                    ChildCount = x.page.ChildCount
-                }).Distinct().AsNoTracking();
-
-            return await query.ToListAsync();
+            //var query = Context.Set<IdentityUserRole<string>>().Where(x => x.UserId == userId)
+            //    .Join(Context.Set<RolesPages>(), userRole => userRole.RoleId, rolePage => rolePage.RoleId,
+            //        (userRole, rolePage) => rolePage.PageId)
+            //    .Join(Context.Set<Page>(), pageId => pageId, page => page.Id, (pageId, page) => page)
+            //    .Join(Context.Set<PageTranslation>().Where(x => x.LanguageId == languageId), page => page.Id,
+            //        pageTranslation => pageTranslation.PageId
+            //        , (page, pageTranslation) => new { page, pageTranslation })
+            //    .OrderBy(x => x.page.IdPath)
+            //    .ThenBy(x => x.page.OrderPath)
+            //    .Select(x => new PageGetByUserViewModel
+            //    {
+            //        Id = x.page.Id,
+            //        Name = x.pageTranslation.Name,
+            //        Url = x.page.Url,
+            //        ParentId = x.page.ParentId,
+            //        IdPath = x.page.IdPath,
+            //        Order = x.page.Order,
+            //        OrderPath = x.page.OrderPath,
+            //        Icon = x.page.Icon,
+            //        BgColor = x.page.BgColor,
+            //        ChildCount = x.page.ChildCount
+            //    }).Distinct().AsNoTracking();
+            var query = from tp in Context.Set<TenantPage>().Where(x => x.TenantId == tenantId)
+                        join p in Context.Set<Page>().Where(x => x.IsActive) on tp.PageId equals p.Id
+                        join pt in Context.Set<PageTranslation>().Where(x => x.LanguageId == languageId) on p.Id equals pt.PageId
+                        select new PageGetByUserViewModel
+                        {
+                            Id = p.Id,
+                            Name = pt.Name,
+                            Url = p.Url,
+                            ParentId = p.ParentId,
+                            IdPath = p.IdPath,
+                            Order = p.Order,
+                            OrderPath = p.OrderPath,
+                            Icon = p.Icon,
+                            BgColor = p.BgColor,
+                            ChildCount = p.ChildCount
+                        };
+        
+            return await query.Distinct().AsNoTracking().ToListAsync();
         }
 
         public async Task<List<PageGetByUserViewModel>> GetAllActivePage(string languageId)

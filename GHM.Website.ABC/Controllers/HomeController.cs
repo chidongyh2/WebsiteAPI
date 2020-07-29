@@ -52,17 +52,18 @@ namespace GHM.Website.ABC.Controllers
 
             var listVaue = await httpClientService.GetAsync<List<ValueViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/core-values/{apiService.TenantId}/{CultureInfo.CurrentCulture.Name}");
             ViewBag.ListValue = listVaue;
-            //if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
-            //{
-            //    ViewBag.MainBanner = banners;
-            //}
-            //else
-            //{
-            var listBannerInHome = await httpClientService.GetAsync<ActionResultResponse<BannerViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/banners/{apiService.TenantId}/position/{(int)Position.Top}");
-            _cache.Set(CacheParam.Banner, listBannerInHome?.Data, TimeSpan.FromHours(1));
 
-            ViewBag.MainBanner = listBannerInHome?.Data;
-            //}
+            if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
+            {
+                ViewBag.MainBanner = banners;
+            }
+            else
+            {
+                var listBannerInHome = await httpClientService.GetAsync<ActionResultResponse<BannerViewModel>>($"{requestUrl.ApiGatewayUrl}/api/v1/website/banners/{apiService.TenantId}/position/{(int)Position.Top}");
+                _cache.Set(CacheParam.Banner, listBannerInHome?.Data, TimeSpan.FromHours(1));
+
+                ViewBag.MainBanner = listBannerInHome?.Data;
+            }
 
             return View();
         }

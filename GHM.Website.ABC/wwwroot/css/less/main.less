@@ -6,7 +6,7 @@
 body {
     font-family: OpenSans-Light !important;
     font-size: 14px;
-    margin-right:0px;
+    margin-right: 0px;
 }
 
 .body-content {
@@ -42,7 +42,6 @@ body {
                 font-size: 40px;
                 height: 40px;
                 width: 40px;
-
                 img {
                     max-height: 600px;
                     margin-left: auto;
@@ -53,7 +52,6 @@ body {
                     animation: zoomin 18s ease-in infinite;
                     transition: all 1s ease-in-out;*/
                     overflow: hidden;
-
                     @media @mobile {
                         max-height: unset;
                     }
@@ -83,8 +81,19 @@ body {
     }
 
     .owl-dots {
-        text-align: center;
-        margin-top: 10px;
+        /*text-align: center;
+        margin-top: 10px;*/
+        position: absolute;
+        top: 90%;
+        left: 45%;
+
+        @media @mobile {
+            top: 85%;
+        }
+
+        @media @mobile {
+            top: 80%;
+        }
 
         .owl-dot {
             padding: 0 2px !important;
@@ -233,10 +242,10 @@ body {
 #video {
     padding-top: 60px;
     padding-bottom: 80px;
-    background-image: url('../../images/bgr web/trang chu/image-06.jpg');
+    /*background-image: url('../../images/bgr web/trang chu/image-06.jpg');*/
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
     background-attachment: fixed;
 
     @media @mobile {
@@ -424,16 +433,16 @@ body {
 }
 
 #about {
-    background-image: url('../../images/bgr web/trang chu/image-08.jpg');
+    /*background-image: url('../../images/bgr web/trang chu/image-08.jpg');*/
     background-position: initial;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
     background-color: @color-white;
     padding-bottom: 65px;
     padding-top: 80px;
 
     @media @mobile {
-        background-image: none;
+        background-image: none !important;
         padding-bottom: 20px;
         padding-top: 20px;
     }
@@ -506,7 +515,6 @@ body {
             font-family: OpenSans;
 
             @media @mobile {
-                
             }
         }
 
@@ -741,11 +749,11 @@ body {
 #abums {
     padding-top: 0px;
     padding-bottom: 20px;
-    background-image: url('../../images/bgr web/bgr tin tuc-sk va ld.jpg');
+    /*background-image: url('../../images/bgr web/bgr tin tuc-sk va ld.jpg');*/
     background-size: 100% auto;
     background-position: initial;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
 
     @media @mobile {
         background-image: none;
@@ -944,6 +952,13 @@ body {
         .header {
             height: 20px;
             background-color: #EAE9E5;
+
+            img {
+                @media @mobile {
+                    height: auto !important;
+                    width: 100%;
+                }
+            }
         }
 
         ul {
@@ -1345,6 +1360,14 @@ table {
     @media @mobile {
         padding-left: 15px;
         padding-right: 15px;
+
+        &:nth-child(2n + 1) {
+            padding-right: 7px;
+        }
+
+        &:nth-child(2n) {
+            padding-left: 7px;
+        }
     }
 
     .image-content {
@@ -1361,6 +1384,10 @@ table {
         @media @mobile {
             min-height: 80px;
             font-size: 14px;
+        }
+
+        @media @tablet {
+            min-height: 120px;
         }
 
         a {
@@ -1418,6 +1445,10 @@ table {
                 overflow: hidden;
                 transition: all .5s;
 
+                @media @tablet {
+                    padding: 10px 20px;
+                }
+
                 &:hover {
                     background-color: #ffffff;
                     box-shadow: 0px 0px 3px 3px rgba(0,0,0,.1);
@@ -1465,10 +1496,10 @@ table {
 #brand {
     padding-top: 40px;
     padding-bottom: 70px;
-    background-image: url('../../images/bgr web/trang chu/image-07.jpg');
+    /*background-image: url('../../images/bgr web/trang chu/image-07.jpg');*/
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
     background-attachment: fixed;
 
     @media @mobile {
@@ -1824,10 +1855,10 @@ table {
     }
 }
 
-.sidebar-event-fixtop{
-    position:fixed;
+.sidebar-event-fixtop {
+    position: fixed;
     top: 50px;
-    width:262px;
+    width: 262px;
 }
 
 hr {
@@ -1885,13 +1916,13 @@ hr {
 }
 
 .news-angency {
-    background-image: url('../../images/bgr web/trang chu/image-05.jpg');
+    /*background-image: url('../../images/bgr web/trang chu/image-05.jpg');*/
     background-position: initial;
     background-repeat: no-repeat;
     background-size: cover;
 
     @media @mobile {
-        background-image: none;
+        background-image: none !important;
     }
 }
 
@@ -1902,3 +1933,4 @@ hr {
         }
     }
 }
+

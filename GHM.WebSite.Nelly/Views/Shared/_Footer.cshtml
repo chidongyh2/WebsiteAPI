@@ -1,0 +1,136 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+    var listMenuItem = ViewBag.FooterMenuNav as List<MenuItemViewModel>;
+    var listBrand = ViewBag.ListBrands as List<BrandSearchViewModel>;
+}
+<div id="wrap-root">
+    <ul>
+        @if (websiteSetting.Fanpage != null)
+        {
+            <li>
+                @if (ViewBag.DeviceType == "desktop")
+                {                    
+                }
+                else
+                {
+                    <div class="fb-livechat"> <div class="ctrlq fb-overlay"></div><div class="fb-widget"> <div class="ctrlq fb-close"></div><div class="fb-page" data-href="@websiteSetting.Fanpage" data-tabs="messages" data-width="360" data-height="400" data-small-header="true" data-hide-cover="true" data-show-facepile="false"> </div><div id="fb-root"></div></div><a href="https://m.me/jadespa.vn" title="Gửi tin nhắn cho chúng tôi qua Facebook" class="ctrlq fb-button"> <div class="bubble">1</div><div class="bubble-msg">LIÊN HỆ VỚI CHÚNG TÔI QUA FACEBOOK.</div></a></div>
+                    <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"></script>
+                }
+            </li>
+        }
+        @if (websiteSetting.ZaloId != null)
+        {
+            <li>
+                <div id="zalo-root">
+                    <div class="zalo-chat-widget" data-oaid="@websiteSetting.ZaloId" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="500" data-height="500"></div>
+                    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+                </div>
+            </li>
+        }
+        <li>
+            <a href="javascript://" id="backToTop">
+                <i class="fa fa-angle-up fa-2x"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 logo">
+                <a href="/" title="@websiteSetting?.Brand">
+                    @*$"{ViewBag.Url}{websiteSetting.Logo}"*@
+                    <img class="img-responsive lazy" data-src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? $"{ViewBag.Url}{websiteSetting.Logo}" : "/images/facion/logo.png" )"
+                         alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) ? websiteSetting?.Brand : ViewBag.Title)" />
+                </a>
+                <ul class="list-inline">
+                    @if (listSocialNetWork != null && listSocialNetWork.Any())
+                    {
+                        @foreach (var socialNetwork in listSocialNetWork)
+                        {
+                            <li class="list-items">
+                                <a href="@socialNetwork.Url" class="btn-scocial">
+                                    @if (!string.IsNullOrEmpty(socialNetwork.Icon))
+                                    {
+                                        <i class="fa @(socialNetwork.Icon)"></i>
+                                    }
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-sm-3 short-link">
+                <h3 class="title">
+                    @Resource.Contact
+                </h3>
+                <ul>
+                    @if (listBranch != null && listBranch.Any())
+                    {
+                        foreach (var branchs in listBranch?.Where(x => x.IsOffice.HasValue && x.IsOffice.Value))
+                        {
+                            <li><i class="fa fa-map-marker"> </i>@branchs?.Address</li>
+                            <li><i class="fa fa-phone"> </i>@websiteSetting.Hotline</li>
+                            @if (branchs.BranchContactDetails != null && branchs.BranchContactDetails.Any())
+                            {
+                                @foreach (var branchItem in branchs.BranchContactDetails)
+                                {
+                                    switch (branchItem.ContactType)
+                                    {
+                                        case ContactType.Email:
+                                            <li class="">
+                                                <i class="fa fa-envelope"></i>
+                                                <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a>
+                                            </li>
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                            }
+                            <li><a href="/"><i class="fa fa-language"> www.nellydevuyst.vn</i></a></li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-sm-3 short-link">
+                <h3 class="title">
+                    @Resource.YouInterested
+                </h3>
+                @if (listMenuItem != null && listMenuItem.Any())
+                {
+                    <ul>
+                        @foreach (var item in listMenuItem)
+                        {
+                            <li><a href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" + item.Url)}")" data-toggle="tooltip" title="@item.Name">@item.Name</a></li>
+                        }
+                    </ul>
+                }
+            </div>
+            <div class="col-sm-3">
+                @if (websiteSetting.Fanpage != null)
+                {
+                    @if (ViewBag.DeviceType == "desktop")
+                    {
+                        <div>
+                            <!-- Page plugin's width will be 190px -->
+                            <div class="fb-page" data-href="@websiteSetting.Fanpage" data-width="420"></div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <!-- Page plugin's width will be 190px -->
+                            <div class="fb-page" data-href="@websiteSetting.Fanpage" data-width="320"></div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="copy-right center">
+    Copyright 2018 - @DateTime.Now.Year  Nelly De Vuyst
+</div>

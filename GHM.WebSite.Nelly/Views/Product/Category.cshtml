@@ -1,0 +1,133 @@
+﻿@{
+    var productCategoryInfo = ViewBag.ProductCategoryInfo as ProductCategorySearchViewModel;
+    ViewBag.Title = productCategoryInfo?.Name;
+    ViewBag.Description = productCategoryInfo?.Description;
+    var jsonSerializerSettings = new JsonSerializerSettings
+    {
+        ContractResolver = new CamelCasePropertyNamesContractResolver()
+    };
+
+    var breadcrumbs = new List<Breadcrumb>
+    {
+         new Breadcrumb()
+        {
+              Name = "Sản phẩm",
+              IsCurrent = false,
+              Url = "san-pham"
+        },
+        new Breadcrumb()
+        {
+            Name = productCategoryInfo?.Name,
+            IsCurrent = true,
+        }
+    };
+    var url = ViewBag.Url;
+    ViewBag.Breadcrumb = breadcrumbs;
+}
+    <link href="~/css/less/comment.min.css" rel="stylesheet" />
+    <partial name="_Breadcumb">
+        <div id="product-category" class="product-categories">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9 content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <partial name="_TitleBar" model="@Resource.ProductCategory" />
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="btn-toolbar">
+                                    <div class="btn-group">
+                                        <a class="btn filter prev" href="javascript://" data-bind="visible: firstIndex() > 0, click: prevIndex" style="display: none">
+                                            <img src="/images/facion/pev.png" />
+                                        </a>
+                                        <!--ko foreach: $root.listProductCategory-->
+                                        <a class="btn filter item" href="javascript://" data-bind="css: {active: Id === $root.productCategoryId()}, click: $root.selectProductCategory.bind($data), visible: IsActive()" style="display:none">
+                                            <span data-bind=" text: Name"></span>
+                                        </a>
+                                        <!--/ko-->
+                                        <a class="btn filter nex" href="javascript://" data-bind="visible: $root.listProductCategory()&& lastIndex() < $root.listProductCategory().length - 1, click: nextIndex" style="display: none">
+                                            <img src="/images/facion/nex.png" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 cm-mgb-20 header">
+                                <div class="image">
+                                    <img class="img-responsive" data-bind="attr: {src:categoryImage() ? '@ViewBag.Url' + categoryImage() : '/images/no-image.png', alt: categoryName}" onerror="this.onerror = null;this.src='/images/no-image.png'" />
+                                </div>
+                                <div class="description" data-bind="html: categoryDescription">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" data-bind="foreach: listProduct">
+                            <div class="col-sm-4 col-xs-6">
+                                <partial name="_ProductItem" />
+                            </div>
+                        </div>
+                        <!--ko if: $root.totalPage() > 1-->
+                        <div class="row">
+                            <div class="col-sm-12 center" style="text-align:center">
+                                <ul class="pagination" data-bind="foreach: listPage">
+                                    <!--ko if:page === 1-->
+                                    <li>
+                                        <a data-bind="css: $root.currentPage() === 1 ? 'disabled' :  '', click: $root.firstPage" href="#Products">
+                                            <i class="fa fa-angle-double-left"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-bind="css: $root.currentPage() === 1 ? 'disabled bg-none' :  'bg-none', click: $root.prevPage" href="#Products">
+                                            <i class="fa fa-angle-left"></i>
+                                        </a>
+                                    </li>
+                                    <!--/ko-->
+                                    <li><a data-bind="css: $root.currentPage() === page ? 'active' : '', text: page, click: $root.searchPageIndex.bind($data)" href="#Products"></a></li>
+                                    <!--ko if: page === $root.totalPage()-->
+                                    <li>
+                                        <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled bg-none' : 'bg-none', click: $root.nextPage" href="#Products">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled' : '', click: $root.lastPage" href="#Products">
+                                            <i class="fa fa-angle-double-right"></i>
+                                        </a>
+                                    </li>
+                                    <!--/ko-->
+                                </ul>
+                            </div>
+                        </div>
+                        <!--/ko-->
+                        <!--ko if: !listProduct() || listProduct().length === 0-->
+                        <partial name="_NotFoundProduct" />
+                        <!--/ko-->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <partial name="_BoxHotline" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <comment-component params="objectId: '@productCategoryInfo?.Id', objectType: 2"></comment-component>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <partial name="_SidebarProduct" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @section scripts {
+            <script type="text/javascript">
+             var productCategories = @(ViewBag.ListProductCategory != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProductCategory)) : "[]");
+             var productCategoryId = "@ViewBag.ProductCategoryId";
+             var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
+            var totalRows = "@ViewBag.TotalProduct";
+            var categoryInfo = @(ViewBag.ProductCategoryInfo != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductCategoryInfo, jsonSerializerSettings)) : "[]");
+            </script>
+            <script src="~/js/component/comment-component.min.js"></script>
+            <script src="~/js/viewmodel/product-category.viewmodel.min.js"></script>
+        }

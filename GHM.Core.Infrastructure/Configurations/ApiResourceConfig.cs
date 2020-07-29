@@ -9,7 +9,10 @@ namespace GHM.Core.Infrastructure.Configurations
         {
             builder.Ignore(x => x.ApiSecrets);            
             builder.Ignore(x => x.Scopes);
-            builder.Ignore(x => x.UserClaims);                        
+            builder.Ignore(x => x.UserClaims);
+            builder.Ignore(x => x.Properties);
+            builder.Ignore(x => x.ShowInDiscoveryDocument);
+            builder.Ignore(x => x.AllowedAccessTokenSigningAlgorithms);
             builder.ToTable("ApiResource").HasKey(x => x.Name);            
         }
     }

@@ -8,7 +8,7 @@ namespace GHM.Website.Domain.IRepository
    public interface IFeedbackRepository
     {
         Task<List<Feedback>> Search(string tenantId,  string keyword,
-            DateTime? startDate, DateTime? endDate, int page, int pageSize, out int totalRows);
+            DateTime? startDate, DateTime? endDate, bool? isResolve, int page, int pageSize, out int totalRows);
 
         Task<int> Insert(Feedback feedback);
 

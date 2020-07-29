@@ -1,0 +1,29 @@
+﻿@model CategoryWidthNewsViewModel
+
+@if (Model != null)
+{
+    <div id="news-in-homepage">
+        <div class="heading">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <partial name="_TitleBar" model="Model.CategoryName" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            @{
+                var listNews = Model.ListNews.Take(3);
+                <div class="row content">
+                    @foreach (var news in listNews)
+                    {
+                        <div class="col-sm-4">
+                            <partial name="_NewsItem" model="news" />
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+}

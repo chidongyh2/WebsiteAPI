@@ -7,7 +7,7 @@ function VideoViewModel() {
     self.seoLink = ko.observable('');
     self.listVideo = ko.observableArray([]);
     self.totalRows = ko.observable(0);
-    self.pageSize = ko.observable(11);
+    self.pageSize = ko.observable(9);
     self.currentPage = ko.observable(1);
     self.totalPage = ko.observable(1);
     self.listPage = ko.observableArray([]);
@@ -16,8 +16,9 @@ function VideoViewModel() {
         self.seoLink(value.SeoLink);
         self.id(value.Id);
         setTimeout(function () {
+            self.currentPage(1);
             self.getVideo(self.seoLink());
-        }, 500);
+        }, 200);
     };
 
     self.getVideo = function (seoLink) {
@@ -38,23 +39,39 @@ function VideoViewModel() {
                         });
                     }
                 }
+            } else {
+                self.listPage([]);
+                self.listVideo([]);
             }
+            console.log(self.listVideo());
         });
+    };
+
+    self.checkUrlVideo = function (text) {
+        console.log(text);
+        if (text.indexOf('uploads/') > -1) {
+            return true;
+        } else {
+            return false;
+        }
     };
 
     self.search = function (value) {
         self.currentPage(value.page);
         self.getVideo(self.seoLink());
+        $("html, body").animate({ scrollTop: $('#abums').offset().top - 50 }, 1000);
     };
 
     self.firstPage = function () {
         self.currentPage(1);
         self.getVideo(self.seoLink());
+        $("html, body").animate({ scrollTop: $('#abums').offset().top - 50 }, 1000);
     };
 
     self.lastPage = function () {
         self.currentPage(self.totalPage());
         self.getVideo(self.seoLink());
+        $("html, body").animate({ scrollTop: $('#abums').offset().top - 50 }, 1000);
     };
 
     self.prevPage = function () {
@@ -65,11 +82,15 @@ function VideoViewModel() {
     self.nextPage = function () {
         self.currentPage(self.currentPage() + 1);
         self.getVideo(self.seoLink());
+        $("html, body").animate({ scrollTop: $('#abums').offset().top - 50 }, 1000);
     };
 
     $(document).ready(function () {
         self.listAlbum(listAlbum);
         self.currentPage(1);
+        if (window.innerWidth < 768) {
+            self.pageSize(7);
+        }
         if (self.listAlbum() && self.listAlbum().length > 0) {
             self.id(self.listAlbum()[0].Id);
             self.seoLink(self.listAlbum()[0].SeoLink);

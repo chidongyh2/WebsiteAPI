@@ -1,0 +1,29 @@
+﻿@model List<MenuItemViewModel>;
+@{
+    var url = ViewBag.Url;
+}
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var item in Model)
+    {
+        <div class="item">
+            <div class="wrap-item">
+                <a href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" +item.Url)}")">
+                    <div style="width: 100%; height: 100%;overflow: hidden;overflow-y: hidden;display: block;">
+                        @*<img class="news-image zoom img-responsive lazy" src="/image?url=@(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{url}{item.Image}&width=273&height=229")"
+                             onerror="this.src='/images/no-image.png'" />*@
+
+                        <img class="news-image zoom img-responsive" src="@(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : $"{url}{item.Image}")"
+                             onerror="this.src='/images/no-image.png'" alt="" />
+                    </div>
+                </a>
+                <div class="title">
+                    <a class="slide-description" href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" +item.Url)}")">@(string.IsNullOrEmpty(item.Name) ? "No Name" : item.Name)</a>
+                </div>                
+            </div>
+        </div>
+
+    }
+}
+

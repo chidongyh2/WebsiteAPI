@@ -8,7 +8,6 @@ using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.Models;
 using GHM.Infrastructure.SqlServer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace GHM.Core.Infrastructure.Repository
@@ -206,6 +205,11 @@ namespace GHM.Core.Infrastructure.Repository
 
             _userRoleRepository.Deletes(listUserRoles);
             return await Context.SaveChangesAsync();
+        }
+
+        public async Task<bool> CheckExist(string userId)
+        {
+            return await _userRoleRepository.ExistAsync(x => x.UserId == userId);
         }
     }
 }

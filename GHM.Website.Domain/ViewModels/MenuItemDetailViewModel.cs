@@ -20,5 +20,6 @@ namespace GHM.Website.Domain.ViewModels
         public int ChildCount { get; set; }
         public string ConcurrencyStamp { get; set; }
         public List<MenuItemTranslationViewModel> MenuItemTranslations { get; set; }
+        public List<MenuItemSelectedViewModel> MenuItemsSelected { get; set; }
     }
 }

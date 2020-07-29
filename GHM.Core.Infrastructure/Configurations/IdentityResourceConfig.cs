@@ -9,6 +9,7 @@ namespace GHM.Core.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<IdentityResource> builder)
         {
             builder.Ignore(x => x.UserClaims);
+            builder.Ignore(x => x.Properties);
             builder.ToTable("IdentityResource").HasKey(x => x.Name);
         }
     }

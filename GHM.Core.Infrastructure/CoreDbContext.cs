@@ -20,6 +20,7 @@ namespace GHM.Core.Infrastructure
         public CoreDbContext(DbContextOptions<CoreDbContext> options)
             : base(options)
         {
+            this.ChangeTracker.LazyLoadingEnabled = false;
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -89,12 +90,12 @@ namespace GHM.Core.Infrastructure
 
         public IQueryable<T> RawFromSql<T>(string queryText) where T : class
         {
-            return Set<T>().FromSql(queryText);
+            return Set<T>().FromSqlRaw(queryText);
         }
 
         public IQueryable<T> RawFromSql<T>(string queryText, params object[] parameters) where T : class
         {
-            return Set<T>().FromSql(queryText, parameters);
+            return Set<T>().FromSqlRaw(queryText, parameters);
         }
 
         public QueryFilterProvider Filters => _filterProviderInitializer.Value;

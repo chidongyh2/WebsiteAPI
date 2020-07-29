@@ -1,0 +1,82 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/less/brand.css",
+    "inputFile": "wwwroot/css/less/brand.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/common.css",
+    "inputFile": "wwwroot/css/less/common.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/config.css",
+    "inputFile": "wwwroot/css/less/config.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/footer.css",
+    "inputFile": "wwwroot/css/less/footer.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/header.css",
+    "inputFile": "wwwroot/css/less/header.less"
+  },
+  {
+    "outputFile": "wwwroot/css/less/main.css",
+    "inputFile": "wwwroot/css/less/main.less"
+  },
+  {
+    "outputFile": "wwwroot/lib/slick-1.8.1/slick/slick.es5.js",
+    "inputFile": "wwwroot/lib/slick-1.8.1/slick/slick.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/elevatezoom-plus-master/src/jquery.ez-plus.es5.js",
+    "inputFile": "wwwroot/lib/elevatezoom-plus-master/src/jquery.ez-plus.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/EasyZoom-master/src/easyzoom.es5.js",
+    "inputFile": "wwwroot/lib/EasyZoom-master/src/easyzoom.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-daterangepicker-master/daterangepicker.css",
+    "inputFile": "wwwroot/lib/bootstrap-daterangepicker-master/daterangepicker.scss"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-daterangepicker-master/daterangepicker.es5.js",
+    "inputFile": "wwwroot/lib/bootstrap-daterangepicker-master/daterangepicker.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-daterangepicker-master/moment.es5.js",
+    "inputFile": "wwwroot/lib/bootstrap-daterangepicker-master/moment.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.es5.js",
+    "inputFile": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-datepicker/js/bootstrap-datepicker.vi.min.es5.js",
+    "inputFile": "wwwroot/lib/bootstrap-datepicker/js/bootstrap-datepicker.vi.min.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/moment.es5.js",
+    "inputFile": "wwwroot/lib/moment.js"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-datetimepicker-master/less/_bootstrap-datetimepicker.css",
+    "inputFile": "wwwroot/lib/bootstrap-datetimepicker-master/less/_bootstrap-datetimepicker.less"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-datetimepicker-master/less/bootstrap-datetimepicker-build.css",
+    "inputFile": "wwwroot/lib/bootstrap-datetimepicker-master/less/bootstrap-datetimepicker-build.less"
+  },
+  {
+    "outputFile": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.es5.js",
+    "inputFile": "wwwroot/lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"
+  },
+  {
+    "outputFile": "wwwroot/js/component/box-hotline.component.es5.js",
+    "inputFile": "wwwroot/js/component/box-hotline.component.js"
+  },
+  {
+    "outputFile": "wwwroot/css/less/comment.css",
+    "inputFile": "wwwroot/css/less/comment.less"
+  }
+]

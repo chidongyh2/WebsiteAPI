@@ -20,6 +20,8 @@ namespace GHM.Core.Domain.IRepository
 
         Task<bool> CheckIsSupperAdmin(string userId);
 
+        Task<bool> CheckExist(string userId);
+
         Task<bool> CheckPermission(string userId, int pageId, int permission);
 
         Task<bool> CheckPermission(string userId, List<PagePermission> pagePermissions);

@@ -26,8 +26,5 @@ namespace GHM.FileManagement.Domain.IServices
 
         Task<List<FileViewModel>> GetsAll(string tenantId, string userId, int? folderId);
 
-        Task<SearchResult<FileViewModel>> Search(string tenantId, string userId, string keyword, int page,
-            int pageSize);
-
     }
 }

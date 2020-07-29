@@ -11,5 +11,6 @@
         public string MetaDescription { get; set; }
         public string SeoLink { get; set; }
         public int ChildCount { get; set; }
+        public string BannerImage { get; set; }
     }
 }

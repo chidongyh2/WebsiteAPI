@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GHM.Website.Domain.Models
 {
-  public  class CoreValue
+    public class CoreValue
     {
         public string Id { get; set; }
 
@@ -14,6 +14,8 @@ namespace GHM.Website.Domain.Models
         public bool IsDelete { get; set; }
 
         public int Order { get; set; }
+        public string Image { get; set; }
+        public string Url { get; set; }
 
         public string ConcurrencyStamp { get; set; }
 

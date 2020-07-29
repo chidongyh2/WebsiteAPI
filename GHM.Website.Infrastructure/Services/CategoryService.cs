@@ -21,16 +21,18 @@ namespace GHM.Website.Infrastructure.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoriesNewsRepository _categoriesNewsRepository;
         private readonly ICategoryTranslationRepository _categoryTranslationRepository;
         private readonly IMenuItemRepository _menuItemRepository;
         private readonly IResourceService<SharedResource> _sharedResourceService;
         private readonly IResourceService<GhmWebsiteResource> _resourceService;
 
-        public CategoryService(ICategoryRepository categoryRepository, ICategoryTranslationRepository categoryTranslationRepository,
+        public CategoryService(ICategoryRepository categoryRepository, ICategoriesNewsRepository categoriesNewsRepository, ICategoryTranslationRepository categoryTranslationRepository,
             IResourceService<SharedResource> sharedResourceService, IResourceService<GhmWebsiteResource> resourceService,
             IMenuItemRepository menuItemRepository)
         {
             _categoryRepository = categoryRepository;
+            _categoriesNewsRepository = categoriesNewsRepository;
             _categoryTranslationRepository = categoryTranslationRepository;
             _sharedResourceService = sharedResourceService;
             _resourceService = resourceService;
@@ -46,6 +48,7 @@ namespace GHM.Website.Infrastructure.Services
                 CreatorId = categoryMeta.CreatorId,
                 CreatorFullName = categoryMeta.CreatorFullName,
                 IsActive = categoryMeta.IsActive,
+                BannerImage = categoryMeta.BannerImage,
                 IdPath = "-1",
                 IsHomePage = categoryMeta.IsHomePage,
                 CreatorAvatar = categoryMeta.CreatorAvatar,
@@ -129,6 +132,7 @@ namespace GHM.Website.Infrastructure.Services
             info.OrderPath = categoryMeta.Order.ToString();
             info.ConcurrencyStamp = Guid.NewGuid().ToString();
             info.LastUpdate = DateTime.Now;
+            info.BannerImage = categoryMeta.BannerImage;
             info.IsHomePage = categoryMeta.IsHomePage;
             if (info.ParentId != categoryMeta.ParentId)
             {
@@ -245,12 +249,14 @@ namespace GHM.Website.Infrastructure.Services
         public async Task<ActionResultResponse> Delete(string tenantId, int id)
         {
             // Check exists in news.
+            var isExistsInnews = await _categoriesNewsRepository.CheckExistsByCategoryId(id);
+            if (isExistsInnews)
+                return new ActionResultResponse(-1, _resourceService.GetString("Category are being used by news. You can not delete this category."));
 
             // Check exists in menu.
-            var isExistsInMenu =
-                await _menuItemRepository.CheckExistsBySubjectId(id.ToString(), SubjectType.NewsCategory);
+            var isExistsInMenu =await _menuItemRepository.CheckExistsBySubjectId(id.ToString(), SubjectType.NewsCategory);
             if (isExistsInMenu)
-                return new ActionResultResponse(-1, _resourceService.GetString("Category are being used by news. You can not delete this category."));
+                return new ActionResultResponse(-1, _resourceService.GetString("Category are being used by menus. You can not delete this category."));
 
             var result = await _categoryRepository.Delete(tenantId, id);
             if (result <= 0)
@@ -310,6 +316,7 @@ namespace GHM.Website.Infrastructure.Services
                 ConcurrencyStamp = categoryInfo.ConcurrencyStamp,
                 IsActive = categoryInfo.IsActive,
                 Order = categoryInfo.Order,
+                BannerImage = categoryInfo.BannerImage,
                 IsHomePage = categoryInfo.IsHomePage,
                 CategoryTranslations = await _categoryTranslationRepository.GetByCategoryId(id)
             };
@@ -434,6 +441,22 @@ namespace GHM.Website.Infrastructure.Services
                     SeoLink = categoryTranslationMeta.SeoLink
                 }
             };
+        }
+
+        public async Task<SearchResult<CategorySearchForSelectViewModel>> GetCategoryHomePage(string tenantId, string languageId)
+        {
+            var items = await _categoryRepository.SearchForHomePage(tenantId, languageId);
+
+            return new SearchResult<CategorySearchForSelectViewModel>
+            {
+                Code = 1,
+                Items = items
+            };
+        }
+
+        public async Task<bool> CheckExistForClient(string tenantId, string seoLink, string languageId)
+        {
+            return await _categoryTranslationRepository.CheckExistsBySeoLink(tenantId, seoLink, languageId);
         }
         #endregion
     }

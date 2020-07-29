@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace GHM.Website.Event.Api
 {
@@ -55,11 +56,11 @@ namespace GHM.Website.Event.Api
                 options.ModelBinderProviders.Insert(0, new DateTimeModelBinderProvider());
             })
                 .AddAuthorization()
-                .AddJsonFormatters()
-                 .AddJsonOptions(options =>
-                 {
-                     options.SerializerSettings.DateFormatString = "dd/MM/yyyy hh:mm:ss";
-                 })
+                .AddJsonOptions(opts =>
+                {
+                    opts.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+                    opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                })
                 .AddFluentValidation();
 
             services.AddMemoryCache();
@@ -73,7 +74,7 @@ namespace GHM.Website.Event.Api
                     options.ApiName = "GHM_Event_Api";
                 });
 
-            services.AddDbContext<WebsiteEventDbContext>(options =>
+            services.AddDbContextPool<WebsiteEventDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("WebsiteEventConnectionString"));
             });
@@ -91,17 +92,9 @@ namespace GHM.Website.Event.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseHsts();
-                app.UseHttpsRedirection();
-            }
+            app.UseHttpsRedirection();
 
             app.UseDeveloperExceptionPage();
 
@@ -137,11 +130,14 @@ namespace GHM.Website.Event.Api
                 builder.AllowCredentials();
             });
 
-            #endregion
-
-            //app.UseMvc();            
+            #endregion      
+            app.UseRouting();
             app.UseAuthentication();
-            app.UseMvcWithDefaultRoute();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

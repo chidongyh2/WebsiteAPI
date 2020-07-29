@@ -5,13 +5,13 @@
     var listMenuItem = ViewBag.FooterMenuNav as List<MenuItemViewModel>;
     var listBrand = ViewBag.ListBrands as List<BrandSearchViewModel>;
 }
-<footer id="footer">
+<footer id="footer" class="lazy" data-src="/images/bgr web/trang chu/image-04.jpg">
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
                 <div class="logo">
                     <a href="/" title="@websiteSetting?.Brand">
-                        <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? websiteSetting.Logo : "/images/Trang chu/Logo ABC tren-duoi.png" )"
+                        <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? $"{ViewBag.Url}{websiteSetting.Logo}" : "/images/Trang chu/Logo ABC tren-duoi.png" )"
                              alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) ? websiteSetting?.Brand : ViewBag.Title)"
                              onerror="this.src='/images/no-image.png'" />
                     </a>
@@ -52,7 +52,7 @@
                                             case ContactType.Email:
                                                 <li class="">
                                                     <i class="fa fa-envelope"></i>
-                                                    <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a> 
+                                                    <a href="mailto:@branchItem.ContactValue">@branchItem.ContactValue</a>
                                                 </li>
                                                 break;
                                             case ContactType.HomePhone:
@@ -93,8 +93,8 @@
                                                 @if (!string.IsNullOrEmpty(socialNetWork.Icon))
                                                 {
                                                     @*<img data-src="@($"/image?url={(string.IsNullOrEmpty(socialNetWork.Image) ? "/images/no-image.png" : socialNetWork.Image)}&width=20&height=20&type=1")"
-                                                         alt="@socialNetWork.Name"
-                                                         class="lazy" />*@
+                                                        alt="@socialNetWork.Name"
+                                                        class="lazy" />*@
                                                     <i class="fa @socialNetWork.Icon"></i>
                                                 }
                                             </a>
@@ -183,7 +183,7 @@
                 {
                     <div class="list-items">
                         <a href="@item.Website" title="@item.Name">
-                            <img data-src="@($"/image?url={(string.IsNullOrEmpty(item.Logo) ? "/images/no-image.png" : item.Logo)}&width=80&height=80&type=1")"
+                            <img data-src="@($"/image?url={(string.IsNullOrEmpty(item.Logo) ? "/images/no-image.png" : $"{ViewBag.Url}{item.Logo}")}&width=80&height=80&type=1")"
                                  alt="@item.Name"
                                  class="lazy" />
                         </a>

@@ -1,18 +1,100 @@
-version: '3'
+version: '3.4'
 
 services:
-  ghm.authentication:
+  filemanagement-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+      - website-network
     ports:
-      - "80"
-  ghm.core.api:
+      - "50005:80"
+
+  apigateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+      - website-network
     ports:
-      - "80"
+      - "50008:80"
+
+
+  authentication:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+      - website-network
+    ports:
+      - "50000:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+
+  core-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+      - website-network
+    ports:
+      - "50001:80"
+
+  website-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+      - website-network
+    ports:
+      - "50002:80"
+
+  notifications-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+      - website-network
+    ports:
+      - "50004:80"
+
+  website-nelly:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+      - website-network
+    ports:
+      - "9200:80"
+
+  website-event-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+      - website-network
+    ports:
+      - "50003:80"
+
+  warehouse-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+      - website-network
+    ports:
+      - "50009:80"
+  
+  rabbitmq:
+    ports:
+      - "15673:15672"
+      - "5672:5672"
+
 networks:
-  default:
-    external:
-      name: nat
+  website-network:
+    external: true
+
+
+
 

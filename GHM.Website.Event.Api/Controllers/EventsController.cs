@@ -294,9 +294,6 @@ namespace GHM.Website.Event.Api.Controllers
         public async Task<IActionResult> SearchAlbum(string id, int page = 1, int pageSize = 20)
         {
             var result = await _eventAlbumService.Search(CurrentUser.TenantId, id, CultureInfo.CurrentCulture.Name, page, pageSize);
-            if (result.Code <= 0)
-                return BadRequest(result);
-
             return Ok(result);
         }
 

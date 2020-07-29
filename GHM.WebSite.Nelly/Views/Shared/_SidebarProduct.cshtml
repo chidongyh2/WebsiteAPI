@@ -1,0 +1,57 @@
+﻿@using System.Globalization
+@{
+    var listPoductHot = ViewBag.ListProductHot as List<ProductSearchViewModel>;
+    var listProductCategory = ViewBag.ListProductCategory as List<ProductCategorySearchViewModel>;
+    var url = ViewBag.Url;
+    var culture = new CultureInfo("en-US");
+}
+
+<div class="sidebar-product">
+    <form action="/san-pham/tim-kiem.html">
+        <div class="form-search">
+            <div class="input-group">
+                <input class="form-control" name="keyword" value="@ViewBag.Keyword" placeholder="Nhập tên hoặc mã sản phẩm" />
+                <span class="input-group-btn">
+                    <button class="btn btn-primary">
+                        <i class="la la-angle-right"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </form>
+    @if (listProductCategory != null && listProductCategory.Any())
+    {
+        <partial name="_ProductCategoryMenuItem" />
+    }
+
+    @if (listPoductHot != null)
+    {
+        <div class="product-replationship">
+            <h3 class="title-sidebar">Sản phẩm nổi bật</h3>
+            <ul class="list-products">
+                @foreach (var product in listPoductHot)
+                {
+                    <li>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="@($"/san-pham/{product.SeoLink}.htm")" title="@product.Name">
+                                    <img class="product-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(product.Thumbnail) ? "/images/no-image.png" : $"{url}{product.Thumbnail}")}&width=160&height=120")" onerror="this.onerror = null;this.src='/images/no-image.png'" alt="@(string.IsNullOrEmpty(product.Name) ? product.Name : product.Name)" />
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <a class="Name" href="@($"/san-pham/{product.SeoLink}.htm")" title="@product.Name">@Common.SubString(product.Name, 40)</a>
+                                @*<div class="star">
+                                    @for (var i = 1; i <= 5; i++)
+                                    {
+                                        <i class="la la-star yellow"></i>
+                                    }
+                                </div>*@
+                                <div class="price">@product.SalePrice?.ToString("N0", culture) <span>đ</span></div>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>

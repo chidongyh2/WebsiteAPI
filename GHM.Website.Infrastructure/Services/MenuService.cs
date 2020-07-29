@@ -15,6 +15,8 @@ using GHM.Infrastructure.Models;
 using GHM.Infrastructure.Resources;
 using GHM.Infrastructure.ViewModels;
 using GHM.Website.Domain.Constants;
+using GHM.Infrastructure.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace GHM.Website.Infrastructure.Services
 {
@@ -27,13 +29,15 @@ namespace GHM.Website.Infrastructure.Services
         private readonly IResourceService<SharedResource> _sharedResourceService;
         private readonly INewsTranslationRepository _newsTranslationRepository;
         private readonly IResourceService<GhmWebsiteResource> _websiteResourceService;
+        private readonly IConfiguration _configuration;
         public MenuService(IMenuRepository menuRepository,
             IMenuItemRepository menuItemRepository,
             IMenuItemTranslationRepository menuItemTranslationRepository,
             ICategoryTranslationRepository categoryTranslationRepositoryRepository,
             INewsTranslationRepository newsTranslationRepository,
             IResourceService<SharedResource> sharedResourceService,
-            IResourceService<GhmWebsiteResource> websiteResourceService
+            IResourceService<GhmWebsiteResource> websiteResourceService,
+            IConfiguration configuration
         )
         {
             _menuRepository = menuRepository;
@@ -43,6 +47,7 @@ namespace GHM.Website.Infrastructure.Services
             _sharedResourceService = sharedResourceService;
             _websiteResourceService = websiteResourceService;
             _newsTranslationRepository = newsTranslationRepository;
+            _configuration = configuration;
         }
 
         #region Menus
@@ -169,6 +174,7 @@ namespace GHM.Website.Infrastructure.Services
                 Position = info.Position,
                 ConcurrencyStamp = info.ConcurrencyStamp,
             };
+
             return new ActionResultResponse<MenuDetailViewModel>
             {
                 Code = 1,
@@ -260,7 +266,7 @@ namespace GHM.Website.Infrastructure.Services
                     var menuItem = new MenuItem
                     {
                         MenuId = menuId,
-                        SubjectId = menuItemMeta.SubjectId,
+                        SubjectId = menuItemSelect.Id,
                         SubjectType = menuItemMeta.SubjectType,
                         Icon = menuItemSelect.Icon,
                         Image = menuItemSelect.Image,
@@ -311,8 +317,13 @@ namespace GHM.Website.Infrastructure.Services
                         var childCount = await _menuItemRepository.GetChildCount(menuItem.ParentId.Value);
                         await _menuItemRepository.UpdateChildCount(menuItem.ParentId.Value, childCount);
                     }
-                    #endregion
 
+                    #endregion
+                    var apiUrls = _configuration.GetApiUrl();
+                    if (apiUrls == null)
+                        return new ActionResultResponse<int>(-1, _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
+
+                    var httpClient = new HttpClientService();
                     #region insert MenuItem Translation ItemSelect.
                     switch (menuItemMeta.SubjectType)
                     {
@@ -357,7 +368,46 @@ namespace GHM.Website.Infrastructure.Services
                                     return resultInsertTranslation;
                             }
                             break;
+                        case SubjectType.Product:
+                            var listProductTranslation = await httpClient.GetAsync<List<ProductTranslationViewModel>>($"{apiUrls.WarehouseApiUrl}/products-management/translation/{tenantId}/{menuItemSelect.Id}");
+                            var listMenuItemTranslationProduct = new List<MenuItemTranslationMeta>();
+                            if (listProductTranslation != null && listProductTranslation.Any())
+                            {
+                                foreach (var productTranslationItem in listProductTranslation)
+                                {
+                                    listMenuItemTranslationProduct.Add(new MenuItemTranslationMeta
+                                    {
+                                        LanguageId = productTranslationItem.LanguageId,
+                                        Name = productTranslationItem.Name,
+                                        NamePath = $"san-pham/{productTranslationItem.SeoLink}.htm",
+                                    });
+                                }
 
+                                var resultInsertTranslation = await InsertMenuItemTranslation(menuItem, listMenuItemTranslationProduct);
+                                if (resultInsertTranslation.Code <= 0)
+                                    return resultInsertTranslation;
+                            }
+                            break;
+                        case SubjectType.ProductCategory:
+                            var productCategoryDetail = await httpClient.GetAsync<ActionResultResponse<ProductCategoryDetailViewModel>>($"{apiUrls.WarehouseApiUrl}/product-categories/{tenantId}/{menuItemSelect.Id}"); ;
+                            var listMenuItemProductCategoryTranslationInsert = new List<MenuItemTranslationMeta>();
+                            if (productCategoryDetail != null && productCategoryDetail.Data.Translations.Any())
+                            {
+                                foreach (var menuItemTranslation in productCategoryDetail.Data.Translations)
+                                {
+                                    listMenuItemProductCategoryTranslationInsert.Add(new MenuItemTranslationMeta
+                                    {
+                                        LanguageId = menuItemTranslation.LanguageId,
+                                        Name = menuItemTranslation.Name,
+                                        NamePath = $"{menuItemTranslation.SeoLink}.htm",
+                                    });
+                                }
+
+                                var resultInsertTranslation = await InsertMenuItemTranslation(menuItem, listMenuItemProductCategoryTranslationInsert);
+                                if (resultInsertTranslation.Code <= 0)
+                                    return resultInsertTranslation;
+                            }
+                            break;
                     }
                     #endregion
                 }
@@ -529,6 +579,116 @@ namespace GHM.Website.Infrastructure.Services
             var childCountid = await _menuItemRepository.GetChildCount(menuItemInfo.Id);
             await _menuItemRepository.UpdateChildCount(menuItemInfo.Id, childCountid);
 
+            #region insert MenuItem Translation ItemSelect.
+            //switch (menuItemMeta.SubjectType)
+            //{
+            //    case SubjectType.News:
+
+            //        var listMenuItemTranslationInsert = new List<MenuItemTranslationMeta>();
+            //        if (menuItemMeta.ListMenuItemSelected != null && menuItemMeta.ListMenuItemSelected.Any())
+            //        {
+            //            foreach (var menuItem in menuItemMeta.ListMenuItemSelected)
+            //            {
+            //                var checkMenuExistBySubjectId = await _menuItemRepository.CheckExistsBySubjectId(tenantId, menuItem.Id, SubjectType.News, menuId);
+            //                if(!checkMenuExistBySubjectId)
+            //                {
+            //                    var listNewsTranslation = await _newsTranslationRepository.GetInfo(menuItem.Id, menuItem.LanguageId, true);
+            //                    var menuItemInsert = new MenuItem();
+            //                    menuItemInsert.MenuId = menuId;
+            //                    menuItemInsert.SubjectId = menuItem.Id;
+            //                    menuItemInsert.Icon = menuItem.Icon;
+            //                    menuItemInsert.Image = menuItem.Image;
+            //                    menuItemInsert.IsActive = menuItemMeta.IsActive;
+            //                    menuItemInsert.ParentId = menuItemInfo.ParentId;
+            //                    menuItemInsert.IdPath = menuItemInfo.IdPath.Replace(menuItemInfo.Id.ToString(), menuItemInsert.Id.ToString());
+            //                    menuItemInsert.Url = listNewsTranslation.SeoLink;
+            //                    menuItemInsert.Order = menuItemMeta.Order;
+            //                    menuItemInsert.OrderPath = menuItemInfo.OrderPath.Replace(menuItem.Order.ToString(), menuItemMeta.Order.ToString());
+            //                    menuItemInsert.Level = menuItemInfo.Level;
+            //                    menuItemInsert.ChildCount = menuItemInfo.ChildCount;
+            //                    menuItemInsert.CreatorId = lastUpdateUserId;
+            //                    menuItemInsert.CreatorFullName = lastUpdateFullName;
+            //                    var insertMenu = await _menuItemRepository.Insert(menuItemInsert);
+
+            //                    var listNewsTranslation = await _newsTranslationRepository.GetByNewsId(menuItemMeta.ListMenuItemSelected);
+            //                    listMenuItemTranslationInsert.Add(new MenuItemTranslationMeta
+            //                    {
+            //                        LanguageId = menuItemTranslation.LanguageId,
+            //                        Name = menuItemTranslation.Title,
+            //                        NamePath = $"{menuItemTranslation.SeoLink}.html",
+            //                    });
+            //                }
+
+            //            }
+
+            //            var resultInsertTranslation = await InsertMenuItemTranslation(menuItem, listMenuItemTranslationInsert);
+            //            if (resultInsertTranslation.Code <= 0)
+            //                return resultInsertTranslation;
+            //        }
+            //        break;
+
+            //    case SubjectType.NewsCategory:
+            //        var listCategoryTranslation = await _categoryTranslationRepositoryRepository.GetByCategoryId(int.Parse(menuItemSelect.Id));
+            //        var listMenuItemTranslationCategoryInsert = new List<MenuItemTranslationMeta>();
+            //        if (listCategoryTranslation != null && listCategoryTranslation.Any())
+            //        {
+            //            foreach (var menuItemTranslation in listCategoryTranslation)
+            //            {
+            //                listMenuItemTranslationCategoryInsert.Add(new MenuItemTranslationMeta
+            //                {
+            //                    LanguageId = menuItemTranslation.LanguageId,
+            //                    Name = menuItemTranslation.Name,
+            //                    NamePath = menuItemTranslation.SeoLink,
+            //                });
+            //            }
+
+            //            var resultInsertTranslation = await InsertMenuItemTranslation(menuItem, listMenuItemTranslationCategoryInsert);
+            //            if (resultInsertTranslation.Code <= 0)
+            //                return resultInsertTranslation;
+            //        }
+            //        break;
+            //    case SubjectType.Product:
+            //        var listProductTranslation = await httpClient.GetAsync<List<ProductTranslationViewModel>>($"{apiUrls.WarehouseApiUrl}/products/translation/{menuItem.Id}");
+            //        var listMenuItemTranslationProduct = new List<MenuItemTranslationMeta>();
+            //        if (listProductTranslation != null && listProductTranslation.Any())
+            //        {
+            //            foreach (var productTranslationItem in listProductTranslation)
+            //            {
+            //                listMenuItemTranslationProduct.Add(new MenuItemTranslationMeta
+            //                {
+            //                    LanguageId = productTranslationItem.LanguageId,
+            //                    Name = productTranslationItem.Name,
+            //                    NamePath = $"{productTranslationItem.SeoLink}.html",
+            //                });
+            //            }
+
+            //            var resultInsertTranslation = await InsertMenuItemTranslation(menuItem, listMenuItemTranslationProduct);
+            //            if (resultInsertTranslation.Code <= 0)
+            //                return resultInsertTranslation;
+            //        }
+            //        break;
+            //    case SubjectType.ProductCategory:
+            //        var listProductCategoryTranslation = await httpClient.GetAsync<List<ProductTranslationViewModel>>($"{apiUrls.WarehouseApiUrl}/product-categories/{menuItem.Id}, true, 1, 10000"); ;
+            //        var listMenuItemProductCategoryTranslationInsert = new List<MenuItemTranslationMeta>();
+            //        if (listProductCategoryTranslation != null && listProductCategoryTranslation.Any())
+            //        {
+            //            foreach (var menuItemTranslation in listProductCategoryTranslation)
+            //            {
+            //                listMenuItemProductCategoryTranslationInsert.Add(new MenuItemTranslationMeta
+            //                {
+            //                    LanguageId = menuItemTranslation.LanguageId,
+            //                    Name = menuItemTranslation.Name,
+            //                    NamePath = menuItemTranslation.SeoLink,
+            //                });
+            //            }
+
+            //            var resultInsertTranslation = await InsertMenuItemTranslation(menuItem, listMenuItemProductCategoryTranslationInsert);
+            //            if (resultInsertTranslation.Code <= 0)
+            //                return resultInsertTranslation;
+            //        }
+            //        break;
+            //}
+            #endregion
             // Update menu item translation.
             var resultUpdateTranslation = await UpdateMenuItemTranslation();
             return new ActionResultResponse(resultUpdateTranslation.Code <= 0
@@ -709,7 +869,6 @@ namespace GHM.Website.Infrastructure.Services
                 ChildCount = menuItemInfo.ChildCount,
                 MenuItemTranslations = await _menuItemTranslationRepository.GetsByMenuItemId(menuItemInfo.Id)
             };
-
             return new ActionResultResponse<MenuItemDetailViewModel>
             {
                 Code = 1,
@@ -780,7 +939,7 @@ namespace GHM.Website.Infrastructure.Services
 
         public async Task<List<MenuItemSearchViewModel>> GetAllActivatedMenuItem(string tenantId, string languageId, string menuId)
         {
-            return await _menuItemRepository.GetAllActivatedMenuItem(tenantId, menuId, languageId);
+            return await _menuItemRepository.GetAllActivatedMenuItemForClient(tenantId, menuId, languageId);
         }
 
         public async Task<List<MenuItemSearchViewModel>> GetAllActivatedMenuItemByPosition(string tenantId, string languageId, Position position)
@@ -789,7 +948,7 @@ namespace GHM.Website.Infrastructure.Services
             if (menuInfo == null)
                 return null;
 
-            return await _menuItemRepository.GetAllActivatedMenuItem(tenantId, menuInfo.Id, languageId);
+            return await _menuItemRepository.GetAllActivatedMenuItemForClient(tenantId, menuInfo.Id, languageId);
         }
         #endregion MenuItems
 
@@ -802,6 +961,81 @@ namespace GHM.Website.Infrastructure.Services
         private async Task RollbackInsertMenuItemTranslation(int menuItemId)
         {
             await _menuItemTranslationRepository.ForceDelete(menuItemId);
+        }
+
+        public async Task<MenuItemViewModel> GetDetailBySeoLink(string tenantId, string seoLink, string languageId)
+        {
+           return  await _menuItemTranslationRepository.GetInfoBySeoLink(tenantId, seoLink, languageId);
+        }
+
+        public async Task<MenuDetailViewModel> GetAllActivatedMenuByPosition(string tenantId, string languageId, Position position)
+        {
+            var menuInfo = await _menuRepository.GetInfoByPosition(tenantId, position);
+
+            if (menuInfo == null)
+                return null;
+            var listMenuItems = await _menuItemRepository.GetAllActivatedMenuItem(tenantId, menuInfo.Id, languageId);
+
+            return new MenuDetailViewModel
+            {
+                Id = menuInfo.Id,
+                Position = menuInfo.Position,
+                ConcurrencyStamp = menuInfo.ConcurrencyStamp,
+                Description = menuInfo.Description,
+                EffectType = menuInfo.EffectType,
+                Icon = menuInfo.Icon,
+                Name = menuInfo.Name,
+                Order = menuInfo.Order,
+                IsActive = menuInfo.IsActive,
+                MenuItems = listMenuItems
+            };
+        }
+
+        public async Task<ActionResultResponse<MenuItemSelectedViewModel>> ItemSelected(string tenantId, int subjectType, string subjectId, string languageId)
+        {
+            if ((SubjectType)subjectType == SubjectType.News)
+            {
+                var item = await _newsTranslationRepository.GetNewsDetailForMenu(tenantId, subjectId, languageId, true);
+                if (item == null)
+                    return new ActionResultResponse<MenuItemSelectedViewModel>(-1, _websiteResourceService.GetString("News does not exist"));
+                return new ActionResultResponse<MenuItemSelectedViewModel>
+                {
+                    Code = 1,
+                    Data = item
+                };
+            }
+            else if ((SubjectType)subjectType == SubjectType.NewsCategory)
+            {
+                var item = await _categoryTranslationRepositoryRepository.GetCategoryDetailForMenu(tenantId, subjectId, languageId, true);
+                if (item == null)
+                    return new ActionResultResponse<MenuItemSelectedViewModel>(-1, _websiteResourceService.GetString("Category does not exist"));
+
+                return new ActionResultResponse<MenuItemSelectedViewModel>
+                {
+                    Code = 1,
+                    Data = item
+                };
+            }
+            else
+            {
+                return new ActionResultResponse<MenuItemSelectedViewModel>
+                {
+                    Code = -1,
+                    Message = _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong)
+                };
+            }
+        }
+
+        public async Task<ActionResultResponse<bool>> CheckExistBySubJectId(string tenantId, string id, SubjectType subjectType)
+        {
+            var isExistsInMenu =
+                await _menuItemRepository.CheckExistsBySubjectId(id.ToString(), subjectType);
+
+            return isExistsInMenu ? new ActionResultResponse<bool>(-5, _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong)) : new ActionResultResponse<bool>
+            {
+                Code = 1,
+                Data = isExistsInMenu
+            };
         }
         #endregion
 

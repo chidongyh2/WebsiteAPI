@@ -193,6 +193,14 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
+        [Route("getNewsRelatedByParentCategoryId/{tenantId}/{id}/{languageId?}/{page}/{pageSize}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetNewsRelatedByParentCategoryId(string tenantId, int id, string languageId, int page = 1 , int pageSize = 5)
+        {
+            var result = await _newsService.GetNewsRelatedByParentCategoryId(tenantId, id, languageId ?? CultureInfo.CurrentCulture.Name, page, pageSize);
+            return Ok(result);
+        }
+
         /// <summary>
         /// Lấy ra số tin túc liên quan
         /// </summary>
@@ -209,6 +217,14 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
+
+        //[Route("related-by-category/{tenantId}/{categoryId}/{selectTop}/{languageId?}"), AcceptVerbs("GET")]
+        //[CheckPermission]
+        //public async Task<IActionResult> GetListTopNewsRelatedByCategoryId(string tenantId, string seoLink, int selectTop, string languageId)
+        //{
+        //    var result = await _newsService.GetListTopNewsRelatedByCategoryId(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, categoryId, selectTop);
+        //    return Ok(result);
+        //}
         /// <summary>
         /// Lấy tin tức theo loại tin tức
         /// </summary>
@@ -218,15 +234,37 @@ namespace GHM.Website.Api.Controllers
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        [Route("category/{tenantId}/{seoLink}/{page}/{pageSize}/{languageId?}"), AcceptVerbs("GET")]
+        [Route("getNewsByCategory/{tenantId}/{seoLink}/{page}/{pageSize}/{languageId?}"), AcceptVerbs("GET")]
         [CheckPermission]
-        public async Task<IActionResult> GetNewsByCategoryId(string tenantId, string seoLink, string languageId,
+        public async Task<IActionResult> GetNewsByCategorySeoLink(string tenantId, string seoLink, string languageId,
             int page = 1, int pageSize = 20)
         {
-            var result = await _newsService.GetNewsByCategoryId(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, page, pageSize);
+            var result = await _newsService.GetNewsByCategorySeoLink(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, page, pageSize);
             return Ok(result);
         }
-
+        [Route("category/{tenantId}/{seoLink}/{page}/{pageSize}/{languageId?}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetNewsByCategorySeoLink2(string tenantId, string seoLink, string languageId,
+          int page = 1, int pageSize = 20)
+        {
+            var result = await _newsService.GetNewsByCategorySeoLink(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, page, pageSize);
+            return Ok(result);
+        }
+        [Route("getNewsRelatedById/{tenantId}/{NewsId}/{languageId}/{page}/{pageSize}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetNewsRelatedById(string tenantId, string newsId, string languageId, int page = 1, int pageSize = 20)
+        {
+            var result = await _newsService.GetNewsRelatedById(tenantId, newsId, languageId ?? CultureInfo.CurrentCulture.Name, page, pageSize);
+            return Ok(result);
+        }
+        [Route("getNewsByCategoryById/{tenantId}/{categoryId}/{page}/{pageSize}/{languageId?}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetNewsByCategoryId(string tenantId, string categoryId, string languageId,
+           int page = 1, int pageSize = 12)
+        {
+            var result = await _newsService.GetNewsByCategoryIdAsync(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, categoryId, page, pageSize);
+            return Ok(result);
+        }
         /// <summary>
         ///  Lấy chi tiết tin tức theo seo link
         /// </summary>
@@ -267,18 +305,88 @@ namespace GHM.Website.Api.Controllers
         [CheckPermission]
         public async Task<IActionResult> GetListNewsHomePage(string tenantId, string languageId, int selectTop = 5)
         {
-            var result = await _newsService.GetCategoryWidthNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, string.Empty, selectTop, true, false);
+            var result = await _newsService.GetListCategoryWidthNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, string.Empty, selectTop, true, false);
             return Ok(result);
         }
-        
+
+        /// <summary>
+        /// Lấy nhiều nhóm bài viết và danh sách bài viết theo nhóm
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="languageId"></param>
+        /// <param name="seoLink"></param>
+        /// <param name="selectTop"></param>
+        /// <returns></returns>
+        [Route("get-list-category-width-news/{tenantId}/{seoLink}/{selectTop}/{languageId?}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetListCategoryWidthNews(string tenantId, string languageId, string seoLink, int selectTop = 5)
+        {
+            var result = await _newsService.GetListCategoryWidthNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, selectTop, false, true);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Lấy một nhóm bài viết và danh sách bài viết
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="languageId"></param>
+        /// <param name="seoLink"></param>
+        /// <param name="selectTop"></param>
+        /// <returns></returns>
         [Route("get-news-width-parent-category/{tenantId}/{seoLink}/{selectTop}/{languageId?}"), AcceptVerbs("GET")]
         [CheckPermission]
         public async Task<IActionResult> GetNewsWidthParentCategory(string tenantId, string languageId, string seoLink, int selectTop = 5)
         {
-            var result = await _newsService.GetCategoryWidthNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, selectTop, false, true);
+            var result = await _newsService.GetCategoryWithNews(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, seoLink, selectTop, false, true);
+            return Ok(result);
+        }
+        
+        /// <summary>
+        ///  Lấy chi  tiết bài viết theo Id
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="subjectId"></param>
+        /// <param name="languageId"></param>
+        /// <returns></returns>
+        [Route("detail/{tenantId}/{subjectId}/{languageId}"), AcceptVerbs("GET")]
+        [CheckPermission]
+        public async Task<IActionResult> GetNewsDetail(string tenantId, string subjectId, string languageId)
+        {
+            var result = await _newsService.GetDetailForClient(tenantId, subjectId, languageId ?? CultureInfo.CurrentCulture.Name);
             return Ok(result);
         }
 
+        //get for Jadespa
+        [Route("get-detail-frombody"), AcceptVerbs("POST")]
+        [CheckPermission]
+        public async Task<IActionResult> GetNewsDetailFromBody(CategoryClientMeta newsClientMeta)
+        {
+            var result = await _newsService.GetClient(newsClientMeta.TenantId, newsClientMeta.LanguageId ?? CultureInfo.CurrentCulture.Name, newsClientMeta.SeoLink);
+            return Ok(result);
+        }
+
+        /// <summary>
+        ///  Kiểm tra bài viết có tồn taị
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="seoLink"></param>
+        /// <param name="languageId"></param>
+        /// <returns></returns>
+        [Route("check-exist"), AcceptVerbs("POST")]
+        [CheckPermission]
+        public async Task<IActionResult> CheckNewsExistBySeoLink(string tenantId, string seoLink, string languageId)
+        {
+            var result = await _newsService.CheckNewsExistBySeoLink(tenantId, seoLink, languageId);
+            return Ok(result);
+        }
+
+        [Route("updateViewNews/{tenantId}/{newId}/{languageId}"), AcceptVerbs("GET")]
+        public async Task<IActionResult> UpdateViewNews(string tenantId, string newId, string languageId)
+        {
+            var result = await _newsService.UpdateViewNews(tenantId, newId, languageId ?? CultureInfo.CurrentCulture.Name);
+
+            return Ok(result);
+        }
         #endregion
     }
 }

@@ -40,20 +40,20 @@ namespace GHM.Website.ABC.Controllers
             ViewBag.FooterMenuNav = GetFooterMenu();
             var path = $"{Request.Path}";
             var absoluteUri = $"{Request.Host}{Request.Path}";
-            var menuInfo = listManinMenu.Where(x => x.NamePath != null && path == "/" +x.NamePath || x.Url == absoluteUri).FirstOrDefault();
-            var image = menuInfo == null || string.IsNullOrEmpty(menuInfo.Image) ? "https://testfilemanager.ghmsoft.vn/uploads/57da7815-c388-4744-a625-53cc73563cfb/2018/11/26/f01ecf64-6570-46d3-8cb7-1a1c74abbaa6.jpg" : menuInfo.Image;
+            var menuInfo = listManinMenu?.Where(x => x.NamePath != null && path == "/" + x.NamePath || x.Url == absoluteUri)?.FirstOrDefault();
+            var image = menuInfo == null || string.IsNullOrEmpty(menuInfo.Image) ? "uploads/57da7815-c388-4744-a625-53cc73563cfb/2018/11/26/f01ecf64-6570-46d3-8cb7-1a1c74abbaa6.jpg" : menuInfo.Image;
             ViewBag.ImageBanner = image;
-
+            ViewBag.Url = _configuration.GetApiUrl()?.FileUrl;
             ViewBag.ListLanguage = GetLanguage();
             ViewBag.CurrentLanguage = CultureInfo.CurrentCulture.Name;
         }
 
         private List<MenuItemViewModel> GetMainMenu()
         {
-            //if (_cache.TryGetValue(CacheParam.MainNav, out List<MenuItemViewModel> menus))
-            //{
-            //    return menus;
-            //}
+            if (_cache.TryGetValue(CacheParam.MainNav, out List<MenuItemViewModel> menus))
+            {
+                return menus;
+            }
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -68,10 +68,10 @@ namespace GHM.Website.ABC.Controllers
 
         private WebsiteSetting GetSetting()
         {
-            //if (_cache.TryGetValue(CacheParam.Setting, out WebsiteSetting setting))
-            //{
-            //    return setting;
-            //}
+            if (_cache.TryGetValue(CacheParam.Setting, out WebsiteSetting setting))
+            {
+                return setting;
+            }
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -107,10 +107,10 @@ namespace GHM.Website.ABC.Controllers
 
         private List<BranchContactSearchViewModel> GetBranch()
         {
-            //if (_cache.TryGetValue(CacheParam.Branch, out List<BranchContactSearchViewModel> branchs))
-            //{
-            //    return branchs;
-            //}
+            if (_cache.TryGetValue(CacheParam.Branch, out List<BranchContactSearchViewModel> branchs))
+            {
+                return branchs;
+            }
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
@@ -125,10 +125,10 @@ namespace GHM.Website.ABC.Controllers
 
         private List<SocialNetworkViewModel> GetSocialNetwork()
         {
-            //if (_cache.TryGetValue(CacheParam.SocialNetwork, out List<SocialNetworkViewModel> socialNetwork))
-            //{
-            //    return socialNetwork;
-            //}
+            if (_cache.TryGetValue(CacheParam.SocialNetwork, out List<SocialNetworkViewModel> socialNetwork))
+            {
+                return socialNetwork;
+            }
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();
 
@@ -142,10 +142,10 @@ namespace GHM.Website.ABC.Controllers
 
         private List<BrandSearchViewModel> GetAllBrand()
         {
-            //if (_cache.TryGetValue(CacheParam.Brand, out List<BrandSearchViewModel> brands))
-            //{
-            //    return brands;
-            //}
+            if (_cache.TryGetValue(CacheParam.Brand, out List<BrandSearchViewModel> brands))
+            {
+                return brands;
+            }
 
             var requestUrl = _configuration.GetApiUrl();
             var apiService = _configuration.GetApiServiceInfo();

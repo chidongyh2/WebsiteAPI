@@ -77,7 +77,7 @@ namespace GHM.Core.Infrastructure.Services
 
         public async Task<ActionResultResponse> Insert(string tenantId, string userId, ApproverConfigType type)
         {
-            var isApproveConfigExists = await _approverConfigRepository.CheckExistsUserId(userId, type);
+            var isApproveConfigExists = await _approverConfigRepository.CheckExistsUserId(tenantId, userId, type);
             if (isApproveConfigExists)
                 return new ActionResultResponse(-1,
                     _resourceService.GetString("Approver already exists."));

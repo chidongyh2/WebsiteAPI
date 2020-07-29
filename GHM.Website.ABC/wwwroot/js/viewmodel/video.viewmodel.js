@@ -46,6 +46,15 @@ function VideoViewModel() {
             });        
     };
 
+    self.checkUrlVideo = function (text) {
+        console.log(text);
+        if (text.indexOf('uploads/') > -1) {
+            return true;
+        } else {
+            return false;
+        }
+    }; 
+
     self.search = function (value) {
         self.currentPage(value.page);
         self.getVideo(self.seoLink());

@@ -48,10 +48,31 @@ nav .navbar-header {
 nav .navbar-header .navbar-brand {
   padding: 0px 20px;
 }
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  nav .navbar-header .navbar-brand {
+    padding: 0px 10px;
+    margin-top: 10px !important;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  nav .navbar-header .navbar-brand {
+    margin-top: 10px;
+  }
+}
 nav .navbar-header img {
   margin-top: 10px;
   width: 160px;
   height: auto;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  nav .navbar-header img {
+    width: 80px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  nav .navbar-header img {
+    width: 120px;
+  }
 }
 nav .navbar-toggle {
   float: left;
@@ -86,7 +107,12 @@ nav .navbar-collapse ul li a {
 nav #ameiaMainNav {
   padding-left: 30px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  nav #ameiaMainNav {
+    padding-left: 10px;
+  }
+}
+@media only screen and (max-width: 767px) {
   nav #ameiaMainNav .navbar-nav {
     border-top: 1px solid #FFFFFF;
     background-color: #A5AAAE;
@@ -113,9 +139,15 @@ nav #ameiaMainNav ul li a {
   -o-transition: all 100ms ease-in-out;
   transition: all 100ms ease-in-out;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   nav #ameiaMainNav ul li a {
     line-height: 40px;
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  nav #ameiaMainNav ul li a {
+    font-size: 12px;
   }
 }
 nav #ameiaMainNav ul li .selected-nav {
@@ -163,7 +195,7 @@ nav #ameiaMainNav ul ul li a i {
 nav #ameiaMainNav ul ul li a:hover {
   margin-left: 10px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   nav #ameiaMainNav ul ul li a {
     padding-left: 10px;
   }
@@ -189,4 +221,33 @@ nav #ameiaMainNav li:hover > ul {
   nav .navbar-header img {
     /*width: 69%;*/
   }
+}
+#color-finder-link {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 400px;
+  z-index: 9999;
+  right: 0;
+  opacity: 0.7;
+  cursor: pointer;
+  -webkit-box-shadow: -3px 3px 2px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: -3px 3px 2px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: -3px 3px 2px 1px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  padding: 5px 8px;
+  border-radius: 8px;
+  color: white;
+}
+#color-finder-link:hover span {
+  color: lightblue;
+}
+#color-finder-link img {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+#color-finder-link span {
+  color: white;
+  font-size: 16px;
 }

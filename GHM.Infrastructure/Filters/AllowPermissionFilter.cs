@@ -21,37 +21,37 @@ namespace GHM.Infrastructure.Filters
         }
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            var header = context.HttpContext.Request.Headers;
-            header.TryGetValue("Permissions", out var permissionsString);
-            var permissions = new List<PagePermission>();
-            if (!string.IsNullOrEmpty(permissionsString))
-            {
-                permissions = JsonConvert.DeserializeObject<List<PagePermission>>(permissionsString);
-                permissions.Add(new PagePermission(PageId, Permissions));
-            }
-            else
-            {
-                permissions.Add(new PagePermission(PageId, Permissions));
+            //var header = context.HttpContext.Request.Headers;
+            //header.TryGetValue("Permissions", out var permissionsString);
+            //var permissions = new List<PagePermission>();
+            //if (!string.IsNullOrEmpty(permissionsString))
+            //{
+            //    permissions = JsonConvert.DeserializeObject<List<PagePermission>>(permissionsString);
+            //    permissions.Add(new PagePermission(PageId, Permissions));
+            //}
+            //else
+            //{
+            //    permissions.Add(new PagePermission(PageId, Permissions));
 
-            }
-            if (header.ContainsKey("Permissions"))
-            {
-                header.Remove("Permissions");
-                AddHeader();
-            }
-            else
-            {
-                AddHeader();
-            }
+            //}
+            //if (header.ContainsKey("Permissions"))
+            //{
+            //    header.Remove("Permissions");
+            //    AddHeader();
+            //}
+            //else
+            //{
+            //    AddHeader();
+            //}
 
             await next();
 
-            void AddHeader()
-            {
-                header.Add(
-                    new KeyValuePair<string, StringValues>("Permissions", JsonConvert.SerializeObject(permissions)
-                ));
-            }
+            //void AddHeader()
+            //{
+            //    header.Add(
+            //        new KeyValuePair<string, StringValues>("Permissions", JsonConvert.SerializeObject(permissions)
+            //    ));
+            //}
         }
     }
 }

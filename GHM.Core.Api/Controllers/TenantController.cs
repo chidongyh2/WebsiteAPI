@@ -13,7 +13,7 @@ namespace GHM.Core.Api.Controllers
     [Authorize]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]s")]
-    public class TenantController : ControllerBase
+    public class TenantController : GhmControllerBase
     {
         private readonly ITenantService _tenantService;
         private readonly ITenantLanguageService _tenantLanguageService;
@@ -24,10 +24,12 @@ namespace GHM.Core.Api.Controllers
             _tenantLanguageService = tenantLanguageService;
         }
 
+        [AllowPermission(PageId.ConfigTenant, Permission.Insert)]
+        [CheckPermission]
         [AcceptVerbs("POST"), ValidateModel]
         public async Task<IActionResult> Insert([FromBody]TenantMeta tenantMeta)
         {
-            var result = await _tenantService.Insert(tenantMeta);
+            var result = await _tenantService.Insert(CurrentUser.TenantId, tenantMeta);
             if (result.Code <= 0)
                 return BadRequest(result);
             return Ok(result);

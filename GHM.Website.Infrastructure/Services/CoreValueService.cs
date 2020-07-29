@@ -60,6 +60,8 @@ namespace GHM.Website.Infrastructure.Services
                 ConcurrencyStamp = coreValueId,
                 IsActive = coreValueMeta.IsActive,
                 Order = coreValueMeta.Order,
+                Image = coreValueMeta.Image,
+                Url = coreValueMeta.Url,
                 TenantId = tenantId,
                 CreatorId = creatorId,
                 CreatorFullName = creatorFullName
@@ -82,7 +84,6 @@ namespace GHM.Website.Infrastructure.Services
             return new ActionResultResponse<string>(1,
                 _websiteResourceService.GetString("Add new core value successful."),
                 string.Empty, coreValueId);
-
 
             #region Local functions
 
@@ -155,7 +156,8 @@ namespace GHM.Website.Infrastructure.Services
             if (info.ConcurrencyStamp != coreValueMeta.ConcurrencyStamp)
                 return new ActionResultResponse(-3, _websiteResourceService.GetString("The core value already updated by other people. You can not update this core value."));
 
-
+            info.Image = coreValueMeta.Image;
+            info.Url = coreValueMeta.Url;
             info.IsActive = coreValueMeta.IsActive;
             info.Order = coreValueMeta.Order;
             info.ConcurrencyStamp = Guid.NewGuid().ToString();
@@ -245,6 +247,8 @@ namespace GHM.Website.Infrastructure.Services
                 Id = info.Id,
                 IsActive = info.IsActive,
                 Order = info.Order,
+                Image = info.Image,
+                Url = info.Url,
                 ConcurrencyStamp = info.ConcurrencyStamp,
                 //CreateTime = info.CreateTime,
                 //LastUpdate = info.LastUpdate,

@@ -1,115 +1,7 @@
-﻿"use strict";
+﻿'use strict';
 
+var isShowToggle = true;
 $(document).ready(function () {
-    $("#myCarousel").owlCarousel({
-        items: 1,
-        loop: true,
-        autoplay: true,
-        dots: true,
-        stopOnHover: true,
-        lazyLoad: true,
-        center: true,
-        dotsEach: true,
-        navigation: true,
-        animateIn: true,
-        autoplayTimeout: 10000
-    });
-
-    var angencySlider = $("#agencySlider").lightSlider({
-        item: 6,
-        auto: true,
-        loop: true,
-        slideMove: 1,
-        speed: 1500,
-        pause: 3000,
-        slideEndAnimation: false,
-        slideMargin: 10,
-        pauseOnHover: false,
-        controls: true,
-        prevHtml: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
-        nextHtml: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
-        pager: false,
-        responsive: [{
-            breakpoint: 800,
-            settings: {
-                item: 3,
-                slideMove: 1
-            }
-        }, {
-            breakpoint: 480,
-            settings: {
-                item: 3,
-                slideMove: 1
-            }
-        }]
-    });
-
-    var videoSlider = $("#video-silder").lightSlider({
-        item: 4,
-        auto: true,
-        loop: true,
-        slideMove: 1,
-        speed: 1500,
-        pause: 3000,
-        slideEndAnimation: false,
-        slideMargin: 15,
-        pauseOnHover: false,
-        controls: true,
-        prevHtml: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
-        nextHtml: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
-        pager: false,
-        responsive: [{
-            breakpoint: 800,
-            settings: {
-                item: 3,
-                slideMove: 1
-            }
-        }, {
-            breakpoint: 480,
-            settings: {
-                item: 3,
-                slideMove: 1
-            }
-        }]
-    });
-
-    $("#brandSlider").lightSlider({
-        item: 4,
-        auto: true,
-        loop: true,
-        slideMove: 1,
-        speed: 1500,
-        pause: 3000,
-        slideEndAnimation: false,
-        slideMargin: 0,
-        pauseOnHover: false,
-        controls: true,
-        prevHtml: '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
-        nextHtml: '<i class="fa fa-chevron-right" aria-hidden="true"></i>',
-        pager: false,
-        responsive: [{
-            breakpoint: 800,
-            settings: {
-                item: 2,
-                slideMove: 1
-            }
-        }, {
-            breakpoint: 480,
-            settings: {
-                item: 2,
-                slideMove: 1
-            }
-        }]
-    });
-
-    $('.lSAction .lSPrev').click(function () {
-        angencySlider.goToPrevSlide();
-    });
-
-    $('.lSAction .lSNext').click(function () {
-        angencySlider.goToNextSlide();
-    });
-
     $('[data-fancybox="gallery"]').fancybox({
         buttons: ['share', 'fullScreen', 'close'],
         thumbs: {
@@ -117,41 +9,70 @@ $(document).ready(function () {
         }
     });
 
-    $('.lazy').Lazy();
+    $('.lazy').lazy({
+        effect: "fadeIn",
+        effectTime: 1000,
+        visibleOnly: true,
+        beforeLoad: function beforeLoad(element) {
+            $(element).attr("src", "/image?url=&width=640&height=360");
+        },
+        onError: function onError(element) {
+            $(element).attr("src", "/image?url=&width=640&height=360");
+        }
+    });
 
     $("#backToTop").click(function () {
         $("html, body").animate({ scrollTop: 0 }, 500);
     });
 
-    $(window).scroll(function () {
-        var b = $(window).scrollTop();
-        if (b > 100) {
+    $(".navbar-collapse").blur(function () {
+        console.log('blur');
+    });
+
+    $('.navbar-toggle').click(function () {
+        isShowToggle = !isShowToggle;
+        if (!isShowToggle) {
+            $(".navbar-header").removeClass("visible-xs");
+            $(".navbar-header").addClass("hidden-xs");
+
             $(".navbar").addClass("navbar-fixed-top");
             $("#backToTop").css("display", "block");
             $(".header-top").css("display", "none");
+
+            $('.navbar-collapse').css("display", "flex");
+            $('.body-content').attr('style', 'margin-top: 0px !important');
+        }
+    });
+
+    $('#page-surround').click(function () {
+        isShowToggle = true;
+        $(".navbar-header").addClass("visible-xs");
+        $(".navbar-header").removeClass("hidden-xs");
+        $('.navbar-collapse').css("display", "none");
+        $('.navbar-collapse').removeClass("in");
+        $('.body-content').attr('style', 'margin-top: 50px !important');
+    });
+
+    $(window).scroll(function () {
+        var b = $(window).scrollTop();
+        if (b > 150 || $(window).innerWidth() < 768) {
+            $(".navbar").addClass("navbar-fixed-top");
+            $("#backToTop").css("display", "block");
+            $(".header-top").css("display", "none");
+
+            var windowWidth = window.innerWidth;
+            if (windowWidth < 768) {
+                isShowToggle = true;
+                $(".navbar-header").addClass("visible-xs");
+                $(".navbar-header").removeClass("hidden-xs");
+                $('.navbar-collapse').css("display", "none");
+                $('.navbar-collapse').removeClass("in");
+                $('.body-content').attr('style', 'margin-top: 50px !important');
+            }
         } else {
             $(".navbar").removeClass("navbar-fixed-top");
             $("#backToTop").css("display", "none");
             $(".header-top").css("display", "block");
-        }
-    });
-
-    var portfolio = $('.portfolio-item');
-    portfolio.hide();
-
-    var portfolioDefault = $('.' + categoryIdDefault);
-    portfolioDefault.show();
-
-    $(".filter").click(function () {
-        $(".filter").removeClass('active');
-        $(this).addClass('active');
-
-        var dataFilter = $(this).data('filter');
-        if (dataFilter === 'all') {
-            $(".portfolio-item").show();
-        } else {
-            portfolio.hide();
-            $("." + dataFilter).show();
         }
     });
 });

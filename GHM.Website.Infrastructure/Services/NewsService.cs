@@ -20,9 +20,6 @@ using GHM.Website.Domain.Constants;
 using Microsoft.Extensions.Configuration;
 using GHM.Events;
 using GHM.Infrastructure.Helpers;
-using System.Net.Http;
-using Newtonsoft.Json;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 
 namespace GHM.Website.Infrastructure.Services
 {
@@ -394,11 +391,11 @@ namespace GHM.Website.Infrastructure.Services
 
                         if (!string.IsNullOrEmpty(newsTranslation.SeoLink))
                         {
-                            newsTranslationInfo.SeoLink = newsTranslation.SeoLink.ToUrlString();
+                            newsTranslationInfo.SeoLink = newsTranslation.SeoLink.ToPlainText();
                         }
                         else
                         {
-                            newsTranslationInfo.SeoLink = newsTranslation.Title.ToUrlString();
+                            newsTranslationInfo.SeoLink = newsTranslation.Title.ToPlainText();
                         }
 
                         // Check Seolink exists.
@@ -753,9 +750,9 @@ namespace GHM.Website.Infrastructure.Services
             return await _newsRepository.GetListTopNewsHot(tenantId, languageId, selectTop);
         }
 
-        public async Task<SearchResult<NewsSearchClientViewModel>> GetNewsByCategoryId(string tenantId, string languageId, string seoLink, int page, int pageSize)
+        public async Task<SearchResult<NewsSearchClientViewModel>> GetNewsByCategorySeoLink(string tenantId, string languageId, string seoLink, int page, int pageSize)
         {
-            var items = await _newsRepository.GetNewsByCategoryId(tenantId, languageId, seoLink, page, pageSize, out var totalRows);
+            var items = await _newsRepository.GetNewsByCategorySeoLink(tenantId, languageId, seoLink, page, pageSize, out var totalRows);
             return new SearchResult<NewsSearchClientViewModel>
             {
                 TotalRows = totalRows,
@@ -772,7 +769,8 @@ namespace GHM.Website.Infrastructure.Services
             var newsId = await _newsTranslationRepository.GetNewsIdBySeoLink(tenantId, languageId, seoLink);
 
             var resultNews = await new HttpClientService()
-                     .GetAsync<List<string>>($"{apiUrls.CoreApiUrl}/tags/{tenantId}/{languageId}/{(int)TagType.News}/{newsId}");
+                        .GetAsync<List<string>>($"{apiUrls.CoreApiUrl}/tags/{tenantId}/{languageId}/{(int)TagType.News}/{newsId}");
+
             return await _newsRepository.GetListTopNewsRelated(tenantId, languageId, resultNews, selectTop);
 
         }
@@ -790,7 +788,7 @@ namespace GHM.Website.Infrastructure.Services
             };
         }
 
-        public async Task<SearchResult<CategoryWidthNewsViewModel>> GetCategoryWidthNews(string tenantId, string languageId, string seoLink, int selectTop,
+        public async Task<SearchResult<CategoryWidthNewsViewModel>> GetListCategoryWidthNews(string tenantId, string languageId, string seoLink, int selectTop,
             bool isHomePage, bool isParent)
         {
             if (isParent)
@@ -804,13 +802,13 @@ namespace GHM.Website.Infrastructure.Services
 
                 return new SearchResult<CategoryWidthNewsViewModel>
                 {
-                    Items = await _newsRepository.GetCategoryWidthNews(tenantId, languageId, categoryInfo.CategoryId, selectTop, isHomePage),
+                    Items = await _newsRepository.GetListCategoryWidthNews(tenantId, languageId, categoryInfo.CategoryId, selectTop, isHomePage),
                 };
             }
 
             return new SearchResult<CategoryWidthNewsViewModel>
             {
-                Items = await _newsRepository.GetCategoryWidthNews(tenantId, languageId, -1, selectTop, isHomePage),
+                Items = await _newsRepository.GetListCategoryWidthNews(tenantId, languageId, -1, selectTop, isHomePage),
             };
         }
 
@@ -869,6 +867,77 @@ namespace GHM.Website.Infrastructure.Services
                 IsSystem = false
             };
             new NotificationHelper().Send(notification);
+        }
+
+        public async Task<ActionResultResponse<CategoryWidthNewsViewModel>> GetNewsByCategoryIdAsync(string tenantId, string languageId, string categoryId, int page, int pageSize)
+        {
+            var categoryWithNews = await _categoryRepository.GetCategoryForWithNews(tenantId, categoryId, languageId);
+            categoryWithNews.ListNews = await _newsRepository.GetNewsByCategoryId(tenantId, languageId, categoryId, page, pageSize,out int totalRows);
+            categoryWithNews.TotalNews = totalRows;
+            return new ActionResultResponse<CategoryWidthNewsViewModel>
+            {
+                Code = 1,
+                Data = categoryWithNews
+            };
+        }
+
+        public async Task<NewsDetailForClientViewModel> GetDetailForClient(string teantId, string newsId, string languageId)
+        {
+            return await _newsRepository.GetDetailForClient(teantId, newsId, languageId);
+        }
+
+        public async Task<bool> CheckNewsExistBySeoLink(string tenantId, string seoLink, string languageId)
+        {
+            return await _newsTranslationRepository.CheckExistBySeoLink(tenantId, seoLink, languageId);
+        }
+
+        public async Task<List<NewsSearchClientViewModel>> GetNewsRelatedById(string tenantId, string newsId, string languageId, int page, int pageSize)
+        {
+            return await _newsRepository.GetListNewsRelatedForClient(tenantId, languageId, newsId, pageSize);       
+        }
+
+        public async Task<ActionResultResponse<CategoryWidthNewsViewModel>> GetCategoryWithNews(string tenantId, string languageId, string seoLink, int selectTop, bool isHomePage, bool isParent)
+        {
+            if (isParent)
+            {
+                var categoryInfo = await _categoryTranslationRepository.GetActiveBySeoLink(tenantId, languageId, seoLink);
+                if (categoryInfo == null)
+                    return new ActionResultResponse<CategoryWidthNewsViewModel>
+                    {
+                        Data = null,
+                    };
+
+                return new ActionResultResponse<CategoryWidthNewsViewModel>
+                {
+                    Data = await _newsRepository.GetCategoryWithNews(tenantId, languageId, categoryInfo.CategoryId, selectTop, isHomePage),
+                };
+            }
+
+            return new ActionResultResponse<CategoryWidthNewsViewModel>
+            {
+                Data = await _newsRepository.GetCategoryWithNews(tenantId, languageId, -1, selectTop, isHomePage),
+            };
+        }
+
+        public async Task<List<NewsSearchClientViewModel>> GetNewsRelatedByParentCategoryId(string tenantId, int id, string languageId, int page, int pageSize)
+        {
+            var info = await _categoryRepository.GetActiveInfo(tenantId, id);
+
+            if (info.ParentId == null)
+                return await _newsRepository.GetListNewsRelatedForClientByParentCategoryId(tenantId, info.Id, languageId, page, pageSize);
+
+            return await _newsRepository.GetListNewsRelatedForClientByParentCategoryId(tenantId, languageId, id, (int)info.ParentId, page, pageSize);
+        }
+
+        public async Task<int> UpdateViewNews(string tenantId, string newId, string languageId)
+        {
+            var info = await _newsRepository.GetInfo(newId);
+            if (info == null)
+                return -1;
+
+            info.ViewCount = info.ViewCount + 1;
+
+            return await _newsRepository.Update(info);
         }
     }
 }

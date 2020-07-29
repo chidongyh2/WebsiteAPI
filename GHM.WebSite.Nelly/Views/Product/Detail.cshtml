@@ -1,0 +1,202 @@
+﻿@using System.Globalization
+@{
+    var productInfo = ViewBag.ProductInfo as ProductSearchViewModel;
+    ViewBag.Title = productInfo?.Name;
+    ViewBag.Description = productInfo?.Description;
+
+    var jsonSerializerSettings = new JsonSerializerSettings
+    {
+        ContractResolver = new CamelCasePropertyNamesContractResolver()
+    };
+
+    var breadcrumbs = new List<Breadcrumb>
+{
+         new Breadcrumb()
+        {
+              Name = "Sản phẩm",
+              IsCurrent = false,
+              Url = "san-pham"
+        }
+    };
+    var url = ViewBag.Url;
+    ViewBag.Breadcrumb = breadcrumbs;
+}
+<link href="~/css/less/comment.min.css" rel="stylesheet" />
+<link href="~/lib/EasyZoom-master/css/easyzoom.min.css" rel="stylesheet" />
+<partial name="_Breadcumb">
+    <div id="product-detail" class="product-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 ">
+                    <div class="row cm-mgb-10 product-info">
+                        <div class="col-sm-5">
+                            <div class="easyzoom easyzoom--overlay">
+                                <a data-bind="attr:{href: '@ViewBag.Url' + productThumbnail()}">
+                                    <img id="thumbnail" class="img-responsive"
+                                         data-bind="attr: {src: '@ViewBag.Url' + productThumbnail()}"
+                                         src="@($" {ViewBag.Url}{productInfo?.Thumbnail}")" alt="@productInfo?.Name"
+                                         onerror="this.onerror = null;this.src='/images/no-image.png'" />
+                                </a>
+                            </div>
+                            <div class="txt-static hidden-xs hidden-sm">
+                                <img class="lazy" data-src="/images/facion/zoom-in.png" />
+                                Rê chuột lên hình để phóng to
+                            </div>
+                            @if (productInfo.IsNew.HasValue && productInfo.IsNew.Value)
+                            {
+                                <div class="badge-container">
+                                    <div class="badge badge-circle">
+                                        <span class="badge-inner">New</span>
+                                    </div>
+                                </div>
+                            }
+                            <div id="product-image-silder" data-bind="foreach: $root.listProductImage()">
+                                <div class="item" data-bind="attr: {class: $root.productThumbnail() === url ? 'item active': 'item'}">
+                                    <a href="javascript://" data-bind="click: $root.selectThumbnail.bind($data)">
+                                        <img class="img-responsive lazy" data-bind="attr: { src: '/image?url=' + '@ViewBag.Url' + url + '&width=320&height=240'}"
+                                             onerror="this.src='/images/no-image.png'" />
+                                        <!--ko if: $root.productThumbnail() === url-->
+                                        <span class="img-overlay"></span>
+                                        <!--/ko-->
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="content">
+                                <div class="title-sidebar">@productInfo?.Name</div>
+                                @*<div class="star">
+                                        @for (var i = 1; i <= 5; i++)
+                                        {
+                                            <i class="la la-star"></i>
+                                        }
+                                    </div>*@
+                                <div class="price">
+                                    <span>@productInfo?.SalePrice?.ToString("N0", new CultureInfo("en-US")) đ</span>
+                                </div>
+                                @if (!string.IsNullOrEmpty(productInfo?.Description))
+                                {
+                                    <div class="description">
+                                        @Html.Raw(productInfo?.Description)
+                                    </div>
+                                }
+                                <div class="attribute">
+                                    <ul class="">
+                                        <li><label>Mã sản phẩm:</label> @productInfo?.Id</li>
+                                        <li>
+                                            <label class="control-label">Thể loại: </label>
+                                            <!--ko foreach: listCategory-->
+                                            <a data-bind="text: productCategoryName, attr: {href: '/san-pham/' + seoLink + '.htm', title: productCategoryName}">
+                                            </a>
+                                            <!--ko if: $index() < $root.listCategory().length - 1-->
+                                            <span>,</span>
+                                            <!--/ko-->
+                                            <!--/ko-->
+                                        </li>
+                                        <!--ko foreach: listAttributeValue-->
+                                        <li>
+                                            <label class="control-label" data-bind="text: attributeName + ':'"> </label>
+                                            <!--ko foreach: listValue-->
+                                            <a href="javascript://" data-bind="text: attributeValueName,
+                                               attr: {title: attributeValueName, href: '/san-pham/tim-kiem.html?attributeName='+attributeName+'&attributeValueName='+attributeValueName}"></a>
+                                            <!--ko if: $index() < $parent.listValue.length - 1-->
+                                            <span>,</span>
+                                            <!--/ko-->
+                                            <!--/ko-->
+                                            @*<span data-bind="text: values"></span>*@
+                                        </li>
+                                        <!--/ko-->
+                                    </ul>
+                                </div>
+                                <div class="add-shopping-cart">
+                                    <label class="control-label"> Số lượng:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-add" data-bind="click: $root.addShoppingCart.bind($data, false), enable: quantity() > 0">
+                                                <i class="la la-minus"></i>
+                                            </button>
+                                        </span>
+                                        <input class="form-control" id="productQuantity" data-bind="value:quantity" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-add" data-bind="click: $root.addShoppingCart.bind($data, true)">
+                                                <i class="la la-plus"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="total-money">
+                                    <label class="control-label"> Tổng tiền:</label>
+                                    <span class="pull-right" data-bind="text: formatNumberic(totalMoney(),  'N0') + ' đ'"></span>
+                                </div>
+                                <div class="read-more">
+                                    <a href="javascript://" class="btn btn-main" data-bind="click: buy"><i class="la la-arrow-right"></i>Thêm vào giỏ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cm-mgb-10 product-detail">
+                        <div class="col-sm-12">
+                            <div class="">
+                                <div class="line hidden-xs hidden-sm"></div>
+                                <h3 class="title" data-bind="click: showProductInfo">
+                                    <i class="la la-bars cm-mgr-5 hidden-lg hidden-md"></i>Thông tin
+                                </h3>
+                                <div class="content">
+                                    <ul class="nav nav-tabs" data-bind="visible: isShowProductInfo()">
+                                        <li id="liDetail" class="active">
+                                            <a href="#detail" data-bind="click: showTabDetail">
+                                                <span>Chi tiết</span>
+                                            </a>
+                                        </li>
+                                        <!--ko foreach: listAttributeContent-->
+                                        <li data-bind="css: { active: isSelected}, click: $root.selectProductAttribute">
+                                            <a data-bind="attr: {href: '#' + attributeId}">
+                                                <span data-bind="text: attributeName"></span>
+                                            </a>
+                                        </li>
+                                        <!--/ko-->
+                                        <li id="liComment">
+                                            <a href="#comment" data-bind="click: showTabComment">
+                                                <span>Bình luận</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" style="padding: 10px; margin-top: 5px;">
+                                        <div class="tab-pane active" id="detail">
+                                            @Html.Raw(productInfo?.Content)
+                                        </div>
+                                        <!--ko foreach: listAttributeContent-->
+                                        <div class="tab-pane" data-bind="css: { active: isSelected }, attr: {id: attributeId}">
+                                            <div data-bind="html: value"></div>
+                                        </div>
+                                        <!--/ko-->
+                                        <div class="tab-pane" id="comment">
+                                            <comment-component params="objectId: '@productInfo?.Id', objectType: 0, isShowTitle: false"></comment-component>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <partial name="_BoxHotline" />
+                </div>
+                <div class="col-sm-3">
+                    <partial name="_SidebarProduct" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section scripts {
+        <script type="text/javascript">
+           var productImages = @(ViewBag.ProdutImages != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProdutImages, jsonSerializerSettings)) : "[]");
+           var productAttributes = @(ViewBag.ProudctAttributes != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProudctAttributes, jsonSerializerSettings)) : "[]");
+           var productCategories = @(ViewBag.ProductCategory != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductCategory, jsonSerializerSettings)) : "[]");
+           var productInfo = @(ViewBag.ProductInfo != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductInfo, jsonSerializerSettings)) : "[]");
+           var productSelectItems = @(ViewBag.ProductSelectItems != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductSelectItems, jsonSerializerSettings)) : "[]");
+        </script>
+        <script src="~/js/component/comment-component.min.js"></script>
+        <script src="~/lib/EasyZoom-master/dist/easyzoom.min.js"></script>
+        <script src="~/js/viewmodel/product-detail.viewmodel.min.js"></script>
+    }
+

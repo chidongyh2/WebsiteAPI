@@ -44,7 +44,7 @@ namespace GHM.Website.Domain.IRepository
 
         Task<List<NewsSearchClientViewModel>> GetListTopNewsHot(string tenantId, string languageId, int selectTop);
 
-        Task<List<NewsSearchClientViewModel>> GetNewsByCategoryId(string tenantId, string languageId, string seoLink,
+        Task<List<NewsSearchClientViewModel>> GetNewsByCategorySeoLink(string tenantId, string languageId, string seoLink,
             int page, int pageSize, out int totalRows);
 
         Task<List<NewsSearchClientViewModel>> GetListTopNewsRelated(string tenantId, string languageId,List<string> newsIds,
@@ -56,6 +56,20 @@ namespace GHM.Website.Domain.IRepository
 
         Task<List<NewsSearchClientViewModel>> GetListTopNewsNewest(string tenantId, string languageId, int selectTop);
 
-        Task<List<CategoryWidthNewsViewModel>> GetCategoryWidthNews(string tenantId, string languageId, int categoryId, int selectTop, bool isHomePage);
+        Task<List<CategoryWidthNewsViewModel>> GetListCategoryWidthNews(string tenantId, string languageId, int categoryId, int selectTop, bool isHomePage);
+
+        Task<CategoryWidthNewsViewModel> GetCategoryWithNews(string tenantId, string languageId, int categoryId, int selectTop, bool isHomePage);
+
+        Task<List<NewsSearchClientViewModel>> GetNewsByCategoryId(string tenantId, string languageId, string categoryId, int page, int pageSize, out int totalRows);
+
+        Task<NewsDetailForClientViewModel> GetDetailForClient(string teantId, string newsId, string languageId);
+
+        Task<List<NewsSearchClientViewModel>> GetListNewsRelated(string tenantId, string languageId, string newsId, int pageSize);
+
+        Task<List<NewsSearchClientViewModel>> GetListNewsRelatedForClient(string tenantId, string languageId, string newsId, int pageSize);
+
+        Task<List<NewsSearchClientViewModel>> GetListNewsRelatedForClientByParentCategoryId(string tenantId, string languageId, int id, int parentId, int page, int pageSize);
+
+        Task<List<NewsSearchClientViewModel>> GetListNewsRelatedForClientByParentCategoryId(string tenantId, int id, string languageId, int page, int pageSize);
     }
 }

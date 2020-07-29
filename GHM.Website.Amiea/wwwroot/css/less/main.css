@@ -57,7 +57,7 @@ body {
                     transition: all 1s ease-in-out;*/
   overflow: hidden;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #myCarousel .active .item a img {
     max-height: unset;
   }
@@ -69,7 +69,7 @@ body {
   height: auto;
   display: block;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #myCarousel img {
     max-height: unset;
   }
@@ -114,7 +114,7 @@ body {
   padding-bottom: 60px;
   margin-bottom: 20px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #hot-news {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -131,25 +131,6 @@ body {
   background-color: #FFFFFF;
   padding: 5px 0px;
   min-height: 120px;
-  /*font-size: 14px;
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-
-            a {
-                color: @color-white;
-                text-decoration: none;
-            }
-
-            &:before, &:after {
-                width: 12%;
-                height: 1px;
-                background: #A1A1A1;
-                content: '';
-                display: inline-block;
-                top: -4px;
-                position: relative;
-            }*/
 }
 #hot-news .news-block .title h2 {
   text-transform: uppercase;
@@ -163,7 +144,7 @@ body {
   line-height: 25px;
   transition: ease-in-out 500ms;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #hot-news .news-block .title h2 a {
     line-height: unset;
   }
@@ -172,12 +153,17 @@ body {
   color: #993333;
   text-decoration: none;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  #hot-news .news-block .title {
+    min-height: 150px;
+  }
+}
+@media only screen and (max-width: 767px) {
   #hot-news .news-block .title {
     display: none;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #hot-news .news-block:first-child {
     padding-top: 0px;
   }
@@ -201,17 +187,17 @@ body {
   background-color: #FFFFFF;
   /*min-height: 265px;*/
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #hot-news .news-block .content .thumbnail-new img {
     min-height: unset;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #hot-news .news-block .content .thumbnail-new {
     position: relative;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #hot-news .news-block .content {
     padding-bottom: 40px;
     padding-top: 40px;
@@ -221,7 +207,7 @@ body {
 #hot-news .news-block .content .summary {
   display: none;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #hot-news .news-block .content .summary {
     display: inline-block;
     position: absolute;
@@ -290,7 +276,7 @@ body {
   color: #333E47;
   margin-bottom: 30px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #video-image .titlebar {
     display: none;
   }
@@ -298,7 +284,7 @@ body {
 #video-image .video .titlebar {
   display: none;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #video-image .video .titlebar {
     display: block;
     text-align: center;
@@ -333,7 +319,7 @@ body {
   color: #FFFFFF;
   font-size: 20px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #video-image .video {
     padding-top: 20px;
   }
@@ -341,7 +327,7 @@ body {
 #video-image .image .titlebar {
   display: none;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #video-image .image .titlebar {
     display: block;
     text-align: center;
@@ -349,7 +335,7 @@ body {
     margin-bottom: 25px;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #video-image .image {
     padding-bottom: 50px;
     border-bottom: 1px solid #DAD8DA;
@@ -361,7 +347,7 @@ body {
   /*max-height: 480px;
         min-height: 420px;*/
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #video-image img {
     min-height: unset;
   }
@@ -430,24 +416,6 @@ body {
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 10px;
-  /*background-color: @color-white;
-        padding: 5px 0px;
-
-        h2 {
-            text-transform: uppercase;
-            text-align: center;
-            font-size: 16px;
-            margin: 10px 0px;
-
-            a {
-                color: @main-color;
-
-                &:hover {
-                    color: @color-hover;
-                    text-decoration: none;
-                }
-            }
-        }*/
 }
 .product-item .product-title a {
   font-size: 14px;
@@ -463,6 +431,18 @@ body {
   display: inline-block;
   top: -4px;
   position: relative;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .product-item .product-title:before,
+  .product-item .product-title:after {
+    width: 13%;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .product-item .product-title:before,
+  .product-item .product-title:after {
+    width: 18%;
+  }
 }
 #about {
   padding-bottom: 60px;
@@ -531,7 +511,7 @@ body {
 #about .contact .btn-contact:hover {
   background-color: #A5AAAE;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #about .contact .btn-contact {
     padding: 8px 20px;
     font-size: 16px;
@@ -577,7 +557,7 @@ body {
 .header img {
   width: 100%;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header {
     height: unset;
   }
@@ -619,7 +599,7 @@ body {
   height: auto;
   /*min-height: 420px;*/
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .list-news .news-item .image-content .news-image {
     min-height: unset;
   }
@@ -631,9 +611,19 @@ body {
   text-transform: uppercase;
   min-height: 80px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .list-news .news-item .title {
     min-height: unset;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .list-news .news-item .title {
+    min-height: 120px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .list-news .news-item .title {
+    min-height: 100px;
   }
 }
 .list-news .news-item .title a {
@@ -655,9 +645,14 @@ body {
   padding-bottom: 0px;
   line-height: 22px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .list-news .news-item .summary {
     min-height: unset;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .list-news .news-item .summary {
+    min-height: 90px;
   }
 }
 .list-news .news-item .summary .title-mobile a {
@@ -694,7 +689,7 @@ body {
 .list-news #hot-news .news-block .content .summary {
   bottom: 20px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .list-news #hot-news .news-block .content .summary {
     bottom: 20px !important;
     margin-bottom: 20px;
@@ -703,7 +698,7 @@ body {
 .list-news #hot-news .news-block:first-child {
   padding-top: 0px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .list-news #hot-news .news-block:last-child .content {
     padding-bottom: 20px;
   }
@@ -741,7 +736,7 @@ body {
   padding-right: 25px;
   min-width: 280px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #product-relationship .media .media-left {
     min-width: 180px;
   }
@@ -754,7 +749,7 @@ body {
 #product-relationship .media .media-left .image-content img {
   width: 250px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #product-relationship .media .media-left .image-content img {
     width: 150px;
   }
@@ -767,7 +762,7 @@ body {
   font-size: 16px;
   line-height: 22px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #product-relationship .media .media-body .title {
     font-size: 14px;
   }
@@ -800,7 +795,7 @@ body {
 #product-relationship .media:nth-child(2n) {
   padding-right: 0px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #product-relationship .media {
     padding-left: 0px;
     padding-right: 0px;
@@ -815,7 +810,7 @@ body {
     border-bottom: none;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #product-relationship {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -860,7 +855,7 @@ body {
   padding-right: 25px;
   min-width: 280px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #news-relationship .media .media-left {
     min-width: 180px;
   }
@@ -877,7 +872,7 @@ body {
   font-size: 16px;
   line-height: 22px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #news-relationship .media .media-body .title {
     font-size: 14px;
   }
@@ -897,7 +892,7 @@ body {
 #news-relationship .media:nth-child(4n+3) {
   border-bottom: none;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #news-relationship .media:nth-child(4n+3) {
     border-bottom: 1px solid #5F5B61;
   }
@@ -905,7 +900,7 @@ body {
 #news-relationship .media:nth-child(4n) {
   border-bottom: none;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #news-relationship .media {
     padding-left: 0px;
     padding-right: 0px;
@@ -913,7 +908,7 @@ body {
     margin-right: 15px;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #news-relationship {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -967,7 +962,7 @@ body {
   background-color: #B7B7B7;
   margin-bottom: 20px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #photo-in-album .content .abum-photo hr {
     display: none;
   }
@@ -994,7 +989,7 @@ body {
   overflow: hidden;
   /*border: 1px solid @color-border;*/
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .photo-item {
     min-height: unset;
   }
@@ -1017,7 +1012,7 @@ body {
 .social-network-header {
   margin-top: 15px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .social-network-header {
     float: left !important;
     margin-top: 10px;
@@ -1134,7 +1129,7 @@ body {
   text-decoration: none;
   color: #333E47;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .video-item .title-video {
     padding-bottom: 10px;
     background-color: #B7B7B7;
@@ -1161,7 +1156,7 @@ body {
   width: 100%;
   min-height: 200px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .video-item .thumbnail-video a img {
     min-height: unset;
   }
@@ -1197,7 +1192,7 @@ body {
   background-color: #B7B7B7;
   margin-bottom: 20px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #video-in-album .content .abum-photo hr {
     display: none;
   }
@@ -1218,12 +1213,12 @@ body {
 #video-in-album .content .abum-photo .video .video-item .thumbnail-video {
   min-height: 200px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #video-in-album .content .abum-photo .video .video-item .thumbnail-video {
     min-height: unset;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #video-in-album .content .abum-photo .video {
     padding-left: 0px;
     padding-right: 0px;
@@ -1296,7 +1291,7 @@ body {
   text-transform: uppercase;
   font-size: 22px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .title-border {
     border-bottom: none;
   }
@@ -1363,12 +1358,12 @@ body {
 #imageModalSlider .item img:hover {
   opacity: 0.8;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #imageModalSlider .item img {
     height: unset;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #imageModalSlider {
     height: unset;
   }

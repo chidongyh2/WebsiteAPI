@@ -1,0 +1,628 @@
+﻿@{
+    Layout = "_LayoutLadingPage";
+    var eventInfo = ViewBag.EventInfo as EventShowClientViewModel;
+    ViewBag.Title = eventInfo?.EventInfo?.MetaTitle;
+    ViewBag.Description = eventInfo?.EventInfo?.MetaDescription;
+    var listEventDay = eventInfo?.EventDays?.OrderBy(x => x.EventDate);
+
+    var videos = ViewBag.Videos as List<AlbumItemViewModel>
+    ;
+    var videoFirst = videos != null && videos.Any() ? videos.FirstOrDefault() : null;
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>
+        ;
+    var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>
+        ;
+    var branchOffice = listBranch?.Where(x => x.IsOffice.HasValue && x.IsOffice.Value).FirstOrDefault();
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+}
+<link href="~/lib/lightslider/css/lightslider.css" rel="stylesheet" />
+<section id="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="intro_content">
+                    <h3 class="title">
+                        ĐỘT PHÁ ĐỂ KHÁC BIỆT
+                    </h3>
+                    <h1>DIGITAL BLADING</h1>
+                    <h2>AMIEA PRIVATE CLASS 2019</h2>
+                    <div id="clockdiv">
+                        <div>
+                            <span class="days" data-bind="text: day()"></span>
+                            <div class="smalltext">@Resource.Date</div>
+                        </div>
+                        <div>
+                            <span class="hours" data-bind="text: hours()"></span>
+                            <div class="smalltext">@Resource.Hour</div>
+                        </div>
+                        <div>
+                            <span class="minutes" data-bind="text: minutes()"></span>
+                            <div class="smalltext">@Resource.Minute</div>
+                        </div>
+                        <div>
+                            <span class="seconds" data-bind="text: seconds()"></span>
+                            <div class="smalltext">@Resource.Second</div>
+                        </div>
+                    </div>
+                    <h4>
+                        27 JUNE - 1 JULY 2019 | HO CHI MINH CITY - VIET NAM
+                    </h4>
+                    <div class="center">
+                        <a class="btn btn-register" id="registerAbout" href="#register">@Resource.RegisterNows</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="icon">
+                    <img class="img" src="~/images/event-register/icon-03.png" />
+                </div>
+                <h2 class="titlebar">
+                    AMIEA - PMU
+                </h2>
+                <h2 class="titlebar">
+                    DIGITAL BLADING - ĐỘT PHÁ ĐỂ KHÁC BIỆT
+
+                </h2>
+                <div class="content">
+                    <p>
+                        <span>
+                            Tin vui cho những người yêu thích trang điểm vĩnh viễn! Tháng 6 này hai chuyên gia đào tạo quốc tế Elena Nikora và Hoi Kwan sẽ chính thức đến
+                            Việt Nam góp mặt vào sự kiện Digital Blading – Đột phá để khác biệt.
+                        </span>
+                    </p>
+                    <p>
+                        <span>
+                            <strong>
+                                Digital Blading
+                            </strong>
+                            được tổ chức tại thành phố Hồ Chí Minh là chương trình nằm trong chuỗi sự kiện tìm kiếm Master Amiea đại diện khu vực châu
+                            Á. Với sự góp mặt của các chuyên gia quốc tế Amiea, Digital Blading hứa hẹn sẽ mang đến cho kĩ thuật viên Việt Nam những trải nghiệm mới mẻ
+                            và kỹ thuật phun xăm hàng đầu thế giới.
+                        </span>
+                    </p>
+                    <p><span><strong>BẠN NHẬN ĐƯỢC NHỮNG GÌ TỪ KHÓA HỌC?</strong></span></p>
+                    <ul class="list-style-none">
+                        <li><i class="fa fa-check-square-o"></i> <span>Quà tặng lên tới 18.000.000đ.</span></li>
+                        <li><i class="fa fa-check-square-o"></i> <span>Được thực hành trên mẫu thật và chuyên gia cầm tay chỉ việc.</span></li>
+                        <li><i class="fa fa-check-square-o"></i> <span>Trở thành Master đại diện Amiea khu vực châu Á.</span></li>
+                        <li><i class="fa fa-check-square-o"></i> <span>Nhận được chứng chỉ từ hãng Amiea khi hoàn thành khóa học về phun xăm thẩm mỹ</span></li>
+                        <li><i class="fa fa-check-square-o"></i> <span>Được tận mắt chiêm ngưỡng buổi trình diễn các kỹ thuật mới nhất về mày và môi từ các chuyên gia hàng đầu PMU Amiea</span></li>
+                        <li><i class="fa fa-check-square-o"></i> <span>Được chia sẻ các kinh nghiệm, kiến thức về từ các chuyên gia hàng đầu.</span></li>
+                        <li><i class="fa fa-check-square-o"></i> <span>Trực tiếp sử dụng các thiết bị PMU và sản phẩm hữu cơ cao cấp, cảm nhận được sự khác biệt từ các thiết bị Amiea.</span></li>
+                        <li><i class="fa fa-check-square-o"></i> <span>Là nơi gặp gỡ các chuyên gia trong lĩnh vực phun xăm thẩm mỹ trong và ngoài nước, tiếp thêm ngon lửa đam mê.</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="images">
+                <div class="col-xs-4">
+                    <img class="img-responsive item" src="~/images/event-register/Nen-tron-01_07_03.jpg" />
+                </div>
+                <div class="col-xs-4">
+                    <img class="img-responsive item" src="~/images/event-register/Nen-tron-01_07_05.jpg" />
+                </div>
+                <div class="col-xs-4">
+                    <img class="img-responsive item" src="~/images/event-register/Nen-tron-01_07_07.jpg" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="professional">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="icon">
+                    <img class="img" src="~/images/event-register/icon 2-03.png" />
+                </div>
+                <h2 class="titlebar">
+                    Chuyên gia Amiea
+                </h2>
+            </div>
+            <div class="col-sm-12">
+                <div class="professional-image">
+                    <img class="img-responsive1" src="~/images/event-register/Web su kien amiea_2-06.png" />
+                </div>
+            </div>
+            <div class="col-sm-12 " id="professional-profile">
+                <div class="professional-profile">
+                    <h2 class="professional-name">ELENA NIKORA</h2>
+                    <div class="center">
+                        <p>Quốc tịch Nga</p>
+                        <p><strong>Master Amiea toàn cầu</strong></p>
+                        @*<p>Chủ sở hữu & người sáng lập Cherryink Beauty Group</p>*@
+                    </div>
+                    <div class="description">
+                        <p>
+                            Chuyên gia đào tạo Amiea quốc tế Elena Nikora với 12 năm kinh nghiệm trong lĩnh vực phun xăm là một trong
+                            những chuyên gia đầu tiên nghiên cứu ra kỹ thuật Digital Blading. Cô được mệnh danh người bậc thầy truyền
+                            cảm hứng của rất nhiều nghệ nhân đến từ Châu Âu, Châu Á, Mỹ - Latinh..
+                        </p>
+                        <p>
+                            Hàng loạt các cuộc thi tầm cỡ quốc tế mà cô tham dự với tư cách giám khảo như: Giải vô địch Beauty-Boom
+                            2018, giải Oscar PMU Brasil 2018, giải vô địch PMU quốc tế Estonia 2018, giải vô địch châu Âu mở rộng về trang
+                            điểm vĩnh viễn và microblading 2017, giám khảo Giải vô địch Nga mở rộng lần XIII năm 2014…
+                        </p>
+                        <p>
+                            Không chỉ hoạt động tham gia nhiều sự kiện quốc tế quan trọng, gần đây nhất Elena Nikora còn là đồng tác giả
+                            trong cuốn sách “PERMANENT MAKEUP – The Essential Steps to become an Artist”, đây là cuốn sách đầu tiên
+                            được xuất bản bởi thương hiệu Amiea và các chuyên gia hàng đầu. Ngoài ra, Elena còn là người đứng đầu
+                            chương trình đào tạo của Học viện Quốc tế Amiea Berlin (Đức), đồng thời là giảng viên cao cấp tại trường trang
+                            điểm vĩnh viễn Soling Studio (Moscow).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="professional-image">
+                    <img class="img-responsive1" src="~/images/event-register/Web su kien amiea_2-05.png" />
+                </div>
+            </div>
+            <div class="col-sm-12 " id="professional-profile1">
+                <div class="professional-profile">
+                    <h2 class="professional-name">HOI KWAN</h2>
+                    <div class="center">
+                        <p>Quốc tịch Canada</p>
+                        <p><strong>Master Amiea toàn cầu</strong></p>
+                        <p>CEO học viện đào tạo Hoitattoo Education</p>
+                    </div>
+                    <div class="description">
+                        <p>
+                            Hoi Kwan là Master số 1 Canada, nghệ nhân đầu tiên của Canada cấp bằng chứng nhận Master Amiea quốc tế.
+                            Hoi Kwan đã đi khắp thế giới bằng tài năng của mình để truyền lửa cho các kỹ thuật viên những kiến thức về
+                            trang điểm vĩnh viễn, đặc biệt là các kỹ thuật về lông mày. Từ Mỹ, Canada, Đức, Hongkong và giờ là Việt Nam
+                        </p>
+                        <p>
+                            Hoi Kwan cũng xuất hiện trong các sự kiện quốc tế như: Giám khảo cho Amiea Talents Competition Canada
+                            2019, diễn giả của Amiea event - Worldwide EyeBrow Festival Hà Lan 2019.
+                        </p>
+                        <p>
+                            Với việc tham gia nhiều lớp đào tạo cao cấp và các sự kiện tầm cỡ, Hoi Kwan luôn đi đầu về các kiến thức và xu
+                            hướng thẩm mỹ mới nhất. Hoi Kwan là cái tên kiểm chứng cho uy tín Amiea tại khắp các quốc gia trên thế giới.
+                        </p>
+                        <p>
+                            Sự hiện diện của chuyên gia Amiea toàn cầu Hoi Kwan càng khiến lớp đào tạo lần này trở lên đặc biệt. Ngoài là
+                            chuyên gia đào tạo quốc tế Amiea, hiện nay Hoi Kwan đang là CEO đồng thời là người phục trách chuyên môn
+                            chính của Hoitattoo Education tại Calgary Alberta, Canada.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12" id="eventContent">
+                <div class="icon">
+                    <img class="img" src="~/images/event-register/icon 2-03.png" />
+                </div>
+                <h2 class="titlebar">
+                    Nội dung chương trình
+                </h2>
+                <div class="event-day">
+                    <h3 class="title">
+                        AMIEA TECHNICAL DAY
+                    </h3>
+                    <h4 class="days">
+                        27/06/2019
+                    </h4>
+                    <div class="content">
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                Giới thiệu về thương hiệu Amiea và sản phẩm Amiea
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Chuyên gia đào tạo quốc tế Hoi Kwan thuyến trình cách giữ sợi trên da dầu, cách xếp sợi phù hợp với
+                                khuôn mặt và tránh làm mực trổ xanh, trổ đỏ
+                            </div>
+                        </div>
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                Chuyên gia đào tạo quốc tế Hoi Kwan trình diễn với mẫu kỹ thuật
+                                hairstroke
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Chuyên gia đào tạo quốc tế Elena Nikora thuyến trình về giải pháp cho môi nhạy cảm, cách khử môi thâm, cách sử dụng
+                                mực organic và kỹ thuật mới Digital Blading
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Chuyên gia đào tạo quốc tế Elena Nikora trình diễn với mẫu kĩ
+                                thuật Fresh Lips
+                            </div>
+                        </div>
+                        <div class="item odd">
+                           
+                            <div class="description">
+
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+
+                            </div>
+                        </div>
+                        <div class="item odd">
+                           
+                            <div class="description">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-day">
+                    <h3 class="title">
+                        KHÓA HỌC PRIVATE CLASS VỚI CHUYÊN GIA ELENA NIKORA
+                    </h3>
+                    <h4 class="days">
+                        28 - 29/06/2019
+                    </h4>
+                    <h4>
+                        Chuyên gia Elena Nikora giảng dạy kỹ thuật Fresh Lip mang lại sức sống
+                        cho đôi môi với kỹ thuật mới cùng Digital Blading
+                    </h4>
+                    <div class="content">
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                Tạo và định hình dáng cho môi chuyên nghiệp dựa trên khuôn môi tự nhiên
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Giải pháp trang điểm vĩnh viễn cho môi nhạy cảm
+                            </div>
+                        </div>
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                Khử thâm và làm tươi
+                                môi
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Nguyên lý về màu và điểm khác biệt của mực môi amiea trong
+                                trang điểm vĩnh viễn
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Kỹ thuật riêng biệt với một số các kim Nano
+                            </div>
+                        </div>
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                Giải pháp khắc phục các lỗi thường gặp về môi
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Thực hành trên da giả
+                            </div>
+                        </div>
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                1 ngày thực hành trên mẫu thật
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-day">
+                    <h3 class="title">
+                        VỚI CHUYÊN GIA HOI KWAN
+                    </h3>
+                    <h4 class="days">
+                        28 - 29/06/2019
+                    </h4>
+                    <h4>
+                        Chuyên gia Hoi Kwan giảng dạy kỹ thuật Hairstroke áp dụng kỹ thuật mới dùng Digital Blading
+                    </h4>
+                    <div class="content">
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                Kỹ thuật Digital Blading mới nhất với kim nano
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Kỹ thuật Hairstroke hoàn hảo nhất
+                            </div>
+                        </div>
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                Cách giữ sợi hoàn hảo nhất cho da dầu
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Cách xếp sợi phù hợp với khuôn mặt
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Giải pháp khắc phục các lỗi thường gặp về mày
+                            </div>
+                        </div>
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                Trình diễn kỹ thuật Digital Blading với kim Nano trên mẫu thật
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Thực hành trên da giả
+                            </div>
+                        </div>
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                1 ngày thực hành trên mẫu thật
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-day">
+                    <h3 class="title">
+                        CHUYÊN GIA ELENA NIKORA
+                    </h3>
+                    <h4 class="days">
+                        30/6 - 01/07/2019
+                    </h4>
+                    <div class="content">
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                Phân tích hình dáng lông mày
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Cơ sở lý thuyết về khắc sợi lông mày
+                            </div>
+                        </div>
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                Kỹ thuật đổ bóng lông mày
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Kỹ thuật Digital Blading
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Sự kết hợp của Shading và Hairstroke
+                            </div>
+                        </div>
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                Thực hành chính xác màu mực phun xăm cho từng loại da
+                            </div>
+                        </div>
+                        <div class="item even">
+                           
+                            <div class="description">
+                                Thực hành trực tiếp trên giấy thực hành đặc biệt, da giả dưới sự
+                                hướng dẫn của chuyên gia
+                            </div>
+                        </div>
+                        <div class="item odd">
+                           
+                            <div class="description">
+                                1 ngày thực hành trên mẫu thật
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="center">
+                    <a class="btn btn-register" id="registerContent" href="#register">@Resource.RegisterNows</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="video">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="icon">
+                    <img class="img" src="~/images/event-register/icon 2-03.png" />
+                </div>
+                <h2 class="titlebar">
+                    Sự kiện AMIEA
+                </h2>
+            </div>
+            <div class="col-sm-12">
+                <div class="video-container">
+                    <div class="img-responsive video-default">
+                        <!--ko if: isSelectVideo()-->
+                        <iframe data-bind="attr: {src: 'https://www.youtube.com/embed/' + videoLinkId() + '?enablejsapi=1&amp;amp;autoplay=1&amp;amp;rel=0&controls=1', alt: videoTitle() }" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" width="100%" height="640"></iframe>
+                        @*<div class="content">
+                                <div class="title" data-bind="text: videoTitle()"></div>
+                            </div>*@
+                        <!--/ko-->
+                        <!--ko if: !isSelectVideo()-->
+                        <iframe src="@(string.Format(" https://www.youtube.com/embed/{0}?enablejsapi=1&amp;amp;autoplay=0&amp;amp;rel=0&controls=1", videoFirst?.VideoLinkId))" allow="autoplay; encrypted-media" frameborder="0" width="100%" height="640"></iframe>
+                        @*<div class="content">
+                                <div class="title">@videoFirst.Title</div>
+                            </div>*@
+                        <!--/ko-->
+                    </div>
+                    <div id="video-silder" data-bind="foreach: listVideo">
+                        <div class="item">
+                            <a href="javascript://" data-bind="attr: { title: Title }, css: {selected : id() === Id}, click: selectVideo" class="thumbnail">
+                                <img class="img-responsive" data-bind="attr: { src: '/image?url=' + Thumbnail, alt: Title }"
+                                     onerror="this.src='/images/no-image.png'" />
+                                <span class="pause-video">
+                                    <i class="fa fa-play"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="register-form" id="register">
+    <div class="container">
+        <div class="row content">
+            <div class="col-sm-12">
+                <div class="icon">
+                    <img class="img" src="~/images/event-register/icon-03.png" />
+                </div>
+                <h2 class="titlebar">
+                    Đăng ký tham dự
+                </h2>
+            </div>
+            <div class="col-sm-12 form">
+                <form class="form-horizontal" id="register_form" data-bind="submit: register">
+                    <div class="form-group">
+                        <div class="col-sm-12 list-event-day">
+                            <ul class="list-inline">
+                                <!--ko foreach: listEventDay-->
+                                <li>
+                                    <a href="javascript://" data-bind="click: selectEventDay.bind($data)">
+
+                                        <!--ko if: eventDays.indexOf(Id) === -1-->
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                        <!--/ko-->
+                                        <!--ko if: eventDays.indexOf(Id) !== -1-->
+                                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                                        <!--/ko-->
+                                        <span data-bind="text: Name"></span>
+                                    </a>
+                                </li>
+                                <!--/ko-->                           
+                            </ul>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="javascript://" data-bind="click: checkAllEventDay">
+                                        <!--ko if: !isCheckAllDay()-->
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                        <!--/ko-->
+                                        <!--ko if: isCheckAllDay()-->
+                                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                                        <!--/ko-->
+                                        <span data-bind="text: eventDayJoin"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-12 note">
+                            <span>(Tích chọn để đăng ký)</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div data-bind="attr: {class: isFullNameError() ? 'col-sm-4 has-error cm-pdr-0' : 'col-sm-4 cm-pdr-0'}">
+                            <input type="text" id="register_full_name" class="form-control w100pc" placeholder="@Resource.FullName *" value="" data-bind="value: fullName, hasFocus: isFullNameFocus" />
+                        </div>
+                        <div data-bind="attr: {class: isPhoneNumberError() ? 'col-sm-4 has-error cm-pdr-0' : 'col-sm-4 cm-pdr-0'}">
+                            <input type="text" class="form-control w100pc" placeholder="@Resource.PhoneNumber *" value="" data-bind="value: phoneNumber, hasFocus: isPhoneNumberFocus" />
+                        </div>
+                        <div data-bind="attr: {class: isEmailError() ? 'col-sm-4 has-error' : 'col-sm-4'}">
+                            <input type="text" class="form-control w100pc" placeholder="Email *" value="" data-bind="value: email, hasFocus: isEmailFocus" />
+                        </div>
+                    </div>
+                    <div class="form-group" data-bind="attr: {class: isAddressError() ? 'form-group has-error' : 'form-group'}">
+                        <div class="col-sm-12">
+                            <textarea type="text" rows="7" class="form-control w100pc" placeholder="Xin vui lòng nói rõ hơn cho chúng tôi về vấn đê mà bạn đang gặp phải" rows="4" data-bind="value: address, hasFocus: isAddressFocus"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 submit center">
+                            <button type="submit" class="btn btn-send-message" data-bind="enable: !isSending()">
+                                <i class="fa fa-spinner fa-pulse" data-bind="visible: isSending()" style="display: none"></i>
+                                @Resource.RegisterNows
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-12 social-network">
+                <ul class="list-inline">
+                    @foreach (var socialNetWork in listSocialNetWork)
+                    {
+                        <li class="list-items">
+                            <a href="@socialNetWork.Url" class="btn-scoical">
+                                @if (!string.IsNullOrEmpty(socialNetWork.Image))
+                                {
+                                    <img src="@($"/image?url={(string.IsNullOrEmpty(socialNetWork.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{socialNetWork.Image}")}&width=30&height=30&type=1")"
+                                         alt="@socialNetWork.Name"
+                                         class="lazy" />
+                                }
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            @if (branchOffice != null)
+            {
+                <div class="col-sm-12 address">
+                    <ul class="list-inline">
+                        <li class="list-items">
+                            <strong>Địa chỉ liên hệ:</strong> @branchOffice.Address
+                        </li>
+                        <li class="list-items">
+                            <strong>HotLine:</strong> @websiteSetting?.Hotline
+                        </li>
+                        <li class="list-items">
+                            <strong>Email:</strong> @branchOffice?.BranchContactDetails?.Where(x => x.ContactType == ContactType.Email)?.FirstOrDefault()?.ContactValue
+                        </li>
+                    </ul>
+                    <p><strong>Hội thảo diển ra: </strong> @eventInfo?.EventInfo?.Address</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<section id="contacts">
+    <iframe frameborder="0" width="100%" height="480" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9595.425268171482!2d106.69734593349634!3d10.77077995620017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f38d874b98f%3A0x80274d9ac66a6116!2zMTI1IEzDvSBU4buxIFRy4buNbmcsIFBoxrDhu51uZyBC4bq_biBUaMOgbmgsIFF14bqtbiAxLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1560306579438!5m2!1svi!2s" allowfullscreen></iframe>
+</section>
+@section scripts{
+    <script src="~/lib/lodash/lodash.min.js"></script>
+    <script type="text/javascript">
+        var eventInfo = @(ViewBag.EventInfo != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.EventInfo)) : "[]");
+        var listYoutube = @(ViewBag.Videos != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.Videos)) : "[]");
+        var videoLinkId = "@videoFirst?.VideoLinkId";
+        var videoTitle = "@videoFirst?.Title";
+        var videoId = "@videoFirst?.Id";
+    </script>
+    <script src="~/js/viewmodel/event-register.viewmodel.js"></script>
+}
+

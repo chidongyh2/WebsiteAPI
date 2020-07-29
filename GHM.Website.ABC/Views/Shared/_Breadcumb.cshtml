@@ -1,10 +1,12 @@
 ﻿
 @{
-    var breadcrumbs = ViewBag.Breadcrumb as List<Breadcrumb>;
+   var breadcrumbs = ViewBag.Breadcrumb as List<Breadcrumb>;
+    var url = ViewBag.Url;
+    var image = ViewBag.ImageBanner;
 }
 
 <div class="header">
-    <img src="@($"/image?url={ViewBag.ImageBanner}")" class="img-responsive" onerror="this.src='/images/no-image.png'"/>
+    <img src="@($"/image?url={url}{ViewBag.ImageBanner}")" class="img-responsive lazy" onerror="this.src='/images/no-image.png'"/>
     <div class="breadcrumb">
         <div class="container">
             <div class="row">

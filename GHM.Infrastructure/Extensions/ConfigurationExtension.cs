@@ -31,6 +31,13 @@ namespace GHM.Infrastructure.Extensions
             return apiServiceInfo;
         }
 
+        public static ApiThrowServiceInfo GetApiThrowServiceInfo(this IConfiguration configuration)
+        {
+            var apiServiceInfo = new ApiThrowServiceInfo();
+            configuration?.GetSection("ApiThrowServiceInfo")?.Bind(apiServiceInfo);
+            return apiServiceInfo;
+        }
+
         public static EventBusConfig GetEventBusConfigs(this IConfiguration configuration)
         {
             var eventBusClientName = new EventBusConfig();

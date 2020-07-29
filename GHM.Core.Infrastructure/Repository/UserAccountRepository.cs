@@ -302,5 +302,10 @@ namespace GHM.Core.Infrastructure.Repository
                 FullName = x.FullName
             }, x => ids.Contains(x.Id) && x.TenantId == tenantId && !x.IsDelete && x.IsActive);
         }
+
+        public async Task<UserAccount> GetInfo(string tenantId, string id, bool isReadOnly = false)
+        {
+            return await _userAccountRepository.GetAsync(isReadOnly, x => x.TenantId == tenantId && x.Id == id && !x.IsDelete);
+        }
     }
 }

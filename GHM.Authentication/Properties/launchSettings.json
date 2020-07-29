@@ -1,6 +1,6 @@
 {
   "iisSettings": {
-    "windowsAuthentication": true,
+    "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
       "applicationUrl": "http://localhost:50000",
@@ -14,6 +14,7 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IIS",
+      "launchBrowser": true,
       "launchUrl": "/api/value",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -21,20 +22,23 @@
     },
     "GHM.Authentication": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "http://auth.ghmsoft.com",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://localhost:50000"
     },
     "IIS": {
       "commandName": "IIS",
-      "launchBrowser": true,
-      "launchUrl": "http://localhost:50000",
+      "launchUrl": "api/values",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "environmentVariables": {},
+      "httpPort": 10000
     }
   }
 }

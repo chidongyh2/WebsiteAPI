@@ -1,0 +1,31 @@
+﻿@model NewsSearchViewModel;
+@{ 
+    var url = ViewBag.Url;
+}
+@if (Model != null)
+{
+    <div class="news-item">
+        <div class="image-content">
+            <a href="@($"/{Model.SeoLink}.html")" title="@(string.IsNullOrEmpty(Model.MetaTitle) ? Model.Title : Model.MetaTitle)">
+                <img class="news-image zoom img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(Model.FeatureImage) ? "/images/no-image.png" : $"{url}{Model.FeatureImage}")}&width=360&height=240")"
+                     onerror="this.onerror = null;this.src='/images/no-image.png'"
+                     alt="@(string.IsNullOrEmpty(Model.AltImage) ? Model.Title : Model.AltImage)" />
+                <span class="img-overlay"></span>
+            </a>
+        </div>
+        <div class="wrap-text-content">
+            <div class="title">
+                <a href="@($"/{Model.SeoLink}.html")" title="@(string.IsNullOrEmpty(Model.MetaTitle) ? Model.Title : Model.MetaTitle)">
+                    @(!string.IsNullOrEmpty(Model.Title) ? Common.SubString(Model.Title, 70) : Model.Title)
+                </a>
+            </div>            
+            <div class="description">
+                <span>@Common.SubString(Model.Description, 150)</span>
+            </div>
+            <div class="read-more">
+                <a href="@($"/{Model.SeoLink}.html")" title="@(string.IsNullOrEmpty(Model.MetaTitle) ? Model.Title : Model.MetaTitle)"
+                   class="btn btn-main"><i class="la la-arrow-right"></i> @Resource.ViewMore </a>
+            </div>
+        </div>
+    </div>
+}

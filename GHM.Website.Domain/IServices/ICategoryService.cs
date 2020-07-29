@@ -34,5 +34,9 @@ namespace GHM.Website.Domain.IServices
         Task<ActionResultResponse<CategoryTranslationViewModel>> GetCategoryRelations(string tenantId, string languageId, string seoLink);
 
         Task<SearchResult<string>> GetAllSeoLinkForSitemap(string tenantId, string languageId);
+
+        Task<SearchResult<CategorySearchForSelectViewModel>> GetCategoryHomePage(string tenantId, string languageId);
+
+        Task<bool> CheckExistForClient(string tenantId, string seoLink, string languageId);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Text.Json;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
@@ -37,12 +38,6 @@ namespace GHM.Core.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            // Add IIS support.
-            services.Configure<IISOptions>(options =>
-            {
-                options.ForwardClientCertificate = false;
-            });
-
             // Add resources support.            
             services.AddLocalization(options => options.ResourcesPath = "Resources");
             services.AddApiVersioning(options =>
@@ -51,12 +46,18 @@ namespace GHM.Core.Api
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.DefaultApiVersion = new ApiVersion(1, 0);
             });
+            services
+                .AddRouting(options => options.LowercaseUrls = true)
+                .AddControllers();
             services.AddOptions();
             services.AddMemoryCache();
             services.AddCors();
-            services.AddMvcCore()
-                .AddAuthorization()
-                .AddJsonFormatters()
+            services.AddMvc()
+                .AddJsonOptions(opts =>
+                {
+                    opts.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+                    opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                })
                 .AddFluentValidation()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .AddDataAnnotationsLocalization();
@@ -66,12 +67,11 @@ namespace GHM.Core.Api
                 .AddIdentityServerAuthentication(options =>
                 {
                     var authority = Configuration.GetApiUrl("Authority");
-                    options.Authority = string.IsNullOrEmpty(authority) ? "http://localhost:5000" : authority;
+                    options.Authority = string.IsNullOrEmpty(authority) ? "http://localhost:50000" : authority;
                     options.RequireHttpsMetadata = false;
                     options.ApiName = "GHM_Core_Api";
                 });
-
-            services.AddDbContext<CoreDbContext>(options =>
+            services.AddDbContextPool<CoreDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("CoreConnectionString"));
             });
@@ -89,18 +89,8 @@ namespace GHM.Core.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else if(env.IsProduction())
-            {
-                app.UseHsts();
-                app.UseHttpsRedirection();
-            }
-
             #region Localizations
             var supportedCultures = new[]
             {
@@ -129,9 +119,15 @@ namespace GHM.Core.Api
                 builder.AllowAnyMethod();
                 builder.AllowCredentials();
             });
-            #endregion            
+            #endregion
+            app.UseExceptionHandler("/error");
+            app.UseRouting();
             app.UseAuthentication();
-            app.UseMvcWithDefaultRoute();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
     public static class StartupHelper

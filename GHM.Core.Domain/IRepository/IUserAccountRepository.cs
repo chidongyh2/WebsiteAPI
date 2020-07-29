@@ -39,5 +39,7 @@ namespace GHM.Core.Domain.IRepository
         Task<List<UserAccountViewModel>> Search(string tenantId, string keyword, bool? isActive, int page, int pageSize, out int totalRows);
 
         Task<List<ShortUserInfoViewModel>> GetShortUserInfoByListIds(string tenantId, List<string> ids);
+
+        Task<UserAccount> GetInfo(string tenantId, string id, bool isReadOnly = false);
     }
 }

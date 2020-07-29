@@ -11,6 +11,7 @@ using GHM.Infrastructure.ModelBinders;
 using Microsoft.AspNetCore.Localization;
 using WebMarkupMin.AspNetCore2;
 using System;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace GHM.Website.Amiea
 {
@@ -26,11 +27,16 @@ namespace GHM.Website.Amiea
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new RequestCulture(new CultureInfo("vi-VN"));
             });
 
             services.AddCors();
@@ -47,7 +53,9 @@ namespace GHM.Website.Amiea
                 .AddFluentValidation();
 
             services.AddMemoryCache();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, options => {
+                options.ResourcesPath = "Resources";
+            });
 
             services.AddWebMarkupMin(
             options =>

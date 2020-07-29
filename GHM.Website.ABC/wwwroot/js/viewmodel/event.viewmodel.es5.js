@@ -4,19 +4,19 @@ function EventViewModel() {
     var self = this;
     self.listEvent = ko.observableArray([]);
     self.totalRows = ko.observable(0);
-    self.pageSize = ko.observable(11);
+    self.pageSize = ko.observable(9);
     self.currentPage = ko.observable(1);
     self.totalPage = ko.observable(1);
     self.listPage = ko.observableArray([]);
+    self.isMobile = ko.observable(false);
 
-    self.getEvent = function (seoLink) {
+    self.getEvent = function () {
         $.get("/get-all-event", {
-            seoLink: self.seoLink(),
             page: self.currentPage(),
             pageSize: self.pageSize()
         }, function (result) {
             if (result) {
-                self.listVideo(result.items);
+                self.listEvent(result.items);
                 self.totalRows(result.totalRows);
                 self.totalPage(Math.ceil(self.totalRows() / self.pageSize()));
                 self.listPage([]);
@@ -29,6 +29,10 @@ function EventViewModel() {
                 }
             }
         });
+
+        if (self.isMobile()) {
+            $("html, body").animate({ scrollTop: $('#events').offset().top - 120 }, 1000);
+        }
     };
 
     self.search = function (value) {
@@ -38,23 +42,31 @@ function EventViewModel() {
 
     self.firstPage = function () {
         self.currentPage(1);
+        self.getEvent();
     };
 
     self.lastPage = function () {
         self.currentPage(self.totalPage());
+        self.getEvent();
     };
 
     self.prevPage = function () {
         self.currentPage(self.currentPage() - 1);
+        self.getEvent();
     };
 
     self.nextPage = function () {
         self.currentPage(self.currentPage() + 1);
+        self.getEvent();
     };
 
     $(document).ready(function () {
         self.listEvent(listEvent);
         self.currentPage(1);
+
+        if (window.innerWidth < 768) {
+            self.isMobile(true);
+        }
         self.search(1);
     });
 }

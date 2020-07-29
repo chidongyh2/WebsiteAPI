@@ -19,6 +19,8 @@ namespace GHM.Website.Domain.Models
         /// </summary>
         public string Email { get; set; }
 
+        public bool IsView { get; set; }
+
         /// <summary>
         /// Người liên hệ.
         /// </summary>
@@ -49,9 +51,14 @@ namespace GHM.Website.Domain.Models
         /// </summary>
         public DateTime CreateTime { get; set; }
 
+        public string ConcurrencyStamp { get; set; }
+
         public Feedback()
         {
+            Id = Guid.NewGuid().ToString();
+            ConcurrencyStamp = Id;
            CreateTime = DateTime.Now;
+            IsView = false;
         }
     }
 }

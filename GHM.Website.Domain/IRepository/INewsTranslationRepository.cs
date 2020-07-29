@@ -28,6 +28,11 @@ namespace GHM.Website.Domain.IRepository
         Task<bool> CheckExists(string tenantId, string newsId, string languageId, string title);
 
         Task<bool> CheckSeoLinkExists(string tenantId, string newsId, string languageId, string seolink);
+
         Task<string> GetNewsIdBySeoLink(string tenantId, string languageId, string seoLink);
+
+        Task<bool> CheckExistBySeoLink(string tenantId, string seoLink, string languageId);
+
+        Task<MenuItemSelectedViewModel> GetNewsDetailForMenu(string tenantId, string subjectId, string languageId, bool v);
     }
 }

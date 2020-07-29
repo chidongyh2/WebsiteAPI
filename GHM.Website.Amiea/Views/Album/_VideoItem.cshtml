@@ -1,12 +1,14 @@
 ﻿@model AlbumItemViewModel;
-
+@{ 
+    var url = ViewBag.Url;
+}
 @if (Model != null)
 {
     <div class="video-item">
         <div class="thumbnail-video">
             <a  title="@Model.Title"
                data-fancybox href="@Model.Url">
-                <img class="img-responsive zoom lazy" data-src="@(string.IsNullOrEmpty(Model.Thumbnail) ? "/images/no-image.png" : Model.Thumbnail)" alt="@Model.Title"
+                <img class="img-responsive zoom lazy" data-src="@(string.IsNullOrEmpty(Model.Thumbnail) ? "/images/no-image.png" : $"{url}{ Model.Thumbnail}")" alt="@Model.Title"
                       onerror="this.src='/images/no-image.png'"/>
                 <span class="duration_video"><i class="fa fa-play"></i></span>
             </a>

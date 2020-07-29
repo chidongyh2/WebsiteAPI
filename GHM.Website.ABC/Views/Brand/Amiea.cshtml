@@ -12,7 +12,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 center cm-mgt-10 cm-mgb-10">
-                        <img class="w200" src="~/images/BGR web/Amiea/Ve-chung-toi-2_Amiea_03.jpg" />
+                        <img class="w200 lazy" data-src="/images/BGR web/Amiea/Ve-chung-toi-2_Amiea_03.jpg" />
                     </div>
                     <div class="col-sm-12 center">
                         <h2 class="titlebar">@Resource.AmieaFamous</h2>
@@ -30,15 +30,15 @@
         <div class="technology-amiea">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12 center">
+                    <div class="col-md-12 center">
                         <h2 class="titlebar">@Resource.TechnologyAmiea</h2>
                         <hr>
                     </div>
                     <div class="factory">
-                        <div class="col-sm-6 image-factory">
-                            <img class="w100pc img-responsive" src="~/images/BGR web/Amiea/Ve-chung-toi-2_Amiea_07.jpg" />
+                        <div class="col-md-6 image-factory">
+                            <img class="w100pc img-responsive lazy" data-src="/images/BGR web/Amiea/Ve-chung-toi-2_Amiea_07.jpg" />
                         </div>
-                        <div class="col-sm-6 content">
+                        <div class="col-md-6 content">
                             <div class="description">
                                 <p>Cơ sở sản xuất của Amiea l&agrave; trung t&acirc;m của MT.DERM ở Berlin, đ&atilde; x&acirc;y dựng một nh&agrave; m&aacute;y rộng 5.200 m<sup>2</sup> chứa tất cả c&aacute;c m&aacute;y m&oacute;c c&ocirc;ng nghệ cao v&agrave; thiết bị chuy&ecirc;n dụng. Từ thiết kế đến lập tr&igrave;nh v&agrave; lắp rap, mỗi bước được l&ecirc;n kế hoạch cẩn thận v&agrave; li&ecirc;n tục cải tiến để đạt được sản lượng tốt nhất.</p>
                                 <p>&Yacute; tưởng đầu ti&ecirc;n được ph&aacute;t triển sau khi đ&aacute;nh gi&aacute; v&agrave; ưu ti&ecirc;n trong một qu&aacute; tr&igrave;nh tư duy thiết kế linh hoạt v&agrave; nhanh ch&oacute;ng. Trong giai đoạn thứ hai, dự &aacute;n sẽ được chuyển giao th&ocirc;ng số kỹ thuật. Giai đoạn tiếp theo li&ecirc;n quan đến ph&aacute;t triển, tạo mẫu, trải qua nhiều b&agrave;i kiểm tra v&agrave; sau đ&oacute; chấp nhận. Cuối c&ugrave;ng, sản phẩm được chứng nhận, sản xuất được thiết lập v&agrave; bắt đầu sản xuất.</p>
@@ -48,14 +48,14 @@
                 </div>
             </div>
         </div>
-        <div class="system-amiea">
+        <div class="system-amiea lazy" data-src="/images/bgr web/anh nền/2-04.jpg">
             <div class="container">
                 <div class="row">
                     <div class="system">
-                        <div class="col-sm-6 image-system">
-                            <img class="img-responsive w100pc" src="~/images/BGR web/Amiea/Ve-chung-toi-2_Amiea_10.jpg" />
+                        <div class="col-md-6 image-system">
+                            <img class="img-responsive w100pc lazy" data-src="/images/BGR web/Amiea/Ve-chung-toi-2_Amiea_10.jpg" />
                         </div>
-                        <div class="col-sm-6 description-system">
+                        <div class="col-md-6 description-system">
                             <div class="description">
                                 <p>Qua nhiều năm, MT.DERM đã nộp một số lượng lớn các bằng sáng chế được cấp quốc tế.</p>
                                 <p>Dưới đây là một trích dẫn của các bằng sáng chế và các ứng dụng bằng sáng chế:</p>
@@ -105,7 +105,7 @@
                                     <div class="item">
                                         <div class="certificate-item">
                                             <a href="@banner.Url" title="@banner.Name" class="thumbnail-image">
-                                                <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(banner.Image) ? "/images/no-image.png" : banner.Image)}&width=320&height=180")"
+                                                <img class="img-responsive " src="@($"/image?url={(string.IsNullOrEmpty(banner.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{banner.Image}")}&width=320&height=180")"
                                                      onerror="this.src='/images/no-image.png'"
                                                      alt="@banner.Name" />
                                             </a>
@@ -132,7 +132,7 @@
                     </div>
                     <div class="col-sm-12 progress-content">
                         <div class="image-amiea">
-                            <img id="image-amiea" class="w100pc img-responsive" src="~/images/BGR web/Amiea/Ve-chung-toi-2_Amiea_13.jpg" />
+                            <img id="image-amiea" class="w100pc img-responsive lazy" data-src="/images/BGR web/Amiea/Ve-chung-toi-2_Amiea_13.jpg" />
                         </div>
                         <div class="block-description">
                             <hr class="bg-white" />
@@ -164,13 +164,13 @@
                                 @foreach (var banner in banners.BannerItems)
                                 {
                                     <div class="item">
-                                        
-                                            <a href="@banner.Url" title="@banner.Name" class="thumbnail-image">
-                                                <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(banner.Image) ? "/images/no-image.png" : banner.Image)}&width=320&height=180")"
-                                                     onerror="this.src='/images/no-image.png'"
-                                                     alt="@banner.Name" />
-                                            </a>
-                                       
+
+                                        <a href="@banner.Url" title="@banner.Name" class="thumbnail-image">
+                                            <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(banner.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{banner.Image}")}&width=320&height=180")"
+                                            onerror="this.src='/images/no-image.png'"
+                                            alt="@banner.Name" />
+                                        </a>
+
                                         <div class="product-name center cm-pdt-15">
                                             @banner.Name
                                         </div>

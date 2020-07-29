@@ -212,9 +212,6 @@ namespace GHM.Website.Infrastructure.Services
                 info.IsHomePage = videoMeta.IsHomePage.Value;
                 info.LastUpdateIsHomePage = DateTime.Now;
             }
-
-            await _videoRepository.Update(info);
-
             //udpate translate
             foreach (var videoTranslation in videoMeta.Translations)
             {

@@ -2,6 +2,7 @@
     var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
     var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
     var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+    var url = ViewBag.Url;
 }
 <footer id="footer">
     <div class="container">
@@ -9,7 +10,7 @@
             <div class="col-sm-12">
                 <h2 class="title">Hệ thống</h2>
                 <div class="logo">
-                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? websiteSetting.Logo :  "" )"
+                    <img class="img-responsive" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? $"{url}{websiteSetting.Logo}" :  "" )"
                          alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) ? websiteSetting?.Brand : ViewBag.Title)"
                          onerror="this.src='/images/no-image.png'" />
                 </div>
@@ -124,7 +125,7 @@
                                 <a href="@socialNetWork.Url" class="btn-scoical">
                                     @if (!string.IsNullOrEmpty(socialNetWork.Image))
                                     {
-                                        <img data-src="@($"/image?url={(string.IsNullOrEmpty(socialNetWork.Image) ? "/images/no-image.png" : socialNetWork.Image)}&width=128&height=128&type=1")"
+                                        <img data-src="@($"/image?url={(string.IsNullOrEmpty(socialNetWork.Image) ? "/images/no-image.png" : $"{url}{socialNetWork.Image}")}&width=128&height=128&type=1")"
                                              alt="@socialNetWork.Name"
                                              class="lazy" />
                                     }
@@ -138,7 +139,7 @@
                 <div class="hotline">
                     <div class="media-middle media-object">
                         <div class="media-left">
-                            <img src="~/images/hotline.png" />
+                            <img class="lazy" data-src="/images/hotline.png" />
                         </div>
                         <div class="media-body">
                             <div class="left">

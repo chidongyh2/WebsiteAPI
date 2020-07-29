@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
 using GHM.Core.Domain.IServices;
@@ -10,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace GHM.Core.Api.Controllers
 {
     [Authorize]
-    [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [Produces("application/json")]
     public class AppsController : GhmControllerBase

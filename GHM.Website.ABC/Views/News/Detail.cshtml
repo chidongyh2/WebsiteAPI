@@ -8,6 +8,7 @@
     ViewBag.Keyword = Model?.MetaKeyword;
     ViewBag.Image = Model?.FeatureImage;
     var absoluteUri = $"{Context.Request.Host}{Context.Request.Path}";
+    var url = ViewBag.Url;
 }
 <partial name="_Breadcumb" />
 <div id="news-detail">
@@ -65,7 +66,7 @@
                             </ul>
                         </div>
                         <div class="content">
-                            @Html.Raw(Model.Content)
+                            @Html.Raw(Model.Content.Replace('"' + "uploads/", '"' + $"{ViewBag.Url}uploads/"))
                         </div>
                     </div>
                 </div>

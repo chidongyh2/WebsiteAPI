@@ -103,12 +103,14 @@ namespace GHM.Website.Infrastructure.Repository
                             branch.WorkTime,
                             branchTranslation.Name,
                             branchTranslation.Address,
+                            branch.Id,
                             ContactValue = detail != null ? detail.ContactValue : "",
                             ContactType = detail != null ? detail.ContactType : Domain.Constants.ContactType.Undefined
                         });
 
             var result = query.GroupBy(x => new
             {
+                x.Id,
                 x.IsOffice,
                 x.Link,
                 x.Logo,
@@ -118,6 +120,7 @@ namespace GHM.Website.Infrastructure.Repository
                 x.Address,
             }, (key, g) => new BranchContactSearchForClientViewModel
             {
+                Id = key.Id,
                 Website = key.Website,
                 Name = key.Name,
                 Logo = key.Logo,
@@ -132,7 +135,7 @@ namespace GHM.Website.Infrastructure.Repository
                 }).ToList(),
             });
 
-            return result.AsNoTracking().OrderByDescending(x => x.Name)
+            return result.AsNoTracking().OrderBy(x => x.Id)
                 .ToListAsync();
         }
 

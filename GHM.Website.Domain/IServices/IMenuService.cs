@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.Models;
 using GHM.Infrastructure.ViewModels;
 using GHM.Website.Domain.Constants;
@@ -43,5 +44,13 @@ namespace GHM.Website.Domain.IServices
         Task<List<MenuItemSearchViewModel>> GetAllActivatedMenuItem(string tenantId, string languageId, string menuId);
 
         Task<List<MenuItemSearchViewModel>> GetAllActivatedMenuItemByPosition(string tenantId, string languageId, Position position);
+
+        Task<MenuItemViewModel> GetDetailBySeoLink(string tenantId, string seoLink, string v);
+
+        Task<MenuDetailViewModel> GetAllActivatedMenuByPosition(string tenantId, string languageId, Position position);
+
+        Task<ActionResultResponse<MenuItemSelectedViewModel>> ItemSelected(string tenantId, int subjectType, string subjectId, string languageId);
+
+        Task<ActionResultResponse<bool>> CheckExistBySubJectId(string tenantId, string id, SubjectType subjectType);
     }
 }

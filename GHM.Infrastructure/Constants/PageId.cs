@@ -69,6 +69,9 @@
         CategoryInvolve = 228,
         VideoGroup = 219,
         CoreValue = 229,
+        Faq = 231,
+        AgencyInfo = 232,
+        Comment = 233,
 
         // ------ Hr: 300 ------
         Hr = 300,
@@ -156,11 +159,23 @@
         // Brand
         Brand = 20000,
 
-        // Product = 30000       
-        Product = 30001,
-        ProductAttribute = 30002,
-        ProductCategory = 30003,
-        Unit = 30007,
-        ProductCategoriesAttribute = 100008,       
+       // ------ Warehouse: 100000 -------
+        Warehouse = 100000,
+        Product = 100001,
+        ProductAttribute = 100002,
+        ProductCategory = 100003,
+        Supplier = 100004,
+        Contact = 100005,
+        Brands = 100006,
+        Unit = 100007,
+        ProductCategoriesAttribute = 100008,
+        WarehouseManagement = 100009,
+        GoodsReceiptNote = 100010,
+        GoodsDeliveryNote = 100011,
+        WarehouseConfig = 100012,
+        InventoryReport = 100013,
+        WarehouseCard = 100014,
+        Inventory = 100015,
+        Order = 100016
     }
 }

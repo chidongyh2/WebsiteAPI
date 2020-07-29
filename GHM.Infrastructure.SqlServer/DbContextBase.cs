@@ -26,12 +26,12 @@ namespace GHM.Infrastructure.SqlServer
 
         public IQueryable<T> RawFromSql<T>(string queryText) where T : class
         {
-            return Set<T>().FromSql(queryText);
+            return Set<T>().FromSqlRaw(queryText);
         }
 
         public IQueryable<T> RawFromSql<T>(string queryText, params object[] parameters) where T : class
         {
-            return Set<T>().FromSql(queryText, parameters);
+            return Set<T>().FromSqlRaw(queryText, parameters);
         }
 
         public QueryFilterProvider Filters => _filterProviderInitializer.Value;

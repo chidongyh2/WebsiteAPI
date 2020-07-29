@@ -5,6 +5,11 @@ using GHM.Website.Domain.IRepository;
 using GHM.Website.Domain.Models;
 using GHM.Website.Domain.ViewModels;
 using GHM.Infrastructure.SqlServer;
+using System.Linq.Expressions;
+using System;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore;
+
 namespace GHM.Website.Infrastructure.Repository
 {
     public class NewsTranslationRepository : RepositoryBase, INewsTranslationRepository
@@ -99,6 +104,28 @@ namespace GHM.Website.Infrastructure.Repository
         {
             return await _newsTranslationRepository.GetAsAsync(x => x.NewsId,
                 x => x.TenantId == tenantId && x.LanguageId == languageId && x.SeoLink == seoLink && !x.IsDelete);
+        }
+
+        public async Task<bool> CheckExistBySeoLink(string tenantId, string seoLink, string languageId)
+        {
+            return await _newsTranslationRepository.ExistAsync(x => x.TenantId == tenantId && x.SeoLink == seoLink && x.LanguageId == languageId && !x.IsDelete);
+        }
+
+        public async Task<MenuItemSelectedViewModel> GetNewsDetailForMenu(string tenantId, string subjectId, string languageId, bool v)
+        {
+            Expression<Func<News, bool>> specN = x => x.Id == subjectId && !x.IsDelete && x.IsActive && x.TenantId == tenantId;
+            Expression<Func<NewsTranslation, bool>> specNT = x => x.LanguageId == languageId && x.NewsId == subjectId && x.TenantId == tenantId;
+
+            var query = from n in Context.Set<News>().Where(specN)
+                        join nt in Context.Set<NewsTranslation>().Where(specNT) on n.Id equals nt.NewsId
+                        select new MenuItemSelectedViewModel
+                        {
+                            Id = n.Id,
+                            Image = n.FeatureImage,
+                            LanguageId = languageId,
+                            Name = nt.Title
+                        };
+            return await query.FirstOrDefaultAsync();
         }
     }
 }

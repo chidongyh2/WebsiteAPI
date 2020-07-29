@@ -1,17 +1,17 @@
 {
-  "ReRoutes": [
+  "Routes": [
     // BEGIN: Pages
     {
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50000
+          "Host": "authentication",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/auth/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamHttpMethod": [ "GET", "POST" ],
       "UseServiceDiscovery": false
     },
     // BEGIN: Events
@@ -20,8 +20,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50003
+          "Host": "website-event-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/events/{everything}",
@@ -39,8 +39,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50001
+          "Host": "core-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/core/{everything}",
@@ -57,8 +57,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50002
+          "Host": "website-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
@@ -75,16 +75,16 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50011
+          "Host": "warehouse-api",
+          "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/v{version}/products/{everything}",
+      "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UseServiceDiscovery": false,
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "GHM_Product_Api" ]
+        "AllowedScopes": [ "GHM_Website_Api" ]
       }
     },
     // BEGIN: Notifications
@@ -93,8 +93,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50004
+          "Host": "notifications-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/notifications/{everything}",
@@ -111,8 +111,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50004
+          "Host": "notifications-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/notifications/{everything}",
@@ -124,13 +124,43 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50004
+          "Host": "notifications-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/notifications",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "UseServiceDiscovery": false
+    },
+    {
+      "DownstreamPathTemplate": "/api/v{version}/notifications",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "notifications-api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v{version}/notifications",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UseServiceDiscovery": false
+    },
+    {
+      "DownstreamPathTemplate": "/api/v{version}/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "filemanagement-api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v{version}/file/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UseServiceDiscovery": false,
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "GHM_Core_Api" ]
+      }
     }
   ],
 

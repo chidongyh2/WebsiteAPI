@@ -1,0 +1,240 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\uploads\**" />
+    <Content Remove="wwwroot\uploads\**" />
+    <EmbeddedResource Remove="wwwroot\uploads\**" />
+    <None Remove="wwwroot\uploads\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DeviceDetector.NET.NetCore" Version="3.9.2.2" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.0.0" />
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="7.20.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="WebMarkupMin.AspNetCore2" Version="2.8.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.5" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\lightslider\img\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\fonts\ionicons.svg" />
+    <None Include="wwwroot\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="wwwroot\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="wwwroot\lib\EasyZoom-master\.editorconfig" />
+    <None Include="wwwroot\lib\EasyZoom-master\.gitignore" />
+    <None Include="wwwroot\lib\EasyZoom-master\.jshintrc" />
+    <None Include="wwwroot\lib\EasyZoom-master\.npmignore" />
+    <None Include="wwwroot\lib\EasyZoom-master\dist\easyzoom.js" />
+    <None Include="wwwroot\lib\EasyZoom-master\Gruntfile.js" />
+    <None Include="wwwroot\lib\EasyZoom-master\LICENSE" />
+    <None Include="wwwroot\lib\EasyZoom-master\README.md" />
+    <None Include="wwwroot\lib\EasyZoom-master\src\easyzoom.js" />
+    <None Include="wwwroot\lib\EasyZoom-master\test\lib\jquery-3.1.1.min.js" />
+    <None Include="wwwroot\lib\EasyZoom-master\test\lib\qunit-2.1.1.js" />
+    <None Include="wwwroot\lib\EasyZoom-master\test\lib\sinon-1.17.6.js" />
+    <None Include="wwwroot\lib\EasyZoom-master\test\spec\easyzoom.js" />
+    <None Include="wwwroot\lib\globinfo\globalize.culture.en-US.js" />
+    <None Include="wwwroot\lib\globinfo\globalize.culture.vi-VN.js" />
+    <None Include="wwwroot\lib\globinfo\globalize.js" />
+    <None Include="wwwroot\lib\line-awesome\fonts\line-awesome.svg" />
+    <None Include="wwwroot\lib\line-awesome\fonts\line-awesome.woff2" />
+    <None Include="wwwroot\lib\slick-1.8.1\.gitignore" />
+    <None Include="wwwroot\lib\slick-1.8.1\CONTRIBUTING.markdown" />
+    <None Include="wwwroot\lib\slick-1.8.1\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\lib\slick-1.8.1\LICENSE" />
+    <None Include="wwwroot\lib\slick-1.8.1\Makefile" />
+    <None Include="wwwroot\lib\slick-1.8.1\README.markdown" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\config.rb" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\fonts\slick.svg" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick-theme.less" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick-theme.scss" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.js" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.less" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.min.js" />
+    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.scss" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\GHM.Infrastructure\GHM.Infrastructure.csproj" />
+    <ProjectReference Include="..\GHM.WebsiteClient.Api\GHM.WebsiteClient.Api.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Compile Update="Resources\Resource.Designer.cs">
+      <DependentUpon>Resource.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Update="Views\Album\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Contact\Agency.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Contact\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\About.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_MainSlider.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\Error.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\Search.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Product\Search.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_MenuContact.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_Brand.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_ProductCategoryHomePage.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_ProductCategorySolution.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_ProductCategoryHotHomePage.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\_Video.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\News\CategoryNews.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\News\Detail.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\News\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\QA\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_BoxHotline.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_PopupSuccess.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_ProductCategoryMenuItem.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_NotFoundProduct.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_SidebarProduct.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_SidebarNewsHot.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_ProductItem.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_NewsItem.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_BlockNews.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_Breadcumb.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_CookieConsentPartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_Footer.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_Header.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_Layout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_MenuItem.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_ValidationScriptsPartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ShoppingCart\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="wwwroot\css\less\config.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\css\less\config.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\css\less\config.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\css\less\header.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\css\less\header.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\css\less\header.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Resource.resx">
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+
+  <ProjectExtensions><VisualStudio><UserProperties bundleconfig_1json__JsonSchema="http://json.schemastore.org/bungee-plugin" /></VisualStudio></ProjectExtensions>
+
+</Project>

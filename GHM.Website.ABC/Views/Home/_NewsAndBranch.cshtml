@@ -2,9 +2,10 @@
     var listCategoryWidthNew = ViewBag.ListNews as List<CategoryWidthNewsViewModel>;
     var categoryIdDefault = listCategoryWidthNew != null && listCategoryWidthNew.Count > 0 ? listCategoryWidthNew.FirstOrDefault().CategoryId : 0;
     var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
+    var url = ViewBag.Url;
 }
-<link href="~/lib/lightslider/css/lightslider.css" rel="stylesheet" />
-<div class="news-angency">
+@*<link href="~/lib/lightslider/css/lightslider.css" rel="stylesheet" />*@
+<div class="news-angency lazy" data-src="/images/bgr web/trang chu/image-05.jpg">
     @if (listCategoryWidthNew != null && listCategoryWidthNew.Any())
     {
         var listCategory = listCategoryWidthNew.Select(x => new
@@ -61,7 +62,7 @@
                             {
                                 <div class="item">
                                     <a href="@branch.Website" title="@branch.Name">
-                                        <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(branch.Logo) ? "/images/no-image.png" : branch.Logo)}")"
+                                        <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(branch.Logo) ? "/images/no-image.png" : $"{ViewBag.Url}{branch.Logo}")}")"
                                         onerror="this.src='/images/no-image.png'"
                                         alt="@branch.Name" />
                                     </a>

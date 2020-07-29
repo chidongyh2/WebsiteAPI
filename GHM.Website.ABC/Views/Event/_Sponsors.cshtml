@@ -21,7 +21,7 @@
                         {
                             <div class="item">
                                 <div class="professional-image">
-                                    <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(sponsors.Avatar) ? "/images/no-image.png" : sponsors.Avatar)}&width=640&height=360")"
+                                    <img class="img-responsive" src="@($"/image?url={(string.IsNullOrEmpty(sponsors.Avatar) ? "/images/no-image.png" : $"{ViewBag.Url}{sponsors.Avatar}")}&width=640&height=360")"
                                          onerror="this.src='/images/no-image.png'"
                                          alt="@sponsors.FullName" />
                                 </div>

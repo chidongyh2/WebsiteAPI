@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using GHM.Infrastructure;
 using GHM.Infrastructure.Constants;
@@ -10,7 +11,6 @@ using GHM.Website.Domain.ModelMetas;
 using GHM.Website.Domain.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
 namespace GHM.Website.Api.Controllers
 {
     [Authorize]
@@ -151,6 +151,15 @@ namespace GHM.Website.Api.Controllers
             return Ok(result);
         }
 
+        [Route("{subjectId}/getMenuItemSelected"), AcceptVerbs("GET")]
+        [AllowPermission(PageId.WebsiteConfigMenu, Permission.View)]
+        [CheckPermission]
+        public async Task<IActionResult> GetMenuItemSelectedDetail(string subjectId, int subjectType, string languageId)
+        {
+            var result = await _menuService.ItemSelected(CurrentUser.TenantId, subjectType, subjectId, languageId);
+            return Ok(result);
+        }
+
         [Route("{id}/items/Order"), AcceptVerbs("POST"), ValidateModel]
         [AllowPermission(PageId.WebsiteConfigMenu, Permission.Update)]
         [CheckPermission]
@@ -159,6 +168,17 @@ namespace GHM.Website.Api.Controllers
             var result = await _menuService.UpdateOrderAndParentId(CurrentUser.TenantId, CurrentUser.Id, CurrentUser.FullName, id, menuItem);
             if (result.Code <= 0)
                 return BadRequest(result);
+            return Ok(result);
+        }
+
+        [Route("check-subject/{tenantId}/{id}/{subjectId}"), AcceptVerbs("GET")]
+        public async Task<IActionResult> CheckExistBySubjectId(string tenantId, string id, SubjectType subjectType)
+        {
+            var result = await _menuService.CheckExistBySubJectId(tenantId, id, subjectType);
+
+            if (result.Code < 0)
+                return BadRequest(result);
+
             return Ok(result);
         }
 
@@ -174,6 +194,22 @@ namespace GHM.Website.Api.Controllers
         public async Task<IActionResult> GetMenuItemByPosition(string tenantId, Position position, string languageId)
         {
             var result = await _menuService.GetAllActivatedMenuItemByPosition(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, position);
+            return Ok(result);
+        }
+
+        [Route("get-all-menu-position/{position}/{tenantId}/{languageId?}"), AcceptVerbs("GET")]
+        public async Task<IActionResult> GetAllMenuPositon(Position position, string tenantId, string languageId)
+        {
+            var result = await _menuService.GetAllActivatedMenuByPosition(tenantId, languageId ?? CultureInfo.CurrentCulture.Name, position);
+            return Ok(result);
+
+        }
+
+        [Route("get-by-seoLink"), AcceptVerbs("POST")]
+        public async Task<IActionResult> GetInfoBySeoLink(CategoryClientMeta categoryMeta)
+        {
+            var result = await _menuService.GetDetailBySeoLink(categoryMeta.TenantId, categoryMeta.SeoLink, categoryMeta.LanguageId ?? CultureInfo.CurrentCulture.Name);
+
             return Ok(result);
         }
         #endregion

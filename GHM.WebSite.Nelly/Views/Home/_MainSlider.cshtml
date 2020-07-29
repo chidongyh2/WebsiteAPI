@@ -1,0 +1,28 @@
+﻿@model BannerViewModel;
+@{
+    var url = ViewBag.Url;
+}
+@if (Model != null && Model.BannerItems != null && Model.BannerItems.Any())
+{
+    <div id="myCarousel" class="owl-carousel">
+        @foreach (var bannerItem in Model.BannerItems?.OrderBy(x => x.Order))
+        {
+            <div class="item">
+                <a href="javascript://" title="@bannerItem.Name">
+                    <img class="img-responsive" data-src="@(string.IsNullOrEmpty(bannerItem.Image) ? "/images/no-image.png" : $"{url}{bannerItem.Image}")"
+                         onerror="this.src='/images/no-image.png'" alt="@bannerItem.Alt" />
+                </a>
+                <div class="carousel-caption d-md-block">
+                    <h2 data-animation="animated ">@bannerItem.Name</h2>
+                    <h3 data-animation="animated ">
+                        @bannerItem.Description
+                    </h3>
+                    <button onclick="window.location.href='@bannerItem.Url'"  class="btn btn-main" data-animation="animated zoomInUp">
+                        Xem ngay
+                        <i class="la la-angle-right"></i>
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+}

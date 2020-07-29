@@ -11,7 +11,17 @@ $(document).ready(function () {
         }
     });
 
-    $('.lazy').Lazy();
+    $('.lazy').lazy({
+        effect: "fadeIn",
+        effectTime: 1000,
+        visibleOnly: true,
+        beforeLoad: function (element) {
+            $(element).attr("src", "/image?url=&width=640&height=360");
+        },
+        onError: function (element) {
+            $(element).attr("src", "/image?url=&width=640&height=360");
+        }
+    });
 
     $("#backToTop").click(() => {
         $("html, body").animate({ scrollTop: 0 }, 500);
@@ -47,7 +57,7 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
         var b = $(window).scrollTop();
-        if (b > 50 || $(window).innerWidth() < 768) {
+        if (b > 150 || $(window).innerWidth() < 768) {
             $(".navbar").addClass("navbar-fixed-top");
             $("#backToTop").css("display", "block");
             $(".header-top").css("display", "none");

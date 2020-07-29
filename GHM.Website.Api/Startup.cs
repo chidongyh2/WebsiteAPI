@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
 using GHM.Website.Infrastructure;
 using GHM.Website.Infrastructure.AutofacModules;
@@ -16,6 +14,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.Text.Json;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace GHM.Website.Api
 {
@@ -32,12 +34,6 @@ namespace GHM.Website.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            // Config IIS support.
-            services.Configure<IISOptions>(options =>
-            {
-                options.ForwardClientCertificate = false;
-            });
-
             services.AddLocalization(options =>
             {
                 options.ResourcesPath = "Resources";
@@ -56,10 +52,10 @@ namespace GHM.Website.Api
                 options.ModelBinderProviders.Insert(0, new DateTimeModelBinderProvider());
             })
                 .AddAuthorization()
-                .AddJsonFormatters()
-                .AddJsonOptions(options =>
+                .AddJsonOptions(opts =>
                 {
-                    options.SerializerSettings.DateFormatString = "dd/MM/yyyy hh:mm:ss";
+                    opts.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+                    opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                 })
                 .AddFluentValidation();
 
@@ -69,14 +65,16 @@ namespace GHM.Website.Api
                 .AddIdentityServerAuthentication(options =>
                 {
                     var authority = Configuration.GetApiUrl("Authority");
-                    options.Authority = !string.IsNullOrEmpty(authority) ? authority : "http://localhost:50000/";
+                    options.Authority = !string.IsNullOrEmpty(authority) ? authority : "http://localhost:50000";
                     options.RequireHttpsMetadata = false;
                     options.ApiName = "GHM_Website_Api";
                 });
 
-            services.AddDbContext<WebsiteDbContext>(options =>
+            services.AddDbContextPool<WebsiteDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("WebsiteConnectionString"));
+                options.UseSqlServer(Configuration.GetConnectionString("WebsiteConnectionString"))
+                .ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.QueryClientEvaluationWarning));
+
             });
 
 
@@ -92,17 +90,9 @@ namespace GHM.Website.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseHsts();
-                app.UseHttpsRedirection();
-            }
+            app.UseHttpsRedirection();
 
             #region Localizations
 
@@ -136,11 +126,14 @@ namespace GHM.Website.Api
                 builder.AllowCredentials();
             });
 
-            #endregion
-
-            //app.UseMvc();            
+            #endregion 
+            app.UseRouting();
             app.UseAuthentication();
-            app.UseMvcWithDefaultRoute();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

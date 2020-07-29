@@ -1,0 +1,159 @@
+﻿@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var absoluteUri = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
+    var message = string.IsNullOrEmpty(ViewBag.Message) ? "Cảm ơn bạn đã quan tâm. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất." : ViewBag.Message;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Favicon) ? $"{ViewBag.Url}/{websiteSetting.Favicon}" : "/favicon.ico")" type="image/x-icon">
+    <link rel="alternate" href="@absoluteUri" hreflang="vi-VN" />
+    <link rel="canonical" href="@absoluteUri" />
+    <meta name="author" content="jadespa jadespa.vn">
+    <meta property="url" content="@absoluteUri" />
+    <meta name="keywords" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Keyword) ? websiteSetting.MetaKeyword : ViewBag.Keyword)">
+    <meta property="type" content="article" />
+    <meta property="title" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.MetaTitle) ? websiteSetting.MetaTitle : ViewBag.MetaTitle)" />
+    <meta name="description" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Description) ? websiteSetting.MetaDescription
+                                         : Common.SubString(ViewBag.Description, 300))" />
+    <meta property="og:brand" content="@websiteSetting.Brand" />
+    <!-- for facebook -->
+    <meta property="og:url" content="@absoluteUri" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.MetaTitle) ? websiteSetting.MetaTitle : ViewBag.MetaTitle)" />
+    <meta property="og:description" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Description) ? websiteSetting.MetaDescription
+                                         : Common.SubString(ViewBag.Description, 300))" />
+    <meta property="og:image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting.Logo : ViewBag.Image)" />
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.MetaTitle) ? websiteSetting.MetaTitle : ViewBag.MetaTitle)">
+    <meta itemprop="description" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Description) ? websiteSetting.MetaDescription
+                                         : Common.SubString(ViewBag.Description, 300))">
+    <meta itemprop="image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting.Logo : ViewBag.Image)">
+    <!-- for Twitter -->
+    <meta name="twitter:url" content="@absoluteUri" />
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.MetaTitle) ? websiteSetting.MetaTitle : ViewBag.MetaTitle)">
+    <meta name="twitter:description" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Description) ? websiteSetting.MetaDescription
+                                         : Common.SubString(ViewBag.Description, 300))">
+    <meta name="twitter:image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)">
+    <meta property="image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)" />
+    <title>@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) && string.IsNullOrEmpty(ViewBag.Title) ? websiteSetting?.Brand : ViewBag.Title)</title>
+
+    <link href="~/css/plugins.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.min.css" />
+    @if (!string.IsNullOrEmpty(websiteSetting.TrackingHeader))
+    {
+        @Html.Raw(websiteSetting.TrackingHeader)
+    }
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    @if (!string.IsNullOrEmpty(websiteSetting.TrackingBody))
+    {
+        @Html.Raw(websiteSetting.TrackingBody)
+    }
+    <!-- End Google Tag Manager (noscript) -->
+
+    @Html.AntiForgeryToken()
+    <partial name="_Header" />
+    <div class="body-content">
+        @RenderBody()
+    </div>
+    <partial name="_SideBar" />
+    <partial name="_Footer" />
+    <partial name="_PopupSuccess" model="@message" />
+    @*HotLine*@
+    <div class="hotlinefix">
+        <div class="phone hidden-xs hidden-sm">
+            <p><a href="tel:@websiteSetting.Hotline">@websiteSetting.Hotline</a></p>
+        </div>
+        <div class="circle-hotline">
+            <a href="tel:@websiteSetting.Hotline">
+                <img class="lazy" data-src="/images/hotline.png">
+            </a>
+        </div>
+    </div>
+    @*search*@
+    <div class="fullscreen_search">
+        <div class="search_close_btn">
+            <i class="ion-android-close btn-close"></i>
+        </div>
+        <div class="search_container">
+            <form action="/san-pham/tim-kiem.html">
+                <input placeholder="Nhập tên sản phẩm cần tìm" type="text" name="keyword" autofocus>
+                <button type="submit"><i class="ion-ios-search-strong"></i></button>
+            </form>
+        </div>
+    </div>
+    <h1 style="display: none">@ViewBag.Title</h1>
+    <script src="~/js/plugins.min.js"></script>
+    <script src="~/js/site.min.js"></script>
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    @if (!string.IsNullOrEmpty(websiteSetting.Fanpage))
+    {
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    xfbml: true,
+                    version: 'v5.0'
+                });
+            };
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+    }
+    <!-- Your customer chat code -->
+
+    @if (!string.IsNullOrEmpty(websiteSetting.FanPageFacebookId))
+    {
+        <div class="fb-customerchat"
+             attribution=setup_tool
+             page_id="@websiteSetting.FanPageFacebookId"
+             theme_color="#fa3c4c"
+             logged_in_greeting="Chào mừng bạn đến với Nelly De Vuyst Việt Nam"
+             logged_out_greeting="Chào mừng bạn đến với Nelly De Vuyst Việt Nam">
+        </div>
+    }
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    @if (!string.IsNullOrEmpty(websiteSetting.GoogleAnalytics))
+    {
+        <script async src="https://www.googletagmanager.com/gtag/js?id=@websiteSetting.GoogleAnalytics"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', '@websiteSetting.GoogleAnalytics');
+        </script>
+    }
+    @if (ViewBag.DeviceType != "desktop")
+    {
+        <script>
+            (function ($) {
+                $(document).ready(function () {
+                    $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        $(this).parent().siblings().removeClass('open');
+                        $(this).parent().toggleClass('open');
+                    });
+                });
+            })(jQuery);
+        </script>
+    }
+    <script type="text/javascript">
+    var absoluteUri = "@absoluteUri";
+    </script>
+    @RenderSection("Scripts", required: false)
+    @RenderSection("KnockOut", required: false)
+</body>
+</html>

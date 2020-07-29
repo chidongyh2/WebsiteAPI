@@ -34,12 +34,16 @@ namespace GHM.Website.Domain.IRepository
         Task<int> CountByParentId(int? id);
 
         Task<List<MenuItemSearchViewModel>> GetAllActivatedMenuItem(string tenantId, string menuId, string languageId);
-        
+
+        Task<List<MenuItemSearchViewModel>> GetAllActivatedMenuItemForClient(string tenantId, string menuId, string languageId);
+
         Task<List<MenuItemForSelectViewModel>> GetAllMenuItemForSelect(string tenantId,  string languageId, string keyword, string menuId, int page, int pageSize, out int totalRows);
 
         Task<List<MenuItemSearchViewModel>> SearchMenuItem(string tenantId, string languageId, string keyword, string menuId, bool? isActive, int page, int pageSize, out int totalRows);
 
         Task<bool> CheckExistsBySubjectId(string subjectId, SubjectType subjectType);
+
+        Task<bool> CheckExistsBySubjectId(string tenantId, string subjectId, SubjectType subjectType, string menuId);
 
         Task<int> UpdateOrderAndParentId(List<MenuItemUpdate> listMenuItem);
     }

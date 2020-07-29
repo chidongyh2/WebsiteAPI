@@ -19,8 +19,6 @@ namespace GHM.Core.Domain.IRepository
 
         Task<ApproverConfig> GetInfo(string userId, ApproverConfigType type);
 
-        Task<bool> CheckExistsUserId(string userId, ApproverConfigType type);
-
         Task<bool> CheckExistsUserId(string tenantId, string userId, ApproverConfigType type);
 
     }

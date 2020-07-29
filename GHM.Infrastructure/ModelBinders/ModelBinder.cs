@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -19,7 +18,6 @@ namespace GHM.Infrastructure.ModelBinders
             var context = bindingContext.HttpContext;
             var initialBody = context.Request.Body; // Workaround
 
-            context.Request.EnableRewind();
             var buffer = new byte[Convert.ToInt32(context.Request.ContentLength)];
             var i = Task.Run(() => context.Request.Body.ReadAsync(buffer, 0, buffer.Length)).Result;
             var json = Encoding.UTF8.GetString(buffer);
