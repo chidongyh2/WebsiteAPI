@@ -1,10 +1,10 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-bionic AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-bionic AS build
 WORKDIR /src
 COPY ["GHM.FileManagement.Api/GHM.FileManagement.Api.csproj", "GHM.FileManagement.Api/"]
 COPY ["GHM.FileManagement.Infrastructure/GHM.FileManagement.Infrastructure.csproj", "GHM.FileManagement.Infrastructure/"]

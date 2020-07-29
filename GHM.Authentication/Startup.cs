@@ -90,14 +90,18 @@ namespace GHM.Authentication
 
             services.AddIdentityServer()
                 //.AddSigningCredential("id_rsa")
-                .AddDeveloperSigningCredential()
-                .AddResourceStore<ResourceRepository>()
-                .AddClientStore<ClientRepository>()
-                .AddProfileService<ProfileRepository>()
+                //.AddDeveloperSigningCredential()
+                //.AddResourceStore<ResourceRepository>()
+                //.AddClientStore<ClientRepository>()
+                //.AddProfileService<ProfileRepository>()
                 //.AddInMemoryIdentityResources(IdentityConfig.GetIdentityResources())
                 //.AddInMemoryApiScopes(IdentityConfig.GetApiScopes())
                 //.AddInMemoryApiResources(IdentityConfig.GetApiResources())
                 //.AddInMemoryClients(IdentityConfig.GetClients())
+                .AddInMemoryCaching()
+                .AddClientStoreCache<ClientRepository>()
+                .AddResourceStoreCache<ResourceRepository>()
+                .AddProfileService<ProfileRepository>()
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();
             #endregion
 
