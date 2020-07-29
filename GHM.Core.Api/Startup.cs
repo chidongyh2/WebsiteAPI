@@ -121,7 +121,6 @@ namespace GHM.Core.Api
             });
             #endregion
             app.UseExceptionHandler("/error");
-            app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

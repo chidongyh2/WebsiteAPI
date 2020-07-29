@@ -5,6 +5,7 @@ using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ocelot.DependencyInjection;
@@ -25,10 +26,15 @@ namespace GHM.Web.ApiGateway
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Config IIS support.
-            services.Configure<IISOptions>(options =>
+            services.Configure<KestrelServerOptions>(options =>
             {
-                options.ForwardClientCertificate = false;
+                options.AllowSynchronousIO = true;
+            });
+
+            // If using IIS:
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
             });
             services.AddMvc().AddJsonOptions(opts =>
             {
@@ -64,7 +70,6 @@ namespace GHM.Web.ApiGateway
             #endregion
             app.UseExceptionHandler("/error");
             app.UseAuthentication();
-            app.UseHttpsRedirection();
             app.UseOcelot().Wait();
         }
     }

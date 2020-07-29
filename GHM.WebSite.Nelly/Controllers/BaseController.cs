@@ -82,35 +82,41 @@ namespace GHM.Website.Nelly.Controllers
             //    return menus;
             //}
 
-            var apiService = _configuration.GetApiServiceInfo();
-
-            var result = await _menuService.GetAllActivatedMenuItemByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, Position.Top);
-
-            var data = result.Select(x => new MenuItemViewModel
+           try
             {
-                Id = x.Id,
-                ChildCount = x.ChildCount,
-                Description = x.Description,
-                Icon = x.Icon,
-                IdPath = x.IdPath,
-                Image = x.Image,
-                IsActive = x.IsActive,
-                Level = x.Level,
-                MenuId = x.MenuId,
-                Name = x.Name,
-                NamePath = x.NamePath,
-                Order = x.Order,
-                OrderPath = x.OrderPath,
-                ParentId = x.ParentId,
-                ParentName = x.ParentName,
-                SubjectId = x.SubjectId,
-                SubjectType = (SubjectType)x.SubjectType,
-                Url = x.Url
-            }).ToList();
+                var apiService = _configuration.GetApiServiceInfo();
 
-            //_cache.Set($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
+                var result = await _menuService.GetAllActivatedMenuItemByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, Position.Top);
 
-            return data;
+                var data = result.Select(x => new MenuItemViewModel
+                {
+                    Id = x.Id,
+                    ChildCount = x.ChildCount,
+                    Description = x.Description,
+                    Icon = x.Icon,
+                    IdPath = x.IdPath,
+                    Image = x.Image,
+                    IsActive = x.IsActive,
+                    Level = x.Level,
+                    MenuId = x.MenuId,
+                    Name = x.Name,
+                    NamePath = x.NamePath,
+                    Order = x.Order,
+                    OrderPath = x.OrderPath,
+                    ParentId = x.ParentId,
+                    ParentName = x.ParentName,
+                    SubjectId = x.SubjectId,
+                    SubjectType = (SubjectType)x.SubjectType,
+                    Url = x.Url
+                }).ToList();
+
+                //_cache.Set($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
+
+                return data;
+            }catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         private async Task<WebsiteSetting> GetSetting()
