@@ -1,7 +1,6 @@
 version: '3.4'
 
 services:
-
   filemanagement-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -42,7 +41,6 @@ services:
     ports:
       - "50001:80"
 
-
   website-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -51,7 +49,6 @@ services:
       - website-network
     ports:
       - "50002:80"
-
 
   notifications-api:
     environment:
@@ -88,7 +85,7 @@ services:
       - website-network
     ports:
       - "50009:80"
-    
+  
   rabbitmq:
     ports:
       - "15673:15672"

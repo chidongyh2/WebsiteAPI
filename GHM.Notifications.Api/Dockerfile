@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-bionic AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/core/3.1-bionic AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-bionic AS build
 WORKDIR /src
 COPY ["GHM.Notifications.Api/GHM.Notifications.Api.csproj", "GHM.Notifications.Api/"]
 COPY ["GHM.Events/GHM.Events.csproj", "GHM.Events/"]

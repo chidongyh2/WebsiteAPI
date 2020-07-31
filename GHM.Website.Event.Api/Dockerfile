@@ -1,5 +1,3 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-bionic AS base
 WORKDIR /app
 EXPOSE 80
@@ -13,13 +11,13 @@ COPY ["GHM.Website_Event.Infrastructure/GHM.Website.Event.Infrastructure.csproj"
 COPY ["GHM.Events/GHM.Events.csproj", "GHM.Events/"]
 COPY ["GHM.EventBus/GHM.EventBus.csproj", "GHM.EventBus/"]
 COPY ["GHM.Infrastructure.SqlServer/GHM.Infrastructure.SqlServer.csproj", "GHM.Infrastructure.SqlServer/"]
-RUN dotnet restore "GHM.Website.Event.Api/GHM.Website.Event.Api.csproj"
+#RUN dotnet restore "GHM.Website.Event.Api/GHM.Website.Event.Api.csproj"
 COPY . .
-WORKDIR "/src/GHM.Website.Event.Api"
-RUN dotnet build "GHM.Website.Event.Api.csproj" -c Release -o /app/build
-
+#WORKDIR "/src/GHM.Website.Event.Api"
+#RUN dotnet build "GHM.Website.Event.Api.csproj" -c Release -o /app/build
+#
 FROM build AS publish
-RUN dotnet publish "GHM.Website.Event.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "GHM.Website.Event.Api/GHM.Website.Event.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

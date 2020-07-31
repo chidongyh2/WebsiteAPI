@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GHM.Core.Domain.IRepository;
+using GHM.Authentication.IRepository;
 using GHM.Infrastructure.Helpers;
 using GHM.Infrastructure.Models;
 using IdentityModel;

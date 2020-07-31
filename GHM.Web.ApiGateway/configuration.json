@@ -20,8 +20,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50003
+          "Host": "website-event-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/events/{everything}",
@@ -57,8 +57,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "website.api",
-          "Port": 50002
+          "Host": "website-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
@@ -75,8 +75,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50009
+          "Host": "warehouse-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/warehouse/{everything}",
@@ -94,7 +94,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "notifications-api",
-          "Port": 50004
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v{version}/notifications/{everything}",
@@ -105,14 +105,13 @@
         "AllowedScopes": [ "GHM_Core_Api" ]
       }
     },
-    // BEGIN: Notifications
     {
       "DownstreamPathTemplate": "/notifications/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50004
+          "Host": "notifications-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/notifications/{everything}",
@@ -120,17 +119,21 @@
       "UseServiceDiscovery": false
     },
     {
-      "DownstreamPathTemplate": "/api/v{version}/notifications",
+      "DownstreamPathTemplate": "/api/v{version}/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 50004
+          "Host": "filemanagement-api",
+          "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/v{version}/notifications",
+      "UpstreamPathTemplate": "/api/v{version}/file/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
-      "UseServiceDiscovery": false
+      "UseServiceDiscovery": false,
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "GHM_Core_Api" ]
+      }
     }
   ],
 

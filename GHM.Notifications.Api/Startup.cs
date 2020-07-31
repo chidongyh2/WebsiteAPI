@@ -53,11 +53,6 @@ namespace GHM.Notifications.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            // Config IIS support.
-            services.Configure<IISOptions>(options =>
-            {
-                options.ForwardClientCertificate = false;
-            });
             services.AddApiVersioning(options =>
             {
                 options.ReportApiVersions = true;
@@ -96,14 +91,14 @@ namespace GHM.Notifications.Api
             services.AddTransient<INotificationService, NotificationService>();
             #endregion
 
-            RegisterEventBus(services);
+            // RegisterEventBus(services);
 
             services.AddDbContext<NotificationDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("NotificationConnectionString"));
             });
 
-            services.AddRawRabbit();
+            // services.AddRawRabbit();
 
             // Config Autofac.
             var container = new ContainerBuilder();
@@ -121,6 +116,9 @@ namespace GHM.Notifications.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
+            app.UseHttpsRedirection();
+
+
             #region Localizations
             var supportedCultures = new[]
             {
@@ -161,8 +159,8 @@ namespace GHM.Notifications.Api
             {
                 endpoints.MapControllers();
             });
-            app.UseRabbitMQ(Configuration);
-            ConfigureEventBus(app);
+            //app.UseRabbitMQ(Configuration);
+            // ConfigureEventBus(app);
         }
 
         private void RegisterEventBus(IServiceCollection services)
@@ -172,21 +170,20 @@ namespace GHM.Notifications.Api
                 var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
                 var factory = new ConnectionFactory()
                 {
-                    HostName = "rabbitmq",
-                    Port = 5672,
-                    UserName = "guest",
-                    Password = "guest"
+                    HostName = "rabbitmq"
                 };
+                factory.Port = 5672;
+                factory.UserName = "guest";
+                if (!string.IsNullOrEmpty(Configuration["EventBusUserName"]))
+                {
+                    factory.UserName = Configuration["EventBusUserName"];
+                }
 
-                //if (!string.IsNullOrEmpty(Configuration["EventBusUserName"]))
-                //{
-                //    factory.UserName = Configuration["EventBusUserName"];
-                //}
-
-                //if (!string.IsNullOrEmpty(Configuration["EventBusPassword"]))
-                //{
-                //    factory.Password = Configuration["EventBusPassword"];
-                //}
+                factory.Password = "guest";
+                if (!string.IsNullOrEmpty(Configuration["EventBusPassword"]))
+                {
+                    factory.Password = Configuration["EventBusPassword"];
+                }
 
                 var retryCount = 5;
                 if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
@@ -245,60 +242,59 @@ namespace GHM.Notifications.Api
             });
         }
 
-        public static IApplicationBuilder UseRabbitMQ(this IApplicationBuilder app, IConfiguration configuration)
-        {
-            var applicationLifeTime = app.ApplicationServices.GetService<IApplicationLifetime>();
-            applicationLifeTime.ApplicationStarted.Register(RegisterNotificationEvent);
+        //public static IApplicationBuilder UseRabbitMQ(this IApplicationBuilder app, IConfiguration configuration)
+        //{
+        //    var applicationLifeTime = app.ApplicationServices.GetService<IApplicationLifetime>();
+        //    applicationLifeTime.ApplicationStarted.Register(RegisterNotificationEvent);
 
-            return app;
+        //    return app;
 
-            void RegisterNotificationEvent()
-            {
-                var hostName = configuration.GetSection("EventBusHostName").Value;
-                var userName = configuration.GetSection("EventBusUserName").Value;
-                var password = configuration.GetSection("EventBusPassword").Value;
+        //    void RegisterNotificationEvent()
+        //    {
+        //        var hostName = configuration.GetSection("EventBusHostName").Value;
+        //        var userName = configuration.GetSection("EventBusUserName").Value;
+        //        var password = configuration.GetSection("EventBusPassword").Value;
 
-                var factory = new ConnectionFactory()
-                {
-                    HostName = string.IsNullOrEmpty(hostName) ? "rabbitmq" : hostName,
-                    UserName = string.IsNullOrEmpty(userName) ? "guest" : userName,
-                    Password = string.IsNullOrEmpty(password) ? "guest" : password,
-                };
-                using (var connection = factory.CreateConnection())
-                {
-                    using (var channel = connection.CreateModel())
-                    {
-                        channel.QueueDeclare(queue: "GHM_WebManager_Notification",
-                        durable: true,
-                        exclusive: false,
-                        autoDelete: false,
-                        arguments: null);
+        //        var factory = new ConnectionFactory()
+        //        {
+        //            HostName = string.IsNullOrEmpty(hostName) ? "localhost" : hostName,
+        //            UserName = string.IsNullOrEmpty(userName) ? "guest" : userName,
+        //            Password = string.IsNullOrEmpty(password) ? "guest" : password,
+        //        };
+        //        using (var connection = factory.CreateConnection())
+        //        using (var channel = connection.CreateModel())
+        //        {
+        //            channel.QueueDeclare(queue: "GHM_WebManager_Notification",
+        //                durable: false,
+        //                exclusive: false,
+        //                autoDelete: false,
+        //                arguments: null);
 
-                        var consumer = new EventingBasicConsumer(channel);
-                        consumer.Received += (model, ea) =>
-                        {
-                            var body = ea.Body;
-                            var message = Encoding.UTF8.GetString(body.Span);
-                            ProcessEvent(message);
-                        };
-                        channel.BasicConsume(queue: "GHM_WebManager_Notification",
-                            autoAck: true,
-                            consumer: consumer);
-                    }
-                }
-            }
+        //            var consumer = new EventingBasicConsumer(channel);
+        //            consumer.Received += (model, ea) =>
+        //            {
+        //                var body = ea.Body;
+        //                var message = Encoding.UTF8.GetString(body);
+        //                ProcessEvent(message);
+        //            };
+        //            channel.BasicConsume(queue: "GHM_WebManager_Notification",
+        //                autoAck: true,
+        //                consumer: consumer);
+        //        }
+        //        Console.ReadLine();
+        //    }
 
-            void ProcessEvent(string message)
-            {
-                var notificationService = app.ApplicationServices.GetService<INotificationService>();
-                var userConnectionRepository = app.ApplicationServices.GetService<IUserConnectionRepository>();
-                var notificationHub = app.ApplicationServices.GetService<IHubContext<NotificationHub>>();
-                var resourceService = app.ApplicationServices.GetService<IResourceService<GhmNotificationResource>>();
+        //    void ProcessEvent(string message)
+        //    {
+        //        var notificationService = app.ApplicationServices.GetService<INotificationService>();
+        //        var userConnectionRepository = app.ApplicationServices.GetService<IUserConnectionRepository>();
+        //        var notificationHub = app.ApplicationServices.GetService<IHubContext<NotificationHub>>();
+        //        var resourceService = app.ApplicationServices.GetService<IResourceService<GhmNotificationResource>>();
 
-                var intergrationEvent = JsonConvert.DeserializeObject<NotificationEvent>(message);
-                new NotificationEventHandler(notificationService, userConnectionRepository, notificationHub, resourceService)
-                    .Handle(intergrationEvent);
-            }
-        }
+        //        var intergrationEvent = JsonConvert.DeserializeObject<NotificationEvent>(message);
+        //        new NotificationEventHandler(notificationService, userConnectionRepository, notificationHub, resourceService)
+        //            .Handle(intergrationEvent);
+        //    }
+        //}
     }
 }

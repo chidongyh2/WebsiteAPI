@@ -6,8 +6,6 @@ services:
     build:
       context: .
       dockerfile: GHM.FileManagement.Api/Dockerfile
-    depends_on:
-      - authentication
 
   apigateway:
     image: ${DOCKER_REGISTRY-}ghmwebapigateway
@@ -30,7 +28,6 @@ services:
       dockerfile: GHM.Authentication/Dockerfile
     depends_on:
       - rabbitmq
-
 
   core-api:
     image: ${DOCKER_REGISTRY-}ghmcoreapi
@@ -65,8 +62,8 @@ services:
       context: .
       dockerfile: GHM.WebSite.Nelly/Dockerfile
     depends_on:
+      - rabbitmq
       - authentication
-
 
   website-event-api:
     image: ${DOCKER_REGISTRY-}ghmwebsiteeventapi
@@ -90,3 +87,19 @@ services:
     image: rabbitmq:3.7.7-management-alpine
     ports:
       - 5673:5672
+
+
+  mssql-data:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: 123@123a
+    ports:
+      - 1434:1433
+    volumes:
+      - mssql-data:/var/opt/mssql/data
+
+volumes:
+  mssql-data:
+      external: true
+

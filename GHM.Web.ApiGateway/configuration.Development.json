@@ -63,7 +63,11 @@
       ],
       "UpstreamPathTemplate": "/api/v{version}/website/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UseServiceDiscovery": false
+      "UseServiceDiscovery": false,
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "GHM_Website_Api" ]
+      }
     },
     // BEGIN: Product
     {
@@ -101,7 +105,6 @@
         "AllowedScopes": [ "GHM_Core_Api" ]
       }
     },
-    // BEGIN: Notifications
     {
       "DownstreamPathTemplate": "/notifications/{everything}",
       "DownstreamScheme": "http",
@@ -116,17 +119,21 @@
       "UseServiceDiscovery": false
     },
     {
-      "DownstreamPathTemplate": "/api/v{version}/notifications",
+      "DownstreamPathTemplate": "/api/v{version}/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "notifications-api",
+          "Host": "filemanagement-api",
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/v{version}/notifications",
+      "UpstreamPathTemplate": "/api/v{version}/file/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
-      "UseServiceDiscovery": false
+      "UseServiceDiscovery": false,
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "GHM_Core_Api" ]
+      }
     }
   ],
 
