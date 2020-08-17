@@ -2,13 +2,13 @@ version: '3.4'
 
 services:
   filemanagement-api:
-    image: ${DOCKER_REGISTRY-}ghmfilemanagementapi
+    image: ghmfilemanagementapi
     build:
       context: .
       dockerfile: GHM.FileManagement.Api/Dockerfile
 
   apigateway:
-    image: ${DOCKER_REGISTRY-}ghmwebapigateway
+    image: ghmwebapigateway
     build:
       context: .
       dockerfile: GHM.Web.ApiGateway/Dockerfile
@@ -22,7 +22,7 @@ services:
       - notifications-api
 
   authentication:
-    image: ${DOCKER_REGISTRY-}ghmauthentication
+    image: ghmauthentication
     build:
       context: .
       dockerfile: GHM.Authentication/Dockerfile
@@ -30,7 +30,7 @@ services:
       - rabbitmq
 
   core-api:
-    image: ${DOCKER_REGISTRY-}ghmcoreapi
+    image: ghmcoreapi
     build:
       context: .
       dockerfile: GHM.Core.Api/Dockerfile
@@ -39,7 +39,7 @@ services:
       - authentication
 
   website-api:
-    image: ${DOCKER_REGISTRY-}ghmwebsiteapi
+    image: ghmwebsiteapi
     build:
       context: .
       dockerfile: GHM.Website.Api/Dockerfile
@@ -48,7 +48,7 @@ services:
       - authentication
 
   notifications-api:
-    image: ${DOCKER_REGISTRY-}ghmnotificationsapi
+    image: ghmnotificationsapi
     build:
       context: .
       dockerfile: GHM.Notifications.Api/Dockerfile
@@ -56,17 +56,8 @@ services:
       - rabbitmq
       - authentication
 
-  website-nelly:
-    image: ${DOCKER_REGISTRY-}ghmwebsitenelly
-    build:
-      context: .
-      dockerfile: GHM.WebSite.Nelly/Dockerfile
-    depends_on:
-      - rabbitmq
-      - authentication
-
   website-event-api:
-    image: ${DOCKER_REGISTRY-}ghmwebsiteeventapi
+    image: ghmwebsiteeventapi
     build:
       context: .
       dockerfile: GHM.Website.Event.Api/Dockerfile
@@ -75,7 +66,7 @@ services:
       - authentication
 
   warehouse-api:
-    image: ${DOCKER_REGISTRY-}ghmwarehouseapi
+    image: ghmwarehouseapi
     build:
       context: .
       dockerfile: GHM.Warehouse.Api/Dockerfile

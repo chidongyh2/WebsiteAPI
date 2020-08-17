@@ -117,23 +117,6 @@
       "UpstreamPathTemplate": "/notifications/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "UseServiceDiscovery": false
-    },
-    {
-      "DownstreamPathTemplate": "/api/v{version}/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "filemanagement-api",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/api/v{version}/file/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
-      "UseServiceDiscovery": false,
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "IdentityApiKey",
-        "AllowedScopes": [ "GHM_Core_Api" ]
-      }
     }
   ],
 
