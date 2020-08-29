@@ -1,12 +1,12 @@
 ﻿
 using GHM.Website.Nelly.Constants;
 using GHM.Website.Nelly.Models;
+using ImageMagick;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.Linq;
 
 namespace GHM.Website.Nelly.Utils
@@ -69,11 +69,7 @@ namespace GHM.Website.Nelly.Utils
             int destWidth = (int)(sourceWidth * nPercent);
             int destHeight = (int)(sourceHeight * nPercent);
 
-            Bitmap bmPhoto = new Bitmap(newWidth, newHeight);
-
-            bmPhoto.SetResolution(sourceImage.HorizontalResolution,
-                     sourceImage.VerticalResolution);
-
+            Image bmPhoto = new Bitmap(newWidth, newHeight);
             Graphics grPhoto = Graphics.FromImage(bmPhoto);
 
             grPhoto.CompositingQuality = CompositingQuality.HighSpeed;

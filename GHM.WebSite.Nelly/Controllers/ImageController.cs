@@ -1,9 +1,13 @@
 ﻿using GHM.Website.Nelly.Constants;
 using GHM.Website.Nelly.Utils;
+using ImageMagick;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System.Drawing;
-using System.Drawing.Imaging;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Jpeg;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -20,67 +24,80 @@ namespace GHM.Website.Nelly.Controllers
         }
 
         [Route("image")]
-        public async Task<IActionResult> Index(string url, int? width, int? height, ImageType type = ImageType.Jpg)
+        public async Task<IActionResult> ReSize(string url, int? width, int? height, ImageType type = ImageType.Jpg)
         {
-            if (!string.IsNullOrEmpty(url))
+            Image sourceImage = await this.LoadImageFromUrl(url);
+            if (sourceImage != null)
             {
-                using (Image sourceImage = await this.LoadImageFromUrl(url))
+                try
                 {
-                    if (sourceImage != null)
+                    int sourceWidth = sourceImage.Width;
+                    int sourceHeight = sourceImage.Height;
+
+                    if (sourceWidth < sourceHeight)
                     {
-                        if (height == sourceImage.Height && width == sourceImage.Width)
-                        {
-                            Stream outputStream = new MemoryStream();
-
-                            sourceImage.Save(outputStream, ImageFormat.Jpeg);
-                            outputStream.Seek(0, SeekOrigin.Begin);
-                            return File(outputStream, "image/jpeg");
-                        }
-                        else
-                        {
-                            using (Image destinationImage = Common.CropImage(sourceImage, width ?? sourceImage.Width, height ?? sourceImage.Height, type))
-                            {
-                                Stream outputStream = new MemoryStream();
-
-                                destinationImage.Save(outputStream, type == ImageType.Jpg ? ImageFormat.Jpeg : ImageFormat.Png);
-                                outputStream.Seek(0, SeekOrigin.Begin);
-
-                                return File(outputStream, "image/jpeg");
-                            }
-                        }
+                        int buff = width ?? sourceWidth;
+                        width = height ?? sourceHeight;
+                        height = buff;
                     }
+
+                    int sourceX = 0, sourceY = 0, destX = 0, destY = 0;
+                    float nPercent = 0, nPercentW = 0, nPercentH = 0;
+
+                    nPercentW = ((float)width / (float)sourceWidth);
+                    nPercentH = ((float)height / (float)sourceHeight);
+                    if (nPercentH < nPercentW)
+                    {
+                        nPercent = nPercentH;
+                        destX = Convert.ToInt16((width -
+                                  (sourceWidth * nPercent)) / 2);
+                    }
+                    else
+                    {
+                        nPercent = nPercentW;
+                        destY = Convert.ToInt16((height -
+                                  (sourceHeight * nPercent)) / 2);
+                    }
+
+                    int destWidth = (int)(sourceWidth * nPercent);
+                    int destHeight = (int)(sourceHeight * nPercent);
+                    sourceImage.Mutate(i => i.Crop(new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight)).Resize(destWidth, destHeight));
+
+                    Stream outputStream = new MemoryStream();
+
+                    sourceImage.Save(outputStream, new JpegEncoder());
+                    outputStream.Seek(0, SeekOrigin.Begin);
+                    return this.File(outputStream, "image/jpg");
+                }
+
+                catch
+                {
+                    // Add error logging here
                 }
             }
 
-            if (string.IsNullOrWhiteSpace(_hostingEnvironment.WebRootPath))
-            {
-                _hostingEnvironment.WebRootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
-            }
-
-            string webRootPath = _hostingEnvironment.WebRootPath;
-            string newPath = Path.Combine(webRootPath, "images/no_image_new.gif");
-
-            using (var fileStream = new FileStream(newPath, FileMode.Open, FileAccess.Read))
-            {
-                Image orginImage = Image.FromStream(fileStream);
-
-                Stream outputStream = new MemoryStream();
-
-                orginImage.Save(outputStream, type == ImageType.Jpg ? ImageFormat.Jpeg : ImageFormat.Png);
-                outputStream.Seek(0, SeekOrigin.Begin);
-                return File(outputStream, "image/jpeg");
-            }
+            return this.NotFound();
         }
 
         private async Task<Image> LoadImageFromUrl(string url)
         {
             Image image = null;
 
-            using (HttpClient httpClient = new HttpClient())
-            using (HttpResponseMessage response = await httpClient.GetAsync(url))
-            using (Stream inputStream = await response.Content.ReadAsStreamAsync())
-            using (Bitmap temp = new Bitmap(inputStream))
-                image = new Bitmap(temp);
+            try
+            {
+                //Note: don't new up HttpClient in practice
+                //This should be stored in a shared field in practice
+                HttpClient httpClient = new HttpClient();
+                HttpResponseMessage response = await httpClient.GetAsync(url);
+                Stream inputStream = await response.Content.ReadAsStreamAsync();
+
+                image = Image.Load(inputStream);
+            }
+
+            catch
+            {
+                // Add error logging here
+            }
 
             return image;
         }

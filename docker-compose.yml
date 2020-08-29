@@ -74,6 +74,15 @@ services:
       - rabbitmq
       - authentication
 
+  website-nelly:
+    image: ghmwebsitenelly
+    build:
+      context: .
+      dockerfile: GHM.WebSite.Nelly/Dockerfile
+    depends_on:
+      - rabbitmq
+      - authentication
+
   rabbitmq:
     image: rabbitmq:3.7.7-management-alpine
     ports:

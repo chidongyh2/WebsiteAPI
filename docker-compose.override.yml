@@ -76,6 +76,15 @@ services:
       - website-network
     ports:
       - "50009:80"
+
+  website-nelly:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+      - website-network
+    ports:
+      - "9000:80"
   
   rabbitmq:
     ports:

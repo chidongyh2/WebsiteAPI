@@ -39,8 +39,8 @@ namespace GHM.Infrastructure.Services
                 _apiUrls = configuration.GetApiUrl();
                 _apiServiceInfo = configuration.GetApiServiceInfo();
             }
-            Client = Task.Run(GetClient).Result;
-
+            //Client = Task.Run(GetClient).Result;
+            Client = new HttpClient();
             ServicePointManager.SecurityProtocol =
                 SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
@@ -49,7 +49,7 @@ namespace GHM.Infrastructure.Services
             {
                 var client = new HttpClient();
                 DiscoveryDocumentResponse discoveryDocument = await client.GetDiscoveryDocumentAsync(_apiUrls.Authority);
-                var tokenResponse = await client.RequestClientCredentialsTokenAsync( new ClientCredentialsTokenRequest
+                var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
                 {
                     Address = discoveryDocument.TokenEndpoint,
                     ClientId = _apiServiceInfo.ClientId,

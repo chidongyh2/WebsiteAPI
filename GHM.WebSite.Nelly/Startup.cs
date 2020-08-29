@@ -147,20 +147,22 @@ namespace GHM.Website.Nelly
             app.UseRequestLocalization(localizationOptions);
             app.UseHttpsRedirection();
             app.UseSession();
+  
             app.UseStaticFiles(
-                //new StaticFileOptions
-                //{
-                //    OnPrepareResponse = context =>
-                //    {
-                //        // Cache static file for 7 day
-                //        string path = context.Context.Request.Path;
-                //        if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".ttf") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg")
-                //        || path.EndsWith(".otf"))
-                //        {
-                //            TimeSpan maxAge = new TimeSpan(30, 0, 0, 0); // 1 ngày
-                //            context.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
-                //        }
-                //}
+                new StaticFileOptions
+                {
+                    OnPrepareResponse = context =>
+                    {
+                        // Cache static file for 7 day
+                        string path = context.Context.Request.Path;
+                        if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".ttf") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg")
+                        || path.EndsWith(".otf"))
+                        {
+                            TimeSpan maxAge = new TimeSpan(30, 0, 0, 0); // 1 ngày
+                            context.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
+                        }
+                    }
+                }
             );
             app.UseWebMarkupMin();//Minify content
             app.UseCookiePolicy();
@@ -193,7 +195,19 @@ namespace GHM.Website.Nelly
                 if (values[parameterName] != null && !values[parameterName].ToString().Equals("lien-he")
                     && !values[parameterName].ToString().Contains("giai-phap/")
                     && !values[parameterName].ToString().Equals("video")
-                    && !values[parameterName].ToString().Equals("san-pham"))
+                    && !values[parameterName].ToString().Equals("san-pham")
+                    && !values[parameterName].ToString().Contains(".js")
+                    && !values[parameterName].ToString().Contains(".scss")
+                    && !values[parameterName].ToString().Contains(".png")
+                    && !values[parameterName].ToString().Contains(".svg")
+                    && !values[parameterName].ToString().Contains(".jpg")
+                    && !values[parameterName].ToString().Contains(".less")
+                    && !values[parameterName].ToString().Contains("lib/")
+                    && !values[parameterName].ToString().Contains("fonts/")
+                    && !values[parameterName].ToString().Contains("image/")
+                    && !values[parameterName].ToString().Contains("images/")
+                    && !values[parameterName].ToString().Contains(".ico")
+                    && !values[parameterName].ToString().Contains(".css"))
                 {
                     //var permalink = values[parameterName].ToString();
                     //string[] link = permalink.Split('.');
