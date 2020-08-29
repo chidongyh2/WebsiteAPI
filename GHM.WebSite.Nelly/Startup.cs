@@ -203,6 +203,7 @@ namespace GHM.Website.Nelly
                     && !values[parameterName].ToString().Contains(".jpg")
                     && !values[parameterName].ToString().Contains(".less")
                     && !values[parameterName].ToString().Contains("lib/")
+                       && !values[parameterName].ToString().Contains(".gif")
                     && !values[parameterName].ToString().Contains("fonts/")
                     && !values[parameterName].ToString().Contains("image/")
                     && !values[parameterName].ToString().Contains("images/")

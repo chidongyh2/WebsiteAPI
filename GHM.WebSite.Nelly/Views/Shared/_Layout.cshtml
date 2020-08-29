@@ -1,4 +1,5 @@
 ﻿@{
+    var url = ViewBag.Url;
     var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
     var absoluteUri = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
     var message = string.IsNullOrEmpty(ViewBag.Message) ? "Cảm ơn bạn đã quan tâm. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất." : ViewBag.Message;
@@ -9,7 +10,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Favicon) ? $"{ViewBag.Url}/{websiteSetting.Favicon}" : "/favicon.ico")" type="image/x-icon">
+    <link rel="icon" href="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Favicon) ? $"/image?url={ViewBag.Url}/{websiteSetting.Favicon}" : "/favicon.ico")" type="image/x-icon">
     <link rel="alternate" href="@absoluteUri" hreflang="vi-VN" />
     <link rel="canonical" href="@absoluteUri" />
     <meta name="author" content="jadespa jadespa.vn">
@@ -26,20 +27,20 @@
     <meta property="og:title" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.MetaTitle) ? websiteSetting.MetaTitle : ViewBag.MetaTitle)" />
     <meta property="og:description" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Description) ? websiteSetting.MetaDescription
                                          : Common.SubString(ViewBag.Description, 300))" />
-    <meta property="og:image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting.Logo : ViewBag.Image)" />
+    <meta property="og:image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? $"/image?url={url}{websiteSetting.Logo}" : $"/image?url={url}{ViewBag.Image}")" />
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.MetaTitle) ? websiteSetting.MetaTitle : ViewBag.MetaTitle)">
     <meta itemprop="description" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Description) ? websiteSetting.MetaDescription
                                          : Common.SubString(ViewBag.Description, 300))">
-    <meta itemprop="image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting.Logo : ViewBag.Image)">
+    <meta itemprop="image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? $"/image?url={url}{websiteSetting.Logo}" : $"/image?url={url}{ViewBag.Image}")">
     <!-- for Twitter -->
     <meta name="twitter:url" content="@absoluteUri" />
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.MetaTitle) ? websiteSetting.MetaTitle : ViewBag.MetaTitle)">
     <meta name="twitter:description" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Description) ? websiteSetting.MetaDescription
                                          : Common.SubString(ViewBag.Description, 300))">
-    <meta name="twitter:image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)">
-    <meta property="image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? websiteSetting?.Logo : ViewBag.Image)" />
+    <meta name="twitter:image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? $"/image?url={url}{websiteSetting.Logo}" : $"/image?url={url}{ViewBag.Image}")">
+    <meta property="image" content="@(websiteSetting != null && string.IsNullOrEmpty(ViewBag.Image) ? $"/image?url={url}{websiteSetting.Logo}" : $"/image?url={url}{ViewBag.Image}")" />
     <title>@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting?.Brand) && string.IsNullOrEmpty(ViewBag.Title) ? websiteSetting?.Brand : ViewBag.Title)</title>
 
     <link href="~/css/plugins.min.css" rel="stylesheet" />

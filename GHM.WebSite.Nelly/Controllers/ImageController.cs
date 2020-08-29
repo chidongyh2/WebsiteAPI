@@ -24,7 +24,7 @@ namespace GHM.Website.Nelly.Controllers
         }
 
         [Route("image")]
-        public async Task<IActionResult> ReSize(string url, int? width, int? height, ImageType type = ImageType.Jpg)
+        public async Task<IActionResult> ReSize(string url, int? width = 0, int? height = 0, ImageType type = ImageType.Jpg)
         {
             Image sourceImage = await this.LoadImageFromUrl(url);
             if (sourceImage != null)
@@ -44,8 +44,8 @@ namespace GHM.Website.Nelly.Controllers
                     int sourceX = 0, sourceY = 0, destX = 0, destY = 0;
                     float nPercent = 0, nPercentW = 0, nPercentH = 0;
 
-                    nPercentW = ((float)width / (float)sourceWidth);
-                    nPercentH = ((float)height / (float)sourceHeight);
+                    nPercentW = width > 0 ? ((float)width / (float)sourceWidth) : 1;
+                    nPercentH = height > 0 ? ((float)height / (float)sourceHeight) : 1;
                     if (nPercentH < nPercentW)
                     {
                         nPercent = nPercentH;
@@ -70,8 +70,9 @@ namespace GHM.Website.Nelly.Controllers
                     return this.File(outputStream, "image/jpg");
                 }
 
-                catch
+                catch (Exception e)
                 {
+                    throw e;
                     // Add error logging here
                 }
             }
