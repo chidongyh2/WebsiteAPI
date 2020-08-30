@@ -7,10 +7,16 @@
   <PropertyGroup>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="uploads\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
