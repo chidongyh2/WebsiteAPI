@@ -61,6 +61,7 @@ namespace GHM.Website.Nelly
                 .AddFluentValidation();
 
             services.AddMemoryCache();
+            services.AddResponseCaching();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddSession(opts =>
             {
@@ -119,6 +120,7 @@ namespace GHM.Website.Nelly
             app.UseRouting();
             app.UseDeveloperExceptionPage();
             app.UseExceptionHandler("/Home/Error");
+            app.UseResponseCaching();
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
             #region Localizations
@@ -145,9 +147,9 @@ namespace GHM.Website.Nelly
                 },
             };
             app.UseRequestLocalization(localizationOptions);
+            #endregion
             app.UseHttpsRedirection();
             app.UseSession();
-  
             app.UseStaticFiles(
                 new StaticFileOptions
                 {
@@ -156,7 +158,7 @@ namespace GHM.Website.Nelly
                         // Cache static file for 7 day
                         string path = context.Context.Request.Path;
                         if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".ttf") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg")
-                        || path.EndsWith(".otf"))
+                        || path.EndsWith(".otf") || path.EndsWith(".ico") || path.EndsWith(".Jpeg"))
                         {
                             TimeSpan maxAge = new TimeSpan(30, 0, 0, 0); // 1 ngày
                             context.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
@@ -166,7 +168,6 @@ namespace GHM.Website.Nelly
             );
             app.UseWebMarkupMin();//Minify content
             app.UseCookiePolicy();
-            #endregion
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

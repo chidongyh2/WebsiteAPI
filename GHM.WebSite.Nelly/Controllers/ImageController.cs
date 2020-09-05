@@ -22,7 +22,7 @@ namespace GHM.Website.Nelly.Controllers
         {
             _hostingEnvironment = hostingEnvironment;
         }
-
+        [ResponseCache(Duration = 86400, Location = ResponseCacheLocation.None, NoStore = false)]
         [Route("image")]
         public async Task<IActionResult> ReSize(string url, int? width = 0, int? height = 0, ImageType type = ImageType.Jpg)
         {

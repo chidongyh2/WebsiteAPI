@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="image">
                                     <a href="@($"/{category.SeoLink}.htm")" title="@(string.IsNullOrEmpty(category.Name) ? category.Name : category.Name)">
-                                        <img class="news-image img-responsive lazy" data-src="@($"/image?url={(string.IsNullOrEmpty(category.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{category.Image}")}&width=600&height=600")"
+                                        <img class="news-image img-responsive lazy" src="@($"/image?url={(string.IsNullOrEmpty(category.Image) ? "/images/no-image.png" : $"{ViewBag.Url}{category.Image}")}&width=600&height=600")"
                                              onerror="this.onerror = null;this.src='/images/no-image.png'"
                                              alt="@category.Name" />
                                     </a>
