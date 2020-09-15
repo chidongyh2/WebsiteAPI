@@ -1,0 +1,36 @@
+﻿@{
+    var mainBanner = ViewBag.MainBanner as BannerViewModel;
+    var listNewsHot = ViewBag.NewsHostHomePage as CategoryWidthNewsViewModel;
+}
+
+@*<partial name="_MainSlider" model="@mainBanner" />
+<partial name="_MenuContact" />*@
+@*@if (ViewBag.ListProductCategoryHomePage != null)
+{
+    <partial name="_ProductCategoryHomePage" model="ViewBag.ListProductCategoryHomePage" />
+}*@
+
+<partial name="_ProductCategoryHotHomePage" model="ViewBag.ListProduct" />
+
+@*@if (ViewBag.ListProductCategorySolution != null)
+{
+    <partial name="_ProductCategorySolution" model="ViewBag.ListProductCategorySolution" />
+}
+@if (ViewBag.NewsHostHomePage != null)
+{
+    <partial name="_NewsHotHomePage" model="ViewBag.NewsHostHomePage" />
+}
+@if (ViewBag.NewHomePage != null)
+{
+    <partial name="_NewsHomePage.cshtml" model="ViewBag.NewHomePage" />
+}*@
+<partial name="_Video" />
+<partial name="_Brand" />
+@section scripts {
+    <script type="text/javascript">
+        var countNewsHot = "@listNewsHot?.ListNews?.Count()";
+        var effectSlider = "@mainBanner.EffectType";
+    </script>
+    <script type="text/javascript" src="~/js/home.min.js"></script>
+}
+

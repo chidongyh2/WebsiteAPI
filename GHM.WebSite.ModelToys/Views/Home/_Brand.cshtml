@@ -1,0 +1,31 @@
+﻿@{   
+    var listBrand = ViewBag.Brands as List<BrandSearchViewModel>;
+    var url = ViewBag.Url;
+}
+
+<div class="news-angency">    
+    @if (listBrand != null && listBrand.Any())
+    {
+        <div id="agency">
+            <div class="container">
+                <div class="row">                    
+                    <div class="col-sm-12">
+                        <div id="agencySlider">
+                            @foreach (var brand in listBrand)
+                            {
+                                <div class="item">
+                                    <a title="@brand.Name">
+                                        <img data-src="@($"/image?url={(string.IsNullOrEmpty(brand.Logo) ? "/images/no-image.png" : $"{ViewBag.Url}{brand.Logo}")}&width=95&height=95&type=1")" onerror="this.src='/images/no-image.png'"
+                                             alt="@brand.Name" />
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

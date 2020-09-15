@@ -1,0 +1,30 @@
+﻿@using Newtonsoft.Json.Serialization;
+
+@{
+    var jsonSerializerSettings = new JsonSerializerSettings
+    {
+        ContractResolver = new CamelCasePropertyNamesContractResolver()
+    };
+}
+
+<div id="product-categoty-hot-in-homepage">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="product-hot-slider">
+                    <!-- ko foreach: listProductHot-->
+                    <div class="item col-md-3">
+                        <partial name="_ProductItem" />
+                    </div>
+                    <!--/ko-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+        var productCategoryHots = @(ViewBag.ListProductCategoryHot != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProductCategoryHot)) : "[]");
+        var productCategoryHotId = "@ViewBag.ProductCategoryId";
+    var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
+</script>

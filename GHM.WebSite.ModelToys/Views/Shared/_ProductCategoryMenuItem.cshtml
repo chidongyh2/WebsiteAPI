@@ -1,0 +1,27 @@
+﻿
+<script id="formElementNodeTemplate" type="text/html">
+    <ul class="root">
+        <li>
+            <a href="javascript://" data-bind="text: text, attr:{href: '/san-pham/' + data.seoLink + '.htm', title: text}"></a>
+            <a href="javascript://" class="pull-right" data-bind="click: function(data){ data.state.show(!data.state.show());}, visible: childCount > 0">
+                <i class="la la-angle-down" data-bind="visible: state.show()"></i>
+                <i class="la la-angle-up" data-bind="visible: !state.show()" style="display:none"></i>
+            </a>
+            <!--ko if: !state.show()-->
+            <ul class="children" data-bind="template:{ name: 'formElementNodeTemplate', foreach: children}"></ul>
+            <!--/ko-->
+        </li>
+    </ul>
+</script>
+<script>
+    var treeData = @(ViewBag.ProductCategroryTree != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ProductCategroryTree, new JsonSerializerSettings
+    {
+        ContractResolver = new CamelCasePropertyNamesContractResolver()
+    })) : "[]");
+</script>
+<div class="product-category-menu">
+    <h3 class="title-sidebar">Sản phẩm</h3>
+    <div data-bind="template: { name: 'formElementNodeTemplate', foreach: productCategoryTree }">
+    </div>
+</div>
+

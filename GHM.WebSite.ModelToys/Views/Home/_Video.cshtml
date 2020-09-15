@@ -1,0 +1,59 @@
+﻿@{
+    var listVideo = ViewBag.ListVideoHomePage as List<VideoViewModel>;
+    var videoFirst = listVideo != null && listVideo.Any() ? listVideo.FirstOrDefault() : null;
+    var title = "Video";
+}
+
+@if (listVideo != null && listVideo.Any())
+{
+    <div id="video" class="lazy" data-src="/images/facion/Video_Background.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="titlebar">
+                        <h3>@title</h3>
+                        <div class="image center">
+                            <img class="lazy" width="25" data-src="/images/facion/la trang.png" alt="title"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="video-container">
+                        <div class="img-responsive video-default">
+                            <!--ko if: isSelectVideo()-->
+                            <iframe data-bind="attr: {src: 'https://www.youtube.com/embed/' + videoLinkId() + '?enablejsapi=1&amp;amp;autoplay=1&amp;amp;rel=0&controls=1', alt: videoTitle() }" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" width="100%" height="480"></iframe>
+                            <!--/ko-->
+                            <!--ko if: !isSelectVideo()-->
+                            <iframe src="@(string.Format("https://www.youtube.com/embed/{0}?enablejsapi=1&amp;amp;autoplay=0&amp;amp;rel=0&controls=1", videoFirst?.VideoLinkId))" allow="autoplay; encrypted-media" frameborder="0" width="100%" height="480"></iframe>
+                            <!--/ko-->
+                        </div>
+                        <div id="video-silder" data-bind="foreach: $root.listVideo()">
+                            <div class="item">
+                                <a href="javascript://" data-bind="attr: { title: Title }, css: {selected : $root.id() === Id}, click: $root.selectVideo" class="thumbnail">
+                                    <!--ko if: $root.checkUrlVideo(Thumbnail)-->
+                                    <img class="img-responsive lazy" data-bind="attr: { 'data-src': '/image?url=' + '@ViewBag.Url' + Thumbnail + '&width=100&height=75', alt: Title }"
+                                         onerror="this.src='/images/no-image.png'" />
+                                    <!--/ko-->
+                                    <!--ko ifnot: $root.checkUrlVideo(Thumbnail)-->
+                                    <img class="img-responsive lazy" data-bind="attr: { 'data-src': '/image?url=' + Thumbnail + '&width=100&height=75', alt: Title }"
+                                         onerror="this.src='/images/no-image.png'" />
+                                    <!--/ko-->
+                                    <span class="pause-video">
+                                        <i class="fa fa-play"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    var listVideo = @(ViewBag.ListVideoHomePage != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListVideoHomePage)) : "[]");
+    var videoLinkId = "@videoFirst?.VideoLinkId";
+    var videoTitle = "@videoFirst?.Title";
+    var videoId = "@videoFirst?.Id";
+</script>

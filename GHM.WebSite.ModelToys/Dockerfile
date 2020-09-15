@@ -1,0 +1,27 @@
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-bionic AS base
+RUN apt-get update && apt-get install -y libgdiplus
+# install System.Drawing native dependencies
+WORKDIR /app
+EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-bionic AS build
+
+
+WORKDIR /src
+COPY ["GHM.WebSite.ModelToys/GHM.WebSite.ModelToys.csproj", "GHM.WebSite.ModelToys/"]
+COPY ["GHM.Infrastructure/GHM.Infrastructure.csproj", "GHM.Infrastructure/"]
+COPY ["GHM.WebsiteClient.Api/GHM.WebsiteClient.Api.csproj", "GHM.WebsiteClient.Api/"]
+RUN dotnet restore "GHM.WebSite.ModelToys/GHM.WebSite.ModelToys.csproj"
+COPY . .
+WORKDIR "/src/GHM.WebSite.ModelToys"
+RUN dotnet build "GHM.WebSite.ModelToys.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "GHM.WebSite.ModelToys.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "GHM.WebSite.ModelToys.dll"]

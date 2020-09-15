@@ -85,6 +85,15 @@ services:
       - website-network
     ports:
       - "9000:80"
+
+  website-modeltoys:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+      - website-network
+    ports:
+      - "9200:80"
   
   rabbitmq:
     ports:

@@ -1,0 +1,164 @@
+﻿@using GHM.WebSite.Nelly.Helper
+@using GHM.WebSite.Nelly.Models
+@{
+    var websiteSetting = ViewBag.WebsiteSetting as WebsiteSetting;
+    var listMenuItem = ViewBag.MainNav as List<MenuItemViewModel>;
+    var listSocialNetWork = ViewBag.SocialNetwork as List<SocialNetworkViewModel>;
+    var listLanguage = ViewBag.ListLanguage as List<TenantLanguageViewModel>;
+    var listBranch = ViewBag.BranchContacts as List<BranchContactSearchViewModel>;
+    var branchOffice = listBranch != null ? listBranch.FirstOrDefault(x => x.IsOffice.HasValue && x.IsOffice.Value) : null;
+    var officeContact = branchOffice != null ? branchOffice.BranchContactDetails.FirstOrDefault(x => x.ContactType == ContactType.Email) : null;
+    var path = $"{Context.Request.Path}";
+    var url = ViewBag.Url;
+    var productSelectItemJson = HttpContextAccessor.HttpContext.Session.GetString(SessionParam.ShoppingCart);
+    var productsItems = JsonConvertHelper.GetObjectFromJson<List<ProductSelectedItem>>(productSelectItemJson);
+}
+<header id="header">
+    <div class="header-top hidden-sm hidden-xs hidden-md">
+        <div class="wrap-header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 hotline">
+                        <span>
+                            @if (websiteSetting?.Hotline != null && websiteSetting.Hotline.Any())
+                            {
+                                <a href="tel:@websiteSetting?.Hotline"><span>@websiteSetting?.Hotline  |</span></a>
+                            }
+                            @if (listBranch != null && listBranch.Any())
+                            {
+                                <span class=""> @listBranch.FirstOrDefault(x => x.IsOffice.HasValue && x.IsOffice.Value)?.Address</span>
+                            }
+                        </span>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="list-inline pull-right">
+                            <li class="">
+                                <form action="/tim-kiem.html">
+                                    <div class="searchbox">
+                                        <input class="form-control" name="keyword" placeholder="Tìm kiếm" />
+                                        <button href="javascript://" type="submit">
+                                            <i class="ion-android-search"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </li>
+                            <li>
+                                <a href="/gio-hang" class="shopping-cart">
+                                    <i class="ion-bag"></i>
+                                    <span class="quantity-product" id="quantity-product">@(productsItems != null ? productsItems.Count : 0)</span>
+                                </a>
+                            </li>
+                            @*<li>
+                                    <a href="javascript://">
+                                        <i class="fa fa-language"></i>
+                                        <span class="cm-pdl-10 size14"> English</span>
+                                    </a>
+                                </li>*@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <nav class="navbar navbar-inverse navbar-expand-lg">
+            <div class="container wrap">
+                <a href="/" class="navbar-brand">
+                    <img class="img-responsive logo" src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ?  $"/image?url={url}{websiteSetting.Logo}": "/images/logo-cu.png" )"
+                         alt="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Brand) ? websiteSetting.Brand :  "Phun xăm thẩm mỹ amiea")"
+                         onerror="this.src='/images/no-image.png'" />
+                </a>
+                <div class="search-box-mobile visible-sm visible-xs">
+                    <a href="javascript://" onclick="showModalSearchProduct()">
+                        <i class="ion-android-search"></i>
+                    </a>
+                </div>
+                <div class="shopping-cart visible-sm visible-xs">
+                    <a href="/gio-hang">
+                        <i class="ion-bag"></i>
+                        <span class="quantity-product" id="quantity-product-bottom">@(productsItems != null ? productsItems.Count : 0)</span>
+                    </a>
+                </div>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" aria-controls="abcMainNav" data-target="#abcMainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <div class="wrap-none-show-icon">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </div>
+                    <div class="wrap-show-icon">
+                        <span class="ion-android-close"></span>
+                    </div>
+                </button>
+                <div class="navbar-collapse collapse" id="abcMainNav">
+                    <ul class="nav navbar-nav navbar-right mr-auto">
+                        @if (listMenuItem != null && listMenuItem.Any())
+                        {
+                            var menuObject = new MenuObject
+                            {
+                                ListMenuItem = listMenuItem,
+                                ParentId = null,
+                            };
+                            <partial name="_MenuItem" model="menuObject" />
+                        }
+                        @if (listSocialNetWork != null && listSocialNetWork.Any())
+                        {
+                            <li class="visible-sm visible-xs visible-md">
+                                <div class="list-social-network">
+                                    @foreach (var socialNetWork in listSocialNetWork)
+                                    {
+                                        <div class="list-items">
+                                            <a href="@socialNetWork.Url" class="btn-scoical" title="@websiteSetting?.Brand">
+                                                @if (!string.IsNullOrEmpty(socialNetWork.Icon))
+                                                {
+                                                    <i class="fa @socialNetWork.Icon"></i>
+                                                }
+                                            </a>
+                                        </div>
+                                    }
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            @if (listLanguage != null && listLanguage.Any() && listLanguage.Count > 1)
+            {
+                <div class="header-tool hidden-sm hidden-xs hidden-md">
+                    <div class="btn-group">
+                        @if (ViewBag.CurrentLanguage == "vi-VN")
+                        {
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <img src="/images/vi.png"> Vietnamese<span class="caret"></span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <img src="~/images/en.png"> English<span class="caret"></span>
+                            </a>
+                        }
+                        <ul class="dropdown-menu pull-right">
+                            @foreach (var language in listLanguage)
+                            {
+                                <li>
+                                    <a href="/change-language/@language.LanguageId?url=@path">
+                                        @if (language.LanguageId == "vi-VN")
+                                        {
+                                            <img src="/images/vi.png">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/images/en.png">
+                                        }
+                                        @language.Name
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        </nav>
+    </div>
+</header>

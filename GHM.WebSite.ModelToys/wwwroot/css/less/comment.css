@@ -1,0 +1,170 @@
+﻿/*@font-face {
+    font-family: 'Opensans';
+    src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Light';
+    src: url('../../lib/open_sans/opensans-light.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Bold';
+    src: url('../../lib/open_sans/opensans-bold.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Regular';
+    src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'Opensans-Lightitalic';
+    src: url('../../lib/open_sans/opensans-lightitalic.ttf') format('truetype');
+    font-display: swap;
+}*/
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('../../lib/font-roboto/roboto-bold_1.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('../../lib/font-roboto/roboto-regular.ttf') format('truetype');
+  font-display: swap;
+}
+/*@font-face {
+    font-family: 'PlayfairDisplay-Regular';
+    src: url('../../lib/playfair-display/playfairdisplay-regular.otf') format('opentype');
+    font-display: swap;
+}*/
+/*@font-face {
+    font-family: 'PlayfairDisplay-Bold';
+    src: url('../../lib/playfair-display/playfairdisplay-bold.otf') format('opentype');
+    font-display: swap;
+}*/
+.comments {
+  margin-bottom: 20px;
+}
+.comments .line {
+  margin-bottom: -2px;
+  border-bottom: 2px solid #EEEDEB;
+  height: 2px;
+  width: 100%;
+}
+.comments .title {
+  overflow: hidden;
+  display: inline-block;
+  margin-top: 0px;
+  border-top: 2px solid #F9A5A7;
+  padding: 10px 0px;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding-bottom: 0px;
+}
+.comments .box-comment .form-horizontal {
+  width: 100%;
+  padding: 20px;
+  background-color: #F7F7F7;
+}
+@media only screen and (max-width: 1200px) {
+  .comments .box-comment .form-horizontal {
+    padding: 15px;
+  }
+}
+.comments .box-comment .form-horizontal .title {
+  text-align: center;
+  text-transform: uppercase;
+  color: #3F3F3F;
+  font-family: Roboto-Regular;
+  font-size: 20px;
+  font-weight: bold;
+}
+.comments .box-comment .form-horizontal .form-group {
+  padding: 5px;
+  background: white;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+.comments .box-comment .form-horizontal .form-group label {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #3F3F3F;
+  font-weight: normal;
+  padding-left: 10px;
+}
+.comments .box-comment .form-horizontal .form-group input,
+.comments .box-comment .form-horizontal .form-group textarea,
+.comments .box-comment .form-horizontal .form-group select {
+  border: none !important;
+  box-shadow: none;
+}
+.comments .box-comment .form-horizontal .form-group input:focus,
+.comments .box-comment .form-horizontal .form-group textarea:focus,
+.comments .box-comment .form-horizontal .form-group select:focus,
+.comments .box-comment .form-horizontal .form-group input:hover,
+.comments .box-comment .form-horizontal .form-group textarea:hover,
+.comments .box-comment .form-horizontal .form-group select:hover {
+  box-shadow: none !important;
+}
+.comments .box-comment .form-horizontal .btn-send {
+  background-color: #F9A5A7;
+  border-radius: 0px;
+  font-size: 15px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-family: Roboto-Regular;
+  padding: 6px 12px;
+  border-radius: 0px !important;
+}
+.comments .comment-no {
+  font-size: 20px;
+  font-family: Roboto-Regular;
+  margin-bottom: 5px;
+}
+.comments .list-comment {
+  display: inline-block;
+  clear: both;
+  width: 100%;
+  padding: 10px 0;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
+}
+.comments .list-comment .comment-item {
+  display: inline-block;
+  clear: both;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.comments .list-comment .comment-item .avatar {
+  display: inline-block;
+  float: left;
+  width: 50px;
+  height: 50px;
+}
+.comments .list-comment .comment-item .content {
+  /*width: 750px;*/
+  margin-left: 15px;
+  clear: none;
+  border-top: none;
+  padding-right: 10px;
+  margin-top: 0px !important;
+}
+.comments .list-comment .comment-item .content .intro {
+  font-size: 13px;
+  font-family: Roboto-Regular;
+  margin-bottom: 5px;
+}
+.comments .list-comment .comment-item .content .comment-details {
+  font-size: 13px;
+  font-family: Roboto-Regular;
+  color: #3F3F3F;
+}
+.comments .list-comment .comment-item .content .tools a {
+  color: #3F3F3F;
+  text-decoration: none;
+}
+.comments .children {
+  background-color: #eeeeee;
+  padding-left: 10px;
+}

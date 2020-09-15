@@ -1,0 +1,178 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css",
+      "wwwroot/css/less/common.css",
+      "wwwroot/css/less/header.css",
+      "wwwroot/css/less/main.css",
+      "wwwroot/css/less/footer.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/home.min.js",
+    "inputFiles": [
+      "wwwroot/js/home.js",
+      "wwwroot/js/viewmodel/home.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/about.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/about.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/banner.min.js",
+    "inputFiles": [
+      "wwwroot/js/banner.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/category-news.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/category-news.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/contact.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/contact.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/plugins.min.css",
+    "inputFiles": [
+      "wwwroot/lib/slick-1.8.1/slick/slick.css",
+      "wwwroot/lib/slick-1.8.1/slick/slick-theme.css",
+      "wwwroot/lib/toastr/toastr.min.css",
+      "wwwroot/css/plugins.css",
+      "wwwroot/lib/line-awesome/css/line-awesome.css",
+      "wwwroot/lib/toastr/toastr.min.css",
+      "wwwroot/lib/animate.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/plugins.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery.min.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "wwwroot/lib/OwlCarousel2-2.3.4/dist/owl.carousel.min.js",
+      "wwwroot/lib/knockout/knockout-3.4.2.js",
+      "wwwroot/lib/lightslider/js/lightslider.es5.min.js",
+      "wwwroot/lib/jquery.lazy-master/jquery.lazy.es5.min.js",
+      "wwwroot/lib/slick-1.8.1/slick/slick.js",
+      "wwwroot/lib/underscore-min.js",
+      "wwwroot/lib/globinfo/globalize.js",
+      "wwwroot/lib/toastr/toastr.js",
+      "wwwroot/lib/jquery.validate.min.js",
+      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "wwwroot/lib/moment.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js",
+      "wwwroot/js/Common.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/video.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/video.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/ProductViewModel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/ProductViewModel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/product-category.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/product-category.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/product-category-solution.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/product-category-solution.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/product-detail.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/product-detail.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/Faq.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/Faq.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/EasyZoom-master/dist/easyzoom.min.js",
+    "inputFiles": [
+      "wwwroot/lib/EasyZoom-master/dist/easyzoom.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/EasyZoom-master/css/easyzoom.min.css",
+    "inputFiles": [
+      "wwwroot/lib/EasyZoom-master/css/easyzoom.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/shopping-cart.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/shopping-cart.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/agency-system.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/agency-system.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/agency-register.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/agency-register.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/viewmodel/product-search.viewmodel.min.js",
+    "inputFiles": [
+      "wwwroot/js/viewmodel/product-search.viewmodel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/bootstrap-datepicker/css/bootstrap-datepicker3.min.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap-datepicker/css/bootstrap-datepicker3.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.min.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/component/box-hotline.component.min.js",
+    "inputFiles": [
+      "wwwroot/js/component/box-hotline.component.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/component/comment-component.min.js",
+    "inputFiles": [
+      "wwwroot/js/component/comment-component.js",
+      "wwwroot/js/component/comment-box-component.js",
+      "wwwroot/js/component/comment-list-component.js"
+    ]
+  }
+]

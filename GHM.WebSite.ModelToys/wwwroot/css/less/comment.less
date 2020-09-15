@@ -1,0 +1,141 @@
+﻿@import "config.less";
+
+.comments {
+    margin-bottom: 20px;
+
+    .line {
+        margin-bottom: -2px;
+        border-bottom: 2px solid @color-border;
+        height: 2px;
+        width: 100%;
+    }
+
+    .title {
+        overflow: hidden;
+        display: inline-block;
+        margin-top: 0px;
+        border-top: 2px solid @main-color;
+        padding: 10px 0px;
+        text-transform: uppercase;
+        font-size: 16px;
+        padding-bottom: 0px;
+    }
+
+    .box-comment {
+        .form-horizontal {
+            width: 100%;
+            padding: 20px;
+            background-color: #F7F7F7;
+
+            @media @mobile {
+                padding: 15px;
+            }
+
+            .title {
+                text-align: center;
+                text-transform: uppercase;
+                color: @color-text;
+                font-family: Roboto-Regular;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .form-group {
+                padding: 5px;
+                background: white;
+                margin: 0px;
+                margin-bottom: 10px;
+
+                label {
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    color: @color-text;
+                    font-weight: normal;
+                    padding-left: 10px;
+                }
+
+                input, textarea, select {
+                    border: none !important;
+                    box-shadow: none;
+
+                    &:focus, &:hover {
+                        box-shadow: none !important;
+                    }
+                }
+            }
+
+            .btn-send {
+                background-color: @main-color;
+                border-radius: 0px;
+                font-size: 15px;
+                color: @color-white;
+                text-transform: uppercase;
+                font-family: Roboto-Regular;
+                padding: 6px 12px;
+                border-radius: 0px !important;
+            }
+        }
+    }
+
+    .comment-no {
+        font-size: 20px;
+        font-family: Roboto-Regular;
+        margin-bottom: 5px;
+    }
+
+    .list-comment {
+        display: inline-block;
+        clear: both;
+        width: 100%;
+        padding: 10px 0;
+        padding-bottom: 0px;
+        margin-bottom: 10px;
+
+        .comment-item {
+            display: inline-block;
+            clear: both;
+            width: 100%;
+            margin-bottom: 10px;
+
+            .avatar {
+                display: inline-block;
+                float: left;
+                width: 50px;
+                height: 50px;
+            }
+
+            .content {
+                /*width: 750px;*/
+                margin-left: 15px;
+                clear: none;
+                border-top: none;
+                padding-right: 10px;
+                margin-top: 0px !important;
+
+                .intro {
+                    font-size: 13px;
+                    font-family: Roboto-Regular;
+                    margin-bottom: 5px;
+                }
+
+                .comment-details {
+                    font-size: 13px;
+                    font-family: Roboto-Regular;
+                    color: @color-text;
+                }
+
+                .tools {
+                    a {
+                        color: @color-text;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .children {
+        background-color: #eeeeee;
+        padding-left: 10px;
+    }
+}
