@@ -148,18 +148,11 @@ function HomeViewModel() {
         _.each(productCategoryHots, function (item) {
             item.IsActive = ko.observable(false);
         });
-
-        //self.listProductCategoryHot(productCategoryHots);
-
         self.productCategoryId(parseInt(productCategoryHotId));
-
-        self.rendProductCategoryActive();
-
+        //self.rendProductCategoryActive();
         self.listProductHot([]);
         $("div").remove(".lslide");
-        console.log(products)
         self.listProductHot(products);
-        //self.initProductSlider();
     });
 }
 

@@ -1,4 +1,4 @@
-﻿/*@font-face {
+/*@font-face {
     font-family: 'Opensans';
     src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
     font-display: swap;
@@ -56,7 +56,7 @@
   overflow: hidden;
   display: inline-block;
   margin-top: 0px;
-  border-top: 2px solid #F9A5A7;
+  border-top: 2px solid #0771f0;
   padding: 10px 0px;
   text-transform: uppercase;
   font-size: 16px;
@@ -108,7 +108,7 @@
   box-shadow: none !important;
 }
 .comments .box-comment .form-horizontal .btn-send {
-  background-color: #F9A5A7;
+  background-color: #0771f0;
   border-radius: 0px;
   font-size: 15px;
   color: #FFFFFF;

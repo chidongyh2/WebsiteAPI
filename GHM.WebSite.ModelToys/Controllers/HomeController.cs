@@ -60,61 +60,49 @@ namespace GHM.Website.ModelToys.Controllers
         {
             var apiService = _configuration.GetApiServiceInfo();
 
-            var listProductCategoryHomePage = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, true, null, 10);
-            var listProductCategoryHomePageData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategoryHomePage);
-            ViewBag.ListProductCategoryHomePage = listProductCategoryHomePageData;
-
-            //var listProductCategoryHot = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, null, int.MaxValue);
-            //var listProductCategoryHotData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategoryHot);
-            //ViewBag.ListProductCategoryHot = listProductCategoryHotData;
-            //ViewBag.ProductCategoryId = listProductCategoryHot?.FirstOrDefault()?.Id;
-
             var products = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, null, true, null, null, 1, 100);
             ViewBag.ListProduct = products?.Items;
-
-            var listProductCategorySolution = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, true, 20);
-            var listProductCategorySolutionData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategorySolution);
-            ViewBag.ListProductCategorySolution = listProductCategorySolutionData;
 
             var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
             var listVideoHomePageData = JsonConvertHelper.GetObjectFromObject<List<VideoViewModel>>(listVideoHomePage);
             ViewBag.ListVideoHomePage = listVideoHomePageData;
 
-            var listCategoryWidthNews = await _newsService.GetListCategoryWidthNewsAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 2, true, 10);
-            var listNewsData = JsonConvertHelper.GetObjectFromObject<List<CategoryWidthNewsViewModel>>(listCategoryWidthNews?.Items);
+            //var listCategoryWidthNews = await _newsService.GetListCategoryWidthNewsAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 2, true, 10);
+            //var listNewsData = JsonConvertHelper.GetObjectFromObject<List<CategoryWidthNewsViewModel>>(listCategoryWidthNews?.Items);
 
-            if (listNewsData != null && listNewsData.Any())
-            {
-                var newsHostHomePage = listNewsData.FirstOrDefault();
-                ViewBag.NewsHostHomePage = newsHostHomePage;
-                ViewBag.NewHomePage = listNewsData.Where(x => x.CategoryId != newsHostHomePage?.CategoryId).FirstOrDefault();
-            }
+            //if (listNewsData != null && listNewsData.Any())
+            //{
+            //    var newsHostHomePage = listNewsData.FirstOrDefault();
+            //    ViewBag.NewsHostHomePage = newsHostHomePage;
+            //    ViewBag.NewHomePage = listNewsData.Where(x => x.CategoryId != newsHostHomePage?.CategoryId).FirstOrDefault();
+            //}
 
             #region cache home
-            if (_cache.TryGetValue($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", out MenuDetailViewModel CategoryMiddleCache))
-            {
-                ViewBag.MenuContact = CategoryMiddleCache;
-            }
-            else
-            {
-                var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
-                var menuMiddleData = JsonConvertHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
-                _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
-                ViewBag.MenuContact = menuMiddleData;
-            }
-
-            //if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
+            //if (_cache.TryGetValue($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", out MenuDetailViewModel CategoryMiddleCache))
             //{
-            //    ViewBag.MainBanner = banners;
+            //    ViewBag.MenuContact = CategoryMiddleCache;
             //}
             //else
             //{
-            var listBannerInHomeData = await _bannerService.GetBannerItemByPositionAsync(apiService.TenantId, (int)Position.Top);
-            var listBannerInHome = JsonConvertHelper.GetObjectFromObject<BannerViewModel>(listBannerInHomeData.Data);
-            _cache.Set(CacheParam.Banner, listBannerInHome, TimeSpan.FromHours(1));
-
-            ViewBag.MainBanner = listBannerInHome;
+            //    var menuMiddle = await _menuService.GetAllActivatedMenuByPositionAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, WebsiteClient.Api.Domain.Constants.Position.Middle);
+            //    var menuMiddleData = JsonConvertHelper.GetObjectFromObject<MenuDetailViewModel>(menuMiddle);
+            //    _cache.Set($"{CacheParam.MenuMiddle}{CultureInfo.CurrentCulture.Name}", menuMiddleData, TimeSpan.FromHours(1));
+            //    ViewBag.MenuContact = menuMiddleData;
             //}
+
+
+            if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
+            {
+                ViewBag.MainBanner = banners;
+            }
+            else
+            {
+                var listBannerInHomeData = await _bannerService.GetBannerItemByPositionAsync(apiService.TenantId, (int)Position.Top);
+                var listBannerInHome = JsonConvertHelper.GetObjectFromObject<BannerViewModel>(listBannerInHomeData.Data);
+                _cache.Set(CacheParam.Banner, listBannerInHome, TimeSpan.FromHours(1));
+
+                ViewBag.MainBanner = listBannerInHome;
+            }
             #endregion
             return View();
         }

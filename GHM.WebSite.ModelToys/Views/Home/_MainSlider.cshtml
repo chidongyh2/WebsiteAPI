@@ -4,7 +4,7 @@
 }
 @if (Model != null && Model.BannerItems != null && Model.BannerItems.Any())
 {
-    <div id="myCarousel" class="owl-carousel">
+    <div id="myCarousel">
         @foreach (var bannerItem in Model.BannerItems?.OrderBy(x => x.Order))
         {
             <div class="item">

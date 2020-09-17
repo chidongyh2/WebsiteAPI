@@ -24,26 +24,111 @@ body {
 }
 
 #myCarousel {
-    .active {
-        .item {
-            a {
-                /*font-size: 40px;
-                height: 40px;
-                width: 40px;*/
-                img {
-                    margin-left: auto;
-                    margin-right: auto;
-                    height: auto;
-                    display: block;
-                    -webkit-animation: zoomin 18s ease-in infinite;
-                    animation: zoomin 18s ease-in infinite;
-                    transition: all 1s ease-in-out;
-                    overflow: hidden;
+    .slick-prev {
+        left: 10px !important;
+    }
 
-                    @media @mobile {
-                        max-height: unset;
+    .slick-next {
+        right: 10px !important;
+    }
+
+    .slick-track {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slick-slide {
+        padding: 0px 5px;
+        position: relative;
+        outline: none !important;
+        &:focus, a {
+            outline: none !important;
+        }
+
+        .news-image {
+            a {
+                pointer-events: none;
+                cursor: default;
+                opacity: 0.6;
+            }
+        }
+
+        .news-content {
+            display: none;
+            text-align: center;
+
+            @media @mobile {
+                display: block;
+
+                .title {
+                    font-family: Roboto-Regular;
+
+                    a {
+                        color: @color-text;
+                        font-family: Roboto-Regular;
                     }
+
+                    padding: 5px 0px;
+                    font-size: 18px;
                 }
+
+                .description {
+                    font-size: 14px;
+                    font-family: Roboto-Regular;
+                }
+            }
+        }
+    }
+
+    .slick-center {
+        z-index: 9999;
+
+        .news-image {
+            background-color: @color-white;
+            box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+
+            a {
+                cursor: pointer;
+            }
+
+            img {
+                transform: scale(1.5);
+                transition: ease-in-out 500ms;
+                -webkit-transition: -webkit-transform 0.5s;
+                -moz-transition: -moz-transform 0.5s;
+                -webkit-transform: scale(1.5);
+                -moz-transform: scale(1.5);
+            }
+        }
+
+        .news-content {
+            margin-top: 20%;
+            margin-left: -20%;
+            margin-right: -20%;
+            /*transform: scaleX(1.8);*/
+            display: block;
+            color: @color-text;
+            text-align: center;
+            background-color: @color-white;
+
+            .title {
+                padding: 10px 10px;
+                font-family: Roboto-Regular;
+                padding-top: 10px;
+                font-size: 20px;
+                margin-bottom: 0px;
+
+                a {
+                    text-decoration: none;
+                    color: @color-text;
+                }
+            }
+
+            .description {
+                padding: 0px 20px;
+                font-family: Roboto-Regular;
+                font-size: 14px;
             }
         }
     }
@@ -97,124 +182,6 @@ body {
                 border: @main-color;
                 color: @color-white;
                 transition: 0.3s ease-in-out;
-            }
-        }
-    }
-
-
-    .owl-item.active .slide-caption h3 {
-        -webkit-animation-name: bounceInRight;
-        animation-name: bounceInRight;
-    }
-
-    .fa-angle-left {
-        left: 50%;
-    }
-
-    .fa-angle-right {
-        right: 50%;
-    }
-
-    .owl-nav {
-        margin-top: 10px;
-        // display: none;
-        .owl-prev {
-            position: absolute;
-            top: 50%;
-            left: 20px;
-            margin-top: -20px;
-            transition: all 0.2s;
-            /*background: @color-white;*/
-            color: @color-text;
-            font-size: 17px;
-            border-radius: 50%;
-            height: 30px;
-            line-height: 30px;
-            width: 30px;
-            /*border: 1px solid @color-text-grey;*/
-            &:hover, :active, :focus {
-                background-color: @main-color;
-                color: @color-white;
-                border: none !important;
-            }
-        }
-
-        .owl-next {
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            margin-top: -20px;
-            transition: all 0.2s;
-            /*background: @color-white;*/
-            color: @color-text;
-            font-size: 17px;
-            border-radius: 50%;
-            height: 30px;
-            line-height: 30px;
-            width: 30px;
-            /*border: 1px solid @color-text-grey;*/
-            &:hover, &:active, &:focus {
-                background-color: @main-color;
-                color: @color-white;
-                border: none !important;
-            }
-        }
-
-        button {
-            img {
-                width: 35px;
-                height: 35px;
-
-                @media @mobile {
-                    width: 30px;
-                    height: 30px;
-                }
-            }
-
-            span {
-                position: absolute;
-                top: -1px;
-                right: 13px;
-            }
-        }
-    }
-
-    &:hover {
-        .owl-nav {
-            display: block;
-        }
-    }
-
-    .owl-dots {
-        text-align: center;
-        margin-top: 0px;
-
-        .owl-dot {
-            padding: 0 2px !important;
-
-            span {
-                display: inline-block;
-                width: 12px;
-                height: 12px;
-                margin: 1px;
-                text-indent: -999px;
-                cursor: pointer;
-                background-color: @color-text-grey;
-                border: none !important;
-                border-radius: 12px;
-                font-size: 12px;
-
-                &:focus {
-                    border: none !important;
-                }
-            }
-        }
-
-        .active {
-            border: none !important;
-
-            span {
-                background-color: @main-color;
             }
         }
     }
@@ -1116,9 +1083,10 @@ body {
         }
 
         .slick-slide {
+            width: 100%;
             padding: 0px 5px;
             position: relative;
-
+            outline: none !important;
             .news-image {
                 a {
                     pointer-events: none;

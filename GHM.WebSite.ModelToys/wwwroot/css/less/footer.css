@@ -1,4 +1,4 @@
-﻿/*@font-face {
+/*@font-face {
     font-family: 'Opensans';
     src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
     font-display: swap;
@@ -44,7 +44,7 @@
     font-display: swap;
 }*/
 #footer {
-  background-color: #FEEEEB;
+  background-color: #f7f8f8;
   padding: 30px 0px;
 }
 @media only screen and (min-width: 1200px) {
@@ -232,8 +232,7 @@
   position: fixed;
   height: 100vh;
   width: 100vw;
-  -webkit-transition: opacity 0.4s, visibility 0.4s;
-  transition: opacity 0.4s, visibility 0.4s;
+  transition: opacity .4s, visibility .4s;
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.05);
