@@ -24,7 +24,6 @@
 </div>
 
 <script type="text/javascript">
-        var productCategoryHots = @(ViewBag.ListProductCategoryHot != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProductCategoryHot)) : "[]");
-        var productCategoryHotId = "@ViewBag.ProductCategoryId";
     var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
+    var totalProducts = "@ViewBag.TotalProduct";
 </script>

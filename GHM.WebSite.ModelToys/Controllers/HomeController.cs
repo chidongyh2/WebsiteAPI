@@ -60,8 +60,9 @@ namespace GHM.Website.ModelToys.Controllers
         {
             var apiService = _configuration.GetApiServiceInfo();
 
-            var products = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, null, true, null, null, 1, 100);
+            var products = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, null, true, null, null, 1, 20);
             ViewBag.ListProduct = products?.Items;
+            ViewBag.TotalProducts = products?.TotalRows;
 
             var listVideoHomePage = await _videoService.ListTopVideoAsync(apiService.TenantId, CultureInfo.CurrentCulture.Name, 20);
             var listVideoHomePageData = JsonConvertHelper.GetObjectFromObject<List<VideoViewModel>>(listVideoHomePage);

@@ -19,6 +19,13 @@ function HomeViewModel() {
     self.firstIndex = ko.observable(0);
     self.lastIndex = ko.observable(4);
 
+    //Phân trang Product
+    self.totalRows = ko.observable(0);
+    self.pageSize = ko.observable(6);
+    self.currentPage = ko.observable(1);
+    self.totalPage = ko.observable(1);
+    self.listPage = ko.observableArray([]);
+
     self.selectValue = function (value) {
         if (value) {
             self.valueId(value.Id);
@@ -132,6 +139,57 @@ function HomeViewModel() {
         }
     };
 
+
+    self.searchPageIndex = function (data) {
+        self.currentPage(data.page);
+        self.search();
+    };
+
+    self.firstPage = function () {
+        self.currentPage(1);
+        self.search();
+        $("html, body").animate({ scrollTop: $('#Products').offset().top - 50 }, 1000);
+    };
+
+    self.lastPage = function () {
+        self.currentPage(self.totalPage());
+        self.search();
+        $("html, body").animate({ scrollTop: $('#Products').offset().top - 50 }, 1000);
+    };
+
+    self.prevPage = function () {
+        self.currentPage(self.currentPage() - 1);
+        self.search();
+        $("html, body").animate({ scrollTop: $('#Products').offset().top - 50 }, 1000);
+    };
+
+    self.nextPage = function () {
+        self.currentPage(self.currentPage() + 1);
+        self.search();
+        $("html, body").animate({ scrollTop: $('#Products').offset().top - 50 }, 1000);
+    };
+
+    self.rendTree = function (data) {
+        _.each(data, function (item) {
+            item.state.show = ko.observable(item.state.opened);
+            if (item.children && item.children.length > 0) {
+                self.rendTree(item.children);
+            }
+        });
+    };
+
+    self.search = function () {
+        $.get('/search-product', {
+            keyword: self.keyword(),
+            attributeName: self.attributeName(),
+            attributeValueName: self.attributeValueName(),
+            page: self.currentPage(), pageSize: self.pageSize()
+        }, function (data) {
+            self.listProductHot(data.items);
+            self.renderPage(data.totalRows);
+        });
+    };
+
     $(document).ready(function () {
         if (window.innerWidth < 768) {
             self.lastIndex(1);
@@ -144,15 +202,10 @@ function HomeViewModel() {
         if (window.innerWidth < 768) {
             self.isMobile(true);
         }
-
-        _.each(productCategoryHots, function (item) {
-            item.IsActive = ko.observable(false);
-        });
-        self.productCategoryId(parseInt(productCategoryHotId));
-        //self.rendProductCategoryActive();
         self.listProductHot([]);
         $("div").remove(".lslide");
         self.listProductHot(products);
+        self.renderPage(totalProducts);
     });
 }
 
