@@ -99,18 +99,6 @@
             </div>
             <div class="col-lg-4">
                 <div class="angency-system">
-                    <div class="form-search">
-                        <h4>Tìm cửa hàng</h4>
-                        <select id="selectCampaignStatus" class="form-control"
-                                data-live-search="true" data-bind="options: listProvince,
-                                                        optionsValue: 'id', optionsText: 'name', value: provinceId,
-                                                        optionsCaption: '-- Tỉnh/TP --'" title="-- Tỉnh/TP --"></select>
-                        <select id="selectCampaignStatus" class="form-control"
-                                data-live-search="true" data-bind="options: listDistrict,
-                                                        optionsValue: 'id', optionsText: 'name', value: districtId,
-                                                        optionsCaption: '-- Quận/Huyện --'" title="-- Quận/Huyện --"></select>
-                        <button class="btn btn-block btn-search" data-bind="click: searchAgency">Tìm kiếm</button>
-                    </div>
                     <ul id="list-angency-system">
                         <!--ko foreach: $root.listAgency()-->
                         <li data-bind="click: $root.selectBranch.bind($data, $data), css:{select: $root.name() === agencyName}">

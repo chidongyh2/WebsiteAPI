@@ -21,7 +21,7 @@ function HomeViewModel() {
 
     //Phân trang Product
     self.totalRows = ko.observable(0);
-    self.pageSize = ko.observable(6);
+    self.pageSize = ko.observable(20);
     self.currentPage = ko.observable(1);
     self.totalPage = ko.observable(1);
     self.listPage = ko.observableArray([]);
@@ -145,28 +145,46 @@ function HomeViewModel() {
         self.search();
     };
 
+    self.renderPage = function (totalRows) {
+        self.totalRows(totalRows);
+        self.totalPage(Math.ceil(self.totalRows() / self.pageSize()));
+        self.listPage([]);
+        if (self.totalPage() > 1) {
+            for (var i = 1; i <= self.totalPage(); i++) {
+                self.listPage.push({
+                    page: i
+                });
+            }
+        }
+    };
+
     self.firstPage = function () {
         self.currentPage(1);
         self.search();
-        $("html, body").animate({ scrollTop: $('#Products').offset().top - 50 }, 1000);
+        $("html, body").animate({ scrollTop: $('#product-categoty-hot-in-homepage').offset().top - 50 }, 1000);
     };
 
     self.lastPage = function () {
         self.currentPage(self.totalPage());
         self.search();
-        $("html, body").animate({ scrollTop: $('#Products').offset().top - 50 }, 1000);
+        $("html, body").animate({ scrollTop: $('#product-categoty-hot-in-homepage').offset().top - 50 }, 1000);
     };
 
     self.prevPage = function () {
         self.currentPage(self.currentPage() - 1);
         self.search();
-        $("html, body").animate({ scrollTop: $('#Products').offset().top - 50 }, 1000);
+        $("html, body").animate({ scrollTop: $('#product-categoty-hot-in-homepage').offset().top - 50 }, 1000);
     };
 
     self.nextPage = function () {
         self.currentPage(self.currentPage() + 1);
         self.search();
-        $("html, body").animate({ scrollTop: $('#Products').offset().top - 50 }, 1000);
+        $("html, body").animate({ scrollTop: $('#product-categoty-hot-in-homepage').offset().top - 50 }, 1000);
+    };
+
+    self.searchPageIndex = function (data) {
+        self.currentPage(data.page);
+        self.search();
     };
 
     self.rendTree = function (data) {
@@ -180,9 +198,6 @@ function HomeViewModel() {
 
     self.search = function () {
         $.get('/search-product', {
-            keyword: self.keyword(),
-            attributeName: self.attributeName(),
-            attributeValueName: self.attributeValueName(),
             page: self.currentPage(), pageSize: self.pageSize()
         }, function (data) {
             self.listProductHot(data.items);
