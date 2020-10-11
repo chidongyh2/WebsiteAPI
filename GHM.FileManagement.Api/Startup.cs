@@ -106,9 +106,10 @@ namespace GHM.FileManagement.Api
                 .GetChildren().Select(x => x.Value).ToArray();
             app.UseCors(builder =>
             {
-                builder.AllowAnyOrigin();
+                builder.WithOrigins(allowOrigins);
                 builder.AllowAnyHeader();
                 builder.AllowAnyMethod();
+                builder.AllowCredentials();
             });
             #endregion
 
