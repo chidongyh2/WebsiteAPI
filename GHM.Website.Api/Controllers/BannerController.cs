@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using GHM.Infrastructure;
 using GHM.Infrastructure.Constants;
 using GHM.Infrastructure.CustomAttributes;
@@ -26,10 +27,15 @@ namespace GHM.Website.Api.Controllers
         [AcceptVerbs("GET")]
         [AllowPermission(PageId.WebsiteBanner, Permission.View)]
         [CheckPermission]
-        public async Task<IActionResult> Search(string keyword, BannerType? bannerType, int page = 1, int pageSize = 20)
+        public IActionResult Search(string keyword, BannerType? bannerType, int page = 1, int pageSize = 20)
         {
-            var result = await _bannerService.Search(CurrentUser.TenantId, bannerType, keyword, page, pageSize);
+            try { 
+            var result = _bannerService.Search(CurrentUser.TenantId, bannerType, keyword, page, pageSize);
             return Ok(result);
+            } catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         [AcceptVerbs("POST"), ValidateModel]

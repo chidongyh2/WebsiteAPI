@@ -82,7 +82,7 @@ namespace GHM.Website.Infrastructure.Repository
             return await _bannerRepository.ExistAsync(x => x.Id == bannerId);
         }
 
-        public Task<List<BannerWidthItemViewModel>> Search(string tenantId, BannerType? bannerType, string keyword,
+        public List<BannerWidthItemViewModel> Search(string tenantId, BannerType? bannerType, string keyword,
             int page, int pageSize, out int totalRows)
         {
             Expression<Func<Banner, bool>> spec = x => x.TenantId == tenantId && !x.IsDelete;
@@ -97,48 +97,60 @@ namespace GHM.Website.Infrastructure.Repository
                 spec = spec.And(x => x.UnsignName.Contains(keyword));
             }
 
-            var query = Context.Set<Banner>().Where(spec)
-                    .Join(Context.Set<BannerItem>(), banner => banner.Id, bannerItem => bannerItem.BannerId,
-                    (banner, bannerItem) => new
-                    {
-                        BannerId = banner.Id,
-                        BannerName = banner.Name,
-                        banner.Type,
-                        banner.IsPopUp,
-                        banner.Position,
-                        bannerItem.Alt,
-                        bannerItem.Description,
-                        bannerItem.Id,
-                        bannerItem.Image,
-                        bannerItem.Order,
-                        bannerItem.TotalClick,
-                        bannerItem.Url,
-                        bannerItem.Name
-                    }).GroupBy(x => new { x.BannerId, x.BannerName, x.Type, x.IsPopUp, x.Position }, (key, g) => new BannerWidthItemViewModel
-                    {
-                        BannerId = key.BannerId,
-                        BannerName = key.BannerName,
-                        Type = key.Type,
-                        IsPopUp = key.IsPopUp,
-                        Position = key.Position,
-                        BannerItems = g.Select(x => new BannerItem
-                        {
-                            Id = x.Id,
-                            Image = x.Image,
-                            Name = x.Name,
-                            Description = x.Description,
-                            Alt = x.Alt,
-                            Url = x.Url,
-                            Order = x.Order,
-                            TotalClick = x.TotalClick,
-                            BannerId = x.BannerId
-                        }).ToList()
-                    });
+            //var query = Context.Set<Banner>().Where(spec).AsNoTracking()
+            //        .Join(Context.Set<BannerItem>().AsNoTracking(), banner => banner.Id, bannerItem => bannerItem.BannerId,
+            //        (banner, bannerItem) => new
+            //        {
+            //            BannerId = banner.Id,
+            //            BannerName = banner.Name,
+            //            banner.Type,
+            //            banner.IsPopUp,
+            //            banner.Position,
+            //            bannerItem.Alt,
+            //            bannerItem.Description,
+            //            bannerItem.Id,
+            //            bannerItem.Image,
+            //            bannerItem.Order,
+            //            bannerItem.TotalClick,
+            //            bannerItem.Url,
+            //            bannerItem.Name
+            //        }).GroupBy(x => new { x.BannerId, x.BannerName, x.Type, x.IsPopUp, x.Position }, (key, g) => new BannerWidthItemViewModel
+            //        {
+            //            BannerId = key.BannerId,
+            //            BannerName = key.BannerName,
+            //            Type = key.Type,
+            //            IsPopUp = key.IsPopUp,
+            //            Position = key.Position,
+            //            BannerItems = g.AsEnumerable().Select(x => new BannerItem
+            //            {
+            //                Id = x.Id,
+            //                Image = x.Image,
+            //                Name = x.Name,
+            //                Description = x.Description,
+            //                Alt = x.Alt,
+            //                Url = x.Url,
+            //                Order = x.Order,
+            //                TotalClick = x.TotalClick,
+            //                BannerId = x.BannerId
+            //            }).ToList()
+            //        });
+
+            var query = Context.Set<Banner>().Where(spec).AsNoTracking().Select(x => new BannerWidthItemViewModel
+            {
+                BannerId = x.Id,
+                BannerName = x.Name,
+                Type = x.Type,
+                IsPopUp = x.IsPopUp,
+                Position = x.Position,
+            }).ToList();
+            totalRows = 0;
+            foreach (var item in query)
+            {
+                item.BannerItems = Context.Set<BannerItem>().Where(x => x.BannerId == item.BannerId).AsNoTracking().ToList();
+            }
 
             totalRows = query.Count();
-            return query
-                .OrderByDescending(x => x.BannerName)
-                .ToListAsync();
+            return query;
         }
     }
 }

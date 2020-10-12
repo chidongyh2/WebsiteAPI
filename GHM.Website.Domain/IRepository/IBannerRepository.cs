@@ -8,7 +8,7 @@ namespace GHM.Website.Domain.IRepository
 {
     public interface IBannerRepository
     {
-        Task<List<BannerWidthItemViewModel>> Search(string tenantId, BannerType? bannerType, string keyword, int page, int pageSize,
+        List<BannerWidthItemViewModel> Search(string tenantId, BannerType? bannerType, string keyword, int page, int pageSize,
             out int totalRows);       
 
         Task<int> Insert(Banner banner);

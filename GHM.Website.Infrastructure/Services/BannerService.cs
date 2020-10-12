@@ -269,9 +269,9 @@ namespace GHM.Website.Infrastructure.Services
 
         }
 
-        public async Task<SearchResult<BannerWidthItemViewModel>> Search(string tenantId, BannerType? bannerType, string keyword, int page, int pageSize)
+        public SearchResult<BannerWidthItemViewModel> Search(string tenantId, BannerType? bannerType, string keyword, int page, int pageSize)
         {
-            var listBanner = await _bannerRepository.Search(tenantId, bannerType, keyword, page, pageSize, out int totalRows);
+            var listBanner = _bannerRepository.Search(tenantId, bannerType, keyword, page, pageSize, out int totalRows);
             return new SearchResult<BannerWidthItemViewModel>
             {
                 Items = listBanner,

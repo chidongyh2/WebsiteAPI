@@ -9,7 +9,7 @@ namespace GHM.Website.Domain.IServices
 {
     public interface IBannerService
     {  
-        Task<SearchResult<BannerWidthItemViewModel>> Search(string tenantId, BannerType? bannerType, string keyword, int page, int pageSize);
+        SearchResult<BannerWidthItemViewModel> Search(string tenantId, BannerType? bannerType, string keyword, int page, int pageSize);
 
         Task<ActionResultResponse> Insert(string tenantId, BannerMeta bannerMeta);
 
