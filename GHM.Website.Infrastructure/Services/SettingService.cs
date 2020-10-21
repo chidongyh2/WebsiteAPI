@@ -49,7 +49,10 @@ namespace GHM.Website.Infrastructure.Services
                 }
             }
 
-            await _settingRepository.Inserts(listNewSettings);
+            if (listNewSettings.Count > 0)
+            {
+                await _settingRepository.Inserts(listNewSettings);
+            }
             return new ActionResultResponse(1, _resourceService.GetString("Save setting successful."));
 
             #region Local functions.

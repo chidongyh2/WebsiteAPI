@@ -101,10 +101,10 @@ namespace GHM.Authentication
                 .GetChildren().Select(x => x.Value).ToArray();
             app.UseCors(builder =>
             {
+                builder.WithOrigins(allowOrigins);
                 builder.AllowAnyHeader();
                 builder.AllowAnyMethod();
                 builder.AllowCredentials();
-                builder.SetIsOriginAllowed(origin => true);
             });
             #endregion
             app.UseExceptionHandler("/error");

@@ -63,37 +63,43 @@ namespace GHM.Website.Infrastructure.Services
 
         public async Task<ActionResultResponse<string>> InsertMenu(string tenantId, string creatorId, string creatorFullName, MenuMeta menuMeta)
         {
-            var menuId = Guid.NewGuid().ToString();
-
-            var isNameExists = await _menuRepository.CheckExistsByName(tenantId, menuMeta.Name);
-            if (isNameExists)
+            try
             {
-                return new ActionResultResponse<string>(-1, _websiteResourceService.GetString("Menu name: \"{0}\" already exists.",
-                    menuMeta.Name));
+                var menuId = Guid.NewGuid().ToString();
+
+                var isNameExists = await _menuRepository.CheckExistsByName(tenantId, menuMeta.Name);
+                if (isNameExists)
+                {
+                    return new ActionResultResponse<string>(-1, _websiteResourceService.GetString("Menu name: \"{0}\" already exists.",
+                        menuMeta.Name));
+                }
+
+                var resultInsertMenu = await _menuRepository.Insert(new Menu
+                {
+                    Id = menuId,
+                    ConcurrencyStamp = menuId,
+                    Name = menuMeta.Name,
+                    Description = menuMeta.Description,
+                    Icon = menuMeta.Icon,
+                    EffectType = menuMeta.EffectType,
+                    Order = menuMeta.Order,
+                    IsActive = menuMeta.IsActive,
+                    Position = menuMeta.Position,
+                    UnsignName = menuMeta.Name.StripVietnameseChars(),
+                    TenantId = tenantId,
+                    CreatorId = creatorId,
+                    CreatorFullName = creatorFullName
+                });
+
+                if (resultInsertMenu <= 0)
+                    return new ActionResultResponse<string>(resultInsertMenu, _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
+
+                return new ActionResultResponse<string>(1, _websiteResourceService.GetString("Add new menu successful."),
+                    string.Empty, menuId);
+            }catch (Exception e)
+            {
+                throw e;
             }
-
-            var resultInsertMenu = await _menuRepository.Insert(new Menu
-            {
-                Id = menuId,
-                ConcurrencyStamp = menuId,
-                Name = menuMeta.Name,
-                Description = menuMeta.Description,
-                Icon = menuMeta.Icon,
-                EffectType = menuMeta.EffectType,
-                Order = menuMeta.Order,
-                IsActive = menuMeta.IsActive,
-                Position = menuMeta.Position,
-                UnsignName = menuMeta.Name.StripVietnameseChars(),
-                TenantId = tenantId,
-                CreatorId = creatorId,
-                CreatorFullName = creatorFullName
-            });
-
-            if (resultInsertMenu <= 0)
-                return new ActionResultResponse<string>(resultInsertMenu, _sharedResourceService.GetString(ErrorMessage.SomethingWentWrong));
-
-            return new ActionResultResponse<string>(1, _websiteResourceService.GetString("Add new menu successful."),
-                string.Empty, menuId);
         }
 
         public async Task<ActionResultResponse> UpdateMenu(string tenantId, string lastUpdateUserId, string lastUpdateFullName, string menuId, MenuMeta menuMeta)

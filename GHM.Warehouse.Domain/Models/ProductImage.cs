@@ -1,4 +1,6 @@
-﻿namespace GHM.Warehouse.Domain.Models
+﻿using System;
+
+namespace GHM.Warehouse.Domain.Models
 {
     public class ProductImage
     {
@@ -11,6 +13,7 @@
         public ProductImage()
         {
             IsDelete = false;
+            Id = Guid.NewGuid().ToString();
         }
     }
 }

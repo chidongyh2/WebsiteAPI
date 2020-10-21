@@ -203,6 +203,7 @@ namespace GHM.Website.ModelToys
                     && !values[parameterName].ToString().Contains("image/")
                     && !values[parameterName].ToString().Contains("images/")
                     && !values[parameterName].ToString().Contains(".ico")
+                    && !values[parameterName].ToString().Contains(".ttf")
                     && !values[parameterName].ToString().Contains(".css"))
                 {
                     return true;
