@@ -23,10 +23,6 @@ namespace GHM.Warehouse.Infrastructure.AutofacModules
                 .As<IDbContext>()
                 .InstancePerLifetimeScope();
 
-            //builder.RegisterType<HttpClientService>()
-            //    .As<IHttpClientService>()
-            //    .InstancePerLifetimeScope();
-
             #region Resources
             builder.RegisterType<ResourceService<SharedResource>>()
                 .As<IResourceService<SharedResource>>()

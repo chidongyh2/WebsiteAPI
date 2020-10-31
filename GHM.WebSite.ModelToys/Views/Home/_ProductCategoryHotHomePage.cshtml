@@ -9,54 +9,61 @@
 
 <div id="product-categoty-hot-in-homepage">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div id="product-hot-slider">
-                    <!-- ko foreach: listProductHot-->
-                    <div class="item col-md-3">
-                        <partial name="_ProductItem" />
+        <div class="col-sm-9 content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="product-hot-slider">
+                        <!-- ko foreach: listProductHot-->
+                        <div class="item col-md-3">
+                            <partial name="_ProductItem" />
+                        </div>
+                        <!--/ko-->
                     </div>
-                    <!--/ko-->
                 </div>
             </div>
-        </div>
-        <!--ko if: $root.totalPage() > 1-->
-        <div class="row">
-            <div class="col-sm-12 center" style="text-align:center">
-                <ul class="pagination" data-bind="foreach: listPage">
-                    <!--ko if:page === 1-->
-                    <li>
-                        <a data-bind="css: $root.currentPage() === 1 ? 'disabled' :  '', click: $root.firstPage" href="#Products">
-                            <i class="fa fa-angle-double-left"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-bind="css: $root.currentPage() === 1 ? 'disabled bg-none' :  'bg-none', click: $root.prevPage" href="#Products">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                    </li>
-                    <!--/ko-->
-                    <li><a data-bind="css: $root.currentPage() === page ? 'active' : '', text: page, click: $root.searchPageIndex.bind($data)" href="#Products"></a></li>
-                    <!--ko if: page === $root.totalPage()-->
-                    <li>
-                        <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled bg-none' : 'bg-none', click: $root.nextPage" href="#Products">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled' : '', click: $root.lastPage" href="#Products">
-                            <i class="fa fa-angle-double-right"></i>
-                        </a>
-                    </li>
-                    <!--/ko-->
-                </ul>
+            <!--ko if: $root.totalPage() > 1-->
+            <div class="row">
+                <div class="col-sm-12 center" style="text-align:center">
+                    <ul class="pagination" data-bind="foreach: listPage">
+                        <!--ko if:page === 1-->
+                        <li>
+                            <a data-bind="css: $root.currentPage() === 1 ? 'disabled' :  '', click: $root.firstPage" href="#Products">
+                                <i class="fa fa-angle-double-left"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-bind="css: $root.currentPage() === 1 ? 'disabled bg-none' :  'bg-none', click: $root.prevPage" href="#Products">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        </li>
+                        <!--/ko-->
+                        <li><a data-bind="css: $root.currentPage() === page ? 'active' : '', text: page, click: $root.searchPageIndex.bind($data)" href="#Products"></a></li>
+                        <!--ko if: page === $root.totalPage()-->
+                        <li>
+                            <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled bg-none' : 'bg-none', click: $root.nextPage" href="#Products">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-bind="css: $root.currentPage() === $root.totalPage() ? 'disabled' : '', click: $root.lastPage" href="#Products">
+                                <i class="fa fa-angle-double-right"></i>
+                            </a>
+                        </li>
+                        <!--/ko-->
+                    </ul>
+                </div>
             </div>
+            <!--/ko-->
         </div>
-        <!--/ko-->
+        <div class="col-sm-3">
+            <partial name="_SidebarProduct" />
+        </div>
     </div>
 </div>
-
-<script type="text/javascript">
+    <script type="text/javascript">
     var products = @(ViewBag.ListProduct != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProduct, jsonSerializerSettings)) : "[]");
     var totalProducts = "@ViewBag.TotalProducts";
-</script>
+    var productCategories = @(ViewBag.ListProductCategory != null ? Html.Raw(JsonConvert.SerializeObject(ViewBag.ListProductCategory)) : "[]");
+    var totalRows = "@ViewBag.TotalProduct";
+    </script>
+

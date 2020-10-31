@@ -159,9 +159,11 @@ function ProductCategoryViewModel() {
         }
 
         if (categoryInfo) {
+            console.log(categoryInfo)
             self.categoryImage(categoryInfo.name);
             self.categoryDescription(categoryInfo.description);
             self.categoryImage(categoryInfo.image);
+            self.productCategorySeoLink(categoryInfo.seoLink);
         }
 
         self.listProduct(products);

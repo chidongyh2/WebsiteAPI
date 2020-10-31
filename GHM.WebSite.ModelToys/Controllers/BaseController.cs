@@ -108,7 +108,10 @@ namespace GHM.Website.ModelToys.Controllers
                     Url = x.Url
                 }).ToList();
 
-                _cache.Set($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
+               if (data.Count > 0)
+                {
+                    _cache.Set($"{CacheParam.MainNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
+                }
                 return data;
             }
         }
@@ -158,7 +161,10 @@ namespace GHM.Website.ModelToys.Controllers
             websiteSetting.CommentNotAllow = Common.GetSettingValue(settings, string.Format("{0}.CommentNotAllow", convention));
             websiteSetting.FanPageFacebookId = Common.GetSettingValue(settings, string.Format("{0}.FanPageFacebookId", convention));
 
-            _cache.Set(CacheParam.Setting, websiteSetting, TimeSpan.FromHours(1));
+           if (websiteSetting != null)
+            {
+                _cache.Set(CacheParam.Setting, websiteSetting, TimeSpan.FromHours(1));
+            }
 
             return websiteSetting;
         }
@@ -175,8 +181,10 @@ namespace GHM.Website.ModelToys.Controllers
 
             var data = JsonConvert.DeserializeObject<List<BrandSearchViewModel>>(JsonConvert.SerializeObject(result));
 
-            _cache.Set($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
-
+            if (data.Count > 0)
+            {
+                _cache.Set($"{CacheParam.Brand}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
+            }
             return data;
         }
 
@@ -202,8 +210,10 @@ namespace GHM.Website.ModelToys.Controllers
                 Url = x.Url
             }).ToList();
 
-            _cache.Set($"{CacheParam.SocialNetwork}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
-
+            if (data.Count > 0)
+            {
+                _cache.Set($"{CacheParam.SocialNetwork}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
+            }
             return data;
         }
 
@@ -224,8 +234,10 @@ namespace GHM.Website.ModelToys.Controllers
 
             var data = JsonConvert.DeserializeObject<List<BranchContactSearchViewModel>>(JsonConvert.SerializeObject(result.Items));
 
-            _cache.Set($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
-
+            if(data.Count > 0)
+            {
+                _cache.Set($"{CacheParam.Branch}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
+            }
             return data;
         }
 
@@ -263,8 +275,8 @@ namespace GHM.Website.ModelToys.Controllers
                 Url = x.Url
             }).ToList();
 
-            _cache.Set($"{CacheParam.FooterNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
-
+            if (data.Count > 0) 
+                 _cache.Set($"{CacheParam.FooterNav}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
             return data;
         }
 
@@ -286,8 +298,9 @@ namespace GHM.Website.ModelToys.Controllers
             var result = await _languageService.GetLanguageSupportAsync(apiService.TenantId);
             var data = JsonConvert.DeserializeObject<List<TenantLanguageViewModel>>(JsonConvert.SerializeObject(result.Items));
 
-            _cache.Set($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
-
+            if (data != null && data.Count > 0)
+                _cache.Set($"{CacheParam.Language}{CultureInfo.CurrentCulture.Name}", data, TimeSpan.FromHours(1));
+            
             return data;
         }
     }

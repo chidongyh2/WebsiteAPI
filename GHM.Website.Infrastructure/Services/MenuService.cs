@@ -272,7 +272,7 @@ namespace GHM.Website.Infrastructure.Services
                     var menuItem = new MenuItem
                     {
                         MenuId = menuId,
-                        SubjectId = menuItemSelect.Id,
+                        SubjectId = Convert.ToString(menuItemSelect.Id),
                         SubjectType = menuItemMeta.SubjectType,
                         Icon = menuItemSelect.Icon,
                         Image = menuItemSelect.Image,
@@ -334,7 +334,7 @@ namespace GHM.Website.Infrastructure.Services
                     switch (menuItemMeta.SubjectType)
                     {
                         case SubjectType.News:
-                            var listNewsTranslation = await _newsTranslationRepository.GetByNewsId(menuItemSelect.Id);
+                            var listNewsTranslation = await _newsTranslationRepository.GetByNewsId(Convert.ToString(menuItemSelect.Id));
                             var listMenuItemTranslationInsert = new List<MenuItemTranslationMeta>();
                             if (listNewsTranslation != null && listNewsTranslation.Any())
                             {
@@ -355,7 +355,7 @@ namespace GHM.Website.Infrastructure.Services
                             break;
 
                         case SubjectType.NewsCategory:
-                            var listCategoryTranslation = await _categoryTranslationRepositoryRepository.GetByCategoryId(int.Parse(menuItemSelect.Id));
+                            var listCategoryTranslation = await _categoryTranslationRepositoryRepository.GetByCategoryId(Convert.ToInt32(menuItemSelect.Id.ToString()));
                             var listMenuItemTranslationCategoryInsert = new List<MenuItemTranslationMeta>();
                             if (listCategoryTranslation != null && listCategoryTranslation.Any())
                             {
@@ -375,7 +375,7 @@ namespace GHM.Website.Infrastructure.Services
                             }
                             break;
                         case SubjectType.Product:
-                            var listProductTranslation = await httpClient.GetAsync<List<ProductTranslationViewModel>>($"{apiUrls.WarehouseApiUrl}/products-management/translation/{tenantId}/{menuItemSelect.Id}");
+                            var listProductTranslation = await httpClient.GetAsync<List<ProductTranslationViewModel>>($"{apiUrls.WarehouseApiUrl}products-management/translation/{tenantId}/{Convert.ToString(menuItemSelect.Id)}");
                             var listMenuItemTranslationProduct = new List<MenuItemTranslationMeta>();
                             if (listProductTranslation != null && listProductTranslation.Any())
                             {
@@ -395,7 +395,7 @@ namespace GHM.Website.Infrastructure.Services
                             }
                             break;
                         case SubjectType.ProductCategory:
-                            var productCategoryDetail = await httpClient.GetAsync<ActionResultResponse<ProductCategoryDetailViewModel>>($"{apiUrls.WarehouseApiUrl}/product-categories/{tenantId}/{menuItemSelect.Id}"); ;
+                            var productCategoryDetail = await httpClient.GetAsync<ActionResultResponse<ProductCategoryDetailViewModel>>($"{apiUrls.WarehouseApiUrl}product-categories/{tenantId}/{Convert.ToInt32(menuItemSelect.Id.ToString())}");
                             var listMenuItemProductCategoryTranslationInsert = new List<MenuItemTranslationMeta>();
                             if (productCategoryDetail != null && productCategoryDetail.Data.Translations.Any())
                             {

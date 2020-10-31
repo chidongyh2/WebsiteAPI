@@ -26,6 +26,7 @@ using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
 using System.Text.Json;
 using System.Reflection;
+using GHM.Infrastructure.Services;
 
 namespace GHM.Warehouse.Api
 {
@@ -59,6 +60,7 @@ namespace GHM.Warehouse.Api
             });
             services.AddMediatR(typeof(GHM.Warehouse.Infrastructure.CommandHandlers.AssemblyHandler).GetTypeInfo().Assembly);
             services.AddCors();
+            services.AddSingleton<IHttpClientService, HttpClientService>();
             services.AddMvcCore(options =>
                 {
                     options.Conventions.Add(new DefaultFromBodyBindingConvention());

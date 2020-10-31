@@ -10,7 +10,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Favicon) ? $"/image?url={ViewBag.Url}/{websiteSetting.Favicon}" : "/favicon.ico")" type="image/x-icon">
+    <link rel="icon" href="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Favicon) ? $"/image?url={ViewBag.Url}{websiteSetting.Favicon}" : "/favicon.ico")" type="image/x-icon">
     <link rel="alternate" href="@absoluteUri" hreflang="vi-VN" />
     <link rel="canonical" href="@absoluteUri" />
     <meta name="author" content="jogervn jogervn.com">
@@ -51,6 +51,7 @@
     }
 </head>
 <body>
+
     <!-- Google Tag Manager (noscript) -->
     @if (!string.IsNullOrEmpty(websiteSetting.TrackingBody))
     {
@@ -101,7 +102,7 @@
             window.fbAsyncInit = function () {
                 FB.init({
                     xfbml: true,
-                    version: 'v5.0'
+                    version: 'v8.0'
                 });
             };
 

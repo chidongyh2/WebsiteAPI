@@ -1,4 +1,4 @@
-/*@font-face {
+﻿/*@font-face {
     font-family: 'Opensans';
     src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
     font-display: swap;
@@ -563,8 +563,10 @@
   text-align: left;
   min-width: 300px;
   padding-left: 0;
+  -webkit-transition-property: opacity,top;
   transition-property: opacity,top;
-  transition-duration: .5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
   z-index: 1030;
   margin-top: 1px;
 }
@@ -718,6 +720,7 @@
   z-index: 10001;
   opacity: 0;
   visibility: hidden;
+  -webkit-transition: 0.3s;
   transition: 0.5s;
 }
 .fullscreen_search.active {
@@ -734,6 +737,7 @@
   width: 80%;
   left: 10%;
   z-index: 10001;
+  -webkit-transition: 0.7s;
   transition: 0.7s;
   transform: scaley(0);
 }
@@ -777,6 +781,7 @@
   background: #0771f0;
   color: #FFFFFF;
   font-size: 48px;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 @media only screen and (max-width: 1200px) {

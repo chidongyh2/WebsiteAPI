@@ -20,56 +20,58 @@ namespace GHM.Infrastructure.Services
     public class HttpClientService : IHttpClientService
     {
         private HttpClient Client { get; }
-        private readonly ApiUrlSettings _apiUrls;
-        private readonly ApiServiceInfo _apiServiceInfo;
-        private readonly IMemoryCache _cache;
-        private const string _cacheKeyToken = "repository_token";
         public HttpClientService()
         {
-            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            var appSettingJsonFile = environment == EnvironmentName.Development
-                ? "appsettings.json"
-                : "appsettings.production.json";
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(appSettingJsonFile);
-            var configuration = builder.Build();
-            if (configuration != null)
-            {
-                _apiUrls = configuration.GetApiUrl();
-                _apiServiceInfo = configuration.GetApiServiceInfo();
-            }
+            //var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            //var appSettingJsonFile = environment == EnvironmentName.Development
+            //    ? "appsettings.json"
+            //    : "appsettings.production.json";
+            //var builder = new ConfigurationBuilder()
+            //    .SetBasePath(Directory.GetCurrentDirectory())
+            //    .AddJsonFile(appSettingJsonFile);
+            //var configuration = builder.Build();
+            //if (configuration != null)
+            //{
+            //    _apiUrls = configuration.GetApiUrl();
+            //    _apiServiceInfo = configuration.GetApiServiceInfo();
+            //}
             //Client = Task.Run(GetClient).Result;
             Client = new HttpClient();
-            ServicePointManager.SecurityProtocol =
-                SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+            //ServicePointManager.SecurityProtocol =
+            //    SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
             #region Local Function.
-            async Task<HttpClient> GetClient()
-            {
-                var client = new HttpClient();
-                DiscoveryDocumentResponse discoveryDocument = await client.GetDiscoveryDocumentAsync(_apiUrls.Authority);
-                var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-                {
-                    Address = discoveryDocument.TokenEndpoint,
-                    ClientId = _apiServiceInfo.ClientId,
-                    ClientSecret = _apiServiceInfo.ClientSecret,
-                    GrantType = GrantTypes.ClientCredentials,
-                    Scope = _apiServiceInfo.Scopes
-                });
-                client.SetBearerToken(tokenResponse.AccessToken);
-                return client;
-            }
+            //async Task<HttpClient> GetClient()
+            //{
+            //    var client = new HttpClient();
+            //    DiscoveryDocumentResponse discoveryDocument = await client.GetDiscoveryDocumentAsync(_apiUrls.Authority);
+            //    var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            //    {
+            //        Address = discoveryDocument.TokenEndpoint,
+            //        ClientId = _apiServiceInfo.ClientId,
+            //        ClientSecret = _apiServiceInfo.ClientSecret,
+            //        GrantType = GrantTypes.ClientCredentials,
+            //        Scope = _apiServiceInfo.Scopes
+            //    });
+            //    client.SetBearerToken(tokenResponse.AccessToken);
+            //    return client;
+            //}
             #endregion
         }
 
         public async Task<T> GetAsync<T>(string requestUri)
         {
-            if (Client == null)
-                return default(T);
+           try
+            {
+                if (Client == null)
+                    return default(T);
 
-            var response = await Client.GetAsync(requestUri);
-            return !response.IsSuccessStatusCode ? default(T) : ParseResponse<T>(await response.Content.ReadAsStringAsync());
+                var response = await Client.GetAsync(requestUri);
+                return !response.IsSuccessStatusCode ? default(T) : ParseResponse<T>(await response.Content.ReadAsStringAsync());
+            }catch (Exception e)
+            {
+                throw e; 
+            }
         }
 
         public async Task<T> PostAsync<T>(string requestUri, Dictionary<string, string> paramters = null)

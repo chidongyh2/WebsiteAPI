@@ -1,4 +1,4 @@
-/*@font-face {
+﻿/*@font-face {
     font-family: 'Opensans';
     src: url('../../lib/open_sans/opensans-regular.ttf') format('truetype');
     font-display: swap;
@@ -232,7 +232,8 @@
   position: fixed;
   height: 100vh;
   width: 100vw;
-  transition: opacity .4s, visibility .4s;
+  -webkit-transition: opacity 0.4s, visibility 0.4s;
+  transition: opacity 0.4s, visibility 0.4s;
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.05);

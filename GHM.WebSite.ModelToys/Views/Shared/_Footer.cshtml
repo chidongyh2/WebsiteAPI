@@ -9,16 +9,25 @@
     <ul>
         @if (websiteSetting.Fanpage != null)
         {
-            <li>
-                @if (ViewBag.DeviceType == "desktop")
-                {                    
-                }
-                else
-                {
-                    <div class="fb-livechat"> <div class="ctrlq fb-overlay"></div><div class="fb-widget"> <div class="ctrlq fb-close"></div><div class="fb-page" data-href="@websiteSetting.Fanpage" data-tabs="messages" data-width="360" data-height="400" data-small-header="true" data-hide-cover="true" data-show-facepile="false"> </div><div id="fb-root"></div></div><a href="https://m.me/jadespa.vn" title="Gửi tin nhắn cho chúng tôi qua Facebook" class="ctrlq fb-button"> <div class="bubble">1</div><div class="bubble-msg">LIÊN HỆ VỚI CHÚNG TÔI QUA FACEBOOK.</div></a></div>
-                    <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"></script>
-                }
-            </li>
+        <li>
+            @if (ViewBag.DeviceType == "desktop")
+            {
+            }
+            else
+            {
+                <!-- Load Facebook SDK for JavaScript -->
+                <div id="fb-root"></div>
+                <!-- Your Chat Plugin code -->
+                <div class="fb-customerchat"
+                     attribution=setup_tool
+                     page_id="101230188409310"
+                     theme_color="#0A7CFF"
+                     logged_in_greeting="Chào mừng bạn ! RogerVN chuyên cung cấp sản phẩm mô hình các loại !"
+                     logged_out_greeting="Chào mừng bạn ! RogerVN chuyên cung cấp sản phẩm mô hình các loại !">
+                </div>
+                <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"></script>
+            }
+        </li>
         }
         @if (websiteSetting.ZaloId != null)
         {
@@ -39,7 +48,7 @@
 <footer id="footer">
     <div class="container">
         <div class="row">
-            <div class="col-sm-3 logo">
+            <div class="col-sm-4 logo">
                 <a href="/" title="@websiteSetting?.Brand">
                     @*$"{ViewBag.Url}{websiteSetting.Logo}"*@
                     <img class="img-responsive lazy" data-src="@(websiteSetting != null && !string.IsNullOrEmpty(websiteSetting.Logo) ? $"/image?url={ViewBag.Url}{websiteSetting.Logo}" : "/images/facion/logo.png" )"
@@ -62,7 +71,7 @@
                     }
                 </ul>
             </div>
-            <div class="col-sm-3 short-link">
+            <div class="col-sm-4 short-link">
                 <h3 class="title">
                     @Resource.Contact
                 </h3>
@@ -90,26 +99,12 @@
                                     }
                                 }
                             }
-                            <li><a href="/"><i class="fa fa-language"> www.nellydevuyst.vn</i></a></li>
+                            <li><a href="/"><i class="fa fa-language"> www.rogervn.com</i></a></li>
                         }
                     }
                 </ul>
             </div>
-            <div class="col-sm-3 short-link">
-                <h3 class="title">
-                    @Resource.YouInterested
-                </h3>
-                @if (listMenuItem != null && listMenuItem.Any())
-                {
-                    <ul>
-                        @foreach (var item in listMenuItem)
-                        {
-                            <li><a href="@($"{(item.Url == "/" ? "/" : string.IsNullOrEmpty(item.Url) ? "/" + item.NamePath : "/" + item.Url)}")" data-toggle="tooltip" title="@item.Name">@item.Name</a></li>
-                        }
-                    </ul>
-                }
-            </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 @if (websiteSetting.Fanpage != null)
                 {
                     @if (ViewBag.DeviceType == "desktop")
@@ -132,5 +127,5 @@
     </div>
 </footer>
 <div class="copy-right center">
-    Copyright 2020 - @DateTime.Now.Year  RogerVN - Hệ thống mô hình Việt Nam
+    Copyright - @DateTime.Now.Year  RogerVN - Chuyên mô hình tại Việt Nam
 </div>

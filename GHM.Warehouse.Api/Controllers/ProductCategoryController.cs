@@ -117,7 +117,7 @@ namespace GHM.Warehouse.Api.Controllers
 
         //Client
         [Route("{tenantId}/{id}"), AcceptVerbs("GET")]
-        [CheckPermission]
+        [AllowAnonymous]
         public async Task<IActionResult> GetDetailProductCategory(string tenantId, int id)
         {
             var result = await _productCategoryService.GetDetail(tenantId, CultureInfo.CurrentCulture.Name, id);

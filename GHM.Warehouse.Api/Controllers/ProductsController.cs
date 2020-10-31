@@ -269,7 +269,7 @@ namespace GHM.Warehouse.Api.Controllers
 
         // client
         [Route("translation/{tenantId}/{id}"), AcceptVerbs("GET")]
-        [CheckPermission]
+        [AllowAnonymous]
         public async Task<IActionResult> GetProductTranslationByTenantAndId(string tenantId, string id)
         {
             var result = await _productService.GetProductTranslationById(tenantId, id);

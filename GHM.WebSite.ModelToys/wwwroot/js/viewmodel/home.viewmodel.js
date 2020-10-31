@@ -7,6 +7,7 @@ function HomeViewModel() {
     self.videoLinkId = ko.observable('');
     self.videoTitle = ko.observable('');
     self.isSelectVideo = ko.observable(false);
+    self.isLoadingMenu = ko.observable(true);
     self.id = ko.observable("");
     self.listValue = ko.observableArray([]);
     self.valueId = ko.observable(1);
@@ -18,13 +19,16 @@ function HomeViewModel() {
     self.listProductHot = ko.observableArray([]);
     self.firstIndex = ko.observable(0);
     self.lastIndex = ko.observable(4);
-
+    self.listMenus = ko.observableArray([]);
     //Phân trang Product
     self.totalRows = ko.observable(0);
     self.pageSize = ko.observable(20);
     self.currentPage = ko.observable(1);
     self.totalPage = ko.observable(1);
     self.listPage = ko.observableArray([]);
+
+    // categories product
+    self.productCategoryTree = ko.observableArray([]);
 
     self.selectValue = function (value) {
         if (value) {
@@ -205,6 +209,16 @@ function HomeViewModel() {
         });
     };
 
+    // apply for product
+    self.rendTree = function (data) {
+        _.each(data, function (item) {
+            item.state.show = ko.observable(item.state.opened);
+            if (item.children && item.children.length > 0) {
+                self.rendTree(item.children);
+            }
+        });
+    };
+
     $(document).ready(function () {
         if (window.innerWidth < 768) {
             self.lastIndex(1);
@@ -221,6 +235,14 @@ function HomeViewModel() {
         $("div").remove(".lslide");
         self.listProductHot(products);
         self.renderPage(totalProducts);
+
+        if (bannerItems) {
+           self.isLoadingMenu(false);
+           self.listMenus(bannerItems);
+        }
+        //render tree for category
+        self.rendTree(treeData);
+        self.productCategoryTree(treeData);
     });
 }
 

@@ -91,6 +91,21 @@ namespace GHM.Website.ModelToys.Controllers
             //    ViewBag.MenuContact = menuMiddleData;
             //}
 
+            #region product for model toys
+            var listProductCategory = await _productService.ProductCategorySearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, null, null, null, int.MaxValue);
+            var listProductCategoryData = JsonConvertHelper.GetObjectFromObject<List<ProductCategorySearchViewModel>>(listProductCategory);
+            ViewBag.ListProductCategory = listProductCategoryData;
+
+            if (listProductCategoryData != null && listProductCategoryData.Any())
+            {
+                var trees = RenderTree(listProductCategoryData, null);
+                ViewBag.ProductCategroryTree = trees?.Take(5);
+            }
+
+
+            var productHots = await _productService.ProductSearch(apiService.TenantId, CultureInfo.CurrentCulture.Name, string.Empty, true, null, string.Empty, 1, 5);
+            ViewBag.ListProductHot = JsonConvertHelper.GetObjectFromObject<List<ProductSearchViewModel>>(productHots?.Items);
+            #endregion
 
             if (_cache.TryGetValue(CacheParam.Banner, out BannerViewModel banners))
             {
