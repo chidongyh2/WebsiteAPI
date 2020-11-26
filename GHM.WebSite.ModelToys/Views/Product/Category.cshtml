@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        @*<div class="row">
                             <div class="col-sm-12 cm-mgb-20 header">
                                 <div class="image">
                                     <img class="img-responsive" data-bind="attr: {src:categoryImage() ? '@ViewBag.Url' + categoryImage() : '/images/no-image.png', alt: categoryName}" onerror="this.onerror = null;this.src='/images/no-image.png'" />
@@ -60,8 +60,8 @@
                                 <div class="description" data-bind="html: categoryDescription">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row" data-bind="foreach: listProduct">
+                        </div>*@
+                        <div class="row mt-5" data-bind="foreach: listProduct">
                             <div class="col-sm-4 col-xs-6">
                                 <partial name="_ProductItem" />
                             </div>
@@ -102,11 +102,11 @@
                         <!--ko if: !listProduct() || listProduct().length === 0-->
                         <partial name="_NotFoundProduct" />
                         <!--/ko-->
-                        <div class="row">
+                        @*<div class="row">
                             <div class="col-sm-12">
                                 <partial name="_BoxHotline" />
                             </div>
-                        </div>
+                        </div>*@
                         <div class="row">
                             <div class="col-sm-12">
                                 <comment-component params="objectId: '@productCategoryInfo?.Id', objectType: 2"></comment-component>

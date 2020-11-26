@@ -65,6 +65,12 @@ body {
 }
 #myCarousel {
   position: relative;
+  min-height: 600px !important;
+}
+@media only screen and (max-width: 1200px) {
+  #myCarousel {
+    min-height: auto !important;
+  }
 }
 #myCarousel .slick-prev {
   left: 10px !important;
@@ -174,6 +180,13 @@ body {
   text-align: left;
   width: 400px;
 }
+@media only screen and (max-width: 1200px) {
+  #myCarousel .carousel-caption {
+    left: 2%;
+    width: auto;
+    top: 0%;
+  }
+}
 #myCarousel .carousel-caption h2 {
   color: #FFFFFF;
   font-family: Roboto-Bold;
@@ -183,6 +196,15 @@ body {
   -webkit-animation-duration: 3s;
   animation-duration: 3s;
 }
+@media only screen and (max-width: 1200px) {
+  #myCarousel .carousel-caption h2 {
+    font-size: 20px;
+    left: 2%;
+    width: auto;
+    top: 0%;
+    margin-bottom: 0px;
+  }
+}
 #myCarousel .carousel-caption h3 {
   color: #FFFFFF;
   font-size: 18px;
@@ -191,6 +213,12 @@ body {
   font-weight: 500;
   -webkit-animation-duration: 3s;
   animation-duration: 3s;
+}
+@media only screen and (max-width: 1200px) {
+  #myCarousel .carousel-caption h3 {
+    font-size: 14px;
+    line-height: normal;
+  }
 }
 #myCarousel .carousel-caption .btn-main {
   padding: 7px 20px !important;
@@ -204,6 +232,11 @@ body {
   border: #0771f0;
   color: #FFFFFF;
   transition: 0.3s ease-in-out;
+}
+@media only screen and (max-width: 1200px) {
+  #myCarousel .carousel-caption .btn-main {
+    display: none;
+  }
 }
 #video {
   padding-top: 60px;

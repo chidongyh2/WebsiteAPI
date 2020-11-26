@@ -33,8 +33,8 @@ function ProductCategoryViewModel() {
             seolink: self.productCategorySeoLink(),
             page: self.currentPage(), pageSize: self.pageSize()
         }, function (data) {
-            self.listProduct(data.items);
-            self.renderPage(data.totalRows);
+            self.listProduct(data.items || []);
+            self.renderPage(data.totalRows || 0);
             var categoryInfo = _.find(self.listProductCategory(), function (item) {
                 return item.SeoLink === self.productCategorySeoLink();
             });
@@ -168,6 +168,7 @@ function ProductCategoryViewModel() {
 
         self.listProduct(products);
         self.renderPage(totalRows);
+        console.log(products, totalRows);
         self.rendProductCategoryActive();
         self.rendTree(treeData);
         self.productCategoryTree(treeData);

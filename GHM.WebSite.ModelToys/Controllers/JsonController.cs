@@ -54,7 +54,10 @@ namespace GHM.WebSite.Nelly.Controllers
             var apiService = _configuration.GetApiServiceInfo();
             var products = await _productService.ProductSearchByCategory(apiService.TenantId, CultureInfo.CurrentCulture.Name, seoLink, null, null, page, pageSize);
 
-            return Ok(new { products.Items, products.TotalRows });
+            if (products != null) 
+                return Ok(new { products.Items, products.TotalRows });
+
+            return Ok();
         }
 
         [Route("view-more-news"), AcceptVerbs("POST")]
